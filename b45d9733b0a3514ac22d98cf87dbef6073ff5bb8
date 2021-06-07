@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e9f360_be64575f",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-07T23:09:15Z",
+      "side": 1,
+      "message": "mimicking behavior in StdioLogger.",
+      "parentUuid": "accb7ae4_16789a06",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 36
+      },
+      "revId": "b45d9733b0a3514ac22d98cf87dbef6073ff5bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad84b2fa_62f27550",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-07T23:07:03Z",
       "side": 1,
       "message": "std::endl includes std::flush",
+      "range": {
+        "startLine": 101,
+        "startChar": 71,
+        "endLine": 101,
+        "endChar": 94
+      },
+      "revId": "b45d9733b0a3514ac22d98cf87dbef6073ff5bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a0026aa_f2ee7bc6",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-07T23:09:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad84b2fa_62f27550",
       "range": {
         "startLine": 101,
         "startChar": 71,
