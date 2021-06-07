@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64bfa1fe_52984db0",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-07T20:30:02Z",
+      "side": 1,
+      "message": "Done. Looks like `service` only needs checkService, so I\u0027ll postpone implementing getService to a follow-up CL.",
+      "parentUuid": "daab1832_45d406f3",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "1a40626a09493fcc3bb6898b7e48670d94fd326c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc9abce9_549e2659",
