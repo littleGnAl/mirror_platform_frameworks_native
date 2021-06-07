@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c23ed09_6a1abd57",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-07T19:17:30Z",
+      "side": 1,
+      "message": "Ooops. This was intentional, but I\u0027ve changed a code a bit so that this is unnecessary right now.\n\nI\u0027ll fix this.",
+      "parentUuid": "24e1f1e7_b8fa8937",
+      "range": {
+        "startLine": 86,
+        "startChar": 30,
+        "endLine": 86,
+        "endChar": 54
+      },
+      "revId": "4b02042bbfc87a411c4056e3a3cde7c660699cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "31268e79_8478cda0",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Will you investigate before merging? It could change the approach needed",
       "parentUuid": "31268e79_8478cda0",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 5
+      },
+      "revId": "4b02042bbfc87a411c4056e3a3cde7c660699cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d6bbef_3b6924c6",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-07T19:17:30Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "a1ab3aa4_37bda49f",
       "range": {
         "startLine": 132,
         "startChar": 0,
