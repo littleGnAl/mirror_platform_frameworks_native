@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ed4110f_ec631d8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-08T22:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6f2bf03_b33355bd",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "18b8e83c970870fdee1b63b37ad9dc36e9619848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "371fe86e_76af21ae",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-08T20:15:36Z",
       "side": 1,
       "message": "you are fixing this here, right? remove the TODO (or file a new bug for RPC and binder to share the threadpool).",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 81
+      },
+      "revId": "18b8e83c970870fdee1b63b37ad9dc36e9619848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f57ec3_de22b7ca",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-08T22:18:20Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "371fe86e_76af21ae",
       "range": {
         "startLine": 474,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08d3bb29_7394bee3",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-08T22:18:20Z",
+      "side": 1,
+      "message": "This is not right. \n\nserver-\u003eremoteBinder()-\u003eisRpcBinder() \u003d\u003d false . server is the regular binder object.\n\nrpcServerBinder object below is the RPC binder objct.",
+      "parentUuid": "f85d421b_a2896028",
+      "range": {
+        "startLine": 1273,
+        "startChar": 23,
+        "endLine": 1273,
+        "endChar": 48
+      },
+      "revId": "18b8e83c970870fdee1b63b37ad9dc36e9619848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "487d23c4_2d596559",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-08T20:15:36Z",
       "side": 1,
       "message": "nit: you could call \u0027getRemoteMaxThreads\u0027 to check the right value gets assigned",
+      "range": {
+        "startLine": 1292,
+        "startChar": 0,
+        "endLine": 1292,
+        "endChar": 68
+      },
+      "revId": "18b8e83c970870fdee1b63b37ad9dc36e9619848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4cab8b5_00d9bcd9",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-08T22:18:20Z",
+      "side": 1,
+      "message": "I am actually using only one thread per RpcSession, so I don\u0027t care about that here.",
+      "parentUuid": "487d23c4_2d596559",
       "range": {
         "startLine": 1292,
         "startChar": 0,
