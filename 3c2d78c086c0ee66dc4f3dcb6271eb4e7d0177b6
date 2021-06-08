@@ -22,6 +22,30 @@
       },
       "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a734619_fe1e078b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-08T21:12:00Z",
+      "side": 1,
+      "message": "Your suggestion is good, except that in this case, the system property set by servicedispatcher aren\u0027t properly cleaned up. Having the service to clean up that system property will be very messy IMO.\n\nThis can be fixed by having the service itself remember which port it is setting the RpcServer on instead of relying on a system property, and erase that when RpcServer ends. Then we can have RpcServer::setShutdownOnAllSessionsExit.\n\nWDYT?",
+      "parentUuid": "ef661f3d_17effdc7",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 25
+      },
+      "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
