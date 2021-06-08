@@ -467,8 +467,17 @@ status_t BBinder::setRpcClientDebug(android::base::unique_fd socketFd) {
     LOG_RPC_DETAIL("%s(fd=%d)", __PRETTY_FUNCTION__, socketFdForPrint);
 
     if (!socketFd.ok()) {
-        ALOGE("%s: No socket FD provided.", __PRETTY_FUNCTION__);
-        return BAD_VALUE;
+        LOG_RPC_DETAIL("%s: Binder object shutting down RpcServer.", __PRETTY_FUNCTION__);
+        Extras* e = getOrCreateExtras();
+        AutoMutex _l(e->mLock);
+        if (e->mRpcServer == nullptr) {
+            ALOGE("%s: RpcServer not set up", __PRETTY_FUNCTION__);
+            return NO_INIT;
+        }
+        ALOGE_IF(e->mRpcServer->shutdown(), "%s: RpcServer can't shutdown", __PRETTY_FUNCTION__);
+        e->mRpcServer = nullptr;
+        LOG_RPC_DETAIL("%s: RpcServer destroyed.", __PRETTY_FUNCTION__);
+        return OK;
     }
 
     // TODO(b/182914638): RPC and binder should share the same thread pool count.
@@ -483,7 +492,7 @@ status_t BBinder::setRpcClientDebug(android::base::unique_fd socketFd) {
     Extras* e = getOrCreateExtras();
     AutoMutex _l(e->mLock);
     if (e->mRpcServer != nullptr) {
-        ALOGE("%s: Already have RPC client", __PRETTY_FUNCTION__);
+        ALOGE("%s: Already have RpcServer", __PRETTY_FUNCTION__);
         return ALREADY_EXISTS;
     }
     e->mRpcServer = RpcServer::make();

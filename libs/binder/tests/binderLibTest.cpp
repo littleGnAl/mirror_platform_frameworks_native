@@ -1215,12 +1215,14 @@ TEST_P(BinderLibRpcTest, SetRpcClientDebug) {
     auto [socket, port] = CreateSocket();
     ASSERT_TRUE(socket.ok());
     EXPECT_THAT(binder->setRpcClientDebug(std::move(socket)), StatusEq(OK));
+    EXPECT_THAT(binder->setRpcClientDebug(android::base::unique_fd()), StatusEq(OK))
+            << "Can't shutdown";
 }
 
 TEST_P(BinderLibRpcTest, SetRpcClientDebugNoFd) {
     auto binder = GetService();
     ASSERT_TRUE(binder != nullptr);
-    EXPECT_THAT(binder->setRpcClientDebug(android::base::unique_fd()), StatusEq(BAD_VALUE));
+    EXPECT_THAT(binder->setRpcClientDebug(android::base::unique_fd()), StatusEq(NO_INIT));
 }
 
 TEST_P(BinderLibRpcTest, SetRpcClientDebugTwice) {
@@ -1234,6 +1236,9 @@ TEST_P(BinderLibRpcTest, SetRpcClientDebugTwice) {
     auto [socket2, port2] = CreateSocket();
     ASSERT_TRUE(socket2.ok());
     EXPECT_THAT(binder->setRpcClientDebug(std::move(socket2)), StatusEq(ALREADY_EXISTS));
+
+    EXPECT_THAT(binder->setRpcClientDebug(android::base::unique_fd()), StatusEq(OK))
+            << "Can't shutdown";
 }
 
 INSTANTIATE_TEST_CASE_P(BinderLibTest, BinderLibRpcTest, testing::Bool(),
@@ -1316,6 +1321,9 @@ TEST_P(BinderLibRpcClientTest, Test) {
     cv.notify_all();
 
     for (auto &t : threads) t.join();
+
+    ASSERT_THAT(server->setRpcClientDebug(android::base::unique_fd()), StatusEq(OK))
+            << "Can't shutdown";
 }
 
 INSTANTIATE_TEST_CASE_P(BinderLibTest, BinderLibRpcClientTest,
