@@ -16,6 +16,63 @@
       "message": "I updated this CL to use options. Please review again! (and thank you for waiting)",
       "revId": "6c5197416200cbfe7d32865a66ef1b3fc03b23a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a752e5d_ca484c53",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1069219
+      },
+      "writtenOn": "2021-06-08T13:33:27Z",
+      "side": 1,
+      "message": "- This is different from the format used below (e.g. 2021-06-08 12:34:56)\n- IIUC %z prints the timezone info (e.g. +09) which means that the printed date is not UTC.\n\nThe same goes for others.\n\nAlso, please beware that the format is slightly different in each function (e.g. \"%Y-%m-%d-%H-%M-%S\" and \"%Y/%m/%d %H:%M:%S\")",
+      "range": {
+        "startLine": 788,
+        "startChar": 38,
+        "endLine": 788,
+        "endChar": 45
+      },
+      "revId": "6c5197416200cbfe7d32865a66ef1b3fc03b23a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6cb57f_6046befc",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1069219
+      },
+      "writtenOn": "2021-06-08T13:33:27Z",
+      "side": 1,
+      "message": "Delete this.",
+      "revId": "6c5197416200cbfe7d32865a66ef1b3fc03b23a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7820fbe8_90eb0475",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1069219
+      },
+      "writtenOn": "2021-06-08T13:33:27Z",
+      "side": 1,
+      "message": "What is this actually testing?",
+      "revId": "6c5197416200cbfe7d32865a66ef1b3fc03b23a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
