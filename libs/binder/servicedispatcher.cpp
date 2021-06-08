@@ -25,9 +25,12 @@
 #include <android-base/stringprintf.h>
 #include <binder/IServiceManager.h>
 #include <binder/RpcServer.h>
+#include <utils/Errors.h>
 
+using android::DEAD_OBJECT;
 using android::defaultServiceManager;
 using android::IBinder;
+using android::NO_INIT;
 using android::OK;
 using android::RpcServer;
 using android::sp;
@@ -35,10 +38,12 @@ using android::statusToString;
 using android::String16;
 using android::base::Basename;
 using android::base::GetBoolProperty;
+using android::base::GetUintProperty;
 using android::base::InitLogging;
 using android::base::LogdLogger;
 using android::base::LogId;
 using android::base::LogSeverity;
+using android::base::SetProperty;
 using android::base::StdioLogger;
 using android::base::StringPrintf;
 
@@ -52,6 +57,10 @@ Usage:
 )";
     LOG(ERROR) << StringPrintf(format, Basename(program).c_str());
     return EX_USAGE;
+}
+
+std::string GetPropertyKey(const char* name) {
+    return StringPrintf("servicedispatcher.%s.port", name);
 }
 
 sp<IBinder> FindService(const char* name) {
@@ -72,6 +81,13 @@ int Dispatch(const char* name) {
     auto binder = FindService(name);
     if (nullptr == binder) return EX_SOFTWARE;
 
+    auto propertyKey = GetPropertyKey(name);
+    if (auto existing = GetUintProperty<unsigned int>(propertyKey, 0u); existing != 0) {
+        LOG(INFO) << "Returning previously set up port for service " << name << ": " << existing;
+        std::cout << existing << std::endl;
+        return EX_OK;
+    }
+
     auto rpcServer = RpcServer::make();
     if (nullptr == rpcServer) {
         LOG(ERROR) << "Cannot create RpcServer";
@@ -89,6 +105,10 @@ int Dispatch(const char* name) {
         LOG(ERROR) << "setRpcClientDebug failed with " << statusToString(status);
         return EX_SOFTWARE;
     }
+    if (!SetProperty(propertyKey, std::to_string(port))) {
+        LOG(WARNING) << "Unable to set " << propertyKey << " to " << port
+                     << ", future calls to servicedispatcher on service " << name << " may fail";
+    }
     LOG(INFO) << "Finish setting up RPC on service " << name << " on port" << port;
 
     std::cout << port << std::endl;
@@ -99,11 +119,37 @@ int Shutdown(const char* name) {
     auto binder = FindService(name);
     if (nullptr == binder) return EX_SOFTWARE;
     auto status = binder->setRpcClientDebug(android::base::unique_fd());
-    if (status != OK) {
-        LOG(ERROR) << "setRpcClientDebug failed with " << statusToString(status);
-        return EX_SOFTWARE;
+
+    // If OK, clear property.
+    // If NO_INIT, the service likely did not set up RPC server. Also clear property.
+    // If DEAD_OBJECT, the service is dead. Also clear property.
+    // Also log accordingly.
+    switch (status) {
+        case NO_INIT:
+        case DEAD_OBJECT:
+            LOG(WARNING) << "WARNING: setRpcClientDebug failed with " << statusToString(status);
+            [[fallthrough]];
+        case OK: {
+            auto propertyKey = GetPropertyKey(name);
+            if (!SetProperty(propertyKey, "")) {
+                LOG(WARNING) << "Unable to set " << propertyKey
+                             << " to empty, future calls to servicedispatcher on service " << name
+                             << " may fail";
+            }
+        } break;
+        default:
+            LOG(ERROR) << "Unable to shutdown RPC on " << name << ": " << statusToString(status)
+                       << ". Future calls to servicedispatcher on service " << name << " may fail.";
     }
-    return EX_OK;
+
+    // If OK or NO_INIT, RpcServer is properly destroyed. Return OK. Otherwise return error.
+    switch (status) {
+        case OK:
+        case NO_INIT:
+            return EX_OK;
+        default:
+            return EX_SOFTWARE;
+    }
 }
 
 // Log to logd. For warning and more severe messages, also log to stderr.
