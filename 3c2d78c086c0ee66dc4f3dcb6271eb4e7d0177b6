@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef661f3d_17effdc7",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-08T20:18:16Z",
+      "side": 1,
+      "message": "If there are multiple people trying to setup a server, it seems this might shutdown one that is being used by something else.\n\nWDYT about a function like RpcServer::onSessionShutdown (extending the event listener maybe or similar) so that we can tell it to shutdown the server when there are no sessions remaining? Or we could add an option like \u0027RpcServer::setShutdownOnAllSessionsExit\u0027 (name?)?",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 25
+      },
+      "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
