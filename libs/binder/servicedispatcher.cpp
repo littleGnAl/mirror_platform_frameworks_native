@@ -27,8 +27,10 @@
 #include <binder/RpcServer.h>
 
 using android::defaultServiceManager;
+using android::IBinder;
 using android::OK;
 using android::RpcServer;
+using android::sp;
 using android::statusToString;
 using android::String16;
 using android::base::Basename;
@@ -44,24 +46,32 @@ namespace {
 int Usage(const char* program) {
     auto format = R"(dispatch calls to RPC service.
 Usage:
-  %s <service_name>
+  %s [-s] <service_name>
+    -s: shuts down RPC communication.
     <service_name>: the service to connect to.
 )";
     LOG(ERROR) << StringPrintf(format, Basename(program).c_str());
     return EX_USAGE;
 }
 
-int Dispatch(const char* name) {
+sp<IBinder> FindService(const char* name) {
     auto sm = defaultServiceManager();
     if (nullptr == sm) {
         LOG(ERROR) << "No servicemanager";
-        return EX_SOFTWARE;
+        return nullptr;
     }
     auto binder = sm->checkService(String16(name));
     if (nullptr == binder) {
         LOG(ERROR) << "No service \"" << name << "\"";
-        return EX_SOFTWARE;
+        return nullptr;
     }
+    return binder;
+}
+
+int Dispatch(const char* name) {
+    auto binder = FindService(name);
+    if (nullptr == binder) return EX_SOFTWARE;
+
     auto rpcServer = RpcServer::make();
     if (nullptr == rpcServer) {
         LOG(ERROR) << "Cannot create RpcServer";
@@ -82,6 +92,17 @@ int Dispatch(const char* name) {
     LOG(INFO) << "Finish setting up RPC on service " << name << " on port" << port;
 
     std::cout << port << std::endl;
+    return EX_OK;
+}
+
+int Shutdown(const char* name) {
+    auto binder = FindService(name);
+    if (nullptr == binder) return EX_SOFTWARE;
+    auto status = binder->setRpcClientDebug(android::base::unique_fd());
+    if (status != OK) {
+        LOG(ERROR) << "setRpcClientDebug failed with " << statusToString(status);
+        return EX_SOFTWARE;
+    }
     return EX_OK;
 }
 
@@ -112,9 +133,13 @@ int main(int argc, char* argv[]) {
     }
     LOG(WARNING) << "WARNING: servicedispatcher is debug only. Use with caution.";
 
+    bool shutdown = false;
     int opt;
-    while (-1 != (opt = getopt(argc, argv, ""))) {
+    while (-1 != (opt = getopt(argc, argv, "s"))) {
         switch (opt) {
+            case 's': {
+                shutdown = true;
+            } break;
             default: {
                 return Usage(argv[0]);
             }
@@ -123,5 +148,6 @@ int main(int argc, char* argv[]) {
     if (optind + 1 != argc) return Usage(argv[0]);
     auto name = argv[optind];
 
+    if (shutdown) return Shutdown(name);
     return Dispatch(name);
 }
