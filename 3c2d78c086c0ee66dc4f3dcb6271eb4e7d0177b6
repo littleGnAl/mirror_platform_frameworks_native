@@ -70,6 +70,30 @@
       },
       "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a259b5f_bc51734f",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-08T22:04:16Z",
+      "side": 1,
+      "message": "As of now, the service does not know anything about the port.\n\n1. servicedispatcher sets up the socket and knows the port.\n2. servicedispatcher sends the socket fd to the service.\n\nThat\u0027s why I kept the system properties in servicedispatcher. The service knows nothing about ports. It just uses the fd directly. For the service to know about the port, I have to let servicedispatcher send the port number to the service during the first set up. WDYT about this?\n\n```\nsetRpcClientDebug(unique_fd socketFd, uint32_t portForFd)\n```",
+      "parentUuid": "6cf09851_48e7069e",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 25
+      },
+      "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
