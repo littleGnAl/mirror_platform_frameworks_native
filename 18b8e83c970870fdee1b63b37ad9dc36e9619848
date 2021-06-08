@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f2bf03_b33355bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-08T20:15:36Z",
+      "side": 1,
+      "message": "nit: be more specific (who are we to say what is wrong and right? - e.g. \u0027setRpcClientDebug - thread # copy kernel binder\u0027)",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "18b8e83c970870fdee1b63b37ad9dc36e9619848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "371fe86e_76af21ae",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-08T20:15:36Z",
+      "side": 1,
+      "message": "you are fixing this here, right? remove the TODO (or file a new bug for RPC and binder to share the threadpool).",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 81
+      },
+      "revId": "18b8e83c970870fdee1b63b37ad9dc36e9619848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85d421b_a2896028",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-08T20:15:36Z",
+      "side": 1,
+      "message": "nit: \u0026\u0026 server-\u003eremoteBinder()-\u003eisRpcBinder()\n\n(BpBinder is \u0027remoteBinder\u0027)",
+      "range": {
+        "startLine": 1273,
+        "startChar": 23,
+        "endLine": 1273,
+        "endChar": 48
+      },
+      "revId": "18b8e83c970870fdee1b63b37ad9dc36e9619848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "487d23c4_2d596559",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-08T20:15:36Z",
+      "side": 1,
+      "message": "nit: you could call \u0027getRemoteMaxThreads\u0027 to check the right value gets assigned",
+      "range": {
+        "startLine": 1292,
+        "startChar": 0,
+        "endLine": 1292,
+        "endChar": 68
+      },
+      "revId": "18b8e83c970870fdee1b63b37ad9dc36e9619848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
