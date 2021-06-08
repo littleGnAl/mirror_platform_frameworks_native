@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000011549800",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1727332?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "46f3ee2b_0fd9eaf7",
+          "description": "Change to \"cmds/installd/tests/installd_dexopt_test.cpp\"",
+          "replacements": [
+            {
+              "path": "cmds/installd/tests/installd_dexopt_test.cpp",
+              "range": {
+                "startLine": 922,
+                "startChar": 65,
+                "endLine": 922,
+                "endChar": 70
+              },
+              "replacement": "access"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "055d17be_a383cf04",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-06-08T16:43:53Z",
+      "side": 1,
+      "message": "Common typo found: \"acess\" -- should it be \"access\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 922,
+        "startChar": 65,
+        "endLine": 922,
+        "endChar": 70
+      },
+      "revId": "9b92aca0ee3d975d0b9e85a557d0d7823d132779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000011549798",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1727332?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c370db36_858584c7",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-06-08T16:43:53Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027they\u0027, \u0027them\u0027, or \u0027person\u0027; see https://developers.google.com/style/word-list#gender for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 965,
+        "startChar": 51,
+        "endLine": 965,
+        "endChar": 55
+      },
+      "revId": "9b92aca0ee3d975d0b9e85a557d0d7823d132779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
