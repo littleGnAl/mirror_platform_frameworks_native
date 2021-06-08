@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cc55fbb_8198c29b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-08T04:07:48Z",
+      "side": 1,
+      "message": "A side note: It\u0027s getting harder to fully understand the changes here. I think it might be good to have an updated design doc that reflects the current status as well as the near term goals.",
+      "revId": "d45be62a2bdd204d5d728aaa56653ea5e072cd9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
