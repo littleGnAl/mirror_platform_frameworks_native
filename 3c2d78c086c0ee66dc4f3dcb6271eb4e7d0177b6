@@ -46,6 +46,30 @@
       },
       "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf09851_48e7069e",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-08T21:41:31Z",
+      "side": 1,
+      "message": "What if the service returns the port if it is already setup, rather than using the system property? That might also help this work on systems w/o properties (maybe some VMs, host).\n\n\u003e the service itself remember which port it is setting the RpcServer on instead of relying on a system property\n\nWe can keep the entire SocketAddress around, yeah. This is a prerequisite for b/189955605 too.",
+      "parentUuid": "6a734619_fe1e078b",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 25
+      },
+      "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
