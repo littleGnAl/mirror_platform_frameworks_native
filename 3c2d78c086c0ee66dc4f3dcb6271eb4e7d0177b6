@@ -118,6 +118,30 @@
       },
       "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce9720c8_903e5ff4",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-09T21:25:05Z",
+      "side": 1,
+      "message": "If there is a long-running process on the phone, it needs to only be alive for the duration that binder RPC is in use.\n\nDo you mean as a daemon OR kept alive by the adb session (I like this last option quite a bit actually)?",
+      "parentUuid": "79aee310_a370cf12",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 25
+      },
+      "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
