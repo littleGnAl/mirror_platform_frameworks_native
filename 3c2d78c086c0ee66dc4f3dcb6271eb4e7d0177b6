@@ -94,6 +94,30 @@
       },
       "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79aee310_a370cf12",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-09T21:02:45Z",
+      "side": 1,
+      "message": "I can also have a long-running servicedispatcher. When servicedispatcher dies (due to manually killing it, adb shutting down, etc.), the port is shut down. In this case, we\u0027ll need one port per host application, meaning that I\u0027ll need to keep a list of RpcServer\u0027s in the binder object to support multiple clients.\n\nWDYT about that?",
+      "parentUuid": "1a259b5f_bc51734f",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 25
+      },
+      "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
