@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a589f78_40bd74b8",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-06-09T12:39:36Z",
+      "side": 1,
+      "message": "enum classes aren\u0027t a think with native binder?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "e90de86f92669fc5557891fdfd1d6e6c2ef240fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
