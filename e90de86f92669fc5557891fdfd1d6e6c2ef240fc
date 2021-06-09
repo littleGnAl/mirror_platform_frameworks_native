@@ -22,6 +22,30 @@
       },
       "revId": "e90de86f92669fc5557891fdfd1d6e6c2ef240fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935a7fbe_3986af7c",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-06-09T14:19:36Z",
+      "side": 1,
+      "message": "Hmm, not sure. I think it should be possible but might require us to define interfaces/parcelables etc. It could extend the scope of this change too much at this point.",
+      "parentUuid": "3a589f78_40bd74b8",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "e90de86f92669fc5557891fdfd1d6e6c2ef240fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
