@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0facfbec_e9585079",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-10T04:17:11Z",
+      "side": 1,
+      "message": "It\u0027s the latter, and the client does need to wait, because otherwise it might send another command to the server that requires that setup, but that setup won\u0027t have happened yet.",
+      "parentUuid": "24172d79_413f4938",
+      "range": {
+        "startLine": 11,
+        "startChar": 63,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "2572954b46f03ee7512fe65dbbf0bf6e0bbc9fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ddd6f53_39062914",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fad7a21_5c2b15d1",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-10T04:17:11Z",
+      "side": 1,
+      "message": "that should be fine as well, the order shouldn\u0027t matter here.",
+      "parentUuid": "1ddd6f53_39062914",
+      "revId": "2572954b46f03ee7512fe65dbbf0bf6e0bbc9fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ec355c8_7529281b",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-10T04:14:20Z",
       "side": 1,
       "message": "Can this be a non-static function? Why does this have to accept session as an argument?",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 53
+      },
+      "revId": "2572954b46f03ee7512fe65dbbf0bf6e0bbc9fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "168b06b3_15d674dc",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-10T04:17:11Z",
+      "side": 1,
+      "message": "It needs to be non-static so that it can clear the refcount in \u0027session\u0027 (you asked this in the CL I introduced it too :)",
+      "parentUuid": "6ec355c8_7529281b",
       "range": {
         "startLine": 215,
         "startChar": 4,
