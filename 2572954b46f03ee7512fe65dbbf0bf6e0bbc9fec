@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2618585_466fe8ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-10T04:29:03Z",
+      "side": 1,
+      "message": "Yeah, but the point is that the server will eventually do the setup, so the client is okay to wait for incoming commands for the callback.\n\nIn order words, I wonder why the server fails in the step (e) if it does the connection setup before making an outgoing command.",
+      "parentUuid": "0facfbec_e9585079",
+      "range": {
+        "startLine": 11,
+        "startChar": 63,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "2572954b46f03ee7512fe65dbbf0bf6e0bbc9fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ddd6f53_39062914",
         "filename": "libs/binder/RpcServer.cpp",
         "patchSetId": 1
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "that should be fine as well, the order shouldn\u0027t matter here.",
       "parentUuid": "1ddd6f53_39062914",
+      "revId": "2572954b46f03ee7512fe65dbbf0bf6e0bbc9fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f47840_bd5eba71",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-10T04:29:03Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "3fad7a21_5c2b15d1",
       "revId": "2572954b46f03ee7512fe65dbbf0bf6e0bbc9fec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -120,6 +162,30 @@
       "side": 1,
       "message": "It needs to be non-static so that it can clear the refcount in \u0027session\u0027 (you asked this in the CL I introduced it too :)",
       "parentUuid": "6ec355c8_7529281b",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 53
+      },
+      "revId": "2572954b46f03ee7512fe65dbbf0bf6e0bbc9fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2865ce20_a26b2307",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-10T04:29:03Z",
+      "side": 1,
+      "message": "Sorry, I keep forgetting. :(",
+      "parentUuid": "168b06b3_15d674dc",
       "range": {
         "startLine": 215,
         "startChar": 4,
