@@ -142,6 +142,30 @@
       },
       "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74cea527_51380b4f",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-10T18:13:29Z",
+      "side": 1,
+      "message": "It\u0027ll be kept alive by the adb session. Its lifetime would be the same as the RpcServer object / the TCP port.\n\nI\u0027ll also need to think about how to tear down the RpcServer object properly when servicedispatcher dies. Maybe through binder objects + death notifications? Or pipe fds? I am not sure about that yet.\n\nIn addition, if a different host application needs to talk to the service, it\u0027ll start another instance of servicedispatcher, another TCP port, and another RpcServer object.",
+      "parentUuid": "ce9720c8_903e5ff4",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 25
+      },
+      "revId": "3c2d78c086c0ee66dc4f3dcb6271eb4e7d0177b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
