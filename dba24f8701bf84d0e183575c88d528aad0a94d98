@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a3c25c5_933fa1ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-10T02:31:51Z",
+      "side": 1,
+      "message": "(note - the flake here is the one that is fixed by the parent CL)",
+      "revId": "dba24f8701bf84d0e183575c88d528aad0a94d98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
