@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24172d79_413f4938",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-10T04:14:20Z",
+      "side": 1,
+      "message": "Is this \"doesn\u0027t\" or \"hasn\u0027t done yet\"? If it\u0027s the latter, I thought that the server will eventually setup the connection up during the step (d). So, the client doesn\u0027t need to wait for server do make the connection.\n\nIf it\u0027s the former, then I\u0027d like to know where in this CL does that.",
+      "range": {
+        "startLine": 11,
+        "startChar": 63,
+        "endLine": 11,
+        "endChar": 70
+      },
+      "revId": "2572954b46f03ee7512fe65dbbf0bf6e0bbc9fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ddd6f53_39062914",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-10T04:14:20Z",
+      "side": 1,
+      "message": "Just to understand. Can this be moved to in between #316 and #318? If not, why?",
+      "revId": "2572954b46f03ee7512fe65dbbf0bf6e0bbc9fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec355c8_7529281b",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-10T04:14:20Z",
+      "side": 1,
+      "message": "Can this be a non-static function? Why does this have to accept session as an argument?",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 215,
+        "endChar": 53
+      },
+      "revId": "2572954b46f03ee7512fe65dbbf0bf6e0bbc9fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
