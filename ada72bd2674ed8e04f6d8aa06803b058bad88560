@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ff2307_b40c8230",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-10T18:20:07Z",
+      "side": 1,
+      "message": "I hate goto\u0027s but ok",
+      "revId": "ada72bd2674ed8e04f6d8aa06803b058bad88560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
