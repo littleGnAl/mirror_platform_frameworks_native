@@ -15,14 +15,13 @@
  */
 
 #include <errno.h>
-#include <fcntl.h>
-#include <fstream>
 #include <poll.h>
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include <chrono>
+#include <fstream>
 #include <thread>
 
 #include <gmock/gmock.h>
@@ -31,6 +30,7 @@
 #include <android-base/properties.h>
 #include <android-base/result-gmock.h>
 #include <android-base/result.h>
+#include <android-base/strings.h>
 #include <android-base/unique_fd.h>
 #include <binder/Binder.h>
 #include <binder/BpBinder.h>
@@ -55,6 +55,7 @@ using namespace android;
 using namespace std::string_literals;
 using namespace std::chrono_literals;
 using android::base::testing::HasValue;
+using android::base::testing::Ok;
 using testing::ExplainMatchResult;
 using testing::Not;
 using testing::WithParamInterface;
@@ -1200,41 +1201,19 @@ public:
     }
 };
 
-class BinderLibRpcTest : public BinderLibRpcTestBase, public WithParamInterface<bool> {
-public:
-    sp<IBinder> GetService() {
-        return GetParam() ? sp<IBinder>(addServer()) : sp<IBinder>(sp<BBinder>::make());
-    }
-    static std::string ParamToString(const testing::TestParamInfo<ParamType> &info) {
-        return info.param ? "remote" : "local";
-    }
-};
+class BinderLibRpcTest : public BinderLibRpcTestBase {};
 
-TEST_P(BinderLibRpcTest, SetRpcClientDebug) {
-    auto binder = GetService();
+TEST_F(BinderLibRpcTest, SetRpcClientDebug) {
+    auto binder = addServer();
     ASSERT_TRUE(binder != nullptr);
     auto [socket, port] = CreateSocket();
     ASSERT_TRUE(socket.ok());
     EXPECT_THAT(binder->setRpcClientDebug(std::move(socket), sp<BBinder>::make()), StatusEq(OK));
 }
 
-TEST_P(BinderLibRpcTest, SetRpcClientDebugNoFd) {
-    auto binder = GetService();
-    ASSERT_TRUE(binder != nullptr);
-    EXPECT_THAT(binder->setRpcClientDebug(android::base::unique_fd(), sp<BBinder>::make()),
-                StatusEq(BAD_VALUE));
-}
-
-TEST_P(BinderLibRpcTest, SetRpcClientDebugNoKeepAliveBinder) {
-    auto binder = GetService();
-    ASSERT_TRUE(binder != nullptr);
-    auto [socket, port] = CreateSocket();
-    ASSERT_TRUE(socket.ok());
-    EXPECT_THAT(binder->setRpcClientDebug(std::move(socket), nullptr), StatusEq(UNEXPECTED_NULL));
-}
-
-TEST_P(BinderLibRpcTest, SetRpcClientDebugTwice) {
-    auto binder = GetService();
+// Tests for multiple RpcServer's on the same binder object.
+TEST_F(BinderLibRpcTest, SetRpcClientDebugTwice) {
+    auto binder = addServer();
     ASSERT_TRUE(binder != nullptr);
 
     auto [socket1, port1] = CreateSocket();
@@ -1245,22 +1224,41 @@ TEST_P(BinderLibRpcTest, SetRpcClientDebugTwice) {
     auto [socket2, port2] = CreateSocket();
     ASSERT_TRUE(socket2.ok());
     auto keepAliveBinder2 = sp<BBinder>::make();
-    EXPECT_THAT(binder->setRpcClientDebug(std::move(socket2), keepAliveBinder2),
-                StatusEq(ALREADY_EXISTS));
+    EXPECT_THAT(binder->setRpcClientDebug(std::move(socket2), keepAliveBinder2), StatusEq(OK));
 }
 
-INSTANTIATE_TEST_CASE_P(BinderLibTest, BinderLibRpcTest, testing::Bool(),
-                        BinderLibRpcTest::ParamToString);
+// Negative tests for RPC APIs on IBinder. Call should fail in the same way on both remote and
+// local binders.
+class BinderLibRpcTestP : public BinderLibRpcTestBase, public WithParamInterface<bool> {
+public:
+    sp<IBinder> GetService() {
+        return GetParam() ? sp<IBinder>(addServer()) : sp<IBinder>(sp<BBinder>::make());
+    }
+    static std::string ParamToString(const testing::TestParamInfo<ParamType> &info) {
+        return info.param ? "remote" : "local";
+    }
+};
+
+TEST_P(BinderLibRpcTestP, SetRpcClientDebugNoFd) {
+    auto binder = GetService();
+    ASSERT_TRUE(binder != nullptr);
+    EXPECT_THAT(binder->setRpcClientDebug(android::base::unique_fd(), sp<BBinder>::make()),
+                StatusEq(BAD_VALUE));
+}
+
+TEST_P(BinderLibRpcTestP, SetRpcClientDebugNoKeepAliveBinder) {
+    auto binder = GetService();
+    ASSERT_TRUE(binder != nullptr);
+    auto [socket, port] = CreateSocket();
+    ASSERT_TRUE(socket.ok());
+    EXPECT_THAT(binder->setRpcClientDebug(std::move(socket), nullptr), StatusEq(UNEXPECTED_NULL));
+}
+INSTANTIATE_TEST_CASE_P(BinderLibTest, BinderLibRpcTestP, testing::Bool(),
+                        BinderLibRpcTestP::ParamToString);
 
 class BinderLibTestService;
-class BinderLibRpcClientTest : public BinderLibRpcTestBase,
-                               public WithParamInterface<std::tuple<bool, uint32_t>> {
+class BinderLibRpcClientTest : public BinderLibRpcTestBase, public WithParamInterface<uint32_t> {
 public:
-    static std::string ParamToString(const testing::TestParamInfo<ParamType> &info) {
-        auto [isRemote, numThreads] = info.param;
-        return (isRemote ? "remote" : "local") + "_server_with_"s + std::to_string(numThreads) +
-                "_threads";
-    }
     sp<IBinder> CreateRemoteService(int32_t id) {
         Parcel data, reply;
         status_t status = data.writeInt32(id);
@@ -1277,13 +1275,12 @@ public:
     }
 };
 
+// Tests for multiple RpcSession's on the same port.
 TEST_P(BinderLibRpcClientTest, Test) {
-    auto [isRemote, numThreadsParam] = GetParam();
-    uint32_t numThreads = numThreadsParam; // ... to be captured in lambda
+    auto numThreads = GetParam();
     int32_t id = 0xC0FFEE00 + numThreads;
-    sp<IBinder> server = isRemote ? sp<IBinder>(CreateRemoteService(id))
-                                  : sp<IBinder>(sp<BinderLibTestService>::make(id, false));
-    ASSERT_EQ(isRemote, !!server->remoteBinder());
+    sp<IBinder> server = sp<IBinder>(CreateRemoteService(id));
+    ASSERT_NE(nullptr, server->remoteBinder());
     ASSERT_THAT(GetId(server), HasValue(id));
 
     auto keepAliveBinder = sp<BBinder>::make();
@@ -1332,9 +1329,8 @@ TEST_P(BinderLibRpcClientTest, Test) {
     for (auto &t : threads) t.join();
 }
 
-INSTANTIATE_TEST_CASE_P(BinderLibTest, BinderLibRpcClientTest,
-                        testing::Combine(testing::Bool(), testing::Values(1u, 10u)),
-                        BinderLibRpcClientTest::ParamToString);
+INSTANTIATE_TEST_CASE_P(BinderLibTest, BinderLibRpcClientTest, testing::Values(1u, 10u),
+                        testing::PrintToStringParamName());
 
 class BinderLibTestService : public BBinder {
 public:
