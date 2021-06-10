@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9149bb9a_fc7c5ec0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-10T18:41:50Z",
+      "side": 1,
+      "message": "I don\u0027t understand what\u0027s going on in this CL, so I\u0027ll defer this to Jiyong.",
+      "revId": "0a40b09a936c308c523bd62247ab526cacd65857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
