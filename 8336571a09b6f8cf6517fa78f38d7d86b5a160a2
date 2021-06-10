@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8391ef_4bbfe0dd",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-10T21:08:42Z",
+      "side": 1,
+      "message": "without this patch, this will hit the 1s delay (yes - I did verify w/o the fix, to check my understanding), since the synchronous callback will not be read and processed by the \u0027doCallbackAsync\u0027 - since it\u0027s oneway, it won\u0027t wait on receiving any commands.",
+      "range": {
+        "startLine": 1003,
+        "startChar": 0,
+        "endLine": 1003,
+        "endChar": 79
+      },
+      "revId": "8336571a09b6f8cf6517fa78f38d7d86b5a160a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
