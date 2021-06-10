@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb612eb_7c0e6385",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-10T04:41:49Z",
+      "side": 1,
+      "message": "This function still feels like a constructor. Instead of returning a status, can we return an instance of ExclusiveConnection class which indicates this error case? e.g.\n\n```\nExclusiveConnection connection(...);\nif (!connection.ok()) return WOULD_BLOCK_or_whatever;\n```",
+      "range": {
+        "startLine": 571,
+        "startChar": 12,
+        "endLine": 571,
+        "endChar": 31
+      },
+      "revId": "8cba0b61a65f60655afabbeec637064c0ad8d815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
