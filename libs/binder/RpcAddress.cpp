@@ -51,11 +51,38 @@ static void ReadRandomBytes(uint8_t* buf, size_t len) {
     close(fd);
 }
 
-RpcAddress RpcAddress::unique() {
+constexpr uint64_t kHeaderFlagForServer = 1 << 0;
+// to distinguish created address from 'zero' address
+constexpr uint64_t kHeaderFlagCreated = 1 << 1;
+
+RpcAddress RpcAddress::random(bool forServer) {
+    // The remainder of this header acts as reserved space for different kinds
+    // of binder objects.
+    uint64_t header = kHeaderFlagCreated;
+
+    // servers and clients allocate addresses independently, so this bit can
+    // tell you where an address originates
+    if (forServer) header |= kHeaderFlagForServer;
+
     RpcAddress ret;
-    ReadRandomBytes((uint8_t*)ret.mRawAddr.get(), sizeof(RpcWireAddress));
+    uint8_t* raw = reinterpret_cast<uint8_t*>(ret.mRawAddr.get());
+
+    static_assert(sizeof(RpcWireAddress) > sizeof(header));
+    memcpy(raw, &header, sizeof(header));
+    ReadRandomBytes(raw + sizeof(header), sizeof(RpcWireAddress) - sizeof(header));
+
     LOG_RPC_DETAIL("Creating new address: %s", ret.toString().c_str());
     return ret;
+}
+
+bool RpcAddress::isForServer() const {
+    uint64_t header = *reinterpret_cast<uint64_t*>(mRawAddr.get());
+    return header & kHeaderFlagForServer;
+}
+
+bool RpcAddress::isRecognizedType() const {
+    uint64_t header = *reinterpret_cast<uint64_t*>(mRawAddr.get());
+    return (header & ~(kHeaderFlagForServer | kHeaderFlagCreated)) == 0;
 }
 
 RpcAddress RpcAddress::fromRawEmbedded(const RpcWireAddress* raw) {
