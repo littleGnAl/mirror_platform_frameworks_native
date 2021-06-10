@@ -90,7 +90,7 @@ struct RpcWireHeader {
 };
 
 struct RpcWireAddress {
-    uint8_t address[32];
+    uint8_t address[40];
 };
 
 struct RpcWireTransaction {
