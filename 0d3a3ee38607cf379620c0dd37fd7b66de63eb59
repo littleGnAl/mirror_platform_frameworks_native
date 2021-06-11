@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d61abeb0_a0446de5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-06-11T17:52:49Z",
+      "side": 1,
+      "message": "PTAL.  The 2 API clients are\nhttps://android-review.googlesource.com/c/platform/packages/modules/Virtualization/+/1728671\nhttps://android-review.googlesource.com/c/platform/packages/modules/Virtualization/+/1728672",
+      "revId": "0d3a3ee38607cf379620c0dd37fd7b66de63eb59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
