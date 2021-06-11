@@ -536,9 +536,9 @@ private:
     size_t              ipcDataSize() const;
     uintptr_t           ipcObjects() const;
     size_t              ipcObjectsCount() const;
-    void                ipcSetDataReference(const uint8_t* data, size_t dataSize,
-                                            const binder_size_t* objects, size_t objectsCount,
-                                            release_func relFunc);
+    [[nodiscard]] status_t ipcSetDataReference(const uint8_t* data, size_t dataSize,
+                                               const binder_size_t* objects, size_t objectsCount,
+                                               release_func relFunc);
 
     status_t            finishWrite(size_t len);
     void                releaseObjects();
