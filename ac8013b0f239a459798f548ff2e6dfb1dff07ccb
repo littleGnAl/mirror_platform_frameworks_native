@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7352359b_970e910e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-11T03:59:43Z",
+      "side": 1,
+      "message": "In the doc, you said that you have a plan to delay (or accumulate) the refcount decrements to the end. Then there wouldn\u0027t be a big delay even when the transaction is handled as part of nested transactions, right?",
+      "parentUuid": "1ac8bc6c_7b7265f9",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "ac8013b0f239a459798f548ff2e6dfb1dff07ccb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8d7b7997_70aa3c64",

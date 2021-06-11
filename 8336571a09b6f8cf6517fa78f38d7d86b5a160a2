@@ -22,6 +22,30 @@
       },
       "revId": "8336571a09b6f8cf6517fa78f38d7d86b5a160a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b20b448_ab8b19bf",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-11T03:59:43Z",
+      "side": 1,
+      "message": "ack. since the thread is one.",
+      "parentUuid": "6e8391ef_4bbfe0dd",
+      "range": {
+        "startLine": 1003,
+        "startChar": 0,
+        "endLine": 1003,
+        "endChar": 79
+      },
+      "revId": "8336571a09b6f8cf6517fa78f38d7d86b5a160a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
