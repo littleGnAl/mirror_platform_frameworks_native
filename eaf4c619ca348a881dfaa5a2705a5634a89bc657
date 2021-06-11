@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cbd6daa_675f9295",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-11T00:26:11Z",
+      "side": 1,
+      "message": "This seems to be a little bit verbose. Can we use \u0027using\u0027 to make this concise?\n\n(You can ignore this if you want. It\u0027s a stylistic issue)",
+      "range": {
+        "startLine": 54,
+        "startChar": 41,
+        "endLine": 54,
+        "endChar": 66
+      },
+      "revId": "eaf4c619ca348a881dfaa5a2705a5634a89bc657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c5b6c6_9aeb535d",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-11T00:26:11Z",
+      "side": 1,
+      "message": "I like this. I\u0027ve always been confused by the mixed use of fd and RpcConnection.",
+      "range": {
+        "startLine": 240,
+        "startChar": 14,
+        "endLine": 240,
+        "endChar": 36
+      },
+      "revId": "eaf4c619ca348a881dfaa5a2705a5634a89bc657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
