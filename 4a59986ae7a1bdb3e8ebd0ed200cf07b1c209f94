@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a38dfb72_f31fe5fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T00:51:19Z",
+      "side": 1,
+      "message": "(note - lost +2 due to an additional condition I forgot to check here)",
+      "revId": "4a59986ae7a1bdb3e8ebd0ed200cf07b1c209f94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
