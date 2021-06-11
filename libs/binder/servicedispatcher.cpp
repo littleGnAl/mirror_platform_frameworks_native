@@ -85,6 +85,9 @@ int Dispatch(const char* name) {
     LOG(INFO) << "Finish setting up RPC on service " << name << " on port" << port;
 
     std::cout << port << std::endl;
+
+    (void)pause(); // Intentionally ignore EINTR. Wait for shell to kill it.
+
     return EX_OK;
 }
 
