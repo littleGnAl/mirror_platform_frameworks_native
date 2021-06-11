@@ -129,6 +129,30 @@
       },
       "revId": "10a7f8039b66bfde542f877b4be438afa09406bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea50bd0c_c4fd5667",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-11T01:29:17Z",
+      "side": 1,
+      "message": "I don\u0027t believe this is a new operator. Shouldn\u0027t this better be `while( (tries--) \u003e 0 )`?",
+      "parentUuid": "78ceb462_0e0ae684",
+      "range": {
+        "startLine": 146,
+        "startChar": 33,
+        "endLine": 146,
+        "endChar": 35
+      },
+      "revId": "10a7f8039b66bfde542f877b4be438afa09406bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
