@@ -98,6 +98,24 @@
       "parentUuid": "d34b8dca_4e4fbfc9",
       "revId": "0d3a3ee38607cf379620c0dd37fd7b66de63eb59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2148e318_321d9934",
+        "filename": "libs/binder/rust/src/binder_rpc_unstable.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T21:59:18Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "efb260bc_a3f0f17f",
+      "revId": "0d3a3ee38607cf379620c0dd37fd7b66de63eb59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
