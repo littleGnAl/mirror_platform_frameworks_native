@@ -16,6 +16,46 @@
       "message": "PTAL.  The 2 API clients are\nhttps://android-review.googlesource.com/c/platform/packages/modules/Virtualization/+/1728671\nhttps://android-review.googlesource.com/c/platform/packages/modules/Virtualization/+/1728672",
       "revId": "0d3a3ee38607cf379620c0dd37fd7b66de63eb59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80ee8dc8_53afa1be",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T21:37:47Z",
+      "side": 1,
+      "message": ".map (to avoid NDK-API-Review which isn\u0027t needed here)",
+      "range": {
+        "startLine": 274,
+        "startChar": 45,
+        "endLine": 274,
+        "endChar": 52
+      },
+      "revId": "0d3a3ee38607cf379620c0dd37fd7b66de63eb59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34b8dca_4e4fbfc9",
+        "filename": "libs/binder/rust/src/binder_rpc_unstable.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T21:37:47Z",
+      "side": 1,
+      "message": "nit: maybe add warnings along the lines of \u0027iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction\u0027",
+      "revId": "0d3a3ee38607cf379620c0dd37fd7b66de63eb59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
