@@ -45,6 +45,11 @@ void ExecVHelper::PrepareArgs(const std::string& bin) {
 }
 
 void ExecVHelper::Exec(int exit_code) {
+    std::string cmd;
+    for (const std::string& arg : args_) {
+        cmd += " " + arg;
+    }
+    LOG(ERROR) << "CALIN: " << cmd;
     execv(argv_[0], (char * const *)&argv_[0]);
     PLOG(ERROR) << "execv(" << argv_[0] << ") failed";
     exit(exit_code);

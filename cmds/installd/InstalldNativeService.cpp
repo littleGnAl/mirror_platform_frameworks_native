@@ -2654,7 +2654,8 @@ binder::Status InstalldNativeService::moveAb(const std::string& apkPath,
 }
 
 binder::Status InstalldNativeService::deleteOdex(const std::string& apkPath,
-        const std::string& instructionSet, const std::optional<std::string>& outputPath) {
+        const std::string& instructionSet, const std::optional<std::string>& outputPath,
+        int64_t* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
     CHECK_ARGUMENT_PATH(apkPath);
     CHECK_ARGUMENT_PATH(outputPath);
@@ -2664,8 +2665,9 @@ binder::Status InstalldNativeService::deleteOdex(const std::string& apkPath,
     const char* instruction_set = instructionSet.c_str();
     const char* oat_dir = outputPath ? outputPath->c_str() : nullptr;
 
-    bool res = delete_odex(apk_path, instruction_set, oat_dir);
-    return res ? ok() : error();
+    int64_t res = delete_odex(apk_path, instruction_set, oat_dir);
+    *_aidl_return = res;
+    return res == -1 ? error() : ok();
 }
 
 // This kernel feature is experimental.
