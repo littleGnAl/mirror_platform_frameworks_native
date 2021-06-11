@@ -16,6 +16,52 @@
       "message": "(note - lost +2 due to an additional condition I forgot to check here)",
       "revId": "4a59986ae7a1bdb3e8ebd0ed200cf07b1c209f94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93dc8490_498b84e4",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-06-11T15:50:22Z",
+      "side": 1,
+      "message": "did you want to update this log now?",
+      "range": {
+        "startLine": 101,
+        "startChar": 53,
+        "endLine": 101,
+        "endChar": 76
+      },
+      "revId": "4a59986ae7a1bdb3e8ebd0ed200cf07b1c209f94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2d282c_db695a19",
+        "filename": "libs/binder/RpcWireFormat.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-06-11T15:50:22Z",
+      "side": 1,
+      "message": "why 40? Does this deserve a definition somewhere, or am I missing it?",
+      "range": {
+        "startLine": 93,
+        "startChar": 20,
+        "endLine": 93,
+        "endChar": 22
+      },
+      "revId": "4a59986ae7a1bdb3e8ebd0ed200cf07b1c209f94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
