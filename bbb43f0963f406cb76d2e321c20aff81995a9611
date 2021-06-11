@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb275a16_94cfb850",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T20:59:17Z",
+      "side": 1,
+      "message": "do note that the RPC backlog right now is only \u00271\u0027. I was thinking of changing it to 0 to force this condition to be more obvious (if we increase the backlog, then people will hit it only in very extreme situations)",
+      "range": {
+        "startLine": 1291,
+        "startChar": 60,
+        "endLine": 1291,
+        "endChar": 92
+      },
+      "revId": "bbb43f0963f406cb76d2e321c20aff81995a9611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
