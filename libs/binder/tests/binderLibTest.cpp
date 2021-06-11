@@ -19,6 +19,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sysexits.h>
 
 #include <chrono>
 #include <fstream>
@@ -27,6 +28,8 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include <android-base/file.h>
+#include <android-base/parseint.h>
 #include <android-base/properties.h>
 #include <android-base/result-gmock.h>
 #include <android-base/result.h>
@@ -77,6 +80,7 @@ static testing::Environment* binder_env;
 static char *binderservername;
 static char *binderserversuffix;
 static char binderserverarg[] = "--binderserver";
+static constexpr const char *servicedispatcher = "/system/bin/servicedispatcher";
 
 static constexpr int kSchedPolicy = SCHED_RR;
 static constexpr int kSchedPriority = 7;
@@ -223,7 +227,7 @@ class BinderLibTestEnv : public ::testing::Environment {
             }
             if (m_serverpid > 0) {
                 //printf("wait for %d\n", m_pids[i]);
-                pid = wait(&exitStatus);
+                pid = waitpid(m_serverpid, &exitStatus, 0);
                 EXPECT_EQ(m_serverpid, pid);
                 EXPECT_TRUE(WIFEXITED(exitStatus));
                 EXPECT_EQ(0, WEXITSTATUS(exitStatus));
@@ -1177,6 +1181,21 @@ TEST_F(BinderLibTest, GotSid) {
     EXPECT_THAT(server->transact(BINDER_LIB_TEST_CAN_GET_SID, data, nullptr), StatusEq(OK));
 }
 
+// RAII object to kill a child service. In some tests, because the child service is added
+// to servicemanager, servicemanager holds a strong reference to the child service.
+class DeferExit {
+public:
+    DeferExit(const sp<IBinder> &binder) : mBinder(binder) {}
+    ~DeferExit() {
+        Parcel data, reply;
+        EXPECT_EQ(OK,
+                  mBinder->transact(BINDER_LIB_TEST_EXIT_TRANSACTION, data, &reply, TF_ONE_WAY));
+    }
+
+private:
+    sp<IBinder> mBinder;
+};
+
 class BinderLibRpcTestBase : public BinderLibTest {
 public:
     void SetUp() override {
@@ -1198,6 +1217,45 @@ public:
             return {};
         }
         return {rpcServer->releaseServer(), port};
+    }
+
+    static android::base::Result<std::tuple<unsigned int, pid_t>> runServiceDispatcher(
+            const std::string &descriptor, bool killIt) {
+        TemporaryFile portNumberFile;
+
+        pid_t pid = fork();
+        if (pid < 0) return android::base::ErrnoError() << "fork";
+        if (pid == 0) {
+            // child
+            portNumberFile.DoNotRemove();
+            LOG_ALWAYS_FATAL_IF(TEMP_FAILURE_RETRY(dup2(portNumberFile.fd, STDOUT_FILENO)) < 0);
+            LOG_ALWAYS_FATAL_IF(
+                    execl(servicedispatcher, servicedispatcher, descriptor.c_str(), nullptr) < 0);
+            exit(EX_SOFTWARE);
+        }
+        (void)close(portNumberFile.fd);
+        std::string content;
+        for (int i = 0; i < 10; ++i) {
+            if (android::base::ReadFileToString(portNumberFile.path, &content) &&
+                android::base::EndsWith(content, "\n")) {
+                break;
+            }
+            usleep(100 * 1000); // 100ms per iteration, max 1s
+        }
+        if (!android::base::EndsWith(content, "\n")) {
+            return android::base::Error()
+                    << "servicedispatcher did not write port number " << content;
+        }
+        unsigned int port;
+        if (!android::base::ParseUint(android::base::Trim(content), &port))
+            return android::base::Error() << "Not a port number: " << android::base::Trim(content);
+
+        if (killIt) {
+            EXPECT_EQ(0, kill(pid, SIGKILL)) << strerror(errno);
+            pid = 0;
+        }
+
+        return std::tuple<unsigned int, pid_t>(port, pid);
     }
 };
 
@@ -1225,6 +1283,36 @@ TEST_F(BinderLibRpcTest, SetRpcClientDebugTwice) {
     ASSERT_TRUE(socket2.ok());
     auto keepAliveBinder2 = sp<BBinder>::make();
     EXPECT_THAT(binder->setRpcClientDebug(std::move(socket2), keepAliveBinder2), StatusEq(OK));
+}
+
+// Test that, if the servicedispatcher dies, the RpcServer is destroyed.
+TEST_F(BinderLibRpcTest, SetRpcClientDebugKeepAliveUntilServiceDispatcherDies) {
+    // TODO(b/182914638): Remove once servicedispatcher is installed unconditionally.
+    if (access(servicedispatcher, X_OK) != 0)
+        GTEST_SKIP() << "No " << servicedispatcher << ": " << strerror(errno);
+
+    int32_t id;
+    auto binder = addServer(&id);
+    ASSERT_TRUE(binder != nullptr);
+    DeferExit deferExit(binder);
+    auto serviceName = String8(binderLibTestServiceName).c_str() + "/"s + std::to_string(id);
+    String16 serviceName16(serviceName.data(), serviceName.size());
+    ASSERT_THAT(defaultServiceManager()->addService(serviceName16, binder), StatusEq(OK));
+
+    auto dispatchResult = runServiceDispatcher(serviceName, true);
+    ASSERT_THAT(dispatchResult, Ok());
+    auto [port, _] = *dispatchResult;
+
+    // Service may not immediately shut it down, so retry a few times to avoid flake.
+    auto rpcSession = RpcSession::make();
+    bool setupResult = false;
+    for (int i = 0; i < 10; ++i) {
+        setupResult = rpcSession->setupInetClient("127.0.0.1", port);
+        if (!setupResult) break;
+        usleep(100 * 1000); // 100ms per iteration, total 1s
+    }
+    ASSERT_FALSE(setupResult) << "setupInetClient on " << port
+                              << " is still successful, but it should have been shut down.";
 }
 
 // Negative tests for RPC APIs on IBinder. Call should fail in the same way on both remote and
