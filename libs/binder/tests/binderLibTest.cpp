@@ -1345,41 +1345,27 @@ INSTANTIATE_TEST_CASE_P(BinderLibTest, BinderLibRpcTestP, testing::Bool(),
                         BinderLibRpcTestP::ParamToString);
 
 class BinderLibTestService;
-class BinderLibRpcClientTest : public BinderLibRpcTestBase, public WithParamInterface<uint32_t> {
-public:
-    sp<IBinder> CreateRemoteService(int32_t id) {
-        Parcel data, reply;
-        status_t status = data.writeInt32(id);
-        EXPECT_THAT(status, StatusEq(OK));
-        if (status != OK) return nullptr;
-        status = m_server->transact(BINDER_LIB_TEST_CREATE_TEST_SERVICE, data, &reply);
-        EXPECT_THAT(status, StatusEq(OK));
-        if (status != OK) return nullptr;
-        sp<IBinder> ret;
-        status = reply.readStrongBinder(&ret);
-        EXPECT_THAT(status, StatusEq(OK));
-        if (status != OK) return nullptr;
-        return ret;
-    }
-};
+class BinderLibRpcClientTest : public BinderLibRpcTestBase, public WithParamInterface<uint32_t> {};
 
 // Tests for multiple RpcSession's on the same port.
 TEST_P(BinderLibRpcClientTest, Test) {
-    auto numThreads = GetParam();
-    int32_t id = 0xC0FFEE00 + numThreads;
-    sp<IBinder> server = sp<IBinder>(CreateRemoteService(id));
-    ASSERT_NE(nullptr, server->remoteBinder());
-    ASSERT_THAT(GetId(server), HasValue(id));
+    // TODO(b/182914638): Remove once servicedispatcher is installed unconditionally.
+    if (access(servicedispatcher, X_OK) != 0)
+        GTEST_SKIP() << "No " << servicedispatcher << ": " << strerror(errno);
 
-    auto keepAliveBinder = sp<BBinder>::make();
-    unsigned int port = 0;
-    // Fake servicedispatcher.
-    {
-        auto [socket, socketPort] = CreateSocket();
-        ASSERT_TRUE(socket.ok());
-        port = socketPort;
-        ASSERT_THAT(server->setRpcClientDebug(std::move(socket), keepAliveBinder), StatusEq(OK));
-    }
+    auto numThreads = GetParam();
+    int32_t id;
+    sp<IBinder> server = addServer(&id);
+    ASSERT_TRUE(server != nullptr);
+    DeferExit deferExit(server);
+    auto serviceName = String8(binderLibTestServiceName).c_str() + "/"s + std::to_string(id);
+    String16 serviceName16(serviceName.data(), serviceName.size());
+    ASSERT_THAT(defaultServiceManager()->addService(serviceName16, server), StatusEq(OK));
+
+    auto dispatchResult = runServiceDispatcher(serviceName, false);
+    ASSERT_THAT(dispatchResult, Ok());
+    auto port = std::get<0>(*dispatchResult);
+    auto pid = std::get<1>(*dispatchResult);
 
     std::mutex mutex;
     std::condition_variable cv;
@@ -1415,6 +1401,8 @@ TEST_P(BinderLibRpcClientTest, Test) {
     cv.notify_all();
 
     for (auto &t : threads) t.join();
+
+    EXPECT_EQ(0, kill(pid, SIGKILL)) << "kill servicedispatcher: " << strerror(errno);
 }
 
 INSTANTIATE_TEST_CASE_P(BinderLibTest, BinderLibRpcClientTest, testing::Values(1u, 10u),
