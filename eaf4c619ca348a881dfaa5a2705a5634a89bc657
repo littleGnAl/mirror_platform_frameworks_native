@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "589ea2bc_b0a7bad4",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T00:34:46Z",
+      "side": 1,
+      "message": "will ignore (and it\u0027s internal, but also following up separately for a bigger discussion about typedefs, which I don\u0027t really like because they add non-local information to code).",
+      "parentUuid": "5cbd6daa_675f9295",
+      "range": {
+        "startLine": 54,
+        "startChar": 41,
+        "endLine": 54,
+        "endChar": 66
+      },
+      "revId": "eaf4c619ca348a881dfaa5a2705a5634a89bc657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "30c5b6c6_9aeb535d",
         "filename": "libs/binder/include/binder/RpcSession.h",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-11T00:26:11Z",
       "side": 1,
       "message": "I like this. I\u0027ve always been confused by the mixed use of fd and RpcConnection.",
+      "range": {
+        "startLine": 240,
+        "startChar": 14,
+        "endLine": 240,
+        "endChar": 36
+      },
+      "revId": "eaf4c619ca348a881dfaa5a2705a5634a89bc657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f6b13fb_f99fd2f8",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T00:34:46Z",
+      "side": 1,
+      "message": "thanks! I was confusing myself too",
+      "parentUuid": "30c5b6c6_9aeb535d",
       "range": {
         "startLine": 240,
         "startChar": 14,
