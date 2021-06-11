@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e53c5fc1_02fb1c6b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T21:03:16Z",
+      "side": 1,
+      "message": "dangling FIXME",
+      "range": {
+        "startLine": 191,
+        "startChar": 73,
+        "endLine": 191,
+        "endChar": 78
+      },
+      "revId": "57e5a748d6b49cc95ab7ceab15b8aeaa26f20c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e26981_a749aee5",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T21:03:16Z",
+      "side": 1,
+      "message": "how can this condition happen?",
+      "range": {
+        "startLine": 192,
+        "startChar": 12,
+        "endLine": 192,
+        "endChar": 33
+      },
+      "revId": "57e5a748d6b49cc95ab7ceab15b8aeaa26f20c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e9e79e_2a76f50e",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T21:03:16Z",
+      "side": 1,
+      "message": "will abort in this case? it\u0027s not nothrow",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 78
+      },
+      "revId": "57e5a748d6b49cc95ab7ceab15b8aeaa26f20c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc3fd807_756e7681",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T21:03:16Z",
+      "side": 1,
+      "message": "nit: do not create in this case, only load?",
+      "range": {
+        "startLine": 551,
+        "startChar": 16,
+        "endLine": 551,
+        "endChar": 33
+      },
+      "revId": "57e5a748d6b49cc95ab7ceab15b8aeaa26f20c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
