@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2303e3e8_5b96284c",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T20:57:32Z",
+      "side": 1,
+      "message": "does it matter if this binder is from a different process than the client?",
+      "range": {
+        "startLine": 154,
+        "startChar": 55,
+        "endLine": 154,
+        "endChar": 70
+      },
+      "revId": "46bc8b5451a1896decf54d47df7d386b606312ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
