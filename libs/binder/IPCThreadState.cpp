@@ -958,12 +958,13 @@ status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
 
                 if (reply) {
                     if ((tr.flags & TF_STATUS_CODE) == 0) {
-                        reply->ipcSetDataReference(
-                            reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer),
-                            tr.data_size,
-                            reinterpret_cast<const binder_size_t*>(tr.data.ptr.offsets),
-                            tr.offsets_size/sizeof(binder_size_t),
-                            freeBuffer);
+                        err = reply->ipcSetDataReference(reinterpret_cast<const uint8_t*>(
+                                                                 tr.data.ptr.buffer),
+                                                         tr.data_size,
+                                                         reinterpret_cast<const binder_size_t*>(
+                                                                 tr.data.ptr.offsets),
+                                                         tr.offsets_size / sizeof(binder_size_t),
+                                                         freeBuffer);
                     } else {
                         err = *reinterpret_cast<const status_t*>(tr.data.ptr.buffer);
                         freeBuffer(nullptr,
@@ -1247,11 +1248,13 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
             if (result != NO_ERROR) break;
 
             Parcel buffer;
-            buffer.ipcSetDataReference(
-                reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer),
-                tr.data_size,
-                reinterpret_cast<const binder_size_t*>(tr.data.ptr.offsets),
-                tr.offsets_size/sizeof(binder_size_t), freeBuffer);
+            result =
+                    buffer.ipcSetDataReference(reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer),
+                                               tr.data_size,
+                                               reinterpret_cast<const binder_size_t*>(
+                                                       tr.data.ptr.offsets),
+                                               tr.offsets_size / sizeof(binder_size_t), freeBuffer);
+            if (result != NO_ERROR) break;
 
             const void* origServingStackPointer = mServingStackPointer;
             mServingStackPointer = __builtin_frame_address(0);

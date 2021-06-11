@@ -77,6 +77,24 @@ static size_t pad_size(size_t s) {
 
 namespace android {
 
+#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
+constexpr int32_t kHeaderVariant = B_PACK_CHARS('V', 'N', 'D', 'R');
+#else
+constexpr int32_t kHeaderVariant = B_PACK_CHARS('S', 'Y', 'S', 'T');
+#endif
+
+struct ParcelLayout {
+    int32_t variant;
+    uint8_t data[0];
+};
+static_assert(sizeof(ParcelLayout) % 4 == 0, "binder requires packets a multiple of size 4");
+static_assert(sizeof(ParcelLayout) == 4,
+              "this can change, but it should be consistent between architectures");
+
+// what is passed over the wire instead of an empty parcel, so that the header
+// is always present (and we don't have to make an allocation to get it)
+static const ParcelLayout kEmptyParcelLayout = ParcelLayout{.variant = kHeaderVariant};
+
 // many things compile this into prebuilts on the stack
 #ifdef __LP64__
 static_assert(sizeof(Parcel) == 120);
@@ -458,7 +476,7 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
 
     // Count objects in range
     for (int i = 0; i < (int) size; i++) {
-        size_t off = objects[i];
+        size_t off = objects[i] - sizeof(ParcelLayout);
         if ((off >= offset) && (off + sizeof(flat_binder_object) <= offset + len)) {
             if (firstIndex == -1) {
                 firstIndex = i;
@@ -503,8 +521,8 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
         // append and acquire objects
         int idx = mObjectsSize;
         for (int i = firstIndex; i <= lastIndex; i++) {
-            size_t off = objects[i] - offset + startPos;
-            mObjects[idx++] = off;
+            size_t off = objects[i] - sizeof(ParcelLayout) - offset + startPos;
+            mObjects[idx++] = off + sizeof(ParcelLayout);
             mObjectsSize++;
 
             flat_binder_object* flat
@@ -597,12 +615,6 @@ void Parcel::updateWorkSourceRequestHeaderPosition() const {
     }
 }
 
-#if defined(__ANDROID_VNDK__) && !defined(__ANDROID_APEX__)
-constexpr int32_t kHeader = B_PACK_CHARS('V', 'N', 'D', 'R');
-#else
-constexpr int32_t kHeader = B_PACK_CHARS('S', 'Y', 'S', 'T');
-#endif
-
 // Write RPC headers.  (previously just the interface token)
 status_t Parcel::writeInterfaceToken(const String16& interface)
 {
@@ -616,7 +628,6 @@ status_t Parcel::writeInterfaceToken(const char16_t* str, size_t len) {
         updateWorkSourceRequestHeaderPosition();
         writeInt32(threadState->shouldPropagateWorkSource() ? threadState->getCallingWorkSourceUid()
                                                             : IPCThreadState::kUnsetWorkSource);
-        writeInt32(kHeader);
     }
 
     // currently the interface identification token is just its name as a string
@@ -683,13 +694,6 @@ bool Parcel::enforceInterface(const char16_t* interface,
         updateWorkSourceRequestHeaderPosition();
         int32_t workSource = readInt32();
         threadState->setCallingWorkSourceUidWithoutPropagation(workSource);
-        // vendor header
-        int32_t header = readInt32();
-        if (header != kHeader) {
-            ALOGE("Expecting header 0x%x but found 0x%x. Mixing copies of libbinder?", kHeader,
-                  header);
-            return false;
-        }
     }
 
     // Interface descriptor.
@@ -1331,7 +1335,7 @@ restart_write:
 
         // Need to write meta-data?
         if (nullMetaData || val.binder != 0) {
-            mObjects[mObjectsSize] = mDataPos;
+            mObjects[mObjectsSize] = mDataPos + sizeof(ParcelLayout);
             acquire_object(ProcessState::self(), val, this, &mOpenAshmemSize);
             mObjectsSize++;
         }
@@ -1369,18 +1373,21 @@ status_t Parcel::validateReadData(size_t upperBound) const
     if (mObjectsSorted || mObjectsSize <= 1) {
 data_sorted:
         // Expect to check only against the next object
-        if (mNextObjectHint < mObjectsSize && upperBound > mObjects[mNextObjectHint]) {
+        if (mNextObjectHint < mObjectsSize &&
+            upperBound > mObjects[mNextObjectHint] - sizeof(ParcelLayout)) {
             // For some reason the current read position is greater than the next object
             // hint. Iterate until we find the right object
             size_t nextObject = mNextObjectHint;
             do {
-                if (mDataPos < mObjects[nextObject] + sizeof(flat_binder_object)) {
+                if (mDataPos <
+                    mObjects[nextObject] - sizeof(ParcelLayout) + sizeof(flat_binder_object)) {
                     // Requested info overlaps with an object
                     ALOGE("Attempt to read from protected data in Parcel %p", this);
                     return PERMISSION_DENIED;
                 }
                 nextObject++;
-            } while (nextObject < mObjectsSize && upperBound > mObjects[nextObject]);
+            } while (nextObject < mObjectsSize &&
+                     upperBound > mObjects[nextObject] - sizeof(ParcelLayout));
             mNextObjectHint = nextObject;
         }
         return NO_ERROR;
@@ -2056,6 +2063,7 @@ const flat_binder_object* Parcel::readObject(bool nullMetaData) const
             return obj;
         }
 
+        // FIXME: cleanup
         // Ensure that this object is valid...
         binder_size_t* const OBJS = mObjects;
         const size_t N = mObjectsSize;
@@ -2068,13 +2076,13 @@ const flat_binder_object* Parcel::readObject(bool nullMetaData) const
             // Start at the current hint position, looking for an object at
             // the current data position.
             if (opos < N) {
-                while (opos < (N-1) && OBJS[opos] < DPOS) {
+                while (opos < (N - 1) && OBJS[opos] - sizeof(ParcelLayout) < DPOS) {
                     opos++;
                 }
             } else {
                 opos = N-1;
             }
-            if (OBJS[opos] == DPOS) {
+            if (OBJS[opos] - sizeof(ParcelLayout) == DPOS) {
                 // Found it!
                 ALOGV("Parcel %p found obj %zu at index %zu with forward search",
                      this, DPOS, opos);
@@ -2084,10 +2092,10 @@ const flat_binder_object* Parcel::readObject(bool nullMetaData) const
             }
 
             // Look backwards for it...
-            while (opos > 0 && OBJS[opos] > DPOS) {
+            while (opos > 0 && OBJS[opos] - sizeof(ParcelLayout) > DPOS) {
                 opos--;
             }
-            if (OBJS[opos] == DPOS) {
+            if (OBJS[opos] - sizeof(ParcelLayout) == DPOS) {
                 // Found it!
                 ALOGV("Parcel %p found obj %zu at index %zu with backward search",
                      this, DPOS, opos);
@@ -2110,8 +2118,8 @@ void Parcel::closeFileDescriptors()
     }
     while (i > 0) {
         i--;
-        const flat_binder_object* flat
-            = reinterpret_cast<flat_binder_object*>(mData+mObjects[i]);
+        const flat_binder_object* flat =
+                reinterpret_cast<flat_binder_object*>(mData + mObjects[i] - sizeof(ParcelLayout));
         if (flat->hdr.type == BINDER_TYPE_FD) {
             //ALOGI("Closing fd: %ld", flat->handle);
             close(flat->handle);
@@ -2121,12 +2129,14 @@ void Parcel::closeFileDescriptors()
 
 uintptr_t Parcel::ipcData() const
 {
-    return reinterpret_cast<uintptr_t>(mData);
+    if (mData == nullptr) return reinterpret_cast<uintptr_t>(&kEmptyParcelLayout);
+    return reinterpret_cast<uintptr_t>(mData - sizeof(ParcelLayout));
 }
 
 size_t Parcel::ipcDataSize() const
 {
-    return (mDataSize > mDataPos ? mDataSize : mDataPos);
+    if (mData == nullptr) return sizeof(kEmptyParcelLayout);
+    return (mDataSize > mDataPos ? mDataSize : mDataPos) + sizeof(ParcelLayout);
 }
 
 uintptr_t Parcel::ipcObjects() const
@@ -2139,23 +2149,45 @@ size_t Parcel::ipcObjectsCount() const
     return mObjectsSize;
 }
 
-void Parcel::ipcSetDataReference(const uint8_t* data, size_t dataSize,
-    const binder_size_t* objects, size_t objectsCount, release_func relFunc)
-{
+status_t Parcel::ipcSetDataReference(const uint8_t* data, size_t dataSize,
+                                     const binder_size_t* objects, size_t objectsCount,
+                                     release_func relFunc) {
     // this code uses 'mOwner == nullptr' to understand whether it owns memory
     LOG_ALWAYS_FATAL_IF(relFunc == nullptr, "must provide cleanup function");
 
     freeData();
 
-    mData = const_cast<uint8_t*>(data);
-    mDataSize = mDataCapacity = dataSize;
+    if (dataSize > 0) {
+        if (dataSize < sizeof(ParcelLayout)) {
+            ALOGE("ipcSetDataReference, not enough data for layout: %zu", dataSize);
+            // FIXME: call mOwner
+            return NOT_ENOUGH_DATA;
+        }
+        ParcelLayout* layout = reinterpret_cast<ParcelLayout*>(const_cast<uint8_t*>(data));
+        if (layout->variant != kHeaderVariant) {
+            ALOGE("Mixing copies of libbinder? Expecting header 0x%x but found 0x%x",
+                  kHeaderVariant, layout->variant);
+            // FIXME: call mOwner
+            return BAD_TYPE;
+        }
+        mData = layout->data;
+        mDataSize = mDataCapacity = dataSize - sizeof(ParcelLayout);
+    } else {
+        // we never want to be here: FIXME remove this path
+        ALOGE("Warning: in the bad place");
+        // FIXME: can data be non-null here? for kernel binder?
+        // FIXME: leaks
+        mData = nullptr;
+        mDataSize = mDataCapacity = 0;
+    }
+
     mObjects = const_cast<binder_size_t*>(objects);
     mObjectsSize = mObjectsCapacity = objectsCount;
     mOwner = relFunc;
 
     binder_size_t minOffset = 0;
     for (size_t i = 0; i < mObjectsSize; i++) {
-        binder_size_t offset = mObjects[i];
+        binder_size_t offset = mObjects[i] - sizeof(ParcelLayout);
         if (offset < minOffset) {
             ALOGE("%s: bad object offset %" PRIu64 " < %" PRIu64 "\n",
                   __func__, (uint64_t)offset, (uint64_t)minOffset);
@@ -2181,6 +2213,8 @@ void Parcel::ipcSetDataReference(const uint8_t* data, size_t dataSize,
         minOffset = offset + sizeof(flat_binder_object);
     }
     scanForFds();
+
+    return OK;
 }
 
 void Parcel::print(TextOutput& to, uint32_t /*flags*/) const
@@ -2196,8 +2230,8 @@ void Parcel::print(TextOutput& to, uint32_t /*flags*/) const
         const binder_size_t* OBJS = mObjects;
         const size_t N = objectsCount();
         for (size_t i=0; i<N; i++) {
-            const flat_binder_object* flat
-                = reinterpret_cast<const flat_binder_object*>(DATA+OBJS[i]);
+            const flat_binder_object* flat = reinterpret_cast<const flat_binder_object*>(
+                    DATA + OBJS[i] - sizeof(ParcelLayout));
             to << endl << "Object #" << i << " @ " << (void*)OBJS[i] << ": "
                 << TypeCode(flat->hdr.type & 0x7f7f7f00)
                 << " = " << flat->binder;
@@ -2220,8 +2254,8 @@ void Parcel::releaseObjects()
     binder_size_t* const objects = mObjects;
     while (i > 0) {
         i--;
-        const flat_binder_object* flat
-            = reinterpret_cast<flat_binder_object*>(data+objects[i]);
+        const flat_binder_object* flat =
+                reinterpret_cast<flat_binder_object*>(data + objects[i] - sizeof(ParcelLayout));
         release_object(proc, *flat, this, &mOpenAshmemSize);
     }
 }
@@ -2237,8 +2271,8 @@ void Parcel::acquireObjects()
     binder_size_t* const objects = mObjects;
     while (i > 0) {
         i--;
-        const flat_binder_object* flat
-            = reinterpret_cast<flat_binder_object*>(data+objects[i]);
+        const flat_binder_object* flat =
+                reinterpret_cast<flat_binder_object*>(data + objects[i] - sizeof(ParcelLayout));
         acquire_object(proc, *flat, this, &mOpenAshmemSize);
     }
 }
@@ -2253,8 +2287,7 @@ void Parcel::freeDataNoInit()
 {
     if (mOwner) {
         LOG_ALLOC("Parcel %p: freeing other owner data", this);
-        //ALOGI("Freeing data ref of %p (pid=%d)", this, getpid());
-        mOwner(this, mData, mDataSize, mObjects, mObjectsSize);
+        mOwner(this, (uint8_t*)ipcData(), ipcDataSize(), mObjects, mObjectsSize);
     } else {
         LOG_ALLOC("Parcel %p: freeing allocated data", this);
         releaseObjects();
@@ -2265,7 +2298,7 @@ void Parcel::freeDataNoInit()
             if (mDeallocZero) {
                 zeroMemory(mData, mDataSize);
             }
-            free(mData);
+            free(mData - sizeof(ParcelLayout));
         }
         if (mObjects) free(mObjects);
     }
@@ -2288,18 +2321,41 @@ status_t Parcel::growData(size_t len)
 }
 
 static uint8_t* reallocZeroFree(uint8_t* data, size_t oldCapacity, size_t newCapacity, bool zero) {
-    if (!zero) {
-        return (uint8_t*)realloc(data, newCapacity);
-    }
-    uint8_t* newData = (uint8_t*)malloc(newCapacity);
-    if (!newData) {
+    if (newCapacity > INT32_MAX - sizeof(ParcelLayout)) {
         return nullptr;
     }
 
-    memcpy(newData, data, std::min(oldCapacity, newCapacity));
-    zeroMemory(data, oldCapacity);
-    free(data);
-    return newData;
+    // FIXME: checks
+
+    (void)oldCapacity;
+    // size_t oldLayoutSize = oldCapacity + sizeof(ParcelLayout);
+    size_t newLayoutSize = newCapacity + sizeof(ParcelLayout);
+
+    ParcelLayout* oldLayout =
+            reinterpret_cast<ParcelLayout*>(data ? data - sizeof(ParcelLayout) : nullptr);
+    ParcelLayout* newLayout;
+
+    if (zero) {
+        // FIXME: use this logic
+        //        newLayout = (ParcelLayout*)malloc(newLayoutSize);
+        //        if (newLayout) {
+        //            memcpy(newLayout, data ? data : (uint8_t*)&kEmptyParcelLayout,
+        //            std::min(oldLayoutSize, newLayoutSize)); zeroMemory(data, oldCapacity); //
+        //            don't care about header free(oldLayout);
+        //        }
+        newLayout = (ParcelLayout*)realloc(oldLayout, newLayoutSize);
+    } else {
+        newLayout = (ParcelLayout*)realloc(oldLayout, newLayoutSize);
+    }
+
+    if (newLayout == nullptr) return nullptr;
+
+    if (oldLayout == nullptr) {
+        // first time allocating
+        newLayout->variant = kHeaderVariant;
+    }
+
+    return newLayout->data;
 }
 
 status_t Parcel::restartWrite(size_t desired)
@@ -2370,8 +2426,7 @@ status_t Parcel::continueWrite(size_t desired)
             objectsSize = 0;
         } else {
             while (objectsSize > 0) {
-                if (mObjects[objectsSize-1] < desired)
-                    break;
+                if (mObjects[objectsSize - 1] - sizeof(ParcelLayout) < desired) break;
                 objectsSize--;
             }
         }
@@ -2416,8 +2471,7 @@ status_t Parcel::continueWrite(size_t desired)
         if (objects && mObjects) {
             memcpy(objects, mObjects, objectsSize*sizeof(binder_size_t));
         }
-        //ALOGI("Freeing data ref of %p (pid=%d)", this, getpid());
-        mOwner(this, mData, mDataSize, mObjects, mObjectsSize);
+        mOwner(this, (uint8_t*)ipcData(), ipcDataSize(), mObjects, mObjectsSize);
         mOwner = nullptr;
 
         LOG_ALLOC("Parcel %p: taking ownership of %zu capacity", this, desired);
@@ -2438,8 +2492,8 @@ status_t Parcel::continueWrite(size_t desired)
             // Need to release refs on any objects we are dropping.
             const sp<ProcessState> proc(ProcessState::self());
             for (size_t i=objectsSize; i<mObjectsSize; i++) {
-                const flat_binder_object* flat
-                    = reinterpret_cast<flat_binder_object*>(mData+mObjects[i]);
+                const flat_binder_object* flat = reinterpret_cast<flat_binder_object*>(
+                        mData + mObjects[i] - sizeof(ParcelLayout));
                 if (flat->hdr.type == BINDER_TYPE_FD) {
                     // will need to rescan because we may have lopped off the only FDs
                     mFdsKnown = false;
@@ -2491,7 +2545,7 @@ status_t Parcel::continueWrite(size_t desired)
 
     } else {
         // This is the first data.  Easy!
-        uint8_t* data = (uint8_t*)malloc(desired);
+        uint8_t* data = reallocZeroFree(nullptr, 0, desired, mDeallocZero);
         if (!data) {
             mError = NO_MEMORY;
             return NO_MEMORY;
@@ -2558,8 +2612,8 @@ void Parcel::scanForFds() const
 {
     bool hasFds = false;
     for (size_t i=0; i<mObjectsSize; i++) {
-        const flat_binder_object* flat
-            = reinterpret_cast<const flat_binder_object*>(mData + mObjects[i]);
+        const flat_binder_object* flat = reinterpret_cast<const flat_binder_object*>(
+                mData + mObjects[i] - sizeof(ParcelLayout));
         if (flat->hdr.type == BINDER_TYPE_FD) {
             hasFds = true;
             break;

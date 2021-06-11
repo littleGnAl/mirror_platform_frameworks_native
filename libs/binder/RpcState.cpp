@@ -431,12 +431,12 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
 
     LOG_ALWAYS_FATAL_IF(std::numeric_limits<int32_t>::max() - sizeof(RpcWireHeader) -
                                         sizeof(RpcWireTransaction) <
-                                data.dataSize(),
-                        "Too much data %zu", data.dataSize());
+                                data.ipcDataSize(),
+                        "Too much data %zu", data.ipcDataSize());
 
     RpcWireHeader command{
             .command = RPC_COMMAND_TRANSACT,
-            .bodySize = static_cast<uint32_t>(sizeof(RpcWireTransaction) + data.dataSize()),
+            .bodySize = static_cast<uint32_t>(sizeof(RpcWireTransaction) + data.ipcDataSize()),
     };
     RpcWireTransaction transaction{
             .address = address.viewRawEmbedded(),
@@ -445,7 +445,7 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
             .asyncNumber = asyncNumber,
     };
     CommandData transactionData(sizeof(RpcWireHeader) + sizeof(RpcWireTransaction) +
-                                data.dataSize());
+                                data.ipcDataSize());
     if (!transactionData.valid()) {
         return NO_MEMORY;
     }
@@ -453,8 +453,8 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
     memcpy(transactionData.data() + 0, &command, sizeof(RpcWireHeader));
     memcpy(transactionData.data() + sizeof(RpcWireHeader), &transaction,
            sizeof(RpcWireTransaction));
-    memcpy(transactionData.data() + sizeof(RpcWireHeader) + sizeof(RpcWireTransaction), data.data(),
-           data.dataSize());
+    memcpy(transactionData.data() + sizeof(RpcWireHeader) + sizeof(RpcWireTransaction),
+           reinterpret_cast<uint8_t*>(data.ipcData()), data.ipcDataSize());
 
     if (status_t status = rpcSend(connection, session, "transaction", transactionData.data(),
                                   transactionData.size());
@@ -480,7 +480,7 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
 static void cleanup_reply_data(Parcel* p, const uint8_t* data, size_t dataSize,
                                const binder_size_t* objects, size_t objectsCount) {
     (void)p;
-    delete[] const_cast<uint8_t*>(data - offsetof(RpcWireReply, data));
+    if (data != nullptr) delete[] const_cast<uint8_t*>(data - offsetof(RpcWireReply, data));
     (void)dataSize;
     LOG_ALWAYS_FATAL_IF(objects != nullptr);
     LOG_ALWAYS_FATAL_IF(objectsCount, 0);
@@ -518,9 +518,16 @@ status_t RpcState::waitForReply(const sp<RpcSession::RpcConnection>& connection,
     RpcWireReply* rpcReply = reinterpret_cast<RpcWireReply*>(data.data());
     if (rpcReply->status != OK) return rpcReply->status;
 
+    // FIXME: leaks sometimes, messy
     data.release();
-    reply->ipcSetDataReference(rpcReply->data, command.bodySize - offsetof(RpcWireReply, data),
-                               nullptr, 0, cleanup_reply_data);
+
+    size_t ipcDataSize = command.bodySize - offsetof(RpcWireReply, data);
+
+    if (status_t status = reply->ipcSetDataReference(ipcDataSize > 0 ? rpcReply->data : nullptr,
+                                                     ipcDataSize, nullptr, 0, cleanup_reply_data);
+        status != OK) {
+        return status;
+    }
 
     reply->markForRpc(session);
 
@@ -739,48 +746,52 @@ processTransactInternalTailCall:
         // transaction->data is owned by this function. Parcel borrows this data and
         // only holds onto it for the duration of this function call. Parcel will be
         // deleted before the 'transactionData' object.
-        data.ipcSetDataReference(transaction->data,
-                                 transactionData.size() - offsetof(RpcWireTransaction, data),
-                                 nullptr /*object*/, 0 /*objectCount*/,
-                                 do_nothing_to_transact_data);
-        data.markForRpc(session);
+        replyStatus = data.ipcSetDataReference(transaction->data,
+                                               transactionData.size() -
+                                                       offsetof(RpcWireTransaction, data),
+                                               nullptr /*object*/, 0 /*objectCount*/,
+                                               do_nothing_to_transact_data);
 
-        if (target) {
-            bool origAllowNested = connection->allowNested;
-            connection->allowNested = !oneway;
+        if (replyStatus == OK) {
+            data.markForRpc(session);
 
-            replyStatus = target->transact(transaction->code, data, &reply, transaction->flags);
+            if (target) {
+                bool origAllowNested = connection->allowNested;
+                connection->allowNested = !oneway;
 
-            connection->allowNested = origAllowNested;
-        } else {
-            LOG_RPC_DETAIL("Got special transaction %u", transaction->code);
+                replyStatus = target->transact(transaction->code, data, &reply, transaction->flags);
 
-            switch (transaction->code) {
-                case RPC_SPECIAL_TRANSACT_GET_MAX_THREADS: {
-                    replyStatus = reply.writeInt32(session->getMaxThreads());
-                    break;
-                }
-                case RPC_SPECIAL_TRANSACT_GET_SESSION_ID: {
-                    // for client connections, this should always report the value
-                    // originally returned from the server, so this is asserting
-                    // that it exists
-                    replyStatus = session->mId.value().writeToParcel(&reply);
-                    break;
-                }
-                default: {
-                    sp<RpcServer> server = session->server();
-                    if (server) {
-                        switch (transaction->code) {
-                            case RPC_SPECIAL_TRANSACT_GET_ROOT: {
-                                replyStatus = reply.writeStrongBinder(server->getRootObject());
-                                break;
+                connection->allowNested = origAllowNested;
+            } else {
+                LOG_RPC_DETAIL("Got special transaction %u", transaction->code);
+
+                switch (transaction->code) {
+                    case RPC_SPECIAL_TRANSACT_GET_MAX_THREADS: {
+                        replyStatus = reply.writeInt32(session->getMaxThreads());
+                        break;
+                    }
+                    case RPC_SPECIAL_TRANSACT_GET_SESSION_ID: {
+                        // for client connections, this should always report the value
+                        // originally returned from the server, so this is asserting
+                        // that it exists
+                        replyStatus = session->mId.value().writeToParcel(&reply);
+                        break;
+                    }
+                    default: {
+                        sp<RpcServer> server = session->server();
+                        if (server) {
+                            switch (transaction->code) {
+                                case RPC_SPECIAL_TRANSACT_GET_ROOT: {
+                                    replyStatus = reply.writeStrongBinder(server->getRootObject());
+                                    break;
+                                }
+                                default: {
+                                    replyStatus = UNKNOWN_TRANSACTION;
+                                }
                             }
-                            default: {
-                                replyStatus = UNKNOWN_TRANSACTION;
-                            }
+                        } else {
+                            ALOGE("Special command sent, but no server object attached.");
                         }
-                    } else {
-                        ALOGE("Special command sent, but no server object attached.");
                     }
                 }
             }
@@ -840,25 +851,25 @@ processTransactInternalTailCall:
 
     LOG_ALWAYS_FATAL_IF(std::numeric_limits<int32_t>::max() - sizeof(RpcWireHeader) -
                                         sizeof(RpcWireReply) <
-                                reply.dataSize(),
-                        "Too much data for reply %zu", reply.dataSize());
+                                reply.ipcDataSize(),
+                        "Too much data for reply %zu", reply.ipcDataSize());
 
     RpcWireHeader cmdReply{
             .command = RPC_COMMAND_REPLY,
-            .bodySize = static_cast<uint32_t>(sizeof(RpcWireReply) + reply.dataSize()),
+            .bodySize = static_cast<uint32_t>(sizeof(RpcWireReply) + reply.ipcDataSize()),
     };
     RpcWireReply rpcReply{
             .status = replyStatus,
     };
 
-    CommandData replyData(sizeof(RpcWireHeader) + sizeof(RpcWireReply) + reply.dataSize());
+    CommandData replyData(sizeof(RpcWireHeader) + sizeof(RpcWireReply) + reply.ipcDataSize());
     if (!replyData.valid()) {
         return NO_MEMORY;
     }
     memcpy(replyData.data() + 0, &cmdReply, sizeof(RpcWireHeader));
     memcpy(replyData.data() + sizeof(RpcWireHeader), &rpcReply, sizeof(RpcWireReply));
-    memcpy(replyData.data() + sizeof(RpcWireHeader) + sizeof(RpcWireReply), reply.data(),
-           reply.dataSize());
+    memcpy(replyData.data() + sizeof(RpcWireHeader) + sizeof(RpcWireReply),
+           reinterpret_cast<uint8_t*>(reply.ipcData()), reply.ipcDataSize());
 
     return rpcSend(connection, session, "reply", replyData.data(), replyData.size());
 }
