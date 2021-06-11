@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "349da23d_0792b708",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-06-11T21:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80ee8dc8_53afa1be",
+      "range": {
+        "startLine": 274,
+        "startChar": 45,
+        "endLine": 274,
+        "endChar": 52
+      },
+      "revId": "0d3a3ee38607cf379620c0dd37fd7b66de63eb59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d34b8dca_4e4fbfc9",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-06-11T21:37:47Z",
       "side": 1,
       "message": "nit: maybe add warnings along the lines of \u0027iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction\u0027",
+      "revId": "0d3a3ee38607cf379620c0dd37fd7b66de63eb59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efb260bc_a3f0f17f",
+        "filename": "libs/binder/rust/src/binder_rpc_unstable.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-06-11T21:50:43Z",
+      "side": 1,
+      "message": "With only our own code in the visibility build rule, we should be safe.  Let me add a comment to warn people if they want to try adding more.  Hope that\u0027s enough.",
+      "parentUuid": "d34b8dca_4e4fbfc9",
       "revId": "0d3a3ee38607cf379620c0dd37fd7b66de63eb59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
