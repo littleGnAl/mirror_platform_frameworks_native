@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16a06524_08e174aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T00:50:43Z",
+      "side": 1,
+      "message": "These also need to be unguessable now. Though, added your suggestion in b/182939933#comment3.\n\nIt\u0027s a bit of an inbetween zone now. I need to wait until we get TLS or similar setup and see what is really needed. Should be coming soon...",
+      "parentUuid": "f9fc6252_b8acff8d",
+      "revId": "10a7f8039b66bfde542f877b4be438afa09406bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f76314d_aae56f46",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-11T00:43:47Z",
       "side": 1,
       "message": "???",
+      "range": {
+        "startLine": 146,
+        "startChar": 33,
+        "endLine": 146,
+        "endChar": 35
+      },
+      "revId": "10a7f8039b66bfde542f877b4be438afa09406bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "124485c3_4c66d34e",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-11T00:50:43Z",
+      "side": 1,
+      "message": "cast to boolean (more common in the kernel)",
+      "parentUuid": "1f76314d_aae56f46",
       "range": {
         "startLine": 146,
         "startChar": 33,
