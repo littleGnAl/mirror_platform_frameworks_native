@@ -229,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d7b2f37_df330196",
+        "filename": "libs/binder/tests/binderHostDeviceTest.xml",
+        "patchSetId": 15
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-12T01:00:54Z",
+      "side": 1,
+      "message": "No, this cannot be auto generated. I think it is intentional to not put too many things in Android.bp.\n\nFiled b/190867620 regardless.",
+      "parentUuid": "28125c43_8f426fd9",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 67
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "110aedb9_0ec912ef",
