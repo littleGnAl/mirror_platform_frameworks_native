@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44d6e3bf_cc749d7b",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 15
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-12T01:02:14Z",
+      "side": 1,
+      "message": "Unnecessary because this is a host test.",
+      "parentUuid": "baa63c71_e144ca24",
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ada7bc2e_f107306b",
