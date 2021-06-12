@@ -22,6 +22,30 @@
       },
       "revId": "46bc8b5451a1896decf54d47df7d386b606312ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "250ee098_df4eba25",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-12T00:46:34Z",
+      "side": 1,
+      "message": "From the perspective of the IBinder API itself, no. All it cares about is that when keepAliveBinder receives a death notification, it should shutdown the RpcServer.",
+      "parentUuid": "2303e3e8_5b96284c",
+      "range": {
+        "startLine": 154,
+        "startChar": 55,
+        "endLine": 154,
+        "endChar": 70
+      },
+      "revId": "46bc8b5451a1896decf54d47df7d386b606312ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
