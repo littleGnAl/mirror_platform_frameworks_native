@@ -268,6 +268,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "370c4894_c9ace6c2",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-12T01:05:38Z",
+      "side": 1,
+      "message": "... and PipeRelay need an extra thread. Maybe we can use temporary files in the libbase\u0027s function as well...",
+      "parentUuid": "fc649652_ef5b4977",
+      "range": {
+        "startLine": 119,
+        "startChar": 22,
+        "endLine": 119,
+        "endChar": 37
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28125c43_8f426fd9",
         "filename": "libs/binder/tests/binderHostDeviceTest.xml",
         "patchSetId": 15
