@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baa63c71_e144ca24",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 15
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-12T00:47:38Z",
+      "side": 1,
+      "message": "please also add this to the test mapping",
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada7bc2e_f107306b",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-12T00:47:38Z",
+      "side": 1,
+      "message": "note b/186661301\n\nalso - was thinking, pid \u003d racey. Is this needed?",
+      "range": {
+        "startLine": 80,
+        "startChar": 47,
+        "endLine": 80,
+        "endChar": 66
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2d30c5_41f32a38",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-12T00:47:38Z",
+      "side": 1,
+      "message": "what is this for?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66622ce8_2bc3b676",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-12T00:47:38Z",
+      "side": 1,
+      "message": "lost comment from other CL?",
+      "range": {
+        "startLine": 119,
+        "startChar": 61,
+        "endLine": 119,
+        "endChar": 62
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a68043b_78ca65b9",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-12T00:47:38Z",
+      "side": 1,
+      "message": "nit: I bet enh@ would accept this or similar in libbase and give a better review than I could.  Maybe next to logwrap_fork_execvp? I think we will want this logic inside of libbinder eventually, right? For host-users of this?",
+      "range": {
+        "startLine": 119,
+        "startChar": 22,
+        "endLine": 119,
+        "endChar": 37
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28125c43_8f426fd9",
+        "filename": "libs/binder/tests/binderHostDeviceTest.xml",
+        "patchSetId": 15
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-12T00:47:38Z",
+      "side": 1,
+      "message": "this can\u0027t be auto-generated, hmmm? Can you file a bug to request dshi@ (or the testing team) adds a soong-attribute for this?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 67
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110aedb9_0ec912ef",
+        "filename": "libs/binder/tests/binderHostDeviceTestService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-12T00:47:38Z",
+      "side": 1,
+      "message": "license",
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
