@@ -46,6 +46,30 @@
       },
       "revId": "46bc8b5451a1896decf54d47df7d386b606312ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "932ae9fc_ff1c5c68",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-12T00:49:10Z",
+      "side": 1,
+      "message": "I know, sorry. For instance, we can\u0027t rely on this for making sure that disabling developer debugging actually turns this feature off (do you have some other mechanism in mind for this)?",
+      "parentUuid": "250ee098_df4eba25",
+      "range": {
+        "startLine": 154,
+        "startChar": 55,
+        "endLine": 154,
+        "endChar": 70
+      },
+      "revId": "46bc8b5451a1896decf54d47df7d386b606312ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
