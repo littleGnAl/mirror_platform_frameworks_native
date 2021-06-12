@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f5b371_0e8d8de2",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 15
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-12T01:02:44Z",
+      "side": 1,
+      "message": "Host tests runs on presubmit by default unless unittest:false, AFAIK",
+      "parentUuid": "44d6e3bf_cc749d7b",
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ada7bc2e_f107306b",
