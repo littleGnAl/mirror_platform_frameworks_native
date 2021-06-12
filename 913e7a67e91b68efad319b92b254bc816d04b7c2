@@ -206,6 +206,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb755d5a_91005220",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-12T01:01:41Z",
+      "side": 1,
+      "message": "Oh, this is intentional so that I can refer to the mutable string buffer below (L123)",
+      "parentUuid": "b2bedc78_88fb2500",
+      "range": {
+        "startLine": 119,
+        "startChar": 61,
+        "endLine": 119,
+        "endChar": 62
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28125c43_8f426fd9",
