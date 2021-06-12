@@ -70,6 +70,30 @@
       },
       "revId": "46bc8b5451a1896decf54d47df7d386b606312ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8286f0f_e24d5a2b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-12T01:25:03Z",
+      "side": 1,
+      "message": "No. The current design is that when developer debugging is off, hopefully adb shell is terminated, servicedispatcher is also terminated, and the service shuts down RpcServer.\n\nIt doesn\u0027t prevent, for example, if the user manually detaches the servicedispatcher process from shell, so that when shell ends, servicedispatcher keeps running in the background like a daemon.\n\nSo yeah, we\u0027ll probably need another mechanism for detecting developer debugging settings. Filed b/190867939 to keep track.",
+      "parentUuid": "932ae9fc_ff1c5c68",
+      "range": {
+        "startLine": 154,
+        "startChar": 55,
+        "endLine": 154,
+        "endChar": 70
+      },
+      "revId": "46bc8b5451a1896decf54d47df7d386b606312ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
