@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5cbf43_4f2f64c1",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-12T00:53:30Z",
+      "side": 1,
+      "message": "Yeah. I need to:\n\n- terminate servicedispatcer to tell the RpcServer to stop\n- terminate the service to clean it up.",
+      "parentUuid": "ada7bc2e_f107306b",
+      "range": {
+        "startLine": 80,
+        "startChar": 47,
+        "endLine": 80,
+        "endChar": 66
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc2d30c5_41f32a38",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-12T00:47:38Z",
       "side": 1,
       "message": "what is this for?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4343903_6eac037c",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-12T00:53:30Z",
+      "side": 1,
+      "message": "for gtest to print Result\u003cCommandResult\u003e properly. For some reason, operator\u003c\u003c is not enough",
+      "parentUuid": "bc2d30c5_41f32a38",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -100,6 +148,54 @@
       "writtenOn": "2021-06-12T00:47:38Z",
       "side": 1,
       "message": "nit: I bet enh@ would accept this or similar in libbase and give a better review than I could.  Maybe next to logwrap_fork_execvp? I think we will want this logic inside of libbinder eventually, right? For host-users of this?",
+      "range": {
+        "startLine": 119,
+        "startChar": 22,
+        "endLine": 119,
+        "endChar": 37
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2bedc78_88fb2500",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-12T00:53:30Z",
+      "side": 1,
+      "message": "what comment?",
+      "parentUuid": "66622ce8_2bc3b676",
+      "range": {
+        "startLine": 119,
+        "startChar": 61,
+        "endLine": 119,
+        "endChar": 62
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc649652_ef5b4977",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-12T00:53:30Z",
+      "side": 1,
+      "message": "\u003e I think we will want this logic inside of libbinder eventually, right?\n\nYes, eventually the host servicemanager will need this (WIP at CL:1728613).\n\nI can put this in libbase, but note that this doesn\u0027t handle stdout / stderr very well. It relies on temporary files. A better solution would be based on pipes, but then we\u0027ll probably need the PipeRelay class again:\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/cmds/lshal/PipeRelay.h\n\n... which also caused race conditions historically.",
+      "parentUuid": "0a68043b_78ca65b9",
       "range": {
         "startLine": 119,
         "startChar": 22,
