@@ -23,6 +23,7 @@
 #include <android-base/logging.h>
 #include <android-base/properties.h>
 #include <android-base/stringprintf.h>
+#include <android/os/IServiceManager.h>
 #include <binder/IServiceManager.h>
 #include <binder/RpcServer.h>
 
@@ -44,12 +45,19 @@ using android::base::StringPrintf;
 
 namespace {
 int Usage(const char* program) {
+    auto basename = Basename(program);
     auto format = R"(dispatch calls to RPC service.
 Usage:
   %s <service_name>
     <service_name>: the service to connect to.
+  %s -m
+    Runs an RPC-friendly service that redirects calls to servicemanager.
+
+  If successful, writes port number and a new line character to stdout, and
+  blocks until killed.
+  Otherwise, writes error message to stderr and exits with non-zero code.
 )";
-    LOG(ERROR) << StringPrintf(format, Basename(program).c_str());
+    LOG(ERROR) << StringPrintf(format, basename.c_str(), basename.c_str());
     return EX_USAGE;
 }
 
@@ -82,13 +90,42 @@ int Dispatch(const char* name) {
         LOG(ERROR) << "setRpcClientDebug failed with " << statusToString(status);
         return EX_SOFTWARE;
     }
-    LOG(INFO) << "Finish setting up RPC on service " << name << " on port" << port;
+    LOG(INFO) << "Finish setting up RPC on service " << name << " on port " << port;
 
     std::cout << port << std::endl;
 
     TEMP_FAILURE_RETRY(pause());
 
     PLOG(FATAL) << "TEMP_FAILURE_RETRY(pause()) exits; this should not happen!";
+    __builtin_unreachable();
+}
+
+int wrapServiceManager() {
+    auto sm = defaultServiceManager();
+    if (nullptr == sm) {
+        LOG(ERROR) << "No servicemanager";
+        return EX_SOFTWARE;
+    }
+    auto service = sm->checkService(String16("manager"));
+    if (nullptr == service) {
+        LOG(ERROR) << "No service called `manager`";
+        return EX_SOFTWARE;
+    }
+
+    auto rpcServer = RpcServer::make();
+    rpcServer->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
+    rpcServer->setRootObject(service);
+    unsigned int port;
+    if (!rpcServer->setupInetServer(0, &port)) {
+        LOG(ERROR) << "Unable to set up inet server";
+        return EX_SOFTWARE;
+    }
+    LOG(INFO) << "Finish wrapping servicemanager with RPC on port " << port;
+    std::cout << port << std::endl;
+    rpcServer->join();
+
+    LOG(FATAL) << "Wrapped servicemanager exits; this should not happen!";
+    __builtin_unreachable();
 }
 
 // Log to logd. For warning and more severe messages, also log to stderr.
@@ -119,13 +156,23 @@ int main(int argc, char* argv[]) {
     LOG(WARNING) << "WARNING: servicedispatcher is debug only. Use with caution.";
 
     int opt;
-    while (-1 != (opt = getopt(argc, argv, ""))) {
+    bool m = false;
+    while (-1 != (opt = getopt(argc, argv, "m"))) {
         switch (opt) {
+            case 'm': {
+                m = true;
+            } break;
             default: {
                 return Usage(argv[0]);
             }
         }
     }
+
+    if (m) {
+        if (optind != argc) return Usage(argv[0]);
+        return wrapServiceManager();
+    }
+
     if (optind + 1 != argc) return Usage(argv[0]);
     auto name = argv[optind];
 
