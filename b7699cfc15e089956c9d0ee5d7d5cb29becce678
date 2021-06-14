@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b140790_b5e7eda7",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2668,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-06-14T21:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c75c8965_af811a5b",
+      "revId": "b7699cfc15e089956c9d0ee5d7d5cb29becce678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "473a58f3_ad8155b9",
@@ -113,6 +131,30 @@
       "writtenOn": "2021-06-14T21:50:54Z",
       "side": 1,
       "message": "f",
+      "range": {
+        "startLine": 112,
+        "startChar": 59,
+        "endLine": 112,
+        "endChar": 60
+      },
+      "revId": "b7699cfc15e089956c9d0ee5d7d5cb29becce678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d01b53c_1aae1234",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-06-14T21:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44c695eb_ab3f1769",
       "range": {
         "startLine": 112,
         "startChar": 59,
