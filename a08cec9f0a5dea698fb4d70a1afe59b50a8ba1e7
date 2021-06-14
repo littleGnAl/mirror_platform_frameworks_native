@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb91236_f5853a65",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-06-14T12:42:54Z",
+      "side": 1,
+      "message": "Is a dump handler that does nothing returns success the same as no dump handler, or should it default to returning an error instead?",
+      "revId": "a08cec9f0a5dea698fb4d70a1afe59b50a8ba1e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b142a65_ad40225b",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-06-14T12:42:54Z",
+      "side": 1,
+      "message": "`assert_eq!`\n\nAnd why the `[..]`?",
+      "range": {
+        "startLine": 465,
+        "startChar": 12,
+        "endLine": 465,
+        "endChar": 48
+      },
+      "revId": "a08cec9f0a5dea698fb4d70a1afe59b50a8ba1e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
