@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41809252_b197980f",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-06-14T18:30:25Z",
+      "side": 1,
+      "message": "The default handler in C++ and in the NDK if we don\u0027t set one returns success. (see https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/ndk/ibinder.cpp;l\u003d149)",
+      "parentUuid": "efb91236_f5853a65",
+      "revId": "a08cec9f0a5dea698fb4d70a1afe59b50a8ba1e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b142a65_ad40225b",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-14T12:42:54Z",
       "side": 1,
       "message": "`assert_eq!`\n\nAnd why the `[..]`?",
+      "range": {
+        "startLine": 465,
+        "startChar": 12,
+        "endLine": 465,
+        "endChar": 48
+      },
+      "revId": "a08cec9f0a5dea698fb4d70a1afe59b50a8ba1e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94f515a1_dd86b884",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-06-14T18:30:25Z",
+      "side": 1,
+      "message": "The [..] is needed to coerce the Vec\u003cString\u003e to [\u0026str] for comparison with dump_args. Good point on the assert_eq! though.",
+      "parentUuid": "3b142a65_ad40225b",
       "range": {
         "startLine": 465,
         "startChar": 12,
