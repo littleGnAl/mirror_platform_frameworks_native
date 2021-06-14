@@ -41,6 +41,7 @@
 #include <unistd.h>
 
 #include "../RpcState.h"   // for debugging
+#include "../Utils.h"      // for Pipe
 #include "../vm_sockets.h" // for VMADDR_*
 
 using namespace std::chrono_literals;
@@ -255,27 +256,16 @@ public:
 };
 sp<IBinder> MyBinderRpcTest::mHeldBinder;
 
-class Pipe {
-public:
-    Pipe() { CHECK(android::base::Pipe(&mRead, &mWrite)); }
-    Pipe(Pipe&&) = default;
-    android::base::borrowed_fd readEnd() { return mRead; }
-    android::base::borrowed_fd writeEnd() { return mWrite; }
-
-private:
-    android::base::unique_fd mRead;
-    android::base::unique_fd mWrite;
-};
-
 class Process {
 public:
     Process(Process&&) = default;
-    Process(const std::function<void(Pipe*)>& f) {
+    Process(const std::function<void(Pipe*)>& f) : mPipe(Pipe::make()) {
+        CHECK(std::holds_alternative<Pipe>(mPipe)) << strerror(std::get<int>(mPipe));
         if (0 == (mPid = fork())) {
             // racey: assume parent doesn't crash before this is set
             prctl(PR_SET_PDEATHSIG, SIGHUP);
 
-            f(&mPipe);
+            f(getPipe());
 
             exit(0);
         }
@@ -285,11 +275,11 @@ public:
             waitpid(mPid, nullptr, 0);
         }
     }
-    Pipe* getPipe() { return &mPipe; }
+    Pipe* getPipe() { return &std::get<Pipe>(mPipe); }
 
 private:
     pid_t mPid = 0;
-    Pipe mPipe;
+    std::variant<Pipe, int> mPipe;
 };
 
 static std::string allocateSocketAddress() {
