@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8ffcb7c_165af107",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2668,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-06-14T21:47:58Z",
+      "side": 1,
+      "message": "Could you assign directly to the _aidl_return value?",
+      "revId": "b7699cfc15e089956c9d0ee5d7d5cb29becce678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "473a58f3_ad8155b9",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
