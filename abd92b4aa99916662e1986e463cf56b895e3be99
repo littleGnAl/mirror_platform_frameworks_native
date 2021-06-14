@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e80bbb0a_2f024045",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-14T00:50:55Z",
+      "side": 1,
+      "message": "I don\u0027t understand the context of this change, but the CL itself looks fine to me.",
+      "revId": "abd92b4aa99916662e1986e463cf56b895e3be99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1db086_c4c22b3f",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-14T00:50:55Z",
+      "side": 1,
+      "message": "nit: add a new line above?",
+      "revId": "abd92b4aa99916662e1986e463cf56b895e3be99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
