@@ -33,6 +33,24 @@
       "message": "nit: add a new line above?",
       "revId": "abd92b4aa99916662e1986e463cf56b895e3be99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c808dde6_178d6b4f",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-14T19:12:54Z",
+      "side": 1,
+      "message": "Ack; clang-format didn\u0027t complain about this, so I\u0027ll not do this for now.",
+      "parentUuid": "7f1db086_c4c22b3f",
+      "revId": "abd92b4aa99916662e1986e463cf56b895e3be99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
