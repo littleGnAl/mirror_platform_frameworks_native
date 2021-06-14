@@ -16,6 +16,29 @@
       "message": "We should get this in sc-dev also. ",
       "revId": "b7699cfc15e089956c9d0ee5d7d5cb29becce678",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "473a58f3_ad8155b9",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2299,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-06-14T09:14:45Z",
+      "side": 1,
+      "message": "Same comment as other CL:we may just fail one extension, so why not reporting the freed bytes for the others?",
+      "range": {
+        "startLine": 2293,
+        "startChar": 0,
+        "endLine": 2299,
+        "endChar": 0
+      },
+      "revId": "b7699cfc15e089956c9d0ee5d7d5cb29becce678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
