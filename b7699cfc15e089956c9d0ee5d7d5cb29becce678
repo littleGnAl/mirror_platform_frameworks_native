@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c75c8965_af811a5b",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2668,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2021-06-14T21:49:48Z",
+      "side": 1,
+      "message": "I could but it\u0027s useful for printf debugging.\nFeeling strongly about it? If yes, I\u0027ll fix, if not, I\u0027ll just avoid running TH again.",
+      "parentUuid": "c8ffcb7c_165af107",
+      "revId": "b7699cfc15e089956c9d0ee5d7d5cb29becce678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "473a58f3_ad8155b9",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 2
