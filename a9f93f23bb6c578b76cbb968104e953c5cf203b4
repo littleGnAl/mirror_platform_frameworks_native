@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f4ad1f_96e918a7",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-15T17:34:21Z",
+      "side": 1,
+      "message": "Yifan, does this work, or is it related to the bug you sent me? This should fail when the service manager is retrieved, since proxied binders are (intentionally) unsupported.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 38
+      },
+      "revId": "a9f93f23bb6c578b76cbb968104e953c5cf203b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
