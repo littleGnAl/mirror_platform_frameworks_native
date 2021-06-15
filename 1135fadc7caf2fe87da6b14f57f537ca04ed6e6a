@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dd8e827_5abca320",
+        "filename": "libs/binder/libbinder_rpc_unstable.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-06-15T21:51:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fafe3d46_40c291b0",
+      "revId": "1135fadc7caf2fe87da6b14f57f537ca04ed6e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cd2ee71_4b88b72c",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-15T20:31:54Z",
       "side": 1,
       "message": "nit: \u0027.h\u0027 is used here",
+      "revId": "1135fadc7caf2fe87da6b14f57f537ca04ed6e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0786bb5_42c55ac9",
+        "filename": "libs/binder/rust/src/binder_rpc_unstable.hpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-06-15T21:51:50Z",
+      "side": 1,
+      "message": "I see a warning of \"#pragma once in main file [-Wpragma-once-outside-header]\" if I use .h.  That\u0027s probably how bindgen uses the header.  I\u0027ll also have to fix other things to be C-compatible, e.g. there\u0027s no `bool`, need to use `struct AIBinder` instead of `AIBinder`.  I figured it\u0027s cleaner to keep using C++/.hpp (either the build system or bindgen detects C++ language by the extension).  But let me know if you think otherwise.",
+      "parentUuid": "4cd2ee71_4b88b72c",
       "revId": "1135fadc7caf2fe87da6b14f57f537ca04ed6e6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
