@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9edb1104_2babea93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-15T03:40:37Z",
+      "side": 1,
+      "message": "Elliot, I am trying to have the host libbinder to use fork / exec / waitpid. These logic are hard to get right, so it would be nice if we can have you to shed some light on this.\n\nSpecifically, Utils.cpp is the main logic that needs to be scrutinized.\n\nThank you for your help!",
+      "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
