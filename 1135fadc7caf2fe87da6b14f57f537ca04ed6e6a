@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fafe3d46_40c291b0",
+        "filename": "libs/binder/libbinder_rpc_unstable.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-15T20:31:54Z",
+      "side": 1,
+      "message": "also nit: \u0027.cpp\u0027 is used here (or does bindgen require these?)",
+      "revId": "1135fadc7caf2fe87da6b14f57f537ca04ed6e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd2ee71_4b88b72c",
+        "filename": "libs/binder/rust/src/binder_rpc_unstable.hpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-15T20:31:54Z",
+      "side": 1,
+      "message": "nit: \u0027.h\u0027 is used here",
+      "revId": "1135fadc7caf2fe87da6b14f57f537ca04ed6e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
