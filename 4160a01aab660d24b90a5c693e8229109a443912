@@ -68,6 +68,23 @@
       "message": "Please cherry-pick to sc-dev",
       "revId": "4160a01aab660d24b90a5c693e8229109a443912",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feea0b54_e64f369b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2021-06-15T22:56:44Z",
+      "side": 1,
+      "message": "Please cherry-pick to internal sc-dev",
+      "revId": "4160a01aab660d24b90a5c693e8229109a443912",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
