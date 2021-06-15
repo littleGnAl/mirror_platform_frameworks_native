@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3f4a71b_9a25c25b",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-15T18:51:53Z",
+      "side": 1,
+      "message": "seems like there\u0027s another copy of this here too:\nhttps://source.corp.google.com/android/frameworks/native/libs/binder/tests/binderRpcTest.cpp;l\u003d264?q\u003dPipe%20readEnd%20case:yes\u0026sq\u003dpackage:%5Eandroid$\n\ni think the reason libbase doesn\u0027t have a type is that the two ends tend to get separated. if you look at the usages of the other copy of this class in the link above, that seems to be borne out --- the Pipe* is passed everywhere (why a pointer?!) but the recipients only use one end or the other. i think it seemed like it would lead to clearer code if we _didn\u0027t_ tempt people into this by bundling the two. (_some_ callers can also come up with more intention-revealing names than just \"read\" and \"write\" too.)",
+      "parentUuid": "12eebf40_84cee3d0",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "66c479a5_3aae8469",
