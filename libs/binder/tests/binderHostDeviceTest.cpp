@@ -33,6 +33,7 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include <binder/IServiceManager.h>
 #include <binder/RpcSession.h>
 
 using ::android::base::EndsWith;
@@ -54,6 +55,7 @@ using ::android::base::testing::HasValue;
 using ::android::base::testing::Ok;
 using ::std::string_literals::operator""s;
 using ::testing::AllOf;
+using ::testing::Contains;
 using ::testing::ContainsRegex;
 using ::testing::ExplainMatchResult;
 
@@ -331,6 +333,39 @@ TEST_F(HostDeviceTest, TestClientsOnDifferentPorts) {
         EXPECT_THAT(rpcBinder->pingBinder(), StatusEq(OK));
         EXPECT_EQ(String16(kDescriptor), rpcBinder->getInterfaceDescriptor());
     };
+    std::vector<std::thread> threads;
+    for (size_t i = 0; i < 10; ++i) threads.emplace_back(threadFn);
+    for (auto& thread : threads) thread.join();
+}
+
+TEST_F(HostDeviceTest, ServiceManagerList) {
+    auto sm = defaultServiceManager();
+
+    auto services = sm->listServices();
+    ASSERT_THAT(services, Contains(String16(kServiceName)));
+}
+
+TEST_F(HostDeviceTest, ServiceOneClient) {
+    auto sm = defaultServiceManager();
+
+    auto rpcBinder = sm->checkService(String16(kServiceName));
+    ASSERT_NE(nullptr, rpcBinder);
+
+    EXPECT_THAT(rpcBinder->pingBinder(), StatusEq(OK));
+    EXPECT_EQ(String16(kDescriptor), rpcBinder->getInterfaceDescriptor());
+}
+
+TEST_F(HostDeviceTest, ServiceTenClientsOnSamePort) {
+    auto sm = defaultServiceManager();
+
+    auto threadFn = [&] {
+        auto rpcBinder = sm->checkService(String16(kServiceName));
+        ASSERT_NE(nullptr, rpcBinder);
+
+        EXPECT_THAT(rpcBinder->pingBinder(), StatusEq(OK));
+        EXPECT_EQ(String16(kDescriptor), rpcBinder->getInterfaceDescriptor());
+    };
+
     std::vector<std::thread> threads;
     for (size_t i = 0; i < 10; ++i) threads.emplace_back(threadFn);
     for (auto& thread : threads) thread.join();
