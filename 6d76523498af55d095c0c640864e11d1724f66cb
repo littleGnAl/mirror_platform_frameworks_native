@@ -16,6 +16,52 @@
       "message": "Elliot, I am trying to have the host libbinder to use fork / exec / waitpid. These logic are hard to get right, so it would be nice if we can have you to shed some light on this.\n\nSpecifically, Utils.cpp is the main logic that needs to be scrutinized.\n\nThank you for your help!",
       "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56c7b6bd_e61a8f1f",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-15T03:44:08Z",
+      "side": 1,
+      "message": "I should probably rename this to something else, since it collides with android::base::Pipe in unique_fd.h. Any suggestions?",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c479a5_3aae8469",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-15T03:44:08Z",
+      "side": 1,
+      "message": "note: not using android::base::Result to avoid linking to libbase and fmtlib. Just treat it as Result\u003cCommandResult\u003e",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
