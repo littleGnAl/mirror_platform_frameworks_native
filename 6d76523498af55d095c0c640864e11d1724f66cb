@@ -110,6 +110,30 @@
       },
       "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049505c4_87f120f8",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-15T03:55:36Z",
+      "side": 1,
+      "message": "Steven, are you okay if the host libbinder links to libbase? If so, I can happily use more utility classes / functions from libbase, including this one.",
+      "parentUuid": "424a7532_85bcee53",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
