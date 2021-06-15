@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "250d9fbf_b6f88481",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-15T17:32:14Z",
+      "side": 1,
+      "message": "I would say we should err on the side of making it fatal, since it shouldn\u0027t happen (binderDied is guaranteed to be called once).",
+      "parentUuid": "783f5471_c0c1a41d",
+      "range": {
+        "startLine": 192,
+        "startChar": 12,
+        "endLine": 192,
+        "endChar": 33
+      },
+      "revId": "57e5a748d6b49cc95ab7ceab15b8aeaa26f20c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50e9e79e_2a76f50e",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Yes.\n\nThis is in the original code too. RpcServer::make() should always return a non-null pointer.\n\nBut if you care, I can change this to an ALOGE + return as well.",
       "parentUuid": "50e9e79e_2a76f50e",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 78
+      },
+      "revId": "57e5a748d6b49cc95ab7ceab15b8aeaa26f20c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a88c462_0cf7dbf9",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-15T17:32:14Z",
+      "side": 1,
+      "message": "I didn\u0027t read the test as closely as I\u0027m reading this. I guess I\u0027m saying that it\u0027s an unnecessary check, but it doesn\u0027t hurt to have it, yeah.",
+      "parentUuid": "22d1bdbe_ca6d808b",
       "range": {
         "startLine": 533,
         "startChar": 0,

@@ -51,6 +51,24 @@
       "parentUuid": "7f1db086_c4c22b3f",
       "revId": "abd92b4aa99916662e1986e463cf56b895e3be99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "306d4fba_0a40729e",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-15T17:32:14Z",
+      "side": 1,
+      "message": "clang-format will never complain about missing a line between functions/classes/etc, so we always have to consider vertical spacing separately.",
+      "parentUuid": "c808dde6_178d6b4f",
+      "revId": "abd92b4aa99916662e1986e463cf56b895e3be99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

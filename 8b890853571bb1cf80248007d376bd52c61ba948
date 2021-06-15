@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2725c47a_a26bc8c1",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-15T17:32:14Z",
+      "side": 1,
+      "message": "nit: we could test w/ the keep alive binder, since we can addServer again and kill the other server",
+      "range": {
+        "startLine": 1249,
+        "startChar": 43,
+        "endLine": 1249,
+        "endChar": 49
+      },
+      "revId": "8b890853571bb1cf80248007d376bd52c61ba948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
