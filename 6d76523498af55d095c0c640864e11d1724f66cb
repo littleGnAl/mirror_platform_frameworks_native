@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "12eebf40_84cee3d0",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-15T17:45:53Z",
+      "side": 1,
+      "message": "You could avoid adding the class at all? It seems it is only adding a different API from libbase to make it more convenient to call android::base::Pipe. A std::variant is a heavy return type too. I know that doesn\u0027t matter on host, but the client of this code is only using this type as a struct, always accessing the members directly (even if they have \u0027nice\u0027 names). This is probably the same reason libbase doesn\u0027t have this abstraction at all, it\u0027s not strictly needed, right?",
+      "parentUuid": "98ab0a86_0b73e5b9",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "66c479a5_3aae8469",
@@ -126,6 +150,30 @@
       "side": 1,
       "message": "Steven, are you okay if the host libbinder links to libbase? If so, I can happily use more utility classes / functions from libbase, including this one.",
       "parentUuid": "424a7532_85bcee53",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc211d21_4fe5d6bd",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-15T17:45:53Z",
+      "side": 1,
+      "message": "if you only need it host, go for it. However, I also don\u0027t really see why we really need this. It seems like CommandResult is returned via a synchronous callback and also via the result. Do we need both of these ways?",
+      "parentUuid": "049505c4_87f120f8",
       "range": {
         "startLine": 89,
         "startChar": 0,
