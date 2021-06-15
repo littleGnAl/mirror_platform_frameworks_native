@@ -16,6 +16,23 @@
       "message": "Rebased",
       "revId": "842f8bcb2a9464d9f76bfdb8cda81d7283963c2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6d0a73_219e6ee5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-15T22:51:00Z",
+      "side": 1,
+      "message": "error: unused import: `std::ptr`\n  --\u003e frameworks/native/libs/binder/rust/src/native.rs:30:5\n   |\n30 | use std::ptr;\n   |     ^^^^^^^^\n   |\n   \u003d note: `-D unused-imports` implied by `-D warnings`\n\nerror: aborting due to previous error",
+      "revId": "842f8bcb2a9464d9f76bfdb8cda81d7283963c2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
