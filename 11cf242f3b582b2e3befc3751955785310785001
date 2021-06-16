@@ -46,6 +46,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea67d061_882058b1",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-06-16T18:50:11Z",
+      "side": 1,
+      "message": "There is a unit test if that\u0027s what you mean. There\u0027s no difference in build system behavior so there\u0027s nothing to catch this. It\u0027s just so we don\u0027t get so confused when reviewing APIs. There\u0027s no large scale migration (for one we don\u0027t know which things are which), but it helps us a lot if folks move to systemapi where appropriate whenever they touch the map file.",
+      "parentUuid": "b5be10e7_b525568a",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
