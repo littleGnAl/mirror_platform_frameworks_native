@@ -338,6 +338,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d82ec7f_f6377b5c",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T23:46:18Z",
+      "side": 1,
+      "message": "Resolving",
+      "parentUuid": "40f41145_991e0947",
+      "range": {
+        "startLine": 119,
+        "startChar": 22,
+        "endLine": 119,
+        "endChar": 37
+      },
+      "revId": "913e7a67e91b68efad319b92b254bc816d04b7c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28125c43_8f426fd9",
