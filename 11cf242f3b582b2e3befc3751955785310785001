@@ -70,6 +70,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0515aae_242424bb",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T18:59:22Z",
+      "side": 1,
+      "message": "Could the build build system catch if the module is exposed by an APEX, then check it specifies \u0027apex\u0027 instead of \u0027systemapi\u0027? I really am starting to wonder why we would have a human-only distinction. Sure, it might seem nice to have two different designations here, but if the application of these designations is arbitrary, and there is no functional difference, they cannot be relied on, so I see them as more of a negative. What am I missing here? Was this an oversight?",
+      "parentUuid": "ea67d061_882058b1",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
