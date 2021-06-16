@@ -358,6 +358,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7069aef3_d55d3015",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-06-16T21:12:02Z",
+      "side": 1,
+      "message": "\u003e The current proposal is to mark APIs as systemapi even if they are non-updatable\n\nWe can add another non-updatable-apex alias. That\u0027s not a domain I\u0027m as familiar with so idk if that\u0027s actually different from systemapi or not.",
+      "parentUuid": "9ebdbd3e_45569eec",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
