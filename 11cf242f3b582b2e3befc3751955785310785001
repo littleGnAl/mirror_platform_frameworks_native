@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "643f7299_31f18401",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-06-16T18:44:07Z",
+      "side": 1,
+      "message": "I believe this should be systemapi. systemapi is just an alias for apex, but it indicates directionality. In this case I believe it\u0027s system publishing to apex (which is #systemapi), not apex publishing to system/apex (which is #apex now).",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
