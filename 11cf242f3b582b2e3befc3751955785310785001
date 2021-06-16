@@ -286,6 +286,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b33bf29d_2628bd85",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T20:25:12Z",
+      "side": 1,
+      "message": "\u003e #apex was previously used for both systemapi to \u0026 from apex modules\n\nThis case is also interesting because we only currently need it in non-updatable APEXes, so (via a limitation of the build system), the stability restrictions on this method are a small overburden. This would probably be added as #platform if we had it, reasoning being YAGNI + me still thinking there could be some improvement/change with this API.\n\nI understand your motivation that this is a way people can encode their intent. I also hold the (notably atypical !!! if only there was a version of/r/unpopularopinion for these kinds of things ...) opinion that this type of intent-distinguishing is a longterm negative in software maintained by a huge number of people (it\u0027s an addition, but as incomplete, I would actually call it a disimprovement). However, it doesn\u0027t matter what we call it, here is my reasoning why we should avoid human-intention aliases here and perhaps even reconsider this notation altogether:\n1. Intent-distinguishing (I would usually say \u0027teleological naming\u0027) for non-functional differences breaks orthogonality. That is, oftentimes when we choose comfortable names, we end up accidentally creating differences when none are needed.\n2. Barrier to entry. Since this is unenforced, people writing code must know about it in order to use it and satisfy reviewers. Sure, it is documented externally, but external AOSP developers can\u0027t see this internal link.\n3. Lack of real meaning. Since people disagree on what something means, and no piece of the code enforces it or tests it, it becomes an unreliable metric. In this case, also a DRY violation. How the API is used with other modules is encoded elsewhere, and this is not enforced to be correct, so it can become out of sync. In this case, systemapi can be just as misleading as it is helpful. We have no way of knowing, so I\u0027d rather the ambiguity be explicit.\n\nMaybe I care too much - if you still don\u0027t agree, I\u0027ll update this (since I\u0027ve already tested both ways, and this change is blocking another team), I shouldn\u0027t couple this conversation with this change.",
+      "parentUuid": "318b2f09_13e63553",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
