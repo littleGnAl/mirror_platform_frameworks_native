@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "300f6a5e_97bd70b4",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T23:59:33Z",
+      "side": 1,
+      "message": "Since you said this is the better way, I won\u0027t touch this.",
+      "parentUuid": "107662fe_b6e4e886",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 33
+      },
+      "revId": "fd0b0e371d7f56b85339ab0153360dc884dd563b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb585424_ac601f0c",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Unresolving",
       "parentUuid": "efc5b484_784deba3",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 5
+      },
+      "revId": "fd0b0e371d7f56b85339ab0153360dc884dd563b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe5072d5_5a619199",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T23:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db3725f5_8426b077",
       "range": {
         "startLine": 101,
         "startChar": 0,
