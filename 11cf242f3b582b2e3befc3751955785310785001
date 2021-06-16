@@ -190,6 +190,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b0f938f_7f7e62a5",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T19:41:41Z",
+      "side": 1,
+      "message": "Well, leave it in there, but approve this without using the alias until we have a solid story there and build system enforcement? I mean, we\u0027re talking about an extra local build, local test run, discussion in review for something which has no functional difference. These costs add up. I wonder, how many times will people in our org pay them? The human definition is not formalized (the thread I mentioned above shows that different people have different conceptions of what \u0027#systemapi\u0027 means, AND these conceptions are mutually inconsistent). The alias may be there, but we need more work for it to be useful. So, I would like to avoid it and stick with the minimal required solution here.\n\nDo you insist?",
+      "parentUuid": "38feac01_5b890bc3",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
