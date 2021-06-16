@@ -310,6 +310,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838e0534_b73b9504",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-06-16T20:51:38Z",
+      "side": 1,
+      "message": "\u003e 2. Barrier to entry. Since this is unenforced, people writing code must know about it in order to use it and satisfy reviewers. Sure, it is documented externally, but external AOSP developers can\u0027t see this internal link.\n\nExternal AOSP developers don\u0027t generally contribute APIs directly, and as API council we would expect a non-external sponsor for that who can ensure it\u0027s following all the various API guidelines \u0026 requirements. The only barrier ends up being that external needs to know about #platform-only in practice for anything using a .map.txt file, which is openly visible.\n\n\u003e 3. Lack of real meaning. Since people disagree on what something means\n\nThere is real meaning. The definitions are here: https://android.googlesource.com/platform/build/soong/+/master/docs/map_files.md\n\nIf there\u0027s documentation suggestions that\u0027s a valid complaint, but there\u0027s no general disagreement here.\n\n\u003e We have no way of knowing, so I\u0027d rather the ambiguity be explicit.\n\nsystemapi was added because we were having actual ambiguity issues trying to review #apex API additions. As mentioned, the policies for the API surfaces are different. Yes you can lie about it and confuse the reviewers, but I\u0027m assuming good intent here. This wasn\u0027t a random speculative change, it was an attempt to improve the API council review process. Given these are largely stable API surfaces, the risk of accidental out-of-sync seems improbable. The risk without build enforcement would be the accidental publishing of #platform-only into a stable surface (like #systemapi), which stub generation should be able to catch eventually.\n\nOtherwise there\u0027s really not a DRY issue here as this is the linker script itself after all.",
+      "parentUuid": "b33bf29d_2628bd85",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
