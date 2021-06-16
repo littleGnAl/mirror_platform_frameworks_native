@@ -334,6 +334,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebdbd3e_45569eec",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T21:00:39Z",
+      "side": 1,
+      "message": "Also - lol - seems this is the first usage :) hope it works!\n\nre re external: This is still an extra step for everyone involved.\n\nre re real meaning: The current proposal is to mark APIs as systemapi even if they are non-updatable (not this case, but still). Confusion on this point is what I mean by not having a formal meaning.\n\nre re DRY: the repetition is once in the build system (layout of libraries) and once here. For instance, if you want to move a library from the system (ll-ndk) into an APEX, you would also want to update all of the entries in these files. Nothing enforces they are equivalent, ergo repetition.\n\nUncoupling...",
+      "parentUuid": "838e0534_b73b9504",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
