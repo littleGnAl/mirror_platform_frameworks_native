@@ -43,6 +43,9 @@ using android::base::StdioLogger;
 using android::base::StringPrintf;
 
 namespace {
+
+using ServiceRetriever = decltype(&android::IServiceManager::checkService);
+
 int Usage(const char* program) {
     auto basename = Basename(program);
     auto format = R"(dispatch calls to RPC service.
@@ -60,13 +63,13 @@ Usage:
     return EX_USAGE;
 }
 
-int Dispatch(const char* name) {
+int Dispatch(const char* name, const ServiceRetriever& serviceRetriever) {
     auto sm = defaultServiceManager();
     if (nullptr == sm) {
         LOG(ERROR) << "No servicemanager";
         return EX_SOFTWARE;
     }
-    auto binder = sm->checkService(String16(name));
+    auto binder = std::invoke(serviceRetriever, defaultServiceManager(), String16(name));
     if (nullptr == binder) {
         LOG(ERROR) << "No service \"" << name << "\"";
         return EX_SOFTWARE;
@@ -156,13 +159,13 @@ private:
     sp<android::os::IServiceManager> mImpl;
 };
 
-int wrapServiceManager() {
+int wrapServiceManager(const ServiceRetriever& serviceRetriever) {
     auto sm = defaultServiceManager();
     if (nullptr == sm) {
         LOG(ERROR) << "No servicemanager";
         return EX_SOFTWARE;
     }
-    auto service = sm->checkService(String16("manager"));
+    auto service = std::invoke(serviceRetriever, defaultServiceManager(), String16("manager"));
     if (nullptr == service) {
         LOG(ERROR) << "No service called `manager`";
         return EX_SOFTWARE;
@@ -222,8 +225,12 @@ int main(int argc, char* argv[]) {
 
     int opt;
     bool m = false;
-    while (-1 != (opt = getopt(argc, argv, "m"))) {
+    ServiceRetriever serviceRetriever = &android::IServiceManager::checkService;
+    while (-1 != (opt = getopt(argc, argv, "gm"))) {
         switch (opt) {
+            case 'g': {
+                serviceRetriever = &android::IServiceManager::getService;
+            } break;
             case 'm': {
                 m = true;
             } break;
@@ -235,11 +242,11 @@ int main(int argc, char* argv[]) {
 
     if (m) {
         if (optind != argc) return Usage(argv[0]);
-        return wrapServiceManager();
+        return wrapServiceManager(serviceRetriever);
     }
 
     if (optind + 1 != argc) return Usage(argv[0]);
     auto name = argv[optind];
 
-    return Dispatch(name);
+    return Dispatch(name, serviceRetriever);
 }
