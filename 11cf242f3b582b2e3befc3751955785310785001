@@ -214,6 +214,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c6abf8_00b89e50",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T19:51:34Z",
+      "side": 1,
+      "message": "(I do have the change ready if you want it - and maybe I should be avoiding ambiguous words like \u0027useful\u0027, but I do feel strongly about minimalism and avoiding aliases - I will say the same thing about typedefs - but let me know)",
+      "parentUuid": "3b0f938f_7f7e62a5",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
