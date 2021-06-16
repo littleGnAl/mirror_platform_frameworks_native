@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "110a9b14_2d166cf9",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T23:43:02Z",
+      "side": 1,
+      "message": "I\u0027ll need the Shim as well.\n\nBut more importantly, don\u0027t we want the API to be seamless? Do we require any host application to explicitly call setDefaultServiceManager() before doing anything?",
+      "parentUuid": "80535eb3_b152eea7",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 29
+      },
+      "revId": "c295fd12b9519fd1ec67fee41a59ecc48f0c94a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "364bb57c_8f4dd400",
         "filename": "libs/binder/ServiceManagerHost.h",
         "patchSetId": 15
