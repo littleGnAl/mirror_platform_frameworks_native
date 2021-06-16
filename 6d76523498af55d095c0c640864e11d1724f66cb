@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b16fb898_b2112e17",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T22:41:18Z",
+      "side": 1,
+      "message": "I\u0027ll remove this class and in binderRpcTest too",
+      "parentUuid": "a3f4a71b_9a25c25b",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "66c479a5_3aae8469",
@@ -198,6 +222,30 @@
       "side": 1,
       "message": "if you only need it host, go for it. However, I also don\u0027t really see why we really need this. It seems like CommandResult is returned via a synchronous callback and also via the result. Do we need both of these ways?",
       "parentUuid": "049505c4_87f120f8",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fafbba47_40009f76",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T22:41:18Z",
+      "side": 1,
+      "message": "CommandResult is not returned via a synchronous callback. The callback is used as a predicate to determine whether execute() should return before the process ends.\n\nAlso, instead of using this, maybe I should use android::base::expected instead?",
+      "parentUuid": "dc211d21_4fe5d6bd",
       "range": {
         "startLine": 89,
         "startChar": 0,
