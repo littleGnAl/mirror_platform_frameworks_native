@@ -262,6 +262,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "318b2f09_13e63553",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-06-16T20:04:17Z",
+      "side": 1,
+      "message": "\u003e The human definition is not formalized\n\nI disagree. #apex was previously used for both systemapi to \u0026 from apex modules. We\u0027ve since narrowed that definition to systemapi from apex modules, and added systemapi to be system API to apex modules.\n\nIt\u0027s already useful without any further build system support, since as mentioned the policies are different depending on which direction this is going. The current alias is a strict improvement, why would we revert that just because it\u0027s not as much of an improvement as it could be?",
+      "parentUuid": "3b23ea79_4455a048",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
