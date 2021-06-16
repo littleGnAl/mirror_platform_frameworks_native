@@ -70,6 +70,8 @@ public:
     void addEventHubDevice(int32_t eventHubId, bool populateMappers = true);
     void removeEventHubDevice(int32_t eventHubId);
     void configure(nsecs_t when, const InputReaderConfiguration* config, uint32_t changes);
+    void configure(nsecs_t when, const InputReaderConfiguration* config, uint32_t changes,
+                   int32_t eventHubId);
     void reset(nsecs_t when);
     void process(const RawEvent* rawEvents, size_t count);
     void timeoutExpired(nsecs_t when);
