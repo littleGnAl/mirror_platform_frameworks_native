@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a65832e_243b9226",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T23:46:29Z",
+      "side": 1,
+      "message": "I think we do want people to call something explicit. People should only be using this when they intend to, right? Other times, they\u0027ll call setDefaultServiceManager on host with other things (like the libfakeservicemanager mock), or they might want the existing default behavior (abort if it is used).",
+      "parentUuid": "110a9b14_2d166cf9",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 29
+      },
+      "revId": "c295fd12b9519fd1ec67fee41a59ecc48f0c94a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "364bb57c_8f4dd400",
         "filename": "libs/binder/ServiceManagerHost.h",
         "patchSetId": 15
