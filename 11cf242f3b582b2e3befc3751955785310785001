@@ -118,6 +118,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8a46b52_5484949b",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-06-16T19:04:36Z",
+      "side": 1,
+      "message": "This mirrors https://g3doc.corp.google.com/company/teams/android-api-council/guidelines/rules-of-engagement.md?cl\u003dhead\n\nsee @SystemApi (client\u003dMODULE_LIBRARIES) vs. @SystemApi (client\u003dSYSTEM_SERVER)\n\nThe reason for the distinction is because the policies for changes to the APIs are different. Specifically:\n\n\u003e For @SystemApi APIs exposed from the platform, they can and will be changed or removed between major Android releases, so users must develop in close proximity to the platform\n\n\u003e However, for @SystemApi that are exposed from mainline modules, they likely cannot be changed or removed, because the clients of the API are likely either bundled and cannot be updated, or even if they\u0027re unbundled, we may not be able to update all the clients by the time we ship the module update that has a change. The deprecation path for such APIs is not yet defined.\n\nIdeally as much of this as possible can be build-enforced, but we humans are also the ones reviewing \u0026 applying policy and we also need that context",
+      "parentUuid": "c0515aae_242424bb",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
