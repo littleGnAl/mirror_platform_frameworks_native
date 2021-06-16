@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "499b29c1_380051e0",
+        "filename": "libs/binder/libbinder_rpc_unstable.map.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-06-16T18:31:57Z",
+      "side": 1,
+      "message": "this is indicating that this should be in the stable systemapi surface for modules. If that\u0027s intended, please read up on go/android-ndk-api-guidelines\n\nThe naming, for example, needs adjustment. If this isn\u0027t intended, use #platform-only instead.\n\nSee https://android.googlesource.com/platform/build/soong/+/master/docs/map_files.md for more details",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 21
+      },
+      "revId": "337003f8521e81b650294f2af955c1c1e57f3e3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
