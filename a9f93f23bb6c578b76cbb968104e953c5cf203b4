@@ -22,6 +22,30 @@
       },
       "revId": "a9f93f23bb6c578b76cbb968104e953c5cf203b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e1438b_e363da23",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T23:28:12Z",
+      "side": 1,
+      "message": "No, see b/191102354.\n\nThis is fixed in the follow up CL:1737082.",
+      "parentUuid": "b1f4ad1f_96e918a7",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 38
+      },
+      "revId": "a9f93f23bb6c578b76cbb968104e953c5cf203b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
