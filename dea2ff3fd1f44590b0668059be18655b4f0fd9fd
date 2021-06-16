@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1bb2e3d_704799c8",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T23:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f7a946b_9433c3e2",
+      "range": {
+        "startLine": 54,
+        "startChar": 58,
+        "endLine": 54,
+        "endChar": 63
+      },
+      "revId": "dea2ff3fd1f44590b0668059be18655b4f0fd9fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae0d45b0_54014009",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-15T17:45:53Z",
       "side": 1,
       "message": "pref: host+ device (if it still works on device)",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 12
+      },
+      "revId": "dea2ff3fd1f44590b0668059be18655b4f0fd9fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3e61e1_32fe2075",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T23:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae0d45b0_54014009",
       "range": {
         "startLine": 333,
         "startChar": 0,
