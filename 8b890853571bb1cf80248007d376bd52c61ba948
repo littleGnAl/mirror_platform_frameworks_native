@@ -22,6 +22,30 @@
       },
       "revId": "8b890853571bb1cf80248007d376bd52c61ba948",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32cb2286_6a88e011",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T19:30:09Z",
+      "side": 1,
+      "message": "I deleted the test because it involves forking etc., which is essentially starting servicedispatcher. Hence, its functionality would be tested in CL:1727280.",
+      "parentUuid": "2725c47a_a26bc8c1",
+      "range": {
+        "startLine": 1249,
+        "startChar": 43,
+        "endLine": 1249,
+        "endChar": 49
+      },
+      "revId": "8b890853571bb1cf80248007d376bd52c61ba948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

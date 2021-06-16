@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "887bc25c_daa06192",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T19:30:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "250d9fbf_b6f88481",
+      "range": {
+        "startLine": 192,
+        "startChar": 12,
+        "endLine": 192,
+        "endChar": 33
+      },
+      "revId": "57e5a748d6b49cc95ab7ceab15b8aeaa26f20c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50e9e79e_2a76f50e",
