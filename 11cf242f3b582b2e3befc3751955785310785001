@@ -142,6 +142,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe4396d_b6c8f6c0",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T19:15:32Z",
+      "side": 1,
+      "message": "Dan, would you consider backpedeling on that FR and requesting build support on analysis of this problem? See also (the generically named) email thread \"Requesting NDK-API-Review in AOSP\" which has a discussion of these symbols as they are used in APEXes which are not a part of mainline. Though, it isn\u0027t of direct relevance to this change, it does reach agreement that the existing use of #apex/#systemapi is misleading/needs work.",
+      "parentUuid": "c8a46b52_5484949b",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
