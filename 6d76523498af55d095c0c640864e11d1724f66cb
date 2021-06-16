@@ -254,6 +254,30 @@
       },
       "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5da2c3c0_853c9205",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T23:20:25Z",
+      "side": 1,
+      "message": "if you go with the libbase dep, definitely",
+      "parentUuid": "fafbba47_40009f76",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
