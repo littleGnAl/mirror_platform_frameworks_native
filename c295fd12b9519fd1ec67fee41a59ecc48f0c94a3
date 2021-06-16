@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b710e2_5ba13540",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T23:40:15Z",
+      "side": 1,
+      "message": "(just glanced at this)",
+      "revId": "c295fd12b9519fd1ec67fee41a59ecc48f0c94a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80535eb3_b152eea7",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T23:40:15Z",
+      "side": 1,
+      "message": "something on host could always call this API and pass in the \u0027createHostAidlServiceManager\u0027?",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 29
+      },
+      "revId": "c295fd12b9519fd1ec67fee41a59ecc48f0c94a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "364bb57c_8f4dd400",
+        "filename": "libs/binder/ServiceManagerHost.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T23:40:15Z",
+      "side": 1,
+      "message": "Can you name this to indicate that it\u0027s RPC? Like \u0027createRpcDelegateServiceManager\u0027?",
+      "range": {
+        "startLine": 26,
+        "startChar": 39,
+        "endLine": 26,
+        "endChar": 47
+      },
+      "revId": "c295fd12b9519fd1ec67fee41a59ecc48f0c94a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
