@@ -22,6 +22,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5be10e7_b525568a",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-16T18:47:35Z",
+      "side": 1,
+      "message": "every other API here would be in the same category. Whoever was adding this alias should have added a test for this, right? If there is a bug for this, it could be handled in the \u0027official\u0027 migration CL (do you know of one?), or I\u0027m happy to file one.",
+      "parentUuid": "643f7299_31f18401",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
