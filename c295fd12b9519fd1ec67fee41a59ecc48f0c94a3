@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48e61829_8ce80a95",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-16T23:50:00Z",
+      "side": 1,
+      "message": "Okay.\n\nAny ideas on how I should deal with the Shim? I can either expose it, or create another\n\n```\nvoid setDefaultServiceManager(const sp\u003cAidlServiceManager\u003e\u0026 sm)\n```",
+      "parentUuid": "6a65832e_243b9226",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 29
+      },
+      "revId": "c295fd12b9519fd1ec67fee41a59ecc48f0c94a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "364bb57c_8f4dd400",
         "filename": "libs/binder/ServiceManagerHost.h",
         "patchSetId": 15
