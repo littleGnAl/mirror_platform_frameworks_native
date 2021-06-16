@@ -22,6 +22,30 @@
       },
       "revId": "337003f8521e81b650294f2af955c1c1e57f3e3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ccca413_8880dbfc",
+        "filename": "libs/binder/libbinder_rpc_unstable.map.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-06-16T22:19:32Z",
+      "side": 1,
+      "message": "Changed to #platform-only per email thread.",
+      "parentUuid": "499b29c1_380051e0",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 21
+      },
+      "revId": "337003f8521e81b650294f2af955c1c1e57f3e3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
