@@ -166,6 +166,30 @@
       },
       "revId": "11cf242f3b582b2e3befc3751955785310785001",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38feac01_5b890bc3",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-06-16T19:30:19Z",
+      "side": 1,
+      "message": "I don\u0027t see why we\u0027d revert it. It\u0027s useful to us. Build support for it can still be added if the APEX team wants to do that. My work is a prerequisite to it.",
+      "parentUuid": "fbe4396d_b6c8f6c0",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "11cf242f3b582b2e3befc3751955785310785001",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
