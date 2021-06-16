@@ -1700,6 +1700,8 @@ int run_server(int index, int readypipefd, bool usePoll)
 
         if (index == 0) {
             ret = sm->addService(binderLibTestServiceName, testService);
+            // FIXME: should be an error (logs now)
+            testService->setRequestingSid(true);
         } else {
             sp<IBinder> server = sm->getService(binderLibTestServiceName);
             Parcel data, reply;
