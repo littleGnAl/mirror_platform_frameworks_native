@@ -419,6 +419,7 @@ public:
     void addDevice(int32_t deviceId, const std::string& name, uint32_t classes) {
         Device* device = new Device(classes);
         device->identifier.name = name;
+        device->identifier.descriptor = name;
         mDevices.add(deviceId, device);
 
         enqueueEvent(ARBITRARY_TIME, deviceId, EventHubInterface::DEVICE_ADDED, 0, 0);
@@ -1741,6 +1742,95 @@ TEST_F(InputReaderTest, Device_CanDispatchToDisplay) {
     disableDevice(deviceId);
     mReader->loopOnce();
     ASSERT_FALSE(mReader->canDispatchToDisplay(deviceId, SECONDARY_DISPLAY_ID));
+}
+
+// We need to read some of the properties from the device's open fd before it was disabled.
+TEST_F(InputReaderTest, Device_ConfigureInputDevices) {
+    const int32_t inputDeviceId = 0;
+    // add the first device, which is a keyboard
+    int32_t eventHubId = 0;
+    ASSERT_NO_FATAL_FAILURE(addDevice(eventHubId, "keyboard_touchpad",
+                            INPUT_DEVICE_CLASS_KEYBOARD, nullptr));
+    mFakeEventHub->enqueueEvent(ARBITRARY_TIME, eventHubId, EV_KEY, KEY_A, 1);
+    mReader->loopOnce();
+    NotifyKeyArgs keyArgs;
+    mFakeListener->assertNotifyKeyWasCalled(&keyArgs);
+
+    // disable the input devices
+    mFakePolicy->addDisabledDevice(inputDeviceId);
+    mReader->requestRefreshConfiguration(InputReaderConfiguration::CHANGE_ENABLED_STATE);
+    mReader->loopOnce();
+    ASSERT_FALSE(mFakeEventHub->isDeviceEnabled(eventHubId));
+
+    // add view ports for touchpad
+    mFakePolicy->setPointerController(inputDeviceId, new FakePointerController());
+    mFakePolicy->clearViewports();
+    mFakePolicy->addDisplayViewport(DISPLAY_ID, DISPLAY_WIDTH, DISPLAY_HEIGHT,
+                                    DISPLAY_ORIENTATION_0, "local:0",
+                                    NO_PORT, ViewportType::VIEWPORT_INTERNAL);
+    mReader->requestRefreshConfiguration(InputReaderConfiguration::CHANGE_DISPLAY_INFO);
+    mReader->loopOnce();
+
+    // add the second device, which is a touchpad
+    eventHubId++;
+    mFakeEventHub->addDevice(eventHubId, "keyboard_touchpad", INPUT_DEVICE_CLASS_TOUCH_MT);
+    mFakeEventHub->addAbsoluteAxis(eventHubId, ABS_MT_POSITION_X, 0, 2, 0, 0);
+    mFakeEventHub->addAbsoluteAxis(eventHubId, ABS_MT_POSITION_Y, 0, 2, 0, 0);
+    mFakeEventHub->addAbsoluteAxis(eventHubId, ABS_MT_TRACKING_ID, 0, 5, 0, 0);
+    mFakeEventHub->finishDeviceScan();
+    mReader->loopOnce();
+    mReader->loopOnce();
+    ASSERT_NO_FATAL_FAILURE(mFakePolicy->assertInputDevicesChanged());
+    ASSERT_NO_FATAL_FAILURE(mFakeEventHub->assertQueueIsEmpty());
+    ASSERT_FALSE(mFakeEventHub->isDeviceEnabled(eventHubId));
+
+    // enable the input devices
+    mFakePolicy->removeDisabledDevice(inputDeviceId);
+    mReader->requestRefreshConfiguration(InputReaderConfiguration::CHANGE_ENABLED_STATE);
+    mReader->loopOnce();
+    ASSERT_TRUE(mFakeEventHub->isDeviceEnabled(eventHubId));
+
+    // the mapper for touchpad should be enabled and work normally
+    mFakeEventHub->enqueueEvent(ARBITRARY_TIME, eventHubId, EV_ABS, ABS_MT_TRACKING_ID, 1);
+    mFakeEventHub->enqueueEvent(ARBITRARY_TIME, eventHubId, EV_ABS, ABS_MT_POSITION_X, 1);
+    mFakeEventHub->enqueueEvent(ARBITRARY_TIME, eventHubId, EV_ABS, ABS_MT_POSITION_Y, 1);
+    mFakeEventHub->enqueueEvent(ARBITRARY_TIME, eventHubId, EV_SYN, SYN_REPORT, 0);
+    mReader->loopOnce();
+    mReader->loopOnce();
+    mReader->loopOnce();
+    mReader->loopOnce();
+    NotifyMotionArgs motionArgs;
+    mFakeListener->assertNotifyMotionWasCalled(&motionArgs);
+
+    // disable the input devices
+    mFakePolicy->addDisabledDevice(inputDeviceId);
+    mReader->requestRefreshConfiguration(InputReaderConfiguration::CHANGE_ENABLED_STATE);
+    mReader->loopOnce();
+    ASSERT_FALSE(mFakeEventHub->isDeviceEnabled(eventHubId));
+
+    // add the third device, which is a keyboard
+    eventHubId++;
+    ASSERT_NO_FATAL_FAILURE(addDevice(eventHubId, "keyboard_touchpad",
+                            INPUT_DEVICE_CLASS_KEYBOARD, nullptr));
+    mReader->loopOnce();
+    ASSERT_FALSE(mFakeEventHub->isDeviceEnabled(eventHubId));
+
+    // enable the input devices
+    mFakePolicy->removeDisabledDevice(inputDeviceId);
+    mReader->requestRefreshConfiguration(InputReaderConfiguration::CHANGE_ENABLED_STATE);
+    mReader->loopOnce();
+    ASSERT_TRUE(mFakeEventHub->isDeviceEnabled(eventHubId));
+
+    // the mapper for touchpad should be enabled and work normally
+    mFakeEventHub->enqueueEvent(ARBITRARY_TIME, 1, EV_ABS, ABS_MT_TRACKING_ID, 2);
+    mFakeEventHub->enqueueEvent(ARBITRARY_TIME, 1, EV_ABS, ABS_MT_POSITION_X, 1);
+    mFakeEventHub->enqueueEvent(ARBITRARY_TIME, 1, EV_ABS, ABS_MT_POSITION_Y, 1);
+    mFakeEventHub->enqueueEvent(ARBITRARY_TIME, 1, EV_SYN, SYN_REPORT, 0);
+    mReader->loopOnce();
+    mReader->loopOnce();
+    mReader->loopOnce();
+    mReader->loopOnce();
+    mFakeListener->assertNotifyMotionWasCalled(&motionArgs);
 }
 
 // --- InputReaderIntegrationTest ---

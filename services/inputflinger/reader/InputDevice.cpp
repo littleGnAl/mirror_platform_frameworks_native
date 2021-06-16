@@ -212,6 +212,11 @@ void InputDevice::removeEventHubDevice(int32_t eventHubId) {
 
 void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config,
                             uint32_t changes) {
+    configure(when, config, changes, -2);
+}
+
+void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config,
+                            uint32_t changes, int32_t eventHubId) {
     mSources = 0;
     mClasses = 0;
     mControllerNumber = 0;
@@ -268,7 +273,7 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
             }
         }
 
-        if (!changes || (changes & InputReaderConfiguration::CHANGE_ENABLED_STATE)) {
+        if (changes & InputReaderConfiguration::CHANGE_ENABLED_STATE) {
             auto it = config->disabledDevices.find(mId);
             bool enabled = it == config->disabledDevices.end();
             setEnabled(enabled, when);
@@ -311,10 +316,18 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
             }
         }
 
-        for_each_mapper([this, when, config, changes](InputMapper& mapper) {
-            mapper.configure(when, config, changes);
-            mSources |= mapper.getSources();
-        });
+        if (!changes && eventHubId != -2) {
+            for_each_mapper_in_subdevice(eventHubId,
+                                         [this, when, config, changes](InputMapper& mapper) {
+                mapper.configure(when, config, changes);
+                mSources |= mapper.getSources();
+            });
+        } else {
+            for_each_mapper([this, when, config, changes](InputMapper& mapper) {
+                mapper.configure(when, config, changes);
+                mSources |= mapper.getSources();
+            });
+        }
 
         // If a device is just plugged but it might be disabled, we need to update some info like
         // axis range of touch from each InputMapper first, then disable it.
