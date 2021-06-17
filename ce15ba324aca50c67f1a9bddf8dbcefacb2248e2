@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46082c1c_752553f4",
+        "filename": "libs/binder/UtilsHost.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T21:12:37Z",
+      "side": 1,
+      "message": "This is useful as a predicate to execute() in several cases (see follow up CLs), so I would like to keep it here.\n\nThe code is something like\n\n```\nexecute(..., \u0026CommandResult::stdoutEndsWithNewLine);\n```\n\n... which waits until the subprocess writes a \\n. This is the behavior of servicedispatcher.",
+      "parentUuid": "6e4efba1_d1326349",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "ce15ba324aca50c67f1a9bddf8dbcefacb2248e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "219b5a58_b8bac240",
@@ -155,6 +179,30 @@
       "writtenOn": "2021-06-17T19:45:56Z",
       "side": 1,
       "message": "I keep commenting on this same thing. What\u0027s up? Am I missing something, that you prefer this style?",
+      "range": {
+        "startLine": 97,
+        "startChar": 69,
+        "endLine": 97,
+        "endChar": 70
+      },
+      "revId": "ce15ba324aca50c67f1a9bddf8dbcefacb2248e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00e88bc4_0fe27ae1",
+        "filename": "libs/binder/UtilsHost.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T21:12:37Z",
+      "side": 1,
+      "message": "You miss my comments in the previous CL.\n\nThis needs to be a modifiable buffer because exec() needs char*[]. If this were a const reference, then I\u0027ll always to a copy of the vector.",
+      "parentUuid": "219b5a58_b8bac240",
       "range": {
         "startLine": 97,
         "startChar": 69,
