@@ -372,6 +372,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e24c321_4bb7b444",
+        "filename": "libs/binder/ServiceManagerHost.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T23:13:50Z",
+      "side": 1,
+      "message": "I still need it on L116",
+      "parentUuid": "3a17f6c6_83d5fc97",
+      "range": {
+        "startLine": 127,
+        "startChar": 30,
+        "endLine": 127,
+        "endChar": 51
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73c44fe1_734d176b",
@@ -385,6 +409,30 @@
       "writtenOn": "2021-06-17T19:35:29Z",
       "side": 1,
       "message": "nit - this is almost an exact duplicate of the logic on L59-L70. This is okay, but I\u0027m curious does it need to be like this?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a59cc9_f7a052d8",
+        "filename": "libs/binder/ServiceManagerHost.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T23:13:50Z",
+      "side": 1,
+      "message": "Indeed. But they are parsing results of different commands (one for adb, the other for servicedispatcher). They just happen to have the same format.\n\nI\u0027ll refactor it out.",
+      "parentUuid": "73c44fe1_734d176b",
       "range": {
         "startLine": 131,
         "startChar": 0,
@@ -418,6 +466,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "066b99f0_3e7b2895",
+        "filename": "libs/binder/ServiceManagerHost.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T23:13:50Z",
+      "side": 1,
+      "message": "It is not an API; it is in libs/binder/ServiceManagerHost.h, not libs/binder/include",
+      "parentUuid": "69015636_e21e70fd",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd6189dc_5ff523e2",
@@ -431,6 +503,30 @@
       "writtenOn": "2021-06-17T19:35:29Z",
       "side": 1,
       "message": "reason to use C++17 style for this again?",
+      "range": {
+        "startLine": 29,
+        "startChar": 52,
+        "endLine": 29,
+        "endChar": 53
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84912de9_86090f9c",
+        "filename": "libs/binder/ServiceManagerHost.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T23:13:50Z",
+      "side": 1,
+      "message": "Same as execute():\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1737083/16/libs/binder/UtilsHost.h#97\n\nI expect caller to do \n\n```\ngetDeviceService({\"adb\", \"shell\", \"servicedispatcher\", \"foo\"})\n```\n\nBut if I use a const reference here, internally I\u0027ll have to make a copy anyway, because I need non-const reference to the string buffer.",
+      "parentUuid": "bd6189dc_5ff523e2",
       "range": {
         "startLine": 29,
         "startChar": 52,
