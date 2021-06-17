@@ -96,6 +96,9 @@ int main(int argc, char* const argv[])
 #ifdef VENDORSERVICES
     ProcessState::initWithDriver("/dev/vndbinder");
 #endif
+#ifndef __ANDROID__
+    setDefaultServiceManager(createRpcDelegateServiceManager());
+#endif
     sp<IServiceManager> sm = defaultServiceManager();
     fflush(stdout);
     if (sm == nullptr) {
@@ -229,7 +232,7 @@ int main(int argc, char* const argv[])
                             int afd = ashmem_create_region("test", statbuf.st_size);
                             void* ptr = mmap(NULL, statbuf.st_size,
                                    PROT_READ | PROT_WRITE, MAP_SHARED, afd, 0);
-                            read(fd, ptr, statbuf.st_size);
+                            (void)read(fd, ptr, statbuf.st_size);
                             close(fd);
                             data.writeFileDescriptor(afd, true /* take ownership */);
                         } else if (strcmp(argv[optind], "nfd") == 0) {
