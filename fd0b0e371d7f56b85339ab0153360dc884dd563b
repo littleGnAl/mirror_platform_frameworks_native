@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1cd9b8_feec7d54",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T00:39:46Z",
+      "side": 1,
+      "message": "Ah this won\u0027t work because the Parcel was constructed for RPC, not regular binder.\n\nIs there a way to transform a Parcel for RPC to a Parcel for binder?",
+      "parentUuid": "36f2171d_860d83ed",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 33
+      },
+      "revId": "fd0b0e371d7f56b85339ab0153360dc884dd563b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb585424_ac601f0c",
