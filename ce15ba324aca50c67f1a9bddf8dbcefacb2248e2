@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92396d56_84b3e105",
+        "filename": "libs/binder/UtilsHost.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T21:09:38Z",
+      "side": 1,
+      "message": "I think libbase\u0027s ReadFdToString() reads until the buffer is drained, which is not suitable here.",
+      "parentUuid": "70773cae_f4e8ba52",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 6
+      },
+      "revId": "ce15ba324aca50c67f1a9bddf8dbcefacb2248e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5b1156c_9f5e3cbf",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "select() is weird and actually wants the max fd + 1 (!). (and is also limited to 1024.)\n\nbut the real code review comment here is \"please use poll() instead of select() in new code\".",
       "parentUuid": "f5b1156c_9f5e3cbf",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 53
+      },
+      "revId": "ce15ba324aca50c67f1a9bddf8dbcefacb2248e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50037891_519a7333",
+        "filename": "libs/binder/UtilsHost.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T21:09:38Z",
+      "side": 1,
+      "message": "Yeah, see L134\n\nI\u0027ll change this to poll()",
+      "parentUuid": "18cde279_ad6a34c6",
       "range": {
         "startLine": 128,
         "startChar": 0,
