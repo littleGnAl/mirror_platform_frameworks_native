@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18cde279_ad6a34c6",
+        "filename": "libs/binder/UtilsHost.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-17T19:51:54Z",
+      "side": 1,
+      "message": "select() is weird and actually wants the max fd + 1 (!). (and is also limited to 1024.)\n\nbut the real code review comment here is \"please use poll() instead of select() in new code\".",
+      "parentUuid": "f5b1156c_9f5e3cbf",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 53
+      },
+      "revId": "ce15ba324aca50c67f1a9bddf8dbcefacb2248e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e4efba1_d1326349",
         "filename": "libs/binder/UtilsHost.h",
         "patchSetId": 16
