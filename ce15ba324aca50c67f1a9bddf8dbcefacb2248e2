@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43698c2c_998f7c9a",
+        "filename": "libs/binder/UtilsHost.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T21:14:41Z",
+      "side": 1,
+      "message": "Is there a reason to prefer poll over select? I know the 1024 limitation but I only need to monitor 2 fds.\n\nI\u0027ll do poll() anyways, but I want to know the reason why we don\u0027t want to use select()",
+      "parentUuid": "50037891_519a7333",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 53
+      },
+      "revId": "ce15ba324aca50c67f1a9bddf8dbcefacb2248e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e4efba1_d1326349",
         "filename": "libs/binder/UtilsHost.h",
         "patchSetId": 16
