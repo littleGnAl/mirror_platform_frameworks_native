@@ -117,6 +117,30 @@
       },
       "revId": "7bb9d1e3156a9094653bac41b32cdb9d4392c786",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8919a6_a4a2b7f8",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T21:27:16Z",
+      "side": 1,
+      "message": "\u003e we don\u0027t support proxying of a binder from another process\n\nThat\u0027s the second reason. The root cause of doing this CL is that we don\u0027t support RpcServer on single-threaded services.\n\nIf we do support RpcServer on single-threaded services, I don\u0027t have to wrap it at all. Instead, I can call `Dispatch(\"manager\")`, which runs RpcServer on the servicemanager process directly, and exposes servicemanager to a TCP port directly.\n\nBecause we don\u0027t support RpcServer on single-threaded services, I have to run the RpcServer in the servicedispatcher process instead. And to run the RpcServer in servicedispatcher, I have to call\n\n```\nRpcServer::setRootObject(binder)\n```\n\n... where binder is a BpBinder. Even though this specific code is allowed, it is useless because we can\u0027t send BpBinder over RPC. \n\nHence, I need this CL to wrap it.",
+      "parentUuid": "3ca451bb_dbdd44a2",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 5
+      },
+      "revId": "7bb9d1e3156a9094653bac41b32cdb9d4392c786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
