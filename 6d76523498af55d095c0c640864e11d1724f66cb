@@ -302,6 +302,30 @@
       },
       "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e8614d_016fdf70",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T01:13:09Z",
+      "side": 1,
+      "message": "I don\u0027t need libbase if I am using expected.h instead of result.h",
+      "parentUuid": "5da2c3c0_853c9205",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 64
+      },
+      "revId": "6d76523498af55d095c0c640864e11d1724f66cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
