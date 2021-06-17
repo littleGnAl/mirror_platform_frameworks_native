@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb2fe38c_2553b801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1879320
+      },
+      "writtenOn": "2021-06-17T14:37:47Z",
+      "side": 1,
+      "message": "Hi, please take a look at this. I wonder if there is a better solution for these problem.",
+      "revId": "5571a059379ae4f99e479281c3ac7fcb2ea88ec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
