@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb458970_76e3678e",
+        "filename": "libs/binder/UtilsHost.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T21:22:27Z",
+      "side": 1,
+      "message": "Thank you! I thought it means number of fds \u003c 1024, but instead it was talking about values of those fds.\n\nLeaving this comment open until I change this to poll",
+      "parentUuid": "1b6f239f_bae026ea",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 53
+      },
+      "revId": "ce15ba324aca50c67f1a9bddf8dbcefacb2248e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e4efba1_d1326349",
         "filename": "libs/binder/UtilsHost.h",
         "patchSetId": 16
