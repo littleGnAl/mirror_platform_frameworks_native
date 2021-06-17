@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b963f992_e267d9f6",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T19:59:16Z",
+      "side": 1,
+      "message": "Yeah, it is explained right below.",
+      "parentUuid": "06845bc6_4faeb4c4",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "7bb9d1e3156a9094653bac41b32cdb9d4392c786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b313ce35_ea5f3101",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-17T19:53:43Z",
       "side": 1,
       "message": "avoid special behavior for a certain argument (can we have an option for it)? It might still be useful to use this to talk to the manager directly. For instance, you could have considered this in your test to avoid having to install another service, or we may want to for debugging in the future",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 5
+      },
+      "revId": "7bb9d1e3156a9094653bac41b32cdb9d4392c786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "940d6a93_4454e015",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T19:59:16Z",
+      "side": 1,
+      "message": "It is a work around. When b/191059588 is fixed I expect this CL to be reverted in the future.\n\nWe can\u0027t talk to the manager directly because of b/191059588. When that\u0027s fixed, I\u0027ll revert this CL so that we can talk to the manager directly.",
+      "parentUuid": "b313ce35_ea5f3101",
       "range": {
         "startLine": 166,
         "startChar": 0,
