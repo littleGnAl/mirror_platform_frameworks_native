@@ -1,0 +1,245 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28aa3d54_2fa00e7d",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:35:29Z",
+      "side": 1,
+      "message": "Why is this needed? I would expect ServiceManagerHostShim to override getService directly",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 5
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c873844a_e2ea585e",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:35:29Z",
+      "side": 1,
+      "message": "this should still be needed on host when multiple threads are involved. Curious, what problem is it calling?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad5c349_47e8c671",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:35:29Z",
+      "side": 1,
+      "message": "nit: comment like L66 (there are a lot of these)",
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7434696c_66d4c518",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:35:29Z",
+      "side": 1,
+      "message": "this should be on the path",
+      "range": {
+        "startLine": 436,
+        "startChar": 34,
+        "endLine": 436,
+        "endChar": 46
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25049e6a_29200f49",
+        "filename": "libs/binder/ServiceManagerHost.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:35:29Z",
+      "side": 1,
+      "message": "super nit: s/if/while/ (or is that overkill)?",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2bd312_680f815a",
+        "filename": "libs/binder/ServiceManagerHost.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:35:29Z",
+      "side": 1,
+      "message": "okay - for Process I understood why you were doing this (that way, the kill/waitpid would get switched to the other process). I was thinking of bringing it up then, because it might be a gotcha.\n\nFor instance:\n\n   Object a \u003d /*create resource 1*/;\n   {\n       Object b \u003d /*create resource 2*/;\n       a \u003d std::move(b); // now a-\u003e2 and b-\u003e1\n       ...\n       // some lines\n       ...\n       // resource 1 is now detroyed by the destructor of a\n   }\n\nThis situation seemed error prone to me, because it appears like we stop caring about resource 1 at the move operation, but it won\u0027t be destroyed until later. However, for the \u0027Process\u0027 case, I thought that would be okay because if you waitpid too early, nothing may actually be killing the child process.\n\nOf course, I understand that your implementation is consistent with the standard, but it seems like in this case and in the Process case, we are really holding onto memory longer than we need to. I feel it would be messy above to rely on the fact during \u0027some lines\u0027 that resource 1 isn\u0027t freed.\n\nI\u0027m curious, do you have any thoughts on this case? Is the only reason to make the implementation easier, since in this case, you don\u0027t have to worry about destroying the object during operator\u003d?",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a17f6c6_83d5fc97",
+        "filename": "libs/binder/ServiceManagerHost.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:35:29Z",
+      "side": 1,
+      "message": "this function should not exist - it is unneeded since it\u0027s the composition of other straightforward APIs",
+      "range": {
+        "startLine": 127,
+        "startChar": 30,
+        "endLine": 127,
+        "endChar": 51
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73c44fe1_734d176b",
+        "filename": "libs/binder/ServiceManagerHost.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:35:29Z",
+      "side": 1,
+      "message": "nit - this is almost an exact duplicate of the logic on L59-L70. This is okay, but I\u0027m curious does it need to be like this?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69015636_e21e70fd",
+        "filename": "libs/binder/ServiceManagerHost.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:35:29Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to expose this as an API (also, if this is the API, it\u0027s a bit strange that you must always specify \u0027adb\u0027 and \u0027shell\u0027 at the beginning, right?)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd6189dc_5ff523e2",
+        "filename": "libs/binder/ServiceManagerHost.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:35:29Z",
+      "side": 1,
+      "message": "reason to use C++17 style for this again?",
+      "range": {
+        "startLine": 29,
+        "startChar": 52,
+        "endLine": 29,
+        "endChar": 53
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd54da0b_be925e1f",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:35:29Z",
+      "side": 1,
+      "message": "comment?",
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
