@@ -137,6 +137,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4446efb6_4bff81a8",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T01:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce69346_70ff61e0",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 29
+      },
+      "revId": "c295fd12b9519fd1ec67fee41a59ecc48f0c94a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "364bb57c_8f4dd400",
@@ -150,6 +174,30 @@
       "writtenOn": "2021-06-16T23:40:15Z",
       "side": 1,
       "message": "Can you name this to indicate that it\u0027s RPC? Like \u0027createRpcDelegateServiceManager\u0027?",
+      "range": {
+        "startLine": 26,
+        "startChar": 39,
+        "endLine": 26,
+        "endChar": 47
+      },
+      "revId": "c295fd12b9519fd1ec67fee41a59ecc48f0c94a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b321953_3f3bb232",
+        "filename": "libs/binder/ServiceManagerHost.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T01:15:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "364bb57c_8f4dd400",
       "range": {
         "startLine": 26,
         "startChar": 39,
