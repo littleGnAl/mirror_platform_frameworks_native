@@ -16,6 +16,23 @@
       "message": "Added RESTRICT AUTOMERGE since we have merge conflicts on sc-dev, and BufferQueueLayer is not used there anymore",
       "revId": "d86f68fcd7830d417571f697b0c993ad53d745e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "742cedbe_332c9c76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1110792
+      },
+      "writtenOn": "2021-06-17T22:48:48Z",
+      "side": 1,
+      "message": "there is merge conflict on internal master. ",
+      "revId": "d86f68fcd7830d417571f697b0c993ad53d745e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
