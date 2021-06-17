@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42579a56_7fac947d",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T22:35:51Z",
+      "side": 1,
+      "message": "\u003e Why is this needed?\n\nFor ServiceManager::waitForService(). This makes it partially work:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1727280/35/libs/binder/tests/binderHostDeviceTest.cpp#141\n\nIt doesn\u0027t fully work yet because registerForNotification() doesn\u0027t work. CL:1738487 demonstrates how it fails.\n\n\u003e I would expect ServiceManagerHostShim to override getService directly\n\nI can do that, but it appears that the parent class ServiceManagerShim::getService() implements it by calling `ServiceManagerShim::checkService()`, which is overridden above. Hence I didn\u0027t override getService().",
+      "parentUuid": "28aa3d54_2fa00e7d",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 5
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c873844a_e2ea585e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-17T19:35:29Z",
       "side": 1,
       "message": "this should still be needed on host when multiple threads are involved. Curious, what problem is it calling?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a93c6db_ea30b731",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T22:35:51Z",
+      "side": 1,
+      "message": "Can you explain a bit more? Isn\u0027t this called upon process destruction?\n\nThis is needed because DeviceServiceExtra (AdbForwarder / CommandResult) is attached to the binder object. If it is never destroyed, the process `adb shell servicemanager manager` will still be killed, since it is a child process of this process. BUT, `adb forward` is not removed. See AdbForwarder::~AdbForwarder in ServiceManagerHost.cpp in this CL.\n\nHowever, these are all based on my speculation. I can manually check if adding this will actually prevent the adb forwarded port to be cleaned up.",
+      "parentUuid": "c873844a_e2ea585e",
       "range": {
         "startLine": 103,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "075f77c5_f7fb2341",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T22:35:51Z",
+      "side": 1,
+      "message": "It should, but I think this is clearer.\n\nDo you want me to change it back to servicedispatcher without `/system/bin`? I\u0027ll do that in the next patchset.",
+      "parentUuid": "7434696c_66d4c518",
+      "range": {
+        "startLine": 436,
+        "startChar": 34,
+        "endLine": 436,
+        "endChar": 46
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25049e6a_29200f49",
         "filename": "libs/binder/ServiceManagerHost.cpp",
         "patchSetId": 28
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "834e56f4_450c5d4b",
+        "filename": "libs/binder/ServiceManagerHost.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T22:35:51Z",
+      "side": 1,
+      "message": "That\u0027s an overkill IMO.\n\nBut maybe I should be using executeResult-\u003estdoutEndsWithNewLine() here?!\n\nEDIT: nah, this is clearer because of L61\n\nEDIT again: actually I should be using android::base::Trim() now that I have libbase",
+      "parentUuid": "25049e6a_29200f49",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d2bd312_680f815a",
         "filename": "libs/binder/ServiceManagerHost.cpp",
         "patchSetId": 28
@@ -123,6 +219,30 @@
       "writtenOn": "2021-06-17T19:35:29Z",
       "side": 1,
       "message": "okay - for Process I understood why you were doing this (that way, the kill/waitpid would get switched to the other process). I was thinking of bringing it up then, because it might be a gotcha.\n\nFor instance:\n\n   Object a \u003d /*create resource 1*/;\n   {\n       Object b \u003d /*create resource 2*/;\n       a \u003d std::move(b); // now a-\u003e2 and b-\u003e1\n       ...\n       // some lines\n       ...\n       // resource 1 is now detroyed by the destructor of a\n   }\n\nThis situation seemed error prone to me, because it appears like we stop caring about resource 1 at the move operation, but it won\u0027t be destroyed until later. However, for the \u0027Process\u0027 case, I thought that would be okay because if you waitpid too early, nothing may actually be killing the child process.\n\nOf course, I understand that your implementation is consistent with the standard, but it seems like in this case and in the Process case, we are really holding onto memory longer than we need to. I feel it would be messy above to rely on the fact during \u0027some lines\u0027 that resource 1 isn\u0027t freed.\n\nI\u0027m curious, do you have any thoughts on this case? Is the only reason to make the implementation easier, since in this case, you don\u0027t have to worry about destroying the object during operator\u003d?",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f3db2bd_d3683f38",
+        "filename": "libs/binder/ServiceManagerHost.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T22:35:51Z",
+      "side": 1,
+      "message": "\u003e The only reason to make the implementation easier, since in this case, you don\u0027t have to worry about destroying the object during operator\u003d?\n\nRight, that\u0027s the only reason.\n\nThe other more obvious implementation is to not implement the move operator, but use std::unique_ptr to wrap it instead. I personally think that\u0027s much clearer to read, though it causes a few more memory allocation.\n\nI don\u0027t have a preference for any solution. I am happy to destroy \"this\" here if you think that\u0027s important. (Same for processes above).",
+      "parentUuid": "6d2bd312_680f815a",
       "range": {
         "startLine": 75,
         "startChar": 9,
