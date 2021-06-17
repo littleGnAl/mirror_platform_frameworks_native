@@ -149,6 +149,43 @@ TEST_F(HostDeviceTest, WaitForService) {
     EXPECT_EQ(String16(kDescriptor), rpcBinder->getInterfaceDescriptor());
 }
 
+TEST_F(HostDeviceTest, WaitForServiceDeferred) {
+    GTEST_SKIP() << "Doesn't work because of b/191059588";
+    auto sm = defaultServiceManager();
+
+    auto newServiceName = kServiceName + "/copy"s;
+
+    std::mutex mutex;
+    std::condition_variable cv;
+    sp<IBinder> rpcBinder;
+
+    std::thread waitThread([&]() {
+        auto sm = defaultServiceManager();
+        {
+            std::lock_guard<std::mutex> lock(mutex);
+            rpcBinder = sm->waitForService(String16(newServiceName.c_str()));
+            ASSERT_NE(nullptr, rpcBinder);
+        }
+        cv.notify_all();
+    });
+
+    std::unique_lock<std::mutex> lock(mutex);
+    ASSERT_FALSE(cv.wait_for(lock, 500ms, [&]() { return rpcBinder != nullptr; }));
+
+    auto service = execute({"adb", "shell", kServiceBinary, newServiceName, kDescriptor},
+                           &CommandResult::stdoutEndsWithNewLine);
+    ASSERT_THAT(service, Ok());
+
+    if (!cv.wait_for(lock, 500ms, [&]() { return rpcBinder != nullptr; })) {
+        waitThread.detach();
+        FAIL() << "waitForService() did not finish after service is added";
+    }
+    waitThread.join();
+
+    EXPECT_THAT(rpcBinder->pingBinder(), StatusEq(OK));
+    EXPECT_EQ(String16(kDescriptor), rpcBinder->getInterfaceDescriptor());
+}
+
 TEST_F(HostDeviceTest, TenClients) {
     auto sm = defaultServiceManager();
 
