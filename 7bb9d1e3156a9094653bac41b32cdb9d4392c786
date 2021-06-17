@@ -93,6 +93,30 @@
       },
       "revId": "7bb9d1e3156a9094653bac41b32cdb9d4392c786",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca451bb_dbdd44a2",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T21:18:58Z",
+      "side": 1,
+      "message": "Wait - the main reason should be that we don\u0027t support proxying of a binder from another process, right? This won\u0027t change anything?",
+      "parentUuid": "940d6a93_4454e015",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 5
+      },
+      "revId": "7bb9d1e3156a9094653bac41b32cdb9d4392c786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
