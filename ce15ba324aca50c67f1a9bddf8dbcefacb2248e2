@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b6f239f_bae026ea",
+        "filename": "libs/binder/UtilsHost.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-17T21:18:55Z",
+      "side": 1,
+      "message": "sure, but you don\u0027t know that your two fds are going to have values \u003c 1024... what if you get 2048 and 2049? you have to know that all the other code you\u0027re linked with isn\u0027t using many fds too.",
+      "parentUuid": "43698c2c_998f7c9a",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 53
+      },
+      "revId": "ce15ba324aca50c67f1a9bddf8dbcefacb2248e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e4efba1_d1326349",
         "filename": "libs/binder/UtilsHost.h",
         "patchSetId": 16
