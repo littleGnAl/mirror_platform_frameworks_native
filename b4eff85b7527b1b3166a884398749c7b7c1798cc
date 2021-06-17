@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73bb60bd_469c3e0d",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T23:38:12Z",
+      "side": 1,
+      "message": "Sure, filing b/191409606\n\nBut regardless, ensuring this is cleaned up is a good mitigation, right? Or, what about if I keep no_destroy on the binder object, but delete the DeviceServiceExtra object up on process exit?",
+      "parentUuid": "6bf58966_72d2d8a4",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ad5c349_47e8c671",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 28
@@ -221,6 +245,30 @@
       "side": 1,
       "message": "Did I ask you to change it the other way? I don\u0027t remember",
       "parentUuid": "075f77c5_f7fb2341",
+      "range": {
+        "startLine": 436,
+        "startChar": 34,
+        "endLine": 436,
+        "endChar": 46
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "940e939a_d04a5659",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-17T23:38:12Z",
+      "side": 1,
+      "message": "No I did it myself.",
+      "parentUuid": "045675f0_110566a8",
       "range": {
         "startLine": 436,
         "startChar": 34,
