@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ba4b0b8_1629bc89",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-17T19:40:29Z",
+      "side": 1,
+      "message": "nit: this is a pretty limited test compared to what we have for other AIDL things (e.g. you could set this up to invoke binderRpcTest from host to device and reuse all those test cases). WDYT?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "5878cf676e81a69329274c55ff777bc262a64ae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
