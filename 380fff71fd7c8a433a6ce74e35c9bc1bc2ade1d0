@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1c25c8_7b77e1a9",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-06-18T08:48:58Z",
+      "side": 1,
+      "message": "Odd that there\u0027s no actual user of --compile-individually today?",
+      "revId": "380fff71fd7c8a433a6ce74e35c9bc1bc2ade1d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
