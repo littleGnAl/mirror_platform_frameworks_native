@@ -1952,6 +1952,7 @@ void SurfaceFlinger::onMessageRefresh() {
         mDrawingState.colorMatrixChanged = false;
     }
 
+    // a dummy change for codelab test
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
 
     if (mDebugRegion != 0) {
