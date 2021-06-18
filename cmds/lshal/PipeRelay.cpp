@@ -54,7 +54,7 @@ Result<std::unique_ptr<PipeRelay>> PipeRelay::create(std::ostream& os,
 
 void PipeRelay::thread(unique_fd rfd, unique_fd rfdTrigger, std::ostream* out,
                        const NullableOStream<std::ostream>* err, std::string fqName) {
-    constexpr auto kReadTimeout = 1000ms;
+    constexpr auto kReadTimeout = 100ms;
 
     std::optional<std::chrono::time_point<std::chrono::system_clock>> closeRequestTime;
 
@@ -64,7 +64,7 @@ void PipeRelay::thread(unique_fd rfd, unique_fd rfdTrigger, std::ostream* out,
         pfd[1] = {.fd = rfdTrigger.get(), .events = 0};
         nfds_t nfds = closeRequestTime.has_value() ? 1 : 2;
 
-        int pollRes = poll(pfd, nfds, 500 /* ms timeout */);
+        int pollRes = poll(pfd, nfds, 100 /* ms timeout */);
         if (pollRes < 0) {
             int savedErrno = errno;
             (*err) << "debug " << fqName << ": poll() failed: " << strerror(savedErrno)
@@ -75,7 +75,6 @@ void PipeRelay::thread(unique_fd rfd, unique_fd rfdTrigger, std::ostream* out,
         // Handle previous close request.
         if (closeRequestTime.has_value() &&
             std::chrono::system_clock::now() - *closeRequestTime > kReadTimeout) {
-            (*err) << "debug " << fqName << ": timeout reading from pipe, output may be truncated.";
             break;
         }
         if (!closeRequestTime.has_value() && pfd[1].revents & POLLHUP) {
