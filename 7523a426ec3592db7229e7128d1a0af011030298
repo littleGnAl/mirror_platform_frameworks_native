@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000011900541",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1740713?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "76e32d4c_39958b47",
+        "filename": "cmds/lshal/PipeRelay.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-06-18T02:36:03Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 108
+      },
+      "revId": "7523a426ec3592db7229e7128d1a0af011030298",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
