@@ -22,6 +22,30 @@
       },
       "revId": "971b2a7749be22111a4a2656973ad2e8de4a520d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efbaf34c_a2d638d4",
+        "filename": "libs/nativewindow/include/vndk/hardware_buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-06-19T13:41:41Z",
+      "side": 1,
+      "message": "And similarly why is it useful for there to be 2 values for this? If camera needs both of these, it should be 1 flag not 2. It should only be 2 flags if it\u0027s meaningfully useful to only specify 1 at a time, but this isn\u0027t indicating that to me.",
+      "parentUuid": "e74f68cb_430106fd",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 37
+      },
+      "revId": "971b2a7749be22111a4a2656973ad2e8de4a520d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
