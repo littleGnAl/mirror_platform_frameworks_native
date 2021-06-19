@@ -22,6 +22,30 @@
       },
       "revId": "5878cf676e81a69329274c55ff777bc262a64ae1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feda26c4_5f6f4275",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-19T00:31:45Z",
+      "side": 1,
+      "message": "I know, but binderRpcTest has some set up code that I don\u0027t need. Some refactoring is required before I run it.\n\nI\u0027ll keep this in mind and do this as a follow up",
+      "parentUuid": "7ba4b0b8_1629bc89",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "5878cf676e81a69329274c55ff777bc262a64ae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
