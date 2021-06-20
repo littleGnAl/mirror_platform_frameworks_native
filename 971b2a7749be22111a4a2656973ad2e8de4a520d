@@ -46,6 +46,30 @@
       },
       "revId": "971b2a7749be22111a4a2656973ad2e8de4a520d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e33da0_b96d6456",
+        "filename": "libs/nativewindow/include/vndk/hardware_buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1871720
+      },
+      "writtenOn": "2021-06-20T04:30:45Z",
+      "side": 1,
+      "message": "1. per the comment describes, the buffer will be read by the HW camera pipeline. e.g. camera subsystem with specialized hardware and special requirements on the buffer.\n\n2. it\u0027s natural to have 2 values because the camera subsystem usually has different requirements on the buffers at OUTPUT and CAPTURE sides of the pipeline. see v4l/v4l2 docs for more info. Having 2 values is also an exact match to \"BufferUsage::CAMERA_OUTPUT\" and \"BufferUsage::CAMERA_INPUT\" (aka \"GRALLOC_USAGE_HW_CAMERA_WRITE\" and \"GRALLOC_USAGE_HW_CAMERA_READ\"). my guts feel it\u0027s inappropriate to deviate here since the other AHB usage bits are exactly matching the modern gralloc usage bits.",
+      "parentUuid": "efbaf34c_a2d638d4",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 37
+      },
+      "revId": "971b2a7749be22111a4a2656973ad2e8de4a520d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
