@@ -46,6 +46,30 @@
       },
       "revId": "337003f8521e81b650294f2af955c1c1e57f3e3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94dc8320_e4fb77e9",
+        "filename": "libs/binder/libbinder_rpc_unstable.map.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-21T12:01:04Z",
+      "side": 1,
+      "message": "This has to be #apex or the new #systemapi. Otherwise, the stub will have no symbol at all and will hit an error like https://android-build.googleplex.com/builds/pending/P23890857/aosp_crosshatch-userdebug/latest/view/logs/build_error.log\n\nThis error isn\u0027t happening because the stub wasn\u0027t built due to a bug in the build system which I am fixing with ag/14961906\n\nI will upload a CL to add #apex back.\n\nExposure of these APIs is not a permanent decision and shall be fixed before T is released.",
+      "parentUuid": "9ccca413_8880dbfc",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 21
+      },
+      "revId": "337003f8521e81b650294f2af955c1c1e57f3e3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
