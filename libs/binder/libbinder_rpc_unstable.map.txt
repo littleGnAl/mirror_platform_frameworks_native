@@ -1,7 +1,8 @@
-LIBBINDER_RPC_UNSTABLE_SHIM { # platform-only
+# TODO(b/191637950) Remove this file before T is released.
+LIBBINDER_RPC_UNSTABLE_SHIM {
   global:
-    RunRpcServer;
-    RpcClient;
+    RunRpcServer; # systemapi
+    RpcClient; # systemapi
   local:
     *;
 };
