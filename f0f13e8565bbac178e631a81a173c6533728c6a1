@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "603b3365_19cfd763",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-06-22T18:27:27Z",
+      "side": 1,
+      "message": "This looks like a cherry-pick of ag/14613610 + ag/15066428\n\nCan we keep the changes as two different CLs so that it would be easier to correlate aosp vs. internal changes?",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "f0f13e8565bbac178e631a81a173c6533728c6a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
