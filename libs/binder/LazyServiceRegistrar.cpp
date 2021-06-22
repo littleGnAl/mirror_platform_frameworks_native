@@ -59,6 +59,9 @@ private:
         bool registered = true;
     };
 
+    bool registerServiceLocked(const sp<IBinder>& service, const std::string& name,
+                               bool allowIsolated, int dumpFlags);
+
     /**
      * Looks up a service guaranteed to be registered (service from onClients).
      */
@@ -77,6 +80,9 @@ private:
      * - Some services have clients.
      */
     void maybeTryShutdown();
+
+    // for below
+    std::mutex mMutex;
 
     // count of services with clients
     size_t mNumConnectedServices;
@@ -117,6 +123,13 @@ private:
 
 bool ClientCounterCallbackImpl::registerService(const sp<IBinder>& service, const std::string& name,
                                             bool allowIsolated, int dumpFlags) {
+    std::lock_guard<std::mutex> lock(mMutex);
+    return registerServiceLocked(service, name, allowIsolated, dumpFlags);
+}
+
+bool ClientCounterCallbackImpl::registerServiceLocked(const sp<IBinder>& service,
+                                                      const std::string& name, bool allowIsolated,
+                                                      int dumpFlags) {
     auto manager = interface_cast<AidlServiceManager>(asBinder(defaultServiceManager()));
 
     bool reRegister = mRegisteredServices.count(name) > 0;
@@ -194,8 +207,7 @@ void ClientCounterCallbackImpl::reRegister() {
             continue;
         }
 
-        if (!registerService(entry.service, name, entry.allowIsolated,
-                             entry.dumpFlags)) {
+        if (!registerServiceLocked(entry.service, name, entry.allowIsolated, entry.dumpFlags)) {
             // Must restart. Otherwise, clients will never be able to get a hold of this service.
             LOG_ALWAYS_FATAL("Bad state: could not re-register services");
         }
@@ -227,11 +239,8 @@ void ClientCounterCallbackImpl::maybeTryShutdown() {
     }
 }
 
-/**
- * onClients is oneway, so no need to worry about multi-threading. Note that this means multiple
- * invocations could occur on different threads however.
- */
 Status ClientCounterCallbackImpl::onClients(const sp<IBinder>& service, bool clients) {
+    std::lock_guard<std::mutex> lock(mMutex);
     auto & [name, registered] = *assertRegisteredService(service);
     if (registered.clients == clients) {
         LOG_ALWAYS_FATAL("Process already thought %s had clients: %d but servicemanager has "
@@ -269,6 +278,7 @@ Status ClientCounterCallbackImpl::onClients(const sp<IBinder>& service, bool cli
 
 void ClientCounterCallbackImpl::setActiveServicesCallback(const std::function<bool(bool)>&
                                                           activeServicesCallback) {
+    std::lock_guard<std::mutex> lock(mMutex);
     mActiveServicesCallback = activeServicesCallback;
 }
 
