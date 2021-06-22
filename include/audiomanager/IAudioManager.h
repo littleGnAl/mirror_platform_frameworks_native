@@ -49,6 +49,10 @@ public:
     virtual audio_unique_id_t trackPlayer(player_type_t playerType, audio_usage_t usage,
                 audio_content_type_t content, const sp<IBinder>& player,
                 audio_session_t sessionId) = 0;
+    virtual audio_unique_id_t trackPlayer(player_type_t playerType,
+                uid_t appUid, audio_usage_t usage,
+                audio_content_type_t content, const sp<IBinder>& player,
+                audio_session_t sessionId) = 0;
     /*oneway*/ virtual status_t playerAttributes(audio_unique_id_t piid, audio_usage_t usage,
                 audio_content_type_t content)= 0;
     /*oneway*/ virtual status_t playerEvent(audio_unique_id_t piid, player_state_t event,
