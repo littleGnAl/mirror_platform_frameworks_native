@@ -16,6 +16,24 @@
       "message": "FYI, this appears to break the remaining mac builds, as libbinder isn\u0027t available there. (I hit this attempting to disable device builds on mac 🙂)",
       "revId": "af766e6162d9e9b648f87e466f5ddbcb9387759e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a23e3ae8_b2f15e03",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 19
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-22T17:45:36Z",
+      "side": 1,
+      "message": "Oh because this is host! I\u0027ll disable it on mac.",
+      "parentUuid": "43cdf0d5_1575779b",
+      "revId": "af766e6162d9e9b648f87e466f5ddbcb9387759e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
