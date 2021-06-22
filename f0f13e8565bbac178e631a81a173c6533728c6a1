@@ -22,6 +22,30 @@
       },
       "revId": "f0f13e8565bbac178e631a81a173c6533728c6a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "022762a6_30b4095f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-06-22T19:12:46Z",
+      "side": 1,
+      "message": "Ah missed this comment. We could but it\u0027s annoying because this patchset is going to need to be cherry-picked to yet more branches, and maintaining 3 CLs where 1 is a dependent is a headache without much value.",
+      "parentUuid": "603b3365_19cfd763",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "f0f13e8565bbac178e631a81a173c6533728c6a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
