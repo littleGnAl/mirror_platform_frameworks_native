@@ -70,6 +70,30 @@
       },
       "revId": "4865cd8aa72ff646ed45a2ce6903e386b55c788c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "258ee5da_b402ea14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2021-06-23T17:50:34Z",
+      "side": 1,
+      "message": "yes, there are non-presubmit test suites created based on test mapping.",
+      "parentUuid": "af25e729_1994a9ec",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 120
+      },
+      "revId": "4865cd8aa72ff646ed45a2ce6903e386b55c788c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
