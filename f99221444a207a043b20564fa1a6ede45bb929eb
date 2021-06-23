@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000012110836",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1744175?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "028f428e_c16ca9dd",
+          "description": "Change to \"services/inputflinger/reader/EventHub.cpp\"",
+          "replacements": [
+            {
+              "path": "services/inputflinger/reader/EventHub.cpp",
+              "range": {
+                "startLine": 128,
+                "startChar": 38,
+                "endLine": 128,
+                "endChar": 44
+              },
+              "replacement": " don\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "b1fc6e6e_c4cafbab",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-06-23T09:52:33Z",
+      "side": 1,
+      "message": "Common typo found: \" dont \" -- should it be \" don\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 128,
+        "startChar": 38,
+        "endLine": 128,
+        "endChar": 44
+      },
+      "revId": "f99221444a207a043b20564fa1a6ede45bb929eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
