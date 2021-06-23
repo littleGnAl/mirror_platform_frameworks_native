@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43a4e972_00358684",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 19
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2021-06-23T16:37:03Z",
+      "side": 1,
+      "message": "The name misses `Host`",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "af766e6162d9e9b648f87e466f5ddbcb9387759e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43cdf0d5_1575779b",
         "filename": "libs/binder/tests/Android.bp",
         "patchSetId": 19
