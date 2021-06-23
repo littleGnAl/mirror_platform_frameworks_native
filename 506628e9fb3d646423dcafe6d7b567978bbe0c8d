@@ -22,6 +22,30 @@
       },
       "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a566db1_84b4dbd8",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-06-23T21:52:56Z",
+      "side": 1,
+      "message": "Hi,\n\nThanks for the review!\n\nI didn\u0027t want to change the default behavior which i think is good, i.e. if the user expects the /dev/input/ to exist then the result of scanDirLocked(\"/dev/input\") is checked and the boot is stopped and logged if its unsuccessful in scanDevicesLocked, this gives a clear error in logcat as well which is easy to catch.\n\nI can change the behavior so that it always passes below in the scanDevicesLocked and the constructor if you like? i.e. \nif(opendir(DEVICE_PATH)) {\n    closedir(DEVICE_PATH);\n    ....\n}\n\nin both the constructor and scanDevicesLocked below? However, if the user expects the /dev/input to exist and it doesnt for some reason it might not be caught?",
+      "parentUuid": "470e0301_345999a6",
+      "range": {
+        "startLine": 130,
+        "startChar": 12,
+        "endLine": 130,
+        "endChar": 28
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
