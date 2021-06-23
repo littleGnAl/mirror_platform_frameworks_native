@@ -165,6 +165,30 @@
       },
       "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0ae82b_b3978506",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-06-23T23:14:35Z",
+      "side": 1,
+      "message": "you can use `atest inputflinger_tests` to build and run the tests.\n\ni don\u0027t think we need a while loop, we would just get \u0027/dev/\u0027 added to the inotify. Then, when inotify is triggered, we would check if it matches \u0027/dev/input\u0027 and reexecute the \u0027add /dev/input to inotify list\u0027. That code should probably be moved to a function.\n\nWhy do you say /dev/input will never be created in your device? Wouldn\u0027t running the tests cause that folder to be created? How does /dev/uinput work on your device?",
+      "parentUuid": "4ee6a897_16507750",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
