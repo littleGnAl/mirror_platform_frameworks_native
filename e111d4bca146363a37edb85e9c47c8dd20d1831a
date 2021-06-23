@@ -103,6 +103,24 @@
       "parentUuid": "3e9b2734_298fd263",
       "revId": "e111d4bca146363a37edb85e9c47c8dd20d1831a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49b72ab2_91bd90da",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-23T18:19:21Z",
+      "side": 1,
+      "message": "I mean, but it is convenient to have, in order to reproduce bugs. I suppose I can always restore and rebuild it, but I thought it was nice to have ready. Maybe, as a general rule, we should only add things that are tested (though b/191371676 violates this!). Though, also, we have log rpc detail is conditional here. We only turn it on for debugging.\n\nWould you +2 it then? Or you think something else is needed?",
+      "parentUuid": "37c122a6_8d832966",
+      "revId": "e111d4bca146363a37edb85e9c47c8dd20d1831a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
