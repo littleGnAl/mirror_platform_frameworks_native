@@ -146,14 +146,6 @@ cc_library {
         darwin: {
             enabled: false,
         },
-        host: {
-            static_libs: [
-                "libbase",
-            ],
-            srcs: [
-                "UtilsHost.cpp",
-            ],
-        },
     },
 
     aidl: {
