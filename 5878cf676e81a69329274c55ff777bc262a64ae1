@@ -46,6 +46,30 @@
       },
       "revId": "5878cf676e81a69329274c55ff777bc262a64ae1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ed75bb_be1c8667",
+        "filename": "libs/binder/tests/binderHostDeviceTest.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:17:57Z",
+      "side": 1,
+      "message": "Resolving this, b/191405567 is filed.",
+      "parentUuid": "feda26c4_5f6f4275",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 1
+      },
+      "revId": "5878cf676e81a69329274c55ff777bc262a64ae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
