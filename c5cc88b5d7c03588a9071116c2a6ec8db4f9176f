@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c25f7abc_583b4489",
+        "filename": "cmds/lshal/PipeRelay.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-23T15:34:20Z",
+      "side": 1,
+      "message": "(yeah, my only comment was \"any time you have to ask something like that, your readers probably do too, so you might want to consider not using the feature at all\". also, \"always test with a hwasan build to catch memory safety issues in C++\".)",
+      "parentUuid": "204c9d12_8b4f3a7c",
+      "range": {
+        "startLine": 51,
+        "startChar": 53,
+        "endLine": 51,
+        "endChar": 64
+      },
+      "revId": "c5cc88b5d7c03588a9071116c2a6ec8db4f9176f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b95072db_7e9b0ef2",
         "filename": "cmds/lshal/PipeRelay.cpp",
         "patchSetId": 11
