@@ -22,6 +22,30 @@
       },
       "revId": "4865cd8aa72ff646ed45a2ce6903e386b55c788c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7304841_47f13eef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2021-06-23T17:41:41Z",
+      "side": 1,
+      "message": "We ignore test module doesn\u0027t exist in build artifact, because some tests might not build on cf target.\n\naosp/1744993 should fix this. We don\u0027t need a revert.\nI will think about if we can have a stronger repo upload hook for test mapping validation.",
+      "parentUuid": "2c66d772_f73e06fc",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 120
+      },
+      "revId": "4865cd8aa72ff646ed45a2ce6903e386b55c788c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
