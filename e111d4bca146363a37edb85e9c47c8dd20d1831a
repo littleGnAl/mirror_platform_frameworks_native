@@ -33,6 +33,23 @@
       "message": "known breakage",
       "revId": "e111d4bca146363a37edb85e9c47c8dd20d1831a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "360af6f2_739d9665",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-23T00:09:22Z",
+      "side": 1,
+      "message": "KI is b/191506099 btw (same one)",
+      "revId": "e111d4bca146363a37edb85e9c47c8dd20d1831a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
