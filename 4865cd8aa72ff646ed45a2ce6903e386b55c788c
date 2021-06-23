@@ -46,6 +46,30 @@
       },
       "revId": "4865cd8aa72ff646ed45a2ce6903e386b55c788c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af25e729_1994a9ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-23T17:49:38Z",
+      "side": 1,
+      "message": "that means TEST_MAPPING is used on non-cf targets?",
+      "parentUuid": "e7304841_47f13eef",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 120
+      },
+      "revId": "4865cd8aa72ff646ed45a2ce6903e386b55c788c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
