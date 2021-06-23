@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c66d772_f73e06fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-23T17:36:38Z",
+      "side": 1,
+      "message": "Prefer https://android-review.googlesource.com/c/platform/frameworks/native/+/1744993\n\nDo you know why the validation test didn\u0027t catch this in presubmit?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 120
+      },
+      "revId": "4865cd8aa72ff646ed45a2ce6903e386b55c788c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
