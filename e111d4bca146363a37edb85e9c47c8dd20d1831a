@@ -54,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11754365_c14d3e13",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:57:54Z",
+      "side": 1,
+      "message": "nit: add a comment?\n\n```\n// 90% chance to do nothing. 10% chance to sleep 0~1 ms.\n```",
+      "revId": "e111d4bca146363a37edb85e9c47c8dd20d1831a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b167f6a5_d3f7f318",
         "filename": "libs/binder/RpcState.h",
         "patchSetId": 3
