@@ -16,6 +16,24 @@
       "message": "Elliot, could you PTAL again?",
       "revId": "891989f8e98c890394fab72f17b77ba3b0474782",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eda8b06_570e7089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-23T01:09:37Z",
+      "side": 1,
+      "message": "(feel free to wait for Elliott as well, but I see you resolved the comments)",
+      "parentUuid": "656c3061_7d779b6c",
+      "revId": "891989f8e98c890394fab72f17b77ba3b0474782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
