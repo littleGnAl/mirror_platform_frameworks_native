@@ -121,6 +121,52 @@
       "parentUuid": "37c122a6_8d832966",
       "revId": "e111d4bca146363a37edb85e9c47c8dd20d1831a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a1b2f4f_cea609f0",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:54:36Z",
+      "side": 1,
+      "message": "nit: change this to MAYBE_WAIT_IN_FLAKE_MODE() because\n\n```\nMAYBE_WAIT_IN_FLAKE_MODE;\n```\n\ndoesn\u0027t look very great",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "e111d4bca146363a37edb85e9c47c8dd20d1831a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb6eee2_fe83a317",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:54:36Z",
+      "side": 1,
+      "message": "What about just\n\n```\n#define MAYBE_WAIT_IN_FLAKE_MODE()\n```\n?\n\nOr what about\n\n```\ndo {} while (false)\n```\n\nso that there won\u0027t be an extra ; when you say\n\n```\nMAYBE_WAIT_IN_FLAKE_MODE;\n```",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "e111d4bca146363a37edb85e9c47c8dd20d1831a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
