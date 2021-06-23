@@ -46,6 +46,53 @@
       },
       "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b975ef64_dca7017b",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-06-23T22:30:50Z",
+      "side": 1,
+      "message": "Can you just use https://en.cppreference.com/w/cpp/filesystem/exists ?",
+      "parentUuid": "3a566db1_84b4dbd8",
+      "range": {
+        "startLine": 130,
+        "startChar": 12,
+        "endLine": 130,
+        "endChar": 28
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b9cd56_442f25e9",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-06-23T22:30:50Z",
+      "side": 1,
+      "message": "One remaining concern here is tests, and specifically, integration tests. We have some in InputReader_test and EventHub_test.\n\nIf we skip adding \u0027/dev/input\u0027 directory, then we cannot discover input devices that might be added when the tests are executed.\n\nThat means, my guess is that this patch, in the current form, will break input tests when the config is enabled (or when the dir doesn\u0027t exist, on your test device).\n\n\nHow about we add a watch for /dev/input directory? Something like this:\n\n    if (directory exists) {\n       // do the usual code for inotify_add_watch(... DEVICE_PATH...);\n   } else {\n      // The /dev/input directory may not exist on development devices that don\u0027t have any input devices connected. Just add a watch for /dev and when /dev/input appears, re-do this add_watch for DEVICE_PATH.\n   }\n   \n   \nYou might have to modify the \"isV4lScanningEnabled\" check, because it would clash with this new logic being added.\n\nTo summarize, please rework the patch such that:\n1) All tests pass, even on your device where /dev/input is not present\n2) Without having to add any custom system properties, to simplify bringup",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
