@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f010f3_fc98b04f",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa0a8eb5_bc464f9e",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 5
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c873844a_e2ea585e",
@@ -169,6 +193,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45a3f385_4b7c39c0",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:21:20Z",
+      "side": 1,
+      "message": "ping",
+      "parentUuid": "73bb60bd_469c3e0d",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ad5c349_47e8c671",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 28
@@ -180,6 +228,24 @@
       "writtenOn": "2021-06-17T19:35:29Z",
       "side": 1,
       "message": "nit: comment like L66 (there are a lot of these)",
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e042236_7afd9a39",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ad5c349_47e8c671",
       "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -279,6 +345,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07669265_b8102ab7",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "940e939a_d04a5659",
+      "range": {
+        "startLine": 436,
+        "startChar": 34,
+        "endLine": 436,
+        "endChar": 46
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25049e6a_29200f49",
@@ -316,6 +406,30 @@
       "side": 1,
       "message": "That\u0027s an overkill IMO.\n\nBut maybe I should be using executeResult-\u003estdoutEndsWithNewLine() here?!\n\nEDIT: nah, this is clearer because of L61\n\nEDIT again: actually I should be using android::base::Trim() now that I have libbase",
       "parentUuid": "25049e6a_29200f49",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27385017_473bfd98",
+        "filename": "libs/binder/ServiceManagerHost.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "834e56f4_450c5d4b",
       "range": {
         "startLine": 60,
         "startChar": 4,
@@ -387,6 +501,30 @@
       "side": 1,
       "message": "I just wanted to make sure I understood. Thanks. If that\u0027s the reason, this sgtm.",
       "parentUuid": "2f3db2bd_d3683f38",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "628b956b_426e83dc",
+        "filename": "libs/binder/ServiceManagerHost.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:21:20Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I\u0027ll leave it as-is then.",
+      "parentUuid": "d6aa5252_5be3593e",
       "range": {
         "startLine": 75,
         "startChar": 9,
@@ -481,6 +619,30 @@
       "side": 1,
       "message": "Indeed. But they are parsing results of different commands (one for adb, the other for servicedispatcher). They just happen to have the same format.\n\nI\u0027ll refactor it out.",
       "parentUuid": "73c44fe1_734d176b",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7331bb50_983c2583",
+        "filename": "libs/binder/ServiceManagerHost.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5a59cc9_f7a052d8",
       "range": {
         "startLine": 131,
         "startChar": 0,
@@ -598,6 +760,24 @@
       "writtenOn": "2021-06-17T19:35:29Z",
       "side": 1,
       "message": "comment?",
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76e1e85_0d5e93eb",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-23T23:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd54da0b_be925e1f",
       "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
