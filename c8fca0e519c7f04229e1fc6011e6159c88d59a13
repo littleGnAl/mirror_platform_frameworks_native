@@ -16,6 +16,52 @@
       "message": "+essick as someone likely to be able to actually review this... i had no idea libcmd was anything to do with media, and it\u0027s not clear to me what the purpose is here? just send random data via binder to the some audio code? (should this fuzzer live with the audio code instead then?)",
       "revId": "c8fca0e519c7f04229e1fc6011e6159c88d59a13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d08e63_fe65fd3e",
+        "filename": "cmds/cmd/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-24T02:32:36Z",
+      "side": 1,
+      "message": "i didn\u0027t see where this was used. so question why it\u0027s needed.",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "c8fca0e519c7f04229e1fc6011e6159c88d59a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12b1770_802a934a",
+        "filename": "cmds/cmd/fuzzer/cmd_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-24T02:32:36Z",
+      "side": 1,
+      "message": "seems this should be \u003cfuzzer/FuzzedDataProvider.h\u003e\nsince we\u0027re getting it from outside of this project.",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "c8fca0e519c7f04229e1fc6011e6159c88d59a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
