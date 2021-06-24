@@ -123,6 +123,8 @@ cc_library {
         "RpcSession.cpp",
         "RpcServer.cpp",
         "RpcState.cpp",
+        "RpcTransportRaw.cpp",
+        "RpcTransportShim.cpp",
         "Static.cpp",
         "Stability.cpp",
         "Status.cpp",
