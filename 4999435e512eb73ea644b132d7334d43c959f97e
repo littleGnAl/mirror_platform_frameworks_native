@@ -46,6 +46,53 @@
       },
       "revId": "4999435e512eb73ea644b132d7334d43c959f97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07067734_565483e3",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 37
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2021-06-24T00:45:55Z",
+      "side": 1,
+      "message": "that\u0027s a different issue of test_suites setting. You need to mark this test as non-unittest.\n\n    test_options: {\n        unit_test: false,\n    },\n    \n Add that, I think it should fix the presubmit check.",
+      "parentUuid": "00df0236_1f7d2872",
+      "range": {
+        "startLine": 364,
+        "startChar": 19,
+        "endLine": 364,
+        "endChar": 26
+      },
+      "revId": "4999435e512eb73ea644b132d7334d43c959f97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06aec99_dc6670f6",
+        "filename": "libs/binder/tests/binderHostDeviceTest.xml",
+        "patchSetId": 37
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2021-06-24T00:45:55Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "4999435e512eb73ea644b132d7334d43c959f97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
