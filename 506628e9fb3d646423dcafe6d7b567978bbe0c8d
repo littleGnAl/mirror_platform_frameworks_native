@@ -261,6 +261,30 @@
       },
       "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b926563_d100916f",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-06-24T19:58:42Z",
+      "side": 1,
+      "message": "/dev/uinput is not there in my device during normal boot to completion which only happens with this patch.\n\nJust wanted to confirm, by integration test you mean InputReader_test and EventHub_test? The thing is they wont run during normal boot, so even if /dev/uinput is created during these tests, it wont be useful during normal boot when these tests wont be run at all by others using device without /dev/input.\n\nI did try to run atest inputflinger_tests but it failed with\n\ncom.android.tradefed.device.NoDeviceException[RUNNER_ALLOCATION_ERROR|500009|INFRA_FAILURE]: No device was allocated for the command. \n\nlikely as my development device doesnt have usb (no inputs :) )\n\nhowever it did place the test in userdata.img nativetest64/inputflinger_tests/inputflinger_tests so will try to run it manually, will update here after the test.",
+      "parentUuid": "a593d784_062214dd",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
