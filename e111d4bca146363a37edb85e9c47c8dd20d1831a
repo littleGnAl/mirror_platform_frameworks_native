@@ -86,6 +86,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c275197d_7feefffe",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-24T18:09:49Z",
+      "side": 1,
+      "message": ":) and a 100% chance to take a lock and make system calls or potentially talk to hardware...\n\nThere are only a couple of lines of code here. I\u0027d be more worried the comment will get out of date. Understand the probabilities of this nature (as you clearly do!) seems really to be a prerequisite to understand how many, many things here would work in the first place? or why many other tradeoffs are made? Though, my reliance on the fact that num%1000 is not meaningfully correlated with num%10 for these two usages so that we don\u0027t lose coverage may not be obvious, anyone wondering about it may learn something! :D",
+      "parentUuid": "11754365_c14d3e13",
+      "revId": "e111d4bca146363a37edb85e9c47c8dd20d1831a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b167f6a5_d3f7f318",
@@ -198,6 +216,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c64ec2af_a3e30ea7",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-24T18:09:49Z",
+      "side": 1,
+      "message": "I disagree :) I like the way it looks!",
+      "parentUuid": "0a1b2f4f_cea609f0",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "e111d4bca146363a37edb85e9c47c8dd20d1831a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fb6eee2_fe83a317",
@@ -235,6 +277,30 @@
       "side": 1,
       "message": "Or even just\n\n```\nwhile(false)\n```",
       "parentUuid": "8fb6eee2_fe83a317",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "e111d4bca146363a37edb85e9c47c8dd20d1831a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09dad528_1df77df9",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-24T18:09:49Z",
+      "side": 1,
+      "message": "Done, oops (prefer \u0027do {} while (false)\u0027 here btw, otherwise with \u0027while(false)\u0027, if you forget the semicolon, it won\u0027t be an error, and the next statement will not be executed)",
+      "parentUuid": "a17d06fc_19298d92",
       "range": {
         "startLine": 52,
         "startChar": 0,
