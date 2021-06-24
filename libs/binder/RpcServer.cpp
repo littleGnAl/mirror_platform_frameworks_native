@@ -29,6 +29,7 @@
 
 #include "RpcSocketAddress.h"
 #include "RpcState.h"
+#include "RpcTransport.h"
 #include "RpcWireFormat.h"
 
 namespace android {
@@ -162,11 +163,17 @@ void RpcServer::join() {
         }
         LOG_RPC_DETAIL("accept4 on fd %d yields fd %d", mServer.get(), clientFd.get());
 
+        auto client = RpcTransportCtx::create()->sslAccept(std::move(clientFd));
+        if (client == nullptr) {
+            ALOGE("Dropping accept4()-ed socket because sslAccept fails");
+            continue;
+        }
+        LOG_RPC_DETAIL("accept4 on fd %d yields RpcTransport %p", mServer.get(), client.get());
+
         {
             std::lock_guard<std::mutex> _l(mLock);
-            std::thread thread =
-                    std::thread(&RpcServer::establishConnection, sp<RpcServer>::fromExisting(this),
-                                std::move(clientFd));
+            std::thread thread = std::thread(&RpcServer::establishConnection,
+                                             sp<RpcServer>::fromExisting(this), std::move(client));
             mConnectingThreads[thread.get_id()] = std::move(thread);
         }
     }
@@ -231,7 +238,7 @@ size_t RpcServer::numUninitializedSessions() {
     return mConnectingThreads.size();
 }
 
-void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd) {
+void RpcServer::establishConnection(sp<RpcServer>&& server, std::unique_ptr<RpcTransport> client) {
     // TODO(b/183988761): cannot trust this simple ID
     LOG_ALWAYS_FATAL_IF(!server->mAgreedExperimental, "no!");
 
@@ -240,8 +247,8 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
     LOG_ALWAYS_FATAL_IF(server->mShutdownTrigger == nullptr);
 
     RpcConnectionHeader header;
-    status_t status = server->mShutdownTrigger->interruptableReadFully(clientFd.get(), &header,
-                                                                       sizeof(header));
+    status_t status =
+            server->mShutdownTrigger->interruptableReadFully(client.get(), &header, sizeof(header));
     bool idValid = status == OK;
     if (!idValid) {
         ALOGE("Failed to read ID for client connecting to RPC server: %s",
@@ -313,7 +320,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
         }
 
         if (reverse) {
-            LOG_ALWAYS_FATAL_IF(!session->addOutgoingConnection(std::move(clientFd), true),
+            LOG_ALWAYS_FATAL_IF(!session->addOutgoingConnection(std::move(client), true),
                                 "server state must already be initialized");
             return;
         }
@@ -322,7 +329,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
         session->preJoinThreadOwnership(std::move(thisThread));
     }
 
-    auto setupResult = session->preJoinSetup(std::move(clientFd));
+    auto setupResult = session->preJoinSetup(std::move(client));
 
     // avoid strong cycle
     server = nullptr;

@@ -21,6 +21,7 @@
 #include <memory>
 
 #include <android-base/unique_fd.h>
+#include <binder/RpcSession.h>
 
 namespace android {
 
@@ -61,6 +62,7 @@ protected:
     [[nodiscard]] inline android::base::borrowed_fd socketFd() const { return mSocket; }
 
 private:
+    friend RpcSession; // For FdTrigger
     friend RpcTransportCtx;
     android::base::unique_fd mSocket;
 };
