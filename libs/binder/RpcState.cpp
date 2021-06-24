@@ -24,6 +24,7 @@
 #include <binder/RpcServer.h>
 
 #include "Debug.h"
+#include "RpcTransport.h"
 #include "RpcWireFormat.h"
 
 #include <inttypes.h>
@@ -257,7 +258,7 @@ RpcState::CommandData::CommandData(size_t size) : mSize(size) {
 status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
                            const sp<RpcSession>& session, const char* what, const void* data,
                            size_t size) {
-    LOG_RPC_DETAIL("Sending %s on fd %d: %s", what, connection->fd.get(),
+    LOG_RPC_DETAIL("Sending %s on RpcTransport %p: %s", what, connection->rpcTransport.get(),
                    hexString(data, size).c_str());
 
     if (size > std::numeric_limits<ssize_t>::max()) {
@@ -266,12 +267,12 @@ status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
         return BAD_VALUE;
     }
 
-    ssize_t sent = TEMP_FAILURE_RETRY(send(connection->fd.get(), data, size, MSG_NOSIGNAL));
+    ssize_t sent = TEMP_FAILURE_RETRY(connection->rpcTransport->send(data, size));
 
     if (sent < 0 || sent != static_cast<ssize_t>(size)) {
         int savedErrno = errno;
-        LOG_RPC_DETAIL("Failed to send %s (sent %zd of %zu bytes) on fd %d, error: %s", what, sent,
-                       size, connection->fd.get(), strerror(savedErrno));
+        LOG_RPC_DETAIL("Failed to send %s (sent %zd of %zu bytes) on RpcTransport %p, error: %s",
+                       what, sent, size, connection->rpcTransport.get(), strerror(savedErrno));
 
         (void)session->shutdownAndWait(false);
         return -savedErrno;
@@ -290,14 +291,15 @@ status_t RpcState::rpcRec(const sp<RpcSession::RpcConnection>& connection,
     }
 
     if (status_t status =
-                session->mShutdownTrigger->interruptableReadFully(connection->fd.get(), data, size);
+                session->mShutdownTrigger->interruptableReadFully(connection->rpcTransport.get(),
+                                                                  data, size);
         status != OK) {
-        LOG_RPC_DETAIL("Failed to read %s (%zu bytes) on fd %d, error: %s", what, size,
-                       connection->fd.get(), statusToString(status).c_str());
+        LOG_RPC_DETAIL("Failed to read %s (%zu bytes) on RpcTransport %p, error: %s", what, size,
+                       connection->rpcTransport.get(), statusToString(status).c_str());
         return status;
     }
 
-    LOG_RPC_DETAIL("Received %s on fd %d: %s", what, connection->fd.get(),
+    LOG_RPC_DETAIL("Received %s on RpcTransport %p: %s", what, connection->rpcTransport.get(),
                    hexString(data, size).c_str());
     return OK;
 }
@@ -464,7 +466,8 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
         return status;
 
     if (flags & IBinder::FLAG_ONEWAY) {
-        LOG_RPC_DETAIL("Oneway command, so no longer waiting on %d", connection->fd.get());
+        LOG_RPC_DETAIL("Oneway command, so no longer waiting on RpcTransport %p",
+                       connection->rpcTransport.get());
 
         // Do not wait on result.
         // However, too many oneway calls may cause refcounts to build up and fill up the socket,
@@ -559,7 +562,7 @@ status_t RpcState::sendDecStrong(const sp<RpcSession::RpcConnection>& connection
 
 status_t RpcState::getAndExecuteCommand(const sp<RpcSession::RpcConnection>& connection,
                                         const sp<RpcSession>& session, CommandType type) {
-    LOG_RPC_DETAIL("getAndExecuteCommand on fd %d", connection->fd.get());
+    LOG_RPC_DETAIL("getAndExecuteCommand on RpcTransport %p", connection->rpcTransport.get());
 
     RpcWireHeader command;
     if (status_t status = rpcRec(connection, session, "command header", &command, sizeof(command));
@@ -572,8 +575,7 @@ status_t RpcState::getAndExecuteCommand(const sp<RpcSession::RpcConnection>& con
 status_t RpcState::drainCommands(const sp<RpcSession::RpcConnection>& connection,
                                  const sp<RpcSession>& session, CommandType type) {
     uint8_t buf;
-    while (0 < TEMP_FAILURE_RETRY(
-                       recv(connection->fd.get(), &buf, sizeof(buf), MSG_PEEK | MSG_DONTWAIT))) {
+    while (0 < TEMP_FAILURE_RETRY(connection->rpcTransport->peek(&buf, sizeof(buf)))) {
         status_t status = getAndExecuteCommand(connection, session, type);
         if (status != OK) return status;
     }
