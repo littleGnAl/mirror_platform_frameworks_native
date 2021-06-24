@@ -157,8 +157,7 @@ cc_library {
                 "UtilsHost.cpp",
             ],
             cflags: [
-                // TODO(b/190868302): enable TLS
-                // "-DBINDER_ENABLE_TLS",
+                "-DBINDER_ENABLE_TLS",
             ],
         },
     },
@@ -192,8 +191,7 @@ cc_library {
             ],
             cflags: [
                 "-DBINDER_RPC_DEV_SERVERS",
-                // TODO(b/190868302): enable TLS
-                // "-DBINDER_ENABLE_TLS",
+                "-DBINDER_ENABLE_TLS",
             ],
         },
     },

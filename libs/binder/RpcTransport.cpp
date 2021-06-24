@@ -420,6 +420,7 @@ std::unique_ptr<RpcTransportServerCtx> RpcTransportServerCtx::create(bool tls) {
 #ifdef BINDER_ENABLE_TLS
     if (tls) return RpcTlsTransportServerCtx::create();
 #endif
+    LOG_ALWAYS_FATAL_IF(tls, "libbinder is not compiled with BINDER_ENABLE_TLS!");
     return std::make_unique<RpcRawTransportServerCtx>();
 }
 
@@ -427,6 +428,7 @@ std::unique_ptr<RpcTransportClientCtx> RpcTransportClientCtx::create(bool tls) {
 #ifdef BINDER_ENABLE_TLS
     if (tls) return RpcTlsTransportClientCtx::create();
 #endif
+    LOG_ALWAYS_FATAL_IF(tls, "libbinder is not compiled with BINDER_ENABLE_TLS!");
     return std::make_unique<RpcRawTransportClientCtx>();
 }
 
