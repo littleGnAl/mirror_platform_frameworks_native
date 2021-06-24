@@ -32,6 +32,7 @@
 namespace android {
 
 class RpcSocketAddress;
+class RpcTransport;
 
 /**
  * This represents a server of an interface, which may be connected to by any
@@ -47,7 +48,7 @@ class RpcSocketAddress;
  */
 class RpcServer final : public virtual RefBase, private RpcSession::EventListener {
 public:
-    static sp<RpcServer> make();
+    static sp<RpcServer> make(bool tls = false);
 
     /**
      * This represents a session for responses, e.g.:
@@ -154,15 +155,16 @@ public:
 
 private:
     friend sp<RpcServer>;
-    RpcServer();
+    explicit RpcServer(bool tls);
 
     void onSessionLockedAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
     void onSessionIncomingThreadEnded() override;
 
-    static void establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd);
+    static void establishConnection(sp<RpcServer>&& server, std::unique_ptr<RpcTransport> client);
     bool setupSocketServer(const RpcSocketAddress& address);
 
     bool mAgreedExperimental = false;
+    const bool mTls;
     size_t mMaxThreads = 1;
     base::unique_fd mServer; // socket we are accepting sessions on
 
