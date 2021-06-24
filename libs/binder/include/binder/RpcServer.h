@@ -19,6 +19,7 @@
 #include <binder/IBinder.h>
 #include <binder/RpcAddress.h>
 #include <binder/RpcSession.h>
+#include <binder/RpcTransport.h>
 #include <utils/Errors.h>
 #include <utils/RefBase.h>
 
@@ -32,6 +33,7 @@
 namespace android {
 
 class RpcSocketAddress;
+class RpcTransport;
 
 /**
  * This represents a server of an interface, which may be connected to by any
@@ -47,7 +49,8 @@ class RpcSocketAddress;
  */
 class RpcServer final : public virtual RefBase, private RpcSession::EventListener {
 public:
-    static sp<RpcServer> make();
+    static sp<RpcServer> make(
+            std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
 
     /**
      * This represents a session for responses, e.g.:
@@ -161,14 +164,15 @@ public:
 
 private:
     friend sp<RpcServer>;
-    RpcServer();
+    explicit RpcServer(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory);
 
     void onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
     void onSessionIncomingThreadEnded() override;
 
-    static void establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd);
+    static void establishConnection(sp<RpcServer>&& server, std::unique_ptr<RpcTransport> client);
     bool setupSocketServer(const RpcSocketAddress& address);
 
+    const std::unique_ptr<RpcTransportCtxFactory> mRpcTransportCtxFactory;
     bool mAgreedExperimental = false;
     size_t mMaxThreads = 1;
     std::optional<uint32_t> mProtocolVersion;
