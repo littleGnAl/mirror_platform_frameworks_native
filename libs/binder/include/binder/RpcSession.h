@@ -36,6 +36,7 @@ class Parcel;
 class RpcServer;
 class RpcSocketAddress;
 class RpcState;
+class RpcTransport;
 
 /**
  * This represents a session (group of connections) between a client
@@ -44,7 +45,7 @@ class RpcState;
  */
 class RpcSession final : public virtual RefBase {
 public:
-    static sp<RpcSession> make();
+    static sp<RpcSession> make(bool tls = false);
 
     /**
      * Set the maximum number of threads allowed to be made (for things like callbacks).
@@ -131,7 +132,7 @@ private:
     friend sp<RpcSession>;
     friend RpcServer;
     friend RpcState;
-    RpcSession();
+    explicit RpcSession(bool tls);
 
     /** This is not a pipe. */
     struct FdTrigger {
@@ -165,9 +166,11 @@ private:
          *   true - read succeeded at 'size'
          *   false - interrupted (failure or trigger)
          */
-        status_t interruptableReadFully(base::borrowed_fd fd, void* data, size_t size);
+        status_t interruptableReadFully(RpcTransport* rpcTransport, void* data, size_t size);
 
     private:
+        status_t triggerablePollRead(RpcTransport* rpcTransport);
+
         base::unique_fd mWrite;
         base::unique_fd mRead;
     };
@@ -190,7 +193,7 @@ private:
     };
 
     struct RpcConnection : public RefBase {
-        base::unique_fd fd;
+        std::unique_ptr<RpcTransport> rpcTransport;
 
         // whether this or another thread is currently using this fd to make
         // or receive transactions.
@@ -216,18 +219,19 @@ private:
         // Status of setup
         status_t status;
     };
-    PreJoinSetupResult preJoinSetup(base::unique_fd fd);
+    PreJoinSetupResult preJoinSetup(std::unique_ptr<RpcTransport> rpcTransport);
     // join on thread passed to preJoinThreadOwnership
     static void join(sp<RpcSession>&& session, PreJoinSetupResult&& result);
 
     [[nodiscard]] bool setupSocketClient(const RpcSocketAddress& address);
     [[nodiscard]] bool setupOneSocketConnection(const RpcSocketAddress& address,
                                                 const RpcAddress& sessionId, bool server);
-    [[nodiscard]] bool addOutgoingConnection(base::unique_fd fd, bool init);
+    [[nodiscard]] bool addOutgoingConnection(std::unique_ptr<RpcTransport> rpcTransport, bool init);
     [[nodiscard]] bool setForServer(const wp<RpcServer>& server,
                                     const wp<RpcSession::EventListener>& eventListener,
                                     const RpcAddress& sessionId);
-    sp<RpcConnection> assignIncomingConnectionToThisThread(base::unique_fd fd);
+    sp<RpcConnection> assignIncomingConnectionToThisThread(
+            std::unique_ptr<RpcTransport> rpcTransport);
     [[nodiscard]] bool removeIncomingConnection(const sp<RpcConnection>& connection);
 
     enum class ConnectionUse {
@@ -259,6 +263,8 @@ private:
         // the wire protocol is constructed guarantees this is safe).
         bool mReentrant = false;
     };
+
+    const bool mTls;
 
     // On the other side of a session, for each of mOutgoingConnections here, there should
     // be one of mIncomingConnections on the other side (and vice versa).
