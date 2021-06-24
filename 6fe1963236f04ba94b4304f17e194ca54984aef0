@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b47adb2_41c9365e",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-24T23:09:17Z",
+      "side": 1,
+      "message": "I suppose this should be a no-op, given line 275, but it doesn\u0027t hurt. If it isn\u0027t a no-op in the future, this would be valuable to have.",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 43
+      },
+      "revId": "6fe1963236f04ba94b4304f17e194ca54984aef0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
