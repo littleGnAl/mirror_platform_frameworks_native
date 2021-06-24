@@ -237,6 +237,30 @@
       },
       "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a593d784_062214dd",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-06-24T19:30:39Z",
+      "side": 1,
+      "message": "It might not happen during boot, but wouldn\u0027t it happen when the integration tests are ran? Do you have /dev/uinput on your device? I\u0027m pretty sure it\u0027s a required kernel feature. That would create a virtual input device",
+      "parentUuid": "519b024d_176592c7",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
