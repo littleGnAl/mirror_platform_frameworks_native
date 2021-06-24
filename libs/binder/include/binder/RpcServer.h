@@ -32,6 +32,7 @@
 namespace android {
 
 class RpcSocketAddress;
+class RpcTransport;
 
 /**
  * This represents a server of an interface, which may be connected to by any
@@ -159,7 +160,7 @@ private:
     void onSessionLockedAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
     void onSessionIncomingThreadEnded() override;
 
-    static void establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd);
+    static void establishConnection(sp<RpcServer>&& server, std::unique_ptr<RpcTransport> client);
     bool setupSocketServer(const RpcSocketAddress& address);
 
     bool mAgreedExperimental = false;
