@@ -26,6 +26,7 @@
 #include <android-base/scopeguard.h>
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
+#include <binder/RpcTransportRaw.h>
 #include <log/log.h>
 
 #include "RpcSocketAddress.h"
@@ -37,13 +38,17 @@ namespace android {
 using base::ScopeGuard;
 using base::unique_fd;
 
-RpcServer::RpcServer() {}
+RpcServer::RpcServer(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory)
+      : mRpcTransportCtxFactory(std::move(rpcTransportCtxFactory)) {}
 RpcServer::~RpcServer() {
     (void)shutdown();
 }
 
-sp<RpcServer> RpcServer::make() {
-    return sp<RpcServer>::make();
+sp<RpcServer> RpcServer::make(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
+    // Default is without TLS.
+    if (rpcTransportCtxFactory == nullptr)
+        rpcTransportCtxFactory = std::make_unique<RpcTransportCtxFactoryRaw>();
+    return sp<RpcServer>::make(std::move(rpcTransportCtxFactory));
 }
 
 void RpcServer::iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction() {
@@ -156,6 +161,10 @@ void RpcServer::join() {
         LOG_ALWAYS_FATAL_IF(mShutdownTrigger == nullptr, "Cannot create join signaler");
     }
 
+    auto ctx = mRpcTransportCtxFactory->newServerCtx();
+    LOG_ALWAYS_FATAL_IF(ctx == nullptr, "Unable to create RpcTransportCtx with %s sockets",
+                        mRpcTransportCtxFactory->toCString());
+
     status_t status;
     while ((status = mShutdownTrigger->triggerablePoll(mServer, POLLIN)) == OK) {
         unique_fd clientFd(TEMP_FAILURE_RETRY(
@@ -167,11 +176,17 @@ void RpcServer::join() {
         }
         LOG_RPC_DETAIL("accept4 on fd %d yields fd %d", mServer.get(), clientFd.get());
 
+        auto client = ctx->newTransport(std::move(clientFd));
+        if (client == nullptr) {
+            ALOGE("Dropping accept4()-ed socket because sslAccept fails");
+            continue;
+        }
+        LOG_RPC_DETAIL("accept4 on fd %d yields RpcTransport %p", mServer.get(), client.get());
+
         {
             std::lock_guard<std::mutex> _l(mLock);
-            std::thread thread =
-                    std::thread(&RpcServer::establishConnection, sp<RpcServer>::fromExisting(this),
-                                std::move(clientFd));
+            std::thread thread = std::thread(&RpcServer::establishConnection,
+                                             sp<RpcServer>::fromExisting(this), std::move(client));
             mConnectingThreads[thread.get_id()] = std::move(thread);
         }
     }
@@ -238,7 +253,7 @@ size_t RpcServer::numUninitializedSessions() {
     return mConnectingThreads.size();
 }
 
-void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd) {
+void RpcServer::establishConnection(sp<RpcServer>&& server, std::unique_ptr<RpcTransport> client) {
     // TODO(b/183988761): cannot trust this simple ID
     LOG_ALWAYS_FATAL_IF(!server->mAgreedExperimental, "no!");
 
@@ -247,8 +262,8 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
     LOG_ALWAYS_FATAL_IF(server->mShutdownTrigger == nullptr);
 
     RpcConnectionHeader header;
-    status_t status = server->mShutdownTrigger->interruptableReadFully(clientFd.get(), &header,
-                                                                       sizeof(header));
+    status_t status =
+            server->mShutdownTrigger->interruptableReadFully(client.get(), &header, sizeof(header));
     if (status != OK) {
         ALOGE("Failed to read ID for client connecting to RPC server: %s",
               statusToString(status).c_str());
@@ -272,7 +287,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
                     .version = protocolVersion,
             };
 
-            status = server->mShutdownTrigger->interruptableWriteFully(clientFd.get(), &response,
+            status = server->mShutdownTrigger->interruptableWriteFully(client.get(), &response,
                                                                        sizeof(response));
             if (status != OK) {
                 ALOGE("Failed to send new session response: %s", statusToString(status).c_str());
@@ -342,7 +357,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
         }
 
         if (incoming) {
-            LOG_ALWAYS_FATAL_IF(!session->addOutgoingConnection(std::move(clientFd), true),
+            LOG_ALWAYS_FATAL_IF(!session->addOutgoingConnection(std::move(client), true),
                                 "server state must already be initialized");
             return;
         }
@@ -351,7 +366,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
         session->preJoinThreadOwnership(std::move(thisThread));
     }
 
-    auto setupResult = session->preJoinSetup(std::move(clientFd));
+    auto setupResult = session->preJoinSetup(std::move(client));
 
     // avoid strong cycle
     server = nullptr;
