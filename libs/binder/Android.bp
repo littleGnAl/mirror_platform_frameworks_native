@@ -150,9 +150,14 @@ cc_library {
         host: {
             static_libs: [
                 "libbase",
+                "libssl",
+                "libcrypto_static",
             ],
             srcs: [
                 "UtilsHost.cpp",
+            ],
+            cflags: [
+                "-DBINDER_ENABLE_TLS",
             ],
         },
     },
@@ -180,7 +185,14 @@ cc_library {
         },
 
         debuggable: {
-            cflags: ["-DBINDER_RPC_DEV_SERVERS"],
+            static_libs: [
+                "libssl",
+                "libcrypto_static",
+            ],
+            cflags: [
+                "-DBINDER_RPC_DEV_SERVERS",
+                "-DBINDER_ENABLE_TLS",
+            ],
         },
     },
 
