@@ -285,6 +285,30 @@
       },
       "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ce44f3b_02d38034",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-06-24T20:27:00Z",
+      "side": 1,
+      "message": "Yes, you need adb connection to the device in order to use atest.\n\nThe tests use /dev/uinput to create a virtual input device. You need https://cateee.net/lkddb/web-lkddb/INPUT_UINPUT.html in your kernel to run these tests.\n\nYes, EventHub_test is one example, you can look at frameworks/native/services/inputflinger/tests/UinputDevice.cpp to get an idea of how it works.\n\nI would expect /dev/input folder to be created when you execute the tests. This means that we should handle the case where this folder appears (and disappears) dynamically.",
+      "parentUuid": "6b926563_d100916f",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
