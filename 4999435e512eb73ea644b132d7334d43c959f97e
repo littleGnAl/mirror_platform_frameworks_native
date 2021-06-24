@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5398715f_bdbdd70c",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 37
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-24T00:05:53Z",
+      "side": 1,
+      "message": "Hi Dan, this host test requires a device to run. But there\u0027s nothing specific about ABI.\n\nShould it be a general test or device test?",
+      "range": {
+        "startLine": 364,
+        "startChar": 19,
+        "endLine": 364,
+        "endChar": 26
+      },
+      "revId": "4999435e512eb73ea644b132d7334d43c959f97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
