@@ -122,6 +122,7 @@ cc_library {
         "RpcAddress.cpp",
         "RpcSession.cpp",
         "RpcServer.cpp",
+        "RpcSsl.cpp",
         "RpcState.cpp",
         "Static.cpp",
         "Stability.cpp",
@@ -179,7 +180,14 @@ cc_library {
         },
 
         debuggable: {
-            cflags: ["-DBINDER_RPC_DEV_SERVERS"],
+            whole_static_libs: [
+                "libssl",
+            ],
+            cflags: [
+                "-DBINDER_RPC_DEV_SERVERS",
+                // TODO(b/190868302): enable this on non-debuggable builds as well
+                "-DBINDER_ENABLE_SSL",
+            ],
         },
     },
 
