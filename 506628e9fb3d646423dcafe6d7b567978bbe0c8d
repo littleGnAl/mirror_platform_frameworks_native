@@ -309,6 +309,30 @@
       },
       "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d4a5219_5555f362",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-06-24T21:48:22Z",
+      "side": 1,
+      "message": "Yes, you were right, after enabling the above CONFIG and running the test it created /dev/input but the test got stuck with the existing patch during EventHubTest.InputEvent_TimestampIsMonotonic (I am assuming its because the else part didnt exist below) . So from your first message we have:\n\n\u003e   if (directory exists) {\n\u003e       // do the usual code for inotify_add_watch(... DEVICE_PATH...);\n\u003e   } else {\n\u003e      // The /dev/input directory may not exist on development devices that don\u0027t have any input devices connected. Just add a watch for /dev and when /dev/input appears, re-do this add_watch for DEVICE_PATH.\n\u003e   }\n\nthe if part will cover the existing case, when /dev/input exists. the else part will cover the case when /dev/input doesnt exist, like in my case but you run these tests. But from my understanding the case when /dev/input doesnt exist and we dont run these tests and just do a normal boot wont be covered in your above example? I mean this because we will have something like a read(mINotifyFd, event_buf, sizeof(event_buf)) which is a blocking wait for /dev/input to appear which never will happen as in a normal boot these tests won\u0027t be run. Do you know how to cover that case? This actually is the main usecase for me.",
+      "parentUuid": "8ce44f3b_02d38034",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
