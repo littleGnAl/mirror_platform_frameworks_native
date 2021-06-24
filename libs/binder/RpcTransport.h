@@ -71,7 +71,7 @@ private:
 class RpcTransportCtx {
 public:
     // Create a proper context with TLS enabled or not. Never null.
-    static std::unique_ptr<RpcTransportCtx> create(bool tls = false);
+    static std::unique_ptr<RpcTransportCtx> create(bool tls = true);
     virtual ~RpcTransportCtx() = default;
     // Called after ::accept4() to configure TLS.
     virtual std::unique_ptr<RpcTransport> sslAccept(android::base::unique_fd acceptedFd) = 0;
