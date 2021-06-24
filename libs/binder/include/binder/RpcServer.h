@@ -18,6 +18,7 @@
 #include <android-base/unique_fd.h>
 #include <binder/IBinder.h>
 #include <binder/RpcAddress.h>
+#include <binder/RpcSecurity.h>
 #include <binder/RpcSession.h>
 #include <utils/Errors.h>
 #include <utils/RefBase.h>
@@ -32,6 +33,7 @@
 namespace android {
 
 class RpcSocketAddress;
+class RpcTransport;
 
 /**
  * This represents a server of an interface, which may be connected to by any
@@ -47,7 +49,7 @@ class RpcSocketAddress;
  */
 class RpcServer final : public virtual RefBase, private RpcSession::EventListener {
 public:
-    static sp<RpcServer> make();
+    static sp<RpcServer> make(RpcSecurity security = RpcSecurity::RAW);
 
     /**
      * This represents a session for responses, e.g.:
@@ -154,14 +156,15 @@ public:
 
 private:
     friend sp<RpcServer>;
-    RpcServer();
+    explicit RpcServer(RpcSecurity security);
 
     void onSessionLockedAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
     void onSessionIncomingThreadEnded() override;
 
-    static void establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd);
+    static void establishConnection(sp<RpcServer>&& server, std::unique_ptr<RpcTransport> client);
     bool setupSocketServer(const RpcSocketAddress& address);
 
+    const RpcSecurity mRpcSecurity;
     bool mAgreedExperimental = false;
     size_t mMaxThreads = 1;
     base::unique_fd mServer; // socket we are accepting sessions on
