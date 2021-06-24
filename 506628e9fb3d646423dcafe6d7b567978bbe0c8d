@@ -213,6 +213,30 @@
       },
       "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "519b024d_176592c7",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-06-24T00:32:07Z",
+      "side": 1,
+      "message": "Apologies, just realized in the code above around the else part isn\u0027t correct, so please ignore that. but the answer to your other question above stands\n\u003e  Then, when inotify is triggered, we would check if it matches \u0027/dev/input\u0027 \n\nThis will never happen with device without any input perihperals during boot.",
+      "parentUuid": "ca77eb19_2b6eb18c",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
