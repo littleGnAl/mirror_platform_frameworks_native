@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5b6f4e_9157b2ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-24T00:50:51Z",
+      "side": 1,
+      "message": "+essick as someone likely to be able to actually review this... i had no idea libcmd was anything to do with media, and it\u0027s not clear to me what the purpose is here? just send random data via binder to the some audio code? (should this fuzzer live with the audio code instead then?)",
+      "revId": "c8fca0e519c7f04229e1fc6011e6159c88d59a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
