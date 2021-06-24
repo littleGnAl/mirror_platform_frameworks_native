@@ -333,6 +333,30 @@
       },
       "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba31893_92ebc235",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-06-24T23:24:21Z",
+      "side": 1,
+      "message": "I don\u0027t think we should have a blocking call for /dev/input to appear.\n\nI think we should handle that case in \"readNotifyLocked\".\n\nSomething like:\n\n    } else if (event-\u003ewd \u003d\u003d mVideoWd) {\n                if (isV4lTouchNode(event-\u003ename)) {\n                    // existing code\n                 } else if (event-\u003ename \u003d\u003d \"input\") {\n                    // \"/dev/input\" folder just appeared or disappeared, do the same thing you would normally do in the constructor or destructor\n                    \n                    \n                    \n                    \nThat probably means that you would have to move stuff out of constructor into a separate method like \"init\" so that it can be called both in the constructor and in \"readNotifyLocked\".",
+      "parentUuid": "2d4a5219_5555f362",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
