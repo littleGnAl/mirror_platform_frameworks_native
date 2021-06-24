@@ -22,6 +22,30 @@
       },
       "revId": "4999435e512eb73ea644b132d7334d43c959f97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00df0236_1f7d2872",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 37
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-24T00:09:09Z",
+      "side": 1,
+      "message": "Asking this because I encounter the following error in presubmit:\n\n```\ncom.android.tradefed.config.ConfigurationException: Fail configuration check:\n\t/tmp/tf-workfolder7820635908926135058/tests-zip_14640063548797752203/host/testcases/binderHostDeviceTest/binderHostDeviceTest.config: preparer com.android.tradefed.targetprep.PushFilePreparer is not supported in host-unit-tests.\n\tat com.android.tradefed.presubmit.HostUnitTestsConfigValidation.testConfigsLoad(HostUnitTestsConfigValidation.java:115)\n```",
+      "parentUuid": "5398715f_bdbdd70c",
+      "range": {
+        "startLine": 364,
+        "startChar": 19,
+        "endLine": 364,
+        "endChar": 26
+      },
+      "revId": "4999435e512eb73ea644b132d7334d43c959f97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
