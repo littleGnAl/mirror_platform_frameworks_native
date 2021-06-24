@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f25c7f_c58c7fbc",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-24T23:18:51Z",
+      "side": 1,
+      "message": "(nit: can be - code might not want to rely on the global)",
+      "range": {
+        "startLine": 174,
+        "startChar": 11,
+        "endLine": 174,
+        "endChar": 19
+      },
+      "revId": "1fcad047f944e86ebae4f0e8f32dcaa677ab35ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

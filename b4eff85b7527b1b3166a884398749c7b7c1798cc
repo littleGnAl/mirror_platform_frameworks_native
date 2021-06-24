@@ -217,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c94d74bd_dc44b302",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-24T23:18:51Z",
+      "side": 1,
+      "message": "Look at the motivating bug for adding clang::no_destroy here. It\u0027s needed in multithreaded environments when the process is shutting it down. Can we make the client handle it in your case?\n\n\u003e delete the DeviceServiceExtra object up on process exit?\n\nDue to the way detachObject is designed, this requires a lot of complicated locking (though probably we should add a new-non-virtual method that handles this and the dispatch for us, you can see how I handled it w/ locking in libbinder_ndk ibinder.cpp).",
+      "parentUuid": "45a3f385_4b7c39c0",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ad5c349_47e8c671",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 28
@@ -702,6 +726,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cbb966e_40ca552a",
+        "filename": "libs/binder/ServiceManagerHost.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-24T23:18:51Z",
+      "side": 1,
+      "message": "nit: it\u0027s still strange that these details are exposed to the caller (getDeviceService has to know about servicedispatcher internally, now things elsewhere in libbinder do as well)",
+      "parentUuid": "066b99f0_3e7b2895",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd6189dc_5ff523e2",
         "filename": "libs/binder/ServiceManagerHost.h",
         "patchSetId": 28
@@ -737,6 +785,30 @@
       "side": 1,
       "message": "Same as execute():\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1737083/16/libs/binder/UtilsHost.h#97\n\nI expect caller to do \n\n```\ngetDeviceService({\"adb\", \"shell\", \"servicedispatcher\", \"foo\"})\n```\n\nBut if I use a const reference here, internally I\u0027ll have to make a copy anyway, because I need non-const reference to the string buffer.",
       "parentUuid": "bd6189dc_5ff523e2",
+      "range": {
+        "startLine": 29,
+        "startChar": 52,
+        "endLine": 29,
+        "endChar": 53
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80575036_4ba54d30",
+        "filename": "libs/binder/ServiceManagerHost.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-24T23:18:51Z",
+      "side": 1,
+      "message": "Oops! I missed that there (and probably in a few other CLs). I would say, still prefer \u0026\u0026 in this case. Do you have any external guidance on this issue? I think the C++17 style only makes sense for things which do not have a copy constructor (like unique_ptr). Otherwise, it\u0027s easy to make extra copies. Alternatively, we could use std::span like string_view is used, but it\u0027s not as nice.",
+      "parentUuid": "84912de9_86090f9c",
       "range": {
         "startLine": 29,
         "startChar": 52,
