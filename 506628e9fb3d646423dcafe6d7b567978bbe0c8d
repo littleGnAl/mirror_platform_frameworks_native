@@ -189,6 +189,30 @@
       },
       "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca77eb19_2b6eb18c",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-06-24T00:03:21Z",
+      "side": 1,
+      "message": "I was thinking that what you roughly meant was something like (rough code)\n\nif(!exists(DEVICE_PATH)) {\n    mINotifyFd \u003d inotify_init();\n    mInputWd \u003d inotify_add_watch(mINotifyFd, \"/dev\", IN_CREATE);\n\n    int res;\n    char event_buf[512];\n    int event_size;\n    int event_pos \u003d 0;\n    struct inotify_event* event;\n    \n    res \u003d read(mINotifyFd, event_buf, sizeof(event_buf));\n    while (res \u003e\u003d (int)sizeof(*event)) {\n        event \u003d (struct inotify_event*)(event_buf + event_pos);\n        if (event-\u003elen) {\n            if ((event-\u003ewd \u003d\u003d mInputWd) \u0026\u0026 (event-\u003emask \u0026 IN_CREATE) \u0026\u0026 (event-\u003ename \u003d\u003d input)) \n                // do the usual code for inotify_add_watch(... DEVICE_PATH...);\n            else\n                // blocking read again as the event in /dev/ was not related to /dev/input\n                res \u003d read(mINotifyFd, event_buf, sizeof(event_buf));\n        }\n    }\n}\n\n\u003e Why do you say /dev/input will never be created in your device? Wouldn\u0027t running the tests cause that folder to be created? How does /dev/uinput work on your device?\nWhat i was trying to address with this patch is to boot android on development platforms that dont have any inputs, i.e. no keyboards, no mouse, no touchscreen, etc. So /dev/input is never created by the kernel as there is no input device, so the above approach will always be stuck waiting for /dev/input to be created which will never happen on normal boot not running any tests, so wont work.",
+      "parentUuid": "6b0ae82b_b3978506",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
