@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2f4c5a4_56856d70",
+        "filename": "cmds/cmd/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2021-06-25T05:39:08Z",
+      "side": 1,
+      "message": "Removed.Done.",
+      "parentUuid": "d3d08e63_fe65fd3e",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "c8fca0e519c7f04229e1fc6011e6159c88d59a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b12b1770_802a934a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-24T02:32:36Z",
       "side": 1,
       "message": "seems this should be \u003cfuzzer/FuzzedDataProvider.h\u003e\nsince we\u0027re getting it from outside of this project.",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 38
+      },
+      "revId": "c8fca0e519c7f04229e1fc6011e6159c88d59a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb0e2a1_9acd9f9f",
+        "filename": "cmds/cmd/fuzzer/cmd_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2021-06-25T05:39:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b12b1770_802a934a",
       "range": {
         "startLine": 24,
         "startChar": 9,
