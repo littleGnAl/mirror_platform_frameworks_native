@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a973a06_ab0d2c2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-25T21:09:59Z",
+      "side": 1,
+      "message": "nice! Though, should this be collapsed into the parent CL? Seems that the parent CL doesn\u0027t work without this?",
+      "revId": "e8aecfa9bdc7f857ffb5b65ee84ab1623057c1d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
