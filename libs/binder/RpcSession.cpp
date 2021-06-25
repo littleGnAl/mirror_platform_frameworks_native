@@ -195,13 +195,18 @@ status_t RpcSession::FdTrigger::triggerablePollRead(base::borrowed_fd fd) {
     }
 }
 
+status_t RpcSession::FdTrigger::triggerablePollRead(RpcTransport* rpcTransport) {
+    if (rpcTransport->pending()) return OK;
+    return triggerablePollRead(rpcTransport->socketFd().get());
+}
+
 status_t RpcSession::FdTrigger::interruptableReadFully(RpcTransport* rpcTransport, void* data,
                                                        size_t size) {
     uint8_t* buffer = reinterpret_cast<uint8_t*>(data);
     uint8_t* end = buffer + size;
 
-    status_t status;
-    while ((status = triggerablePollRead(rpcTransport->socketFd().get())) == OK) {
+    status_t status = OK;
+    while ((status = triggerablePollRead(rpcTransport)) == OK) {
         ssize_t readSize = TEMP_FAILURE_RETRY(rpcTransport->recv(buffer, end - buffer));
         if (readSize == 0) return DEAD_OBJECT; // EOF
 
