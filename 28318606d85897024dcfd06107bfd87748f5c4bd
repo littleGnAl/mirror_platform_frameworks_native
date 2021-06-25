@@ -22,6 +22,30 @@
       },
       "revId": "28318606d85897024dcfd06107bfd87748f5c4bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6dbae0e_2a100b3d",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-25T19:47:45Z",
+      "side": 0,
+      "message": "Kind of. I can\u0027t remember if I didn\u0027t change the return type before because I was being overly worried about breaking the ABI (void -\u003e void* should be fine, and things don\u0027t really use these APIs anyway) OR if I just didn\u0027t realize that we could reuse it. My libbinder_ndk design here was a bit silly. Even if the return type was frozen here, we could always add a new non-virtual method (the virtual table is frozen) and do the BpBinder/BBinder lookup ourselves to dispatch it. I\u0027m trying this first because it\u0027s cleaner.",
+      "parentUuid": "2129c913_9e80d172",
+      "range": {
+        "startLine": 269,
+        "startChar": 7,
+        "endLine": 269,
+        "endChar": 56
+      },
+      "revId": "28318606d85897024dcfd06107bfd87748f5c4bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
