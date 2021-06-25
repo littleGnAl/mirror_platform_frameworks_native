@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f34ad85_0cf89349",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-06-25T23:04:35Z",
+      "side": 1,
+      "message": "I\u0027m strongly in favor of this and about 99% convinced it\u0027s safe, but I\u0027m wondering if we should have some kind of test, maybe a multi-threaded client stress test.",
+      "revId": "f03fe3d27e284141676c4c5ea7ba7efaec97d1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
