@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7db04847_424c5abb",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 37
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-25T07:29:00Z",
+      "side": 1,
+      "message": "But after I add that, does it still run on presubmit with a device?",
+      "parentUuid": "07067734_565483e3",
+      "range": {
+        "startLine": 364,
+        "startChar": 19,
+        "endLine": 364,
+        "endChar": 26
+      },
+      "revId": "4999435e512eb73ea644b132d7334d43c959f97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a06aec99_dc6670f6",
         "filename": "libs/binder/tests/binderHostDeviceTest.xml",
         "patchSetId": 37
@@ -85,6 +109,30 @@
       "writtenOn": "2021-06-24T00:45:55Z",
       "side": 1,
       "message": "2021",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "4999435e512eb73ea644b132d7334d43c959f97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b219db50_a735f468",
+        "filename": "libs/binder/tests/binderHostDeviceTest.xml",
+        "patchSetId": 37
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-25T07:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a06aec99_dc6670f6",
       "range": {
         "startLine": 2,
         "startChar": 19,
