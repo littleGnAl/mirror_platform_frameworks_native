@@ -22,6 +22,30 @@
       },
       "revId": "63a2d51e0537eb4bd0653b842589dd4375883980",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51818ec6_5fcc0ee1",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-25T20:24:24Z",
+      "side": 1,
+      "message": "This is consistent with the original behavior (which also wasn\u0027t very good). However, with the existing API, there isn\u0027t a lot of options. I had it locally before so that attachObject would return \u0027object\u0027 in this error condition, but it\u0027s complicated to handle for clients, and it is still ambiguous (because mObjects.attach could still return the same value in the case of a double-set).\n\nI\u0027ve made a note in b/192023359#comment2, and I\u0027ll follow-up with an abort (assuming this change sticks - I\u0027m worried about this, hence why this change is so broken up.",
+      "parentUuid": "37cf75f4_7b469944",
+      "range": {
+        "startLine": 317,
+        "startChar": 18,
+        "endLine": 317,
+        "endChar": 44
+      },
+      "revId": "63a2d51e0537eb4bd0653b842589dd4375883980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
