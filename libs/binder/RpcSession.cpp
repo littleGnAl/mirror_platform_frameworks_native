@@ -201,6 +201,7 @@ status_t RpcSession::FdTrigger::triggerablePollRead(base::borrowed_fd fd) {
 }
 
 status_t RpcSession::FdTrigger::triggerablePollRead(RpcTransport* rpcTransport) {
+    if (rpcTransport->pending()) return OK;
     return triggerablePollRead(rpcTransport->socketFd().get());
 }
 
