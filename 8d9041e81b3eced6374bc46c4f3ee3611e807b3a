@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t set certificate for client!",
       "revId": "8d9041e81b3eced6374bc46c4f3ee3611e807b3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5229ad7_d31e2773",
+        "filename": "libs/binder/RpcTransport.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-25T05:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0845fa7_b92f8eda",
+      "revId": "8d9041e81b3eced6374bc46c4f3ee3611e807b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
