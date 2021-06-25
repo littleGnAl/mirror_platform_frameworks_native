@@ -16,6 +16,24 @@
       "message": "is libbinder_ndk the only place that needs access to this? ",
       "revId": "9e759e81a53bd0f5027f3a0a37661206d46774a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2013851c_15106720",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-25T23:57:56Z",
+      "side": 1,
+      "message": "This is mostly convenience + optimization. Other things should be able to use it as well. I did consider exposing it only to libbinder_ndk, but I felt it would be wasted effort, since there are reasons why you would want to do this elsewhere.\n\nlibbinder_ndk could avoid needing this by allocating an extra 40-byte std::mutex per BpBinder, and the resulting code would actually be faster for certain types of contentious environments (since there are two locks, two threads which need the separate locks would never experience contention). My main goal with this API is to avoid the _global_ contention without adding additional memory (in all but the rare case I mention in the CL). The additional per-binder contention is relatively unimportant. We could make the libbinder_ndk code much less contentious per-binder object by introducing attachObjectLocked/findObjectLocked/detachObjectLocked. However, it\u0027s a bit messy to start exposing this kind of stuff.",
+      "parentUuid": "b1e15cae_43c56e45",
+      "revId": "9e759e81a53bd0f5027f3a0a37661206d46774a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
