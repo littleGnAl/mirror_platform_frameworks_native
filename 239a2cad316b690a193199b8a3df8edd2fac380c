@@ -16,6 +16,23 @@
       "message": "TH has known error b/191603039",
       "revId": "239a2cad316b690a193199b8a3df8edd2fac380c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c55f810_154965de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-25T01:29:01Z",
+      "side": 1,
+      "message": "Bypass reason: b/191603039",
+      "revId": "239a2cad316b690a193199b8a3df8edd2fac380c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
