@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e15cae_43c56e45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-06-25T23:36:42Z",
+      "side": 1,
+      "message": "is libbinder_ndk the only place that needs access to this? ",
+      "revId": "9e759e81a53bd0f5027f3a0a37661206d46774a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
