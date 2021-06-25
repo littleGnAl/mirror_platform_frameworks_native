@@ -233,17 +233,14 @@ ABpBinder::~ABpBinder() {}
 
 void ABpBinder::onLastStrongRef(const void* id) {
     {
-        std::lock_guard<std::mutex> lock(ABpBinderTag::gLock);
         // Since ABpBinder is OBJECT_LIFETIME_WEAK, we must remove this weak reference in order for
         // the ABpBinder to be deleted. Since a strong reference to this ABpBinder object should no
         // longer be able to exist at the time of this method call, there is no longer a need to
         // recover it.
 
         ABpBinderTag::Value* value =
-                static_cast<ABpBinderTag::Value*>(remote()->findObject(ABpBinderTag::kId));
-        if (value != nullptr) {
-            value->binder = nullptr;
-        }
+                static_cast<ABpBinderTag::Value*>(remote()->detachObject(ABpBinderTag::kId));
+        if (value) ABpBinderTag::clean(ABpBinderTag::kId, value, nullptr /*cookie*/);
     }
 
     BpRefBase::onLastStrongRef(id);
