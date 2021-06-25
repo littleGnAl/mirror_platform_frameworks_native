@@ -48,8 +48,13 @@ impl fmt::Debug for SpIBinder {
 
 /// # Safety
 ///
-/// An `SpIBinder` is a handle to a C++ IBinder, which is thread-safe
+/// An `SpIBinder` is an immutable handle to a C++ IBinder, which is thread-safe
 unsafe impl Send for SpIBinder {}
+
+/// # Safety
+///
+/// An `SpIBinder` is an immutable handle to a C++ IBinder, which is thread-safe
+unsafe impl Sync for SpIBinder {}
 
 impl SpIBinder {
     /// Create an `SpIBinder` wrapper object from a raw `AIBinder` pointer.
