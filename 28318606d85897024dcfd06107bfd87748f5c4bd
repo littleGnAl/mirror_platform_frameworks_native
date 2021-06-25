@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2129c913_9e80d172",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-25T04:14:42Z",
+      "side": 0,
+      "message": "Has this been a false statement?",
+      "range": {
+        "startLine": 269,
+        "startChar": 7,
+        "endLine": 269,
+        "endChar": 56
+      },
+      "revId": "28318606d85897024dcfd06107bfd87748f5c4bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
