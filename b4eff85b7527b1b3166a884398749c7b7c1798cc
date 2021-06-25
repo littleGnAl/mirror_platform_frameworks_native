@@ -263,6 +263,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a65a8f_da089f9f",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-25T06:16:06Z",
+      "side": 1,
+      "message": "It also minimizes the time window to exploit b/191711475, though b/191711475 is not completely fixed.",
+      "parentUuid": "68a5df58_e771e459",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ad5c349_47e8c671",
