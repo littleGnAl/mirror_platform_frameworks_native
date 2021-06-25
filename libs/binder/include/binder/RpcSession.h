@@ -169,6 +169,8 @@ private:
         status_t interruptableReadFully(RpcTransport* rpcTransport, void* data, size_t size);
 
     private:
+        status_t triggerablePollRead(RpcTransport* rpcTransport);
+
         base::unique_fd mWrite;
         base::unique_fd mRead;
     };
