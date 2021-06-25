@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e1961c_758a8aa4",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-25T02:13:11Z",
+      "side": 1,
+      "message": "yeah, I was going to remove it completely - but if \u0027binder\u0027 is a a BBinder object, then it\u0027ll cost extra allocations here. Will follow-up",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 5
+      },
+      "revId": "fa5a043702a2c2c4f6ad47795d30f77c842c47e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
