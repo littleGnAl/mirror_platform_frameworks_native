@@ -239,6 +239,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68a5df58_e771e459",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-25T06:13:56Z",
+      "side": 1,
+      "message": "Done. Now, it will immediately stop adb forwarding when it is connected.\n\nThis also makes b/191409606 no longer necessary.",
+      "parentUuid": "c94d74bd_dc44b302",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ad5c349_47e8c671",
@@ -748,6 +772,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da68dc9_fdf6ce2b",
+        "filename": "libs/binder/ServiceManagerHost.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-25T06:13:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cbb966e_40ca552a",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd6189dc_5ff523e2",
@@ -809,6 +857,30 @@
       "side": 1,
       "message": "Oops! I missed that there (and probably in a few other CLs). I would say, still prefer \u0026\u0026 in this case. Do you have any external guidance on this issue? I think the C++17 style only makes sense for things which do not have a copy constructor (like unique_ptr). Otherwise, it\u0027s easy to make extra copies. Alternatively, we could use std::span like string_view is used, but it\u0027s not as nice.",
       "parentUuid": "84912de9_86090f9c",
+      "range": {
+        "startLine": 29,
+        "startChar": 52,
+        "endLine": 29,
+        "endChar": 53
+      },
+      "revId": "b4eff85b7527b1b3166a884398749c7b7c1798cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a67af24_19600fbf",
+        "filename": "libs/binder/ServiceManagerHost.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-25T06:13:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80575036_4ba54d30",
       "range": {
         "startLine": 29,
         "startChar": 52,
