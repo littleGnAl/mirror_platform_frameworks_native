@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32eaad35_226fbced",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-25T02:13:40Z",
+      "side": 1,
+      "message": "I think I was worried about breaking the ABI before, but this is fine.",
+      "range": {
+        "startLine": 263,
+        "startChar": 13,
+        "endLine": 263,
+        "endChar": 17
+      },
+      "revId": "f8a3b587391a9555462d18181701b5a531f01ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
