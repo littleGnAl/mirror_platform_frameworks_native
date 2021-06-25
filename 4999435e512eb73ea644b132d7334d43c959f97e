@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a23b2a3e_6aac4c7f",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 37
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-25T07:32:34Z",
+      "side": 1,
+      "message": "If not, does adding it to TEST_MAPPING manually work?",
+      "parentUuid": "7db04847_424c5abb",
+      "range": {
+        "startLine": 364,
+        "startChar": 19,
+        "endLine": 364,
+        "endChar": 26
+      },
+      "revId": "4999435e512eb73ea644b132d7334d43c959f97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a06aec99_dc6670f6",
         "filename": "libs/binder/tests/binderHostDeviceTest.xml",
         "patchSetId": 37
