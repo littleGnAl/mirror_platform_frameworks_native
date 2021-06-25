@@ -72,12 +72,10 @@ public:
                                         uint32_t flags = 0,
                                         wp<DeathRecipient>* outRecipient = nullptr);
 
-    virtual void        attachObject(   const void* objectID,
-                                        void* object,
-                                        void* cleanupCookie,
-                                        object_cleanup_func func) final;
+    virtual void* attachObject(const void* objectID, void* object, void* cleanupCookie,
+                               object_cleanup_func func) final;
     virtual void*       findObject(const void* objectID) const final;
-    virtual void        detachObject(const void* objectID) final;
+    virtual void* detachObject(const void* objectID) final;
 
     virtual BpBinder*   remoteBinder();
 
@@ -97,16 +95,14 @@ public:
                     ObjectManager();
                     ~ObjectManager();
 
-        void        attach( const void* objectID,
-                            void* object,
-                            void* cleanupCookie,
-                            IBinder::object_cleanup_func func);
-        void*       find(const void* objectID) const;
-        void        detach(const void* objectID);
+                    void* attach(const void* objectID, void* object, void* cleanupCookie,
+                                 IBinder::object_cleanup_func func);
+                    void* find(const void* objectID) const;
+                    void* detach(const void* objectID);
 
-        void        kill();
+                    void kill();
 
-    private:
+                private:
                     ObjectManager(const ObjectManager&);
         ObjectManager& operator=(const ObjectManager&);
 
