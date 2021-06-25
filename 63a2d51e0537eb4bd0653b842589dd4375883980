@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37cf75f4_7b469944",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-06-25T20:17:02Z",
+      "side": 1,
+      "message": "nit: should this be mentioned anywhere? nullptr means successfully attached, or out of memory and failed to attach. I\u0027m not sure what a caller can do if this does happen, but seems like it could be tricky.",
+      "range": {
+        "startLine": 317,
+        "startChar": 18,
+        "endLine": 317,
+        "endChar": 44
+      },
+      "revId": "63a2d51e0537eb4bd0653b842589dd4375883980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
