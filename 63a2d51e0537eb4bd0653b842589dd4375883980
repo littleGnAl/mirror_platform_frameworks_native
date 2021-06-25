@@ -46,6 +46,30 @@
       },
       "revId": "63a2d51e0537eb4bd0653b842589dd4375883980",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7906ae_7755c723",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-06-25T20:37:56Z",
+      "side": 1,
+      "message": "got it. That sounds reasonable, thanks!",
+      "parentUuid": "51818ec6_5fcc0ee1",
+      "range": {
+        "startLine": 317,
+        "startChar": 18,
+        "endLine": 317,
+        "endChar": 44
+      },
+      "revId": "63a2d51e0537eb4bd0653b842589dd4375883980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
