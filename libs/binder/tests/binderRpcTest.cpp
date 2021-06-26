@@ -404,7 +404,7 @@ public:
 
         auto ret = ProcessSession{
                 .host = Process([&](android::base::borrowed_fd writeEnd) {
-                    sp<RpcServer> server = RpcServer::make();
+                    sp<RpcServer> server = RpcServer::make(true);
 
                     server->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
                     server->setMaxThreads(numThreads);
@@ -446,7 +446,7 @@ public:
         }
 
         for (size_t i = 0; i < numSessions; i++) {
-            sp<RpcSession> session = RpcSession::make();
+            sp<RpcSession> session = RpcSession::make(true);
             session->setMaxThreads(numReverseConnections);
 
             switch (socketType) {
@@ -1104,13 +1104,15 @@ TEST_P(BinderRpc, Fds) {
 }
 
 static bool testSupportVsockLoopback() {
+    // We don't need to enable TLS to know if vsock is supported.
+    const bool tls = false;
     unsigned int vsockPort = allocateVsockPort();
-    sp<RpcServer> server = RpcServer::make();
+    sp<RpcServer> server = RpcServer::make(tls);
     server->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
     CHECK(server->setupVsockServer(vsockPort));
     server->start();
 
-    sp<RpcSession> session = RpcSession::make();
+    sp<RpcSession> session = RpcSession::make(tls);
     bool okay = session->setupVsockClient(VMADDR_CID_LOCAL, vsockPort);
     CHECK(server->shutdown());
     ALOGE("Detected vsock loopback supported: %d", okay);
