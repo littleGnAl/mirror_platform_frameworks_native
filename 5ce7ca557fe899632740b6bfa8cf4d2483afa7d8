@@ -16,6 +16,24 @@
       "message": "Not saying you should submit this on a Friday evening... but +2 :)",
       "revId": "5ce7ca557fe899632740b6bfa8cf4d2483afa7d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2fd5ac_bcbf1319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-26T00:40:13Z",
+      "side": 1,
+      "message": "I won\u0027t submit risky code on Friday evenings, but you should +2 all my code :) thanks!",
+      "parentUuid": "86a3a83e_2e027772",
+      "revId": "5ce7ca557fe899632740b6bfa8cf4d2483afa7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
