@@ -66,7 +66,7 @@ static inline std::string PrintToString(Security security) {
 }
 
 static inline std::vector<Security> SecurityValues() {
-    return {Security::RAW};
+    return {Security::RAW, Security::TLS};
 }
 
 TEST(BinderRpcParcel, EntireParcelFormatted) {
