@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5729aa0_69e13f73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-26T00:49:29Z",
+      "side": 1,
+      "message": "rustBinderTest failed in presubmit. It appears it only ran once, so I\u0027m thinking it could be a device or other issue. Running the test in a loop w/ this change, I could not reproduce any failure.",
+      "revId": "1f1bed66b99b2cd6b7dc8db441fa492ec18d12f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62943301_2184b316",
