@@ -22,6 +22,30 @@
       },
       "revId": "9e759e81a53bd0f5027f3a0a37661206d46774a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42c8db8_73e95bbf",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-26T00:19:39Z",
+      "side": 0,
+      "message": "Honestly, I didn\u0027t read it, but it was on the lock. I should have put a line break between the comment and the lock for that. The comment is still true, you could also argue that \u0027lookupOrCreate\u0027 as the name of the function implies this (the guarantees made here are also tested explicitly in CtsNdkBinderTestCases). Though - I still question all the time if this was the right decision (...).",
+      "parentUuid": "352d4b01_821e0f15",
+      "range": {
+        "startLine": 255,
+        "startChar": 1,
+        "endLine": 256,
+        "endChar": 92
+      },
+      "revId": "9e759e81a53bd0f5027f3a0a37661206d46774a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

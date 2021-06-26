@@ -22,6 +22,30 @@
       },
       "revId": "1f1bed66b99b2cd6b7dc8db441fa492ec18d12f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fbf3a57_47538e10",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-26T00:19:39Z",
+      "side": 1,
+      "message": "Correct. findObject/attachObject already take a lock internally. Note - \u0027if (oldValue)\u0027 is expected to branch true very infrequently here.\n\nThis CL is an improvement, but it\u0027s not really ideal. Actually (and I can say this because I wrote all of this), it kind of looks like a 4 year old wrote it. We have 3 lock takes, and each time we release the lock, we have to check to see if there was a race with the other thread (e.g. \u0027allocated by another thread\u0027). It really is a bit silly, and there are two main alternatives I thought about:\n\n1. take the lock once, and call something like \u0027findObjectLocked\u0027 \u0027attachObjectLocked\u0027. This way, we can initialize everything, and we are sure another thread doesn\u0027t interrupt us during that process. The downside of this is just that it can be used incorrectly pretty easily w/o a bit of annotation work (I still need to get -Wthread-safety setup in a lot more places...)\n\n2. (so that clients of libbinder don\u0027t have to worry about things like this) export an API like IBinder::attachObject(const void* id, ... createObjectIfMissing). However, this isn\u0027t very generic, so I tend to prefer (1).\n\nSo given this, I say, focus on fixing the global lock. Accept a bit of complexity here (this pattern, of allocating an object and then trying to set it, and deleting it if another thread already set it, it\u0027s actually pretty common, because atomic memory loading APIs tend to follow this format  - of course we have an actual lock here, so we could do better, but it doesn\u0027t matter nearly as much as this).",
+      "parentUuid": "62943301_2184b316",
+      "range": {
+        "startLine": 255,
+        "startChar": 4,
+        "endLine": 267,
+        "endChar": 0
+      },
+      "revId": "1f1bed66b99b2cd6b7dc8db441fa492ec18d12f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
