@@ -22,9 +22,12 @@
 #include <dlfcn.h>
 
 #include <memory>
+#include <mutex>
 
 #include "RpcTransportRaw.h"
 #include "RpcTransportTls.h"
+
+#define LOG_DLOPEN_DETAIL(...) ALOGI(__VA_ARGS__)
 
 namespace android {
 
@@ -36,17 +39,31 @@ constexpr const char* kLibBinderTransport = "libbinder_tls.so";
 
 // FIXME this leaks!
 
-void dlhandleDeleter(void*) {
-    // if (0 != dlclose(rawHandle)) ALOGE("dlclose(): %s", dlerror());
+std::mutex gMutex;
+
+void dlhandleDeleter(void* rawHandle) {
+    std::lock_guard<std::mutex> lock(gMutex);
+
+    LOG_DLOPEN_DETAIL("dlclose(%p)", rawHandle);
+    if (0 != dlclose(rawHandle)) ALOGE("dlclose(): %s", dlerror());
 }
 
-Dlhandle dlopenLibrary(const char* name) {
-    void* rawHandle = dlopen(name, RTLD_LAZY | RTLD_LOCAL);
+Dlhandle dlopenLibrary() {
+    static std::weak_ptr<void> gWeakHandle;
+
+    std::lock_guard<std::mutex> lock(gMutex);
+    auto strongHandle = gWeakHandle.lock();
+    if (strongHandle != nullptr) return strongHandle;
+
+    void* rawHandle = dlopen(kLibBinderTransport, RTLD_LAZY | RTLD_LOCAL);
     if (rawHandle == nullptr) {
-        ALOGE("dlopen(%s): %s", name, dlerror());
+        ALOGE("dlopen(%s): %s", kLibBinderTransport, dlerror());
         return nullptr;
     }
-    return Dlhandle(rawHandle, dlhandleDeleter);
+    LOG_DLOPEN_DETAIL("dlopen(%s) -> %p", kLibBinderTransport, rawHandle);
+    strongHandle = Dlhandle(rawHandle, dlhandleDeleter);
+    gWeakHandle = strongHandle;
+    return strongHandle;
 }
 
 // A tuple (Dlhandle, RpcTransport) that ensures the internal implementation is destroyed
@@ -54,12 +71,30 @@ Dlhandle dlopenLibrary(const char* name) {
 class RpcTransportShim : public RpcTransport {
 public:
     RpcTransportShim(Dlhandle handle, std::unique_ptr<RpcTransport> impl)
-          : mHandle(std::move(handle)), mImpl(std::move(impl)) {}
-    int send(const void* buf, int size) override { return mImpl->send(buf, size); }
-    int recv(void* buf, int size) override { return mImpl->recv(buf, size); }
-    int peek(void* buf, int size) override { return mImpl->peek(buf, size); }
-    bool pending() override { return mImpl->pending(); }
-    android::base::borrowed_fd pollSocket() const override { return mImpl->pollSocket(); }
+          : mHandle(std::move(handle)), mImpl(std::move(impl)) {
+        LOG_DLOPEN_DETAIL("RpcTransportShim::RpcTransportShim");
+    }
+    ~RpcTransportShim() { LOG_DLOPEN_DETAIL("RpcTransportShim::~RpcTransportShim"); }
+    int send(const void* buf, int size) override {
+        LOG_DLOPEN_DETAIL("RpcTransportShim::send");
+        return mImpl->send(buf, size);
+    }
+    int recv(void* buf, int size) override {
+        LOG_DLOPEN_DETAIL("RpcTransportShim::recv");
+        return mImpl->recv(buf, size);
+    }
+    int peek(void* buf, int size) override {
+        LOG_DLOPEN_DETAIL("RpcTransportShim::peek");
+        return mImpl->peek(buf, size);
+    }
+    bool pending() override {
+        LOG_DLOPEN_DETAIL("RpcTransportShim::pending");
+        return mImpl->pending();
+    }
+    android::base::borrowed_fd pollSocket() const override {
+        LOG_DLOPEN_DETAIL("RpcTransportShim::pollSocket");
+        return mImpl->pollSocket();
+    }
 
 private:
     // Order matters. The implementation must be deallocated before the dl handle, because
@@ -73,8 +108,12 @@ private:
 class RpcTransportCtxShim : public RpcTransportCtx {
 public:
     RpcTransportCtxShim(Dlhandle handle, std::unique_ptr<RpcTransportCtx> impl)
-          : mHandle(std::move(handle)), mImpl(std::move(impl)) {}
+          : mHandle(std::move(handle)), mImpl(std::move(impl)) {
+        LOG_DLOPEN_DETAIL("RpcTransportCtxShim::RpcTransportCtxShim");
+    }
+    ~RpcTransportCtxShim() { LOG_DLOPEN_DETAIL("RpcTransportCtxShim::~RpcTransportCtxShim"); }
     std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd fd) const override {
+        LOG_DLOPEN_DETAIL("RpcTransportCtxShim::newTransport");
         return std::make_unique<RpcTransportShim>(mHandle, mImpl->newTransport(std::move(fd)));
     }
 
@@ -87,7 +126,7 @@ private:
 
 template <typename Fn>
 std::unique_ptr<RpcTransportCtx> newRpcTransportCtxTls(const char* fnName) {
-    auto lib = dlopenLibrary(kLibBinderTransport);
+    auto lib = dlopenLibrary();
     if (lib == nullptr) return nullptr;
     auto fnPtr = dlsym(lib.get(), fnName);
     if (fnPtr == nullptr) {
