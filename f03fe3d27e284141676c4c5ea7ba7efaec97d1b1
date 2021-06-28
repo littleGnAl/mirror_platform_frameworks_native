@@ -16,6 +16,24 @@
       "message": "I\u0027m strongly in favor of this and about 99% convinced it\u0027s safe, but I\u0027m wondering if we should have some kind of test, maybe a multi-threaded client stress test.",
       "revId": "f03fe3d27e284141676c4c5ea7ba7efaec97d1b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd82f75_fff1825a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-28T21:06:04Z",
+      "side": 1,
+      "message": "You can see libutils RefBase comments for this, but the thread-safety of sp\u003cFoo\u003e (and consequently SpAIBinder) is similar to T*.\n\nFor instance, you can have multiple threads calling myBinder-\u003efoo(), but if any of these tries to change out which binder this is pointing to, that will cause problems.",
+      "parentUuid": "6f34ad85_0cf89349",
+      "revId": "f03fe3d27e284141676c4c5ea7ba7efaec97d1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
