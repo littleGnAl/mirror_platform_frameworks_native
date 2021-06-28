@@ -34,7 +34,7 @@ public:
     void trigger();
 
     /**
-     * Whether this has been triggered.
+     * Check whether this has been triggered by checking the write end.
      */
     bool isTriggered();
 
@@ -48,6 +48,11 @@ public:
      *   false - trigger happened
      */
     status_t triggerablePoll(base::borrowed_fd fd, int16_t event);
+
+    /**
+     * Check whether this has been triggered by poll()ing the read end.
+     */
+    bool isTriggeredPolled();
 
 private:
     base::unique_fd mWrite;

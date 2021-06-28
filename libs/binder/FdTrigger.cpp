@@ -59,4 +59,8 @@ status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
     }
 }
 
+bool FdTrigger::isTriggeredPolled() {
+    pollfd pfd{.fd = mRead.get(), .events = 0, .revents = 0};
+}
+
 } // namespace android
