@@ -235,6 +235,32 @@ cc_library {
     },
 }
 
+cc_library_shared {
+    name: "libbinder_tls",
+    host_supported: true,
+
+    header_libs: [
+        "libbinder_headers",
+    ],
+    export_header_lib_headers: [
+        "libbinder_headers",
+    ],
+    export_include_dirs: ["include_tls"],
+    shared_libs: [
+        "libbinder",
+        "libcrypto",
+        "liblog",
+        "libssl",
+        "libutils",
+    ],
+    static_libs: [
+        "libbase",
+    ],
+    srcs: [
+        "RpcTransportTls.cpp",
+    ],
+}
+
 // AIDL interface between libbinder and framework.jar
 filegroup {
     name: "libbinder_aidl",
