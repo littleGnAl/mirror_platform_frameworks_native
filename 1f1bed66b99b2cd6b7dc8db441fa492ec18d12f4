@@ -18,6 +18,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e6ad568_3898842f",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-28T16:46:50Z",
+      "side": 1,
+      "message": "and also, it cannot be deleted here, since it is cleaned up by onLastStrongRef, and we hold a strong ref. :)",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 38
+      },
+      "revId": "1f1bed66b99b2cd6b7dc8db441fa492ec18d12f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62943301_2184b316",
