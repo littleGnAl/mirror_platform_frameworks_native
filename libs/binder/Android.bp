@@ -192,6 +192,10 @@ cc_library {
         "libutils",
     ],
 
+    required: [
+        "libbinder_tls",
+    ],
+
     header_libs: [
         "libbinder_headers",
     ],
@@ -231,6 +235,32 @@ cc_library {
         sampling: true,
         profile_file: "libbinder/libbinder.profdata",
     },
+}
+
+cc_library_shared {
+    name: "libbinder_tls",
+    visibility: ["//visibility:private"],
+    host_supported: true,
+
+//  // TODO(b/190868302): Determine if these are needed or not
+//    vendor_available: true,
+//    vndk: {
+//        enabled: true,
+//    },
+//    double_loadable: true,
+//    native_bridge_supported: true,
+
+    header_libs: [
+        "libbase_headers",
+    ],
+    shared_libs: [
+        "liblog",
+        "libssl",
+        "libcrypto",
+    ],
+    srcs: [
+        "RpcTransportTls.cpp",
+    ],
 }
 
 // AIDL interface between libbinder and framework.jar
