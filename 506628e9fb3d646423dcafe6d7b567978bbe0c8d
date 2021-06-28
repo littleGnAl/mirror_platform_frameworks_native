@@ -357,6 +357,30 @@
       },
       "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed72567_6dd2193a",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-06-28T14:02:09Z",
+      "side": 1,
+      "message": "Hi,\n\nI have updated the patch with the above approach, it takes care of all the scenarios and i tested EventHubTest.InputEvent_TimestampIsMonotonic, i had also added the debug prints and i saw inotify added successfully and the test passed as well. Please have a look, Thanks!",
+      "parentUuid": "bba31893_92ebc235",
+      "range": {
+        "startLine": 314,
+        "startChar": 8,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "506628e9fb3d646423dcafe6d7b567978bbe0c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
