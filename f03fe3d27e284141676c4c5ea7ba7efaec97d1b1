@@ -34,6 +34,24 @@
       "parentUuid": "6f34ad85_0cf89349",
       "revId": "f03fe3d27e284141676c4c5ea7ba7efaec97d1b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917073a7_30f10c2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-06-28T21:35:41Z",
+      "side": 1,
+      "message": "Access to AIBinder`/`SpIBinder`/`WpIBinder` is behind the abstraction barrier, and that ability isn\u0027t currently exposed. If it were, I would expect it to be exposed behind `\u0026mut`, not `\u0026`, which would prevent it from being possible for concurrent access.",
+      "parentUuid": "4cd82f75_fff1825a",
+      "revId": "f03fe3d27e284141676c4c5ea7ba7efaec97d1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
