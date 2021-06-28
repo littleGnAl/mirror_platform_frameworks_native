@@ -191,6 +191,10 @@ cc_library {
         "libutils",
     ],
 
+    required: [
+        "libbinder_tls",
+    ],
+
     header_libs: [
         "libbinder_headers",
         "libandroid_runtime_vm_headers",
@@ -231,6 +235,36 @@ cc_library {
         sampling: true,
         profile_file: "libbinder/libbinder.profdata",
     },
+}
+
+cc_library_shared {
+    name: "libbinder_tls",
+
+    vendor_available: true,
+    vndk: {
+        enabled: true,
+    },
+    host_supported: true,
+
+    // TODO(b/190868302): Determine if double_loadable is needed or not
+    // double_loadable: true,
+
+    header_libs: [
+        "libbase_headers",
+        "libbinder_headers",
+    ],
+    export_header_lib_headers: [
+        "libbinder_headers",
+    ],
+    export_include_dirs: ["include_tls"],
+    shared_libs: [
+        "liblog",
+        "libssl",
+        "libcrypto",
+    ],
+    srcs: [
+        "RpcTransportTls.cpp",
+    ],
 }
 
 // AIDL interface between libbinder and framework.jar
