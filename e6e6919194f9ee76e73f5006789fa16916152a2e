@@ -34,6 +34,24 @@
       "parentUuid": "a828b1dc_8c10ae9c",
       "revId": "e6e6919194f9ee76e73f5006789fa16916152a2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebeb266_6a70b0c7",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 40
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-28T22:57:41Z",
+      "side": 1,
+      "message": "You want to drop the \u0027host\u0027 line here. See \u0027hidl_test\u0027 for comparison, for example. It may be confusing configuration, but think - no matter what test is running, we always need to run stuff on host (tradefed). So, engprod is optimizing for whether a device is needed.",
+      "parentUuid": "ef1f046e_ee96026b",
+      "revId": "e6e6919194f9ee76e73f5006789fa16916152a2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
