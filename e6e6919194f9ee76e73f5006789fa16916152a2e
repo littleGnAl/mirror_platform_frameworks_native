@@ -16,6 +16,24 @@
       "message": "I thought you mentioned that this test requires a device to run?",
       "revId": "e6e6919194f9ee76e73f5006789fa16916152a2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef1f046e_ee96026b",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 40
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-28T22:23:50Z",
+      "side": 1,
+      "message": "The test itself runs on the host, but the test requires a device to run.\n\nIs this the correct configuration?",
+      "parentUuid": "a828b1dc_8c10ae9c",
+      "revId": "e6e6919194f9ee76e73f5006789fa16916152a2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
