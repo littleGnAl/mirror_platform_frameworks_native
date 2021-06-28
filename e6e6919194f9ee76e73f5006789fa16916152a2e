@@ -52,6 +52,24 @@
       "parentUuid": "ef1f046e_ee96026b",
       "revId": "e6e6919194f9ee76e73f5006789fa16916152a2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b9ff24_433a7fda",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 40
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2021-06-28T23:39:45Z",
+      "side": 1,
+      "message": "Thanks for the clarification. That\u0027s a good way to remember that.\n\nhost here means hostside, aka, deviceless test.",
+      "parentUuid": "aebeb266_6a70b0c7",
+      "revId": "e6e6919194f9ee76e73f5006789fa16916152a2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
