@@ -34,6 +34,24 @@
       "parentUuid": "614a5f2e_cdb080e4",
       "revId": "98d115e9415279ca700ec009619de90396e45f53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c993473_c55a75fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-29T02:34:18Z",
+      "side": 1,
+      "message": "I also tried atest with multiple devices, and that seems to respect `ANDROID_SERIAL`.",
+      "parentUuid": "2b17fe4d_1bc3ac04",
+      "revId": "98d115e9415279ca700ec009619de90396e45f53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
