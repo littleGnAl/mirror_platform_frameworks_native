@@ -70,6 +70,24 @@
       "parentUuid": "aebeb266_6a70b0c7",
       "revId": "e6e6919194f9ee76e73f5006789fa16916152a2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "665cf553_32e0e071",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 40
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-29T00:27:54Z",
+      "side": 1,
+      "message": "Thanks both! Done.",
+      "parentUuid": "46b9ff24_433a7fda",
+      "revId": "e6e6919194f9ee76e73f5006789fa16916152a2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
