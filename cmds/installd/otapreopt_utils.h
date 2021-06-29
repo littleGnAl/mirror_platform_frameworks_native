@@ -31,7 +31,7 @@ static inline bool ValidateTargetSlotSuffix(const std::string& input) {
 }
 
 // Wrapper on fork/execv to run a command in a subprocess.
-bool Exec(const std::vector<std::string>& arg_vector, std::string* error_msg);
+bool Exec(const std::vector<std::string>& arg_vector, std::string* error_msg, int status_fd = -1);
 
 }  // namespace installd
 }  // namespace android

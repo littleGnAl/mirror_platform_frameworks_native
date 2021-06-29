@@ -21,6 +21,7 @@
 #include <unistd.h>
 
 #include <android-base/logging.h>
+#include <android-base/macros.h>
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 
@@ -30,7 +31,7 @@ using android::base::StringPrintf;
 namespace android {
 namespace installd {
 
-bool Exec(const std::vector<std::string>& arg_vector, std::string* error_msg) {
+bool Exec(const std::vector<std::string>& arg_vector, std::string* error_msg, int status_fd) {
     const std::string command_line = Join(arg_vector, ' ');
 
     CHECK_GE(arg_vector.size(), 1U) << command_line;
@@ -53,6 +54,11 @@ bool Exec(const std::vector<std::string>& arg_vector, std::string* error_msg) {
 
         // Change process groups, so we don't get reaped by ProcessManager.
         setpgid(0, 0);
+
+        if (status_fd != -1) {
+            int ret = close(status_fd);
+            UNUSED(ret);
+        }
 
         execv(program, &args[0]);
 
