@@ -22,6 +22,30 @@
       },
       "revId": "6fe1963236f04ba94b4304f17e194ca54984aef0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaafc5d5_ecdf1e97",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-29T01:00:31Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t see this comment.\n\nFeel free to submit a better fix. I propose this to clear the lint errors suggested by my IDE.",
+      "parentUuid": "5b47adb2_41c9365e",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 43
+      },
+      "revId": "6fe1963236f04ba94b4304f17e194ca54984aef0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
