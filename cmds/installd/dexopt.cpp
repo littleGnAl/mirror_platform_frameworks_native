@@ -15,8 +15,8 @@
  */
 #define LOG_TAG "installd"
 
-#include <array>
 #include <fcntl.h>
+#include <signal.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/capability.h>
@@ -28,10 +28,15 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+#include <array>
 #include <iomanip>
+#include <mutex>
+#include <thread>
+#include <unordered_set>
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
+#include <android-base/no_destructor.h>
 #include <android-base/properties.h>
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
@@ -47,6 +52,7 @@
 #include <selinux/android.h>
 #include <server_configurable_flags/get_flags.h>
 #include <system/thread_defs.h>
+#include <utils/Mutex.h>
 
 #include "dexopt.h"
 #include "dexopt_return_codes.h"
@@ -68,6 +74,63 @@ using android::base::ReadFully;
 using android::base::StringPrintf;
 using android::base::WriteFully;
 using android::base::unique_fd;
+
+namespace {
+
+class DexOptStatus {
+ public:
+    // add PID of forked dexopt pids to the record
+    void add_dexopt_pid(pid_t pid) {
+        std::lock_guard<std::mutex> lock(dexopt_lock_);
+        dexopt_pids_.insert(pid);
+    }
+
+    // Returns true if pid was killed (is in killed list). It could have finished if killing
+    // happened after the process is finished.
+    bool check_if_killed_and_remove_dexopt_pid(pid_t pid) {
+        std::lock_guard<std::mutex> lock(dexopt_lock_);
+        dexopt_pids_.erase(pid);
+        if (dexopt_killed_pids_.erase(pid) == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    // Tells whether dexopt is blocked or not.
+    bool is_dexopt_blocked() {
+        std::lock_guard<std::mutex> lock(dexopt_lock_);
+        return dexopt_blocked_;
+    }
+
+    // Enable or disable dexopt blocking.
+    void control_dexopt_blocking(bool block) {
+        std::lock_guard<std::mutex> lock(dexopt_lock_);
+        dexopt_blocked_ = block;
+        if (!block) {
+            return;
+        }
+        // Blocked, also kill currently running tasks
+        for (auto pid : dexopt_pids_) {
+            kill(pid, SIGKILL);
+            dexopt_killed_pids_.insert(pid);
+        }
+        dexopt_pids_.clear();
+    }
+
+ private:
+    std::mutex dexopt_lock_;
+    // when true, dexopt is blocked and will not run.
+    bool dexopt_blocked_ GUARDED_BY(dexopt_lock_) = false;
+    // PIDs of child process while runinng dexopt.
+    // If the child process is finished, it should be removed.
+    std::unordered_set<pid_t> dexopt_pids_ GUARDED_BY(dexopt_lock_);
+    // PIDs of child processes killed by cancellation.
+    std::unordered_set<pid_t> dexopt_killed_pids_ GUARDED_BY(dexopt_lock_);
+};
+
+android::base::NoDestructor<DexOptStatus> dexopt_status_;
+
+} // namespace
 
 namespace android {
 namespace installd {
@@ -1525,23 +1588,46 @@ static std::string join_fds(const std::vector<unique_fd>& fds) {
     return ss.str();
 }
 
+void control_dexopt_blocking(bool block) {
+    dexopt_status_->control_dexopt_blocking(block);
+}
+
+bool is_dexopt_blocked() {
+    return dexopt_status_->is_dexopt_blocked();
+}
+
+enum SecondaryDexOptProcessResult {
+    kSecondaryDexOptProcessOk = 0,
+    kSecondaryDexOptProcessCancelled = 1,
+    kSecondaryDexOptProcessError = 2
+};
+
 // Processes the dex_path as a secondary dex files and return true if the path dex file should
-// be compiled. Returns false for errors (logged) or true if the secondary dex path was process
-// successfully.
-// When returning true, the output parameters will be:
+// be compiled.
+// Returns: kSecondaryDexOptProcessError for errors (logged).
+//          kSecondaryDexOptProcessOk if the secondary dex path was process successfully.
+//          kSecondaryDexOptProcessCancelled if the processing was cancelled.
+//
+// When returning kSecondaryDexOptProcessOk, the output parameters will be:
 //   - is_public_out: whether or not the oat file should not be made public
 //   - dexopt_needed_out: valid OatFileAsssitant::DexOptNeeded
 //   - oat_dir_out: the oat dir path where the oat file should be stored
-static bool process_secondary_dex_dexopt(const std::string& dex_path, const char* pkgname,
-        int dexopt_flags, const char* volume_uuid, int uid, const char* instruction_set,
-        const char* compiler_filter, bool* is_public_out, int* dexopt_needed_out,
-        std::string* oat_dir_out, bool downgrade, const char* class_loader_context,
-        const std::vector<std::string>& context_dex_paths, /* out */ std::string* error_msg) {
+static SecondaryDexOptProcessResult process_secondary_dex_dexopt(const std::string& dex_path,
+        const char* pkgname, int dexopt_flags, const char* volume_uuid, int uid,
+        const char* instruction_set, const char* compiler_filter, bool* is_public_out,
+        int* dexopt_needed_out, std::string* oat_dir_out, bool downgrade,
+        const char* class_loader_context, const std::vector<std::string>& context_dex_paths,
+        /* out */ std::string* error_msg) {
     LOG(DEBUG) << "Processing secondary dex path " << dex_path;
+
+    if (dexopt_status_->is_dexopt_blocked()) {
+        return kSecondaryDexOptProcessCancelled;
+    }
+
     int storage_flag;
     if (!validate_dexopt_storage_flags(dexopt_flags, &storage_flag, error_msg)) {
         LOG(ERROR) << *error_msg;
-        return false;
+        return kSecondaryDexOptProcessError;
     }
     // Compute the oat dir as it's not easy to extract it from the child computation.
     char oat_path[PKG_PATH_MAX];
@@ -1550,10 +1636,13 @@ static bool process_secondary_dex_dexopt(const std::string& dex_path, const char
     if (!create_secondary_dex_oat_layout(
             dex_path, instruction_set, oat_dir, oat_isa_dir, oat_path, error_msg)) {
         LOG(ERROR) << "Could not create secondary odex layout: " << *error_msg;
-        return false;
+        return kSecondaryDexOptProcessError;
     }
     oat_dir_out->assign(oat_dir);
 
+    if (dexopt_status_->is_dexopt_blocked()) {
+        return kSecondaryDexOptProcessCancelled;
+    }
     pid_t pid = fork();
     if (pid == 0) {
         // child -- drop privileges before continuing.
@@ -1622,13 +1711,19 @@ static bool process_secondary_dex_dexopt(const std::string& dex_path, const char
     }
 
     /* parent */
+    dexopt_status_->add_dexopt_pid(pid);
     int result = wait_child(pid);
+    bool cancelled = dexopt_status_->check_if_killed_and_remove_dexopt_pid(pid);
     if (!WIFEXITED(result)) {
+        if ((WTERMSIG(result) == SIGKILL) && cancelled) {
+            LOG(INFO) << "dexoptanalyzer cancelled for path:" << dex_path;
+            return kSecondaryDexOptProcessCancelled;
+        }
         *error_msg = StringPrintf("dexoptanalyzer failed for path %s: 0x%04x",
                                   dex_path.c_str(),
                                   result);
         LOG(ERROR) << *error_msg;
-        return false;
+        return kSecondaryDexOptProcessError;
     }
     result = WEXITSTATUS(result);
     // Check that we successfully executed dexoptanalyzer.
@@ -1656,7 +1751,7 @@ static bool process_secondary_dex_dexopt(const std::string& dex_path, const char
     // It is ok to check this flag outside in the parent process.
     *is_public_out = ((dexopt_flags & DEXOPT_PUBLIC) != 0) && is_file_public(dex_path);
 
-    return success;
+    return success ? kSecondaryDexOptProcessOk : kSecondaryDexOptProcessError;
 }
 
 static std::string format_dexopt_error(int status, const char* dex_path) {
@@ -1670,16 +1765,28 @@ static std::string format_dexopt_error(int status, const char* dex_path) {
   return StringPrintf("Dex2oat invocation for %s failed with 0x%04x", dex_path, status);
 }
 
+
 int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* instruction_set,
         int dexopt_needed, const char* oat_dir, int dexopt_flags, const char* compiler_filter,
         const char* volume_uuid, const char* class_loader_context, const char* se_info,
         bool downgrade, int target_sdk_version, const char* profile_name,
-        const char* dex_metadata_path, const char* compilation_reason, std::string* error_msg) {
+        const char* dex_metadata_path, const char* compilation_reason, std::string* error_msg,
+        /* out */ bool* completed) {
     CHECK(pkgname != nullptr);
     CHECK(pkgname[0] != 0);
     CHECK(error_msg != nullptr);
     CHECK_EQ(dexopt_flags & ~DEXOPT_MASK, 0)
         << "dexopt flags contains unknown fields: " << dexopt_flags;
+
+    bool local_completed; // local placeholder for nullptr case
+    if (completed == nullptr) {
+        completed = &local_completed;
+    }
+    *completed = true;
+    if (dexopt_status_->is_dexopt_blocked()) {
+        *completed = false;
+        return 0;
+    }
 
     if (!validate_dex_path_size(dex_path)) {
         *error_msg = StringPrintf("Failed to validate %s", dex_path);
@@ -1712,14 +1819,19 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
             *error_msg = "Failed acquiring context dex paths";
             return -1;  // We had an error, logged in the process method.
         }
-
-        if (process_secondary_dex_dexopt(dex_path, pkgname, dexopt_flags, volume_uuid, uid,
-                instruction_set, compiler_filter, &is_public, &dexopt_needed, &oat_dir_str,
-                downgrade, class_loader_context, context_dex_paths, error_msg)) {
+        SecondaryDexOptProcessResult sec_dex_result = process_secondary_dex_dexopt(dex_path,
+                pkgname, dexopt_flags, volume_uuid, uid,instruction_set, compiler_filter,
+                &is_public, &dexopt_needed, &oat_dir_str, downgrade, class_loader_context,
+                context_dex_paths, error_msg);
+        if (sec_dex_result == kSecondaryDexOptProcessOk) {
             oat_dir = oat_dir_str.c_str();
             if (dexopt_needed == NO_DEXOPT_NEEDED) {
                 return 0;  // Nothing to do, report success.
             }
+        } else if (sec_dex_result == kSecondaryDexOptProcessCancelled) {
+            // cancelled, not an error.
+            *completed = false;
+            return 0;
         } else {
             if (error_msg->empty()) {  // TODO: Make this a CHECK.
                 *error_msg = "Failed processing secondary.";
@@ -1825,6 +1937,11 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
 
     auto execv_helper = std::make_unique<ExecVHelper>();
 
+    if (dexopt_status_->is_dexopt_blocked()) {
+        *completed = false;
+        return 0;
+    }
+
     LOG(VERBOSE) << "DexInv: --- BEGIN '" << dex_path << "' ---";
 
     RunDex2Oat runner(dex2oat_bin, execv_helper.get());
@@ -1866,10 +1983,18 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
 
         runner.Exec(DexoptReturnCodes::kDex2oatExec);
     } else {
+        dexopt_status_->add_dexopt_pid(pid);
         int res = wait_child(pid);
+        bool cancelled = dexopt_status_->check_if_killed_and_remove_dexopt_pid(pid);
         if (res == 0) {
             LOG(VERBOSE) << "DexInv: --- END '" << dex_path << "' (success) ---";
         } else {
+            if ((WTERMSIG(res) == SIGKILL) && cancelled) {
+                LOG(VERBOSE) << "DexInv: --- END '" << dex_path << "' --- cancelled";
+                // cancelled, not an error
+                *completed = false;
+                return 0;
+            }
             LOG(VERBOSE) << "DexInv: --- END '" << dex_path << "' --- status=0x"
                          << std::hex << std::setw(4) << res << ", process failed";
             *error_msg = format_dexopt_error(res, dex_path);
@@ -1877,12 +2002,14 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
         }
     }
 
+    // TODO(b/156537504) Implement SWAP of completed files
     // We've been successful, don't delete output.
     out_oat.DisableCleanup();
     out_vdex.DisableCleanup();
     out_image.DisableCleanup();
     reference_profile.DisableCleanup();
 
+    *completed = true;
     return 0;
 }
 
