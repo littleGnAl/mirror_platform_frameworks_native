@@ -905,6 +905,11 @@ macro_rules! declare_binder_enum {
         pub struct $enum(pub $backing);
         impl $enum {
             $( pub const $name: Self = Self($value); )*
+
+            #[inline]
+            pub fn enum_range() -> &'static [Self] {
+                &[$(Self::$name),*]
+            }
         }
 
         impl $crate::parcel::Serialize for $enum {
