@@ -891,6 +891,21 @@ macro_rules! declare_binder_interface {
     };
 }
 
+/// Trait providing all the values of an AIDL enumeration.
+///
+/// This trait is implemented for AIDL enumerations and provides a `ENUM_VALUES`
+/// constant that is a reference to a slice of all possible values in this
+/// enumeration.
+pub trait EnumValues: Sized + 'static {
+    /// Exhaustive list of all possible values of this enumeration
+    ///
+    /// This constant can be accessed as `T::ENUM_VALUES` in most cases,
+    /// but if the enumeration also contains an value with the same
+    /// name then `T::ENUM_VALUES` will refer to the value and
+    /// `<T as EnumValues>::ENUM_VALUES` will refer to the constant.
+    const ENUM_VALUES: &'static [Self];
+}
+
 /// Declare an AIDL enumeration.
 ///
 /// This is mainly used internally by the AIDL compiler.
@@ -905,6 +920,10 @@ macro_rules! declare_binder_enum {
         pub struct $enum(pub $backing);
         impl $enum {
             $( pub const $name: Self = Self($value); )*
+        }
+
+        impl $crate::EnumValues for $enum {
+            const ENUM_VALUES: &'static [Self] = &[$(Self::$name),*];
         }
 
         impl $crate::parcel::Serialize for $enum {
