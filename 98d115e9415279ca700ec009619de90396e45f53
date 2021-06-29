@@ -16,6 +16,24 @@
       "message": "The test is failing on Treehugger with the following message:\n\n```\nadb: more than one device/emulator\n```\n\nDan, is ANDROID_SERIAL not set? How do I get the ANDROID_SERIAL to use without using tradefed?",
       "revId": "98d115e9415279ca700ec009619de90396e45f53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b17fe4d_1bc3ac04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-29T02:31:03Z",
+      "side": 1,
+      "message": "Indeed, HostGTest doesn\u0027t set ANDROID_SERIAL. Maybe I should use ExecutableHostTest? Or set ANDROID_SERIAL in HostGTest?",
+      "parentUuid": "614a5f2e_cdb080e4",
+      "revId": "98d115e9415279ca700ec009619de90396e45f53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
