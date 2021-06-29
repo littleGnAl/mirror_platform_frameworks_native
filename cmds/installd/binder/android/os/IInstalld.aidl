@@ -57,7 +57,8 @@ interface IInstalld {
             @utf8InCpp String packageName, int appId,
             @utf8InCpp String seInfo, int targetSdkVersion, @utf8InCpp String fromCodePath);
 
-    void dexopt(@utf8InCpp String apkPath, int uid, @nullable @utf8InCpp String packageName,
+    // return true if completed, false if cancelled. It will throw exception for other error cases.
+    boolean dexopt(@utf8InCpp String apkPath, int uid, @nullable @utf8InCpp String packageName,
             @utf8InCpp String instructionSet, int dexoptNeeded,
             @nullable @utf8InCpp String outputPath, int dexFlags,
             @utf8InCpp String compilerFilter, @nullable @utf8InCpp String uuid,
@@ -66,6 +67,9 @@ interface IInstalld {
             @nullable @utf8InCpp String profileName,
             @nullable @utf8InCpp String dexMetadataPath,
             @nullable @utf8InCpp String compilationReason);
+    // Blocks (when block is true) or unblock (when block is false) dexopt.
+    // Blocking also invloves cancelling the currently running dexopt.
+    void controlDexOptBlocking(boolean block);
     boolean compileLayouts(@utf8InCpp String apkPath, @utf8InCpp String packageName,
             @utf8InCpp String outDexFile, int uid);
 
