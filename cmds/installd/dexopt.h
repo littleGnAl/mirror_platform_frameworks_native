@@ -121,11 +121,24 @@ bool hash_secondary_dex_file(const std::string& dex_path,
         const std::string& pkgname, int uid, const std::optional<std::string>& volume_uuid,
         int storage_flag, std::vector<uint8_t>* out_secondary_dex_hash);
 
+// wrapper without completed output flag. This is for the case cancellation is not handled.
 int dexopt(const char *apk_path, uid_t uid, const char *pkgName, const char *instruction_set,
         int dexopt_needed, const char* oat_dir, int dexopt_flags, const char* compiler_filter,
         const char* volume_uuid, const char* class_loader_context, const char* se_info,
         bool downgrade, int target_sdk_version, const char* profile_name,
         const char* dexMetadataPath, const char* compilation_reason, std::string* error_msg);
+
+// competed pass true if completed, false if it was cancelled in the middle.
+int dexopt(const char *apk_path, uid_t uid, const char *pkgName, const char *instruction_set,
+        int dexopt_needed, const char* oat_dir, int dexopt_flags, const char* compiler_filter,
+        const char* volume_uuid, const char* class_loader_context, const char* se_info,
+        bool downgrade, int target_sdk_version, const char* profile_name,
+        const char* dexMetadataPath, const char* compilation_reason, std::string* error_msg,
+        /* out */ bool* completed);
+
+bool is_dexopt_blocked();
+
+void control_dexopt_blocking(bool block);
 
 bool calculate_oat_file_path_default(char path[PKG_PATH_MAX], const char *oat_dir,
         const char *apk_path, const char *instruction_set);
