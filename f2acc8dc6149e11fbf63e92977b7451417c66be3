@@ -22,6 +22,30 @@
       },
       "revId": "f2acc8dc6149e11fbf63e92977b7451417c66be3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719fb6a0_6830cd54",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-29T15:57:24Z",
+      "side": 0,
+      "message": "maybe, but it is only hit in the fatal case, so I don\u0027t know",
+      "parentUuid": "1c22eaef_bd32b1da",
+      "range": {
+        "startLine": 486,
+        "startChar": 36,
+        "endLine": 486,
+        "endChar": 41
+      },
+      "revId": "f2acc8dc6149e11fbf63e92977b7451417c66be3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
