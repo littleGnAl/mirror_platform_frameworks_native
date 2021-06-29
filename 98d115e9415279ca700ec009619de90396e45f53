@@ -52,6 +52,24 @@
       "parentUuid": "2b17fe4d_1bc3ac04",
       "revId": "98d115e9415279ca700ec009619de90396e45f53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26020394_9000dd0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 41
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-29T02:43:57Z",
+      "side": 1,
+      "message": "using ExecutableHostTest works but it loses the result parsing. Therefore, I am proposing CL:1751003. PTAL.",
+      "parentUuid": "6c993473_c55a75fb",
+      "revId": "98d115e9415279ca700ec009619de90396e45f53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
