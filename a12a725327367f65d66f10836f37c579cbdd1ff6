@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b6338a_996b42ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-30T04:38:28Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a12a725327367f65d66f10836f37c579cbdd1ff6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "135b2a88_c88fa1c0",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "It\u0027s a function in C++, so I wanted to match that. Otherwise, it can definitely be a const (I initially had a const that the function returned a reference to).",
       "parentUuid": "135b2a88_c88fa1c0",
+      "range": {
+        "startLine": 908,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 13
+      },
+      "revId": "a12a725327367f65d66f10836f37c579cbdd1ff6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4558020_b7c41b80",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-30T04:38:28Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to follow C++ and if you think const is more idiomatic in Rust then please go for it.",
+      "parentUuid": "cf98f966_bcd9ef70",
       "range": {
         "startLine": 908,
         "startChar": 0,
