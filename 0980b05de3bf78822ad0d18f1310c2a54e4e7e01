@@ -130,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc89211_e4cd0200",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1868,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-06-30T20:21:16Z",
+      "side": 1,
+      "message": "Ok, if this folder doesn\u0027t disappear, we can probably leave this part as is. Although, I\u0027m concerned about the possibility of the user manually deleting the folder like you mentioned - would it mean that we will have a dangling watch on a non-existing folder?",
+      "parentUuid": "b1945878_28b5229e",
+      "range": {
+        "startLine": 1868,
+        "startChar": 20,
+        "endLine": 1868,
+        "endChar": 50
+      },
+      "revId": "0980b05de3bf78822ad0d18f1310c2a54e4e7e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74166427_e579d9a1",

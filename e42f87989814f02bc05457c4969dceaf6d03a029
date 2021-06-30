@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271ba2bd_9a280548",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-06-30T20:21:16Z",
+      "side": 1,
+      "message": "Don\u0027t we need to add a watch for /dev  here?\nWhat happens if \"isV4lScanningEnabled\" returns false?",
+      "range": {
+        "startLine": 305,
+        "startChar": 6,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "e42f87989814f02bc05457c4969dceaf6d03a029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5f2470_e0610aba",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-06-30T20:21:16Z",
+      "side": 1,
+      "message": "This can be done in EventHub.h or in the initializer list, to avoid having to add an else branch here.",
+      "range": {
+        "startLine": 317,
+        "startChar": 8,
+        "endLine": 317,
+        "endChar": 20
+      },
+      "revId": "e42f87989814f02bc05457c4969dceaf6d03a029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ece6b9_51f143ec",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-06-30T20:21:16Z",
+      "side": 1,
+      "message": "nit: let\u0027s name this \u0027addInputDeviceInotify\u0027, since this is adding a watch for /dev/input rather than for /dev.",
+      "range": {
+        "startLine": 368,
+        "startChar": 15,
+        "endLine": 368,
+        "endChar": 31
+      },
+      "revId": "e42f87989814f02bc05457c4969dceaf6d03a029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
