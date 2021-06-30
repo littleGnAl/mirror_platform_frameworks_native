@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d154eed_b558f520",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-06-30T15:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5243aa91_8de902f0",
+      "revId": "0980b05de3bf78822ad0d18f1310c2a54e4e7e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61d67d71_090b2e7b",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-28T16:44:11Z",
       "side": 1,
       "message": "We call this \u0027mVideoWd\u0027, but in reality we don\u0027t just use it for video devices anymore, but also for watching the presence of /dev/input. This should be renamed. Maybe \u0027mDevWd\u0027 (because it watches /dev)?",
+      "range": {
+        "startLine": 1865,
+        "startChar": 36,
+        "endLine": 1865,
+        "endChar": 44
+      },
+      "revId": "0980b05de3bf78822ad0d18f1310c2a54e4e7e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef1fb65_758feadf",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-06-30T15:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61d67d71_090b2e7b",
       "range": {
         "startLine": 1865,
         "startChar": 36,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1945878_28b5229e",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1868,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-06-30T15:32:25Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t. Once it appears, it wont go away, the folder is empty and any future events will come up there, for e.g. when i run the test again, or if something gets connected (although if there was something like that in device tree, /dev/input would be there at the start).\n\nI tested PS6 and the Eventhub test passes. I did rm -rf /dev/input and ran the test  again and it created /dev/input again and the test passed. I had debug prints in the else if (strcmp(event-\u003ename, \"input\") part and they came up both the times, so it seems even if someone does remove it, its handled.",
+      "parentUuid": "acaac6b3_6f4dc845",
+      "range": {
+        "startLine": 1868,
+        "startChar": 20,
+        "endLine": 1868,
+        "endChar": 50
+      },
+      "revId": "0980b05de3bf78822ad0d18f1310c2a54e4e7e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74166427_e579d9a1",
         "filename": "services/inputflinger/reader/EventHub.cpp",
         "patchSetId": 4
@@ -77,6 +143,30 @@
       "writtenOn": "2021-06-28T16:44:11Z",
       "side": 1,
       "message": "lets move this into a separate function to avoid duplication with L304\n\nAlso, add a comment in the new function to explain why we need this. Something like:\n// On devices that don\u0027t have any input devices (like some development boards), the /dev/input directory will be absent. The user may still plug in an input device at a later time, however. Add watch for contents of /dev/input only when /dev/input appears.",
+      "range": {
+        "startLine": 1875,
+        "startChar": 20,
+        "endLine": 1877,
+        "endChar": 70
+      },
+      "revId": "0980b05de3bf78822ad0d18f1310c2a54e4e7e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ef2d35_1a4a4d65",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1877,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-06-30T15:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74166427_e579d9a1",
       "range": {
         "startLine": 1875,
         "startChar": 20,
