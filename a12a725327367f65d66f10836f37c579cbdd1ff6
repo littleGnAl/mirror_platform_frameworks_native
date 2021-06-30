@@ -111,6 +111,30 @@
       },
       "revId": "a12a725327367f65d66f10836f37c579cbdd1ff6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ca50b3_b6e5b2b1",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-30T23:26:44Z",
+      "side": 1,
+      "message": "I don\u0027t have a good idea either. ;-) \n\n\u003e move the constant outside the Rust struct,\n\nThe current implementation seems to be reasonable then.",
+      "parentUuid": "27ae4ebd_1868e035",
+      "range": {
+        "startLine": 908,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 13
+      },
+      "revId": "a12a725327367f65d66f10836f37c579cbdd1ff6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
