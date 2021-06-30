@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a55b15_65364fc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-30T22:43:12Z",
+      "side": 1,
+      "message": "\u003e Does this assume that the new hook mechanism is used only to attach/detach Java threads?\n\nFrom libbinder\u0027s perspective, the hook can be used however the client wants. Right now it is only used for attaching / detaching Java threads.\n\nHence, this text is only in the commit message, not in the code comments.",
+      "parentUuid": "e4080b97_13773bb8",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c565e18b_7651dacd",
@@ -143,6 +167,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0ab5b0_91da38d7",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-30T22:43:12Z",
+      "side": 1,
+      "message": "Resolving. Elliot, do you have any concerns with this?",
+      "parentUuid": "44d5aece_a954eaad",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 44
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf26c37c_349e4973",
@@ -204,6 +252,30 @@
       "side": 1,
       "message": "L293 is meant to be the default thread name. Normally, the thread name should be retrieved in L295.\n\nThe hook itself requires me to provide a thread name for logging purposes:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/1751551/1/core/jni/AndroidRuntime.cpp#1349",
       "parentUuid": "683bad83_41dec337",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 9
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b8514b_72d9987e",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-30T22:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fd8ca06_45317ccd",
       "range": {
         "startLine": 292,
         "startChar": 0,
