@@ -241,6 +241,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c8a7482_9083eadb",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-30T23:07:09Z",
+      "side": 1,
+      "message": "no, i meant \"let\u0027s not add stuff to libutils at all, let\u0027s give libbinder a way to know whether it\u0027s running in a zygote context --- that would also work equally well for std::thread and pthread_create()\".",
+      "parentUuid": "3d048013_e2ecdbd8",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 44
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf26c37c_349e4973",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 3
