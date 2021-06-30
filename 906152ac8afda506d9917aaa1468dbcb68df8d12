@@ -265,6 +265,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3acf84e_0f45f43c",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-30T23:12:40Z",
+      "side": 1,
+      "message": "You mean:\n\nDon\u0027t change anything in libutils.\n\nIn libandroid_runtime, expose javaAttachThread and javaDetachThread by deleting the \"static\" keyword\n\nIn libbinder, declare javaAttachThread and javaDetachThread as weak symbols, and run them when necessary\n\n?",
+      "parentUuid": "9c8a7482_9083eadb",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 44
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf26c37c_349e4973",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 3
