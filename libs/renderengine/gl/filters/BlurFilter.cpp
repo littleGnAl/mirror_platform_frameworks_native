@@ -184,8 +184,8 @@ status_t BlurFilter::render(bool multiPass) {
     if (mix >= 1 || multiPass) {
         mLastDrawTarget->bindAsReadBuffer();
         glBlitFramebuffer(0, 0, mLastDrawTarget->getBufferWidth(),
-                          mLastDrawTarget->getBufferHeight(), mDisplayX, mDisplayY, mDisplayWidth,
-                          mDisplayHeight, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+                          mLastDrawTarget->getBufferHeight(), mDisplayX, mDisplayY, mDisplayX + mDisplayWidth,
+                          mDisplayY + mDisplayHeight, GL_COLOR_BUFFER_BIT, GL_LINEAR);
         return NO_ERROR;
     }
 
