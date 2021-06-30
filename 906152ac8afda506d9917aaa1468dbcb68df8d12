@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72932ee8_ad873bd0",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-30T16:52:33Z",
+      "side": 1,
+      "message": "agreed, see:\nhttps://android-review.googlesource.com/c/platform/system/core/+/1751787/5/libutils/Threads.cpp#67\n\nThough, I know the pre/post-hook things might have been my suggestion, but I\u0027m wondering, could we use javaCreateThreadEtc here? Is it possible to create a android_thread_func_t function here, and we can pass this to the existing API?",
+      "parentUuid": "cd8ced59_d3fc7134",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 44
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf26c37c_349e4973",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 3
