@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44d5aece_a954eaad",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-30T22:33:05Z",
+      "side": 1,
+      "message": "They were indeed meant to be global, not per-thread. See my explanation in https://android-review.googlesource.com/c/platform/system/core/+/1751787/5..8/libutils/Threads.cpp#b67.\n\nIt is meant to magically infects this code, indeed. This is so that libbinder can call vm-\u003eAttachThread in zygote and not call it in other processes. libbinder itself doesn\u0027t know anything about JVM.",
+      "parentUuid": "aa2be175_0c7696fa",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 44
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf26c37c_349e4973",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 3
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "It\u0027s used as the thread name. +1 - see \u0027ProcessState::makeBinderThreadName\u0027. I don\u0027t think we\u0027ll need any more information in the thread name (we don\u0027t really need numbers - we have TIDs). Maybe call it RpcSessionThread for now?",
       "parentUuid": "bf26c37c_349e4973",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 9
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd8ca06_45317ccd",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-30T22:33:05Z",
+      "side": 1,
+      "message": "L293 is meant to be the default thread name. Normally, the thread name should be retrieved in L295.\n\nThe hook itself requires me to provide a thread name for logging purposes:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/1751551/1/core/jni/AndroidRuntime.cpp#1349",
+      "parentUuid": "683bad83_41dec337",
       "range": {
         "startLine": 292,
         "startChar": 0,
