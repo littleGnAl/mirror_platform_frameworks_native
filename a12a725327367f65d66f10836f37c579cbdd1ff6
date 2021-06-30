@@ -87,6 +87,30 @@
       },
       "revId": "a12a725327367f65d66f10836f37c579cbdd1ff6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ae4ebd_1868e035",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-06-30T21:56:23Z",
+      "side": 1,
+      "message": "Follow-up issue to figure out: idiomatic Rust constants are all upper case, which risks a collision with the enum items. If I call the constant VALUES and the enum has its own VALUES item, the Rust code will fail to compile. I could:\n* move the constant outside the Rust struct, into the parent module; the name issue is still there but then the conflict would be between $enum and VALUES, which is less likely.\n* have the AIDL compiler give it a name that\u0027s unique, e.g., $name_VALUES (can\u0027t do it from the macro because I can\u0027t concatenate $name and _VALUES from here) or VALUES1\n* do nothing and hope it works out.",
+      "parentUuid": "b4558020_b7c41b80",
+      "range": {
+        "startLine": 908,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 13
+      },
+      "revId": "a12a725327367f65d66f10836f37c579cbdd1ff6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
