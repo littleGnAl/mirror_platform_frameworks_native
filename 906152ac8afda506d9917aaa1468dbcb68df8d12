@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa2be175_0c7696fa",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-30T17:06:56Z",
+      "side": 1,
+      "message": "oops see also https://android-review.googlesource.com/c/platform/frameworks/base/+/1751551/1/core/jni/AndroidRuntime.cpp#1593\n\nPlease ignore the javaCreateThreadEtc/android_thread_func_t suggestion. We needed the hooks specifically because we want to attach the JVM even for some threads which we don\u0027t create (where we join).",
+      "parentUuid": "72932ee8_ad873bd0",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 44
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf26c37c_349e4973",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 3
