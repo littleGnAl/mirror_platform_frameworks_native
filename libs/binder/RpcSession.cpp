@@ -20,14 +20,17 @@
 
 #include <inttypes.h>
 #include <poll.h>
+#include <pthread.h>
 #include <unistd.h>
 
 #include <string_view>
 
 #include <android-base/macros.h>
+#include <android_runtime/threads.h>
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
 #include <binder/Stability.h>
+#include <utils/AndroidThreads.h>
 #include <utils/String8.h>
 
 #include "RpcSocketAddress.h"
@@ -274,10 +277,46 @@ RpcSession::PreJoinSetupResult RpcSession::preJoinSetup(base::unique_fd fd) {
     };
 }
 
+namespace {
+// RAII object for attaching / detaching current thread to JVM if Android Runtime exists. If
+// Android Runtime doesn't exist, no-op.
+class JavaThreadAttacher {
+public:
+    JavaThreadAttacher() {
+        if (javaAttachThread == nullptr) return;
+        char buf[16];
+        const char* threadName = "UnknownRpcSessionThread"; // default thread name
+        if (0 == pthread_getname_np(pthread_self(), buf, sizeof(buf))) {
+            threadName = buf;
+        }
+        LOG_RPC_DETAIL("Attaching current thread %s to JVM", threadName);
+        LOG_ALWAYS_FATAL_IF(!javaAttachThread(threadName), "Cannot attach thread %s to JVM",
+                            threadName);
+        mAttached = true;
+    }
+    ~JavaThreadAttacher() {
+        if (!mAttached) return;
+        LOG_ALWAYS_FATAL_IF(javaDetachThread == nullptr,
+                            "javaAttachThread exists but javaDetachThread doesn't");
+        LOG_RPC_DETAIL("Detaching current thread from JVM");
+        if (javaDetachThread()) {
+            mAttached = false;
+        } else {
+            ALOGW("Unable to detach current thread from JVM");
+        }
+    }
+
+private:
+    DISALLOW_COPY_AND_ASSIGN(JavaThreadAttacher);
+    bool mAttached = false;
+};
+} // namespace
+
 void RpcSession::join(sp<RpcSession>&& session, PreJoinSetupResult&& setupResult) {
     sp<RpcConnection>& connection = setupResult.connection;
 
     if (setupResult.status == OK) {
+        JavaThreadAttacher javaThreadAttacher;
         while (true) {
             status_t status = session->state()->getAndExecuteCommand(connection, session,
                                                                      RpcState::CommandType::ANY);
