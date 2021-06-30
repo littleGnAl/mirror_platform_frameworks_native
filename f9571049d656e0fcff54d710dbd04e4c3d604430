@@ -33,6 +33,24 @@
       "message": "Steven, a new patchset uploaded. Please take a look.",
       "revId": "f9571049d656e0fcff54d710dbd04e4c3d604430",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23147b61_f1a3ebdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-30T23:52:17Z",
+      "side": 1,
+      "message": "Oh, my bad. You already did it. Thanks.",
+      "parentUuid": "a0ef52a7_0ee99bd8",
+      "revId": "f9571049d656e0fcff54d710dbd04e4c3d604430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
