@@ -193,6 +193,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10800975_5dc7630e",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-30T22:48:48Z",
+      "side": 1,
+      "message": "\u003e Elliot, do you have any concerns with this?\n\nyeah, i really don\u0027t like \"It is meant to magically infects this code, indeed\". that feels like we\u0027re making things worse from a libutils/pthread_create/std::thread interop perspective.\n\nif libbinder needs to know whether it\u0027s running in the zygote or not, can\u0027t it use a weak symbol or something?",
+      "parentUuid": "bd0ab5b0_91da38d7",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 44
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf26c37c_349e4973",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 3
