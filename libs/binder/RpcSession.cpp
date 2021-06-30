@@ -20,6 +20,7 @@
 
 #include <inttypes.h>
 #include <poll.h>
+#include <pthread.h>
 #include <unistd.h>
 
 #include <string_view>
@@ -28,6 +29,7 @@
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
 #include <binder/Stability.h>
+#include <utils/AndroidThreads.h>
 #include <utils/String8.h>
 
 #include "RpcSocketAddress.h"
@@ -274,10 +276,34 @@ RpcSession::PreJoinSetupResult RpcSession::preJoinSetup(base::unique_fd fd) {
     };
 }
 
+namespace {
+class HookExecuter {
+public:
+    HookExecuter() { runHook(getThreadPreHook); }
+    ~HookExecuter() { runHook(getThreadPostHook); }
+
+private:
+    void runHook(decltype(getThreadPreHook) getter) {
+        thread_hook_t hook = nullptr;
+        void* userdata = nullptr;
+        getter(&hook, &userdata);
+        if (hook == nullptr) return;
+
+        char buf[16];
+        const char* threadName = "RpcBinder";
+        if (0 == pthread_getname_np(pthread_self(), buf, sizeof(buf))) {
+            threadName = buf;
+        }
+        hook(userdata, threadName);
+    }
+};
+} // namespace
+
 void RpcSession::join(sp<RpcSession>&& session, PreJoinSetupResult&& setupResult) {
     sp<RpcConnection>& connection = setupResult.connection;
 
     if (setupResult.status == OK) {
+        HookExecuter hookExecuter;
         while (true) {
             status_t status = session->state()->getAndExecuteCommand(connection, session,
                                                                      RpcState::CommandType::ANY);
