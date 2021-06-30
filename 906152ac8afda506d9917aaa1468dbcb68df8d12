@@ -217,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d048013_e2ecdbd8",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-06-30T22:58:58Z",
+      "side": 1,
+      "message": "I am more than happy to switch over to weak symbols, if that\u0027s preferable! :D\n\nHere\u0027s the plan:\n\nIn libutils/AndroidThreads.h:\n\n```\nvoid runThreadPreHook() __attribute__((weak));\nvoid runThreadPostHook() __attribute__((weak));\n\nint thread_data_t::trampoline(...) {\n    if (runThreadPreHook) runThreadPreHook();\n    entryFunction();\n    if (runThreadPostHook) runThreadPostHook();\n}\n```\n\nIn libandroid_runtime:\n\n```\nvoid runThreadPreHook() { javaAttachThread(); }\nvoid runThreadPostHook() { javaDetachThread(); }\nint javaAttachThread() {\n    char threadName[16];\n    pthread_getname_np(pthread_self(), threadName, sizeof(threadName));\n    // ...\n} \n```\n\nIn libbinder:\n```\nvoid RpcSession::join() {\n    runThreadPreHook();\n    while (...) {};\n    runThreadPostHook();\n}\n```\n\nIf you like this, I\u0027ll start the work. Otherwise, let me know how you would like this to be.",
+      "parentUuid": "10800975_5dc7630e",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 44
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf26c37c_349e4973",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 3
