@@ -68,6 +68,30 @@
       },
       "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "683bad83_41dec337",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-30T16:34:21Z",
+      "side": 1,
+      "message": "It\u0027s used as the thread name. +1 - see \u0027ProcessState::makeBinderThreadName\u0027. I don\u0027t think we\u0027ll need any more information in the thread name (we don\u0027t really need numbers - we have TIDs). Maybe call it RpcSessionThread for now?",
+      "parentUuid": "bf26c37c_349e4973",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 9
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
