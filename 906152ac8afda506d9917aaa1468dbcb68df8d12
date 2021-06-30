@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4080b97_13773bb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-30T07:17:04Z",
+      "side": 1,
+      "message": "Does this assume that the new hook mechanism is used only to attach/detach Java threads? What happens if a client has registered a different hook?",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c565e18b_7651dacd",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-30T07:17:04Z",
+      "side": 1,
+      "message": "This looks odd to me because this parameter is used for both Pre and Post hooks. I know that this works because the type of the two functions are the same, but still that doesn\u0027t look intuitive to me.\n\nI don\u0027t have a strong opinion, but wish that this can be written as ...\n\nvoid runHook(bool pre) {\n    if (pre) {getThreadPreHook(...);}\n    else {getThreadPostHook(...);}\n    ...\n}\n\nor\n\ntemplate\u003ctypename F\u003e\nvoid runHook(F getter) { ... }\n\nthough the latter generates slightly bigger code.",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 44
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf26c37c_349e4973",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-30T07:17:04Z",
+      "side": 1,
+      "message": "I don\u0027t understand what the the name is used for in the hook routines, especially given that it falls back to the default name \u0027RpcBinder\u0027.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 9
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
