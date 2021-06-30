@@ -22,6 +22,30 @@
       },
       "revId": "a12a725327367f65d66f10836f37c579cbdd1ff6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf98f966_bcd9ef70",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-06-30T02:38:26Z",
+      "side": 1,
+      "message": "It\u0027s a function in C++, so I wanted to match that. Otherwise, it can definitely be a const (I initially had a const that the function returned a reference to).",
+      "parentUuid": "135b2a88_c88fa1c0",
+      "range": {
+        "startLine": 908,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 13
+      },
+      "revId": "a12a725327367f65d66f10836f37c579cbdd1ff6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
