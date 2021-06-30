@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f53980a7_00255661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-30T06:09:33Z",
+      "side": 1,
+      "message": "I missed NDK version of ParcelableHolder. fixed.",
+      "revId": "f9571049d656e0fcff54d710dbd04e4c3d604430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
