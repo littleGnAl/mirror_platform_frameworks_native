@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "135b2a88_c88fa1c0",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-30T02:05:28Z",
+      "side": 1,
+      "message": "can we use const instead of function?",
+      "range": {
+        "startLine": 908,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 13
+      },
+      "revId": "a12a725327367f65d66f10836f37c579cbdd1ff6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
