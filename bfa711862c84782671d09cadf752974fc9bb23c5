@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7af79c7_d75a10e6",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-01T03:54:29Z",
+      "side": 1,
+      "message": "Save this to a static variable using std::call_once because dlsym is a costly action?",
+      "range": {
+        "startLine": 288,
+        "startChar": 8,
+        "endLine": 288,
+        "endChar": 66
+      },
+      "revId": "bfa711862c84782671d09cadf752974fc9bb23c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f96f90a_ce26334b",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-01T03:54:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 303,
+        "startChar": 8,
+        "endLine": 303,
+        "endChar": 66
+      },
+      "revId": "bfa711862c84782671d09cadf752974fc9bb23c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
