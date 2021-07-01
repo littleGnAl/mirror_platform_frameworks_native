@@ -16,6 +16,29 @@
       "message": "Hi,\n\nI need you to review this patch for the tilt value output problems on Android.\nYour cooperation would be very helpful for this to go forward.\nThank you for taking your time.\n\nTats",
       "revId": "35e05533759f5467bd38c20524c6d10eb1abb2e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "973168c6_17d75cd6",
+        "filename": "services/inputflinger/reader/mapper/TouchInputMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2021-07-01T18:44:46Z",
+      "side": 1,
+      "message": "Should we report the resolution here as well?",
+      "range": {
+        "startLine": 923,
+        "startChar": 12,
+        "endLine": 923,
+        "endChar": 48
+      },
+      "revId": "35e05533759f5467bd38c20524c6d10eb1abb2e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
