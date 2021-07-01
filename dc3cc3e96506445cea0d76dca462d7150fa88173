@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e40667db_b071e22f",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-07-01T03:37:44Z",
+      "side": 1,
+      "message": "+1",
+      "range": {
+        "startLine": 903,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 68
+      },
+      "revId": "dc3cc3e96506445cea0d76dca462d7150fa88173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
