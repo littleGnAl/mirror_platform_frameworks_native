@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2eed3936_eea86140",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-07-01T11:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "271ba2bd_9a280548",
+      "range": {
+        "startLine": 305,
+        "startChar": 6,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "e42f87989814f02bc05457c4969dceaf6d03a029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ea5f2470_e0610aba",
         "filename": "services/inputflinger/reader/EventHub.cpp",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-30T20:21:16Z",
       "side": 1,
       "message": "This can be done in EventHub.h or in the initializer list, to avoid having to add an else branch here.",
+      "range": {
+        "startLine": 317,
+        "startChar": 8,
+        "endLine": 317,
+        "endChar": 20
+      },
+      "revId": "e42f87989814f02bc05457c4969dceaf6d03a029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba1b97be_0e8d5566",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-07-01T11:22:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea5f2470_e0610aba",
       "range": {
         "startLine": 317,
         "startChar": 8,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-30T20:21:16Z",
       "side": 1,
       "message": "nit: let\u0027s name this \u0027addInputDeviceInotify\u0027, since this is adding a watch for /dev/input rather than for /dev.",
+      "range": {
+        "startLine": 368,
+        "startChar": 15,
+        "endLine": 368,
+        "endChar": 31
+      },
+      "revId": "e42f87989814f02bc05457c4969dceaf6d03a029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ad8bcc_09db2198",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-07-01T11:22:33Z",
+      "side": 1,
+      "message": "Done.\n\nI have made he filename/function/Wd consistent with each other, i.e. DEVICE_INPUT_PATH/addDeviceInputInotify/mDeviceInputWd and INPUT_PATH/addDeviceInotify/mDeviceWd",
+      "parentUuid": "e8ece6b9_51f143ec",
       "range": {
         "startLine": 368,
         "startChar": 15,

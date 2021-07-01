@@ -154,6 +154,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4b9c0e5_c6680cee",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1868,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-07-01T11:22:33Z",
+      "side": 1,
+      "message": "I did try: \n\n                } else if (strcmp(event-\u003ename, \"input\") \u003d\u003d 0 \u0026\u0026 event-\u003emask \u0026 IN_DELETE ) {\n                    int err \u003d inotify_rm_watch(mINotifyFd, mDeviceInputWd);\n                    if(err) {\n                        ALOGW(\"Could not remove INotify for %s: %s\",\n                               DEVICE_INPUT_PATH, strerror(errno));\n                    }\n\nhowever, i always got:\nW EventHub: Could not remove INotify for /dev/input: Invalid argument\n\nFrom https://linux.die.net/man/2/inotify_rm_watch it means likely that The watch descriptor wd is not valid.\n\nI did add an inotifyd on /dev/input and after rm -rf /dev/input it marked it as \"unwatchable\". so i guess it means that when u remove the folder the watch becomes invalid and that is ok i think.\n\nAfter i ran inputflinger_tests again, the watch was added again in readNotifyLocked, and the Wd was valid, so its ok to have the dangling watch on a non-existing folder.",
+      "parentUuid": "3cc89211_e4cd0200",
+      "range": {
+        "startLine": 1868,
+        "startChar": 20,
+        "endLine": 1868,
+        "endChar": 50
+      },
+      "revId": "0980b05de3bf78822ad0d18f1310c2a54e4e7e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74166427_e579d9a1",
