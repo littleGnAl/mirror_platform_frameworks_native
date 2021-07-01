@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b20a455_0a279828",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-07-01T20:22:10Z",
+      "side": 1,
+      "message": "Actually, I think\n\n```\nstatic auto sym \u003d dlsym(RTLD_DEFAULT, \"androidJavaAttachThread\");\n```\n\nwould be thread safe too (since C++11), according to \n\nhttps://stackoverflow.com/a/1661564\n\nhttp://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3337.pdf , section 6.7.4",
+      "parentUuid": "98f9c50c_cda8717d",
+      "range": {
+        "startLine": 288,
+        "startChar": 8,
+        "endLine": 288,
+        "endChar": 66
+      },
+      "revId": "bfa711862c84782671d09cadf752974fc9bb23c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f96f90a_ce26334b",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 7
