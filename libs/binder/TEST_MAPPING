@@ -16,10 +16,13 @@
       "name": "binderDriverInterfaceTest"
     },
     {
+      "name": "binderHostDeviceTest"
+    },
+    {
       "name": "binderTextOutputTest"
     },
     {
-      "name": "binderParcelTest"
+      "name": "binderUnitTest"
     },
     {
       "name": "binderLibTest"
