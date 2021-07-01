@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98f9c50c_cda8717d",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-07-01T20:04:14Z",
+      "side": 1,
+      "message": "And note that this would apply to all processes, even for those that doesn\u0027t call this code at all.\n\nI can squeeze them into one pointer to a struct that contains all four things, though. Then it would become one static pointer for all processes, and one heap allocation of the size of two std::once_flag and two pointers for system_server only",
+      "parentUuid": "e6406b58_07d39bb1",
+      "range": {
+        "startLine": 288,
+        "startChar": 8,
+        "endLine": 288,
+        "endChar": 66
+      },
+      "revId": "bfa711862c84782671d09cadf752974fc9bb23c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f96f90a_ce26334b",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 7
