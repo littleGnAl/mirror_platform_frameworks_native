@@ -22,6 +22,30 @@
       },
       "revId": "91a96b6474aa999790e4fabfa8ab7240c61c7490",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "def6d8c1_576ba34e",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-01T00:03:39Z",
+      "side": 1,
+      "message": "clean deletes the object, but it may be used by lookupOrCreateFromBinder @ L272.",
+      "parentUuid": "3bf5974f_cec21da2",
+      "range": {
+        "startLine": 243,
+        "startChar": 31,
+        "endLine": 243,
+        "endChar": 55
+      },
+      "revId": "91a96b6474aa999790e4fabfa8ab7240c61c7490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
