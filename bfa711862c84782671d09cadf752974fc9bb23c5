@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6406b58_07d39bb1",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-07-01T19:58:06Z",
+      "side": 1,
+      "message": "Sure; that would add a few global variables, though (two std::once_flag and two pointers)",
+      "parentUuid": "f7af79c7_d75a10e6",
+      "range": {
+        "startLine": 288,
+        "startChar": 8,
+        "endLine": 288,
+        "endChar": 66
+      },
+      "revId": "bfa711862c84782671d09cadf752974fc9bb23c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f96f90a_ce26334b",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 7
