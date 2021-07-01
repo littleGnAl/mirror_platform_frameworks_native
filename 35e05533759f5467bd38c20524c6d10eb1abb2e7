@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b8688f_9b4a77c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885590
+      },
+      "writtenOn": "2021-07-01T00:42:40Z",
+      "side": 1,
+      "message": "Hi,\n\nI need you to review this patch for the tilt value output problems on Android.\nYour cooperation would be very helpful for this to go forward.\nThank you for taking your time.\n\nTats",
+      "revId": "35e05533759f5467bd38c20524c6d10eb1abb2e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
