@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48842f31_3c4164f6",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-07-01T22:30:39Z",
+      "side": 0,
+      "message": "nit: let\u0027s bring back this log",
+      "range": {
+        "startLine": 310,
+        "startChar": 8,
+        "endLine": 310,
+        "endChar": 48
+      },
+      "revId": "07ac6eefffa4822a2e40c2e497bd4a5dae402958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
