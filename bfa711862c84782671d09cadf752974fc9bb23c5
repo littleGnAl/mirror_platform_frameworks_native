@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26857865_cccc5fc2",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-07-01T20:34:06Z",
+      "side": 1,
+      "message": "Thanks Elliot! I\u0027ve been researching around this topic and I don\u0027t know if dlsym() would be evaluated twice if there are two threads entering JavaThreadAttacher(). (Though, even if it were evaluated twice, the assignment should only happen once atomically).\n\nDone changing it to static. Note: we pay the price of two pointers per process using binder. Hopefully this doesn\u0027t push over the page limit.",
+      "parentUuid": "8c44b50a_9ade67fd",
+      "range": {
+        "startLine": 288,
+        "startChar": 8,
+        "endLine": 288,
+        "endChar": 66
+      },
+      "revId": "bfa711862c84782671d09cadf752974fc9bb23c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f96f90a_ce26334b",
@@ -133,6 +157,30 @@
       "writtenOn": "2021-07-01T03:54:29Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 303,
+        "startChar": 8,
+        "endLine": 303,
+        "endChar": 66
+      },
+      "revId": "bfa711862c84782671d09cadf752974fc9bb23c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd533a40_8b010b4f",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-07-01T20:34:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f96f90a_ce26334b",
       "range": {
         "startLine": 303,
         "startChar": 8,
