@@ -337,6 +337,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "974609fd_2376144c",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-07-01T01:32:47Z",
+      "side": 1,
+      "message": "See new patchset.\n\nThis actually doesn\u0027t work; within libbinder, javaAttachThread is always resolved to nullptr. I suspect it is because libbinder is loaded before libandroid_runtime (because libbinder is a dependency of libandroid_runtime), and javaAttachThread is in libbinder\u0027s symbols table, and gets resolved to null.\n\nMaybe instead of using weak symbols, I should use dlopen(NULL) instead?",
+      "parentUuid": "bb4c843f_2ee5ea41",
+      "range": {
+        "startLine": 286,
+        "startChar": 17,
+        "endLine": 286,
+        "endChar": 44
+      },
+      "revId": "906152ac8afda506d9917aaa1468dbcb68df8d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf26c37c_349e4973",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 3

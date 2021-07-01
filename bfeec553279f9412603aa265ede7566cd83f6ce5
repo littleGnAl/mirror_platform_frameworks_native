@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b25ec1aa_ff187792",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-07-01T01:32:47Z",
+      "side": 1,
+      "message": "This is always null",
+      "revId": "bfeec553279f9412603aa265ede7566cd83f6ce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
