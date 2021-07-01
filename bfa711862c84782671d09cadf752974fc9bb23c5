@@ -144,6 +144,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eca1220_8385b069",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-07-01T20:57:23Z",
+      "side": 1,
+      "message": "no, the compiler inserts the \"moral equivalent\" of the pthread_once_t code for you, so one thread will just block.",
+      "parentUuid": "26857865_cccc5fc2",
+      "range": {
+        "startLine": 288,
+        "startChar": 8,
+        "endLine": 288,
+        "endChar": 66
+      },
+      "revId": "bfa711862c84782671d09cadf752974fc9bb23c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f96f90a_ce26334b",
