@@ -16,6 +16,24 @@
       "message": "You are hitting a merge conflict on internal master with ag/12141927.\n\n3 options:\n\n1. I can cherry-pick that CL to aosp-master, and you can help resolve merge conflicts (if any) on that CL. This way, you can rebase the current CL on top, and it should flow into master\n2. Wait until internal master is pushed to aosp, and then rebase this CL on top\n3. Specify a \u0027DO NOT MERGE\u0027 in the current CL (the beginning of the commit message), which means it will not go into internal master and only into aosp-master. Then later, when master is pushed into aosp, again cherry-pick this CL and submit again into aosp-master.\n\nLet me know which you prefer.",
       "revId": "bd79c4acf1745eefe81b40bfef9d309943efbaf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a6c0e0_203bdcf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-07-02T19:54:54Z",
+      "side": 1,
+      "message": "whats the difference between aosp-master and internal master?\n\nI have rebased the patch on top of master (https://android.googlesource.com/platform/frameworks/native/+/refs/heads/master) in PS10, so i guess should be ok now?",
+      "parentUuid": "ae6ddd06_d41d38b0",
+      "revId": "bd79c4acf1745eefe81b40bfef9d309943efbaf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
