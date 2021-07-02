@@ -39,6 +39,30 @@
       },
       "revId": "36e4630388a32a4702f29d7f0b86e4b8f59ea4bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8428909e_db8de482",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-07-02T10:25:26Z",
+      "side": 1,
+      "message": "I think it should be here.\n\nWe want to add a watch on /dev to check for the creation of /dev/input if /dev/input doesn\u0027t exist. It shouldn\u0027t matter if the exists function returned an error or not, only that it returned false.",
+      "parentUuid": "7817428c_09030a83",
+      "range": {
+        "startLine": 307,
+        "startChar": 8,
+        "endLine": 308,
+        "endChar": 36
+      },
+      "revId": "36e4630388a32a4702f29d7f0b86e4b8f59ea4bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
