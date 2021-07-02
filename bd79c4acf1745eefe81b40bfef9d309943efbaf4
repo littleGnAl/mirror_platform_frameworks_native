@@ -34,6 +34,24 @@
       "parentUuid": "ae6ddd06_d41d38b0",
       "revId": "bd79c4acf1745eefe81b40bfef9d309943efbaf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c8a719b_2dc4f5e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-07-02T21:20:40Z",
+      "side": 1,
+      "message": "internal master is the source of truth. aosp-master flows into internal master.\n\nHere are some resources that describe the branches: [0] and [1]\n\nMost likely, you don\u0027t have access to internal master.\n\n[0] https://stackoverflow.com/questions/5026250/android-source-branches\n[1] https://source.android.com/setup/start/codelines",
+      "parentUuid": "a8a6c0e0_203bdcf1",
+      "revId": "bd79c4acf1745eefe81b40bfef9d309943efbaf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
