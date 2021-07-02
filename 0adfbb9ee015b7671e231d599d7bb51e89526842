@@ -51,6 +51,23 @@
       "parentUuid": "a8c8106a_03041094",
       "revId": "0adfbb9ee015b7671e231d599d7bb51e89526842",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "344fed22_53c27ce6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2021-07-02T20:58:55Z",
+      "side": 1,
+      "message": "Before:\n\nD LibBpfLoader: Loading optional ELF object /system/etc/bpf/gpu_mem.o with license Apache 2.0\nD LibBpfLoader: Couldn\u0027t find section bpfloader_min_ver (defaulting to 0 [0x0]).\nD LibBpfLoader: Couldn\u0027t find section bpfloader_max_ver (defaulting to 65536 [0x10000]).\nD LibBpfLoader: Couldn\u0027t find section size_of_bpf_map_def (defaulting to 32 [0x20]).\nD LibBpfLoader: Couldn\u0027t find section size_of_bpf_prog_def (defaulting to 20 [0x14]).\nI LibBpfLoader: BpfLoader version 0x00001 processing ELF object /system/etc/bpf/gpu_mem.o with ver [0x00000,0x10000)\nE LibBpfLoader: readProgDefs failed due to improper sized progs section, 28 % 20 !\u003d 0\n\nAfter:\n\nD LibBpfLoader: Loading optional ELF object /system/etc/bpf/gpu_mem.o with license Apache 2.0\nI LibBpfLoader: Section bpfloader_min_ver value is 0 [0x0]\nI LibBpfLoader: Section bpfloader_max_ver value is 65536 [0x10000]\nI LibBpfLoader: Section size_of_bpf_map_def value is 40 [0x28]\nI LibBpfLoader: Section size_of_bpf_prog_def value is 28 [0x1c]\nI LibBpfLoader: BpfLoader version 0x00001 processing ELF object /system/etc/bpf/gpu_mem.o with ver [0x00000,0x10000)",
+      "revId": "0adfbb9ee015b7671e231d599d7bb51e89526842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
