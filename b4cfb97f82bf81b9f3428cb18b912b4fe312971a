@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "739fb573_4bed135b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-07-02T22:46:41Z",
+      "side": 1,
+      "message": "Hi Shenxiang,\n\nCould you please add a test case for this in InputReader_test? I think this will help us understand the issue you are trying to solve.\n\nYou can run the tests using atest, like this:\n`atest inputflinger_tests`.\n\nThanks!",
+      "revId": "b4cfb97f82bf81b9f3428cb18b912b4fe312971a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
