@@ -34,7 +34,7 @@ namespace android {
 
 using base::ScopeGuard;
 
-#ifdef RPC_FLAKE_PRONE
+#if RPC_FLAKE_PRONE
 void rpcMaybeWaitToFlake() {
     static std::random_device r;
     static std::mutex m;
