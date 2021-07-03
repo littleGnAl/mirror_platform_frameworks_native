@@ -16,6 +16,23 @@
       "message": "For the majority of use cases, resolves:\nhttps://issuetracker.google.com/issues/163120692",
       "revId": "3966c88cdf58a8bde80f20911a576af9a188c84f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "322ac8b2_cb7215c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288387
+      },
+      "writtenOn": "2021-07-03T06:06:50Z",
+      "side": 1,
+      "message": "Requires fw/b:\nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/1755610",
+      "revId": "3966c88cdf58a8bde80f20911a576af9a188c84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
