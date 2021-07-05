@@ -2138,9 +2138,10 @@ Layer::RoundedCornerState Layer::getRoundedCornerState() const {
     if (p != nullptr) {
         RoundedCornerState parentState = p->getRoundedCornerState();
         if (parentState.radius > 0) {
-            ui::Transform t = getActiveTransform(getDrawingState());
+            ui::Transform t = parentState.parentBufferScaleTransform * getActiveTransform(getDrawingState());
             t = t.inverse();
             parentState.cropRect = t.transform(parentState.cropRect);
+            parentState.parentBufferScaleTransform = getBufferScaleTransform();
             // The rounded corners shader only accepts 1 corner radius for performance reasons,
             // but a transform matrix can define horizontal and vertical scales.
             // Let's take the average between both of them and pass into the shader, practically we
