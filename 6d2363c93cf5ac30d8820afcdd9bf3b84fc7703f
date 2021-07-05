@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000012792168",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1755605?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "603b476e_0d851f26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-05T08:08:58Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027they\u0027, \u0027them\u0027, or \u0027person\u0027; see https://developers.google.com/style/word-list#gender for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 17,
+        "startChar": 64,
+        "endLine": 17,
+        "endChar": 67
+      },
+      "revId": "6d2363c93cf5ac30d8820afcdd9bf3b84fc7703f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000012792168",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1755605?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a1ce57c0_b816cfb6",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2141,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-05T08:08:58Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2141,
+        "startChar": 0,
+        "endLine": 2141,
+        "endChar": 109
+      },
+      "revId": "6d2363c93cf5ac30d8820afcdd9bf3b84fc7703f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
