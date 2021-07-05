@@ -140,6 +140,8 @@ public:
 
         // Rounded rectangle in local layer coordinate space.
         FloatRect cropRect = FloatRect();
+        // The buffer scale transform in parent layer.
+        ui::Transform parentBufferScaleTransform;
         // Radius of the rounded rectangle.
         float radius = 0.0f;
     };
