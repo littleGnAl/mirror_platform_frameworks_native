@@ -52,6 +52,24 @@
       "parentUuid": "a8a6c0e0_203bdcf1",
       "revId": "bd79c4acf1745eefe81b40bfef9d309943efbaf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c6df7c_f5e0e3c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-07-05T09:45:16Z",
+      "side": 1,
+      "message": "Thanks for the links and the explanation!\n\nOption 1 seems like the best option, so will go for that. Please let me know where I have to cherry-pick. Thanks!",
+      "parentUuid": "5c8a719b_2dc4f5e8",
+      "revId": "bd79c4acf1745eefe81b40bfef9d309943efbaf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
