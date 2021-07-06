@@ -16,6 +16,24 @@
       "message": "Add `Bug: N/A`",
       "revId": "395b9d5aef635188a6700c467aef08d4b86cfe90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8523ecb7_1e993f20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1483893
+      },
+      "writtenOn": "2021-07-06T09:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2828cc93_02d8bf92",
+      "revId": "395b9d5aef635188a6700c467aef08d4b86cfe90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
