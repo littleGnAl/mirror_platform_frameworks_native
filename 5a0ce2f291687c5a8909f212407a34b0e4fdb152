@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75c67a50_945cd8c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-07-07T23:02:35Z",
+      "side": 1,
+      "message": "This is going to cause some conflicts when merging internally - I believe the concept of a getBufferScaleTransform() no longer exists.",
+      "revId": "5a0ce2f291687c5a8909f212407a34b0e4fdb152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
