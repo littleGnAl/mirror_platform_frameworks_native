@@ -127,6 +127,8 @@ struct __attribute__ ((__packed__, aligned(alignof(uint32_t)))) ColorAspects {
         PrimariesBT601_6_525,   // Rec.ITU-R BT.601-6 525 or equivalent
         PrimariesGenericFilm,   // Generic Film
         PrimariesBT2020,        // Rec.ITU-R BT.2020 or equivalent
+        PrimariesDCIP3,         // SMPTE RP 431-2 or equivalent
+        PrimariesD65P3,         // SMPTE EG 432-1 or equivalent
         PrimariesOther = 0xff,
     };
 
@@ -173,6 +175,8 @@ struct __attribute__ ((__packed__, aligned(alignof(uint32_t)))) ColorAspects {
         StandardBT2020Constant,         // PrimariesBT2020 and MatrixBT2020Constant
         StandardBT470M,                 // PrimariesBT470_6M and MatrixBT470_6M
         StandardFilm,                   // PrimariesGenericFilm and KR=0.253, KB=0.068
+        StandardDCIP3,                  // PrimariesDCIP3
+        StandardD65P3,                  // PrimariesD653 and MatrixBT601_6
         StandardOther = 0xff,
     };
 
@@ -282,6 +286,8 @@ inline static const char *asString(ColorAspects::Primaries i, const char *def = 
         case ColorAspects::PrimariesBT601_6_525: return "BT601_6_525";
         case ColorAspects::PrimariesGenericFilm: return "GenericFilm";
         case ColorAspects::PrimariesBT2020:      return "BT2020";
+        case ColorAspects::PrimariesDCIP3:       return "DCIP3";
+        case ColorAspects::PrimariesD65P3:       return "D65P3";
         case ColorAspects::PrimariesOther:       return "Other";
         default:                                 return def;
     }
@@ -332,6 +338,8 @@ inline static const char *asString(ColorAspects::Standard i, const char *def = "
         case ColorAspects::StandardBT2020Constant:       return "BT2020Constant";
         case ColorAspects::StandardBT470M:               return "BT470M";
         case ColorAspects::StandardFilm:                 return "Film";
+        case ColorAspects::StandardDCIP3:                return "DCIP3";
+        case ColorAspects::StandardD65P3:                return "D65P3";
         case ColorAspects::StandardOther:                return "Other";
         default:                                         return def;
     }
