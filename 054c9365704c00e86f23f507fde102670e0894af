@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bbb7ee1_e60b966e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-07-07T19:42:37Z",
+      "side": 1,
+      "message": "I filed a bug (http://b/193051159) for the mistaken UX that indicated I was somehow responsible for this fuzzer, when indeed there are no OWNERS in any of these directories - 😞. I suggest that you add a proper OWNERS file for cmd since it seems like there are now some relevant folks CCed here.\n\nFor future reference, I\u0027m not comfortable reviewing general fuzzer changes, as these tend to be more specific to the particular area, rather than something toolchain-related.",
+      "revId": "054c9365704c00e86f23f507fde102670e0894af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
