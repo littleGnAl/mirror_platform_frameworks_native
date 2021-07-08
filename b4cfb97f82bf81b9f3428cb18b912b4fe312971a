@@ -16,6 +16,24 @@
       "message": "Hi Shenxiang,\n\nCould you please add a test case for this in InputReader_test? I think this will help us understand the issue you are trying to solve.\n\nYou can run the tests using atest, like this:\n`atest inputflinger_tests`.\n\nThanks!",
       "revId": "b4cfb97f82bf81b9f3428cb18b912b4fe312971a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a5c2c0_6a04887e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1879320
+      },
+      "writtenOn": "2021-07-08T16:40:30Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I have added a test case in InputReader_test to describe the issue that I have meet. Please take a look at this. Thanks!",
+      "parentUuid": "739fb573_4bed135b",
+      "revId": "b4cfb97f82bf81b9f3428cb18b912b4fe312971a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
