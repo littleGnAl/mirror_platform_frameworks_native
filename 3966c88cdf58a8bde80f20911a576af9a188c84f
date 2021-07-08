@@ -33,6 +33,23 @@
       "message": "Requires fw/b:\nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/1755610",
       "revId": "3966c88cdf58a8bde80f20911a576af9a188c84f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07e4ee74_fea830bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-07-08T00:57:54Z",
+      "side": 1,
+      "message": "Hi Sam,\n\nWe merged a different solution for this problem internally. It should be available in a later S release. So I don\u0027t think we need this CL.\n\nAlso, for your solution, I don\u0027t think we can be sure that accessibility injects the events right away. If it processes events on a separate thread, for example, then input could send 2 events to it. If a11y hasn\u0027t responded to the first event, the second event will overwrite the \"latest\" event in the InputFilterHost, and the device id will remain broken.",
+      "revId": "3966c88cdf58a8bde80f20911a576af9a188c84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
