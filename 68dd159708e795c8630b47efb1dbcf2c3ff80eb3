@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2061578c_8a7bfa12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-07-08T20:02:50Z",
+      "side": 1,
+      "message": "Add here:\n\n    Merged-In: Ib5658e96783b8a1099fe0a2cb6dda51703045c84\n\nthis way, it won\u0027t try to apply this CL to internal master",
+      "revId": "68dd159708e795c8630b47efb1dbcf2c3ff80eb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
