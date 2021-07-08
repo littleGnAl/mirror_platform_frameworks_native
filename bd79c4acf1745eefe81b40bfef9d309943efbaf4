@@ -70,6 +70,24 @@
       "parentUuid": "5c8a719b_2dc4f5e8",
       "revId": "bd79c4acf1745eefe81b40bfef9d309943efbaf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f148ec3_a9d09719",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-07-08T09:29:35Z",
+      "side": 1,
+      "message": "Thanks for sending the patch through. I have rebased this commit on top of it.",
+      "parentUuid": "c3c6df7c_f5e0e3c0",
+      "revId": "bd79c4acf1745eefe81b40bfef9d309943efbaf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
