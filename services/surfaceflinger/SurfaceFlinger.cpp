@@ -19,7 +19,6 @@
 #pragma clang diagnostic ignored "-Wconversion"
 
 //#define LOG_NDEBUG 0
-#define ATRACE_TAG ATRACE_TAG_GRAPHICS
 
 #include "SurfaceFlinger.h"
 
@@ -1951,7 +1950,7 @@ void SurfaceFlinger::onMessageRefresh() {
         refreshArgs.colorTransformMatrix = mDrawingState.colorMatrix;
         mDrawingState.colorMatrixChanged = false;
     }
-
+    
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
 
     if (mDebugRegion != 0) {
