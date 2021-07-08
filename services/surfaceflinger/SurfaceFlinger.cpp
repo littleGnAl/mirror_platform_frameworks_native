@@ -1950,7 +1950,7 @@ void SurfaceFlinger::onMessageRefresh() {
         refreshArgs.colorTransformMatrix = mDrawingState.colorMatrix;
         mDrawingState.colorMatrixChanged = false;
     }
-    
+
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
 
     if (mDebugRegion != 0) {
