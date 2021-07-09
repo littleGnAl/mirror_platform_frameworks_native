@@ -16,6 +16,24 @@
       "message": "This is still hitting a merge conflict internally. I\u0027ll just cherry-pick this into master and you can specify merged-in here as well. Otherwise there would be too many changes to CP into aosp from master.",
       "revId": "33dfb97a51521e63d1dc0b360e96d702c037d0ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c76272e6_624c2b98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1721573
+      },
+      "writtenOn": "2021-07-09T09:13:25Z",
+      "side": 1,
+      "message": "Thanks, i have added Merged-In: I8675921280e351dd8885becce79a7cb4a9936c10, so I guess I should wait for you to merge this in internal-master now, and then Presubmit-Verify will pass in aosp-master and the patch can be merged here?",
+      "parentUuid": "fcc210de_a5efc022",
+      "revId": "33dfb97a51521e63d1dc0b360e96d702c037d0ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
