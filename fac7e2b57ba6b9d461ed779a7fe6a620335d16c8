@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba256b3_b1638656",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-07-09T10:04:07Z",
+      "side": 1,
+      "message": "should we cp to sc-dev? happy to Dr No it if done today (and you think it\u0027s needed for sc-dev)",
+      "revId": "fac7e2b57ba6b9d461ed779a7fe6a620335d16c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
