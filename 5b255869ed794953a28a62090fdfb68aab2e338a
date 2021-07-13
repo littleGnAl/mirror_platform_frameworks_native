@@ -16,6 +16,23 @@
       "message": "Can you provide a bug ID? This change does not have a lot of context.\n\nThe problem description is also not clear. What is \"ground glass\"? Why is it rendered incorrectly, and why does the proposed fix help solve this issue? How was this change tested and validated to solve this issue?",
       "revId": "5b255869ed794953a28a62090fdfb68aab2e338a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "675a7480_415bd5d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012974
+      },
+      "writtenOn": "2021-07-13T15:50:46Z",
+      "side": 1,
+      "message": "\u003e The attached video is the problem of adding a blurred background to the Recents window, and a similar problem should also occur when adding a blurred background to the notification bar.\n\nWhere is the attached video? I don\u0027t think Gerrit lets you attach a video. Is there an associated bug?",
+      "revId": "5b255869ed794953a28a62090fdfb68aab2e338a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
