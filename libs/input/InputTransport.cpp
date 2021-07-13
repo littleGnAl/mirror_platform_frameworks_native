@@ -880,6 +880,9 @@ void InputConsumer::updateTouchState(InputMessage& msg) {
         ssize_t index = findTouchState(deviceId, source);
         if (index >= 0) {
             TouchState& touchState = mTouchStates.editItemAt(index);
+            if ((msg.body.motion.action & AMOTION_EVENT_ACTION_MASK) == AMOTION_EVENT_ACTION_UP) {
+               touchState.addHistory(msg);
+            }
             rewriteMessage(touchState, msg);
             mTouchStates.removeAt(index);
         }
