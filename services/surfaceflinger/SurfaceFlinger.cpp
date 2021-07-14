@@ -198,7 +198,7 @@ struct SCOPED_CAPABILITY ConditionalLockGuard {
     }
 
     Mutex& mutex;
-    const bool lock;
+    const bool lock;;
 };
 
 using ConditionalLock = ConditionalLockGuard<Mutex>;
