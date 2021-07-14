@@ -1958,7 +1958,6 @@ void SurfaceFlinger::onMessageRefresh() {
 
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
 
-
     if (mDebugRegion != 0) {
         refreshArgs.devOptFlashDirtyRegionsDelay =
                 std::chrono::milliseconds(mDebugRegion > 1 ? mDebugRegion : 0);
