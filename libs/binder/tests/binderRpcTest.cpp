@@ -127,11 +127,6 @@ public:
         out->clear();
         for (auto session : spServer->listSessions()) {
             size_t count = session->state()->countBinders();
-            if (count != 1) {
-                // this is called when there is only one binder held remaining,
-                // so to aid debugging
-                session->state()->dump();
-            }
             out->push_back(count);
         }
         return Status::ok();
@@ -968,6 +963,12 @@ TEST_P(BinderRpc, OnewayCallExhaustion) {
     Status status = iface->sleepMsAsync(kTooLongMs);
     EXPECT_EQ(DEAD_OBJECT, status.transactionError()) << status;
 
+    // now that it has died, wait for the remote session to shutdown
+    std::vector<int32_t> remoteCounts;
+    do {
+        EXPECT_OK(proc.rootIface->countBinders(&remoteCounts));
+    } while (remoteCounts.size() == kNumClients);
+
     // the second session should be shutdown in the other process by the time we
     // are able to join above (it'll only be hung up once it finishes processing
     // any pending commands). We need to erase this session from the record
@@ -1112,7 +1113,7 @@ static bool testSupportVsockLoopback() {
 
     sp<RpcSession> session = RpcSession::make();
     bool okay = session->setupVsockClient(VMADDR_CID_LOCAL, vsockPort);
-    CHECK(server->shutdown());
+    while (!server->shutdown()) usleep(10000);
     ALOGE("Detected vsock loopback supported: %d", okay);
     return okay;
 }
