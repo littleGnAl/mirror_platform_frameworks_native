@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ace9dd_dfabbc33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-14T22:20:56Z",
+      "side": 1,
+      "message": "you should share the time benefit in the commit message or in the Cl",
+      "revId": "b4b511324559b92822a712cd3232da71f9dad916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
