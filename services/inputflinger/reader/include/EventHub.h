@@ -373,13 +373,13 @@ private:
         }
     };
 
-    status_t openDeviceLocked(const char* devicePath);
+    status_t openDeviceLocked(const std::string& devicePath);
     void openVideoDeviceLocked(const std::string& devicePath);
     void createVirtualKeyboardLocked();
     void addDeviceLocked(Device* device);
     void assignDescriptorLocked(InputDeviceIdentifier& identifier);
 
-    void closeDeviceByPathLocked(const char* devicePath);
+    void closeDeviceByPathLocked(const std::string& devicePath);
     void closeVideoDeviceByPathLocked(const std::string& devicePath);
     void closeDeviceLocked(Device* device);
     void closeAllDevicesLocked();
@@ -396,14 +396,14 @@ private:
     status_t unregisterDeviceFromEpollLocked(Device* device);
     void unregisterVideoDeviceFromEpollLocked(const TouchVideoDevice& videoDevice);
 
-    status_t scanDirLocked(const char* dirname);
+    status_t scanDirLocked(const std::string& dirname);
     status_t scanVideoDirLocked(const std::string& dirname);
     void scanDevicesLocked();
     status_t readNotifyLocked();
 
     Device* getDeviceByDescriptorLocked(const std::string& descriptor) const;
     Device* getDeviceLocked(int32_t deviceId) const;
-    Device* getDeviceByPathLocked(const char* devicePath) const;
+    Device* getDeviceByPathLocked(const std::string& devicePath) const;
     /**
      * Look through all available fd's (both for input devices and for video devices),
      * and return the device pointer.
@@ -425,6 +425,9 @@ private:
 
     status_t mapLed(Device* device, int32_t led, int32_t* outScanCode) const;
     void setLedStateLocked(Device* device, int32_t led, bool on);
+
+    void addDeviceInputInotify();
+    void addDeviceInotify();
 
     // Protect all internal state.
     mutable Mutex mLock;
@@ -465,8 +468,8 @@ private:
     int mWakeReadPipeFd;
     int mWakeWritePipeFd;
 
-    int mInputWd;
-    int mVideoWd;
+    int mDeviceInputWd;
+    int mDeviceWd = -1;
 
     // Maximum number of signalled FDs to handle at a time.
     static const int EPOLL_MAX_EVENTS = 16;
