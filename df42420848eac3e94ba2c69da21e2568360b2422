@@ -16,6 +16,24 @@
       "message": "Are there benchmark results showing that this is an improvement? Has this been a significant performance issue in the past that this is resolving?",
       "revId": "df42420848eac3e94ba2c69da21e2568360b2422",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a34d9d8_13d91e37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1670415
+      },
+      "writtenOn": "2021-07-14T15:15:34Z",
+      "side": 1,
+      "message": "Sorry. I don\u0027t do any benchmark for it. The initial reason I created this CL is only code clean up reason. The same checking has been done multiple times, so I extracted it to a value to reduce it.",
+      "parentUuid": "6dcd2048_6a1ee1b3",
+      "revId": "df42420848eac3e94ba2c69da21e2568360b2422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
