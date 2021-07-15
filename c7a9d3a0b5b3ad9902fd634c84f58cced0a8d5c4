@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355be310_aa1551d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1871720
+      },
+      "writtenOn": "2021-07-15T17:03:47Z",
+      "side": 1,
+      "message": "Thanks for reviewing! Latest patch amends a missing semi-colon ; )",
+      "revId": "c7a9d3a0b5b3ad9902fd634c84f58cced0a8d5c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

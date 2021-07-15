@@ -70,6 +70,30 @@
       },
       "revId": "971b2a7749be22111a4a2656973ad2e8de4a520d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "026a0f27_f213ce0c",
+        "filename": "libs/nativewindow/include/vndk/hardware_buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1871720
+      },
+      "writtenOn": "2021-07-15T17:03:47Z",
+      "side": 1,
+      "message": "Looks like we can resolve this.",
+      "parentUuid": "c3e33da0_b96d6456",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 37
+      },
+      "revId": "971b2a7749be22111a4a2656973ad2e8de4a520d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
