@@ -365,6 +365,19 @@ struct BinderRpcTestProcessSession {
         rootIface = nullptr;
         rootBinder = nullptr;
     }
+
+    void connectToAcceptedSessions() {
+        for (auto& info : proc.sessions) {
+            auto connections = info.session->releaseAcceptedConnections();
+            info.session = nullptr;
+
+            auto session = RpcSession::make();
+            EXPECT_TRUE(session->attachAcceptedConnections(std::move(connections)));
+            proc.sessions[0] = {session, session->getRootObject()};
+            rootBinder = proc.sessions.at(0).root;
+            rootIface = interface_cast<IBinderRpcTest>(rootBinder);
+        }
+    }
 };
 
 enum class SocketType {
@@ -392,6 +405,7 @@ public:
         size_t numThreads = 1;
         size_t numSessions = 1;
         size_t numIncomingConnections = 0;
+        RpcSession::SetupMode setupMode = RpcSession::SetupMode::FULL;
     };
 
     // This creates a new process serving an interface on a certain number of
@@ -452,6 +466,7 @@ public:
         for (size_t i = 0; i < options.numSessions; i++) {
             sp<RpcSession> session = RpcSession::make();
             session->setMaxThreads(options.numIncomingConnections);
+            session->setSetupMode(options.setupMode);
 
             switch (socketType) {
                 case SocketType::UNIX:
@@ -468,7 +483,11 @@ public:
             }
             LOG_ALWAYS_FATAL("Could not connect");
         success:
-            ret.sessions.push_back({session, session->getRootObject()});
+            sp<IBinder> root;
+            if (options.setupMode == RpcSession::SetupMode::FULL) {
+                root = session->getRootObject();
+            }
+            ret.sessions.push_back({session, root});
         }
         return ret;
     }
@@ -493,6 +512,14 @@ public:
 
 TEST_P(BinderRpc, Ping) {
     auto proc = createRpcTestSocketServerProcess({});
+    ASSERT_NE(proc.rootBinder, nullptr);
+    EXPECT_EQ(OK, proc.rootBinder->pingBinder());
+}
+
+TEST_P(BinderRpc, PingAcceptOnly) {
+    auto proc = createRpcTestSocketServerProcess({.setupMode = RpcSession::SetupMode::ACCEPT_ONLY});
+    proc.connectToAcceptedSessions();
+
     ASSERT_NE(proc.rootBinder, nullptr);
     EXPECT_EQ(OK, proc.rootBinder->pingBinder());
 }
@@ -986,44 +1013,53 @@ TEST_P(BinderRpc, OnewayCallExhaustion) {
 TEST_P(BinderRpc, Callbacks) {
     const static std::string kTestString = "good afternoon!";
 
-    for (bool callIsOneway : {true, false}) {
-        for (bool callbackIsOneway : {true, false}) {
-            for (bool delayed : {true, false}) {
-                auto proc = createRpcTestSocketServerProcess(
-                        {.numThreads = 1, .numSessions = 1, .numIncomingConnections = 1});
-                auto cb = sp<MyBinderRpcCallback>::make();
+    for (auto setupMode : {RpcSession::SetupMode::FULL, RpcSession::SetupMode::ACCEPT_ONLY}) {
+        for (bool callIsOneway : {true, false}) {
+            for (bool callbackIsOneway : {true, false}) {
+                for (bool delayed : {true, false}) {
+                    auto proc = createRpcTestSocketServerProcess({.numThreads = 1,
+                                                                  .numSessions = 1,
+                                                                  .numIncomingConnections = 1,
+                                                                  .setupMode = setupMode});
 
-                if (callIsOneway) {
-                    EXPECT_OK(proc.rootIface->doCallbackAsync(cb, callbackIsOneway, delayed,
-                                                              kTestString));
-                } else {
-                    EXPECT_OK(
-                            proc.rootIface->doCallback(cb, callbackIsOneway, delayed, kTestString));
+                    if (setupMode == RpcSession::SetupMode::ACCEPT_ONLY) {
+                        proc.connectToAcceptedSessions();
+                    }
+
+                    auto cb = sp<MyBinderRpcCallback>::make();
+
+                    if (callIsOneway) {
+                        EXPECT_OK(proc.rootIface->doCallbackAsync(cb, callbackIsOneway, delayed,
+                                                                  kTestString));
+                    } else {
+                        EXPECT_OK(proc.rootIface->doCallback(cb, callbackIsOneway, delayed,
+                                                             kTestString));
+                    }
+
+                    using std::literals::chrono_literals::operator""s;
+                    std::unique_lock<std::mutex> _l(cb->mMutex);
+                    cb->mCv.wait_for(_l, 1s, [&] { return !cb->mValues.empty(); });
+
+                    EXPECT_EQ(cb->mValues.size(), 1)
+                            << "callIsOneway: " << callIsOneway
+                            << " callbackIsOneway: " << callbackIsOneway << " delayed: " << delayed;
+                    if (cb->mValues.empty()) continue;
+                    EXPECT_EQ(cb->mValues.at(0), kTestString)
+                            << "callIsOneway: " << callIsOneway
+                            << " callbackIsOneway: " << callbackIsOneway << " delayed: " << delayed;
+
+                    // since we are severing the connection, we need to go ahead and
+                    // tell the server to shutdown and exit so that waitpid won't hang
+                    if (auto status = proc.rootIface->scheduleShutdown(); !status.isOk()) {
+                        EXPECT_EQ(DEAD_OBJECT, status.transactionError()) << status;
+                    }
+
+                    // since this session has an incoming connection w/ a threadpool, we
+                    // need to manually shut it down
+                    EXPECT_TRUE(proc.proc.sessions.at(0).session->shutdownAndWait(true));
+
+                    proc.expectAlreadyShutdown = true;
                 }
-
-                using std::literals::chrono_literals::operator""s;
-                std::unique_lock<std::mutex> _l(cb->mMutex);
-                cb->mCv.wait_for(_l, 1s, [&] { return !cb->mValues.empty(); });
-
-                EXPECT_EQ(cb->mValues.size(), 1)
-                        << "callIsOneway: " << callIsOneway
-                        << " callbackIsOneway: " << callbackIsOneway << " delayed: " << delayed;
-                if (cb->mValues.empty()) continue;
-                EXPECT_EQ(cb->mValues.at(0), kTestString)
-                        << "callIsOneway: " << callIsOneway
-                        << " callbackIsOneway: " << callbackIsOneway << " delayed: " << delayed;
-
-                // since we are severing the connection, we need to go ahead and
-                // tell the server to shutdown and exit so that waitpid won't hang
-                if (auto status = proc.rootIface->scheduleShutdown(); !status.isOk()) {
-                    EXPECT_EQ(DEAD_OBJECT, status.transactionError()) << status;
-                }
-
-                // since this session has an incoming connection w/ a threadpool, we
-                // need to manually shut it down
-                EXPECT_TRUE(proc.proc.sessions.at(0).session->shutdownAndWait(true));
-
-                proc.expectAlreadyShutdown = true;
             }
         }
     }
