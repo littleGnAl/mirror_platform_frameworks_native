@@ -50,6 +50,11 @@ void rpcMaybeWaitToFlake() {
 RpcState::RpcState() {}
 RpcState::~RpcState() {}
 
+bool RpcState::hasState() {
+    std::lock_guard<std::mutex> _l(mNodeMutex);
+    return mTerminated || !mNodeForAddress.empty();
+}
+
 status_t RpcState::onBinderLeaving(const sp<RpcSession>& session, const sp<IBinder>& binder,
                                    RpcAddress* outAddress) {
     bool isRemote = binder->remoteBinder();
