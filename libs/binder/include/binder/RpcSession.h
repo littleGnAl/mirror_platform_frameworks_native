@@ -59,6 +59,15 @@ public:
     void setMaxThreads(size_t threads);
     size_t getMaxThreads();
 
+    enum class SetupMode {
+        // default
+        FULL,
+        // accept connections, but don't read or write any data from them. See
+        // also 'releaseAcceptedConnections'
+        ACCEPT_ONLY,
+    };
+    void setSetupMode(SetupMode mode);
+
     /**
      * This should be called once per thread, matching 'join' in the remote
      * process.
@@ -83,6 +92,24 @@ public:
      * unceremoniously cast down the bottomless pit, /dev/null.
      */
     [[nodiscard]] bool addNullDebuggingClient();
+
+    struct AcceptedConnection {
+        base::unique_fd fd;
+        bool incoming;
+        uint8_t reserved[11];
+    };
+    static_assert(sizeof(AcceptedConnection) == 16);
+
+    /**
+     * Attach connections released with releaseAcceptedConnections.
+     */
+    [[nodiscard]] bool attachAcceptedConnections(std::vector<AcceptedConnection>&& connections);
+    /**
+     * For SetupMode::ACCEPT_ONLY. Retrieve the accepted connections. Typically,
+     * these would be passed to another process and used with
+     * attachAcceptedConnections.
+     */
+    std::vector<AcceptedConnection> releaseAcceptedConnections();
 
     /**
      * Query the other side of the session for the root object hosted by that
@@ -203,6 +230,7 @@ private:
     };
 
     status_t readId();
+    bool isSetupLocked(); // if any part is setup
 
     // A thread joining a server must always call these functions in order, and
     // cleanup is only programmed once into join. These are in separate
@@ -225,9 +253,10 @@ private:
 
     [[nodiscard]] bool setupSocketClient(const RpcSocketAddress& address);
     [[nodiscard]] bool setupOneSocketConnection(const RpcSocketAddress& address,
-                                                const RpcAddress& sessionId, bool server);
+                                                const RpcAddress& sessionId, bool incoming,
+                                                SetupMode setupMode);
     [[nodiscard]] bool addIncomingConnection(base::unique_fd fd);
-    [[nodiscard]] bool addOutgoingConnection(base::unique_fd fd, bool init);
+    [[nodiscard]] bool addOutgoingConnection(base::unique_fd fd, bool doInit);
     [[nodiscard]] bool setForServer(const wp<RpcServer>& server,
                                     const wp<RpcSession::EventListener>& eventListener,
                                     const RpcAddress& sessionId);
@@ -291,6 +320,7 @@ private:
     std::mutex mMutex; // for all below
 
     size_t mMaxThreads = 0;
+    SetupMode mSetupMode = SetupMode::FULL;
 
     std::condition_variable mAvailableConnectionCv; // for mWaitingThreads
     size_t mWaitingThreads = 0;
@@ -298,6 +328,7 @@ private:
     size_t mOutgoingConnectionsOffset = 0;
     std::vector<sp<RpcConnection>> mOutgoingConnections;
     std::vector<sp<RpcConnection>> mIncomingConnections;
+    std::vector<AcceptedConnection> mAcceptedConnections;
     std::map<std::thread::id, std::thread> mThreads;
 };
 
