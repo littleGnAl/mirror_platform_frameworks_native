@@ -16,6 +16,24 @@
       "message": "you should share the time benefit in the commit message or in the Cl",
       "revId": "b4b511324559b92822a712cd3232da71f9dad916",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79d3fc4_86c603bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-07-15T01:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79ace9dd_dfabbc33",
+      "revId": "b4b511324559b92822a712cd3232da71f9dad916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
