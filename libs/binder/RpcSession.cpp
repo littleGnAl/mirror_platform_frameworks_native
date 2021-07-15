@@ -64,16 +64,19 @@ sp<RpcSession> RpcSession::make() {
 
 void RpcSession::setMaxThreads(size_t threads) {
     std::lock_guard<std::mutex> _l(mMutex);
-    LOG_ALWAYS_FATAL_IF(!mOutgoingConnections.empty() || !mIncomingConnections.empty(),
-                        "Must set max threads before setting up connections, but has %zu client(s) "
-                        "and %zu server(s)",
-                        mOutgoingConnections.size(), mIncomingConnections.size());
+    LOG_ALWAYS_FATAL_IF(isSetupLocked(), "Must set max threads before setting up connections.");
     mMaxThreads = threads;
 }
 
 size_t RpcSession::getMaxThreads() {
     std::lock_guard<std::mutex> _l(mMutex);
     return mMaxThreads;
+}
+
+void RpcSession::setSetupMode(SetupMode mode) {
+    std::lock_guard<std::mutex> _l(mMutex);
+    LOG_ALWAYS_FATAL_IF(isSetupLocked(), "Must set setup mode before setting up connections.");
+    mSetupMode = mode;
 }
 
 bool RpcSession::setupUnixDomainClient(const char* path) {
@@ -103,7 +106,25 @@ bool RpcSession::addNullDebuggingClient() {
         return false;
     }
 
-    return addOutgoingConnection(std::move(serverFd), false);
+    return addOutgoingConnection(std::move(serverFd), false /*doInit*/);
+}
+
+bool RpcSession::attachAcceptedConnections(std::vector<AcceptedConnection>&& connections) {
+    for (auto& connection : connections) {
+        if (connection.incoming) {
+            if (!addIncomingConnection(std::move(connection.fd))) return false;
+        } else {
+            if (!addOutgoingConnection(std::move(connection.fd), true /*doInit*/)) return false;
+        }
+    }
+    return true;
+}
+
+std::vector<RpcSession::AcceptedConnection> RpcSession::releaseAcceptedConnections() {
+    std::lock_guard<std::mutex> _l(mMutex);
+    LOG_ALWAYS_FATAL_IF(mSetupMode != SetupMode::ACCEPT_ONLY);
+    LOG_ALWAYS_FATAL_IF(mAcceptedConnections.empty());
+    return std::move(mAcceptedConnections);
 }
 
 sp<IBinder> RpcSession::getRootObject() {
@@ -260,6 +281,11 @@ status_t RpcSession::readId() {
     return OK;
 }
 
+bool RpcSession::isSetupLocked() {
+    return !mOutgoingConnections.empty() || !mIncomingConnections.empty() ||
+            !mAcceptedConnections.empty();
+}
+
 void RpcSession::WaitForShutdownListener::onSessionLockedAllIncomingThreadsEnded(
         const sp<RpcSession>& session) {
     (void)session;
@@ -394,9 +420,7 @@ sp<RpcServer> RpcSession::server() {
 bool RpcSession::setupSocketClient(const RpcSocketAddress& addr) {
     {
         std::lock_guard<std::mutex> _l(mMutex);
-        LOG_ALWAYS_FATAL_IF(mOutgoingConnections.size() != 0,
-                            "Must only setup session once, but already has %zu clients",
-                            mOutgoingConnections.size());
+        LOG_ALWAYS_FATAL_IF(isSetupLocked(), "Must only setup session once, but already setup");
     }
 
     if (!setupOneSocketConnection(addr, RpcAddress::zero(), false /*incoming*/)) return false;
@@ -475,10 +499,18 @@ bool RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr, const Rp
 
         LOG_RPC_DETAIL("Socket at %s client with fd %d", addr.toString().c_str(), serverFd.get());
 
+        {
+            std::lock_guard<std::mutex> _l(mMutex);
+            if (mSetupMode == SetupMode::FULL) {
+                mAcceptedConnections.push_back({.fd = std::move(serverFd), .incoming = incoming});
+                return true;
+            }
+        }
+
         if (incoming) {
             return addIncomingConnection(std::move(serverFd));
         } else {
-            return addOutgoingConnection(std::move(serverFd), true);
+            return addOutgoingConnection(std::move(serverFd), true /*doInit*/);
         }
     }
 
@@ -515,7 +547,7 @@ bool RpcSession::addIncomingConnection(unique_fd fd) {
     return true;
 }
 
-bool RpcSession::addOutgoingConnection(unique_fd fd, bool init) {
+bool RpcSession::addOutgoingConnection(unique_fd fd, bool doInit) {
     sp<RpcConnection> connection = sp<RpcConnection>::make();
     {
         std::lock_guard<std::mutex> _l(mMutex);
@@ -534,7 +566,7 @@ bool RpcSession::addOutgoingConnection(unique_fd fd, bool init) {
     }
 
     status_t status = OK;
-    if (init) {
+    if (doInit) {
         mState->sendConnectionInit(connection, sp<RpcSession>::fromExisting(this));
     }
 
