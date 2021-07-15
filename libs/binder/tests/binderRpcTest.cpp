@@ -392,6 +392,7 @@ public:
         size_t numThreads = 1;
         size_t numSessions = 1;
         size_t numIncomingConnections = 0;
+        RpcSession::SetupMode setupMode = RpcSession::SetupMode::FULL;
     };
 
     // This creates a new process serving an interface on a certain number of
@@ -452,6 +453,7 @@ public:
         for (size_t i = 0; i < options.numSessions; i++) {
             sp<RpcSession> session = RpcSession::make();
             session->setMaxThreads(options.numIncomingConnections);
+            session->setSetupMode(options.setupMode);
 
             switch (socketType) {
                 case SocketType::UNIX:
@@ -468,7 +470,11 @@ public:
             }
             LOG_ALWAYS_FATAL("Could not connect");
         success:
-            ret.sessions.push_back({session, session->getRootObject()});
+            sp<IBinder> root;
+            if (options.setupMode == RpcSession::SetupMode::FULL) {
+                root = session->getRootObject();
+            }
+            ret.sessions.push_back({session, root});
         }
         return ret;
     }
@@ -493,6 +499,21 @@ public:
 
 TEST_P(BinderRpc, Ping) {
     auto proc = createRpcTestSocketServerProcess({});
+    ASSERT_NE(proc.rootBinder, nullptr);
+    EXPECT_EQ(OK, proc.rootBinder->pingBinder());
+}
+
+TEST_P(BinderRpc, PingAcceptOnly) {
+    auto proc = createRpcTestSocketServerProcess({.setupMode = RpcSession::SetupMode::ACCEPT_ONLY});
+
+    auto connections = proc.proc.sessions.at(0).session->releaseAcceptedConnections();
+
+    auto session = RpcSession::make();
+    EXPECT_TRUE(session->attachAcceptedConnections(std::move(connections)));
+    proc.proc.sessions[0] = {session, session->getRootObject()};
+    proc.rootBinder = proc.proc.sessions.at(0).root;
+    proc.rootIface = interface_cast<IBinderRpcTest>(proc.rootBinder);
+
     ASSERT_NE(proc.rootBinder, nullptr);
     EXPECT_EQ(OK, proc.rootBinder->pingBinder());
 }

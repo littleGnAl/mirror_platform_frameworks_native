@@ -60,6 +60,8 @@ public:
     RpcState();
     ~RpcState();
 
+    bool hasState();
+
     status_t sendConnectionInit(const sp<RpcSession::RpcConnection>& connection,
                                 const sp<RpcSession>& session);
     status_t readConnectionInit(const sp<RpcSession::RpcConnection>& connection,
