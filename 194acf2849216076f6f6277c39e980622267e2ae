@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48355411_f01feb86",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-07-15T20:05:51Z",
+      "side": 1,
+      "message": "Note: I could also use JNI 1.1 behavior and not provide args at all",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 29
+      },
+      "revId": "194acf2849216076f6f6277c39e980622267e2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
