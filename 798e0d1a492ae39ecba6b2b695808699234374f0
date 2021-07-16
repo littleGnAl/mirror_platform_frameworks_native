@@ -22,6 +22,30 @@
       },
       "revId": "798e0d1a492ae39ecba6b2b695808699234374f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ad9f23_48c7ee1c",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-16T00:50:39Z",
+      "side": 1,
+      "message": "ack - I\u0027ve taken a note, thanks. Will follow-up or do if I end up having to change parts of this.",
+      "parentUuid": "18bc9b07_4ecf37be",
+      "range": {
+        "startLine": 184,
+        "startChar": 59,
+        "endLine": 184,
+        "endChar": 68
+      },
+      "revId": "798e0d1a492ae39ecba6b2b695808699234374f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
