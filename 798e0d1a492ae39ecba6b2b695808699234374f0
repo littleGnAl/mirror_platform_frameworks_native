@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18bc9b07_4ecf37be",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-16T00:46:05Z",
+      "side": 1,
+      "message": "nit: the man page says that this is not needed.\n\n```\nPOLLHUP\n              Hang up (only returned in revents; ignored in events).\n```",
+      "range": {
+        "startLine": 184,
+        "startChar": 59,
+        "endLine": 184,
+        "endChar": 68
+      },
+      "revId": "798e0d1a492ae39ecba6b2b695808699234374f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
