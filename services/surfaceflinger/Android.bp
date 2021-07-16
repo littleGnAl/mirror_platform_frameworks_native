@@ -142,6 +142,7 @@ filegroup {
         "ContainerLayer.cpp",
         "DisplayDevice.cpp",
         "DisplayHardware/ComposerHal.cpp",
+        "DisplayHardware/Crc32.cpp",
         "DisplayHardware/DisplayIdentification.cpp",
         "DisplayHardware/FramebufferSurface.cpp",
         "DisplayHardware/HWC2.cpp",

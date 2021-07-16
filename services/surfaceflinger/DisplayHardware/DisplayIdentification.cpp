@@ -28,6 +28,7 @@
 
 #include <log/log.h>
 
+#include "Crc32.h"
 #include "DisplayIdentification.h"
 
 namespace android {
@@ -281,8 +282,9 @@ std::optional<Edid> parseEdid(const DisplayIdentificationData& edid) {
     }
 
     // Hash model string instead of using product code or (integer) serial number, since the latter
-    // have been observed to change on some displays with multiple inputs.
-    const auto modelHash = static_cast<uint32_t>(std::hash<std::string_view>()(modelString));
+    // have been observed to change on some displays with multiple inputs. Use a stable hash instead
+    // of std::hash which is only required to be same within a single execution of a program.
+    const uint32_t modelHash = crc32(modelString);
 
     // Parse extension blocks.
     std::optional<Cea861ExtensionBlock> cea861Block;
