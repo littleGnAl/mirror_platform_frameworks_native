@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c616111_aaad4f31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-16T22:07:58Z",
+      "side": 1,
+      "message": "I probably need more refactoring of this code, might wait for some bigger things until after the TLS support lands though - please review harshly",
+      "revId": "8db5ce0bd6b2b2f27f90e8991b0d508d0c3ac244",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
