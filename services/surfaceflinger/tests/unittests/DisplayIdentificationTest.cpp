@@ -21,6 +21,7 @@
 #include <gtest/gtest.h>
 
 #include "DisplayHardware/DisplayIdentification.h"
+#include "DisplayHardware/Hash.h"
 
 namespace android {
 namespace {
@@ -128,7 +129,7 @@ DisplayIdentificationData asDisplayIdentificationData(const unsigned char (&byte
 }
 
 uint32_t hash(const char* str) {
-    return static_cast<uint32_t>(std::hash<std::string_view>()(str));
+    return static_cast<uint32_t>(cityHash64Len0To16(str));
 }
 
 } // namespace
