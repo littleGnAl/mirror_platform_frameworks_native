@@ -16,6 +16,24 @@
       "message": "I probably need more refactoring of this code, might wait for some bigger things until after the TLS support lands though - please review harshly",
       "revId": "8db5ce0bd6b2b2f27f90e8991b0d508d0c3ac244",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9edd0720_e8388f5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-17T14:06:19Z",
+      "side": 1,
+      "message": "I will be OOO until Wed. I don\u0027t think this is urgent, but if you want early feedback, please invite others.",
+      "parentUuid": "3c616111_aaad4f31",
+      "revId": "8db5ce0bd6b2b2f27f90e8991b0d508d0c3ac244",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

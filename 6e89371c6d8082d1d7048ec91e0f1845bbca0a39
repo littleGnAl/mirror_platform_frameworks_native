@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "557ff86f_97579808",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-17T14:06:19Z",
+      "side": 1,
+      "message": "Do we need to update mOutgoingConnections and mIncomingConnections as well?",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 43
+      },
+      "revId": "6e89371c6d8082d1d7048ec91e0f1845bbca0a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
