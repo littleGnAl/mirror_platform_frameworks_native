@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d77047a_730df8b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1482920
+      },
+      "writtenOn": "2021-07-19T09:29:26Z",
+      "side": 1,
+      "message": "Is there more context to this change like a bug?\n\nPlease let\u0027s also update the CL description with something more informative than \"codelab change\". It should be clear to anyone reading the change log for this file what the purpose of the change was. ",
+      "revId": "e927087f7eae5cd05c28b879425b9eeadf0dac7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
