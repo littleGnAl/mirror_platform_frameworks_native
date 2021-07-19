@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65539d2f_52f457de",
+        "filename": "services/surfaceflinger/DisplayHardware/Hash.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2021-07-19T21:35:01Z",
+      "side": 1,
+      "message": "Unused. Replace with \u003ccstring\u003e for memcpy.",
+      "revId": "a5a7a5d60d0f948292eabde730d4dfdd67c8be38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57227f18_a0d85ee5",
+        "filename": "services/surfaceflinger/DisplayHardware/Hash.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2021-07-19T21:35:01Z",
+      "side": 1,
+      "message": "Nit:\n\n    ALOGE(\"%s called ...\", __func__, len);",
+      "revId": "a5a7a5d60d0f948292eabde730d4dfdd67c8be38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd471f07_012f2cc7",
+        "filename": "services/surfaceflinger/DisplayHardware/Hash.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2021-07-19T21:35:01Z",
+      "side": 1,
+      "message": "Nit: Newer headers omit this. See DisplayIdentification.h for example.\n\nDitto in .cpp file.",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "a5a7a5d60d0f948292eabde730d4dfdd67c8be38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5f8d5a_0d67f7dc",
+        "filename": "services/surfaceflinger/tests/unittests/DisplayIdentificationTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2021-07-19T21:35:01Z",
+      "side": 1,
+      "message": "Could you change this to compare the IDs against constants, and verify that the test passes on 64-bit platforms before/after changing the hash function?",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 51
+      },
+      "revId": "a5a7a5d60d0f948292eabde730d4dfdd67c8be38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
