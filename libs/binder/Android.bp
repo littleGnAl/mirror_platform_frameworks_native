@@ -192,7 +192,7 @@ cc_library {
 
     header_libs: [
         "libbinder_headers",
-        "libandroid_runtime_threads_headers",
+        "libandroid_runtime_vm_headers",
     ],
 
     export_header_lib_headers: [
@@ -288,7 +288,7 @@ cc_library {
     // Do not expand the visibility.
     visibility: [
         "//packages/modules/Virtualization/authfs:__subpackages__",
-        "//packages/modules/Virtualization/compos",
+        "//packages/modules/Virtualization/compos:__subpackages__",
         "//packages/modules/Virtualization/microdroid",
     ],
 }
