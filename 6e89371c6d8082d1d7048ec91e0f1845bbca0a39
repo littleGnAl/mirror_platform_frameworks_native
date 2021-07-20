@@ -22,6 +22,30 @@
       },
       "revId": "6e89371c6d8082d1d7048ec91e0f1845bbca0a39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6486bde7_821080a5",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-20T23:20:19Z",
+      "side": 1,
+      "message": "added asserts",
+      "parentUuid": "557ff86f_97579808",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 43
+      },
+      "revId": "6e89371c6d8082d1d7048ec91e0f1845bbca0a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
