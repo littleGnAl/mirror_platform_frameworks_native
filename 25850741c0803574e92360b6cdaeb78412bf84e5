@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2a5473_4dd70df4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-07-20T22:18:21Z",
+      "side": 1,
+      "message": "frameworks/native/cmds/dumpstate/dumpstate.cpp:1239:66: error: no member named \u0027DUMP\u0027 in \u0027android::Dumpsys::Type\u0027\n        status_t status \u003d dumpsys.startDumpThread(Dumpsys::Type::DUMP, service, args);\n                                                  ~~~~~~~~~~~~~~~^\nframeworks/native/cmds/dumpstate/dumpstate.cpp:1318:66: error: no member named \u0027DUMP\u0027 in \u0027android::Dumpsys::Type\u0027\n        status_t status \u003d dumpsys.startDumpThread(Dumpsys::Type::DUMP, service, args);\n                                                  ~~~~~~~~~~~~~~~^",
+      "revId": "25850741c0803574e92360b6cdaeb78412bf84e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4d04c2a_39c1777b",
+        "filename": "cmds/dumpsys/dumpsys.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-07-20T22:18:21Z",
+      "side": 1,
+      "message": "nit: what do you think about (1 \u003c\u003c 0)... (1 \u003c\u003c n) instead of hex values?",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "25850741c0803574e92360b6cdaeb78412bf84e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
