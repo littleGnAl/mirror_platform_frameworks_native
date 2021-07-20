@@ -303,9 +303,9 @@ TEST(DisplayIdentificationTest, parseDisplayIdentificationData) {
     ASSERT_TRUE(tertiaryInfo);
 
     // Display IDs should be unique.
-    EXPECT_NE(primaryInfo->id, secondaryInfo->id);
-    EXPECT_NE(primaryInfo->id, tertiaryInfo->id);
-    EXPECT_NE(secondaryInfo->id, tertiaryInfo->id);
+    EXPECT_EQ(primaryInfo->id.value, 21571479025788672);
+    EXPECT_EQ(secondaryInfo->id.value, 9834267132873217);
+    EXPECT_EQ(tertiaryInfo->id.value, 21441883803501570);
 }
 
 TEST(DisplayIdentificationTest, deviceProductInfo) {
