@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "326bd9c7_ec741687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885590
+      },
+      "writtenOn": "2021-07-21T00:45:41Z",
+      "side": 1,
+      "message": "I guess this modification, setting 0 to the member, resolution, is also eventually needed to apply this entire change to the scale setting for  tilt events.",
+      "revId": "35e05533759f5467bd38c20524c6d10eb1abb2e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "973168c6_17d75cd6",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "Yes, I guess it needs too as you pointed out. the resolution is retrieved at \"getAbsoluteAxisInfo\" in [1]. However, the resolution is never set unless \"input_abs_set_res\" is called.[2]\n\n\n[1]: https://elixir.bootlin.com/linux/latest/source/drivers/input/evdev.c#L1213\n[2]: https://elixir.bootlin.com/linux/latest/source/include/linux/input.h#L479",
       "parentUuid": "973168c6_17d75cd6",
+      "range": {
+        "startLine": 923,
+        "startChar": 12,
+        "endLine": 923,
+        "endChar": 48
+      },
+      "revId": "35e05533759f5467bd38c20524c6d10eb1abb2e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31813bed_fe115607",
+        "filename": "services/inputflinger/reader/mapper/TouchInputMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1885590
+      },
+      "writtenOn": "2021-07-21T00:45:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "808a0ed2_745b977a",
       "range": {
         "startLine": 923,
         "startChar": 12,
