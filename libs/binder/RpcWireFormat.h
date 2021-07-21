@@ -64,7 +64,7 @@ enum : uint32_t {
      */
     RPC_COMMAND_REPLY,
     /**
-     * follows is RpcWireAddress
+     * follows is RpcDecStrong
      *
      * note - this in the protocol directly instead of as a 'special
      * transaction' in order to keep it as lightweight as possible (we don't
@@ -93,6 +93,12 @@ struct RpcWireHeader {
     uint32_t bodySize;
 
     uint32_t reserved[2];
+};
+
+struct RpcDecStrong {
+    RpcWireAddress address;
+    uint32_t amount;
+    uint32_t reserved;
 };
 
 struct RpcWireTransaction {
