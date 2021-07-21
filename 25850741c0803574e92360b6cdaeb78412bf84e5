@@ -39,6 +39,30 @@
       },
       "revId": "25850741c0803574e92360b6cdaeb78412bf84e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2d833b7_a2d83ec9",
+        "filename": "cmds/dumpsys/dumpsys.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-21T18:17:59Z",
+      "side": 1,
+      "message": "Same values, slightly easier to read b/c people tend to be able to recognize ordinals more easily than powers in hex, but both patterns are common.",
+      "parentUuid": "c4d04c2a_39c1777b",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "25850741c0803574e92360b6cdaeb78412bf84e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
