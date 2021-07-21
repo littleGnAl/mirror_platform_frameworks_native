@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f0090ab_aed4d879",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561731
+      },
+      "writtenOn": "2021-07-21T14:05:31Z",
+      "side": 1,
+      "message": "Remaining presubmit failures will be handled by the Merged-In once that is submitted.",
+      "revId": "52dc6cd4eac2f001eb73e8c675bafb76a4c6c3f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

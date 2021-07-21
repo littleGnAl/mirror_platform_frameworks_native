@@ -163,6 +163,30 @@
       },
       "revId": "a5a7a5d60d0f948292eabde730d4dfdd67c8be38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df64cc6_f868f99c",
+        "filename": "services/surfaceflinger/tests/unittests/DisplayIdentificationTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1561731
+      },
+      "writtenOn": "2021-07-21T14:05:31Z",
+      "side": 1,
+      "message": "aosp/1771771 on its own already seemed to show some differences so back in this change :)",
+      "parentUuid": "3fba3927_8403a68c",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 51
+      },
+      "revId": "a5a7a5d60d0f948292eabde730d4dfdd67c8be38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
