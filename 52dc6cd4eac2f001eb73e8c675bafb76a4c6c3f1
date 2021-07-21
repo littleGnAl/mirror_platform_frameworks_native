@@ -16,6 +16,86 @@
       "message": "Remaining presubmit failures will be handled by the Merged-In once that is submitted.",
       "revId": "52dc6cd4eac2f001eb73e8c675bafb76a4c6c3f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d9aa0e_3f66e3a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-07-21T17:08:05Z",
+      "side": 1,
+      "message": "LGTM modulo some nitpicking ",
+      "revId": "52dc6cd4eac2f001eb73e8c675bafb76a4c6c3f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500ace73_09e01a63",
+        "filename": "services/surfaceflinger/DisplayHardware/Hash.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-07-21T17:08:05Z",
+      "side": 1,
+      "message": "looks like we only use these two in hash64Len0To16, can we define it in the same scope similar to kMul?",
+      "range": {
+        "startLine": 29,
+        "startChar": 19,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "52dc6cd4eac2f001eb73e8c675bafb76a4c6c3f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "125a50ef_ff1c3ffb",
+        "filename": "services/surfaceflinger/DisplayHardware/Hash.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-07-21T17:08:05Z",
+      "side": 1,
+      "message": "should we add here \n static_assert(std::is_integral\u003cT\u003e)\nBefore trying to memcpy?",
+      "revId": "52dc6cd4eac2f001eb73e8c675bafb76a4c6c3f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e32cd9b0_8de1b814",
+        "filename": "services/surfaceflinger/DisplayHardware/Hash.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-07-21T17:08:05Z",
+      "side": 1,
+      "message": "should this be unsigned as well? (or assert shift \u003c 64)",
+      "range": {
+        "startLine": 39,
+        "startChar": 40,
+        "endLine": 39,
+        "endChar": 43
+      },
+      "revId": "52dc6cd4eac2f001eb73e8c675bafb76a4c6c3f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
