@@ -221,7 +221,7 @@ private:
     // happens, and there is a strong reference to the binder kept by
     // binderNode, this returns that strong reference, so that it can be
     // dropped after any locks are removed.
-    sp<IBinder> tryEraseNode(std::map<uint64_t, BinderNode>::iterator& it);
+    sp<IBinder> maybeEraseNode(std::map<uint64_t, BinderNode>::iterator& it);
     // true - success
     // false - session shutdown, halt
     [[nodiscard]] bool nodeProgressAsyncNumber(BinderNode* node);
