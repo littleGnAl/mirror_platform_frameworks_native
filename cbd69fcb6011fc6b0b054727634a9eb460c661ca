@@ -50,6 +50,23 @@
       "message": "specifically, the ToT failure is b/194242735",
       "revId": "cbd69fcb6011fc6b0b054727634a9eb460c661ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35b9552e_d7c70fcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-22T17:30:30Z",
+      "side": 1,
+      "message": "Friendly ping for review",
+      "revId": "cbd69fcb6011fc6b0b054727634a9eb460c661ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
