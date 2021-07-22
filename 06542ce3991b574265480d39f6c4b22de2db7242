@@ -187,6 +187,30 @@
       },
       "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94aabcba_f802f7af",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-22T21:12:12Z",
+      "side": 1,
+      "message": "btw - I actually think it\u0027s okay to require libbinder to create the connections. This allows some parts of the thread creation logic and associated protocols to remain an implementation detail (until these FDs are passed across an update boundary, but we don\u0027t expect this), but see the other comment, the real show-stopper here is the session ID association logic.",
+      "parentUuid": "c4d278c5_cd2d7648",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
