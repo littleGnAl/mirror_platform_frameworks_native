@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6137067_36a9a6bd",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-22T14:28:02Z",
+      "side": 1,
+      "message": "This description doesn\u0027t seem to match with the condition incoming \u0026\u0026 i \u003d\u003d 0.",
+      "range": {
+        "startLine": 117,
+        "startChar": 40,
+        "endLine": 117,
+        "endChar": 77
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba047c23_ea536a44",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-22T14:28:02Z",
+      "side": 1,
+      "message": "When this function returns false for a connection, shouldn\u0027t we remove the previous connections that were added by add[Incoming|Outgoing]Connection?",
+      "range": {
+        "startLine": 118,
+        "startChar": 66,
+        "endLine": 118,
+        "endChar": 79
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65bedf1f_1271a276",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-22T14:28:02Z",
+      "side": 1,
+      "message": "Why not mSetupMode? Is it to run addOutgoingConnection for the initial connection? Why do we need to run it even when SetupMode is ACCEPT_ONLY? Can\u0027t we do that after (or during) attachAcceptedConnections?\n\nThis part makes it impossible to get these connections from outside of libbinder.",
+      "range": {
+        "startLine": 444,
+        "startChar": 80,
+        "endLine": 444,
+        "endChar": 95
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "987da169_e0c648af",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-22T14:28:02Z",
+      "side": 1,
+      "message": "Why is this the only way to create AcceptedConnections? I wish we can attach to any set of connections that are established in any way (e.g. outside of libbinder).",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
