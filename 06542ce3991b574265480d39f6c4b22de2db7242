@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0026146a_da884646",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-23T01:09:36Z",
+      "side": 1,
+      "message": "I will close this thread and comment on the other one.",
+      "parentUuid": "a5f565ae_6928732e",
+      "range": {
+        "startLine": 444,
+        "startChar": 80,
+        "endLine": 444,
+        "endChar": 95
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "987da169_e0c648af",
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "btw - I actually think it\u0027s okay to require libbinder to create the connections. This allows some parts of the thread creation logic and associated protocols to remain an implementation detail (until these FDs are passed across an update boundary, but we don\u0027t expect this), but see the other comment, the real show-stopper here is the session ID association logic.",
       "parentUuid": "c4d278c5_cd2d7648",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe03c898_45fb8c86",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-23T01:09:36Z",
+      "side": 1,
+      "message": "Why do the processes that originally created the connections need to care about the protocols and threads? The processes are not the ones that will actually do the binder transactions. Can\u0027t they just create a number of connections that act as dumb pipes, and then send them to the actual processes that will do the binder calls over the connections?\n\nMy mental model is as follows:\n\n```\n|-----------Host VM--------------------|-------------Guest VM----------------|\n\nC \u003c----local binder---\u003e     V                     M \u003c---local binder---\u003e   S\n```\n\nC: a binder client process\nV: virtualization service\nM: microdroid manager\nS: a binder server process\n\nInitially, C and S are not connected. They can only talk to either V or M using the local binder within their VMs.\n\n1. S tells M that it can provide a service with a specific name (let\u0027s call it \"foo\").\n\n2. C tells V that it wants to talk with the \"foo\" service in the guest VM whose cid is 100. That (100, foo) uniquely identifies the service.\n\n3. During the steps 1 and 2, S and C also let M and V know how many connections they can serve. Let C(S) and C(C) be the num of connections towards S and C, respectively.\n\n4. V and M creates C(S) + C(C) vsock connections. Note that V and M don\u0027t need to have that many \"threads\" in them. They don\u0027t do any initialization over the connections. They just make dumb connections and that\u0027s it. In the example below, C(S) \u003d 2 and C(C) \u003d 2.\n\n```\n|-----------Host VM--------------------|-------------Guest VM----------------|\n\nC \u003c----local binder---\u003e     V   \u003c---vsock----\u003e    M \u003c---local binder---\u003e   S\n                                \u003c---vsock----\u003e\n                                \u003c---vsock----\u003e\n                                \u003c---vsock----\u003e\n```\n\n5. V returns the two connection sets (ParcelFileDescriptor[] incoming, ParcelFileDescriptor[] outgoing) back to C.\n\n6. M does the same for S.\n\n7. C and S attach the connections to their RpcSession objects. The initialization of the session object, and the creation of threads happens at this moment.\n\n```\n|-----------Host VM--------------------|-------------Guest VM----------------|\n\nC \u003c----local binder---\u003e     V                      M \u003c---local binder---\u003e   S\n  \n  \u003c----------------------outgoing connection over vsock   -----------------\u003e\n  \u003c----------------------outgoing connection over vsock   -----------------\u003e\n  \u003c----------------------incoming connection over vsock   -----------------\u003e\n  \u003c----------------------incoming connection over vsock   -----------------\u003e\n```\n\nThe steps 1 to 6 are out of the scope of this change.",
+      "parentUuid": "94aabcba_f802f7af",
       "range": {
         "startLine": 112,
         "startChar": 0,
