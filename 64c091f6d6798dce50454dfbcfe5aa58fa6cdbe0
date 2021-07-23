@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000013752643",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1776767?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "184d908e_6551e55c",
+          "description": "Change to \"libs/binder/include/binder/Stability.h\"",
+          "replacements": [
+            {
+              "path": "libs/binder/include/binder/Stability.h",
+              "range": {
+                "startLine": 132,
+                "startChar": 10,
+                "endLine": 132,
+                "endChar": 16
+              },
+              "replacement": "ingest"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "b9f7de2c_a58d809d",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-23T22:17:49Z",
+      "side": 1,
+      "message": "Common typo found: \"injest\" -- should it be \"ingest\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 132,
+        "startChar": 10,
+        "endLine": 132,
+        "endChar": 16
+      },
+      "revId": "64c091f6d6798dce50454dfbcfe5aa58fa6cdbe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
