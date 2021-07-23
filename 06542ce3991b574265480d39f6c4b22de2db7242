@@ -283,6 +283,30 @@
       },
       "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89679dbb_f3ae47cd",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-23T05:08:43Z",
+      "side": 1,
+      "message": "The steps 1-6 could also be a part of libbinder, if you think the pattern will be common. I however think that it deserves a separate CL.\n\nMy concerns with the current CL were that 1) it makes it impossible to use FDs that are created outside of libbinder, and 2) only clients can release their accepted connections to other clients; servers can\u0027t do the same.",
+      "parentUuid": "6e6c99cf_d6bf54c2",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
