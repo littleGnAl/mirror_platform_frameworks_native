@@ -46,6 +46,30 @@
       },
       "revId": "eef51e5617eedcd0bee78f2c9a5ab57c5428bf83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97be6778_ed0bad1a",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-07-23T22:31:02Z",
+      "side": 1,
+      "message": "Nice, thanks for that!",
+      "parentUuid": "40e33aa7_9a92f177",
+      "range": {
+        "startLine": 160,
+        "startChar": 32,
+        "endLine": 160,
+        "endChar": 39
+      },
+      "revId": "eef51e5617eedcd0bee78f2c9a5ab57c5428bf83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
