@@ -356,5 +356,6 @@ cc_binary {
         "libbinder",
         "liblog",
         "libutils",
+        "android.debug_aidl-cpp",
     ],
 }
