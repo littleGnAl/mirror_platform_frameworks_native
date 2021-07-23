@@ -259,6 +259,30 @@
       },
       "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e6c99cf_d6bf54c2",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-23T02:30:09Z",
+      "side": 1,
+      "message": "Yeah, I suppose we could do this too. I could add some server-level transactions that expose the thread counts (though I need to think how this might interact with TLS). The main benefit would be having simpler FDs so the libbinder dependency isn\u0027t needed. Though, also note if we use libbinder, we could change the logic to be like this under the existing APIs. Let me know if you have any other thoughts, but I\u0027ll try tomorrow.",
+      "parentUuid": "fe03c898_45fb8c86",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
