@@ -307,6 +307,30 @@
       },
       "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56923a02_db327f77",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-23T17:26:58Z",
+      "side": 1,
+      "message": "I mean, with what you are proposing, 1-6 do need to be part of libbinder, because we need to query and talk to the server to get the thread counts. This is doable, but it requires adding an additional protocol at the server level, not the session level (okay).\n\nre 1 - this is the concern I understand/agree with, though I\u0027m not sure how much we\u0027d actually need it in practice. Do you know why we\u0027d want to do this btw?\n\nre 2 - what would the usecase be for this? I wasn\u0027t anticipating servers releasing connections. There is a lot of state associated with connected sessions, and we have to read from connections to even understand how they are grouped into sessions.\n\nSo, actually yeah, I was imagining things a little differently than the above steps. In the current design, we need no process \u0027M\u0027.\n\nLet me schedule a meeting to iron out the details here, make sure we\u0027re on the same page.",
+      "parentUuid": "89679dbb_f3ae47cd",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
