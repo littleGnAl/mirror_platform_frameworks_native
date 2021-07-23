@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323cd7cc_f7aeb28c",
+        "filename": "libs/binder/include/binder/Stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-07-23T22:10:50Z",
+      "side": 1,
+      "message": "I\u0027m not following the uint16_t, int16_t, and int32_t used for Level. Is there a simple answer for this? 3 different stability levels somewhere?",
+      "range": {
+        "startLine": 160,
+        "startChar": 32,
+        "endLine": 160,
+        "endChar": 39
+      },
+      "revId": "eef51e5617eedcd0bee78f2c9a5ab57c5428bf83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
