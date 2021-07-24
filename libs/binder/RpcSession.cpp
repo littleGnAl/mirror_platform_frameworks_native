@@ -261,7 +261,7 @@ status_t RpcSession::readId() {
     return OK;
 }
 
-void RpcSession::WaitForShutdownListener::onSessionLockedAllIncomingThreadsEnded(
+void RpcSession::WaitForShutdownListener::onSessionAllIncomingThreadsEnded(
         const sp<RpcSession>& session) {
     (void)session;
     mShutdown = true;
@@ -293,7 +293,13 @@ RpcSession::PreJoinSetupResult RpcSession::preJoinSetup(base::unique_fd fd) {
     // be able to do nested calls (we can't only read from it)
     sp<RpcConnection> connection = assignIncomingConnectionToThisThread(std::move(fd));
 
-    status_t status = mState->readConnectionInit(connection, sp<RpcSession>::fromExisting(this));
+    status_t status;
+
+    if (connection == nullptr) {
+        status = DEAD_OBJECT;
+    } else {
+        status = mState->readConnectionInit(connection, sp<RpcSession>::fromExisting(this));
+    }
 
     return PreJoinSetupResult{
             .connection = std::move(connection),
@@ -360,6 +366,7 @@ void RpcSession::join(sp<RpcSession>&& session, PreJoinSetupResult&& setupResult
     sp<RpcConnection>& connection = setupResult.connection;
 
     if (setupResult.status == OK) {
+        LOG_ALWAYS_FATAL_IF(!connection, "must have connection if setup succeeded");
         JavaThreadAttacher javaThreadAttacher;
         while (true) {
             status_t status = session->state()->getAndExecuteCommand(connection, session,
@@ -375,8 +382,10 @@ void RpcSession::join(sp<RpcSession>&& session, PreJoinSetupResult&& setupResult
               statusToString(setupResult.status).c_str());
     }
 
-    LOG_ALWAYS_FATAL_IF(!session->removeIncomingConnection(connection),
-                        "bad state: connection object guaranteed to be in list");
+    if (connection != nullptr) {
+        LOG_ALWAYS_FATAL_IF(!session->removeIncomingConnection(connection),
+                            "bad state: connection object guaranteed to be in list");
+    }
 
     sp<RpcSession::EventListener> listener;
     {
@@ -579,24 +588,35 @@ bool RpcSession::setForServer(const wp<RpcServer>& server, const wp<EventListene
 
 sp<RpcSession::RpcConnection> RpcSession::assignIncomingConnectionToThisThread(unique_fd fd) {
     std::lock_guard<std::mutex> _l(mMutex);
+
+    // Don't accept any more connections, some have shutdown. Usually this
+    // happens when new connections are still being established as part of a
+    // very short-lived session which shuts down after it already started
+    // accepting new connections.
+    if (mIncomingConnections.size() < mMaxIncomingConnections) {
+        return nullptr;
+    }
+
     sp<RpcConnection> session = sp<RpcConnection>::make();
     session->fd = std::move(fd);
     session->exclusiveTid = gettid();
+
     mIncomingConnections.push_back(session);
+    mMaxIncomingConnections = mIncomingConnections.size();
 
     return session;
 }
 
 bool RpcSession::removeIncomingConnection(const sp<RpcConnection>& connection) {
-    std::lock_guard<std::mutex> _l(mMutex);
+    std::unique_lock<std::mutex> _l(mMutex);
     if (auto it = std::find(mIncomingConnections.begin(), mIncomingConnections.end(), connection);
         it != mIncomingConnections.end()) {
         mIncomingConnections.erase(it);
         if (mIncomingConnections.size() == 0) {
             sp<EventListener> listener = mEventListener.promote();
             if (listener) {
-                listener->onSessionLockedAllIncomingThreadsEnded(
-                        sp<RpcSession>::fromExisting(this));
+                _l.unlock();
+                listener->onSessionAllIncomingThreadsEnded(sp<RpcSession>::fromExisting(this));
             }
         }
         return true;
