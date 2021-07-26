@@ -105,6 +105,14 @@ public:
     size_t getMaxThreads();
 
     /**
+     * By default, the latest available protocol version which the client
+     * supports will be used. This can be used to override that. No server-side
+     * validation is done on this value, and it is intended to be used mostly
+     * for tests.
+     */
+    void setProtocolVersionOverride(uint32_t version);
+
+    /**
      * The root object can be retrieved by any client, without any
      * authentication. TODO(b/183988761)
      *
@@ -164,6 +172,7 @@ private:
 
     bool mAgreedExperimental = false;
     size_t mMaxThreads = 1;
+    std::optional<uint32_t> mProtocolVersionOverride;
     base::unique_fd mServer; // socket we are accepting sessions on
 
     std::mutex mLock; // for below
