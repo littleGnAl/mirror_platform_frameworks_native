@@ -22,6 +22,47 @@
       },
       "revId": "16a4106cb7bc18d473a428d9f19c7561a21e3f06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a04f77_530b864e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-26T18:06:17Z",
+      "side": 1,
+      "message": "I think it could be confusing because it\u0027s not really doing anything, and we\u0027ll have actual versions elsewhere. If we do need a per-binder solution, maybe it will look like this (in which case we can revert this CL) or maybe a different solution will be needed. Dead code \u003d delete it. This simplifies (slightly) what is going on, removes noise. I would always remove code in this situation.",
+      "parentUuid": "3db0037e_c060ad8d",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "16a4106cb7bc18d473a428d9f19c7561a21e3f06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95be13a8_bcfca9c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-26T18:06:17Z",
+      "side": 1,
+      "message": "The presubmit failure was b/187730364",
+      "revId": "16a4106cb7bc18d473a428d9f19c7561a21e3f06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
