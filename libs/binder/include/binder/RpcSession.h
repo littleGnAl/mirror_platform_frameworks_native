@@ -37,9 +37,9 @@ class RpcServer;
 class RpcSocketAddress;
 class RpcState;
 
-constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION_NEXT = 1;
+constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION_NEXT = 2;
 constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL = 10000;
-constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION = 10000;
+constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION = 1;
 
 // this feature is introduced in version 'next'
 constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_X = 1;
