@@ -274,8 +274,7 @@ TEST(RpcWire, CurrentVersion) {
     checkRepr(kCurrentRepr, RPC_WIRE_PROTOCOL_VERSION);
 }
 
-static_assert(RPC_WIRE_PROTOCOL_VERSION == RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL,
-              "you better update this test!");
+static_assert(RPC_WIRE_PROTOCOL_VERSION == 1, "you better update this test!");
 
 TEST(RpcWire, ReleaseBranchHasFrozenRpcWireProtocol) {
     if (RPC_WIRE_PROTOCOL_VERSION == RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL) {
