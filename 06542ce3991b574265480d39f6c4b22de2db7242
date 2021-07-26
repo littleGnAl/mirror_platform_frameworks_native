@@ -331,6 +331,30 @@
       },
       "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37823ebb_df588fe9",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-26T06:00:39Z",
+      "side": 1,
+      "message": "Symmetry is the main reason.\n\nAnother reason is that it allows V and M to be a server and a client while C and S are a client and a server. In my model, V is blocked on accept(2)ing on a particular port and M is calling connect(2). This is required because, from the perspective of the host, it doesn\u0027t/can\u0027t know the exact status inside the guest; e.g. if the M (or S) has started and thus V can make a \u0027connect\u0027 call to it. If V acts as a server (only for the purpose of creating connections), we don\u0027t have the problem because guests can always safely assume that the host has finished booting and VS is running.\n\nThis in addition makes the security story a little bit simpler. With my model, guest only needs to connect to a known port in a known CID (2). Host only needs to check if the incoming connection is from the CIDs of the active VMs. Otherwise (i.e. if V is a client and M is a server), guest has no idea whether the incoming connection is from VS or another process (perhaps compromised) and therefore needs to implement another layer of protection.",
+      "parentUuid": "56923a02_db327f77",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
