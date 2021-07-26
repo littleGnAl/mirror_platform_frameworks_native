@@ -610,7 +610,12 @@ status_t Parcel::writeInterfaceToken(const String16& interface)
 }
 
 status_t Parcel::writeInterfaceToken(const char16_t* str, size_t len) {
-    if (CC_LIKELY(!isForRpc())) {
+    if (CC_UNLIKELY(isForRpc())) {
+        if (mSession->getProtocolVersion().value() >=
+            RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_X) {
+            if (status_t status = writeInt32(42); status != OK) return status;
+        }
+    } else {
         const IPCThreadState* threadState = IPCThreadState::self();
         writeInt32(threadState->getStrictModePolicy() | STRICT_MODE_PENALTY_GATHER);
         updateWorkSourceRequestHeaderPosition();
@@ -664,7 +669,14 @@ bool Parcel::enforceInterface(const char16_t* interface,
                               size_t len,
                               IPCThreadState* threadState) const
 {
-    if (CC_LIKELY(!isForRpc())) {
+    if (CC_UNLIKELY(isForRpc())) {
+        if (mSession->getProtocolVersion().value() >=
+            RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_X) {
+            int32_t x;
+            if (status_t status = readInt32(&x); status != OK) return status;
+            ALOGI("Read new protocol version %" PRId32, x);
+        }
+    } else {
         // StrictModePolicy.
         int32_t strictPolicy = readInt32();
         if (threadState == nullptr) {
