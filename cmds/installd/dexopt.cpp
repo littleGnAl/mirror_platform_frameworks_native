@@ -1815,7 +1815,8 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
     // Decide whether to use dex2oat64.
     bool use_dex2oat64 = false;
     // Check whether the device even supports 64-bit ABIs.
-    if (!GetProperty("ro.product.cpu.abilist64", "").empty()) {
+    if (!GetProperty("ro.product.cpu.abilist64", "").empty() &&
+        strcmp(instruction_set, "arm64") == 0) {
       use_dex2oat64 = GetBoolProperty("dalvik.vm.dex2oat64.enabled", false);
     }
     const char* dex2oat_bin = select_execution_binary(
