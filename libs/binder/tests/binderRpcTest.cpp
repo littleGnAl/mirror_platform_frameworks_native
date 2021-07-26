@@ -67,6 +67,19 @@ TEST(BinderRpc, SetExternalServer) {
     ASSERT_EQ(sinkFd, retrieved.get());
 }
 
+TEST(BinderRpc, CannotUseNextWireVersion) {
+    auto session = RpcSession::make();
+    EXPECT_FALSE(session->setProtocolVersion(RPC_WIRE_PROTOCOL_VERSION_NEXT));
+    EXPECT_FALSE(session->setProtocolVersion(RPC_WIRE_PROTOCOL_VERSION_NEXT + 1));
+    EXPECT_FALSE(session->setProtocolVersion(RPC_WIRE_PROTOCOL_VERSION_NEXT + 2));
+    EXPECT_FALSE(session->setProtocolVersion(RPC_WIRE_PROTOCOL_VERSION_NEXT + 15));
+}
+
+TEST(BinderRpc, CanUseExperimentalWireVersion) {
+    auto session = RpcSession::make();
+    EXPECT_TRUE(session->setProtocolVersion(RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL));
+}
+
 using android::binder::Status;
 
 #define EXPECT_OK(status)                 \
