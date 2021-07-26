@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db0037e_c060ad8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-26T04:58:54Z",
+      "side": 1,
+      "message": "ok, but wouldn\u0027t keeping it better for us to be future proof?",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "16a4106cb7bc18d473a428d9f19c7561a21e3f06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
