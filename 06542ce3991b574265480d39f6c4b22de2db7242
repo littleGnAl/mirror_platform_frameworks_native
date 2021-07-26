@@ -355,6 +355,30 @@
       },
       "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc409891_da066b10",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-26T17:30:55Z",
+      "side": 1,
+      "message": "This would also introduce the need to add a new process \u0027M\u0027 to the VM, which currently is not needed, right? Whether we listen(2) from \u0027M\u0027 or \u0027S\u0027, we have the same problem of signaling back to the client that we are ready to start accepting (or otherwise our clients will have to poll). Of course, adding this symmetry into RpcSession/RpcServer wouldn\u0027t be bad, I guess I\u0027m thinking it could be done separately, and only in RpcServer once we are sure we actually want to take advantage of the symmetry. Or maybe it wouldn\u0027t hurt, provide the mechanism.\n\n\u003e guest only needs to connect to a known port in a known CID (2)\n\nSpecifically, it can be a known port regardless of whether \u0027M\u0027 or \u0027S\u0027 are listening.\n\nOne other consideration - if \u0027S\u0027 itself is not accepting connections, then it will be impossible to implement the lazy creation of connections for pKVM (then again - perhaps it\u0027s best not to re-implement this memory-leak-like lazy creation of threads). Costs upfront... yeah.",
+      "parentUuid": "37823ebb_df588fe9",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
