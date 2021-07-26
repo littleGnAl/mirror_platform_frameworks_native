@@ -233,6 +233,7 @@ private:
                                     const RpcAddress& sessionId);
     sp<RpcConnection> assignIncomingConnectionToThisThread(base::unique_fd fd);
     [[nodiscard]] bool removeIncomingConnection(const sp<RpcConnection>& connection);
+    [[nodiscard]] bool setProtocolVersion(uint32_t version);
 
     enum class ConnectionUse {
         CLIENT,
@@ -291,6 +292,7 @@ private:
     std::mutex mMutex; // for all below
 
     size_t mMaxThreads = 0;
+    uint32_t mProtocolVersion = 0;
 
     std::condition_variable mAvailableConnectionCv; // for mWaitingThreads
     size_t mWaitingThreads = 0;
