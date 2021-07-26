@@ -20,6 +20,10 @@ namespace android {
 #pragma clang diagnostic push
 #pragma clang diagnostic error "-Wpadded"
 
+constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION_NEXT = 0;
+constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL = 10000;
+constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION = RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL;
+
 enum : uint8_t {
     RPC_CONNECTION_OPTION_INCOMING = 0x1, // default is outgoing
 };
@@ -37,9 +41,20 @@ struct RpcWireAddress {
  * either as part of a new session or an existing session
  */
 struct RpcConnectionHeader {
+    uint32_t version; // maximum supported by caller
+    uint8_t reserver0[4];
     RpcWireAddress sessionId;
     uint8_t options;
-    uint8_t reserved[7];
+    uint8_t reserved1[7];
+};
+
+/**
+ * In response to an RpcConnectionHeader which corresponds to a new session,
+ * this returns information to the server.
+ */
+struct RpcNewSessionResponse {
+    uint32_t version; // maximum supported by callee <= maximum supported by caller
+    uint8_t reserved[4];
 };
 
 #define RPC_CONNECTION_INIT_OKAY "cci"
