@@ -16,6 +16,29 @@
       "message": "Note - I still need to move http://aosp/1775442 into this stack and show in the other CLs how this test would get updated as the protocol changes. However, please do start the review if you can.",
       "revId": "5745f461a1c4bf65a98aa30d1305486fc5b55408",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d7edd3d_32839230",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-27T03:37:37Z",
+      "side": 1,
+      "message": "Is this true? If I am reading the code correctly, if the client supports 3 and setProtocolVersionOverride(5) is called on the server side, the session will still use 3. Right?\n\nIf so, then you might want to revise this description as follows:\n\nThis can be used to forcibly lower the protocol version below the version that the client wanted. You however can\u0027t use this function to set the protocol version higher than the client wanted.",
+      "range": {
+        "startLine": 109,
+        "startChar": 30,
+        "endLine": 109,
+        "endChar": 64
+      },
+      "revId": "5745f461a1c4bf65a98aa30d1305486fc5b55408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
