@@ -379,6 +379,30 @@
       },
       "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94dc2e5d_13966d3e",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-27T05:36:02Z",
+      "side": 1,
+      "message": "M (microdroid manager) already exists in the VM. \n\n\u003e we have the same problem of signaling back to the client that we are ready to start accepting\n\nYou are right if the listening is done on the VM side. But the idea here is that the listening is done on the host VM side (V, specifically) so that there is no need for the signaling.\n\n\u003e impossible to implement the lazy creation of connections for pKVM \n\nI don\u0027t get this. Could you elaborate? The 7 steps I describe above are triggered by S. The vsock connections won\u0027t be created before S tells M that it can now serve a binder object.",
+      "parentUuid": "cc409891_da066b10",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
