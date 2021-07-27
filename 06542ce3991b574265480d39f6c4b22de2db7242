@@ -403,6 +403,30 @@
       },
       "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5295f0c5_bc018ac3",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-27T20:48:34Z",
+      "side": 1,
+      "message": "I mean, right now, we have a server that supports, say, 3 connections, so we always create 3. However, what we could do is only create the connections that are needed (e.g. if you make a call which would saturate the existing 2 connections, first you open a 3rd connection)",
+      "parentUuid": "94dc2e5d_13966d3e",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "06542ce3991b574265480d39f6c4b22de2db7242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
