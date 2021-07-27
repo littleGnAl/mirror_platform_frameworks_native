@@ -388,21 +388,25 @@ enum class SocketType {
     VSOCK,
     INET,
 };
-static inline std::string PrintSocketType(const testing::TestParamInfo<SocketType>& info) {
-    switch (info.param) {
+static inline std::string PrintSocketType(
+        const testing::TestParamInfo<std::tuple<SocketType, uint32_t, uint32_t>>& info) {
+    auto& [socket, client, server] = info.param;
+    std::string suffix = std::string() + "_client__" + std::to_string(client) + "__server__" +
+            std::to_string(server) + "_";
+    switch (socket) {
         case SocketType::UNIX:
-            return "unix_domain_socket";
+            return "unix_domain_socket" + suffix;
         case SocketType::VSOCK:
-            return "vm_socket";
+            return "vm_socket" + suffix;
         case SocketType::INET:
-            return "inet_socket";
+            return "inet_socket" + suffix;
         default:
             LOG_ALWAYS_FATAL("Unknown socket type");
             return "";
     }
 }
 
-class BinderRpc : public ::testing::TestWithParam<SocketType> {
+class BinderRpc : public ::testing::TestWithParam<std::tuple<SocketType, uint32_t, uint32_t>> {
 public:
     struct Options {
         size_t numThreads = 1;
@@ -416,7 +420,10 @@ public:
             const Options& options, const std::function<void(const sp<RpcServer>&)>& configure) {
         CHECK_GE(options.numSessions, 1) << "Must have at least one session to a server";
 
-        SocketType socketType = GetParam();
+        auto& [socketType, clientVersion, serverVersion] = GetParam();
+        (void)socketType;
+        (void)clientVersion;
+        (void)serverVersion;
 
         unsigned int vsockPort = allocateVsockPort();
         std::string addr = allocateSocketAddress();
@@ -424,7 +431,14 @@ public:
 
         auto ret = ProcessSession{
                 .host = Process([&](android::base::borrowed_fd writeEnd) {
+                    auto& [socketType, clientVersion, serverVersion] = GetParam();
+                    (void)socketType;
+                    (void)clientVersion;
+                    (void)serverVersion;
+
                     sp<RpcServer> server = RpcServer::make();
+
+                    server->setProtocolVersion(serverVersion);
 
                     server->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
                     server->setMaxThreads(options.numThreads);
@@ -467,6 +481,7 @@ public:
 
         for (size_t i = 0; i < options.numSessions; i++) {
             sp<RpcSession> session = RpcSession::make();
+            CHECK(session->setProtocolVersion(clientVersion));
             session->setMaxThreads(options.numIncomingConnections);
 
             switch (socketType) {
@@ -1155,7 +1170,19 @@ static std::vector<SocketType> testSocketTypes() {
     return ret;
 }
 
-INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc, ::testing::ValuesIn(testSocketTypes()),
+static std::vector<uint32_t> testVersions() {
+    std::vector<uint32_t> versions;
+    for (size_t i = 0; i < RPC_WIRE_PROTOCOL_VERSION_NEXT; i++) {
+        versions.push_back(i);
+    }
+    versions.push_back(RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL);
+    return versions;
+}
+
+INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
+                        ::testing::Combine(::testing::ValuesIn(testSocketTypes()),
+                                           ::testing::ValuesIn(testVersions()),
+                                           ::testing::ValuesIn(testVersions())),
                         PrintSocketType);
 
 class BinderRpcServerRootObject : public ::testing::TestWithParam<std::tuple<bool, bool>> {};
