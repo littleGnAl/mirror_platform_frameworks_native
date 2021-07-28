@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1505d0ba_8fb3d795",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-07-28T01:11:02Z",
+      "side": 1,
+      "message": "Will merge sc change first.",
+      "revId": "03755c32451725e242f677b0e1228c1ec41c2cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
