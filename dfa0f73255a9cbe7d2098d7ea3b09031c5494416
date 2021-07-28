@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a88870_2eecfb64",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1879320
+      },
+      "writtenOn": "2021-07-28T02:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa99449b_336fa287",
+      "range": {
+        "startLine": 1803,
+        "startChar": 19,
+        "endLine": 1803,
+        "endChar": 46
+      },
+      "revId": "dfa0f73255a9cbe7d2098d7ea3b09031c5494416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3193b3b2_27b0c74d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-08T16:40:30Z",
       "side": 1,
       "message": "In another case, the \"TouchInputMapper\" of the touch screen device will be configure again because of the addition of new device. Then, the correct axis range will be overwrote by invalid data.",
+      "range": {
+        "startLine": 1833,
+        "startChar": 19,
+        "endLine": 1833,
+        "endChar": 46
+      },
+      "revId": "dfa0f73255a9cbe7d2098d7ea3b09031c5494416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0223352_435a4474",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 1879320
+      },
+      "writtenOn": "2021-07-28T02:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3193b3b2_27b0c74d",
       "range": {
         "startLine": 1833,
         "startChar": 19,
