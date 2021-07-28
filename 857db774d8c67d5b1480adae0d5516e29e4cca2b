@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42192a87_9c2a0c13",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1697666
+      },
+      "writtenOn": "2021-07-28T15:59:29Z",
+      "side": 1,
+      "message": "Should this also be tied to the kernel binder version too? I\u0027m thinking how things might break if in the future we bump that, VM uses old kernel version but the wire seems the same -- might be a dumb suggestion to fold that in here....",
+      "range": {
+        "startLine": 45,
+        "startChar": 19,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "857db774d8c67d5b1480adae0d5516e29e4cca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
