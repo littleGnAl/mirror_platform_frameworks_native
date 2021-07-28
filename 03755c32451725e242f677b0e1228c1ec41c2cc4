@@ -73,6 +73,30 @@
       },
       "revId": "03755c32451725e242f677b0e1228c1ec41c2cc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d528a9b_ea5bb699",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-07-28T12:55:41Z",
+      "side": 1,
+      "message": "The memory usage is caused by the ftrace instance creating many files and using up slab memory for inode_cache object. \n\nMade default buffer size 1 kb. (The trace buffers are allocated in pages, so this will actually be 4 kb in most cases)",
+      "parentUuid": "41ad25a3_19d2bad0",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 0
+      },
+      "revId": "03755c32451725e242f677b0e1228c1ec41c2cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
