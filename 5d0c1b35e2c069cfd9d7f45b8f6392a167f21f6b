@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e893c3_9a104093",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-28T18:39:16Z",
+      "side": 1,
+      "message": "set threadpool size to limit it (default is 15, though started lazily)?",
+      "range": {
+        "startLine": 277,
+        "startChar": 35,
+        "endLine": 277,
+        "endChar": 50
+      },
+      "revId": "5d0c1b35e2c069cfd9d7f45b8f6392a167f21f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
