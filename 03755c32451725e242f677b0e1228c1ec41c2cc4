@@ -16,6 +16,23 @@
       "message": "Will merge sc change first.",
       "revId": "03755c32451725e242f677b0e1228c1ec41c2cc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "139b1722_890a1f45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-07-28T07:56:52Z",
+      "side": 1,
+      "message": "A couple of questions:\n\n1. Are you sure that the \"act of creating the instance\" is taking memory and not \"the act of using it and setting the buffer size?\". What causes that memory usage?\nCan we:\n- always create the instance\n- Force set the buffer to 4KB (or whatever is the minimum) here\n- Disable the code in perfetto that sets up the buffer when  mm_events.enabled\u003dfalse?\n\n2. I echo the question I put in the downstream CL. Isn\u0027t this inherently racy? Now you have two init scripts reacting on persist properties (Which realistically will be loaded at the same time): (i) this one; (ii) perfetto.rc starting traced_probes. Aren\u0027t they going to race with each other?",
+      "revId": "03755c32451725e242f677b0e1228c1ec41c2cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
