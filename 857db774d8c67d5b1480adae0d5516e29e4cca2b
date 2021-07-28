@@ -22,6 +22,30 @@
       },
       "revId": "857db774d8c67d5b1480adae0d5516e29e4cca2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "410f34fb_c2a7d2d0",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-28T18:50:56Z",
+      "side": 1,
+      "message": "The RPC stuff doesn\u0027t involve the linux binder driver at all.",
+      "parentUuid": "42192a87_9c2a0c13",
+      "range": {
+        "startLine": 45,
+        "startChar": 19,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "857db774d8c67d5b1480adae0d5516e29e4cca2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
