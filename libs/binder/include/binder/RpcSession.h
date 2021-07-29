@@ -37,6 +37,10 @@ class RpcServer;
 class RpcSocketAddress;
 class RpcState;
 
+constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION_NEXT = 0;
+constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL = 0xF0000000;
+constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION = RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL;
+
 /**
  * This represents a session (group of connections) between a client
  * and a server. Multiple connections are needed for multiple parallel "binder"
@@ -58,6 +62,13 @@ public:
      */
     void setMaxThreads(size_t threads);
     size_t getMaxThreads();
+
+    /**
+     * By default, the minimum of the supported versions of the client and the
+     * server will be used. Usually, this API should only be used for debugging.
+     */
+    [[nodiscard]] bool setProtocolVersion(uint32_t version);
+    std::optional<uint32_t> getProtocolVersion();
 
     /**
      * This should be called once per thread, matching 'join' in the remote
@@ -177,19 +188,19 @@ private:
 
     class EventListener : public virtual RefBase {
     public:
-        virtual void onSessionLockedAllIncomingThreadsEnded(const sp<RpcSession>& session) = 0;
+        virtual void onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) = 0;
         virtual void onSessionIncomingThreadEnded() = 0;
     };
 
     class WaitForShutdownListener : public EventListener {
     public:
-        void onSessionLockedAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
+        void onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
         void onSessionIncomingThreadEnded() override;
         void waitForShutdown(std::unique_lock<std::mutex>& lock);
 
     private:
         std::condition_variable mCv;
-        bool mShutdown = false;
+        volatile bool mShutdown = false;
     };
 
     struct RpcConnection : public RefBase {
@@ -291,12 +302,14 @@ private:
     std::mutex mMutex; // for all below
 
     size_t mMaxThreads = 0;
+    std::optional<uint32_t> mProtocolVersion;
 
     std::condition_variable mAvailableConnectionCv; // for mWaitingThreads
     size_t mWaitingThreads = 0;
     // hint index into clients, ++ when sending an async transaction
     size_t mOutgoingConnectionsOffset = 0;
     std::vector<sp<RpcConnection>> mOutgoingConnections;
+    size_t mMaxIncomingConnections = 0;
     std::vector<sp<RpcConnection>> mIncomingConnections;
     std::map<std::thread::id, std::thread> mThreads;
 };
