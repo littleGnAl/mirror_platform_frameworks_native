@@ -22,6 +22,30 @@
       },
       "revId": "5d0c1b35e2c069cfd9d7f45b8f6392a167f21f6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06e5c69_eef56b08",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-07-29T19:32:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78e893c3_9a104093",
+      "range": {
+        "startLine": 277,
+        "startChar": 35,
+        "endLine": 277,
+        "endChar": 50
+      },
+      "revId": "5d0c1b35e2c069cfd9d7f45b8f6392a167f21f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
