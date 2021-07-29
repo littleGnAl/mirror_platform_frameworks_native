@@ -23,6 +23,30 @@
       },
       "revId": "bb7e77170be67dd825aeea22448453b708bdac61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e579699e_cf5943c8",
+        "filename": "cmds/lshal/TableEntry.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-29T22:18:34Z",
+      "side": 1,
+      "message": "Would you add a clang-format? :) done",
+      "parentUuid": "6dd01565_e5d75ea8",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 117
+      },
+      "revId": "bb7e77170be67dd825aeea22448453b708bdac61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
