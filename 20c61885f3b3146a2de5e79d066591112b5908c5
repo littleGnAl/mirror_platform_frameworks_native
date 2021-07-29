@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ceaafb5_d549ffe0",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-29T22:13:41Z",
+      "side": 1,
+      "message": "is there any reason you didn\u0027t statically include it before for this? I thought you were going to.",
+      "parentUuid": "e44f1426_e202ead7",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 6
+      },
+      "revId": "20c61885f3b3146a2de5e79d066591112b5908c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b65aa6f_07600c36",
