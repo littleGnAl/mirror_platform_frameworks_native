@@ -22,6 +22,30 @@
       },
       "revId": "1ebdc70d175bcc1320a4b42606aafbd54c08624c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed8d3de_b2e9a5c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-29T17:30:06Z",
+      "side": 1,
+      "message": "Of course, I will do so when I get a chance. I\u0027ve made a note of this and a summary of the performance-related work I have to do in b/182940634#comment5. Though - I will try to frontload work that changes the wire protocol wrt binder RPC.",
+      "parentUuid": "91632c94_3193e1e5",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "1ebdc70d175bcc1320a4b42606aafbd54c08624c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
