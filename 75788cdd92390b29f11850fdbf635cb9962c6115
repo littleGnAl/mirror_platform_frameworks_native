@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa93a94_80ed9d1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-07-30T20:00:39Z",
+      "side": 1,
+      "message": "This will help for local previews, but you need to edit http://google3/third_party/devsite/android/en/ndk/_scripts/Doxyfile-local if you want it to have any effect on DAC.",
+      "revId": "75788cdd92390b29f11850fdbf635cb9962c6115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
