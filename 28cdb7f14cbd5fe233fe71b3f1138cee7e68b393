@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24535e22_01b9d6ba",
+        "filename": "libs/binder/tests/binderRpcWireProtocolTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-07-30T23:53:59Z",
+      "side": 1,
+      "message": "0x2a \u003d\u003d 42",
+      "range": {
+        "startLine": 238,
+        "startChar": 9,
+        "endLine": 238,
+        "endChar": 11
+      },
+      "revId": "28cdb7f14cbd5fe233fe71b3f1138cee7e68b393",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
