@@ -218,6 +218,7 @@ bool RpcSession::FdTrigger::isTriggered() {
 }
 
 status_t RpcSession::FdTrigger::triggerablePoll(RpcTransport* rpcTransport, int16_t event) {
+    if ((event & POLLIN) && rpcTransport->pending()) return OK;
     return triggerablePoll(rpcTransport->pollSocket(), event);
 }
 
