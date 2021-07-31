@@ -43,31 +43,23 @@
 namespace ndk {
 
 /**
- * analog using std::shared_ptr for internally held refcount
- *
  * ref must be called at least one time during the lifetime of this object. The recommended way to
  * construct this object is with SharedRefBase::make.
+ *
+ * Note - this class used to not inherit from enable_shared_from_this, so
+ * std::make_shared works, but it won't be portable against old copies of this
+ * class.
  */
-class SharedRefBase {
+class SharedRefBase : public std::enable_shared_from_this<SharedRefBase> {
    public:
     SharedRefBase() {}
-    virtual ~SharedRefBase() {
-        std::call_once(mFlagThis, [&]() {
-            __assert(__FILE__, __LINE__, "SharedRefBase: no ref created during lifetime");
-        });
-    }
+    virtual ~SharedRefBase() {}
 
     /**
      * A shared_ptr must be held to this object when this is called. This must be called once during
      * the lifetime of this object.
      */
-    std::shared_ptr<SharedRefBase> ref() {
-        std::shared_ptr<SharedRefBase> thiz = mThis.lock();
-
-        std::call_once(mFlagThis, [&]() { mThis = thiz = std::shared_ptr<SharedRefBase>(this); });
-
-        return thiz;
-    }
+    std::shared_ptr<SharedRefBase> ref() { return shared_from_this(); }
 
     /**
      * Convenience method for a ref (see above) which automatically casts to the desired child type.
@@ -82,12 +74,7 @@ class SharedRefBase {
      */
     template <class T, class... Args>
     static std::shared_ptr<T> make(Args&&... args) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        T* t = new T(std::forward<Args>(args)...);
-#pragma clang diagnostic pop
-        // warning: Potential leak of memory pointed to by 't' [clang-analyzer-unix.Malloc]
-        return t->template ref<T>();  // NOLINT(clang-analyzer-unix.Malloc)
+        return std::make_shared<T>(std::forward<Args>(args)...);
     }
 
     static void operator delete(void* p) { std::free(p); }
@@ -103,10 +90,6 @@ class SharedRefBase {
     [[deprecated("Prefer SharedRefBase::make<T>(...) if possible.")]]
 #endif
     static void* operator new(size_t s) { return std::malloc(s); }
-
-   private:
-    std::once_flag mFlagThis;
-    std::weak_ptr<SharedRefBase> mThis;
 };
 
 /**
