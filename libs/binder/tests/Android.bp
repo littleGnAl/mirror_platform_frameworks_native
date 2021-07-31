@@ -153,6 +153,7 @@ cc_test {
     shared_libs: [
         "libbinder",
         "libbinder_ndk",
+        "libbinder_tls",
         "libbase",
         "libutils",
         "libcutils",
