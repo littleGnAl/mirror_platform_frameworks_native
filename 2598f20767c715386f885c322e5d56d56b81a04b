@@ -16,6 +16,24 @@
       "message": "Hi Yi, could you tell how to do sampling PGO\u0027s profile on android devices? I didn\u0027t find any introduction docs on the web.",
       "revId": "2598f20767c715386f885c322e5d56d56b81a04b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b3429b_a8338ca5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2021-08-02T09:00:08Z",
+      "side": 1,
+      "message": "Hi Jinpeng, the Sampling PGO feature is still in development, we will share more details on Android developer site once it is ready.",
+      "parentUuid": "1d6dca30_2957f6a1",
+      "revId": "2598f20767c715386f885c322e5d56d56b81a04b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
