@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "910119f2_232e6346",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-02T20:11:13Z",
+      "side": 1,
+      "message": "when would this be an issue?",
+      "range": {
+        "startLine": 50,
+        "startChar": 27,
+        "endLine": 51,
+        "endChar": 8
+      },
+      "revId": "ed0d79223b73e51e26e03ceff8bbc33d633ad79b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
