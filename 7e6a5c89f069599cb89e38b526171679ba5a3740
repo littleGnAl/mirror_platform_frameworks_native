@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b739b6c_f6ab5120",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 16
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-02T20:26:49Z",
+      "side": 1,
+      "message": "if it isn\u0027t needed now, remove the comment, and we can add it when it is needed",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 29
+      },
+      "revId": "7e6a5c89f069599cb89e38b526171679ba5a3740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7fde32_4a2a0220",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-02T20:26:49Z",
+      "side": 1,
+      "message": "do you have a TLS-familiar reviewer?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 84
+      },
+      "revId": "7e6a5c89f069599cb89e38b526171679ba5a3740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb40751b_25be6b89",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-02T20:26:49Z",
+      "side": 1,
+      "message": "no default?",
+      "revId": "7e6a5c89f069599cb89e38b526171679ba5a3740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ed4a38_274698f5",
+        "filename": "libs/binder/include_tls/binder/RpcTransportTls.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-02T20:26:49Z",
+      "side": 1,
+      "message": "comment w/ self-signed cert",
+      "range": {
+        "startLine": 25,
+        "startChar": 35,
+        "endLine": 25,
+        "endChar": 42
+      },
+      "revId": "7e6a5c89f069599cb89e38b526171679ba5a3740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "059c57c3_552d0114",
+        "filename": "libs/binder/include_tls/binder/RpcTransportTls.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-02T20:26:49Z",
+      "side": 1,
+      "message": "can you make the constructor of this private and have a \u0027make\u0027 method which returns std::unique_ptr\u003cRpcTransportCtxFactoryTls\u003e. Otherwise, we risk sizof(RpcTransportCtxFactoryTls) being frozen. Also virtual destructor (do you know why there is no warning for this)?",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "7e6a5c89f069599cb89e38b526171679ba5a3740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
