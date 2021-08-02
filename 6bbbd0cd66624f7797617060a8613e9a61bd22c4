@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "047868da_dd89ab5c",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-02T20:21:11Z",
+      "side": 1,
+      "message": "this might cost some additional syscalls for the raw transport? Could this be moved into the rpcTransport class?",
+      "range": {
+        "startLine": 221,
+        "startChar": 42,
+        "endLine": 221,
+        "endChar": 49
+      },
+      "revId": "6bbbd0cd66624f7797617060a8613e9a61bd22c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
