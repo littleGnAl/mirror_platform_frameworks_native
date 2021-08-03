@@ -94,6 +94,30 @@
       },
       "revId": "20c61885f3b3146a2de5e79d066591112b5908c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8567a0_7c0bab6d",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T19:54:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aff218aa_c98fa052",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 107
+      },
+      "revId": "20c61885f3b3146a2de5e79d066591112b5908c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
