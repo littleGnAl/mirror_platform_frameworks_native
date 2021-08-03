@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "089288d2_45a8d7c2",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T16:53:57Z",
+      "side": 1,
+      "message": "Added David Benjamin.\n\nDavid, could you PTAL?",
+      "parentUuid": "0e7fde32_4a2a0220",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 84
+      },
+      "revId": "7e6a5c89f069599cb89e38b526171679ba5a3740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb40751b_25be6b89",
@@ -60,6 +84,24 @@
       "writtenOn": "2021-08-02T20:26:49Z",
       "side": 1,
       "message": "no default?",
+      "revId": "7e6a5c89f069599cb89e38b526171679ba5a3740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de7f128_fdfe0286",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T16:53:57Z",
+      "side": 1,
+      "message": "I think those are the logs that we care about. I could add a default log of the \"type\" though",
+      "parentUuid": "bb40751b_25be6b89",
       "revId": "7e6a5c89f069599cb89e38b526171679ba5a3740",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
