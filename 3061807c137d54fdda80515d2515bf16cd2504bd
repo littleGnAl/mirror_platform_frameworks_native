@@ -109,6 +109,24 @@
       "message": "virtual destructor?",
       "revId": "3061807c137d54fdda80515d2515bf16cd2504bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b77d00_f53016ae",
+        "filename": "libs/binder/include_tls/binder/RpcTransportTls.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T21:37:39Z",
+      "side": 1,
+      "message": "It should be implicitly declared, because the parent class declares it",
+      "parentUuid": "d2917eed_d112932a",
+      "revId": "3061807c137d54fdda80515d2515bf16cd2504bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
