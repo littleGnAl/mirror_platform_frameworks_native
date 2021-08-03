@@ -283,6 +283,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd64270_7eb883c5",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T17:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "312ab93a_ef11c751",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 95
+      },
+      "revId": "598843b264da8743b7eb7d242baf4756e58cecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93483b59_79cccae6",
@@ -296,6 +320,30 @@
       "writtenOn": "2021-08-02T20:24:26Z",
       "side": 1,
       "message": "make constructor private, make virtual destructor, have a static method which returns \u0026 constructs std::unique_ptr\u003cRpcTransportCtxFactoryRaw\u003e (we don\u0027t want to risk sizeof(RpcTransportCtxFactoryRaw) being frozen)",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "598843b264da8743b7eb7d242baf4756e58cecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1654ce40_55863c50",
+        "filename": "libs/binder/include/binder/RpcTransportRaw.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T17:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93483b59_79cccae6",
       "range": {
         "startLine": 29,
         "startChar": 6,
