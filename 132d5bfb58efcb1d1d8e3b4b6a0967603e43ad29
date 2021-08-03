@@ -22,6 +22,30 @@
       },
       "revId": "132d5bfb58efcb1d1d8e3b4b6a0967603e43ad29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7009557b_e39680ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-03T23:18:31Z",
+      "side": 1,
+      "message": "I also tested the failure manually, but yeah, that\u0027s not so great.",
+      "parentUuid": "1f4bf0b3_9f0b9cae",
+      "range": {
+        "startLine": 13,
+        "startChar": 20,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "132d5bfb58efcb1d1d8e3b4b6a0967603e43ad29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
