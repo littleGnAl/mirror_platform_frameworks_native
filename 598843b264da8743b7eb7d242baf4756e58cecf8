@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef479636_92c112b0",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T18:08:17Z",
+      "side": 1,
+      "message": "Scratch the last comment. libbase now contains fmtlib as a whole_static_lib. Let me know if you are okay with changing this to Result\u003cvoid\u003e.",
+      "parentUuid": "22d437d4_80b39238",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 70
+      },
+      "revId": "598843b264da8743b7eb7d242baf4756e58cecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "debfff8b_1356e5af",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 9
