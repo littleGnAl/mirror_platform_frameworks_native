@@ -69,6 +69,30 @@
       },
       "revId": "132d5bfb58efcb1d1d8e3b4b6a0967603e43ad29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7a6e07_12883ce7",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-03T23:32:28Z",
+      "side": 1,
+      "message": "If they are \u0027\u003d\u003d\u0027, then it is at max capacity now, so another shouldn\u0027t be added.",
+      "parentUuid": "963ee4f6_86e772aa",
+      "range": {
+        "startLine": 632,
+        "startChar": 37,
+        "endLine": 632,
+        "endChar": 38
+      },
+      "revId": "132d5bfb58efcb1d1d8e3b4b6a0967603e43ad29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
