@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d31b1199_224f59ac",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-03T20:43:11Z",
+      "side": 1,
+      "message": "clang-format did not correct this to \"* \"? hmmmmmmmm?",
+      "range": {
+        "startLine": 308,
+        "startChar": 10,
+        "endLine": 308,
+        "endChar": 12
+      },
+      "revId": "3061807c137d54fdda80515d2515bf16cd2504bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2917eed_d112932a",
         "filename": "libs/binder/include_tls/binder/RpcTransportTls.h",
         "patchSetId": 21
