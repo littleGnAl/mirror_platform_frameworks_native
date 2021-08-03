@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d20046b7_ac922ee9",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 21
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T21:39:25Z",
+      "side": 1,
+      "message": "Nope. It is more or less a \"plugin\".",
+      "parentUuid": "af30bf70_5a1fd7a8",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 6
+      },
+      "revId": "3061807c137d54fdda80515d2515bf16cd2504bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d31b1199_224f59ac",
