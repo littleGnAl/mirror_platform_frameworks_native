@@ -332,6 +332,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c660c0e_15b83796",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T21:36:19Z",
+      "side": 1,
+      "message": "Done, I dropped it",
+      "parentUuid": "704a81a1_a348dbe0",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 54
+      },
+      "revId": "598843b264da8743b7eb7d242baf4756e58cecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "312ab93a_ef11c751",
