@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce40f36_5118c2fc",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T16:41:10Z",
+      "side": 1,
+      "message": "This is needed for TLS.",
+      "parentUuid": "60ce2b84_61e2b58d",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "598843b264da8743b7eb7d242baf4756e58cecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcf4726f_22867221",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1defde3f_8b63ec6d",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T16:41:10Z",
+      "side": 1,
+      "message": "sure. WDYT about\n\n```\nint send(buf, size, std::string* error)\n```\n\n?",
+      "parentUuid": "fcf4726f_22867221",
+      "range": {
+        "startLine": 33,
+        "startChar": 32,
+        "endLine": 33,
+        "endChar": 70
+      },
+      "revId": "598843b264da8743b7eb7d242baf4756e58cecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "debfff8b_1356e5af",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 9
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-02T20:19:14Z",
       "side": 1,
       "message": "This isn\u0027t the behavior we want, right? Since the goal of using this function is to drain commands. If there are things in the kernel, we could drain more.\n\nIs this a limitation of TLS?",
+      "range": {
+        "startLine": 52,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "598843b264da8743b7eb7d242baf4756e58cecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "357eea35_f894fe9c",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T16:41:10Z",
+      "side": 1,
+      "message": "It is a limitation of libssl. libssl may have pending data in a userspace buffer.\n\nI need to peek the userspace buffer without actually calling any syscalls, see CL:1747935",
+      "parentUuid": "debfff8b_1356e5af",
       "range": {
         "startLine": 52,
         "startChar": 18,
@@ -106,6 +178,30 @@
       "writtenOn": "2021-08-02T20:19:14Z",
       "side": 1,
       "message": "this doesn\u0027t seem very extensible",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 54
+      },
+      "revId": "598843b264da8743b7eb7d242baf4756e58cecf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "704a81a1_a348dbe0",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-03T16:41:10Z",
+      "side": 1,
+      "message": "This is for logging \u0026 testing only.",
+      "parentUuid": "1437d0e0_179a9be7",
       "range": {
         "startLine": 77,
         "startChar": 0,
