@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb91f014_62403088",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-03T21:46:30Z",
+      "side": 1,
+      "message": "Each thread corresponds to one accept (even if the thread doesn\u0027t stick around).\n\nThis main thread repeatedly accepts, and then it spawns a new thread in order to handle the accepted thread.\n\nFor instance, if \u0027newTransport\u0027 could ever block, then you can DOS the server completely.",
+      "parentUuid": "a4c716eb_17e20508",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 95
+      },
+      "revId": "034d562fc9cd020c31cf07f32eb1178f9f4cc5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3489bd7a_6804775d",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 18
