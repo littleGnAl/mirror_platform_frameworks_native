@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "581ef5ee_c228d963",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T23:27:39Z",
+      "side": 1,
+      "message": "binderRpcTest hangs. Investigating.",
+      "revId": "176d9694eb2375c82e9411ee2adb3e3059f4a795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
