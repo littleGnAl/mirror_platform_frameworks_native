@@ -159,6 +159,24 @@
       "parentUuid": "ab773869_da1cad53",
       "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103e67db_66d5b2ce",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-04T22:43:22Z",
+      "side": 1,
+      "message": "If you\u0027re doing non-blocking IO, the API contract in BIO is that you need to manage the BIO\u0027s retry flags in read and write.\n\nlibssl consumes those flags and converts them into SSL_ERROR_WANT_WRITE and SSL_ERROR_WANT_READ as appropriate. See documentation:\n\nhttps://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#SSL_read\nhttps://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#SSL_get_error\nhttps://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#SSL_ERROR_WANT_READ\n\nThis CL isn\u0027t honoring the BIO API contract, which means the APIs in libssl won\u0027t work right. If you make your own BIO, you need to fix that. If you just silence SIGPIPE, then you can use the normal socket BIO and have that handled for you.\n\n(Alas, this API is needlessly fussy. It\u0027s from OpenSSL and we\u0027ve preserved the behavior that it was.)\n\n\u003e If so, is there an equivalent of poll() in libssl to notify an FD when actual data is available?\n\nThe way this works is libssl tells you what it was blocked on, and you manage the call to poll() to retry the operation when it\u0027s ready. select/poll loops tend to be pretty global (you want to incorporate everything else your application is waiting on), so the OpenSSL/BoringSSL API expects you do that and only gives you the tools to integrate with your application\u0027s existing non-blocking I/O story.",
+      "parentUuid": "1bd3679d_5d8bfd47",
+      "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
