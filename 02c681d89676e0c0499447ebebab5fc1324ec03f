@@ -434,6 +434,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8a7ea13_1d6b3957",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T21:13:21Z",
+      "side": 1,
+      "message": "Feel free to switch MSG_NOSIGNAL everywhere to be SO_NONBLOCK when we create sockets. binder_rpc_fuzzer _should_ cover us to make sure we are actually not blocking anywhere and that shutdown works (as you mentioned, we\u0027ll need to change this to start fuzzing the client and the server) though, so I don\u0027t have a strong preference between one or the other.\n\nAnyway - yeah, none of our operations should be blocking. SO_NONBLOCK probably makes the most sense, assuming that it actually works for all socket types (I assume it would?)",
+      "parentUuid": "f8c1ca5c_90896213",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ccb2174_43b4d136",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -551,6 +569,24 @@
       "side": 1,
       "message": "Note for libbinder owners: RpcTransport::peek is used in:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1747934/27/libs/binder/RpcState.cpp#601\n\nSteven, could you please take a look at Adam\u0027s comment here?",
       "parentUuid": "160a1e65_83ba58ff",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a46d50_14c0cbb9",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T21:13:21Z",
+      "side": 1,
+      "message": "What comment? I don\u0027t see any comments.",
+      "parentUuid": "9bdb2b9a_02d3d73e",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
