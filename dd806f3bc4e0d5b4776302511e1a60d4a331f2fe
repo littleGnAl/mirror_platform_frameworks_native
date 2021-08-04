@@ -123,6 +123,24 @@
       "parentUuid": "bbdd90ff_2d0498eb",
       "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab773869_da1cad53",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T21:14:31Z",
+      "side": 1,
+      "message": "\u003e meanwhile macOS has some option you set on the fd, if I recall.\n\nSO_NOSIGPIPE, which of course isn\u0027t supported on Linux.",
+      "parentUuid": "68186345_90d433f6",
+      "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
