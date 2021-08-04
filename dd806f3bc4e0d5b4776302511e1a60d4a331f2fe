@@ -213,6 +213,24 @@
       "parentUuid": "cde4e3e0_8f933fba",
       "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218e9cab_803892df",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T23:34:48Z",
+      "side": 1,
+      "message": "\u003e writing a poll() loop inside the BIO\n\nOh, the pseudocode is just an example. I am not polling inside the BIO, but just giving a simplified version of:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1747934/27/libs/binder/RpcSession.cpp#277\n\n... which uses this RpcTransport API that I am implementing.",
+      "parentUuid": "4e646ae4_8b639711",
+      "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
