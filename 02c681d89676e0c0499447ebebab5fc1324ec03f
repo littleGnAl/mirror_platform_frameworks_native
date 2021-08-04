@@ -1,0 +1,294 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b506d020_f53a5c23",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "Better to call EVP_PKEY_set1_EC_KEY and don\u0027t have .release(). Otherwise, on failure, the EC_KEY is leaked.",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f6711a_72950d4a",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "31-bit serial is a little small. It\u0027s unlikely to be a problem, but there are clients (e.g. NSS) that refuse to process duplicate serials. Probably safer to just use a 128-bit value, which is fairly standard. See example here: http://google3/experimental/users/agl/selfsigned/selfsigned.cc?l\u003d34\u0026rcl\u003d153370872",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5ba56e_24753683",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "From an international point-of-view: why? (Not important though.)",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc45346_09ad6be3",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "Is it worth being more descriptive about what this is for? (Your call.)",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23388b6_8a8fdc70",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "Use of |int|, rather than |size_t| for lengths can cause problems. Your call if this is the style for this area of the code, but if it\u0027s just because the OpenSSL API uses |int| then you should prevent that from spreading. The OpenSSL API is a 90s mess.",
+      "range": {
+        "startLine": 120,
+        "startChar": 55,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4349446_998a1032",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "Result\u003cssize_t\u003e contains a ssize_t on success, but why ssize_t not size_t? What does a negative value mean in the success case? (I see that it\u0027s the interface that\u0027s being implemented so maybe too set in stone to change.)",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74ea664e_841c6346",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "Either the transport is non-blocking, in which case you don\u0027t want to busy-loop on WANT_WRITE, or it\u0027s blocking, in which case WANT_WRITE should never happen.",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ccb2174_43b4d136",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "(ditto everything about |send| here.)",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf8fbb55_c8f90651",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "There is no \"socketRead() above\".",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803ada38_ed171475",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "Be aware that SSL_peek is weird. It might return only a small number of bytes even if more are technically available (because of record fragmentation at the sending side). In general, you can only assume that you can peek a single byte.\n\nIf possible avoid needing to peek in the protocol. If required, at least a comment is needed here and you might find that your protocol deadlocks depending on the peeking needs. In that case, peeking will need to be implemented at a higher level.",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47265ff_a9c0d4dc",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "connectOrAccept",
+      "range": {
+        "startLine": 189,
+        "startChar": 21,
+        "endLine": 189,
+        "endChar": 34
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac9d9668_d2c085b4",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "SSL_accept / SSL_connect return \u003c\u003d 0 on error, not just zero. Elsewhere things like WANT_READ/WANT_WRITE are handled, although I\u0027m still not sure if this code is supposed to be non-blocking or not so WANT_READ/WANT_WRITE may not be possible here.",
+      "range": {
+        "startLine": 202,
+        "startChar": 38,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6470182_5efd4f47",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "|ret| is not used elsewhere.",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e8302b_8d344f92",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "nit: missing blank line following.",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a44a0b3_c905662b",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "I\u0027d including something like:\n\n// No certificate verification configured because we only want passively-secure connections.",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40766869_5b336ccb",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T18:55:56Z",
+      "side": 1,
+      "message": "nit: missing blank line after.",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
