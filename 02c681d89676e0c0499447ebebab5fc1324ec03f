@@ -788,6 +788,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3542226d_b3bc0a7d",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T23:48:37Z",
+      "side": 1,
+      "message": "Also, this should probably be something like (if I am to handle SSL_ERROR_WANT_CONNECT/ACCEPT):\n\n```\nint ret;\nwhile ((ret \u003d fn(ssl.get())) \u003c\u003d 0) {\n  int err \u003d SSL_get_error(ssl.get(), ret);\n  if (err \u003d\u003d SSL_ERROR_WANT_CONNECT || err \u003d\u003d SSL_ERROR_WANT_ACCEPT) {\n    continue;\n  }\n  ALOGE(\"%s(): %s\", fnString, SSL_error_description(err));\n  return nullptr;\n}\n```\n\nRight?",
+      "parentUuid": "e0b9f37c_8c82a8fb",
+      "range": {
+        "startLine": 202,
+        "startChar": 38,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7e8302b_8d344f92",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
