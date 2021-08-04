@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47723dc6_e46b8edd",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "Ack, will do",
+      "parentUuid": "b506d020_f53a5c23",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63f6711a_72950d4a",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-04T18:55:56Z",
       "side": 1,
       "message": "31-bit serial is a little small. It\u0027s unlikely to be a problem, but there are clients (e.g. NSS) that refuse to process duplicate serials. Probably safer to just use a 128-bit value, which is fairly standard. See example here: http://google3/experimental/users/agl/selfsigned/selfsigned.cc?l\u003d34\u0026rcl\u003d153370872",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6aba322_f53fcf73",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "Ack, will do",
+      "parentUuid": "63f6711a_72950d4a",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7cdfab3f_256d0d6f",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "What value should I set it? Or maybe I shouldn\u0027t set any \"C\" value at all?",
+      "parentUuid": "6d5ba56e_24753683",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "acc45346_09ad6be3",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -65,6 +119,24 @@
       "writtenOn": "2021-08-04T18:55:56Z",
       "side": 1,
       "message": "Is it worth being more descriptive about what this is for? (Your call.)",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feb6e311_dc781c4a",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "Ack, will do",
+      "parentUuid": "acc45346_09ad6be3",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -111,6 +183,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2f620f0_0f83b74e",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "It is both SSL_write() and send(2). The RpcTransport class is meant to be a wrapper that hides TLS details.\n\nEDIT: I just checked that send(2) uses size_t. Though, if I change this API to use size_t, then a caller may call this with an overflown value.\n\nSteven, do you think this should be changed to an uint32_t instead?",
+      "parentUuid": "e23388b6_8a8fdc70",
+      "range": {
+        "startLine": 120,
+        "startChar": 55,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61170810_85023818",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "Ha! You are right. Will do.",
+      "parentUuid": "f4349446_998a1032",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74ea664e_841c6346",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -122,6 +236,24 @@
       "writtenOn": "2021-08-04T18:55:56Z",
       "side": 1,
       "message": "Either the transport is non-blocking, in which case you don\u0027t want to busy-loop on WANT_WRITE, or it\u0027s blocking, in which case WANT_WRITE should never happen.",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd952845_32996194",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "This is from:\n\nhttps://cs.android.com/android/platform/superproject/+/master:external/boringssl/src/tool/transport_common.cc;l\u003d723;drc\u003d00a7c4040a2a6f6242d962a19cb9963f7f420818\n\nI\u0027ll fix this in the next patch, but please confirm that this paradigm is wrong",
+      "parentUuid": "74ea664e_841c6346",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -160,6 +292,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e93cc0_b54835b5",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "This is from:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1747933/24/libs/binder/RpcTransportTls.cpp#54\n\nWhen I split the CL into two with `git add -i` I forgot to put this comment in the next CL. I\u0027ll be lazy and leave it as-is, since the two CLs are in the same topic :D",
+      "parentUuid": "cf8fbb55_c8f90651",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "803ada38_ed171475",
@@ -179,6 +329,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9da7e510_efa9c34a",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "\u003e It might return only a small number of bytes even if more are technically available\n\nThis is okay. This is intend to replace places where I need `recv(..., MSG_PEEK | MSG_DONTWAIT)`.",
+      "parentUuid": "803ada38_ed171475",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a47265ff_a9c0d4dc",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -190,6 +358,30 @@
       "writtenOn": "2021-08-04T18:55:56Z",
       "side": 1,
       "message": "connectOrAccept",
+      "range": {
+        "startLine": 189,
+        "startChar": 21,
+        "endLine": 189,
+        "endChar": 34
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b16d7dbc_32912d8d",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "a47265ff_a9c0d4dc",
       "range": {
         "startLine": 189,
         "startChar": 21,
@@ -242,6 +434,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "854e293d_da4758db",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "I am not sure if I understand here. I am basically following\n\nhttps://cs.android.com/android/platform/superproject/+/master:external/boringssl/src/tool/server.cc;l\u003d394;drc\u003d00a7c4040a2a6f6242d962a19cb9963f7f420818\n\nhttps://cs.android.com/android/platform/superproject/+/master:external/boringssl/src/tool/client.cc;l\u003d327;drc\u003d00a7c4040a2a6f6242d962a19cb9963f7f420818\n\nAs for this code, it may or may not be blocking. (Steven, please confirm). So, should I handle WANT_READ / WANT_WRITE here?",
+      "parentUuid": "ac9d9668_d2c085b4",
+      "range": {
+        "startLine": 202,
+        "startChar": 38,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7e8302b_8d344f92",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -270,6 +486,24 @@
       "writtenOn": "2021-08-04T18:55:56Z",
       "side": 1,
       "message": "I\u0027d including something like:\n\n// No certificate verification configured because we only want passively-secure connections.",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb48d410_811da638",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T20:45:54Z",
+      "side": 1,
+      "message": "See L288; I\u0027ll configure certificate verification in upcoming CLs. (I still haven\u0027t figure out how to do that yet).\n\nThanks for the advice; I\u0027ll include the text you provided in the comment.",
+      "parentUuid": "4a44a0b3_c905662b",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
