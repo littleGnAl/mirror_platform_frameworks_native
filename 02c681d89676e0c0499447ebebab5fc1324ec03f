@@ -249,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41c120e2_b92892aa",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T20:55:49Z",
+      "side": 1,
+      "message": "I\u0027d be happy w/ a size_t or a uint32_t. If there is an overflow, we can error (please check manually - ubsan overflow detection is on this library, so it would be a hard abort).",
+      "parentUuid": "e2f620f0_0f83b74e",
+      "range": {
+        "startLine": 120,
+        "startChar": 55,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74ea664e_841c6346",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -295,6 +319,24 @@
       "writtenOn": "2021-08-04T20:53:27Z",
       "side": 1,
       "message": "It depends somewhat on whether you are using non-blocking I/O or not. Worth a comment? If not then WANT_WRITE should never happen, so it\u0027s harmless. If yes, then it\u0027s a bigger problem, I think.",
+      "parentUuid": "bd952845_32996194",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c86e22_526b56fb",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T20:55:49Z",
+      "side": 1,
+      "message": "Yeah - we should return for a partial read here. That will push interruptibleWriteFully to poll the FD until it is writeable. That way, it\u0027s event-driven.\n\nTo see a busy loop like this, you might try adding a counter here (locally, to debug/check) and then log how many times this loop will iterate w/ this error.",
       "parentUuid": "bd952845_32996194",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -506,6 +548,30 @@
       "side": 1,
       "message": "I am not sure if I understand here. I am basically following\n\nhttps://cs.android.com/android/platform/superproject/+/master:external/boringssl/src/tool/server.cc;l\u003d394;drc\u003d00a7c4040a2a6f6242d962a19cb9963f7f420818\n\nhttps://cs.android.com/android/platform/superproject/+/master:external/boringssl/src/tool/client.cc;l\u003d327;drc\u003d00a7c4040a2a6f6242d962a19cb9963f7f420818\n\nAs for this code, it may or may not be blocking. (Steven, please confirm). So, should I handle WANT_READ / WANT_WRITE here?",
       "parentUuid": "ac9d9668_d2c085b4",
+      "range": {
+        "startLine": 202,
+        "startChar": 38,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3614943e_e238c2c3",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T20:55:49Z",
+      "side": 1,
+      "message": "Nothing here should be blocking (everything should be polling on the shutdown trigger). If a remote server deadlocks or pauses during the SSL handshake, we still want to be able to call RpcSession::shutdown (not deadlock).",
+      "parentUuid": "854e293d_da4758db",
       "range": {
         "startLine": 202,
         "startChar": 38,
