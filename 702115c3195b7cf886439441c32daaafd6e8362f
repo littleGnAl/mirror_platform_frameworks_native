@@ -16,6 +16,29 @@
       "message": "sorry Yifan, PS29 is PS27 (PS28 is accidentally PS25)",
       "revId": "702115c3195b7cf886439441c32daaafd6e8362f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccde9647_df885ac9",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T00:50:54Z",
+      "side": 1,
+      "message": "you said this can block, if it does, can it be made so that mShutdownTrigger can unblock it?",
+      "range": {
+        "startLine": 263,
+        "startChar": 32,
+        "endLine": 263,
+        "endChar": 44
+      },
+      "revId": "702115c3195b7cf886439441c32daaafd6e8362f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
