@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d5f0ddd_a7e80dc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T20:31:13Z",
+      "side": 1,
+      "message": "We talked about this when we met and discussed the flow w/o an extra process in the VM (without what you had called \u0027M\u0027).\n\nI should note, adding the ability to do this, it could be separate from this. However, I\u0027d really like to avoid adding extra/unnecessary processes.\n\nAnyway - I see you\u0027ve added this to the meeting agenda, so we can discuss in person (resolving since any new feature added to the server would be separate from this).",
+      "parentUuid": "e35e810d_a86e6226",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "43c0c05695328217895f10742f608e234df7f8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdcd48ec_70da9807",
@@ -72,6 +96,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d38bd5a0_9da738b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T20:31:13Z",
+      "side": 1,
+      "message": "Yep, as we discussed. \u0027V\u0027 should be hosting a service which \u0027S\u0027 can signal when it is ready \u0027onBootPhase\u0027, but this is more of an implementation detail of how we\u0027ll make things work, while this commit message is intended to be a minimal description of how attaching FDs could be.",
+      "parentUuid": "b2bb7d7d_d0837c4a",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "43c0c05695328217895f10742f608e234df7f8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b42dd11_73d3dd0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T20:31:13Z",
+      "side": 1,
+      "message": "This should be irrelevant to this patch, which should support any discovery mechanism (we are talking about using this API outside of pKVM as well). There are many possibilities:\n- the port is statically assigned\n- the port is passed to \u0027V\u0027 from \u0027S\u0027\n- the port is dynamically assigned by \u0027V\u0027 when it starts the VM\n\nAny way works.",
+      "parentUuid": "cdcd48ec_70da9807",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "43c0c05695328217895f10742f608e234df7f8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ce63e32d_a22cea53",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3aabef43_6150d22d",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T20:31:13Z",
+      "side": 1,
+      "message": "That\u0027s correct. I coded this logic here because we expect to be using this API after \u0027S\u0027 signals \u0027V\u0027, \u0027V\u0027 connects to \u0027S\u0027, and then \u0027V\u0027 send the valid connection to \u0027C\u0027 over binder. However, in order to avoid a client who doesn\u0027t need this (only has a \u0027request\u0027 function), as documented:\n\n\u003e For convenience, if \u0027fd\u0027 is -1, \u0027request\u0027 will be called.\n\nThat is, rather than someone saying:\n\n    auto request \u003d [\u003d](...) { return ...; }\n    session-\u003esetupPreconnectedClient(std::move(request()), request);\n\nIt\u0027s possible to avoid the variable:\n\n    session-\u003esetupPreconnectedClient({}, [\u003d](...) { return ...; });\n\n.. while keeping the \u0027complex\u0027 logic here so that you don\u0027t have to code up this generator-like/coroutine-like logic into \u0027request\u0027 for the expected usecase described above.\n\n\nI am not really sure exactly what to say here, to clarify things. A moved unique_fd becomes -1 (which is !ok()). If std::move of unique_fd became a shared fd, it would be totally broken and misnamed. If it did a dup, it would be hugely inefficient, and since duping can fail, the API would make it painful to detect/correct errors. What else could this code do? What would you expect me to comment? \"// std::move\u0027d from fd becomes -1 (!ok())\" ?",
+      "parentUuid": "e115c9f1_64c78502",
+      "range": {
+        "startLine": 131,
+        "startChar": 12,
+        "endLine": 131,
+        "endChar": 20
+      },
+      "revId": "43c0c05695328217895f10742f608e234df7f8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efa370da_15b54fd6",
         "filename": "libs/binder/include/binder/RpcSession.h",
         "patchSetId": 2
@@ -123,6 +219,30 @@
       "writtenOn": "2021-08-04T12:05:30Z",
       "side": 1,
       "message": "this will be called multiple times right?",
+      "range": {
+        "startLine": 104,
+        "startChar": 82,
+        "endLine": 104,
+        "endChar": 89
+      },
+      "revId": "43c0c05695328217895f10742f608e234df7f8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59558ddf_787e48d1",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T20:31:13Z",
+      "side": 1,
+      "message": "correct.",
+      "parentUuid": "efa370da_15b54fd6",
       "range": {
         "startLine": 104,
         "startChar": 82,
