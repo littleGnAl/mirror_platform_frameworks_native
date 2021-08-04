@@ -39,6 +39,30 @@
       },
       "revId": "702115c3195b7cf886439441c32daaafd6e8362f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b62077f_6171a152",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T02:34:29Z",
+      "side": 1,
+      "message": "My bad. I double checked and I realize that this doesn\u0027t actually do the handshake, so it shouldn\u0027t block.\n\nAll it does is to create a new SSL struct (SSL_new) and sets the FD (SSL_set_bio) for it. Both of them shouldn\u0027t actually start writing /  reading from the raw fd.\n\nBut still, I think it is nice to offload the work to the new thread, so I\u0027ll keep this PS as-is.",
+      "parentUuid": "ccde9647_df885ac9",
+      "range": {
+        "startLine": 263,
+        "startChar": 32,
+        "endLine": 263,
+        "endChar": 44
+      },
+      "revId": "702115c3195b7cf886439441c32daaafd6e8362f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
