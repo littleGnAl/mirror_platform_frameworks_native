@@ -177,6 +177,24 @@
       "parentUuid": "1bd3679d_5d8bfd47",
       "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde4e3e0_8f933fba",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T23:11:53Z",
+      "side": 1,
+      "message": "\u003e libssl consumes those flags and converts them into SSL_ERROR_WANT_WRITE and SSL_ERROR_WANT_READ as appropriate.\n\n\u003e This CL isn\u0027t honoring the BIO API contract, which means the APIs in libssl won\u0027t work right. If you make your own BIO, you need to fix that.\n\nSo IIUC:\n\nlibssl\u0027s default BIO calls BIO_set_retry_read() when EAGAIN is returned from recv() / read(). So, when I implement my own BIO, I\u0027ll need to propagate the EAGAIN to libssl\u0027s retry flag.\n\nIs this correct? So I would just do:\n\n```\nint ret \u003d TEMP_FAILURE_RETRY(recv(...)); // retries on EINTR\nif (ret \u003d\u003d -1) {\n  if (errno \u003d\u003d EAGAIN || errno \u003d\u003d EWOULDBLOCK) BIO_set_retry_read();\n  else BIO_clear_retry_flags();\n}\n```\n\nThen, I should get SSL_ERROR_WANT_READ when I call SSL_read(). Right?\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n\u003e The way this works is libssl tells you what it was blocked on, and you manage the call to poll() to retry the operation when it\u0027s ready. \n\nI am not sure if I understand. IIUC, poll()ing on the raw socket fd is the closest way to wait for real data. It may still wake up spuriously, because raw data available doesn\u0027t mean real data being available. Right?\n\nIn pseudocode, for a raw socket, I may have:\n\n```\nwhile (poll()) {\n  if (POLLIN is set for fd) {\n    int ret \u003d TEMP_FAILURE_RETRY(read(fd));\n    if (ret \u003c\u003d 0) abort(); // because it should never happen!\n  }\n}\n```\n\nbut with libssl, I\u0027ll need to be resilient to SSL_ERROR_WANT_READ:\n\n```\nwhile (poll()) {\n  if (POLLIN is set for fd) {\n    int ret \u003d TEMP_FAILURE_RETRY(SSL_read());\n    if (ret \u003c\u003d 0) {\n      if (SSL_get_error() \u003d\u003d SSL_ERROR_WANT_READ) continue; // poll again\n      abort(); // this should never happen!\n  }\n}\n  \n```",
+      "parentUuid": "103e67db_66d5b2ce",
+      "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
