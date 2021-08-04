@@ -772,6 +772,13 @@ bool Layer::isSecure() const {
 // ----------------------------------------------------------------------------
 
 void Layer::pushPendingState() {
+    // If we add syncPoint in detached layer, the doTransaction(uint32_t) couldn't execute
+    // applyPendingStates to make the syncPoint "setTransactionApplied". Then the
+    // allTransactionsSignaled in latchBuffer would always return false, so we couldn't
+    // acquireBuffer and cause us to run out of memory in bufferqueue.
+    if (mLayerDetached) {
+        return;
+    }
     if (!mCurrentState.modified) {
         return;
     }
