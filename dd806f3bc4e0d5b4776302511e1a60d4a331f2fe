@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1a8a2b4_d685c8f5",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T21:03:05Z",
+      "side": 1,
+      "message": "I don\u0027t think ignoring SIGPIPE at the application level is an option in general for Android because of the amount of code or processes we might be intertwined with (some users of this may want it). I want this code to be non-global and self-contained, and I don\u0027t want it to be interacting w/ random other things that are using SIGPIPE.\n\n\u003e It\u0027s odd for a library to squash SIGPIPE itself and override the application\u0027s wish.\n\n:) couldn\u0027t disagree more, but I also expect I am probably missing something here. What is so great about this global signal? :)",
+      "parentUuid": "8342d190_43d50d8f",
+      "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7d54297_17de475f",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 24
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Ooops. I\u0027ll add TEMP_FAILURE_RETRY here. Thanks for pointing this out!",
       "parentUuid": "d7d54297_17de475f",
+      "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbdd90ff_2d0498eb",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-04T21:03:05Z",
+      "side": 1,
+      "message": "All of this stuff should be non-blocking in order to hook into the polling w/ the shutdown trigger one level up.\n\n\u003e SIGPIPE is kinda terrible and any complex application on UNIX probably wants to disable it.\n\nSo, specifically, I don\u0027t want to be concerned if some utility or application is already using SIGPIPE, I don\u0027t want to have to rewrite that utility in order to make it work with this library.",
+      "parentUuid": "411c09ff_5e0a65cd",
       "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
