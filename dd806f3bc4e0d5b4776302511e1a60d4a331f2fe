@@ -195,6 +195,24 @@
       "parentUuid": "103e67db_66d5b2ce",
       "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e646ae4_8b639711",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T23:31:16Z",
+      "side": 1,
+      "message": "Just noting one point from the above:\n\n\u003e In pseudocode, for a raw socket, I may have:\n\u003e \n\u003e while (poll()) {\n\u003e   if (POLLIN is set for fd) {\n\u003e   int ret \u003d TEMP_FAILURE_RETRY(read(fd));\n\u003e   if (ret \u003c\u003d 0) abort(); // because it should never happen!\n\u003e }\n\nFirstly, read() can fail after poll() says that it\u0027s readable, in general. So you should be kind to the kernel and loop again.\n\nBut, more importantly, writing a poll() loop inside the BIO just makes a blocking socket from a non-blocking socket again! In order to take advantage of a non-blocking socket there has to be an application-level poll loop somewhere that will service other sockets while a given TLS socket is waiting for data.\n\nYou are both writing a library (and thus shouldn\u0027t deal with application-wide issues) and doing non-blocking I/O (which has to be application-wide to work). The usual answers are either to have a standard poll loop that all the libraries can use (e.g. glib[1] for many Linux apps) or else expose callbacks from your library that the application has to wire up. Perhaps Android has a standard poll system, but I don\u0027t know much about Android internals.\n\n[1] https://gitlab.gnome.org/GNOME/glib",
+      "parentUuid": "cde4e3e0_8f933fba",
+      "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
