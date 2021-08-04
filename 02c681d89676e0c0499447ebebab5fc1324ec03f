@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4876de0_722863d5",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T21:05:26Z",
+      "side": 1,
+      "message": "EVP_PKEY is reference counted. If a \"set1\" function is successful it\u0027ll take its own reference to the object. Then when the bssl::UniquePtr goes out of scope it\u0027ll decrement the refcount, but that won\u0027t destroy the object.\n\n(https://commondatastorage.googleapis.com/chromium-boringssl-docs/evp.h.html#Getting-and-setting-concrete-public-key-types)\n\nYou might reasonably ask why it\u0027s called \"UniquePtr\" if it\u0027s not unique. The OpenSSL API was historically ambiguous about which objects were reference counted and which weren\u0027t and we\u0027re still living that that today.",
+      "parentUuid": "204d4263_e7a52187",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63f6711a_72950d4a",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
