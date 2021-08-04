@@ -225,6 +225,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4903f844_b243c3bf",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T20:53:27Z",
+      "side": 1,
+      "message": "In general:\n\nbool send_wrapper(const uint8_t *data, size_t len) {\n  while (len \u003e 0) {\n    size_t todo \u003d len;\n    if (todo \u003e INT_MAX) {\n      todo \u003d INT_MAX;\n    }\n    if (!int_using_send_function(data, static_cast\u003cint\u003e(todo))) {\n       ...\n    }\n    data +\u003d todo;\n    len -\u003d todo;\n  }\n}",
+      "parentUuid": "e2f620f0_0f83b74e",
+      "range": {
+        "startLine": 120,
+        "startChar": 55,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74ea664e_841c6346",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -254,6 +278,24 @@
       "side": 1,
       "message": "This is from:\n\nhttps://cs.android.com/android/platform/superproject/+/master:external/boringssl/src/tool/transport_common.cc;l\u003d723;drc\u003d00a7c4040a2a6f6242d962a19cb9963f7f420818\n\nI\u0027ll fix this in the next patch, but please confirm that this paradigm is wrong",
       "parentUuid": "74ea664e_841c6346",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc701279_006abff3",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T20:53:27Z",
+      "side": 1,
+      "message": "It depends somewhat on whether you are using non-blocking I/O or not. Worth a comment? If not then WANT_WRITE should never happen, so it\u0027s harmless. If yes, then it\u0027s a bigger problem, I think.",
+      "parentUuid": "bd952845_32996194",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -341,6 +383,24 @@
       "side": 1,
       "message": "\u003e It might return only a small number of bytes even if more are technically available\n\nThis is okay. This is intend to replace places where I need `recv(..., MSG_PEEK | MSG_DONTWAIT)`.",
       "parentUuid": "803ada38_ed171475",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160a1e65_83ba58ff",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-04T20:53:27Z",
+      "side": 1,
+      "message": "But it\u0027s important to understand what those points are expecting. If they\u0027re just asking whether data is available then ... probably ok, but unclear why that would be needed if non-blocking. If they expect to be able to peek some protocol-level message out, however, then the semantics of SSL_peek might subtly break them because they\u0027ll peek a single byte forever and wait for more that will never come.",
+      "parentUuid": "9da7e510_efa9c34a",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
