@@ -162,6 +162,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a654fb32_c29e6709",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T21:10:50Z",
+      "side": 1,
+      "message": "I\u0027ll change it to INT (international):\n\nhttps://www.digicert.com/kb/ssl-certificate-country-codes.htm",
+      "parentUuid": "7cdfab3f_256d0d6f",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "acc45346_09ad6be3",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
