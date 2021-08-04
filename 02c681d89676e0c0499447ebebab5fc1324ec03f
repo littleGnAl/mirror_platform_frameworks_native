@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "204d4263_e7a52187",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T21:01:48Z",
+      "side": 1,
+      "message": "I just want to confirm the following. From the docs it appears that set1 functions don\u0027t adopt the EC_KEY pointer. Does that mean I\u0027ll have to keep it around until the EVP_PKEY object is released?",
+      "parentUuid": "47723dc6_e46b8edd",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63f6711a_72950d4a",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -344,6 +362,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8c1ca5c_90896213",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T21:01:48Z",
+      "side": 1,
+      "message": "Steven, are we always going to use blocking sockets?",
+      "parentUuid": "bc701279_006abff3",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ccb2174_43b4d136",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -443,6 +479,24 @@
       "side": 1,
       "message": "But it\u0027s important to understand what those points are expecting. If they\u0027re just asking whether data is available then ... probably ok, but unclear why that would be needed if non-blocking. If they expect to be able to peek some protocol-level message out, however, then the semantics of SSL_peek might subtly break them because they\u0027ll peek a single byte forever and wait for more that will never come.",
       "parentUuid": "9da7e510_efa9c34a",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bdb2b9a_02d3d73e",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T21:01:48Z",
+      "side": 1,
+      "message": "Note for libbinder owners: RpcTransport::peek is used in:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1747934/27/libs/binder/RpcState.cpp#601\n\nSteven, could you please take a look at Adam\u0027s comment here?",
+      "parentUuid": "160a1e65_83ba58ff",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -572,6 +626,30 @@
       "side": 1,
       "message": "Nothing here should be blocking (everything should be polling on the shutdown trigger). If a remote server deadlocks or pauses during the SSL handshake, we still want to be able to call RpcSession::shutdown (not deadlock).",
       "parentUuid": "854e293d_da4758db",
+      "range": {
+        "startLine": 202,
+        "startChar": 38,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b9f37c_8c82a8fb",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T21:01:48Z",
+      "side": 1,
+      "message": "IIUC, even though the raw socket says it is available for read / write, it doesn\u0027t mean there are data available above the TLS level. It could be just initiating a handshake, but not reading / writing application-level data. So technically the I/O could still block.\n\nAm I understanding correctly?",
+      "parentUuid": "3614943e_e238c2c3",
       "range": {
         "startLine": 202,
         "startChar": 38,
