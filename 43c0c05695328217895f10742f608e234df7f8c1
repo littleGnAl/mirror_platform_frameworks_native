@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e35e810d_a86e6226",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-04T12:05:30Z",
+      "side": 1,
+      "message": "I wanted to avoid this because S can\u0027t be sure if a new connection request is from V (a trusted one in the host VM) or not.\n\nTo ensure this, we have to make sure that only V can make a new vsock connection in the host VM.. using selinux.",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "43c0c05695328217895f10742f608e234df7f8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdcd48ec_70da9807",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-04T12:05:30Z",
+      "side": 1,
+      "message": "How does V know the port number that S is listening on? (CID is known because it\u0027s V who created a VM and assigned a CID to it) Does it come from C?",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "43c0c05695328217895f10742f608e234df7f8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2bb7d7d_d0837c4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-04T12:05:30Z",
+      "side": 1,
+      "message": "I think we need an additional step for V to check if the prior step (VM B is up and S is listening on a port) is finished.\n\nTo do so, S (or the OS process who launched S in the VM) should notify VM A that it is now ready.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "43c0c05695328217895f10742f608e234df7f8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce63e32d_a22cea53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-04T12:05:30Z",
+      "side": 1,
+      "message": "I can +2 but I have some questions.",
+      "revId": "43c0c05695328217895f10742f608e234df7f8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e115c9f1_64c78502",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-04T12:05:30Z",
+      "side": 1,
+      "message": "Just to get confirm. Even if \u0027fd\u0027 was originally set to a valid number, this expression evaluates to `true` when this lambda is executed for the non-primary connections, because fd was moved before. Right?\n\nThen this is a clever routine, but I think it deserves an explanation.",
+      "range": {
+        "startLine": 131,
+        "startChar": 12,
+        "endLine": 131,
+        "endChar": 20
+      },
+      "revId": "43c0c05695328217895f10742f608e234df7f8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa370da_15b54fd6",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-04T12:05:30Z",
+      "side": 1,
+      "message": "this will be called multiple times right?",
+      "range": {
+        "startLine": 104,
+        "startChar": 82,
+        "endLine": 104,
+        "endChar": 89
+      },
+      "revId": "43c0c05695328217895f10742f608e234df7f8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
