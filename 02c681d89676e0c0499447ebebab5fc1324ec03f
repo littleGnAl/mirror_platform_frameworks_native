@@ -452,6 +452,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8ca4d4b_fb4d2fbe",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T21:50:22Z",
+      "side": 1,
+      "message": "So, to Adam\u0027s comment, we are using non-blocking I/O. According to Adam\u0027s comment, WANT_WRITE *could* happen.\n\nAdam, could you explain what \"bigger problem\" that could present?",
+      "parentUuid": "e8a7ea13_1d6b3957",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ccb2174_43b4d136",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -587,6 +605,24 @@
       "side": 1,
       "message": "What comment? I don\u0027t see any comments.",
       "parentUuid": "9bdb2b9a_02d3d73e",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b71a79_561c85fe",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T21:50:22Z",
+      "side": 1,
+      "message": "At the point where RpcTransport::peek() is called, i.e. this:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1747934/27/libs/binder/RpcState.cpp#601\n\n\u003e But it\u0027s important to understand what those points are expecting. If they\u0027re just asking whether data is available then ... probably ok, but unclear why that would be needed if non-blocking. If they expect to be able to peek some protocol-level message out, however, then the semantics of SSL_peek might subtly break them because they\u0027ll peek a single byte forever and wait for more that will never come.\n\nDoes \"drainCommands\" expect to \"peek some protocal-level\" message out? I assume it does. Though, even it may only peek a single byte forever, I don\u0027t think it will wait for more. It\u0027ll just move on. So my guess is that this is fine for drainCommands specifically.",
+      "parentUuid": "44a46d50_14c0cbb9",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
