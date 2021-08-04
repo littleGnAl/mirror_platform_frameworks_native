@@ -16,6 +16,23 @@
       "message": "This is plausible, but odd. Generally either SIGPIPE is ignored if the application wishes, or not. It\u0027s odd for a library to squash SIGPIPE itself and override the application\u0027s wish.",
       "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d54297_17de475f",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-04T19:50:48Z",
+      "side": 1,
+      "message": "Are you going to be doing any non-blocking I/O? If so, you need to manage retry flags (BIO_clear_retry_flags and BIO_set_retry_read/BIO_set_retry_write on check errno) on EAGAIN and probably also EINTR.\n\nDitto for send. Though, yeah, I\u0027d probably have just suppressed SIGPIPE in the application. SIGPIPE is kinda terrible and any complex application on UNIX probably wants to disable it. (It\u0027s mostly a workaround for shell utilities that forget to check the return value of write.)",
+      "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
