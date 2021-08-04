@@ -141,6 +141,24 @@
       "parentUuid": "68186345_90d433f6",
       "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bd3679d_5d8bfd47",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-04T22:34:04Z",
+      "side": 1,
+      "message": "To David\u0027s original comment:\n\n\u003e Are you going to be doing any non-blocking I/O?\n\nYes.\n\nI double checked that TEMP_FAILURE_RETRY only handles EINTR, while for non-blocking I/O, EAGAIN / EWOULDBLOCK is used instead.\n\nIn our design, EAGAIN / EWOULDBLOCK would be handled by the caller, not here. This is intended to replace\n\n```\nTEMP_FAILURE_RETRY(::send())\n```\n\nlike RpcTransportRaw::send(): https://android-review.googlesource.com/c/platform/frameworks/native/+/1751000/18/libs/binder/RpcTransportRaw.cpp#36\n\nSo it is intentional to only handle EINTR but not EAGAIN here.\n\nIn practice, we always poll the socket until the FD is available for read / write before actually calling RpcTransportTls::send() / recv(), so we shouldn\u0027t hit EAGAIN / EWOULDBLOCK. See:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1747934/29/libs/binder/RpcSession.cpp#277\n\nAm I understanding correctly?\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nPut it in another way, could the following happen?\n\n1. The application poll()s on the raw FD and see data is available\n2. It calls SSL_read(), which does some handshakes\n3. The handshakes consumes all the available data\n4. When libssl tries to read actual data, nothing is available, so it would \n  - block on a blocking socket; or\n  - return EAGAIN / EWOULDBLOCK on a non-blocking socket (assuming BIO_set_retry_read is not used).\n  \nIf so, is there an equivalent of poll() in libssl to notify an FD when actual data is available?",
+      "parentUuid": "ab773869_da1cad53",
+      "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
