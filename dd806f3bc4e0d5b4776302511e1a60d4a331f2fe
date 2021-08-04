@@ -105,6 +105,24 @@
       "parentUuid": "411c09ff_5e0a65cd",
       "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68186345_90d433f6",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-04T21:10:18Z",
+      "side": 1,
+      "message": "SIGPIPE\u0027s only purpose in life is to kill the process if any writes ever fail, on the assumption that the caller forgot to check the result. It\u0027s so a buggy implementation of cat in:\n\n    cat very_large_file | head\n\nwill eventually exit when head closes the pipe. It\u0027s basically a workaround for early UNIX programs failing to check write() errors. Had cat checked write() errors, it would have worked just fine. Now it\u0027s just some ridiculous thing we have to turn off in every complex UNIX program, just like exiting \"real mode\" in an x86 processor.\n\n(There isn\u0027t even a standard way in POSIX to suppress it on an individual fd. MSG_NOSIGNAL is Linux-only, meanwhile macOS has some option you set on the fd, if I recall.)",
+      "parentUuid": "bbdd90ff_2d0498eb",
+      "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
