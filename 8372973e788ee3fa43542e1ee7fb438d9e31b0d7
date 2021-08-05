@@ -225,6 +225,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5799aeba_19564128",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T23:15:17Z",
+      "side": 1,
+      "message": "Ack. After b/195683291 is fixed (CLs already uploaded), I\u0027ll delete this API altogether and just use recv() directly.",
+      "parentUuid": "b6a22e01_0f138684",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97da40c3_6ec106e5",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 28
