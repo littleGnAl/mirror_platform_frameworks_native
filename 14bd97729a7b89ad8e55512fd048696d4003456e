@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa068a1_43aa8d13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T21:06:48Z",
+      "side": 1,
+      "message": "Thanks David. I\u0027ll address the comments in the next patchset.",
+      "revId": "14bd97729a7b89ad8e55512fd048696d4003456e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a9445c1_da633dd1",
