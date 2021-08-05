@@ -195,6 +195,11 @@ Result<size_t> RpcTransportTls::send(const void *buf, size_t size) {
     int ret = SSL_write(mSsl.get(), buf, static_cast<int>(todo));
     if (ret <= 0) {
         int err = SSL_get_error(mSsl.get(), ret);
+        if (err == SSL_ERROR_WANT_WRITE) {
+            // SSL_ERROR_WANT_WRITE only happens when the socket is non-blocking. This is similar to
+            // EAGAIN / EWOULDBLOCK on send(2). Like RpcTransportRaw::send(), don't handle it here.
+            return Error(EWOULDBLOCK) << "SSL_write(): " << SSL_error_description(err);
+        }
         return Error() << "SSL_write(): " << SSL_error_description(err);
     }
     LOG_TLS_DETAIL("TLS: Sent %d bytes!", ret);
@@ -206,6 +211,11 @@ Result<size_t> RpcTransportTls::recv(void *buf, size_t size) {
     int ret = SSL_read(mSsl.get(), buf, todo);
     if (ret < 0) {
         int err = SSL_get_error(mSsl.get(), ret);
+        if (err == SSL_ERROR_WANT_READ) {
+            // SSL_ERROR_WANT_READ only happens when the socket is non-blocking. This is similar to
+            // EAGAIN / EWOULDBLOCK on recv(2). Like RpcTransportRaw::recv(), don't handle it here.
+            return Error(EWOULDBLOCK) << "SSL_read(): " << SSL_error_description(err);
+        }
         return Error() << "SSL_read(): " << SSL_error_description(err);
     }
     LOG_TLS_DETAIL("TLS: Received %d bytes!", ret);
@@ -236,6 +246,11 @@ Result<size_t> RpcTransportTls::peek(void *buf, size_t size) {
     int ret = SSL_peek(mSsl.get(), buf, size);
     if (ret < 0) {
         int err = SSL_get_error(mSsl.get(), ret);
+        if (err == SSL_ERROR_WANT_READ) {
+            // SSL_ERROR_WANT_READ only happens when the socket is non-blocking. This is similar to
+            // EAGAIN / EWOULDBLOCK on recv(2). Like RpcTransportRaw::peek(), don't handle it here.
+            return Error(EWOULDBLOCK) << "SSL_peek(): " << SSL_error_description(err);
+        }
         return Error() << "SSL_peek(): " << SSL_error_description(err);
     }
     LOG_TLS_DETAIL("TLS: Peeked %d bytes!", ret);
@@ -260,12 +275,19 @@ bssl::UniquePtr<SSL> connectOrAccept(SSL_CTX *ctx, android::base::borrowed_fd fd
     }
     SSL_set_bio(ssl.get(), bio.get(), bio.release());
 
-    int ret = fn(ssl.get());
-    if (ret > 0) {
-        return ssl;
+    for (int i = 0; i < 5; i++) {
+        int ret = fn(ssl.get());
+        if (ret > 0) {
+            return ssl;
+        }
+        int err = SSL_get_error(ssl.get(), ret);
+        ALOGE("%s(): %s", fnString, SSL_error_description(err));
+        if (err != SSL_ERROR_WANT_ACCEPT && err != SSL_ERROR_WANT_CONNECT) {
+            return nullptr;
+        }
+        // Hit EAGAIN / EWOULDBLOCK on non-blocking sockets. Retry a little bit.
     }
-    int err = SSL_get_error(ssl.get(), ret);
-    ALOGE("%s(): %s", fnString, SSL_error_description(err));
+    ALOGE("%s(): hit EAGAIN / EWOULDBLOCK for 5 times, rejecting", fnString);
     return nullptr;
 }
 
