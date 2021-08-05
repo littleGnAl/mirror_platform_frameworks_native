@@ -32,6 +32,7 @@
 #include "RpcSocketAddress.h"
 #include "RpcState.h"
 #include "RpcWireFormat.h"
+#include "Utils.h"
 
 namespace android {
 
@@ -391,6 +392,12 @@ bool RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
             TEMP_FAILURE_RETRY(socket(addr.addr()->sa_family, SOCK_STREAM | SOCK_CLOEXEC, 0)));
     if (serverFd == -1) {
         ALOGE("Could not create socket: %s", strerror(errno));
+        return false;
+    }
+
+    if (auto ret = setNonBlocking(serverFd); !ret.ok()) {
+        ALOGE("Cannot setupSocketServer at %s: %s", addr.toString().c_str(),
+              ret.error().message().c_str());
         return false;
     }
 

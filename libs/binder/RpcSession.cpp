@@ -38,6 +38,7 @@
 #include "RpcSocketAddress.h"
 #include "RpcState.h"
 #include "RpcWireFormat.h"
+#include "Utils.h"
 
 #ifdef __GLIBC__
 extern "C" pid_t gettid();
@@ -532,6 +533,12 @@ bool RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr, const Rp
             int savedErrno = errno;
             ALOGE("Could not create socket at %s: %s", addr.toString().c_str(),
                   strerror(savedErrno));
+            return false;
+        }
+
+        if (auto ret = setNonBlocking(serverFd); !ret.ok()) {
+            ALOGE("Cannot setupOneSocketConnection at %s: %s", addr.toString().c_str(),
+                  ret.error().message().c_str());
             return false;
         }
 
