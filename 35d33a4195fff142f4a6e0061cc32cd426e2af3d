@@ -22,6 +22,53 @@
       },
       "revId": "35d33a4195fff142f4a6e0061cc32cd426e2af3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2218534_35365786",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T23:14:43Z",
+      "side": 1,
+      "message": "I thought it isn\u0027t under the lock?",
+      "parentUuid": "29448a1d_b2492154",
+      "range": {
+        "startLine": 529,
+        "startChar": 8,
+        "endLine": 529,
+        "endChar": 24
+      },
+      "revId": "35d33a4195fff142f4a6e0061cc32cd426e2af3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d11fd20a_f2681220",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T23:14:43Z",
+      "side": 1,
+      "message": "This",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 0
+      },
+      "revId": "35d33a4195fff142f4a6e0061cc32cd426e2af3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
