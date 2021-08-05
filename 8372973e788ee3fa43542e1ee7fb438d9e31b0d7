@@ -208,6 +208,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6a22e01_0f138684",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T21:45:01Z",
+      "side": 1,
+      "message": "Actually, there\u0027s another bug here. It is possible for the underlying socket to not have data available, but the SSL object inside has data buffered. This code will report the wrong thing.\n\nThat means you should just delete this poll loop because it isn\u0027t doing anything useful. Simply call SSL_peek() and let it block or not block depending on whether the socket is blocking. Note, however, this means your peek() API is a blocking one when the underlying socket is blocking.",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97da40c3_6ec106e5",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 28
@@ -254,6 +271,24 @@
       "writtenOn": "2021-08-05T21:05:26Z",
       "side": 1,
       "message": "It is blocking as of now, but it may be non-blocking in the future.\n\nBut thanks for the suggestion. This means I\u0027ll have to change the socket to non-blocking. Filed b/195683291 to keep track.\n\nAs for handling of SSL_ERROR_WANT_READ, please see CL:1786591. Do I need to handle SSL_ERROR_WANT_WRITE even though this is reading things?",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70804563_720b7428",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T21:45:01Z",
+      "side": 1,
+      "message": "We WANT_READ vs WANT_WRITE, let\u0027s discuss this in the other CL. I expect we\u0027ll need to go through many iterations before the non-blocking handling is right and it\u0027ll be confusing to have it spread over so many CLs.",
+      "parentUuid": "7808422d_f90d827c",
       "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
