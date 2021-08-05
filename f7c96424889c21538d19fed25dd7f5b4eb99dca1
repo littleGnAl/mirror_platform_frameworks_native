@@ -36,6 +36,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "351fb65f_0501b76d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T23:09:11Z",
+      "side": 1,
+      "message": "Thanks David for your thorough review!\n\nLooks like I\u0027ll have to turn to non-blocking sockets (b/195683291) before adjusting these CLs. And when we settle on non-blocking sockets, I think this CL should be squashed into CL:1745081.\n\nI\u0027ll set these CLs as WIP, and I\u0027ll let you know when these CLs are ready for review.",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d53e2ce_84a26b9d",
@@ -126,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43de441f_169daf18",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T23:09:11Z",
+      "side": 1,
+      "message": "Understood! I\u0027ll handle both of them.",
+      "parentUuid": "ae7ca575_d7ac227c",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c7e38e5_c649f940",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 3
@@ -173,6 +208,24 @@
       "side": 1,
       "message": "Note if you do a poll loop here, that means you\u0027re doing blocking handshakes but non-blocking reads and writes. This is a little strange because it means the caller still can\u0027t use your library on an interactive thread. Is that the goal?",
       "parentUuid": "48d4d2d3_e29fbf6f",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8809c7e8_37d8a5fe",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T23:09:11Z",
+      "side": 1,
+      "message": "You are right. I\u0027ll move the poll loop to the caller.",
+      "parentUuid": "c1175dc3_19afbc8b",
       "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
