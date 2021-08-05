@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f8d5a9_452d54e9",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:26:49Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to be used. Plus a KeyPair isn\u0027t an EC_KEY and EVP_PKEY pair. The EC_KEY is just the low-level representation of what\u0027s already in the EVP_PKEY. A \"key pair\" typically refers to a public/private key pair, and OpenSSL\u0027s types already always store the pairs together.",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c83e42b8_5c8e51b7",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:26:49Z",
+      "side": 1,
+      "message": "Nit: This function and X509_get_notAfter aren\u0027t const-correct. Use X509_getm_notBefore and X509_getm_notAfter if you want the mutable ones.\n\n(OpenSSL was very inconsistent about whether they wanted to do the getm thing. E.g. there\u0027s no X509_getm_serialNumber. I\u0027ve no idea why.)",
+      "range": {
+        "startLine": 84,
+        "startChar": 45,
+        "endLine": 84,
+        "endChar": 63
+      },
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0158e53c_18eb5c46",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:26:49Z",
+      "side": 1,
+      "message": "This will fold most errors into a generic \"SSL\", which means we won\u0027t be able to help you when things go wrong. Ideally also log the error queue. See \u003copenssl/err.h\u003e. Ditto throughout.",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26bf5cd_68280dbe",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:26:49Z",
+      "side": 1,
+      "message": "Is this the right return value? Seems it would convert -1 into a size_t and then report 0xffff...ffff bytes were read.",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97da40c3_6ec106e5",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:26:49Z",
+      "side": 1,
+      "message": "Is the socket blocking or non-blocking? If it\u0027s blocking, the poll in front won\u0027t guarantee this function works. poll will tell you whether there is *any* data available on the socket. SSL_peek will try to consume an entire record.\n\nThat is, if the other side sends you half a record, poll will say POLLIN. Then this will call SSL_peek, which will attempt to consume the record. If the socket is blocking, we\u0027ll just block until we get the record back.\n\nIf the socket is non-blocking, you\u0027re missing handling of SSL_ERROR_WANT_WRITE, etc.",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb411590_f8d5f441",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:26:49Z",
+      "side": 1,
+      "message": "What is your authentication story here? TLS is meaningless without authentication.\n\nOn the client, you\u0027ll be calling into BoringSSL\u0027s built-in certificate verifier with no trust anchors and then ignoring the result. We may break that in the future because those defaults are terrible. If that\u0027s explicitly what you want, you need to configure this, but that\u0027s also insecure. If that\u0027s not what you want, you need to configure a certificate verification story.\n\nOn the server, you\u0027ll be authenticating with some throwaway self-signed certificate.",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe05e89_13139da8",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:26:49Z",
+      "side": 1,
+      "message": "There is no need to do this connectOrAccept thing. Calling SSL_connect/SSL_accept is just shorthand for:\n\nSSL_set_connect_state or SSL_set_accept_state, which configures whether this is a client or server. Then calling SSL_do_handshake to drive the handshake. So, when you set up a client or server connection, call the right set_foo_state function. Then connectOrAccept just unconditionally calls SSL_do_handshake.",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
