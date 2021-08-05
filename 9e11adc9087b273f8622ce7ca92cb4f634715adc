@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7fc3d42_2af03461",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-05T23:22:21Z",
+      "side": 1,
+      "message": "could you \"| SOCK_NONBLOCK\" here instead?\n\nAlso, should you remove MSG_NONBLOCK from other parts of the code in this change?\n\nYou\u0027ll also need to rebase your change to ToT (for https://android-review.googlesource.com/c/platform/frameworks/native/+/1785497) and handle setupPreconnectedClient.",
+      "range": {
+        "startLine": 531,
+        "startChar": 80,
+        "endLine": 531,
+        "endChar": 92
+      },
+      "revId": "9e11adc9087b273f8622ce7ca92cb4f634715adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
