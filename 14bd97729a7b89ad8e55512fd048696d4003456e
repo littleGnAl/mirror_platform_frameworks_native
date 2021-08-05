@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9445c1_da633dd1",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:30:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be necessary. We\u0027ll never call this on a null BIO.",
+      "revId": "14bd97729a7b89ad8e55512fd048696d4003456e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6161822_a8ed1448",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:30:30Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be necessary. Either size is zero, in which case calling recv is legal, or size is non-zero, in which case the caller has a bug.",
+      "revId": "14bd97729a7b89ad8e55512fd048696d4003456e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "612b9619_77fb299b",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:30:30Z",
+      "side": 1,
+      "message": "This should be:\n\n    BIO_clear_retry_flags(bio);\n    if (errno \u003d\u003d EAGAIN || errno \u003d\u003d EWOULDBLOCK) {\n        BIO_set_retry_read(bio);\n    }\n\nDitto below.",
+      "revId": "14bd97729a7b89ad8e55512fd048696d4003456e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
