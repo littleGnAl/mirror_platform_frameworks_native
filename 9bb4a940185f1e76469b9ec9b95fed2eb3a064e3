@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06535552_4e2e5006",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1128890
+      },
+      "writtenOn": "2021-08-05T22:28:35Z",
+      "side": 1,
+      "message": "hey Steven, I believe this cl is causing oriole from booting up successfully on git_master (see b/195591779). Let me know if you have any concerns reverting this cl to get oriole back to green on git_master.",
+      "revId": "9bb4a940185f1e76469b9ec9b95fed2eb3a064e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
