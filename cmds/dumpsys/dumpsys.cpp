@@ -21,7 +21,9 @@
 
 #include <android-base/file.h>
 #include <android-base/stringprintf.h>
+#include <android-base/strings.h>
 #include <android-base/unique_fd.h>
+#include <binder/BpBinder.h>
 #include <binder/Parcel.h>
 #include <binder/ProcessState.h>
 #include <binder/Stability.h>
@@ -62,13 +64,15 @@ static void usage() {
             "usage: dumpsys\n"
             "         To dump all services.\n"
             "or:\n"
-            "       dumpsys [-t TIMEOUT] [--priority LEVEL] [--dump] [--pid] [--thread] [--help | "
+            "       dumpsys [-t TIMEOUT] [--priority LEVEL] [--dump] [--pid] [--thread] "
+            "[--clients] [--help | "
             "-l | --skip SERVICES "
             "| SERVICE [ARGS]]\n"
             "         --help: shows this help\n"
             "         -l: only list services, do not dump them\n"
             "         -t TIMEOUT_SEC: TIMEOUT to use in seconds instead of default 10 seconds\n"
             "         -T TIMEOUT_MS: TIMEOUT to use in milliseconds instead of default 10 seconds\n"
+            "         --clients: dump client PIDs instead of usual dump\n"
             "         --dump: ask the service to dump itself (this is the default)\n"
             "         --pid: dump PID instead of usual dump\n"
             "         --proto: filter services that support dumping data in proto format. Dumps\n"
@@ -131,15 +135,12 @@ int Dumpsys::main(int argc, char* const argv[]) {
     int dumpTypeFlags = 0;
     int timeoutArgMs = 10000;
     int priorityFlags = IServiceManager::DUMP_FLAG_PRIORITY_ALL;
-    static struct option longOptions[] = {{"help", no_argument, 0, 0},
-                                          {"dump", no_argument, 0, 0},
-                                          {"pid", no_argument, 0, 0},
-                                          {"priority", required_argument, 0, 0},
-                                          {"proto", no_argument, 0, 0},
-                                          {"skip", no_argument, 0, 0},
-                                          {"stability", no_argument, 0, 0},
-                                          {"thread", no_argument, 0, 0},
-                                          {0, 0, 0, 0}};
+    static struct option longOptions[] = {
+        {"help", no_argument, 0, 0},           {"clients", no_argument, 0, 0},
+        {"dump", no_argument, 0, 0},           {"pid", no_argument, 0, 0},
+        {"priority", required_argument, 0, 0}, {"proto", no_argument, 0, 0},
+        {"skip", no_argument, 0, 0},           {"stability", no_argument, 0, 0},
+        {"thread", no_argument, 0, 0},         {0, 0, 0, 0}};
 
     // Must reset optind, otherwise subsequent calls will fail (wouldn't happen on main.cpp, but
     // happens on test cases).
@@ -178,6 +179,8 @@ int Dumpsys::main(int argc, char* const argv[]) {
                 dumpTypeFlags |= TYPE_STABILITY;
             } else if (!strcmp(longOptions[optionIndex].name, "thread")) {
                 dumpTypeFlags |= TYPE_THREAD;
+            } else if (!strcmp(longOptions[optionIndex].name, "clients")) {
+                dumpTypeFlags |= TYPE_CLIENTS;
             }
             break;
 
@@ -373,6 +376,25 @@ static status_t dumpThreadsToFd(const sp<IBinder>& service, const unique_fd& fd)
     return OK;
 }
 
+static status_t dumpClientsToFd(const sp<IBinder>& service, const unique_fd& fd) {
+    std::string clientPids;
+    const auto handle = service->remoteBinder()->getDebugBinderHandle();
+    if (handle == std::nullopt) {
+        return OK;
+    }
+    std::vector<pid_t> pids;
+    pid_t myPid = getpid();
+    const auto status =
+        getBinderClientPids(BinderDebugContext::BINDER, myPid, handle.value(), &pids);
+    if (status != OK) {
+        return status;
+    }
+    pids.erase(std::remove_if(pids.begin(), pids.end(), [&](pid_t pid) { return pid == myPid; }),
+               pids.end());
+    WriteStringToFd("Client PIDs: " + ::android::base::Join(pids, ", ") + "\n", fd.get());
+    return OK;
+}
+
 static void reportDumpError(const String16& serviceName, status_t error, const char* context) {
     if (error == OK) return;
 
@@ -412,6 +434,10 @@ status_t Dumpsys::startDumpThread(int dumpTypeFlags, const String16& serviceName
         if (dumpTypeFlags & TYPE_THREAD) {
             status_t err = dumpThreadsToFd(service, remote_end);
             reportDumpError(serviceName, err, "dumping thread info");
+        }
+        if (dumpTypeFlags & TYPE_CLIENTS) {
+            status_t err = dumpClientsToFd(service, remote_end);
+            reportDumpError(serviceName, err, "dumping clients indfo");
         }
 
         // other types always act as a header, this is usually longer
