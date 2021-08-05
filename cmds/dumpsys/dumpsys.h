@@ -56,6 +56,7 @@ class Dumpsys {
         TYPE_PID = 0x2,       // dump pid of server only
         TYPE_STABILITY = 0x4, // dump stability information of server
         TYPE_THREAD = 0x8,    // dump thread usage of server only
+        TYPE_CLIENTS = 0x16,  // dump pid of clients
     };
 
     /**

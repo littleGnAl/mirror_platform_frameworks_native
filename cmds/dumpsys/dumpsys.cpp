@@ -20,8 +20,10 @@
 #include <thread>
 
 #include <android-base/file.h>
+#include <android-base/strings.h>
 #include <android-base/stringprintf.h>
 #include <android-base/unique_fd.h>
+#include <binder/BpBinder.h>
 #include <binder/Parcel.h>
 #include <binder/ProcessState.h>
 #include <binder/Stability.h>
@@ -62,13 +64,14 @@ static void usage() {
             "usage: dumpsys\n"
             "         To dump all services.\n"
             "or:\n"
-            "       dumpsys [-t TIMEOUT] [--priority LEVEL] [--dump] [--pid] [--thread] [--help | "
+            "       dumpsys [-t TIMEOUT] [--priority LEVEL] [--dump] [--pid] [--thread] [--clients] [--help | "
             "-l | --skip SERVICES "
             "| SERVICE [ARGS]]\n"
             "         --help: shows this help\n"
             "         -l: only list services, do not dump them\n"
             "         -t TIMEOUT_SEC: TIMEOUT to use in seconds instead of default 10 seconds\n"
             "         -T TIMEOUT_MS: TIMEOUT to use in milliseconds instead of default 10 seconds\n"
+            "         --clients: dump client PIDs instead of usual dump\n"
             "         --dump: ask the service to dump itself (this is the default)\n"
             "         --pid: dump PID instead of usual dump\n"
             "         --proto: filter services that support dumping data in proto format. Dumps\n"
@@ -132,6 +135,7 @@ int Dumpsys::main(int argc, char* const argv[]) {
     int timeoutArgMs = 10000;
     int priorityFlags = IServiceManager::DUMP_FLAG_PRIORITY_ALL;
     static struct option longOptions[] = {{"help", no_argument, 0, 0},
+                                          {"clients", no_argument, 0, 0},
                                           {"dump", no_argument, 0, 0},
                                           {"pid", no_argument, 0, 0},
                                           {"priority", required_argument, 0, 0},
@@ -178,6 +182,8 @@ int Dumpsys::main(int argc, char* const argv[]) {
                 dumpTypeFlags |= TYPE_STABILITY;
             } else if (!strcmp(longOptions[optionIndex].name, "thread")) {
                 dumpTypeFlags |= TYPE_THREAD;
+            } else if (!strcmp(longOptions[optionIndex].name, "clients")) {
+                dumpTypeFlags |= TYPE_CLIENTS;
             }
             break;
 
@@ -373,6 +379,29 @@ static status_t dumpThreadsToFd(const sp<IBinder>& service, const unique_fd& fd)
     return OK;
 }
 
+static status_t dumpClientsToFd(const sp<IBinder>& service, const unique_fd& fd) {
+    pid_t pid;
+    status_t status = service->getDebugPid(&pid);
+    if (status != OK) {
+        return status;
+    }
+    BinderPidInfo pidInfo;
+    status = getBinderPidInfo(BinderDebugContext::BINDER, pid, &pidInfo);
+    if (status != OK) {
+        return status;
+    }
+    const auto handle = service->remoteBinder()->getDebugBinderHandle();
+    std::string clientPids = (handle != std::nullopt) ? std::to_string(handle.value()) : "None";
+
+    for (const auto& [idx, pids] : pidInfo.refPids) {
+      if (idx == reinterpret_cast<uint64_t>(service->remoteBinder())) {
+          clientPids += ::android::base::Join(pids, ", ");
+      }
+    }
+    WriteStringToFd("Client PIDs: " + clientPids, fd.get());
+    return OK;
+}
+
 static void reportDumpError(const String16& serviceName, status_t error, const char* context) {
     if (error == OK) return;
 
@@ -412,6 +441,10 @@ status_t Dumpsys::startDumpThread(int dumpTypeFlags, const String16& serviceName
         if (dumpTypeFlags & TYPE_THREAD) {
             status_t err = dumpThreadsToFd(service, remote_end);
             reportDumpError(serviceName, err, "dumping thread info");
+        }
+        if (dumpTypeFlags & TYPE_CLIENTS) {
+            status_t err = dumpClientsToFd(service, remote_end);
+            reportDumpError(serviceName, err, "dumping clients indfo");
         }
 
         // other types always act as a header, this is usually longer
