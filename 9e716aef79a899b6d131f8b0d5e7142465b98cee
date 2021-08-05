@@ -16,6 +16,116 @@
       "message": "Just realized I need to add tests",
       "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ef4aa0_00cbf4af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-05T20:46:51Z",
+      "side": 1,
+      "message": "(oh well sorry I commented this as well :)",
+      "parentUuid": "b8552f87_73974240",
+      "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf69edc0_849cb629",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-05T20:46:51Z",
+      "side": 1,
+      "message": "nit: why is the order here different?",
+      "range": {
+        "startLine": 68,
+        "startChar": 13,
+        "endLine": 68,
+        "endChar": 24
+      },
+      "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2c8286_2aaed15b",
+        "filename": "cmds/dumpsys/dumpsys.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-05T20:46:51Z",
+      "side": 1,
+      "message": "info",
+      "range": {
+        "startLine": 440,
+        "startChar": 63,
+        "endLine": 440,
+        "endChar": 68
+      },
+      "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55eeb7d3_4e76874d",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-05T20:46:51Z",
+      "side": 1,
+      "message": "can you add a couple of cases for this?",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 24
+      },
+      "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "012bdeca_d8beabfb",
+        "filename": "libs/binderdebug/BinderDebug.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-05T20:46:51Z",
+      "side": 1,
+      "message": "How long does it take to dump the clients on every service on the device? This is a big file to read for every service. Could we be reading per-process files? Or only read it once? Probably it\u0027s okay, but I\u0027m curious",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
