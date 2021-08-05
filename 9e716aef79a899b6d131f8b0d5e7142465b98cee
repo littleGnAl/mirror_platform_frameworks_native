@@ -270,6 +270,30 @@
       },
       "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d125d19_487e196c",
+        "filename": "libs/binderdebug/BinderDebug.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-05T23:09:19Z",
+      "side": 1,
+      "message": "(separately would be okay of course, plus usually people would be wanting to only check one service, but if we ever want to add this to a bugreport, it needs to be faster)",
+      "parentUuid": "79e5cf91_24822b2e",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
