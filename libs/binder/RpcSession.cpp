@@ -555,10 +555,33 @@ bool RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr, const Rp
                 ALOGW("Connection reset on %s", addr.toString().c_str());
                 continue;
             }
-            int savedErrno = errno;
-            ALOGE("Could not connect socket at %s: %s", addr.toString().c_str(),
-                  strerror(savedErrno));
-            return false;
+            if (errno != EAGAIN && errno != EINPROGRESS) {
+                int savedErrno = errno;
+                ALOGE("Could not connect socket at %s: %s", addr.toString().c_str(),
+                      strerror(savedErrno));
+                return false;
+            }
+            // For non-blocking sockets, connect() may return EAGAIN (for unix domain socket) or
+            // EINPROGRESS (for others). Call poll() and getsockopt() to get the error.
+            status_t pollStatus = mShutdownTrigger->triggerablePoll(serverFd, POLLOUT);
+            if (pollStatus != OK) {
+                ALOGE("Could not POLLOUT after connect() on non-blocking socket: %s",
+                      statusToString(pollStatus).c_str());
+                return false;
+            }
+            int soError;
+            socklen_t soErrorLen = sizeof(soError);
+            int ret = getsockopt(serverFd.get(), SOL_SOCKET, SO_ERROR, &soError, &soErrorLen);
+            if (ret == -1) {
+                ALOGE("Could not getsockopt() after connect() on non-blocking socket: %s",
+                      strerror(errno));
+                return false;
+            }
+            if (soError != 0) {
+                ALOGE("After connect(), getsockopt() returns error for socket at %s: %s",
+                      addr.toString().c_str(), strerror(soError));
+                return false;
+            }
         }
         LOG_RPC_DETAIL("Socket at %s client with fd %d", addr.toString().c_str(), serverFd.get());
 
