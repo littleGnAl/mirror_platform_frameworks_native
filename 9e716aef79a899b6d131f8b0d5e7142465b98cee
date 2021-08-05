@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "607706bb_c9a72062",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-05T23:08:38Z",
+      "side": 1,
+      "message": "I see. For a local binder, we could look up clients based on the cookie, but we don\u0027t really need that functionality since dumpsys itself doesn\u0027t register anything.\n\nI would print something at least like \u0027Doesn\u0027t support finding clients for local binder\u0027 or similar.",
+      "parentUuid": "69a11602_167356bf",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 24
+      },
+      "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "012bdeca_d8beabfb",
         "filename": "libs/binderdebug/BinderDebug.cpp",
         "patchSetId": 1
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "Yes we can with a call to the service to get its PID which I was trying to avoid.\nBUT, that shaves off tons of time on a Cuttlefish on my Cloudtop.\nIt goes from 18 seconds to 9 seconds(on par with `--thread`).\n\n`time adb shell dumpsys --pid` is only .25 seconds. That doesn\u0027t touch any of the files.\nI could test on a physical device to see what the difference is, but it looks like the extra file operations will dwarf the IPC.",
       "parentUuid": "012bdeca_d8beabfb",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79e5cf91_24822b2e",
+        "filename": "libs/binderdebug/BinderDebug.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-05T23:08:38Z",
+      "side": 1,
+      "message": "wait, this takes 9 seconds to run? That is too long. I assume all the time is reading this file multiple times? Pretty long for \u0027--thread\u0027 as well. I\u0027d be pretty tempted to restructure the loop that loops over all the services and get all of them at the same time, and then only read this file once.",
+      "parentUuid": "7d64593f_deb04641",
       "range": {
         "startLine": 68,
         "startChar": 0,
