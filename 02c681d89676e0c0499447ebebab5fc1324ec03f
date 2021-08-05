@@ -90,6 +90,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ca1e21b_9571029d",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2b3fcc7_88953734",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63f6711a_72950d4a",
@@ -121,6 +139,24 @@
       "side": 1,
       "message": "Ack, will do",
       "parentUuid": "63f6711a_72950d4a",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a291cfd3_ba4e67f1",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6aba322_f53fcf73",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -180,6 +216,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "50aa2b58_fc06f813",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done. I dropped the country code.",
+      "parentUuid": "a654fb32_c29e6709",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "acc45346_09ad6be3",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -209,6 +263,24 @@
       "side": 1,
       "message": "Ack, will do",
       "parentUuid": "acc45346_09ad6be3",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ce1085_4f2b4494",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done, I added a \"CN\" (common name) field that indicates what this is for.",
+      "parentUuid": "feb6e311_dc781c4a",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -333,6 +405,48 @@
       "side": 1,
       "message": "I\u0027d be happy w/ a size_t or a uint32_t. If there is an overflow, we can error (please check manually - ubsan overflow detection is on this library, so it would be a hard abort).",
       "parentUuid": "e2f620f0_0f83b74e",
+      "range": {
+        "startLine": 120,
+        "startChar": 55,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ee5f340_805e08a7",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61170810_85023818",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21eb1984_d7b7374b",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done.\n\nNote: I just chopped the overflow size_t to be std::numeric_limits\u003cint\u003e::max(), since that still conforms with the API. Since the callers (RpcSession::FdTrigger::interruptible*Fully) already has a loop that ensures the full buffer is written / read, I think this is fine.",
+      "parentUuid": "41c120e2_b92892aa",
       "range": {
         "startLine": 120,
         "startChar": 55,
@@ -468,6 +582,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8bdcc6_ea53bfb3",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Note: I offload the handling of WANT_WRITE etc. to another CL:1786591. Please comment there.",
+      "parentUuid": "d8ca4d4b_fb4d2fbe",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ccb2174_43b4d136",
@@ -481,6 +613,24 @@
       "writtenOn": "2021-08-04T18:55:56Z",
       "side": 1,
       "message": "(ditto everything about |send| here.)",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb2f328e_2c0281d1",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ccb2174_43b4d136",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -629,6 +779,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be3202c9_485ecd00",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Steven, PTAL",
+      "parentUuid": "46b71a79_561c85fe",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a47265ff_a9c0d4dc",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
@@ -664,6 +832,30 @@
       "side": 1,
       "message": "Will do.",
       "parentUuid": "a47265ff_a9c0d4dc",
+      "range": {
+        "startLine": 189,
+        "startChar": 21,
+        "endLine": 189,
+        "endChar": 34
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6f779f_b378d75e",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b16d7dbc_32912d8d",
       "range": {
         "startLine": 189,
         "startChar": 21,
@@ -810,6 +1002,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a595f4_d71a045f",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6470182_5efd4f47",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4886936c_5beeb698",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Note: I\u0027ve offload the handling of WANT_* to CL:1786591. Please comment there.",
+      "parentUuid": "3542226d_b3bc0a7d",
+      "range": {
+        "startLine": 202,
+        "startChar": 38,
+        "endLine": 202,
+        "endChar": 39
+      },
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7e8302b_8d344f92",
@@ -823,6 +1057,24 @@
       "writtenOn": "2021-08-04T18:55:56Z",
       "side": 1,
       "message": "nit: missing blank line following.",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6471c4af_0b4d4915",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7e8302b_8d344f92",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -862,6 +1114,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4143e869_4fcf60ac",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb48d410_811da638",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40766869_5b336ccb",
@@ -875,6 +1145,24 @@
       "writtenOn": "2021-08-04T18:55:56Z",
       "side": 1,
       "message": "nit: missing blank line after.",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbaa0588_d4d49551",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:27:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40766869_5b336ccb",
       "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
