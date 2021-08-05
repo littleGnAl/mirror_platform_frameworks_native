@@ -231,6 +231,24 @@
       "parentUuid": "4e646ae4_8b639711",
       "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14af7429_f60000e2",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T00:33:01Z",
+      "side": 1,
+      "message": "Done.\n\nDavid, could you please see if I am using BIO_set_retry_read and BIO_clear_retry_flags correctly?",
+      "parentUuid": "218e9cab_803892df",
+      "revId": "dd806f3bc4e0d5b4776302511e1a60d4a331f2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
