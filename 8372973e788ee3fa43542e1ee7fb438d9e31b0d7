@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d80fbe5_4611b91c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T21:05:26Z",
+      "side": 1,
+      "message": "CL:1747999",
+      "parentUuid": "4315f0d8_8ee4762e",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16f8d5a9_452d54e9",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-08-05T20:26:49Z",
       "side": 1,
       "message": "This doesn\u0027t appear to be used. Plus a KeyPair isn\u0027t an EC_KEY and EVP_PKEY pair. The EC_KEY is just the low-level representation of what\u0027s already in the EVP_PKEY. A \"key pair\" typically refers to a public/private key pair, and OpenSSL\u0027s types already always store the pairs together.",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "185a642e_319ed256",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T21:05:26Z",
+      "side": 1,
+      "message": "Oops you are right. I\u0027ll drop it",
+      "parentUuid": "16f8d5a9_452d54e9",
       "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -78,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b909b72_f9ba112f",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T21:05:26Z",
+      "side": 1,
+      "message": "Ack, will do",
+      "parentUuid": "c83e42b8_5c8e51b7",
+      "range": {
+        "startLine": 84,
+        "startChar": 45,
+        "endLine": 84,
+        "endChar": 63
+      },
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0158e53c_18eb5c46",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 28
@@ -89,6 +149,24 @@
       "writtenOn": "2021-08-05T20:26:49Z",
       "side": 1,
       "message": "This will fold most errors into a generic \"SSL\", which means we won\u0027t be able to help you when things go wrong. Ideally also log the error queue. See \u003copenssl/err.h\u003e. Ditto throughout.",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e2f77e_5ea4a03d",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T21:05:26Z",
+      "side": 1,
+      "message": "Thanks for the suggestion!\n\nThough, I am not familiar with libssl enough to know how to log the error queue. After I read the documentation, here\u0027s what I come up with:\n\n```\nif (ret \u003c\u003d 0) {\n  std::stringstream ss;\n  int err \u003d SSL_get_error(mSsl.get(), ret);\n  ss \u003c\u003c \"SSL_write(): \" \u003c\u003c SSL_error_description(err) \u003c\u003c \": \";\n  ERR_print_errors_cb([](const char* str, size_t len, void* ctx) {\n    auto ss \u003d (std::stringstream*)ctx;\n    (*ss) \u003c\u003c std::string_view(str, len) \u003c\u003c \"\\n\";\n    return 1; // continue\n  }, \u0026ss);\n  return Error() \u003c\u003c ss.str();\n}\n```\n\nIs this what you mean by logging the error queue?",
+      "parentUuid": "0158e53c_18eb5c46",
       "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -112,6 +190,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f2fc1f4_6c94b807",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T21:05:26Z",
+      "side": 1,
+      "message": "Ooops, thanks for catching! I\u0027ll fix this",
+      "parentUuid": "a26bf5cd_68280dbe",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97da40c3_6ec106e5",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 28
@@ -123,6 +219,41 @@
       "writtenOn": "2021-08-05T20:26:49Z",
       "side": 1,
       "message": "Is the socket blocking or non-blocking? If it\u0027s blocking, the poll in front won\u0027t guarantee this function works. poll will tell you whether there is *any* data available on the socket. SSL_peek will try to consume an entire record.\n\nThat is, if the other side sends you half a record, poll will say POLLIN. Then this will call SSL_peek, which will attempt to consume the record. If the socket is blocking, we\u0027ll just block until we get the record back.\n\nIf the socket is non-blocking, you\u0027re missing handling of SSL_ERROR_WANT_WRITE, etc.",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74ee3092_bc2fa1ab",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T21:05:26Z",
+      "side": 1,
+      "message": "This is blocking for now, but according to your text, it should be non-blocking. Filed b/195683291 to track this.\n\nAs for handling of SSL_ERROR_WANT_*, it is in CL:1786591. Looks like you already see that CL. Let\u0027s comment there.",
+      "parentUuid": "97da40c3_6ec106e5",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7808422d_f90d827c",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T21:05:26Z",
+      "side": 1,
+      "message": "It is blocking as of now, but it may be non-blocking in the future.\n\nBut thanks for the suggestion. This means I\u0027ll have to change the socket to non-blocking. Filed b/195683291 to keep track.\n\nAs for handling of SSL_ERROR_WANT_READ, please see CL:1786591. Do I need to handle SSL_ERROR_WANT_WRITE even though this is reading things?",
       "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -144,6 +275,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f46b14_a0fc8f74",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T21:05:26Z",
+      "side": 1,
+      "message": "Authentication isn\u0027t implemented as of now; this is tracked in b/195166979 (See below).",
+      "parentUuid": "fb411590_f8d5f441",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbe05e89_13139da8",
@@ -157,6 +306,24 @@
       "writtenOn": "2021-08-05T20:26:49Z",
       "side": 1,
       "message": "There is no need to do this connectOrAccept thing. Calling SSL_connect/SSL_accept is just shorthand for:\n\nSSL_set_connect_state or SSL_set_accept_state, which configures whether this is a client or server. Then calling SSL_do_handshake to drive the handshake. So, when you set up a client or server connection, call the right set_foo_state function. Then connectOrAccept just unconditionally calls SSL_do_handshake.",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7aa7e45_510ebc94",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-05T21:05:26Z",
+      "side": 1,
+      "message": "Ack, will do",
+      "parentUuid": "fbe05e89_13139da8",
       "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
