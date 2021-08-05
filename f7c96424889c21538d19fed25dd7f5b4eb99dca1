@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98015847_9feb417d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:38:58Z",
+      "side": 1,
+      "message": "Er, is the aim to support non-blocking sockets or not? The other thread suggested yes. If you don\u0027t need it, including features like this (especially without tests!) that may not actually work seems not great. It\u0027s also a bit more complex than this CL suggests. (See comments.)",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d53e2ce_84a26b9d",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:38:58Z",
+      "side": 1,
+      "message": "This is a little subtle. WANT_WRITE and WANT_READ are not telling you what function you called, but what function the TLS library called. That is, if SSL_write was blocking on a BIO_read, it\u0027ll tell you SSL_ERROR_WANT_READ and you need to listen for POLLIN. Conversely, if SSL_read was blocking on BIO_write, it\u0027ll tell you SSL_ERROR_WANT_WRITE, and you need to listen on POLLOUT.\n\nThere are edge cases in the TLS protocol where this is possible. In practice, almost no one gets this right, so we try to avoid unusual I/O patterns where possible, largely by forbidden certain features.\n\n*IF* you call the handshake first *AND* you don\u0027t enable any interesting features like 0-RTT or TLS 1.2 renegotiation, I believe you\u0027ll never run into this. However, if you ever do enable those features, this API will need to report something more complex to capture this. (Probably worth a comment here that you\u0027re assuming this.)",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c7e38e5_c649f940",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:38:58Z",
+      "side": 1,
+      "message": "This loop isn\u0027t right. If the socket is blocking, you\u0027ll never need to loop around. The I/O will block. If the socket is non-blocking, looping back around won\u0027t help because you have to wait for the data to come back, by integrating into the caller\u0027s poll() machinery.",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf59ba4_e1acf13b",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T20:38:58Z",
+      "side": 1,
+      "message": "These will never happen and only come up if the underlying BIO sets a BIO_RR_CONNECT or BIO_RR_ACCEPT retry reason. You all don\u0027t.\n\nWhat *will* happen is SSL_ERROR_WANT_READ and SSL_ERROR_WANT_WRITE. You can get either one out of this function, depending on whether you\u0027re blocked on reading or writing to the socket. The error code doesn\u0027t tell you the function (you presumably know that), but the underlying operation that it was blocked on.",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
