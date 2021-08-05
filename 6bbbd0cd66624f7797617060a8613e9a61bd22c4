@@ -46,6 +46,30 @@
       },
       "revId": "6bbbd0cd66624f7797617060a8613e9a61bd22c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d21e180_9ccfe78e",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-05T19:38:59Z",
+      "side": 1,
+      "message": "If rpcTransport-\u003epending() returns false, then more syscalls will be made in the TLS backend case?",
+      "parentUuid": "ba16f341_7a712c22",
+      "range": {
+        "startLine": 221,
+        "startChar": 42,
+        "endLine": 221,
+        "endChar": 49
+      },
+      "revId": "6bbbd0cd66624f7797617060a8613e9a61bd22c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
