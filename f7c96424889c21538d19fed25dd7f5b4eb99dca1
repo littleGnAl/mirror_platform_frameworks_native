@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7a86930_5d6953c1",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T21:50:59Z",
+      "side": 1,
+      "message": "\u003e That means SSL_do_handshake(), right?\n\nThat\u0027s right.\n\n\u003e I did set minimum TLS version 1.3. Would that enable 0-RTT by default? Or does that need to be manually configured?\n\nThat needs to be manually configured, so you\u0027re fine.",
+      "parentUuid": "272cb833_343c20fa",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "983de77c_b5337291",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 3
@@ -84,6 +102,24 @@
       "writtenOn": "2021-08-05T21:20:16Z",
       "side": 1,
       "message": "https://android-review.googlesource.com/c/platform/frameworks/native/+/1745081/28/libs/binder/RpcTransportTls.cpp#179\n\nDavid, I shouldn\u0027t handle SSL_ERROR_WANT_WRITE here, right?",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7ca575_d7ac227c",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T21:50:59Z",
+      "side": 1,
+      "message": "This is the same story as SSL_read. Your code is currently making a technically invalid assumption that you probably can get away with. Specifically, you\u0027re assuming that TLS reads only call transport reads and TLS writes only call transport writes. (Actually this is extremely false due to alerts, but retries and alerts already don\u0027t work particularly well.)\n\nThis is a question of API contracts. Right now, your public API is that you return Error(EWOULDBLOCK) if you need a retry, and the caller determines POLLIN vs POLLOUT based on what operation they were doing.\n\nThat API *does not work* for TLS in general. It is incapable of capturing when RpcTransportTls::recv needs POLLOUT, or RpcTransportTls::send needs POLLIN. In order to capture that, you need the return value to tell you which you want. Your options are:\n\n1. Change the API so the return value captures POLLIN/POLLOUT. Handle both WANT_READ and WANT_WRITE out of every operation.\n\n2. Leave the API as-is and make this assumption. This may constrain you in the future as you try to add new features or as the protocol develops, because you will be unable to handle certain kinds of protocol flows. If you pick this option, you cannot check WANT_WRITE in RpcTransportTls::recv because there is no way to tell the caller about it.",
+      "parentUuid": "983de77c_b5337291",
       "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -125,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1175dc3_19afbc8b",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T21:50:59Z",
+      "side": 1,
+      "message": "Note if you do a poll loop here, that means you\u0027re doing blocking handshakes but non-blocking reads and writes. This is a little strange because it means the caller still can\u0027t use your library on an interactive thread. Is that the goal?",
+      "parentUuid": "48d4d2d3_e29fbf6f",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edf59ba4_e1acf13b",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 3
@@ -154,6 +208,24 @@
       "side": 1,
       "message": "Understood. I\u0027ll change them to READ and WRITE.",
       "parentUuid": "edf59ba4_e1acf13b",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0ff906a_bb142ada",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-05T21:50:59Z",
+      "side": 1,
+      "message": "Note READ and WRITE mean different things. For READ, you need to tell the poll loop to listen for POLLIN and for WRITE, you need to tell the poll loop to listen for POLLOUT.\n\nThis connects to the other two comments:\n\n- Do you want to block the calling thread on handshake? If yes, your API is partially blocking. If no, you need to report WANT_READ and WANT_WRITE to the caller and define how to retry.\n\n- If you report WANT_READ and WANT_WRITE to the caller, your result type needs to be rich enough to express this. See the recv/send/peek comments.",
+      "parentUuid": "3b41aaf1_246b093d",
       "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
