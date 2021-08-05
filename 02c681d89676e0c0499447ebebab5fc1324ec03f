@@ -797,6 +797,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3e9e0ab_2961a8b4",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-05T18:19:31Z",
+      "side": 1,
+      "message": "(still can\u0027t see the comment, pinging offline to find out more)\n\nYes, it expects that if peek returns true, there is some protocol message is partially there. It would be a problem if peek returns true, but there is no protocol message there and there is no protocol message on the way.\n\nBtw - if you remove the call to drainCommands, you can see which test cases fail, so that you can try running them in a tight loop to test your change, if you are worried about it.",
+      "parentUuid": "be3202c9_485ecd00",
+      "revId": "02c681d89676e0c0499447ebebab5fc1324ec03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a47265ff_a9c0d4dc",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 25
