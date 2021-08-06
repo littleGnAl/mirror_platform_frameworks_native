@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c23859d5_b8f27120",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-06T00:08:17Z",
+      "side": 1,
+      "message": "err - yeah - client should not call setup from multiple simultaneous threads",
+      "parentUuid": "b2218534_35365786",
+      "range": {
+        "startLine": 529,
+        "startChar": 8,
+        "endLine": 529,
+        "endChar": 24
+      },
+      "revId": "35d33a4195fff142f4a6e0061cc32cd426e2af3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d11fd20a_f2681220",
