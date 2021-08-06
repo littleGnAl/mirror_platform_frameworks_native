@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "983d5705_568cebeb",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T07:18:51Z",
+      "side": 1,
+      "message": "addressed https://android-review.googlesource.com/c/platform/frameworks/native/+/1786591/3/libs/binder/RpcTransportTls.cpp#249",
+      "revId": "7cb1287d4d323a2d51ac1a9a94fa5b74fd8f4fd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "419ab517_ad5fd97f",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T07:18:51Z",
+      "side": 1,
+      "message": "addressed https://android-review.googlesource.com/c/platform/frameworks/native/+/1786591/3/libs/binder/RpcTransportTls.cpp#198",
+      "revId": "7cb1287d4d323a2d51ac1a9a94fa5b74fd8f4fd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee27d112_aacb107f",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T07:18:51Z",
+      "side": 1,
+      "message": "addressed https://android-review.googlesource.com/c/platform/frameworks/native/+/1786591/3/libs/binder/RpcTransportTls.cpp#278",
+      "range": {
+        "startLine": 252,
+        "startChar": 32,
+        "endLine": 252,
+        "endChar": 47
+      },
+      "revId": "7cb1287d4d323a2d51ac1a9a94fa5b74fd8f4fd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8959dfdc_66aec6a3",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T07:18:51Z",
+      "side": 1,
+      "message": "addressed https://android-review.googlesource.com/c/platform/frameworks/native/+/1786591/3/libs/binder/RpcTransportTls.cpp#285",
+      "revId": "7cb1287d4d323a2d51ac1a9a94fa5b74fd8f4fd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
