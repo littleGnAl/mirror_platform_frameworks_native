@@ -310,6 +310,7 @@ status_t RpcState::rpcRec(const sp<RpcSession::RpcConnection>& connection,
         status != OK) {
         LOG_RPC_DETAIL("Failed to read %s (%zu bytes) on RpcTransport %p, error: %s", what, size,
                        connection->rpcTransport.get(), statusToString(status).c_str());
+        (void)session->shutdownAndWait(false);
         return status;
     }
 
@@ -519,8 +520,8 @@ status_t RpcState::waitForReply(const sp<RpcSession::RpcConnection>& connection,
                                 const sp<RpcSession>& session, Parcel* reply) {
     RpcWireHeader command;
     while (true) {
-        if (status_t status =
-                    rpcRec(connection, session, "command header", &command, sizeof(command));
+        if (status_t status = rpcRec(connection, session, "command header (for reply)", &command,
+                                     sizeof(command));
             status != OK)
             return status;
 
@@ -591,7 +592,8 @@ status_t RpcState::getAndExecuteCommand(const sp<RpcSession::RpcConnection>& con
     LOG_RPC_DETAIL("getAndExecuteCommand on RpcTransport %p", connection->rpcTransport.get());
 
     RpcWireHeader command;
-    if (status_t status = rpcRec(connection, session, "command header", &command, sizeof(command));
+    if (status_t status = rpcRec(connection, session, "command header (for server)", &command,
+                                 sizeof(command));
         status != OK)
         return status;
 
