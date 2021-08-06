@@ -170,6 +170,29 @@ bssl::UniquePtr<X509> makeSelfSignedCert(EVP_PKEY *evp_pkey, const int valid_day
     }
 }
 
+// If |sslError| is WANT_READ / WANT_WRITE, poll for POLLIN / POLLOUT respectively. Otherwise
+// return error. Also return error if |fdTrigger| is triggered before or during poll().
+status_t pollForSslError(android::base::borrowed_fd fd, int sslError, FdTrigger *fdTrigger,
+                         const char *fnString) {
+    int event = 0;
+    switch (sslError) {
+        case SSL_ERROR_WANT_READ:
+            event = POLLIN;
+            break; // start polling
+        case SSL_ERROR_WANT_WRITE:
+            event = POLLOUT;
+            break; // start polling
+        default:
+            ALOGE("%s(): %s", fnString, SSL_error_description(sslError));
+            return UNKNOWN_ERROR;
+    }
+    status_t ret = fdTrigger->triggerablePoll(fd, event);
+    if (ret != OK && ret != DEAD_OBJECT && ret != -ECANCELED)
+        ALOGE("triggerablePoll error while poll()-ing after %s(): %s", fnString,
+              statusToString(ret).c_str());
+    return ret;
+}
+
 class RpcTransportTls : public RpcTransport {
 public:
     RpcTransportTls(android::base::unique_fd socket, bssl::UniquePtr<SSL> ssl)
@@ -226,6 +249,7 @@ Result<size_t> RpcTransportTls::peek(void *buf, size_t size) {
     LOG_TLS_DETAIL("TLS: Peeked %d bytes!", ret);
     return ret;
 }
+
 status_t RpcTransportTls::interruptableWriteFully(FdTrigger *fdTrigger, const void *data,
                                                   size_t size) {
     const uint8_t *buffer = reinterpret_cast<const uint8_t *>(data);
@@ -233,32 +257,22 @@ status_t RpcTransportTls::interruptableWriteFully(FdTrigger *fdTrigger, const vo
 
     MAYBE_WAIT_IN_FLAKE_MODE;
 
-    int event = POLLIN | POLLOUT;
-    status_t status;
-    while ((status = fdTrigger->triggerablePoll(mSocket.get(), event)) == OK) {
+    while (buffer < end) {
         auto writeSize = this->send(buffer, end - buffer);
-        if (!writeSize.ok()) {
-            LOG_RPC_DETAIL("SSL_write(): %s", SSL_error_description(writeSize.error().code()));
-            switch (writeSize.error().code()) {
-                case SSL_ERROR_WANT_READ:
-                    event = POLLIN;
-                    continue; // poll again
-                case SSL_ERROR_WANT_WRITE:
-                    event = POLLOUT;
-                    continue; // poll again
-                default:
-                    return UNKNOWN_ERROR;
-            }
+        if (writeSize.ok()) {
+            // This assumes that SSL_write() only returns 0 on EOF.
+            // https://crbug.com/466303
+            if (*writeSize == 0) return DEAD_OBJECT;
+            buffer += *writeSize;
+            continue;
         }
-
-        // This assumes that SSL_write() only returns 0 on EOF.
-        // https://crbug.com/466303
-        if (*writeSize == 0) return DEAD_OBJECT;
-
-        buffer += *writeSize;
-        if (buffer == end) return OK;
+        LOG_TLS_DETAIL("SSL_write(): %s", SSL_error_description(writeSize.error().code()));
+        status_t pollStatus =
+                pollForSslError(mSocket.get(), writeSize.error().code(), fdTrigger, "SSL_write");
+        if (pollStatus != OK) return pollStatus;
+        // Try SSL_write() again
     }
-    return status;
+    return OK;
 }
 
 status_t RpcTransportTls::interruptableReadFully(FdTrigger *fdTrigger, void *data, size_t size) {
@@ -267,34 +281,25 @@ status_t RpcTransportTls::interruptableReadFully(FdTrigger *fdTrigger, void *dat
 
     MAYBE_WAIT_IN_FLAKE_MODE;
 
-    int event = POLLIN | POLLOUT;
-    status_t status;
-    while ((status = fdTrigger->triggerablePoll(mSocket.get(), event)) == OK) {
+    while (buffer < end) {
         auto readSize = this->recv(buffer, end - buffer);
-        if (!readSize.ok()) {
-            LOG_RPC_DETAIL("SSL_read(): %s", SSL_error_description(readSize.error().code()));
-            switch (readSize.error().code()) {
-                case SSL_ERROR_WANT_READ:
-                    event = POLLIN;
-                    continue; // poll again
-                case SSL_ERROR_WANT_WRITE:
-                    event = POLLOUT;
-                    continue; // poll again
-                default:
-                    return UNKNOWN_ERROR;
-            }
+        if (readSize.ok()) {
+            // This assumes that SSL_read() only returns 0 on EOF.
+            // https://crbug.com/466303
+            if (*readSize == 0) return DEAD_OBJECT;
+            buffer += *readSize;
+            continue;
         }
-
-        // This assumes that SSL_read() only returns 0 on EOF.
-        // https://crbug.com/466303
-        if (*readSize == 0) return DEAD_OBJECT;
-
-        buffer += *readSize;
-        if (buffer == end) return OK;
+        LOG_TLS_DETAIL("SSL_read(): %s", SSL_error_description(readSize.error().code()));
+        status_t pollStatus =
+                pollForSslError(mSocket.get(), readSize.error().code(), fdTrigger, "SSL_read");
+        if (pollStatus != OK) return pollStatus;
+        // Try SSL_read() again
     }
-    return status;
+    return OK;
 }
 
+// For |ssl|, set internal FD to |fd|, and do handshake. Handshake is triggerable by |fdTrigger|.
 bool setFdAndDoHandshake(SSL *ssl, android::base::borrowed_fd fd, FdTrigger *fdTrigger) {
     bssl::UniquePtr<BIO> bio = newSocketBio(fd);
     TEST_AND_RETURN(false, bio != nullptr);
@@ -302,30 +307,20 @@ bool setFdAndDoHandshake(SSL *ssl, android::base::borrowed_fd fd, FdTrigger *fdT
 
     MAYBE_WAIT_IN_FLAKE_MODE;
 
-    int event = POLLIN | POLLOUT;
-    status_t status;
-    while ((status = fdTrigger->triggerablePoll(fd, event)) == OK) {
-        int ret = SSL_do_handshake(ssl);
-        if (ret > 0) {
-            return true;
+    int ret;
+    while ((ret = SSL_do_handshake(ssl)) <= 0) {
+        if (ret == 0) {
+            // This assumes that SSL_do_handshake() only returns 0 on EOF.
+            // https://crbug.com/466303
+            LOG_TLS_DETAIL("SSL_do_handshake(): EOF");
+            return false;
         }
-        int err = SSL_get_error(ssl, ret);
-        LOG_TLS_DETAIL("SSL_do_handshake(): %s", SSL_error_description(err));
-        switch (err) {
-            case SSL_ERROR_WANT_READ:
-                event = POLLIN;
-                continue; // poll again
-            case SSL_ERROR_WANT_WRITE:
-                event = POLLOUT;
-                continue; // poll again
-            default:
-                ALOGE("SSL_do_handshake(): %s", SSL_error_description(err));
-                return false;
-        }
+        int sslError = SSL_get_error(ssl, ret);
+        LOG_TLS_DETAIL("SSL_do_handshake(): %s", SSL_error_description(sslError));
+        status_t pollStatus = pollForSslError(fd, sslError, fdTrigger, "SSL_do_handshake");
+        if (pollStatus != OK) return false;
     }
-    ALOGE("%s: cancelled because shutdown triggered: %s", __PRETTY_FUNCTION__,
-          statusToString(status).c_str());
-    return false;
+    return true;
 }
 
 class RpcTransportCtxTlsServer : public RpcTransportCtx {
