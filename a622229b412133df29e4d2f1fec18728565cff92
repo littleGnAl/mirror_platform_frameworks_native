@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f0b122_6a38ff3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-06T00:35:32Z",
+      "side": 1,
+      "message": "+2 although I would have been much happier if this was android::base::Result :)",
+      "revId": "a622229b412133df29e4d2f1fec18728565cff92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
