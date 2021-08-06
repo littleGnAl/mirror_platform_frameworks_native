@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4dc564e_ff185602",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-06T00:38:36Z",
+      "side": 1,
+      "message": "GTEST_SKIP() \u003c\u003c \"reason\" to make it explicit?",
+      "revId": "04e0a5cca6235aaede1bfdbcb4ad3c6bc6f0f5e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
