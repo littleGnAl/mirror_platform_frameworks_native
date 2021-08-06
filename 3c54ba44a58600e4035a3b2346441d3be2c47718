@@ -22,6 +22,30 @@
       },
       "revId": "3c54ba44a58600e4035a3b2346441d3be2c47718",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ef1101_d551e96e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T18:13:14Z",
+      "side": 1,
+      "message": "I could, but then connect itself would be non-triggerable by the shutdown trigger.",
+      "parentUuid": "fb7f53c7_49e08583",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "3c54ba44a58600e4035a3b2346441d3be2c47718",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
