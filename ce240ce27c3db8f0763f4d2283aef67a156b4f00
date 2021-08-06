@@ -46,6 +46,30 @@
       },
       "revId": "ce240ce27c3db8f0763f4d2283aef67a156b4f00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae0a7a27_560e3d56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-06T04:10:26Z",
+      "side": 1,
+      "message": "Hmm, I couldn\u0027t follow the discussion in the link. I just wanted to know how slow the RPC transaction is compared to the local transaction. And yes, there are many factors like scheduling which would affect the end-to-end time, but I don\u0027t know how to capture those factors.",
+      "parentUuid": "d07876ea_f66aadff",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 84
+      },
+      "revId": "ce240ce27c3db8f0763f4d2283aef67a156b4f00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
