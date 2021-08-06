@@ -16,6 +16,24 @@
       "message": "+2 although I would have been much happier if this was android::base::Result :)",
       "revId": "a622229b412133df29e4d2f1fec18728565cff92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6969a641_350758b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-06T00:37:40Z",
+      "side": 1,
+      "message": "Sure, we could use it. Actually though, since Yifan has added some new usages of android::base::Result which I had to change here, I realized another problem with it. The type of the \u0027int\u0027 is ambiguous. It isn\u0027t clear if the Result contains a status_t or an errno, right? Or am I missing something?",
+      "parentUuid": "37f0b122_6a38ff3a",
+      "revId": "a622229b412133df29e4d2f1fec18728565cff92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
