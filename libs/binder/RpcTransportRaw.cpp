@@ -19,6 +19,7 @@
 
 #include <binder/RpcTransportRaw.h>
 
+#include "FdTrigger.h"
 #include "RpcState.h"
 
 using android::base::ErrnoError;
@@ -53,8 +54,10 @@ public:
         }
         return ret;
     }
-    bool pending() override { return false; }
-    android::base::borrowed_fd pollSocket() const override { return mSocket; }
+
+    status_t triggerablePoll(FdTrigger *fdTrigger, int16_t event) override {
+        return fdTrigger->triggerablePoll(mSocket.get(), event);
+    }
 
 private:
     android::base::unique_fd mSocket;
