@@ -75,6 +75,24 @@
       "parentUuid": "3d01fe25_75239111",
       "revId": "24c3f023367cfa47e2440715c6756c3b57c4d048",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9964bfd1_c4d584dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-08-06T23:17:24Z",
+      "side": 1,
+      "message": "Adding AsRawFd here is definitely appropriate since I think ParcelFds can be used to transfer things that shouldn\u0027t be used as a `File` (e.g. a socket) even if it would technically work.",
+      "parentUuid": "6581a30d_edca35e3",
+      "revId": "24c3f023367cfa47e2440715c6756c3b57c4d048",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
