@@ -201,6 +201,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "593a02e4_e7678c7e",
+        "filename": "cmds/dumpsys/tests/dumpsys_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-06T00:15:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "607706bb_c9a72062",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 24
+      },
+      "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "012bdeca_d8beabfb",
@@ -286,6 +310,30 @@
       "side": 1,
       "message": "(separately would be okay of course, plus usually people would be wanting to only check one service, but if we ever want to add this to a bugreport, it needs to be faster)",
       "parentUuid": "79e5cf91_24822b2e",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32405962_206ac357",
+        "filename": "libs/binderdebug/BinderDebug.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-06T00:15:54Z",
+      "side": 1,
+      "message": "It took 18 seconds reading that large file multiple times. Now it takes 9 seconds reading the smaller per-process files. I agree that\u0027s still slow.",
+      "parentUuid": "8d125d19_487e196c",
       "range": {
         "startLine": 68,
         "startChar": 0,
