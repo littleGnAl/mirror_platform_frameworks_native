@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f16113_11dc7037",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-06T17:14:11Z",
+      "side": 1,
+      "message": "can I suggest that you run the shutdown trigger setup here once instead of in the two implementations of \u0027connectAndInit\u0027, where it would be setup on L489?\n\n(note - there is one case where this function gets called twice - in setupInetClient, if L489 fails, then it will try another address, so setting up the shutdown trigger needs to be re-entrant. I have b/189955605 to clean this up, but actually I started changing this function so that if it failed, it would clean up the state, but I just simply don\u0027t care to do so - it is easier to create a new RpcSession object than to program in something trying to turn an error state into a good state)",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 5
+      },
+      "revId": "cf8adda93eac9ada69d988bc26e93573540aefad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
