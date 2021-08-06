@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e29f23b5_9e85d699",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T07:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "615201c6_4d6fd517",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "351fb65f_0501b76d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -49,6 +67,23 @@
       "writtenOn": "2021-08-05T23:09:11Z",
       "side": 1,
       "message": "Thanks David for your thorough review!\n\nLooks like I\u0027ll have to turn to non-blocking sockets (b/195683291) before adjusting these CLs. And when we settle on non-blocking sockets, I think this CL should be squashed into CL:1745081.\n\nI\u0027ll set these CLs as WIP, and I\u0027ll let you know when these CLs are ready for review.",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6312171_6a51d68f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T07:13:55Z",
+      "side": 1,
+      "message": "Done; please see CL:1745081",
       "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -106,6 +141,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca9fbbc4_42bbad3f",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T07:13:55Z",
+      "side": 1,
+      "message": "Done; please see CL:1745081",
+      "parentUuid": "c7a86930_5d6953c1",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "983de77c_b5337291",
@@ -155,6 +208,24 @@
       "side": 1,
       "message": "Understood! I\u0027ll handle both of them.",
       "parentUuid": "ae7ca575_d7ac227c",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcdcdd22_8cd8e477",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T07:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43de441f_169daf18",
       "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -230,6 +301,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a63dcd3_208339bf",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T07:13:55Z",
+      "side": 1,
+      "message": "Done; please see CL:1745081",
+      "parentUuid": "8809c7e8_37d8a5fe",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edf59ba4_e1acf13b",
@@ -279,6 +368,24 @@
       "side": 1,
       "message": "Note READ and WRITE mean different things. For READ, you need to tell the poll loop to listen for POLLIN and for WRITE, you need to tell the poll loop to listen for POLLOUT.\n\nThis connects to the other two comments:\n\n- Do you want to block the calling thread on handshake? If yes, your API is partially blocking. If no, you need to report WANT_READ and WANT_WRITE to the caller and define how to retry.\n\n- If you report WANT_READ and WANT_WRITE to the caller, your result type needs to be rich enough to express this. See the recv/send/peek comments.",
       "parentUuid": "3b41aaf1_246b093d",
+      "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54985bae_6fc48dc1",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T07:13:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0ff906a_bb142ada",
       "revId": "f7c96424889c21538d19fed25dd7f5b4eb99dca1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
