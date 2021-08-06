@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a592cd14_88d44026",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-06T00:30:03Z",
+      "side": 1,
+      "message": "Can we make the number of iterations the same across these two suffixes so that we can compare the result?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 84
+      },
+      "revId": "ce240ce27c3db8f0763f4d2283aef67a156b4f00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
