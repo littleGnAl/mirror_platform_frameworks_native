@@ -342,6 +342,30 @@
       },
       "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6102c2a5_30f5979c",
+        "filename": "libs/binderdebug/BinderDebug.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-06T00:28:08Z",
+      "side": 1,
+      "message": "If we can read the larger file exactly once, it would be better (note - checkService is also already usually called from the main thread - so we could save calling that twice as well), but this should definitely be separate from this change, yeah",
+      "parentUuid": "32405962_206ac357",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "9e716aef79a899b6d131f8b0d5e7142465b98cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
