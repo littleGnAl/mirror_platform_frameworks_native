@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6abe0739_7d449eda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-06T17:21:05Z",
+      "side": 1,
+      "message": "+1 for this direction btw - makes sense",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "45bca8fad79256ce06890ce83706face789be0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95968118_e9db5202",
+        "filename": "libs/binder/FdTrigger.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-06T17:21:05Z",
+      "side": 1,
+      "message": "We should avoid this now that it\u0027s so generic. e.g. \u0027base::borrowed_fd getFd()\u0027? (if you want to follow-up or you want me to handle it, please file a bug)",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "45bca8fad79256ce06890ce83706face789be0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415dad56_cddad2e8",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-06T17:21:05Z",
+      "side": 1,
+      "message": "did you try w/ flake mode on btw?",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "45bca8fad79256ce06890ce83706face789be0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea81d13_eff1d5e7",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-06T17:21:05Z",
+      "side": 1,
+      "message": "continuing that side note - this code is exactly the same ! which is why I started thinking about this nasty \u0027const\u0027 case. I wanted to combine these functions when I originally wrote them, but it would have required templates to make the const conditional on whether it is a read or a write, and it would have been too ugly (with the virtual functions, it\u0027s simply not an option).",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 5
+      },
+      "revId": "45bca8fad79256ce06890ce83706face789be0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf60eaf_acafa05e",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-06T17:21:05Z",
+      "side": 1,
+      "message": "side note: I think these APIs really highlight a problem with const. This const is the reason why whether it is a read or write cannot be an argument - we need two separate functions (yeah - this is fine). There is a type of orthogonality present here which simply cannot be expressed in C++ (at least not in any way I\u0027ve been able to find).",
+      "range": {
+        "startLine": 47,
+        "startChar": 67,
+        "endLine": 47,
+        "endChar": 73
+      },
+      "revId": "45bca8fad79256ce06890ce83706face789be0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
