@@ -22,6 +22,30 @@
       },
       "revId": "ce240ce27c3db8f0763f4d2283aef67a156b4f00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07876ea_f66aadff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-06T00:35:46Z",
+      "side": 1,
+      "message": "google benchmark tries to figure out the fewest possible iterations to get a good result. See https://github.com/google/benchmark/issues/370. Maybe we can use --benchmark_repetitions? Anyway, I think I am more worried about the scheduling differences for now. WDYT?",
+      "parentUuid": "a592cd14_88d44026",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 84
+      },
+      "revId": "ce240ce27c3db8f0763f4d2283aef67a156b4f00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
