@@ -52,6 +52,24 @@
       "parentUuid": "6d3f0e4c_f1f9d9e5",
       "revId": "aaf47029622feffaa8edd52b9b21a20c3810c933",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bb86323_cda5eaea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-06T19:08:52Z",
+      "side": 1,
+      "message": "Thanks for solving b/195703600! I\u0027ll upload a new PS.",
+      "parentUuid": "e0bf18fa_5b54fedb",
+      "revId": "aaf47029622feffaa8edd52b9b21a20c3810c933",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
