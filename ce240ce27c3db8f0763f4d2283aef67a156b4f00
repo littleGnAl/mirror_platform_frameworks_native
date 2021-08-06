@@ -70,6 +70,29 @@
       },
       "revId": "ce240ce27c3db8f0763f4d2283aef67a156b4f00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c03b8c_ca1f9138",
+        "filename": "libs/binder/tests/binderRpcBenchmark.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-08-06T16:24:19Z",
+      "side": 1,
+      "message": "(not sure if these numbers are intentionally not 2^N)",
+      "range": {
+        "startLine": 151,
+        "startChar": 46,
+        "endLine": 151,
+        "endChar": 64
+      },
+      "revId": "ce240ce27c3db8f0763f4d2283aef67a156b4f00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
