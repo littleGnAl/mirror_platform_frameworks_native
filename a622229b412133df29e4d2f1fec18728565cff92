@@ -88,6 +88,24 @@
       "parentUuid": "d8ea4d1d_205eb3e5",
       "revId": "a622229b412133df29e4d2f1fec18728565cff92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9062c70_030da2da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-07T01:37:11Z",
+      "side": 1,
+      "message": "The error code in Result\u003c\u003e is just an int. It could be from errno, but could be from anywhere (e.g. your custom error code).\n\nAnd ack for submitting this as is.",
+      "parentUuid": "5b69bba5_6430646f",
+      "revId": "a622229b412133df29e4d2f1fec18728565cff92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
