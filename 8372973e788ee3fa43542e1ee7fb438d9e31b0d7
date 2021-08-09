@@ -213,6 +213,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73aeaa4d_7df61580",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-09T18:56:09Z",
+      "side": 1,
+      "message": "Yes, although probably best as a helper function.\n\n(Note that any SSL_ function that takes may have put things on the error queue and, if you don\u0027t dump it, you\u0027re supposed to call ERR_clear_error. Otherwise entries from a different failing can end up getting logged here. Yes, this is a terrible APIP.)",
+      "parentUuid": "c9e2f77e_5ea4a03d",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a26bf5cd_68280dbe",
