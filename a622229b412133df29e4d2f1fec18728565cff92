@@ -106,6 +106,24 @@
       "parentUuid": "5b69bba5_6430646f",
       "revId": "a622229b412133df29e4d2f1fec18728565cff92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f61ae1b_6104aa1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-09T20:55:06Z",
+      "side": 1,
+      "message": "The convention is that it is an errno, esp here:\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/libbase/include/android-base/result.h;l\u003d150;drc\u003dmaster\n\nThough you certainly can use any integer as long as the caller and callee agrees on it.",
+      "parentUuid": "d9062c70_030da2da",
+      "revId": "a622229b412133df29e4d2f1fec18728565cff92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
