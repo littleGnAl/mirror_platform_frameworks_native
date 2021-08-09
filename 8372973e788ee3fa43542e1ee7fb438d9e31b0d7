@@ -251,6 +251,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30787cd4_8242a7f9",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-09T20:24:48Z",
+      "side": 1,
+      "message": "Ack, let me try calling ERR_clear_error in proper places to see if that bug goes away",
+      "parentUuid": "be671d37_80e71f47",
+      "revId": "8372973e788ee3fa43542e1ee7fb438d9e31b0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a26bf5cd_68280dbe",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 28
