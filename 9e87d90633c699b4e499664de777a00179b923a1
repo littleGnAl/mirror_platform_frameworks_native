@@ -16,6 +16,23 @@
       "message": "Nice!",
       "revId": "9e87d90633c699b4e499664de777a00179b923a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e2fea0_691353f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-09T23:25:52Z",
+      "side": 1,
+      "message": "How is this different from running the tests using atest?",
+      "revId": "9e87d90633c699b4e499664de777a00179b923a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
