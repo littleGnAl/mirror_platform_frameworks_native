@@ -22,6 +22,30 @@
       },
       "revId": "f6d4229b65253d2ff91ecbc93105a8114d0d3584",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4bb3fe1_808ee91f",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-09T23:25:37Z",
+      "side": 1,
+      "message": "It\u0027s a raw pointer so it should be borrowed",
+      "parentUuid": "56f78942_5827b5dd",
+      "range": {
+        "startLine": 65,
+        "startChar": 49,
+        "endLine": 65,
+        "endChar": 52
+      },
+      "revId": "f6d4229b65253d2ff91ecbc93105a8114d0d3584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
