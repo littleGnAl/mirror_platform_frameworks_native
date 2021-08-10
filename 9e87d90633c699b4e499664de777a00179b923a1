@@ -87,6 +87,24 @@
       "parentUuid": "ecb6ec5e_dca18a4f",
       "revId": "9e87d90633c699b4e499664de777a00179b923a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90681af0_d7d0895b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-10T00:41:33Z",
+      "side": 1,
+      "message": "btw - I always wished that the standard way (at least for native tests) was having a standard place to put them!\n\nNeeding a separate location to install benchmarks, tests, fuzzers, etc... is a small unnecessary cost. Like we put all binaries in */bin regardless of their use, we should put all tests in the same place regardless of their use. This would simplify a lot of these tools, these types of scripts, etc... but there is pushback against making changes to these types of things because of the number of places that depend on these directories.",
+      "parentUuid": "7f363534_6b4f502e",
+      "revId": "9e87d90633c699b4e499664de777a00179b923a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
