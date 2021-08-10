@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2557a150_0d6887a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885590
+      },
+      "writtenOn": "2021-08-10T06:10:46Z",
+      "side": 1,
+      "message": "Hi,\n\nIf you could proceed this and make this change into next update for Android, it would be great.\n\nI believe this change can solve the problems having trouble with tilt value confusion on Android App if something similar to this has not been yet applied.\nThanks,\n\nTats",
+      "revId": "35e05533759f5467bd38c20524c6d10eb1abb2e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "973168c6_17d75cd6",
