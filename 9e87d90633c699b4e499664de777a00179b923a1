@@ -105,6 +105,24 @@
       "parentUuid": "7f363534_6b4f502e",
       "revId": "9e87d90633c699b4e499664de777a00179b923a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e872fbe_ce52b0af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-10T01:39:42Z",
+      "side": 1,
+      "message": "b/131429500... well, they have made some progress! I should try `--skip-loading-config-jar`.",
+      "parentUuid": "90681af0_d7d0895b",
+      "revId": "9e87d90633c699b4e499664de777a00179b923a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
