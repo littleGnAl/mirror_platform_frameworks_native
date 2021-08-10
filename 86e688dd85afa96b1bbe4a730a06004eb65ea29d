@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67d2989_2f1b712d",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-10T21:17:55Z",
+      "side": 1,
+      "message": "You don\u0027t appear to use any RAND_ functions. There is BN_rand_range, but that\u0027s from bn.h: https://commondatastorage.googleapis.com/chromium-boringssl-docs/bn.h.html#BN_rand_range",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c3caf5a_27e70c1e",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-10T21:17:55Z",
+      "side": 1,
+      "message": "ERR_print_errors_cb consumes the error queue so clearing here isn\u0027t needed, although you do need to set |mHandled| so might choose to do this anyway.",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3abed65f_25869997",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-10T21:17:55Z",
+      "side": 1,
+      "message": "Your call, and follow local style, but there\u0027s a multi-line conditional body here without braces.",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e728d9_9ceeefad",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-10T21:17:55Z",
+      "side": 1,
+      "message": "https://bugs.chromium.org/p/boringssl/issues/detail?id\u003d24 actually says that SSL_write _should_ never return zero. But David knows the current state of this.",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f415759_93eec37e",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-10T21:17:55Z",
+      "side": 1,
+      "message": "Less sure about this one, but again David knows the current state better than I.",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5424513_dc957407",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1019036
+      },
+      "writtenOn": "2021-08-10T21:17:55Z",
+      "side": 1,
+      "message": "You\u0027re always configuring a cert and private key, so you want the client to do client authentication when the server requests it?",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
