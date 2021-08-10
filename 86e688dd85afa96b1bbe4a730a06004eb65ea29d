@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "89b886cd_5ecddbd5",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-10T22:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67d2989_2f1b712d",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2c3caf5a_27e70c1e",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 38
@@ -37,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "daf936a5_2b228d6f",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-10T22:37:48Z",
+      "side": 1,
+      "message": "Indeed, that\u0027s why I have the comment above",
+      "parentUuid": "2c3caf5a_27e70c1e",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3abed65f_25869997",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 38
@@ -48,6 +84,24 @@
       "writtenOn": "2021-08-10T21:17:55Z",
       "side": 1,
       "message": "Your call, and follow local style, but there\u0027s a multi-line conditional body here without braces.",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e71880c_4abd967d",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-10T22:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3abed65f_25869997",
       "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -99,6 +153,24 @@
       "writtenOn": "2021-08-10T21:17:55Z",
       "side": 1,
       "message": "You\u0027re always configuring a cert and private key, so you want the client to do client authentication when the server requests it?",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fa6648a_3bc17327",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-10T22:37:48Z",
+      "side": 1,
+      "message": "I think the answer is yes, though authentication has not been properly decided yet. b/195166979 tracks this.\n\nFor one feature (host-device communication) we always use a freshly generated keypair / cert. For other features we might need both sides to agree on a root cert first.\n\nThough, the design for authentication is not finalized yet, so I\u0027ll leave this unanswered.",
+      "parentUuid": "f5424513_dc957407",
       "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
