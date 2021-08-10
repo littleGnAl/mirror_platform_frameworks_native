@@ -16,6 +16,7 @@
 
 #include <memory>
 
+#include <android-base/result.h>
 #include <android-base/unique_fd.h>
 #include <utils/Errors.h>
 
@@ -51,8 +52,13 @@ public:
 
     /**
      * Check whether this has been triggered by poll()ing the read end.
+     *
+     * Return:
+     *   true - triggered
+     *   false - not triggered
+     *   error - error when polling
      */
-    bool isTriggeredPolled();
+    android::base::Result<bool> isTriggeredPolled();
 
 private:
     base::unique_fd mWrite;
