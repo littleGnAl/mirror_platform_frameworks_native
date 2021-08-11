@@ -111,7 +111,10 @@ public:
     std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd fd, FdTrigger*) const {
         return std::make_unique<RpcTransportRaw>(std::move(fd));
     }
+    std::string getX509Pem() override { return {}; }
+    status_t addTrustedX509Pem(std::string_view) override { return OK; }
 };
+
 } // namespace
 
 std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryRaw::newServerCtx() const {
