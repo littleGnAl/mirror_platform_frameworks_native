@@ -52,20 +52,40 @@ protected:
     RpcTransport() = default;
 };
 
-// Represents the context that generates the socket connection.
-class RpcTransportCtx {
+class RpcTransportServerCtx {
 public:
-    virtual ~RpcTransportCtx() = default;
-
+    virtual ~RpcTransportServerCtx() = default;
     // Create a new RpcTransport object.
     //
-    // Implemenion details: for TLS, this function may incur I/O. |fdTrigger| may be used
+    // Implementation details: for TLS, this function may incur I/O. |fdTrigger| may be used
     // to interrupt I/O. This function blocks until handshake is finished.
     [[nodiscard]] virtual std::unique_ptr<RpcTransport> newTransport(
             android::base::unique_fd fd, FdTrigger *fdTrigger) const = 0;
 
-protected:
-    RpcTransportCtx() = default;
+    // Return the preconfigured certificate.
+    //
+    // Implementation details:
+    // - For raw sockets, this always returns empty string.
+    // - For TLS, this returns the certificate.
+    [[nodiscard]] virtual std::string getCertificate() = 0;
+};
+
+class RpcTransportClientCtx {
+public:
+    virtual ~RpcTransportClientCtx() = default;
+    // Create a new RpcTransport object.
+    //
+    // Implementation details: for TLS, this function may incur I/O. |fdTrigger| may be used
+    // to interrupt I/O. This function blocks until handshake is finished.
+    [[nodiscard]] virtual std::unique_ptr<RpcTransport> newTransport(
+            android::base::unique_fd fd, FdTrigger *fdTrigger) const = 0;
+
+    // Add a trusted certificate. Servers presenting this certificate are accepted.
+    //
+    // Implementation details:
+    // - For raw sockets, this always returns OK.
+    // - For TLS, this sets the trusted certificate.
+    [[nodiscard]] virtual status_t addTrustedCertificate(std::string_view cert) = 0;
 };
 
 // A factory class that generates RpcTransportCtx.
@@ -73,10 +93,10 @@ class RpcTransportCtxFactory {
 public:
     virtual ~RpcTransportCtxFactory() = default;
     // Creates server context.
-    [[nodiscard]] virtual std::unique_ptr<RpcTransportCtx> newServerCtx() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<RpcTransportServerCtx> newServerCtx() const = 0;
 
     // Creates client context.
-    [[nodiscard]] virtual std::unique_ptr<RpcTransportCtx> newClientCtx() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<RpcTransportClientCtx> newClientCtx() const = 0;
 
     // Return a short description of this transport (e.g. "raw"). For logging / debugging / testing
     // only.
