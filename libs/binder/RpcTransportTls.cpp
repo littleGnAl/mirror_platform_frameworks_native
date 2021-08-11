@@ -89,6 +89,28 @@ long socketCtrl(BIO* bio, int cmd, long num, void*) { // NOLINT
     return 0;
 }
 
+std::string toString(X509* x509, CertificateFormat format) {
+    bssl::UniquePtr<BIO> certBio(BIO_new(BIO_s_mem()));
+    switch (format) {
+        case CertificateFormat::PEM: {
+            TEST_AND_RETURN({}, PEM_write_bio_X509(certBio.get(), x509));
+        } break;
+        default: {
+            LOG_ALWAYS_FATAL("Unsupported format %d", static_cast<int>(format));
+        }
+    }
+    const uint8_t* data;
+    size_t len;
+    TEST_AND_RETURN({}, BIO_mem_contents(certBio.get(), &data, &len));
+    return std::string(reinterpret_cast<const char*>(data), len);
+}
+
+bssl::UniquePtr<X509> fromPem(std::string_view s) {
+    if (s.length() > std::numeric_limits<int>::max()) return nullptr;
+    bssl::UniquePtr<BIO> certBio(BIO_new_mem_buf(s.data(), static_cast<int>(s.length())));
+    return bssl::UniquePtr<X509>(PEM_read_bio_X509(certBio.get(), nullptr, nullptr, nullptr));
+}
+
 bssl::UniquePtr<BIO> newSocketBio(android::base::borrowed_fd fd) {
     static const BIO_METHOD* gMethods = ([] {
         auto methods = BIO_meth_new(BIO_get_new_index(), "socket_no_signal");
@@ -287,7 +309,7 @@ struct SslCaller {
     }
 };
 
-// A wrapper over bssl::UniquePtr<SSL>. This class ensures that all SSL_* functions are called
+// A wrapper over SSL*. This class ensures that all SSL_* functions are called
 // through call(), which returns an ErrorQueue object that requires the caller to either handle
 // or clear it.
 // Example:
@@ -296,22 +318,26 @@ struct SslCaller {
 //   else ALOGE("%s", errorQueue.toString().c_str());
 class Ssl {
 public:
-    explicit Ssl(bssl::UniquePtr<SSL> ssl) : mSsl(std::move(ssl)) {
+    // Does not retain ownership.
+    explicit Ssl(SSL* ssl) : mSsl(ssl) { LOG_ALWAYS_FATAL_IF(mSsl == nullptr); }
+    // Retains ownership.
+    explicit Ssl(bssl::UniquePtr<SSL> ssl) : mOwned(std::move(ssl)), mSsl(mOwned.get()) {
         LOG_ALWAYS_FATAL_IF(mSsl == nullptr);
     }
 
     template <typename Fn, typename... Args>
     inline typename SslCaller<Fn, Args...>::ResultAndErrorQueue call(Fn fn, Args&&... args) {
-        return SslCaller<Fn, Args...>::call(fn, mSsl.get(), std::forward<Args>(args)...);
+        return SslCaller<Fn, Args...>::call(fn, mSsl, std::forward<Args>(args)...);
     }
 
     int getError(int ret) {
         LOG_ALWAYS_FATAL_IF(mSsl == nullptr);
-        return SSL_get_error(mSsl.get(), ret);
+        return SSL_get_error(mSsl, ret);
     }
 
 private:
-    bssl::UniquePtr<SSL> mSsl;
+    bssl::UniquePtr<SSL> mOwned;
+    SSL* mSsl;
 };
 
 class RpcTransportTls : public RpcTransport {
@@ -458,19 +484,109 @@ public:
                                                FdTrigger* fdTrigger) const override;
     std::string getCertificate(CertificateFormat) override;
     status_t addTrustedPeerCertificate(CertificateFormat, std::string_view cert) override;
+    virtual const char* toCString() const = 0;
 
 protected:
+    static ssl_verify_result_t sslCustomVerify(SSL* rawSsl, uint8_t* outAlert);
     virtual void preHandshake(Ssl* ssl) const = 0;
     bssl::UniquePtr<SSL_CTX> mCtx;
 };
-std::string RpcTransportCtxTls::getCertificate(CertificateFormat) {
-    // TODO(b/195166979): return certificate here
-    return {};
+
+std::string RpcTransportCtxTls::getCertificate(CertificateFormat format) {
+    X509* x509 = SSL_CTX_get0_certificate(mCtx.get()); // does not own
+    return toString(x509, format);
 }
 
-status_t RpcTransportCtxTls::addTrustedPeerCertificate(CertificateFormat, std::string_view) {
-    // TODO(b/195166979): set certificate here
+status_t RpcTransportCtxTls::addTrustedPeerCertificate(CertificateFormat format,
+                                                       std::string_view cert) {
+    X509_STORE* store = SSL_CTX_get_cert_store(mCtx.get());
+    if (store == nullptr) return NO_INIT;
+    bssl::UniquePtr<X509> x509;
+    switch (format) {
+        case CertificateFormat::PEM: {
+            x509 = fromPem(cert);
+        } break;
+        default: {
+            LOG_ALWAYS_FATAL("Unsupported CertificateFormat: %d", static_cast<int>(format));
+            __builtin_unreachable();
+        }
+    }
+    if (x509 == nullptr) {
+        ALOGE("Certificate is not in the proper format %s", PrintToString(format).c_str());
+        return BAD_VALUE;
+    }
+    TEST_AND_RETURN(BAD_VALUE, X509_STORE_add_cert(store, x509.get()));
     return OK;
+}
+
+// Verify by comparing the leaf of peer certificate with every certificate added to X509_STORE
+// via addTrustedX509Pem. Does not support certificate chains.
+ssl_verify_result_t RpcTransportCtxTls::sslCustomVerify(SSL* rawSsl, uint8_t* outAlert) {
+    const char* logPrefix = SSL_is_server(rawSsl) ? "Server" : "Client";
+    Ssl ssl(rawSsl);
+
+    bssl::UniquePtr<X509> peerCert;
+    {
+        auto [peerCertPtr, errorQueue] = ssl.call(SSL_get_peer_certificate);
+        if (peerCertPtr == nullptr) {
+            LOG_TLS_DETAIL("%s: Failed to verify client because client did not present a "
+                           "certificate: %s",
+                           logPrefix, errorQueue.toString().c_str());
+            if (outAlert != nullptr) *outAlert = SSL_AD_CERTIFICATE_UNOBTAINABLE;
+            return ssl_verify_invalid;
+        }
+        errorQueue.clear();
+        peerCert.reset(peerCertPtr);
+
+        LOG_TLS_DETAIL("%s: got peer certificate: %s", logPrefix,
+                       toString(peerCert.get(), CertificateFormat::PEM).c_str());
+    }
+
+    auto [ctx, ctxError] = ssl.call(SSL_get_SSL_CTX);
+    if (ctx == nullptr) {
+        ALOGE("%s: %s: SSL_get_SSL_CTX failed", logPrefix, __PRETTY_FUNCTION__);
+        if (outAlert != nullptr) *outAlert = SSL_AD_INTERNAL_ERROR;
+        return ssl_verify_invalid;
+    }
+    ctxError.clear();
+
+    auto store = SSL_CTX_get_cert_store(ctx);
+    if (store == nullptr) {
+        ALOGE("%s: %s: SSL_CTX_get_cert_store failed", logPrefix, __PRETTY_FUNCTION__);
+        if (outAlert != nullptr) *outAlert = SSL_AD_INTERNAL_ERROR;
+        return ssl_verify_invalid;
+    }
+    auto objects = X509_STORE_get0_objects(store);
+    size_t cnt = sk_X509_OBJECT_num(objects);
+    if (cnt == SIZE_MAX) {
+        ALOGE("%s: %s: sk_X509_OBJECT_num overflow", logPrefix, __PRETTY_FUNCTION__);
+        if (outAlert != nullptr) *outAlert = SSL_AD_INTERNAL_ERROR;
+        return ssl_verify_invalid;
+    }
+    for (size_t i = 0; i < cnt; i++) {
+        auto object = sk_X509_OBJECT_value(objects, i);
+        if (object == nullptr) {
+            LOG_TLS_DETAIL("%s: When verifying peer cert, ignoring cert #%zu: sk_X509_OBJECT_value "
+                           "is null",
+                           logPrefix, i);
+            continue;
+        }
+        auto trustedCert = X509_OBJECT_get0_X509(object);
+        if (trustedCert == nullptr) {
+            LOG_TLS_DETAIL("%s: When verifying peer cert, ignoring cert #%zu: "
+                           "X509_OBJECT_get0_X509 is null",
+                           logPrefix, i);
+            continue;
+        }
+
+        if (0 == X509_cmp(trustedCert, peerCert.get())) {
+            return ssl_verify_ok;
+        }
+    }
+    LOG_TLS_DETAIL("%s: Failed to verify client because client presented untrusted certificate",
+                   logPrefix);
+    if (outAlert != nullptr) *outAlert = SSL_AD_CERTIFICATE_UNKNOWN;
+    return ssl_verify_invalid;
 }
 
 // Common implementation for creating server and client contexts. The child class, |Impl|, is
@@ -488,10 +604,8 @@ std::unique_ptr<RpcTransportCtxTls> RpcTransportCtxTls::create() {
     TEST_AND_RETURN(nullptr, SSL_CTX_use_PrivateKey(ctx.get(), evp_pkey.get()));
     TEST_AND_RETURN(nullptr, SSL_CTX_use_certificate(ctx.get(), cert.get()));
 
-    // TODO(b/195166979): peer should send certificate in a different channel, and this class
-    //  should verify it here.
-    SSL_CTX_set_custom_verify(ctx.get(), SSL_VERIFY_PEER,
-                              [](SSL*, uint8_t*) -> ssl_verify_result_t { return ssl_verify_ok; });
+    SSL_CTX_set_custom_verify(ctx.get(), SSL_VERIFY_PEER | SSL_VERIFY_FAIL_IF_NO_PEER_CERT,
+                              sslCustomVerify);
 
     // Require at least TLS 1.3
     TEST_AND_RETURN(nullptr, SSL_CTX_set_min_proto_version(ctx.get(), TLS1_3_VERSION));
@@ -502,6 +616,8 @@ std::unique_ptr<RpcTransportCtxTls> RpcTransportCtxTls::create() {
 
     auto ret = std::make_unique<Impl>();
     ret->mCtx = std::move(ctx);
+    LOG_TLS_DETAIL("%s: set up ctx with certificate: %s", ret->toCString(),
+                   toString(cert.get(), CertificateFormat::PEM).c_str());
     return ret;
 }
 
@@ -521,6 +637,7 @@ public:
     void preHandshake(Ssl* ssl) const override {
         ssl->call(SSL_set_accept_state).errorQueue.clear();
     }
+    const char* toCString() const override { return "Server"; }
 };
 
 class RpcTransportCtxTlsClient : public RpcTransportCtxTls {
@@ -528,6 +645,7 @@ public:
     void preHandshake(Ssl* ssl) const override {
         ssl->call(SSL_set_connect_state).errorQueue.clear();
     }
+    const char* toCString() const override { return "Client"; }
 };
 
 } // namespace
