@@ -52,20 +52,29 @@ protected:
     RpcTransport() = default;
 };
 
-// Represents the context that generates the socket connection.
 class RpcTransportCtx {
 public:
     virtual ~RpcTransportCtx() = default;
-
     // Create a new RpcTransport object.
     //
-    // Implemenion details: for TLS, this function may incur I/O. |fdTrigger| may be used
+    // Implementation details: for TLS, this function may incur I/O. |fdTrigger| may be used
     // to interrupt I/O. This function blocks until handshake is finished.
     [[nodiscard]] virtual std::unique_ptr<RpcTransport> newTransport(
             android::base::unique_fd fd, FdTrigger *fdTrigger) const = 0;
 
-protected:
-    RpcTransportCtx() = default;
+    // Return the preconfigured certificate.
+    //
+    // Implementation details:
+    // - For raw sockets, this always returns empty string.
+    // - For TLS, this returns the certificate.
+    [[nodiscard]] virtual std::string getX509Pem() = 0;
+
+    // Add a trusted certificate. Servers presenting this certificate are accepted.
+    //
+    // Implementation details:
+    // - For raw sockets, this always returns OK.
+    // - For TLS, this sets the trusted certificate.
+    [[nodiscard]] virtual status_t addTrustedX509Pem(std::string_view cert) = 0;
 };
 
 // A factory class that generates RpcTransportCtx.

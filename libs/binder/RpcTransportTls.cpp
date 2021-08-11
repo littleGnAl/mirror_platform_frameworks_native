@@ -428,17 +428,33 @@ bool setFdAndDoHandshake(Ssl* ssl, android::base::borrowed_fd fd, FdTrigger* fdT
     }
 }
 
-class RpcTransportCtxTlsServer : public RpcTransportCtx {
+class RpcTransportCtxTls : public RpcTransportCtx {
 public:
-    static std::unique_ptr<RpcTransportCtxTlsServer> create();
-    std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd acceptedFd,
+    template <typename Impl,
+              typename = std::enable_if_t<std::is_base_of_v<RpcTransportCtxTls, Impl>>>
+    static std::unique_ptr<RpcTransportCtxTls> create();
+    std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd fd,
                                                FdTrigger* fdTrigger) const override;
+    std::string getX509Pem() override;
+    status_t addTrustedX509Pem(std::string_view cert) override;
 
-private:
+protected:
     bssl::UniquePtr<SSL_CTX> mCtx;
-};
 
-std::unique_ptr<RpcTransportCtxTlsServer> RpcTransportCtxTlsServer::create() {
+    virtual void preHandshake(Ssl* ssl) const = 0;
+};
+std::string RpcTransportCtxTls::getX509Pem() {
+    // TODO(b/195166979): return certificate here
+    return {};
+}
+
+status_t RpcTransportCtxTls::addTrustedX509Pem(std::string_view) {
+    // TODO(b/195166979): set certificate here
+    return OK;
+}
+
+template <typename Impl, typename>
+std::unique_ptr<RpcTransportCtxTls> RpcTransportCtxTls::create() {
     bssl::UniquePtr<SSL_CTX> ctx(SSL_CTX_new(TLS_method()));
     TEST_AND_RETURN(nullptr, ctx != nullptr);
 
@@ -449,44 +465,8 @@ std::unique_ptr<RpcTransportCtxTlsServer> RpcTransportCtxTlsServer::create() {
     TEST_AND_RETURN(nullptr, cert != nullptr);
     TEST_AND_RETURN(nullptr, SSL_CTX_use_PrivateKey(ctx.get(), evp_pkey.get()));
     TEST_AND_RETURN(nullptr, SSL_CTX_use_certificate(ctx.get(), cert.get()));
-    // Require at least TLS 1.3
-    TEST_AND_RETURN(nullptr, SSL_CTX_set_min_proto_version(ctx.get(), TLS1_3_VERSION));
 
-    if constexpr (SHOULD_LOG_TLS_DETAIL) { // NOLINT
-        SSL_CTX_set_info_callback(ctx.get(), sslDebugLog);
-    }
-
-    auto rpcTransportTlsServerCtx = std::make_unique<RpcTransportCtxTlsServer>();
-    rpcTransportTlsServerCtx->mCtx = std::move(ctx);
-    return rpcTransportTlsServerCtx;
-}
-
-std::unique_ptr<RpcTransport> RpcTransportCtxTlsServer::newTransport(
-        android::base::unique_fd acceptedFd, FdTrigger* fdTrigger) const {
-    bssl::UniquePtr<SSL> ssl(SSL_new(mCtx.get()));
-    TEST_AND_RETURN(nullptr, ssl != nullptr);
-    Ssl wrapped(std::move(ssl));
-
-    wrapped.call(SSL_set_accept_state).errorQueue.clear();
-    TEST_AND_RETURN(nullptr, setFdAndDoHandshake(&wrapped, acceptedFd, fdTrigger));
-    return std::make_unique<RpcTransportTls>(std::move(acceptedFd), std::move(wrapped));
-}
-
-class RpcTransportCtxTlsClient : public RpcTransportCtx {
-public:
-    static std::unique_ptr<RpcTransportCtxTlsClient> create();
-    std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd connectedFd,
-                                               FdTrigger* fdTrigger) const override;
-
-private:
-    bssl::UniquePtr<SSL_CTX> mCtx;
-};
-
-std::unique_ptr<RpcTransportCtxTlsClient> RpcTransportCtxTlsClient::create() {
-    bssl::UniquePtr<SSL_CTX> ctx(SSL_CTX_new(TLS_method()));
-    TEST_AND_RETURN(nullptr, ctx != nullptr);
-
-    // TODO(b/195166979): server should send certificate in a different channel, and client
+    // TODO(b/195166979): peer should send certificate in a different channel, and this class
     //  should verify it here.
     SSL_CTX_set_custom_verify(ctx.get(), SSL_VERIFY_PEER,
                               [](SSL*, uint8_t*) -> ssl_verify_result_t { return ssl_verify_ok; });
@@ -498,30 +478,46 @@ std::unique_ptr<RpcTransportCtxTlsClient> RpcTransportCtxTlsClient::create() {
         SSL_CTX_set_info_callback(ctx.get(), sslDebugLog);
     }
 
-    auto rpcTransportTlsClientCtx = std::make_unique<RpcTransportCtxTlsClient>();
-    rpcTransportTlsClientCtx->mCtx = std::move(ctx);
-    return rpcTransportTlsClientCtx;
+    auto ret = std::make_unique<Impl>();
+    ret->mCtx = std::move(ctx);
+    return ret;
 }
 
-std::unique_ptr<RpcTransport> RpcTransportCtxTlsClient::newTransport(
-        android::base::unique_fd connectedFd, FdTrigger* fdTrigger) const {
+std::unique_ptr<RpcTransport> RpcTransportCtxTls::newTransport(android::base::unique_fd acceptedFd,
+                                                               FdTrigger* fdTrigger) const {
     bssl::UniquePtr<SSL> ssl(SSL_new(mCtx.get()));
     TEST_AND_RETURN(nullptr, ssl != nullptr);
     Ssl wrapped(std::move(ssl));
 
-    wrapped.call(SSL_set_connect_state).errorQueue.clear();
-    TEST_AND_RETURN(nullptr, setFdAndDoHandshake(&wrapped, connectedFd, fdTrigger));
-    return std::make_unique<RpcTransportTls>(std::move(connectedFd), std::move(wrapped));
+    preHandshake(&wrapped);
+    TEST_AND_RETURN(nullptr, setFdAndDoHandshake(&wrapped, acceptedFd, fdTrigger));
+    return std::make_unique<RpcTransportTls>(std::move(acceptedFd), std::move(wrapped));
 }
+
+class RpcTransportCtxTlsServer : public RpcTransportCtxTls {
+protected:
+    void preHandshake(Ssl* ssl) const override {
+        ssl->call(SSL_set_accept_state).errorQueue.clear();
+    }
+};
+
+class RpcTransportCtxTlsClient : public RpcTransportCtxTls {
+protected:
+    void preHandshake(Ssl* ssl) const override {
+        ssl->call(SSL_set_connect_state).errorQueue.clear();
+    }
+};
+
+static_assert(std::is_base_of_v<RpcTransportCtxTls, RpcTransportCtxTlsServer>);
 
 } // namespace
 
 std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryTls::newServerCtx() const {
-    return android::RpcTransportCtxTlsServer::create();
+    return android::RpcTransportCtxTls::create<RpcTransportCtxTlsServer>();
 }
 
 std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryTls::newClientCtx() const {
-    return android::RpcTransportCtxTlsClient::create();
+    return android::RpcTransportCtxTls::create<RpcTransportCtxTlsClient>();
 }
 
 const char* RpcTransportCtxFactoryTls::toCString() const {
