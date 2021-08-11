@@ -503,6 +503,10 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
 
     LOG_ALWAYS_FATAL_IF(reply == nullptr, "Reply parcel must be used for synchronous transaction.");
 
+    // we know we don't care to run now, the question is, does the poll cost too
+    // much?
+    sched_yield();
+
     return waitForReply(connection, session, reply);
 }
 
