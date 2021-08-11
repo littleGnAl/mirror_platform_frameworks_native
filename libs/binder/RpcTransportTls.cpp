@@ -89,6 +89,20 @@ long socketCtrl(BIO* bio, int cmd, long num, void*) { // NOLINT
     return 0;
 }
 
+std::string toString(X509* x509) {
+    bssl::UniquePtr<BIO> certBio(BIO_new(BIO_s_mem()));
+    TEST_AND_RETURN({}, PEM_write_bio_X509(certBio.get(), x509));
+    const uint8_t* data;
+    size_t len;
+    TEST_AND_RETURN({}, BIO_mem_contents(certBio.get(), &data, &len));
+    return std::string(reinterpret_cast<const char*>(data), len);
+}
+
+bssl::UniquePtr<X509> fromString(std::string_view s) {
+    bssl::UniquePtr<BIO> certBio(BIO_new_mem_buf(s.data(), s.length()));
+    return bssl::UniquePtr<X509>(PEM_read_bio_X509(certBio.get(), nullptr, nullptr, nullptr));
+}
+
 bssl::UniquePtr<BIO> newSocketBio(android::base::borrowed_fd fd) {
     static const BIO_METHOD* gMethods = ([] {
         auto methods = BIO_meth_new(BIO_get_new_index(), "socket_no_signal");
@@ -404,9 +418,11 @@ status_t RpcTransportTls::interruptableReadFully(FdTrigger* fdTrigger, void* dat
 bool setFdAndDoHandshake(Ssl* ssl, android::base::borrowed_fd fd, FdTrigger* fdTrigger) {
     bssl::UniquePtr<BIO> bio = newSocketBio(fd);
     TEST_AND_RETURN(false, bio != nullptr);
-    auto [_, errorQueue] = ssl->call(SSL_set_bio, bio.get(), bio.get());
-    (void)bio.release(); // SSL_set_bio takes ownership.
-    errorQueue.clear();
+    {
+        auto [_, errorQueue] = ssl->call(SSL_set_bio, bio.get(), bio.get());
+        (void)bio.release(); // SSL_set_bio takes ownership.
+        errorQueue.clear();
+    }
 
     MAYBE_WAIT_IN_FLAKE_MODE;
 
@@ -450,6 +466,9 @@ std::unique_ptr<RpcTransportCtxTlsServer> RpcTransportCtxTlsServer::create() {
     TEST_AND_RETURN(nullptr, cert != nullptr);
     TEST_AND_RETURN(nullptr, SSL_CTX_use_PrivateKey(ctx.get(), evp_pkey.get()));
     TEST_AND_RETURN(nullptr, SSL_CTX_use_certificate(ctx.get(), cert.get()));
+
+    LOG_TLS_DETAIL("Server: using certificate: %s", toString(cert.get()).c_str());
+
     // Require at least TLS 1.3
     TEST_AND_RETURN(nullptr, SSL_CTX_set_min_proto_version(ctx.get(), TLS1_3_VERSION));
 
@@ -474,8 +493,10 @@ std::unique_ptr<RpcTransport> RpcTransportCtxTlsServer::newTransport(
 }
 
 std::string RpcTransportCtxTlsServer::getCertificate() {
-    // TODO(b/195166979): return certificate here
-    return {};
+    X509* x509 = SSL_CTX_get0_certificate(mCtx.get()); // does not own
+    auto ret = toString(x509);
+    LOG_ALWAYS_FATAL_IF(ret.empty(), "No pre-configured certificate!");
+    return ret;
 }
 
 class RpcTransportCtxTlsClient : public RpcTransportClientCtx {
@@ -493,10 +514,7 @@ std::unique_ptr<RpcTransportCtxTlsClient> RpcTransportCtxTlsClient::create() {
     bssl::UniquePtr<SSL_CTX> ctx(SSL_CTX_new(TLS_method()));
     TEST_AND_RETURN(nullptr, ctx != nullptr);
 
-    // TODO(b/195166979): server should send certificate in a different channel, and client
-    //  should verify it here.
-    SSL_CTX_set_custom_verify(ctx.get(), SSL_VERIFY_PEER,
-                              [](SSL*, uint8_t*) -> ssl_verify_result_t { return ssl_verify_ok; });
+    SSL_CTX_set_verify(ctx.get(), SSL_VERIFY_PEER, nullptr);
 
     // Require at least TLS 1.3
     TEST_AND_RETURN(nullptr, SSL_CTX_set_min_proto_version(ctx.get(), TLS1_3_VERSION));
@@ -518,11 +536,26 @@ std::unique_ptr<RpcTransport> RpcTransportCtxTlsClient::newTransport(
 
     wrapped.call(SSL_set_connect_state).errorQueue.clear();
     TEST_AND_RETURN(nullptr, setFdAndDoHandshake(&wrapped, connectedFd, fdTrigger));
+
+    if constexpr (SHOULD_LOG_TLS_DETAIL) {
+        auto [x509p, peerCertErrorQueue] = wrapped.call(SSL_get_peer_certificate);
+        if (x509p == nullptr) {
+            ALOGE("Client: SSL_get_peer_certificate(): no peer certificate: %s",
+                  peerCertErrorQueue.toString().c_str());
+        } else {
+            peerCertErrorQueue.clear();
+            bssl::UniquePtr<X509> x509(x509p);
+            LOG_TLS_DETAIL("Client: got peer certificate: %s", toString(x509.get()).c_str());
+        }
+    }
+
     return std::make_unique<RpcTransportTls>(std::move(connectedFd), std::move(wrapped));
 }
 
-status_t RpcTransportCtxTlsClient::addTrustedCertificate(std::string_view) {
-    // TODO(b/195166979): set certificate here
+status_t RpcTransportCtxTlsClient::addTrustedCertificate(std::string_view cert) {
+    X509_STORE* store = SSL_CTX_get_cert_store(mCtx.get());
+    LOG_ALWAYS_FATAL_IF(store == nullptr);
+    TEST_AND_RETURN(BAD_VALUE, X509_STORE_add_cert(store, fromString(cert).get()));
     return OK;
 }
 
