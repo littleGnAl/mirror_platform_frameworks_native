@@ -27,8 +27,8 @@ class RpcTransportCtxFactoryTls : public RpcTransportCtxFactory {
 public:
     static std::unique_ptr<RpcTransportCtxFactory> make();
 
-    std::unique_ptr<RpcTransportCtx> newServerCtx() const override;
-    std::unique_ptr<RpcTransportCtx> newClientCtx() const override;
+    std::unique_ptr<RpcTransportServerCtx> newServerCtx() const override;
+    std::unique_ptr<RpcTransportClientCtx> newClientCtx() const override;
     const char* toCString() const override;
 
 private:
