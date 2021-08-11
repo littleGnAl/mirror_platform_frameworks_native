@@ -23,6 +23,8 @@
 #include "RpcState.h"
 #include "RpcWireFormat.h"
 
+#include <atomic>
+
 namespace android {
 
 RpcAddress RpcAddress::zero() {
@@ -32,24 +34,6 @@ RpcAddress RpcAddress::zero() {
 bool RpcAddress::isZero() const {
     RpcWireAddress ZERO{.options = 0};
     return memcmp(mRawAddr.get(), &ZERO, sizeof(RpcWireAddress)) == 0;
-}
-
-static void ReadRandomBytes(uint8_t* buf, size_t len) {
-    int fd = TEMP_FAILURE_RETRY(open("/dev/urandom", O_RDONLY | O_CLOEXEC | O_NOFOLLOW));
-    if (fd == -1) {
-        ALOGE("%s: cannot read /dev/urandom", __func__);
-        return;
-    }
-
-    size_t n;
-    while ((n = TEMP_FAILURE_RETRY(read(fd, buf, len))) > 0) {
-        len -= n;
-        buf += n;
-    }
-    if (len > 0) {
-        ALOGW("%s: there are %d bytes skipped", __func__, (int)len);
-    }
-    close(fd);
 }
 
 RpcAddress RpcAddress::random(bool forServer) {
@@ -64,8 +48,16 @@ RpcAddress RpcAddress::random(bool forServer) {
     RpcAddress ret;
     RpcWireAddress* raw = ret.mRawAddr.get();
 
+    // FIXME: this is not okay for RpcSession IDs which shouldn't be guessable.
+    // and this is a hack. If we really want to change this, we should keep
+    // RpcSession as a large unguessable ID and change the binder ID to be fewer
+    // bits.
+
     raw->options = options;
-    ReadRandomBytes(raw->address, sizeof(raw->address));
+
+    static std::atomic<uint64_t> i = 0;
+    static_assert(sizeof(raw->address) > sizeof(i));
+    *((uint64_t*)raw->address) = i++;
 
     LOG_RPC_DETAIL("Creating new address: %s", ret.toString().c_str());
     return ret;
