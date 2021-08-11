@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "321f7b89_8c193ec5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-11T22:10:07Z",
+      "side": 1,
+      "message": "I was going to wait to merge this, but instead, we can maintain the test this release, and we can see how the wire protocol changes over time.",
+      "revId": "44d9ce5058c105d0f7406b3e8358c63bb9cd501a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
