@@ -428,11 +428,12 @@ bool setFdAndDoHandshake(Ssl *ssl, android::base::borrowed_fd fd, FdTrigger *fdT
     }
 }
 
-class RpcTransportCtxTlsServer : public RpcTransportCtx {
+class RpcTransportCtxTlsServer : public RpcTransportServerCtx {
 public:
     static std::unique_ptr<RpcTransportCtxTlsServer> create();
     std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd acceptedFd,
                                                FdTrigger *fdTrigger) const override;
+    std::string getCertificate() override;
 
 private:
     bssl::UniquePtr<SSL_CTX> mCtx;
@@ -472,11 +473,17 @@ std::unique_ptr<RpcTransport> RpcTransportCtxTlsServer::newTransport(
     return std::make_unique<RpcTransportTls>(std::move(acceptedFd), std::move(wrapped));
 }
 
-class RpcTransportCtxTlsClient : public RpcTransportCtx {
+std::string RpcTransportCtxTlsServer::getCertificate() {
+    // TODO(b/195166979): return certificate here
+    return {};
+}
+
+class RpcTransportCtxTlsClient : public RpcTransportClientCtx {
 public:
     static std::unique_ptr<RpcTransportCtxTlsClient> create();
     std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd connectedFd,
                                                FdTrigger *fdTrigger) const override;
+    status_t addTrustedCertificate(std::string_view cert) override;
 
 private:
     bssl::UniquePtr<SSL_CTX> mCtx;
@@ -511,13 +518,18 @@ std::unique_ptr<RpcTransport> RpcTransportCtxTlsClient::newTransport(
     return std::make_unique<RpcTransportTls>(std::move(connectedFd), std::move(wrapped));
 }
 
+status_t RpcTransportCtxTlsClient::addTrustedCertificate(std::string_view) {
+    // TODO(b/195166979): set certificate here
+    return OK;
+}
+
 } // namespace
 
-std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryTls::newServerCtx() const {
+std::unique_ptr<RpcTransportServerCtx> RpcTransportCtxFactoryTls::newServerCtx() const {
     return android::RpcTransportCtxTlsServer::create();
 }
 
-std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryTls::newClientCtx() const {
+std::unique_ptr<RpcTransportClientCtx> RpcTransportCtxFactoryTls::newClientCtx() const {
     return android::RpcTransportCtxTlsClient::create();
 }
 
