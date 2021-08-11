@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753bef83_dc83f4c8",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-11T22:03:37Z",
+      "side": 1,
+      "message": "Suppose you tried to read a buffer of 100 bytes, but then the other side write 50 bytes and then closed the connection EOF. This function won\u0027t report those 50 bytes and just report an error. Is that fine for binder?",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0028014_e6c1ddf3",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-11T22:03:37Z",
+      "side": 1,
+      "message": "Well, there was that bug above, but it doesn\u0027t affect you. Other than that, I think that assumption is valid now? Note however, there are two different EOFs: an unauthenticated transport EOF, and an authenticated close_notify. Whether this means anything is another matter... on the web, close_notify is fiction.\n\nBut since an unexpected EOF is also an error for you, you don\u0027t actually care. So this works, but it\u0027d also work to just delete this block. On EOF, getError(0) will see there wasn\u0027t another cause for the error and return SSL_ERROR_SYSCALL. Then pollForSslError will give you back your error string. Whichever.",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b402fb71_d8688a86",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-11T22:03:37Z",
+      "side": 1,
+      "message": "(I\u0027m assuming that DEAD_OBJECT is the binder way to say \"EOF\".)",
+      "range": {
+        "startLine": 321,
+        "startChar": 19,
+        "endLine": 321,
+        "endChar": 30
+      },
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f0a28f4_fb4c57bc",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-11T22:03:37Z",
+      "side": 1,
+      "message": "I forget if C++ promises what order these get evaluated in. This might be safer:\n\n  ssl-\u003ecall(SSL_set_bio, bio.get(), bio.get()).errorQueue.clear();\n  bio.release();  // SSL_set_bio takes ownership.",
+      "range": {
+        "startLine": 337,
+        "startChar": 27,
+        "endLine": 337,
+        "endChar": 51
+      },
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025d584f_adfc5da5",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-11T22:03:37Z",
+      "side": 1,
+      "message": "This\u0027ll only fail on malloc error, but since you\u0027re checking the others anyway:\n\n  TEST_AND_RETURN(nullptr, ctx !\u003d nullptr);",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f40b1998_e8d2d9d7",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-11T22:03:37Z",
+      "side": 1,
+      "message": "(I\u0027m guessing the caller is expected to have already configured this as a non-blocking fd?)",
+      "range": {
+        "startLine": 429,
+        "startChar": 8,
+        "endLine": 429,
+        "endChar": 44
+      },
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa84e930_8bd3f4fd",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-11T22:03:37Z",
+      "side": 1,
+      "message": "Not configuring it at all actually does something really weird. We inherited some silly default behavior that we haven\u0027t unwound yet. :-/ By default, our client *does* verify the certificate, and then ignores the result!\n\nThis is a waste, so if you actually want to ignore certificate verification, let\u0027s set up a SSL_set_custom_verify() callback that always returns ssl_verify_ok. Also this way if we get to unwinding that silly default, you won\u0027t break. :-)",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c20574_5ba5996a",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-11T22:03:37Z",
+      "side": 1,
+      "message": "The comment and the TODO don\u0027t match up. The TODO suggests this is just incomplete, while the comment suggests you\u0027re targeting a weak passive-only threat model.\n\nGiven the bug, I\u0027m assuming (and hoping) it\u0027s the former. So maybe write that.",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

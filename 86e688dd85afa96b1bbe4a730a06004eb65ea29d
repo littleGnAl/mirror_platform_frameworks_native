@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d047cff_3cf2603b",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-11T22:03:37Z",
+      "side": 1,
+      "message": "Apparently we do return zero, though it\u0027s a bug and doesn\u0027t affect you. :-)\nhttps://boringssl-review.googlesource.com/c/boringssl/+/48845\n\nUnder the hood, SSL_write can return zero if BIO_write returns zero. It shouldn\u0027t, but we don\u0027t currently prevent this. (But the BIOs you\u0027re using shouldn\u0027t be returning zero.)\n\nBut the reason BIO_write shouldn\u0027t return zero is also the same as why this case doesn\u0027t make much sense: what does it mean for writing to get an EOF? An EOF is normally a non-error end of stream condition for reading. Additionally, SSL_get_error(0) works just fine. So I think you can delete this block. You won\u0027t get zero and, if you do, it\u0027ll still report an error.",
+      "parentUuid": "77e728d9_9ceeefad",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f415759_93eec37e",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 38
@@ -136,6 +154,24 @@
       "writtenOn": "2021-08-10T21:17:55Z",
       "side": 1,
       "message": "Less sure about this one, but again David knows the current state better than I.",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02952f9f_56388e36",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-11T22:03:37Z",
+      "side": 1,
+      "message": "I believe we\u0027ll currently return 0 if we get a close_notify during the handshake, BIO_read reports an EOF, or if BIO_write returns zero (but it really shouldn\u0027t...). Honestly, we probably should map it all to 0 or -1, since an EOF in the handshake isn\u0027t really a success condition.\n\nAnyway, this is similar to SSL_read and SSL_write: this should be fine, but if you delete this block, it\u0027ll also be fine. It\u0027s all error cases anyway. And in this case, it just changes logging anyway. Meh.",
+      "parentUuid": "8f415759_93eec37e",
       "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
