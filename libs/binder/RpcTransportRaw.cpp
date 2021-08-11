@@ -105,21 +105,32 @@ private:
     android::base::unique_fd mSocket;
 };
 
-// RpcTransportCtx with TLS disabled.
-class RpcTransportCtxRaw : public RpcTransportCtx {
+// RpcTransportServerCtx with TLS disabled.
+class RpcTransportServerCtxRaw : public RpcTransportServerCtx {
 public:
     std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd fd, FdTrigger*) const {
         return std::make_unique<RpcTransportRaw>(std::move(fd));
     }
+    std::string getCertificate() override { return {}; }
 };
+
+// RpcTransportCtx with TLS disabled.
+class RpcTransportClientCtxRaw : public RpcTransportClientCtx {
+public:
+    std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd fd, FdTrigger*) const {
+        return std::make_unique<RpcTransportRaw>(std::move(fd));
+    }
+    status_t addTrustedCertificate(std::string_view) override { return OK; }
+};
+
 } // namespace
 
-std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryRaw::newServerCtx() const {
-    return std::make_unique<RpcTransportCtxRaw>();
+std::unique_ptr<RpcTransportServerCtx> RpcTransportCtxFactoryRaw::newServerCtx() const {
+    return std::make_unique<RpcTransportServerCtxRaw>();
 }
 
-std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryRaw::newClientCtx() const {
-    return std::make_unique<RpcTransportCtxRaw>();
+std::unique_ptr<RpcTransportClientCtx> RpcTransportCtxFactoryRaw::newClientCtx() const {
+    return std::make_unique<RpcTransportClientCtxRaw>();
 }
 
 const char *RpcTransportCtxFactoryRaw::toCString() const {
