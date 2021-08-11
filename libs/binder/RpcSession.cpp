@@ -606,7 +606,7 @@ status_t RpcSession::initAndAddConnection(unique_fd fd, const RpcAddress& sessio
     if (!sentHeader.ok()) {
         ALOGE("Could not write connection header to socket: %s",
               sentHeader.error().message().c_str());
-        return -sentHeader.error().code();
+        return sentHeader.error().code() == 0 ? UNKNOWN_ERROR : -sentHeader.error().code();
     }
     if (*sentHeader != sizeof(header)) {
         ALOGE("Could not write connection header to socket: sent %zd bytes, expected %zd",
