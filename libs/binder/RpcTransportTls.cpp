@@ -89,6 +89,20 @@ long socketCtrl(BIO* bio, int cmd, long num, void*) { // NOLINT
     return 0;
 }
 
+std::string toString(X509* x509) {
+    bssl::UniquePtr<BIO> certBio(BIO_new(BIO_s_mem()));
+    TEST_AND_RETURN({}, PEM_write_bio_X509(certBio.get(), x509));
+    const uint8_t* data;
+    size_t len;
+    TEST_AND_RETURN({}, BIO_mem_contents(certBio.get(), &data, &len));
+    return std::string(reinterpret_cast<const char*>(data), len);
+}
+
+bssl::UniquePtr<X509> fromString(std::string_view s) {
+    bssl::UniquePtr<BIO> certBio(BIO_new_mem_buf(s.data(), s.length()));
+    return bssl::UniquePtr<X509>(PEM_read_bio_X509(certBio.get(), nullptr, nullptr, nullptr));
+}
+
 bssl::UniquePtr<BIO> newSocketBio(android::base::borrowed_fd fd) {
     static const BIO_METHOD* gMethods = ([] {
         auto methods = BIO_meth_new(BIO_get_new_index(), "socket_no_signal");
@@ -444,12 +458,16 @@ protected:
     virtual void preHandshake(Ssl* ssl) const = 0;
 };
 std::string RpcTransportCtxTls::getX509Pem() {
-    // TODO(b/195166979): return certificate here
-    return {};
+    X509* x509 = SSL_CTX_get0_certificate(mCtx.get()); // does not own
+    auto ret = toString(x509);
+    LOG_ALWAYS_FATAL_IF(ret.empty(), "No pre-configured certificate!");
+    return ret;
 }
 
-status_t RpcTransportCtxTls::addTrustedX509Pem(std::string_view) {
-    // TODO(b/195166979): set certificate here
+status_t RpcTransportCtxTls::addTrustedX509Pem(std::string_view cert) {
+    X509_STORE* store = SSL_CTX_get_cert_store(mCtx.get());
+    LOG_ALWAYS_FATAL_IF(store == nullptr);
+    TEST_AND_RETURN(BAD_VALUE, X509_STORE_add_cert(store, fromString(cert).get()));
     return OK;
 }
 
@@ -466,10 +484,9 @@ std::unique_ptr<RpcTransportCtxTls> RpcTransportCtxTls::create() {
     TEST_AND_RETURN(nullptr, SSL_CTX_use_PrivateKey(ctx.get(), evp_pkey.get()));
     TEST_AND_RETURN(nullptr, SSL_CTX_use_certificate(ctx.get(), cert.get()));
 
-    // TODO(b/195166979): peer should send certificate in a different channel, and this class
-    //  should verify it here.
-    SSL_CTX_set_custom_verify(ctx.get(), SSL_VERIFY_PEER,
-                              [](SSL*, uint8_t*) -> ssl_verify_result_t { return ssl_verify_ok; });
+    LOG_TLS_DETAIL("Using certificate: %s", toString(cert.get()).c_str());
+
+    SSL_CTX_set_verify(ctx.get(), SSL_VERIFY_PEER | SSL_VERIFY_FAIL_IF_NO_PEER_CERT, nullptr);
 
     // Require at least TLS 1.3
     TEST_AND_RETURN(nullptr, SSL_CTX_set_min_proto_version(ctx.get(), TLS1_3_VERSION));
@@ -491,6 +508,19 @@ std::unique_ptr<RpcTransport> RpcTransportCtxTls::newTransport(android::base::un
 
     preHandshake(&wrapped);
     TEST_AND_RETURN(nullptr, setFdAndDoHandshake(&wrapped, acceptedFd, fdTrigger));
+
+    if constexpr (SHOULD_LOG_TLS_DETAIL) { // NOLINT
+        auto [x509p, peerCertErrorQueue] = wrapped.call(SSL_get_peer_certificate);
+        if (x509p == nullptr) {
+            ALOGE("SSL_get_peer_certificate(): no peer certificate: %s",
+                  peerCertErrorQueue.toString().c_str());
+        } else {
+            peerCertErrorQueue.clear();
+            bssl::UniquePtr<X509> x509(x509p);
+            LOG_TLS_DETAIL("got peer certificate: %s", toString(x509.get()).c_str());
+        }
+    }
+
     return std::make_unique<RpcTransportTls>(std::move(acceptedFd), std::move(wrapped));
 }
 
