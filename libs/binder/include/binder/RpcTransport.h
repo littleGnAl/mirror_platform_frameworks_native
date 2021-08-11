@@ -34,6 +34,15 @@ enum class CertificateFormat {
     // TODO(b/195166979): support other formats, e.g. DER
 };
 
+inline std::string PrintToString(CertificateFormat format) {
+    switch (format) {
+        case CertificateFormat::PEM:
+            return "PEM";
+        default:
+            return "<unknown>";
+    }
+}
+
 // Represents a socket connection.
 class RpcTransport {
 public:
