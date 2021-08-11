@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7dd05a8_476640f9",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 40
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-11T22:08:27Z",
+      "side": 1,
+      "message": "I think you can omit this callback. We initialize everything to zero anyway, so these are just the defaults.",
+      "revId": "75d02fed9c1d95a4a16d5973575f5daf03863015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
