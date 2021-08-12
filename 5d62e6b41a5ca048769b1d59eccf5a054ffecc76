@@ -34,6 +34,24 @@
       "parentUuid": "433059a9_6d53f98d",
       "revId": "5d62e6b41a5ca048769b1d59eccf5a054ffecc76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac51f73b_2847603b",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-12T19:30:11Z",
+      "side": 1,
+      "message": "Do you wish to authenticate the client or just the server? If you also wish to authenticate the client, you need a certificate on the client side. If the server is okay with any client connecting to it, you can leave the client anonymous.\n\nWhat security properties are you trying to get out of TLS in your design? (Did your design get enough of a security review to answer those questions?)",
+      "parentUuid": "e08327c5_9ba98877",
+      "revId": "5d62e6b41a5ca048769b1d59eccf5a054ffecc76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
