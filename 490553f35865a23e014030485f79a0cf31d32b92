@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2aad25e_729de84e",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T18:57:20Z",
+      "side": 1,
+      "message": "I still think it is valuable because the caller may not know where the poll() is from",
+      "parentUuid": "1c667d46_ff18ac79",
+      "range": {
+        "startLine": 66,
+        "startChar": 47,
+        "endLine": 66,
+        "endChar": 77
+      },
+      "revId": "490553f35865a23e014030485f79a0cf31d32b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9e755e0_738d7869",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0789d1b9_f7443cc9",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T18:57:20Z",
+      "side": 1,
+      "message": "(See above)",
+      "parentUuid": "b9e755e0_738d7869",
+      "range": {
+        "startLine": 74,
+        "startChar": 38,
+        "endLine": 74,
+        "endChar": 67
+      },
+      "revId": "490553f35865a23e014030485f79a0cf31d32b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e73493f_7c5d76c6",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-12T11:01:58Z",
       "side": 1,
       "message": "style: this usually is \u0027ret\u0027.",
+      "range": {
+        "startLine": 330,
+        "startChar": 9,
+        "endLine": 330,
+        "endChar": 20
+      },
+      "revId": "490553f35865a23e014030485f79a0cf31d32b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c163439_9f7eff3a",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T18:57:20Z",
+      "side": 1,
+      "message": "Done. I just realized I was shadowing the function name!",
+      "parentUuid": "3e73493f_7c5d76c6",
       "range": {
         "startLine": 330,
         "startChar": 9,
