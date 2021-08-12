@@ -49,8 +49,10 @@ namespace android {
 
 using base::unique_fd;
 
-RpcSession::RpcSession(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory)
-      : mRpcTransportCtxFactory(std::move(rpcTransportCtxFactory)) {
+RpcSession::RpcSession(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory,
+                       std::optional<std::string> certificate)
+      : mRpcTransportCtxFactory(std::move(rpcTransportCtxFactory)),
+        mCertificate(std::move(certificate)) {
     LOG_RPC_DETAIL("RpcSession created %p", this);
 
     mState = std::make_unique<RpcState>();
@@ -63,11 +65,13 @@ RpcSession::~RpcSession() {
                         "Should not be able to destroy a session with servers in use.");
 }
 
-sp<RpcSession> RpcSession::make(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
+sp<RpcSession> RpcSession::make(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory,
+                                std::optional<std::string> certificate) {
     // Default is without TLS.
-    if (rpcTransportCtxFactory == nullptr)
+    if (rpcTransportCtxFactory == nullptr) {
         rpcTransportCtxFactory = RpcTransportCtxFactoryRaw::make();
-    return sp<RpcSession>::make(std::move(rpcTransportCtxFactory));
+    }
+    return sp<RpcSession>::make(std::move(rpcTransportCtxFactory), std::move(certificate));
 }
 
 void RpcSession::setMaxThreads(size_t threads) {
@@ -160,6 +164,7 @@ status_t RpcSession::addNullDebuggingClient() {
         ALOGE("Unable to create RpcTransportCtx for null debugging client");
         return NO_MEMORY;
     }
+    // Skip addTrustedCertificate because addNullDebuggingClient only works on raw sockets.
     auto server = ctx->newTransport(std::move(serverFd), mShutdownTrigger.get());
     if (server == nullptr) {
         ALOGE("Unable to set up RpcTransport");
@@ -534,6 +539,13 @@ status_t RpcSession::initAndAddConnection(unique_fd fd, const RpcAddress& sessio
         ALOGE("Unable to create client RpcTransportCtx with %s sockets",
               mRpcTransportCtxFactory->toCString());
         return NO_MEMORY;
+    }
+    if (mCertificate.has_value()) {
+        auto certStatus = ctx->addTrustedCertificate(*mCertificate);
+        if (certStatus != OK) {
+            ALOGE("Unable to add trusted certificate: %s: %s", mCertificate->c_str(),
+                  statusToString(certStatus).c_str());
+        }
     }
     auto server = ctx->newTransport(std::move(fd), mShutdownTrigger.get());
     if (server == nullptr) {
