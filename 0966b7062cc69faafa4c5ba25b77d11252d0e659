@@ -224,6 +224,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aff1310_782dd1e9",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 44
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T18:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e6ec2f4_232ed5c3",
+      "range": {
+        "startLine": 75,
+        "startChar": 41,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "0966b7062cc69faafa4c5ba25b77d11252d0e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c2e5e1e_25ac1909",
