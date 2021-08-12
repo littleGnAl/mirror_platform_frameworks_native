@@ -52,7 +52,8 @@ constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION = RPC_WIRE_PROTOCOL_VERSION_EXPERIM
 class RpcSession final : public virtual RefBase {
 public:
     static sp<RpcSession> make(
-            std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
+            std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr,
+            std::optional<std::string> certificate = std::nullopt);
 
     /**
      * Set the maximum number of threads allowed to be made (for things like callbacks).
@@ -125,6 +126,11 @@ public:
     status_t getRemoteMaxThreads(size_t* maxThreads);
 
     /**
+     * Set a trusted certificate.
+     */
+    void setTrustedCertificate(const std::string& certificate);
+
+    /**
      * Shuts down the service.
      *
      * For client sessions, wait can be true or false. For server sessions,
@@ -159,7 +165,8 @@ private:
     friend sp<RpcSession>;
     friend RpcServer;
     friend RpcState;
-    explicit RpcSession(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory);
+    explicit RpcSession(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory,
+                        std::optional<std::string> certificate);
 
     class EventListener : public virtual RefBase {
     public:
@@ -260,6 +267,7 @@ private:
     };
 
     const std::unique_ptr<RpcTransportCtxFactory> mRpcTransportCtxFactory;
+    const std::optional<std::string> mCertificate;
 
     // On the other side of a session, for each of mOutgoingConnections here, there should
     // be one of mIncomingConnections on the other side (and vice versa).
