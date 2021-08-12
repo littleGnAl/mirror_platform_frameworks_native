@@ -22,6 +22,30 @@
       },
       "revId": "b1f608f2002096575fe430fce6424032332580bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ad3a26a_55eb1630",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-12T23:42:52Z",
+      "side": 1,
+      "message": "unique_ptr is called Box in Rust, right? :) :P",
+      "parentUuid": "8b733367_c516b678",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 789,
+        "endChar": 1
+      },
+      "revId": "b1f608f2002096575fe430fce6424032332580bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
