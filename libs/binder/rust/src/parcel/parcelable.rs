@@ -778,7 +778,7 @@ impl<T: Deserialize> Deserialize for Box<T> {
 
 impl<T: SerializeOption> SerializeOption for Box<T> {
     fn serialize_option(this: Option<&Self>, parcel: &mut Parcel) -> Result<()> {
-        SerializeOption::serialize_option(this.as_ref(), parcel)
+        SerializeOption::serialize_option(this.map(|inner| inner.as_ref()), parcel)
     }
 }
 
