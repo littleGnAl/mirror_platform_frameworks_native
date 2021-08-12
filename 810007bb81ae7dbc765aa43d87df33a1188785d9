@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66b2f582_f0740ce0",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T05:01:46Z",
+      "side": 1,
+      "message": "Yes.\n\nThis likely means a packet meaningful to libbinder doesn\u0027t get read / written fully, so for the reader, it should just forget about the data being read and clean up.\n\nWe do not read multiple meaningful packets in one interruptableReadFully, I believe.\n\n(Steven, please confirm).",
+      "parentUuid": "753bef83_dc83f4c8",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0028014_e6c1ddf3",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 42
@@ -37,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bcde2c36_2222d748",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T05:01:46Z",
+      "side": 1,
+      "message": "Thanks for the note. I\u0027ll leave it here; this does allow me to return DEAD_OBJECT on EOF. Without this block, I believe it will hit L162 and return UNKNOWN_ERROR, which isn\u0027t a very good error code.",
+      "parentUuid": "e0028014_e6c1ddf3",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b402fb71_d8688a86",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 42
@@ -48,6 +84,30 @@
       "writtenOn": "2021-08-11T22:03:37Z",
       "side": 1,
       "message": "(I\u0027m assuming that DEAD_OBJECT is the binder way to say \"EOF\".)",
+      "range": {
+        "startLine": 321,
+        "startChar": 19,
+        "endLine": 321,
+        "endChar": 30
+      },
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03cfabc1_7c7c4974",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T05:01:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b402fb71_d8688a86",
       "range": {
         "startLine": 321,
         "startChar": 19,
@@ -138,6 +198,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "415067d0_1d41cc55",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T05:01:46Z",
+      "side": 1,
+      "message": "The sentence was from \n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1745081/25..42/libs/binder/RpcTransportTls.cpp#b269\n\nI am happy to drop it.\n\nI do need proper certificate verification, which will come up in follow up CLs.",
+      "parentUuid": "fa84e930_8bd3f4fd",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6c20574_5ba5996a",
@@ -151,6 +229,24 @@
       "writtenOn": "2021-08-11T22:03:37Z",
       "side": 1,
       "message": "The comment and the TODO don\u0027t match up. The TODO suggests this is just incomplete, while the comment suggests you\u0027re targeting a weak passive-only threat model.\n\nGiven the bug, I\u0027m assuming (and hoping) it\u0027s the former. So maybe write that.",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ecd1ceb_4046b5fe",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T05:01:46Z",
+      "side": 1,
+      "message": "Yeah. Let me drop the sentence above and keep the TODO.",
+      "parentUuid": "e6c20574_5ba5996a",
       "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

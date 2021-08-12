@@ -176,6 +176,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adfeb5d0_2985343c",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T05:01:46Z",
+      "side": 1,
+      "message": "Ack, thanks for the note! I\u0027ll leave it there",
+      "parentUuid": "02952f9f_56388e36",
+      "revId": "86e688dd85afa96b1bbe4a730a06004eb65ea29d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5424513_dc957407",
