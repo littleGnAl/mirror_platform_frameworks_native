@@ -16,6 +16,24 @@
       "message": "FIXME",
       "revId": "5d62e6b41a5ca048769b1d59eccf5a054ffecc76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08327c5_9ba98877",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T19:06:05Z",
+      "side": 1,
+      "message": "Deleted the comment.\n\nDavid, do I need to configure a certificate on the client side and make the server request it? What security feature do I achieve if I do so?",
+      "parentUuid": "433059a9_6d53f98d",
+      "revId": "5d62e6b41a5ca048769b1d59eccf5a054ffecc76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
