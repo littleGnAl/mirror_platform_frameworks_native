@@ -276,6 +276,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c1ad7c_e2262c58",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T18:42:19Z",
+      "side": 1,
+      "message": "Done, I stick in SSL_CTX_set_custom_verify when the SSL_CTX is initialized.",
+      "parentUuid": "24c42d69_83af78e3",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6c20574_5ba5996a",
