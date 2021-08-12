@@ -260,6 +260,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24c42d69_83af78e3",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-12T16:21:26Z",
+      "side": 1,
+      "message": "Sticking in the callback in the meantime is probably prudent, both so you have a place to fill in your fingerprint check later, and so you don\u0027t accidentally rely on the goofy default, if you end up doing the check elsewhere.",
+      "parentUuid": "415067d0_1d41cc55",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6c20574_5ba5996a",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 42
