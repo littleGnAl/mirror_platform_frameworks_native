@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b733367_c516b678",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-08-12T23:33:58Z",
+      "side": 1,
+      "message": "Why is this being added? Just for convenience (which is fine, but it seems unrelated to the commit message)? Should this be a separate change?",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 789,
+        "endChar": 1
+      },
+      "revId": "b1f608f2002096575fe430fce6424032332580bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
