@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "568027c3_5a74d301",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 44
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T17:50:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92df33c5_962d9dff",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "0966b7062cc69faafa4c5ba25b77d11252d0e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "18bbe9ad_edd69dbe",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 44
@@ -81,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1de2a4a_17aa980e",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 44
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T17:50:46Z",
+      "side": 1,
+      "message": "I adopt this from:\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/update_engine/common/utils.h;l\u003d481;drc\u003dd567c8bc9f3e2273fa68ee4c861e615984d551ea",
+      "parentUuid": "570e4be9_37c4c7a9",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "0966b7062cc69faafa4c5ba25b77d11252d0e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "734753c1_cbb5dd1c",
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b837fec2_1542e1ad",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 44
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T17:50:46Z",
+      "side": 1,
+      "message": "clang-format doesn\u0027t say so",
+      "parentUuid": "734753c1_cbb5dd1c",
+      "range": {
+        "startLine": 75,
+        "startChar": 41,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "0966b7062cc69faafa4c5ba25b77d11252d0e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c2e5e1e_25ac1909",
@@ -117,6 +189,24 @@
       "writtenOn": "2021-08-12T10:46:02Z",
       "side": 1,
       "message": "Code up to this point seems to be providing some abstraction or an adaptation layer over boring ssl. Can we make this to a separate header?",
+      "revId": "0966b7062cc69faafa4c5ba25b77d11252d0e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc9eb7f9_8971b537",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 44
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T17:50:46Z",
+      "side": 1,
+      "message": "I don\u0027t think so. The whole file provides an abstraction layer over boringssl to libbinder. The code above (e.g. Ssl-\u003ecall) still requires the caller to know things about boringssl. The code below also uses a lot of definitions (e.g. bssl::UniquePtr\u003cX509\u003e with the authentication CLs, SSL_ERROR_*, SSL_CTX_*(), etc.) from boringssl. So I don\u0027t think here is the best place to draw the line.",
+      "parentUuid": "4c2e5e1e_25ac1909",
       "revId": "0966b7062cc69faafa4c5ba25b77d11252d0e659",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
