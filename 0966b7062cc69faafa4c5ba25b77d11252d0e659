@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92df33c5_962d9dff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 44
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-12T10:46:02Z",
+      "side": 1,
+      "message": "This is not implemented in this CL, where is it? Or should this description be updated?",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "0966b7062cc69faafa4c5ba25b77d11252d0e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18bbe9ad_edd69dbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 44
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-12T10:46:02Z",
+      "side": 1,
+      "message": "I am afraid that I don\u0027t understand even 10% of this CL (and the subsequent changes). It would be nice if a design doc is shared if exists. I could only find one [1] which is too simple for me to understand. Or I might be just struggling reading boring ssl APIs.\n\nInstead, I\u0027ve left a few comments on the style and the source code organization. They are not significant, but PTAL.\n\n[1] https://docs.google.com/document/d/1mec1KJrvnVgb8QtJr8Y-sAXT7vCeNw1ZQn3Api3Z12E/edit#heading\u003dh.mouwwa18zv5j",
+      "revId": "0966b7062cc69faafa4c5ba25b77d11252d0e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570e4be9_37c4c7a9",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 44
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-12T10:46:02Z",
+      "side": 1,
+      "message": "nit: `TEST_OR_RETURN(expr, value)` or simply `OR_RETURN(expr, value)` , because it returns when the expression is false?",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "0966b7062cc69faafa4c5ba25b77d11252d0e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2e5e1e_25ac1909",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 44
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-12T10:46:02Z",
+      "side": 1,
+      "message": "Code up to this point seems to be providing some abstraction or an adaptation layer over boring ssl. Can we make this to a separate header?",
+      "revId": "0966b7062cc69faafa4c5ba25b77d11252d0e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
