@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af1d1b0_bf00cbaa",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-12T11:06:12Z",
+      "side": 1,
+      "message": "what is the expected encoding? PEM? (or DER?) Either way, how about showing it in the method name?",
+      "range": {
+        "startLine": 521,
+        "startChar": 57,
+        "endLine": 521,
+        "endChar": 73
+      },
+      "revId": "54fa555cfe045bc004179c26c5e1d1a6e2630ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
