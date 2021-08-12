@@ -104,6 +104,7 @@ cc_library {
         "BpBinder.cpp",
         "BufferedTextOutput.cpp",
         "Debug.cpp",
+        "FdTrigger.cpp",
         "IInterface.cpp",
         "IMemory.cpp",
         "IPCThreadState.cpp",
@@ -359,5 +360,6 @@ cc_binary {
         "libbinder",
         "liblog",
         "libutils",
+        "android.debug_aidl-cpp",
     ],
 }
