@@ -141,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11eafc89_29599616",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T06:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f0a28f4_fb4c57bc",
+      "range": {
+        "startLine": 337,
+        "startChar": 27,
+        "endLine": 337,
+        "endChar": 51
+      },
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "025d584f_adfc5da5",
@@ -154,6 +178,24 @@
       "writtenOn": "2021-08-11T22:03:37Z",
       "side": 1,
       "message": "This\u0027ll only fail on malloc error, but since you\u0027re checking the others anyway:\n\n  TEST_AND_RETURN(nullptr, ctx !\u003d nullptr);",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d75f2ec_9f9e6230",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T06:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "025d584f_adfc5da5",
       "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -247,6 +289,24 @@
       "side": 1,
       "message": "Yeah. Let me drop the sentence above and keep the TODO.",
       "parentUuid": "e6c20574_5ba5996a",
+      "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e86318fd_70651101",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 42
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T06:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ecd1ceb_4046b5fe",
       "revId": "810007bb81ae7dbc765aa43d87df33a1188785d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
