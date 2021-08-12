@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa1491b_adf4e053",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-12T23:01:08Z",
+      "side": 1,
+      "message": "this implies that multiple can be added, but the other API only returns one. Is that right?",
+      "range": {
+        "startLine": 77,
+        "startChar": 35,
+        "endLine": 77,
+        "endChar": 38
+      },
+      "revId": "15ea9b4623da2800429d3202f81601c61ea67c3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

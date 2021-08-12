@@ -22,6 +22,30 @@
       },
       "revId": "54fa555cfe045bc004179c26c5e1d1a6e2630ae6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5aeef18_3683f2f2",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-12T23:01:08Z",
+      "side": 1,
+      "message": "I think this was handled. Though, I wonder, should we have an enum for the format, for future compatibility?",
+      "parentUuid": "4af1d1b0_bf00cbaa",
+      "range": {
+        "startLine": 521,
+        "startChar": 57,
+        "endLine": 521,
+        "endChar": 73
+      },
+      "revId": "54fa555cfe045bc004179c26c5e1d1a6e2630ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
