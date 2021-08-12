@@ -46,6 +46,30 @@
       },
       "revId": "b1f608f2002096575fe430fce6424032332580bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae9ea4fb_7899aa76",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-08-12T23:51:00Z",
+      "side": 1,
+      "message": "Oh, I missed this in the commit msg.\n\nSteven\u0027s right. Box\u003cT\u003e is used by recursive parcelable types. (In AIDL, it\u0027s represented via @nullable(heap\u003dtrue) annotation.).",
+      "parentUuid": "5ad3a26a_55eb1630",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 789,
+        "endChar": 1
+      },
+      "revId": "b1f608f2002096575fe430fce6424032332580bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
