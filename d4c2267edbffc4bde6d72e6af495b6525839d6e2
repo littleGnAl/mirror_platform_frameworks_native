@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041f0b97_edbb388c",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T22:28:45Z",
+      "side": 1,
+      "message": "For server, this doesn\u0027t work yet. It appears that this will replace any previous calls for addTrustedX509Pem, so there are always only one cert trusted.\n\nDavid, could you share if there is another API I should be using?",
+      "range": {
+        "startLine": 470,
+        "startChar": 31,
+        "endLine": 470,
+        "endChar": 50
+      },
+      "revId": "d4c2267edbffc4bde6d72e6af495b6525839d6e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

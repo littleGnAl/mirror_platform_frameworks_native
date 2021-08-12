@@ -52,6 +52,24 @@
       "parentUuid": "e08327c5_9ba98877",
       "revId": "5d62e6b41a5ca048769b1d59eccf5a054ffecc76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be638eb_0849345c",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-12T22:28:45Z",
+      "side": 1,
+      "message": "Done. I\u0027ve talked to Steven, and for the automotive case, I need the server to authenticate the client as well.\n\nThough, right now it won\u0027t support multiple trusted clients; see the other comment",
+      "parentUuid": "ac51f73b_2847603b",
+      "revId": "5d62e6b41a5ca048769b1d59eccf5a054ffecc76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
