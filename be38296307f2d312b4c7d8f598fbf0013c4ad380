@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce9743d3_6d614ddd",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-12T16:28:06Z",
+      "side": 1,
+      "message": "Right, this is what I was referring to in https://android-review.googlesource.com/c/platform/frameworks/native/+/1745081/42..44/libs/binder/RpcTransportTls.cpp#430, with the \"verify but ignore the result\" weird defaults.\n\nInstead, configure the handshake to fail on the certificates you don\u0027t like. This can matter if you ever do session resumption or client certificates (the handshake shouldn\u0027t send the Finished message). Plus it\u0027s just error-prone to have to check afterwards like this.\n\nIf you just want to use the built-in verifier (see note below), then call SSL_set_verify(ssl, SSL_VERIFY_PEER, nullptr). If you want to do something custom, you should specify a SSL_set_custom_verify callback.",
+      "revId": "be38296307f2d312b4c7d8f598fbf0013c4ad380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98653b7e_5a35493a",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-12T16:28:06Z",
+      "side": 1,
+      "message": "Is the aim to verify that the server sent you exactly `cert` as a leaf certificate, or is `cert` meant to be a CA certificate that issues things? This API is for configuring a CA certificate and does the whole path-building thing.",
+      "revId": "be38296307f2d312b4c7d8f598fbf0013c4ad380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
