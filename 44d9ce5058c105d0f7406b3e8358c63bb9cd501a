@@ -62,6 +62,30 @@
       },
       "revId": "44d9ce5058c105d0f7406b3e8358c63bb9cd501a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e47c2902_e1c9fb8b",
+        "filename": "libs/binder/tests/binderRpcWireProtocolTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-12T00:35:54Z",
+      "side": 1,
+      "message": "It would be easier to read, but it would be harder to maintain (this is also why I go through the trouble of Split/Join - makes it much easier to copy/paste these).\n\nSee an example here:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1779207/3\n\nIf we split every one up in order to put it next to the right function, it\u0027s going to be a lot of work for little benefit.",
+      "parentUuid": "a8dac3a4_9e0712d3",
+      "range": {
+        "startLine": 205,
+        "startChar": 18,
+        "endLine": 205,
+        "endChar": 31
+      },
+      "revId": "44d9ce5058c105d0f7406b3e8358c63bb9cd501a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
