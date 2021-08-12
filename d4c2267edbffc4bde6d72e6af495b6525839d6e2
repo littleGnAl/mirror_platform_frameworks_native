@@ -22,6 +22,52 @@
       },
       "revId": "d4c2267edbffc4bde6d72e6af495b6525839d6e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e10c111_cead6a97",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-12T23:09:41Z",
+      "side": 1,
+      "message": "note - for a malicious server/etc... you can add more options here, so that you can reuse createRpcTestSocketServerProcess with other types of connections",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 20
+      },
+      "revId": "d4c2267edbffc4bde6d72e6af495b6525839d6e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea4d76d_1ef19304",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-12T23:09:41Z",
+      "side": 1,
+      "message": "can we test this across all types of servers?",
+      "range": {
+        "startLine": 1415,
+        "startChar": 41,
+        "endLine": 1415,
+        "endChar": 62
+      },
+      "revId": "d4c2267edbffc4bde6d72e6af495b6525839d6e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
