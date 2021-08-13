@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2ed8515_ea48b10e",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-08-13T00:33:42Z",
+      "side": 1,
+      "message": "I got \"cannot return without recursing\" warning. I\u0027d like to keep this rather adding [allow(..)]",
+      "parentUuid": "f56f2c79_7afd9c87",
+      "revId": "73f0d27d10dab0a765a4f25b578ed19d7ce11d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba2fed67_b7479c99",
         "filename": "libs/binder/rust/src/parcel/parcelable.rs",
         "patchSetId": 3
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Alternatively, I think Option::as_deref could replace the entire Option::map call.",
       "parentUuid": "ba2fed67_b7479c99",
+      "revId": "73f0d27d10dab0a765a4f25b578ed19d7ce11d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f3a065_c203962e",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-08-13T00:33:42Z",
+      "side": 1,
+      "message": "I tried both suggestions but they results in infinite loop.",
+      "parentUuid": "176b01fd_0a095ecf",
       "revId": "73f0d27d10dab0a765a4f25b578ed19d7ce11d21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
