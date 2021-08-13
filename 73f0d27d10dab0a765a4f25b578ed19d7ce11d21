@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f78e3aaa_22b7b98f",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-08-13T01:09:31Z",
+      "side": 1,
+      "message": "Sorry, it should be `\u0026**` because you\u0027re dealing with a reference to a box.",
+      "parentUuid": "b2ed8515_ea48b10e",
+      "revId": "73f0d27d10dab0a765a4f25b578ed19d7ce11d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba2fed67_b7479c99",
         "filename": "libs/binder/rust/src/parcel/parcelable.rs",
         "patchSetId": 3
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "I tried both suggestions but they results in infinite loop.",
       "parentUuid": "176b01fd_0a095ecf",
+      "revId": "73f0d27d10dab0a765a4f25b578ed19d7ce11d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2fc2e6e_13113e44",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-08-13T01:09:31Z",
+      "side": 1,
+      "message": "Same as above, need to double deref through the reference and the box.",
+      "parentUuid": "e3f3a065_c203962e",
       "revId": "73f0d27d10dab0a765a4f25b578ed19d7ce11d21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
