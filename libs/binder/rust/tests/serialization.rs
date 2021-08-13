@@ -18,11 +18,12 @@
 //! access.
 
 use binder::declare_binder_interface;
-use binder::parcel::ParcelFileDescriptor;
 use binder::{
-    Binder, BinderFeatures, ExceptionCode, Interface, Parcel, Result, SpIBinder, Status,
-    StatusCode, TransactionCode,
+    BinderFeatures, ExceptionCode, Interface, ParcelFileDescriptor, SpIBinder, Status, StatusCode,
 };
+// Import from impl API for testing only, should not be necessary as long as you
+// are using AIDL.
+use binder::binder_impl::{Binder, Parcel, TransactionCode};
 
 use std::ffi::{c_void, CStr, CString};
 use std::sync::Once;
@@ -113,7 +114,7 @@ fn on_transact(
     code: TransactionCode,
     parcel: &Parcel,
     reply: &mut Parcel,
-) -> Result<()> {
+) -> Result<(), StatusCode> {
     match code {
         bindings::Transaction_TEST_BOOL => {
             assert_eq!(parcel.read::<bool>()?, true);
