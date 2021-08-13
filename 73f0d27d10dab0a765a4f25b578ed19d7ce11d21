@@ -90,6 +90,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dccde6d3_b0a0a1e0",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-08-13T20:18:31Z",
+      "side": 1,
+      "message": "AsRef is usually used as a generic trait param to accept both values and references for a function param. Deref then taking a reference is usually used to deref through boxes, etc.",
+      "parentUuid": "7edbd430_5ee7e16a",
+      "revId": "73f0d27d10dab0a765a4f25b578ed19d7ce11d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba2fed67_b7479c99",
