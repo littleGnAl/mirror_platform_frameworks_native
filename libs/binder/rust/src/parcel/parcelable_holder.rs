@@ -15,7 +15,7 @@
  */
 
 use crate::binder::Stability;
-use crate::error::{Result, StatusCode};
+use crate::error::StatusCode;
 use crate::parcel::{OwnedParcel, Parcel, Parcelable};
 use crate::{impl_deserialize_for_parcelable, impl_serialize_for_parcelable};
 
@@ -97,7 +97,7 @@ impl ParcelableHolder {
     }
 
     /// Set the parcelable contained in this `ParcelableHolder`.
-    pub fn set_parcelable<T>(&mut self, p: Arc<T>) -> Result<()>
+    pub fn set_parcelable<T>(&mut self, p: Arc<T>) -> Result<(), StatusCode>
     where
         T: Any + Parcelable + ParcelableMetadata + std::fmt::Debug + Send + Sync,
     {
@@ -126,7 +126,7 @@ impl ParcelableHolder {
     /// * `Ok(None)` if the holder is empty or the descriptor does not match
     /// * `Ok(Some(_))` if the object holds a parcelable of type `T`
     ///   with the correct descriptor
-    pub fn get_parcelable<T>(&self) -> Result<Option<Arc<T>>>
+    pub fn get_parcelable<T>(&self) -> Result<Option<Arc<T>>, StatusCode>
     where
         T: Any + Parcelable + ParcelableMetadata + Default + std::fmt::Debug + Send + Sync,
     {
@@ -181,7 +181,7 @@ impl_serialize_for_parcelable!(ParcelableHolder);
 impl_deserialize_for_parcelable!(ParcelableHolder);
 
 impl Parcelable for ParcelableHolder {
-    fn write_to_parcel(&self, parcel: &mut Parcel) -> Result<()> {
+    fn write_to_parcel(&self, parcel: &mut Parcel) -> Result<(), StatusCode> {
         parcel.write(&self.stability)?;
 
         let mut data = self.data.lock().unwrap();
@@ -221,7 +221,7 @@ impl Parcelable for ParcelableHolder {
         }
     }
 
-    fn read_from_parcel(&mut self, parcel: &Parcel) -> Result<()> {
+    fn read_from_parcel(&mut self, parcel: &Parcel) -> Result<(), StatusCode> {
         self.stability = parcel.read()?;
 
         let data_size: i32 = parcel.read()?;
