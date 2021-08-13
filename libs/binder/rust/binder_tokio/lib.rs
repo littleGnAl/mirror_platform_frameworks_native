@@ -28,8 +28,8 @@
 //!
 //! [`Tokio`]: crate::Tokio
 
-use binder::public_api::{BinderAsyncPool, BoxFuture, Strong};
-use binder::{FromIBinder, StatusCode};
+use binder::{BoxFuture, FromIBinder, StatusCode, Strong};
+use binder::binder_impl::BinderAsyncPool;
 use std::future::Future;
 
 /// Retrieve an existing service for a particular interface, sleeping for a few
@@ -37,7 +37,7 @@ use std::future::Future;
 pub async fn get_interface<T: FromIBinder + ?Sized + 'static>(name: &str) -> Result<Strong<T>, StatusCode> {
     let name = name.to_string();
     let res = tokio::task::spawn_blocking(move || {
-        binder::public_api::get_interface::<T>(&name)
+        binder::get_interface::<T>(&name)
     }).await;
 
     // The `is_panic` branch is not actually reachable in Android as we compile
@@ -56,7 +56,7 @@ pub async fn get_interface<T: FromIBinder + ?Sized + 'static>(name: &str) -> Res
 pub async fn wait_for_interface<T: FromIBinder + ?Sized + 'static>(name: &str) -> Result<Strong<T>, StatusCode> {
     let name = name.to_string();
     let res = tokio::task::spawn_blocking(move || {
-        binder::public_api::wait_for_interface::<T>(&name)
+        binder::wait_for_interface::<T>(&name)
     }).await;
 
     // The `is_panic` branch is not actually reachable in Android as we compile
