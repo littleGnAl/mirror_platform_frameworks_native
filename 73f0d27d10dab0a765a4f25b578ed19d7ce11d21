@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7edbd430_5ee7e16a",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-08-13T20:13:14Z",
+      "side": 1,
+      "message": "It\u0027s not AOSP-specific, I\u0027ve seen it a lot in the Rust standard library.",
+      "parentUuid": "ac7c8193_e03436e1",
+      "revId": "73f0d27d10dab0a765a4f25b578ed19d7ce11d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba2fed67_b7479c99",
