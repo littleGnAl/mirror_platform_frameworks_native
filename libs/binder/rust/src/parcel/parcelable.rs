@@ -716,18 +716,18 @@ impl<T: DeserializeOption> Deserialize for Option<T> {
 #[macro_export]
 macro_rules! impl_deserialize_for_parcelable {
     ($parcelable:ident) => {
-        impl $crate::parcel::Deserialize for $parcelable {
+        impl $crate::aidl_internal_api::Deserialize for $parcelable {
             fn deserialize(
-                parcel: &$crate::parcel::Parcel,
-            ) -> $crate::Result<Self> {
-                $crate::parcel::DeserializeOption::deserialize_option(parcel)
+                parcel: &$crate::aidl_internal_api::Parcel,
+            ) -> Result<Self, $crate::StatusCode> {
+                $crate::aidl_internal_api::DeserializeOption::deserialize_option(parcel)
                     .transpose()
                     .unwrap_or(Err($crate::StatusCode::UNEXPECTED_NULL))
             }
             fn deserialize_from(
                 &mut self,
-                parcel: &$crate::parcel::Parcel,
-            ) -> $crate::Result<()> {
+                parcel: &$crate::aidl_internal_api::Parcel,
+            ) -> Result<(), $crate::StatusCode> {
                 let status: i32 = parcel.read()?;
                 if status == 0 {
                     Err($crate::StatusCode::UNEXPECTED_NULL)
@@ -737,20 +737,20 @@ macro_rules! impl_deserialize_for_parcelable {
             }
         }
 
-        impl $crate::parcel::DeserializeArray for $parcelable {}
+        impl $crate::aidl_internal_api::DeserializeArray for $parcelable {}
 
-        impl $crate::parcel::DeserializeOption for $parcelable {
+        impl $crate::aidl_internal_api::DeserializeOption for $parcelable {
             fn deserialize_option(
-                parcel: &$crate::parcel::Parcel,
-            ) -> $crate::Result<Option<Self>> {
+                parcel: &$crate::aidl_internal_api::Parcel,
+            ) -> Result<Option<Self>, $crate::StatusCode> {
                 let mut result = None;
                 Self::deserialize_option_from(&mut result, parcel)?;
                 Ok(result)
             }
             fn deserialize_option_from(
                 this: &mut Option<Self>,
-                parcel: &$crate::parcel::Parcel,
-            ) -> $crate::Result<()> {
+                parcel: &$crate::aidl_internal_api::Parcel,
+            ) -> Result<(), $crate::StatusCode> {
                 let status: i32 = parcel.read()?;
                 if status == 0 {
                     *this = None;

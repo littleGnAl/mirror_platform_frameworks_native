@@ -100,41 +100,41 @@ mod proxy;
 mod binder;
 mod error;
 mod native;
+mod parcel;
 mod state;
 
 use binder_ndk_sys as sys;
 
-pub mod parcel;
-
-pub use crate::binder::{
-    BinderFeatures, FromIBinder, IBinder, IBinderInternal, Interface, InterfaceClass, Remotable,
-    Stability, Strong, TransactionCode, TransactionFlags, Weak, FIRST_CALL_TRANSACTION,
-    FLAG_CLEAR_BUF, FLAG_ONEWAY, FLAG_PRIVATE_LOCAL, LAST_CALL_TRANSACTION,
-};
-pub use error::{status_t, ExceptionCode, Result, Status, StatusCode};
+pub use binder::{BinderFeatures, FromIBinder, IBinder, Interface, Strong, Weak};
+pub use error::{ExceptionCode, Status, StatusCode};
 pub use native::add_service;
-pub use native::Binder;
-pub use parcel::Parcel;
-pub use proxy::{get_interface, get_service, wait_for_interface, wait_for_service};
-pub use proxy::{AssociateClass, DeathRecipient, Proxy, SpIBinder, WpIBinder};
+pub use parcel::ParcelFileDescriptor;
+pub use proxy::{get_interface, get_service, wait_for_interface, wait_for_service, DeathRecipient, SpIBinder, WpIBinder};
 pub use state::{ProcessState, ThreadState};
 
+/// Binder result containing a [`Status`] on error.
+pub type Result<T> = std::result::Result<T, Status>;
+
 /// Unstable, in-development API that only allowlisted clients are allowed to use.
+#[doc(hidden)]
 pub mod unstable_api {
     pub use crate::binder::AsNative;
     pub use crate::proxy::unstable_api::new_spibinder;
     pub use crate::sys::AIBinder;
 }
 
-/// The public API usable outside AIDL-generated interface crates.
-pub mod public_api {
-    pub use super::parcel::ParcelFileDescriptor;
-    pub use super::{add_service, get_interface, wait_for_interface};
-    pub use super::{
-        BinderFeatures, DeathRecipient, ExceptionCode, IBinder, Interface, ProcessState, SpIBinder,
-        Status, StatusCode, Strong, ThreadState, Weak, WpIBinder,
+/// Internal API for use by the AIDL compiler.
+#[doc(hidden)]
+pub mod aidl_internal_api {
+    pub use crate::binder::{
+        FromIBinder, IBinderInternal, InterfaceClass, Remotable, Stability, TransactionCode,
+        TransactionFlags, FIRST_CALL_TRANSACTION, FLAG_CLEAR_BUF, FLAG_ONEWAY, FLAG_PRIVATE_LOCAL,
+        LAST_CALL_TRANSACTION,
     };
-
-    /// Binder result containing a [`Status`] on error.
-    pub type Result<T> = std::result::Result<T, Status>;
+    pub use crate::error::status_t;
+    pub use crate::native::Binder;
+    pub use crate::parcel::{
+        Deserialize, DeserializeArray, DeserializeOption, Parcel, Serialize, SerializeArray, SerializeOption,
+    };
+    pub use crate::proxy::{AssociateClass, Proxy};
 }

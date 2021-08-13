@@ -18,11 +18,13 @@
 //! access.
 
 use binder::declare_binder_interface;
-use binder::parcel::ParcelFileDescriptor;
 use binder::{
-    Binder, BinderFeatures, ExceptionCode, Interface, Parcel, Result, SpIBinder, Status,
-    StatusCode, TransactionCode,
+    BinderFeatures, ExceptionCode, Interface, ParcelFileDescriptor, SpIBinder, Status,
+    StatusCode,
 };
+// Import from internal API for testing only, do not use this module in
+// production.
+use binder::aidl_internal_api::{Binder, Parcel, TransactionCode};
 
 use std::ffi::{c_void, CStr, CString};
 use std::sync::Once;
@@ -113,7 +115,7 @@ fn on_transact(
     code: TransactionCode,
     parcel: &Parcel,
     reply: &mut Parcel,
-) -> Result<()> {
+) -> Result<(), StatusCode> {
     match code {
         bindings::Transaction_TEST_BOOL => {
             assert_eq!(parcel.read::<bool>()?, true);
