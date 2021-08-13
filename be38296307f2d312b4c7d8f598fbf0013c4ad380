@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1132f7bf_bdc9c35e",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-13T02:23:01Z",
+      "side": 1,
+      "message": "Please take a look at the new patchset and see if I am implementing the custom verification properly.\n\nTests for my use cases pass, but I don\u0027t know if I miss something obvious.",
+      "parentUuid": "ffc95a60_4072bd8c",
+      "revId": "be38296307f2d312b4c7d8f598fbf0013c4ad380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98653b7e_5a35493a",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "For now, I only need `cert` to be the exact leaf certificate.\n\nI may want to configure CA certificate and do the path-building thing in the future, but Chad suggested in an email thread that I should be using conscrypt instead of libssl directly.\n\nWhich API should I use to only treat cert as the leaf certificate?",
       "parentUuid": "98653b7e_5a35493a",
+      "revId": "be38296307f2d312b4c7d8f598fbf0013c4ad380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9086d162_e3675fbb",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-13T02:23:01Z",
+      "side": 1,
+      "message": "Please take a look at the new patchset and see if I am implementing the custom verification properly.\n\nTests for my use cases pass, but I don\u0027t know if I miss something obvious.",
+      "parentUuid": "245c22fa_6fceb63a",
       "revId": "be38296307f2d312b4c7d8f598fbf0013c4ad380",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
