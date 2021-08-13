@@ -46,6 +46,30 @@
       },
       "revId": "54fa555cfe045bc004179c26c5e1d1a6e2630ae6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "276d09b7_6bdfa130",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-13T02:21:44Z",
+      "side": 1,
+      "message": "Done.\n\nFor DER Format -- sure, but I\u0027ll handle it in the next CL.",
+      "parentUuid": "d5aeef18_3683f2f2",
+      "range": {
+        "startLine": 521,
+        "startChar": 57,
+        "endLine": 521,
+        "endChar": 73
+      },
+      "revId": "54fa555cfe045bc004179c26c5e1d1a6e2630ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

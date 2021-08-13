@@ -22,6 +22,30 @@
       },
       "revId": "15ea9b4623da2800429d3202f81601c61ea67c3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86638748_6b2310bf",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-13T02:21:44Z",
+      "side": 1,
+      "message": "Nope, the two APIs are unrelated.\n\ngetX509Pem returns the pre-configured self-signed certificate that this context presents to other peers.\n\naddTrustedX509Pem trusts a peer certificate that a peer gives this context.\n\nSee example here:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1794131/10/libs/binder/tests/binderRpcTest.cpp#1523",
+      "parentUuid": "0fa1491b_adf4e053",
+      "range": {
+        "startLine": 77,
+        "startChar": 35,
+        "endLine": 77,
+        "endChar": 38
+      },
+      "revId": "15ea9b4623da2800429d3202f81601c61ea67c3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
