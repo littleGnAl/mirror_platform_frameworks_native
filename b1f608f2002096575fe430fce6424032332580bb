@@ -70,6 +70,30 @@
       },
       "revId": "b1f608f2002096575fe430fce6424032332580bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "772fed99_1c7db446",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-08-13T00:00:38Z",
+      "side": 1,
+      "message": "I missed the new AIDL attribute, got it.",
+      "parentUuid": "ae9ea4fb_7899aa76",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 789,
+        "endChar": 1
+      },
+      "revId": "b1f608f2002096575fe430fce6424032332580bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
