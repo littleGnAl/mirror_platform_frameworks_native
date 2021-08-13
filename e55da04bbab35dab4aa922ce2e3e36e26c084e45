@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebd0551e_2250221d",
+        "filename": "libs/binder/tests/binderRpcWireProtocolTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-13T17:33:51Z",
+      "side": 1,
+      "message": "CHECK_EQ(OK, ...);",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 9
+      },
+      "revId": "e55da04bbab35dab4aa922ce2e3e36e26c084e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
