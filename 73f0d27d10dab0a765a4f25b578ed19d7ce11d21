@@ -33,6 +33,24 @@
       "message": "Ditto, `\u0026*inner`.",
       "revId": "73f0d27d10dab0a765a4f25b578ed19d7ce11d21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176b01fd_0a095ecf",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-08-13T00:22:32Z",
+      "side": 1,
+      "message": "Alternatively, I think Option::as_deref could replace the entire Option::map call.",
+      "parentUuid": "ba2fed67_b7479c99",
+      "revId": "73f0d27d10dab0a765a4f25b578ed19d7ce11d21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
