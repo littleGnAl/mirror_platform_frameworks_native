@@ -31,12 +31,27 @@ bssl::UniquePtr<X509> fromPem(std::string_view s) {
     return bssl::UniquePtr<X509>(PEM_read_bio_X509(certBio.get(), nullptr, nullptr, nullptr));
 }
 
+bssl::UniquePtr<X509> fromDer(std::string_view s) {
+    if (s.length() > std::numeric_limits<long>::max()) return nullptr;
+    auto data = reinterpret_cast<const unsigned char*>(s.data());
+    auto expectedEnd = data + s.length();
+    bssl::UniquePtr<X509> ret(d2i_X509(nullptr, &data, static_cast<long>(s.length())));
+    if (data != expectedEnd) {
+        ALOGE("%s: %zd bytes remaining!", __PRETTY_FUNCTION__,
+              static_cast<ssize_t>(expectedEnd - data));
+        return nullptr;
+    }
+    return ret;
+}
+
 } // namespace
 
 bssl::UniquePtr<X509> certificateFromString(std::string_view s, CertificateFormat format) {
     switch (format) {
         case CertificateFormat::PEM:
             return fromPem(s);
+        case CertificateFormat::DER:
+            return fromDer(s);
     }
     LOG_ALWAYS_FATAL("Unsupported format %d", static_cast<int>(format));
 }
@@ -46,6 +61,9 @@ std::string toString(X509* x509, CertificateFormat format) {
     switch (format) {
         case CertificateFormat::PEM: {
             TEST_AND_RETURN({}, PEM_write_bio_X509(certBio.get(), x509));
+        } break;
+        case CertificateFormat::DER: {
+            TEST_AND_RETURN({}, i2d_X509_bio(certBio.get(), x509));
         } break;
         default: {
             LOG_ALWAYS_FATAL("Unsupported format %d", static_cast<int>(format));
