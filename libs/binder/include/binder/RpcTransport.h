@@ -31,13 +31,15 @@ class FdTrigger;
 
 enum class CertificateFormat {
     PEM,
-    // TODO(b/195166979): support other formats, e.g. DER
+    DER,
 };
 
 static inline std::string PrintToString(CertificateFormat format) {
     switch (format) {
         case CertificateFormat::PEM:
             return "PEM";
+        case CertificateFormat::DER:
+            return "DER";
         default:
             return "<unknown>";
     }
