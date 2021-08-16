@@ -95,6 +95,9 @@ std::string toString(X509* x509, CertificateFormat format) {
         case CertificateFormat::PEM: {
             TEST_AND_RETURN({}, PEM_write_bio_X509(certBio.get(), x509));
         } break;
+        case CertificateFormat::DER: {
+            TEST_AND_RETURN({}, i2d_X509_bio(certBio.get(), x509));
+        } break;
         default: {
             LOG_ALWAYS_FATAL("Unsupported format %d", static_cast<int>(format));
         }
@@ -109,6 +112,19 @@ bssl::UniquePtr<X509> fromPem(std::string_view s) {
     if (s.length() > std::numeric_limits<int>::max()) return nullptr;
     bssl::UniquePtr<BIO> certBio(BIO_new_mem_buf(s.data(), static_cast<int>(s.length())));
     return bssl::UniquePtr<X509>(PEM_read_bio_X509(certBio.get(), nullptr, nullptr, nullptr));
+}
+
+bssl::UniquePtr<X509> fromDer(std::string_view s) {
+    if (s.length() > std::numeric_limits<long>::max()) return nullptr;
+    auto data = reinterpret_cast<const unsigned char*>(s.data());
+    auto expectedEnd = data + s.length();
+    bssl::UniquePtr<X509> ret(d2i_X509(nullptr, &data, static_cast<long>(s.length())));
+    if (data != expectedEnd) {
+        LOG_TLS_DETAIL("%s: %zd bytes remaining!", __PRETTY_FUNCTION__,
+                       static_cast<ssize_t>(expectedEnd - data));
+        return nullptr;
+    }
+    return ret;
 }
 
 bssl::UniquePtr<BIO> newSocketBio(android::base::borrowed_fd fd) {
@@ -505,6 +521,9 @@ status_t RpcTransportCtxTls::addTrustedPeerCertificate(CertificateFormat format,
     switch (format) {
         case CertificateFormat::PEM: {
             x509 = fromPem(cert);
+        } break;
+        case CertificateFormat::DER: {
+            x509 = fromDer(cert);
         } break;
         default: {
             LOG_ALWAYS_FATAL("Unsupported CertificateFormat: %d", static_cast<int>(format));
