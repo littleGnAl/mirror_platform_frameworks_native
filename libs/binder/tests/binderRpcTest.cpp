@@ -1724,6 +1724,7 @@ TEST_P(RpcTransportTest, MaliciousClient) {
 std::vector<CertificateFormat> testCertificateFormats() {
     return {
             CertificateFormat::PEM,
+            CertificateFormat::DER,
     };
 }
 
