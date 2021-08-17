@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c2b978c_12824b72",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-17T04:12:36Z",
+      "side": 1,
+      "message": "To test the underlying RpcTransport, I am not using the RpcServer / RpcSession. I am only testing the certificate exchange and validation. So createRpcTestSocketServerProcess doesn\u0027t apply.",
+      "parentUuid": "4e10c111_cead6a97",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 20
+      },
+      "revId": "d4c2267edbffc4bde6d72e6af495b6525839d6e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ea4d76d_1ef19304",
@@ -84,6 +108,30 @@
       "writtenOn": "2021-08-12T23:09:41Z",
       "side": 1,
       "message": "can we test this across all types of servers?",
+      "range": {
+        "startLine": 1415,
+        "startChar": 41,
+        "endLine": 1415,
+        "endChar": 62
+      },
+      "revId": "d4c2267edbffc4bde6d72e6af495b6525839d6e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a332e655_9ea790f9",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-17T04:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ea4d76d_1ef19304",
       "range": {
         "startLine": 1415,
         "startChar": 41,
