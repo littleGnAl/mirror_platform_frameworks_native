@@ -70,6 +70,30 @@
       },
       "revId": "54fa555cfe045bc004179c26c5e1d1a6e2630ae6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82cd4cf7_e39d46b7",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-17T00:16:56Z",
+      "side": 1,
+      "message": "Done again, I added a \"format\" argument. DER format is supported in CL:1797431",
+      "parentUuid": "276d09b7_6bdfa130",
+      "range": {
+        "startLine": 521,
+        "startChar": 57,
+        "endLine": 521,
+        "endChar": 73
+      },
+      "revId": "54fa555cfe045bc004179c26c5e1d1a6e2630ae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
