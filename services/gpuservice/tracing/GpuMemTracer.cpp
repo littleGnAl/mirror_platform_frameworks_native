@@ -107,16 +107,19 @@ void GpuMemTracer::traceInitialCounters() {
         ALOGE("Cannot trace without GpuMem initialization");
         return;
     }
-    mGpuMem->traverseGpuMemTotals([](int64_t ts, uint32_t gpuId, uint32_t pid, uint64_t size) {
-        GpuMemDataSource::Trace([&](GpuMemDataSource::TraceContext ctx) {
-            auto packet = ctx.NewTracePacket();
-            packet->set_timestamp(ts);
-            auto* event = packet->set_gpu_mem_total_event();
-            event->set_gpu_id(gpuId);
-            event->set_pid(pid);
-            event->set_size(size);
-        });
-    });
+    mGpuMem->traverseGpuMemInfo(
+            [](int64_t ts, uint32_t gpuId, uint32_t pid, uint64_t size, uint64_t imported_size) {
+                GpuMemDataSource::Trace([&](GpuMemDataSource::TraceContext ctx) {
+                    auto packet = ctx.NewTracePacket();
+                    packet->set_timestamp(ts);
+                    auto* event = packet->set_gpu_mem_total_event();
+                    event->set_gpu_id(gpuId);
+                    event->set_pid(pid);
+                    event->set_size(size);
+                    // TODO: Add imported_size to gpu_mem_total event.
+                    imported_size = 0; // Avoid -Wunused-parameter build error
+                });
+            });
     // Flush the TraceContext. The last packet in the above loop will go
     // missing without this flush.
     GpuMemDataSource::Trace([](GpuMemDataSource::TraceContext ctx) { ctx.Flush(); });

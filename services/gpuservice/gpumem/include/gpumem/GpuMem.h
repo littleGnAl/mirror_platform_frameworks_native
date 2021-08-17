@@ -30,14 +30,15 @@ public:
     ~GpuMem();
 
     // initialize eBPF program and map
-    void initialize();
+    void initialize(bool attach_tracepoint = true);
     // dumpsys interface
     void dump(const Vector<String16>& args, std::string* result);
     bool isInitialized() { return mInitialized.load(); }
 
     // Traverse the gpu memory total map to feed the callback function.
-    void traverseGpuMemTotals(const std::function<void(int64_t ts, uint32_t gpuId, uint32_t pid,
-                                                       uint64_t size)>& callback);
+    void traverseGpuMemInfo(
+            const std::function<void(int64_t ts, uint32_t gpuId, uint32_t pid, uint64_t size,
+                                     uint64_t imported_size)>& callback);
 
 private:
     // Friend class for testing.
@@ -46,20 +47,33 @@ private:
     // set gpu memory total map
     void setGpuMemTotalMap(bpf::BpfMap<uint64_t, uint64_t>& map);
 
+    // set gpu memory imported map
+    void setGpuMemImportedMap(bpf::BpfMap<uint64_t, uint64_t>& map);
+
     // indicate whether ebpf has been initialized
     std::atomic<bool> mInitialized = false;
     // bpf map for GPU memory total data
     android::bpf::BpfMap<uint64_t, uint64_t> mGpuMemTotalMap;
+    // bpf map for GPU memory imported data
+    android::bpf::BpfMap<uint64_t, uint64_t> mGpuMemImportedMap;
+    // Is imported memory supported?
+    bool mImportedMemSupported = false;
 
     // gpu memory tracepoint event category
     static constexpr char kGpuMemTraceGroup[] = "gpu_mem";
     // gpu memory total tracepoint
     static constexpr char kGpuMemTotalTracepoint[] = "gpu_mem_total";
+    // gpu memory total imported_size field
+    static constexpr char kGpuMemImportedSizeField[] = "imported_size";
     // pinned gpu memory total bpf c program path in bpf sysfs
     static constexpr char kGpuMemTotalProgPath[] =
             "/sys/fs/bpf/prog_gpu_mem_tracepoint_gpu_mem_gpu_mem_total";
+    // pinned gpu memory bpf c program path in bpf sysfs
+    static constexpr char kGpuMemProgPath[] = "/sys/fs/bpf/prog_gpu_mem_tracepoint_gpu_mem_gpu_mem";
     // pinned gpu memory total bpf map path in bpf sysfs
     static constexpr char kGpuMemTotalMapPath[] = "/sys/fs/bpf/map_gpu_mem_gpu_mem_total_map";
+    // pinned gpu imported memory bpf map path in bpf sysfs
+    static constexpr char kGpuMemImportedMapPath[] = "/sys/fs/bpf/map_gpu_mem_gpu_mem_imported_map";
     // 30 seconds timeout for trying to attach bpf program to tracepoint
     static constexpr int kGpuWaitTimeout = 30;
 };
