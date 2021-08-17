@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bb94f9a_fdfa8a21",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-17T06:45:54Z",
+      "side": 1,
+      "message": "this can be \u0027protected\u0027 right?",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 509,
+        "endChar": 7
+      },
+      "revId": "5f4038c4bab878f513693b4f97603f44479601f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
