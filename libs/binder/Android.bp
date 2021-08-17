@@ -104,6 +104,7 @@ cc_library {
         "BpBinder.cpp",
         "BufferedTextOutput.cpp",
         "Debug.cpp",
+        "FdTrigger.cpp",
         "IInterface.cpp",
         "IMemory.cpp",
         "IPCThreadState.cpp",
@@ -123,6 +124,7 @@ cc_library {
         "RpcSession.cpp",
         "RpcServer.cpp",
         "RpcState.cpp",
+        "RpcTransportRaw.cpp",
         "Static.cpp",
         "Stability.cpp",
         "Status.cpp",
@@ -147,9 +149,6 @@ cc_library {
             enabled: false,
         },
         host: {
-            static_libs: [
-                "libbase",
-            ],
             srcs: [
                 "ServiceManagerHost.cpp",
                 "UtilsHost.cpp",
@@ -190,9 +189,13 @@ cc_library {
         "libutils",
     ],
 
+    static_libs: [
+        "libbase",
+    ],
+
     header_libs: [
         "libbinder_headers",
-        "libandroid_runtime_threads_headers",
+        "libandroid_runtime_vm_headers",
     ],
 
     export_header_lib_headers: [
@@ -230,6 +233,42 @@ cc_library {
         sampling: true,
         profile_file: "libbinder/libbinder.profdata",
     },
+}
+
+cc_defaults {
+    name: "libbinder_tls_shared_deps",
+    shared_libs: [
+        "libbinder",
+        "libcrypto",
+        "liblog",
+        "libssl",
+        "libutils",
+    ],
+}
+
+cc_defaults {
+    name: "libbinder_tls_defaults",
+    defaults: ["libbinder_tls_shared_deps"],
+    host_supported: true,
+
+    header_libs: [
+        "libbinder_headers",
+    ],
+    export_header_lib_headers: [
+        "libbinder_headers",
+    ],
+    export_include_dirs: ["include_tls"],
+    static_libs: [
+        "libbase",
+    ],
+    srcs: [
+        "RpcTransportTls.cpp",
+    ],
+}
+
+cc_library_shared {
+    name: "libbinder_tls",
+    defaults: ["libbinder_tls_defaults"],
 }
 
 // AIDL interface between libbinder and framework.jar
@@ -288,7 +327,7 @@ cc_library {
     // Do not expand the visibility.
     visibility: [
         "//packages/modules/Virtualization/authfs:__subpackages__",
-        "//packages/modules/Virtualization/compos",
+        "//packages/modules/Virtualization/compos:__subpackages__",
         "//packages/modules/Virtualization/microdroid",
     ],
 }
@@ -357,5 +396,6 @@ cc_binary {
         "libbinder",
         "liblog",
         "libutils",
+        "android.debug_aidl-cpp",
     ],
 }

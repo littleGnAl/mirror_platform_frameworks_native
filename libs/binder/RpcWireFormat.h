@@ -21,7 +21,7 @@ namespace android {
 #pragma clang diagnostic error "-Wpadded"
 
 enum : uint8_t {
-    RPC_CONNECTION_OPTION_REVERSE = 0x1,
+    RPC_CONNECTION_OPTION_INCOMING = 0x1, // default is outgoing
 };
 
 constexpr uint64_t RPC_WIRE_ADDRESS_OPTION_CREATED = 1 << 0; // distinguish from '0' address
@@ -37,9 +37,20 @@ struct RpcWireAddress {
  * either as part of a new session or an existing session
  */
 struct RpcConnectionHeader {
+    uint32_t version; // maximum supported by caller
+    uint8_t reserver0[4];
     RpcWireAddress sessionId;
     uint8_t options;
-    uint8_t reserved[7];
+    uint8_t reserved1[7];
+};
+
+/**
+ * In response to an RpcConnectionHeader which corresponds to a new session,
+ * this returns information to the server.
+ */
+struct RpcNewSessionResponse {
+    uint32_t version; // maximum supported by callee <= maximum supported by caller
+    uint8_t reserved[4];
 };
 
 #define RPC_CONNECTION_INIT_OKAY "cci"
@@ -47,7 +58,7 @@ struct RpcConnectionHeader {
 /**
  * Whenever a client connection is setup, this is sent as the initial
  * transaction. The main use of this is in order to control the timing for when
- * a reverse connection is setup.
+ * an incoming connection is setup.
  */
 struct RpcOutgoingConnectionInit {
     char msg[4];
