@@ -87,6 +87,24 @@
       "parentUuid": "e905a520_ecc90508",
       "revId": "ab9180ad4747d7be2c6586c2d373c95803872baf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2524315_744cd588",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-17T22:55:13Z",
+      "side": 1,
+      "message": "\u003e Can I attach objects to SSL*?\n\nYou can! On both SSL and SSL_CTX. :-)\n\nThere\u0027s SSL_(CTX_)set_app_data which let you stick a void* on each object. And then if you need something more complicated, you can use the ex_data machinery. (See SSL_get_ex_new_index, ex_data.h, and related functions.)",
+      "parentUuid": "c06ca813_8efc39cc",
+      "revId": "ab9180ad4747d7be2c6586c2d373c95803872baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
