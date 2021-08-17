@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "855a6b63_d43e4c55",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-17T22:51:26Z",
+      "side": 1,
+      "message": "\u003e The expectation is that the client don\u0027t do this.\n\nThe expectation is that the callers to RpcServer don\u0027t do this. RpcServer does expose the addTrustedPeerCertificate() API. I need to prevent callers to RpcServer to call addTrustedPeerCertificate() after the server is started.",
+      "parentUuid": "7a0a58b3_45c7c4c4",
+      "revId": "ab9180ad4747d7be2c6586c2d373c95803872baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e905a520_ecc90508",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 17
