@@ -46,6 +46,30 @@
       },
       "revId": "60427d5deeac68239b80f80ae50b5ae8225761ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03493ab1_5b0e8f9e",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-17T17:05:42Z",
+      "side": 1,
+      "message": "Hah, fun! Thanks for details.",
+      "parentUuid": "f754ec85_d8c19860",
+      "range": {
+        "startLine": 118,
+        "startChar": 41,
+        "endLine": 118,
+        "endChar": 45
+      },
+      "revId": "60427d5deeac68239b80f80ae50b5ae8225761ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
