@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad473aa5_6c7b0394",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-17T23:43:01Z",
+      "side": 1,
+      "message": "Done.\n\nAdded docs to explain thread-safety of RpcTransportCtx::addTrustedPeerCertificate itself:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1794129/15..16/libs/binder/include/binder/RpcTransport.h\n\nChecks that RpcServer::addTrustedPeerCertificate must not be called once the server is started:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1794130/15..16/libs/binder/RpcServer.cpp",
+      "parentUuid": "855a6b63_d43e4c55",
+      "revId": "ab9180ad4747d7be2c6586c2d373c95803872baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e905a520_ecc90508",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "\u003e Can I attach objects to SSL*?\n\nYou can! On both SSL and SSL_CTX. :-)\n\nThere\u0027s SSL_(CTX_)set_app_data which let you stick a void* on each object. And then if you need something more complicated, you can use the ex_data machinery. (See SSL_get_ex_new_index, ex_data.h, and related functions.)",
       "parentUuid": "c06ca813_8efc39cc",
+      "revId": "ab9180ad4747d7be2c6586c2d373c95803872baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29f1cd5_91fdb300",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-17T23:43:01Z",
+      "side": 1,
+      "message": "Done:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1794131/17..18/libs/binder/RpcTransportTls.cpp",
+      "parentUuid": "c2524315_744cd588",
       "revId": "ab9180ad4747d7be2c6586c2d373c95803872baf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
