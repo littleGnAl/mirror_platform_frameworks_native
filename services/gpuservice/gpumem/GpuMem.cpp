@@ -20,20 +20,55 @@
 
 #include "gpumem/GpuMem.h"
 
+#include <android-base/file.h>
 #include <android-base/stringprintf.h>
+#include <android-base/strings.h>
 #include <libbpf.h>
 #include <libbpf_android.h>
 #include <log/log.h>
 #include <unistd.h>
 #include <utils/Timers.h>
 #include <utils/Trace.h>
-
 #include <unordered_map>
 #include <vector>
 
 namespace android {
 
 using base::StringAppendF;
+
+static bool FtraceEventHasField(const char* subsystem, const char* event, const char* field) {
+    using ::android::base::ReadFileToString;
+    using ::android::base::Split;
+    using ::android::base::StartsWith;
+    using ::android::base::StringPrintf;
+    using ::android::base::Trim;
+
+    std::string path = StringPrintf("/sys/kernel/tracing/events/%s/%s/format", subsystem, event);
+    std::string debugfs_path =
+            StringPrintf("/sys/kernel/tracing/events/%s/%s/format", subsystem, event);
+
+    std::string format;
+    if (!ReadFileToString(path, &format) && !ReadFileToString(debugfs_path, &format)) {
+        ALOGE("Failed to read ftrace event format for %s/%s", subsystem, event);
+        return false;
+    }
+
+    auto lines = Split(format, "\n");
+    for (auto& line : lines) {
+        line = Trim(line);
+
+        if (!StartsWith(line, "field:")) {
+            continue;
+        }
+
+        auto field_name = Split(Trim(Split(line, ";")[0]), " ").back();
+        if (field_name == field) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 GpuMem::~GpuMem() {
     bpf_detach_tracepoint(kGpuMemTraceGroup, kGpuMemTotalTracepoint);
@@ -43,10 +78,15 @@ void GpuMem::initialize() {
     // Make sure bpf programs are loaded
     bpf::waitForProgsLoaded();
 
+    bool imported_mem_supported =
+            FtraceEventHasField(kGpuMemTraceGroup, kGpuMemTotalTracepoint, "imported_size");
+    ALOGI("GPU imported memory tracking is %ssupported", imported_mem_supported ? "" : "not ");
+
     errno = 0;
-    int fd = bpf::retrieveProgram(kGpuMemTotalProgPath);
+    const char* bpf_prog_path = (imported_mem_supported) ? kGpuMemProgPath : kGpuMemTotalProgPath;
+    int fd = bpf::retrieveProgram(bpf_prog_path);
     if (fd < 0) {
-        ALOGE("Failed to retrieve pinned program from %s [%d(%s)]", kGpuMemTotalProgPath, errno,
+        ALOGE("Failed to retrieve pinned program from %s [%d(%s)]", bpf_prog_path, errno,
               strerror(errno));
         return;
     }
@@ -64,6 +104,9 @@ void GpuMem::initialize() {
         sleep(1);
     }
 
+    ALOGI("Attached bpf prog %s to tracepoint %s/%s", bpf_prog_path, kGpuMemTraceGroup,
+          kGpuMemTotalTracepoint);
+
     // Use the read-only wrapper BpfMapRO to properly retrieve the read-only map.
     errno = 0;
     auto map = bpf::BpfMapRO<uint64_t, uint64_t>(kGpuMemTotalMapPath);
@@ -74,11 +117,26 @@ void GpuMem::initialize() {
     }
     setGpuMemTotalMap(map);
 
+    if (imported_mem_supported) {
+        errno = 0;
+        auto mem_imported_map = bpf::BpfMapRO<uint64_t, uint64_t>(kGpuMemImportedMapPath);
+        if (!mem_imported_map.isValid()) {
+            ALOGE("Failed to create bpf map from %s [%d(%s)]", kGpuMemImportedMapPath, errno,
+                  strerror(errno));
+            return;
+        }
+        setGpuMemImportedMap(mem_imported_map);
+    }
+
     mInitialized.store(true);
 }
 
 void GpuMem::setGpuMemTotalMap(bpf::BpfMap<uint64_t, uint64_t>& map) {
     mGpuMemTotalMap = std::move(map);
+}
+
+void GpuMem::setGpuMemImportedMap(bpf::BpfMap<uint64_t, uint64_t>& map) {
+    mGpuMemImportedMap = std::move(map);
 }
 
 // Dump the snapshots of global and per process memory usage on all gpus
@@ -112,6 +170,8 @@ void GpuMem::dump(const Vector<String16>& /* args */, std::string* result) {
         if (!res.ok()) break;
         key = res.value();
     }
+
+    // TODO: Dump imported gpu memory if supported
 
     for (auto& gpu : dumpMap) {
         if (gpu.second.empty()) continue;
