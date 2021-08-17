@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a0a58b3_45c7c4c4",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-17T22:49:40Z",
+      "side": 1,
+      "message": "The answer is no and no.\n\n\u003e Is it valid to create a single RpcTransportCtx and then have multiple RpcTransports attached to it on different threads?\n\nOn the server side (RpcServer), we always have a centralized thread to accept4() and create RpcTransport objects.\n\nOn the client side (RpcSession), addTrustedPeerCertificate is called in RpcSession() right after the RpcTransportCtx object is created, so no more certificates can be added later.\n\nSee CL:1794130\n\n\u003e If so, is valid to call addTrustedPeerCertificate() *after* you\u0027ve already called newTransport()?\n\nThe expectation is that the client don\u0027t do this. However, we don\u0027t prevent RpcServer from doing this either.\n\nI\u0027ll leave this comment open and fix this in CL:1794130, then resolve this comment.",
+      "parentUuid": "01baa5c0_ffdd774d",
+      "revId": "ab9180ad4747d7be2c6586c2d373c95803872baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e905a520_ecc90508",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 17
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-17T17:00:51Z",
       "side": 1,
       "message": "No use in using the X509_STORE if you\u0027re just comparing for equality. Just store a list of certificates on the RpcTransportCtxTls.",
+      "revId": "ab9180ad4747d7be2c6586c2d373c95803872baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c06ca813_8efc39cc",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-17T22:49:40Z",
+      "side": 1,
+      "message": "The problem is that, in sslCustomVerify(), I\u0027ll need to access this list, and from the SSL* pointer I don\u0027t have access to the outer RpcTransportCtxTls.\n\nCan I attach objects to SSL*?",
+      "parentUuid": "e905a520_ecc90508",
       "revId": "ab9180ad4747d7be2c6586c2d373c95803872baf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
