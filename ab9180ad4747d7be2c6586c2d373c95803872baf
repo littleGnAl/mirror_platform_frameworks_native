@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01baa5c0_ffdd774d",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-17T17:00:51Z",
+      "side": 1,
+      "message": "What are the thread-safety rules for this class?\n\nIs it valid to create a single RpcTransportCtx and then have multiple RpcTransports attached to it on different threads?\n\nIf so, is valid to call addTrustedPeerCertificate() *after* you\u0027ve already called newTransport()?\n\nIf the answer to both is yes, you\u0027ll have both a thread-safety question to resolve (mutating state that another thread sees), as well as a semantics question (are the pre-existing RpcTransports intended to see the changes?).",
+      "revId": "ab9180ad4747d7be2c6586c2d373c95803872baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e905a520_ecc90508",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-17T17:00:51Z",
+      "side": 1,
+      "message": "No use in using the X509_STORE if you\u0027re just comparing for equality. Just store a list of certificates on the RpcTransportCtxTls.",
+      "revId": "ab9180ad4747d7be2c6586c2d373c95803872baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
