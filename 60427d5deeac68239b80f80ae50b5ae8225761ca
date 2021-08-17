@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82867c81_3fb678e3",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-17T16:24:34Z",
+      "side": 1,
+      "message": "is it expected to ever be that large? Is DER format expected to be larger than PEM(which uses int max above).",
+      "range": {
+        "startLine": 118,
+        "startChar": 41,
+        "endLine": 118,
+        "endChar": 45
+      },
+      "revId": "60427d5deeac68239b80f80ae50b5ae8225761ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
