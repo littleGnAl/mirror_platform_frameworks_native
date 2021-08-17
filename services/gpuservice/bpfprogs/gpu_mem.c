@@ -31,6 +31,15 @@
  */
 DEFINE_BPF_MAP_GRO(gpu_mem_total_map, HASH, uint64_t, uint64_t, GPU_MEM_TOTAL_MAP_SIZE,
                    AID_GRAPHICS);
+/*
+ * This map maintains the global and per process gpu memory imported counters.
+ *
+ * The KEY is ((gpu_id << 32) | pid) while VAL is the size in bytes.
+ * Use HASH type here since key is not int.
+ * Pass AID_GRAPHICS as gid since gpuservice is in the graphics group.
+ */
+DEFINE_BPF_MAP_GRO(gpu_mem_imported_map, HASH, uint64_t, uint64_t, GPU_MEM_TOTAL_MAP_SIZE,
+                   AID_GRAPHICS);
 
 /* This struct aligns with the fields offsets of the raw tracepoint format */
 struct gpu_mem_total_args {
@@ -69,6 +78,64 @@ DEFINE_BPF_PROG("tracepoint/gpu_mem/gpu_mem_total", AID_ROOT, AID_GRAPHICS, tp_g
     } else {
         bpf_gpu_mem_total_map_update_elem(&key, &cur_val, BPF_NOEXIST);
     }
+    return 0;
+}
+
+struct gpu_mem_args {
+    uint64_t ignore;
+    /* Actual fields start at offset 8 */
+    uint32_t gpu_id;
+    uint32_t pid;
+    uint64_t size;
+    uint64_t imported_size;
+};
+
+/*
+ * If the gpu_mem_total tracepoint has the imported_size field
+ * this prog is attached to the tracepoint instead.
+ *
+ * The program parses the gpu_mem/gpu_mem_total tracepoint's data into
+ * {KEY, VAL} pair used to update the gpu_mem_total and gpu_mem_imported
+ * bpf maps.
+ *
+ * Pass AID_GRAPHICS as gid since gpuservice is in the graphics group.
+ * Upon seeing size 0, the corresponding KEY needs to be cleaned up.
+ */
+
+DEFINE_BPF_PROG("tracepoint/gpu_mem/gpu_mem", AID_ROOT, AID_GRAPHICS, tp_gpu_mem)
+(struct gpu_mem_args* args) {
+    uint64_t key = 0;
+    uint64_t curr_mem_total = 0;
+    uint64_t curr_mem_imported = 0;
+    uint64_t* prev_mem_total = NULL;
+    uint64_t* prev_mem_imported = NULL;
+
+    /* The upper 32 bits are for gpu_id while the lower is the pid */
+    key = ((uint64_t)args->gpu_id << 32) | args->pid;
+
+    curr_mem_total = args->size;
+    curr_mem_imported = args->imported_size;
+
+    if (!curr_mem_total) {
+        bpf_gpu_mem_total_map_delete_elem(&key);
+        bpf_gpu_mem_imported_map_delete_elem(&key);
+        return 0;
+    }
+
+    prev_mem_total = bpf_gpu_mem_total_map_lookup_elem(&key);
+    if (prev_mem_total) {
+        *prev_mem_total = curr_mem_total;
+    } else {
+        bpf_gpu_mem_total_map_update_elem(&key, &curr_mem_total, BPF_NOEXIST);
+    }
+
+    prev_mem_imported = bpf_gpu_mem_imported_map_lookup_elem(&key);
+    if (prev_mem_imported) {
+        *prev_mem_imported = curr_mem_imported;
+    } else {
+        bpf_gpu_mem_imported_map_update_elem(&key, &curr_mem_imported, BPF_NOEXIST);
+    }
+
     return 0;
 }
 
