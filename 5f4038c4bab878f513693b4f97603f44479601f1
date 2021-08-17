@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4e1113f_be2ad5d6",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-17T16:16:06Z",
+      "side": 1,
+      "message": "this is ok to do in the client now? If so, should we remove that comment?",
+      "range": {
+        "startLine": 472,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 77
+      },
+      "revId": "5f4038c4bab878f513693b4f97603f44479601f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bb94f9a_fdfa8a21",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 4
