@@ -22,6 +22,30 @@
       },
       "revId": "60427d5deeac68239b80f80ae50b5ae8225761ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f754ec85_d8c19860",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-17T16:55:41Z",
+      "side": 1,
+      "message": "DER is smaller than PEM. These just come from the fact that a lot of OpenSSL APIs are not size_t-clean and OpenSSL tends to just haphazardly use whatever int type. It happens that BIO_new_mem_buf takes int while d2i_X509 takes long. This is all very silly. :-(",
+      "parentUuid": "82867c81_3fb678e3",
+      "range": {
+        "startLine": 118,
+        "startChar": 41,
+        "endLine": 118,
+        "endChar": 45
+      },
+      "revId": "60427d5deeac68239b80f80ae50b5ae8225761ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
