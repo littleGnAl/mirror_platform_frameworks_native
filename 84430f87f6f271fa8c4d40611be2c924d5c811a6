@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f504a2_1f74abd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-17T04:22:26Z",
+      "side": 1,
+      "message": "The change itself looks good (thus +1), but I am not sure if such a discrimination of APIs is what we do in binder. I wish everything is directly accessible via `binder::*`. I\u0027ve left an inline comment below. PTAL.",
+      "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d64b192_e02586ef",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-17T04:22:26Z",
+      "side": 1,
+      "message": "In libbinder and libbinder_ndk, these are public APIs and people can use them regardless of whether they use AIDL or not. Actually, I have thought that binder shouldn\u0027t assume that it is used only via the AIDL-generated code. i.e. we don\u0027t categories binder APIs into (1) those that are accessible to the AIDL clients, and (2) those that are visible only to the AIDL-generated code.\n\nI however don\u0027t know if we want to keep the same principle for the rust backend. I believe Steven has an authoritative answer here.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 46
+      },
+      "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
