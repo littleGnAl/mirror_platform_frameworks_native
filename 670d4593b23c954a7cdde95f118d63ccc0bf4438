@@ -113,6 +113,121 @@
       "message": "I did not look very carefully at the tests (as noted in the other CL, these reviews are a bit too time-consuming right now), so I\u0027m going to assume that other reviewers will look them over.",
       "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4052ac_eaa3a6ad",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-18T21:06:59Z",
+      "side": 1,
+      "message": "Could you remove unlink() from this function, or add it to allocateSocketAddress()? I wouldn\u0027t expect ...IfNecessary() to have this different behavior.",
+      "range": {
+        "startLine": 1420,
+        "startChar": 12,
+        "endLine": 1420,
+        "endChar": 32
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "791388dc_ae79d716",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-18T21:06:59Z",
+      "side": 1,
+      "message": "When would this contain multiple addresses?",
+      "range": {
+        "startLine": 1472,
+        "startChar": 24,
+        "endLine": 1472,
+        "endChar": 88
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d318bf_bcc4ec28",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-18T21:06:59Z",
+      "side": 1,
+      "message": "nit: rename to `untrustedServer`?",
+      "range": {
+        "startLine": 1629,
+        "startChar": 16,
+        "endLine": 1629,
+        "endChar": 31
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bda8326_001cbd12",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1632,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-18T21:06:59Z",
+      "side": 1,
+      "message": "Is this a comment on `client.run(handshakeOk)`? \nI had to reread client.setUp() to try and figure out what this comment meant.\nThe client will still connect fine, but then fail in client.run() after failing to create the transport?",
+      "range": {
+        "startLine": 1631,
+        "startChar": 0,
+        "endLine": 1632,
+        "endChar": 53
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2f3396_167d8319",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-18T21:06:59Z",
+      "side": 1,
+      "message": "nit: could mention that this is only the case for TLS, not RAW.",
+      "range": {
+        "startLine": 1691,
+        "startChar": 7,
+        "endLine": 1693,
+        "endChar": 80
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
