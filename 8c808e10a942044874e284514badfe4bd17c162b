@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3cb7fc_78d189f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T04:04:34Z",
+      "side": 1,
+      "message": "I\u0027m missing some context because I didn\u0027t come to the meeting and my understanding to installd is limited. Reviewed the code from a readability perspective.",
+      "revId": "8c808e10a942044874e284514badfe4bd17c162b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9417a795_d7e1225a",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T04:04:34Z",
+      "side": 1,
+      "message": "snake_case without prefix. go/cstyle#Variable_Names",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "8c808e10a942044874e284514badfe4bd17c162b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50a054b_cbe7c5f0",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T04:04:34Z",
+      "side": 1,
+      "message": "I\u0027d suggest putting these variables in a class so that the mutex usage can be enforced by GUARDED_BY annotation. https://cs.android.com/android/platform/superproject/+/master:system/core/libutils/include/utils/Mutex.h;l\u003d43;drc\u003de1a285ddc1c728d95222aeddbe82b94ac5eb3304\n\ngo/totw/129#using-thread-annotations",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 55
+      },
+      "revId": "8c808e10a942044874e284514badfe4bd17c162b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3399213d_cb1155d4",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T04:04:34Z",
+      "side": 1,
+      "message": "Objects with static storage duration are forbidden unless they are trivially destructible. go/cstyle#Static_and_Global_Variables\n\nConsider using NoDestructor\u003cT\u003e. https://cs.android.com/android/platform/superproject/+/master:system/libbase/include/android-base/no_destructor.h;l\u003d61;drc\u003d916ea5e6f9a51d2d9358df21d4d215fce58967a0\n\ngo/totw/110#the-fix-safe-initialization-no-destruction",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 18
+      },
+      "revId": "8c808e10a942044874e284514badfe4bd17c162b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b0eb28_bd3dcbc2",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T04:04:34Z",
+      "side": 1,
+      "message": "Usually, function names are in CamelCase with the first letter capitalized (go/cstyle#Function_Names). I guess this file is using snake_case for historical reasons. Let\u0027s keep using snake_case for the sake of consistency.",
+      "range": {
+        "startLine": 1542,
+        "startChar": 12,
+        "endLine": 1542,
+        "endChar": 24
+      },
+      "revId": "8c808e10a942044874e284514badfe4bd17c162b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7a32ba2_0b5ceca3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T04:04:34Z",
+      "side": 1,
+      "message": "Looks like std::unordered_set is more suitable than std::vector in your use case?",
+      "range": {
+        "startLine": 1551,
+        "startChar": 0,
+        "endLine": 1552,
+        "endChar": 81
+      },
+      "revId": "8c808e10a942044874e284514badfe4bd17c162b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "053d8293_4ff43fea",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1556,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T04:04:34Z",
+      "side": 1,
+      "message": "Nit: Omit `else`.",
+      "range": {
+        "startLine": 1556,
+        "startChar": 6,
+        "endLine": 1556,
+        "endChar": 12
+      },
+      "revId": "8c808e10a942044874e284514badfe4bd17c162b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfaedaa3_56242ab6",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T04:04:34Z",
+      "side": 1,
+      "message": "SIGKILL cannot be caught, and therefore does not provide the process a chance to do cleanups. I\u0027m not sure how signals are handled in dex2oat, but I\u0027d suggest waiting a few seconds for the process to exit gracefully before sending a SIGKILL.",
+      "range": {
+        "startLine": 1577,
+        "startChar": 8,
+        "endLine": 1577,
+        "endChar": 27
+      },
+      "revId": "8c808e10a942044874e284514badfe4bd17c162b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33e8f4a6_556109e5",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1810,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T04:04:34Z",
+      "side": 1,
+      "message": "snake_case",
+      "range": {
+        "startLine": 1810,
+        "startChar": 37,
+        "endLine": 1810,
+        "endChar": 49
+      },
+      "revId": "8c808e10a942044874e284514badfe4bd17c162b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63fb7a16_9a16f794",
+        "filename": "cmds/installd/dexopt.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T04:04:34Z",
+      "side": 1,
+      "message": "Alternatively, you can define this as an optional parameter with a default value `nullptr` so that you don\u0027t have to overload the function. In the implementation, you can check if the pointer is `nullptr` before you assign a value to it.",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 33
+      },
+      "revId": "8c808e10a942044874e284514badfe4bd17c162b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67004440_8aad62b4",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-18T04:04:34Z",
+      "side": 1,
+      "message": "snake_case",
+      "range": {
+        "startLine": 351,
+        "startChar": 61,
+        "endLine": 351,
+        "endChar": 76
+      },
+      "revId": "8c808e10a942044874e284514badfe4bd17c162b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
