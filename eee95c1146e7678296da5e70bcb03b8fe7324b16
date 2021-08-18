@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afc61ccb_8c5e667c",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-18T15:21:21Z",
+      "side": 1,
+      "message": "Speaking of thread-safety, the way it\u0027s implemented, calling, say, interruptableWriteFully and interruptableReadFully on separate threads is *not* safe. May want to say something here too.",
+      "revId": "eee95c1146e7678296da5e70bcb03b8fe7324b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5354115_2dc86771",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-18T15:21:21Z",
+      "side": 1,
+      "message": "The tests in https://android-review.googlesource.com/c/platform/frameworks/native/+/1794131 seem to use threads.  Server::run() spins up a new thread for each accepted fd. I\u0027m not sure this constraint is what you actually want.\n\nAs long as you don\u0027t mutate an SSL_CTX after it is shared, BoringSSL is perfectly happy sharing an SSL_CTX (but not an SSL!) across threads, so that\u0027s fine. It seems the only issue here is the mutating addTrustedPeerCertificate() call.\n\nYou can say that you\u0027re not allowed to call addTrustedPeerCertificate() at all after newTransport(), to avoid race conditions. Or you could add some locking so there are no race conditions, just it\u0027s undefined whether it applies to running sockets. Or you could make the caller specify that when you construct the object, which avoids this problem altogether.",
+      "revId": "eee95c1146e7678296da5e70bcb03b8fe7324b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb38c5f_546a8dd9",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-18T15:21:21Z",
+      "side": 1,
+      "message": "(Should this be const?)",
+      "revId": "eee95c1146e7678296da5e70bcb03b8fe7324b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
