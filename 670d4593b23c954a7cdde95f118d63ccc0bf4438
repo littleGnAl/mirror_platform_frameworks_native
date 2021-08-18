@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0bfc67_8184a2fa",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-18T15:28:31Z",
+      "side": 1,
+      "message": "BoringSSL functions only push to the error queue on error. Returning NULL from SSL_get_peer_certificate is not documented as an error condition. It\u0027s just how to signal that the peer didn\u0027t send a certificate.",
+      "range": {
+        "startLine": 533,
+        "startChar": 38,
+        "endLine": 533,
+        "endChar": 67
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81073b8a_b53f0dcf",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-18T15:28:31Z",
+      "side": 1,
+      "message": "certificate_unobtainable is an alert from a goofy client certificate URLs extension. It is not appropriate here:\nhttps://datatracker.ietf.org/doc/html/rfc6066#section-5\n\nThis case is impossible because BoringSSL won\u0027t ask you to verify a lack of certificate. So you should either use SSL_AD_INTERNAL_ERROR, or just skip the check on the assumption this will always return something.",
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "695205a0_05caf845",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-18T15:28:31Z",
+      "side": 1,
+      "message": "No harm in checking, but this cannot return NULL. (If it could, we would said \"or NULL if ...\" in the documentation.)",
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9162f8e_809af5d0",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-18T15:28:31Z",
+      "side": 1,
+      "message": "No harm in checking, but this cannot return NULL.",
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c3742c_4c0eaa41",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-18T15:28:31Z",
+      "side": 1,
+      "message": "No harm in checking, but this will always be non-null.",
+      "range": {
+        "startLine": 565,
+        "startChar": 4,
+        "endLine": 565,
+        "endChar": 29
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebec87c6_a34a2a1b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-18T15:28:31Z",
+      "side": 1,
+      "message": "I did not look very carefully at the tests (as noted in the other CL, these reviews are a bit too time-consuming right now), so I\u0027m going to assume that other reviewers will look them over.",
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
