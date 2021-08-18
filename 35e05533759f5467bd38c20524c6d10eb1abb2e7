@@ -138,6 +138,30 @@
       },
       "revId": "35e05533759f5467bd38c20524c6d10eb1abb2e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "071f9ad9_bce1c734",
+        "filename": "services/inputflinger/reader/mapper/TouchInputMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2021-08-18T19:10:37Z",
+      "side": 1,
+      "message": "Since the resolution here was never being reported in the MotionRanges API, I think we can leave it out.\n\nIf we do report it in the future, it should always read 1 unit/radian, because we simply use radians.",
+      "parentUuid": "31813bed_fe115607",
+      "range": {
+        "startLine": 923,
+        "startChar": 12,
+        "endLine": 923,
+        "endChar": 48
+      },
+      "revId": "35e05533759f5467bd38c20524c6d10eb1abb2e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
