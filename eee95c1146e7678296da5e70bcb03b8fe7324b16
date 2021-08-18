@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "746c776e_3d4a79f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-18T15:25:40Z",
+      "side": 1,
+      "message": "By the way, as a reviewer, having the definition of the API and the implementation/tests split apart like this makes it very difficult to review. For instance, the bug in the thread-safety documentation was only noticeable after seeing the implementation and tests, but the documentation was in this CL.\n\nAs someone external to the project and yet apparently the main person reviewing TLS calls for correctness, these reviews already take a lot of time. Can you please structure future CLs so that they are more reviewable?",
+      "revId": "eee95c1146e7678296da5e70bcb03b8fe7324b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afc61ccb_8c5e667c",
