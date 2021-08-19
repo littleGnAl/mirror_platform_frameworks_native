@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "952975c4_33d50a24",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e0bfc67_8184a2fa",
+      "range": {
+        "startLine": 533,
+        "startChar": 38,
+        "endLine": 533,
+        "endChar": 67
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81073b8a_b53f0dcf",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-08-18T15:28:31Z",
       "side": 1,
       "message": "certificate_unobtainable is an alert from a goofy client certificate URLs extension. It is not appropriate here:\nhttps://datatracker.ietf.org/doc/html/rfc6066#section-5\n\nThis case is impossible because BoringSSL won\u0027t ask you to verify a lack of certificate. So you should either use SSL_AD_INTERNAL_ERROR, or just skip the check on the assumption this will always return something.",
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34e1ea1_f2c0e9e5",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81073b8a_b53f0dcf",
       "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e45ea9c_a272bc98",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "695205a0_05caf845",
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9162f8e_809af5d0",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-08-18T15:28:31Z",
       "side": 1,
       "message": "No harm in checking, but this cannot return NULL.",
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4489d60_7f244402",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9162f8e_809af5d0",
       "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -100,6 +178,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "40f03ed4_ec9c66ee",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72c3742c_4c0eaa41",
+      "range": {
+        "startLine": 565,
+        "startChar": 4,
+        "endLine": 565,
+        "endChar": 29
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ebec87c6_a34a2a1b",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 18
@@ -111,6 +213,24 @@
       "writtenOn": "2021-08-18T15:28:31Z",
       "side": 1,
       "message": "I did not look very carefully at the tests (as noted in the other CL, these reviews are a bit too time-consuming right now), so I\u0027m going to assume that other reviewers will look them over.",
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4462c2a5_186bfbc6",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:35:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ebec87c6_a34a2a1b",
       "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -128,6 +248,30 @@
       "writtenOn": "2021-08-18T21:06:59Z",
       "side": 1,
       "message": "Could you remove unlink() from this function, or add it to allocateSocketAddress()? I wouldn\u0027t expect ...IfNecessary() to have this different behavior.",
+      "range": {
+        "startLine": 1420,
+        "startChar": 12,
+        "endLine": 1420,
+        "endChar": 32
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7eaf46c_576520a8",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc4052ac_eaa3a6ad",
       "range": {
         "startLine": 1420,
         "startChar": 12,
@@ -163,6 +307,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "38d1bc9f_aed44f26",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:35:58Z",
+      "side": 1,
+      "message": "in this case (because we use kLocalInetAddress), never. However, this is to resemble what RpcSession is doing.",
+      "parentUuid": "791388dc_ae79d716",
+      "range": {
+        "startLine": 1472,
+        "startChar": 24,
+        "endLine": 1472,
+        "endChar": 88
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "42d318bf_bcc4ec28",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 18
@@ -174,6 +342,30 @@
       "writtenOn": "2021-08-18T21:06:59Z",
       "side": 1,
       "message": "nit: rename to `untrustedServer`?",
+      "range": {
+        "startLine": 1629,
+        "startChar": 16,
+        "endLine": 1629,
+        "endChar": 31
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d89d1a_a57d654e",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42d318bf_bcc4ec28",
       "range": {
         "startLine": 1629,
         "startChar": 16,
@@ -209,6 +401,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "083989ec_48e9ce4c",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1632,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bda8326_001cbd12",
+      "range": {
+        "startLine": 1631,
+        "startChar": 0,
+        "endLine": 1632,
+        "endChar": 53
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ca2f3396_167d8319",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 18
@@ -220,6 +436,30 @@
       "writtenOn": "2021-08-18T21:06:59Z",
       "side": 1,
       "message": "nit: could mention that this is only the case for TLS, not RAW.",
+      "range": {
+        "startLine": 1691,
+        "startChar": 7,
+        "endLine": 1693,
+        "endChar": 80
+      },
+      "revId": "670d4593b23c954a7cdde95f118d63ccc0bf4438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3148b7e8_38d18096",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:35:58Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "ca2f3396_167d8319",
       "range": {
         "startLine": 1691,
         "startChar": 7,
