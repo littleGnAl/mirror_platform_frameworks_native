@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "118984ee_26d08e6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-19T23:55:33Z",
+      "side": 1,
+      "message": "C99 added flexible array members: https://en.wikipedia.org/wiki/Flexible_array_member\nExpression for size of an array must be greater than zero:\nhttps://en.cppreference.com/w/c/language/array\n\nGCC still seems fine with zero length arrays:\nhttps://gcc.gnu.org/onlinedocs/gcc-4.1.2/gcc/Zero-Length.html\n\nSo, do we care to change it to a flexible array member?",
+      "revId": "139913a0e5a285b159525c9cbc7ce0e08e7afe36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
