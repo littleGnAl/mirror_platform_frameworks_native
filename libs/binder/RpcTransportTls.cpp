@@ -89,6 +89,28 @@ long socketCtrl(BIO* bio, int cmd, long num, void*) { // NOLINT
     return 0;
 }
 
+std::string toString(X509* x509, CertificateFormat format) {
+    bssl::UniquePtr<BIO> certBio(BIO_new(BIO_s_mem()));
+    switch (format) {
+        case CertificateFormat::PEM: {
+            TEST_AND_RETURN({}, PEM_write_bio_X509(certBio.get(), x509));
+        } break;
+        default: {
+            LOG_ALWAYS_FATAL("Unsupported format %d", static_cast<int>(format));
+        }
+    }
+    const uint8_t* data;
+    size_t len;
+    TEST_AND_RETURN({}, BIO_mem_contents(certBio.get(), &data, &len));
+    return std::string(reinterpret_cast<const char*>(data), len);
+}
+
+bssl::UniquePtr<X509> fromPem(std::string_view s) {
+    if (s.length() > std::numeric_limits<int>::max()) return nullptr;
+    bssl::UniquePtr<BIO> certBio(BIO_new_mem_buf(s.data(), static_cast<int>(s.length())));
+    return bssl::UniquePtr<X509>(PEM_read_bio_X509(certBio.get(), nullptr, nullptr, nullptr));
+}
+
 bssl::UniquePtr<BIO> newSocketBio(android::base::borrowed_fd fd) {
     static const BIO_METHOD* gMethods = ([] {
         auto methods = BIO_meth_new(BIO_get_new_index(), "socket_no_signal");
@@ -449,29 +471,102 @@ bool setFdAndDoHandshake(Ssl* ssl, android::base::borrowed_fd fd, FdTrigger* fdT
     }
 }
 
+// All APIs are thread safe.
+//
+// It is safe for different threads to call newTransport() and / or addTrustedPeerCertificate()
+// simultaneously in any order. However, if one thread is calling newTransport() while the other
+// is calling addTrustedPeerCertificate(), there is no guarantee that newTransport() does handshake
+// with that specific peer certificate trusted or not. Caller is responsible for ensuring the order
+// of these calls.
 class RpcTransportCtxTls : public RpcTransportCtx {
 public:
     template <typename Impl,
               typename = std::enable_if_t<std::is_base_of_v<RpcTransportCtxTls, Impl>>>
     static std::unique_ptr<RpcTransportCtxTls> create();
+    // Peer certificates previously added via addTrustedPeerCertificate() are trusted.
+    // Thread-safe; okay to have simultaneous calls into newTransport() from different threads.
     std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd fd,
                                                FdTrigger* fdTrigger) const override;
-    std::string getCertificate(CertificateFormat) const override;
+    // Only guarantee to affect newTransport() after addTrustedPeerCertificate() returns.
+    // Thread-safe; okay to have simultaneous calls into addTrustedPeerCertificate() from
+    // different threads.
     status_t addTrustedPeerCertificate(CertificateFormat, std::string_view cert) override;
+    // Thread-safe; okay to call getCertificate() at any time, regardless of whether other threads
+    // are calling into getCertificate or other APIs.
+    std::string getCertificate(CertificateFormat) const override;
 
 protected:
+    static ssl_verify_result_t sslCustomVerify(SSL* ssl, uint8_t* outAlert);
+    bool isTrusted(X509* peerCert);
     virtual void preHandshake(Ssl* ssl) const = 0;
+    virtual const char* toCString() const = 0;
+
     bssl::UniquePtr<SSL_CTX> mCtx;
+
+    std::mutex mMutex; // for below
+    std::vector<bssl::UniquePtr<X509>> mTrustedPeerCertificates;
 };
 
-std::string RpcTransportCtxTls::getCertificate(CertificateFormat) const {
-    // TODO(b/195166979): return certificate here
-    return {};
+std::string RpcTransportCtxTls::getCertificate(CertificateFormat format) const {
+    X509* x509 = SSL_CTX_get0_certificate(mCtx.get()); // does not own
+    return toString(x509, format);
 }
 
-status_t RpcTransportCtxTls::addTrustedPeerCertificate(CertificateFormat, std::string_view) {
-    // TODO(b/195166979): set certificate here
+status_t RpcTransportCtxTls::addTrustedPeerCertificate(CertificateFormat format,
+                                                       std::string_view cert) {
+    bssl::UniquePtr<X509> x509;
+    switch (format) {
+        case CertificateFormat::PEM: {
+            x509 = fromPem(cert);
+        } break;
+        default: {
+            LOG_ALWAYS_FATAL("Unsupported CertificateFormat: %d", static_cast<int>(format));
+        }
+    }
+    if (x509 == nullptr) {
+        ALOGE("Certificate is not in the proper format %s", PrintToString(format).c_str());
+        return BAD_VALUE;
+    }
+    std::lock_guard<std::mutex> lock(mMutex);
+    mTrustedPeerCertificates.push_back(std::move(x509));
     return OK;
+}
+
+bool RpcTransportCtxTls::isTrusted(X509* peerCert) {
+    std::lock_guard<std::mutex> lock(mMutex);
+    for (const auto& trustedCert : mTrustedPeerCertificates) {
+        if (0 == X509_cmp(trustedCert.get(), peerCert)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Verify by comparing the leaf of peer certificate with every certificate in
+// mTrustedPeerCertificates. Does not support certificate chains.
+ssl_verify_result_t RpcTransportCtxTls::sslCustomVerify(SSL* ssl, uint8_t* outAlert) {
+    LOG_ALWAYS_FATAL_IF(outAlert == nullptr);
+    const char* logPrefix = SSL_is_server(ssl) ? "Server" : "Client";
+
+    bssl::UniquePtr<X509> peerCert(SSL_get_peer_certificate(ssl)); // Does not set error queue
+    LOG_ALWAYS_FATAL_IF(peerCert == nullptr,
+                        "%s: libssl should not ask to verify non-existing cert", logPrefix);
+    LOG_TLS_DETAIL("%s: got peer certificate: %s", logPrefix,
+                   toString(peerCert.get(), CertificateFormat::PEM).c_str());
+
+    auto ctx = SSL_get_SSL_CTX(ssl); // Does not set error queue
+    LOG_ALWAYS_FATAL_IF(ctx == nullptr);
+    // void* -> RpcTransportCtxTls*
+    auto rpcTransportCtxTls = reinterpret_cast<RpcTransportCtxTls*>(SSL_CTX_get_app_data(ctx));
+    LOG_ALWAYS_FATAL_IF(rpcTransportCtxTls == nullptr);
+
+    if (rpcTransportCtxTls->isTrusted(peerCert.get())) {
+        return ssl_verify_ok;
+    }
+    LOG_TLS_DETAIL("%s: Failed to verify client because client presented untrusted certificate",
+                   logPrefix);
+    *outAlert = SSL_AD_CERTIFICATE_UNKNOWN;
+    return ssl_verify_invalid;
 }
 
 // Common implementation for creating server and client contexts. The child class, |Impl|, is
@@ -488,10 +583,8 @@ std::unique_ptr<RpcTransportCtxTls> RpcTransportCtxTls::create() {
     TEST_AND_RETURN(nullptr, SSL_CTX_use_PrivateKey(ctx.get(), evp_pkey.get()));
     TEST_AND_RETURN(nullptr, SSL_CTX_use_certificate(ctx.get(), cert.get()));
 
-    // TODO(b/195166979): peer should send certificate in a different channel, and this class
-    //  should verify it here.
-    SSL_CTX_set_custom_verify(ctx.get(), SSL_VERIFY_PEER,
-                              [](SSL*, uint8_t*) -> ssl_verify_result_t { return ssl_verify_ok; });
+    SSL_CTX_set_custom_verify(ctx.get(), SSL_VERIFY_PEER | SSL_VERIFY_FAIL_IF_NO_PEER_CERT,
+                              sslCustomVerify);
 
     // Require at least TLS 1.3
     TEST_AND_RETURN(nullptr, SSL_CTX_set_min_proto_version(ctx.get(), TLS1_3_VERSION));
@@ -500,8 +593,12 @@ std::unique_ptr<RpcTransportCtxTls> RpcTransportCtxTls::create() {
         SSL_CTX_set_info_callback(ctx.get(), sslDebugLog);
     }
 
-    auto ret = std::make_unique<Impl>();
+    std::unique_ptr<RpcTransportCtxTls> ret = std::make_unique<Impl>();
+    // RpcTransportCtxTls* -> void*
+    TEST_AND_RETURN(nullptr, SSL_CTX_set_app_data(ctx.get(), reinterpret_cast<void*>(ret.get())));
     ret->mCtx = std::move(ctx);
+    LOG_TLS_DETAIL("%s: set up ctx with certificate: %s", ret->toCString(),
+                   toString(cert.get(), CertificateFormat::PEM).c_str());
     return ret;
 }
 
@@ -521,6 +618,7 @@ protected:
     void preHandshake(Ssl* ssl) const override {
         ssl->call(SSL_set_accept_state).errorQueue.clear();
     }
+    const char* toCString() const override { return "Server"; }
 };
 
 class RpcTransportCtxTlsClient : public RpcTransportCtxTls {
@@ -528,6 +626,7 @@ protected:
     void preHandshake(Ssl* ssl) const override {
         ssl->call(SSL_set_connect_state).errorQueue.clear();
     }
+    const char* toCString() const override { return "Client"; }
 };
 
 } // namespace
