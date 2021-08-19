@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4232209_641d4e8d",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:53:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4e1113f_be2ad5d6",
+      "range": {
+        "startLine": 472,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 77
+      },
+      "revId": "5f4038c4bab878f513693b4f97603f44479601f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bb94f9a_fdfa8a21",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-17T06:45:54Z",
       "side": 1,
       "message": "this can be \u0027protected\u0027 right?",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 509,
+        "endChar": 7
+      },
+      "revId": "5f4038c4bab878f513693b4f97603f44479601f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30597d88_eed36533",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:53:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb94f9a_fdfa8a21",
       "range": {
         "startLine": 509,
         "startChar": 0,
