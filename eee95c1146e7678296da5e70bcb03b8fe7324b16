@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52912f95_933ed2e4",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:56:14Z",
+      "side": 0,
+      "message": "\u003e should we be cleaning anything up here? \n\nNo. \n\n\u003e This will allow the trusted client certs to remain after shutting down the server, right? Is that OK?\n\nYes. This is deliberate.",
+      "parentUuid": "bbedcfbf_51c5bd37",
+      "range": {
+        "startLine": 232,
+        "startChar": 4,
+        "endLine": 232,
+        "endChar": 19
+      },
+      "revId": "eee95c1146e7678296da5e70bcb03b8fe7324b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e2bb2ac_7592f28b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-18T21:50:02Z",
       "side": 0,
       "message": "is losing this information a big deal outside of testing? \nIt seems like we would know the context when debugging normally, but I don\u0027t have any experience with this.",
+      "range": {
+        "startLine": 540,
+        "startChar": 45,
+        "endLine": 540,
+        "endChar": 97
+      },
+      "revId": "eee95c1146e7678296da5e70bcb03b8fe7324b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac91618_e0875ecd",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:56:14Z",
+      "side": 0,
+      "message": "Technically yes. Though, it would always be TLS, because RpcTransportCtxRaw::newTransport never return null.",
+      "parentUuid": "4e2bb2ac_7592f28b",
       "range": {
         "startLine": 540,
         "startChar": 45,
