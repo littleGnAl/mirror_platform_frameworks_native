@@ -96,6 +96,13 @@ impl Parcel {
         let _ = ManuallyDrop::new(self);
         ptr
     }
+
+    pub(crate) fn is_owned(&self) -> bool {
+        match *self {
+            Self::Owned(_) => true,
+            Self::Borrowed(_) => false,
+        }
+    }
 }
 
 // Data serialization methods
