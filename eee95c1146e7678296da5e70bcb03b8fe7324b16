@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36cc584_9e7e2dd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:28:35Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! go/binder-tls for the documentation.\n\nI\u0027ve also added more documentation to aosp/1794131. PTAL.",
+      "parentUuid": "746c776e_3d4a79f7",
+      "revId": "eee95c1146e7678296da5e70bcb03b8fe7324b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afc61ccb_8c5e667c",
