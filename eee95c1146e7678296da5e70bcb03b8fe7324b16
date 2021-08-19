@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7dd43f_0eb07f27",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:31:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afc61ccb_8c5e667c",
+      "revId": "eee95c1146e7678296da5e70bcb03b8fe7324b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5354115_2dc86771",
@@ -66,6 +84,24 @@
       "writtenOn": "2021-08-18T15:21:21Z",
       "side": 1,
       "message": "The tests in https://android-review.googlesource.com/c/platform/frameworks/native/+/1794131 seem to use threads.  Server::run() spins up a new thread for each accepted fd. I\u0027m not sure this constraint is what you actually want.\n\nAs long as you don\u0027t mutate an SSL_CTX after it is shared, BoringSSL is perfectly happy sharing an SSL_CTX (but not an SSL!) across threads, so that\u0027s fine. It seems the only issue here is the mutating addTrustedPeerCertificate() call.\n\nYou can say that you\u0027re not allowed to call addTrustedPeerCertificate() at all after newTransport(), to avoid race conditions. Or you could add some locking so there are no race conditions, just it\u0027s undefined whether it applies to running sockets. Or you could make the caller specify that when you construct the object, which avoids this problem altogether.",
+      "revId": "eee95c1146e7678296da5e70bcb03b8fe7324b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "763ab85d_819cc072",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-19T20:31:57Z",
+      "side": 1,
+      "message": "Done, PTAL. In particular, PTAL at these comments:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1794131/19/libs/binder/RpcTransportTls.cpp#474\n\nI am picking the second option for better flexibility:\n\n\u003e Or you could add some locking so there are no race conditions, just it\u0027s undefined whether it applies to running sockets.\n\nFor the third option:\n\n\u003e Or you could make the caller specify that when you construct the object, which avoids this problem altogether.\n\nIt doesn\u0027t work in my case for two-way authentication, since I\u0027ll have to construct both the server and client contexts to get their certificates, then exchange them. So peer certificates shouldn\u0027t be set in the constructor.",
+      "parentUuid": "e5354115_2dc86771",
       "revId": "eee95c1146e7678296da5e70bcb03b8fe7324b16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
