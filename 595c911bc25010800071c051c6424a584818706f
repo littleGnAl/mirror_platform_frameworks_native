@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7f956c2_bab74e63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-08-20T16:50:04Z",
+      "side": 1,
+      "message": "Thanks Xiaobo!",
+      "revId": "595c911bc25010800071c051c6424a584818706f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6811690_5f57450f",
+        "filename": "libs/input/VelocityControl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-08-20T16:50:04Z",
+      "side": 1,
+      "message": "It would be good to change this into:\n\n    static constexpr bool DEBUG_ACCELERATION \u003d false\n    \nto make sure that these debug logs compile.\nI\u0027ll leave it up to you whether you want to actually do this (and whether in this CL or not)",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "595c911bc25010800071c051c6424a584818706f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
