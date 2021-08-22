@@ -1236,12 +1236,19 @@ static Dumpstate::RunStatus RunDumpsysTextByPriority(const std::string& title, i
         std::string path(title);
         path.append(" - ").append(String8(service).c_str());
         size_t bytes_written = 0;
-        status_t status = dumpsys.startDumpThread(Dumpsys::Type::DUMP, service, args);
+        status_t status = dumpsys.startDumpThread(Dumpsys::TYPE_DUMP, service, args);
         if (status == OK) {
             dumpsys.writeDumpHeader(STDOUT_FILENO, service, priority);
             std::chrono::duration<double> elapsed_seconds;
-            status = dumpsys.writeDump(STDOUT_FILENO, service, service_timeout,
-                                       /* as_proto = */ false, elapsed_seconds, bytes_written);
+            if (priority == IServiceManager::DUMP_FLAG_PRIORITY_HIGH &&
+                service == String16("meminfo")) {
+                // Use a longer timeout for meminfo, since 30s is not always enough.
+                status = dumpsys.writeDump(STDOUT_FILENO, service, 60s,
+                                           /* as_proto = */ false, elapsed_seconds, bytes_written);
+            } else {
+                status = dumpsys.writeDump(STDOUT_FILENO, service, service_timeout,
+                                           /* as_proto = */ false, elapsed_seconds, bytes_written);
+            }
             dumpsys.writeDumpFooter(STDOUT_FILENO, service, elapsed_seconds);
             bool dump_complete = (status == OK);
             dumpsys.stopDumpThread(dump_complete);
@@ -1308,7 +1315,7 @@ static Dumpstate::RunStatus RunDumpsysProto(const std::string& title, int priori
             path.append("_HIGH");
         }
         path.append(kProtoExt);
-        status_t status = dumpsys.startDumpThread(Dumpsys::Type::DUMP, service, args);
+        status_t status = dumpsys.startDumpThread(Dumpsys::TYPE_DUMP, service, args);
         if (status == OK) {
             status = ds.AddZipEntryFromFd(path, dumpsys.getDumpFd(), service_timeout);
             bool dumpTerminated = (status == OK);
@@ -1694,6 +1701,12 @@ static Dumpstate::RunStatus dumpstate() {
     RunCommand("MULTICAST ADDRESSES", {"ip", "maddr"});
 
     RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(RunDumpsysHigh);
+
+    // The dump mechanism in connectivity is refactored due to modularization work. Connectivity can
+    // only register with a default priority(NORMAL priority). Dumpstate has to call connectivity
+    // dump with priority parameters to dump high priority information.
+    RunDumpsys("SERVICE HIGH connectivity", {"connectivity", "--dump-priority", "HIGH"},
+                   CommandOptions::WithTimeout(10).Build());
 
     RunCommand("SYSTEM PROPERTIES", {"getprop"});
 

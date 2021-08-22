@@ -382,22 +382,23 @@ uid_t IPCThreadState::getCallingUid() const
     return mCallingUid;
 }
 
-IPCThreadState::SpGuard* IPCThreadState::pushGetCallingSpGuard(SpGuard* guard) {
-    SpGuard* orig = mServingStackPointerGuard;
+const IPCThreadState::SpGuard* IPCThreadState::pushGetCallingSpGuard(const SpGuard* guard) {
+    const SpGuard* orig = mServingStackPointerGuard;
     mServingStackPointerGuard = guard;
     return orig;
 }
 
-void IPCThreadState::restoreGetCallingSpGuard(SpGuard* guard) {
+void IPCThreadState::restoreGetCallingSpGuard(const SpGuard* guard) {
     mServingStackPointerGuard = guard;
 }
 
 void IPCThreadState::checkContextIsBinderForUse(const char* use) const {
-    if (mServingStackPointerGuard == nullptr) return;
+    if (LIKELY(mServingStackPointerGuard == nullptr)) return;
 
-    if (!mServingStackPointer || mServingStackPointerGuard < mServingStackPointer) {
-        LOG_ALWAYS_FATAL("In context %s, %s does not make sense.",
-                         mServingStackPointerGuard->context, use);
+    if (!mServingStackPointer || mServingStackPointerGuard->address < mServingStackPointer) {
+        LOG_ALWAYS_FATAL("In context %s, %s does not make sense (binder sp: %p, guard: %p).",
+                         mServingStackPointerGuard->context, use, mServingStackPointer,
+                         mServingStackPointerGuard->address);
     }
 
     // in the case mServingStackPointer is deeper in the stack than the guard,
@@ -515,14 +516,16 @@ void IPCThreadState::flushCommands()
 
 bool IPCThreadState::flushIfNeeded()
 {
-    if (mIsLooper || mServingStackPointer != nullptr) {
+    if (mIsLooper || mServingStackPointer != nullptr || mIsFlushing) {
         return false;
     }
+    mIsFlushing = true;
     // In case this thread is not a looper and is not currently serving a binder transaction,
     // there's no guarantee that this thread will call back into the kernel driver any time
     // soon. Therefore, flush pending commands such as BC_FREE_BUFFER, to prevent them from getting
     // stuck in this thread's out buffer.
     flushCommands();
+    mIsFlushing = false;
     return true;
 }
 
@@ -636,12 +639,6 @@ void IPCThreadState::processPostWriteDerefs()
         obj->decStrong(mProcess.get());
     }
     mPostWriteStrongDerefs.clear();
-}
-
-void IPCThreadState::createTransactionReference(RefBase* ref)
-{
-    ref->incStrong(mProcess.get());
-    mPostWriteStrongDerefs.push(ref);
 }
 
 void IPCThreadState::joinThreadPool(bool isMain)
@@ -879,6 +876,7 @@ IPCThreadState::IPCThreadState()
         mWorkSource(kUnsetWorkSource),
         mPropagateWorkSource(false),
         mIsLooper(false),
+        mIsFlushing(false),
         mStrictModePolicy(0),
         mLastTransactionBinderFlags(0),
         mCallRestriction(mProcess->mCallRestriction) {
@@ -1256,7 +1254,7 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
                 tr.offsets_size/sizeof(binder_size_t), freeBuffer);
 
             const void* origServingStackPointer = mServingStackPointer;
-            mServingStackPointer = &origServingStackPointer; // anything on the stack
+            mServingStackPointer = __builtin_frame_address(0);
 
             const pid_t origPid = mCallingPid;
             const char* origSid = mCallingSid;
