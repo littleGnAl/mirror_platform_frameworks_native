@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcfc78c5_7119e557",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-23T17:58:49Z",
+      "side": 1,
+      "message": "ok, then I will send SIGKILL only.",
+      "parentUuid": "2b4a334e_c67a1529",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d662033e_915798ff",
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "It\u0027s probably not a good idea to assume how the client will use an API, even though the API has only one usage for now. At the very least, it should be documented in the AIDL that using the API in a particular way may lead to an unexpected behavior. However, in this particular case, I still think a more elegant solution is to determine if a child is killed using WTERMSIG or something like that.",
       "parentUuid": "dc53868e_c2c705ce",
+      "range": {
+        "startLine": 1725,
+        "startChar": 4,
+        "endLine": 1725,
+        "endChar": 80
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7629b833_70058487",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-23T17:58:49Z",
+      "side": 1,
+      "message": "WTERMSIG alone is not necessarily bulletproof as we do not know if it was killed by this or something else. Returning cancelled while it was killed due to other reason is more problematic. Client getting error for the run is fine if we cannot sort out the cause properly and if the process has died. Whole stack is robust against such case: Failed one will be retries later.\nI will change it to check SIGKILL + cancelled while cancelled dropped early will be returned as regular error.",
+      "parentUuid": "7e592032_1c189ce6",
       "range": {
         "startLine": 1725,
         "startChar": 4,
