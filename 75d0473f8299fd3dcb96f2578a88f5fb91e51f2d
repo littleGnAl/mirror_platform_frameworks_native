@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc53868e_c2c705ce",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-23T16:24:32Z",
+      "side": 1,
+      "message": "We will have system server side change in internal gerrit. When that CL is reviewed, you can see how system server will handle this.",
+      "parentUuid": "dc5e53f3_94d24362",
+      "range": {
+        "startLine": 1725,
+        "startChar": 4,
+        "endLine": 1725,
+        "endChar": 80
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "024108e9_4340ea53",
