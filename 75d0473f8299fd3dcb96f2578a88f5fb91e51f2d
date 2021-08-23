@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d662033e_915798ff",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-23T06:57:38Z",
+      "side": 1,
+      "message": "If the client calls controlDexOptBlocking(true) immediately followed by a controlDexOptBlocking(false), there can be a race condition where `cancelled` may be `false` even though the child process is actually killed.\n\nCould you try some more reliable way to determine if a child is killed (such as WTERMSIG) rather than relying on check_if_killed_and_remove_dexopt_pid?",
+      "range": {
+        "startLine": 1725,
+        "startChar": 4,
+        "endLine": 1725,
+        "endChar": 80
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "024108e9_4340ea53",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 6
