@@ -62,6 +62,24 @@
       "message": "Nit: Extraneous new line.",
       "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ebfa9cc_544f3c42",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1777,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-23T16:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "024108e9_4340ea53",
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
