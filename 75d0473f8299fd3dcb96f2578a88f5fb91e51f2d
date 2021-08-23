@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b23a43e_0e63bcb8",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-23T05:07:43Z",
+      "side": 1,
+      "message": "It will be nicer if you could wait for the processes to exit with a timeout rather than unconditionally waiting.",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "024108e9_4340ea53",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1777,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-23T05:07:43Z",
+      "side": 1,
+      "message": "Nit: Extraneous new line.",
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
