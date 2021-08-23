@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e145dc9_0336d795",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-23T16:03:01Z",
+      "side": 1,
+      "message": "waiting for multiple child processes is problematic (hard to do it in single thread) and cost is 100ms. So I will keep the current shape as saving may not be that big.",
+      "parentUuid": "5b23a43e_0e63bcb8",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d662033e_915798ff",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-23T06:57:38Z",
       "side": 1,
       "message": "If the client calls controlDexOptBlocking(true) immediately followed by a controlDexOptBlocking(false), there can be a race condition where `cancelled` may be `false` even though the child process is actually killed.\n\nCould you try some more reliable way to determine if a child is killed (such as WTERMSIG) rather than relying on check_if_killed_and_remove_dexopt_pid?",
+      "range": {
+        "startLine": 1725,
+        "startChar": 4,
+        "endLine": 1725,
+        "endChar": 80
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc5e53f3_94d24362",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-23T16:03:01Z",
+      "side": 1,
+      "message": "In that case, the session will be returned as error. Regardless of that, the client cancelling in system server side waits until the pending cancellation is completed before calling controlDexOptBlocking(false), so it should not be a concern as the situation will not happen from the client side.",
+      "parentUuid": "d662033e_915798ff",
       "range": {
         "startLine": 1725,
         "startChar": 4,
