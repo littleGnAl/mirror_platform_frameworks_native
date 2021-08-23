@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b4a334e_c67a1529",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-23T17:06:14Z",
+      "side": 1,
+      "message": "The 100ms figure looks very arbitrary. Waiting for child processes with a timeout allows increasing the timeout to a longer time without adding extra costs in normal cases. If you feel that this is hard to implement, I\u0027d suggest removing the SIGTERM and the 100ms sleep. AFAIK, it\u0027s fine to just sending dex2oat a SIGKILL.",
+      "parentUuid": "7e145dc9_0336d795",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 39
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d662033e_915798ff",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 6
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "We will have system server side change in internal gerrit. When that CL is reviewed, you can see how system server will handle this.",
       "parentUuid": "dc5e53f3_94d24362",
+      "range": {
+        "startLine": 1725,
+        "startChar": 4,
+        "endLine": 1725,
+        "endChar": 80
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e592032_1c189ce6",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-23T17:06:14Z",
+      "side": 1,
+      "message": "It\u0027s probably not a good idea to assume how the client will use an API, even though the API has only one usage for now. At the very least, it should be documented in the AIDL that using the API in a particular way may lead to an unexpected behavior. However, in this particular case, I still think a more elegant solution is to determine if a child is killed using WTERMSIG or something like that.",
+      "parentUuid": "dc53868e_c2c705ce",
       "range": {
         "startLine": 1725,
         "startChar": 4,
