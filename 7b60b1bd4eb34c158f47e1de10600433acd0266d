@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "065b0d87_af8c5bfc",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-24T19:48:15Z",
+      "side": 1,
+      "message": "nit: if you think there would be more, consider :__subpackages__ under virtualization",
+      "range": {
+        "startLine": 329,
+        "startChar": 42,
+        "endLine": 333,
+        "endChar": 66
+      },
+      "revId": "7b60b1bd4eb34c158f47e1de10600433acd0266d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
