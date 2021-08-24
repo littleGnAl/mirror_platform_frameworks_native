@@ -217,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bbb366c_0b4510c3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-24T03:27:15Z",
+      "side": 1,
+      "message": "I see. Thank you for the explanation. I got the point that treating \"Cancelled\" as \"Error\" is better than treating \"Error\" as \"Cancelled\". However, I believe there are still other ways to reliability check if the process is cancelled by the API call and avoid race condition. I can see a need in solving the problem: A client may want to call controlDexOptBlocking(false) right after controlDexOptBlocking(true) just for cancelling the current dexopt runs without blocking any future runs.\n\nOne of the ways to avoid race condition is not to clear dexopt_killed_pids_ when control_dexopt_blocking(false) is called. I don\u0027t see many benefits in clearing the set in such case as pids in the set will be removed by check_if_killed_and_remove_dexopt_pid() anyway.\n\nPS: If you think pids may not guarantee uniqueness as they can be reused by the OS, you may provide a unique identifier when you call add_dexopt_pid() and use that unique identifier for calling check_if_killed_and_remove_dexopt_pid().",
+      "parentUuid": "7629b833_70058487",
+      "range": {
+        "startLine": 1725,
+        "startChar": 4,
+        "endLine": 1725,
+        "endChar": 80
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "024108e9_4340ea53",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 6
