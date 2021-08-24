@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc9b518c_74084fb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-24T20:23:42Z",
+      "side": 1,
+      "message": "It sounds like this didn\u0027t fix the issue on the bug? Can you abandon?",
+      "revId": "199526d54406763f1ee394a6434bba70441f881a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
