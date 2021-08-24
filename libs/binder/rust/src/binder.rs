@@ -917,6 +917,42 @@ macro_rules! declare_binder_interface {
     };
 }
 
+/// Declare an asynchronous binder proxy.
+///
+/// This is mainly used internally by the AIDL compiler.
+#[macro_export]
+macro_rules! declare_async_binder_proxy {
+    ($proxy_async:ident { $proxy:ident }) => {
+        pub struct $proxy_async {
+            proxy: $proxy,
+        }
+
+        impl $proxy_async {
+            pub fn new(proxy: $proxy) -> Self {
+                Self {
+                    proxy,
+                }
+            }
+        }
+
+        impl $crate::Interface for $proxy_async {
+            fn as_binder(&self) -> $crate::SpIBinder {
+                $crate::Interface::as_binder(&self.proxy)
+            }
+        }
+
+        impl $crate::Proxy for $proxy_async {
+            fn get_descriptor() -> &'static str {
+                <$proxy as $crate::Proxy>::get_descriptor()
+            }
+
+            fn from_binder(mut binder: $crate::SpIBinder) -> $crate::Result<Self> {
+                Ok(Self::new(<$proxy as $crate::Proxy>::from_binder(binder)?))
+            }
+        }
+    };
+}
+
 /// Declare an AIDL enumeration.
 ///
 /// This is mainly used internally by the AIDL compiler.
