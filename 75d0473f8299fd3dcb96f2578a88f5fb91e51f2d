@@ -239,6 +239,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9403bc6_8c235a08",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-24T17:52:07Z",
+      "side": 1,
+      "message": "Looks like all I need to do is to remove the clear() in L110/111. Then check_if_killed_and_remove_dexopt_pid will always return accurate information as L1713 and L1715 will always executed together. If thread is killed, the process will be killed so no need to clean it up separately.",
+      "parentUuid": "3bbb366c_0b4510c3",
+      "range": {
+        "startLine": 1725,
+        "startChar": 4,
+        "endLine": 1725,
+        "endChar": 80
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "024108e9_4340ea53",
