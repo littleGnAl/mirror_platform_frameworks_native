@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "883868b4_f0f2d895",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2021-08-25T20:57:36Z",
+      "side": 1,
+      "message": "Ah, templates. Well, I will defer C++ style to you all. I don\u0027t know your codebase\u0027s preferences. :-)\n\nSome other, less template-heavy options:\n\nOption 1: Since RpcTransportCtxTls::create() makes the SSL_CTX without reference to Impl at all, you could just have a createSslCtx() function, and then the newServerCtx() and newClientCtx() just call that and pass the SSL_CTX into the subclass\u0027s constructor.\n\nOption 2: I suspect, as you add callbacks, the assumption in Option 1 will stop holding. But you could stick all the RpcTransportCtxTls::create() bits in a protected bool init(). Then:\n\nstd::unique_ptr\u003cRpcTransportCtx\u003e RpcTransportCtxFactoryTls::newServerCtx() const {\n    auto ctx \u003d std::make_unique\u003cRpcTransportCtxTlsServer\u003e();\n    if (!ctx-\u003einit()) {\n      return nullptr;\n    }\n    return ctx;\n}\n\nMaybe with some virtual functions later if you want to customize the setup by client vs. server.\n\nOption 3:\nIt\u0027s not like the client and server contexts are any different, at least right now. You could have a shared context type that takes a void(*)(SSL*) function pointer so it knows which of SSL_set_connect_state or SSL_set_accept_state to call. Dunno if they\u0027ll diverge later.\n\nBut this works too. Your call.",
+      "revId": "1af485881bce567ed9412b889f22b92c9b1a7e1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
