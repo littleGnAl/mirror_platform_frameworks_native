@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6b93b5_88fcb697",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-08-25T17:34:07Z",
+      "side": 1,
+      "message": "Seems fine, but I\u0027m trying to understand why we need the proxy object at all.",
+      "revId": "affee60402e6dc44af349051ed9521acb3908167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e2aa04_f2ca533f",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-08-25T17:34:07Z",
+      "side": 1,
+      "message": "It\u0027s unclear to me why we\u0027re creating a proxy object rather than attaching an additional trait.\n\nIs it to prevent someone from using the same object both synchronously and asynchronously?",
+      "revId": "affee60402e6dc44af349051ed9521acb3908167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
