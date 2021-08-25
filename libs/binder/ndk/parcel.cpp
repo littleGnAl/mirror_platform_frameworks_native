@@ -673,4 +673,22 @@ AParcel* AParcel_create() {
     return new AParcel(nullptr);
 }
 
+binder_status_t AParcel_marshal(const AParcel* parcel, uint8_t* buffer, size_t len) {
+    if (parcel->get()->objectsCount() || parcel->get()->hasFileDescriptors()) {
+        return STATUS_INVALID_OPERATION;
+    }
+    int32_t dataSize = AParcel_getDataSize(parcel);
+    if (len < static_cast<size_t>(dataSize)) {
+        return STATUS_BAD_VALUE;
+    }
+    const uint8_t* internalBuffer = parcel->get()->data();
+    memcpy(buffer, internalBuffer, dataSize);
+    return STATUS_OK;
+}
+
+binder_status_t AParcel_unmarshal(AParcel* parcel, const uint8_t* buffer, size_t len) {
+    status_t status = parcel->get()->setData(buffer, len);
+    return PruneStatusT(status);
+}
+
 // @END
