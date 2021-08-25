@@ -22,6 +22,30 @@
       },
       "revId": "ecf937dd80999d2b37c5b44cda1065bfd4da42fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea6b184_1bf3b8e7",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-08-25T21:03:10Z",
+      "side": 1,
+      "message": "In fact, this is a string for the PEM format and byte array for the DER format. So I decide to just use a string. For the DER format it means it\u0027ll return a non-printable string.\n\ndo you want me to switch to a byte array everywhere?",
+      "parentUuid": "84f4013a_df9d6a62",
+      "range": {
+        "startLine": 62,
+        "startChar": 45,
+        "endLine": 62,
+        "endChar": 57
+      },
+      "revId": "ecf937dd80999d2b37c5b44cda1065bfd4da42fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
