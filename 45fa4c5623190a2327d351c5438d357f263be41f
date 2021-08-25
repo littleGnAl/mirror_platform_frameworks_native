@@ -52,6 +52,47 @@
       "parentUuid": "b449fbab_354a9de8",
       "revId": "45fa4c5623190a2327d351c5438d357f263be41f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a77c4b0_bc279339",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-25T22:33:46Z",
+      "side": 1,
+      "message": "Yes, agreed, but in this case, it should be called something else (or perhaps more suitably, the Java API should be renamed)",
+      "parentUuid": "8fbe4c3c_e4c27820",
+      "revId": "45fa4c5623190a2327d351c5438d357f263be41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7634b1fe_cc82ea97",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-25T22:33:46Z",
+      "side": 1,
+      "message": "introduced",
+      "range": {
+        "startLine": 144,
+        "startChar": 20,
+        "endLine": 144,
+        "endChar": 30
+      },
+      "revId": "45fa4c5623190a2327d351c5438d357f263be41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
