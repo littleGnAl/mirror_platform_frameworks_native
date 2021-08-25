@@ -34,6 +34,24 @@
       "parentUuid": "1b36d8cc_cd9cce05",
       "revId": "45fa4c5623190a2327d351c5438d357f263be41f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fbe4c3c_e4c27820",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-08-25T21:19:11Z",
+      "side": 1,
+      "message": "I don\u0027t think the HIDL/AIDL distinction is likely to cause problems in our use case, but since this API would be available in the NDK in general, it\u0027s hard to predict how others would try to use it.\n\nWe have a design doc, but we\u0027ve taken a few changes in direction, so I\u0027ll try to spruce it up and get it to you later today.",
+      "parentUuid": "b449fbab_354a9de8",
+      "revId": "45fa4c5623190a2327d351c5438d357f263be41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
