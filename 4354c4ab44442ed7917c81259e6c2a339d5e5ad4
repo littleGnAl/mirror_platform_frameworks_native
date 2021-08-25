@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a567e5f2_dd0991aa",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-25T19:08:44Z",
+      "side": 1,
+      "message": "This seems misleading to me. It sounds like it\u0027s going to be calling unlinkToDeath automatically.\nWould we want to say \"automatically unlinked, as long as there is no concurrent death recipient executing.\"?",
+      "range": {
+        "startLine": 569,
+        "startChar": 37,
+        "endLine": 569,
+        "endChar": 59
+      },
+      "revId": "4354c4ab44442ed7917c81259e6c2a339d5e5ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb91a70d_4e7fb49d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-25T19:08:44Z",
+      "side": 1,
+      "message": "Can the data be safely deleted after the concurrent death recipient has finished executing? Would the recipient get cleaned up or \"unlinked\" automatically after that because of the decStrong() from AIBinder_DeathRecipient_delete?",
+      "range": {
+        "startLine": 571,
+        "startChar": 24,
+        "endLine": 572,
+        "endChar": 25
+      },
+      "revId": "4354c4ab44442ed7917c81259e6c2a339d5e5ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
