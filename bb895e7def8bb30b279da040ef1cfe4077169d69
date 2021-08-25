@@ -22,6 +22,30 @@
       },
       "revId": "bb895e7def8bb30b279da040ef1cfe4077169d69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd294201_604a906c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-25T23:52:26Z",
+      "side": 1,
+      "message": "You know, actually, I think this same race occurs in both places. There isn\u0027t a way to control deleting this data w/ a lock (this is b/181971563). I\u0027ll reword this, yeah",
+      "parentUuid": "fe757af8_00126acb",
+      "range": {
+        "startLine": 571,
+        "startChar": 24,
+        "endLine": 572,
+        "endChar": 26
+      },
+      "revId": "bb895e7def8bb30b279da040ef1cfe4077169d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
