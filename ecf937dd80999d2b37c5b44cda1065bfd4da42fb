@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f4013a_df9d6a62",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-25T00:44:08Z",
+      "side": 1,
+      "message": "these should all be strings, not byte arrays? Will that always be true?",
+      "range": {
+        "startLine": 62,
+        "startChar": 45,
+        "endLine": 62,
+        "endChar": 57
+      },
+      "revId": "ecf937dd80999d2b37c5b44cda1065bfd4da42fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
