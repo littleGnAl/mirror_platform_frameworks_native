@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8932013_45b2ee84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-08-25T20:44:52Z",
+      "side": 1,
+      "message": "We should add a test that attempts to use a Parcel initialized for an object in a transaction on a different object. This should fail due to checks in the NDK API, but it\u0027s a case that was previously impossible.",
+      "revId": "ab08821e6498b79c99585a3526b33def7ece0dce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
