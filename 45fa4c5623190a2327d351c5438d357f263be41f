@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b36d8cc_cd9cce05",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-08-25T17:17:58Z",
+      "side": 1,
+      "message": "This has a subtle mismatch with the Java implementation because of\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binderthreadstate/include/binderthreadstate/CallerUtils.h;l\u003d46?q\u003dCallerUtils.h\n\nNote that this means even if we have a normal-binder call in progress, we could be closer to a hardware-binder call than a normal one. While we don\u0027t have Rust support for hardware-binder, it would be unsurprising if we linked Rust code into existing legacy C++ code that uses it.\n\ntl;dr mabye mimic the Java interface more exactly and do https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/jni/android_util_Binder.cpp;l\u003d963?q\u003dAndroid_util_binder.cpp",
+      "revId": "45fa4c5623190a2327d351c5438d357f263be41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
