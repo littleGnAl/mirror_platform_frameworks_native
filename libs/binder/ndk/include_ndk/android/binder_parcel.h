@@ -1163,6 +1163,37 @@ binder_status_t AParcel_appendFrom(const AParcel* from, AParcel* to, int32_t sta
  * \return A parcel which is not related to any IBinder objects.
  */
 AParcel* AParcel_create() __INTRODUCED_IN(31);
+
+/**
+ * Returns the raw bytes of the parcel.
+ *
+ * The parcel must not contain any binders or file descriptors.
+ *
+ * The data you retrieve here must not be placed in any kind of persistent storage. (on local disk,
+ * across a network, etc). For that, you should use standard serialization or another kind of
+ * general serialization mechanism. The Parcel marshalled representation is highly optimized for
+ * local IPC, and as such does not attempt to maintain compatibility with data created in different
+ * versions of the platform.
+ *
+ * \param parcel The parcel of which to get the data.
+ *
+ * \return STATUS_OK on success, STATUS_INVALID_OPERATION if parcel contains binders or file
+ * descriptors.
+ */
+binder_status_t AParcel_marshal(const AParcel* parcel, const uint8_t** buffer) __INTRODUCED_IN(32);
+
+/**
+ * Set the data in the parcel to the raw bytes from the buffer.
+ *
+ * \param parcel The parcel to set data.
+ * \param buffer The data buffer to set.
+ * \param len The size of the data to set.
+ *
+ * \return STATUS_OK on success.
+ */
+binder_status_t AParcel_unmarshal(AParcel* parcel, const uint8_t* buffer, size_t len)
+        __INTRODUCED_IN(32);
+
 __END_DECLS
 
 /** @} */
