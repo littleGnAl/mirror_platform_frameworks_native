@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe757af8_00126acb",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-25T23:48:23Z",
+      "side": 1,
+      "message": "If this is the case, I think we should better suggest calling AIBinder_unlinkToDeath before calling this and then explain the cases where it can be omitted (e.g. no data associated with the death recipient).",
+      "range": {
+        "startLine": 571,
+        "startChar": 24,
+        "endLine": 572,
+        "endChar": 26
+      },
+      "revId": "bb895e7def8bb30b279da040ef1cfe4077169d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
