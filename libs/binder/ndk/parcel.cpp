@@ -673,4 +673,13 @@ AParcel* AParcel_create() {
     return new AParcel(nullptr);
 }
 
+const uint8_t* AParcel_data(const AParcel* parcel) {
+    return parcel->get()->data();
+}
+
+binder_status_t AParcel_setData(AParcel* parcel, const uint8_t* buffer, size_t len) {
+    status_t status = parcel->get()->setData(buffer, len);
+    return PruneStatusT(status);
+}
+
 // @END
