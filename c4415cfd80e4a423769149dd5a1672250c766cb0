@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e212cfb_bb19fe7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-25T02:48:49Z",
+      "side": 1,
+      "message": "LGTM. I\u0027m not able to give a +2 in China due to a known bug. Please ask someone else for a +2. Sorry for the inconvenience.",
+      "revId": "c4415cfd80e4a423769149dd5a1672250c766cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

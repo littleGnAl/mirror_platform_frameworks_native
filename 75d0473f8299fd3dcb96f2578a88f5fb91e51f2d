@@ -263,6 +263,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e91f74a5_ab42451c",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-25T02:48:49Z",
+      "side": 1,
+      "message": "Right. Thank you for the change.",
+      "parentUuid": "c9403bc6_8c235a08",
+      "range": {
+        "startLine": 1725,
+        "startChar": 4,
+        "endLine": 1725,
+        "endChar": 80
+      },
+      "revId": "75d0473f8299fd3dcb96f2578a88f5fb91e51f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "024108e9_4340ea53",
