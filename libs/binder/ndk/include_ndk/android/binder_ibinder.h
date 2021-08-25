@@ -566,7 +566,10 @@ __attribute__((warn_unused_result)) AIBinder_DeathRecipient* AIBinder_DeathRecip
 
 /**
  * Deletes a binder death recipient. It is not necessary to call AIBinder_unlinkToDeath before
- * calling this as these will all be automatically unlinked.
+ * calling this as these will all be automatically unlinked. However, do note that in that case,
+ * there may be concurrent execution of a death recipient. So, if there is data associated with
+ * the death recipient, it can not be safely deleted after calling this function without calling
+ * AIBinder_unlinkToDeath.
  *
  * Available since API level 29.
  *
