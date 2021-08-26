@@ -264,6 +264,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a10c25c_9c716bf1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-26T19:34:49Z",
+      "side": 1,
+      "message": "Directly serializing to ashmem requires building whole set of things especially in code generation path. Write flow2 above shows example of doing it for working cases without sacrificing performance. Read flow showed above already avoids additional copy and is very efficient. So performance is not an issue here.\n\nThe user of API should know the caveats and limitations for using this low level API. What low level NDK API do we have which completely prevents client\u0027s mis-usage?",
+      "parentUuid": "ddc167bf_7d373e4b",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
