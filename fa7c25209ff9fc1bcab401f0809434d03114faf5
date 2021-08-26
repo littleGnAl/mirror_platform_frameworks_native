@@ -240,6 +240,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc167bf_7d373e4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-08-26T19:27:14Z",
+      "side": 1,
+      "message": "\u003e We cannot prevent all mis-usages from API itself.\n\nSure but I\u0027m arguing the API itself is inherently wrong. As in, there are no correct usages of it in the first place, so _all_ usages are mis-usages. The usage outlined in the bug itself is, for example, a mis-usage. This isn\u0027t a documentation problem, it\u0027s a architecture design problem.\n\nWhat you want instead is to serialize \u0026 deserialize directly to/from ashmem or have a way to just raise the binder limit. Either of those are OK designs IMO. This isn\u0027t, it\u0027s taking a slow path and making it even slower \u0026 have it use even more RAM, all while mysteriously failing in common scenarios.",
+      "parentUuid": "30748137_38169d60",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
