@@ -111,6 +111,30 @@
       },
       "revId": "45fa4c5623190a2327d351c5438d357f263be41f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "553bb125_fd1987f2",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-08-26T09:00:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7634b1fe_cc82ea97",
+      "range": {
+        "startLine": 144,
+        "startChar": 20,
+        "endLine": 144,
+        "endChar": 30
+      },
+      "revId": "45fa4c5623190a2327d351c5438d357f263be41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
