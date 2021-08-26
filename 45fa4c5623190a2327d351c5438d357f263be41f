@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef3d6d9b_069e423a",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-08-26T05:54:04Z",
+      "side": 1,
+      "message": "Ultimately the purpose is to, when starting a transaction, figure out if its ok to offload the transaction to another thread. The situation when this is not ok is when the transaction would become a sub-transaction, because then you _must_ start it on the current thread in order for the kernel to properly handle A-\u003eB-\u003eA calls.",
+      "parentUuid": "9a77c4b0_bc279339",
+      "revId": "45fa4c5623190a2327d351c5438d357f263be41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7634b1fe_cc82ea97",
         "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
         "patchSetId": 2
