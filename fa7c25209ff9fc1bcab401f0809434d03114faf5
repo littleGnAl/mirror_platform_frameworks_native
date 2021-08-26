@@ -216,6 +216,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "30748137_38169d60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-26T19:16:03Z",
+      "side": 1,
+      "message": "We need to document things that will not work.\nFor low level operation like this, it should be the responsibility of client to make sure to pass what is relevant. We cannot prevent all mis-usages from API itself.\n\nWrite flow 1:\n1. serialize to Parcel\n2. copy\nCaller can check if there is objects written and fail it.\nBut this is hard to prevent as client\u0027s intent for copy is not clear.\n\nWrite flow 2:\n1. get big enough shared memory\n2. setData\n3. serialize\nWe can potentially return error in serialization phase. But again client\u0027s intent is not clear.\n\nRead flow:\n1. get data through shared memory\n2. setData\n3. deserialize\n\nRead flow will fail as there is no objects stored.",
+      "parentUuid": "e1953953_bebb0b6c",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
