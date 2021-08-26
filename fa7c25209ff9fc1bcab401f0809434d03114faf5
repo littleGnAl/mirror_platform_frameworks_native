@@ -192,6 +192,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1953953_bebb0b6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T16:30:57Z",
+      "side": 1,
+      "message": "I was thinking they would need to add methods like \"hasFd\" or \"hasBinder\" or \"hasObject\" for this to work later. The current plan doesn\u0027t need to marshall these.\n\nAnyway - I\u0027m very mixed on this, and I started an android-binder@ thread. While I do think it\u0027s technically correct and there is an argument for it, it could be errorprone, and it\u0027s basically rebuilding a binder mechanism to pass certain data beyond binder\u0027s limit, and I\u0027d rather see this limit fixed in binder. Like John mentioned, some of the workarounds fwk uses for this, we\u0027ve gotten away w/o this kind of thing for a long time.",
+      "parentUuid": "e399f6ef_5b81a5e2",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
