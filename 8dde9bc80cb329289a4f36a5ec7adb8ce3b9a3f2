@@ -16,6 +16,29 @@
       "message": "Adding Martijn for OWNERS since Steven is out this week.",
       "revId": "8dde9bc80cb329289a4f36a5ec7adb8ce3b9a3f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aef2f56_c02e3bfa",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T19:58:04Z",
+      "side": 1,
+      "message": "null SpIBinder is used pretty frequently in C++ code. For instance, as return values. Would we expect that in Rust as well?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "8dde9bc80cb329289a4f36a5ec7adb8ce3b9a3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
