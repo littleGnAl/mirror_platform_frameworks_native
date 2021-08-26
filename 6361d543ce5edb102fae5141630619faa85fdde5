@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82ff8735_67538474",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T00:33:36Z",
+      "side": 1,
+      "message": "what exactly causes this? Is it when the backlog is full?",
+      "range": {
+        "startLine": 11,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "6361d543ce5edb102fae5141630619faa85fdde5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d0f69b_9b91bf91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T00:33:36Z",
+      "side": 1,
+      "message": "can you add a test case?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "6361d543ce5edb102fae5141630619faa85fdde5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a56af73_72d2ca26",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T00:33:36Z",
+      "side": 1,
+      "message": "nit: avoid reusing error code? even make it const above? we could be logging the original value on L503, since it could be one of two different values, might be useful.",
+      "range": {
+        "startLine": 500,
+        "startChar": 74,
+        "endLine": 500,
+        "endChar": 83
+      },
+      "revId": "6361d543ce5edb102fae5141630619faa85fdde5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
