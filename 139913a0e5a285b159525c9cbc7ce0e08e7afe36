@@ -34,6 +34,24 @@
       "parentUuid": "118984ee_26d08e6f",
       "revId": "139913a0e5a285b159525c9cbc7ce0e08e7afe36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe2c9bb_39a9a4b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-26T20:17:18Z",
+      "side": 1,
+      "message": "It\u0027s 4 bytes before and after - I added logs in RpcState.cpp for sizeof(RpcWireReply) with the change and with the revert.",
+      "parentUuid": "92303153_3ef1132f",
+      "revId": "139913a0e5a285b159525c9cbc7ce0e08e7afe36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
