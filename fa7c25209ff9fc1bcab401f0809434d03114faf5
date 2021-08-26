@@ -432,6 +432,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "57386f76_a2221f17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-08-26T21:16:07Z",
+      "side": 1,
+      "message": "\u003e It\u0027s pretty critical that this would happen though. It is not safe to unparcel from shared memory that is owned by another process. This is a central security principle - in kernel binder, it\u0027s guaranteed by the kernel owning the memory that is being unparceled from. ipcSetDataReference must *not* be used here.\n\nAre you specifically talking about unparceling here, or more generally? There are certainly other IPC transports on Android where one process can read from a shared memory buffer that another process still has write access to (gralloc / bufferqueue being the one that immediately comes to mind).  Of course, corrupting image buffers is less likely to crash anything than corrupting serialized data structures, but zero-copy is more or less mandatory to reach acceptable performance once buffers get big enough or are produced at fast enough rates.\n\nBut that also just further argues for not using Parcel as your data model, for large data transport.",
+      "parentUuid": "306444e3_d1d66bc3",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
