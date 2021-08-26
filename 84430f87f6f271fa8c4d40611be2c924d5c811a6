@@ -39,6 +39,30 @@
       },
       "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d49b355b_5c562333",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T20:00:09Z",
+      "side": 1,
+      "message": "There are some things in SystemApi/NDK that are commented or namespaced as internal/not recommended to use, such as Stability. Generally though, I\u0027d say, the assumption that AIDL will be the only users of these APIs is wrong. Once there are enough users, using the internal APIs will become de facto practice, and that\u0027s gross.",
+      "parentUuid": "5d64b192_e02586ef",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 46
+      },
+      "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
