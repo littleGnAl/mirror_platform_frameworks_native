@@ -336,6 +336,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac756e9_6236dbb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-26T20:57:51Z",
+      "side": 1,
+      "message": "I see. So additional copy for writing is not avoidable. But it should be compared against the case where binder call itself fails because of memory limit. We can also remove that additional copy if we can handle memory size limit for Parcel but that will be for future.\nFor passing fd, you can check other email thread on why is it not working without updating auto-generation code. We can make it work in the end but not now without having other things updated.\n\nHow about exposing all necessary information to the client so that client can decide if the operation is safe or not? We need at least to expose object count so that client copying it to shared memory can tell if it is ok or not. Read will fail anyway so main issue will be to detect error in write side.",
+      "parentUuid": "92cb19f6_efda839c",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
