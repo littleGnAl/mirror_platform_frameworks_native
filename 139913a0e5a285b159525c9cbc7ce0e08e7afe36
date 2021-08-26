@@ -70,6 +70,24 @@
       "parentUuid": "8fe2c9bb_39a9a4b2",
       "revId": "139913a0e5a285b159525c9cbc7ce0e08e7afe36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d067196_9f3a04ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-26T22:05:12Z",
+      "side": 1,
+      "message": "Hah! Both of those would have been much faster :) /shame.\nI like the usage of the template!\n\nDo you want the static_assert added here, or that was just a tip for faster investigation?",
+      "parentUuid": "654e229e_f4a27b6a",
+      "revId": "139913a0e5a285b159525c9cbc7ce0e08e7afe36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
