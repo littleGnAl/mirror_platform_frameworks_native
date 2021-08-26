@@ -63,6 +63,30 @@
       },
       "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121cdf9f_ccd05241",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-08-26T22:46:56Z",
+      "side": 1,
+      "message": "If this is something we want to change, that\u0027s a reasonable discussion, but I think the only bearing it would have on this CL is the name of the internal module (e.g. maybe it should just be `internal_api` not `aidl_interal_api`)? It sounds like you\u0027re suggesting that we should stabilize everything required to build the AIDL implementation, which is possible, but this change is just about switching namespacing.",
+      "parentUuid": "d49b355b_5c562333",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 46
+      },
+      "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
