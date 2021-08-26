@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa45ba3_2037ea5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1219061
+      },
+      "writtenOn": "2021-08-26T01:12:33Z",
+      "side": 1,
+      "message": "We need raw data of parcelable to be written/read from the shared memory file so that we could use the same marshal/unmarshal logic to deal with parcelable that are small enough which we could directly send or large enough so they need be sent over shared memory file.\n\nIf we use a different serialization/deserialization mechanism, we have to use two different mechanism to send the data based on whether it exceeds binder limitation or not.",
+      "parentUuid": "7626d551_755a69e0",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
