@@ -22,6 +22,29 @@
       },
       "revId": "95d15e56fc1e45b1aa11e9ad6ce01f77f0a28c36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16253a0a_fcbc9c39",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-08-26T15:59:04Z",
+      "side": 1,
+      "message": "FWIW, this is the (only) error I\u0027m seeing.  It doesn\u0027t look anything was happening on the server side though, so I don\u0027t know what causes the connection to reset.",
+      "range": {
+        "startLine": 512,
+        "startChar": 23,
+        "endLine": 512,
+        "endChar": 45
+      },
+      "revId": "95d15e56fc1e45b1aa11e9ad6ce01f77f0a28c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
