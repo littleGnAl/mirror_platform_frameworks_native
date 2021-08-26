@@ -560,6 +560,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec0b5064_2e2e1336",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1219061
+      },
+      "writtenOn": "2021-08-26T22:26:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44923894_72d0a872",
+      "range": {
+        "startLine": 1171,
+        "startChar": 27,
+        "endLine": 1171,
+        "endChar": 28
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7429496a_4706b848",
