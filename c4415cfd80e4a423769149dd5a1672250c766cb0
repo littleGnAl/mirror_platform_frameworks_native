@@ -16,6 +16,80 @@
       "message": "LGTM. I\u0027m not able to give a +2 in China due to a known bug. Please ask someone else for a +2. Sorry for the inconvenience.",
       "revId": "c4415cfd80e4a423769149dd5a1672250c766cb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51942424_8e3ba7b8",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-26T13:25:45Z",
+      "side": 1,
+      "message": "nit: one more space",
+      "revId": "c4415cfd80e4a423769149dd5a1672250c766cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6b2615f_ca6a1067",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-26T13:25:45Z",
+      "side": 1,
+      "message": "What if we get a block request at this point?",
+      "revId": "c4415cfd80e4a423769149dd5a1672250c766cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e64170d6_d8b48e2d",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1715,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-26T13:25:45Z",
+      "side": 1,
+      "message": "Can cancelled be true and WTERMSIG(result) not be SIGKILL?",
+      "range": {
+        "startLine": 1715,
+        "startChar": 45,
+        "endLine": 1715,
+        "endChar": 55
+      },
+      "revId": "c4415cfd80e4a423769149dd5a1672250c766cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3351c30a_3d9750df",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-08-26T13:25:45Z",
+      "side": 1,
+      "message": "Same question: what if we get a cancel request here?",
+      "revId": "c4415cfd80e4a423769149dd5a1672250c766cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
