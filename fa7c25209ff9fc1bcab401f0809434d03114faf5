@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4acd1caf_31b0f3b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1219061
+      },
+      "writtenOn": "2021-08-26T00:47:34Z",
+      "side": 1,
+      "message": "We need to pass parcelable that might exceed binder memory limitation across binder interface. For such parcelable, we add a library and check whether the marshalled data would exceed memory limitation, if so, we write the marshalled data in a shared memory file and pass the fileDescriptor to that shared memory file instead. On the other end, the receiver would do the opposite operation and turn the data back to a regular parcelable.\nWe are passing data between android system and Vehicle HAL using AIDL interface, so we have to use Parcelable (Parcel).\nThe detailed design is at go/auto-bigger-payload.",
+      "parentUuid": "c2078a86_b34bc6a3",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
