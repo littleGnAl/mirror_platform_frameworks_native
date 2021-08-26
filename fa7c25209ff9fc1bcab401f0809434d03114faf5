@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d7477a_85df235a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T00:29:02Z",
+      "side": 1,
+      "message": "(note, all the adds are from adding \u0027android-ndk-api-council\u0027 to the CL)",
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2953d788_a8f68edf",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T00:29:02Z",
+      "side": 1,
+      "message": "nice! I see this is the description from android.os.Parcel.marshall. perfect.",
+      "range": {
+        "startLine": 1170,
+        "startChar": 3,
+        "endLine": 1170,
+        "endChar": 6
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44923894_72d0a872",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T00:29:02Z",
+      "side": 1,
+      "message": "nit: this file uses single spaces",
+      "range": {
+        "startLine": 1171,
+        "startChar": 27,
+        "endLine": 1171,
+        "endChar": 28
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
