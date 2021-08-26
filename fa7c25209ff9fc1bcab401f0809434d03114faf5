@@ -288,6 +288,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "76fc7576_d65c1de9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1219061
+      },
+      "writtenOn": "2021-08-26T19:37:29Z",
+      "side": 1,
+      "message": "I do agree that we need to add the checks for binders to be compatible with SDK. If we add the checks for objectsCount, we could prevent accidental misuse or the marshal function.",
+      "parentUuid": "4a10c25c_9c716bf1",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
