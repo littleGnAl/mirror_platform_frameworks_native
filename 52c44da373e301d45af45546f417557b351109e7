@@ -70,6 +70,30 @@
       },
       "revId": "52c44da373e301d45af45546f417557b351109e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e836a8_c3ee5105",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-08-26T21:05:18Z",
+      "side": 1,
+      "message": "Not exactly.  If something doesn\u0027t compile, TreeHugger will presumably catch that.\n\nBindgen\u0027s tests seem to test things such as whether the layout of shared structs are what it expects (since if they were not that would cause major problems).  I think it\u0027s more of an issue when using the same bindings across different architectures, which shouldn\u0027t be a problem for us, but it doesn\u0027t hurt to be safe.  https://github.com/rust-lang/rust-bindgen/issues/1823 gives an example of the sort of tests it generates.",
+      "parentUuid": "464e658f_04a3169b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "52c44da373e301d45af45546f417557b351109e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
