@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2078a86_b34bc6a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-08-26T00:37:56Z",
+      "side": 1,
+      "message": "This needs a bit more elaboration - we don\u0027t have raw access to Parcel\u0027s guts in the SDK, and I\u0027m very skeptical we should have it in the NDK either, given that it\u0027s not guaranteed to be any sort of stable.  So I don\u0027t see how applications can safely use this.\n\nCan you elaborate on why you need Parcels here to begin with if you\u0027re creating your own IPC paths?",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
