@@ -52,6 +52,24 @@
       "parentUuid": "92303153_3ef1132f",
       "revId": "139913a0e5a285b159525c9cbc7ce0e08e7afe36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "654e229e_f4a27b6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T20:42:12Z",
+      "side": 1,
+      "message": "consider also, \u0027static_assert(sizeof(RpcWireReply) \u003d\u003d 4)\u0027\n\nYou can also have the compiler print constexpr data if you\u0027re fancy:\n\n    template\u003csize_t p\u003e class CompilePrint;\n    CompilePrint\u003csizeof(RpcWireReply)\u003e boom; // will error b/c class is not defined and show size",
+      "parentUuid": "8fe2c9bb_39a9a4b2",
+      "revId": "139913a0e5a285b159525c9cbc7ce0e08e7afe36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
