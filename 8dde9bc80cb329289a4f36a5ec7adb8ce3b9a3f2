@@ -39,6 +39,30 @@
       },
       "revId": "8dde9bc80cb329289a4f36a5ec7adb8ce3b9a3f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "357f7860_b019a93e",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-08-26T20:45:49Z",
+      "side": 1,
+      "message": "No, one of the current invariants of this object is that it cannot contain a null pointer. In Rust nullable types are generally represented by Option (None). We use Option\u003cSpIBinder\u003e explicitly when null is a possibility.",
+      "parentUuid": "5aef2f56_c02e3bfa",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "8dde9bc80cb329289a4f36a5ec7adb8ce3b9a3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
