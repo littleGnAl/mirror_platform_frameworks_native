@@ -408,6 +408,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "306444e3_d1d66bc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-26T21:11:12Z",
+      "side": 1,
+      "message": "returning error will be problematic as we cannot predict what clients will do. It may be better to leave it to client to check using  these calls while we document this flow to pass data over shared memory in data() call.",
+      "parentUuid": "8ebcfe7d_9ffb88e8",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
