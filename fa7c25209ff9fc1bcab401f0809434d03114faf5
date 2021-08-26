@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d848c7ff_121f7007",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T01:46:06Z",
+      "side": 1,
+      "message": "btw - Eddy, android.os.Parcel#marshall is this same public API, right?\n\nThis is about reusing the parceling code. I don\u0027t necessarily love it (I wish we could remove this constraint from binder), but there are real constraints in binder, and we discussed some type-level checks in a library the automotive team would add to use this, so it\u0027s safe (up to developer mistakes, as per usual).",
+      "parentUuid": "dfa45ba3_2037ea5b",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
