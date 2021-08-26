@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7093d0b_d86e1cd0",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-08-26T15:40:56Z",
+      "side": 1,
+      "message": "This patch works reliably if I increase the retry.  On my device, it seems the worst case out of 10 runs requires 17 retries (mostly 10+).\n\nHaving said that, I\u0027m not sure what\u0027s a reasonable retry number in general. Eventually, our client code should coordinate the connection handshake better, so this wouldn\u0027t be super important.  But what should we do in the short term?",
+      "range": {
+        "startLine": 474,
+        "startChar": 35,
+        "endLine": 474,
+        "endChar": 36
+      },
+      "revId": "95d15e56fc1e45b1aa11e9ad6ce01f77f0a28c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
