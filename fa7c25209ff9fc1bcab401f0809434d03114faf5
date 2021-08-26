@@ -133,6 +133,29 @@
       },
       "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7429496a_4706b848",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-26T01:03:41Z",
+      "side": 1,
+      "message": "The raw data may include already serialized data and the parcel can be used to de-serialize it. Plz note that the serialized data should include only stable data like vintf stable AIDL to cross the boundary between vendor and system without breaking compatibility.",
+      "range": {
+        "startLine": 1184,
+        "startChar": 0,
+        "endLine": 1184,
+        "endChar": 2
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
