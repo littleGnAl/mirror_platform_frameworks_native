@@ -33,6 +33,24 @@
       "message": "It\u0027s unclear to me why we\u0027re creating a proxy object rather than attaching an additional trait.\n\nIs it to prevent someone from using the same object both synchronously and asynchronously?",
       "revId": "affee60402e6dc44af349051ed9521acb3908167",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc3b329a_e187f9d3",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-08-26T09:09:36Z",
+      "side": 1,
+      "message": "Well, for one, we really don\u0027t want people to accidentally call the synchronous version on the Tokio worker threads. By defining a new type, it\u0027s harder to mix them up in this way.\n\nAnother reason is `async fn` support in traits is pretty terrible. It is intentional that the async methods are not defined in a trait.",
+      "parentUuid": "68e2aa04_f2ca533f",
+      "revId": "affee60402e6dc44af349051ed9521acb3908167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
