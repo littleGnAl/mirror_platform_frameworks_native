@@ -312,6 +312,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "92cb19f6_efda839c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-08-26T20:43:53Z",
+      "side": 1,
+      "message": "\u003e Directly serializing to ashmem requires building whole set of things especially in code generation path. \n\nI\u0027m talking the Parcel internally supporting allocating its mData on ashmem/memfd instead. So all your code generation targeting Parcel would be unchanged, _and_ it would still work with binder \u0026 FD objects.\n\n\u003e Write flow2 above shows example of doing it for working cases without sacrificing performance. [...]Read flow showed above already avoids additional copy and is very efficient\n\nsetData does a memcpy to Parcel\u0027s internal buffer: https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/Parcel.cpp;drc\u003d16a4106cb7bc18d473a428d9f19c7561a21e3f06;l\u003d421\n\nSo the write flow 2 doesn\u0027t work, the data doesn\u0027t end up on ashmem, and the read flow starts by doing a deep copy of the ashmem buffer.",
+      "parentUuid": "76fc7576_d65c1de9",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
