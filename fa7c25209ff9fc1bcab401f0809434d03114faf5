@@ -360,6 +360,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "93788f24_ed3067d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-26T20:58:02Z",
+      "side": 1,
+      "message": "\u003e the read flow starts by doing a deep copy of the ashmem buffer.\n\nIt\u0027s pretty critical that this would happen though. It is not safe to unparcel from shared memory that is owned by another process. This is a central security principle - in kernel binder, it\u0027s guaranteed by the kernel owning the memory that is being unparceled from. ipcSetDataReference must *not* be used here.",
+      "parentUuid": "92cb19f6_efda839c",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "fa7c25209ff9fc1bcab401f0809434d03114faf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19d7477a_85df235a",
