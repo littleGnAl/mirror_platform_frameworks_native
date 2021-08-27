@@ -118,6 +118,30 @@
       },
       "revId": "52c44da373e301d45af45546f417557b351109e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8a7d968_11f6dcef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-27T16:33:56Z",
+      "side": 1,
+      "message": "Thanks for the explanation.\n\nOne more question then, could rust_bindgen use CreateModule internally to create these tests, so that we don\u0027t always have to declare them separately?",
+      "parentUuid": "97e1360f_9e4ceea8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "52c44da373e301d45af45546f417557b351109e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
