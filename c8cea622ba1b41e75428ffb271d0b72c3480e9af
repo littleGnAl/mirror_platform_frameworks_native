@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f821595_88b22aac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2021-08-27T15:27:36Z",
+      "side": 1,
+      "message": "This has been changed on S, which will become aosp/master soon",
+      "revId": "c8cea622ba1b41e75428ffb271d0b72c3480e9af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
