@@ -16,6 +16,24 @@
       "message": "I couldn\u0027t figure out how to run the tests locally, so I\u0027m using the CI setup to do it for me.",
       "revId": "5b60f182e25a9f7550d95829d042d901f008c6d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69620042_df59f12e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-27T15:42:21Z",
+      "side": 1,
+      "message": "\u0027atest libbinder_ndk_unit_test\u0027 (or generally \u0027atest \u003cany test name\u003e\u0027)",
+      "parentUuid": "b2a9e906_bde7abd8",
+      "revId": "5b60f182e25a9f7550d95829d042d901f008c6d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
