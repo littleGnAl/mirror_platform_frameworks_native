@@ -135,6 +135,30 @@
       },
       "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "223a6cf9_de9f6862",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-27T01:40:12Z",
+      "side": 1,
+      "message": "We have made it possible for users to use binder without AIDL by manually writing the proxy and stub code by themselves, or even by using a tool other than the AIDL compiler (e.g. grpc). I think we don\u0027t want to change the expectation exceptionally for rust clients.",
+      "parentUuid": "2fa438ab_6fe0269e",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 46
+      },
+      "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
