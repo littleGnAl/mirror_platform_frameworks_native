@@ -304,13 +304,16 @@ binder_status_t AIBinder_dump(AIBinder* binder, int fd, const char** args, uint3
 /**
  * Registers for notifications that the associated binder is dead. The same death recipient may be
  * associated with multiple different binders. If the binder is local, then no death recipient will
- * be given (since if the local process dies, then no recipient will exist to recieve a
+ * be given (since if the local process dies, then no recipient will exist to receive a
  * transaction). The cookie is passed to recipient in the case that this binder dies and can be
- * null. The exact cookie must also be used to unlink this transaction (see AIBinder_linkToDeath).
+ * null. The exact cookie must also be used to unlink this transaction (see AIBinder_unlinkToDeath).
  * This function may return a binder transaction failure. The cookie can be used both for
  * identification and holding user data.
  *
  * If binder is local, this will return STATUS_INVALID_OPERATION.
+ *
+ * This method is equivalent to calling AIBinder_linkToDeathWithCleanup with onUnlinked set to a
+ * null pointer.
  *
  * Available since API level 29.
  *
@@ -324,6 +327,56 @@ binder_status_t AIBinder_linkToDeath(AIBinder* binder, AIBinder_DeathRecipient* 
                                      void* cookie) __INTRODUCED_IN(29);
 
 /**
+ * This function is intended for cleaning up the data in the provided cookie, and it is executed
+ * when the DeathRecipient is unlinked. When the DeathRecipient is unlinked due to a death receipt,
+ * this method is called after the call to onBinderDied.
+ *
+ * If the same cookie is provided to multiple binders, this method will be called once for each
+ * binder that stops using it. If the caller passes it to multiple binders, then the caller is
+ * responsible for reference counting the cookie.
+ *
+ * See also AIBinder_linkToDeath/AIBinder_unlinkToDeath.
+ *
+ * Available since API level 32.
+ *
+ * \param cookie the cookie passed to AIBinder_linkToDeath.
+ */
+typedef void (*AIBinder_DeathRecipient_onBinderUnlinked)(void* cookie) __INTRODUCED_IN(32);
+
+/**
+ * Registers for notifications that the associated binder is dead. The same death recipient may be
+ * associated with multiple different binders. If the binder is local, then no death recipient will
+ * be given (since if the local process dies, then no recipient will exist to receive a
+ * transaction). The cookie is passed to recipient in the case that this binder dies and can be
+ * null. The exact cookie must also be used to unlink this transaction (see AIBinder_unlinkToDeath).
+ * This function may return a binder transaction failure. The cookie can be used both for
+ * identification and holding user data.
+ *
+ * When the provided DeathRecipient is unlinked from this binder for any reason, the provided
+ * onUnlinked callback is called with the cookie (unless the callback is null), indicating that this
+ * binder will no longer use the cookie and that it is safe to deallocate it. If the same cookie is
+ * passed to multiple binders, then each binder will call onUnlinked when it has finished using the
+ * cookie, and it is the caller's responsibility to reference count the cookie.
+ *
+ * If the call returns an error, then the onUnlinked method is immediately called with the cookie.
+ *
+ * If binder is local, this will return STATUS_INVALID_OPERATION.
+ *
+ * Available since API level 32.
+ *
+ * \param binder the binder object you want to receive death notifications from.
+ * \param recipient the callback that will receive notifications when/if the binder dies.
+ * \param cookie the value that will be passed to the death recipient on death.
+ * \param onUnlinked the callback to call when it is safe to clean up the cookie.
+ *
+ * \return STATUS_OK on success.
+ */
+binder_status_t AIBinder_linkToDeathWithCleanup(AIBinder* binder,
+                                                AIBinder_DeathRecipient* recipient, void* cookie,
+                                                AIBinder_DeathRecipient_onBinderUnlinked onUnlinked)
+        __INTRODUCED_IN(32);
+
+/**
  * Stops registration for the associated binder dying. Does not delete the recipient. This function
  * may return a binder transaction failure and in case the death recipient cannot be found, it
  * returns STATUS_NAME_NOT_FOUND.
@@ -332,6 +385,10 @@ binder_status_t AIBinder_linkToDeath(AIBinder* binder, AIBinder_DeathRecipient* 
  * AIBinder objects. If the death recipient is deleted, all binders will automatically be unlinked.
  * If the binder dies, it will automatically unlink. If the binder is deleted, it will be
  * automatically unlinked.
+ *
+ * Be aware that it is not safe to immediately deallocate the cookie when this call returns. If you
+ * need to clean up the cookie, you should do so in the onUnlinked callback, which can be set using
+ * AIBinder_linkToDeathWithCleanup.
  *
  * Available since API level 29.
  *
@@ -567,6 +624,10 @@ __attribute__((warn_unused_result)) AIBinder_DeathRecipient* AIBinder_DeathRecip
 /**
  * Deletes a binder death recipient. It is not necessary to call AIBinder_unlinkToDeath before
  * calling this as these will all be automatically unlinked.
+ *
+ * Be aware that it is not safe to immediately deallocate the cookie when this call returns. If you
+ * need to clean up the cookie, you should do so in the onUnlinked callback, which can be set using
+ * AIBinder_linkToDeathWithCleanup.
  *
  * Available since API level 29.
  *
