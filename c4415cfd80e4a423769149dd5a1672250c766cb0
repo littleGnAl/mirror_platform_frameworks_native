@@ -106,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4292ea6e_8330fd49",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-08-27T17:48:47Z",
+      "side": 1,
+      "message": "Yes, you are right. fork and adding should be done under mutex as atomic operation. I will update it.",
+      "parentUuid": "cedd837b_599081a3",
+      "revId": "c4415cfd80e4a423769149dd5a1672250c766cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e64170d6_d8b48e2d",
