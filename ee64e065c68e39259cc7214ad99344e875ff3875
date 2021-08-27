@@ -34,6 +34,29 @@
       "parentUuid": "0c49c5fb_a7b2e507",
       "revId": "ee64e065c68e39259cc7214ad99344e875ff3875",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c23ca60_5292b551",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-08-27T16:33:06Z",
+      "side": 1,
+      "message": "Should this be on the DeathRecipient instead? eg, AIBinder_DeathRecipient_setOnUnlinked(...)?\n\nIf not this should be named AIBinder_onBinderUnlinked instead, but from the API surface it looks like it makes more sense to be on the AIBinder_DeathRecipient rather than an extra parameter on linkToDeath.",
+      "range": {
+        "startLine": 344,
+        "startChar": 15,
+        "endLine": 344,
+        "endChar": 55
+      },
+      "revId": "ee64e065c68e39259cc7214ad99344e875ff3875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
