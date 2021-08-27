@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7011d0b7_69232035",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-08-27T15:10:32Z",
+      "side": 1,
+      "message": "According to the bug, it looks like this is unrelated and can be abandoned.\nhttps://buganizer.corp.google.com/issues/197936183\n\nThe test failure is in MediaProviderClientTests.",
+      "revId": "b4c7dad48e468b05d7e16ba80e8c8f3ce46ea496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
