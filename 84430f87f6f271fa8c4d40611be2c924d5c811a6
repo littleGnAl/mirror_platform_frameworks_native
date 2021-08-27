@@ -159,6 +159,30 @@
       },
       "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05a36956_d4cfabfc",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-08-27T21:58:26Z",
+      "side": 1,
+      "message": "If we really want to expose all of this, ok, but we have an opportunity to do things differently for Rust. I don\u0027t think we should just do what has been done for historical reasons in C++ and Java without considering alternatives.",
+      "parentUuid": "223a6cf9_de9f6862",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 46
+      },
+      "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
