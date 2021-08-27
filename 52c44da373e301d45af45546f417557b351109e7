@@ -142,6 +142,30 @@
       },
       "revId": "52c44da373e301d45af45546f417557b351109e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11377298_c81ff643",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-08-27T16:40:43Z",
+      "side": 1,
+      "message": "It\u0027s something I\u0027ve considered. I believe we could, but it makes the existence of the test a little less obvious since it\u0027s not clearly defined in a build file. At least with this approach it\u0027s clear there\u0027s a test here which can be run. The risk of course being that the test never gets defined.\n\nThis isn\u0027t a particularly strong conviction; I could be convinced that its better to just automatically create these and make sure the automatic test generation is well documented :)",
+      "parentUuid": "d8a7d968_11f6dcef",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "52c44da373e301d45af45546f417557b351109e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
