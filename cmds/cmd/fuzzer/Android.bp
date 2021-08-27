@@ -30,7 +30,6 @@ cc_fuzz {
     ],
     static_libs: [
         "libcmd",
-        "libutils",
         "liblog",
         "libselinux",
     ],
