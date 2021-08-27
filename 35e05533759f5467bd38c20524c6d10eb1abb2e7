@@ -86,6 +86,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55af9e92_92e27516",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885590
+      },
+      "writtenOn": "2021-08-27T00:53:38Z",
+      "side": 1,
+      "message": "Thank you too, Prabir!\nDo I have to do anything else for this?, like doing something to mark this submission as \"close\".\nIf anything is left for such, please let me know.",
+      "parentUuid": "d703e6ae_0258a4a0",
+      "revId": "35e05533759f5467bd38c20524c6d10eb1abb2e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "973168c6_17d75cd6",
