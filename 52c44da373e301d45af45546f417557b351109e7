@@ -94,6 +94,30 @@
       },
       "revId": "52c44da373e301d45af45546f417557b351109e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97e1360f_9e4ceea8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-08-27T13:20:35Z",
+      "side": 1,
+      "message": "Yup, layout mismatches would result in undefined behavior at runtime -- the tests verify that the shared struct layouts are as expected.\n\nActual test code is only generated if there are layouts to test, which is why some of these tests don\u0027t actually test anything *right now*. In the future however, if these bindings begin to include structs, then having these test modules already defined ensures we\u0027ll be testing those generated layouts.",
+      "parentUuid": "87e836a8_c3ee5105",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "52c44da373e301d45af45546f417557b351109e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
