@@ -146,6 +146,11 @@ LIBBINDER_NDK32 { # introduced=32
     AIBinder_Class_disableInterfaceTokenHeader;
 };
 
+LIBBINDER_NDK33 { # introduced=33
+  global:
+    AIBinder_DeathRecipient_setOnUnlinked;
+};
+
 LIBBINDER_NDK_PLATFORM {
   global:
     AParcel_getAllowFds;
