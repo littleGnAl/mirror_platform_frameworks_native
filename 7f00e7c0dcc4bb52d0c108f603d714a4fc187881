@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb7e1a3_9080ce54",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-08-27T18:15:19Z",
+      "side": 1,
+      "message": "This should copy to a provided buffer instead of returning the underlying raw pointer.",
+      "range": {
+        "startLine": 1183,
+        "startChar": 16,
+        "endLine": 1183,
+        "endChar": 31
+      },
+      "revId": "7f00e7c0dcc4bb52d0c108f603d714a4fc187881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
