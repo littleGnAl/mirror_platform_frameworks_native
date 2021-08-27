@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cedd837b_599081a3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1642,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-27T03:20:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure that \"it will fork and kill\", even if an additional check is added. Consider the following case:\n\nT0: Check is_dexopt_blocked(), get `false`.\nT0: Fork.\nT1: Call control_dexopt_blocking(true)\nT1: Kill processes in dexopt_pids_ (Note that the newly forked process is not in the set yet)\nT0: Add the child pid to dexopt_pids_.\n\nI think a mutex needs to be used to avoid this reace condition.",
+      "parentUuid": "cf79d970_b72823ff",
+      "revId": "c4415cfd80e4a423769149dd5a1672250c766cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e64170d6_d8b48e2d",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 9
@@ -166,6 +184,24 @@
       "side": 1,
       "message": "it should be caught in later steps. if there are steps taking long time, better to add additional check as necessary.",
       "parentUuid": "3351c30a_3d9750df",
+      "revId": "c4415cfd80e4a423769149dd5a1672250c766cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebd6ec82_c9e0b7b5",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-08-27T03:20:18Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "6797e8bd_4679e610",
       "revId": "c4415cfd80e4a423769149dd5a1672250c766cb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
