@@ -166,6 +166,30 @@
       },
       "revId": "52c44da373e301d45af45546f417557b351109e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f38d691_97e7ace4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-27T16:47:13Z",
+      "side": 1,
+      "message": "host tests which are marked as unit tests will automatically be run by the infra these days. jdesprez@ has been doing a lot of work to improve this situation, to make sure we are running all host tests that we can (I expect this can be done as a host test). If you want to consider it more, you might reach out to him to make sure our infra would be running them.",
+      "parentUuid": "11377298_c81ff643",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "52c44da373e301d45af45546f417557b351109e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
