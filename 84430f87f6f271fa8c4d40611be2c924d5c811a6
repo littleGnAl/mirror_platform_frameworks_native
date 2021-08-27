@@ -111,6 +111,30 @@
       },
       "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa438ab_6fe0269e",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-08-27T01:27:28Z",
+      "side": 1,
+      "message": "The question is really whether we want users to use anything other than the AIDL interface. I was under the impression that we definitely did not.",
+      "parentUuid": "645e99f6_010d5cbd",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 46
+      },
+      "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
