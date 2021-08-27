@@ -16,6 +16,24 @@
       "message": "(api reviewers from adding \u0027android-ndk-api-council\u0027)",
       "revId": "ee64e065c68e39259cc7214ad99344e875ff3875",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94585851_81d8518a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-27T15:43:37Z",
+      "side": 1,
+      "message": "Oh, the other thing is that you should update CtsNdkBinderTestCases to have a test for this as well, since this is an app API. CTS tests are grouped in a different directory",
+      "parentUuid": "0c49c5fb_a7b2e507",
+      "revId": "ee64e065c68e39259cc7214ad99344e875ff3875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
