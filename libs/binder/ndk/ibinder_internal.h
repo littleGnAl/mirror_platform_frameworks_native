@@ -145,8 +145,14 @@ struct AIBinder_DeathRecipient : ::android::RefBase {
     struct TransferDeathRecipient : ::android::IBinder::DeathRecipient {
         TransferDeathRecipient(const ::android::wp<::android::IBinder>& who, void* cookie,
                                const ::android::wp<AIBinder_DeathRecipient>& parentRecipient,
-                               const AIBinder_DeathRecipient_onBinderDied onDied)
-            : mWho(who), mCookie(cookie), mParentRecipient(parentRecipient), mOnDied(onDied) {}
+                               const AIBinder_DeathRecipient_onBinderDied onDied,
+                               const AIBinder_DeathRecipient_onBinderUnlinked onUnlinked)
+            : mWho(who),
+              mCookie(cookie),
+              mParentRecipient(parentRecipient),
+              mOnDied(onDied),
+              mOnUnlinked(onUnlinked) {}
+        ~TransferDeathRecipient();
 
         void binderDied(const ::android::wp<::android::IBinder>& who) override;
 
@@ -162,10 +168,13 @@ struct AIBinder_DeathRecipient : ::android::RefBase {
         // This is kept separately from AIBinder_DeathRecipient in case the death recipient is
         // deleted while the death notification is fired
         const AIBinder_DeathRecipient_onBinderDied mOnDied;
+        const AIBinder_DeathRecipient_onBinderUnlinked mOnUnlinked;
     };
 
     explicit AIBinder_DeathRecipient(AIBinder_DeathRecipient_onBinderDied onDied);
-    binder_status_t linkToDeath(const ::android::sp<::android::IBinder>&, void* cookie);
+    binder_status_t linkToDeathWithCleanup(
+            const ::android::sp<::android::IBinder>&, void* cookie,
+            const AIBinder_DeathRecipient_onBinderUnlinked onUnlinked);
     binder_status_t unlinkToDeath(const ::android::sp<::android::IBinder>& binder, void* cookie);
 
    private:
