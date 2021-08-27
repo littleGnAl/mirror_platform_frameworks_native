@@ -367,6 +367,12 @@ const char* AIBinder_Class_getDescriptor(const AIBinder_Class* clazz) {
     return clazz->getInterfaceDescriptorUtf8();
 }
 
+AIBinder_DeathRecipient::TransferDeathRecipient::~TransferDeathRecipient() {
+    if (mOnUnlinked != nullptr) {
+        mOnUnlinked(mCookie);
+    }
+}
+
 void AIBinder_DeathRecipient::TransferDeathRecipient::binderDied(const wp<IBinder>& who) {
     CHECK(who == mWho) << who.unsafe_get() << "(" << who.get_refs() << ") vs " << mWho.unsafe_get()
                        << " (" << mWho.get_refs() << ")";
@@ -400,16 +406,20 @@ void AIBinder_DeathRecipient::pruneDeadTransferEntriesLocked() {
                            mDeathRecipients.end());
 }
 
-binder_status_t AIBinder_DeathRecipient::linkToDeath(const sp<IBinder>& binder, void* cookie) {
+binder_status_t AIBinder_DeathRecipient::linkToDeathWithCleanup(
+        const sp<IBinder>& binder, void* cookie,
+        const AIBinder_DeathRecipient_onBinderUnlinked onUnlinked) {
     CHECK(binder != nullptr);
 
     std::lock_guard<std::mutex> l(mDeathRecipientsMutex);
 
     sp<TransferDeathRecipient> recipient =
-            new TransferDeathRecipient(binder, cookie, this, mOnDied);
+            new TransferDeathRecipient(binder, cookie, this, mOnDied, onUnlinked);
 
     status_t status = binder->linkToDeath(recipient, cookie, 0 /*flags*/);
     if (status != STATUS_OK) {
+        // When we failed to link, the destructor of TransferDeathRecipient runs here, which
+        // ensures that onUnlinked is called before we return with an error from this method.
         return PruneStatusT(status);
     }
 
@@ -509,13 +519,19 @@ binder_status_t AIBinder_dump(AIBinder* binder, int fd, const char** args, uint3
 
 binder_status_t AIBinder_linkToDeath(AIBinder* binder, AIBinder_DeathRecipient* recipient,
                                      void* cookie) {
+    return AIBinder_linkToDeathWithCleanup(binder, recipient, cookie, nullptr);
+}
+
+binder_status_t AIBinder_linkToDeathWithCleanup(
+        AIBinder* binder, AIBinder_DeathRecipient* recipient, void* cookie,
+        AIBinder_DeathRecipient_onBinderUnlinked onUnlinked) {
     if (binder == nullptr || recipient == nullptr) {
         LOG(ERROR) << __func__ << ": Must provide binder and recipient.";
         return STATUS_UNEXPECTED_NULL;
     }
 
     // returns binder_status_t
-    return recipient->linkToDeath(binder->getBinder(), cookie);
+    return recipient->linkToDeathWithCleanup(binder->getBinder(), cookie, onUnlinked);
 }
 
 binder_status_t AIBinder_unlinkToDeath(AIBinder* binder, AIBinder_DeathRecipient* recipient,
