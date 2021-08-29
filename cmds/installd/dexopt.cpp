@@ -1477,10 +1477,11 @@ bool open_vdex_files_for_dex2oat(const char* apk_path, const char* out_oat_path,
         //    cannot be currently used by a running process.
         // 3) We are not doing a profile guided compilation, because dexlayout requires two
         //    different vdex files to operate.
-        update_vdex_in_place =
-            (in_vdex_path_str == out_vdex_path_str) &&
-            (dexopt_action == DEX2OAT_FOR_BOOT_IMAGE) &&
-            !profile_guided;
+        //
+        // update_vdex_in_place =
+        //    (in_vdex_path_str == out_vdex_path_str) &&
+        //    (dexopt_action == DEX2OAT_FOR_BOOT_IMAGE) &&
+        //    !profile_guided;
         if (update_vdex_in_place) {
             // Open the file read-write to be able to update it.
             in_vdex_wrapper_fd->reset(open(in_vdex_path_str.c_str(), O_RDWR, 0));
