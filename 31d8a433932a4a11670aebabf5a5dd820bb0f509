@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1980d4a0_bd96f326",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-30T20:26:39Z",
+      "side": 1,
+      "message": "unique_fd can\u0027t be used in the header here because libbinder stuff is included in places where libbase isn\u0027t. So, it\u0027s a bit messy, but I\u0027ve left it as-is. :(",
+      "range": {
+        "startLine": 388,
+        "startChar": 20,
+        "endLine": 388,
+        "endChar": 23
+      },
+      "revId": "31d8a433932a4a11670aebabf5a5dd820bb0f509",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
