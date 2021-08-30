@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d9a172_b91fe1e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-30T20:53:31Z",
+      "side": 1,
+      "message": "libs/binder already has an OWNERS file. Can you add the component there?",
+      "revId": "99094318fa5ddeaabbe209d94ea98848f255f884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
