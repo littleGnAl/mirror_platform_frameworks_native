@@ -183,6 +183,30 @@
       },
       "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd51b79_daac134f",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-30T00:53:59Z",
+      "side": 1,
+      "message": "Ok, then the question goes down to \"Do we want to discourage (though we can never prohibit for compat reasons) people using binder directly without AIDL?\" If so, it might be better to hide these APIs at least for Rust.\n\nSteven, what do you think?",
+      "parentUuid": "05a36956_d4cfabfc",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 46
+      },
+      "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
