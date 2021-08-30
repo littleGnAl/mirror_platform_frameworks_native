@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "893546cd_e4be6baa",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-30T16:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "107354f7_e2242965",
+      "range": {
+        "startLine": 617,
+        "startChar": 7,
+        "endLine": 617,
+        "endChar": 8
+      },
+      "revId": "b50e77e852a2056853966959bcadb9155e41919c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06547b73_d6255dea",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-29T11:55:52Z",
       "side": 1,
       "message": "Should it mention that this option also disables transaction reading?",
+      "range": {
+        "startLine": 222,
+        "startChar": 34,
+        "endLine": 222,
+        "endChar": 67
+      },
+      "revId": "b50e77e852a2056853966959bcadb9155e41919c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58a5236_008ac0f0",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-30T16:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06547b73_d6255dea",
       "range": {
         "startLine": 222,
         "startChar": 34,
