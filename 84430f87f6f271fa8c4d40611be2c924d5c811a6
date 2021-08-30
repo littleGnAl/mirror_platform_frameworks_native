@@ -207,6 +207,30 @@
       },
       "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb6c9ffb_8afcdd19",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-30T18:43:52Z",
+      "side": 1,
+      "message": "No. There are and will be non-AIDL users of binder.\n\nLonger explanation/argument: https://android-review.googlesource.com/c/platform/system/tools/aidl/+/1797532/1/tests/golden_output/aidl-test-interface-rust-source/gen/android/aidl/tests/IDeprecated.rs#35",
+      "parentUuid": "8bd51b79_daac134f",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 46
+      },
+      "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
