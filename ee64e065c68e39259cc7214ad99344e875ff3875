@@ -57,6 +57,30 @@
       },
       "revId": "ee64e065c68e39259cc7214ad99344e875ff3875",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24480052_a0becec7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-08-31T11:03:55Z",
+      "side": 1,
+      "message": "You\u0027ve convinced me. I changed it.",
+      "parentUuid": "6c23ca60_5292b551",
+      "range": {
+        "startLine": 344,
+        "startChar": 15,
+        "endLine": 344,
+        "endChar": 55
+      },
+      "revId": "ee64e065c68e39259cc7214ad99344e875ff3875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
