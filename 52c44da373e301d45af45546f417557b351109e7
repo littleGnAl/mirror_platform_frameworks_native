@@ -214,6 +214,30 @@
       },
       "revId": "52c44da373e301d45af45546f417557b351109e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "208ea679_dbdafdb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-08-31T15:26:29Z",
+      "side": 1,
+      "message": "I\u0027m assuming this is resolved and the CL can be submitted.  Please re-open if not.",
+      "parentUuid": "88f8f627_b93f34fd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "52c44da373e301d45af45546f417557b351109e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
