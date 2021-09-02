@@ -22,5 +22,6 @@ struct AIBinder;
 
 bool RunRpcServer(AIBinder* service, unsigned int port);
 AIBinder* RpcClient(unsigned int cid, unsigned int port);
+AIBinder* RpcPreconnectedClient(int (*requestFunc)(void *param), void *param);
 
 }
