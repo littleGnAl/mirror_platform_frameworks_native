@@ -54,6 +54,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c8e52b8_4841ff42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1017430
+      },
+      "writtenOn": "2021-09-02T18:42:47Z",
+      "side": 1,
+      "message": "between ANR traces and binder latency distributions, this is not necessary and we should not be paying any runtime cost for this.",
+      "revId": "f68a88a0d4549186395fc2f18ddfc6fa385f963e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "427903b5_733fbd5a",
