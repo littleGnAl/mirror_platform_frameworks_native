@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e73b9064_51399c33",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-02T09:37:31Z",
+      "side": 1,
+      "message": "It looks like this takes responsibility for closing the fd. Should we document that?\nIt may make it slightly harder to call from Rust.",
+      "range": {
+        "startLine": 58,
+        "startChar": 10,
+        "endLine": 58,
+        "endChar": 31
+      },
+      "revId": "35a83bb7a4204c13cd6369eea7b1f724b9ae1f82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
