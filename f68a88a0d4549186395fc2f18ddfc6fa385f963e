@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31010425_27fa7e05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-09-02T13:25:59Z",
+      "side": 1,
+      "message": "I\u0027d definitely be interested to see how often this triggers. In case of HIDL, there were some IPCs which would basically block forever until some work was available (not a great idea...). I wouldn\u0027t be surprised if there\u0027s more of those.\n\nI also think gaillard@ once worked on a dashboard to visualize binder call execution times? Might be easier to monitor that.\n\n",
+      "revId": "f68a88a0d4549186395fc2f18ddfc6fa385f963e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
