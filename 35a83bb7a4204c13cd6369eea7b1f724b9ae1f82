@@ -122,6 +122,24 @@
       "parentUuid": "fceec5e3_2e3ed734",
       "revId": "35a83bb7a4204c13cd6369eea7b1f724b9ae1f82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32730e5c_1c4d638b",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-09-02T12:43:28Z",
+      "side": 1,
+      "message": "Okay, It seems that both of them are feasible.. let me rework.",
+      "parentUuid": "9b215fdf_dfa63e71",
+      "revId": "35a83bb7a4204c13cd6369eea7b1f724b9ae1f82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
