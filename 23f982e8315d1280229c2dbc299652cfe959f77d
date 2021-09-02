@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4be9a4ca_8a4c5eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-02T10:03:28Z",
+      "side": 1,
+      "message": "So far I\u0027ve just copied the declaration into my code, which is a terrible idea - see http://cs/android/packages/modules/Virtualization/compos/compos_key_cmd/compos_key_cmd.cpp?l\u003d46.\n\nMind you that code is only for testing.",
+      "revId": "23f982e8315d1280229c2dbc299652cfe959f77d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
