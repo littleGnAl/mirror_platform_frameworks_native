@@ -22,6 +22,30 @@
       },
       "revId": "35a83bb7a4204c13cd6369eea7b1f724b9ae1f82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d5fce8a_4e551ac5",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-09-02T10:06:47Z",
+      "side": 1,
+      "message": "How can we handle the Rust case? IntoRawFd?",
+      "parentUuid": "e73b9064_51399c33",
+      "range": {
+        "startLine": 58,
+        "startChar": 10,
+        "endLine": 58,
+        "endChar": 31
+      },
+      "revId": "35a83bb7a4204c13cd6369eea7b1f724b9ae1f82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
