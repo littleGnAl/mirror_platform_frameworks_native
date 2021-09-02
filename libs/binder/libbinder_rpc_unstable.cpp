@@ -15,6 +15,7 @@
  */
 
 #include <android-base/logging.h>
+#include <android-base/unique_fd.h>
 #include <android/binder_libbinder.h>
 #include <binder/RpcServer.h>
 #include <binder/RpcSession.h>
@@ -24,6 +25,7 @@ using android::RpcServer;
 using android::RpcSession;
 using android::status_t;
 using android::statusToString;
+using android::base::unique_fd;
 
 extern "C" {
 
@@ -47,6 +49,22 @@ AIBinder* RpcClient(unsigned int cid, unsigned int port) {
     auto session = RpcSession::make();
     if (status_t status = session->setupVsockClient(cid, port); status != OK) {
         LOG(ERROR) << "Failed to set up vsock client with CID " << cid << " and port " << port
+                   << " error: " << statusToString(status).c_str();
+        return nullptr;
+    }
+    return AIBinder_fromPlatformBinder(session->getRootObject());
+}
+
+AIBinder* RpcPreconnectedClient(int fd) {
+    unique_fd ufd(fd);
+    auto session = RpcSession::make();
+    auto requestFunc = [] {
+        // no more connections available for preconnected cases
+        return unique_fd{};
+    };
+    if (status_t status = session->setupPreconnectedClient(std::move(ufd), requestFunc);
+        status != OK) {
+        LOG(ERROR) << "Failed to set up vsock client with fd " << fd
                    << " error: " << statusToString(status).c_str();
         return nullptr;
     }
