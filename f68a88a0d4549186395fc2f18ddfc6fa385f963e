@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43686a8c_1a86bbff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-02T18:52:55Z",
+      "side": 1,
+      "message": "yeah, that sounds good to me. I can abandon. Though do note b/161393989, we don\u0027t actually have traces for AIDL interfaces turned on....",
+      "parentUuid": "0c8e52b8_4841ff42",
+      "revId": "f68a88a0d4549186395fc2f18ddfc6fa385f963e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "427903b5_733fbd5a",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 1
@@ -84,6 +102,30 @@
       "writtenOn": "2021-09-02T18:39:30Z",
       "side": 1,
       "message": "can you also please print out tr.flags?  I\u0027d be especially worried if this long execution is happening for TF_ONE_WAY.",
+      "range": {
+        "startLine": 1318,
+        "startChar": 97,
+        "endLine": 1318,
+        "endChar": 98
+      },
+      "revId": "f68a88a0d4549186395fc2f18ddfc6fa385f963e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4257ce_618eb98a",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-02T18:52:55Z",
+      "side": 1,
+      "message": "I can update the patch if you want, but seems like I will abandon",
+      "parentUuid": "427903b5_733fbd5a",
       "range": {
         "startLine": 1318,
         "startChar": 97,
