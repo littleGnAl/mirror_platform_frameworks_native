@@ -61,7 +61,9 @@ public:
      * Creates a new address as a copy of an embedded object.
      */
     static RpcAddress fromRawEmbedded(const RpcWireAddress* raw);
+    static RpcAddress viewFromRawEmbedded(const RpcWireAddress* raw);
     const RpcWireAddress& viewRawEmbedded() const;
+    bool isView() const;
 
     bool operator<(const RpcAddress& rhs) const;
     std::string toString() const;
@@ -74,6 +76,9 @@ public:
 private:
     RpcAddress();
 
+    const RpcWireAddress* rawAddr() const { return mUnownedRawAddr ?: mRawAddr.get(); }
+
+    const RpcWireAddress* mUnownedRawAddr = nullptr;
     std::shared_ptr<RpcWireAddress> mRawAddr;
 };
 

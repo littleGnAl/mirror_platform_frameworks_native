@@ -26,12 +26,15 @@
 namespace android {
 
 RpcAddress RpcAddress::zero() {
-    return RpcAddress();
+    auto ret = RpcAddress();
+    ret.mRawAddr = std::make_shared<RpcWireAddress>();
+    memset(ret.mRawAddr.get(), 0, sizeof(RpcWireAddress));
+    return ret;
 }
 
 bool RpcAddress::isZero() const {
     RpcWireAddress ZERO{.options = 0};
-    return memcmp(mRawAddr.get(), &ZERO, sizeof(RpcWireAddress)) == 0;
+    return memcmp(rawAddr(), &ZERO, sizeof(RpcWireAddress)) == 0;
 }
 
 static void ReadRandomBytes(uint8_t* buf, size_t len) {
@@ -62,6 +65,7 @@ RpcAddress RpcAddress::random(bool forServer) {
     if (forServer) options |= RPC_WIRE_ADDRESS_OPTION_FOR_SERVER;
 
     RpcAddress ret;
+    ret.mRawAddr = std::make_shared<RpcWireAddress>();
     RpcWireAddress* raw = ret.mRawAddr.get();
 
     raw->options = options;
@@ -72,41 +76,53 @@ RpcAddress RpcAddress::random(bool forServer) {
 }
 
 bool RpcAddress::isForServer() const {
-    return mRawAddr.get()->options & RPC_WIRE_ADDRESS_OPTION_FOR_SERVER;
+    return rawAddr()->options & RPC_WIRE_ADDRESS_OPTION_FOR_SERVER;
 }
 
 bool RpcAddress::isRecognizedType() const {
     uint64_t allKnownOptions = RPC_WIRE_ADDRESS_OPTION_CREATED | RPC_WIRE_ADDRESS_OPTION_FOR_SERVER;
-    return (mRawAddr.get()->options & ~allKnownOptions) == 0;
+    return (rawAddr()->options & ~allKnownOptions) == 0;
 }
 
 RpcAddress RpcAddress::fromRawEmbedded(const RpcWireAddress* raw) {
+    RpcAddress ret;
+    ret.mRawAddr = std::make_shared<RpcWireAddress>();
+    memcpy(ret.mRawAddr.get(), raw, sizeof(RpcWireAddress));
+    return ret;
+}
+
+RpcAddress RpcAddress::viewFromRawEmbedded(const RpcWireAddress* raw) {
     RpcAddress addr;
-    memcpy(addr.mRawAddr.get(), raw, sizeof(RpcWireAddress));
+    addr.mUnownedRawAddr = raw;
     return addr;
 }
 
 const RpcWireAddress& RpcAddress::viewRawEmbedded() const {
-    return *mRawAddr.get();
+    return *rawAddr();
+}
+
+bool RpcAddress::isView() const {
+    return mUnownedRawAddr != nullptr;
 }
 
 bool RpcAddress::operator<(const RpcAddress& rhs) const {
-    return std::memcmp(mRawAddr.get(), rhs.mRawAddr.get(), sizeof(RpcWireAddress)) < 0;
+    return std::memcmp(rawAddr(), rhs.rawAddr(), sizeof(RpcWireAddress)) < 0;
 }
 
 std::string RpcAddress::toString() const {
-    return base::HexString(mRawAddr.get(), sizeof(RpcWireAddress));
+    return base::HexString(rawAddr(), sizeof(RpcWireAddress));
 }
 
 status_t RpcAddress::writeToParcel(Parcel* parcel) const {
-    return parcel->write(mRawAddr.get(), sizeof(RpcWireAddress));
+    return parcel->write(rawAddr(), sizeof(RpcWireAddress));
 }
 
 status_t RpcAddress::readFromParcel(const Parcel& parcel) {
+    LOG_ALWAYS_FATAL_IF(isView(), "Cannot read to unowned RpcAddress");
     return parcel.read(mRawAddr.get(), sizeof(RpcWireAddress));
 }
 
 RpcAddress::~RpcAddress() {}
-RpcAddress::RpcAddress() : mRawAddr(std::make_shared<RpcWireAddress>()) {}
+RpcAddress::RpcAddress() {}
 
 } // namespace android

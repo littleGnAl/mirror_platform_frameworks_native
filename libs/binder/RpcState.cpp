@@ -165,7 +165,9 @@ status_t RpcState::onBinderEntering(const sp<RpcSession>& session, const RpcAddr
         return BAD_VALUE;
     }
 
-    auto&& [it, inserted] = mNodeForAddress.insert({address, BinderNode{}});
+    auto&& [it, inserted] = mNodeForAddress.insert(
+            {address.isView() ? RpcAddress::fromRawEmbedded(&address.viewRawEmbedded()) : address,
+             BinderNode{}});
     LOG_ALWAYS_FATAL_IF(!inserted, "Failed to insert binder when creating proxy");
 
     // Currently, all binders are assumed to be part of the same session (no
@@ -685,9 +687,7 @@ processTransactInternalTailCall:
     }
     RpcWireTransaction* transaction = reinterpret_cast<RpcWireTransaction*>(transactionData.data());
 
-    // TODO(b/182939933): heap allocation just for lookup in mNodeForAddress,
-    // maybe add an RpcAddress 'view' if the type remains 'heavy'
-    auto addr = RpcAddress::fromRawEmbedded(&transaction->address);
+    auto addr = RpcAddress::viewFromRawEmbedded(&transaction->address);
     bool oneway = transaction->flags & IBinder::FLAG_ONEWAY;
 
     status_t replyStatus = OK;
@@ -912,8 +912,7 @@ status_t RpcState::processDecStrong(const sp<RpcSession::RpcConnection>& connect
     }
     RpcWireAddress* address = reinterpret_cast<RpcWireAddress*>(commandData.data());
 
-    // TODO(b/182939933): heap allocation just for lookup
-    auto addr = RpcAddress::fromRawEmbedded(address);
+    auto addr = RpcAddress::viewFromRawEmbedded(address);
     std::unique_lock<std::mutex> _l(mNodeMutex);
     auto it = mNodeForAddress.find(addr);
     if (it == mNodeForAddress.end()) {
