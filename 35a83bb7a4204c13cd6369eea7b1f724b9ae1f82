@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d264c79_07bb72de",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-09-02T12:26:42Z",
+      "side": 1,
+      "message": "Are there any cases where this is actually useful?",
+      "revId": "35a83bb7a4204c13cd6369eea7b1f724b9ae1f82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e73b9064_51399c33",
         "filename": "libs/binder/libbinder_rpc_unstable.cpp",
         "patchSetId": 1
@@ -68,6 +85,23 @@
         "endLine": 58,
         "endChar": 31
       },
+      "revId": "35a83bb7a4204c13cd6369eea7b1f724b9ae1f82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fceec5e3_2e3ed734",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-09-02T12:26:42Z",
+      "side": 1,
+      "message": "Will this cause problems? It might be better to keep a reference to the IVirtualMachine so that you can call connectVsock as needed.",
       "revId": "35a83bb7a4204c13cd6369eea7b1f724b9ae1f82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
