@@ -16,6 +16,24 @@
       "message": "I\u0027d definitely be interested to see how often this triggers. In case of HIDL, there were some IPCs which would basically block forever until some work was available (not a great idea...). I wouldn\u0027t be surprised if there\u0027s more of those.\n\nI also think gaillard@ once worked on a dashboard to visualize binder call execution times? Might be easier to monitor that.\n\n",
       "revId": "f68a88a0d4549186395fc2f18ddfc6fa385f963e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "255f028f_5a11fa6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337780
+      },
+      "writtenOn": "2021-09-02T14:35:24Z",
+      "side": 1,
+      "message": "We\u0027ll have some data next week in Pitot once http://cl/390125853 is submitted. You could use it to figure out how often this warning will trigger.\n\nI think this log entry will be useful for ANRs but the threshold is probably too small?\n\nFYI I would like in Android T to output on-going long binder calls to the ANR dump to help with debugging for watchdogs. I think we can easily do that using a BinderInternal.Observer.",
+      "parentUuid": "31010425_27fa7e05",
+      "revId": "f68a88a0d4549186395fc2f18ddfc6fa385f963e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
