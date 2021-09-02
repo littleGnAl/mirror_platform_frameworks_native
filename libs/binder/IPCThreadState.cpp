@@ -1290,20 +1290,33 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
                     << ", offsets addr="
                     << reinterpret_cast<const size_t*>(tr.data.ptr.offsets) << endl;
             }
+
+            int64_t preExecuteMillis = uptimeMillis();
+            sp<IBinder> target;
+
             if (tr.target.ptr) {
                 // We only have a weak reference on the target object, so we must first try to
                 // safely acquire a strong reference before doing anything else with it.
                 if (reinterpret_cast<RefBase::weakref_type*>(
                         tr.target.ptr)->attemptIncStrong(this)) {
-                    error = reinterpret_cast<BBinder*>(tr.cookie)->transact(tr.code, buffer,
-                            &reply, tr.flags);
+                    target = sp<IBinder>::fromExisting(reinterpret_cast<IBinder*>(tr.cookie));
+                    error = target->transact(tr.code, buffer, &reply, tr.flags);
                     reinterpret_cast<BBinder*>(tr.cookie)->decStrong(this);
                 } else {
                     error = UNKNOWN_TRANSACTION;
                 }
-
             } else {
+                target = the_context_object;
                 error = the_context_object->transact(tr.code, buffer, &reply, tr.flags);
+            }
+
+            int64_t executionMillis = uptimeMillis() - preExecuteMillis;
+            if (executionMillis > 100) {
+                ALOGW("Transaction to %p (%s) with code %d from pid %d uid %d executed for %" PRId64
+                      "ms. That's a long time!",
+                      (void*)tr.target.ptr,
+                      target ? String8(target->getInterfaceDescriptor()).c_str() : "???", tr.code,
+                      mCallingPid, mCallingUid, executionMillis);
             }
 
             //ALOGI("<<<< TRANSACT from pid %d restore pid %d sid %s uid %d\n",
