@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba378502_4c61f991",
+        "filename": "libs/binder/tests/binderDefaultImplTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-02T22:49:54Z",
+      "side": 1,
+      "message": "this is strange. What function is this? It should be static:\n\nASSERT_TRUE(IBinderDefaultImpl::setDefaultImpl(std::move(defaultImpl)));",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "d2c1fa32d671b995028f6ad6ad42ff6fa13240e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
