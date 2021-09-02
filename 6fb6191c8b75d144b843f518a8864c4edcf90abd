@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeb447b2_601b2326",
+        "filename": "libs/binder/RpcAddress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-02T23:57:56Z",
+      "side": 1,
+      "message": "please review hard, but the need for this is essentially so that we don\u0027t need to make an allocation in order to make this work in a map. I need to think more about how to clean this up, because it\u0027s quite messy.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 1
+      },
+      "revId": "6fb6191c8b75d144b843f518a8864c4edcf90abd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
