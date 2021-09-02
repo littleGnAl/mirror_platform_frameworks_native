@@ -52,6 +52,29 @@
       "parentUuid": "255f028f_5a11fa6d",
       "revId": "f68a88a0d4549186395fc2f18ddfc6fa385f963e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427903b5_733fbd5a",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-02T18:39:30Z",
+      "side": 1,
+      "message": "can you also please print out tr.flags?  I\u0027d be especially worried if this long execution is happening for TF_ONE_WAY.",
+      "range": {
+        "startLine": 1318,
+        "startChar": 97,
+        "endLine": 1318,
+        "endChar": 98
+      },
+      "revId": "f68a88a0d4549186395fc2f18ddfc6fa385f963e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
