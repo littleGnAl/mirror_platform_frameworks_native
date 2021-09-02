@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b067c5_415010dd",
+        "filename": "libs/binder/tests/binderDefaultImplTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-02T17:55:39Z",
+      "side": 1,
+      "message": "check Status return object",
+      "range": {
+        "startLine": 72,
+        "startChar": 17,
+        "endLine": 72,
+        "endChar": 27
+      },
+      "revId": "3792e6f21ea68c345c3d9e3bf2cdf332965d30d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3fe7e9a_7df9c999",
+        "filename": "libs/binder/tests/binderDefaultImplTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-02T17:55:39Z",
+      "side": 1,
+      "message": "nit:\n\n-\u003e\n\n   auto service \u003d ...\n   ASSERT_NE(nullptr, service);\n   service-\u003e...",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "3792e6f21ea68c345c3d9e3bf2cdf332965d30d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d9ef490_5a87cbf8",
+        "filename": "libs/binder/tests/binderDefaultImplTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-02T17:55:39Z",
+      "side": 1,
+      "message": "but what is the error?\n\n    ASSERT_TRUE(ret.isOk()) \u003c\u003c ret;",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "3792e6f21ea68c345c3d9e3bf2cdf332965d30d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6495c4e_6aa89c83",
+        "filename": "libs/binder/tests/binderDefaultImplTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-02T17:55:39Z",
+      "side": 1,
+      "message": "beware:\n\nhttps://man7.org/linux/man-pages/man2/kill.2.html\n\n\u003e If pid equals 0, then sig is sent to every process in the process\n\u003e       group of the calling process.",
+      "range": {
+        "startLine": 107,
+        "startChar": 22,
+        "endLine": 107,
+        "endChar": 23
+      },
+      "revId": "3792e6f21ea68c345c3d9e3bf2cdf332965d30d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a909fa12_6271c802",
+        "filename": "libs/binder/tests/binderDefaultImplTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-02T17:55:39Z",
+      "side": 1,
+      "message": "move to L115 - it\u0027s a bit scary if doShimThings/doRemoteHalThings return, e.g. after L85",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 29
+      },
+      "revId": "3792e6f21ea68c345c3d9e3bf2cdf332965d30d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
