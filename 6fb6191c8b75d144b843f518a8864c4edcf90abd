@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "520a178b_06fe09b9",
+        "filename": "libs/binder/RpcAddress.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-03T18:59:51Z",
+      "side": 1,
+      "message": "nit: can this be added to another constructor instead being set directly in multiple places? Seems like this would be easy to miss.",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 54
+      },
+      "revId": "6fb6191c8b75d144b843f518a8864c4edcf90abd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeb447b2_601b2326",
@@ -37,6 +60,30 @@
       "writtenOn": "2021-09-03T03:29:59Z",
       "side": 1,
       "message": "Can\u0027t this be RpcWireAddress? I think we can keep it in stack. The overhead wouldn\u0027t be large because the object is not big (only 40 bytes). RVO and move senatics will reduce the overhead even further.",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "6fb6191c8b75d144b843f518a8864c4edcf90abd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51611fe2_d0369f4d",
+        "filename": "libs/binder/include/binder/RpcAddress.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-03T18:59:51Z",
+      "side": 1,
+      "message": "I also like this idea, but I remember Steven mentioning reasons for hiding it with a pointer.",
+      "parentUuid": "5793790f_1261faf0",
       "range": {
         "startLine": 82,
         "startChar": 4,
