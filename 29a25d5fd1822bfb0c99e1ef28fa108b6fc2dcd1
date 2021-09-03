@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c7f48fe_0c89809e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-03T23:49:21Z",
+      "side": 1,
+      "message": "..though I am not sure if this is the right place for this APEX. frameworks/* are quite bloated already.",
+      "revId": "29a25d5fd1822bfb0c99e1ef28fa108b6fc2dcd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
