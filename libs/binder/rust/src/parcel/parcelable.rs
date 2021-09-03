@@ -27,6 +27,24 @@ use std::mem::{self, MaybeUninit};
 use std::ptr;
 use std::slice;
 
+/// Super-trait for Binder parcelables.
+///
+/// This is equivalent `android::Parcelable` in C++.
+/// However, unlike C++, `ParcelableHolder` does not
+/// implement this trait since it implements the serialization
+/// traits separately and provides its own `get_stability` method.
+pub trait Parcelable: Serialize + Deserialize + std::fmt::Debug {
+    /// The Binder parcelable descriptor string.
+    ///
+    /// This string is a unique identifier for a Binder parcelable.
+    fn get_descriptor() -> &'static str;
+
+    /// The Binder parcelable stability.
+    fn get_stability(&self) -> Stability where Self: Sized {
+        Stability::Local
+    }
+}
+
 /// A struct whose instances can be written to a [`Parcel`].
 // Might be able to hook this up as a serde backend in the future?
 pub trait Serialize {
