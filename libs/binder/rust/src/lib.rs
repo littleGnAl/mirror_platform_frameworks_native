@@ -128,7 +128,7 @@ pub mod unstable_api {
 
 /// The public API usable outside AIDL-generated interface crates.
 pub mod public_api {
-    pub use super::parcel::ParcelFileDescriptor;
+    pub use super::parcel::{ParcelFileDescriptor, ParcelableHolder};
     pub use super::{add_service, get_interface, wait_for_interface};
     pub use super::{
         BinderFeatures, DeathRecipient, ExceptionCode, IBinder, Interface, ProcessState, SpIBinder,
