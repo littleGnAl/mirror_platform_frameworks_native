@@ -30,15 +30,15 @@ namespace android {
 constexpr uint32_t TEST_MAP_SIZE = 10;
 constexpr uint64_t TEST_GLOBAL_KEY = 0;
 constexpr uint32_t TEST_GLOBAL_PID = 0;
-constexpr uint64_t TEST_GLOBAL_VAL = 123;
+constexpr uint64_t TEST_GLOBAL_TOTAL_MEM = 123;
 constexpr uint32_t TEST_GLOBAL_GPU_ID = 0;
 constexpr uint64_t TEST_PROC_KEY_1 = 1;
 constexpr uint32_t TEST_PROC_PID_1 = 1;
-constexpr uint64_t TEST_PROC_VAL_1 = 234;
+constexpr uint64_t TEST_PROC_TOTAL_MEM_1 = 234;
 constexpr uint32_t TEST_PROC_1_GPU_ID = 0;
 constexpr uint64_t TEST_PROC_KEY_2 = 4294967298; // (1 << 32) + 2
 constexpr uint32_t TEST_PROC_PID_2 = 2;
-constexpr uint64_t TEST_PROC_VAL_2 = 345;
+constexpr uint64_t TEST_PROC_TOTAL_MEM_2 = 345;
 constexpr uint32_t TEST_PROC_2_GPU_ID = 1;
 
 class GpuMemTracerTest : public testing::Test {
@@ -99,11 +99,11 @@ public:
 static constexpr uint64_t getSizeForPid(uint32_t pid) {
     switch (pid) {
         case TEST_GLOBAL_PID:
-            return TEST_GLOBAL_VAL;
+            return TEST_GLOBAL_TOTAL_MEM;
         case TEST_PROC_PID_1:
-            return TEST_PROC_VAL_1;
+            return TEST_PROC_TOTAL_MEM_1;
         case TEST_PROC_PID_2:
-            return TEST_PROC_VAL_2;
+            return TEST_PROC_TOTAL_MEM_2;
     }
     return 0;
 }
@@ -121,11 +121,15 @@ static constexpr uint32_t getGpuIdForPid(uint32_t pid) {
 }
 
 TEST_F(GpuMemTracerTest, traceInitialCountersAfterGpuMemInitialize) {
-    ASSERT_RESULT_OK(mTestMap.writeValue(TEST_GLOBAL_KEY, TEST_GLOBAL_VAL, BPF_ANY));
-    ASSERT_RESULT_OK(mTestMap.writeValue(TEST_PROC_KEY_1, TEST_PROC_VAL_1, BPF_ANY));
-    ASSERT_RESULT_OK(mTestMap.writeValue(TEST_PROC_KEY_2, TEST_PROC_VAL_2, BPF_ANY));
+    mGpuMem->initialize(false);
+    EXPECT_TRUE(mGpuMem->isInitialized());
+
+    ASSERT_RESULT_OK(mTestMap.writeValue(TEST_GLOBAL_KEY, TEST_GLOBAL_TOTAL_MEM, BPF_ANY));
+    ASSERT_RESULT_OK(mTestMap.writeValue(TEST_PROC_KEY_1, TEST_PROC_TOTAL_MEM_1, BPF_ANY));
+    ASSERT_RESULT_OK(mTestMap.writeValue(TEST_PROC_KEY_2, TEST_PROC_TOTAL_MEM_2, BPF_ANY));
     mTestableGpuMem.setGpuMemTotalMap(mTestMap);
-    mTestableGpuMem.setInitialized();
+
+    // TODO: Add imported_size to event
 
     // Only 1 tracer thread should be existing for test.
     EXPECT_EQ(getTracerThreadCount(), 1);
