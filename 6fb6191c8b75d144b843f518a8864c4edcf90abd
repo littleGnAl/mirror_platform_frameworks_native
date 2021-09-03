@@ -92,6 +92,30 @@
       },
       "revId": "6fb6191c8b75d144b843f518a8864c4edcf90abd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf28c350_8cf2d92f",
+        "filename": "libs/binder/include/binder/RpcAddress.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-03T20:27:59Z",
+      "side": 1,
+      "message": "The reason is that flattening this here would make every BpBinder add 24 bytes, which is a lot of memory overall. b/182939933 though, I think I\u0027ll change the BpBinder ID to be a plain int (forgeability isn\u0027t important for objects constrained to the session). Maybe I\u0027ll combine this with http://aosp/1793808, get both performance fixes at once and avoid a lot of the complexity here.",
+      "parentUuid": "51611fe2_d0369f4d",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "6fb6191c8b75d144b843f518a8864c4edcf90abd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
