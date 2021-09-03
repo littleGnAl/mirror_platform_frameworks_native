@@ -22,6 +22,30 @@
       },
       "revId": "d2c1fa32d671b995028f6ad6ad42ff6fa13240e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b045fc_75c333d8",
+        "filename": "libs/binder/tests/binderDefaultImplTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-03T17:31:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure... I don\u0027t see any non-static setDefaultImpl() methods.\nI\u0027ve changed it, and I see identical behavior.",
+      "parentUuid": "ba378502_4c61f991",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "d2c1fa32d671b995028f6ad6ad42ff6fa13240e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
