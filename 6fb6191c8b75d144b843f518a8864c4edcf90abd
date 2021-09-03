@@ -116,6 +116,30 @@
       },
       "revId": "6fb6191c8b75d144b843f518a8864c4edcf90abd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98e71e1b_96d7954c",
+        "filename": "libs/binder/include/binder/RpcAddress.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-03T23:46:59Z",
+      "side": 1,
+      "message": "\u003e every BpBinder add 24 bytes\n\nThen let BpBinder have shared_ptr to RpcAddress? Or make RpcAddress a member of RpcSession.",
+      "parentUuid": "bf28c350_8cf2d92f",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "6fb6191c8b75d144b843f518a8864c4edcf90abd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
