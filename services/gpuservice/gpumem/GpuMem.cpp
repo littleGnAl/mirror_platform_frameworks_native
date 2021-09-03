@@ -21,6 +21,7 @@
 #include "gpumem/GpuMem.h"
 
 #include <android-base/stringprintf.h>
+#include <android-base/unique_fd.h>
 #include <libbpf.h>
 #include <libbpf_android.h>
 #include <log/log.h>
@@ -34,6 +35,7 @@
 namespace android {
 
 using base::StringAppendF;
+using base::unique_fd;
 
 GpuMem::~GpuMem() {
     bpf_detach_tracepoint(kGpuMemTraceGroup, kGpuMemTotalTracepoint);
@@ -44,7 +46,7 @@ void GpuMem::initialize() {
     bpf::waitForProgsLoaded();
 
     errno = 0;
-    int fd = bpf::retrieveProgram(kGpuMemTotalProgPath);
+    unique_fd fd{bpf::retrieveProgram(kGpuMemTotalProgPath)};
     if (fd < 0) {
         ALOGE("Failed to retrieve pinned program from %s [%d(%s)]", kGpuMemTotalProgPath, errno,
               strerror(errno));
