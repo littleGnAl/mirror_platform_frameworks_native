@@ -27,6 +27,40 @@ use std::mem::{self, MaybeUninit};
 use std::ptr;
 use std::slice;
 
+/// Super-trait for Binder parcelables.
+///
+/// This is equivalent `android::Parcelable` in C++.
+/// However, unlike C++, `ParcelableHolder` does not
+/// implement this trait since it implements the serialization
+/// traits separately and provides its own `get_stability` method.
+pub trait Parcelable: std::fmt::Debug {
+    /// The Binder parcelable descriptor string.
+    ///
+    /// This string is a unique identifier for a Binder parcelable.
+    fn get_descriptor() -> &'static str where Self: Sized;
+
+    /// The Binder parcelable stability.
+    fn get_stability(&self) -> Stability {
+        Stability::Local
+    }
+
+    /// Internal serialization function for parcelables.
+    ///
+    /// This method is mainly for internal use.
+    /// `Serialize::serialize` and its variants are generally
+    /// preferred over this function, since the former also
+    /// prepend a header.
+    fn serialize_parcelable(&self, parcel: &mut Parcel) -> Result<()>;
+
+    /// Internal deserialization function for parcelables.
+    ///
+    /// This method is mainly for internal use.
+    /// `Deserialize::deserialize` and its variants are generally
+    /// preferred over this function, since the former also
+    /// parse the additional header.
+    fn deserialize_parcelable(&mut self, parcel: &Parcel) -> Result<()>;
+}
+
 /// A struct whose instances can be written to a [`Parcel`].
 // Might be able to hook this up as a serde backend in the future?
 pub trait Serialize {
@@ -711,19 +745,53 @@ impl<T: DeserializeOption> Deserialize for Option<T> {
     }
 }
 
+/// Implement `Serialize` trait and friends for a parcelable
+///
+/// This is an internal macro used by the AIDL compiler to implement
+/// `Serialize`, `SerializeArray` and `SerializeOption` for
+/// structured parcelables. The target type must implement the
+/// `Parcelable` trait.
+/// ```
+#[macro_export]
+macro_rules! impl_serialize_for_parcelable {
+    ($parcelable:ident) => {
+        impl $crate::parcel::Serialize for $parcelable {
+            fn serialize(
+                &self,
+                parcel: &mut $crate::parcel::Parcel,
+            ) -> $crate::Result<()> {
+                <Self as $crate::parcel::SerializeOption>::serialize_option(
+                    Some(self),
+                    parcel,
+                )
+            }
+        }
+
+        impl $crate::parcel::SerializeArray for $parcelable {}
+
+        impl $crate::parcel::SerializeOption for $parcelable {
+            fn serialize_option(
+                this: Option<&Self>,
+                parcel: &mut $crate::parcel::Parcel,
+            ) -> $crate::Result<()> {
+                if let Some(this) = this {
+                    use $crate::parcel::Parcelable;
+                    parcel.write(&1i32)?;
+                    this.serialize_parcelable(parcel)
+                } else {
+                    parcel.write(&0i32)
+                }
+            }
+        }
+    }
+}
+
 /// Implement `Deserialize` trait and friends for a parcelable
 ///
 /// This is an internal macro used by the AIDL compiler to implement
 /// `Deserialize`, `DeserializeArray` and `DeserializeOption` for
-/// structured parcelables. The target type must implement a
-/// `deserialize_parcelable` method with the following signature:
-/// ```no_run
-/// fn deserialize_parcelable(
-///     &mut self,
-///     parcel: &binder::parcel::Parcelable,
-/// ) -> binder::Result<()> {
-///     // ...
-/// }
+/// structured parcelables. The target type must implement the
+/// `Parcelable` trait.
 /// ```
 #[macro_export]
 macro_rules! impl_deserialize_for_parcelable {
@@ -744,6 +812,7 @@ macro_rules! impl_deserialize_for_parcelable {
                 if status == 0 {
                     Err($crate::StatusCode::UNEXPECTED_NULL)
                 } else {
+                    use $crate::parcel::Parcelable;
                     self.deserialize_parcelable(parcel)
                 }
             }
@@ -768,6 +837,7 @@ macro_rules! impl_deserialize_for_parcelable {
                     *this = None;
                     Ok(())
                 } else {
+                    use $crate::parcel::Parcelable;
                     this.get_or_insert_with(Self::default)
                         .deserialize_parcelable(parcel)
                 }
