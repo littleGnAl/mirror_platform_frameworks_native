@@ -24,24 +24,34 @@ namespace android {
 class TestableGpuMem {
 public:
     TestableGpuMem() = default;
-    explicit TestableGpuMem(GpuMem *gpuMem) : mGpuMem(gpuMem) {}
+    explicit TestableGpuMem(GpuMem* gpuMem) : mGpuMem(gpuMem) {}
 
-    void setInitialized() { mGpuMem->mInitialized.store(true); }
+    bool isImportedMemSupported() { return mGpuMem->mImportedMemSupported; }
 
     void setGpuMemTotalMap(bpf::BpfMap<uint64_t, uint64_t>& map) {
         mGpuMem->setGpuMemTotalMap(map);
+    }
+
+    void setGpuMemImportedMap(bpf::BpfMap<uint64_t, uint64_t>& map) {
+        mGpuMem->setGpuMemImportedMap(map);
     }
 
     std::string getGpuMemTraceGroup() { return mGpuMem->kGpuMemTraceGroup; }
 
     std::string getGpuMemTotalTracepoint() { return mGpuMem->kGpuMemTotalTracepoint; }
 
+    std::string getGpuMemImportedSizeField() { return mGpuMem->kGpuMemImportedSizeField; }
+
     std::string getGpuMemTotalProgPath() { return mGpuMem->kGpuMemTotalProgPath; }
+
+    std::string getGpuMemProgPath() { return mGpuMem->kGpuMemProgPath; }
 
     std::string getGpuMemTotalMapPath() { return mGpuMem->kGpuMemTotalMapPath; }
 
+    std::string getGpuMemImportedMapPath() { return mGpuMem->kGpuMemImportedMapPath; }
+
 private:
-    GpuMem *mGpuMem;
+    GpuMem* mGpuMem;
 };
 
 } // namespace android
