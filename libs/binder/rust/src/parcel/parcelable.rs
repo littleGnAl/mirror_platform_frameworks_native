@@ -820,10 +820,6 @@ impl<T: DeserializeOption> DeserializeOption for Box<T> {
 
 #[test]
 fn test_custom_parcelable() {
-    use crate::binder::Interface;
-    use crate::native::Binder;
-    let mut service = Binder::new(()).as_binder();
-
     struct Custom(u32, bool, String, Vec<String>);
 
     impl Serialize for Custom {
@@ -856,7 +852,7 @@ fn test_custom_parcelable() {
 
     let custom = Custom(123_456_789, true, string8, strs);
 
-    let mut parcel = Parcel::new_for_test(&mut service).unwrap();
+    let mut parcel = Parcel::try_new().unwrap();
     let start = parcel.get_data_position();
 
     assert!(custom.serialize(&mut parcel).is_ok());
@@ -876,13 +872,9 @@ fn test_custom_parcelable() {
 #[test]
 #[allow(clippy::excessive_precision)]
 fn test_slice_parcelables() {
-    use crate::binder::Interface;
-    use crate::native::Binder;
-    let mut service = Binder::new(()).as_binder();
-
     let bools = [true, false, false, true];
 
-    let mut parcel = Parcel::new_for_test(&mut service).unwrap();
+    let mut parcel = Parcel::try_new().unwrap();
     let start = parcel.get_data_position();
 
     assert!(bools.serialize(&mut parcel).is_ok());
@@ -906,7 +898,7 @@ fn test_slice_parcelables() {
 
     let u8s = [101u8, 255, 42, 117];
 
-    let mut parcel = Parcel::new_for_test(&mut service).unwrap();
+    let mut parcel = Parcel::try_new().unwrap();
     let start = parcel.get_data_position();
 
     assert!(parcel.write(&u8s[..]).is_ok());
