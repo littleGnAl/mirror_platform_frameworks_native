@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "362f84ee_709fc013",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2021-09-07T20:27:07Z",
+      "side": 1,
+      "message": "Please verify if this is the right API number that this is being introduced in.",
+      "range": {
+        "startLine": 588,
+        "startChar": 87,
+        "endLine": 588,
+        "endChar": 89
+      },
+      "revId": "3610974a49924d12f0304eda8d059bdd04ff0695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
