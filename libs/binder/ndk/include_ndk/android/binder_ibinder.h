@@ -231,7 +231,7 @@ void AIBinder_Class_setOnDump(AIBinder_Class* clazz, AIBinder_onDump onDump) __I
  *
  * \param clazz class to disable interface header on.
  */
-void AIBinder_Class_disableInterfaceTokenHeader(AIBinder_Class* clazz) __INTRODUCED_IN(32);
+void AIBinder_Class_disableInterfaceTokenHeader(AIBinder_Class* clazz) __INTRODUCED_IN(33);
 
 /**
  * Creates a new binder object of the appropriate class.
