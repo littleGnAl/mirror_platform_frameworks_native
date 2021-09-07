@@ -132,7 +132,8 @@ impl Parcel {
     ///
     /// The length `0i32` will be written to the parcel first, followed by the
     /// writes performed by the callback. The initial length will then be
-    /// updated to the length of all data written by the callback, plus the
+    /// updated to the length of all data written by the callback.
+    /// If `include_length` is true, the serialized length will also include the
     /// size of the length elemement itself (4 bytes).
     ///
     /// # Examples
@@ -142,7 +143,7 @@ impl Parcel {
     /// ```
     /// # use binder::{Binder, Interface, Parcel};
     /// # let mut parcel = Parcel::Owned(std::ptr::null_mut());
-    /// parcel.sized_write(|subparcel| {
+    /// parcel.sized_write(true, |subparcel| {
     ///     subparcel.write(&1u32)?;
     ///     subparcel.write(&2u32)?;
     ///     subparcel.write(&3u32)
@@ -154,20 +155,23 @@ impl Parcel {
     /// ```ignore
     /// [16i32, 1u32, 2u32, 3u32]
     /// ```
-    pub fn sized_write<F>(&mut self, f: F) -> Result<()>
+    pub fn sized_write<F>(&mut self, include_length: bool, f: F) -> Result<()>
     where for<'a>
         F: Fn(&'a WritableSubParcel<'a>) -> Result<()>
     {
-        let start = self.get_data_position();
+        let length_start = self.get_data_position();
         self.write(&0i32)?;
+        let data_start = self.get_data_position();
         {
             let subparcel = WritableSubParcel(RefCell::new(self));
             f(&subparcel)?;
         }
         let end = self.get_data_position();
         unsafe {
-            self.set_data_position(start)?;
+            self.set_data_position(length_start)?;
         }
+
+        let start = if include_length { length_start } else { data_start };
         assert!(end >= start);
         self.write(&(end - start))?;
         unsafe {
@@ -644,7 +648,7 @@ fn test_sized_write() {
 
     let arr = [1i32, 2i32, 3i32];
 
-    parcel.sized_write(|subparcel| {
+    parcel.sized_write(true, |subparcel| {
         subparcel.write(&arr[..])
     }).expect("Could not perform sized write");
 
@@ -665,6 +669,23 @@ fn test_sized_write() {
     assert_eq!(
         parcel.read::<Vec<i32>>().unwrap(),
         &arr,
+    );
+
+    let mut parcel2 = Parcel::try_new().unwrap();
+    let start = parcel2.get_data_position();
+    parcel2.sized_write(false, |subparcel| {
+        subparcel.write(&arr[..])
+    }).expect("Could not perform sized write");
+
+    unsafe {
+        parcel2.set_data_position(start).unwrap();
+    }
+
+    // i32 array length + 3 i32 elements
+    let expected_len = 16i32;
+    assert_eq!(
+        expected_len,
+        parcel2.read().unwrap(),
     );
 }
 
