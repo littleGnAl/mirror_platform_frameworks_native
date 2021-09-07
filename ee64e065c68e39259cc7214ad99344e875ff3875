@@ -36,6 +36,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c1bbc4_9203bbcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-09-07T08:44:46Z",
+      "side": 1,
+      "message": "Done in aosp/1818947",
+      "parentUuid": "94585851_81d8518a",
+      "revId": "ee64e065c68e39259cc7214ad99344e875ff3875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36eda4ab_d22f9afb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-09-07T08:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94585851_81d8518a",
+      "revId": "ee64e065c68e39259cc7214ad99344e875ff3875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c23ca60_5292b551",
