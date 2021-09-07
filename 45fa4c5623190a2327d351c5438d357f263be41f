@@ -90,6 +90,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b447227_aacf527f",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-09-07T10:40:32Z",
+      "side": 1,
+      "message": "Done in aosp/1818907",
+      "parentUuid": "ef3d6d9b_069e423a",
+      "revId": "45fa4c5623190a2327d351c5438d357f263be41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6fe5109_00daeb01",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-09-07T10:40:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef3d6d9b_069e423a",
+      "revId": "45fa4c5623190a2327d351c5438d357f263be41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7634b1fe_cc82ea97",
