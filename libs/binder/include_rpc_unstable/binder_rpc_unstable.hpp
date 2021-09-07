@@ -21,7 +21,8 @@ extern "C" {
 struct AIBinder;
 
 bool RunRpcServer(AIBinder* service, unsigned int port);
+bool RunRpcServerCallback(AIBinder* service, unsigned int port, void (*callback)(void* param), void* param);
 AIBinder* RpcClient(unsigned int cid, unsigned int port);
-AIBinder* RpcPreconnectedClient(int (*requestFunc)(void *param), void *param);
+AIBinder* RpcPreconnectedClient(int (*requestFunc)(void* param), void* param);
 
 }

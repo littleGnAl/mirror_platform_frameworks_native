@@ -29,7 +29,8 @@ using android::base::unique_fd;
 
 extern "C" {
 
-bool RunRpcServer(AIBinder* service, unsigned int port) {
+bool RunRpcServerCallback(AIBinder* service, unsigned int port, void (*callback)(void* param),
+                          void* param) {
     auto server = RpcServer::make();
     server->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
     if (status_t status = server->setupVsockServer(port); status != OK) {
@@ -38,11 +39,17 @@ bool RunRpcServer(AIBinder* service, unsigned int port) {
         return false;
     }
     server->setRootObject(AIBinder_toPlatformBinder(service));
+
+    if (callback) callback(param);
     server->join();
 
     // Shutdown any open sessions since server failed.
     (void)server->shutdown();
     return true;
+}
+
+bool RunRpcServer(AIBinder* service, unsigned int port) {
+    return RunRpcServerCallback(service, port, nullptr, nullptr);
 }
 
 AIBinder* RpcClient(unsigned int cid, unsigned int port) {
