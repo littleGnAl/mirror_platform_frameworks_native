@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "787b0fb5_18ecd6a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1069528
+      },
+      "writtenOn": "2021-09-07T04:11:24Z",
+      "side": 1,
+      "message": "More changes than I edited. Is this perhaps because VIM reformatted the code for me?",
+      "revId": "61bb2b11191cadd29cb1a0ce2a157baced99e74a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
