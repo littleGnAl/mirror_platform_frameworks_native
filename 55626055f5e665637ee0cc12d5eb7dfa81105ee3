@@ -22,6 +22,53 @@
       },
       "revId": "55626055f5e665637ee0cc12d5eb7dfa81105ee3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3c90e60_88bf50ad",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-07T23:36:22Z",
+      "side": 1,
+      "message": "\u0027 *\u0027 -\u003e \u0027* \u0027 (is clang-format not running on this? - don\u0027t worry about it too much, but I might need to modify the scripts to make sure they are running on .hpp files)",
+      "range": {
+        "startLine": 25,
+        "startChar": 69,
+        "endLine": 25,
+        "endChar": 71
+      },
+      "revId": "55626055f5e665637ee0cc12d5eb7dfa81105ee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "815928dc_dd1d07c8",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-07T23:36:22Z",
+      "side": 1,
+      "message": "+1 - doc comment desired as well.\n\nSecondarily, should there be a cleanup function for the void* param?",
+      "parentUuid": "11086118_759dbf5a",
+      "range": {
+        "startLine": 25,
+        "startChar": 38,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "55626055f5e665637ee0cc12d5eb7dfa81105ee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
