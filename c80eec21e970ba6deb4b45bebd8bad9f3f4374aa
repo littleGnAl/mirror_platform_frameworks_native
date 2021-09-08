@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "770e5e95_8ffeca5c",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-08T23:06:15Z",
+      "side": 1,
+      "message": "Oops - that\u0027s right. Thanks.",
+      "parentUuid": "77da2655_54dd60d7",
+      "range": {
+        "startLine": 676,
+        "startChar": 72,
+        "endLine": 676,
+        "endChar": 84
+      },
+      "revId": "c80eec21e970ba6deb4b45bebd8bad9f3f4374aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c802cc4c_b10db2e6",
