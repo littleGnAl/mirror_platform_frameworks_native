@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c897f4_0fb50466",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1895425
+      },
+      "writtenOn": "2021-09-08T18:43:38Z",
+      "side": 1,
+      "message": "ptal? Just a simple CL to reduce log spam (per linked bug). It\u0027s possible there\u0027s an underlying issue that could be fixed here to reduce log spam while still logging this to Error when needed, but I\u0027m not familiar with this code so not sure how to approach that, so in the meantime this may make development using BufferQueueProducer more convenient.\n\nPer logging severity level recommendations, ERROR didn\u0027t seem like an appropriate severity level, as the message isn\u0027t actionable. (This may also be the case for surrounding logs, but I\u0027m choosing to omit fixing that for now)\n\n[1]: https://g3doc.corp.google.com/base/g3doc/logging.md?cl\u003dhead#:~:text\u003dproblem.-,error,-corresponds ",
+      "revId": "ba8183c5b07ffc732911416931e5011dcc6bb883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5748804_74673720",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1895425
+      },
+      "writtenOn": "2021-09-08T18:43:38Z",
+      "side": 1,
+      "message": "I\u0027m aware that LOGW is only used by this one log, after this CL. All other BQ_LOG uses are:\n- BQ_LOGV, which might not be appropriate here as this may be higher severity, or - - BQ_LOGE, which I think shouldn\u0027t be appropriate as this is being logged too often without anything actionable for the user to do.\n\nTherefore, I\u0027m leaving a TODO here to likely return thisto BQ_LOGE after the logging becomes more appropriate / less verbose.",
+      "range": {
+        "startLine": 651,
+        "startChar": 12,
+        "endLine": 651,
+        "endChar": 19
+      },
+      "revId": "ba8183c5b07ffc732911416931e5011dcc6bb883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf7506b3_bb238703",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1895425
+      },
+      "writtenOn": "2021-09-08T18:43:38Z",
+      "side": 1,
+      "message": "I\u0027m aware that surrounding logs continue to be LOGE. I assume other logs are still somewhat rare or more useful, so there may not be a need to modify their logging level.",
+      "revId": "ba8183c5b07ffc732911416931e5011dcc6bb883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
