@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfadb71e_85b444f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-09-08T08:28:44Z",
+      "side": 1,
+      "message": "Hi John, could you help NDK-API-Review?",
+      "revId": "e12fccc47f691e19041e6d1d94d0f70c7731c0e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
