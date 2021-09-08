@@ -69,6 +69,54 @@
       },
       "revId": "55626055f5e665637ee0cc12d5eb7dfa81105ee3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "525e653f_20aa9337",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-09-08T01:55:18Z",
+      "side": 1,
+      "message": "This callback is called as a subroutine of RpcPreconnectedClient function, and the callers are expected to store the parameter in their stack. So I don\u0027t think we need a cleanup function.",
+      "parentUuid": "815928dc_dd1d07c8",
+      "range": {
+        "startLine": 25,
+        "startChar": 38,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "55626055f5e665637ee0cc12d5eb7dfa81105ee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02065199_14728a74",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-09-08T01:55:18Z",
+      "side": 1,
+      "message": "Oops, I missed this. Done.",
+      "parentUuid": "f3c90e60_88bf50ad",
+      "range": {
+        "startLine": 25,
+        "startChar": 69,
+        "endLine": 25,
+        "endChar": 71
+      },
+      "revId": "55626055f5e665637ee0cc12d5eb7dfa81105ee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
