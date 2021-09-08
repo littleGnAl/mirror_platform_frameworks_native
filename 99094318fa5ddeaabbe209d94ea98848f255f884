@@ -34,6 +34,24 @@
       "parentUuid": "c2d9a172_b91fe1e9",
       "revId": "99094318fa5ddeaabbe209d94ea98848f255f884",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af34b3d8_50cddf8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-08T22:58:14Z",
+      "side": 1,
+      "message": "Yup, let\u0027s keep one owners file please! If they\u0027re not okay with it, they can remove themselves as owners.",
+      "parentUuid": "3254e77c_164e74aa",
+      "revId": "99094318fa5ddeaabbe209d94ea98848f255f884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
