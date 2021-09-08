@@ -16,6 +16,24 @@
       "message": "Is it still easy to cherry-pick to sc-v2 (API level 32)? That could benefit us as some of our Nest devices might not be migrated to T.\n\nNo need to push hard for it if it need some approval process\n\nThanks!",
       "revId": "9b0d089cfa9ac0b778c3459a7ecdeffe58d14ad9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be501004_be7a6556",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-08T00:26:35Z",
+      "side": 1,
+      "message": "I thought you only needed the API for T? :) \u002732\u0027 was only a typo before - it wouldn\u0027t have worked on sc-v2-dev devices. There are currently no planned NDK APIs in sc-v2-dev, and I don\u0027t think we\u0027d be able to get this there.",
+      "parentUuid": "3849bbd2_98007d4f",
+      "revId": "9b0d089cfa9ac0b778c3459a7ecdeffe58d14ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
