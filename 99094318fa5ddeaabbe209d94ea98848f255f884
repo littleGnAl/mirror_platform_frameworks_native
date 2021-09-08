@@ -16,6 +16,24 @@
       "message": "libs/binder already has an OWNERS file. Can you add the component there?",
       "revId": "99094318fa5ddeaabbe209d94ea98848f255f884",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3254e77c_164e74aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-09-08T22:56:34Z",
+      "side": 1,
+      "message": "Sure, but the owners in that OWNERS file don\u0027t seem to match the record at our side: https://docs.google.com/spreadsheets/d/1Mwnb6juZBiRH9_l3Wa6Gm8q6xpj9bsHK1YNL8yo3APc/edit#gid\u003d1880379107\u0026range\u003dE295\n\nCould you confirm the up-to-date owners list? Do make sure they are all okay with being assigned to or CC\u0027ed in the bugs related to module binderDriverInterfaceTest.",
+      "parentUuid": "c2d9a172_b91fe1e9",
+      "revId": "99094318fa5ddeaabbe209d94ea98848f255f884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
