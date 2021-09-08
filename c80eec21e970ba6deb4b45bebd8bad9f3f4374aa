@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77da2655_54dd60d7",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1219061
+      },
+      "writtenOn": "2021-09-08T23:02:56Z",
+      "side": 1,
+      "message": "We might only want to copy part of the data out. If we have \u0027start\u0027 here, the caller only have to allocate buffer of \u0027len\u0027, but not parcel-\u003edataSize().",
+      "parentUuid": "8b77e75d_e772b393",
+      "range": {
+        "startLine": 676,
+        "startChar": 72,
+        "endLine": 676,
+        "endChar": 84
+      },
+      "revId": "c80eec21e970ba6deb4b45bebd8bad9f3f4374aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c802cc4c_b10db2e6",
         "filename": "libs/binder/ndk/parcel.cpp",
         "patchSetId": 6
