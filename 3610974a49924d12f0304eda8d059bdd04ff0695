@@ -46,6 +46,30 @@
       },
       "revId": "3610974a49924d12f0304eda8d059bdd04ff0695",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab52dc15_587c8bda",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_ibinder.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-09-08T23:17:18Z",
+      "side": 1,
+      "message": "Once https://android-review.googlesource.com/c/platform/bionic/+/1822489 merges you can just use that. The doc should be updated to say 33 though since we can\u0027t macro-replace that.",
+      "parentUuid": "00d06773_0e777da5",
+      "range": {
+        "startLine": 588,
+        "startChar": 87,
+        "endLine": 588,
+        "endChar": 89
+      },
+      "revId": "3610974a49924d12f0304eda8d059bdd04ff0695",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
