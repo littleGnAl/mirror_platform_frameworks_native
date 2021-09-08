@@ -196,6 +196,18 @@ unsafe extern "C" fn deserialize_element<T: Deserialize>(
     StatusCode::OK as status_t
 }
 
+/// Flag that specifies that the following parcelable is present.
+///
+/// This is the Rust equivalent of `Parcel::kNonNullParcelableFlag`
+/// from `include/binder/Parcel.h` in C++.
+pub const NON_NULL_PARCELABLE_FLAG: i32 = 1;
+
+/// Flag that specifies that the following parcelable is absent.
+///
+/// This is the Rust equivalent of `Parcel::kNullParcelableFlag`
+/// from `include/binder/Parcel.h` in C++.
+pub const NULL_PARCELABLE_FLAG: i32 = 0;
+
 /// Helper trait for types that can be nullable when serialized.
 // We really need this trait instead of implementing `Serialize for Option<T>`
 // because of the Rust orphan rule which prevents us from doing
@@ -207,10 +219,10 @@ pub trait SerializeOption: Serialize {
     /// Serialize an Option of this type into the given [`Parcel`].
     fn serialize_option(this: Option<&Self>, parcel: &mut Parcel) -> Result<()> {
         if let Some(inner) = this {
-            parcel.write(&1i32)?;
+            parcel.write(&NON_NULL_PARCELABLE_FLAG)?;
             parcel.write(inner)
         } else {
-            parcel.write(&0i32)
+            parcel.write(&NULL_PARCELABLE_FLAG)
         }
     }
 }
@@ -776,10 +788,10 @@ macro_rules! impl_serialize_for_parcelable {
             ) -> $crate::Result<()> {
                 if let Some(this) = this {
                     use $crate::parcel::Parcelable;
-                    parcel.write(&1i32)?;
+                    parcel.write(&$crate::parcel::NON_NULL_PARCELABLE_FLAG)?;
                     this.serialize_parcelable(parcel)
                 } else {
-                    parcel.write(&0i32)
+                    parcel.write(&$crate::parcel::NULL_PARCELABLE_FLAG)
                 }
             }
         }
@@ -809,7 +821,7 @@ macro_rules! impl_deserialize_for_parcelable {
                 parcel: &$crate::parcel::Parcel,
             ) -> $crate::Result<()> {
                 let status: i32 = parcel.read()?;
-                if status == 0 {
+                if status == $crate::parcel::NULL_PARCELABLE_FLAG {
                     Err($crate::StatusCode::UNEXPECTED_NULL)
                 } else {
                     use $crate::parcel::Parcelable;
@@ -833,7 +845,7 @@ macro_rules! impl_deserialize_for_parcelable {
                 parcel: &$crate::parcel::Parcel,
             ) -> $crate::Result<()> {
                 let status: i32 = parcel.read()?;
-                if status == 0 {
+                if status == $crate::parcel::NULL_PARCELABLE_FLAG {
                     *this = None;
                     Ok(())
                 } else {
