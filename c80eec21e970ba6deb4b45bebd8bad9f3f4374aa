@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb126056_1aca93ef",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-08T22:56:40Z",
+      "side": 1,
+      "message": "you\u0027ll need to rebase this on top of https://android-review.googlesource.com/c/platform/frameworks/native/+/1820832 (the automatic rebase will be wrong, sorry!)",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 9
+      },
+      "revId": "c80eec21e970ba6deb4b45bebd8bad9f3f4374aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b77e75d_e772b393",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-08T22:56:40Z",
+      "side": 1,
+      "message": "is there any reason this has a \u0027start\u0027? The client can always pass (buffer + start), and we could avoid caring about overflow before",
+      "range": {
+        "startLine": 676,
+        "startChar": 72,
+        "endLine": 676,
+        "endChar": 84
+      },
+      "revId": "c80eec21e970ba6deb4b45bebd8bad9f3f4374aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c802cc4c_b10db2e6",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-08T22:56:40Z",
+      "side": 1,
+      "message": "objects include file descriptors, right? do we need to check both?",
+      "range": {
+        "startLine": 677,
+        "startChar": 23,
+        "endLine": 677,
+        "endChar": 35
+      },
+      "revId": "c80eec21e970ba6deb4b45bebd8bad9f3f4374aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab2c0ec_83d9f507",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-08T22:56:40Z",
+      "side": 1,
+      "message": "check for overflow? (ubsan will abort)",
+      "range": {
+        "startLine": 681,
+        "startChar": 8,
+        "endLine": 681,
+        "endChar": 19
+      },
+      "revId": "c80eec21e970ba6deb4b45bebd8bad9f3f4374aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecbac38a_25f56925",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-08T22:56:40Z",
+      "side": 1,
+      "message": "nit: std:: here but not below?",
+      "range": {
+        "startLine": 685,
+        "startChar": 4,
+        "endLine": 685,
+        "endChar": 9
+      },
+      "revId": "c80eec21e970ba6deb4b45bebd8bad9f3f4374aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9412207a_9a943655",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-08T22:56:40Z",
+      "side": 1,
+      "message": "STATUS_NO_MEMORY",
+      "range": {
+        "startLine": 698,
+        "startChar": 15,
+        "endLine": 698,
+        "endChar": 35
+      },
+      "revId": "c80eec21e970ba6deb4b45bebd8bad9f3f4374aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
