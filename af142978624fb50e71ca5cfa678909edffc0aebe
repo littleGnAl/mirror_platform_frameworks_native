@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c599c2_23384733",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-08T23:05:38Z",
+      "side": 1,
+      "message": "This version of ParcelableHolder is not thread-safe. The underlying problem is that Parcel is not thread-safe either, so even if I used Arc and Mutex here, Parcel would still be the problem.",
+      "revId": "af142978624fb50e71ca5cfa678909edffc0aebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de08dcc_910598d0",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-08T23:05:38Z",
+      "side": 1,
+      "message": "Should this also return Ok(None)? C++ returns BAD_VALUE here but that feels inconsistent to me.",
+      "revId": "af142978624fb50e71ca5cfa678909edffc0aebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
