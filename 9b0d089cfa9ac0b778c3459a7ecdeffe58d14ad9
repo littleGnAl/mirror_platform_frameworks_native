@@ -34,6 +34,24 @@
       "parentUuid": "3849bbd2_98007d4f",
       "revId": "9b0d089cfa9ac0b778c3459a7ecdeffe58d14ad9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90178c4_b590806d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1879856
+      },
+      "writtenOn": "2021-09-08T00:33:27Z",
+      "side": 1,
+      "message": "Got it, thanks! Yeah we only absolutely need it in Android T, Android S is optional",
+      "parentUuid": "be501004_be7a6556",
+      "revId": "9b0d089cfa9ac0b778c3459a7ecdeffe58d14ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
