@@ -16,14 +16,24 @@
 
 #pragma once
 
+#include <binder/CertificateFormat.h>
 #include <binder/RpcCertificateVerifier.h>
 
 namespace android {
 
 // A simple certificate verifier for testing.
+// Keep a list of leaf certificates as trusted. No certificate chain support.
 class RpcCertificateVerifierSimple : public RpcCertificateVerifier {
 public:
     status_t verify(const X509*, uint8_t*) override;
+
+    // Add a trusted peer certificate. Peers presenting this certificate are accepted.
+    //
+    // Caller must ensure that RpcTransportCtx::newTransport() are called after all trusted peer
+    // certificates are added. Otherwise, RpcTransport-s created before may not trust peer
+    // certificates added later.
+    [[nodiscard]] status_t addTrustedPeerCertificate(CertificateFormat format,
+                                                     std::string_view cert);
 };
 
 } // namespace android

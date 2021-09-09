@@ -14,21 +14,15 @@
  * limitations under the License.
  */
 
+// Formats for serializing TLS certificate.
+
 #pragma once
-
-#include <openssl/ssl.h>
-#include <utils/Errors.h>
-
-#include <binder/CertificateFormat.h>
 
 namespace android {
 
-// An interface with a function that verifies a peer certificate. It is a wrapper over the custom
-// verify function (see SSL_CTX_set_custom_verify).
-class RpcCertificateVerifier {
-public:
-    virtual ~RpcCertificateVerifier() = default;
-    virtual status_t verify(const X509* peerCert, uint8_t* outAlert) = 0;
+enum class CertificateFormat {
+    PEM,
+    // TODO(b/195166979): support other formats, e.g. DER
 };
 
 } // namespace android

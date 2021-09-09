@@ -25,4 +25,10 @@ status_t RpcCertificateVerifierSimple::verify(const X509*, uint8_t*) {
     return OK;
 }
 
+status_t RpcCertificateVerifierSimple::addTrustedPeerCertificate(CertificateFormat,
+                                                                 std::string_view) {
+    // TODO(b/195166979): implement this
+    return OK;
+}
+
 } // namespace android
