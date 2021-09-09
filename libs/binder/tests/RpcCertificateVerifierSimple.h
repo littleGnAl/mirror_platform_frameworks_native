@@ -16,6 +16,12 @@
 
 #pragma once
 
+#include <mutex>
+#include <string_view>
+#include <vector>
+
+#include <openssl/ssl.h>
+
 #include <binder/CertificateFormat.h>
 #include <binder/RpcCertificateVerifier.h>
 
@@ -23,6 +29,10 @@ namespace android {
 
 // A simple certificate verifier for testing.
 // Keep a list of leaf certificates as trusted. No certificate chain support.
+//
+// All APIs are thread-safe. However, if verify() and addTrustedPeerCertificate() are called
+// simultaneously in different threads, it is not deterministic whether verify() will use the
+// certificate being added.
 class RpcCertificateVerifierSimple : public RpcCertificateVerifier {
 public:
     status_t verify(const X509*, uint8_t*) override;
@@ -34,6 +44,10 @@ public:
     // certificates added later.
     [[nodiscard]] status_t addTrustedPeerCertificate(CertificateFormat format,
                                                      std::string_view cert);
+
+private:
+    std::mutex mMutex; // for below
+    std::vector<bssl::UniquePtr<X509>> mTrustedPeerCertificates;
 };
 
 } // namespace android
