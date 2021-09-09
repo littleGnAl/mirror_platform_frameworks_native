@@ -28,6 +28,7 @@
 namespace android {
 
 class FdTrigger;
+class RpcCertificateVerifier;
 
 enum class CertificateFormat {
     PEM,
