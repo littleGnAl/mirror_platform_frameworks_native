@@ -33,6 +33,24 @@
       "message": "Hi John, could you help NDK-API-Review?",
       "revId": "172473fcdf9b496dbfa019907f6dd8b328f6ae7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0537ca66_7754d889",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-09-09T04:20:10Z",
+      "side": 1,
+      "message": "Thank you!",
+      "parentUuid": "08d36d61_3a72f7cd",
+      "revId": "172473fcdf9b496dbfa019907f6dd8b328f6ae7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
