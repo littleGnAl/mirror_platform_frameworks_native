@@ -16,6 +16,29 @@
       "message": "I couldn\u0027t see an easy way to add a test for this without a lot of duplication of the existing tests.\nOTOH it\u0027s now used in VirtualizationService and we have various tests of that.",
       "revId": "a4ab9aed81c7851f33e22ff50153e9e83db38257",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b63f895_c8aadbcd",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-09T20:53:45Z",
+      "side": 1,
+      "message": "this should also specify that if this function is used, none of the other addService functions should be used (if they are, this process might shutdown when other services are in use)",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 461,
+        "endChar": 72
+      },
+      "revId": "a4ab9aed81c7851f33e22ff50153e9e83db38257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
