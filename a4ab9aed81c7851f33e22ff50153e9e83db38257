@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e74f21_f8b70002",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-09T14:57:23Z",
+      "side": 1,
+      "message": "I couldn\u0027t see an easy way to add a test for this without a lot of duplication of the existing tests.\nOTOH it\u0027s now used in VirtualizationService and we have various tests of that.",
+      "revId": "a4ab9aed81c7851f33e22ff50153e9e83db38257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
