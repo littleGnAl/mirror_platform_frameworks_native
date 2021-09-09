@@ -14,26 +14,20 @@
  * limitations under the License.
  */
 
-// Formats for serializing TLS certificate.
+// Utilities for serializing and deserializing X509 certificates.
 
 #pragma once
 
 #include <string>
+#include <string_view>
+
+#include <openssl/ssl.h>
+
+#include <binder/CertificateFormat.h>
 
 namespace android {
 
-enum class CertificateFormat {
-    PEM,
-    // TODO(b/195166979): support other formats, e.g. DER
-};
-
-static inline std::string PrintToString(CertificateFormat format) {
-    switch (format) {
-        case CertificateFormat::PEM:
-            return "PEM";
-        default:
-            return "<unknown>";
-    }
-}
+bssl::UniquePtr<X509> certificateFromString(std::string_view s, CertificateFormat format);
+std::string toString(X509* x509, CertificateFormat format);
 
 } // namespace android
