@@ -22,10 +22,12 @@
 #include <openssl/bn.h>
 #include <openssl/ssl.h>
 
+#include <binder/RpcCertificateUtils.h>
 #include <binder/RpcTransportTls.h>
 
 #include "FdTrigger.h"
 #include "RpcState.h"
+#include "Utils.h"
 
 #define SHOULD_LOG_TLS_DETAIL false
 
@@ -34,14 +36,6 @@
 #else
 #define LOG_TLS_DETAIL(...) ALOGV(__VA_ARGS__) // for type checking
 #endif
-
-#define TEST_AND_RETURN(value, expr)            \
-    do {                                        \
-        if (!(expr)) {                          \
-            ALOGE("Failed to call: %s", #expr); \
-            return value;                       \
-        }                                       \
-    } while (0)
 
 using android::base::ErrnoError;
 using android::base::Error;
@@ -466,9 +460,9 @@ protected:
     std::shared_ptr<RpcCertificateVerifier> mCertVerifier;
 };
 
-std::string RpcTransportCtxTls::getCertificate(CertificateFormat) const {
-    // TODO(b/195166979): return certificate here
-    return {};
+std::string RpcTransportCtxTls::getCertificate(CertificateFormat format) const {
+    X509* x509 = SSL_CTX_get0_certificate(mCtx.get()); // does not own
+    return toString(x509, format);
 }
 
 // Verify by comparing the leaf of peer certificate with every certificate in
