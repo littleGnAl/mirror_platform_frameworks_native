@@ -16,6 +16,24 @@
       "message": "Note: this was partially from https://android-review.googlesource.com/c/platform/frameworks/native/+/1794131/23/libs/binder/RpcTransportTls.cpp",
       "revId": "7d7aec22043a782d9ccdb0a51c0ccb862398617e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58bc338_e92b4cdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-10T03:09:04Z",
+      "side": 1,
+      "message": "Better link:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1794131/18..23/libs/binder/RpcTransportTls.cpp#b524",
+      "parentUuid": "135b78fb_dbb020dd",
+      "revId": "7d7aec22043a782d9ccdb0a51c0ccb862398617e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
