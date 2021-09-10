@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2e400a_3dde1b3f",
+        "filename": "libs/binder/RpcCertificateUtils.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-10T17:14:39Z",
+      "side": 1,
+      "message": "do you need to check this against any numeric_limits after the addition?",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "df93562c2cee545608f802bfef639d16b554bf28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
