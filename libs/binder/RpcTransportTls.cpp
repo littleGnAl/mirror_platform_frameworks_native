@@ -19,6 +19,7 @@
 
 #include <poll.h>
 
+#include <android-base/hex.h>
 #include <openssl/bn.h>
 #include <openssl/ssl.h>
 
@@ -499,6 +500,12 @@ std::unique_ptr<RpcTransportCtxTls> RpcTransportCtxTls::create() {
     if constexpr (SHOULD_LOG_TLS_DETAIL) { // NOLINT
         SSL_CTX_set_info_callback(ctx.get(), sslDebugLog);
     }
+
+    SSL_CTX_set_select_certificate_cb(ctx.get(), [](const SSL_CLIENT_HELLO* hello) {
+        auto id = android::base::HexString(hello->session_id, hello->session_id_len);
+        ALOGI("Seen session ID %s", id.c_str());
+        return ssl_select_cert_success;
+    });
 
     auto ret = std::make_unique<Impl>();
     ret->mCtx = std::move(ctx);
