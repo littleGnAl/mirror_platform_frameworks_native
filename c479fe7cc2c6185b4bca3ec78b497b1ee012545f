@@ -46,6 +46,30 @@
       },
       "revId": "c479fe7cc2c6185b4bca3ec78b497b1ee012545f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d346f4cb_2f4a2510",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-10T23:00:15Z",
+      "side": 1,
+      "message": "nit: I think the explicit control structure is much more clear than having to memorize or lookup 50 different macros around Android for types like this.",
+      "parentUuid": "9e3b621f_30a01486",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "c479fe7cc2c6185b4bca3ec78b497b1ee012545f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
