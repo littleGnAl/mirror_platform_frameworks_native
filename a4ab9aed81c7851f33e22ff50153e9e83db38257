@@ -39,6 +39,30 @@
       },
       "revId": "a4ab9aed81c7851f33e22ff50153e9e83db38257",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4acbadba_732e83e2",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-10T08:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b63f895_c8aadbcd",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 461,
+        "endChar": 72
+      },
+      "revId": "a4ab9aed81c7851f33e22ff50153e9e83db38257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
