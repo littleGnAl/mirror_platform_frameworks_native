@@ -14,31 +14,6 @@
  * limitations under the License.
  */
 
-// Formats for serializing TLS certificate.
-
-#pragma once
-
-#include <string>
-#include <vector>
-
-namespace android {
-
-using RpcCertificateData = std::vector<uint8_t>;
-// TODO: with C++20: using RpcCertificateView = std::span<uint8_t>
-using RpcCertificateView = const RpcCertificateData&;
-
-enum class CertificateFormat {
-    PEM,
-    // TODO(b/195166979): support other formats, e.g. DER
-};
-
-static inline std::string PrintToString(CertificateFormat format) {
-    switch (format) {
-        case CertificateFormat::PEM:
-            return "PEM";
-        default:
-            return "<unknown>";
-    }
+parcelable ParcelableCertificateData {
+    byte[] data;
 }
-
-} // namespace android
