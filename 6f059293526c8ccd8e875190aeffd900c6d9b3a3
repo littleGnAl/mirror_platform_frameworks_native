@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7231b73c_1e63c106",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1741425
+      },
+      "writtenOn": "2021-09-10T23:59:21Z",
+      "side": 1,
+      "message": "Presubmit tests run on a kernel missing BINDER_FREEZE ioctl.",
+      "revId": "6f059293526c8ccd8e875190aeffd900c6d9b3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
