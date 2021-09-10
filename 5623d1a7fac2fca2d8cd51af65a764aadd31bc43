@@ -46,6 +46,53 @@
       },
       "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d0cdab7_5e04822c",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-10T23:54:51Z",
+      "side": 1,
+      "message": "I get that this is a public API, resolving but see the other comment",
+      "parentUuid": "63e6fe65_1218d548",
+      "range": {
+        "startLine": 159,
+        "startChar": 61,
+        "endLine": 159,
+        "endChar": 69
+      },
+      "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "953d1a4b_352341cb",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-10T23:54:51Z",
+      "side": 1,
+      "message": "Is it intentional that this (and almost all changes in this CL that doesn\u0027t involve public APIs) a uint64_t, not an RpcWireAddress?\n\nIf so, why?",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 208,
+        "endChar": 20
+      },
+      "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
