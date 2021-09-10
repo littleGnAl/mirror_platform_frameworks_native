@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "135477a2_3b0f343f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-10T17:04:22Z",
+      "side": 1,
+      "message": "nit: could we keep this in related headers? We don\u0027t want too, too many in libbinder. Or maybe call it RpcCertificateFormat to keep it with the other RPC headers, WDYT?",
+      "revId": "fab95ab1f06d358e6f7eecf2bf925a352cf9f2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
