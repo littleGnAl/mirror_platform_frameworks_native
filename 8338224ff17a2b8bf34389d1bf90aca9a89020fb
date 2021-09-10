@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9792df05_c1aef261",
+        "filename": "libs/binder/include/binder/RpcCertificateVerifier.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-10T22:36:55Z",
+      "side": 1,
+      "message": "I agree that using lambdas and std::functions would be a more straight-forward API, but I think it makes the implementation harder.\n\nThe reason I create a separate class for this is that the verifier may store data (see https://android-review.googlesource.com/c/platform/frameworks/native/+/1823368/7/libs/binder/tests/RpcCertificateVerifierSimple.cpp ). Admittedly, lambdas may implicitly store data by capturing variables, but then these variables (e.g. mTrustedPeerCertificates) are hard to be modified later.\n\nIt is also not an std::function to avoid being copied. For example, RpcCertificateVerifierSimple cannot be copied because it stores unique_ptr\u0027s. (Technically SSL objects are reference counted, and those unique_ptr\u0027s are simply reference counts to the internal objects, but relying on that is too convoluted IMO).\n\nAnother option would be\n\n```\nusing RpcCertificateVerifier \u003d std::function\u003c...\u003e;\nclass RpcCertificateVerifierImpl {\n  ... operator(...) {}\n};\n```\n\nHowever, since RpcCertificateVerifierImpl can\u0027t be copied (for the reasons above), I have to store `std::shared_ptr\u003cstd::function\u003c\u003e\u003e` in RpcTransportCtxFactoryTls instead, which is not any better than the current code IMO.",
+      "parentUuid": "1e6c2169_b72478b1",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 49
+      },
+      "revId": "8338224ff17a2b8bf34389d1bf90aca9a89020fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96c4db27_cb2a73ac",
