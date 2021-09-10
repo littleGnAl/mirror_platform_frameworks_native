@@ -22,6 +22,30 @@
       },
       "revId": "e88eaaae416deb4e9379cc2df36e44d8859cbaba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795f6e0d_6ac67cfa",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-10T17:33:14Z",
+      "side": 1,
+      "message": "+1\nCert chain verification is likely required for auto",
+      "parentUuid": "20b1288e_bbe0da8b",
+      "range": {
+        "startLine": 468,
+        "startChar": 29,
+        "endLine": 468,
+        "endChar": 65
+      },
+      "revId": "e88eaaae416deb4e9379cc2df36e44d8859cbaba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
