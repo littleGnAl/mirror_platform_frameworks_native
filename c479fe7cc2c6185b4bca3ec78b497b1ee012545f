@@ -70,6 +70,30 @@
       },
       "revId": "c479fe7cc2c6185b4bca3ec78b497b1ee012545f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65b51a17_406c78b8",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-10T23:59:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d346f4cb_2f4a2510",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "c479fe7cc2c6185b4bca3ec78b497b1ee012545f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
