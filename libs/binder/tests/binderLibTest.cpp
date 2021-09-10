@@ -465,19 +465,10 @@ TEST_F(BinderLibTest, NopTransactionClear) {
 
 TEST_F(BinderLibTest, Freeze) {
     Parcel data, reply, replypid;
-    std::ifstream freezer_file("/sys/fs/cgroup/freezer/cgroup.freeze");
+    std::ifstream freezer_file("/sys/fs/cgroup/uid_0/cgroup.freeze");
 
     //Pass test on devices where the freezer is not supported
     if (freezer_file.fail()) {
-        GTEST_SKIP();
-        return;
-    }
-
-    std::string freezer_enabled;
-    std::getline(freezer_file, freezer_enabled);
-
-    //Pass test on devices where the freezer is disabled
-    if (freezer_enabled != "1") {
         GTEST_SKIP();
         return;
     }
@@ -499,6 +490,14 @@ TEST_F(BinderLibTest, Freeze) {
 
     EXPECT_EQ(sync_received, 1);
     EXPECT_EQ(async_received, 0);
+
+    uint32_t sync_received2, async_received2;
+
+    EXPECT_EQ(NO_ERROR, IPCThreadState::self()->getProcessFreezeInfo(pid, &sync_received2,
+                &async_received2));
+
+    EXPECT_EQ(sync_received2, 1);
+    EXPECT_EQ(async_received2, 0);
 
     EXPECT_EQ(NO_ERROR, IPCThreadState::self()->freeze(pid, 0, 0));
     EXPECT_EQ(NO_ERROR, m_server->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, &reply));
