@@ -16,6 +16,23 @@
       "message": "So, this got a bit more complicated :-(",
       "revId": "dc1f3367144e8e09d441316f9ab5755af3f6f746",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d0422b9_7da43869",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-09-10T18:19:28Z",
+      "side": 1,
+      "message": "Nit: It might be a little cleaner to group these into the same `pub use`, but we haven\u0027t gotten our formatter to do this yet so no worries.",
+      "revId": "dc1f3367144e8e09d441316f9ab5755af3f6f746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
