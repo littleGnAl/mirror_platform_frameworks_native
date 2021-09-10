@@ -120,6 +120,29 @@
       "message": "The rest of libbinder generally only seems to check against NULL_PARCELABLE_FLAG (0), so it accepts all non-zero values, but C++ ParcelableHolder rejects everything except NON_NULL_PARCELABLE_FLAG (1).",
       "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc8f493_97b0b512",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-10T02:21:04Z",
+      "side": 1,
+      "message": "nit: can we have an API like Parcel#read_parcel(size) which returns a new Parcel with that amount of data from self. (It moves position as well.)\n\nBut, yeah, it would be overkill.",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 9
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
