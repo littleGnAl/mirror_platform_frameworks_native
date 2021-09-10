@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f44f412e_44135f91",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-10T22:58:13Z",
+      "side": 1,
+      "message": "We could make ParcelableHolder generic over the stability, i.e., ParcelableHolder\u003cS\u003e and concrete types ParcelableHolder\u003cLocal\u003e and ParcelableHolder\u003cVintf\u003e, but that\u0027s something the C++ code could have done too. Should we keep the Rust API exactly like the C++ one?",
+      "parentUuid": "73d189e0_92fcd062",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "156359b2_e44ce2d8",
         "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
         "patchSetId": 6
@@ -119,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b80436c3_ea0b4a19",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-10T22:58:13Z",
+      "side": 1,
+      "message": "\u003e In C++(and other languages), we add a comment like: /*include_size\u003d*/.\nI haven\u0027t seen a lot of that in Rust, but it can\u0027t hurt either. I\u0027ll add it.\n\n\u003e btw, why we don\u0027t include size? C++ backend writes the size of (name + parcelable)\nC++ ParcelableHolder doesn\u0027t include the size either, not sure why.\nJeongik would know?",
+      "parentUuid": "156359b2_e44ce2d8",
+      "range": {
+        "startLine": 186,
+        "startChar": 35,
+        "endLine": 186,
+        "endChar": 40
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ea004d8_73dd138b",
         "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
         "patchSetId": 6
@@ -130,6 +178,30 @@
       "writtenOn": "2021-09-10T02:12:23Z",
       "side": 1,
       "message": "if we don\u0027t need to put size, why not just use parcel?\n\n  parcel.write(..)\n  parcel.write_..",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 61
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a28aa3_6881fcb9",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-10T22:58:13Z",
+      "side": 1,
+      "message": "include_size/include_length is a bit ambiguous here. What it means is that it does prepend the size, but the size of the size field itself is counted too (or not if include_length\u003dfalse). For example, writing an 8 byte payload writes a size of 12(4+8) with include_length\u003dtrue, but a size of 8 with include_length\u003dfalse.\n\nI\u0027m happy to bikeshed the name of \"include_length\", if anyone can think of a better alternative.",
+      "parentUuid": "0ea004d8_73dd138b",
       "range": {
         "startLine": 187,
         "startChar": 0,
