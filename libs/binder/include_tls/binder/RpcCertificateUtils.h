@@ -14,31 +14,20 @@
  * limitations under the License.
  */
 
-// Formats for serializing TLS certificate.
+// Utilities for serializing and deserializing X509 certificates.
 
 #pragma once
 
-#include <string>
 #include <vector>
+
+#include <openssl/ssl.h>
+
+#include <binder/CertificateFormat.h>
 
 namespace android {
 
-using RpcCertificateData = std::vector<uint8_t>;
-// TODO: with C++20: using RpcCertificateView = std::span<uint8_t>
-using RpcCertificateView = const RpcCertificateData&;
+bssl::UniquePtr<X509> deserializeCertificate(RpcCertificateView cert, CertificateFormat format);
 
-enum class CertificateFormat {
-    PEM,
-    // TODO(b/195166979): support other formats, e.g. DER
-};
-
-static inline std::string PrintToString(CertificateFormat format) {
-    switch (format) {
-        case CertificateFormat::PEM:
-            return "PEM";
-        default:
-            return "<unknown>";
-    }
-}
+RpcCertificateData serializeCertificate(X509* x509, CertificateFormat format);
 
 } // namespace android
