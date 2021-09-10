@@ -22,6 +22,30 @@
       },
       "revId": "c479fe7cc2c6185b4bca3ec78b497b1ee012545f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e3b621f_30a01486",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-10T22:28:25Z",
+      "side": 1,
+      "message": "It\u0027s not a public API though.\n\nSwitch to Result doesn\u0027t help too much IMO; you still need to say\n\n```\nif (!expr) return Error() \u003c\u003c \"expr failed\"\n```",
+      "parentUuid": "23bb8ace_089be507",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "c479fe7cc2c6185b4bca3ec78b497b1ee012545f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
