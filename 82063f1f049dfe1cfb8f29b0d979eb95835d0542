@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe1386eb_75feb020",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2021-09-10T22:25:33Z",
+      "side": 1,
+      "message": "Booted aosp_cf_x86_64_phone-userdebug from the presubmit:\n\nacloud create --build-target aosp_cf_x86_64_phone-userdebug --build-id P25951701 --autoconnect webrtc\n\nVerified that sensors and \u0027pm list features\u0027 still work as expected, and that the APEXes are being used instead of direct files in /vendor.",
+      "revId": "82063f1f049dfe1cfb8f29b0d979eb95835d0542",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
