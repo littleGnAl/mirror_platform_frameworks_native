@@ -101,6 +101,11 @@ public:
         return status;
     }
 
+    std::vector<uint8_t> getSessionId() override {
+        // FIXME
+        return {};
+    }
+
 private:
     android::base::unique_fd mSocket;
 };

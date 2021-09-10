@@ -322,6 +322,15 @@ public:
     status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size) override;
     status_t interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size) override;
 
+    std::vector<uint8_t> getSessionId() override {
+        auto [session, errorQueue] = mSsl.call(SSL_get_session);
+        errorQueue.clear();
+        LOG_ALWAYS_FATAL_IF(session == nullptr);
+        unsigned len;
+        const uint8_t* id = SSL_SESSION_get_id(session, &len);
+        return std::vector<uint8_t>(id, id + len);
+    }
+
 private:
     android::base::unique_fd mSocket;
     Ssl mSsl;
