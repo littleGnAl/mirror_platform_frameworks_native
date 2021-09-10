@@ -33,6 +33,24 @@
       "message": "Should this also return Ok(None)? C++ returns BAD_VALUE here but that feels inconsistent to me.",
       "revId": "af142978624fb50e71ca5cfa678909edffc0aebe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d72ca9_d9185e38",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-10T02:12:23Z",
+      "side": 1,
+      "message": "agreed. there\u0027s inconsistency.\n\nI think the intention is to return \"None\" (nullptr in C++) only when ParcelableHolder is empty. That being said, returning None(or nullptr) when parcel contains a wrong type (L126) might be wrong and it should return BAD_VALUE.\n\nJeongik, C++ backend has the same behavior. Please take a look.",
+      "parentUuid": "5de08dcc_910598d0",
+      "revId": "af142978624fb50e71ca5cfa678909edffc0aebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

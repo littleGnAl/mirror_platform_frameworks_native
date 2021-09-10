@@ -38,6 +38,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73d189e0_92fcd062",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-10T02:12:23Z",
+      "side": 1,
+      "message": "We don\u0027t want to reset \"stability\". Stability is set when creating an object and persist along with it. I\u0027m curious if we can model this with type system.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156359b2_e44ce2d8",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-10T02:12:23Z",
+      "side": 1,
+      "message": "In C++(and other languages), we add a comment like: /*include_size\u003d*/.\n\nbtw, why we don\u0027t include size? C++ backend writes the size of (name + parcelable)",
+      "range": {
+        "startLine": 186,
+        "startChar": 35,
+        "endLine": 186,
+        "endChar": 40
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea004d8_73dd138b",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-10T02:12:23Z",
+      "side": 1,
+      "message": "if we don\u0027t need to put size, why not just use parcel?\n\n  parcel.write(..)\n  parcel.write_..",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 61
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09ddbb71_1bfc43eb",
         "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
         "patchSetId": 6
