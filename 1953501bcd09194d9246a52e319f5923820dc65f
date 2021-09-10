@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b1c8ba2_805ed592",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-10T20:37:03Z",
+      "side": 1,
+      "message": "The ParcelableHolder object constructor takes a Stability value which is either Local or Vintf, and set_parcelable checks that stability exactly like the C++ code does. Is there more to it than that?",
+      "parentUuid": "b011dde5_8bd9255f",
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73d189e0_92fcd062",
         "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
         "patchSetId": 6
