@@ -16,6 +16,24 @@
       "message": "..though I am not sure if this is the right place for this APEX. frameworks/* are quite bloated already.",
       "revId": "29a25d5fd1822bfb0c99e1ef28fa108b6fc2dcd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76e96fbd_a07d1b50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2021-09-10T20:50:32Z",
+      "side": 1,
+      "message": "Ack. I put it here so it lives next to its source files, but we can move it to another location in a followup.\n\nDid you have anything in mind? I\u0027m worried that a new project per-vendor-APEX like platform/packages/modules/* would grow to too many projects.",
+      "parentUuid": "7c7f48fe_0c89809e",
+      "revId": "29a25d5fd1822bfb0c99e1ef28fa108b6fc2dcd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
