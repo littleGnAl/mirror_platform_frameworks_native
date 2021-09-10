@@ -46,6 +46,30 @@
       },
       "revId": "e88eaaae416deb4e9379cc2df36e44d8859cbaba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60cca49e_6352fe04",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-10T22:37:54Z",
+      "side": 1,
+      "message": "Yes, with conscrypt.\n\nIt won\u0027t be in this CL. We\u0027ll need to clarify security goals before implementing certificate chains.\n\nNote: This class is for testing only.",
+      "parentUuid": "795f6e0d_6ac67cfa",
+      "range": {
+        "startLine": 468,
+        "startChar": 29,
+        "endLine": 468,
+        "endChar": 65
+      },
+      "revId": "e88eaaae416deb4e9379cc2df36e44d8859cbaba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
