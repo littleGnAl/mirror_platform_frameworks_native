@@ -131,7 +131,7 @@ public:
     /**
      * See RpcTransportCtx::getCertificate
      */
-    std::string getCertificate(CertificateFormat);
+    RpcCertificateData getCertificate(CertificateFormat);
 
     /**
      * Shuts down the service.

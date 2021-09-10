@@ -18,7 +18,13 @@
 
 #pragma once
 
+#include <vector>
+
 namespace android {
+
+using RpcCertificateData = std::vector<uint8_t>;
+// TODO: with C++20: using RpcCertificateView = std::span<uint8_t>
+using RpcCertificateView = const RpcCertificateData&;
 
 enum class CertificateFormat {
     PEM,
