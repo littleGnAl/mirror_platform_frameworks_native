@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "834ffe13_e039f85d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-10T01:14:09Z",
+      "side": 1,
+      "message": "Basically, what I\u0027m asking is: keep this version or rewrite based on the simpler AParcelableHolder?",
+      "parentUuid": "9e9f75ad_484b0f8c",
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09ddbb71_1bfc43eb",
         "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
         "patchSetId": 6
