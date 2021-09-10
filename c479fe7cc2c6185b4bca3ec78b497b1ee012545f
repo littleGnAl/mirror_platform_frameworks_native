@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23bb8ace_089be507",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-10T17:02:51Z",
+      "side": 1,
+      "message": "nit: I do which we could avoid this API, because the macros aren\u0027t typed (e.g. easy to use expr w/ non-boolean result. Could we consider switching to Result everywhere?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "c479fe7cc2c6185b4bca3ec78b497b1ee012545f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
