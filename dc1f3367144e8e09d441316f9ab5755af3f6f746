@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e578f4ae_af7b79f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-10T10:44:14Z",
+      "side": 1,
+      "message": "So, this got a bit more complicated :-(",
+      "revId": "dc1f3367144e8e09d441316f9ab5755af3f6f746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
