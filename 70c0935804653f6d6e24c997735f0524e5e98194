@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fe2dc7a_4d39510f",
+        "filename": "libs/binder/RpcCertificateUtils.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-10T05:29:56Z",
+      "side": 1,
+      "message": "Can we return `const vector\u003cuint8_t\u003e` instead? We are not actually returning a string, but a byte array. I would rather call this function `serializeX509Cert`",
+      "range": {
+        "startLine": 57,
+        "startChar": 23,
+        "endLine": 57,
+        "endChar": 52
+      },
+      "revId": "70c0935804653f6d6e24c997735f0524e5e98194",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
