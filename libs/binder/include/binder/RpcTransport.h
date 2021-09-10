@@ -54,6 +54,9 @@ public:
                                              size_t size) = 0;
     virtual status_t interruptableReadFully(FdTrigger *fdTrigger, void *buf, size_t size) = 0;
 
+    // Return the session ID.
+    virtual std::vector<uint8_t> getSessionId() = 0;
+
 protected:
     RpcTransport() = default;
 };
