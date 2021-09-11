@@ -46,6 +46,30 @@
       },
       "revId": "df93562c2cee545608f802bfef639d16b554bf28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8819df03_20bda72b",
+        "filename": "libs/binder/RpcCertificateUtils.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-11T00:04:16Z",
+      "side": 1,
+      "message": "Nope.\n\nI check numeric_limits because d2i_X509 requires a long in its input. Note that expectEnd is not an input to `d2i_X509`. It is only used for checking in L39.\n\nAnd +1 on Steven\u0027s comment. (I switch to std::vector now, but the same logic applies)",
+      "parentUuid": "cf7fbf49_eaaea485",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "df93562c2cee545608f802bfef639d16b554bf28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
