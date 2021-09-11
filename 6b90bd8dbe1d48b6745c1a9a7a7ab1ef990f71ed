@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b8efabf_447c24cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-11T00:20:41Z",
+      "side": 1,
+      "message": "note, this is with this change:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1824010\n\nIn the binder RPC case, we are still making allocations for this transaction, which accounts for some of the difference (also regular binder has real scheduler hints)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 71
+      },
+      "revId": "6b90bd8dbe1d48b6745c1a9a7a7ab1ef990f71ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a9d8562_95ecbb33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-11T00:20:41Z",
+      "side": 1,
+      "message": "this is representative of over 99% of transactions w/ binder, and it\u0027s pretty comprable",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 71
+      },
+      "revId": "6b90bd8dbe1d48b6745c1a9a7a7ab1ef990f71ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b520d59a_d3f84095",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-11T00:20:41Z",
+      "side": 1,
+      "message": "and this is actually faster ! :)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 71
+      },
+      "revId": "6b90bd8dbe1d48b6745c1a9a7a7ab1ef990f71ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4386487_f085cbde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-11T00:20:41Z",
+      "side": 1,
+      "message": "this is what I\u0027m not sure what to do about, but maybe we can fix it",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "6b90bd8dbe1d48b6745c1a9a7a7ab1ef990f71ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
