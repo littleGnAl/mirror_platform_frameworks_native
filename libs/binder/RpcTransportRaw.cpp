@@ -63,6 +63,19 @@ public:
 
         MAYBE_WAIT_IN_FLAKE_MODE;
 
+        {
+            auto writeSize = this->send(buffer, end - buffer);
+            if (writeSize.ok()) {
+                if (*writeSize == 0) return DEAD_OBJECT;
+
+                buffer += *writeSize;
+                if (buffer == end) return OK;
+            } else if (writeSize.error().code() != -WOULD_BLOCK) {
+                LOG_RPC_DETAIL("RpcTransport::send(): %s", writeSize.error().message().c_str());
+                return writeSize.error().code() == 0 ? UNKNOWN_ERROR : -writeSize.error().code();
+            }
+        }
+
         status_t status;
         while ((status = fdTrigger->triggerablePoll(mSocket.get(), POLLOUT)) == OK) {
             auto writeSize = this->send(buffer, end - buffer);
@@ -84,6 +97,19 @@ public:
         uint8_t* end = buffer + size;
 
         MAYBE_WAIT_IN_FLAKE_MODE;
+
+        {
+            auto readSize = this->recv(buffer, end - buffer);
+            if (readSize.ok()) {
+                if (*readSize == 0) return DEAD_OBJECT;
+
+                buffer += *readSize;
+                if (buffer == end) return OK;
+            } else if (readSize.error().code() != -WOULD_BLOCK) {
+                LOG_RPC_DETAIL("RpcTransport::send(): %s", readSize.error().message().c_str());
+                return readSize.error().code() == 0 ? UNKNOWN_ERROR : -readSize.error().code();
+            }
+        }
 
         status_t status;
         while ((status = fdTrigger->triggerablePoll(mSocket.get(), POLLIN)) == OK) {
