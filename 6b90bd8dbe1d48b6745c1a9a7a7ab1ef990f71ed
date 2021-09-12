@@ -91,6 +91,53 @@
       },
       "revId": "6b90bd8dbe1d48b6745c1a9a7a7ab1ef990f71ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a58f722_e8507679",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-12T23:19:29Z",
+      "side": 1,
+      "message": "Me neither.",
+      "parentUuid": "c4386487_f085cbde",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "6b90bd8dbe1d48b6745c1a9a7a7ab1ef990f71ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "895ceec9_8a3e0a8e",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-12T23:19:29Z",
+      "side": 1,
+      "message": "This part is duplicated... but should be okay.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 45
+      },
+      "revId": "6b90bd8dbe1d48b6745c1a9a7a7ab1ef990f71ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
