@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b42e32a_8faaa096",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-12T23:35:13Z",
+      "side": 1,
+      "message": "Why not `struct RpcAddress { uint64_t value; }`?\n\nI see that some details about RpcWireAddress are already exposed. e.g. RPC_WIRE_ADDRESS_OPTION_CREATED. It would be nicer if those are abstracted in RpcAddress. `bool RpcAddress::Created()`.\n\nWith uint64_t, the readability became worse than before, IMO.",
+      "parentUuid": "ed8cddc8_46dfbf3f",
+      "range": {
+        "startLine": 159,
+        "startChar": 61,
+        "endLine": 159,
+        "endChar": 69
+      },
+      "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "953d1a4b_352341cb",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 2
@@ -186,6 +210,29 @@
         "startChar": 12,
         "endLine": 208,
         "endChar": 20
+      },
+      "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232d65df_3c9bc3cc",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-12T23:35:13Z",
+      "side": 1,
+      "message": "Is this RPC_WIRE_ADDRESS_OPTION_CREATED ?",
+      "range": {
+        "startLine": 288,
+        "startChar": 24,
+        "endLine": 288,
+        "endChar": 25
       },
       "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
