@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e6b13d7_1a426c6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-12T23:23:47Z",
+      "side": 1,
+      "message": "I agree with the next change, but don\u0027t quite understand why this is needed. We can still hide uint64_t under RpcAddress.",
+      "revId": "826367f2240f2e64036b6be9a7cde93fdd79cba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
