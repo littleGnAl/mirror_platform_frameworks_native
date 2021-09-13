@@ -16,6 +16,23 @@
       "message": "Thanks for the review!",
       "revId": "29936fa194516a906585eb3938d62d1944a21172",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e8952a_537f5832",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1895425
+      },
+      "writtenOn": "2021-09-13T18:54:59Z",
+      "side": 1,
+      "message": "Hmm how do I submit this CL? I\u0027m not very familiar with android gerrit (and tried flipping the presubmit-ready and verified flags as they seemed appropriate)",
+      "revId": "29936fa194516a906585eb3938d62d1944a21172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
