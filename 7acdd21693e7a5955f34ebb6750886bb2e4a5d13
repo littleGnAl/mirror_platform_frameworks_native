@@ -46,6 +46,30 @@
       },
       "revId": "7acdd21693e7a5955f34ebb6750886bb2e4a5d13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e701e23_108a6742",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-13T21:16:57Z",
+      "side": 1,
+      "message": "We need this here so we can call subparcel.write_parcelable() on line 188 on an AnyParcelable object (write_parcelable requires that its parameter implements Parcelable).",
+      "parentUuid": "8887b7a6_f340246b",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "7acdd21693e7a5955f34ebb6750886bb2e4a5d13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
