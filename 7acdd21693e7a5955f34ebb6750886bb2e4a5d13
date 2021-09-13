@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "273b03ae_3ccaa120",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-13T12:18:53Z",
+      "side": 1,
+      "message": "Hold on, iiuc, this is only valid for AIDL-generated structured parcelables (at least for now).\n\nJeongik, can you confirm this is what we expect from ParcelableHolder? I guess so, but we\u0027d better be specific about ParcelableHolder\u0027s contract.",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "7acdd21693e7a5955f34ebb6750886bb2e4a5d13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
