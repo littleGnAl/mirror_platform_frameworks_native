@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcdf6515_1df73cd5",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-09-13T17:02:06Z",
+      "side": 1,
+      "message": "bufferqueue is feature frozen so there is no need to leave the TODO - it\u0027s highly unlikely that we\u0027ll change internals to the point where this log is less verbose.\n\nHaving this warn is okay.",
+      "parentUuid": "c5748804_74673720",
+      "range": {
+        "startLine": 651,
+        "startChar": 12,
+        "endLine": 651,
+        "endChar": 19
+      },
+      "revId": "ba8183c5b07ffc732911416931e5011dcc6bb883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf7506b3_bb238703",
         "filename": "libs/gui/BufferQueueProducer.cpp",
         "patchSetId": 2
@@ -71,6 +95,24 @@
       "writtenOn": "2021-09-08T18:43:38Z",
       "side": 1,
       "message": "I\u0027m aware that surrounding logs continue to be LOGE. I assume other logs are still somewhat rare or more useful, so there may not be a need to modify their logging level.",
+      "revId": "ba8183c5b07ffc732911416931e5011dcc6bb883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "145c0cbd_d7139599",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-09-13T17:02:06Z",
+      "side": 1,
+      "message": "let\u0027s leave the severity alone here unless these logs are in fact spammy.",
+      "parentUuid": "bf7506b3_bb238703",
       "revId": "ba8183c5b07ffc732911416931e5011dcc6bb883",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
