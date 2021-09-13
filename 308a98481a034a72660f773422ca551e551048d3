@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b0fbe6b_0af7ead4",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-13T22:40:11Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what I saw. Adding explicit checks in AParcel_appendFrom or not, we don\u0027t need extra check here, right?",
+      "parentUuid": "fd593313_08dd5c92",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 9
+      },
+      "revId": "308a98481a034a72660f773422ca551e551048d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35f58105_f9a4bd1d",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 3
