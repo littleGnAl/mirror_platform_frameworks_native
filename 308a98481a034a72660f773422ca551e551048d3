@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e499bcb_e4b96478",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-13T22:42:43Z",
+      "side": 1,
+      "message": "\u003e this will always succeed \u0027new AParcel\u0027 in Android will throw an exception on failure, and since exceptions are disabled, this will be a crash\n\nIsn\u0027t libbinder(_rs) supporting \"host\"(non-Android)?",
+      "parentUuid": "13a91303_30dcb851",
+      "range": {
+        "startLine": 219,
+        "startChar": 29,
+        "endLine": 219,
+        "endChar": 43
+      },
+      "revId": "308a98481a034a72660f773422ca551e551048d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "914fda6a_37ae63d6",
