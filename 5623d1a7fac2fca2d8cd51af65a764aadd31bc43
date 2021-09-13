@@ -240,6 +240,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edbd91a8_5d063d31",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-13T23:15:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c5304632_8e83d4e8",
+      "range": {
+        "startLine": 159,
+        "startChar": 61,
+        "endLine": 159,
+        "endChar": 69
+      },
+      "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb4158fe_f6e160ad",
@@ -395,6 +419,30 @@
       "side": 1,
       "message": "Jiyong - this is unrelated to the current change. Let me know if you want to follow-up, but since this is an existing problem in Java and C++ code, I\u0027d like to do it separately.",
       "parentUuid": "2ea1761b_1d412ebc",
+      "range": {
+        "startLine": 288,
+        "startChar": 24,
+        "endLine": 288,
+        "endChar": 25
+      },
+      "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2324048_87dbb1f6",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-13T23:15:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "47ea5390_d722b555",
       "range": {
         "startLine": 288,
         "startChar": 24,
