@@ -70,6 +70,30 @@
       },
       "revId": "7acdd21693e7a5955f34ebb6750886bb2e4a5d13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a27b9f53_56088b7c",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-13T21:46:01Z",
+      "side": 1,
+      "message": "We want to leave open the possibility for custom Rust parcelables, exactly like we have now with cpp_header.",
+      "parentUuid": "8887b7a6_f340246b",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "7acdd21693e7a5955f34ebb6750886bb2e4a5d13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
