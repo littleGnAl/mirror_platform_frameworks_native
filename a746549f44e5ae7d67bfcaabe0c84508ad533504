@@ -22,6 +22,30 @@
       },
       "revId": "a746549f44e5ae7d67bfcaabe0c84508ad533504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02fe6bc_01d9912b",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-13T22:48:52Z",
+      "side": 1,
+      "message": "It would lead to a leak (circular reference). By passing it in here, we avoid needing to promote the session more than once (it happens to need to be promoted when this function is called).",
+      "parentUuid": "89b62525_8e7be2d2",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 96
+      },
+      "revId": "a746549f44e5ae7d67bfcaabe0c84508ad533504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
