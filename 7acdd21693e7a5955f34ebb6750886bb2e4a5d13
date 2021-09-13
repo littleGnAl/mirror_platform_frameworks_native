@@ -94,6 +94,30 @@
       },
       "revId": "7acdd21693e7a5955f34ebb6750886bb2e4a5d13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2801933b_c88faf08",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-13T22:30:22Z",
+      "side": 1,
+      "message": "The Parcelable trait has 2 kinds of methods for now:\n* get_descriptor() and get_stability() which are both required by ParcelableHolder, so custom parcelables would need to implement.\n* serialize_parcelable/deserialize_parcelable which ParcelableHolder also requires, but are also used by impl_serialize_for_parcelable/impl_deserialize_for_parcelable, respectively. Any custom parcelable that gets serialized would need to implement these two.\n\nIf a custom parcelable doesn\u0027t need to be stored in a ParcelableHolder, it could skip the first two. Is there ever a scenario where it wouldn\u0027t need to implement the serialization functions?\n\nIn any case, I could split the current Parcelable into two traits (one per list item above).",
+      "parentUuid": "a27b9f53_56088b7c",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "7acdd21693e7a5955f34ebb6750886bb2e4a5d13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
