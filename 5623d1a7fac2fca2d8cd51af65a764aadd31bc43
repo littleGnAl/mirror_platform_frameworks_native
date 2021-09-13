@@ -170,6 +170,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57a148d3_5a4522e2",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-13T16:11:50Z",
+      "side": 1,
+      "message": "I lean towards having a more explicit type instead of uint64_t, and Jiyong\u0027s suggestion sounds like it would be a good change.",
+      "parentUuid": "3b42e32a_8faaa096",
+      "range": {
+        "startLine": 159,
+        "startChar": 61,
+        "endLine": 159,
+        "endChar": 69
+      },
+      "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb4158fe_f6e160ad",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-13T16:11:50Z",
+      "side": 1,
+      "message": "define a constant somewhere for present/not-present? null/non-null works too.",
+      "range": {
+        "startLine": 206,
+        "startChar": 45,
+        "endLine": 206,
+        "endChar": 56
+      },
+      "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "953d1a4b_352341cb",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 2
