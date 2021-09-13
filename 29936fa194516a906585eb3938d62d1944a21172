@@ -33,6 +33,24 @@
       "message": "Hmm how do I submit this CL? I\u0027m not very familiar with android gerrit (and tried flipping the presubmit-ready and verified flags as they seemed appropriate)",
       "revId": "29936fa194516a906585eb3938d62d1944a21172",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4121e53c_cab5aa1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-09-13T19:42:31Z",
+      "side": 1,
+      "message": "presubmit must pass first before ths can be submitted (so the Presubmit-Verified flag must be +1)",
+      "parentUuid": "40e8952a_537f5832",
+      "revId": "29936fa194516a906585eb3938d62d1944a21172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
