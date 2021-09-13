@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc000607_83a56558",
+        "filename": "libs/binder/include/binder/CertificateFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-13T21:07:53Z",
+      "side": 1,
+      "message": "You mean the following?\n\n```\nstruct RpcCertificateData {\n  std::vector\u003cuint8_t\u003e\n};\n```\n\n\u003e they hide the underlying type\n\nThat was the intention, in case we want to change RpcCertificateView from const std::vector\u003c\u003e\u0026 to std::span\u003c\u003e later; and with the typedef RpcCertificateView, I think it makes sense to add RpcCertificateData too.",
+      "parentUuid": "bdb68e9e_99edfca1",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "658e2e75c615131f335d9114dbc27a15f27195f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c16bfec1_244a4a89",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62910429_b3ac8edb",
+        "filename": "libs/binder/include/binder/CertificateFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-13T21:07:53Z",
+      "side": 1,
+      "message": "\u003e std::span implies no ownership\n\nYes (also see Also see https://android-review.googlesource.com/c/platform/frameworks/native/+/1794131/31/libs/binder/include/binder/CertificateFormat.h#28)\n\n\u003e the client/server would always have to own this separately.\n\nYes; client and server are on different machines\n\n\u003e Is that expected?\n\nWhat do you mean? The two facts above aren\u0027t logically related IMO.",
+      "parentUuid": "c16bfec1_244a4a89",
+      "range": {
+        "startLine": 26,
+        "startChar": 48,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "658e2e75c615131f335d9114dbc27a15f27195f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1338e14a_87ce94a0",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-13T17:19:08Z",
       "side": 1,
       "message": "so this is a copy of the data now, should we consider it \u0027const std::vector\u003cuint8_t\u003e\u0026\u0027 instead?",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 22
+      },
+      "revId": "658e2e75c615131f335d9114dbc27a15f27195f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a92fc2b9_96e7c7ca",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-13T21:07:53Z",
+      "side": 1,
+      "message": "Nope, because the implementation stores it as an X509 struct, not the serialized form. It is serialized when getCertificate() is called.",
+      "parentUuid": "1338e14a_87ce94a0",
       "range": {
         "startLine": 139,
         "startChar": 4,
