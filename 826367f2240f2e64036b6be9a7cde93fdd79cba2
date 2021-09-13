@@ -16,6 +16,24 @@
       "message": "I agree with the next change, but don\u0027t quite understand why this is needed. We can still hide uint64_t under RpcAddress.",
       "revId": "826367f2240f2e64036b6be9a7cde93fdd79cba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9636677_8e97b997",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-13T16:28:44Z",
+      "side": 1,
+      "message": "(unresolving for visibility, but I also would like to submit now)\n\nThe session ID is something different than an RpcAddress. Previously, we were reusing RPC address in order to act as both an \"unforgeable\" (cryptographically) token for a binder and for a session ID. However, as it turns out, we only need to have an \"unforgeable\" token as a session ID.\n\nIn order to add a connection to an existing session, you must have access to this 256-bit session ID. For instance, even with the same client and server certificate, it is possible to have 2 RpcSession objects using this. When one of these wants to add a connection to the existing session, it must pass a connection header w/ the existing session. Without a session ID, we wouldn\u0027t know which session to add the thread/connection to. Also, it\u0027s important the session ID is unguessable in order to add an extra layer of security. For instance, imagine two processes/devices connect to the same server (either with virtualization manager, by requesting connections to that server, OR if they have the same client x509 certificate). In either case, one client shouldn\u0027t be able to modify the session associated with the other. So, by providing the session ID on the connection which is already established, we ensure that only that client can create new connections associated with the existing session.",
+      "parentUuid": "7e6b13d7_1a426c6e",
+      "revId": "826367f2240f2e64036b6be9a7cde93fdd79cba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
