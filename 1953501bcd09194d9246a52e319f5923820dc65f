@@ -118,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd15a254_7a923b29",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-13T11:22:29Z",
+      "side": 1,
+      "message": "\u003e ParcelableHolder\u003cS\u003e\n\nYes, that\u0027s what I was thinking. Unless we want to the same thing to C++ parcelableholder, let\u0027s keep this way. I\u0027m fine with this.",
+      "parentUuid": "f44f412e_44135f91",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "156359b2_e44ce2d8",
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "\u003e In C++(and other languages), we add a comment like: /*include_size\u003d*/.\nI haven\u0027t seen a lot of that in Rust, but it can\u0027t hurt either. I\u0027ll add it.\n\n\u003e btw, why we don\u0027t include size? C++ backend writes the size of (name + parcelable)\nC++ ParcelableHolder doesn\u0027t include the size either, not sure why.\nJeongik would know?",
       "parentUuid": "156359b2_e44ce2d8",
+      "range": {
+        "startLine": 186,
+        "startChar": 35,
+        "endLine": 186,
+        "endChar": 40
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5366476_deccd52d",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-13T11:22:29Z",
+      "side": 1,
+      "message": "Oh, I see. ParcelableHolder write(s)ToParcel in a \"length prefixed way\", which is different from structured parcelables. Since ParcelableHolder is a hand-written parcelable class, it doesn\u0027t have to follow the structured parcelable.\n\nbtw, since this is specific to ParcelableHolder, I don\u0027t think we need to extend sized_write API to have an additional parameter(include_length). IMO it makes code a bit hard to read.",
+      "parentUuid": "b80436c3_ea0b4a19",
       "range": {
         "startLine": 186,
         "startChar": 35,

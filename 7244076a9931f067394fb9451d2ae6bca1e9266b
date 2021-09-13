@@ -16,6 +16,24 @@
       "message": "\"data\" needs to be wrapped in a RefCell because of the immutable reference here. If I changed this to \u0026mut self then I could get rid of the RefCell, but then get_parcelable would only work on mutable ParcelableHolder objects (unlike C++ which marks this method as const).",
       "revId": "7244076a9931f067394fb9451d2ae6bca1e9266b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15890483_001f7f25",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-13T11:22:29Z",
+      "side": 1,
+      "message": "The reason why C++ declares this method as const is .. \n- to optimize multiple calls to getParcelable\n- to meet the convention of const getters\n\nIf you think \u0026mut self is suitable here, you can go for it.\nJeongik, wdyt?",
+      "parentUuid": "f7b79ea6_3c3a9fb1",
+      "revId": "7244076a9931f067394fb9451d2ae6bca1e9266b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
