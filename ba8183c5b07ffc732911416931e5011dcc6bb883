@@ -82,6 +82,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b94e53d4_54a12ace",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1895425
+      },
+      "writtenOn": "2021-09-13T17:49:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fcdf6515_1df73cd5",
+      "range": {
+        "startLine": 651,
+        "startChar": 12,
+        "endLine": 651,
+        "endChar": 19
+      },
+      "revId": "ba8183c5b07ffc732911416931e5011dcc6bb883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf7506b3_bb238703",
@@ -113,6 +137,24 @@
       "side": 1,
       "message": "let\u0027s leave the severity alone here unless these logs are in fact spammy.",
       "parentUuid": "bf7506b3_bb238703",
+      "revId": "ba8183c5b07ffc732911416931e5011dcc6bb883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3769e80b_db12fb59",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1895425
+      },
+      "writtenOn": "2021-09-13T17:49:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "145c0cbd_d7139599",
       "revId": "ba8183c5b07ffc732911416931e5011dcc6bb883",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
