@@ -194,6 +194,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5496a2c_a4db6f24",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-13T16:32:18Z",
+      "side": 1,
+      "message": "\u003e Why not `struct RpcAddress { uint64_t value; }`?\n\nI considered it (surely since I suggested it!), but it\u0027s all in internal headers, and the name is always used w/ the type here (\u0027uint64_t address\u0027), and this is consistent with how the existing binder ID is already being done. Using a struct buys us type safety, but it is atypical in C++ programs, and it makes things slightly more complicated, and, as I mentioned earlier, this type _would_ have to be exposed in headers, but I want it to remain internal.\n\n\u003e see that some details about RpcWireAddress are already exposed\n\nNo, this is a private header.",
+      "parentUuid": "57a148d3_5a4522e2",
+      "range": {
+        "startLine": 159,
+        "startChar": 61,
+        "endLine": 159,
+        "endChar": 69
+      },
+      "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb4158fe_f6e160ad",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 2
@@ -205,6 +229,30 @@
       "writtenOn": "2021-09-13T16:11:50Z",
       "side": 1,
       "message": "define a constant somewhere for present/not-present? null/non-null works too.",
+      "range": {
+        "startLine": 206,
+        "startChar": 45,
+        "endLine": 206,
+        "endChar": 56
+      },
+      "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef8fc1d_3f724d81",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-13T16:32:18Z",
+      "side": 1,
+      "message": "This convention is repeated throughout libbinder and the SDK Java code. If we want to fix it, we should do it separately.",
+      "parentUuid": "eb4158fe_f6e160ad",
       "range": {
         "startLine": 206,
         "startChar": 45,
