@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc7cfd31_4971c1f3",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-13T12:11:55Z",
+      "side": 1,
+      "message": "On a second thought, C++ Parcel::appendFrom will catch this, right? Extra checking in AParcel_appendFrom() won\u0027t hurt though.",
+      "parentUuid": "914fda6a_37ae63d6",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 9
+      },
+      "revId": "308a98481a034a72660f773422ca551e551048d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35f58105_f9a4bd1d",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 3
