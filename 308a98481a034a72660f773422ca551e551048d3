@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914fda6a_37ae63d6",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-13T12:08:38Z",
+      "side": 1,
+      "message": "I think this belongs to AParcel_appendFrom. https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/ndk/parcel.cpp;l\u003d667-669\n\nSteven, wdyt?",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 9
+      },
+      "revId": "308a98481a034a72660f773422ca551e551048d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f58105_f9a4bd1d",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-13T12:08:38Z",
+      "side": 1,
+      "message": "We\u0027re missing valid case of append_from where (start \u003e 0).\nHow about calling parcel3.append_from(\u0026parcel1, 2, 2) after this line and check if read::\u003ci32\u003e works fine.",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 60
+      },
+      "revId": "308a98481a034a72660f773422ca551e551048d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
