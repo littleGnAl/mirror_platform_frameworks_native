@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd593313_08dd5c92",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-13T21:44:21Z",
+      "side": 1,
+      "message": "Just checked both functions, AParcel_appendFrom is\n```\nbinder_status_t AParcel_appendFrom(const AParcel* from, AParcel* to, int32_t start, int32_t size) {\n    status_t status \u003d to-\u003eget()-\u003eappendFrom(from-\u003eget(), start, size);\n    return PruneStatusT(status);\n}\n```\nand the relevant parts of Parcel::appendFrom are\n```\nstatus_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len) {\n...\n    // range checks against the source parcel size\n    if ((offset \u003e parcel-\u003emDataSize)\n            || (len \u003e parcel-\u003emDataSize)\n            || (offset + len \u003e parcel-\u003emDataSize)) {\n        return BAD_VALUE;\n    }\n```\n\nFor a negative start/size passed to AParcel_appendFrom as a negative int32_t, the value gets implicitly converted to a really large unsigned size_t when passed to Parcel::appendFrom. This large size_t will fail one of the range checks unless parcel-\u003emDataSize is also a big value (on a 64-bit machine it would have to be at least 0x8000000000000000, so unlikely to happen). Do we want to rely on this behavior, or add explicit checks to AParcel_appendFrom?",
+      "parentUuid": "fc7cfd31_4971c1f3",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 9
+      },
+      "revId": "308a98481a034a72660f773422ca551e551048d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35f58105_f9a4bd1d",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 3
