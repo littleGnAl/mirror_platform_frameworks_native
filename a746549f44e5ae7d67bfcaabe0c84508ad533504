@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89b62525_8e7be2d2",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-13T22:35:12Z",
+      "side": 1,
+      "message": "Perhaps you might want to have a constructor that accepts sp\u003cRpcSession\u003e as an argument.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 96
+      },
+      "revId": "a746549f44e5ae7d67bfcaabe0c84508ad533504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
