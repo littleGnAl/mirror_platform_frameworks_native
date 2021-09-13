@@ -22,6 +22,30 @@
       },
       "revId": "95434e9b57e53d8b408070026ee7914c57535216",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb997ba7_bac92a79",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-13T23:56:02Z",
+      "side": 1,
+      "message": "\u003e why this doesn\u0027t cause an error over raw sockets as well\n\nFor this specific log, I see on both raw and TLS sockets:\n\n```\nWARNING: 10000 pending oneway transactions. Terminating!\n```\n\nBut I don\u0027t get why this log only shows up for TLS not raw sockets:\n\n```\nOneway call failed with error\n```\n\nMy guess is that TLS calls recv() on SSL_write(), but for raw sockets, send() may not report errors when the remote is shut down. But I can\u0027t find a way to confirm this.",
+      "parentUuid": "1be40837_1a8058f1",
+      "range": {
+        "startLine": 755,
+        "startChar": 0,
+        "endLine": 755,
+        "endChar": 100
+      },
+      "revId": "95434e9b57e53d8b408070026ee7914c57535216",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
