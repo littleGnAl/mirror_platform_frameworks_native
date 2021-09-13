@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb68e9e_99edfca1",
+        "filename": "libs/binder/include/binder/CertificateFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-13T17:19:08Z",
+      "side": 1,
+      "message": "nit: can we avoid typedefs, since they don\u0027t add anymore type safety, and they hide the underlying type",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "658e2e75c615131f335d9114dbc27a15f27195f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c16bfec1_244a4a89",
+        "filename": "libs/binder/include/binder/CertificateFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-13T17:19:08Z",
+      "side": 1,
+      "message": "why? std::span implies no ownership, so the client/server would always have to own this separately. Is that expected?",
+      "range": {
+        "startLine": 26,
+        "startChar": 48,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "658e2e75c615131f335d9114dbc27a15f27195f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1338e14a_87ce94a0",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-13T17:19:08Z",
+      "side": 1,
+      "message": "so this is a copy of the data now, should we consider it \u0027const std::vector\u003cuint8_t\u003e\u0026\u0027 instead?",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 22
+      },
+      "revId": "658e2e75c615131f335d9114dbc27a15f27195f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
