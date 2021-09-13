@@ -52,6 +52,24 @@
       "parentUuid": "b9636677_8e97b997",
       "revId": "826367f2240f2e64036b6be9a7cde93fdd79cba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3329dd9_40e9b253",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-13T23:20:01Z",
+      "side": 1,
+      "message": "Thanks for the explanation.\n\n\u003e act as both an \"unforgeable\" (cryptographically) token for a binder and for a session ID\n\nThis is what I missed.",
+      "parentUuid": "8408786b_1136f36c",
+      "revId": "826367f2240f2e64036b6be9a7cde93fdd79cba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
