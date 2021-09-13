@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a91303_30dcb851",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-13T22:18:05Z",
+      "side": 1,
+      "message": "I changed the comment.",
+      "parentUuid": "18555b22_ce7010aa",
+      "range": {
+        "startLine": 219,
+        "startChar": 29,
+        "endLine": 219,
+        "endChar": 43
+      },
+      "revId": "308a98481a034a72660f773422ca551e551048d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "914fda6a_37ae63d6",
@@ -108,6 +132,30 @@
       "writtenOn": "2021-09-13T12:08:38Z",
       "side": 1,
       "message": "We\u0027re missing valid case of append_from where (start \u003e 0).\nHow about calling parcel3.append_from(\u0026parcel1, 2, 2) after this line and check if read::\u003ci32\u003e works fine.",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 60
+      },
+      "revId": "308a98481a034a72660f773422ca551e551048d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e01e266_d8ca9ece",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-13T22:18:05Z",
+      "side": 1,
+      "message": "I added a separate check for this, and left the old test in too (wanted to have a check for NOT_ENOUGH_DATA).",
+      "parentUuid": "35f58105_f9a4bd1d",
       "range": {
         "startLine": 688,
         "startChar": 0,
