@@ -825,7 +825,7 @@ processTransactInternalTailCall:
     }
 
     if (oneway) {
-        if (replyStatus != OK) {
+        if (replyStatus != OK && replyStatus != DEAD_OBJECT) {
             ALOGW("Oneway call failed with error: %d", replyStatus);
         }
 
