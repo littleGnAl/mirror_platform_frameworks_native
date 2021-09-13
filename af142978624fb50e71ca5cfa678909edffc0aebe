@@ -51,6 +51,24 @@
       "parentUuid": "5de08dcc_910598d0",
       "revId": "af142978624fb50e71ca5cfa678909edffc0aebe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "636687dc_4700f5a4",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-09-13T15:43:36Z",
+      "side": 1,
+      "message": "yeah, it is an intentional inconsistency.\nwhen queried type name isn\u0027t the same as stored one, it should return BAD_VALUE as c++ backend does.",
+      "parentUuid": "21d72ca9_d9185e38",
+      "revId": "af142978624fb50e71ca5cfa678909edffc0aebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

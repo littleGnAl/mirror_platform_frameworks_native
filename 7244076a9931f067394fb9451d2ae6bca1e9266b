@@ -34,6 +34,24 @@
       "parentUuid": "f7b79ea6_3c3a9fb1",
       "revId": "7244076a9931f067394fb9451d2ae6bca1e9266b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c75777d_e899bb2f",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-09-13T15:43:36Z",
+      "side": 1,
+      "message": "I declared the C++ backend\u0027s getParcelable because of the reasons Jooyung mentioned. I think either is okay.",
+      "parentUuid": "15890483_001f7f25",
+      "revId": "7244076a9931f067394fb9451d2ae6bca1e9266b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
