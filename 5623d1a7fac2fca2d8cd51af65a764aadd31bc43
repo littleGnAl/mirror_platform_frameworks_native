@@ -331,6 +331,30 @@
       },
       "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ea1761b_1d412ebc",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-13T16:36:54Z",
+      "side": 1,
+      "message": "No, it is the 1 from L206, and this convention is repeated throughout libbinder and the SDK Java code. Like Devin commented, we could fix these, but we\u0027re talking about 100s of LOC encoding this in many other places.\n\nThe reason why this was \u0027\u0026 1\u0027 (and it was \u0027\u0026 1\u0027 before) is that this allows us to use other bits there if we want to. Most other places consider any non-0 value to mean present, but adding the \u0027\u0026 1\u0027 gives us a lot more flexibility if we need to take advantage of these values in the future.",
+      "parentUuid": "232d65df_3c9bc3cc",
+      "range": {
+        "startLine": 288,
+        "startChar": 24,
+        "endLine": 288,
+        "endChar": 25
+      },
+      "revId": "5623d1a7fac2fca2d8cd51af65a764aadd31bc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
