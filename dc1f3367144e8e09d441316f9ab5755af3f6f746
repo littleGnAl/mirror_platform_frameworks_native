@@ -33,6 +33,24 @@
       "message": "Nit: It might be a little cleaner to group these into the same `pub use`, but we haven\u0027t gotten our formatter to do this yet so no worries.",
       "revId": "dc1f3367144e8e09d441316f9ab5755af3f6f746",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f337828_aa20757d",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-13T08:43:47Z",
+      "side": 1,
+      "message": "Yeah, it is neater. Done.",
+      "parentUuid": "0d0422b9_7da43869",
+      "revId": "dc1f3367144e8e09d441316f9ab5755af3f6f746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
