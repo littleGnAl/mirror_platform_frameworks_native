@@ -22,6 +22,30 @@
       },
       "revId": "4e9b5c8ea34f7a63fd416c2e6d0d410911620e5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f1f6a58_14d0a77e",
+        "filename": "libs/binder/include/binder/RpcCertificateFormat.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-13T23:22:53Z",
+      "side": 1,
+      "message": "Done (in CL:1824414)",
+      "parentUuid": "f8e5dae3_789cf462",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "4e9b5c8ea34f7a63fd416c2e6d0d410911620e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
