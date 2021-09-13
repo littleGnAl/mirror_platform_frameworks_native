@@ -46,6 +46,30 @@
       },
       "revId": "a746549f44e5ae7d67bfcaabe0c84508ad533504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c1a7ec3_dedfda30",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-13T23:56:05Z",
+      "side": 1,
+      "message": "If WaitForShutdownListener is always a member of RpcSession, then the former could have a const pointer to the latter when it\u0027s created.",
+      "parentUuid": "e02fe6bc_01d9912b",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 96
+      },
+      "revId": "a746549f44e5ae7d67bfcaabe0c84508ad533504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
