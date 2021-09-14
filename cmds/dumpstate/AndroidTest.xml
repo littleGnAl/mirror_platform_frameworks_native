@@ -16,11 +16,11 @@
 <configuration description="Config for dumpstate_test_fixture">
     <target_preparer class="com.android.tradefed.targetprep.PushFilePreparer">
         <option name="cleanup" value="true" />
-        <option name="push" value="dumpstate_test_fixture->/data/local/tmp/dumpstate_test_fixture" />
+        <option name="push" value="dumpstate_test_fixture->/data/local/tests/unrestricted/dumpstate_test_fixture" />
     </target_preparer>
     <option name="test-suite-tag" value="apct" />
     <test class="com.android.tradefed.testtype.GTest" >
-        <option name="native-test-device-path" value="/data/local/tmp" />
+        <option name="native-test-device-path" value="/data/local/tests/unrestricted" />
         <option name="module-name" value="dumpstate_test_fixture" />
     </test>
 </configuration>

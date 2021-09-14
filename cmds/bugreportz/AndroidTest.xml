@@ -16,11 +16,11 @@
 <configuration description="Config for bugreportz_test">
     <target_preparer class="com.android.tradefed.targetprep.PushFilePreparer">
         <option name="cleanup" value="true" />
-        <option name="push" value="bugreportz_test->/data/local/tmp/bugreportz_test" />
+        <option name="push" value="bugreportz_test->/data/local/tests/unrestricted/bugreportz_test" />
     </target_preparer>
     <option name="test-suite-tag" value="apct" />
     <test class="com.android.tradefed.testtype.GTest" >
-        <option name="native-test-device-path" value="/data/local/tmp" />
+        <option name="native-test-device-path" value="/data/local/tests/unrestricted" />
         <option name="module-name" value="bugreportz_test" />
     </test>
 </configuration>

@@ -16,11 +16,11 @@
 <configuration description="Config for libsurfaceflinger_unittest">
     <target_preparer class="com.android.tradefed.targetprep.PushFilePreparer">
         <option name="cleanup" value="true" />
-        <option name="push" value="libsurfaceflinger_unittest->/data/local/tmp/libsurfaceflinger_unittest" />
+        <option name="push" value="libsurfaceflinger_unittest->/data/local/tests/unrestricted/libsurfaceflinger_unittest" />
     </target_preparer>
     <option name="test-suite-tag" value="apct" />
     <test class="com.android.tradefed.testtype.GTest" >
-        <option name="native-test-device-path" value="/data/local/tmp" />
+        <option name="native-test-device-path" value="/data/local/tests/unrestricted" />
         <option name="module-name" value="libsurfaceflinger_unittest" />
     </test>
 </configuration>
