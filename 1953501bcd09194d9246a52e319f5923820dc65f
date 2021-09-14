@@ -273,6 +273,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59f0bade_f3323b18",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-14T01:24:20Z",
+      "side": 1,
+      "message": "I got rid of the include_length argument, and replaced sized_write call here with the actual code.",
+      "parentUuid": "14f88bd6_6ec302b2",
+      "range": {
+        "startLine": 186,
+        "startChar": 35,
+        "endLine": 186,
+        "endChar": 40
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ea004d8_73dd138b",
@@ -310,6 +334,30 @@
       "side": 1,
       "message": "include_size/include_length is a bit ambiguous here. What it means is that it does prepend the size, but the size of the size field itself is counted too (or not if include_length\u003dfalse). For example, writing an 8 byte payload writes a size of 12(4+8) with include_length\u003dtrue, but a size of 8 with include_length\u003dfalse.\n\nI\u0027m happy to bikeshed the name of \"include_length\", if anyone can think of a better alternative.",
       "parentUuid": "0ea004d8_73dd138b",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 61
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37194f9f_4237a309",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-14T01:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06a28aa3_6881fcb9",
       "range": {
         "startLine": 187,
         "startChar": 0,
