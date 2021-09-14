@@ -70,6 +70,30 @@
       },
       "revId": "a108d08f0890b28487225a019c913793010eed9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94507170_e2156af3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-14T00:55:02Z",
+      "side": 1,
+      "message": "My concern was why sized_write needs to support both by introducing bool. If ParcelableHolder is the only case, I\u0027d like to implement its own write_to_parcel there instead of making sized_write complicated.",
+      "parentUuid": "92d7a3a3_a1575d80",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "a108d08f0890b28487225a019c913793010eed9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
