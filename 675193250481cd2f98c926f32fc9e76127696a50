@@ -213,6 +213,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf0d9d3_6e5d456f",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1802,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:38:06Z",
+      "side": 1,
+      "message": "CL:1826119",
+      "parentUuid": "4be0fa68_b5573f7b",
+      "range": {
+        "startLine": 1802,
+        "startChar": 0,
+        "endLine": 1802,
+        "endChar": 19
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eec575f5_86967d62",
@@ -297,6 +321,30 @@
       "side": 1,
       "message": "Of course :D",
       "parentUuid": "42a92bba_7725b0b6",
+      "range": {
+        "startLine": 1813,
+        "startChar": 4,
+        "endLine": 1818,
+        "endChar": 5
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2409f465_95c7df46",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:38:06Z",
+      "side": 1,
+      "message": "CL:1826119",
+      "parentUuid": "6d3596c3_ffc6bed4",
       "range": {
         "startLine": 1813,
         "startChar": 4,
@@ -438,6 +486,30 @@
       "side": 1,
       "message": "Yes. I\u0027ll follow up in the next CL.",
       "parentUuid": "7ffbfc30_6a4f4d01",
+      "range": {
+        "startLine": 1834,
+        "startChar": 0,
+        "endLine": 1835,
+        "endChar": 93
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "472d38d1_3b796279",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:38:06Z",
+      "side": 1,
+      "message": "CL:1826119",
+      "parentUuid": "e36e2be4_1e548dc9",
       "range": {
         "startLine": 1834,
         "startChar": 0,
