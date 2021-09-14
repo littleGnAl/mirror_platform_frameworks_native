@@ -94,6 +94,30 @@
       },
       "revId": "a108d08f0890b28487225a019c913793010eed9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10dfa39e_a408f4a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-14T01:03:50Z",
+      "side": 1,
+      "message": "\u003e I\u0027d like to implement its own write_to_parcel there instead of making sized_write complicated.\n\nI can do that, sure. The reason I did it this way is that it\u0027s exactly the same code, except for that small length difference.",
+      "parentUuid": "94507170_e2156af3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "a108d08f0890b28487225a019c913793010eed9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
