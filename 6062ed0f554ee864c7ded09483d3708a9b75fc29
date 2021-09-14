@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9df4afc_17bd4357",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1741425
+      },
+      "writtenOn": "2021-09-14T22:41:43Z",
+      "side": 1,
+      "message": "We can\u0027t merge this patch until whatever depends on it reaches AOSP.",
+      "revId": "6062ed0f554ee864c7ded09483d3708a9b75fc29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
