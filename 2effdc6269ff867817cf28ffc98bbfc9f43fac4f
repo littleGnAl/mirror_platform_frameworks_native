@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd86e772_1fbca08f",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-14T23:40:41Z",
+      "side": 1,
+      "message": "nit: use errno to log and return and remove the savedErrno?\nSame with the read bellow.",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "2effdc6269ff867817cf28ffc98bbfc9f43fac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
