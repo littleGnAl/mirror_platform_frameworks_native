@@ -70,6 +70,42 @@
       "parentUuid": "dd62d96e_81bc9977",
       "revId": "6062ed0f554ee864c7ded09483d3708a9b75fc29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6afa70cd_4764a845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1741425
+      },
+      "writtenOn": "2021-09-14T23:26:38Z",
+      "side": 1,
+      "message": "Will do. Thx",
+      "parentUuid": "c49de09c_be08fbca",
+      "revId": "6062ed0f554ee864c7ded09483d3708a9b75fc29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c75e321_19cbe4b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1741425
+      },
+      "writtenOn": "2021-09-14T23:26:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c49de09c_be08fbca",
+      "revId": "6062ed0f554ee864c7ded09483d3708a9b75fc29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
