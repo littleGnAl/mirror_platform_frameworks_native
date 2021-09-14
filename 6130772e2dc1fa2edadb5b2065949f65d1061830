@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "484d3074_f25741b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T21:10:11Z",
+      "side": 1,
+      "message": "Yifan - not sure why the extra layer is here (organic growth?). We can keep it if you think we\u0027d use it in the future.",
+      "revId": "6130772e2dc1fa2edadb5b2065949f65d1061830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
