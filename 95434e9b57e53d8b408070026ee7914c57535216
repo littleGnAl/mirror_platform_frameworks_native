@@ -46,6 +46,30 @@
       },
       "revId": "95434e9b57e53d8b408070026ee7914c57535216",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f995fe_e915d8e8",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T00:05:39Z",
+      "side": 1,
+      "message": "\u003e I can\u0027t find a way to confirm this.\n\nOne possibility. For raw sockets, here, set a boolean variable. Inside of RpcState transact, when this variable is true, add additional logs. Using these, you should be able to see the difference.\n\nOne thing I think could be causing this is if sendDecStrong passes in the raw case, but it fails in the TLS case. Then, it would be as you said (and we should prefer to clear the asynchronous transactions here, or maybe move where RpcState::clear is called inside shutdownAndWait, or similar in order to avoid sending a bunch of additional transactions that will directly fail).",
+      "parentUuid": "eb997ba7_bac92a79",
+      "range": {
+        "startLine": 755,
+        "startChar": 0,
+        "endLine": 755,
+        "endChar": 100
+      },
+      "revId": "95434e9b57e53d8b408070026ee7914c57535216",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
