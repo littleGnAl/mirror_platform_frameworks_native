@@ -70,6 +70,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe1763c_3ef0e7cc",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:19:08Z",
+      "side": 1,
+      "message": "nah I want to avoid static strings",
+      "parentUuid": "2912be06_7bc1da6d",
+      "range": {
+        "startLine": 1769,
+        "startChar": 0,
+        "endLine": 1769,
+        "endChar": 38
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac2fd68f_f841c210",
@@ -83,6 +107,54 @@
       "writtenOn": "2021-09-14T16:29:47Z",
       "side": 1,
       "message": "nit: avoid comments like these",
+      "range": {
+        "startLine": 1802,
+        "startChar": 0,
+        "endLine": 1802,
+        "endChar": 19
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a34acc2_03606530",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1802,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:19:08Z",
+      "side": 1,
+      "message": "Ack.\n\nI agree, this particular comment is super useless",
+      "parentUuid": "ac2fd68f_f841c210",
+      "range": {
+        "startLine": 1802,
+        "startChar": 0,
+        "endLine": 1802,
+        "endChar": 19
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4be0fa68_b5573f7b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1802,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:19:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac2fd68f_f841c210",
       "range": {
         "startLine": 1802,
         "startChar": 0,
@@ -116,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba00cea_43964c4c",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:19:08Z",
+      "side": 1,
+      "message": "I think this is worth commenting, even though the boolean name `shouldContinueWriting` illustrates the meaning",
+      "parentUuid": "eec575f5_86967d62",
+      "range": {
+        "startLine": 1812,
+        "startChar": 0,
+        "endLine": 1812,
+        "endChar": 59
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42a92bba_7725b0b6",
@@ -129,6 +225,30 @@
       "writtenOn": "2021-09-14T16:29:47Z",
       "side": 1,
       "message": "super nit: the code golfer in me can\u0027t resist thinking\n\n{\n    std::lock_guard\u003cstd::mutex\u003e lock(writeMutex);\n    shouldContinueWriting \u003d true;\n}\nwriteCv.notify_all();",
+      "range": {
+        "startLine": 1813,
+        "startChar": 4,
+        "endLine": 1818,
+        "endChar": 5
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d3596c3_ffc6bed4",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:19:08Z",
+      "side": 1,
+      "message": "Of course :D",
+      "parentUuid": "42a92bba_7725b0b6",
       "range": {
         "startLine": 1813,
         "startChar": 4,
@@ -162,6 +282,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d0df84e_b6cbf5dc",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:19:08Z",
+      "side": 1,
+      "message": "Yes -- It is the test RpcTransportTest.GoodCertificate",
+      "parentUuid": "0fced245_ee74c87e",
+      "range": {
+        "startLine": 1822,
+        "startChar": 0,
+        "endLine": 1822,
+        "endChar": 43
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4d2aa17_7d540dc3",
@@ -185,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "202b3689_cd907efd",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:19:08Z",
+      "side": 1,
+      "message": "Because it is the same as unix domain sockets.\n\nWhether a socket is pre-connected is only meaningful for RpcServer::setup*Client functions. This test is on the underlying RpcTransport, so socket fds are \"preconnected\" anyway.",
+      "parentUuid": "f4d2aa17_7d540dc3",
+      "range": {
+        "startLine": 1833,
+        "startChar": 79,
+        "endLine": 1833,
+        "endChar": 84
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ffbfc30_6a4f4d01",
@@ -198,6 +366,30 @@
       "writtenOn": "2021-09-14T16:29:47Z",
       "side": 1,
       "message": "sorry, missed this as well. It seems that we\u0027re testing raw sockets with both PEM and DER formats.\n\nShould we only have 3 values?\n- raw\n- tls + pem\n- tls + der",
+      "range": {
+        "startLine": 1834,
+        "startChar": 0,
+        "endLine": 1835,
+        "endChar": 93
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36e2be4_1e548dc9",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:19:08Z",
+      "side": 1,
+      "message": "Yes. I\u0027ll follow up in the next CL.",
+      "parentUuid": "7ffbfc30_6a4f4d01",
       "range": {
         "startLine": 1834,
         "startChar": 0,
