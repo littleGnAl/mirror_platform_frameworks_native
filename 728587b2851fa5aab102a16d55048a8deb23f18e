@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc2079c1_c65c12ed",
+        "filename": "libs/binder/tests/unit_fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-14T16:19:48Z",
+      "side": 1,
+      "message": "nit: could check status \u003d\u003d OK after it falls out of the for loop to avoid a goto(replaced with a break).",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "728587b2851fa5aab102a16d55048a8deb23f18e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
