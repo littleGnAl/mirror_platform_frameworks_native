@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d73c70_acb1918a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:21:18Z",
+      "side": 1,
+      "message": "The value actually doesn\u0027t matter, as long as it is not OK.\n\nI use -ECANCELED because that\u0027s the value used in FdTrigger.",
+      "parentUuid": "9e220e27_1690ba37",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbcac5ad_669b3970",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-14T16:29:47Z",
       "side": 1,
       "message": "nit: also missed, if you wanted to do it separately, rpcSecurity \u003d\u003d RAW return OK; (prefer to exclude explicitly, for future-proofing)",
+      "range": {
+        "startLine": 1644,
+        "startChar": 0,
+        "endLine": 1644,
+        "endChar": 55
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "946a1088_4b46ed4f",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1644,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-14T19:21:18Z",
+      "side": 1,
+      "message": "I actually think this is more correct. This is meant to be\n\n```\nif (TLS) {\n   trust certificate;\n}\n```\n\nnot\n\n\n```\nif (!RAW) {\n   trust certificate;\n}\n```",
+      "parentUuid": "dbcac5ad_669b3970",
       "range": {
         "startLine": 1644,
         "startChar": 0,
