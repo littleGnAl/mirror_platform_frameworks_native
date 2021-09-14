@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e220e27_1690ba37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T16:29:47Z",
+      "side": 1,
+      "message": "is there any way to check this condition, based on the behavior we want, rather than the exact value returned from the function call?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbcac5ad_669b3970",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1644,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T16:29:47Z",
+      "side": 1,
+      "message": "nit: also missed, if you wanted to do it separately, rpcSecurity \u003d\u003d RAW return OK; (prefer to exclude explicitly, for future-proofing)",
+      "range": {
+        "startLine": 1644,
+        "startChar": 0,
+        "endLine": 1644,
+        "endChar": 55
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2912be06_7bc1da6d",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T16:29:47Z",
+      "side": 1,
+      "message": "super nit: since this is static, make a std::string from the beginning, and avoid needing to make extra heap allocations everywhere",
+      "range": {
+        "startLine": 1769,
+        "startChar": 0,
+        "endLine": 1769,
+        "endChar": 38
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac2fd68f_f841c210",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1802,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T16:29:47Z",
+      "side": 1,
+      "message": "nit: avoid comments like these",
+      "range": {
+        "startLine": 1802,
+        "startChar": 0,
+        "endLine": 1802,
+        "endChar": 19
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec575f5_86967d62",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T16:29:47Z",
+      "side": 1,
+      "message": "nit: also comments like these, are they really needed?",
+      "range": {
+        "startLine": 1812,
+        "startChar": 0,
+        "endLine": 1812,
+        "endChar": 59
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a92bba_7725b0b6",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T16:29:47Z",
+      "side": 1,
+      "message": "super nit: the code golfer in me can\u0027t resist thinking\n\n{\n    std::lock_guard\u003cstd::mutex\u003e lock(writeMutex);\n    shouldContinueWriting \u003d true;\n}\nwriteCv.notify_all();",
+      "range": {
+        "startLine": 1813,
+        "startChar": 4,
+        "endLine": 1818,
+        "endChar": 5
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fced245_ee74c87e",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T16:29:47Z",
+      "side": 1,
+      "message": "nit: should there be a corresponding ASSERT_TRUE readMessage for when defaultPostConnect is used?",
+      "range": {
+        "startLine": 1822,
+        "startChar": 0,
+        "endLine": 1822,
+        "endChar": 43
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d2aa17_7d540dc3",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T16:29:47Z",
+      "side": 1,
+      "message": "why are preconnected sockets disabled here? I might have missed this",
+      "range": {
+        "startLine": 1833,
+        "startChar": 79,
+        "endLine": 1833,
+        "endChar": 84
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ffbfc30_6a4f4d01",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T16:29:47Z",
+      "side": 1,
+      "message": "sorry, missed this as well. It seems that we\u0027re testing raw sockets with both PEM and DER formats.\n\nShould we only have 3 values?\n- raw\n- tls + pem\n- tls + der",
+      "range": {
+        "startLine": 1834,
+        "startChar": 0,
+        "endLine": 1835,
+        "endChar": 93
+      },
+      "revId": "675193250481cd2f98c926f32fc9e76127696a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
