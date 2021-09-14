@@ -72,6 +72,27 @@ pub trait SerializeArray: Serialize + Sized {
     }
 }
 
+/// Helper function that immutably accesses an element of an array.
+unsafe extern "C" fn get_array_element<'a, T>(array: *const c_void, index: c_ulong) -> &'a T {
+    // c_ulong and usize are the same, but we need the explicitly sized version
+    // so the function signature matches what bindgen generates.
+    let index = index as usize;
+    let slice: &[T] = slice::from_raw_parts(array.cast(), index + 1);
+    &slice[index]
+}
+
+/// Helper function that mutably accesses an element of an array.
+unsafe extern "C" fn get_array_element_mut<'a, T>(
+    array: *mut c_void,
+    index: c_ulong,
+) -> Option<&'a mut MaybeUninit<T>> {
+    // c_ulong and usize are the same, but we need the explicitly sized version
+    // so the function signature matches what bindgen generates.
+    let index = index as usize;
+    let vec = &mut *(array as *mut Option<Vec<MaybeUninit<T>>>);
+    vec.as_mut().map(|v| &mut v[index])
+}
+
 /// Callback to serialize an element of a generic parcelable array.
 ///
 /// Safety: We are relying on binder_ndk to not overrun our slice. As long as it
@@ -82,21 +103,15 @@ unsafe extern "C" fn serialize_element<T: Serialize>(
     array: *const c_void,
     index: c_ulong,
 ) -> status_t {
-    // c_ulong and usize are the same, but we need the explicitly sized version
-    // so the function signature matches what bindgen generates.
-    let index = index as usize;
-
-    let slice: &[T] = slice::from_raw_parts(array.cast(), index+1);
-
     let mut parcel = match Parcel::borrowed(parcel) {
         None => return StatusCode::UNEXPECTED_NULL as status_t,
         Some(p) => p,
     };
 
-    slice[index].serialize(&mut parcel)
-                .err()
-                .unwrap_or(StatusCode::OK)
-        as status_t
+    get_array_element::<T>(array, index)
+        .serialize(&mut parcel)
+        .err()
+        .unwrap_or(StatusCode::OK) as status_t
 }
 
 /// Helper trait for types that can be deserialized as arrays.
@@ -140,13 +155,8 @@ unsafe extern "C" fn deserialize_element<T: Deserialize>(
     array: *mut c_void,
     index: c_ulong,
 ) -> status_t {
-    // c_ulong and usize are the same, but we need the explicitly sized version
-    // so the function signature matches what bindgen generates.
-    let index = index as usize;
-
-    let vec = &mut *(array as *mut Option<Vec<MaybeUninit<T>>>);
-    let vec = match vec {
-        Some(v) => v,
+    let element_ref = match get_array_element_mut::<T>(array, index) {
+        Some(eref) => eref,
         None => return StatusCode::BAD_INDEX as status_t,
     };
 
@@ -158,7 +168,7 @@ unsafe extern "C" fn deserialize_element<T: Deserialize>(
         Ok(e) => e,
         Err(code) => return code as status_t,
     };
-    ptr::write(vec[index].as_mut_ptr(), element);
+    ptr::write(element_ref.as_mut_ptr(), element);
     StatusCode::OK as status_t
 }
 
@@ -230,10 +240,7 @@ unsafe extern "C" fn allocate_vec_with_buffer<T>(
 ///
 /// The opaque data pointer passed to the array read function must be a mutable
 /// pointer to an `Option<Vec<MaybeUninit<T>>>`.
-unsafe extern "C" fn allocate_vec<T>(
-    data: *mut c_void,
-    len: i32,
-) -> bool {
+unsafe extern "C" fn allocate_vec<T>(data: *mut c_void, len: i32) -> bool {
     let vec = &mut *(data as *mut Option<Vec<MaybeUninit<T>>>);
     if len < 0 {
         *vec = None;
@@ -401,8 +408,76 @@ parcelable_primitives! {
     impl DeserializeArray for f64 = sys::AParcel_readDoubleArray;
 }
 
-impl SerializeArray for bool {}
-impl DeserializeArray for bool {}
+impl SerializeArray for bool {
+    fn serialize_array(slice: &[Self], parcel: &mut Parcel) -> Result<()> {
+        /// Callback to get an element of a bool array.
+        ///
+        /// Safety: We are relying on binder_ndk to not overrun our slice. As long as it
+        /// doesn't provide an index larger than the length of the original slice in
+        /// serialize_array, this operation is safe. The index provided is zero-based.
+        unsafe extern "C" fn getter(array: *const c_void, index: c_ulong) -> bool {
+            *get_array_element(array, index)
+        }
+
+        let status = unsafe {
+            // Safety: `Parcel` always contains a valid pointer to an
+            // `AParcel`. If the slice is > 0 length, `slice.as_ptr()` will be a
+            // valid pointer to an array of elements of type `bool`. If the slice
+            // length is 0, `slice.as_ptr()` may be dangling, but this is safe
+            // since the pointer is not dereferenced if the length parameter is
+            // 0.
+            sys::AParcel_writeBoolArray(
+                parcel.as_native_mut(),
+                slice.as_ptr() as *const c_void,
+                slice.len().try_into().or(Err(StatusCode::BAD_VALUE))?,
+                Some(getter),
+            )
+        };
+        status_result(status)
+    }
+}
+
+impl DeserializeArray for bool {
+    fn deserialize_array(parcel: &Parcel) -> Result<Option<Vec<Self>>> {
+        /// Callback to set an element of a bool array.
+        ///
+        /// Safety: We are relying on binder_ndk to not overrun our slice. As long as it
+        /// doesn't provide an index larger than the length of the original slice in
+        /// serialize_array, this operation is safe. The index provided is zero-based.
+        unsafe extern "C" fn setter(array: *mut c_void, index: c_ulong, value: bool) {
+            // We should never get here with a None vector,
+            // so the unwrap() should never panic
+            let element_ref = get_array_element_mut(array, index).unwrap();
+            ptr::write(element_ref.as_mut_ptr(), value);
+        }
+
+        let mut vec: Option<Vec<MaybeUninit<Self>>> = None;
+        let status = unsafe {
+            // Safety: `Parcel` always contains a valid pointer to an
+            // `AParcel`. `allocate_vec<T>` expects the opaque pointer to
+            // be of type `*mut Option<Vec<MaybeUninit<T>>>`, so `&mut vec` is
+            // correct for it.
+            sys::AParcel_readBoolArray(
+                parcel.as_native(),
+                &mut vec as *mut _ as *mut c_void,
+                Some(allocate_vec::<bool>),
+                Some(setter),
+            )
+        };
+        status_result(status)?;
+        let vec: Option<Vec<Self>> = unsafe {
+            // Safety: We are assuming that the NDK correctly
+            // initialized every element of the vector by now, so we
+            // know that all the MaybeUninits are now properly
+            // initialized. We can transmute from Vec<MaybeUninit<T>> to
+            // Vec<T> because MaybeUninit<T> has the same alignment and
+            // size as T, so the pointer to the vector allocation will
+            // be compatible.
+            mem::transmute(vec)
+        };
+        Ok(vec)
+    }
+}
 
 impl Serialize for u8 {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
@@ -502,7 +577,48 @@ impl SerializeOption for str {
     }
 }
 
-impl SerializeArray for Option<&str> {}
+macro_rules! impl_string_serialize_array {
+    ($ty:ty => $closure:expr) => {
+        impl SerializeArray for $ty {
+            fn serialize_array(slice: &[Self], parcel: &mut Parcel) -> Result<()> {
+                unsafe extern "C" fn getter(
+                    array: *const c_void,
+                    index: c_ulong,
+                    out_length: *mut i32,
+                ) -> *const c_char {
+                    let (p, len) = $closure(get_array_element(array, index));
+                    ptr::write(out_length, len);
+                    p
+                }
+
+                let status = unsafe {
+                    // Safety: `Parcel` always contains a valid pointer to an
+                    // `AParcel`. If the slice is > 0 length, `slice.as_ptr()` will be a
+                    // valid pointer to an array of elements of type `$ty`. If the slice
+                    // length is 0, `slice.as_ptr()` may be dangling, but this is safe
+                    // since the pointer is not dereferenced if the length parameter is
+                    // 0.
+                    sys::AParcel_writeStringArray(
+                        parcel.as_native_mut(),
+                        slice.as_ptr() as *const c_void,
+                        slice.len().try_into().or(Err(StatusCode::BAD_VALUE))?,
+                        Some(getter),
+                    )
+                };
+                status_result(status)
+            }
+        }
+    };
+}
+
+impl_string_serialize_array! {Option<&str> => |s: &Option<&str>| {
+    if let Some(s) = s {
+        let b = s.as_bytes();
+        (b.as_ptr().cast(), b.len().try_into().unwrap())
+    } else {
+        (ptr::null(), -1)
+    }
+}}
 
 impl Serialize for str {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
@@ -510,7 +626,10 @@ impl Serialize for str {
     }
 }
 
-impl SerializeArray for &str {}
+impl_string_serialize_array! {&str => |s: &&str| {
+    let b = s.as_bytes();
+    (b.as_ptr().cast(), b.len().try_into().unwrap())
+}}
 
 impl Serialize for String {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
@@ -518,7 +637,10 @@ impl Serialize for String {
     }
 }
 
-impl SerializeArray for String {}
+impl_string_serialize_array! {String => |s: &String| {
+    let b = s.as_bytes();
+    (b.as_ptr().cast(), b.len().try_into().unwrap())
+}}
 
 impl SerializeOption for String {
     fn serialize_option(this: Option<&Self>, parcel: &mut Parcel) -> Result<()> {
@@ -526,7 +648,14 @@ impl SerializeOption for String {
     }
 }
 
-impl SerializeArray for Option<String> {}
+impl_string_serialize_array! {Option<String> => |s: &Option<String>| {
+    if let Some(s) = s {
+        let b = s.as_bytes();
+        (b.as_ptr().cast(), b.len().try_into().unwrap())
+    } else {
+        (ptr::null(), -1)
+    }
+}}
 
 impl Deserialize for Option<String> {
     fn deserialize(parcel: &Parcel) -> Result<Self> {
@@ -554,7 +683,70 @@ impl Deserialize for Option<String> {
     }
 }
 
-impl DeserializeArray for Option<String> {}
+impl DeserializeArray for Option<String> {
+    fn deserialize_array(parcel: &Parcel) -> Result<Option<Vec<Self>>> {
+        unsafe extern "C" fn element_allocator(
+            data: *mut c_void,
+            index: c_ulong,
+            len: i32,
+            buffer: *mut *mut c_char,
+        ) -> bool {
+            let element_ref = get_array_element_mut::<Option<Vec<u8>>>(data, index).unwrap();
+            if len < 0 {
+                ptr::write(element_ref.as_mut_ptr(), None);
+                return true;
+            }
+            if len == 0 {
+                return false;
+            }
+
+            let mut new_vec: Vec<u8> = vec![0; len as usize];
+            ptr::write(buffer, new_vec.as_mut_ptr().cast());
+            ptr::write(element_ref.as_mut_ptr(), Some(new_vec));
+
+            true
+        }
+
+        let mut vec: Option<Vec<MaybeUninit<Option<Vec<u8>>>>> = None;
+        let status = unsafe {
+            // Safety: `Parcel` always contains a valid pointer to an
+            // `AParcel`. `allocate_vec<T>` expects the opaque pointer to
+            // be of type `*mut Option<Vec<MaybeUninit<T>>>`, so `&mut vec` is
+            // correct for it.
+            sys::AParcel_readStringArray(
+                parcel.as_native(),
+                &mut vec as *mut _ as *mut c_void,
+                Some(allocate_vec::<Option<Vec<u8>>>),
+                Some(element_allocator),
+            )
+        };
+        status_result(status)?;
+
+        // Convert `Option<Vec<MaybeUninit<Option<Vec<u8>>>>>`
+        // to `Result<Option<Vec<Option<String>>>>`
+        vec.map(|vec| {
+            vec.into_iter()
+                .map(|opt| unsafe {
+                    // Safety: We are assuming that the NDK correctly
+                    // initialized every element of the vector by now, so we
+                    // know that all the MaybeUninits are now properly
+                    // initialized.
+                    opt.assume_init()
+                        .map(|mut s| {
+                            // The vector includes a null-terminator and we don't want the
+                            // string to be null-terminated for Rust.
+                            s.pop();
+                            String::from_utf8(s).or(Err(StatusCode::BAD_VALUE))
+                        })
+                        // Transpose Option<Result> into Result<Option>
+                        .transpose()
+                })
+                .collect::<Result<Vec<_>>>()
+        })
+        // Transpose Option<Result> into Result<Option>
+        .transpose()
+    }
+}
 
 impl Deserialize for String {
     fn deserialize(parcel: &Parcel) -> Result<Self> {
@@ -564,7 +756,63 @@ impl Deserialize for String {
     }
 }
 
-impl DeserializeArray for String {}
+impl DeserializeArray for String {
+    fn deserialize_array(parcel: &Parcel) -> Result<Option<Vec<Self>>> {
+        unsafe extern "C" fn element_allocator(
+            data: *mut c_void,
+            index: c_ulong,
+            len: i32,
+            buffer: *mut *mut c_char,
+        ) -> bool {
+            let element_ref = get_array_element_mut::<Vec<u8>>(data, index).unwrap();
+            if len <= 0 {
+                return false;
+            }
+
+            let mut new_vec: Vec<u8> = vec![0; len as usize];
+            ptr::write(buffer, new_vec.as_mut_ptr().cast());
+            ptr::write(element_ref.as_mut_ptr(), new_vec);
+
+            true
+        }
+
+        let mut vec: Option<Vec<MaybeUninit<Vec<u8>>>> = None;
+        let status = unsafe {
+            // Safety: `Parcel` always contains a valid pointer to an
+            // `AParcel`. `allocate_vec<T>` expects the opaque pointer to
+            // be of type `*mut Option<Vec<MaybeUninit<T>>>`, so `&mut vec` is
+            // correct for it.
+            sys::AParcel_readStringArray(
+                parcel.as_native(),
+                &mut vec as *mut _ as *mut c_void,
+                Some(allocate_vec::<Vec<u8>>),
+                Some(element_allocator),
+            )
+        };
+        status_result(status)?;
+
+        // Convert `Option<Vec<MaybeUninit<Vec<u8>>>>`
+        // to `Result<Option<Vec<String>>>`
+        vec.map(|vec| {
+            vec.into_iter()
+                .map(|s| unsafe {
+                    // Safety: We are assuming that the NDK correctly
+                    // initialized every element of the vector by now, so we
+                    // know that all the MaybeUninits are now properly
+                    // initialized.
+                    let mut s = s.assume_init();
+
+                    // The vector includes a null-terminator and we don't want the
+                    // string to be null-terminated for Rust.
+                    s.pop();
+                    String::from_utf8(s).or(Err(StatusCode::BAD_VALUE))
+                })
+                .collect::<Result<Vec<_>>>()
+        })
+        // Transpose Option<Result> into Result<Option>
+        .transpose()
+    }
+}
 
 impl<T: SerializeArray> Serialize for [T] {
     fn serialize(&self, parcel: &mut Parcel) -> Result<()> {
