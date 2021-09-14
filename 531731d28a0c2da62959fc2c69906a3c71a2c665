@@ -16,6 +16,24 @@
       "message": "This might leave behind a ParcelableHolder in an inconsistent state, if the method returns an error later, but it\u0027s also how the C++ implementation behaves. Does it matter?",
       "revId": "531731d28a0c2da62959fc2c69906a3c71a2c665",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2f4f07b_566cef49",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 15
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-14T03:02:31Z",
+      "side": 1,
+      "message": "Yeah, I had the same concern with the C++ impl, but I don\u0027t think it matters here. I wouldn\u0027t expect someone use the object after read_from_parcel() fails.",
+      "parentUuid": "43e2adb3_089fca6d",
+      "revId": "531731d28a0c2da62959fc2c69906a3c71a2c665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
