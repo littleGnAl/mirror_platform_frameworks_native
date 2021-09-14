@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2089a2_0f400b10",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-09-14T00:01:31Z",
+      "side": 1,
+      "message": "This does not result in a class being associated to the raw `SpIBinder`, which is why the tests are failing. Discussing possible solutions offline.",
+      "revId": "d0cd4c8ddc3d292b88944bd49551b9a96d8730ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
