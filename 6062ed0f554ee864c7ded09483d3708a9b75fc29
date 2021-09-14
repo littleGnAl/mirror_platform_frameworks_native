@@ -34,6 +34,24 @@
       "parentUuid": "e9df4afc_17bd4357",
       "revId": "6062ed0f554ee864c7ded09483d3708a9b75fc29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd62d96e_81bc9977",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1741425
+      },
+      "writtenOn": "2021-09-14T23:21:34Z",
+      "side": 1,
+      "message": "Technically yes. But there\u0027re quite a few patches from RVC to SC. Cherry-picking just some of them might make it harder for other patches to get in.",
+      "parentUuid": "6770da59_357da977",
+      "revId": "6062ed0f554ee864c7ded09483d3708a9b75fc29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
