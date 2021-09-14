@@ -46,6 +46,30 @@
       },
       "revId": "a108d08f0890b28487225a019c913793010eed9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d7a3a3_a1575d80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T00:50:47Z",
+      "side": 1,
+      "message": "awww man. We can never change that.",
+      "parentUuid": "18352ba1_fafc778b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "a108d08f0890b28487225a019c913793010eed9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
