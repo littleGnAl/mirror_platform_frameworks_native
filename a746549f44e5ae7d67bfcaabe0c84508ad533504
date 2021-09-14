@@ -70,6 +70,30 @@
       },
       "revId": "a746549f44e5ae7d67bfcaabe0c84508ad533504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8fdce46_d387f2b3",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T00:14:29Z",
+      "side": 1,
+      "message": "Sure, but also then the ownership information is implicit rather than part of the type (I would try to avoid raw pointers everywhere, because we want to make ownership explicit, regardless of the current state of the code). The other downsides of moving it to the constructor:\n- cost an extra word size bytes of memory extra per RpcSession\n- require adding a constructor (more LOC, more functions to have to maintain)\n\nDefinitely, we could do it, but perhaps I don\u0027t understand what the motivation is. Is risk you are concerned about is that this will be created for one RpcSession, but used with another? Or is it aesthetic, since we have two functions here which take sp\u003cRpcSession\u003e?",
+      "parentUuid": "4c1a7ec3_dedfda30",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 96
+      },
+      "revId": "a746549f44e5ae7d67bfcaabe0c84508ad533504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
