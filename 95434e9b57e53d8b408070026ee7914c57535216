@@ -70,6 +70,30 @@
       },
       "revId": "95434e9b57e53d8b408070026ee7914c57535216",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6d4cd6_2370bc25",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T00:16:39Z",
+      "side": 1,
+      "message": "btw - we do want this log that I\u0027m highlighting here, but I\u0027m suggesting maybe adding \u0027it-\u003esecond.asyncTodo.clear()\u0027 here, in order to avoid making a bunch of calls that we know will fail. In other cases where we call shutdownAndWait, we probably do want logs per oneway transaction, since we wouldn\u0027t expect very many to be built up, and we would want to know about any problems with them.",
+      "parentUuid": "37f995fe_e915d8e8",
+      "range": {
+        "startLine": 755,
+        "startChar": 0,
+        "endLine": 755,
+        "endChar": 100
+      },
+      "revId": "95434e9b57e53d8b408070026ee7914c57535216",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
