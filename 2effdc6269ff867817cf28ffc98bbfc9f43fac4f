@@ -22,6 +22,30 @@
       },
       "revId": "2effdc6269ff867817cf28ffc98bbfc9f43fac4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c10c7096_aa9350d8",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-14T23:45:43Z",
+      "side": 1,
+      "message": "needed for the return, but there\u0027s a mistake there (should be -savedErrno - fixed now)",
+      "parentUuid": "cd86e772_1fbca08f",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "2effdc6269ff867817cf28ffc98bbfc9f43fac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
