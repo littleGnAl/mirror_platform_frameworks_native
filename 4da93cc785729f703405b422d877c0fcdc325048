@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19e3765_2dc84f76",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-14T00:40:21Z",
+      "side": 1,
+      "message": "aosp/1819034 introduces Parcelable trait with write_to_parcel/read_from_parcel methods. Can ParcelableHolder implement it and forget about these FLAGs?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 49
+      },
+      "revId": "4da93cc785729f703405b422d877c0fcdc325048",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
