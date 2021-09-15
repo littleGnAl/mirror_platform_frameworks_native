@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb70f004_8113ef9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-09-15T12:39:52Z",
+      "side": 1,
+      "message": "Removed from topic so it can be merged independently.",
+      "revId": "feba6cad390e8e270a43247b62fdc72c4aa87b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
