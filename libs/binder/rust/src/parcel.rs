@@ -23,6 +23,7 @@ use crate::sys;
 
 use std::cell::RefCell;
 use std::convert::TryInto;
+use std::marker::PhantomData;
 use std::mem::ManuallyDrop;
 use std::ptr;
 use std::fmt;
@@ -50,6 +51,74 @@ pub enum Parcel {
     Owned(*mut sys::AParcel),
     /// Borrowed parcel pointer (will not be destroyed on drop)
     Borrowed(*mut sys::AParcel),
+}
+
+/// A variant of Parcel that is known to be owned.
+pub struct OwnedParcel {
+    ptr: *mut sys::AParcel,
+}
+
+/// # Safety
+///
+/// This type guarantees that it owns the AParcel and that all access to
+/// the AParcel happens through the OwnedParcel, so it is ok to send across
+/// threads.
+unsafe impl Send for OwnedParcel {}
+
+/// A variant of Parcel that is known to be borrowed.
+pub struct BorrowedParcel<'a> {
+    inner: Parcel,
+    _lifetime: PhantomData<&'a mut Parcel>,
+}
+
+impl OwnedParcel {
+    /// Create an owned reference to a parcel object from a raw pointer.
+    ///
+    /// # Safety
+    ///
+    /// This constructor is safe if the raw pointer parameter is either null
+    /// (resulting in `None`), or a valid pointer to an `AParcel` object. The
+    /// parcel object must be owned by the caller prior to this call, as this
+    /// constructor takes ownership of the parcel and will destroy it on drop.
+    ///
+    /// Additionally, the caller must guarantee that it is valid to take
+    /// ownership of the AParcel object. All future access to the AParcel
+    /// must happen through this `OwnedParcel`.
+    pub unsafe fn from_raw(ptr: *mut sys::AParcel) -> Option<OwnedParcel> {
+        ptr.as_mut().map(|ptr| Self { ptr })
+    }
+
+    /// Consume the parcel, transferring ownership to the caller.
+    pub(crate) fn into_raw(self) -> *mut sys::AParcel {
+        let ptr = self.ptr;
+        let _ = ManuallyDrop::new(self);
+        ptr
+    }
+
+    /// Convert this `OwnedParcel` into an owned `Parcel`.
+    pub fn into_parcel(self) -> Parcel {
+        Parcel::Owned(self.ptr)
+    }
+
+    /// Get a borrowed view into the contents of this `Parcel`.
+    pub fn borrowed(&mut self) -> BorrowedParcel<'_> {
+        BorrowedParcel {
+            inner: Parcel::Borrowed(self.ptr),
+            _lifetime: PhantomData,
+        }
+    }
+}
+
+impl<'a> std::ops::Deref for BorrowedParcel<'a> {
+    type Target = Parcel;
+    fn deref(&self) -> &Parcel {
+        &self.inner
+    }
+}
+impl<'a> std::ops::DerefMut for BorrowedParcel<'a> {
+    fn deref_mut(&mut self) -> &mut Parcel {
+        &mut self.inner
+    }
 }
 
 /// # Safety
@@ -94,33 +163,6 @@ impl Parcel {
     /// (resulting in `None`), or a valid pointer to an `AParcel` object.
     pub(crate) unsafe fn borrowed(ptr: *mut sys::AParcel) -> Option<Parcel> {
         ptr.as_mut().map(|ptr| Self::Borrowed(ptr))
-    }
-
-    /// Create an owned reference to a parcel object from a raw pointer.
-    ///
-    /// # Safety
-    ///
-    /// This constructor is safe if the raw pointer parameter is either null
-    /// (resulting in `None`), or a valid pointer to an `AParcel` object. The
-    /// parcel object must be owned by the caller prior to this call, as this
-    /// constructor takes ownership of the parcel and will destroy it on drop.
-    pub(crate) unsafe fn owned(ptr: *mut sys::AParcel) -> Option<Parcel> {
-        ptr.as_mut().map(|ptr| Self::Owned(ptr))
-    }
-
-    /// Consume the parcel, transferring ownership to the caller if the parcel
-    /// was owned.
-    pub(crate) fn into_raw(mut self) -> *mut sys::AParcel {
-        let ptr = self.as_native_mut();
-        let _ = ManuallyDrop::new(self);
-        ptr
-    }
-
-    pub(crate) fn is_owned(&self) -> bool {
-        match *self {
-            Self::Owned(_) => true,
-            Self::Borrowed(_) => false,
-        }
     }
 }
 
@@ -474,6 +516,18 @@ impl Drop for Parcel {
                 // here.
                 sys::AParcel_delete(ptr)
             }
+        }
+    }
+}
+
+impl Drop for OwnedParcel {
+    fn drop(&mut self) {
+        // Run the C++ Parcel complete object destructor
+        unsafe {
+            // Safety: `OwnedParcel` always contains a valid pointer to an
+            // `AParcel`. Since we own the parcel, we can safely delete it
+            // here.
+            sys::AParcel_delete(self.ptr)
         }
     }
 }
