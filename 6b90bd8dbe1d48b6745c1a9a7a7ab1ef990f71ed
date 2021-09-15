@@ -141,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "286eb1ef_ebbaf3bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-15T02:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3475e3d_1753c64e",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "6b90bd8dbe1d48b6745c1a9a7a7ab1ef990f71ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "895ceec9_8a3e0a8e",
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "I will fix this if I actually submit it though, yeah (it is duplicated 4 times!)",
       "parentUuid": "895ceec9_8a3e0a8e",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 45
+      },
+      "revId": "6b90bd8dbe1d48b6745c1a9a7a7ab1ef990f71ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a187ad5_10a962ec",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-15T02:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e20d9606_168d6ea6",
       "range": {
         "startLine": 67,
         "startChar": 0,
