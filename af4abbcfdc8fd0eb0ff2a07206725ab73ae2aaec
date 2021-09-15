@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a318953b_fe5bc54e",
+        "filename": "libs/binder/aidl/android/os/ConnectionInfo.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-15T22:45:40Z",
+      "side": 1,
+      "message": "I am neutral; don\u0027t do it if it is too messy",
+      "parentUuid": "df448906_76e0eb6c",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "af4abbcfdc8fd0eb0ff2a07206725ab73ae2aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e93634d7_eeb79ac5",
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "I don\u0027t think so. \nlibbinder_ndk would need to depend on that as far as I can tell.\nIf I add the ConnectionInfo header file here, libbinder_ndk fails to build.",
       "parentUuid": "e93634d7_eeb79ac5",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "af4abbcfdc8fd0eb0ff2a07206725ab73ae2aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69caadcc_8ff560d6",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-15T22:45:40Z",
+      "side": 1,
+      "message": "I just feel sad about having 3 copies of ConnectionInfo definitions.\n\nSteven, WDYT?",
+      "parentUuid": "df137c00_0649ca54",
       "range": {
         "startLine": 113,
         "startChar": 11,
