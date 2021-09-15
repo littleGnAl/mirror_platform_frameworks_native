@@ -43,56 +43,60 @@ public:
         return ret;
     }
 
-    status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size) override {
-        const uint8_t* buffer = reinterpret_cast<const uint8_t*>(data);
+    template <typename Buffer, typename SendOrReceive>
+    status_t interruptableReadOrWrite(FdTrigger* fdTrigger, Buffer buffer, size_t size,
+                                      SendOrReceive sendOrReceiveFun, int16_t event) {
         const uint8_t* end = buffer + size;
 
         MAYBE_WAIT_IN_FLAKE_MODE;
 
+        // Since we didn't poll, we need to manually check to see if it was triggered. Otherwise, we
+        // may never know we should be shutting down.
+        if (fdTrigger->isTriggered()) {
+            return -ECANCELED;
+        }
+
+        bool first = true;
         status_t status;
-        while ((status = fdTrigger->triggerablePoll(mSocket.get(), POLLOUT)) == OK) {
-            ssize_t writeSize =
-                    TEMP_FAILURE_RETRY(::send(mSocket.get(), buffer, end - buffer, MSG_NOSIGNAL));
-            if (writeSize < 0) {
+        do {
+            ssize_t processSize = TEMP_FAILURE_RETRY(
+                    sendOrReceiveFun(mSocket.get(), buffer, end - buffer, MSG_NOSIGNAL));
+
+            if (processSize < 0) {
                 int savedErrno = errno;
-                LOG_RPC_DETAIL("RpcTransport send(): %s", strerror(savedErrno));
-                return -savedErrno;
+
+                // Still return the error on later passes, since it would expose
+                // a problem with polling
+                if (!first || savedErrno != EWOULDBLOCK) {
+                    LOG_RPC_DETAIL("RpcTransport send(): %s", strerror(savedErrno));
+                    return -savedErrno;
+                }
+            } else {
+                if (processSize == 0) return DEAD_OBJECT;
+
+                buffer += processSize;
+                if (buffer == end) {
+                    return OK;
+                }
             }
 
-            if (writeSize == 0) return DEAD_OBJECT;
-
-            buffer += writeSize;
-            if (buffer == end) return OK;
-        }
+            if (first) first = false;
+        } while ((status = fdTrigger->triggerablePoll(mSocket.get(), event)) == OK);
         return status;
+    }
+
+    status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size) override {
+        return interruptableReadOrWrite(fdTrigger, reinterpret_cast<const uint8_t*>(data), size,
+                                        send, POLLOUT);
     }
 
     status_t interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size) override {
-        uint8_t* buffer = reinterpret_cast<uint8_t*>(data);
-        uint8_t* end = buffer + size;
-
-        MAYBE_WAIT_IN_FLAKE_MODE;
-
-        status_t status;
-        while ((status = fdTrigger->triggerablePoll(mSocket.get(), POLLIN)) == OK) {
-            ssize_t readSize =
-                    TEMP_FAILURE_RETRY(::recv(mSocket.get(), buffer, end - buffer, MSG_NOSIGNAL));
-            if (readSize < 0) {
-                int savedErrno = errno;
-                LOG_RPC_DETAIL("RpcTransport recv(): %s", strerror(savedErrno));
-                return -savedErrno;
-            }
-
-            if (readSize == 0) return DEAD_OBJECT; // EOF
-
-            buffer += readSize;
-            if (buffer == end) return OK;
-        }
-        return status;
+        return interruptableReadOrWrite(fdTrigger, reinterpret_cast<uint8_t*>(data), size, recv,
+                                        POLLIN);
     }
 
 private:
-    android::base::unique_fd mSocket;
+    base::unique_fd mSocket;
 };
 
 // RpcTransportCtx with TLS disabled.
