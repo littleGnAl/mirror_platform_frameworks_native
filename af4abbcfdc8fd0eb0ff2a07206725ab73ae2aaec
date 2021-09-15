@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "139990f3_25e246ef",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-15T01:35:40Z",
+      "side": 1,
+      "message": "(LOL)\n\nThere really should be android::vintf::BREAK and android::vintf::CONTINUE constants 😄",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 33
+      },
+      "revId": "af4abbcfdc8fd0eb0ff2a07206725ab73ae2aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868747ad_4a41be3d",
+        "filename": "libs/binder/aidl/android/os/ConnectionInfo.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-15T01:35:40Z",
+      "side": 1,
+      "message": "nit: can libvintf use this definition?",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "af4abbcfdc8fd0eb0ff2a07206725ab73ae2aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e93634d7_eeb79ac5",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-15T01:35:40Z",
+      "side": 1,
+      "message": "nit: Can this use the AIDL definition?",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "af4abbcfdc8fd0eb0ff2a07206725ab73ae2aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
