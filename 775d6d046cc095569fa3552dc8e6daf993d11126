@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcc37041_09be9a5f",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-15T05:01:57Z",
+      "side": 1,
+      "message": "nit: this should be parameterized",
+      "range": {
+        "startLine": 71,
+        "startChar": 49,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "775d6d046cc095569fa3552dc8e6daf993d11126",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
