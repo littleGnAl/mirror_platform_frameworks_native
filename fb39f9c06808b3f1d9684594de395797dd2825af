@@ -16,6 +16,24 @@
       "message": "you missed the \"Available since API level 33\" documentation comments on these two new APIs (see all the others for examples).\n\nyou did get the __INTRODUCED_IN(33) though, so at least confused coders will get a clear compiler error. but the docs will be confusing...",
       "revId": "fb39f9c06808b3f1d9684594de395797dd2825af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "281c1940_477c8f1c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1219061
+      },
+      "writtenOn": "2021-09-15T00:41:06Z",
+      "side": 1,
+      "message": "Sorry, see aocr/1826579",
+      "parentUuid": "731fa226_ab7be98b",
+      "revId": "fb39f9c06808b3f1d9684594de395797dd2825af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
