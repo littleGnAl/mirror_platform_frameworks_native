@@ -162,6 +162,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dd337a9f_55c6784e",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-15T01:51:07Z",
+      "side": 1,
+      "message": "I decided to give this a try and discovered ParcelableHolder\u003cS\u003e wouldn\u0027t work because the first thing read_from_parcel() does is read the stability, so it would have to immediately replace `self` with a ParcelableHolder\u003cS\u003e with another stability which isn\u0027t possible (in Rust or C++, I think). For example, you\u0027d need to assign a ParcelableHolder\u003cVintf\u003e to `self` which wouldn\u0027t work if `self` were already a ParcelableHolder\u003cLocal\u003e.\n\nThis wouldn\u0027t work even if we modified read_from_parcel() to return a new object, i.e., Result\u003cSelf\u003e.",
+      "parentUuid": "dd15a254_7a923b29",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "1953501bcd09194d9246a52e319f5923820dc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0fa6a11c_74e324e8",
         "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
         "patchSetId": 6
