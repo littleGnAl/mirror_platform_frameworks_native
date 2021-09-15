@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df448906_76e0eb6c",
+        "filename": "libs/binder/aidl/android/os/ConnectionInfo.aidl",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-15T17:47:14Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to have libvintf depend on this interface. Do you think its worth it?",
+      "parentUuid": "868747ad_4a41be3d",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 25
+      },
+      "revId": "af4abbcfdc8fd0eb0ff2a07206725ab73ae2aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e93634d7_eeb79ac5",
         "filename": "libs/binder/include/binder/IServiceManager.h",
         "patchSetId": 5
@@ -60,6 +84,30 @@
       "writtenOn": "2021-09-15T01:35:40Z",
       "side": 1,
       "message": "nit: Can this use the AIDL definition?",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "af4abbcfdc8fd0eb0ff2a07206725ab73ae2aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df137c00_0649ca54",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-15T17:47:14Z",
+      "side": 1,
+      "message": "I don\u0027t think so. \nlibbinder_ndk would need to depend on that as far as I can tell.\nIf I add the ConnectionInfo header file here, libbinder_ndk fails to build.",
+      "parentUuid": "e93634d7_eeb79ac5",
       "range": {
         "startLine": 113,
         "startChar": 11,
