@@ -52,6 +52,8 @@ pub enum Parcel {
     Borrowed(*mut sys::AParcel),
 }
 
+unsafe impl Send for Parcel {}
+
 /// # Safety
 ///
 /// The `Parcel` constructors guarantee that a `Parcel` object will always
