@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fcdd505_4cf6488f",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-15T22:49:27Z",
+      "side": 1,
+      "message": "Also check EAGAIN. Both are possible on non-blocking sockets",
+      "range": {
+        "startLine": 70,
+        "startChar": 44,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "775d6d046cc095569fa3552dc8e6daf993d11126",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcc37041_09be9a5f",
         "filename": "libs/binder/RpcTransportRaw.cpp",
         "patchSetId": 6
