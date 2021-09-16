@@ -106,6 +106,24 @@
       "parentUuid": "53a2de2f_1204f404",
       "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d57a6f_517ae4cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T21:22:23Z",
+      "side": 1,
+      "message": "Updated the commit message to say this directly. Thanks",
+      "parentUuid": "ec76ceba_e40faf2a",
+      "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
