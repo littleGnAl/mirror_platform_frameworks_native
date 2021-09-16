@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ce3014_8314f6dd",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-16T22:35:17Z",
+      "side": 1,
+      "message": "nice job clang. Looks great :P",
+      "range": {
+        "startLine": 320,
+        "startChar": 8,
+        "endLine": 323,
+        "endChar": 20
+      },
+      "revId": "43b10d794f61fe7c4b7ebd1715a53a83b6b9b211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f8ee02_2e20e81b",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-16T22:35:17Z",
+      "side": 1,
+      "message": "From your commit message it kind of sounds like we only want to do this if we get DEAD_OBJECT.\nThis is shutting down for all errors on the read? Is that ok?",
+      "range": {
+        "startLine": 326,
+        "startChar": 8,
+        "endLine": 326,
+        "endChar": 46
+      },
+      "revId": "43b10d794f61fe7c4b7ebd1715a53a83b6b9b211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
