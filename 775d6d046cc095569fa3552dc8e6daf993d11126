@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeb901d8_2f8b3fba",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T00:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956b838d_e1066283",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "775d6d046cc095569fa3552dc8e6daf993d11126",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fcdd505_4cf6488f",
@@ -94,6 +118,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecad0515_e0a6be5a",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T00:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fcdd505_4cf6488f",
+      "range": {
+        "startLine": 70,
+        "startChar": 44,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "775d6d046cc095569fa3552dc8e6daf993d11126",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7ca22a_b86bcbed",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T00:24:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "547dd6fb_4e96a1d5",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "775d6d046cc095569fa3552dc8e6daf993d11126",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcc37041_09be9a5f",
@@ -107,6 +179,30 @@
       "writtenOn": "2021-09-15T05:01:57Z",
       "side": 1,
       "message": "nit: this should be parameterized",
+      "range": {
+        "startLine": 71,
+        "startChar": 49,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "775d6d046cc095569fa3552dc8e6daf993d11126",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a490d9c_7aa66f1a",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T00:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcc37041_09be9a5f",
       "range": {
         "startLine": 71,
         "startChar": 49,
@@ -140,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d61addd_ef31ea96",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T00:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed4b514a_ee3da42a",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 57
+      },
+      "revId": "775d6d046cc095569fa3552dc8e6daf993d11126",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90123824_6646376c",
@@ -153,6 +273,30 @@
       "writtenOn": "2021-09-15T22:58:19Z",
       "side": 1,
       "message": "nit: this cast is only necessary to do pointer arithmatic. Maybe don\u0027t cast here and move before L49?\n\nIf so you can also infer `first` from `buffer !\u003d data`",
+      "range": {
+        "startLine": 89,
+        "startChar": 51,
+        "endLine": 89,
+        "endChar": 67
+      },
+      "revId": "775d6d046cc095569fa3552dc8e6daf993d11126",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2760cb67_3bd1ace6",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T00:24:53Z",
+      "side": 1,
+      "message": "it needs to be here, b/c that way Buffer will be const or non-const appropriately.",
+      "parentUuid": "90123824_6646376c",
       "range": {
         "startLine": 89,
         "startChar": 51,

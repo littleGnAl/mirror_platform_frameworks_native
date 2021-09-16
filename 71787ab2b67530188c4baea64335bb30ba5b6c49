@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0101fb4_6f75ec23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T00:24:53Z",
+      "side": 1,
+      "message": "The test failure is some unix domain socket only deadlocking, though I think this means the other sockets can deadlock too. I\u0027ll need to look into it more.",
+      "revId": "71787ab2b67530188c4baea64335bb30ba5b6c49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
