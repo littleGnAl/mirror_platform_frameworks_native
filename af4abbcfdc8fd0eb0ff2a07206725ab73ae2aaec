@@ -164,6 +164,30 @@
       },
       "revId": "af4abbcfdc8fd0eb0ff2a07206725ab73ae2aaec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e3b79e1_d1ce10f3",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T00:33:04Z",
+      "side": 1,
+      "message": "I feel sad too, but I don\u0027t know how to avoid it, given prebuilts/android branching structure/etc...",
+      "parentUuid": "69caadcc_8ff560d6",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "af4abbcfdc8fd0eb0ff2a07206725ab73ae2aaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
