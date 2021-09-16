@@ -88,6 +88,24 @@
       "parentUuid": "7304194a_3c82d4c5",
       "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec76ceba_e40faf2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-16T21:19:47Z",
+      "side": 1,
+      "message": "\u003e but it doesn\u0027t really have anything to do with the error codes people expect (and are already handling) in libbinder. \n\nThat\u0027s a better argument.",
+      "parentUuid": "53a2de2f_1204f404",
+      "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
