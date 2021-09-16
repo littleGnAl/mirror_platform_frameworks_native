@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83c27314_d94896b5",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1219061
+      },
+      "writtenOn": "2021-09-16T00:36:19Z",
+      "side": 1,
+      "message": "objectsCount is a global property, I am unsure how to check a specific range for objects?",
+      "parentUuid": "52db4069_b3da02d9",
+      "range": {
+        "startLine": 677,
+        "startChar": 3,
+        "endLine": 677,
+        "endChar": 40
+      },
+      "revId": "fb39f9c06808b3f1d9684594de395797dd2825af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ed73085_5184966f",
         "filename": "libs/binder/ndk/parcel.cpp",
         "patchSetId": 8
@@ -107,6 +131,30 @@
       "writtenOn": "2021-09-16T00:22:09Z",
       "side": 1,
       "message": "qq: Why does unmarshal() overwrite at position\u003d0 while marshal() accepts `start` as an offset? What if `parcel` has some objects in it already? Does \"setDataSize(len) + setDataPosition(0) + writeInPlace(len)\" properly discard the old objects?",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 54
+      },
+      "revId": "fb39f9c06808b3f1d9684594de395797dd2825af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e875ab5a_aaf3a931",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1219061
+      },
+      "writtenOn": "2021-09-16T00:36:19Z",
+      "side": 1,
+      "message": "Because in unmarshal, buffer is caller provided which explicitly indicates a start, otherwise, you could pass (buffer + start) as buffer. I think it overwrites all older objects, this is the same behavior as the native implementation.",
+      "parentUuid": "1ed73085_5184966f",
       "range": {
         "startLine": 690,
         "startChar": 0,
@@ -130,6 +178,30 @@
       "writtenOn": "2021-09-16T00:22:09Z",
       "side": 1,
       "message": "nit: `Parcel::write(const void* data, size_t len)`?",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 29
+      },
+      "revId": "fb39f9c06808b3f1d9684594de395797dd2825af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00140f68_4582e3a6",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1219061
+      },
+      "writtenOn": "2021-09-16T00:36:19Z",
+      "side": 1,
+      "message": "I am copying this from Java API native implementation. This should be equal to write, but I am being consistent here.",
+      "parentUuid": "b27ac262_22287373",
       "range": {
         "startLine": 696,
         "startChar": 0,
