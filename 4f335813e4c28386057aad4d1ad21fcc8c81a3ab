@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf78e0ad_03a30411",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T18:15:57Z",
+      "side": 1,
+      "message": "also - this makes these two functions more symmetrical.",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 46
+      },
+      "revId": "4f335813e4c28386057aad4d1ad21fcc8c81a3ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
