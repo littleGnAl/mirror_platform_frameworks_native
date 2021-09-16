@@ -52,6 +52,24 @@
       "parentUuid": "829d8e6e_70e472dc",
       "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb95691_cc2c4a23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T21:17:31Z",
+      "side": 1,
+      "message": "That is the socket protocol, but it doesn\u0027t really have anything to do with the error codes people expect (and are already handling) in libbinder. If we were designing this from the ground up, maybe we would want to distinguish between these two cases, but the libbinder code and above understands DEAD_OBJECT (-EPIPE), not -ECANCELED.",
+      "parentUuid": "7304194a_3c82d4c5",
+      "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
