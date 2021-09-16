@@ -45,6 +45,30 @@
       },
       "revId": "43b10d794f61fe7c4b7ebd1715a53a83b6b9b211",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a2627c_05941254",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T23:08:34Z",
+      "side": 1,
+      "message": "Yeah. Any error that we can handle should be handled by the transport there. Application protocols in binder don\u0027t really support faulty transmission of calls or have a way of understanding them.",
+      "parentUuid": "25f8ee02_2e20e81b",
+      "range": {
+        "startLine": 326,
+        "startChar": 8,
+        "endLine": 326,
+        "endChar": 46
+      },
+      "revId": "43b10d794f61fe7c4b7ebd1715a53a83b6b9b211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
