@@ -70,6 +70,24 @@
       "parentUuid": "7304194a_3c82d4c5",
       "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a2de2f_1204f404",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-16T21:18:01Z",
+      "side": 1,
+      "message": "That is, I think this argument is not valid:\n\n\u003e if your call happens to get\ninterrupted, you\u0027ll get -ECANCELED or if your call happened to be\nscheduled slightly later, you\u0027d get DEAD_OBJECT.\n\nI agree this part:\n\n\u003e if your call happens to get\ninterrupted, you\u0027ll get -ECANCELED \n\n(assuming interrupted means trigger is triggered). After this point, there should be no way you can get DEAD_OBJECT unless the remote has shutdown.",
+      "parentUuid": "7304194a_3c82d4c5",
+      "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
