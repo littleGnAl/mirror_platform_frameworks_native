@@ -16,6 +16,29 @@
       "message": "We could instead, or as well, implement a similar into_file method.\n\nSee also Victor\u0027s earlier https://r.android.com/1789493.",
       "revId": "26209e4e43114c0d690271028d862f46731616bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "473736c8_ea50e089",
+        "filename": "libs/binder/rust/src/parcel/file_descriptor.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T16:25:28Z",
+      "side": 1,
+      "message": "Is there another type more common in the Rust ecosystem that can be used which preserves ownership? I seem to recall a conversation about this in previous CLs, so requesting mmaurer@ or ahomescu@ to take a look",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 1
+      },
+      "revId": "26209e4e43114c0d690271028d862f46731616bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
