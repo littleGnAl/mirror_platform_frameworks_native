@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e345788c_39430353",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T22:03:17Z",
+      "side": 1,
+      "message": "this is also wrong (tautology)",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 71,
+        "endChar": 79
+      },
+      "revId": "f17b4bf509d04e49754d02a75219d7255e6499f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
