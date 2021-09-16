@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b4a99e_bc9159a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-16T09:29:52Z",
+      "side": 1,
+      "message": "We could instead, or as well, implement a similar into_file method.\n\nSee also Victor\u0027s earlier https://r.android.com/1789493.",
+      "revId": "26209e4e43114c0d690271028d862f46731616bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
