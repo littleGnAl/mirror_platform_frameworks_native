@@ -34,6 +34,24 @@
       "parentUuid": "4a02b936_e41ffac9",
       "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7304194a_3c82d4c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-16T21:14:24Z",
+      "side": 1,
+      "message": "In the second case (ECANCELLED), the connection is technically not dead. Technically you can still send / receive stuff from the FD.\n\nIt is just that the shut down trigger is triggered.\n\nSo, I think it is not the matter of time to distinguish these two codes; it is the reason why the connection is considered abandoned.\n\nFor example, if the server is shutting down, then the server should see ECANCELED and the client should see DEAD_OBJECT. If the client is shutting down, then the client should see ECANCELED and the server should see DEAD_OBJECT.",
+      "parentUuid": "829d8e6e_70e472dc",
+      "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
