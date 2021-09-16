@@ -16,6 +16,24 @@
       "message": "DEAD_OBJECT is kinda different from ECANCELED. To me:\n\nDEAD_OBJECT means the remote shuts down. This is not something I can control.\n\nECANCELED means I am actively shutting down this connection.",
       "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829d8e6e_70e472dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-16T21:08:39Z",
+      "side": 1,
+      "message": "I think the commit message explains this a bit. WDYT? We don\u0027t care if the connection is shutting down right now or it was shut down 1s ago. It is shut down, and it\u0027s dead now. This is the error code that binder clients expect, and it matches the binder driver behavior.",
+      "parentUuid": "4a02b936_e41ffac9",
+      "revId": "121deb3b310712fca7aa75cc776f13c28e18c471",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
