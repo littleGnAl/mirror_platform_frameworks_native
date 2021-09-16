@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0046ecc1_dbfd33f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-16T00:22:09Z",
+      "side": 1,
+      "message": "Sorry for late bumping into this. Leaving a couple of QQs and a nit.",
+      "revId": "fb39f9c06808b3f1d9684594de395797dd2825af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "731fa226_ab7be98b",
@@ -50,6 +67,75 @@
       "side": 1,
       "message": "thanks!",
       "parentUuid": "281c1940_477c8f1c",
+      "revId": "fb39f9c06808b3f1d9684594de395797dd2825af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52db4069_b3da02d9",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-16T00:22:09Z",
+      "side": 1,
+      "message": "nit: I\u0027m curious if check on the narrower range [start, start+len) would suffice?",
+      "range": {
+        "startLine": 677,
+        "startChar": 3,
+        "endLine": 677,
+        "endChar": 40
+      },
+      "revId": "fb39f9c06808b3f1d9684594de395797dd2825af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ed73085_5184966f",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-16T00:22:09Z",
+      "side": 1,
+      "message": "qq: Why does unmarshal() overwrite at position\u003d0 while marshal() accepts `start` as an offset? What if `parcel` has some objects in it already? Does \"setDataSize(len) + setDataPosition(0) + writeInPlace(len)\" properly discard the old objects?",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 54
+      },
+      "revId": "fb39f9c06808b3f1d9684594de395797dd2825af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b27ac262_22287373",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-09-16T00:22:09Z",
+      "side": 1,
+      "message": "nit: `Parcel::write(const void* data, size_t len)`?",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 29
+      },
       "revId": "fb39f9c06808b3f1d9684594de395797dd2825af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
