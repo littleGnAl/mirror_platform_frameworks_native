@@ -93,6 +93,30 @@
       },
       "revId": "43b10d794f61fe7c4b7ebd1715a53a83b6b9b211",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "886c73b8_e985a464",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-17T17:54:16Z",
+      "side": 1,
+      "message": "I think this is worth a comment because I have the same question as Devin does.\n\nAlso, the previous change has nothing to do with this change, since you are not checking DEAD_OBJECT or -ECANCELED here, right?",
+      "parentUuid": "0e3029df_fbe5b191",
+      "range": {
+        "startLine": 326,
+        "startChar": 8,
+        "endLine": 326,
+        "endChar": 46
+      },
+      "revId": "43b10d794f61fe7c4b7ebd1715a53a83b6b9b211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
