@@ -117,6 +117,30 @@
       },
       "revId": "43b10d794f61fe7c4b7ebd1715a53a83b6b9b211",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740ca106_212fdacd",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-17T18:24:10Z",
+      "side": 1,
+      "message": "Updated the commit message, to reflect that DEAD_OBJECT is only an example of a serious problem here.\n\nSince it is shutting down here, earlier, this causes existing checks for DEAD_OBJECT in the test to race with this. Previously, we would successfully send a value and then only get DEAD_OBJECT on the return side. That is why the -ECANCELED -\u003e DEAD_OBJECT change is a prerequisite.\n\nAll of the code here shuts down on any error, and more largely, this is the \u0027fail hard fail fast\u0027 principle we know \u0026 love (and so I would like to avoid the comment here, b/c if it is needed here, it should also be needed in an enormous number of other places):\n- there are many errors that are possible\n- we handle the ones we can\n- if some other error happens, it is unexpected, and we want to know about it, so we fail hard (there should be no finger crossing in OS design!)\n\nThis principle carries over to RPC binder, and that is why for our first usecases, we are looking at things on-device or on closed networks. That is also why we are focusing on debugging as a usecase out of the gate - even if this is over an unstable network, the developer can see that there is a problem - either in a failed test result or in their connection. As this is used more, we should understand the other errors that can happen and the problems associated with them.\n\nAs we look at using this in other places, especially places where we have less stable connections:\n- we may rely being able to tear down and set back up RpcSession\n- we may have to build more retry layers/etc... instead of silently shutting down, either in something which composes RpcTransport or here\n- we will definitely have to use other protocols next to RPC binder which tolerate this, such as video streaming codecs, (and that\u0027s okay - and that\u0027s also why everything we do wrt connection discovery needs to be orthogonal to transport)",
+      "parentUuid": "886c73b8_e985a464",
+      "range": {
+        "startLine": 326,
+        "startChar": 8,
+        "endLine": 326,
+        "endChar": 46
+      },
+      "revId": "43b10d794f61fe7c4b7ebd1715a53a83b6b9b211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
