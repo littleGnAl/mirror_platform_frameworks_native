@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e2815e9_1892d959",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-20T15:10:03Z",
+      "side": 1,
+      "message": "nit: \"provide an auth\"",
+      "range": {
+        "startLine": 519,
+        "startChar": 24,
+        "endLine": 519,
+        "endChar": 38
+      },
+      "revId": "d6338b2735265e74698ea0eb67658833c1a2178f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "614d9741_973e0ce5",
+        "filename": "libs/binder/include_tls/binder/RpcAuth.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-20T15:10:03Z",
+      "side": 1,
+      "message": "are other SSL functions not allowed here?",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "d6338b2735265e74698ea0eb67658833c1a2178f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
