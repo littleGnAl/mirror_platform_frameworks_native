@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762d810a_25087b0e",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T22:08:12Z",
+      "side": 1,
+      "message": "do we need Test class inheritance? Is there a flatter way to do this?",
+      "range": {
+        "startLine": 1439,
+        "startChar": 6,
+        "endLine": 1439,
+        "endChar": 26
+      },
+      "revId": "763440b6b352bb2898de66672ee4f6311251b704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
