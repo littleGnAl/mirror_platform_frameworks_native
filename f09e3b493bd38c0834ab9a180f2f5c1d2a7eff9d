@@ -16,6 +16,24 @@
       "message": "Should be in RpcAuthTesting.cpp",
       "revId": "f09e3b493bd38c0834ab9a180f2f5c1d2a7eff9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d8ff858_fa2684f4",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1876,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T21:49:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f866798a_017f1236",
+      "revId": "f09e3b493bd38c0834ab9a180f2f5c1d2a7eff9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
