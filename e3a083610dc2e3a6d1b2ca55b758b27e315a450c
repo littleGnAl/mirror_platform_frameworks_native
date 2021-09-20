@@ -16,6 +16,24 @@
       "message": "qq - I would generally be adding lambdas these days, instead of adding more classes. For instance, sizeof(RpcAuth) will be frozen as soon as there are some users. Also, I wonder if classes are heavier (they certainly are in terms of number of files/lines of code you need to read to understand things). WDYT?",
       "revId": "e3a083610dc2e3a6d1b2ca55b758b27e315a450c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9e3e466_adebb0a3",
+        "filename": "libs/binder/include_tls/binder/RpcAuth.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T21:52:39Z",
+      "side": 1,
+      "message": "I like lambdas too, but I also think it makes the ownership complicated for this:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1830832/4/libs/binder/tests/RpcAuthTesting.h#38\n\nSame for RpcCertVerifier. How would you make a lambda own a unique_ptr?",
+      "parentUuid": "19c23e1d_dd422d42",
+      "revId": "e3a083610dc2e3a6d1b2ca55b758b27e315a450c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
