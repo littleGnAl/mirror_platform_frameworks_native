@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55887eb5_13c2b378",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T21:40:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18d41c0a_b986b502",
+      "range": {
+        "startLine": 243,
+        "startChar": 9,
+        "endLine": 243,
+        "endChar": 15
+      },
+      "revId": "306cb29a1e05fe01b47d65fb7f6f987090b42666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af797eaf_3e1a15f7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-20T21:34:33Z",
       "side": 1,
       "message": "to confirm, we\u0027re sure this can be implemented by delegating to, say, conscrypt?",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "306cb29a1e05fe01b47d65fb7f6f987090b42666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5b58063_af7ceede",
+        "filename": "libs/binder/include_tls/binder/RpcCertificateVerifier.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T21:40:52Z",
+      "side": 1,
+      "message": "I think so, but I can\u0027t confirm this yet because I don\u0027t know what API does conscrypt expose yet.",
+      "parentUuid": "af797eaf_3e1a15f7",
       "range": {
         "startLine": 40,
         "startChar": 21,
