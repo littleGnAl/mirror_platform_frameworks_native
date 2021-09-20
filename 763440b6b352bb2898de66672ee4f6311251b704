@@ -70,6 +70,30 @@
       },
       "revId": "763440b6b352bb2898de66672ee4f6311251b704",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6563b50f_ed241cec",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T23:54:25Z",
+      "side": 1,
+      "message": "I (partially) agree what you said for SetUp. But I don\u0027t agree what you said for TearDown() in general.\n\n\u003e For instance, would it be bad to have an explicit shutdownAndWait call in the tests?\n\nYes (in general, not for this specific CL -- see below). Consider:\n\n```\nTEST_F(..., ...) {\n   server \u003d commonSetUpFunction();\n   ASSERT_TRUE(...);\n   server-\u003eshutdownAndWait(); \n}\n```\n\nIf the `ASSERT_TRUE` fails, shutdownAndWait() is never called. To ensure it is called, one alternative is to rely on TearDown:\n\n```\nclass FooTest { Server server; void TearDown() { server-\u003eshutdownAndWait(); } }; \nTEST_F(..., ...) {\n   server \u003d commonSetUpFunction();\n   ASSERT_TRUE(...);\n}\n```\nThis is like the finally clause in Java:\n```\ntry {\n    server \u003d commonSetUpFunction();\n    assertTrue(...);\n} finally {\n    server.shutdownAndWait();\n}\n```\n\nYou may also argue that another alternative is to use RAII objects, like ~Server() calls shutdownAndWait() in my CL. But on the other hand, I can also argue that in the above example, the test environment FooTest itself is an RAII object.\n\n------------\n\nIn this CL, I am going to delete the TearDown() function and remove the Test inheritance. However, I can\u0027t avoid this structure:\n\n```\nclass RpcTransportTestBase {\n    using P \u003d std::tuple\u003c...\u003e;\n    class Server{};\n    class Client{};\n};\nclass RpcTransportTest : RpcTransportTestBase, WithParamInterface\u003c...\u003e{};\nclass RpcTransportTlsKeyTest : RpcTransportTestBase, WithParamInterface\u003c...\u003e{};\n```\n\n... because the params of RpcTransportTest and RpcTransportTlsKeyTest are different.\n\nI can also do:\n\n```\nusing RpcTransportTestParam \u003d std::tuple\u003c...\u003e;\nclass RpcTransportTestServer{};\nclass RpcTransportTestClient{};\nclass RpcTransportTest : TestWithParam\u003c...\u003e{};\nclass RpcTransportTlsKeyTest : TestWithParam\u003c...\u003e{};\n```\n\nDo you think this is \"flatter\" in your opinion?",
+      "parentUuid": "5684ba47_354a82b6",
+      "range": {
+        "startLine": 1439,
+        "startChar": 6,
+        "endLine": 1439,
+        "endChar": 26
+      },
+      "revId": "763440b6b352bb2898de66672ee4f6311251b704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
