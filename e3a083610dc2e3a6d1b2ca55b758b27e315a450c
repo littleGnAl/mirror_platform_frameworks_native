@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c23e1d_dd422d42",
+        "filename": "libs/binder/include_tls/binder/RpcAuth.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T21:44:04Z",
+      "side": 1,
+      "message": "qq - I would generally be adding lambdas these days, instead of adding more classes. For instance, sizeof(RpcAuth) will be frozen as soon as there are some users. Also, I wonder if classes are heavier (they certainly are in terms of number of files/lines of code you need to read to understand things). WDYT?",
+      "revId": "e3a083610dc2e3a6d1b2ca55b758b27e315a450c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
