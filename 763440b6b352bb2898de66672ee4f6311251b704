@@ -46,6 +46,30 @@
       },
       "revId": "763440b6b352bb2898de66672ee4f6311251b704",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5684ba47_354a82b6",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T23:19:21Z",
+      "side": 1,
+      "message": "Btw - I mean, avoid RpcTransportTestBase if possible. tearDownInternal is still non-local, w/ inheritance. Let me discuss in more detail, and we can merge this as-is, but I want to discuss.\n\nHere is the philosophy I suggest: We should avoid use of ::testing::Test as much as possible. TEST_F is harmful. Unfortunately, we need these classes in order to do parameterized tests (and we need TEST_P). We should never need test environments. We should have as few test classes as possible, and if we have them, they should essentially be empty (only for parameters).\n\nFor consideration:\n- TearDown/SetUp assume that we need X tests which need the same environment. However, sometimes we need another test with a slightly different environment. For instance, in the main test here, we use createRpcTestSocketServerProcess. This can be called with different arguments or multiple times, depending on how many processes we want. We don\u0027t want a class per configuration - we want flexibility to have any configuration.\n- TearDown/SetUp are non-local. Ideally, if someone wants to learn how to use this code, they can look at the test body itself and understand what is happening. Sometimes, being able to do this means needing to restructure APIs, but generally I think it is better. For instance, would it be bad to have an explicit shutdownAndWait call in the tests? Clients of libbinder would need to do the same.\n\nAnyway, food for thought, I know it\u0027s hard to avoid these sometimes, and still +2, but consider: minimizing classes, minimizing the amount you need to mentally jump from one place to another in the code. Maximize what you can understand from reading a test by itself.",
+      "parentUuid": "a54e5a50_98155612",
+      "range": {
+        "startLine": 1439,
+        "startChar": 6,
+        "endLine": 1439,
+        "endChar": 26
+      },
+      "revId": "763440b6b352bb2898de66672ee4f6311251b704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
