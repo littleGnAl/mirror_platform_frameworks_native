@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b98819_95ba6e94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T22:42:30Z",
+      "side": 1,
+      "message": "Bug number please?\n\nNote, the original CL is to fix b/182306776",
+      "revId": "27e2eed457310f359b08f0eaef1d3c2aba69808a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
