@@ -70,6 +70,24 @@
       "parentUuid": "dcaf8fef_99bb0fff",
       "revId": "e3a083610dc2e3a6d1b2ca55b758b27e315a450c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49dabb96_676cb30e",
+        "filename": "libs/binder/include_tls/binder/RpcAuth.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T22:58:58Z",
+      "side": 1,
+      "message": "\u003e How would you make a lambda own a unique_ptr?\n\nI couldn\u0027t find a way to do this with an anonymous lambda, but see RpcServer::establishConnection for instance. If the unique_ptr can be an argument to the lambda, it\u0027s also pretty straightforward.",
+      "parentUuid": "60b3f7a4_6486d4c1",
+      "revId": "e3a083610dc2e3a6d1b2ca55b758b27e315a450c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
