@@ -34,6 +34,24 @@
       "parentUuid": "19c23e1d_dd422d42",
       "revId": "e3a083610dc2e3a6d1b2ca55b758b27e315a450c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcaf8fef_99bb0fff",
+        "filename": "libs/binder/include_tls/binder/RpcAuth.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T21:53:53Z",
+      "side": 1,
+      "message": "(For RpcCertVerifier, the naive implementation is: https://android-review.googlesource.com/c/platform/frameworks/native/+/1830321/3/libs/binder/tests/RpcCertificateVerifierSimple.h )",
+      "parentUuid": "b9e3e466_adebb0a3",
+      "revId": "e3a083610dc2e3a6d1b2ca55b758b27e315a450c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
