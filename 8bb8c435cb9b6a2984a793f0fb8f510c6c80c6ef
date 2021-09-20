@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "583f4d9e_06365eae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-20T15:31:14Z",
+      "side": 1,
+      "message": "Looks nice!",
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a59407_fa81f076",
+        "filename": "libs/binder/tests/RpcTlsUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-20T15:31:14Z",
+      "side": 1,
+      "message": "nit: constant for this indent size?",
+      "range": {
+        "startLine": 26,
+        "startChar": 53,
+        "endLine": 26,
+        "endChar": 54
+      },
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
