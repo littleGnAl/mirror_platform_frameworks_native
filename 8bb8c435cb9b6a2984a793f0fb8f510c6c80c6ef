@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0d363a0_e628e541",
+        "filename": "libs/binder/RpcTlsUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T22:20:55Z",
+      "side": 1,
+      "message": "There\u0027s only one error, that the format of the buffer isn\u0027t the specified format.\n\nHere, if the size exceeds int max, it is definitely not a valid key / certificate for our purposes, because that would be too big.\n\nIf BIO functions returns errors, libssl just returns nullptr, and we don\u0027t know what the internal I/O errors are.\n\nAlso, since we are always using memory BIO, there shouldn\u0027t be any I/O errors.",
+      "parentUuid": "adeb5668_18196618",
+      "range": {
+        "startLine": 32,
+        "startChar": 62,
+        "endLine": 32,
+        "endChar": 69
+      },
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14dcd512_6b8955bf",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-20T21:40:11Z",
       "side": 1,
       "message": "maybe this is a super, super nit, but given that we are looking at running this on other platforms as well, should we assert sizeof(unsigned char) \u003d\u003d 1 or do the pointer addition on a uint8_t*?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea88a06_2922cf2b",
+        "filename": "libs/binder/RpcTlsUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T22:20:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14dcd512_6b8955bf",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -81,6 +129,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cb02a3d_a7d2f12d",
+        "filename": "libs/binder/include/binder/RpcKeyFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T22:20:55Z",
+      "side": 1,
+      "message": "Semi-copied; I change the name of the type name to RpcKeyFormat\n\nI want two types to distinguish the format for keys and for certificates. I could\u0027ve also done\n\n```\nusing RpcKeyFormat \u003d RpcCertificateFormat\n```\n\nBut I thought you don\u0027t like type aliases because they cause unnecessary abstractions + they don\u0027t actually ensure type safety.",
+      "parentUuid": "f336c218_31e0e3e5",
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0527f178_236618ff",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-09-20T21:40:11Z",
       "side": 1,
       "message": "nit: We could also use std::span if you want a view. :D",
+      "range": {
+        "startLine": 36,
+        "startChar": 59,
+        "endLine": 36,
+        "endChar": 86
+      },
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80615fa0_933c5445",
+        "filename": "libs/binder/include_tls/binder/RpcTlsUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T22:20:55Z",
+      "side": 1,
+      "message": "but we don\u0027t have C++20 right?",
+      "parentUuid": "0527f178_236618ff",
       "range": {
         "startLine": 36,
         "startChar": 59,
