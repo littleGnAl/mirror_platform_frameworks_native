@@ -18,6 +18,92 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "adeb5668_18196618",
+        "filename": "libs/binder/RpcTlsUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T21:40:11Z",
+      "side": 1,
+      "message": "should we change these functions to have more explicit error codes while they have few users? It might be useful to know if it is null b/c of this, or the bio functions return errors, what those are.",
+      "range": {
+        "startLine": 32,
+        "startChar": 62,
+        "endLine": 32,
+        "endChar": 69
+      },
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14dcd512_6b8955bf",
+        "filename": "libs/binder/RpcTlsUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T21:40:11Z",
+      "side": 1,
+      "message": "maybe this is a super, super nit, but given that we are looking at running this on other platforms as well, should we assert sizeof(unsigned char) \u003d\u003d 1 or do the pointer addition on a uint8_t*?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f336c218_31e0e3e5",
+        "filename": "libs/binder/include/binder/RpcKeyFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T21:40:11Z",
+      "side": 1,
+      "message": "this file is a copy of frameworks/native/libs/binder/include/binder/RpcCertificateFormat.h? Should it be moved instead of added?",
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0527f178_236618ff",
+        "filename": "libs/binder/include_tls/binder/RpcTlsUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T21:40:11Z",
+      "side": 1,
+      "message": "nit: We could also use std::span if you want a view. :D",
+      "range": {
+        "startLine": 36,
+        "startChar": 59,
+        "endLine": 36,
+        "endChar": 86
+      },
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a2a59407_fa81f076",
