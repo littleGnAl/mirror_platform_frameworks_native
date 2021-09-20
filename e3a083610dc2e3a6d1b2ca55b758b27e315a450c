@@ -52,6 +52,24 @@
       "parentUuid": "b9e3e466_adebb0a3",
       "revId": "e3a083610dc2e3a6d1b2ca55b758b27e315a450c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60b3f7a4_6486d4c1",
+        "filename": "libs/binder/include_tls/binder/RpcAuth.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T22:07:43Z",
+      "side": 1,
+      "message": "Also see:\nhttps://en.cppreference.com/w/cpp/utility/functional/function\n\n\u003e Class template std::function is a general-purpose polymorphic function wrapper. Instances of std::function can store, copy, and invoke any CopyConstructible Callable target\n\nIn our cases, the RpcCertificateVerifierSimple and RpcAuthPreSigned are all non-copy-constructible [1], so I can\u0027t see a good way to use std::function in the API.\n\n[1] That being said, they could technically be made copy-constructible by incrementing the ref-count of the internal objects, e.g. X509_up_ref() I just feel that\u0027s too complicated. But let me know if you think it is worth it.\n\nhttps://www.openssl.org/docs/man1.1.0/man3/X509_up_ref.html",
+      "parentUuid": "dcaf8fef_99bb0fff",
+      "revId": "e3a083610dc2e3a6d1b2ca55b758b27e315a450c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
