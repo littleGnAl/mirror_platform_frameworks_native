@@ -45,6 +45,30 @@
       },
       "revId": "d6338b2735265e74698ea0eb67658833c1a2178f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd58285_770bd5da",
+        "filename": "libs/binder/include_tls/binder/RpcAuth.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T21:32:10Z",
+      "side": 1,
+      "message": "They are allowed, hence the word \"may\"",
+      "parentUuid": "614d9741_973e0ce5",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "d6338b2735265e74698ea0eb67658833c1a2178f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
