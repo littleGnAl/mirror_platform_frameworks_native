@@ -117,6 +117,30 @@
       },
       "revId": "306cb29a1e05fe01b47d65fb7f6f987090b42666",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97117c1e_151e0c03",
+        "filename": "libs/binder/include_tls/binder/RpcCertificateVerifier.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-20T22:34:43Z",
+      "side": 1,
+      "message": "I have high confidence in this because:\n\n- You can get the certificate \u0026 chain from the SSL object, see comment above\n- Once you get that, you should be able to pass the chain to conscrypt to validate, e.g.\n\nhttps://cr.openjdk.java.net/~iris/se/11/latestSpec/api/java.base/javax/net/ssl/X509TrustManager.html",
+      "parentUuid": "c959009e_12b0a90c",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "306cb29a1e05fe01b47d65fb7f6f987090b42666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
