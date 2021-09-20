@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d41c0a_b986b502",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T21:34:33Z",
+      "side": 1,
+      "message": "since we have #include \u003copenssl/ssl.h\u003e in the header, we should also have expor_shared_lib_headers?",
+      "range": {
+        "startLine": 243,
+        "startChar": 9,
+        "endLine": 243,
+        "endChar": 15
+      },
+      "revId": "306cb29a1e05fe01b47d65fb7f6f987090b42666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af797eaf_3e1a15f7",
+        "filename": "libs/binder/include_tls/binder/RpcCertificateVerifier.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T21:34:33Z",
+      "side": 1,
+      "message": "to confirm, we\u0027re sure this can be implemented by delegating to, say, conscrypt?",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "306cb29a1e05fe01b47d65fb7f6f987090b42666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
