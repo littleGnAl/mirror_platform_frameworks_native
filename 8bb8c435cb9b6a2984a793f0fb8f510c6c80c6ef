@@ -149,6 +149,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79b70c15_3c32738b",
+        "filename": "libs/binder/include/binder/RpcKeyFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T23:58:29Z",
+      "side": 1,
+      "message": "Can we pick a name that will work for both? I would expect that we always support the same list of formats for keys and certificates (certificates contain keys, right?). It feels strange having two copies of the same type unless we are certain their definitions are going to diverge.",
+      "parentUuid": "4cb02a3d_a7d2f12d",
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0527f178_236618ff",
         "filename": "libs/binder/include_tls/binder/RpcTlsUtils.h",
         "patchSetId": 2
@@ -184,6 +202,30 @@
       "side": 1,
       "message": "but we don\u0027t have C++20 right?",
       "parentUuid": "0527f178_236618ff",
+      "range": {
+        "startLine": 36,
+        "startChar": 59,
+        "endLine": 36,
+        "endChar": 86
+      },
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97fcf257_e44056b1",
+        "filename": "libs/binder/include_tls/binder/RpcTlsUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-20T23:58:29Z",
+      "side": 1,
+      "message": "You can always set cpp_std: \"experimental\",",
+      "parentUuid": "80615fa0_933c5445",
       "range": {
         "startLine": 36,
         "startChar": 59,
