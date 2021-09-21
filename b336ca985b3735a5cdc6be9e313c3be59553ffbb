@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a615d367_9e40189f",
+        "filename": "libs/binder/tests/binderRpcBenchmark.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-21T23:48:52Z",
+      "side": 1,
+      "message": "Steven, if I don\u0027t re-instantiate RpcSession here, and handshake fails in setupUnixDomainClient, then mOutgoingConnections will be non-empty, causing subsequent setupUnixDomainClient to abort.\n\nIs this an expected behavior?",
+      "range": {
+        "startLine": 268,
+        "startChar": 8,
+        "endLine": 268,
+        "endChar": 19
+      },
+      "revId": "b336ca985b3735a5cdc6be9e313c3be59553ffbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
