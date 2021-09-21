@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d00159_f319e0b4",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-21T00:40:21Z",
+      "side": 1,
+      "message": "e.g. this doesn\u0027t look so close to RpcTransportTestUtils::Server::setUp",
+      "revId": "b1ce80cabff8bec04c1d6c8556a068cb016a0999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

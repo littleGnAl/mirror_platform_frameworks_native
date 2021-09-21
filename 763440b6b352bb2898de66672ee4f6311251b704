@@ -118,6 +118,30 @@
       },
       "revId": "763440b6b352bb2898de66672ee4f6311251b704",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c002aa18_41506b69",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-21T00:40:21Z",
+      "side": 1,
+      "message": "Note, I am NOT testing the RpcSession / RpcServer APIs in this test. I am testing the RpcTransport APIs. See other comment.\n\nAlso, PTAL at the latest patchset and make new comments on top of the new patchset. I made part of the changes, but I didn\u0027t completely remove RpcTransportTestUtils. Thanks!",
+      "parentUuid": "38e6939b_18e2ebe3",
+      "range": {
+        "startLine": 1439,
+        "startChar": 6,
+        "endLine": 1439,
+        "endChar": 26
+      },
+      "revId": "763440b6b352bb2898de66672ee4f6311251b704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

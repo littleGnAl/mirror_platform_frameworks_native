@@ -22,6 +22,30 @@
       },
       "revId": "afeee606d497f816530576c123eeab4e7ae94fa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61fcd1ac_bffff21b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-21T00:40:21Z",
+      "side": 1,
+      "message": "This test is to test the RpcTransport APIs, not RpcServer. I am using RpcServer here just to avoid duplicating the RpcServer::setupXServer code.\n\nFor de-duping, I think it does not resemble createRpcTestSocketServerProcess() enough to be de-duplicated. Otherwise there\u0027ll be another unnecessary abstraction layer, and I think you are against it (and I am against it too).",
+      "parentUuid": "b905ef46_1917382a",
+      "range": {
+        "startLine": 1457,
+        "startChar": 0,
+        "endLine": 1503,
+        "endChar": 17
+      },
+      "revId": "afeee606d497f816530576c123eeab4e7ae94fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
