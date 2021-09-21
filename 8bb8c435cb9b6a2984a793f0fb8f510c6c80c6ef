@@ -183,6 +183,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b4f104f_1d2683a6",
+        "filename": "libs/binder/include/binder/RpcKeyFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-21T00:26:48Z",
+      "side": 1,
+      "message": "Though, I am not certain that their definitions will diverge either.",
+      "parentUuid": "259749a2_9ba8a299",
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0527f178_236618ff",
