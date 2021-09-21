@@ -94,6 +94,30 @@
       },
       "revId": "763440b6b352bb2898de66672ee4f6311251b704",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e6939b_18e2ebe3",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-21T00:08:07Z",
+      "side": 1,
+      "message": "\u003e You may also argue that another alternative is to use RAII objects, like ~Server() calls shutdownAndWait() in my CL.\n\nActually, this is a great idea. Would it make sense for us to change the RpcServer API so that when you start it, you get an object that forces you to shut it down? \u0027join\u0027 could also take this object. This is what I mean - by making the problem visible closely in the test, we can more easily see what is good/bad about the APIs (I\u0027m not saying my tests here are perfect - the Process objects _are_ complicated).\n\n\u003e  I can also argue that in the above example, the test environment FooTest itself is an RAII object.\n\nBtw, ::testing::Environment is a different set of classes - this is the Test object. Also, the test object isn\u0027t technically RAII because the lifetime of the resource isn\u0027t tied to the lifetime of FooTest.\n\n\u003e ... because the params of RpcTransportTest and RpcTransportTlsKeyTest are different.\n\nDo they need to be?\n\n\u003e Do you think this is \"flatter\" in your opinion?\n\nYes. However, since RpcSession is the client object and RpcServer is the server object, if we have to add extra layers of abstraction here, it makes me think that the RpcSession/RpcServer APIs are not good enough. Could we change them so that we don\u0027t need to do so much managing of their state with these extra objects in the test?",
+      "parentUuid": "6563b50f_ed241cec",
+      "range": {
+        "startLine": 1439,
+        "startChar": 6,
+        "endLine": 1439,
+        "endChar": 26
+      },
+      "revId": "763440b6b352bb2898de66672ee4f6311251b704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
