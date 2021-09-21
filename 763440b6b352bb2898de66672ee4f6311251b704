@@ -142,6 +142,30 @@
       },
       "revId": "763440b6b352bb2898de66672ee4f6311251b704",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0718b6c_352693a6",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-21T00:57:45Z",
+      "side": 1,
+      "message": "\u003e Btw, ::testing::Environment is a different set of classes - this is the Test object. \n\nYeah I know. I am using \"environment\" here as a generic term, not `::testing::Environment`. I mean\n\n\"I can also argue that in the above example, the test **suite** FooTest itself is an RAII object\"\n\n\u003e Also, the test object isn\u0027t technically RAII because the lifetime of the resource isn\u0027t tied to the lifetime of FooTest.\n\nIt is. AFAIK, a FooTest object is created and destroyed for every TEST_F executed.",
+      "parentUuid": "c002aa18_41506b69",
+      "range": {
+        "startLine": 1439,
+        "startChar": 6,
+        "endLine": 1439,
+        "endChar": 26
+      },
+      "revId": "763440b6b352bb2898de66672ee4f6311251b704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
