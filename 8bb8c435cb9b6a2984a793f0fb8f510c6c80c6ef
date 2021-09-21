@@ -237,6 +237,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f69980a1_b54eb111",
+        "filename": "libs/binder/include/binder/RpcKeyFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-21T00:47:56Z",
+      "side": 1,
+      "message": "But some formats aren\u0027t supported for both of them, and we don\u0027t necessary support a certain format for both of them. I think it is more beneficial to keep them separated.\n\nAlso, if we have a type that\u0027s a union of them, then the APIs of serializing / deserializing definitely needs a status_t error code to say \"unsupported format\" -- which needs a broader refactoring.",
+      "parentUuid": "ca50c18e_7c6f253d",
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0527f178_236618ff",
