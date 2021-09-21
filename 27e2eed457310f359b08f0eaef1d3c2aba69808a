@@ -16,6 +16,24 @@
       "message": "Bug number please?\n\nNote, the original CL is to fix b/182306776",
       "revId": "27e2eed457310f359b08f0eaef1d3c2aba69808a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fffefa04_c04c8577",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1855559
+      },
+      "writtenOn": "2021-09-21T01:37:15Z",
+      "side": 1,
+      "message": "Hi Yifan, I wanted to verify my hypothesis before I could make any meaningful argument. Unfortunately the problem is not reproducible at-all on my local device but very prominent on the lab devices through forrest, so I choose to create a revert first.\n\nAnyway, I have left more details about this on b/200623090.",
+      "parentUuid": "48b98819_95ba6e94",
+      "revId": "27e2eed457310f359b08f0eaef1d3c2aba69808a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
