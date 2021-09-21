@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b063132d_cf0e434e",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-21T23:23:16Z",
+      "side": 1,
+      "message": "due to this difference, this doesn\u0027t fix the problem I restored this CL to fix. I may revisit this idea, but I need a different solution.",
+      "range": {
+        "startLine": 164,
+        "startChar": 12,
+        "endLine": 164,
+        "endChar": 33
+      },
+      "revId": "c09dc9bc7e79f31d3ba96d2ec05dfe82575e09a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
