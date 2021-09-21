@@ -221,6 +221,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca50c18e_7c6f253d",
+        "filename": "libs/binder/include/binder/RpcKeyFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-21T00:40:23Z",
+      "side": 1,
+      "message": "Fundamentally, these are formats for storing some encrypted/signed/binary data, right? Would it make sense to consider the type that is the union of these two?\n\nPerhaps TlsEncodingFormat?",
+      "parentUuid": "ccc55ef7_d6ca9dff",
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0527f178_236618ff",
         "filename": "libs/binder/include_tls/binder/RpcTlsUtils.h",
         "patchSetId": 2
