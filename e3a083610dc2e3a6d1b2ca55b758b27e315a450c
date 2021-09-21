@@ -88,6 +88,24 @@
       "parentUuid": "60b3f7a4_6486d4c1",
       "revId": "e3a083610dc2e3a6d1b2ca55b758b27e315a450c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b27f02a1_57cbc51d",
+        "filename": "libs/binder/include_tls/binder/RpcAuth.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-21T00:23:28Z",
+      "side": 1,
+      "message": "The problem is that RpcAuth\u0027s function needs to be executed multiple times. establishConnection is executed only once, so inside the function, it can take the ownership.\n\nI need to assign the ownership to the lambda object itself, not the function implementation on the stack.",
+      "parentUuid": "49dabb96_676cb30e",
+      "revId": "e3a083610dc2e3a6d1b2ca55b758b27e315a450c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
