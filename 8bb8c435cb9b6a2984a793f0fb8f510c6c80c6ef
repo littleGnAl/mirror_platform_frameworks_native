@@ -255,6 +255,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "257f6c54_5de988aa",
+        "filename": "libs/binder/include/binder/RpcKeyFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-21T17:50:59Z",
+      "side": 1,
+      "message": "sure, it\u0027s okay. Still, it feels off we lose the ability to convert between RpcKeyFormat and RpcCertificateFormat. I would expect it would be useful in code to know that these have very overlapping values.",
+      "parentUuid": "f69980a1_b54eb111",
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0527f178_236618ff",
