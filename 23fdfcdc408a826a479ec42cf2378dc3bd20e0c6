@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c82ea2b4_10bda72e",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-09-22T16:52:33Z",
+      "side": 1,
+      "message": "Document that this function panics if the `identifier` contains a NUL.",
+      "revId": "23fdfcdc408a826a479ec42cf2378dc3bd20e0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb8af5d6_e4d25d29",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-09-22T16:52:33Z",
+      "side": 1,
+      "message": "Maybe this should be wrapped in a higher-level API? My initial thought is a function that returns a guard object, and when all the guard objects have been dropped then calls `AServiceManager_forceLazyServicesPersist(false)`. As it is, it seems like if two different parts of a process use this then the process could end up not persisting as long as expected.",
+      "revId": "23fdfcdc408a826a479ec42cf2378dc3bd20e0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
