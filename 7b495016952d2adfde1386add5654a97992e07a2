@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43396d7b_13480cc5",
+        "filename": "libs/binder/tests/binderRpcBenchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-22T00:21:13Z",
+      "side": 1,
+      "message": "not related to this CL, but what errors are possible here and how would we debug them? There isn\u0027t any error code. Same below.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 34
+      },
+      "revId": "7b495016952d2adfde1386add5654a97992e07a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c5d359_38511838",
+        "filename": "libs/binder/tests/binderRpcBenchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-22T00:21:13Z",
+      "side": 1,
+      "message": "nit: style, and mentioning it b/c we have talked about it before for APIs. Use explicit \u0026\u0026 for objects w/ copy constructors? Otherwise, even though this is efficient now (r-value is used below, so we won\u0027t create a copy), this type of API will create copies in other code.",
+      "range": {
+        "startLine": 210,
+        "startChar": 37,
+        "endLine": 210,
+        "endChar": 39
+      },
+      "revId": "7b495016952d2adfde1386add5654a97992e07a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
