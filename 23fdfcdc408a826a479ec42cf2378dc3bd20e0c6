@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e819bf75_3bdd699c",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-22T17:02:02Z",
+      "side": 1,
+      "message": "Ah, good point; ditto with add_service above. (I hadn\u0027t at the time grokked how weird CString was.)",
+      "parentUuid": "c82ea2b4_10bda72e",
+      "revId": "23fdfcdc408a826a479ec42cf2378dc3bd20e0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb8af5d6_e4d25d29",
         "filename": "libs/binder/rust/src/native.rs",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-22T16:52:33Z",
       "side": 1,
       "message": "Maybe this should be wrapped in a higher-level API? My initial thought is a function that returns a guard object, and when all the guard objects have been dropped then calls `AServiceManager_forceLazyServicesPersist(false)`. As it is, it seems like if two different parts of a process use this then the process could end up not persisting as long as expected.",
+      "revId": "23fdfcdc408a826a479ec42cf2378dc3bd20e0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d590b0_317fb76a",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-22T17:02:02Z",
+      "side": 1,
+      "message": "Yeah. Over on aosp/1822373 I said \"This feels a little un-Rust-like. I could create an RAII wrapper object that would call force_persist(false) when dropped; but it would need a global atomic count, and we\u0027d then have to stash away a set of slightly bogus objects in parallel with the VM refs, which isn\u0027t obviously nicer.\"\n\nSo I think here the higher-level API wouldn\u0027t simplify things. And hopefully use of this functionality is fairly rare anyway. \n\nI think I\u0027d like to wait to see other use cases before designing such an API.",
+      "parentUuid": "eb8af5d6_e4d25d29",
       "revId": "23fdfcdc408a826a479ec42cf2378dc3bd20e0c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
