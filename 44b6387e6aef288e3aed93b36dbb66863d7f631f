@@ -22,6 +22,30 @@
       },
       "revId": "44b6387e6aef288e3aed93b36dbb66863d7f631f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19943ccf_656eae50",
+        "filename": "cmds/lshal/test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-22T23:52:11Z",
+      "side": 1,
+      "message": "this is intentional to not break existing tests, see DebugTest.Debug / Debug2 / DebugParent",
+      "parentUuid": "d892c5c2_8c0ce465",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "44b6387e6aef288e3aed93b36dbb66863d7f631f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
