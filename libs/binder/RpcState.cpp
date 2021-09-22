@@ -152,7 +152,7 @@ status_t RpcState::onBinderEntering(const sp<RpcSession>& session, uint64_t addr
         return BAD_VALUE;
     }
 
-    std::unique_lock<std::mutex> _l(mNodeMutex);
+    std::lock_guard<std::mutex> _l(mNodeMutex);
     if (mTerminated) return DEAD_OBJECT;
 
     if (auto it = mNodeForAddress.find(address); it != mNodeForAddress.end()) {
@@ -160,14 +160,6 @@ status_t RpcState::onBinderEntering(const sp<RpcSession>& session, uint64_t addr
 
         // implicitly have strong RPC refcount, since we received this binder
         it->second.timesRecd++;
-
-        _l.unlock();
-
-        // We have timesRecd RPC refcounts, but we only need to hold on to one
-        // when we keep the object. All additional dec strongs are sent
-        // immediately, we wait to send the last one in BpBinder::onLastDecStrong.
-        (void)session->sendDecStrong(address);
-
         return OK;
     }
 
@@ -186,6 +178,26 @@ status_t RpcState::onBinderEntering(const sp<RpcSession>& session, uint64_t addr
     // device global binders in the RPC world).
     it->second.binder = *out = BpBinder::PrivateAccessor::create(session, it->first);
     it->second.timesRecd = 1;
+    return OK;
+}
+
+status_t RpcState::binderFlushRefs(const sp<RpcSession>& session, uint64_t address,
+                                   const sp<IBinder>& binder) {
+    std::unique_lock<std::mutex> _l(mNodeMutex);
+    if (mTerminated) return DEAD_OBJECT;
+
+    auto it = mNodeForAddress.find(address);
+
+    LOG_ALWAYS_FATAL_IF(it == mNodeForAddress.end(), "Can't be deleted while we hold sp<>");
+    LOG_ALWAYS_FATAL_IF(it->second.binder != binder,
+                        "Caller of binderFlushRefs using inconsistent arguments");
+
+    if (it->second.timesRecd > 1 || (it->second.timesRecd > 0 && it->second.timesSent > 0)) {
+        _l.unlock();
+
+        return session->sendDecStrong(address);
+    }
+
     return OK;
 }
 
@@ -823,6 +835,10 @@ processTransactInternalTailCall:
                 }
             }
         }
+    }
+
+    if (addr != 0 && replyStatus == OK) {
+        replyStatus = binderFlushRefs(session, addr, target);
     }
 
     if (oneway) {
