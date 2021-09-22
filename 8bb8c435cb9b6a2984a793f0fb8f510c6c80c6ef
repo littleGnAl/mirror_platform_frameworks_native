@@ -273,6 +273,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1140bbf0_9ee42e52",
+        "filename": "libs/binder/include/binder/RpcKeyFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-22T01:08:33Z",
+      "side": 1,
+      "message": "\u003e Still, it feels off we lose the ability to convert between RpcKeyFormat and RpcCertificateFormat.\n\nThat\u0027s actually my intention, because they are for converting different things. I explicitly want to disallow people to call deserializeCertificate(RpcKeyFormat::DER), for example.",
+      "parentUuid": "257f6c54_5de988aa",
+      "revId": "8bb8c435cb9b6a2984a793f0fb8f510c6c80c6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0527f178_236618ff",
