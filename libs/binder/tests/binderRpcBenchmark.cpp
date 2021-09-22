@@ -97,13 +97,19 @@ public:
     status_t verify(const SSL*, uint8_t*) override { return OK; }
 };
 
+class RpcCertificateVerifierFail : public RpcCertificateVerifier {
+public:
+    status_t verify(const SSL*, uint8_t*) override { return android::UNKNOWN_ERROR; }
+};
+
+template <typename Verifier = RpcCertificateVerifierNoOp>
 std::unique_ptr<RpcTransportCtxFactory> makeFactoryTls() {
     auto pkey = android::makeKeyPairForSelfSignedCert();
     CHECK_NE(pkey.get(), nullptr);
     auto cert = android::makeSelfSignedCert(pkey.get(), android::kCertValidSeconds);
     CHECK_NE(cert.get(), nullptr);
 
-    auto verifier = std::make_shared<RpcCertificateVerifierNoOp>();
+    auto verifier = std::make_shared<Verifier>();
     auto auth = std::make_unique<RpcAuthPreSigned>(std::move(pkey), std::move(cert));
     return RpcTransportCtxFactoryTls::make(verifier, std::move(auth));
 }
@@ -263,7 +269,7 @@ int main(int argc, char** argv) {
 
     std::string tlsAddr = tmp + "/binderRpcTlsBenchmark";
     (void)unlink(tlsAddr.c_str());
-    forkRpcServer(tlsAddr.c_str(), RpcServer::make(makeFactoryTls()));
+    forkRpcServer(tlsAddr.c_str(), RpcServer::make(makeFactoryTls<RpcCertificateVerifierFail>()));
     setupClient(gSessionTls, tlsAddr.c_str());
 
     ::benchmark::RunSpecifiedBenchmarks();

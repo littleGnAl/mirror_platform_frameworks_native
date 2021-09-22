@@ -34,7 +34,7 @@ struct RpcWireHeader;
  * a specific subset of logs to debug, this could be broken up like
  * IPCThreadState's.
  */
-#define SHOULD_LOG_RPC_DETAIL false
+#define SHOULD_LOG_RPC_DETAIL true
 
 #if SHOULD_LOG_RPC_DETAIL
 #define LOG_RPC_DETAIL(...) ALOGI(__VA_ARGS__)
