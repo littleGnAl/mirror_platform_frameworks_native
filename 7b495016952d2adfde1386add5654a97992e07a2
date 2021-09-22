@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "756213ee_d01ad33a",
+        "filename": "libs/binder/tests/binderRpcBenchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-22T01:05:36Z",
+      "side": 1,
+      "message": "I can make this a android::base::Result\u003c...\u003e in a follow-up CL to include a detailed error message if you want. But no error code would be suitable other than UNKNOWN_ERROR, IMO.",
+      "parentUuid": "4acd0443_a29e56c5",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 34
+      },
+      "revId": "7b495016952d2adfde1386add5654a97992e07a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33c5d359_38511838",
