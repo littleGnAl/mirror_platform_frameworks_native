@@ -69,6 +69,24 @@
       "parentUuid": "15890483_001f7f25",
       "revId": "7244076a9931f067394fb9451d2ae6bca1e9266b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba5a1620_4029d7e4",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-23T06:00:43Z",
+      "side": 1,
+      "message": "I added a comment, we can change the code later if needed.",
+      "parentUuid": "9c75777d_e899bb2f",
+      "revId": "7244076a9931f067394fb9451d2ae6bca1e9266b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
