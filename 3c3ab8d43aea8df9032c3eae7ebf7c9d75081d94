@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5166ce0_dc63e498",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-23T20:30:18Z",
+      "side": 1,
+      "message": "SIZE_MAX \n\n\n(just joking)",
+      "range": {
+        "startLine": 1056,
+        "startChar": 33,
+        "endLine": 1056,
+        "endChar": 37
+      },
+      "revId": "3c3ab8d43aea8df9032c3eae7ebf7c9d75081d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
