@@ -69,6 +69,24 @@
       "parentUuid": "eb8af5d6_e4d25d29",
       "revId": "23fdfcdc408a826a479ec42cf2378dc3bd20e0c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb885a2_51e0d1dd",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-23T07:56:41Z",
+      "side": 1,
+      "message": "Having thought some more about it: actually, I think for VirtualizationService the semantics should be that the service keeps itself alive as long as there is at least one IVirtualMachine in existence. That simplifies things for clients (composd is already having to deal with this), removes my special casing for daemonize mode, and maps directly to the idea of having guard objects.",
+      "parentUuid": "30d590b0_317fb76a",
+      "revId": "23fdfcdc408a826a479ec42cf2378dc3bd20e0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
