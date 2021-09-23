@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e74792_bc8028a4",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-23T09:34:34Z",
+      "side": 1,
+      "message": "Done: aosp/1834433",
+      "parentUuid": "e819bf75_3bdd699c",
+      "revId": "23fdfcdc408a826a479ec42cf2378dc3bd20e0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb8af5d6_e4d25d29",
