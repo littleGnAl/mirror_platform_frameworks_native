@@ -260,6 +260,8 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
     LOG_ALWAYS_FATAL_IF(server->mShutdownTrigger == nullptr);
     LOG_ALWAYS_FATAL_IF(server->mCtx == nullptr);
 
+    pthread_setname_np(pthread_self(), ("server_t" + std::to_string(clientFd.get())).c_str());
+
     status_t status = OK;
 
     int clientFdForLog = clientFd.get();
