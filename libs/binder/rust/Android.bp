@@ -17,6 +17,7 @@ rust_library {
     rustlibs: [
         "liblibc",
         "libbinder_ndk_sys",
+        "liblazy_static",
     ],
     host_supported: true,
     target: {
