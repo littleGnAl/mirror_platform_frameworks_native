@@ -22,6 +22,30 @@
       },
       "revId": "9c69689d90172cd23a96a03a406b3e582e96ce03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a97a8ca_a9c1d410",
+        "filename": "libs/binder/tests/include_tls_test_utils/binder/RpcTlsTestUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-24T04:36:19Z",
+      "side": 1,
+      "message": "Yes, see follow up CL (CL:1835927)",
+      "parentUuid": "3b12656d_88d4d966",
+      "range": {
+        "startLine": 83,
+        "startChar": 60,
+        "endLine": 83,
+        "endChar": 62
+      },
+      "revId": "9c69689d90172cd23a96a03a406b3e582e96ce03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
