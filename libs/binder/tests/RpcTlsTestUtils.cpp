@@ -115,4 +115,15 @@ status_t RpcCertificateVerifierSimple::addTrustedPeerCertificate(RpcCertificateF
     return OK;
 }
 
+std::unique_ptr<RpcTransportCtxFactory> makeFactoryTlsNoVerify() {
+    auto pkey = android::makeKeyPairForSelfSignedCert();
+    CHECK_NE(pkey.get(), nullptr);
+    auto cert = android::makeSelfSignedCert(pkey.get(), android::kCertValidSeconds);
+    CHECK_NE(cert.get(), nullptr);
+
+    auto verifier = std::make_shared<RpcCertificateVerifierNoOp>();
+    auto auth = std::make_unique<RpcAuthPreSigned>(std::move(pkey), std::move(cert));
+    return RpcTransportCtxFactoryTls::make(verifier, std::move(auth));
+}
+
 } // namespace android

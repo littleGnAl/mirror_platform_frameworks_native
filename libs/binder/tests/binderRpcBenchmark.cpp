@@ -89,26 +89,11 @@ static const std::initializer_list<int64_t> kTransportList = {
         Transport::RPC_TLS,
 };
 
-// Certificate validation happens during handshake and does not affect the result of benchmarks.
-// Skip certificate validation to simplify the setup process.
-class RpcCertificateVerifierNoOp : public RpcCertificateVerifier {
-public:
-    status_t verify(const SSL*, uint8_t*) override { return OK; }
-};
-
-std::unique_ptr<RpcTransportCtxFactory> makeFactoryTls() {
-    auto pkey = android::makeKeyPairForSelfSignedCert();
-    CHECK_NE(pkey.get(), nullptr);
-    auto cert = android::makeSelfSignedCert(pkey.get(), android::kCertValidSeconds);
-    CHECK_NE(cert.get(), nullptr);
-
-    auto verifier = std::make_shared<RpcCertificateVerifierNoOp>();
-    auto auth = std::make_unique<RpcAuthPreSigned>(std::move(pkey), std::move(cert));
-    return RpcTransportCtxFactoryTls::make(verifier, std::move(auth));
-}
 
 static sp<RpcSession> gSession = RpcSession::make();
-static sp<RpcSession> gSessionTls = RpcSession::make(makeFactoryTls());
+// Certificate validation happens during handshake and does not affect the result of benchmarks.
+// Skip certificate validation to simplify the setup process.
+static sp<RpcSession> gSessionTls = RpcSession::make(android::makeFactoryTlsNoVerify());
 #ifdef __BIONIC__
 static const String16 kKernelBinderInstance = String16(u"binderRpcBenchmark-control");
 static sp<IBinder> gKernelBinder;
@@ -262,7 +247,7 @@ int main(int argc, char** argv) {
 
     std::string tlsAddr = tmp + "/binderRpcTlsBenchmark";
     (void)unlink(tlsAddr.c_str());
-    forkRpcServer(tlsAddr.c_str(), RpcServer::make(makeFactoryTls()));
+    forkRpcServer(tlsAddr.c_str(), RpcServer::make(android::makeFactoryTlsNoVerify()));
     setupClient(gSessionTls, tlsAddr.c_str());
 
     ::benchmark::RunSpecifiedBenchmarks();
