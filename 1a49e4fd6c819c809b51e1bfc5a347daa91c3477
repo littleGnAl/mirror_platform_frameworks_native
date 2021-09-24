@@ -56,6 +56,30 @@
       },
       "revId": "1a49e4fd6c819c809b51e1bfc5a347daa91c3477",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0f3f08_a4121f22",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-24T08:10:15Z",
+      "side": 1,
+      "message": "CString is null-terminated, so can\u0027t represent a string with an embedded 0.\nCString::new returns an error, and then the unwrap() call panics, if one is passed in; we could instead return an error here.\nI wonder what the Java equivalent does?\n\nI didn\u0027t see any other usages of CString in this file, but I didn\u0027t look beyond that.",
+      "parentUuid": "1086bf7f_95a341b1",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 71
+      },
+      "revId": "1a49e4fd6c819c809b51e1bfc5a347daa91c3477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
