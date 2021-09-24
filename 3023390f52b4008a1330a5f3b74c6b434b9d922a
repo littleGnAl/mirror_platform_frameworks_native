@@ -16,6 +16,24 @@
       "message": "(friendly ping for review)",
       "revId": "3023390f52b4008a1330a5f3b74c6b434b9d922a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb6703a_533babcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-24T04:24:25Z",
+      "side": 1,
+      "message": "Though given https://android-review.googlesource.com/c/platform/frameworks/native/+/1835925, let me know if you would consider this premature optimization.",
+      "parentUuid": "0393d0b0_f584bb9d",
+      "revId": "3023390f52b4008a1330a5f3b74c6b434b9d922a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
