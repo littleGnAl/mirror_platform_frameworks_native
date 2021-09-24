@@ -19,10 +19,15 @@ cc_fuzz {
     srcs: [
         "main.cpp",
     ],
+    defaults: [
+        "libbinder_tls_shared_deps",
+    ],
     static_libs: [
         "libbase",
         "libcutils",
         "liblog",
+        "libbinder_tls_static",
+        "libbinder_tls_test_utils",
     ],
 
     target: {
