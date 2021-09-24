@@ -42,6 +42,7 @@ bool FdTrigger::isTriggered() {
 }
 
 status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
+    LOG_ALWAYS_FATAL_IF(event == 0, "triggerablePoll %d with event 0 is not allowed", fd.get());
     while (true) {
         pollfd pfd[]{{.fd = fd.get(), .events = static_cast<int16_t>(event), .revents = 0},
                      {.fd = mRead.get(), .events = 0, .revents = 0}};
