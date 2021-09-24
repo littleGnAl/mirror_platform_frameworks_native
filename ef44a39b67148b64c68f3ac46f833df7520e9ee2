@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12ef0958_42658d34",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-24T00:43:17Z",
+      "side": 1,
+      "message": "This can also be:\n\n```\nLOG_ALWAYS_FATAL_IF(event \u003d\u003d 0, \"triggerablePoll %d with event 0 is not allowed\", fd.get());\npollfd pfd[]{{.fd \u003d fd.get(), .events \u003d static_cast\u003cint16_t\u003e(event), .revents \u003d 0},\n             {.fd \u003d mRead.get(), .events \u003d 0, .revents \u003d 0}};\nint ret \u003d TEMP_FAILURE_RETRY(poll(pfd, arraysize(pfd), -1));\nif (ret \u003c 0) {\n    return -errno;\n}\nif (ret \u003d\u003d 0) {\n    LOG_ALWAYS_FATAL(...); // !\n}\nif (pfd[1].revents \u0026 POLLHUP) {\n    return DEAD_OBJECT;\n}\nreturn pfd[0].revents \u0026 event ? OK : DEAD_OBJECT;\n```\n\nbecause poll() only returns 0 on timeout, but we set timeout to -1 (no timeout).\n\nSteven, WDYT?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "ef44a39b67148b64c68f3ac46f833df7520e9ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
