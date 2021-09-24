@@ -16,6 +16,57 @@
       "message": "First attempt at a higher-level API.\n\nIt\u0027s arguable this could be entirely separate from the binder code, layered on top of the raw function. But it does seem a much nicer and more Rust-like way to do it.",
       "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b6f0e07_6df6df1f",
+        "filename": "libs/binder/rust/src/lazy_service.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-09-24T10:51:10Z",
+      "side": 1,
+      "message": "Nit: I\u0027d be inclined to put a blank line between the crate docs and these use statements, as they are not related.",
+      "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f61fca_19a4d09f",
+        "filename": "libs/binder/rust/src/lazy_service.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-09-24T10:51:10Z",
+      "side": 1,
+      "message": "This makes it possible for anyone to construct a LazyServiceGuard without calling new, which would lead to incorrect behaviour. I think the usual pattern to prevent that is to do something like:\n\n```\npub struct LazyServiceGuard {\n  // Prevent construction outside of this module.\n  _private: (),\n}\n```",
+      "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63298d44_0acd03b4",
+        "filename": "libs/binder/rust/src/lazy_service.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-09-24T10:51:10Z",
+      "side": 1,
+      "message": "Can you use an AtomicU64 instead? It should be slightly more efficient.",
+      "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
