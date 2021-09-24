@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d134fb3_05a04d23",
+        "filename": "libs/binder/rust/src/lazy_service.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-24T12:51:00Z",
+      "side": 1,
+      "message": "So would I, but rustfmt keeps removing it. I haven\u0027t worked out why.",
+      "parentUuid": "2b6f0e07_6df6df1f",
+      "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70f61fca_19a4d09f",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a2d343_d4b7fb5a",
+        "filename": "libs/binder/rust/src/lazy_service.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-24T12:51:00Z",
+      "side": 1,
+      "message": "Oh, interesting. Thanks!",
+      "parentUuid": "70f61fca_19a4d09f",
+      "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63298d44_0acd03b4",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-09-24T10:51:10Z",
       "side": 1,
       "message": "Can you use an AtomicU64 instead? It should be slightly more efficient.",
+      "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0187bdd1_a51283fc",
+        "filename": "libs/binder/rust/src/lazy_service.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-24T12:51:00Z",
+      "side": 1,
+      "message": "That was my first implementation, but it isn\u0027t safe:\nSupposed thread 1 has a LazyServiceGuard and drops it.\nAnd thread 2 at around the same time creates a new one.\n\nThen we will get calls to force_persist(false) and force_persist(true), but it\u0027s important that they happen in that order and not the reverse.\n\nMaking the call from inside the mutex was the only way I could see to ensure they were properly sequenced.",
+      "parentUuid": "63298d44_0acd03b4",
       "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
