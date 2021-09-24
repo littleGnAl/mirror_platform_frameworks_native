@@ -139,6 +139,11 @@ using android::binder::Status;
         Status stat = (status);           \
         EXPECT_TRUE(stat.isOk()) << stat; \
     } while (false)
+#define ASSERT_OK(status)                 \
+    do {                                  \
+        Status stat = (status);           \
+        ASSERT_TRUE(stat.isOk()) << stat; \
+    } while (false)
 
 class MyBinderRpcSession : public BnBinderRpcSession {
 public:
@@ -1045,7 +1050,7 @@ TEST_P(BinderRpc, ThreadingStressTest) {
 static void saturateThreadPool(size_t threadCount, const sp<IBinderRpcTest>& iface) {
     std::vector<std::thread> threads;
     for (size_t i = 0; i < threadCount; i++) {
-        threads.push_back(std::thread([&] { EXPECT_OK(iface->sleepMs(500)); }));
+        threads.push_back(std::thread([&] { ASSERT_OK(iface->sleepMs(500)); }));
     }
     for (auto& t : threads) t.join();
 }
@@ -1061,7 +1066,7 @@ TEST_P(BinderRpc, OnewayStressTest) {
     for (size_t i = 0; i < kNumClientThreads; i++) {
         threads.push_back(std::thread([&] {
             for (size_t j = 0; j < kNumCalls; j++) {
-                EXPECT_OK(proc.rootIface->sendString("a"));
+                ASSERT_OK(proc.rootIface->sendString("a"));
             }
         }));
     }

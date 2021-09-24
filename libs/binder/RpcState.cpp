@@ -307,7 +307,7 @@ RpcState::CommandData::CommandData(size_t size) : mSize(size) {
 
 status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
                            const sp<RpcSession>& session, const char* what, const void* data,
-                           size_t size) {
+                           size_t size, bool block) {
     LOG_RPC_DETAIL("Sending %s on RpcTransport %p: %s", what, connection->rpcTransport.get(),
                    android::base::HexString(data, size).c_str());
 
@@ -319,11 +319,12 @@ status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
 
     if (status_t status =
                 connection->rpcTransport->interruptableWriteFully(session->mShutdownTrigger.get(),
-                                                                  data, size);
+                                                                  data, size, block);
         status != OK) {
         LOG_RPC_DETAIL("Failed to write %s (%zu bytes) on RpcTransport %p, error: %s", what, size,
                        connection->rpcTransport.get(), statusToString(status).c_str());
-        (void)session->shutdownAndWait(false);
+        // to the point of forgetting EAGAIN
+        if (block) (void)session->shutdownAndWait(false);
         return status;
     }
 
@@ -519,12 +520,21 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
     memcpy(transactionData.data() + sizeof(RpcWireHeader) + sizeof(RpcWireTransaction), data.data(),
            data.dataSize());
 
-    if (status_t status = rpcSend(connection, session, "transaction", transactionData.data(),
-                                  transactionData.size());
-        status != OK)
-        // TODO(b/167966510): need to undo onBinderLeaving - we know the
-        // refcount isn't successfully transferred.
-        return status;
+    while (true) {
+        status_t status = rpcSend(connection, session, "transaction", transactionData.data(),
+                                  transactionData.size(), false);
+        if (status == OK) break;
+
+        if (status != -EAGAIN && status != -EWOULDBLOCK) {
+            // TODO(b/167966510): need to undo onBinderLeaving - we know the
+            // refcount isn't successfully transferred.
+            return status;
+        }
+
+        if (status_t status = drainCommands(connection, session, CommandType::CONTROL_ONLY);
+            status != OK)
+            return status;
+    }
 
     if (flags & IBinder::FLAG_ONEWAY) {
         LOG_RPC_DETAIL("Oneway command, so no longer waiting on RpcTransport %p",
@@ -637,8 +647,9 @@ status_t RpcState::getAndExecuteCommand(const sp<RpcSession::RpcConnection>& con
     RpcWireHeader command;
     if (status_t status = rpcRec(connection, session, "command header (for server)", &command,
                                  sizeof(command));
-        status != OK)
+        status != OK) {
         return status;
+    }
 
     return processCommand(connection, session, command, type);
 }
@@ -648,7 +659,10 @@ status_t RpcState::drainCommands(const sp<RpcSession::RpcConnection>& connection
     uint8_t buf;
     while (connection->rpcTransport->peek(&buf, sizeof(buf)).value_or(0) > 0) {
         status_t status = getAndExecuteCommand(connection, session, type);
-        if (status != OK) return status;
+        if (status != OK) {
+            ALOGE("Drain command fails with %s", statusToString(status).c_str());
+            return status;
+        }
     }
     return OK;
 }
