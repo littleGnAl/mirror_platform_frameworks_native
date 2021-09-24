@@ -121,6 +121,24 @@
       "parentUuid": "63298d44_0acd03b4",
       "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b816e335_eaba5824",
+        "filename": "libs/binder/rust/src/lazy_service.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-09-24T12:59:59Z",
+      "side": 1,
+      "message": "Ah, good point. Maybe add a comment explaining that so that someone doesn\u0027t come around later and try to optimise it.",
+      "parentUuid": "0187bdd1_a51283fc",
+      "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
