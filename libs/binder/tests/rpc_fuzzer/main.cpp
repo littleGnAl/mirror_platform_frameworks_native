@@ -18,11 +18,14 @@
 #include <binder/Binder.h>
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
-#include <binder/RpcSession.h>
+#include <binder/RpcTransport.h>
+#include <binder/RpcTransportRaw.h>
 #include <fuzzer/FuzzedDataProvider.h>
 
 #include <sys/resource.h>
 #include <sys/un.h>
+
+#include "../../FdTrigger.h"
 
 namespace android {
 
@@ -51,13 +54,17 @@ class SomeBinder : public BBinder {
     }
 };
 
+std::unique_ptr<RpcTransportCtxFactory> makeTransportCtxFactory(FuzzedDataProvider* /*provider*/) {
+    return RpcTransportCtxFactoryRaw::make();
+}
+
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     if (size > 50000) return 0;
     FuzzedDataProvider provider(data, size);
 
     unlink(kSock.c_str());
 
-    sp<RpcServer> server = RpcServer::make();
+    sp<RpcServer> server = RpcServer::make(makeTransportCtxFactory(&provider));
     server->setRootObject(sp<SomeBinder>::make());
     server->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
     CHECK_EQ(OK, server->setupUnixDomainServer(kSock.c_str()));
@@ -70,9 +77,14 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     CHECK_LT(kSock.size(), sizeof(addr.sun_path));
     memcpy(&addr.sun_path, kSock.c_str(), kSock.size());
 
-    std::vector<base::unique_fd> connections;
+    std::vector<std::unique_ptr<RpcTransport>> connections;
 
     bool hangupBeforeShutdown = provider.ConsumeBool();
+
+    std::unique_ptr<RpcTransportCtx> clientCtx = makeTransportCtxFactory(&provider)->newClientCtx();
+    CHECK_NE(clientCtx, nullptr);
+    auto fdTrigger = FdTrigger::make();
+    CHECK_NE(fdTrigger, nullptr);
 
     while (provider.remaining_bytes() > 0) {
         if (connections.empty() || provider.ConsumeBool()) {
@@ -82,16 +94,18 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
                      TEMP_FAILURE_RETRY(
                              connect(fd.get(), reinterpret_cast<sockaddr*>(&addr), sizeof(addr))))
                     << strerror(errno);
-            connections.push_back(std::move(fd));
+            auto transport = clientCtx->newTransport(std::move(fd), fdTrigger.get());
+            CHECK_NE(transport, nullptr);
+            connections.emplace_back(std::move(transport));
         } else {
             size_t idx = provider.ConsumeIntegralInRange<size_t>(0, connections.size() - 1);
 
             if (provider.ConsumeBool()) {
                 std::string writeData = provider.ConsumeRandomLengthString();
-                ssize_t size = TEMP_FAILURE_RETRY(send(connections.at(idx).get(), writeData.data(),
-                                                       writeData.size(), MSG_NOSIGNAL));
-                CHECK(errno == EPIPE || size == writeData.size())
-                        << size << " " << writeData.size() << " " << strerror(errno);
+                status_t status = connections.at(idx)->interruptableWriteFully(fdTrigger.get(),
+                                                                               writeData.data(),
+                                                                               writeData.size());
+                CHECK(status == OK || status == DEAD_OBJECT) << statusToString(status);
             } else {
                 connections.erase(connections.begin() + idx); // hang up
             }
