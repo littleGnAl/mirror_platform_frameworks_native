@@ -46,6 +46,30 @@
       },
       "revId": "ef44a39b67148b64c68f3ac46f833df7520e9ee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbec1ecb_bb2045c9",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-24T01:10:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb6f97a6_9d341780",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 5
+      },
+      "revId": "ef44a39b67148b64c68f3ac46f833df7520e9ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
