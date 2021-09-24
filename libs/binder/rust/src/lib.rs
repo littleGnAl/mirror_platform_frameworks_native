@@ -99,6 +99,7 @@ mod proxy;
 #[macro_use]
 mod binder;
 mod error;
+mod lazy_service;
 mod native;
 mod state;
 
@@ -112,7 +113,7 @@ pub use crate::binder::{
     FLAG_CLEAR_BUF, FLAG_ONEWAY, FLAG_PRIVATE_LOCAL, LAST_CALL_TRANSACTION,
 };
 pub use error::{status_t, ExceptionCode, Result, Status, StatusCode};
-pub use native::{add_service, force_lazy_services_persist, register_lazy_service, Binder};
+pub use native::{add_service, register_lazy_service, Binder};
 pub use parcel::Parcel;
 pub use proxy::{get_interface, get_service, wait_for_interface, wait_for_service};
 pub use proxy::{AssociateClass, DeathRecipient, Proxy, SpIBinder, WpIBinder};
@@ -121,6 +122,7 @@ pub use state::{ProcessState, ThreadState};
 /// Unstable, in-development API that only allowlisted clients are allowed to use.
 pub mod unstable_api {
     pub use crate::binder::AsNative;
+    pub use crate::lazy_service::LazyServiceGuard;
     pub use crate::proxy::unstable_api::new_spibinder;
     pub use crate::sys::AIBinder;
 }
@@ -128,10 +130,7 @@ pub mod unstable_api {
 /// The public API usable outside AIDL-generated interface crates.
 pub mod public_api {
     pub use super::parcel::ParcelFileDescriptor;
-    pub use super::{
-        add_service, force_lazy_services_persist, get_interface, register_lazy_service,
-        wait_for_interface,
-    };
+    pub use super::{add_service, get_interface, register_lazy_service, wait_for_interface};
     pub use super::{
         BinderFeatures, DeathRecipient, ExceptionCode, IBinder, Interface, ProcessState, SpIBinder,
         Status, StatusCode, Strong, ThreadState, Weak, WpIBinder,
