@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd27ac8e_2e01956e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-24T10:35:22Z",
+      "side": 1,
+      "message": "First attempt at a higher-level API.\n\nIt\u0027s arguable this could be entirely separate from the binder code, layered on top of the raw function. But it does seem a much nicer and more Rust-like way to do it.",
+      "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
