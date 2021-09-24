@@ -18,7 +18,8 @@
 #include <binder/Binder.h>
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
-#include <binder/RpcSession.h>
+#include <binder/RpcTransport.h>
+#include <binder/RpcTransportRaw.h>
 #include <fuzzer/FuzzedDataProvider.h>
 
 #include <sys/resource.h>
@@ -51,13 +52,17 @@ class SomeBinder : public BBinder {
     }
 };
 
+std::unique_ptr<RpcTransportCtxFactory> makeTransportCtxFactory(FuzzedDataProvider* /*provider*/) {
+    return RpcTransportCtxFactoryRaw::make();
+}
+
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     if (size > 50000) return 0;
     FuzzedDataProvider provider(data, size);
 
     unlink(kSock.c_str());
 
-    sp<RpcServer> server = RpcServer::make();
+    sp<RpcServer> server = RpcServer::make(makeTransportCtxFactory(&provider));
     server->setRootObject(sp<SomeBinder>::make());
     server->iUnderstandThisCodeIsExperimentalAndIWillNotUseItInProduction();
     CHECK_EQ(OK, server->setupUnixDomainServer(kSock.c_str()));
