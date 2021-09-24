@@ -18,9 +18,12 @@
 #include <binder/Binder.h>
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
+#include <binder/RpcTlsTestUtils.h>
 #include <binder/RpcTransport.h>
 #include <binder/RpcTransportRaw.h>
+#include <binder/RpcTransportTls.h>
 #include <fuzzer/FuzzedDataProvider.h>
+#include <openssl/ssl.h>
 
 #include <sys/resource.h>
 #include <sys/un.h>
@@ -54,7 +57,29 @@ class SomeBinder : public BBinder {
     }
 };
 
-std::unique_ptr<RpcTransportCtxFactory> makeTransportCtxFactory(FuzzedDataProvider* /*provider*/) {
+std::unique_ptr<RpcTransportCtxFactory> makeTransportCtxFactoryTls(status_t verifyStatus) {
+    // These two functions aren't part of libbinder_tls, and they are time consuming. Hence,
+    // only generate them once and use them for each run.
+    static auto sPkey = makeKeyPairForSelfSignedCert();
+    CHECK_NE(sPkey.get(), nullptr);
+    static auto sCert = makeSelfSignedCert(sPkey.get(), kCertValidSeconds);
+    CHECK_NE(sCert.get(), nullptr);
+
+    CHECK(EVP_PKEY_up_ref(sPkey.get()));
+    bssl::UniquePtr<EVP_PKEY> pkey(sPkey.get());
+    CHECK(X509_up_ref(sCert.get()));
+    bssl::UniquePtr<X509> cert(sCert.get());
+
+    auto verifier = std::make_shared<RpcCertificateVerifierNoOp>(verifyStatus);
+    auto auth = std::make_unique<RpcAuthPreSigned>(std::move(pkey), std::move(cert));
+    return RpcTransportCtxFactoryTls::make(verifier, std::move(auth));
+}
+
+std::unique_ptr<RpcTransportCtxFactory> makeTransportCtxFactory(FuzzedDataProvider* provider) {
+    bool isTls = provider->ConsumeBool();
+    if (isTls) {
+        return makeTransportCtxFactoryTls(provider->ConsumeIntegral<status_t>());
+    }
     return RpcTransportCtxFactoryRaw::make();
 }
 
@@ -83,7 +108,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
 
     while (provider.remaining_bytes() > 0) {
         if (connections.empty() || provider.ConsumeBool()) {
-            base::unique_fd fd(TEMP_FAILURE_RETRY(socket(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC, 0)));
+            base::unique_fd fd(TEMP_FAILURE_RETRY(socket(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC | SOCK_NONBLOCK, 0)));
             CHECK_NE(fd.get(), -1);
             CHECK_EQ(0,
                      TEMP_FAILURE_RETRY(
