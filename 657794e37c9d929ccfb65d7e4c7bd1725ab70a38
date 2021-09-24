@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0add73b_f56839fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-24T16:30:33Z",
+      "side": 1,
+      "message": "maze@, I updated the CL according to your suggestion in the bug, with some small adjustments. PTAL.\n\nIn particular, if revents is POLLHUP | event, I treat it as a success condition because I need to ensure that data is drained.\n\nThank you for your suggestion! WDYT about the latest patchset?",
+      "revId": "657794e37c9d929ccfb65d7e4c7bd1725ab70a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
