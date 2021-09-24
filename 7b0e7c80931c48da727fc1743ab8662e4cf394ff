@@ -139,6 +139,24 @@
       "parentUuid": "0187bdd1_a51283fc",
       "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2082e8b6_d82a5603",
+        "filename": "libs/binder/rust/src/lazy_service.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-24T13:06:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b816e335_eaba5824",
+      "revId": "7b0e7c80931c48da727fc1743ab8662e4cf394ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
