@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b394231_638951d1",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-24T04:33:09Z",
+      "side": 1,
+      "message": "we don\u0027t really want to set the transport on the caller. This means we wouldn\u0027t be fuzzing the TLS layer entirely. We want to ideally (though we\u0027ll need to check coverage to see if we can make progress).\n\nAlso - we should probably make the certificates/keys that we use deterministic, so that the coverage guided fuzzer can make progress.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "d59baf6668aa18454c8dad1be74273c229933cc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
