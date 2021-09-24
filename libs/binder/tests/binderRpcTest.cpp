@@ -1913,6 +1913,18 @@ INSTANTIATE_TEST_CASE_P(
                          testing::Values(RpcKeyFormat::PEM, RpcKeyFormat::DER)),
         RpcTransportTlsKeyTest::PrintParamInfo);
 
+TEST(FdTriggerTest, InvalidFd) {
+    int invalidFd = INT_MAX;
+    // Check that invalidFd is not opened.
+    int fdRet = access(("/proc/self/fd/" + std::to_string(invalidFd)).c_str(), F_OK);
+    int savedErrno = errno;
+    ASSERT_EQ(-1, fdRet);
+    ASSERT_EQ(ENOENT, savedErrno);
+
+    auto trigger = FdTrigger::make();
+    EXPECT_EQ(DEAD_OBJECT, trigger->triggerablePoll(invalidFd, POLLIN));
+}
+
 } // namespace android
 
 int main(int argc, char** argv) {

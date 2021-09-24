@@ -42,21 +42,22 @@ bool FdTrigger::isTriggered() {
 }
 
 status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
-    while (true) {
-        pollfd pfd[]{{.fd = fd.get(), .events = static_cast<int16_t>(event), .revents = 0},
-                     {.fd = mRead.get(), .events = 0, .revents = 0}};
-        int ret = TEMP_FAILURE_RETRY(poll(pfd, arraysize(pfd), -1));
-        if (ret < 0) {
-            return -errno;
-        }
-        if (ret == 0) {
-            continue;
-        }
-        if (pfd[1].revents & POLLHUP) {
-            return DEAD_OBJECT;
-        }
-        return pfd[0].revents & event ? OK : DEAD_OBJECT;
+    LOG_ALWAYS_FATAL_IF(event == 0, "triggerablePoll %d with event 0 is not allowed", fd.get());
+    pollfd pfd[]{{.fd = fd.get(), .events = static_cast<int16_t>(event), .revents = 0},
+                 {.fd = mRead.get(), .events = 0, .revents = 0}};
+    int ret = TEMP_FAILURE_RETRY(poll(pfd, arraysize(pfd), -1));
+    if (ret < 0) {
+        return -errno;
     }
+    LOG_ALWAYS_FATAL_IF(ret == 0, "poll(%d) returns 0 with infinite timeout", fd.get());
+    // At least one FD has events. Check them.
+    // Detect explicit trigger(): DEAD_OBJECT
+    if (pfd[1].revents & POLLHUP) {
+        return DEAD_OBJECT;
+    }
+    // (pfd[0].revents & event) is the only success condition (note event != 0).
+    // All other cases, including POLLERR / POLLNVAL in either FD, results in DEAD_OBJECT.
+    return pfd[0].revents & event ? OK : DEAD_OBJECT;
 }
 
 } // namespace android
