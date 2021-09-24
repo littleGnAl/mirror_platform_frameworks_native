@@ -46,6 +46,30 @@
       },
       "revId": "d59baf6668aa18454c8dad1be74273c229933cc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e277b394_258ed1a7",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-24T04:58:36Z",
+      "side": 1,
+      "message": "\u003e we don\u0027t really want to set the transport on the caller. This means we wouldn\u0027t be fuzzing the TLS layer entirely. We want to ideally (though we\u0027ll need to check coverage to see if we can make progress).\n\nTalked offline. We should just keep the raw ::send() and let the fuzzer do the job.\n\nWe can provide corpuses and dicts to make it reach high coverage quickly, but it shouldn\u0027t be handled here. The fuzzer should play dumb.",
+      "parentUuid": "b48f3455_3e6b9b31",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "d59baf6668aa18454c8dad1be74273c229933cc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
