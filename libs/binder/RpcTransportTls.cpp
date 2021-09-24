@@ -268,7 +268,8 @@ public:
     RpcTransportTls(android::base::unique_fd socket, Ssl ssl)
           : mSocket(std::move(socket)), mSsl(std::move(ssl)) {}
     Result<size_t> peek(void* buf, size_t size) override;
-    status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size) override;
+    status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size,
+                                     bool) override;
     status_t interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size) override;
 
 private:
@@ -295,7 +296,7 @@ Result<size_t> RpcTransportTls::peek(void* buf, size_t size) {
 }
 
 status_t RpcTransportTls::interruptableWriteFully(FdTrigger* fdTrigger, const void* data,
-                                                  size_t size) {
+                                                  size_t size, bool) {
     auto buffer = reinterpret_cast<const uint8_t*>(data);
     const uint8_t* end = buffer + size;
 

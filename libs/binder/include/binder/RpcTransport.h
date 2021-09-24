@@ -47,8 +47,9 @@ public:
      *   OK - succeeded in completely processing 'size'
      *   error - interrupted (failure or trigger)
      */
+    // NOLINTNEXTLINE(google-default-arguments)
     [[nodiscard]] virtual status_t interruptableWriteFully(FdTrigger *fdTrigger, const void *buf,
-                                                           size_t size) = 0;
+                                                           size_t size, bool block = true) = 0;
     [[nodiscard]] virtual status_t interruptableReadFully(FdTrigger *fdTrigger, void *buf,
                                                           size_t size) = 0;
 
