@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b12656d_88d4d966",
+        "filename": "libs/binder/tests/include_tls_test_utils/binder/RpcTlsTestUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-24T04:34:08Z",
+      "side": 1,
+      "message": "for the fuzzer, we might want to ConsumeBool and return an error in some cases, so that we can also fuzz the no success case. WDYT?",
+      "range": {
+        "startLine": 83,
+        "startChar": 60,
+        "endLine": 83,
+        "endChar": 62
+      },
+      "revId": "9c69689d90172cd23a96a03a406b3e582e96ce03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
