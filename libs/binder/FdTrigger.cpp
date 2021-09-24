@@ -17,11 +17,13 @@
 #define LOG_TAG "FdTrigger"
 #include <log/log.h>
 
+#include "FdTrigger.h"
+
 #include <poll.h>
 
 #include <android-base/macros.h>
 
-#include "FdTrigger.h"
+#include "RpcState.h"
 namespace android {
 
 std::unique_ptr<FdTrigger> FdTrigger::make() {
@@ -42,21 +44,52 @@ bool FdTrigger::isTriggered() {
 }
 
 status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
-    while (true) {
-        pollfd pfd[]{{.fd = fd.get(), .events = static_cast<int16_t>(event), .revents = 0},
-                     {.fd = mRead.get(), .events = 0, .revents = 0}};
-        int ret = TEMP_FAILURE_RETRY(poll(pfd, arraysize(pfd), -1));
-        if (ret < 0) {
-            return -errno;
-        }
-        if (ret == 0) {
-            continue;
-        }
-        if (pfd[1].revents & POLLHUP) {
-            return DEAD_OBJECT;
-        }
-        return pfd[0].revents & event ? OK : DEAD_OBJECT;
+    LOG_ALWAYS_FATAL_IF(event == 0, "triggerablePoll %d with event 0 is not allowed", fd.get());
+    pollfd pfd[]{{.fd = fd.get(), .events = static_cast<int16_t>(event), .revents = 0},
+                 {.fd = mRead.get(), .events = 0, .revents = 0}};
+    int ret = TEMP_FAILURE_RETRY(poll(pfd, arraysize(pfd), -1));
+    if (ret < 0) {
+        return -errno;
     }
+    LOG_ALWAYS_FATAL_IF(ret == 0, "poll(%d) returns 0 with infinite timeout", fd.get());
+
+    // At least one FD has events. Check them.
+
+    // Detect explicit trigger(): DEAD_OBJECT
+    if (pfd[1].revents & POLLHUP) {
+        return DEAD_OBJECT;
+    }
+    // See unknown flags in trigger FD's revents (POLLERR / POLLNVAL).
+    // Treat this error condition as UNKNOWN_ERROR.
+    if (pfd[1].revents != 0) {
+        ALOGE("Unknown revents on trigger FD %d: revents = %d", pfd[1].fd, pfd[1].revents);
+        return UNKNOWN_ERROR;
+    }
+
+    // pfd[1].revents is 0, hence pfd[0].revents must be set, and only possible values are
+    // a subset of event | POLLHUP | POLLERR | POLLNVAL.
+
+    // POLLNVAL: invalid FD number, e.g. not opened.
+    if (pfd[0].revents & POLLNVAL) {
+        return BAD_VALUE;
+    }
+
+    // Success condition; event flag(s) set. Even though the other flags may be set
+    // (POLLHUP or POLLERR), treat it as a success condition to ensure data is drained.
+    if (pfd[0].revents & event) {
+        return OK;
+    }
+
+    // Peer closed connection. If this is the write end of a pipe then POLLERR may also be
+    // set simultaneously. We treat POLLHUP and (POLLHUP | POLLERR) as DEAD_OBJECT.
+    // This is a very common case, so don't log.
+    if (pfd[0].revents & POLLHUP) {
+        return DEAD_OBJECT;
+    }
+
+    // pfd[0].revents specifies POLLERR only.
+    LOG_RPC_DETAIL("poll() incoming FD %d results in revents = %d", pfd[0].fd, pfd[0].revents);
+    return DEAD_OBJECT;
 }
 
 } // namespace android
