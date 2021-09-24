@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a55eb4_c1cb019b",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-24T05:07:25Z",
+      "side": 1,
+      "message": "Do we still need this check? (I am not opposed to having it, but just to check if my understanding is correct)",
+      "range": {
+        "startLine": 613,
+        "startChar": 8,
+        "endLine": 613,
+        "endChar": 54
+      },
+      "revId": "83ce3b360e814a04f0fccb39ac253f1eac62a527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
