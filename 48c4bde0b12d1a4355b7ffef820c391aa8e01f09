@@ -16,6 +16,75 @@
       "message": "(friendly ping for review)",
       "revId": "48c4bde0b12d1a4355b7ffef820c391aa8e01f09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04691762_43c1dadc",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-24T05:01:07Z",
+      "side": 1,
+      "message": "why not !\u003d ?",
+      "range": {
+        "startLine": 933,
+        "startChar": 25,
+        "endLine": 933,
+        "endChar": 26
+      },
+      "revId": "48c4bde0b12d1a4355b7ffef820c391aa8e01f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3879a44e_9b595456",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-24T05:01:07Z",
+      "side": 1,
+      "message": "Just out of curiosity. Why is the column width set to 80, whereas it\u0027s set to 100 in the rest of the file?",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 7
+      },
+      "revId": "48c4bde0b12d1a4355b7ffef820c391aa8e01f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "744e06f4_ff11a0d8",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-24T05:01:07Z",
+      "side": 1,
+      "message": "This reads like the dec strong message will be sent to a target, which doesn\u0027t make sense. Is there a better word other than \u0027target\u0027?",
+      "range": {
+        "startLine": 105,
+        "startChar": 40,
+        "endLine": 105,
+        "endChar": 48
+      },
+      "revId": "48c4bde0b12d1a4355b7ffef820c391aa8e01f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
