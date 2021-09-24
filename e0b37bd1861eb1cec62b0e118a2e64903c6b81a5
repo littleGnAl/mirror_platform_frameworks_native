@@ -57,6 +57,30 @@
       },
       "revId": "e0b37bd1861eb1cec62b0e118a2e64903c6b81a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e36d693_8d534fbe",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-24T17:51:53Z",
+      "side": 1,
+      "message": "That\u0027s okay, caller  has full information of what\u0027s going on",
+      "parentUuid": "968901fd_c7b56905",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 22
+      },
+      "revId": "e0b37bd1861eb1cec62b0e118a2e64903c6b81a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
