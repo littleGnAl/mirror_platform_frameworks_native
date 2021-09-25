@@ -1,0 +1,29 @@
+package {
+    default_applicable_licenses: ["frameworks_native_license"],
+}
+
+apex_key {
+    name: "com.android.input.config.key",
+    public_key: "com.android.input.config.avbpubkey",
+    private_key: "com.android.input.config.pem",
+}
+
+android_app_certificate {
+    name: "com.android.input.config.certificate",
+    certificate: "com.android.input.config",
+}
+
+// Empty default vendor APEX for com.android.input.config.
+// Custom implementations can use override_apex based on this APEX
+// and include custom KL/KCM/IDC files as 'prebuilts'.
+apex {
+    name: "com.android.input.config",
+    manifest: "apex_manifest.json",
+    key: "com.android.input.config.key",
+    certificate: ":com.android.input.config.certificate",
+    file_contexts: "file_contexts",
+    use_vndk_as_stable: true,
+    updatable: false,
+    // Install the apex in /vendor/apex
+    soc_specific: true,
+}
