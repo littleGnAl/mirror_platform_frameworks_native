@@ -87,7 +87,12 @@ std::string getInputDeviceConfigurationFilePathByName(
     std::string path;
 
     // Treblized input device config files will be located /odm/usr or /vendor/usr.
-    const char *rootsForPartition[] {"/odm", "/vendor", getenv("ANDROID_ROOT")};
+    const char* rootsForPartition[]{
+            "/odm",
+            "/vendor",
+            "/apex/com.android.input.config/etc",
+            getenv("ANDROID_ROOT"),
+    };
     for (size_t i = 0; i < size(rootsForPartition); i++) {
         if (rootsForPartition[i] == nullptr) {
             continue;
