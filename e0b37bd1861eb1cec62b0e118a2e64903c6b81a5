@@ -106,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e79394_d696637a",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-27T21:07:08Z",
+      "side": 1,
+      "message": "\u003e this is new behavior\n\nYes.\n\n\u003e and them main change in the CL, right?\n\nAlso L73~L83 below. I would rather say L80~83 is the main change.\n\n\u003e does it impact any tests passing/failing?\n\nNo.",
+      "parentUuid": "0e4105bb_548a2cbb",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "e0b37bd1861eb1cec62b0e118a2e64903c6b81a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "616b562c_d759dc87",
@@ -119,6 +143,30 @@
       "writtenOn": "2021-09-27T20:50:13Z",
       "side": 1,
       "message": "this is new behavior, but if we ever hit it, it would mean a serious error/bad state, right? We know we only send valid FDs here?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 5
+      },
+      "revId": "e0b37bd1861eb1cec62b0e118a2e64903c6b81a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2055ebbb_ec6e1bad",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-27T21:07:08Z",
+      "side": 1,
+      "message": "\u003e We know we only send valid FDs here?\n\nFrom FdTrigger\u0027s perspective, no because the fd is an incoming argument. So I am inclined to return BAD_VALUE instead of failing.\n\nFrom libbinder\u0027s perspective, yes.",
+      "parentUuid": "616b562c_d759dc87",
       "range": {
         "startLine": 72,
         "startChar": 0,
@@ -152,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0821d9a_975379cb",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-27T21:07:08Z",
+      "side": 1,
+      "message": "Yes. See comment. I need to \"ensure data is drained\",so returning OK here.\n\nIn practice, I should probably return OK only if we are reading. For writing, I think (POLLOUT | POLLHUP) should probably be a DEAD_OBJECT?\n\nBut also note that for TLS we may be polling for event \u003d (POLLIN | POLLOUT), which makes it even more convoluted. So let\u0027s just return OK here even for the POLLOUT case.",
+      "parentUuid": "4a4b2162_a2c049d2",
+      "range": {
+        "startLine": 87,
+        "startChar": 15,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "e0b37bd1861eb1cec62b0e118a2e64903c6b81a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5854b02b_05d349fe",
@@ -165,6 +237,30 @@
       "writtenOn": "2021-09-27T20:50:13Z",
       "side": 1,
       "message": "should this have a check instead of a comment?",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 14
+      },
+      "revId": "e0b37bd1861eb1cec62b0e118a2e64903c6b81a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca79678a_7f998097",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-27T21:07:08Z",
+      "side": 1,
+      "message": "LOG_ALWAYS_FATAL_IF(revents !\u003d POLLHUP) ?\n\nsure, but I think it is unnecessary. It is in the man pages of poll(). I think it would hardly change in the future.\n\nAnd even it were not POLLHUP, returning DEAD_OBJECT would be a good status code.",
+      "parentUuid": "5854b02b_05d349fe",
       "range": {
         "startLine": 91,
         "startChar": 7,
