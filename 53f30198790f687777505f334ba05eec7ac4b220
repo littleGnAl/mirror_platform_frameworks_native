@@ -16,6 +16,24 @@
       "message": "It was very difficult for me to understand this change (actually the entire ref count mechanism for rpc) and I am not sure if my understanding is correct. Is there a good documentation that describes the mechanism?\n\nAll I could find was the following paragraph in the original design doc:\n\n\"Whenever a binder object is sent to another process (either as the target of a transaction OR as an argument of a transaction) this comes with an implicit strong refcount to the binder. RpcSession on the receiving side holds this object internally as a BpBinder and will immediately send transactions to decrement any extra strong refcounts they own. When a BpBinder object is dropped completely, the last strong refcount command will be sent over the wire, and the object will be deleted.\"\n\nWhat I don\u0027t understand is this part: \n\n\"and will immediately send transactions to decrement any extra strong refcounts they own\"\n\nWhat defines \u0027extra\u0027? If we are to decrement immediately why haven\u0027t we not incremented when sending? ",
       "revId": "53f30198790f687777505f334ba05eec7ac4b220",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f2068a_d66c2c14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-27T22:54:34Z",
+      "side": 1,
+      "message": "Hey Jiyong - I am going to add a section to the design doc for this and tag you on it today.",
+      "parentUuid": "3626c503_95126d70",
+      "revId": "53f30198790f687777505f334ba05eec7ac4b220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

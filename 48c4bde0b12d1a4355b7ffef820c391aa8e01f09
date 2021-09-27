@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b76f77e_5329b3a4",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-27T22:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04691762_43c1dadc",
+      "range": {
+        "startLine": 933,
+        "startChar": 25,
+        "endLine": 933,
+        "endChar": 26
+      },
+      "revId": "48c4bde0b12d1a4355b7ffef820c391aa8e01f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3879a44e_9b595456",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f8ccad_e08ce46b",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-27T22:54:34Z",
+      "side": 1,
+      "message": "no reason.",
+      "parentUuid": "3879a44e_9b595456",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 7
+      },
+      "revId": "48c4bde0b12d1a4355b7ffef820c391aa8e01f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "744e06f4_ff11a0d8",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-09-24T05:01:07Z",
       "side": 1,
       "message": "This reads like the dec strong message will be sent to a target, which doesn\u0027t make sense. Is there a better word other than \u0027target\u0027?",
+      "range": {
+        "startLine": 105,
+        "startChar": 40,
+        "endLine": 105,
+        "endChar": 48
+      },
+      "revId": "48c4bde0b12d1a4355b7ffef820c391aa8e01f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf8a0bfe_919ae0fc",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-27T22:54:34Z",
+      "side": 1,
+      "message": "The \u0027target\u0027 is the target reference count number. I\u0027m going to keep this the same to avoid rebasing the CL above this. If you have a suggestion for the name, let me know!",
+      "parentUuid": "744e06f4_ff11a0d8",
       "range": {
         "startLine": 105,
         "startChar": 40,
