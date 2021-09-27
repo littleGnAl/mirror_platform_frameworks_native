@@ -97,6 +97,30 @@
       },
       "revId": "1a49e4fd6c819c809b51e1bfc5a347daa91c3477",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f942564a_cea6801a",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-09-27T17:47:51Z",
+      "side": 1,
+      "message": "I checked through what Java does - they convert the Java string to a char16_t representation, which then gets serialized and sent to the service manager. On the servicemanager side, this gets packed into a String16 on deserialization, which uses data+length rather than relying on null termination (though it *also* gets null terminated during unpacking). It\u0027s possible that at some point this will cause hiccups inside ServiceManager, but that would not be a Rust problem but rather a general one.\n\nIt looks like either:\n\n* `AServiceManager_addService` is too narrow, and should take a `char16_t *` / `size_t` pair rather than a `char *`\n* If we don\u0027t intend to support embedded `NUL`s, we should probably add a check to this to the deserialization of `String16` values.",
+      "parentUuid": "4c0f3f08_a4121f22",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 71
+      },
+      "revId": "1a49e4fd6c819c809b51e1bfc5a347daa91c3477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
