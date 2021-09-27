@@ -130,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea91e9ad_8f8ab866",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-27T21:08:36Z",
+      "side": 1,
+      "message": "I also used to add this test:\n\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/1835920/5..6/libs/binder/tests/binderRpcTest.cpp\n\nBut I don\u0027t know why I deleted from the latest patchset. Now that I look at it, maybe it is not a very good test?",
+      "parentUuid": "82e79394_d696637a",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "e0b37bd1861eb1cec62b0e118a2e64903c6b81a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "616b562c_d759dc87",
