@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17722ccc_b7df6477",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-27T22:33:06Z",
+      "side": 1,
+      "message": "is there any generic API that would make this simpler or that we can add instead? +76 LOC for an RAII class seems heavy. Generally, services should call persist \u0027true\u0027 before they are registered, and they should only call persist \u0027false\u0027 once. Calling persist \u0027true\u0027 at other times could be racey, since a service can never guarantee its clients are alive.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
