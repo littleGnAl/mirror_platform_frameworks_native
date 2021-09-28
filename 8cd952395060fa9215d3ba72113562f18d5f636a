@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d0b026_9fa81273",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2021-09-28T13:41:15Z",
+      "side": 1,
+      "message": "All merge conflicts finally resolved. CP to AOSP is now ready. PTAL.",
+      "revId": "8cd952395060fa9215d3ba72113562f18d5f636a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
