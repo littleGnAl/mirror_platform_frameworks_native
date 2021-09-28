@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d77eafe_4d717cc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2021-09-28T01:24:25Z",
+      "side": 1,
+      "message": "What\u0027s the advantage to having a default empty apex in the tree given it\u0027s supposed to be SoC specific / overridden? Also seems odd to use the com.android namespace for a vendor package.\n\nIs there another example in the tree of this?",
+      "revId": "541ed471c6138d8c0b578d3f8f587ee0cc9b232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a06d00_e2d758cf",
+        "filename": "libs/input/input_config_apex/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2021-09-28T01:24:25Z",
+      "side": 1,
+      "message": "nit: missing copyright header\n\nhere and pretty much all other applicable files",
+      "revId": "541ed471c6138d8c0b578d3f8f587ee0cc9b232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
