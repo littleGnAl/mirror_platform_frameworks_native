@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96c1b8ab_45c47e4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2021-09-28T19:08:23Z",
+      "side": 1,
+      "message": "Good question, I admit this does look pointless at first glance so I\u0027ll try to explain here, and add more in-code comments to the APEX Android.bp afterward.\n\nUsing a default empty APEX with a known name has two major benefits:\n\n1. A default APEX here allows simple overriding via override_apex. For example, see https://r.android.com/c/device/google/cuttlefish/+/1836620/1/apex/com.android.input.config/Android.bp. That single Android.bp is the only file necessary to define this override_apex in order to make a vendor-specific override. No extra APEX key files or supplemental files like file_contexts are necessary.  \n\n2. It allows InputDevice.cpp to have a single, hardcoded path in /apex/ to search for these config files from an APEX. Even when a partner uses override_apex to create their custom version of this APEX with a custom name, it\u0027ll be mounted at the same /apex/com.android.input.config/ location.\n\n(1) is not essential, but simplifies things for any partner wishing to provide their own custom version of this APEX.\n(2) is also not essential, but it feels more straightforward to me than the alternative of scanning every APEX on the device to see if it contains /usr/*.idc files.\n\nRe: naming, I chose \"com.android.\" prefix since most other current generic AOSP APEXes use the same (https://cs.android.com/search?q\u003d%22com.android%22%20%22apex%20%7B%22%20lang:soong%20-f:tests). The expectation is that the custom override would then use a name specific to their device, like \"com.google.cf.input.config\" in my above-linked Cuttlefish override_apex.\nHowever, I\u0027m fine using any other name if you have a specific suggestion!\n\nWe don\u0027t have any example of a default intended-to-be-overridden APEX like this yet. This project (http://go/vapex) is still in early stages, so this just happens to be the first :) The larger plan is prove that using APEXes in /vendor works as intended and provides the benefits we hope it does, before suggesting to the wider ecosystem to convert.",
+      "parentUuid": "8d77eafe_4d717cc7",
+      "revId": "541ed471c6138d8c0b578d3f8f587ee0cc9b232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68a06d00_e2d758cf",
         "filename": "libs/input/input_config_apex/Android.bp",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-28T01:24:25Z",
       "side": 1,
       "message": "nit: missing copyright header\n\nhere and pretty much all other applicable files",
+      "revId": "541ed471c6138d8c0b578d3f8f587ee0cc9b232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96078c6d_c7928e04",
+        "filename": "libs/input/input_config_apex/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2021-09-28T19:08:23Z",
+      "side": 1,
+      "message": "Thanks! Added it to this Android.bp, but I don\u0027t think the other file types usually have it.\n\nI don\u0027t see any examples in the tree for APEX test keys, file_contexts, or non-external JSON files with the copyright header, and I\u0027m not sure the APEX test key files support it.\n\nPlease LMK if you want me to add it to any specific file and I\u0027ll see if I can work it into the file\u0027s comment syntax.",
+      "parentUuid": "68a06d00_e2d758cf",
       "revId": "541ed471c6138d8c0b578d3f8f587ee0cc9b232f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
