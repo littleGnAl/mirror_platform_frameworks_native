@@ -46,7 +46,7 @@ public:
     template <typename Buffer, typename SendOrReceive>
     status_t interruptableReadOrWrite(FdTrigger* fdTrigger, Buffer buffer, size_t size,
                                       SendOrReceive sendOrReceiveFun, const char* funName,
-                                      int16_t event) {
+                                      int16_t event, const std::function<status_t()>& prePoll) {
         const Buffer end = buffer + size;
 
         MAYBE_WAIT_IN_FLAKE_MODE;
@@ -57,7 +57,7 @@ public:
             return DEAD_OBJECT;
         }
 
-        bool first = true;
+        bool havePolled = false;
         status_t status;
         do {
             ssize_t processSize = TEMP_FAILURE_RETRY(
@@ -68,7 +68,8 @@ public:
 
                 // Still return the error on later passes, since it would expose
                 // a problem with polling
-                if (!first || (first && savedErrno != EAGAIN && savedErrno != EWOULDBLOCK)) {
+                if (havePolled ||
+                    (!havePolled && savedErrno != EAGAIN && savedErrno != EWOULDBLOCK)) {
                     LOG_RPC_DETAIL("RpcTransport %s(): %s", funName, strerror(savedErrno));
                     return -savedErrno;
                 }
@@ -81,19 +82,26 @@ public:
                 }
             }
 
-            if (first) first = false;
-        } while ((status = fdTrigger->triggerablePoll(mSocket.get(), event)) == OK);
+            if (prePoll) {
+                status = prePoll();
+            } else {
+                if (havePolled) havePolled = true;
+                status = fdTrigger->triggerablePoll(mSocket.get(), event);
+            }
+        } while (status == OK);
         return status;
     }
 
-    status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size) override {
+    status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size,
+                                     const std::function<status_t()>& prePoll) override {
         return interruptableReadOrWrite(fdTrigger, reinterpret_cast<const uint8_t*>(data), size,
-                                        send, "send", POLLOUT);
+                                        send, "send", POLLOUT, prePoll);
     }
 
-    status_t interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size) override {
+    status_t interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size,
+                                    const std::function<status_t()>& prePoll) override {
         return interruptableReadOrWrite(fdTrigger, reinterpret_cast<uint8_t*>(data), size, recv,
-                                        "recv", POLLIN);
+                                        "recv", POLLIN, prePoll);
     }
 
 private:

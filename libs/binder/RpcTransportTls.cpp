@@ -169,12 +169,13 @@ public:
     // If |sslError| is WANT_READ / WANT_WRITE, poll for POLLIN / POLLOUT respectively. Otherwise
     // return error. Also return error if |fdTrigger| is triggered before or during poll().
     status_t pollForSslError(android::base::borrowed_fd fd, int sslError, FdTrigger* fdTrigger,
-                             const char* fnString, int additionalEvent = 0) {
+                             const char* fnString, int additionalEvent,
+                             const std::function<status_t()>& prePoll) {
         switch (sslError) {
             case SSL_ERROR_WANT_READ:
-                return handlePoll(POLLIN | additionalEvent, fd, fdTrigger, fnString);
+                return handlePoll(POLLIN | additionalEvent, fd, fdTrigger, fnString, prePoll);
             case SSL_ERROR_WANT_WRITE:
-                return handlePoll(POLLOUT | additionalEvent, fd, fdTrigger, fnString);
+                return handlePoll(POLLOUT | additionalEvent, fd, fdTrigger, fnString, prePoll);
             case SSL_ERROR_SYSCALL: {
                 auto queue = toString();
                 LOG_TLS_DETAIL("%s(): %s. Treating as DEAD_OBJECT. Error queue: %s", fnString,
@@ -194,11 +195,10 @@ private:
     bool mHandled = false;
 
     status_t handlePoll(int event, android::base::borrowed_fd fd, FdTrigger* fdTrigger,
-                        const char* fnString) {
-        status_t ret = fdTrigger->triggerablePoll(fd, event);
+                        const char* fnString, const std::function<status_t()>& prePoll) {
+        status_t ret = prePoll ? prePoll() : fdTrigger->triggerablePoll(fd, event);
         if (ret != OK && ret != DEAD_OBJECT) {
-            ALOGE("triggerablePoll error while poll()-ing after %s(): %s", fnString,
-                  statusToString(ret).c_str());
+            ALOGE("poll error while after %s(): %s", fnString, statusToString(ret).c_str());
         }
         clear();
         return ret;
@@ -268,8 +268,10 @@ public:
     RpcTransportTls(android::base::unique_fd socket, Ssl ssl)
           : mSocket(std::move(socket)), mSsl(std::move(ssl)) {}
     Result<size_t> peek(void* buf, size_t size) override;
-    status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size) override;
-    status_t interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size) override;
+    status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size,
+                                     const std::function<status_t()>& prePoll) override;
+    status_t interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size,
+                                    const std::function<status_t()>& prePoll) override;
 
 private:
     android::base::unique_fd mSocket;
@@ -295,7 +297,8 @@ Result<size_t> RpcTransportTls::peek(void* buf, size_t size) {
 }
 
 status_t RpcTransportTls::interruptableWriteFully(FdTrigger* fdTrigger, const void* data,
-                                                  size_t size) {
+                                                  size_t size,
+                                                  const std::function<status_t()>& prePoll) {
     auto buffer = reinterpret_cast<const uint8_t*>(data);
     const uint8_t* end = buffer + size;
 
@@ -317,8 +320,8 @@ status_t RpcTransportTls::interruptableWriteFully(FdTrigger* fdTrigger, const vo
         int sslError = mSsl.getError(writeSize);
         // TODO(b/195788248): BIO should contain the FdTrigger, and send(2) / recv(2) should be
         //   triggerablePoll()-ed. Then additionalEvent is no longer necessary.
-        status_t pollStatus =
-                errorQueue.pollForSslError(mSocket.get(), sslError, fdTrigger, "SSL_write", POLLIN);
+        status_t pollStatus = errorQueue.pollForSslError(mSocket.get(), sslError, fdTrigger,
+                                                         "SSL_write", POLLIN, prePoll);
         if (pollStatus != OK) return pollStatus;
         // Do not advance buffer. Try SSL_write() again.
     }
@@ -326,7 +329,8 @@ status_t RpcTransportTls::interruptableWriteFully(FdTrigger* fdTrigger, const vo
     return OK;
 }
 
-status_t RpcTransportTls::interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size) {
+status_t RpcTransportTls::interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size,
+                                                 const std::function<status_t()>& prePoll) {
     auto buffer = reinterpret_cast<uint8_t*>(data);
     uint8_t* end = buffer + size;
 
@@ -350,8 +354,8 @@ status_t RpcTransportTls::interruptableReadFully(FdTrigger* fdTrigger, void* dat
             return DEAD_OBJECT;
         }
         int sslError = mSsl.getError(readSize);
-        status_t pollStatus =
-                errorQueue.pollForSslError(mSocket.get(), sslError, fdTrigger, "SSL_read");
+        status_t pollStatus = errorQueue.pollForSslError(mSocket.get(), sslError, fdTrigger,
+                                                         "SSL_read", 0, prePoll);
         if (pollStatus != OK) return pollStatus;
         // Do not advance buffer. Try SSL_read() again.
     }
@@ -382,7 +386,7 @@ bool setFdAndDoHandshake(Ssl* ssl, android::base::borrowed_fd fd, FdTrigger* fdT
         }
         int sslError = ssl->getError(ret);
         status_t pollStatus =
-                errorQueue.pollForSslError(fd, sslError, fdTrigger, "SSL_do_handshake");
+                errorQueue.pollForSslError(fd, sslError, fdTrigger, "SSL_do_handshake", 0, {});
         if (pollStatus != OK) return false;
     }
 }

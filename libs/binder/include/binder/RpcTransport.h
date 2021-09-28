@@ -18,6 +18,7 @@
 
 #pragma once
 
+#include <functional>
 #include <memory>
 #include <string>
 
@@ -43,14 +44,18 @@ public:
     /**
      * Read (or write), but allow to be interrupted by a trigger.
      *
+     * prePoll - function to be called before blocking/waiting on data
+     *
      * Return:
      *   OK - succeeded in completely processing 'size'
      *   error - interrupted (failure or trigger)
      */
-    [[nodiscard]] virtual status_t interruptableWriteFully(FdTrigger *fdTrigger, const void *buf,
-                                                           size_t size) = 0;
-    [[nodiscard]] virtual status_t interruptableReadFully(FdTrigger *fdTrigger, void *buf,
-                                                          size_t size) = 0;
+    [[nodiscard]] virtual status_t interruptableWriteFully(
+            FdTrigger *fdTrigger, const void *buf, size_t size,
+            const std::function<status_t()> &prePoll) = 0;
+    [[nodiscard]] virtual status_t interruptableReadFully(
+            FdTrigger *fdTrigger, void *buf, size_t size,
+            const std::function<status_t()> &prePoll) = 0;
 
 protected:
     RpcTransport() = default;
