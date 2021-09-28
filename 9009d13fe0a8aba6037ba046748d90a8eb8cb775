@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a60928d_ceaa7592",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-09-28T21:29:08Z",
+      "side": 1,
+      "message": "I think his point is that after the client receives a new binder from the top level service (their VM object), they have no reason to believe they should need to keep the top level binder alive, as they won\u0027t be making any more calls on it. I think that in an ideal world, a process hosting a lazy service would be kept alive by any binder which that process would service, not just the one which triggers its startup but that sounds like it\u0027s not the case at the moment?\n\nWas this an intentional design decision, or something it would be appropriate for us to work around in the library? (I\u0027ve commented above under the assumption this is due to a technical restriction in the implementation of lazy services rather than a choice.)",
+      "parentUuid": "eebb59fe_1c77db97",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "12213876_fd5f9488",
@@ -85,6 +109,40 @@
       "writtenOn": "2021-09-28T08:10:19Z",
       "side": 1,
       "message": "Matthew/Stephen - any thoughts?",
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b70b577_51521048",
+        "filename": "libs/binder/rust/src/lazy_service.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-09-28T21:29:08Z",
+      "side": 1,
+      "message": "I think compare_exchange should allow you to use an AtomicUsize for this, but the extra code is probably not worth the optimization.",
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d8d437_da397e9a",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-09-28T21:29:08Z",
+      "side": 1,
+      "message": "Instead of exposing this, could we try to hook this up to be injected into every binder object created in the service iff register_lazy_service has been called? This doesn\u0027t seem like something the client should be handling themselves.\n\nAn alternate option might be to track the number of non-lazy binder service objects present in the process. Then:\n\n* On register_lazy_service, we mark ourselves as immortal if we have more than one non-lazy object present, and decrement it (since that service became lazy)\n* On decrement of non-lazy, if the number of objects would go to zero, disable immortal mode.",
       "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
