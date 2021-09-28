@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "eebb59fe_1c77db97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-28T21:06:24Z",
+      "side": 1,
+      "message": "The way that the lazy service stuff works is that the virtualization service will only be shutdown when the clients drop the reference to the binder of the service. As long as they are holding a reference to the top-level service, it\u0027ll be alive. Could we rely on this?",
+      "parentUuid": "9f3d5894_3b42686a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "12213876_fd5f9488",
