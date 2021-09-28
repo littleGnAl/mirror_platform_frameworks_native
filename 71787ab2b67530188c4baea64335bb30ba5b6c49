@@ -33,6 +33,42 @@
       "message": "The test failure is some unix domain socket only deadlocking, though I think this means the other sockets can deadlock too. I\u0027ll need to look into it more.",
       "revId": "71787ab2b67530188c4baea64335bb30ba5b6c49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76bc45e9_a3758c81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-28T22:49:30Z",
+      "side": 1,
+      "message": "old",
+      "parentUuid": "3ec56a79_4b742365",
+      "revId": "71787ab2b67530188c4baea64335bb30ba5b6c49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da6552f_c53a6d0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-28T22:49:30Z",
+      "side": 1,
+      "message": "old",
+      "parentUuid": "a0101fb4_6f75ec23",
+      "revId": "71787ab2b67530188c4baea64335bb30ba5b6c49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
