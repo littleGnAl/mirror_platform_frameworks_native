@@ -22,6 +22,29 @@
       },
       "revId": "a7a9ce396da628c2458aa6cdafcd5a6b47d75626",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded83d30_d95e3788",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-28T00:41:51Z",
+      "side": 1,
+      "message": "for raw transport you call triggerablePoll once, then switch to altPoll(). But for TLS you always do altPoll().\n\nIs this intentional? If so, why?",
+      "range": {
+        "startLine": 199,
+        "startChar": 23,
+        "endLine": 199,
+        "endChar": 83
+      },
+      "revId": "a7a9ce396da628c2458aa6cdafcd5a6b47d75626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
