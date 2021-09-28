@@ -22,6 +22,30 @@
       },
       "revId": "d8083310534b157c7e303083df15fe9b362e4913",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ea532e_7178fa50",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-28T20:16:26Z",
+      "side": 1,
+      "message": "It can be, but it requires nesting all of the non-oneway stuff or adding an extra \"if (oneway) return OK;\". Let me leave it like this and come back, given the stack here.",
+      "parentUuid": "11d5c18d_855ea145",
+      "range": {
+        "startLine": 861,
+        "startChar": 4,
+        "endLine": 865,
+        "endChar": 5
+      },
+      "revId": "d8083310534b157c7e303083df15fe9b362e4913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
