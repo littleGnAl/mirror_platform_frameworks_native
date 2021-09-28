@@ -22,6 +22,30 @@
       },
       "revId": "43921d5d92d6e27bf1ec00de062746f032268717",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f947e3e_c5e050e0",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-28T20:50:35Z",
+      "side": 1,
+      "message": "Maybe think of it as an \u0027alternative to polling\u0027?\n\nhavePolled is saying we are guaranteed to have data/space available to read/write. See L71 - if we set havePolled here and there isn\u0027t actually data/space available, it\u0027ll be considered an error, which we want to avoid.",
+      "parentUuid": "e84badc1_e26f5624",
+      "range": {
+        "startLine": 88,
+        "startChar": 15,
+        "endLine": 88,
+        "endChar": 17
+      },
+      "revId": "43921d5d92d6e27bf1ec00de062746f032268717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
