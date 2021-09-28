@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "265a2f9a_ee2a8d9e",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-28T00:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f119a1af_15744ee4",
+      "range": {
+        "startLine": 86,
+        "startChar": 16,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "a7a9ce396da628c2458aa6cdafcd5a6b47d75626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ded83d30_d95e3788",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-28T00:41:51Z",
       "side": 1,
       "message": "for raw transport you call triggerablePoll once, then switch to altPoll(). But for TLS you always do altPoll().\n\nIs this intentional? If so, why?",
+      "range": {
+        "startLine": 199,
+        "startChar": 23,
+        "endLine": 199,
+        "endChar": 83
+      },
+      "revId": "a7a9ce396da628c2458aa6cdafcd5a6b47d75626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "060139ab_e86b53c5",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-28T00:57:41Z",
+      "side": 1,
+      "message": "both places check isTriggered, but they should check isTriggered more (for the generic case - it shouldn\u0027t matter in this case, since altPoll is checking it, but we shouldn\u0027t be relying on that, yeah).",
+      "parentUuid": "ded83d30_d95e3788",
       "range": {
         "startLine": 199,
         "startChar": 23,

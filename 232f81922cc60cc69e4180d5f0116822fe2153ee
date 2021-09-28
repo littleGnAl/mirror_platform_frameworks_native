@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec10a70_ab4228e1",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-28T00:57:41Z",
+      "side": 1,
+      "message": "Done, thanks (rare error path - if the poll returned successfully, but there was actually no data to read/write, this is needed to make sure we return that error, rather than retrying)",
+      "parentUuid": "889ff581_09e663e5",
+      "range": {
+        "startLine": 88,
+        "startChar": 20,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "232f81922cc60cc69e4180d5f0116822fe2153ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a78e17_44a2118a",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-28T00:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "889ff581_09e663e5",
+      "range": {
+        "startLine": 88,
+        "startChar": 20,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "232f81922cc60cc69e4180d5f0116822fe2153ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9296a70e_84711020",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-09-28T00:39:10Z",
       "side": 1,
       "message": "nit: explain return code? I assume you mean \"if prePoll() returns non-OK status code it will return immediately\"?\n\nAlso probably default to nullptr",
+      "revId": "232f81922cc60cc69e4180d5f0116822fe2153ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97fe5ee8_d26292d2",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-28T00:57:41Z",
+      "side": 1,
+      "message": "done for explanation\n\nI don\u0027t like default arguments. I like explicit code :D this forced me to think about every client site - if it needed more work.",
+      "parentUuid": "9296a70e_84711020",
       "revId": "232f81922cc60cc69e4180d5f0116822fe2153ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
