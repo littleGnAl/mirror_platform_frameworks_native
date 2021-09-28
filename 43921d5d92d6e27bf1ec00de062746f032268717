@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84badc1_e26f5624",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-28T19:02:59Z",
+      "side": 1,
+      "message": "Should we handle havePolled for altPoll? The names makes me feel like it should be.",
+      "range": {
+        "startLine": 88,
+        "startChar": 15,
+        "endLine": 88,
+        "endChar": 17
+      },
+      "revId": "43921d5d92d6e27bf1ec00de062746f032268717",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
