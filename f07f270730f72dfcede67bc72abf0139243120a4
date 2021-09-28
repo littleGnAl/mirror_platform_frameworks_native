@@ -22,6 +22,30 @@
       },
       "revId": "f07f270730f72dfcede67bc72abf0139243120a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d3fe256_36a40f9b",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-28T23:59:31Z",
+      "side": 1,
+      "message": "Good point, changed it.\n\nI added an assertion that the pointer is not null, does it make sense to keep that or should I remove it?",
+      "parentUuid": "3297b6a9_c138c891",
+      "range": {
+        "startLine": 223,
+        "startChar": 24,
+        "endLine": 223,
+        "endChar": 38
+      },
+      "revId": "f07f270730f72dfcede67bc72abf0139243120a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
