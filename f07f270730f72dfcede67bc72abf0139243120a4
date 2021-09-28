@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3297b6a9_c138c891",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-09-28T17:44:28Z",
+      "side": 1,
+      "message": "If AParcel_create() never returns NULL, why are we returning an Option\u003cParcel\u003e and not a Parcel?",
+      "range": {
+        "startLine": 223,
+        "startChar": 24,
+        "endLine": 223,
+        "endChar": 38
+      },
+      "revId": "f07f270730f72dfcede67bc72abf0139243120a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
