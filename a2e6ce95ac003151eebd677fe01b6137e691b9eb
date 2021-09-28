@@ -16,6 +16,24 @@
       "message": "Since we have a parcelable trait now, why are these two macros not just blanket impls?",
       "revId": "a2e6ce95ac003151eebd677fe01b6137e691b9eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97be7735_c1864b78",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-28T22:16:09Z",
+      "side": 1,
+      "message": "One blanket impl covers all types and would prevent us from adding any second blanket impl later. If we did `impl\u003cT: Parcelable\u003e Serialize for T` then we couldn\u0027t add a second `impl\u003cT: Trait2\u003e Serialize for T` because then the compiler wouldn\u0027t know which impl to pick for a type that implements both traits (Trait2 + Parcelable), and would give us a \"conflicting implementations\" error.\n\nWe could say \"Parcelable is the only trait we care about\" but using macros avoids that (unless there\u0027s another way I\u0027m not aware of).",
+      "parentUuid": "feff03e9_e1f8b798",
+      "revId": "a2e6ce95ac003151eebd677fe01b6137e691b9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
