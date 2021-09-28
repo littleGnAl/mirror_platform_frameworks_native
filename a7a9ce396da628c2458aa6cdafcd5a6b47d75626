@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f119a1af_15744ee4",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-28T00:39:10Z",
+      "side": 1,
+      "message": "you may just return directly if status !\u003d OK?\n\nsame below (L89). Then it\u0027ll become a do {} while(true), which is just a while(true)?\n\nThen you can also simplify the conditional branching logic here",
+      "range": {
+        "startLine": 86,
+        "startChar": 16,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "a7a9ce396da628c2458aa6cdafcd5a6b47d75626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

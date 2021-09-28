@@ -45,6 +45,23 @@
       },
       "revId": "232f81922cc60cc69e4180d5f0116822fe2153ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9296a70e_84711020",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-28T00:39:10Z",
+      "side": 1,
+      "message": "nit: explain return code? I assume you mean \"if prePoll() returns non-OK status code it will return immediately\"?\n\nAlso probably default to nullptr",
+      "revId": "232f81922cc60cc69e4180d5f0116822fe2153ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
