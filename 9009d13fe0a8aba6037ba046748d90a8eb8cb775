@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48de9e8_07a5c261",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-28T21:55:06Z",
+      "side": 1,
+      "message": "Yeah, it is a technical restriction, and this is probably a good solution around it. However, this is adding a global variable (mutex w/ count) which every user of libbinder_rs has to pay (these add up, at a certain point tip over and add another page of memory needed per process - I have spent a lot of time removing them from core libraries). In principle - functionality is kept constant with this CL, and it adds a cost to every user, even if it is easier to use.\n\nFor instance, could we replace force persist with an API that returns a RefBase object which keeps hold of the persistant state? Non-Rust languages would also benefit from this, and we could add the data in the LazyServiceRegistrar instance which is already allocated on the heap, so that we don\u0027t require more memory in the default case.",
+      "parentUuid": "2a60928d_ceaa7592",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "12213876_fd5f9488",
