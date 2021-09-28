@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d5c18d_855ea145",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-09-28T18:53:27Z",
+      "side": 1,
+      "message": "Can this be moved after the the `if (oneway)` block, and remove the duplicate from line 915?\nI don\u0027t see any of the arguments changing for the oneway case so it looks like the same call.",
+      "range": {
+        "startLine": 861,
+        "startChar": 4,
+        "endLine": 865,
+        "endChar": 5
+      },
+      "revId": "d8083310534b157c7e303083df15fe9b362e4913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
