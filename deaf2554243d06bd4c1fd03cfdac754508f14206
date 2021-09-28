@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f195164_e3e12727",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 20
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-28T23:59:47Z",
+      "side": 1,
+      "message": "get_parcelable replaces a Parcel with a Parcelable in self.data and takes \u0026self. I can 100% eliminate the RefCell if I change that to \u0026mut self.",
+      "parentUuid": "d474c758_e00ad2c3",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "deaf2554243d06bd4c1fd03cfdac754508f14206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bf8ac58_923fdd77",
         "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
         "patchSetId": 20
@@ -37,6 +61,24 @@
       "writtenOn": "2021-09-28T18:02:09Z",
       "side": 1,
       "message": "If we want to impl Clone for ParcelableHolder, why not take this branch and use it to impl Clone for `Parcel`? Then you\u0027d just be able to #[derive(Clone)] for the holder + holderdata",
+      "revId": "deaf2554243d06bd4c1fd03cfdac754508f14206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fed07ee_afd97bf2",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 20
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-28T23:59:47Z",
+      "side": 1,
+      "message": "Done, but that raised an interesting corner case for the Clone implementation. See 1819035.",
+      "parentUuid": "8bf8ac58_923fdd77",
       "revId": "deaf2554243d06bd4c1fd03cfdac754508f14206",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
