@@ -22,6 +22,47 @@
       },
       "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f3d5894_3b42686a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-28T08:10:19Z",
+      "side": 1,
+      "message": "See the use case in aosp/1836356:\nClients reasonably expect that virtualization service will keep running as long as they own a VM. The calls to set persist true sit inside calls from the client (which doesn\u0027t prove the client hasn\u0027t just died of course). Client death will lead to the VM being terminated which will release the force persist.\n\nThis doesn\u0027t seem a huge amount of code to me, and most of it is pretty trivial. I can move it into virtualizationservice instead, but that seems less general.",
+      "parentUuid": "17722ccc_b7df6477",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12213876_fd5f9488",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-28T08:10:19Z",
+      "side": 1,
+      "message": "Matthew/Stephen - any thoughts?",
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
