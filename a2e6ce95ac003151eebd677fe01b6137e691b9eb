@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feff03e9_e1f8b798",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 7
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-09-28T18:13:47Z",
+      "side": 1,
+      "message": "Since we have a parcelable trait now, why are these two macros not just blanket impls?",
+      "revId": "a2e6ce95ac003151eebd677fe01b6137e691b9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
