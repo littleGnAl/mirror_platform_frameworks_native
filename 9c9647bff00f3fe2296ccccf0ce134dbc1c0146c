@@ -16,6 +16,24 @@
       "message": "This is what Cow does, but I\u0027m still not sure if cloning a Borrowed should return an Owned.",
       "revId": "9c9647bff00f3fe2296ccccf0ce134dbc1c0146c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc201d0_5c4da51f",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-09-29T01:00:36Z",
+      "side": 1,
+      "message": "Scratch that, I realized that since Parcel::Borrowed is a mutable pointer, cloning it and having multiple Parcels borrow the same AParcel is really, really unsafe. clone() here now always returns a new owned Parcel.",
+      "parentUuid": "e883499c_03ce5227",
+      "revId": "9c9647bff00f3fe2296ccccf0ce134dbc1c0146c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
