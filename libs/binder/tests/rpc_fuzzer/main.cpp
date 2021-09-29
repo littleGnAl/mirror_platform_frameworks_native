@@ -51,7 +51,7 @@ class SomeBinder : public BBinder {
     }
 };
 
-extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+int testOne(const uint8_t* data, size_t size) {
     if (size > 50000) return 0;
     FuzzedDataProvider provider(data, size);
 
@@ -110,6 +110,22 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     serverThread.join();
 
     return 0;
+}
+
+ssize_t countFds() {
+    DIR* dir = opendir("/proc/self/fd/");
+    if (dir == nullptr) return -1;
+    ssize_t ret = 0;
+    dirent* ent;
+    while ((ent = readdir(dir)) != nullptr) ret++;
+    closedir(dir);
+    return ret;
+}
+
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+    int ret = testOne(data, size);
+    CHECK_LT(countFds(), 1024);
+    return ret;
 }
 
 } // namespace android
