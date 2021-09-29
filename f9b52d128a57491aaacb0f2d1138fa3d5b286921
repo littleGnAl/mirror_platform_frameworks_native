@@ -22,6 +22,30 @@
       },
       "revId": "f9b52d128a57491aaacb0f2d1138fa3d5b286921",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b408923b_a68a2726",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-29T02:12:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81cb805e_766594d3",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "f9b52d128a57491aaacb0f2d1138fa3d5b286921",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
