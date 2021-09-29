@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc6bdac3_7ee97fc6",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-09-29T20:22:56Z",
+      "side": 1,
+      "message": "Yes, that is what parameterizing the type did - basically, it describes an abstract interface that this library happens to fulfill. If someone wants to use the async features they\u0027ll need this library, but sync people won\u0027t.",
+      "parentUuid": "37127cc3_c11b4a21",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 29
+      },
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09f21c14_9697d87e",
@@ -88,6 +112,23 @@
       "writtenOn": "2021-09-28T20:45:52Z",
       "side": 1,
       "message": "Why is this not just a re-export of futures::future::BoxFuture ? Is it because it\u0027s also Sync? Why does it need to be Sync?\n\nIf it doesn\u0027t need to be sync, I\u0027d also expect that binder_tokio would no longer need the sync_wrapper module\n\nIf it does need to be sync, I\u0027d prefer a name other than BoxFuture because I think people will confuse it with `futures::future::BoxFuture` which would be a subtly different type.",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47113941_015680a4",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-09-29T20:22:56Z",
+      "side": 1,
+      "message": "After chatting with Andrei, I\u0027m not convinced that Parcel is Send because of the Borrowed case.\n\nIn the Borrowed case, the object is still owned by C++ somewhere. That means that if we `Send` it, we are asserting that the underlying `AParcel` is threadsafe, because C++ may attempt to access it from the thread we sent it from. It is not clear to me that it is, though I\u0027d be happy for smoreland@ to tell me I\u0027m wrong and that `AParcel` is thread-safe.",
       "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
