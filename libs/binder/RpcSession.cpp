@@ -28,6 +28,7 @@
 
 #include <android-base/hex.h>
 #include <android-base/macros.h>
+#include <android-base/scopeguard.h>
 #include <android_runtime/vm.h>
 #include <binder/BpBinder.h>
 #include <binder/Parcel.h>
@@ -414,7 +415,36 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
                             "Must only setup session once, but already has %zu clients",
                             mOutgoingConnections.size());
     }
+
     if (auto status = initShutdownTrigger(); status != OK) return status;
+
+    auto oldProtocolVersion = mProtocolVersion;
+    auto cleanup = base::ScopeGuard([&] {
+        // if any threads are started, shut them down
+        (void)shutdownAndWait(true);
+
+        // reset up state
+        mShutdownListener = nullptr;
+        mEventListener.clear();
+
+        mId.clear();
+
+        mShutdownTrigger = nullptr;
+        mState = std::make_unique<RpcState>();
+
+        // leave max thread configuration unchanged
+
+        // protocol version may have been downgraded
+        mProtocolVersion = oldProtocolVersion;
+
+        mWaitingThreads = 0;
+        mOutgoingConnectionsOffset = 0;
+        mOutgoingConnections.clear();
+        mMaxIncomingConnections = 0;
+        mIncomingConnections.clear();
+
+        LOG_ALWAYS_FATAL_IF(!mThreads.empty());
+    });
 
     if (status_t status = connectAndInit({}, false /*incoming*/); status != OK) return status;
 
@@ -463,6 +493,8 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
     for (size_t i = 0; i < mMaxThreads; i++) {
         if (status_t status = connectAndInit(mId, true /*incoming*/); status != OK) return status;
     }
+
+    cleanup.Disable();
 
     return OK;
 }
