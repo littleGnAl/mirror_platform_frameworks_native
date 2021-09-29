@@ -51,7 +51,17 @@ class SomeBinder : public BBinder {
     }
 };
 
-extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+ssize_t countFds() {
+    DIR* dir = opendir("/proc/self/fd/");
+    if (dir == nullptr) return -1;
+    ssize_t ret = 0;
+    dirent* ent;
+    while ((ent = readdir(dir)) != nullptr) ret++;
+    closedir(dir);
+    return ret;
+}
+
+int testInternal(const uint8_t* data, size_t size) {
     if (size > 50000) return 0;
     FuzzedDataProvider provider(data, size);
 
@@ -110,6 +120,13 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     serverThread.join();
 
     return 0;
+}
+
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+    ssize_t origFds = countFds();
+    int ret = testInternal(data, size);
+    CHECK_EQ(countFds(), origFds) << "FD LEAK!";
+    return ret;
 }
 
 } // namespace android
