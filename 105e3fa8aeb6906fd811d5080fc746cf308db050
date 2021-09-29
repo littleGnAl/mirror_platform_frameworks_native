@@ -84,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f295334_c268363d",
+        "filename": "libs/binder/rust/binder_tokio/sync_wrapper.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-09-29T22:09:02Z",
+      "side": 1,
+      "message": "It doesn\u0027t need `T: Send` for the same reasons that it doesn\u0027t need `T: Sync`, namely that an `\u0026SyncWrapper\u003cT\u003e` is useless.",
+      "parentUuid": "09f21c14_9697d87e",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a43d2bc_ef097ffc",
         "filename": "libs/binder/rust/binder_tokio/sync_wrapper.rs",
         "patchSetId": 4
@@ -118,6 +136,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b347d9b5_befc1bb8",
+        "filename": "libs/binder/rust/src/binder_async.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-09-29T22:09:02Z",
+      "side": 1,
+      "message": "I added the `+ Sync` because it makes the functions more ergonomic to use. Things that aren\u0027t `Sync` can propagate through many layers of types an async fns, and you will sometimes run into issues with other libraries that have a `: Sync` bound somewhere. A similar discussion can be found in https://github.com/hyperium/hyper/pull/2653.\n\nAlso, this crate does not depend on the futures crate.",
+      "parentUuid": "1a67e565_90901852",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47113941_015680a4",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 4
@@ -135,6 +171,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c18c262_b7081fef",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-09-29T22:09:02Z",
+      "side": 1,
+      "message": "I see. In that case, this is yet another reason that it shouldn\u0027t be an enum (b/200676345)",
+      "parentUuid": "47113941_015680a4",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d417736_34195ecb",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 4
@@ -146,6 +200,30 @@
       "writtenOn": "2021-09-29T18:33:22Z",
       "side": 1,
       "message": "would you consider adding some cases to aidl_integration_tests as well, to make sure this still interops w/ the other languages w/o any problems?",
+      "range": {
+        "startLine": 158,
+        "startChar": 10,
+        "endLine": 158,
+        "endChar": 16
+      },
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f844f08_ea501853",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-09-29T22:09:02Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll do that next week.",
+      "parentUuid": "3d417736_34195ecb",
       "range": {
         "startLine": 158,
         "startChar": 10,
