@@ -161,6 +161,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27be61d_e4ac0411",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-29T16:17:34Z",
+      "side": 1,
+      "message": "We discussed this offline:\nLazyServiceRegistrar will offer a new API to increment/decrement the use count, where \u003e 0 means the service will not be killed. (To co-exist with the current API, which can be done in a couple of ways.) I\u0027ll create a bug for that.\nOnce we have that this can come back again but with a simpler implementation that doesn\u0027t need any new global state.",
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b70b577_51521048",
