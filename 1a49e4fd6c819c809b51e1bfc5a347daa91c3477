@@ -121,6 +121,30 @@
       },
       "revId": "1a49e4fd6c819c809b51e1bfc5a347daa91c3477",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca749f9_10af9ebe",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-29T08:20:15Z",
+      "side": 1,
+      "message": "So what\u0027s the next step?\n\nI have little sympathy with anyone trying to give their service a name with an embedded zero. If we tried to support it I suspect we\u0027d have a steady stream of bugs.\n\nFor the code here, I\u0027m happy to either document the status quo (it panics) or change it to return an error.\n\nMaking sure we reject such strings on the Java side also sounds like a good thing, but is rather beyond the scope of this CL.",
+      "parentUuid": "f942564a_cea6801a",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 71
+      },
+      "revId": "1a49e4fd6c819c809b51e1bfc5a347daa91c3477",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
