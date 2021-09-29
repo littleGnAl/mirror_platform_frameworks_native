@@ -22,6 +22,30 @@
       },
       "revId": "dc76765d4b6f53220ae7a24fbce1a00d8f3623fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c14f90_42bfbaba",
+        "filename": "libs/binder/tests/rpc_fuzzer/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-09-29T21:04:08Z",
+      "side": 1,
+      "message": "\u003e when multiple certificates are generated, they are different\n\nThat\u0027s the case with or without this flag",
+      "parentUuid": "08f7ddd2_6a31843e",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 46
+      },
+      "revId": "dc76765d4b6f53220ae7a24fbce1a00d8f3623fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
