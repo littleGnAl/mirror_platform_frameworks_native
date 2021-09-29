@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2eee7d_d170e3cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-29T08:13:13Z",
+      "side": 1,
+      "message": "\u003e I think his point is that after the client receives a new binder from the top level service (their VM object), they have no reason to believe they should need to keep the top level binder alive, as they won\u0027t be making any more calls on it. I think that in an ideal world, a process hosting a lazy service would be kept alive by any binder which that process would service, not just the one which triggers its startup but that sounds like it\u0027s not the case at the moment?\n\nYes, exactly. The top-level service is a factory for other more useful objects. That doesn\u0027t seem like an unreasonable or even uncommon pattern.\n\nRight now my workaround is indeed to keep hold of the top-level service in various places, but that puts a burden on every client.\n\n\u003e For instance, could we replace force persist with an API that returns a RefBase object which keeps hold of the persistant state? Non-Rust languages would also benefit from this, and we could add the data in the LazyServiceRegistrar instance which is already allocated on the heap, so that we don\u0027t require more memory in the default case.\n\nThat sounds promising, I think. From my point of view, exposing an atomic counter rather than a boolean is all that\u0027s needed. (The only reason I\u0027m using a mutex here rather than an atomic is because of the need to make the force persist true/false calls.)",
+      "parentUuid": "c48de9e8_07a5c261",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "12213876_fd5f9488",
@@ -154,6 +178,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71c9eae_7c3dc92d",
+        "filename": "libs/binder/rust/src/lazy_service.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-29T08:13:13Z",
+      "side": 1,
+      "message": "Agreed on both.\n(I confess I picked u64 just so I didn\u0027t have to worry about what would happen if I incremented it round to 0.)",
+      "parentUuid": "1b70b577_51521048",
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8d8d437_da397e9a",
@@ -167,6 +209,24 @@
       "writtenOn": "2021-09-28T21:29:08Z",
       "side": 1,
       "message": "Instead of exposing this, could we try to hook this up to be injected into every binder object created in the service iff register_lazy_service has been called? This doesn\u0027t seem like something the client should be handling themselves.\n\nAn alternate option might be to track the number of non-lazy binder service objects present in the process. Then:\n\n* On register_lazy_service, we mark ourselves as immortal if we have more than one non-lazy object present, and decrement it (since that service became lazy)\n* On decrement of non-lazy, if the number of objects would go to zero, disable immortal mode.",
+      "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1b87c5_c7d9f2f0",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-09-29T08:13:13Z",
+      "side": 1,
+      "message": "That sounds good in principle, although I suspect we\u0027d need a way to say \"this particular binder object shouldn\u0027t keep me alive\".",
+      "parentUuid": "e8d8d437_da397e9a",
       "revId": "9009d13fe0a8aba6037ba046748d90a8eb8cb775",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
