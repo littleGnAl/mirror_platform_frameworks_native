@@ -51,7 +51,19 @@ class SomeBinder : public BBinder {
     }
 };
 
+ssize_t countFds() {
+    DIR* dir = opendir("/proc/self/fd/");
+    if (dir == nullptr) return -1;
+    ssize_t ret = 0;
+    dirent* ent;
+    while ((ent = readdir(dir)) != nullptr) ret++;
+    closedir(dir);
+    return ret;
+}
+
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+    CHECK_EQ(countFds(), 3) << "FD LEAK!";
+    
     if (size > 50000) return 0;
     FuzzedDataProvider provider(data, size);
 
