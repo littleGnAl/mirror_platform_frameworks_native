@@ -39,6 +39,10 @@ enum {
     VAL_BOOLEANARRAY = 23,
     VAL_PERSISTABLEBUNDLE = 25,
     VAL_DOUBLEARRAY = 28,
+    VAL_CHAR = 29,
+    VAL_SHORTARRAY = 30,
+    VAL_CHARARRAY = 31,
+    VAL_FLOATARRAY = 32,
 };
 
 } // namespace binder
