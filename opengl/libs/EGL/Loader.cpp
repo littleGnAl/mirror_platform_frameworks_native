@@ -134,9 +134,11 @@ static void* load_wrapper(const char* path) {
 
 #ifndef EGL_WRAPPER_DIR
 #if defined(__LP64__)
+#define ASAN_EGL_WRAPPER_DIR "/data/asan/system/lib64"
 #define EGL_WRAPPER_DIR "/system/lib64"
 #else
-#define EGL_WRAPPER_DIR "/system/lib"
+#define ASAN_EGL_WRAPPER_DIR "/data/asan/system/lib"
+#define EGL_WRAPPER_DIR "/system/lib64"
 #endif
 #endif
 
@@ -284,13 +286,19 @@ void* Loader::open(egl_connection_t* cnx)
                         HAL_SUBNAME_KEY_PROPERTIES[0], HAL_SUBNAME_KEY_PROPERTIES[1]);
 
     if (!cnx->libEgl) {
-        cnx->libEgl = load_wrapper(EGL_WRAPPER_DIR "/libEGL.so");
+        cnx->libEgl = load_wrapper(ASAN_EGL_WRAPPER_DIR "/libEGL.so");
     }
     if (!cnx->libGles1) {
         cnx->libGles1 = load_wrapper(EGL_WRAPPER_DIR "/libGLESv1_CM.so");
     }
+    if (!cnx->libGles1) {
+        cnx->libGles1 = load_wrapper(ASAN_EGL_WRAPPER_DIR "/libGLESv1_CM.so");
+    }
     if (!cnx->libGles2) {
         cnx->libGles2 = load_wrapper(EGL_WRAPPER_DIR "/libGLESv2.so");
+    }
+    if (!cnx->libGles2) {
+        cnx->libGles2 = load_wrapper(ASAN_EGL_WRAPPER_DIR "/libGLESv2.so");
     }
 
     if (!cnx->libEgl || !cnx->libGles2 || !cnx->libGles1) {
@@ -396,10 +404,14 @@ static void* load_system_driver(const char* kind, const char* suffix, const bool
             const char* const searchPaths[] = {
 #if defined(__LP64__)
                     "/vendor/lib64/egl",
-                    "/system/lib64/egl"
+                    "/data/asan/vendor/lib64/egl",
+                    "/system/lib64/egl",
+                    "/data/asan/system/lib64/egl",
 #else
                     "/vendor/lib/egl",
-                    "/system/lib/egl"
+                    "/data/asan/vendor/lib/egl",
+                    "/system/lib/egl",
+                    "/data/asan/system/lib/egl"
 #endif
             };
 

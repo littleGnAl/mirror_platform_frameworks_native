@@ -127,6 +127,7 @@ cc_library_static {
             instruction_set: "arm",
         },
     },
+    sanitize:  { address: true },
 }
 
 cc_library_static {
@@ -137,6 +138,7 @@ cc_library_static {
         "EGL/FileBlobCache.cpp",
     ],
     export_include_dirs: ["EGL"],
+    sanitize:  { address: true },
 }
 
 cc_library_shared {
@@ -182,6 +184,7 @@ cc_library_shared {
         versions: ["29"],
     },
     header_libs: ["libsurfaceflinger_headers"],
+    sanitize:  { address: true },
 }
 
 cc_test {
