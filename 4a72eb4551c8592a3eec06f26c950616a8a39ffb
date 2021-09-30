@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4f1d5c43_fc6b79e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-30T22:51:26Z",
+      "side": 1,
+      "message": "This should be discovered by the fuzzer, but the infrastructure was having some problems since this bug was introduced. See b/199324691",
+      "parentUuid": "65665e7e_3be3e4d0",
+      "revId": "4a72eb4551c8592a3eec06f26c950616a8a39ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a46acc8d_302b8063",
         "filename": "libs/binder/RpcServer.cpp",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-30T22:47:12Z",
       "side": 1,
       "message": "nit: comment about units (bytes) or add to the name?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "4a72eb4551c8592a3eec06f26c950616a8a39ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce8658c_6cf5284f",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-30T22:51:26Z",
+      "side": 1,
+      "message": "done - I would say - not even a nit - great advice always.",
+      "parentUuid": "a46acc8d_302b8063",
       "range": {
         "startLine": 42,
         "startChar": 0,
