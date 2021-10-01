@@ -118,7 +118,7 @@ impl TryFrom<u32> for TestTransactionCode {
 }
 
 impl Interface for TestService {
-    fn dump(&self, _file: &File, args: &[&CStr]) -> binder::Result<()> {
+    fn dump(&self, _file: &mut File, args: &[&CStr]) -> binder::Result<()> {
         let mut dump_args = self.dump_args.lock().unwrap();
         dump_args.extend(args.iter().map(|s| s.to_str().unwrap().to_owned()));
         Ok(())
@@ -539,9 +539,9 @@ mod tests {
 
             let dump_args = ["dump", "args", "for", "testing"];
 
-            let null_out = File::open("/dev/null").expect("Could not open /dev/null");
+            let mut null_out = File::open("/dev/null").expect("Could not open /dev/null");
             remote
-                .dump(&null_out, &dump_args)
+                .dump(&mut null_out, &dump_args)
                 .expect("Could not dump remote service");
 
             let remote_args = test_client.get_dump_args().expect("Could not fetched dumped args");
