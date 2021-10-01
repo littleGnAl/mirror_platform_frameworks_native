@@ -333,7 +333,7 @@ impl<T: Remotable> InterfaceClassMethods for Binder<T> {
             return StatusCode::UNEXPECTED_NULL as status_t;
         }
         // We don't own this file, so we need to be careful not to drop it.
-        let file = ManuallyDrop::new(File::from_raw_fd(fd));
+        let mut file = ManuallyDrop::new(File::from_raw_fd(fd));
 
         if args.is_null() {
             return StatusCode::UNEXPECTED_NULL as status_t;
@@ -343,7 +343,7 @@ impl<T: Remotable> InterfaceClassMethods for Binder<T> {
 
         let object = sys::AIBinder_getUserData(binder);
         let binder: &T = &*(object as *const T);
-        let res = binder.on_dump(&file, &args);
+        let res = binder.on_dump(&mut file, &args);
 
         match res {
             Ok(()) => 0,
@@ -509,7 +509,7 @@ impl Remotable for () {
         Ok(())
     }
 
-    fn on_dump(&self, _file: &File, _args: &[&CStr]) -> Result<()> {
+    fn on_dump(&self, _file: &mut File, _args: &[&CStr]) -> Result<()> {
         Ok(())
     }
 

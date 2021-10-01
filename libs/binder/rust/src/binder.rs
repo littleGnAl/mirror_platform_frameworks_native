@@ -60,7 +60,7 @@ pub trait Interface: Send + Sync {
     ///
     /// This handler is a no-op by default and should be implemented for each
     /// Binder service struct that wishes to respond to dump transactions.
-    fn dump(&self, _file: &File, _args: &[&CStr]) -> Result<()> {
+    fn dump(&self, _file: &mut File, _args: &[&CStr]) -> Result<()> {
         Ok(())
     }
 }
@@ -109,7 +109,7 @@ pub trait Remotable: Send + Sync {
 
     /// Handle a request to invoke the dump transaction on this
     /// object.
-    fn on_dump(&self, file: &File, args: &[&CStr]) -> Result<()>;
+    fn on_dump(&self, file: &mut File, args: &[&CStr]) -> Result<()>;
 
     /// Retrieve the class of this remote object.
     ///
@@ -146,7 +146,7 @@ pub trait IBinderInternal: IBinder {
     fn set_requesting_sid(&mut self, enable: bool);
 
     /// Dump this object to the given file handle
-    fn dump<F: AsRawFd>(&mut self, fp: &F, args: &[&str]) -> Result<()>;
+    fn dump<F: AsRawFd>(&mut self, fp: &mut F, args: &[&str]) -> Result<()>;
 
     /// Get a new interface that exposes additional extension functionality, if
     /// available.
@@ -827,7 +827,7 @@ macro_rules! declare_binder_interface {
                 }
             }
 
-            fn on_dump(&self, file: &std::fs::File, args: &[&std::ffi::CStr]) -> $crate::Result<()> {
+            fn on_dump(&self, file: &mut std::fs::File, args: &[&std::ffi::CStr]) -> $crate::Result<()> {
                 self.0.dump(file, args)
             }
 
