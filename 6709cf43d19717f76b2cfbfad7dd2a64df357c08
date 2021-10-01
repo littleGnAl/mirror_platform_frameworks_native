@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b827f24d_1a3dd702",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-10-01T00:41:05Z",
+      "side": 1,
+      "message": "I actually missed this very important return when I made the suggestion 😄\nIt\u0027s still nice to see the flushes closer to eachother.",
+      "range": {
+        "startLine": 920,
+        "startChar": 8,
+        "endLine": 920,
+        "endChar": 18
+      },
+      "revId": "6709cf43d19717f76b2cfbfad7dd2a64df357c08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
