@@ -118,7 +118,7 @@ impl TryFrom<u32> for TestTransactionCode {
 }
 
 impl Interface for TestService {
-    fn dump(&self, _file: &File, args: &[&CStr]) -> binder::Result<()> {
+    fn dump(&self, _file: &mut File, args: &[&CStr]) -> binder::Result<()> {
         let mut dump_args = self.dump_args.lock().unwrap();
         dump_args.extend(args.iter().map(|s| s.to_str().unwrap().to_owned()));
         Ok(())
