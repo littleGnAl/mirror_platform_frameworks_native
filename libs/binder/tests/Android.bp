@@ -94,6 +94,23 @@ cc_test {
 }
 
 cc_test {
+    name: "binderMemoryHeapBaseUnitTest",
+    target: {
+        darwin: {
+            enabled: false,
+        },
+    },
+   srcs: ["binderMemoryHeapBaseUnitTest.cpp"],
+    shared_libs: [
+        "libbinder",
+        "libcutils",
+        "libutils",
+    ],
+    test_suites: ["general-tests"],
+}
+
+
+cc_test {
     name: "binderLibTest",
     defaults: ["binder_test_defaults"],
     product_variables: {
