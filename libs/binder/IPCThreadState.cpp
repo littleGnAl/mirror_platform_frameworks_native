@@ -64,6 +64,8 @@
 
 #endif
 
+// Log any transactions for which the data exceeds this size
+#define LOG_TRANSACTIONS_OVER_SIZE (500 * 1024)
 // ---------------------------------------------------------------------------
 
 namespace android {
@@ -1277,6 +1279,12 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
             // ALOGI(">>>> TRANSACT from pid %d sid %s uid %d\n", mCallingPid,
             //    (mCallingSid ? mCallingSid : "<N/A>"), mCallingUid);
 
+            if (tr.data_size > LOG_TRANSACTIONS_OVER_SIZE) {
+                TextOutput::Bundle _b(alog);
+                alog << "Large transaction from pid " << mCallingPid << " uid " << mCallingUid
+                     << " size " << tr.data_size << " code " << TypeCode(tr.code) << ": " << indent
+                     << buffer << dedent << endl;
+            }
             Parcel reply;
             status_t error;
             IF_LOG_TRANSACTIONS() {
