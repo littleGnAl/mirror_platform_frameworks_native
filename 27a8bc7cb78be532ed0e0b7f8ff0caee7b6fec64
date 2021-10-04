@@ -22,6 +22,30 @@
       },
       "revId": "27a8bc7cb78be532ed0e0b7f8ff0caee7b6fec64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "270ed285_5142873d",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-04T21:24:37Z",
+      "side": 1,
+      "message": "It\u0027s supposed to be the state of the threads/connections. I\u0027m open to name recommendations, will change it if you have a suggestion. I couldn\u0027t think of anything short enough.",
+      "parentUuid": "88782aed_a8eee67e",
+      "range": {
+        "startLine": 323,
+        "startChar": 6,
+        "endLine": 323,
+        "endChar": 18
+      },
+      "revId": "27a8bc7cb78be532ed0e0b7f8ff0caee7b6fec64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
