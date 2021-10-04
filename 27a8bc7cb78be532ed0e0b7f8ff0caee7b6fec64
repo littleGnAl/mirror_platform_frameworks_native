@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88782aed_a8eee67e",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-04T09:00:09Z",
+      "side": 1,
+      "message": "nit: this reads as a per-thread state, but it isn\u0027t.",
+      "range": {
+        "startLine": 323,
+        "startChar": 6,
+        "endLine": 323,
+        "endChar": 18
+      },
+      "revId": "27a8bc7cb78be532ed0e0b7f8ff0caee7b6fec64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
