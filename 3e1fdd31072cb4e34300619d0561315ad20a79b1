@@ -16,6 +16,70 @@
       "message": "Just an idea - what do you think? Linked bug has some more comments",
       "revId": "3e1fdd31072cb4e34300619d0561315ad20a79b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48654cc3_38ba439b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-04T21:15:38Z",
+      "side": 1,
+      "message": "Based on my 2019 analysis of this and related issues (another-look-at-aidl-hidl-perf) - I would recommend we go with a log limit of 300KB to catch the largest transactions seen there.",
+      "parentUuid": "8aef36bc_39c00882",
+      "revId": "3e1fdd31072cb4e34300619d0561315ad20a79b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a44d61b_ca330356",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-04T21:15:38Z",
+      "side": 1,
+      "message": "I would recommend moving this to be when a transaction is sent instead of when it is received. Given this CL, if a transaction fails to send, then we won\u0027t have this log. However, we want to know _especially_ about transactions which fail due to size.\n\nIf we do it when sending the transactions, we should also log \u0027getInterfaceDescriptor()\u0027 _iff_ it has been fetched (maybe we could finally add getInterfaceDescriptorIfAvailable - for these - I have added it but it must have not gotten merged - dang!).\n\nIf we do it here as well (so that we also get the log for successful transactions), we should log the interface descriptor as well, which would give us more information when the descriptor isn\u0027t already available in the client.",
+      "range": {
+        "startLine": 1282,
+        "startChar": 19,
+        "endLine": 1282,
+        "endChar": 28
+      },
+      "revId": "3e1fdd31072cb4e34300619d0561315ad20a79b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc6167c_a40f9e72",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-04T21:15:38Z",
+      "side": 1,
+      "message": "what does this do?",
+      "range": {
+        "startLine": 1283,
+        "startChar": 0,
+        "endLine": 1283,
+        "endChar": 44
+      },
+      "revId": "3e1fdd31072cb4e34300619d0561315ad20a79b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
