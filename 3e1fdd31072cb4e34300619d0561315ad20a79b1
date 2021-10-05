@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c2df952_d6d75d9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-10-05T13:08:19Z",
+      "side": 1,
+      "message": "Ack!",
+      "parentUuid": "48654cc3_38ba439b",
+      "revId": "3e1fdd31072cb4e34300619d0561315ad20a79b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a44d61b_ca330356",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 2
@@ -61,6 +79,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fd8c2be_70494304",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-10-05T13:08:19Z",
+      "side": 1,
+      "message": "That makes sense. My thinking has been that failing transactions will get noticed if they are important, but that doesn\u0027t have to be true. I will rework this. Dumping the Parcel in the log here may put sensitive data in bugreport, so maybe we should just log the interface name + code (which is usually enough to identify the culprit, anyway)",
+      "parentUuid": "2a44d61b_ca330356",
+      "range": {
+        "startLine": 1282,
+        "startChar": 19,
+        "endLine": 1282,
+        "endChar": 28
+      },
+      "revId": "3e1fdd31072cb4e34300619d0561315ad20a79b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fc6167c_a40f9e72",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 2
@@ -72,6 +114,30 @@
       "writtenOn": "2021-10-04T21:15:38Z",
       "side": 1,
       "message": "what does this do?",
+      "range": {
+        "startLine": 1283,
+        "startChar": 0,
+        "endLine": 1283,
+        "endChar": 44
+      },
+      "revId": "3e1fdd31072cb4e34300619d0561315ad20a79b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331130bd_983960c1",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-10-05T13:08:19Z",
+      "side": 1,
+      "message": "I think useless leftover from a previous attempt.",
+      "parentUuid": "8fc6167c_a40f9e72",
       "range": {
         "startLine": 1283,
         "startChar": 0,
