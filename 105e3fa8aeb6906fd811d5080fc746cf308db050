@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6063c159_cf06789b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-10-05T08:10:07Z",
+      "side": 1,
+      "message": "Yeah.",
+      "parentUuid": "e607c8ea_d8096ec4",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37127cc3_c11b4a21",
@@ -117,6 +135,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb74245f_24decf20",
+        "filename": "libs/binder/rust/binder_tokio/sync_wrapper.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-10-05T08:10:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a43d2bc_ef097ffc",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a67e565_90901852",
@@ -148,6 +184,24 @@
       "side": 1,
       "message": "I added the `+ Sync` because it makes the functions more ergonomic to use. Things that aren\u0027t `Sync` can propagate through many layers of types an async fns, and you will sometimes run into issues with other libraries that have a `: Sync` bound somewhere. A similar discussion can be found in https://github.com/hyperium/hyper/pull/2653.\n\nAlso, this crate does not depend on the futures crate.",
       "parentUuid": "1a67e565_90901852",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ccc966d_839d96fe",
+        "filename": "libs/binder/rust/src/binder_async.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-10-05T08:10:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b347d9b5_befc1bb8",
       "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
