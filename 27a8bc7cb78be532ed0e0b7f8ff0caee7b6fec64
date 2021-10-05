@@ -70,6 +70,30 @@
       },
       "revId": "27a8bc7cb78be532ed0e0b7f8ff0caee7b6fec64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abb2d420_4a630234",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-05T00:44:04Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/native/+/1843848",
+      "parentUuid": "8eeddb53_6072a062",
+      "range": {
+        "startLine": 323,
+        "startChar": 6,
+        "endLine": 323,
+        "endChar": 18
+      },
+      "revId": "27a8bc7cb78be532ed0e0b7f8ff0caee7b6fec64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
