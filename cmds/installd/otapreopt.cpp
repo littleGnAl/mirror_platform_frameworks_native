@@ -246,7 +246,8 @@ private:
           }
           std::string memfd_file = StringPrintf("/proc/%d/fd/%d", getpid(), fd.get());
           std::string error_msg;
-          if (!Exec({"/apex/com.android.sdkext/bin/derive_classpath", memfd_file}, &error_msg)) {
+          if (!Exec({"/apex/com.android.sdkext/bin/derive_classpath", "--output=" + memfd_file},
+                    &error_msg)) {
             PLOG(ERROR) << "Running derive_classpath failed: " << error_msg;
             return false;
           }
