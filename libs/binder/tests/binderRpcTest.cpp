@@ -480,7 +480,7 @@ public:
     struct Options {
         size_t numThreads = 1;
         size_t numSessions = 1;
-        size_t numIncomingConnections = 0;
+        size_t numIncoming = 0;
     };
 
     static inline std::string PrintParamInfo(const testing::TestParamInfo<ParamType>& info) {
@@ -613,7 +613,7 @@ public:
         status_t status;
 
         for (const auto& session : sessions) {
-            session->setMaxThreads(options.numIncomingConnections);
+            session->setMaxThreads(options.numIncoming);
 
             switch (socketType) {
                 case SocketType::PRECONNECTED:
@@ -1160,7 +1160,7 @@ TEST_P(BinderRpc, Callbacks) {
         for (bool callbackIsOneway : {true, false}) {
             for (bool delayed : {true, false}) {
                 auto proc = createRpcTestSocketServerProcess(
-                        {.numThreads = 1, .numSessions = 1, .numIncomingConnections = 1});
+                        {.numThreads = 1, .numSessions = 1, .numIncoming = 1});
                 auto cb = sp<MyBinderRpcCallback>::make();
 
                 if (callIsOneway) {
