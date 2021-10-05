@@ -46,6 +46,30 @@
       },
       "revId": "27a8bc7cb78be532ed0e0b7f8ff0caee7b6fec64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eeddb53_6072a062",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-05T00:36:43Z",
+      "side": 1,
+      "message": "I wasn\u0027t concerned about the length, but the meaning. I like mConnections or mConnectionsState better because threads are just one way of supporting multiple connections. \"A session consists of multiple connections\" seems to be the right abstraction, IMO.",
+      "parentUuid": "270ed285_5142873d",
+      "range": {
+        "startLine": 323,
+        "startChar": 6,
+        "endLine": 323,
+        "endChar": 18
+      },
+      "revId": "27a8bc7cb78be532ed0e0b7f8ff0caee7b6fec64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
