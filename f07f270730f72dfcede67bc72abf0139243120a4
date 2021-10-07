@@ -46,6 +46,30 @@
       },
       "revId": "f07f270730f72dfcede67bc72abf0139243120a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64bb7360_d103bdd9",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-10-07T17:37:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d3fe256_36a40f9b",
+      "range": {
+        "startLine": 223,
+        "startChar": 24,
+        "endLine": 223,
+        "endChar": 38
+      },
+      "revId": "f07f270730f72dfcede67bc72abf0139243120a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
