@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ecbdb76a_cd1bc35f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-10-07T15:29:37Z",
+      "side": 1,
+      "message": "The test passed, but I realized we can\u0027t change the cmdline format since SdkExtension is a Mainline module, and dexpreopt isn\u0027t updated together.  I\u0027ve fixed derive_classpath, and will re-run the test there.",
+      "parentUuid": "e4244bab_4436eb71",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "3f07152b2157e24ab38386dabe1c6c24c72e0b1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4dace9fc_e92d828a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
