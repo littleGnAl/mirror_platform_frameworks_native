@@ -34,6 +34,24 @@
       "parentUuid": "6287c0e5_0d7233f4",
       "revId": "fc62269a3f0c605e7b7450d277e54f7c3ea873ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27fc7151_c7bee190",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-07T22:10:14Z",
+      "side": 1,
+      "message": "Also - if we are using these, are we sure that we won\u0027t accidentally start using many more APIs there. The benefit of the stable APIs is that we can also get input from some knowledgeable people whenever we are adding APIs. WDYT?",
+      "parentUuid": "c7aba458_0cf4c7eb",
+      "revId": "fc62269a3f0c605e7b7450d277e54f7c3ea873ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
