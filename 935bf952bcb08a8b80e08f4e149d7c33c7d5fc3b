@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b33ad2e0_f91c65ef",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-07T18:47:50Z",
+      "side": 1,
+      "message": "check for overflows (ubsan here \u003d aborts)",
+      "range": {
+        "startLine": 573,
+        "startChar": 12,
+        "endLine": 573,
+        "endChar": 59
+      },
+      "revId": "935bf952bcb08a8b80e08f4e149d7c33c7d5fc3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b78d8013_93ad2330",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-07T18:47:50Z",
+      "side": 1,
+      "message": "can this be OOR?",
+      "range": {
+        "startLine": 574,
+        "startChar": 85,
+        "endLine": 574,
+        "endChar": 96
+      },
+      "revId": "935bf952bcb08a8b80e08f4e149d7c33c7d5fc3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa5525f6_8629e7f4",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-07T18:47:50Z",
+      "side": 1,
+      "message": "please add to binder_parcel_fuzzer",
+      "range": {
+        "startLine": 90,
+        "startChar": 9,
+        "endLine": 90,
+        "endChar": 34
+      },
+      "revId": "935bf952bcb08a8b80e08f4e149d7c33c7d5fc3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
