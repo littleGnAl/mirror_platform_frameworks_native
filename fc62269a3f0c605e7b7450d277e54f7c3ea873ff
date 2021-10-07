@@ -52,6 +52,24 @@
       "parentUuid": "c7aba458_0cf4c7eb",
       "revId": "fc62269a3f0c605e7b7450d277e54f7c3ea873ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "780793d8_086f2faa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-10-07T23:32:13Z",
+      "side": 1,
+      "message": "I considered to using it by extending it for our purpose. But for now exposing package_native to virt apex seems to be the simplest thing. I filed a bug about stabilization (b/202115393). Extending libneuralnetworks_packageinfo would be an option for this.\n\nHowever, as you pointed out, how can we rename the lib given that it\u0027s being used by Mainline module(NN)? Should we stick to the name? I think we could introduce a new stable API lib with wider feature set and make libneuralnetworks_packageinfo use it.",
+      "parentUuid": "27fc7151_c7bee190",
+      "revId": "fc62269a3f0c605e7b7450d277e54f7c3ea873ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
