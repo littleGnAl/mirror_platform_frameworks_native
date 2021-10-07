@@ -50,6 +50,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e70ea4c_137149dd",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 20
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-10-07T17:36:40Z",
+      "side": 1,
+      "message": "I have a slight preference for using a \u0026mut here unless we have a good reason for adding the interior mutability. Was that done in C++ for a reason, or was it just how it happened to be written?",
+      "parentUuid": "1f195164_e3e12727",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "deaf2554243d06bd4c1fd03cfdac754508f14206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e71fe5a_718ad2cd",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 20
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-10-07T17:36:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f195164_e3e12727",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "deaf2554243d06bd4c1fd03cfdac754508f14206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bf8ac58_923fdd77",
         "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
         "patchSetId": 20
