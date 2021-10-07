@@ -87,6 +87,7 @@ public:
     void                restoreAllowFds(bool lastValue);
 
     bool                hasFileDescriptors() const;
+    bool hasFileDescriptorsInRange(size_t offset, size_t length) const;
 
     // Zeros data when reallocating. Other mitigations may be added
     // in the future.
