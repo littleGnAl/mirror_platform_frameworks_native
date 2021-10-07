@@ -261,6 +261,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fee1f68a_cb9d157b",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-07T22:18:47Z",
+      "side": 1,
+      "message": "Parcel is not threadsafe. However, AParcel also owns the C++ object. If you are sure all references to it are destroyed, then it is okay to send.",
+      "parentUuid": "4c18c262_b7081fef",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d417736_34195ecb",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 4

@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b085667d_d2436f50",
+        "filename": "libs/binder/rust/binder_tokio/lib.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-07T22:18:47Z",
+      "side": 1,
+      "message": "license headers",
+      "revId": "e531c98fba52f28d601a3e576e6db23169347e55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9eb129f_bd33bc71",
+        "filename": "libs/binder/rust/binder_tokio/sync_wrapper.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-07T22:18:47Z",
+      "side": 1,
+      "message": "What does this type do btw? I don\u0027t quite understand. Would it be worth documenting, or would Rust people understand?",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "e531c98fba52f28d601a3e576e6db23169347e55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
