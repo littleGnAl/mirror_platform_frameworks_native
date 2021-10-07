@@ -566,6 +566,19 @@ bool Parcel::hasFileDescriptors() const
     return mHasFds;
 }
 
+bool Parcel::hasFileDescriptorsInRange(size_t offset, size_t len) const {
+    for (size_t i = 0; i < mObjectsSize; i++) {
+        size_t pos = mObjects[i];
+        if (pos < offset) continue;
+        if (pos + sizeof(flat_binder_object) > offset + len) break;
+        const flat_binder_object* flat = reinterpret_cast<const flat_binder_object*>(mData + pos);
+        if (flat->hdr.type == BINDER_TYPE_FD) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void Parcel::markSensitive() const
 {
     mDeallocZero = true;
@@ -2559,16 +2572,7 @@ void Parcel::initState()
 
 void Parcel::scanForFds() const
 {
-    bool hasFds = false;
-    for (size_t i=0; i<mObjectsSize; i++) {
-        const flat_binder_object* flat
-            = reinterpret_cast<const flat_binder_object*>(mData + mObjects[i]);
-        if (flat->hdr.type == BINDER_TYPE_FD) {
-            hasFds = true;
-            break;
-        }
-    }
-    mHasFds = hasFds;
+    mHasFds = hasFileDescriptorsInRange(0, dataSize());
     mFdsKnown = true;
 }
 
