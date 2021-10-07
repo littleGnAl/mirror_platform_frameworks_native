@@ -16,6 +16,24 @@
       "message": "A gentle ping for owner review, Steven.",
       "revId": "fc62269a3f0c605e7b7450d277e54f7c3ea873ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7aba458_0cf4c7eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-07T22:09:23Z",
+      "side": 1,
+      "message": "sorry - I didn\u0027t realize that this was waiting for me.\n\nWe already have a stable solution for package manager (libneuralnetworks_packageinfo). Sure - maybe the name isn\u0027t great for virt, but I wonder if we could already use these APIs?\n\n+Alex as fyi - (see b/189990754)",
+      "parentUuid": "6287c0e5_0d7233f4",
+      "revId": "fc62269a3f0c605e7b7450d277e54f7c3ea873ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
