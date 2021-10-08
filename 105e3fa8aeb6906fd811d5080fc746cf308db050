@@ -226,6 +226,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c265271_6d7ca17e",
+        "filename": "libs/binder/rust/src/binder_async.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-10-08T20:34:04Z",
+      "side": 1,
+      "message": "So, futures crate aside, I\u0027m not sure I understand from looking at that hyperium pull request *why* it\u0027s useful for a BoxFuture to be sync. The one response giving an example is some guy putting a future into an Arc, which is of questionable usefulness...",
+      "parentUuid": "1ccc966d_839d96fe",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47113941_015680a4",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 4
