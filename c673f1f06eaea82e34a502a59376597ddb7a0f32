@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea491887_df6a34cc",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2580,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-08T05:58:02Z",
+      "side": 1,
+      "message": "How slow is this? I see that this is called when Parcel.equals is called. Do you think we need an optimization like caching this and invalidate it when an FD added or removed?",
+      "range": {
+        "startLine": 2564,
+        "startChar": 0,
+        "endLine": 2580,
+        "endChar": 26
+      },
+      "revId": "c673f1f06eaea82e34a502a59376597ddb7a0f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
