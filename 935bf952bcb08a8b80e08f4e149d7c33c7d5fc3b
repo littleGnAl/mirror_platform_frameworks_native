@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31562fa2_e95ae5cc",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-08T17:47:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "248fd423_bb5b20e9",
+      "range": {
+        "startLine": 574,
+        "startChar": 85,
+        "endLine": 574,
+        "endChar": 96
+      },
+      "revId": "935bf952bcb08a8b80e08f4e149d7c33c7d5fc3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa5525f6_8629e7f4",
