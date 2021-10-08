@@ -140,6 +140,30 @@
       },
       "revId": "935bf952bcb08a8b80e08f4e149d7c33c7d5fc3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd3a892_961c332a",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-08T17:30:45Z",
+      "side": 1,
+      "message": "The idea is to use the (u)?int8_t \u0027data\u0027 field there. You could use it to index some values for this.\n\nIf you file a bug, we can convert this to have access to FuzzedDataProvider at that level.\n\nAs far as the error - this is being run in continuous integration. You can try to sync and see if it fixes it. Otherwise, I can try to figure out what the problem is.",
+      "parentUuid": "d55cca06_a250e0d8",
+      "range": {
+        "startLine": 90,
+        "startChar": 9,
+        "endLine": 90,
+        "endChar": 34
+      },
+      "revId": "935bf952bcb08a8b80e08f4e149d7c33c7d5fc3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
