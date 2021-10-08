@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb041e13_279a8ff2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2021-10-08T23:35:43Z",
+      "side": 1,
+      "message": "Simplified this by removing the default base APEX here.\n\nUsers will need a bit of boilerplate when they want to create their own (e.g. https://r.android.com/1836620), but that\u0027s currently the case for any (non-override) APEX.",
+      "parentUuid": "96c1b8ab_45c47e4b",
+      "revId": "541ed471c6138d8c0b578d3f8f587ee0cc9b232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68a06d00_e2d758cf",
