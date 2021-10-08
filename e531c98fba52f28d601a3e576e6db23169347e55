@@ -39,6 +39,30 @@
       },
       "revId": "e531c98fba52f28d601a3e576e6db23169347e55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f0eacf9_e2aad33a",
+        "filename": "libs/binder/rust/binder_tokio/sync_wrapper.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-10-08T20:31:19Z",
+      "side": 1,
+      "message": "This type allows you to take a non-sync type (e.g. something which cannot have \u0026T present in two threads at once) and wrap it such that it becomes Sync. The logic is that since it abstracts the `T` so that the only thing you can do with it requires a `\u0026mut`, the `Sync` can\u0027t actually be used to do anything.\n\nThis type doesn\u0027t actually appear on the interface of the crate, it is an internal implementation detail of how she is making the returned BoxFutures Sync. I\u0027m still not convinced that they need to be, but if we decide that they do, this should be OK.\n\nAs far as documenting, we could add a note, but I thought a type called \"SyncWrapper\" that implements Sync regardless of whether the type inside is threadsafe was kind of self-explanatory.",
+      "parentUuid": "f9eb129f_bd33bc71",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "e531c98fba52f28d601a3e576e6db23169347e55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
