@@ -22,6 +22,30 @@
       },
       "revId": "c673f1f06eaea82e34a502a59376597ddb7a0f32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d80266_a5dc3708",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2580,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-08T18:03:45Z",
+      "side": 1,
+      "message": "hey - thanks Jiyong. I was planning on removing this function immediately - forgot I need to remove other users.",
+      "parentUuid": "ea491887_df6a34cc",
+      "range": {
+        "startLine": 2564,
+        "startChar": 0,
+        "endLine": 2580,
+        "endChar": 26
+      },
+      "revId": "c673f1f06eaea82e34a502a59376597ddb7a0f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
