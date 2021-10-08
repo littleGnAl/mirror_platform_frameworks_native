@@ -60,7 +60,7 @@ pub trait Interface: Send + Sync {
     ///
     /// This handler is a no-op by default and should be implemented for each
     /// Binder service struct that wishes to respond to dump transactions.
-    fn dump(&self, _file: &File, _args: &[&CStr]) -> Result<()> {
+    fn dump(&self, _file: &mut File, _args: &[&CStr]) -> Result<()> {
         Ok(())
     }
 }
@@ -828,7 +828,7 @@ macro_rules! declare_binder_interface {
             }
 
             fn on_dump(&self, file: &mut std::fs::File, args: &[&std::ffi::CStr]) -> $crate::Result<()> {
-                self.0.dump(mut file, args)
+                self.0.dump(file, args)
             }
 
             fn get_class() -> $crate::InterfaceClass {
