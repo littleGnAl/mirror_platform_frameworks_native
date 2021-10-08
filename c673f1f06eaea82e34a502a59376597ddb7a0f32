@@ -46,6 +46,30 @@
       },
       "revId": "c673f1f06eaea82e34a502a59376597ddb7a0f32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87eef90c_5e0e29f1",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2580,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-08T20:48:55Z",
+      "side": 1,
+      "message": "Yeah - actually I believe that is dead code. Note also - I\u0027ll finish the naming migration once this lands (b/202029388).",
+      "parentUuid": "78d80266_a5dc3708",
+      "range": {
+        "startLine": 2564,
+        "startChar": 0,
+        "endLine": 2580,
+        "endChar": 26
+      },
+      "revId": "c673f1f06eaea82e34a502a59376597ddb7a0f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
