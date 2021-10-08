@@ -520,6 +520,26 @@ int Parcel::compareData(const Parcel& other) {
     return memcmp(data(), other.data(), size);
 }
 
+status_t Parcel::compareDataInRange(size_t thisOffset, const Parcel& other, size_t otherOffset,
+                                    size_t len, int& result) {
+    if (len > INT32_MAX || thisOffset > INT32_MAX || otherOffset > INT32_MAX) {
+        // Don't accept size_t values which may have come from an inadvertent conversion from a
+        // negative int.
+        return BAD_VALUE;
+    }
+    size_t thisLimit = thisOffset + len;
+    if (thisOffset >= mDataSize || thisLimit > mDataSize || thisOffset > thisLimit) {
+        return BAD_VALUE;
+    }
+    size_t otherLimit = otherOffset + len;
+    if (otherOffset >= other.mDataSize || otherLimit > other.mDataSize ||
+        otherOffset > otherLimit) {
+        return BAD_VALUE;
+    }
+    result = memcmp(data() + thisOffset, other.data() + otherOffset, len);
+    return NO_ERROR;
+}
+
 bool Parcel::allowFds() const
 {
     return mAllowFds;
