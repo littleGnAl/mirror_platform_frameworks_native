@@ -72,6 +72,18 @@ public:
     size_t getMaxIncomingThreads();
 
     /**
+     * Set the maximum number of outgoing threads allowed to be made.
+     * By default, this is SIZE_MAX. This must be called before setting up this connection as a
+     * client.
+     *
+     * This limits the number of outgoing threads on top of the remote peer setting. This RpcSession
+     * will only instantiate |min(maxOutgoingThreads, remoteMaxThreads)| outgoing threads, where
+     * |remoteMaxThreads| can be retrieved from the remote peer via |getRemoteMaxThreads()|.
+     */
+    void setMaxOutgoingThreads(size_t threads);
+    size_t getMaxOutgoingThreads();
+
+    /**
      * By default, the minimum of the supported versions of the client and the
      * server will be used. Usually, this API should only be used for debugging.
      */
@@ -308,6 +320,7 @@ private:
     std::mutex mMutex; // for all below
 
     size_t mMaxIncomingThreads = 0;
+    size_t mMaxOutgoingThreads = SIZE_MAX;
     std::optional<uint32_t> mProtocolVersion;
 
     std::condition_variable mAvailableConnectionCv; // for mWaitingThreads
