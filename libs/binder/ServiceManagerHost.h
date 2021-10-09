@@ -26,6 +26,7 @@ namespace android {
 // Return nullptr on any error.
 // When the returned binder object is destroyed, remove adb forwarding and kills
 // the long-running servicedispatcher process.
-sp<IBinder> getDeviceService(std::vector<std::string>&& serviceDispatcherArgs);
+sp<IBinder> getDeviceService(std::vector<std::string>&& serviceDispatcherArgs,
+                             size_t maxOutgoingThreads);
 
 } // namespace android
