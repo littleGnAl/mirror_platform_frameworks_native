@@ -46,6 +46,30 @@
       },
       "revId": "c7305998b48082ccaf4c6136dd918bf882f9f2bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b166ae69_711061a2",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-11T22:29:18Z",
+      "side": 1,
+      "message": "Yeah - see comment on parent. You could make it 10, and you could also use the same struct to have defaults inside of RpcSession itself.",
+      "parentUuid": "513b4c6e_7fbbc82d",
+      "range": {
+        "startLine": 195,
+        "startChar": 52,
+        "endLine": 195,
+        "endChar": 77
+      },
+      "revId": "c7305998b48082ccaf4c6136dd918bf882f9f2bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
