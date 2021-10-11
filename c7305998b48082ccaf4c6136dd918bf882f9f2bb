@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042cf62f_0ef13c77",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-11T18:15:37Z",
+      "side": 1,
+      "message": "for future compatibility, WDYT of making the option a struct?",
+      "range": {
+        "startLine": 195,
+        "startChar": 52,
+        "endLine": 195,
+        "endChar": 77
+      },
+      "revId": "c7305998b48082ccaf4c6136dd918bf882f9f2bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
