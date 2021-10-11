@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "376b96f0_dea00c8d",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-11T22:35:08Z",
+      "side": 1,
+      "message": "Yeah - we should log this. For instance, if someone is having deadlock issues, and they are requesting more threads be started, they need to be notified why that change isn\u0027t fixing the issue. It could be hard to debug.",
+      "parentUuid": "e60e40ad_b8f3adfc",
+      "range": {
+        "startLine": 490,
+        "startChar": 34,
+        "endLine": 490,
+        "endChar": 37
+      },
+      "revId": "8074a16190e56c195961856ba4f99cd46bb25101",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab1b0384_3b49e1e6",
         "filename": "libs/binder/include/binder/RpcSession.h",
         "patchSetId": 2
