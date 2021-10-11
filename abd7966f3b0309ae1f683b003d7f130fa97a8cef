@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a677a726_55586db9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-10-11T23:18:43Z",
+      "side": 1,
+      "message": "Oops! This latest patch set is unrelated to the initial stuff in this CL... the testing I had initially was really close the Default testing I was doing and just kept amending this commit with this Change-Id. But, I removed all that and went with a very simple test case in binderRpcTest instead.",
+      "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

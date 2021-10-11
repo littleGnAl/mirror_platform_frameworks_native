@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a56827ec_794c0601",
+        "filename": "libs/binder/tests/binderDefaultImplTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-10-11T23:18:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a512621_5b149312",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "3792e6f21ea68c345c3d9e3bf2cdf332965d30d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6495c4e_6aa89c83",
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "Yeah, I\u0027ve been checking ps for any lingering procs. I don\u0027t see anything sticking around.\nI will need to find a way to get the server to disconnect and clean up so we can re-run the test anyway. Right now it thinks \"/data/local/tmp/myAddress2\" is still in use even with the kill() or trying to delete with the android::base API there.\n\nBut, since the rest of this test isn\u0027t working correctly, I don\u0027t think I\u0027ll be submitting this.",
       "parentUuid": "829873c6_d96a2a0c",
+      "range": {
+        "startLine": 107,
+        "startChar": 22,
+        "endLine": 107,
+        "endChar": 23
+      },
+      "revId": "3792e6f21ea68c345c3d9e3bf2cdf332965d30d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d254011_1a5ef893",
+        "filename": "libs/binder/tests/binderDefaultImplTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-10-11T23:18:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aa362c12_a39deb5a",
       "range": {
         "startLine": 107,
         "startChar": 22,
