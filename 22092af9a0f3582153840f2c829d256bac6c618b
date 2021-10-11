@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0a370e_0b01a422",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133744
+      },
+      "writtenOn": "2021-10-11T13:33:17Z",
+      "side": 1,
+      "message": "PS6: There was a bug where if the FD was written after rewinding the cursor with setDataPosition() the method could return false because it assumed mObjects was always sorted. Fixed that and added a test for this case in the CTS.",
+      "revId": "22092af9a0f3582153840f2c829d256bac6c618b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
