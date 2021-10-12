@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4fff7ca_87d28753",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-10-12T14:10:19Z",
+      "side": 1,
+      "message": "It would be good to specify here exactly which tests you ran, e.g. by giving the atest command.",
+      "revId": "7c1326a72f64457e188dafcc94758477a4a6ee51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7c281856_7eb0d175",
@@ -14,6 +31,40 @@
       "writtenOn": "2021-10-12T13:53:56Z",
       "side": 1,
       "message": "Hi Andrew! PTAL",
+      "revId": "7c1326a72f64457e188dafcc94758477a4a6ee51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6b5691_a22468ea",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-10-12T14:10:19Z",
+      "side": 1,
+      "message": "Is this change needed? The only place I can see where this is implemented is in proxy.rs, and that doesn\u0027t need an `\u0026mut F`. With the only bound being `AsRawFd` I don\u0027t see what use mutability could be anyway, the only method it has is `as_raw_fd(\u0026self)`.",
+      "revId": "7c1326a72f64457e188dafcc94758477a4a6ee51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985667f0_c5ac3932",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-10-12T14:10:19Z",
+      "side": 1,
+      "message": "This doesn\u0027t need a mutable reference.",
       "revId": "7c1326a72f64457e188dafcc94758477a4a6ee51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
