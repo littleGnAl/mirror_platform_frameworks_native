@@ -110,6 +110,30 @@
       },
       "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69cde4b3_a76180a7",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-12T18:33:54Z",
+      "side": 1,
+      "message": "Oh, that\u0027s the reason, we are giving a refcount to defaultServiceManager. I guess in this case, defaultServiceManager won\u0027t drop the ref until it gets a death notification, which will happen much later. Though, it would cause use-after-delete if this did happen, or if another service registered over shimmy (e.g. if you run two instances of this test at the same time).\n\nWe should either avoid registering this with the defaultServiceManager, or we should register something else over it (this could be racey to cleanup the ref though - might need to ping it or similar).",
+      "parentUuid": "0260f0d0_b538db6d",
+      "range": {
+        "startLine": 1296,
+        "startChar": 0,
+        "endLine": 1296,
+        "endChar": 35
+      },
+      "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
