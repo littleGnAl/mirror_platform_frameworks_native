@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "891995ca_2b08b9db",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1897307
+      },
+      "writtenOn": "2021-10-12T19:55:32Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand this. From what I can see the implementation in proxy.rs calls cs/android/frameworks/native/libs/binder/ndk/ibinder.cpp?l\u003d504. While the resultant file being transferred is mutable,  the file descriptor need not be.\n\nchanging this back to immutable reference..",
+      "parentUuid": "9c6b5691_a22468ea",
+      "revId": "7c1326a72f64457e188dafcc94758477a4a6ee51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "985667f0_c5ac3932",
         "filename": "libs/binder/rust/src/proxy.rs",
         "patchSetId": 5
