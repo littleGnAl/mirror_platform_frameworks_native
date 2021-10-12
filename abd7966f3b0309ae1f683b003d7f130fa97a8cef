@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48fd9479_7cb7ef92",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-10-12T18:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc191c92_b9dae1cb",
+      "range": {
+        "startLine": 1288,
+        "startChar": 44,
+        "endLine": 1288,
+        "endChar": 47
+      },
+      "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f6c3fc8_fdce4ccd",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-12T00:43:59Z",
       "side": 1,
       "message": "this shouldn\u0027t be needed (should be implicit in L1288), because it happens in ~sp\u003cIBinderRpcTestDelegate\u003e\n\nI would think this would crash the program, but maybe something else is causing it. You can debug seeing how many refcounts are added here by calling \u0027myDelegate-\u003egetStrongCount()\u0027 - I would expect it to be 1 here\n\nOne other possibility is that there is a leak somewhere else.",
+      "range": {
+        "startLine": 1296,
+        "startChar": 0,
+        "endLine": 1296,
+        "endChar": 35
+      },
+      "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0260f0d0_b538db6d",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-10-12T18:16:22Z",
+      "side": 1,
+      "message": "Without it, the tests fail in the ProcessSession destructor because countBinders is 1.\nIs ProcessSession destructor called before the Delegator destructor? Things I\u0027ve seen online say the destructors should be called in revers order of their construction(stack), so in this case the Delegator should be destructed first.\n\nAfter I addService(), getStrongCount() is 2, not 1.\nI see the same strong count behavior when registering a regular interface in binderStabilityTest main(), so it is expected to be 2 here?",
+      "parentUuid": "6f6c3fc8_fdce4ccd",
       "range": {
         "startLine": 1296,
         "startChar": 0,
