@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c281856_7eb0d175",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1897307
+      },
+      "writtenOn": "2021-10-12T13:53:56Z",
+      "side": 1,
+      "message": "Hi Andrew! PTAL",
+      "revId": "7c1326a72f64457e188dafcc94758477a4a6ee51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
