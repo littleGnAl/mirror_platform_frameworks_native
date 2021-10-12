@@ -244,6 +244,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c87d9dd_36995223",
+        "filename": "libs/binder/rust/src/binder_async.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-10-12T07:55:18Z",
+      "side": 1,
+      "message": "The example isn\u0027t putting the future in an arc - it\u0027s putting a closure that returns a future in an Arc. But it\u0027s isn\u0027t the Arc causing the requirement here, it\u0027s something else not visible in the comment, probably the way they defined the struct containing that `inner` field.\n\nGenerally the reason you want your futures to be Sync is because there are rather many crates out there that require the Sync bound on streams, and the lack of Sync would bubble up to any stream using these binder calls internally in any way.\n\nArguably this is usually a mistake of some sort in the external crate, but when you run into it it\u0027s a really cryptic compiler error, and it\u0027s really difficult to work around when you do run into it. The only workaround I know that doesn\u0027t involve fixing the external crate or writing unsafe code is to wrap the future in  `tokio_util::sync::ReusableBoxFuture`. I added the SyncWrapper here to reduce the chance that anyone runs into that error.\n\nOne example of such a requirement can be found here: https://docs.rs/tonic/0.5.2/tonic/client/struct.Grpc.html#method.client_streaming",
+      "parentUuid": "3c265271_6d7ca17e",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47113941_015680a4",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 4
@@ -332,6 +350,30 @@
       "side": 1,
       "message": "Sure, I\u0027ll do that next week.",
       "parentUuid": "3d417736_34195ecb",
+      "range": {
+        "startLine": 158,
+        "startChar": 10,
+        "endLine": 158,
+        "endChar": 16
+      },
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa123fe9_3f28169b",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-10-12T07:55:18Z",
+      "side": 1,
+      "message": "I couldn\u0027t find the test folder you are referring to. Where do you want me to add this?",
+      "parentUuid": "0f844f08_ea501853",
       "range": {
         "startLine": 158,
         "startChar": 10,
