@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02afd93f_d5393384",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-10-12T15:42:04Z",
+      "side": 1,
+      "message": "formatting",
+      "range": {
+        "startLine": 305,
+        "startChar": 100,
+        "endLine": 305,
+        "endChar": 124
+      },
+      "revId": "2a3297f0b518a1efeb68786ebe0222387d5bb214",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
