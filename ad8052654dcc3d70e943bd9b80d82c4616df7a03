@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "860bf7f2_9981872b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-10-12T11:19:31Z",
+      "side": 1,
+      "message": "It seems like the build was broken by the introduction of a new non-threadsafe ParcelableHolder type, which is used as the argument to some AIDl calls. Ref: b/169035750",
+      "revId": "ad8052654dcc3d70e943bd9b80d82c4616df7a03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
