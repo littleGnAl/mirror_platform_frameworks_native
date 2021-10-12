@@ -134,6 +134,30 @@
       },
       "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1c64b6_2f596f44",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-10-12T23:10:11Z",
+      "side": 1,
+      "message": "I\u0027ll just avoid registering it to avoid the racing. \nI don\u0027t imagine there will be changes to the delegator that would break the ability to register with service manager. I just needed to make sure it would work for developing it in the first place.",
+      "parentUuid": "69cde4b3_a76180a7",
+      "range": {
+        "startLine": 1296,
+        "startChar": 0,
+        "endLine": 1296,
+        "endChar": 35
+      },
+      "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
