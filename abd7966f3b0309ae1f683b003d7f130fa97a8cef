@@ -16,6 +16,52 @@
       "message": "Oops! This latest patch set is unrelated to the initial stuff in this CL... the testing I had initially was really close the Default testing I was doing and just kept amending this commit with this Change-Id. But, I removed all that and went with a very simple test case in binderRpcTest instead.",
       "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc191c92_b9dae1cb",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-12T00:43:59Z",
+      "side": 1,
+      "message": "nit: pref sp\u003cIBinderRpcTestDelegate\u003e::make(...)",
+      "range": {
+        "startLine": 1288,
+        "startChar": 44,
+        "endLine": 1288,
+        "endChar": 47
+      },
+      "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f6c3fc8_fdce4ccd",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-12T00:43:59Z",
+      "side": 1,
+      "message": "this shouldn\u0027t be needed (should be implicit in L1288), because it happens in ~sp\u003cIBinderRpcTestDelegate\u003e\n\nI would think this would crash the program, but maybe something else is causing it. You can debug seeing how many refcounts are added here by calling \u0027myDelegate-\u003egetStrongCount()\u0027 - I would expect it to be 1 here\n\nOne other possibility is that there is a leak somewhere else.",
+      "range": {
+        "startLine": 1296,
+        "startChar": 0,
+        "endLine": 1296,
+        "endChar": 35
+      },
+      "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
