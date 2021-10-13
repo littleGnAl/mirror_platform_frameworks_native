@@ -158,6 +158,30 @@
       },
       "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2fafd0e_03a86916",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-13T17:44:01Z",
+      "side": 1,
+      "message": "Agreed - these are orthogonal concepts, and they should be tested independently. You\u0027ll have a separate independent test for the entire shim design.",
+      "parentUuid": "8e1c64b6_2f596f44",
+      "range": {
+        "startLine": 1296,
+        "startChar": 0,
+        "endLine": 1296,
+        "endChar": 35
+      },
+      "revId": "abd7966f3b0309ae1f683b003d7f130fa97a8cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26b61d68_33d88917",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-13T17:44:01Z",
+      "side": 1,
+      "message": "super nit - sorry should have mentioned earlier - it might be worth it to override one method here, and show that you can call the original method or the override method. This is mostly to make sure that the class methods are actually overridable as intended.",
+      "range": {
+        "startLine": 1304,
+        "startChar": 26,
+        "endLine": 1304,
+        "endChar": 49
+      },
+      "revId": "ce26310c4518b6d72e748c99cf7521a5057262bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
