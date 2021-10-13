@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43dbcba6_53dcfd80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-10-13T00:28:04Z",
+      "side": 1,
+      "message": "please also review Steven\u0027s comments on internal master.",
+      "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c35e962_ce1ed654",
+        "filename": "libs/binder/MemoryHeapBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-10-13T00:28:04Z",
+      "side": 1,
+      "message": "will this logspam?",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 79,
+        "endChar": 13
+      },
+      "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
