@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2463b814_0580a056",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-10-13T18:49:00Z",
+      "side": 1,
+      "message": "https://play.rust-lang.org/?version\u003dstable\u0026mode\u003ddebug\u0026edition\u003d2018\u0026gist\u003d6ab5f1497660cd3f1e5fa7f27e251494\n\nWe could consider changing the signature, but your reasoning is incorrect. You can write to a \u0026File just fine - I\u0027m guessing the error message confused you. A `\u0026mut \u0026File` writes just fine, so you can just have a mutable local variable or argument which starts with the passed in \u0026File and it will work fine.",
+      "revId": "3f517e41bbf65959061c30f26ed95bd2ad457daa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
