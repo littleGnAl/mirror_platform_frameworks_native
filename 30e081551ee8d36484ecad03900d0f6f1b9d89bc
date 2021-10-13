@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e6432d_648dd96f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-13T22:41:57Z",
+      "side": 1,
+      "message": "Sorry, I already have uploaded https://android-review.googlesource.com/q/topic:delete_use_apex_name_macro, but forgot to ask review.",
+      "revId": "30e081551ee8d36484ecad03900d0f6f1b9d89bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
