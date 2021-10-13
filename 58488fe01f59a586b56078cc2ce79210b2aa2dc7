@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "054e881b_830e7478",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-13T23:19:24Z",
+      "side": 0,
+      "message": "We might need both, what happens when IBinder[] (is that the AIDL type here, or is it List\u003cIBinder\u003e?) is an input argument?",
+      "revId": "58488fe01f59a586b56078cc2ce79210b2aa2dc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
