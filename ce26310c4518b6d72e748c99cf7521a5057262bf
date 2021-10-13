@@ -22,6 +22,30 @@
       },
       "revId": "ce26310c4518b6d72e748c99cf7521a5057262bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78aed613_96e45bdc",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-10-13T17:48:06Z",
+      "side": 1,
+      "message": "Separately from that test in the aidl_integration_test?\nhttps://android-review.googlesource.com/c/platform/system/tools/aidl/+/1854059/3/tests/aidl_test_client_delegate.cpp\nLike there might be differences between overriding an RPC method and a binder method?",
+      "parentUuid": "26b61d68_33d88917",
+      "range": {
+        "startLine": 1304,
+        "startChar": 26,
+        "endLine": 1304,
+        "endChar": 49
+      },
+      "revId": "ce26310c4518b6d72e748c99cf7521a5057262bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
