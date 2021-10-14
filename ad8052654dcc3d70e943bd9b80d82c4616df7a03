@@ -16,6 +16,23 @@
       "message": "It seems like the build was broken by the introduction of a new non-threadsafe ParcelableHolder type, which is used as the argument to some AIDl calls. Ref: b/169035750",
       "revId": "ad8052654dcc3d70e943bd9b80d82c4616df7a03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2769b5f_133d16bb",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-14T02:55:37Z",
+      "side": 1,
+      "message": "This needs to be Parcel::Owned(self.into_raw()) otherwise the destructor gets called at the end of the function, then again later for Parcel. I\u0027ll fix it in the other CL.",
+      "revId": "ad8052654dcc3d70e943bd9b80d82c4616df7a03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
