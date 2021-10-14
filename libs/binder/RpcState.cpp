@@ -333,6 +333,34 @@ status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
     return OK;
 }
 
+// FIXME: decopy
+status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
+                           const sp<RpcSession>& session, const char* what, iovec* iovs,
+                           size_t niovs, const std::function<status_t()>& altPoll) {
+    (void)what;
+    //    LOG_RPC_DETAIL("Sending %s on RpcTransport %p: %s", what, connection->rpcTransport.get(),
+    //                   android::base::HexString(data, size).c_str());
+
+    //    if (size > std::numeric_limits<ssize_t>::max()) {
+    //        ALOGE("Cannot send %s at size %zu (too big)", what, size);
+    //        (void)session->shutdownAndWait(false);
+    //        return BAD_VALUE;
+    //    }
+
+    if (status_t status =
+                connection->rpcTransport->interruptableWriteFully(session->mShutdownTrigger.get(),
+                                                                  iovs, niovs, altPoll);
+        status != OK) {
+        // LOG_RPC_DETAIL("Failed to write %s (%zu bytes) on RpcTransport %p, error: %s", what,
+        // size,
+        //               connection->rpcTransport.get(), statusToString(status).c_str());
+        (void)session->shutdownAndWait(false);
+        return status;
+    }
+
+    return OK;
+}
+
 status_t RpcState::rpcRec(const sp<RpcSession::RpcConnection>& connection,
                           const sp<RpcSession>& session, const char* what, void* data,
                           size_t size) {
@@ -514,17 +542,12 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
             .flags = flags,
             .asyncNumber = asyncNumber,
     };
-    CommandData transactionData(sizeof(RpcWireHeader) + sizeof(RpcWireTransaction) +
-                                data.dataSize());
-    if (!transactionData.valid()) {
-        return NO_MEMORY;
-    }
 
-    memcpy(transactionData.data() + 0, &command, sizeof(RpcWireHeader));
-    memcpy(transactionData.data() + sizeof(RpcWireHeader), &transaction,
-           sizeof(RpcWireTransaction));
-    memcpy(transactionData.data() + sizeof(RpcWireHeader) + sizeof(RpcWireTransaction), data.data(),
-           data.dataSize());
+    iovec iovs[] = {
+            {&command, sizeof(RpcWireHeader)},
+            {&transaction, sizeof(RpcWireTransaction)},
+            {(void*)data.data(), data.dataSize()},
+    };
 
     constexpr size_t kWaitMaxUs = 1000000;
     constexpr size_t kWaitLogUs = 10000;
@@ -550,8 +573,7 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
         return drainCommands(connection, session, CommandType::CONTROL_ONLY);
     };
 
-    if (status_t status = rpcSend(connection, session, "transaction", transactionData.data(),
-                                  transactionData.size(), drainRefs);
+    if (status_t status = rpcSend(connection, session, "transaction", iovs, 3 /*fixme*/, drainRefs);
         status != OK) {
         // TODO(b/167966510): need to undo onBinderLeaving - we know the
         // refcount isn't successfully transferred.

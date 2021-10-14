@@ -38,6 +38,19 @@ class RpcTransport {
 public:
     virtual ~RpcTransport() = default;
 
+    // FIXME: decopy
+    [[nodiscard]] status_t interruptableWriteFully(FdTrigger *fdTrigger, const void *buf,
+                                                   size_t size,
+                                                   const std::function<status_t()> &altPoll) {
+        iovec iovs[] = {{const_cast<void *>(buf), size}};
+        return interruptableWriteFully(fdTrigger, iovs, 1, altPoll);
+    }
+    [[nodiscard]] status_t interruptableReadFully(FdTrigger *fdTrigger, void *buf, size_t size,
+                                                  const std::function<status_t()> &altPoll) {
+        iovec iovs[] = {{buf, size}};
+        return interruptableReadFully(fdTrigger, iovs, 1, altPoll);
+    }
+
     // replacement of ::recv(MSG_PEEK). Error code may not be set if TLS is enabled.
     [[nodiscard]] virtual android::base::Result<size_t> peek(void *buf, size_t size) = 0;
 
@@ -53,10 +66,10 @@ public:
      *   error - interrupted (failure or trigger)
      */
     [[nodiscard]] virtual status_t interruptableWriteFully(
-            FdTrigger *fdTrigger, const void *buf, size_t size,
+            FdTrigger *fdTrigger, iovec *iovs, size_t niovs,
             const std::function<status_t()> &altPoll) = 0;
     [[nodiscard]] virtual status_t interruptableReadFully(
-            FdTrigger *fdTrigger, void *buf, size_t size,
+            FdTrigger *fdTrigger, iovec *iovs, size_t niovs,
             const std::function<status_t()> &altPoll) = 0;
 
 protected:

@@ -275,9 +275,9 @@ public:
     RpcTransportTls(android::base::unique_fd socket, Ssl ssl)
           : mSocket(std::move(socket)), mSsl(std::move(ssl)) {}
     Result<size_t> peek(void* buf, size_t size) override;
-    status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size,
+    status_t interruptableWriteFully(FdTrigger* fdTrigger, iovec* iovs, size_t niovs,
                                      const std::function<status_t()>& altPoll) override;
-    status_t interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size,
+    status_t interruptableReadFully(FdTrigger* fdTrigger, iovec* iovs, size_t niovs,
                                     const std::function<status_t()>& altPoll) override;
 
 private:
@@ -303,11 +303,19 @@ Result<size_t> RpcTransportTls::peek(void* buf, size_t size) {
     return ret;
 }
 
-status_t RpcTransportTls::interruptableWriteFully(FdTrigger* fdTrigger, const void* data,
-                                                  size_t size,
+status_t RpcTransportTls::interruptableWriteFully(FdTrigger* fdTrigger, iovec* iovs, size_t niovs,
                                                   const std::function<status_t()>& altPoll) {
-    auto buffer = reinterpret_cast<const uint8_t*>(data);
-    const uint8_t* end = buffer + size;
+    // FIXME
+    size_t total = 0;
+    for (size_t i = 0; i < niovs; i++) total += iovs[i].iov_len;
+    std::vector<uint8_t> data;
+    data.reserve(total);
+    for (size_t i = 0; i < niovs; i++)
+        data.insert(data.end(), reinterpret_cast<uint8_t*>(iovs[i].iov_base),
+                    reinterpret_cast<uint8_t*>(iovs[i].iov_base) + iovs[i].iov_len);
+
+    auto buffer = reinterpret_cast<const uint8_t*>(data.data());
+    const uint8_t* end = buffer + data.size();
 
     MAYBE_WAIT_IN_FLAKE_MODE;
 
@@ -332,14 +340,20 @@ status_t RpcTransportTls::interruptableWriteFully(FdTrigger* fdTrigger, const vo
         if (pollStatus != OK) return pollStatus;
         // Do not advance buffer. Try SSL_write() again.
     }
-    LOG_TLS_DETAIL("TLS: Sent %zu bytes!", size);
+    LOG_TLS_DETAIL("TLS: Sent %zu bytes!", data.size());
     return OK;
 }
 
-status_t RpcTransportTls::interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size,
+status_t RpcTransportTls::interruptableReadFully(FdTrigger* fdTrigger, iovec* iovs, size_t niovs,
                                                  const std::function<status_t()>& altPoll) {
-    auto buffer = reinterpret_cast<uint8_t*>(data);
-    uint8_t* end = buffer + size;
+    // FIXME
+    size_t total = 0;
+    for (size_t i = 0; i < niovs; i++) total += iovs[i].iov_len;
+    std::vector<uint8_t> data;
+    data.resize(total);
+
+    auto buffer = reinterpret_cast<uint8_t*>(data.data());
+    uint8_t* end = buffer + data.size();
 
     MAYBE_WAIT_IN_FLAKE_MODE;
 
@@ -366,7 +380,15 @@ status_t RpcTransportTls::interruptableReadFully(FdTrigger* fdTrigger, void* dat
         if (pollStatus != OK) return pollStatus;
         // Do not advance buffer. Try SSL_read() again.
     }
-    LOG_TLS_DETAIL("TLS: Received %zu bytes!", size);
+    LOG_TLS_DETAIL("TLS: Received %zu bytes!", data.size());
+
+    // what a mess
+    uint8_t* ptr = data.data();
+    for (size_t i = 0; i < niovs; i++) {
+        memcpy(iovs[i].iov_base, ptr, iovs[i].iov_len);
+        ptr += iovs[i].iov_len;
+    }
+
     return OK;
 }
 
