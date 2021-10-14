@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "886d4727_e5c45aff",
+        "filename": "libs/binder/MemoryHeapBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-14T01:19:27Z",
+      "side": 1,
+      "message": "I think thread from internal CL got lost, can we update libbinder to be at the next API level? or file an issue for that? We shouldn\u0027t need this",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c35e962_ce1ed654",
         "filename": "libs/binder/MemoryHeapBase.cpp",
         "patchSetId": 1
@@ -37,6 +60,69 @@
         "endLine": 79,
         "endChar": 13
       },
+      "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a18b2e_47e9d4eb",
+        "filename": "libs/binder/MemoryHeapBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-14T01:19:27Z",
+      "side": 1,
+      "message": "same as below",
+      "range": {
+        "startLine": 83,
+        "startChar": 41,
+        "endLine": 83,
+        "endChar": 47
+      },
+      "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df63ebc4_87962bc3",
+        "filename": "libs/binder/MemoryHeapBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-14T01:19:27Z",
+      "side": 1,
+      "message": "hard abort w/ error message for bad client usage?",
+      "range": {
+        "startLine": 109,
+        "startChar": 53,
+        "endLine": 109,
+        "endChar": 59
+      },
+      "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ee869d7_1a705d71",
+        "filename": "libs/binder/MemoryHeapBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-14T01:19:27Z",
+      "side": 1,
+      "message": "same",
       "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
