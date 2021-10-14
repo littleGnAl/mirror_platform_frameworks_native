@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5b79063_d3b8645a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-10-14T01:22:22Z",
+      "side": 1,
+      "message": "add an API to libcutils that lets a caller opt-in early instead of duplicating?",
+      "range": {
+        "startLine": 11,
+        "startChar": 43,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6722a706_7fa2db4f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
