@@ -16,6 +16,24 @@
       "message": "We might need both, what happens when IBinder[] (is that the AIDL type here, or is it List\u003cIBinder\u003e?) is an input argument?",
       "revId": "58488fe01f59a586b56078cc2ce79210b2aa2dc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11578b50_325a3097",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-10-14T00:03:51Z",
+      "side": 0,
+      "message": "In the Rust backend, IBinder[] and List\u003cIBinder\u003e should be the same, I think.\n\nWhen IBinder[] is an input, it is mapped to Rust type(\u0026[SpIBinder]).\nBtw, `in @nullable IBinder[]` is mapped to `Option\u003c\u0026[Option\u003cSpIBinder\u003e]\u003e`.\n\nBut I\u0027ll try your suggestion(Option\u003c\u0026[Option\u003c\u0026SpIBinder\u003e]\u003e) for the latter case.\n\nIf it works, then we might not need this CL(SerializeArray for Option\u003cSpIBinder\u003e), right?",
+      "parentUuid": "054e881b_830e7478",
+      "revId": "58488fe01f59a586b56078cc2ce79210b2aa2dc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
