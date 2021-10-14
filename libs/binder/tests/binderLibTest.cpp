@@ -436,6 +436,11 @@ class TestDeathRecipient : public IBinder::DeathRecipient, public BinderLibTestE
         };
 };
 
+TEST_F(BinderLibTest, CannotUseBinderAfterFork) {
+    // EXPECT_DEATH works by forking the process
+    EXPECT_DEATH({ ProcessState::self(); }, "libbinder does not support being forked");
+}
+
 TEST_F(BinderLibTest, WasParceled) {
     auto binder = sp<BBinder>::make();
     EXPECT_FALSE(binder->wasParceled());
