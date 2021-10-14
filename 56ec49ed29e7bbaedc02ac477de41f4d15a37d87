@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00866beb_e577dee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-14T03:02:50Z",
+      "side": 1,
+      "message": "This is a copy (plus some additions) of Alice\u0027s work.",
+      "revId": "56ec49ed29e7bbaedc02ac477de41f4d15a37d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
