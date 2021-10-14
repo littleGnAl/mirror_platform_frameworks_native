@@ -51,6 +51,24 @@
       "parentUuid": "bb73784b_51ac68ac",
       "revId": "1ed3fea0aa124bb4ad1b022a168607673de7056f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e284ef6f_e788c22a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2021-10-14T19:11:52Z",
+      "side": 1,
+      "message": "Unfortunately I don\u0027t have access to that change. Is it something that could be cherry-picked to AOSP/master? I\u0027m happy to abandon this change if so.",
+      "parentUuid": "b78d7bc4_abb5752e",
+      "revId": "1ed3fea0aa124bb4ad1b022a168607673de7056f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
