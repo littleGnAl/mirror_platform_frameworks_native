@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7126cde_c1b093cb",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-14T02:21:16Z",
+      "side": 1,
+      "message": "From presubmits:\nframeworks/native/cmds/installd/InstalldNativeService.cpp:305:54: error: format specifies type \u0027long\u0027 but the argument has type \u0027long long\u0027 [-Werror,-Wformat]\n\nPlease fix.",
+      "revId": "79b44e6b1ee33e12229c2c75262f06fdae864c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
