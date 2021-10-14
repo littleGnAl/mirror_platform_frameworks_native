@@ -70,6 +70,30 @@
       },
       "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e31df36_5da1d974",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-14T21:45:44Z",
+      "side": 1,
+      "message": "I see, yeah. I was thinking more about AParcel_create, AIBinder_prepareTransaction, and AIBinder_transact which have the parcels on the stack. However, yes, when we are processing a command from another process, I guess it is on the stack.\n\nCould we reflect this in the Rust API without needing to create new types? For instance, when we execute a command, we should have \u0026Parcel (we should have a borrowed value only).",
+      "parentUuid": "09bee6f4_3b21dafb",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
