@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1906275b_e5096b4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-10-14T17:40:14Z",
+      "side": 1,
+      "message": "I applied Steven\u0027s suggestion. Could you take a look? Thanks",
+      "revId": "52f68c0267b80349674ae1a536d9f3eb39db568a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
