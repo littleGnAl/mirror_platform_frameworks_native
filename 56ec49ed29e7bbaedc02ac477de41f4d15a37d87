@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7597422b_b0ee343c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-14T19:03:45Z",
+      "side": 1,
+      "message": "Forgot to mention: I think this might be a stopgap measure, ideally we would get rid of the Parcel enum altogether.",
+      "parentUuid": "8345a1d2_438ce168",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "56ec49ed29e7bbaedc02ac477de41f4d15a37d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "00866beb_e577dee3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
