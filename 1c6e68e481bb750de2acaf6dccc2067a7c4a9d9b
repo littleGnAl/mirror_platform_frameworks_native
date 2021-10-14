@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7954080f_6f2734a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-14T03:03:50Z",
+      "side": 1,
+      "message": "I still need to test this together with the async CLs, there\u0027s nothing else in the tree that requires thread-safety.",
+      "revId": "1c6e68e481bb750de2acaf6dccc2067a7c4a9d9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
