@@ -33,6 +33,24 @@
       "message": "From presubmits:\nframeworks/native/cmds/installd/InstalldNativeService.cpp:305:54: error: format specifies type \u0027long\u0027 but the argument has type \u0027long long\u0027 [-Werror,-Wformat]\n\nPlease fix.",
       "revId": "79b44e6b1ee33e12229c2c75262f06fdae864c1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3928811a_d5db6391",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-10-14T18:38:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7126cde_c1b093cb",
+      "revId": "79b44e6b1ee33e12229c2c75262f06fdae864c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
