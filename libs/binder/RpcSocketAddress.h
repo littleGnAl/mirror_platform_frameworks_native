@@ -28,6 +28,13 @@
 
 namespace android {
 
+static constexpr socklen_t kMaxSupportedSockAddrSize =
+        std::max({sizeof(sockaddr_un), sizeof(sockaddr_vm), sizeof(sockaddr_in)});
+union SockAddrAny {
+    sockaddr addr;
+    uint8_t buffer[kMaxSupportedSockAddrSize];
+};
+
 class RpcSocketAddress {
 public:
     virtual ~RpcSocketAddress() {}
