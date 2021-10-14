@@ -22,6 +22,30 @@
       },
       "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f5e6ccb_aebf0e81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-14T21:28:57Z",
+      "side": 1,
+      "message": "Sure, but that AParcel will internally point to C++ `Parcel`s allocated on the stack, right? I\u0027m talking about buffer and reply from IPCThreadState::executeCommand (https://android.googlesource.com/platform/frameworks/native/+/master/libs/binder/IPCThreadState.cpp#1249) which get wrapped by `AParcel`s (https://android.googlesource.com/platform/frameworks/native/+/master/libs/binder/ndk/ibinder.cpp#179) and then passed to Rust. This means that Rust indirectly holds pointers to C++ objects on the stack. Am I missing something here? Both buffer/data and reply seem to be passed by reference or pointer, respectively.\n\nI think a pointer to a pointer to a C++ stack object is still not safe to send between threads.",
+      "parentUuid": "ff495912_c75baa58",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
