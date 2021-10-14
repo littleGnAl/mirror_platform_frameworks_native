@@ -33,6 +33,24 @@
       "message": "checked with hikey, and it could boot with this change. Also checked with hikey960 and db845c, no affect on the boot",
       "revId": "1ed3fea0aa124bb4ad1b022a168607673de7056f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b78d7bc4_abb5752e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1574224
+      },
+      "writtenOn": "2021-10-14T14:19:56Z",
+      "side": 1,
+      "message": "I don\u0027t understand why the base does not include ag/15484245, which is esentially the same thing as this CL",
+      "parentUuid": "bb73784b_51ac68ac",
+      "revId": "1ed3fea0aa124bb4ad1b022a168607673de7056f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
