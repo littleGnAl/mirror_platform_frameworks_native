@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48788786_efd345be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-14T00:42:41Z",
+      "side": 1,
+      "message": "Can you also add these to the fuzzer?",
+      "revId": "58488fe01f59a586b56078cc2ce79210b2aa2dc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f034a9bf_2a4317fb",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-14T00:42:41Z",
+      "side": 1,
+      "message": "I guess it\u0027s a lot simpler to reuse this, hmm. Yeah, this is probably the right call.",
+      "range": {
+        "startLine": 554,
+        "startChar": 11,
+        "endLine": 554,
+        "endChar": 42
+      },
+      "revId": "58488fe01f59a586b56078cc2ce79210b2aa2dc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
