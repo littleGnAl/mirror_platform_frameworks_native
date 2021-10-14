@@ -46,6 +46,30 @@
       },
       "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09bee6f4_3b21dafb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-14T21:33:28Z",
+      "side": 1,
+      "message": "Update: even the `AParcel`s seem to live on the stack: https://android.googlesource.com/platform/frameworks/native/+/master/libs/binder/ndk/ibinder.cpp#179.",
+      "parentUuid": "7f5e6ccb_aebf0e81",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
