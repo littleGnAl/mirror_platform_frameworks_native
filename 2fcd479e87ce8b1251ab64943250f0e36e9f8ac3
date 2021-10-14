@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0934adf7_d1d140d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-10-14T23:45:24Z",
+      "side": 1,
+      "message": "I got an email about a build breakage that looks related on sc-dev-plus-aosp.\nAssuming this is related to that, but are there any bugs or links to build failures for this revert?",
+      "revId": "2fcd479e87ce8b1251ab64943250f0e36e9f8ac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
