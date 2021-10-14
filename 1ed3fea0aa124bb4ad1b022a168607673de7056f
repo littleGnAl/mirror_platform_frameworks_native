@@ -69,6 +69,47 @@
       "parentUuid": "b78d7bc4_abb5752e",
       "revId": "1ed3fea0aa124bb4ad1b022a168607673de7056f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01923ee1_167fa526",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1574224
+      },
+      "writtenOn": "2021-10-14T20:07:59Z",
+      "side": 1,
+      "message": "Apparently it did not make it into AOSP.\nThis change is basically the same, you can submit it, it\u0027s easier than cherrypicking.",
+      "parentUuid": "e284ef6f_e788c22a",
+      "revId": "1ed3fea0aa124bb4ad1b022a168607673de7056f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96a69c2d_0307a12d",
+        "filename": "libs/renderengine/skia/Cache.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1574224
+      },
+      "writtenOn": "2021-10-14T20:07:59Z",
+      "side": 1,
+      "message": "replace with \n\nstatus_t error \u003d f16ExternalBuffer-\u003einitCheck();\n        if (!error) {",
+      "range": {
+        "startLine": 410,
+        "startChar": 7,
+        "endLine": 411,
+        "endChar": 24
+      },
+      "revId": "1ed3fea0aa124bb4ad1b022a168607673de7056f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
