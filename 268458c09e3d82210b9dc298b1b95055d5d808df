@@ -118,6 +118,30 @@
       },
       "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808d0a0f_8f10dc23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-14T22:26:38Z",
+      "side": 1,
+      "message": "\u003e For instance, when we execute a command, we should have \u0026Parcel (we should have a borrowed value only).\nI think I see what you\u0027re saying here, and that\u0027s sort of what we\u0027re already doing. Only a few places use Parcel::borrowed and the most significant one is native.rs (https://android.googlesource.com/platform/frameworks/native/+/master/libs/binder/rust/src/native.rs#280). This code passes one \u0026Parcel and one \u0026mut Parcel to on_transact(). The latter could be problematic since mutable references let you move the Parcel out of the reference. We might be able to change that into a \u0026Parcel if we rewrote all Parcel methods to take \u0026self, but I\u0027m not sure how safe that is.\n\nThe other problem is that there would be no way to guarantee that someone doesn\u0027t come in later and make changes to libbinder_rs where they create a new Parcel::Borrowed and then accidentally move it between threads.",
+      "parentUuid": "2ed79928_63bcd0f2",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
