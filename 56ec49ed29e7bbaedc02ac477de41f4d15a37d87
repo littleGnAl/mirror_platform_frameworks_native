@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "acb1dc1e_76537813",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-14T18:36:51Z",
+      "side": 1,
+      "message": "Parcel is currently an enum with two variants, which makes them seem interchangeable but they\u0027re really not. For example, OwnedParcel can be Send while BorrowedParcel isn\u0027t because the latter can point to e.g. C++ Parcel values on the stack.\n\nI\u0027ll update the message.",
+      "parentUuid": "0d4144e2_d59e2bce",
+      "range": {
+        "startLine": 9,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "56ec49ed29e7bbaedc02ac477de41f4d15a37d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "00866beb_e577dee3",
