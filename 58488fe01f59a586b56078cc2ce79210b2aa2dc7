@@ -34,6 +34,24 @@
       "parentUuid": "054e881b_830e7478",
       "revId": "58488fe01f59a586b56078cc2ce79210b2aa2dc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d474b3d9_f0f5a508",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-10-14T00:24:19Z",
+      "side": 0,
+      "message": "Done.",
+      "parentUuid": "11578b50_325a3097",
+      "revId": "58488fe01f59a586b56078cc2ce79210b2aa2dc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
