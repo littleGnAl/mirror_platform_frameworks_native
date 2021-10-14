@@ -16,6 +16,23 @@
       "message": "Would appreciate review/thoughts on if this is a ok fix or if there is a better way to solve the issue?",
       "revId": "1ed3fea0aa124bb4ad1b022a168607673de7056f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2426b855_5dca4271",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1041813
+      },
+      "writtenOn": "2021-10-14T12:52:34Z",
+      "side": 1,
+      "message": "checked with hikey, and it could boot with this change. Also checked with hikey960 and db845c, no affect on the boot",
+      "revId": "1ed3fea0aa124bb4ad1b022a168607673de7056f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
