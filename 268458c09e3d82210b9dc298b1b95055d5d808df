@@ -94,6 +94,30 @@
       },
       "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed79928_63bcd0f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-14T22:03:09Z",
+      "side": 1,
+      "message": "We could add Send to Parcel and avoid OwnedParcel altogether, but then we would have to dynamically enforce that a Parcel::Borrowed doesn\u0027t escape the thread it was created in. We could store a TID in Parcel::Borrowed and check it before every operation (or just from as_native and as_native_mut) but that seems really excessive.\n\nPlus that would only produce errors at run time, whereas using an approach with split types would give us useful errors during compilation (if anyone tried to pass a BorrowedCppParcel between threads).",
+      "parentUuid": "9e31df36_5da1d974",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
