@@ -70,8 +70,8 @@ class MyBinderRpcBenchmark : public BnBinderRpcBenchmark {
         *out = binder;
         return Status::ok();
     }
-    Status repeatBytes(const std::vector<uint8_t>& bytes, std::vector<uint8_t>* out) override {
-        *out = bytes;
+    Status repeatBytes(const std::vector<uint8_t>& /*bytes*/) override {
+        //        *out = bytes;
         return Status::ok();
     }
 };
@@ -176,8 +176,8 @@ void BM_throughputForTransportAndBytes(benchmark::State& state) {
     }
 
     while (state.KeepRunning()) {
-        std::vector<uint8_t> out;
-        Status ret = iface->repeatBytes(bytes, &out);
+        //        std::vector<uint8_t> out;
+        Status ret = iface->repeatBytes(bytes);
         CHECK(ret.isOk()) << ret;
     }
 }
