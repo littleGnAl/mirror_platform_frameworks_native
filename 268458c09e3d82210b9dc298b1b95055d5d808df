@@ -166,6 +166,30 @@
       },
       "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6347a52_466626bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-15T07:31:58Z",
+      "side": 1,
+      "message": "\u003e However, sending a borrowed parcel means that the thread it was on before you sent it can still have a reference to it, allowing concurrent access from two threads.\n\nThere\u0027s also an additional lifetime issue, I think. On the incoming transaction code path, we\u0027re \"borrowing\" (conceptually, not in the Rust sense) some parcels that live on the stack in C++. If we send those borrowed Rust `Parcel`s to another thread and then the original thread returns from executeCommand, the borrowed objects get destroyed while live pointers to them still exist.",
+      "parentUuid": "d9b12dbe_3717f960",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
