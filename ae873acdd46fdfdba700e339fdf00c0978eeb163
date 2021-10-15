@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09081081_6027b4d6",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-15T16:10:16Z",
+      "side": 1,
+      "message": "do you know why the fuzzer didn\u0027t catch this?",
+      "range": {
+        "startLine": 557,
+        "startChar": 15,
+        "endLine": 557,
+        "endChar": 18
+      },
+      "revId": "ae873acdd46fdfdba700e339fdf00c0978eeb163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4a866f_7b590ea2",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-15T16:10:16Z",
+      "side": 1,
+      "message": "actually wait, why do we have an unchecked version of this function at all? The cost of the checks should be trivial",
+      "range": {
+        "startLine": 564,
+        "startChar": 38,
+        "endLine": 564,
+        "endChar": 47
+      },
+      "revId": "ae873acdd46fdfdba700e339fdf00c0978eeb163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
