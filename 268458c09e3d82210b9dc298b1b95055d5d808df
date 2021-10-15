@@ -142,6 +142,30 @@
       },
       "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b12dbe_3717f960",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-10-15T05:47:25Z",
+      "side": 1,
+      "message": "No, I don\u0027t think you could avoid OwnedParcel altogether. There\u0027s no way to insert a check when something gets sent across a thread, so you must have a separate type to send stuff. And we do need to be able to send them across threads for the async binder implementations.\n\nI will submit a follow-up PR that entirely removes the Parcel enum in favor of separate types for owned borrowed types, also removing any issues with moving out of a \u0026mut Parcel that exist now.\n\nRegarding the comment that this is on, the reason that it isn\u0027t safe to move a borrowed Parcel is essentially that parcels are Send but not Sync, i.e. it is safe to send across threads, but you can only access them from one thread at the time. However, sending a borrowed parcel means that the thread it was on before you sent it can still have a reference to it, allowing concurrent access from two threads.",
+      "parentUuid": "808d0a0f_8f10dc23",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
