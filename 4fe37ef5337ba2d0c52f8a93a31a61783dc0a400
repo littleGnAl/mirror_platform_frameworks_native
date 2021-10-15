@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6002691a_077c71f8",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-10-15T11:05:34Z",
+      "side": 1,
+      "message": "I think this is correct - from a binder pov, if you only make outgoing transactions, and never start a threadpool, fork() probably works. But I think your current implementation will reject fork() even without starting a threadpool, since you need ProcessState even to make outgoing transactions. I think that behavior is fine btw, but the comment is slightly misleading.",
+      "range": {
+        "startLine": 97,
+        "startChar": 65,
+        "endLine": 97,
+        "endChar": 96
+      },
+      "revId": "4fe37ef5337ba2d0c52f8a93a31a61783dc0a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9f65326_1f04d182",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-10-15T11:05:34Z",
+      "side": 1,
+      "message": "mismatches with the string in the other file?",
+      "range": {
+        "startLine": 441,
+        "startChar": 78,
+        "endLine": 441,
+        "endChar": 84
+      },
+      "revId": "4fe37ef5337ba2d0c52f8a93a31a61783dc0a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
