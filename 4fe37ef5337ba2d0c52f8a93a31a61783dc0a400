@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80c1b715_cf7b5d6b",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-15T16:01:36Z",
+      "side": 1,
+      "message": "Updated wording to reflect behavior.\n\n\u003e if you only make outgoing transactions, and never start a threadpool, fork() probably works\n\nWhen a fork is preformed, the child process gets a clone of the parent FD. I\u0027m not sure how this could work, binder_open has:\n\n    proc-\u003epid \u003d current-\u003egroup_leader-\u003epid;\n\nMy understanding of dup is that we should have a pointer to the same kernel object which is now shared with another process. That can\u0027t work, right?",
+      "parentUuid": "6002691a_077c71f8",
+      "range": {
+        "startLine": 97,
+        "startChar": 65,
+        "endLine": 97,
+        "endChar": 96
+      },
+      "revId": "4fe37ef5337ba2d0c52f8a93a31a61783dc0a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9f65326_1f04d182",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-15T11:05:34Z",
       "side": 1,
       "message": "mismatches with the string in the other file?",
+      "range": {
+        "startLine": 441,
+        "startChar": 78,
+        "endLine": 441,
+        "endChar": 84
+      },
+      "revId": "4fe37ef5337ba2d0c52f8a93a31a61783dc0a400",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d913af47_403eac8f",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-15T16:01:36Z",
+      "side": 1,
+      "message": "Done (it only has to be a substring - I intentionally left it matching the parent CL and meant to remove the \u0027threadpool is started\u0027 part, but forgot)",
+      "parentUuid": "e9f65326_1f04d182",
       "range": {
         "startLine": 441,
         "startChar": 78,
