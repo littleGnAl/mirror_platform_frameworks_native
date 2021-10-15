@@ -130,6 +130,7 @@ LIBBINDER_NDK31 { # introduced=31
 
     AIBinder_forceDowngradeToSystemStability; # apex
     AIBinder_forceDowngradeToVendorStability; # llndk
+    AIBinder_setMinSchedulerPolicy; # llndk
 
     AIBinder_Class_getDescriptor;
     AIBinder_Weak_clone;
@@ -145,6 +146,7 @@ LIBBINDER_NDK33 { # introduced=33
   global:
     AIBinder_Class_disableInterfaceTokenHeader;
     AIBinder_DeathRecipient_setOnUnlinked;
+    AIBinder_setMinSchedulerPolicy;
     AParcel_marshal;
     AParcel_unmarshal;
 };
