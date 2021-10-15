@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "021528ea_077444bc",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-15T15:52:03Z",
+      "side": 1,
+      "message": "I thought about it, but it gets complicated because of how the locking works here. If I only add a ScopeGuard on L103, then: Thread A gets to L105 while calling selfOrNull(), lock will be dropped before the scope guards (destructor runs in the opposite order of creation). Thread B might call self(), and get to L128 and write the pointer non-atomically. So, Thread A would be accessing an invalid pointer in the ScopeGuard destructor.\n\nI could make the ScopeGuard also responsible for dropping the lock in certain cases, but it gets messy.\n\nWe can\u0027t take the lock earlier than L105 (note - the combination of mutex and flag once here are a performance optimization so that once gProcess is created, since we never change its value, we can access it without a lock, see b/161336582#comment18).\n\nIf you have a specific suggestion for how to work around this, I\u0027d be happy to hear it, but I couldn\u0027t think of one - hence moving this into a function. Though yeah - I\u0027m maybe one of these days I\u0027ll realize there is a simpler solution and upload another patch, I can\u0027t think of one now.",
+      "parentUuid": "583a8f64_cfcdacc3",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 9
+      },
+      "revId": "ee9df90157863cf12ca2cce7d00324e0974d6ac1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6ecfd59_2728eee7",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-15T05:36:20Z",
       "side": 1,
       "message": "why are these have to be members of ProcessState? They don\u0027t access any field from the class.",
+      "range": {
+        "startLine": 159,
+        "startChar": 5,
+        "endLine": 159,
+        "endChar": 19
+      },
+      "revId": "ee9df90157863cf12ca2cce7d00324e0974d6ac1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ac9625_3bf1ec3d",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-15T15:52:03Z",
+      "side": 1,
+      "message": "childPostFork needs access to private member \u0027mForked\u0027, so I added all of these to the class for consistency.",
+      "parentUuid": "a6ecfd59_2728eee7",
       "range": {
         "startLine": 159,
         "startChar": 5,
