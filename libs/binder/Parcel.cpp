@@ -554,7 +554,7 @@ status_t Parcel::hasFileDescriptorsInRange(size_t offset, size_t len, bool& resu
         return BAD_VALUE;
     }
     size_t limit = offset + len;
-    if (offset > mDataSize || len > mDataSize || limit > mDataSize || offset > limit) {
+    if (offset >= mDataSize || len > mDataSize || limit > mDataSize || offset > limit) {
         return BAD_VALUE;
     }
     result = hasFileDescriptorsInRangeUnchecked(offset, len);
