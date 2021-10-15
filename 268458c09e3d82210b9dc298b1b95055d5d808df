@@ -190,6 +190,30 @@
       },
       "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb66bd5_321b1133",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-15T17:46:56Z",
+      "side": 1,
+      "message": "I guess you can count destroying an object as \"accessing\" it, so we\u0027re both talking about the same thing.",
+      "parentUuid": "a6347a52_466626bf",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
