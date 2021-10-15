@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b25002d1_e22c7428",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-10-15T11:07:19Z",
+      "side": 1,
+      "message": "LGTM beyond Jiyong\u0027s comments.",
+      "revId": "ee9df90157863cf12ca2cce7d00324e0974d6ac1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "583a8f64_cfcdacc3",
