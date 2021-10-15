@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07389e3e_b5111f63",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1133744
+      },
+      "writtenOn": "2021-10-15T16:32:53Z",
+      "side": 1,
+      "message": "I don\u0027t think anything particularly bad happens without the check, hasFileDescriptorsInRangeUnchecked() would just always return false",
+      "parentUuid": "09081081_6027b4d6",
+      "range": {
+        "startLine": 557,
+        "startChar": 15,
+        "endLine": 557,
+        "endChar": 18
+      },
+      "revId": "ae873acdd46fdfdba700e339fdf00c0978eeb163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc4a866f_7b590ea2",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-15T16:10:16Z",
       "side": 1,
       "message": "actually wait, why do we have an unchecked version of this function at all? The cost of the checks should be trivial",
+      "range": {
+        "startLine": 564,
+        "startChar": 38,
+        "endLine": 564,
+        "endChar": 47
+      },
+      "revId": "ae873acdd46fdfdba700e339fdf00c0978eeb163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ef3dc8_6e94d647",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1133744
+      },
+      "writtenOn": "2021-10-15T16:32:53Z",
+      "side": 1,
+      "message": "No strong reason, I just extracted this out when refactoring to be used in scanForFds() since this was the common code, that saves me from having to deal with a status_t result (deal might mean just ignore) since we trust the bounds in scanForFds(), but meh, I don\u0027t mind either way. Do you want me to inline hasFileDescriptorsInRangeUnchecked() and call the public version in scanForFds()?",
+      "parentUuid": "cc4a866f_7b590ea2",
       "range": {
         "startLine": 564,
         "startChar": 38,
