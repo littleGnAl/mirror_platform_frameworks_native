@@ -554,14 +554,10 @@ status_t Parcel::hasFileDescriptorsInRange(size_t offset, size_t len, bool& resu
         return BAD_VALUE;
     }
     size_t limit = offset + len;
-    if (offset > mDataSize || len > mDataSize || limit > mDataSize || offset > limit) {
+    if (limit > mDataSize || offset > limit || len > limit) {
         return BAD_VALUE;
     }
-    result = hasFileDescriptorsInRangeUnchecked(offset, len);
-    return NO_ERROR;
-}
-
-bool Parcel::hasFileDescriptorsInRangeUnchecked(size_t offset, size_t len) const {
+    result = false;
     for (size_t i = 0; i < mObjectsSize; i++) {
         size_t pos = mObjects[i];
         if (pos < offset) continue;
@@ -571,10 +567,11 @@ bool Parcel::hasFileDescriptorsInRangeUnchecked(size_t offset, size_t len) const
         }
         const flat_binder_object* flat = reinterpret_cast<const flat_binder_object*>(mData + pos);
         if (flat->hdr.type == BINDER_TYPE_FD) {
-            return true;
+            result = true;
+            break;
         }
     }
-    return false;
+    return NO_ERROR;
 }
 
 void Parcel::markSensitive() const
@@ -2567,9 +2564,9 @@ void Parcel::initState()
     }
 }
 
-void Parcel::scanForFds() const
-{
-    mHasFds = hasFileDescriptorsInRangeUnchecked(0, dataSize());
+void Parcel::scanForFds() const {
+    status_t status = hasFileDescriptorsInRange(0, dataSize(), mHasFds);
+    ALOGE_IF(status != NO_ERROR, "Error %d calling hasFileDescriptorsInRange()", status);
     mFdsKnown = true;
 }
 

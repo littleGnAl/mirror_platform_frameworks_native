@@ -576,7 +576,6 @@ private:
 
     status_t            writeRawNullableParcelable(const Parcelable*
                                                    parcelable);
-    bool hasFileDescriptorsInRangeUnchecked(size_t offset, size_t length) const;
 
     //-----------------------------------------------------------------------------
     // Generic type read and write methods for Parcel:
