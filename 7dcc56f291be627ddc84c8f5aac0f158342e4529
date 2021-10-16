@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e3d65f_da267a3a",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-10-16T02:46:29Z",
+      "side": 1,
+      "message": "Andrei, I\u0027m not sure whether this is too much or not. I tried to add this to `impl_deserialize_for_parcelable` so that it looks like `impl DeserializeArray for Option\u003cMyParcelable\u003e` but compiler complains about it.",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 56
+      },
+      "revId": "7dcc56f291be627ddc84c8f5aac0f158342e4529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
