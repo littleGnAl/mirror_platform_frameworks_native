@@ -214,6 +214,30 @@
       },
       "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c919243a_9cff283f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-10-16T09:10:56Z",
+      "side": 1,
+      "message": "Well, you are right that destroying a value is somewhat different from what I was talking about, but in Rust-land, it is covered under a different rule: Destroying or moving an object can only happen if it is not borrowed, so if a reference to it exists anywhere (on the current thread or otherwise), destroying the object is not safe. This rule is the same no matter whether the type is Send or Sync or not.\n\nIt\u0027s probably worth pointing out that Send doesn\u0027t really have anything to do with transfer of ownership. The meaning of something being Send is that it is safe to access from threads other than the thread it was created on. The meaning of Sync is that it is safe to immutably access the value from several threads in parallel.\n\nSo if a type is Send but not Sync, then you can only access it from one thread at the time, even if your access is immutable. Similarly, if a type is Sync but not Send, then it can be accessed immutably from several threads in parallel, but mutable access must happen on the thread it was created on.",
+      "parentUuid": "0bb66bd5_321b1133",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
