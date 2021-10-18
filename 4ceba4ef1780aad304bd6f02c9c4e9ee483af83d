@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a15aa4d_bfa654a6",
+        "filename": "libs/binder/ndk/include_platform/android/binder_ibinder_platform.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-18T16:57:21Z",
+      "side": 1,
+      "message": "nit: maybe also mention aborts on invalid values",
+      "revId": "4ceba4ef1780aad304bd6f02c9c4e9ee483af83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebff0ab9_df1efd11",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-18T16:57:21Z",
+      "side": 1,
+      "message": "this line should be deleted",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 43
+      },
+      "revId": "4ceba4ef1780aad304bd6f02c9c4e9ee483af83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c9ceb8d_c62c5f7e",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-18T16:57:21Z",
+      "side": 1,
+      "message": "add \u0027# llndk\u0027 here",
+      "revId": "4ceba4ef1780aad304bd6f02c9c4e9ee483af83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
