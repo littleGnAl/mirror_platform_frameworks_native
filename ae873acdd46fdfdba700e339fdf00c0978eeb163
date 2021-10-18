@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a041ca_6fcf7647",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-18T18:07:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "07389e3e_b5111f63",
+      "range": {
+        "startLine": 557,
+        "startChar": 15,
+        "endLine": 557,
+        "endChar": 18
+      },
+      "revId": "ae873acdd46fdfdba700e339fdf00c0978eeb163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc4a866f_7b590ea2",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "No strong reason, I just extracted this out when refactoring to be used in scanForFds() since this was the common code, that saves me from having to deal with a status_t result (deal might mean just ignore) since we trust the bounds in scanForFds(), but meh, I don\u0027t mind either way. Do you want me to inline hasFileDescriptorsInRangeUnchecked() and call the public version in scanForFds()?",
       "parentUuid": "cc4a866f_7b590ea2",
+      "range": {
+        "startLine": 564,
+        "startChar": 38,
+        "endLine": 564,
+        "endChar": 47
+      },
+      "revId": "ae873acdd46fdfdba700e339fdf00c0978eeb163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2fd9c20_e3aa6417",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-18T18:07:46Z",
+      "side": 1,
+      "message": "I think that only having the checked version of the function is better. Even if we think we know all of the constraints are met, it\u0027s still nice to verify them, especially if they ever change in the future.",
+      "parentUuid": "f6ef3dc8_6e94d647",
       "range": {
         "startLine": 564,
         "startChar": 38,
