@@ -22,6 +22,30 @@
       },
       "revId": "7dcc56f291be627ddc84c8f5aac0f158342e4529",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dd44979_276314d9",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-18T21:17:51Z",
+      "side": 1,
+      "message": "Adding this\n```\n        impl $crate::parcel::SerializeArray for Option\u003c$parcelable\u003e {}\n```\nto impl_serialize_for_parcelable (and the equivalent for impl_deserialize_for_parcelable) should work, what error were you getting?",
+      "parentUuid": "25e3d65f_da267a3a",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 56
+      },
+      "revId": "7dcc56f291be627ddc84c8f5aac0f158342e4529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
