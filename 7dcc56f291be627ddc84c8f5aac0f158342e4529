@@ -46,6 +46,30 @@
       },
       "revId": "7dcc56f291be627ddc84c8f5aac0f158342e4529",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "039ec77c_c0b9b7df",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-18T21:31:11Z",
+      "side": 1,
+      "message": "Never mind, I tried it out myself and got the error. I think the approach here might be the only one that works, so let\u0027s go with it.",
+      "parentUuid": "3dd44979_276314d9",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 56
+      },
+      "revId": "7dcc56f291be627ddc84c8f5aac0f158342e4529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
