@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d0f9878_5d8d5ff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-10-18T22:34:42Z",
+      "side": 1,
+      "message": "This still requires +2 and owner review.",
+      "revId": "7dcc56f291be627ddc84c8f5aac0f158342e4529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25e3d65f_da267a3a",
@@ -62,6 +79,30 @@
       "side": 1,
       "message": "Never mind, I tried it out myself and got the error. I think the approach here might be the only one that works, so let\u0027s go with it.",
       "parentUuid": "3dd44979_276314d9",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 56
+      },
+      "revId": "7dcc56f291be627ddc84c8f5aac0f158342e4529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e285f3_54ede0f4",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-10-18T22:34:42Z",
+      "side": 1,
+      "message": "Thank you for trying it yourself. Restricting implementing traits for external types seems reasonable but sometimes it feels like too restrictive like this one.",
+      "parentUuid": "039ec77c_c0b9b7df",
       "range": {
         "startLine": 386,
         "startChar": 0,
