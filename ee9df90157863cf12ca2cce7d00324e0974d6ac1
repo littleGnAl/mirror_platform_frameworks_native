@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "099be04a_66d19649",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-18T03:51:10Z",
+      "side": 1,
+      "message": "I thought the following would work, but then we will lock twice (not nested) and gProcess here might be different from gProcess that gets returned. But since gProcess is set only once and we don\u0027t run the check if gProcess is null, that should be fine.\n\n```\nat L103:\nScopeGuard sg \u003d [\u0026]() {\n    std::lock_guard\u003cstd::mutex\u003e l(gProcessMutex);\n    if (gProcess) {\n        verifyNotForked(gProcess-\u003emForked);\n    }\n};\n```\n\nAnyway, this is a nit. I don\u0027t mind if this is left as it is.",
+      "parentUuid": "021528ea_077444bc",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 9
+      },
+      "revId": "ee9df90157863cf12ca2cce7d00324e0974d6ac1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6ecfd59_2728eee7",
