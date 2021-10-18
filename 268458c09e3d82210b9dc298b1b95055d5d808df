@@ -238,6 +238,64 @@
       },
       "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f8e8683_d79d9dad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-10-18T22:50:36Z",
+      "side": 1,
+      "message": "Yeah, I think we need a new type if we want to make it Send, and that it probably even makes sense from a clarity/usability PoV\n\nhttps://play.rust-lang.org/?version\u003dstable\u0026mode\u003ddebug\u0026edition\u003d2018\u0026gist\u003db1ba0bf9cf88fd54ffce9ae43ad92f93\n\nis roughly how I think it might work once the second half is done.",
+      "parentUuid": "c919243a_9cff283f",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "890bdd2b_e9c65694",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-10-18T22:50:36Z",
+      "side": 1,
+      "message": "I\u0027m assuming this too will change to OwnedParcel once AIDL has been updated.",
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d5818b_c9d071a0",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-10-18T22:50:36Z",
+      "side": 1,
+      "message": "As discussed offline, this should eventually subsume Parcel (naming TBD).\n\nWe don\u0027t want to have `BorrowedParcel { inner: Owned(...`.\n\nThat will be done in a follow-up change since it expands the scope of this change to include the AIDL generator.",
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
