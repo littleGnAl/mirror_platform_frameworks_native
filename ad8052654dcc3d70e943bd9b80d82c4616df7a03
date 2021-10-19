@@ -33,6 +33,24 @@
       "message": "This needs to be Parcel::Owned(self.into_raw()) otherwise the destructor gets called at the end of the function, then again later for Parcel. I\u0027ll fix it in the other CL.",
       "revId": "ad8052654dcc3d70e943bd9b80d82c4616df7a03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c206bf8_eeb97c84",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-10-19T08:07:32Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "f2769b5f_133d16bb",
+      "revId": "ad8052654dcc3d70e943bd9b80d82c4616df7a03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
