@@ -16,6 +16,24 @@
       "message": "Would it make sense to always use a session specific root?\nHow often do servers accept multiple clients and not care about which one is which?",
       "revId": "9ae0dd594c0435c9c959ace7f9c006d2e67d264e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52332ab_ba5d6755",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-19T21:44:12Z",
+      "side": 1,
+      "message": "The major complication for this is that we need a weak root object for host\u003c-\u003edevice debug rpc binder. I\u0027m unsure of how often we would need the strong variation, but it is used for several tests. I have kept it for now, so we can see what happens.",
+      "parentUuid": "fab825be_27080ed3",
+      "revId": "9ae0dd594c0435c9c959ace7f9c006d2e67d264e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
