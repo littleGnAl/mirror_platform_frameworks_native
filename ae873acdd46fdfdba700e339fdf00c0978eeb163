@@ -141,6 +141,30 @@
       },
       "revId": "ae873acdd46fdfdba700e339fdf00c0978eeb163",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff0eabad_0b8ded58",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1133744
+      },
+      "writtenOn": "2021-10-19T09:58:19Z",
+      "side": 1,
+      "message": "Done. This allowed to uncover the problematic case where parce length \u003d 0, offset \u003d 0, length \u003d 0 - it was throwing but it shouldn\u0027t. So, I changed the rule to only throw if the right limit (offset + length) is \u003e length (it can be \u003d length), and I check for overflow by checking if offset \u003e limit or len \u003e limit (where limit \u003d offset + len). I updated CTS accordingly. PTAL.",
+      "parentUuid": "a2fd9c20_e3aa6417",
+      "range": {
+        "startLine": 564,
+        "startChar": 38,
+        "endLine": 564,
+        "endChar": 47
+      },
+      "revId": "ae873acdd46fdfdba700e339fdf00c0978eeb163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
