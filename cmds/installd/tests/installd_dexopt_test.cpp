@@ -286,7 +286,7 @@ protected:
                 package_name_,
                 kTestUserId,
                 kAppDataFlags,
-                kTestAppUid,
+                kTestAppUid, -1,
                 se_info_,
                 kOSdkVersion,
                 &ce_data_inode_);
