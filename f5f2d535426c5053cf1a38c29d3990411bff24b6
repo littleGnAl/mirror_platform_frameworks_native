@@ -141,6 +141,30 @@
       },
       "revId": "f5f2d535426c5053cf1a38c29d3990411bff24b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "017ec352_d9395ec8",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-20T16:47:49Z",
+      "side": 1,
+      "message": "libbinder has integer sanitization on, so it will abort (you could add a test w/ these values? in binderParcelUnitTest.cpp). This was part of previous \u0027safe parcel\u0027 related work\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/Android.bp;l\u003d196;drc\u003de2c27ecceb197ef5e4cac095a36c41fa151a7a66",
+      "parentUuid": "da3dffe0_d38cca1f",
+      "range": {
+        "startLine": 556,
+        "startChar": 20,
+        "endLine": 556,
+        "endChar": 31
+      },
+      "revId": "f5f2d535426c5053cf1a38c29d3990411bff24b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
