@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aeca354_95569d8a",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-20T00:03:04Z",
+      "side": 1,
+      "message": "could we convert this to pointer for output for readability as well?",
+      "range": {
+        "startLine": 550,
+        "startChar": 71,
+        "endLine": 550,
+        "endChar": 75
+      },
+      "revId": "f5f2d535426c5053cf1a38c29d3990411bff24b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9caaaa83_2521c27f",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-20T00:03:04Z",
+      "side": 1,
+      "message": "this can overflow as well in 32-bit",
+      "range": {
+        "startLine": 556,
+        "startChar": 20,
+        "endLine": 556,
+        "endChar": 31
+      },
+      "revId": "f5f2d535426c5053cf1a38c29d3990411bff24b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
