@@ -104,6 +104,30 @@
       },
       "revId": "9ae0dd594c0435c9c959ace7f9c006d2e67d264e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a223cf00_eb5a196c",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-20T17:06:18Z",
+      "side": 1,
+      "message": "In RpcState RPC_SPECIAL_TRANSACT_GET_ROOT",
+      "parentUuid": "a7bf3327_b4308a4a",
+      "range": {
+        "startLine": 403,
+        "startChar": 15,
+        "endLine": 403,
+        "endChar": 22
+      },
+      "revId": "9ae0dd594c0435c9c959ace7f9c006d2e67d264e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
