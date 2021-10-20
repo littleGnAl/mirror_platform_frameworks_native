@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d69049_61f5efd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-20T17:05:42Z",
+      "side": 1,
+      "message": "\u003e then there will be multiple root objects, which is a big change from kernel binder.\n\nYes, we discussed this in the pKVM userspace sync 2021-10-13 SEO/MTV. I\u0027ve added it to the agenda today again.\n\n\u003e What if the root object manages a global state, but wants to behave differently depending on who the caller is?\n\nThe easy answer is don\u0027t have root objects like this. A lot of that time, global state is map\u003cclient, clientstate\u003e anyway, so this would be an improvement. Otherwise, shared_ptr\u003cglobal_state\u003e booM!\n\n\u003e I think we can\u0027t help but use a TLS for storing context objects which are created for each session.\n\u003e The context objects have references to the session object that they belong to.\n\nIn a single root object, when we are processing a call, the only way I have figured out to solve this problem is to use stack pointers (see pushGetCallingSpGuard). Given a thread-specific list of RpcSession + IPCThreadState, we could figure out which one we are serving, but this doesn\u0027t interop well if people are using other IPC mechanisms. It may be thread-local, but it\u0027s really non-local. Thread-local is still global to the thread, and it has all the same drawbacks.\n\nWe only have limited amounts of TLS, and getCalling* is a very highly problematic anti-pattern (there are many cases of people calling the wrong version of it). We shouldn\u0027t recreate such a big mistake in the name of consistency.",
+      "parentUuid": "45bb1305_9e078c69",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "9ae0dd594c0435c9c959ace7f9c006d2e67d264e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fab825be_27080ed3",
