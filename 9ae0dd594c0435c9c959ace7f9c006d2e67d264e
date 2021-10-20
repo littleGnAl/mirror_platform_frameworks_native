@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "45bb1305_9e078c69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-20T11:06:54Z",
+      "side": 1,
+      "message": "This might be an easy way, but then there will be multiple root objects, which is a big change from kernel binder. In some cases, that might not be what the user want. What if the root object manages a global state, but wants to behave differently depending on who the caller is?\n\nI think we can\u0027t help but use a TLS for storing context objects which are created for each session. The context objects have references to the session object that they belong to.",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "9ae0dd594c0435c9c959ace7f9c006d2e67d264e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fab825be_27080ed3",
@@ -32,6 +55,29 @@
       "side": 1,
       "message": "The major complication for this is that we need a weak root object for host\u003c-\u003edevice debug rpc binder. I\u0027m unsure of how often we would need the strong variation, but it is used for several tests. I have kept it for now, so we can see what happens.",
       "parentUuid": "fab825be_27080ed3",
+      "revId": "9ae0dd594c0435c9c959ace7f9c006d2e67d264e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7bf3327_b4308a4a",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-20T11:06:54Z",
+      "side": 1,
+      "message": "where does this check happen?",
+      "range": {
+        "startLine": 403,
+        "startChar": 15,
+        "endLine": 403,
+        "endChar": 22
+      },
       "revId": "9ae0dd594c0435c9c959ace7f9c006d2e67d264e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
