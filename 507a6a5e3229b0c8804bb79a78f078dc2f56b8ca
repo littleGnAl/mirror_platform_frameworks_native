@@ -22,6 +22,30 @@
       },
       "revId": "507a6a5e3229b0c8804bb79a78f078dc2f56b8ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b52fe38_8670b39e",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1891746
+      },
+      "writtenOn": "2021-10-21T18:52:37Z",
+      "side": 1,
+      "message": "fts_accpath should be relative to the current path, but I agree we should use fts_path here as the path we passed in fts_open is absolute.",
+      "parentUuid": "88e7ffe5_15eee0fc",
+      "range": {
+        "startLine": 448,
+        "startChar": 30,
+        "endLine": 448,
+        "endChar": 41
+      },
+      "revId": "507a6a5e3229b0c8804bb79a78f078dc2f56b8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
