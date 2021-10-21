@@ -85,6 +85,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a39ae64c_3408773d",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-10-21T00:09:52Z",
+      "side": 1,
+      "message": "Can we pass by value the std::function object and std::move it to the member variable?",
+      "range": {
+        "startLine": 141,
+        "startChar": 8,
+        "endLine": 141,
+        "endChar": 80
+      },
+      "revId": "9ae0dd594c0435c9c959ace7f9c006d2e67d264e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7bf3327_b4308a4a",
         "filename": "libs/binder/RpcServer.cpp",
         "patchSetId": 3
