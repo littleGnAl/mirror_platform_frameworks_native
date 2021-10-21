@@ -231,6 +231,30 @@
       },
       "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b51d5785_c13a2bd2",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2021-10-21T20:58:29Z",
+      "side": 1,
+      "message": "I\u0027ve updated the comment and removed the hidden doc attribute from the implementation APIs.",
+      "parentUuid": "fb6c9ffb_8afcdd19",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 46
+      },
+      "revId": "84430f87f6f271fa8c4d40611be2c924d5c811a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
