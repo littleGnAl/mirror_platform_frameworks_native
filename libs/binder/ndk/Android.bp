@@ -54,6 +54,7 @@ cc_library {
 
     defaults: ["libbinder_ndk_host_user"],
     host_supported: true,
+    recovery_available: true,
 
     llndk: {
         symbol_file: "libbinder_ndk.map.txt",
