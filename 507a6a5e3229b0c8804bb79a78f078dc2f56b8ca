@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e7ffe5_15eee0fc",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-10-21T15:50:49Z",
+      "side": 1,
+      "message": "I\u0027m probably missing something, but I thought fts_accpath is relative to the path we passed into fts_open (eg the app-dir root); shouldn\u0027t we be using p-\u003efts_path here (and below?)",
+      "range": {
+        "startLine": 448,
+        "startChar": 30,
+        "endLine": 448,
+        "endChar": 41
+      },
+      "revId": "507a6a5e3229b0c8804bb79a78f078dc2f56b8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
