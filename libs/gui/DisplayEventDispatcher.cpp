@@ -33,6 +33,8 @@ namespace android {
 // using just a few large reads.
 static const size_t EVENT_BUFFER_SIZE = 100;
 
+static const nsecs_t WAITING_FOR_VSYNC_TIMEOUT = ms2ns(300);
+
 DisplayEventDispatcher::DisplayEventDispatcher(
         const sp<Looper>& looper, ISurfaceComposer::VsyncSource vsyncSource,
         ISurfaceComposer::EventRegistrationFlags eventRegistration)
@@ -86,6 +88,7 @@ status_t DisplayEventDispatcher::scheduleVsync() {
         }
 
         mWaitingForVsync = true;
+        mLastScheduleVsyncTime = systemTime(SYSTEM_TIME_MONOTONIC);
     }
     return OK;
 }
@@ -124,7 +127,18 @@ int DisplayEventDispatcher::handleEvent(int, int events, void*) {
               this, ns2ms(vsyncTimestamp), to_string(vsyncDisplayId).c_str(), vsyncCount,
               vsyncEventData.id);
         mWaitingForVsync = false;
+        mLastVsyncCount = vsyncCount;
         dispatchVsync(vsyncTimestamp, vsyncDisplayId, vsyncCount, vsyncEventData);
+    }
+
+    if (mWaitingForVsync) {
+        nsecs_t currentTime = systemTime(SYSTEM_TIME_MONOTONIC);
+        nsecs_t vsyncScheduleTime = currentTime - mLastScheduleVsyncTime;
+        if (vsyncScheduleTime > WAITING_FOR_VSYNC_TIMEOUT) {
+            ALOGW("Vsync time out! vsyncScheduleTime=%" PRId64 "ms", ns2ms(vsyncScheduleTime));
+            mWaitingForVsync = false;
+            dispatchVsync(currentTime, 0 /* displayId is not used */, ++mLastVsyncCount);
+        }
     }
 
     return 1; // keep the callback
