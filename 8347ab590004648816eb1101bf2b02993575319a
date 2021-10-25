@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d21ea6df_d95790ee",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-25T15:50:31Z",
+      "side": 0,
+      "message": "will copies of libbinder ever be mixed? Should we have a separate header for recovery?",
+      "revId": "8347ab590004648816eb1101bf2b02993575319a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
