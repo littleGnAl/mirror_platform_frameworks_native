@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01af31c_562877c5",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-10-25T04:36:53Z",
+      "side": 1,
+      "message": "nit; these are in network byte order, so we may want to ntohs.\n\n(but I understand it\u0027s not important as this is just part of a test)",
+      "range": {
+        "startLine": 666,
+        "startChar": 0,
+        "endLine": 675,
+        "endChar": 46
+      },
+      "revId": "51c44a96895b8c462e24984e510b09aded52297f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
