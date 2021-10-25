@@ -264,6 +264,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "17312702_2e2fcc39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-10-25T02:58:12Z",
+      "side": 1,
+      "message": "\u003e We could store a TID in Parcel::Borrowed and check it before every operation\n\nTurns out there is a crate that does exactly this: https://docs.rs/send-cell/0.1.4/send_cell/struct.SendCell.html\n\n\u003e Accessing the contained value will call panic! if happening from any thread but the thread on which the value was created on. \n\nAnyway, it\u0027s not really worth using SendCell here but I wanted to mention it for future reference (could be useful in other situations).",
+      "parentUuid": "3f8e8683_d79d9dad",
+      "range": {
+        "startLine": 11,
+        "startChar": 29,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "268458c09e3d82210b9dc298b1b95055d5d808df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "890bdd2b_e9c65694",
