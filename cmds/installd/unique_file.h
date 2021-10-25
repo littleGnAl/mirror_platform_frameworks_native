@@ -70,6 +70,8 @@ class UniqueFile {
         return value_;
     }
 
+    void resetFd(int fd) { value_ = fd; }
+
     const std::string& path() const {
       return path_;
     }
@@ -81,6 +83,8 @@ class UniqueFile {
     void DisableCleanup() {
         do_cleanup_ = false;
     }
+
+    bool CleanupEnabled() { return do_cleanup_; }
 
     void reset();
     void reset(int new_value, std::string path, CleanUpFunction new_cleanup = nullptr);
