@@ -18,9 +18,29 @@
 
 #include <string>
 
+#include <fcntl.h>
 #include <unistd.h>
 
 #include <android-base/logging.h>
+#include <android-base/stringprintf.h>
+
+namespace {
+
+constexpr char kBackupFileSuffix[] = ".backup";
+
+std::string GetBackupFilePath(const std::string& path) {
+    return android::base::StringPrintf("%s%s", path.c_str(), kBackupFileSuffix);
+}
+
+void UnlinkPossiblyNonExistingFile(const std::string& path) {
+    if (unlink(path.c_str()) < 0) {
+        if (errno != ENOENT && errno != EROFS) {  // EROFS reported even if it does not exist.
+            PLOG(ERROR) << "Cannot unlink: " << path;
+        }
+    }
+}
+
+}  // namespace
 
 namespace android {
 namespace installd {
@@ -46,6 +66,7 @@ UniqueFile& UniqueFile::operator=(UniqueFile&& other) {
     cleanup_ = other.cleanup_;
     do_cleanup_ = other.do_cleanup_;
     auto_close_ = other.auto_close_;
+    has_backup_file_ = other.has_backup_file_;
     other.release();
     return *this;
 }
@@ -54,16 +75,30 @@ void UniqueFile::reset() {
     reset(-1, "");
 }
 
-void UniqueFile::reset(int new_value, std::string path, CleanUpFunction new_cleanup) {
+void UniqueFile::reset(int new_value, const std::string& path, CleanUpFunction new_cleanup) {
     if (auto_close_ && value_ >= 0) {
         if (close(value_) < 0) {
-            PLOG(ERROR) << "Failed to close fd " << value_ << ", with path " << path;
+            PLOG(ERROR) << "Failed to close fd " << value_ << ", with path: " << path;
         }
     }
-    if (do_cleanup_ && cleanup_ != nullptr) {
-        cleanup_(path_);
+    if (do_cleanup_) {
+        if (cleanup_ != nullptr) {
+            cleanup_(path_);
+        }
+        // Restore backup file if it exists
+        if (has_backup_file_) {
+            if (rename(GetBackupFilePath(path_).c_str(), path_.c_str()) < 0) {
+                PLOG(ERROR) << "Cannot rename " << GetBackupFilePath(path_) << " to " << path_;
+            }
+        }
     }
 
+    // Always try to remove Backup file for valid path.
+    if (!path_.empty()) {
+        UnlinkPossiblyNonExistingFile(GetBackupFilePath(path_));
+    }
+
+    has_backup_file_ = false;
     value_ = new_value;
     path_ = path;
     cleanup_ = new_cleanup;
@@ -73,7 +108,35 @@ void UniqueFile::release() {
     value_ = -1;
     path_ = "";
     do_cleanup_ = false;
+    has_backup_file_ = false;
     cleanup_ = nullptr;
+}
+
+UniqueFile UniqueFile::CreateWritableFileWithBackup(const std::string& path, int permissions,
+        CleanUpFunction cleanup) {
+    std::string backup_file_path = GetBackupFilePath(path);
+    // If old backup file exists, delete it.
+    UnlinkPossiblyNonExistingFile(backup_file_path);
+    // Old file may not exist. In that case, there is no backup.
+    bool has_backup = false;
+    if (rename(path.c_str(), backup_file_path.c_str()) == 0) {
+        has_backup = true;
+    } else if (errno != ENOENT) {  // Ignore if it does not exist.
+        PLOG(ERROR) << "Cannot rename " << path << " to " << backup_file_path;
+    }
+    int fd = open(path.c_str(), O_RDWR | O_CREAT, permissions);
+    if (fd < 0) {
+        PLOG(ERROR) << "Cannot create file: " << path;
+    }
+    UniqueFile uf(fd, path, cleanup);
+    uf.has_backup_file_ = has_backup;
+
+    return uf;
+}
+
+void UniqueFile::RemoveFileAndBackup(const std::string& path) {
+    UnlinkPossiblyNonExistingFile(GetBackupFilePath(path));
+    UnlinkPossiblyNonExistingFile(path);
 }
 
 }  // namespace installd
