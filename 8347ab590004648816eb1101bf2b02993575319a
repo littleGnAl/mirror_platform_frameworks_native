@@ -34,6 +34,24 @@
       "parentUuid": "d21ea6df_d95790ee",
       "revId": "8347ab590004648816eb1101bf2b02993575319a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a2361c1_d27ca75d",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-25T23:05:12Z",
+      "side": 0,
+      "message": "Can you add it? This is already kind of a hedge against mistakes made elsewhere. API defense in layers?",
+      "parentUuid": "44d750d9_8783c307",
+      "revId": "8347ab590004648816eb1101bf2b02993575319a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
