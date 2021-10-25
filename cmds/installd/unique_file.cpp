@@ -18,9 +18,29 @@
 
 #include <string>
 
+#include <fcntl.h>
 #include <unistd.h>
 
 #include <android-base/logging.h>
+#include <android-base/stringprintf.h>
+
+namespace {
+
+constexpr char kTmpFileSuffix[] = ".tmp";
+
+std::string GetTmpFilePath(const std::string& path) {
+    return android::base::StringPrintf("%s%s", path.c_str(), kTmpFileSuffix);
+}
+
+void UnlinkPossiblyNonExistingFile(const std::string& path) {
+    if (unlink(path.c_str()) < 0) {
+        if (errno != ENOENT && errno != EROFS) {  // EROFS reported even if it does not exist.
+            PLOG(ERROR) << "Cannot unlink: " << path;
+        }
+    }
+}
+
+}  // namespace
 
 namespace android {
 namespace installd {
@@ -46,6 +66,7 @@ UniqueFile& UniqueFile::operator=(UniqueFile&& other) {
     cleanup_ = other.cleanup_;
     do_cleanup_ = other.do_cleanup_;
     auto_close_ = other.auto_close_;
+    has_tmp_file_ = other.has_tmp_file_;
     other.release();
     return *this;
 }
@@ -54,16 +75,30 @@ void UniqueFile::reset() {
     reset(-1, "");
 }
 
-void UniqueFile::reset(int new_value, std::string path, CleanUpFunction new_cleanup) {
+void UniqueFile::reset(int new_value, const std::string& path, CleanUpFunction new_cleanup) {
     if (auto_close_ && value_ >= 0) {
         if (close(value_) < 0) {
-            PLOG(ERROR) << "Failed to close fd " << value_ << ", with path " << path;
+            PLOG(ERROR) << "Failed to close fd " << value_ << ", with path: " << path;
         }
     }
-    if (do_cleanup_ && cleanup_ != nullptr) {
-        cleanup_(path_);
+    if (has_tmp_file_) {  // Has default cleanup behavior
+        if (!do_cleanup_) {  // Rename tmp file to path
+            if (rename(GetTmpFilePath(path_).c_str(), path_.c_str()) < 0) {
+                PLOG(ERROR) << "Cannot rename " << GetTmpFilePath(path_) << " to " << path_;
+            }
+        }  // Else: need to remove tmp file: handled in later lines
+    } else if (do_cleanup_) {
+        if (cleanup_ != nullptr) {
+            cleanup_(path_);
+        }
     }
 
+    // Always try to remove tmp file for valid path.
+    if (!path_.empty()) {
+        UnlinkPossiblyNonExistingFile(GetTmpFilePath(path_));
+    }
+
+    has_tmp_file_ = false;
     value_ = new_value;
     path_ = path;
     cleanup_ = new_cleanup;
@@ -73,7 +108,29 @@ void UniqueFile::release() {
     value_ = -1;
     path_ = "";
     do_cleanup_ = false;
+    has_tmp_file_ = false;
     cleanup_ = nullptr;
+}
+
+UniqueFile UniqueFile::CreateWritableFileWithTmpWorkFile(const std::string& path, int permissions) {
+    std::string tmp_file_path = GetTmpFilePath(path);
+    // If old tmp file exists, delete it.
+    UnlinkPossiblyNonExistingFile(tmp_file_path);
+    int fd = open(tmp_file_path.c_str(), O_RDWR | O_CREAT, permissions);
+    if (fd < 0) {
+        PLOG(ERROR) << "Cannot create file: " << path;
+    }
+    UniqueFile uf(fd, path);
+    if (fd >= 0) {
+        uf.has_tmp_file_ = true;
+    }
+
+    return uf;
+}
+
+void UniqueFile::RemoveFileAndTmpFile(const std::string& path) {
+    UnlinkPossiblyNonExistingFile(GetTmpFilePath(path));
+    UnlinkPossiblyNonExistingFile(path);
 }
 
 }  // namespace installd

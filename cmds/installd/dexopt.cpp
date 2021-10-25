@@ -996,23 +996,20 @@ UniqueFile maybe_open_app_image(const std::string& out_oat_path,
         return UniqueFile();
     }
 
-    // In case there is a stale image, remove it now. Ignore any error.
-    unlink(image_path.c_str());
-
     // Not enabled, exit.
     if (!generate_app_image) {
+        UniqueFile::RemoveFileAndTmpFile(image_path);
         return UniqueFile();
     }
     std::string app_image_format = GetProperty("dalvik.vm.appimageformat", "");
     if (app_image_format.empty()) {
+        UniqueFile::RemoveFileAndTmpFile(image_path);
         return UniqueFile();
     }
     // Recreate is true since we do not want to modify a mapped image. If the app is
     // already running and we modify the image file, it can cause crashes (b/27493510).
-    UniqueFile image_file(
-            open_output_file(image_path.c_str(), true /*recreate*/, 0600 /*permissions*/),
-            image_path,
-            UnlinkIgnoreResult);
+    UniqueFile image_file = UniqueFile::CreateWritableFileWithTmpWorkFile(image_path,
+        /*permissions*/ 0600);
     if (image_file.fd() < 0) {
         // Could not create application image file. Go on since we can compile without it.
         LOG(ERROR) << "installd could not create '" << image_path
@@ -1170,10 +1167,8 @@ bool open_vdex_files_for_dex2oat(const char* apk_path, const char* out_oat_path,
         // wrapper).
         in_vdex_wrapper->DisableAutoClose();
     } else {
-        out_vdex_wrapper->reset(
-              open_output_file(out_vdex_path_str.c_str(), /*recreate*/true, /*permissions*/0644),
-              out_vdex_path_str,
-              UnlinkIgnoreResult);
+        *out_vdex_wrapper = UniqueFile::CreateWritableFileWithTmpWorkFile(out_vdex_path_str,
+            /*permissions*/0644);
         if (out_vdex_wrapper->fd() < 0) {
             ALOGE("installd cannot open vdex'%s' during dexopt\n", out_vdex_path_str.c_str());
             return false;
@@ -1196,10 +1191,8 @@ UniqueFile open_oat_out_file(const char* apk_path, const char* oat_dir,
     if (!create_oat_out_path(apk_path, instruction_set, oat_dir, is_secondary_dex, out_oat_path)) {
         return UniqueFile();
     }
-    UniqueFile oat(
-            open_output_file(out_oat_path, /*recreate*/true, /*permissions*/0644),
-            out_oat_path,
-            UnlinkIgnoreResult);
+    UniqueFile oat = UniqueFile::CreateWritableFileWithTmpWorkFile(out_oat_path,
+        /*permissions*/0644);
     if (oat.fd() < 0) {
         PLOG(ERROR) << "installd cannot open output during dexopt" <<  out_oat_path;
     } else if (!set_permissions_and_ownership(
@@ -1838,6 +1831,7 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
         if (sec_dex_result == kSecondaryDexOptProcessOk) {
             oat_dir = oat_dir_str.c_str();
             if (dexopt_needed == NO_DEXOPT_NEEDED) {
+                *completed = true;
                 return 0;  // Nothing to do, report success.
             }
         } else if (sec_dex_result == kSecondaryDexOptProcessCancelled) {
@@ -1976,6 +1970,8 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
     bool cancelled = false;
     pid_t pid = dexopt_status_->check_cancellation_and_fork(&cancelled);
     if (cancelled) {
+        *completed = false;
+        reference_profile.DisableCleanup();
         return 0;
     }
     if (pid == 0) {
@@ -2003,6 +1999,7 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
                 LOG(VERBOSE) << "DexInv: --- END '" << dex_path << "' --- cancelled";
                 // cancelled, not an error
                 *completed = false;
+                reference_profile.DisableCleanup();
                 return 0;
             }
             LOG(VERBOSE) << "DexInv: --- END '" << dex_path << "' --- status=0x"

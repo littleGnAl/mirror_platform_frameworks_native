@@ -83,7 +83,22 @@ class UniqueFile {
     }
 
     void reset();
-    void reset(int new_value, std::string path, CleanUpFunction new_cleanup = nullptr);
+    void reset(int new_value, const std::string& path, CleanUpFunction new_cleanup = nullptr);
+
+    // This creates UniqueFile with temporary work file.
+    // There can be existing file in the path and regardless of existing file, a temporary work
+    // file is created and fd() returns the temporary work file.
+    // When the UniqueFile is destructed, it will either rename temporary file to the given
+    // path name (=when DisableCleanup() is called) or keep the original file and delete the
+    // temporary file (=when DisableCleanup() is not called). In both cases, after destruction,
+    // the temporary file no longer exists.
+    // If temporary file already exists when this is called, existing temporary file will be deleted
+    // as it can be a left-over from abnormal situation like system crash.
+    static UniqueFile CreateWritableFileWithTmpWorkFile(const std::string& path, int permissions);
+
+    // Remove the specified file together with tmp file generated for the path from
+    // CreateWritableFileWithTmpWorkFile call.
+    static void RemoveFileAndTmpFile(const std::string& path);
 
  private:
     void release();
@@ -93,6 +108,7 @@ class UniqueFile {
     CleanUpFunction cleanup_;
     bool do_cleanup_;
     bool auto_close_;
+    bool has_tmp_file_ = false;
 };
 
 }  // namespace installd
