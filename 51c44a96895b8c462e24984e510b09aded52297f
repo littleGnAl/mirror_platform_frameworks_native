@@ -22,6 +22,30 @@
       },
       "revId": "51c44a96895b8c462e24984e510b09aded52297f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aead0e59_e134d222",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-10-25T21:30:27Z",
+      "side": 1,
+      "message": "Good point! Unresolving for better visibility",
+      "parentUuid": "f01af31c_562877c5",
+      "range": {
+        "startLine": 666,
+        "startChar": 0,
+        "endLine": 675,
+        "endChar": 46
+      },
+      "revId": "51c44a96895b8c462e24984e510b09aded52297f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
