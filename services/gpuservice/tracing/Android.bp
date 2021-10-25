@@ -23,6 +23,7 @@ package {
 
 cc_library_shared {
     name: "libgpumemtracer",
+    header_libs: ["bpf_map_utils"],
     srcs: [
         "GpuMemTracer.cpp",
     ],

@@ -27,6 +27,7 @@ cc_test {
     sanitize: {
         address: true,
     },
+    header_libs: ["bpf_map_utils"],
     srcs: [
         "GpuMemTest.cpp",
         "GpuMemTracerTest.cpp",

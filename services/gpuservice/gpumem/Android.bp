@@ -23,6 +23,7 @@ package {
 
 cc_library_shared {
     name: "libgpumem",
+    header_libs: ["bpf_map_utils"],
     srcs: [
         "GpuMem.cpp",
     ],

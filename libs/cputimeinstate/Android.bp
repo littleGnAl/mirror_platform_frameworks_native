@@ -15,9 +15,12 @@ cc_library {
         "libbpf",
         "libbpf_android",
         "liblog",
-        "libnetdutils"
+        "libnetdutils",
     ],
-    header_libs: ["bpf_prog_headers"],
+    header_libs: [
+        "bpf_map_utils",
+        "bpf_prog_headers",
+    ],
     cflags: [
         "-Werror",
         "-Wall",
@@ -36,7 +39,10 @@ cc_test {
         "libtimeinstate",
         "libnetdutils",
     ],
-    header_libs: ["bpf_prog_headers"],
+    header_libs: [
+        "bpf_map_utils",
+        "bpf_prog_headers",
+    ],
     cflags: [
         "-Werror",
         "-Wall",
