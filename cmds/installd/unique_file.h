@@ -83,16 +83,28 @@ class UniqueFile {
     }
 
     void reset();
-    void reset(int new_value, std::string path, CleanUpFunction new_cleanup = nullptr);
+    void reset(int new_value, const std::string& path, CleanUpFunction new_cleanup = nullptr);
+
+    // This creates UniqueFile with backup file. Existing file with the given path will be renamed
+    // into backup file. When the file is cleaned up, the backup file is restored to the original
+    // file name. If this instance is destroyed without cleanup, new file is kept and the backup
+    // file is deleted.
+    static UniqueFile CreateWritableFileWithBackup(const std::string& path, int permissions,
+        CleanUpFunction cleanup = nullptr);
+
+    // Remove the specified file together with backup file generated for the path.
+    static void RemoveFileAndBackup(const std::string& path);
 
  private:
     void release();
 
     int value_;
     std::string path_;
+    std::string backup_file_path_;
     CleanUpFunction cleanup_;
     bool do_cleanup_;
     bool auto_close_;
+    bool has_backup_file_ = false;
 };
 
 }  // namespace installd
