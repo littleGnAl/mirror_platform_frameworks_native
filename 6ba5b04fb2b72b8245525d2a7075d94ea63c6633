@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf5b553_a16f9af4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2021-10-26T22:31:45Z",
+      "side": 1,
+      "message": "Sorry for the delayed patch... Added unit test, but still using ifdef to check if we are on BIONIC",
+      "revId": "6ba5b04fb2b72b8245525d2a7075d94ea63c6633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
