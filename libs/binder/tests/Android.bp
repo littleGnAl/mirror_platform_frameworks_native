@@ -84,7 +84,11 @@ cc_test {
             enabled: false,
         },
     },
-    srcs: ["binderParcelUnitTest.cpp", "binderBinderUnitTest.cpp"],
+    srcs: [
+        "binderParcelUnitTest.cpp",
+        "binderBinderUnitTest.cpp",
+        "binderMemoryHeapBaseUnitTest.cpp",
+    ],
     shared_libs: [
         "libbinder",
         "libcutils",
@@ -92,6 +96,7 @@ cc_test {
     ],
     test_suites: ["general-tests"],
 }
+
 
 cc_test {
     name: "binderLibTest",
