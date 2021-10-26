@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae0bdc4c_92c1f2be",
+        "filename": "libs/gui/DisplayEventDispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-10-26T21:04:50Z",
+      "side": 1,
+      "message": "nit: make currentTime and vsyncScheduleTime const",
+      "revId": "9e3161f9b4e0f14328e79919572d55566ecdc548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844c30fa_b995e49d",
+        "filename": "libs/gui/DisplayEventDispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-10-26T21:04:50Z",
+      "side": 1,
+      "message": "nit: maybe vsyncScheduleDelay?",
+      "range": {
+        "startLine": 138,
+        "startChar": 35,
+        "endLine": 138,
+        "endChar": 52
+      },
+      "revId": "9e3161f9b4e0f14328e79919572d55566ecdc548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2bb435a_c5060fe9",
+        "filename": "libs/gui/DisplayEventDispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-10-26T21:04:50Z",
+      "side": 1,
+      "message": "you also need to pass VsyncEventData. How does this compile?",
+      "revId": "9e3161f9b4e0f14328e79919572d55566ecdc548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
