@@ -365,12 +365,6 @@ done:
     return res;
 }
 
-static int restorecon_app_data_lazy(const std::string& parent, const char* name,
-        const std::string& seInfo, uid_t uid, bool existing) {
-    return restorecon_app_data_lazy(StringPrintf("%s/%s", parent.c_str(), name), seInfo, uid,
-            existing);
-}
-
 static int prepare_app_dir(const std::string& path, mode_t target_mode, uid_t uid) {
     if (fs_prepare_dir_strict(path.c_str(), target_mode, uid, uid) != 0) {
         PLOG(ERROR) << "Failed to prepare " << path;
@@ -460,9 +454,7 @@ binder::Status InstalldNativeService::createAppData(const std::optional<std::str
         }
 
         // Consider restorecon over contents if label changed
-        if (restorecon_app_data_lazy(path, seInfo, uid, existing) ||
-                restorecon_app_data_lazy(path, "cache", seInfo, uid, existing) ||
-                restorecon_app_data_lazy(path, "code_cache", seInfo, uid, existing)) {
+        if (restorecon_app_data_lazy(path, seInfo, uid, existing)) {
             return error("Failed to restorecon " + path);
         }
 
@@ -494,9 +486,7 @@ binder::Status InstalldNativeService::createAppData(const std::optional<std::str
         }
 
         // Consider restorecon over contents if label changed
-        if (restorecon_app_data_lazy(path, seInfo, uid, existing) ||
-                restorecon_app_data_lazy(path, "cache", seInfo, uid, existing) ||
-                restorecon_app_data_lazy(path, "code_cache", seInfo, uid, existing)) {
+        if (restorecon_app_data_lazy(path, seInfo, uid, existing)) {
             return error("Failed to restorecon " + path);
         }
 
