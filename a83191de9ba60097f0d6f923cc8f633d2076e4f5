@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ff99ab9_a68ea32e",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2021-10-27T17:33:15Z",
+      "side": 1,
+      "message": "It looks like this fatal if the global gProcess is forked? It calls init() with driver \u003d\u003d nullptr and that calls verifyNotForked.",
+      "range": {
+        "startLine": 1306,
+        "startChar": 34,
+        "endLine": 1306,
+        "endChar": 44
+      },
+      "revId": "a83191de9ba60097f0d6f923cc8f633d2076e4f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
