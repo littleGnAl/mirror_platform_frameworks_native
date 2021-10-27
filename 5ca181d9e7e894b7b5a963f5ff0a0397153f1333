@@ -16,6 +16,24 @@
       "message": "This will keep failing presubmit at least until 1855900 and 1856915 get submitted.",
       "revId": "5ca181d9e7e894b7b5a963f5ff0a0397153f1333",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de720192_559e6a5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-10-27T07:21:10Z",
+      "side": 1,
+      "message": "Submitted them. It would take some time until they get merged into internal branches. I\u0027ll relaunch presubmit then.",
+      "parentUuid": "621be0e2_adb739b4",
+      "revId": "5ca181d9e7e894b7b5a963f5ff0a0397153f1333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
