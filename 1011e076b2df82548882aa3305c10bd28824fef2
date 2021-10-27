@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09c42ff9_e782e17d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-10-27T18:27:55Z",
+      "side": 1,
+      "message": "I think we found that this is an unsafe change to make, since it reintroduces this bug:\n\nhttps://b.corp.google.com/issues/32504081",
+      "revId": "1011e076b2df82548882aa3305c10bd28824fef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
