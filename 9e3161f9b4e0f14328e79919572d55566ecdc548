@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70984400_37f9b108",
+        "filename": "libs/gui/DisplayEventDispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1901488
+      },
+      "writtenOn": "2021-10-27T09:13:37Z",
+      "side": 1,
+      "message": "Thanks for your advice, I added const to the code.",
+      "parentUuid": "ae0bdc4c_92c1f2be",
+      "revId": "9e3161f9b4e0f14328e79919572d55566ecdc548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "844c30fa_b995e49d",
         "filename": "libs/gui/DisplayEventDispatcher.cpp",
         "patchSetId": 4
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bc6ea0d_e8d6f0b1",
+        "filename": "libs/gui/DisplayEventDispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1901488
+      },
+      "writtenOn": "2021-10-27T09:13:37Z",
+      "side": 1,
+      "message": "I changed \u0027vsyncScheduleTime\u0027 to \u0027vsyncScheduleDelay\u0027 in the code.",
+      "parentUuid": "844c30fa_b995e49d",
+      "range": {
+        "startLine": 138,
+        "startChar": 35,
+        "endLine": 138,
+        "endChar": 52
+      },
+      "revId": "9e3161f9b4e0f14328e79919572d55566ecdc548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2bb435a_c5060fe9",
         "filename": "libs/gui/DisplayEventDispatcher.cpp",
         "patchSetId": 4
@@ -54,6 +96,24 @@
       "writtenOn": "2021-10-26T21:04:50Z",
       "side": 1,
       "message": "you also need to pass VsyncEventData. How does this compile?",
+      "revId": "9e3161f9b4e0f14328e79919572d55566ecdc548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5259bb9b_efb9cafd",
+        "filename": "libs/gui/DisplayEventDispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1901488
+      },
+      "writtenOn": "2021-10-27T09:13:37Z",
+      "side": 1,
+      "message": "Sorry for the mistake, the code is from Android R, I have updated the code to adapt to the latest version of the code.",
+      "parentUuid": "d2bb435a_c5060fe9",
       "revId": "9e3161f9b4e0f14328e79919572d55566ecdc548",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
