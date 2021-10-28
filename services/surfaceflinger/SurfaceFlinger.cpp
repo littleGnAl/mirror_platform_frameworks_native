@@ -473,7 +473,7 @@ SurfaceFlinger::SurfaceFlinger(Factory& factory) : SurfaceFlinger(factory, SkipI
         android::hardware::details::setTrebleTestingOverride(true);
     }
 
-    useFrameRateApi = use_frame_rate_api(true);
+    useFrameRateApi = base::GetBoolProperty("ro.vendor.surface_flinger.use_frame_rate_api", true);
 
     mKernelIdleTimerEnabled = mSupportKernelIdleTimer = sysprop::support_kernel_idle_timer(false);
     base::SetProperty(KERNEL_IDLE_TIMER_PROP, mKernelIdleTimerEnabled ? "true" : "false");
