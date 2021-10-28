@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f3fd12a_3eb6f9f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-10-28T09:14:28Z",
+      "side": 1,
+      "message": "The change LGTM but android11-dev is the development branch of Android R which was done 1y ago. I think we should loop in some release manager on the bug to figure out how to deal with this.",
+      "revId": "32744400edb7cc0b7681457c3591152e772d4ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
