@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94224e04_594b35c1",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-28T23:50:09Z",
+      "side": 1,
+      "message": "though - taking another step back\n\nParcel already exposes data() and dataSize(). This API doesn\u0027t let you do things you can\u0027t already do in the C++ API.",
+      "range": {
+        "startLine": 539,
+        "startChar": 14,
+        "endLine": 539,
+        "endChar": 20
+      },
+      "revId": "897b1656204587f39975d39b136d7ebd32894354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
