@@ -46,6 +46,8 @@
 #endif
 
 #define DEBUG_XATTRS 0
+#define PREPARE_DIR_FAILURE -1
+#define PREPARE_DIR_SUCCESS 0
 
 using android::base::EndsWith;
 using android::base::Fdopendir;
@@ -993,8 +995,8 @@ int wait_child(pid_t pid)
  * directory mode flags during a platform upgrade.
  * The app cache directory path will be 'parent'/'name'.
  */
-int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t target_mode,
-        uid_t uid, gid_t gid) {
+PrepareAppCacheDirResult prepare_app_cache_dir(const std::string& parent, const char* name,
+         mode_t target_mode, uid_t uid, gid_t gid) {
     auto path = StringPrintf("%s/%s", parent.c_str(), name);
     struct stat st;
     if (stat(path.c_str(), &st) != 0) {
@@ -1002,13 +1004,13 @@ int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t ta
             // This is fine, just create it
             if (fs_prepare_dir_strict(path.c_str(), target_mode, uid, gid) != 0) {
                 PLOG(ERROR) << "Failed to prepare " << path;
-                return -1;
+                return PrepareAppCacheDirResult(PREPARE_DIR_FAILURE);
             } else {
-                return 0;
+                return PrepareAppCacheDirResult(PREPARE_DIR_SUCCESS, true);
             }
         } else {
             PLOG(ERROR) << "Failed to stat " << path;
-            return -1;
+            return PrepareAppCacheDirResult(PREPARE_DIR_FAILURE);
         }
     }
 
@@ -1017,10 +1019,10 @@ int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t ta
         // Mismatched UID is real trouble; we can't recover
         LOG(ERROR) << "Mismatched UID at " << path << ": found " << st.st_uid
                 << " but expected " << uid;
-        return -1;
+        return PrepareAppCacheDirResult(PREPARE_DIR_FAILURE);
     } else if (st.st_gid == gid && actual_mode == target_mode) {
         // Everything looks good!
-        return 0;
+        return PrepareAppCacheDirResult(PREPARE_DIR_SUCCESS);
     } else {
         // Mismatched GID/mode is recoverable; fall through to update
         LOG(DEBUG) << "Mismatched cache GID/mode at " << path << ": found " << st.st_gid
@@ -1034,7 +1036,7 @@ int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t ta
     char *argv[] = { (char*) path.c_str(), nullptr };
     if (!(fts = fts_open(argv, FTS_PHYSICAL | FTS_NOCHDIR | FTS_XDEV, nullptr))) {
         PLOG(ERROR) << "Failed to fts_open " << path;
-        return -1;
+        return PrepareAppCacheDirResult(PREPARE_DIR_FAILURE);
     }
     while ((p = fts_read(fts)) != nullptr) {
         switch (p->fts_info) {
@@ -1057,8 +1059,9 @@ int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t ta
         }
     }
     fts_close(fts);
-    return 0;
+    return PrepareAppCacheDirResult(PREPARE_DIR_SUCCESS);
 }
+
 
 static const char* kProcFilesystems = "/proc/filesystems";
 bool supports_sdcardfs() {

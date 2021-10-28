@@ -1344,7 +1344,7 @@ static bool prepare_secondary_dex_oat_dir(const std::string& dex_path, int uid,
 
     // Create oat file output directory.
     mode_t oat_dir_mode = S_IRWXU | S_IRWXG | S_IXOTH;
-    if (prepare_app_cache_dir(dex_dir, "oat", oat_dir_mode, uid, uid) != 0) {
+    if (prepare_app_cache_dir(dex_dir, "oat", oat_dir_mode, uid, uid).res != 0) {
         LOG(ERROR) << "Could not prepare oat dir for secondary dex: " << dex_path;
         return false;
     }
@@ -1352,7 +1352,7 @@ static bool prepare_secondary_dex_oat_dir(const std::string& dex_path, int uid,
     char oat_dir[PKG_PATH_MAX];
     snprintf(oat_dir, PKG_PATH_MAX, "%s/oat", dex_dir.c_str());
 
-    if (prepare_app_cache_dir(oat_dir, instruction_set, oat_dir_mode, uid, uid) != 0) {
+    if (prepare_app_cache_dir(oat_dir, instruction_set, oat_dir_mode, uid, uid).res != 0) {
         LOG(ERROR) << "Could not prepare oat/isa dir for secondary dex: " << dex_path;
         return false;
     }
