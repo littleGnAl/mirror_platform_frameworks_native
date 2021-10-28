@@ -321,10 +321,17 @@ static int restorecon_app_data_lazy(const std::string& path, const std::string& 
     int res = 0;
     char* before = nullptr;
     char* after = nullptr;
+    if (!existing) {
+        if (selinux_android_restorecon_pkgdir(path.c_str(), seInfo.c_str(), uid,
+                SELINUX_ANDROID_RESTORECON_RECURSE) < 0) {
+            PLOG(ERROR) << "Failed recursive restorecon for " << path;
+            goto fail;
+        }
+        return res;
+    }
 
     // Note that SELINUX_ANDROID_RESTORECON_DATADATA flag is set by
     // libselinux. Not needed here.
-
     if (lgetfilecon(path.c_str(), &before) < 0) {
         PLOG(ERROR) << "Failed before getfilecon for " << path;
         goto fail;
@@ -511,9 +518,16 @@ static void chown_app_profile_dir(const std::string &packageName, int32_t appId,
 static binder::Status createAppDataDirs(const std::string& path,
         int32_t uid, int32_t* previousUid, int32_t cacheGid,
         const std::string& seInfo, mode_t targetMode) {
+    auto cache_path = StringPrintf("%s/%s", path.c_str(), "cache");
+    auto code_cache_path = StringPrintf("%s/%s", path.c_str(), "code_cache");
     struct stat st{};
-    bool existing = (stat(path.c_str(), &st) == 0);
-    if (existing) {
+    struct stat st_cache{};
+    struct stat st_code_cache{};
+    bool parent_dir_exists = (stat(path.c_str(), &st) == 0);
+    bool cache_exists = (stat(cache_path.c_str(), &st_cache) == 0);
+    bool code_cache_exists = (stat(code_cache_path.c_str(), &st_code_cache) == 0);
+
+    if (parent_dir_exists) {
         if (*previousUid < 0) {
             // If previousAppId is -1 in CreateAppDataArgs, we will assume the current owner
             // of the directory as previousUid. This is required because it is not always possible
@@ -527,6 +541,7 @@ static binder::Status createAppDataDirs(const std::string& path,
         }
     }
 
+    // Prepare only the parent app directory
     if (prepare_app_dir(path, targetMode, uid) ||
             prepare_app_cache_dir(path, "cache", 02771, uid, cacheGid) ||
             prepare_app_cache_dir(path, "code_cache", 02771, uid, cacheGid)) {
@@ -534,12 +549,23 @@ static binder::Status createAppDataDirs(const std::string& path,
     }
 
     // Consider restorecon over contents if label changed
-    if (restorecon_app_data_lazy(path, seInfo, uid, existing) ||
-            restorecon_app_data_lazy(path, "cache", seInfo, uid, existing) ||
-            restorecon_app_data_lazy(path, "code_cache", seInfo, uid, existing)) {
+    if (restorecon_app_data_lazy(path, seInfo, uid, parent_dir_exists)) {
         return error("Failed to restorecon " + path);
     }
 
+    // If the parent dir exists, the restorecon would already have been done
+    // as a part of the recursive restorecon above
+    if (parent_dir_exists && !cache_exists &&
+        restorecon_app_data_lazy(path, "cache", seInfo, uid, false)) {
+        return error("Failed to restorecon " + path + "/cache dir");
+    }
+
+    // If the parent dir exists, the restorecon would already have been done
+    // as a part of the recursive restorecon above
+    if (parent_dir_exists && !code_cache_exists &&
+        restorecon_app_data_lazy(path, "code_cache", seInfo, uid, false)) {
+        return error("Failed to restorecon " + path + "/code_cache dir");
+    }
     return ok();
 }
 
