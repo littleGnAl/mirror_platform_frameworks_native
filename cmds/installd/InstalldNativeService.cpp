@@ -367,6 +367,18 @@ static int restorecon_app_data_lazy(const std::string& parent, const char* name,
             existing);
 }
 
+/**
+ * Prepares the app cache directory and does a restorecon only if the directory was just created
+ */
+int prepare_cache_dir_and_restorecon(const std::string& parent, const char* name,
+        mode_t target_mode, uid_t uid, gid_t gid, const std::string& seInfo) {
+    PrepareAppCacheDirResult result = prepare_app_cache_dir(parent, name, target_mode, uid, gid);
+    if (result.is_dir_created) {
+        restorecon_app_data_lazy(parent, name, seInfo, uid, true);
+    }
+    return result.res;
+}
+
 static int prepare_app_dir(const std::string& path, mode_t target_mode, uid_t uid) {
     if (fs_prepare_dir_strict(path.c_str(), target_mode, uid, uid) != 0) {
         PLOG(ERROR) << "Failed to prepare " << path;
@@ -450,15 +462,13 @@ binder::Status InstalldNativeService::createAppData(const std::optional<std::str
         bool existing = (access(path.c_str(), F_OK) == 0);
 
         if (prepare_app_dir(path, targetMode, uid) ||
-                prepare_app_cache_dir(path, "cache", 02771, uid, cacheGid) ||
-                prepare_app_cache_dir(path, "code_cache", 02771, uid, cacheGid)) {
+            prepare_cache_dir_and_restorecon(path, "cache", 02771, uid, cacheGid, seInfo) ||
+            prepare_cache_dir_and_restorecon(path, "code_cache", 02771, uid, cacheGid, seInfo)) {
             return error("Failed to prepare " + path);
         }
 
         // Consider restorecon over contents if label changed
-        if (restorecon_app_data_lazy(path, seInfo, uid, existing) ||
-                restorecon_app_data_lazy(path, "cache", seInfo, uid, existing) ||
-                restorecon_app_data_lazy(path, "code_cache", seInfo, uid, existing)) {
+        if (restorecon_app_data_lazy(path, seInfo, uid, existing)) {
             return error("Failed to restorecon " + path);
         }
 
@@ -484,15 +494,13 @@ binder::Status InstalldNativeService::createAppData(const std::optional<std::str
         bool existing = (access(path.c_str(), F_OK) == 0);
 
         if (prepare_app_dir(path, targetMode, uid) ||
-                prepare_app_cache_dir(path, "cache", 02771, uid, cacheGid) ||
-                prepare_app_cache_dir(path, "code_cache", 02771, uid, cacheGid)) {
+            prepare_cache_dir_and_restorecon(path, "cache", 02771, uid, cacheGid, seInfo) ||
+            prepare_cache_dir_and_restorecon(path, "code_cache", 02771, uid, cacheGid, seInfo)) {
             return error("Failed to prepare " + path);
         }
 
         // Consider restorecon over contents if label changed
-        if (restorecon_app_data_lazy(path, seInfo, uid, existing) ||
-                restorecon_app_data_lazy(path, "cache", seInfo, uid, existing) ||
-                restorecon_app_data_lazy(path, "code_cache", seInfo, uid, existing)) {
+        if (restorecon_app_data_lazy(path, seInfo, uid, existing)) {
             return error("Failed to restorecon " + path);
         }
 
