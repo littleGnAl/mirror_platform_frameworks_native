@@ -993,8 +993,8 @@ int wait_child(pid_t pid)
  * directory mode flags during a platform upgrade.
  * The app cache directory path will be 'parent'/'name'.
  */
-int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t target_mode,
-        uid_t uid, gid_t gid) {
+PrepareAppCacheDirResult prepare_app_cache_dir(const std::string& parent, const char* name,
+         mode_t target_mode, uid_t uid, gid_t gid) {
     auto path = StringPrintf("%s/%s", parent.c_str(), name);
     struct stat st;
     if (stat(path.c_str(), &st) != 0) {
@@ -1002,13 +1002,13 @@ int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t ta
             // This is fine, just create it
             if (fs_prepare_dir_strict(path.c_str(), target_mode, uid, gid) != 0) {
                 PLOG(ERROR) << "Failed to prepare " << path;
-                return -1;
+                return PrepareAppCacheDirResult(-1);
             } else {
-                return 0;
+                return PrepareAppCacheDirResult(0, true);
             }
         } else {
             PLOG(ERROR) << "Failed to stat " << path;
-            return -1;
+            return PrepareAppCacheDirResult(-1);
         }
     }
 
@@ -1017,10 +1017,10 @@ int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t ta
         // Mismatched UID is real trouble; we can't recover
         LOG(ERROR) << "Mismatched UID at " << path << ": found " << st.st_uid
                 << " but expected " << uid;
-        return -1;
+        return PrepareAppCacheDirResult(-1);
     } else if (st.st_gid == gid && actual_mode == target_mode) {
         // Everything looks good!
-        return 0;
+        return PrepareAppCacheDirResult(0);
     } else {
         // Mismatched GID/mode is recoverable; fall through to update
         LOG(DEBUG) << "Mismatched cache GID/mode at " << path << ": found " << st.st_gid
@@ -1034,7 +1034,7 @@ int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t ta
     char *argv[] = { (char*) path.c_str(), nullptr };
     if (!(fts = fts_open(argv, FTS_PHYSICAL | FTS_NOCHDIR | FTS_XDEV, nullptr))) {
         PLOG(ERROR) << "Failed to fts_open " << path;
-        return -1;
+        return PrepareAppCacheDirResult(-1);
     }
     while ((p = fts_read(fts)) != nullptr) {
         switch (p->fts_info) {
@@ -1057,8 +1057,9 @@ int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t ta
         }
     }
     fts_close(fts);
-    return 0;
+    return PrepareAppCacheDirResult(0);
 }
+
 
 static const char* kProcFilesystems = "/proc/filesystems";
 bool supports_sdcardfs() {

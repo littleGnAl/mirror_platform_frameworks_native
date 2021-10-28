@@ -150,8 +150,16 @@ int ensure_config_user_dirs(userid_t userid);
 
 int wait_child(pid_t pid);
 
-int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t target_mode,
-        uid_t uid, gid_t gid);
+struct PrepareAppCacheDirResult {
+    int res;
+    bool is_dir_created;
+
+    PrepareAppCacheDirResult(int value): res(value), is_dir_created(false) {}
+    PrepareAppCacheDirResult(int value, bool flag): res(value), is_dir_created(flag) {}
+};
+
+PrepareAppCacheDirResult prepare_app_cache_dir(const std::string& parent, const char* name,
+        mode_t target_mode, uid_t uid, gid_t gid);
 
 bool supports_sdcardfs();
 int64_t get_occupied_app_space_external(const std::string& uuid, int32_t userId, int32_t appId);
