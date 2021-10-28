@@ -16,6 +16,24 @@
       "message": "The good_old_string function name will be missed.",
       "revId": "619b935854a01f9691d85ef47aedc65e7b388f7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "686e6bca_354bea78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-28T23:31:51Z",
+      "side": 1,
+      "message": "that good old good_old_string function",
+      "parentUuid": "3263f034_dd5aafe1",
+      "revId": "619b935854a01f9691d85ef47aedc65e7b388f7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
