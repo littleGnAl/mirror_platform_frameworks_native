@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c00a106_d0449f8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885146
+      },
+      "writtenOn": "2021-10-29T06:30:56Z",
+      "side": 1,
+      "message": "sorry.Ground glass is a term for a blurred background。\nIf a window uses a blur background, then it still records the screen in the horizontal screen, and then rotates to the vertical screen. At this time, the mDisplayx and mDisplay of the virtual screen will not be 0, so the local area drawn by glblitframebuffer is wrong. The drawing area is correct only when mDisplayX and mDisplayY are 0, and the parameter itself is wrong",
+      "parentUuid": "f3db3085_bcdabe73",
+      "revId": "5b255869ed794953a28a62090fdfb68aab2e338a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "675a7480_415bd5d3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-13T15:50:46Z",
       "side": 1,
       "message": "\u003e The attached video is the problem of adding a blurred background to the Recents window, and a similar problem should also occur when adding a blurred background to the notification bar.\n\nWhere is the attached video? I don\u0027t think Gerrit lets you attach a video. Is there an associated bug?",
+      "revId": "5b255869ed794953a28a62090fdfb68aab2e338a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5699d3_a77ac667",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1885146
+      },
+      "writtenOn": "2021-10-29T06:30:56Z",
+      "side": 1,
+      "message": "If a window uses a blur background, then it still records the screen in the horizontal screen, and then rotates to the vertical screen. At this time, the mDisplayx and mDisplay of the virtual screen will not be 0, so the local area drawn by glblitframebuffer is wrong. The drawing area is correct only when mdisplayx and mdisplayy are 0, and the parameter itself is wrong",
+      "parentUuid": "675a7480_415bd5d3",
       "revId": "5b255869ed794953a28a62090fdfb68aab2e338a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
