@@ -22,6 +22,30 @@
       },
       "revId": "b144cc498a151e22783838af2900b42923429337",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5295a323_4adab47f",
+        "filename": "services/surfaceflinger/DisplayHardware/VirtualDisplaySurface.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1566103
+      },
+      "writtenOn": "2021-10-29T11:13:48Z",
+      "side": 1,
+      "message": "this change just want to fix bb, maybe we can do this in a separate CL needed",
+      "parentUuid": "8b131d07_bf590c25",
+      "range": {
+        "startLine": 329,
+        "startChar": 4,
+        "endLine": 329,
+        "endChar": 16
+      },
+      "revId": "b144cc498a151e22783838af2900b42923429337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
