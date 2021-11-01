@@ -114,9 +114,13 @@ nsecs_t Fence::getSignalTime() const {
         ALOGE("sync_fence_info returned NULL for fd %d", mFenceFd.get());
         return SIGNAL_TIME_INVALID;
     }
-    if (finfo->status != 1) {
+    if (!finfo->status) {
         sync_fence_info_free(finfo);
         return SIGNAL_TIME_PENDING;
+    }
+    else if (finfo->status != 1) {
+        sync_fence_info_free(finfo);
+        return SIGNAL_TIME_INVALID;
     }
 
     struct sync_pt_info* pinfo = NULL;
