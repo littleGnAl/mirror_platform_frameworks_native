@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a782088f_862480b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-11-01T15:24:20Z",
+      "side": 1,
+      "message": "I believe the references to current state have been removed in aosp now so this change should be obsolete",
+      "revId": "2c41622c00921ff1fe9fba78fd546a0cf71da7a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
