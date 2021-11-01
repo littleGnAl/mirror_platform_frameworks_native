@@ -22,6 +22,30 @@
       },
       "revId": "9e2cf7f2a5aa305a5c6856deab5d1da870f71886",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de39b36_c5741160",
+        "filename": "libs/binder/include/binder/IInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-01T23:28:37Z",
+      "side": 1,
+      "message": "No, it\u0027s because we synthesize a few names from the param: Foo (base) \u003d\u003e IFoo (interface qualified type name AND interface type name for ctor/dtor), BpFoo (proxy type name). At least I couldn\u0027t find the way to manipulate \"Parent::Nested\" to generate those names. \n\nFor related type name (here, BpFoo), using the associated type names can be the option (e.g container class\u0027es `value_type`). But, we still need a way to define ctor and dtor with ...",
+      "parentUuid": "b12a8cd3_2faf3d38",
+      "range": {
+        "startLine": 171,
+        "startChar": 58,
+        "endLine": 171,
+        "endChar": 72
+      },
+      "revId": "9e2cf7f2a5aa305a5c6856deab5d1da870f71886",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
