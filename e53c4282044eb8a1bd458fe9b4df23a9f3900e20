@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "511b17e7_10c54179",
+        "filename": "libs/gui/DisplayEventDispatcher.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-11-01T15:19:26Z",
+      "side": 1,
+      "message": "nit: constexpr",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "e53c4282044eb8a1bd458fe9b4df23a9f3900e20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f8529a0_77d5f181",
+        "filename": "libs/gui/include/gui/DisplayEventDispatcher.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-11-01T15:19:26Z",
+      "side": 1,
+      "message": "these are uninitiailized - can they be initialized in the constructor so that we have some well-defined defaults?",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "e53c4282044eb8a1bd458fe9b4df23a9f3900e20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
