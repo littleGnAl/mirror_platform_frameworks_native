@@ -25,6 +25,7 @@
 // TODO(b/142061461): parent class
 class SomeParcelable {
 public:
+    binder_status_t writeToParcel(AParcel* /*parcel*/) { return STATUS_OK; }
     binder_status_t readFromParcel(const AParcel* parcel) {
         return AParcel_readInt32(parcel, &mValue);
     }
