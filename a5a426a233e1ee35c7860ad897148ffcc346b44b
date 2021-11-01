@@ -45,6 +45,30 @@
       },
       "revId": "a5a426a233e1ee35c7860ad897148ffcc346b44b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f68aa6_9515a359",
+        "filename": "cmds/installd/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-11-01T16:23:37Z",
+      "side": 1,
+      "message": "The problem there is that prepare_app_cache_dir() is also called from dexopt.cpp which does not have any seinfo. Passing a null argument there and checking for a null seinfo (or adding another ideantifier to check for the client) felt equally bad and hence I relied on this response structure. WDYT?",
+      "parentUuid": "640ad0e0_c6ce8fea",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 33
+      },
+      "revId": "a5a426a233e1ee35c7860ad897148ffcc346b44b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
