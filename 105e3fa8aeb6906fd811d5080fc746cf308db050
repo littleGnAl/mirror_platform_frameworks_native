@@ -280,6 +280,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c87b20b_9dc8af12",
+        "filename": "libs/binder/rust/src/binder_async.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-11-01T17:50:19Z",
+      "side": 1,
+      "message": "Additionally, if we decide in the future that we were wrong and our BoxFutures should be Sync, it\u0027s easy to add it back in just as you\u0027ve done here. If we export them as Sync, and people use them in ways that assume that, we\u0027re stuck with it forever.",
+      "parentUuid": "72523bab_443b2186",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47113941_015680a4",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 4
