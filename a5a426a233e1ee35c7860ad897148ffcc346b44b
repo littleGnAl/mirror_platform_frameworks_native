@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde25faf_b8922f14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-01T16:16:28Z",
+      "side": 1,
+      "message": "\"restorecons\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "a5a426a233e1ee35c7860ad897148ffcc346b44b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "640ad0e0_c6ce8fea",
+        "filename": "cmds/installd/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-01T16:16:28Z",
+      "side": 1,
+      "message": "Hmm, I\u0027d prefer to not add this new class.\n\nCan you instead move the \"restorecon_app_data_lazy\" method into this utils.h/cpp location, and add the seinfo argument to the prepare_app_cache_dir() method below?  That should be enough for that method to internally call over to restorecon_app_data_lazy() when it knows the directory was created.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 33
+      },
+      "revId": "a5a426a233e1ee35c7860ad897148ffcc346b44b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
