@@ -81,6 +81,30 @@
       },
       "revId": "e531c98fba52f28d601a3e576e6db23169347e55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "292bd5f2_d2700ca3",
+        "filename": "libs/binder/rust/binder_tokio/sync_wrapper.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-11-01T17:23:55Z",
+      "side": 1,
+      "message": "Marking resolved - what this is for would be obvious to a Rust person, why it\u0027s safe is less obvious, and I disagree on whether we should do it at all, but that\u0027s in another comment thread.",
+      "parentUuid": "3f0eacf9_e2aad33a",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "e531c98fba52f28d601a3e576e6db23169347e55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -262,6 +262,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72523bab_443b2186",
+        "filename": "libs/binder/rust/src/binder_async.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-11-01T17:23:55Z",
+      "side": 1,
+      "message": "After contacting the author of tonic, I was informed that the Sync bounds on Grpc are unintended and should be removed in an upcoming revision.\n\nThis is exactly that sort of thing I\u0027m worried about - faking sync on our types will result in people writing code which assumes it needlessly. If we really need SyncWrapper, I think it should be a separate utility, not something on the API surface of our async code that users will rely on.",
+      "parentUuid": "3c87d9dd_36995223",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47113941_015680a4",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 4
@@ -410,6 +428,30 @@
       "side": 1,
       "message": "I couldn\u0027t find the test folder you are referring to. Where do you want me to add this?",
       "parentUuid": "0f844f08_ea501853",
+      "range": {
+        "startLine": 158,
+        "startChar": 10,
+        "endLine": 158,
+        "endChar": 16
+      },
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd887c8_130244fe",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-11-01T17:23:55Z",
+      "side": 1,
+      "message": "He\u0027s referring to https://cs.android.com/android/platform/superproject/+/master:system/tools/aidl/tests/aidl_integration_test.py?q\u003daidl_integration_test\n\nThere is a client/server under the rust directory. You\u0027d want to add an async client in there, and add the async client as another client option in the integeration test python file.\n\nI don\u0027t think this should block the CL, but it would be good to have.",
+      "parentUuid": "aa123fe9_3f28169b",
       "range": {
         "startLine": 158,
         "startChar": 10,
