@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d406ac53_4e06d6b1",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-02T23:18:28Z",
+      "side": 1,
+      "message": "Andrei, I\u0027m not sure what this should be. Can you confirm this?",
+      "range": {
+        "startLine": 705,
+        "startChar": 8,
+        "endLine": 705,
+        "endChar": 40
+      },
+      "revId": "24f4a955cedaf927d3ac3a4de71d7be8cf0c0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa1aa35f_19ed5ebd",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-02T23:18:28Z",
+      "side": 1,
+      "message": "Steven, this is added to satisfy `is_parcelable` constraints. Since we don\u0027t have a common base class, it checks if there\u0027s writeToParcel(AParcel*) and readFromParce(const AParcel*).",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 76
+      },
+      "revId": "24f4a955cedaf927d3ac3a4de71d7be8cf0c0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
