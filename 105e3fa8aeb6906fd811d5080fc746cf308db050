@@ -298,6 +298,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad58cf0e_12a22698",
+        "filename": "libs/binder/rust/src/binder_async.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-11-02T10:10:45Z",
+      "side": 1,
+      "message": "I have removed the Sync bound from this CL so we can moved forward with the other changes.",
+      "parentUuid": "0c87b20b_9dc8af12",
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "47113941_015680a4",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 4
@@ -470,6 +488,30 @@
       "side": 1,
       "message": "He\u0027s referring to https://cs.android.com/android/platform/superproject/+/master:system/tools/aidl/tests/aidl_integration_test.py?q\u003daidl_integration_test\n\nThere is a client/server under the rust directory. You\u0027d want to add an async client in there, and add the async client as another client option in the integeration test python file.\n\nI don\u0027t think this should block the CL, but it would be good to have.",
       "parentUuid": "aa123fe9_3f28169b",
+      "range": {
+        "startLine": 158,
+        "startChar": 10,
+        "endLine": 158,
+        "endChar": 16
+      },
+      "revId": "105e3fa8aeb6906fd811d5080fc746cf308db050",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f774705c_dfd2b40d",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-11-02T10:10:45Z",
+      "side": 1,
+      "message": "If I don\u0027t get around to this before the remaining concerns are resolved, then please approve the CL anyway. I will do it in a follow-up CL in that case.",
+      "parentUuid": "cbd887c8_130244fe",
       "range": {
         "startLine": 158,
         "startChar": 10,
