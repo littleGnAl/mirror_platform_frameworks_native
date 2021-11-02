@@ -16,6 +16,23 @@
       "message": "I believe the references to current state have been removed in aosp now so this change should be obsolete",
       "revId": "2c41622c00921ff1fe9fba78fd546a0cf71da7a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc0e83e0_49805878",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1670415
+      },
+      "writtenOn": "2021-11-02T15:33:52Z",
+      "side": 1,
+      "message": "Thanks for providing latest information about it. I will abandon it.",
+      "revId": "2c41622c00921ff1fe9fba78fd546a0cf71da7a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
