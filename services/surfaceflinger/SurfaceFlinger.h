@@ -810,7 +810,7 @@ private:
     bool mVisibleRegionsDirty;
     bool mGeometryInvalid;
     bool mAnimCompositionPending;
-    std::vector<sp<Layer>> mLayersWithQueuedFrames;
+    std::set<sp<Layer>> mLayersWithQueuedFrames;
     sp<Fence> mPreviousPresentFence = Fence::NO_FENCE;
     bool mHadClientComposition = false;
 
