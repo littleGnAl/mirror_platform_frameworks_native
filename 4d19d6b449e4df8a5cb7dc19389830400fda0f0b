@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b0b24df_f56c78de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-11-02T15:01:45Z",
+      "side": 1,
+      "message": "nit: Fixes broken build",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "4d19d6b449e4df8a5cb7dc19389830400fda0f0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c480a5_b20d2bbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-11-02T15:01:45Z",
+      "side": 1,
+      "message": "what is bb?",
+      "range": {
+        "startLine": 10,
+        "startChar": 56,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "4d19d6b449e4df8a5cb7dc19389830400fda0f0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
