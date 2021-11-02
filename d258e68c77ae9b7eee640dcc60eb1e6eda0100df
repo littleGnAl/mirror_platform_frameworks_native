@@ -22,6 +22,30 @@
       },
       "revId": "d258e68c77ae9b7eee640dcc60eb1e6eda0100df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f92ed6f2_18d41115",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-11-02T01:44:04Z",
+      "side": 1,
+      "message": "L355 would need me to forward declare JavaVM, which could be a typedef\n\nL327 needs JavaVMAttachArgs as well. Both of them are from jni.h\n\nHence I didn\u0027t hide the #ifdef branch in getJavaVM() function",
+      "parentUuid": "cd25f7fb_abcfa063",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 34
+      },
+      "revId": "d258e68c77ae9b7eee640dcc60eb1e6eda0100df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
