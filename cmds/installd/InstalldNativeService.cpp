@@ -324,7 +324,6 @@ static int restorecon_app_data_lazy(const std::string& path, const std::string& 
 
     // Note that SELINUX_ANDROID_RESTORECON_DATADATA flag is set by
     // libselinux. Not needed here.
-
     if (lgetfilecon(path.c_str(), &before) < 0) {
         PLOG(ERROR) << "Failed before getfilecon for " << path;
         goto fail;
@@ -539,15 +538,21 @@ static binder::Status createAppDataDirs(const std::string& path,
         }
     }
 
-    if (prepare_app_dir(path, targetMode, uid) ||
-        prepare_cache_dir_and_restorecon(path, "cache", 02771, uid, cacheGid, seInfo) ||
-        prepare_cache_dir_and_restorecon(path, "code_cache", 02771, uid, cacheGid, seInfo)) {
+    // Prepare only the parent app directory
+    if (prepare_app_dir(path, targetMode, uid)) {
         return error("Failed to prepare " + path);
     }
 
     // Consider restorecon over contents if label changed
     if (restorecon_app_data_lazy(path, seInfo, uid, existing)) {
         return error("Failed to restorecon " + path);
+    }
+
+    // Prepare the cache directories and restorecon over contents
+    // if these directories are newly created
+    if (prepare_cache_dir_and_restorecon(path, "cache", 02771, uid, cacheGid, seInfo) ||
+        prepare_cache_dir_and_restorecon(path, "code_cache", 02771, uid, cacheGid, seInfo)) {
+        return error("Failed to prepare cache dirs for " + path);
     }
     return ok();
 }
