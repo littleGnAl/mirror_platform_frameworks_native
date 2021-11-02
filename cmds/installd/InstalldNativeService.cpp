@@ -321,6 +321,14 @@ static int restorecon_app_data_lazy(const std::string& path, const std::string& 
     int res = 0;
     char* before = nullptr;
     char* after = nullptr;
+    if (!existing) {
+        if (selinux_android_restorecon_pkgdir(path.c_str(), seInfo.c_str(), uid,
+                SELINUX_ANDROID_RESTORECON_RECURSE) < 0) {
+            PLOG(ERROR) << "Failed recursive restorecon for " << path;
+            goto fail;
+        }
+        return res;
+    }
 
     // Note that SELINUX_ANDROID_RESTORECON_DATADATA flag is set by
     // libselinux. Not needed here.
@@ -373,7 +381,7 @@ int prepare_cache_dir_and_restorecon(const std::string& parent, const char* name
         mode_t target_mode, uid_t uid, gid_t gid, const std::string& seInfo) {
     PrepareAppCacheDirResult result = prepare_app_cache_dir(parent, name, target_mode, uid, gid);
     if (result.is_dir_created) {
-        restorecon_app_data_lazy(parent, name, seInfo, uid, true);
+        restorecon_app_data_lazy(parent, name, seInfo, uid, false);
     }
     return result.res;
 }
