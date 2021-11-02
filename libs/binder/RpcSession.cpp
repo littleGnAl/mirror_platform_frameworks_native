@@ -29,7 +29,6 @@
 #include <android-base/hex.h>
 #include <android-base/macros.h>
 #include <android-base/scopeguard.h>
-#include <android_runtime/vm.h>
 #include <binder/BpBinder.h>
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
@@ -46,6 +45,10 @@
 
 #ifdef __GLIBC__
 extern "C" pid_t gettid();
+#endif
+
+#ifndef __ANDROID_RECOVERY__
+#include <android_runtime/vm.h>
 #endif
 
 namespace android {
@@ -347,10 +350,14 @@ private:
     bool mAttached = false;
 
     static JavaVM* getJavaVM() {
+#ifdef __ANDROID_RECOVERY__
+        return nullptr;
+#else
         static auto fn = reinterpret_cast<decltype(&AndroidRuntimeGetJavaVM)>(
                 dlsym(RTLD_DEFAULT, "AndroidRuntimeGetJavaVM"));
         if (fn == nullptr) return nullptr;
         return fn();
+#endif
     }
 };
 } // namespace
