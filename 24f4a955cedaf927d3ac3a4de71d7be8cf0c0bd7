@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1898f4_a63aa1f0",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-03T00:58:29Z",
+      "side": 1,
+      "message": "Yeah, I thought about it, but abandoned it because we still need to distinguish make_optional/make_unique. We can add a small helper to handle both to create a default-constructed value... I\u0027d keep this way.",
+      "parentUuid": "4a7a4224_17dea732",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 30
+      },
+      "revId": "24f4a955cedaf927d3ac3a4de71d7be8cf0c0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d406ac53_4e06d6b1",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "I usually just put in the smallest number of traits I can get away with. You can try and remove them one by one, and I think getting rid of Serialize should work (seems to for DeserializeArray below, because Strong\u003cT\u003e already implements Deserialize on L707 and Serialize on L693). The other two are required by Strong\u003cT\u003e.",
       "parentUuid": "d406ac53_4e06d6b1",
+      "range": {
+        "startLine": 705,
+        "startChar": 8,
+        "endLine": 705,
+        "endChar": 40
+      },
+      "revId": "24f4a955cedaf927d3ac3a4de71d7be8cf0c0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b17f01_6477641f",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-03T00:58:29Z",
+      "side": 1,
+      "message": "Thanks. Yeah, when I removed Serialize, the compiler tells me to add it back ;-)\n\n```\n82  | pub trait SerializeArray: Serialize + Sized {\n    |                           --------- required by this bound in `parcel::parcelable::SerializeArray`\n...\n705 | impl\u003cT: FromIBinder + ?Sized\u003e SerializeArray for Strong\u003cT\u003e {}\n    |                               ^^^^^^^^^^^^^^ the trait `parcel::parcelable::Serialize` is not implemented for `T`\n    |\n    \u003d note: required because of the requirements on the impl of `parcel::parcelable::Serialize` for `binder::Strong\u003cT\u003e`\nhelp: consider further restricting this bound\n    |\n705 | impl\u003cT: FromIBinder + ?Sized + parcel::parcelable::Serialize\u003e SerializeArray for Strong\u003cT\u003e {}\n    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n```",
+      "parentUuid": "2c268a02_d59faa23",
       "range": {
         "startLine": 705,
         "startChar": 8,
