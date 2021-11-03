@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b0525d7_0b76c719",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1902884
+      },
+      "writtenOn": "2021-11-03T05:31:03Z",
+      "side": 1,
+      "message": "Fence error results in Fence::getSignalTime returning SIGNAL_TIME_PENDING and consequently BufferLayer::latchBuffer not being able to proceed because SIGNAL_TIME_PENDING is regarded as fence not having been signaled. I think fence with an error should be treated as signaled because kernel defines this way. Please refer to dma-fence.h::dma_fence_get_status_locked. Fence::getSignalTime() connects with dma_fence_get_status_locked through libsync.\n\n * Returns 0 if the fence has not yet been signaled, 1 if the fence has\n * been signaled without an error condition, or a negative error code\n * if the fence has been completed in err.\n \nThe consequence of this is that once fence error happens (e.g., out of a GPU hang) on a particular layer, it will never have chance to be latched (unless the error is cleared) even though the whole pipeline has been restored and ready to render the subsequent frames. Since the clear of the fence error tends not to happen once the fence is signaled, it always result in the layer freezing at the last frame before the error. \n\nP.S.: Setting \"debug.sf.latch_unsignaled\" to 1 eliminates the issue but seems not a formal solution.",
+      "parentUuid": "c180c7f4_ac6dd003",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "fce89c09631ee13b1356d7bb302998fcb7bb4548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0771b131_5edcd010",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-02T15:16:00Z",
       "side": 1,
       "message": "there should be a bug filed + tests describing how this change was tested\n\nalso this Tracked-On clause is empty so it\u0027s not meaningful",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "fce89c09631ee13b1356d7bb302998fcb7bb4548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c71163c_f55150ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1902884
+      },
+      "writtenOn": "2021-11-03T05:31:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0771b131_5edcd010",
       "range": {
         "startLine": 25,
         "startChar": 0,
