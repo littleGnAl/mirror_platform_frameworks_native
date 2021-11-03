@@ -34,6 +34,24 @@
       "parentUuid": "6f70bd1b_0b3316b4",
       "revId": "1b07286375857a1723cf1f761d85cfd701b3a17b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "874245fa_3da2f8c8",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-03T04:40:15Z",
+      "side": 0,
+      "message": "Done. While running it locally, I found that a problem when logging invalid binder descriptor (which contains invalid char). Patch uploaded in a chain.",
+      "parentUuid": "80bd5659_91b2b980",
+      "revId": "1b07286375857a1723cf1f761d85cfd701b3a17b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
