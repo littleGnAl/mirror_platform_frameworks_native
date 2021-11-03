@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "492361b5_6e35e638",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-11-03T01:18:18Z",
+      "side": 1,
+      "message": "Never mind, that makes perfect sense: Serialize for Strong\u003cT\u003e requires Serialize for T, but Deserialize does not.",
+      "parentUuid": "19b17f01_6477641f",
+      "range": {
+        "startLine": 705,
+        "startChar": 8,
+        "endLine": 705,
+        "endChar": 40
+      },
+      "revId": "24f4a955cedaf927d3ac3a4de71d7be8cf0c0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa1aa35f_19ed5ebd",
