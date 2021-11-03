@@ -33,6 +33,23 @@
       "message": "Defer to Michael for +2",
       "revId": "54283d65974e8eebc0b65dddfcaad3ccfdaa8482",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d24aeb_1dc2a386",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2021-11-03T23:26:38Z",
+      "side": 1,
+      "message": "Repeated suite/test-mapping failure seems to be an unrelated existing issue http://b/204589809",
+      "revId": "54283d65974e8eebc0b65dddfcaad3ccfdaa8482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
