@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a7a4224_17dea732",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-11-03T00:31:05Z",
+      "side": 1,
+      "message": "nit: could also use \u0027p-\u003ereset()\u0027 here and share a bit more code",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 30
+      },
+      "revId": "24f4a955cedaf927d3ac3a4de71d7be8cf0c0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d406ac53_4e06d6b1",
         "filename": "libs/binder/rust/src/parcel/parcelable.rs",
         "patchSetId": 1

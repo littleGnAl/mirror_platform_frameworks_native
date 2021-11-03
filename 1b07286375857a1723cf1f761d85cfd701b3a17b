@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f70bd1b_0b3316b4",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-11-03T00:31:05Z",
+      "side": 0,
+      "message": "can you also update parcel_fuzzer/binder_ndk.cpp?",
+      "revId": "1b07286375857a1723cf1f761d85cfd701b3a17b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
