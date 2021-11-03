@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000016842942",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1878148?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c0a224bd_295e5019",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-03T04:38:54Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 108
+      },
+      "revId": "3b31ccac97b070fd9e20a9d1860382af5a15fd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000016842942",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1878148?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f8ba9a47_8436c261",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-03T04:38:54Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 123
+      },
+      "revId": "3b31ccac97b070fd9e20a9d1860382af5a15fd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000016842942",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1878148?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a98fb9fa_591eb857",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-03T04:38:54Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 106
+      },
+      "revId": "3b31ccac97b070fd9e20a9d1860382af5a15fd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
