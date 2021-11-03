@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4212573_b1c1553e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-11-03T16:32:02Z",
+      "side": 1,
+      "message": "Hey! Please review these CLs for the restorecon optimizations. I have added a couple of changes, please feel free to drop a comment if there is any issue. I will try to briefly address both the changes here:\n\n- As mentioned in the previous CL, the recursive restorecon call results in processing the parent directory twice (one for detecting if label has changed and other while recursive processing). With this CL, I check if the directory is newly created and force a recursive restorecon if that is the case, saving the duplicate selabel lookup.",
+      "revId": "ae4fad7755ceed2a1d72d3a18fdd75b5251c739d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
