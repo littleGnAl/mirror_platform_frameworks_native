@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c268a02_d59faa23",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-11-03T00:34:05Z",
+      "side": 1,
+      "message": "I usually just put in the smallest number of traits I can get away with. You can try and remove them one by one, and I think getting rid of Serialize should work (seems to for DeserializeArray below, because Strong\u003cT\u003e already implements Deserialize on L707 and Serialize on L693). The other two are required by Strong\u003cT\u003e.",
+      "parentUuid": "d406ac53_4e06d6b1",
+      "range": {
+        "startLine": 705,
+        "startChar": 8,
+        "endLine": 705,
+        "endChar": 40
+      },
+      "revId": "24f4a955cedaf927d3ac3a4de71d7be8cf0c0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa1aa35f_19ed5ebd",
         "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
         "patchSetId": 1
