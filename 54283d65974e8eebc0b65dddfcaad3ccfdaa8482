@@ -50,6 +50,23 @@
       "message": "Repeated suite/test-mapping failure seems to be an unrelated existing issue http://b/204589809",
       "revId": "54283d65974e8eebc0b65dddfcaad3ccfdaa8482",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a8e547_ca928d30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2021-11-03T23:29:26Z",
+      "side": 1,
+      "message": "Let\u0027s bring the empty APEX back, I think that\u0027s better than having nothing. Just wanted to understand the context / pattern first since it\u0027s relatively new.",
+      "revId": "54283d65974e8eebc0b65dddfcaad3ccfdaa8482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
