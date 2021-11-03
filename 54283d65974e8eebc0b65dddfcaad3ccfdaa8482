@@ -67,6 +67,23 @@
       "message": "Let\u0027s bring the empty APEX back, I think that\u0027s better than having nothing. Just wanted to understand the context / pattern first since it\u0027s relatively new.",
       "revId": "54283d65974e8eebc0b65dddfcaad3ccfdaa8482",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00e7fcf5_3dcbfa1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2021-11-03T23:35:20Z",
+      "side": 1,
+      "message": "Bypassing due to existing failure in `MediaProviderTests`",
+      "revId": "54283d65974e8eebc0b65dddfcaad3ccfdaa8482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
