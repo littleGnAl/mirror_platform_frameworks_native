@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b889ad17_b7bbf9ea",
+        "filename": "libs/gui/DisplayEventDispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-11-03T15:09:34Z",
+      "side": 1,
+      "message": "Resolving",
+      "parentUuid": "70984400_37f9b108",
+      "revId": "9e3161f9b4e0f14328e79919572d55566ecdc548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "844c30fa_b995e49d",
@@ -83,6 +101,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3726caec_34b7141c",
+        "filename": "libs/gui/DisplayEventDispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-11-03T15:09:34Z",
+      "side": 1,
+      "message": "Resolving",
+      "parentUuid": "2bc6ea0d_e8d6f0b1",
+      "range": {
+        "startLine": 138,
+        "startChar": 35,
+        "endLine": 138,
+        "endChar": 52
+      },
+      "revId": "9e3161f9b4e0f14328e79919572d55566ecdc548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2bb435a_c5060fe9",
@@ -114,6 +156,24 @@
       "side": 1,
       "message": "Sorry for the mistake, the code is from Android R, I have updated the code to adapt to the latest version of the code.",
       "parentUuid": "d2bb435a_c5060fe9",
+      "revId": "9e3161f9b4e0f14328e79919572d55566ecdc548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d0fd278_e9e5dca2",
+        "filename": "libs/gui/DisplayEventDispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-11-03T15:09:34Z",
+      "side": 1,
+      "message": "Resolving",
+      "parentUuid": "5259bb9b_efb9cafd",
       "revId": "9e3161f9b4e0f14328e79919572d55566ecdc548",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
