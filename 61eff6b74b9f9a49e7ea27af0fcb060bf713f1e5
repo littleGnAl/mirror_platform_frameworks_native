@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65957f64_aff6a64f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-11-04T21:46:15Z",
+      "side": 1,
+      "message": "Hi Primiano and Lalit,\n\nThis is to replace the out of tree patch we are carrying to throttle rss stat. What we will need after this is to have perfetto use rss_stat_throttled event instead of rss_stat event when available. Then I will drop the out of tree patch from the new kernels.\n\n- Kalesh",
+      "revId": "61eff6b74b9f9a49e7ea27af0fcb060bf713f1e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
