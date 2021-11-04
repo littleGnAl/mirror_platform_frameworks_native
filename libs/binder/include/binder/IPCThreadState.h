@@ -60,8 +60,6 @@ public:
                                                     uint32_t *async_received);
 #endif
 
-            sp<ProcessState>    process();
-            
             status_t            clearLastError();
 
             /**
