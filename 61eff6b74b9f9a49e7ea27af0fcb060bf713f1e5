@@ -33,6 +33,23 @@
       "message": "LG from my side.",
       "revId": "61eff6b74b9f9a49e7ea27af0fcb060bf713f1e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "183c25ab_6dd783cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-11-05T10:22:19Z",
+      "side": 1,
+      "message": "Uh nice thanks. Is there something that we need to do in perfetto or is this a drop-in replacement for the previously downstreamed event?\n\nHow does the event format look like?",
+      "revId": "61eff6b74b9f9a49e7ea27af0fcb060bf713f1e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
