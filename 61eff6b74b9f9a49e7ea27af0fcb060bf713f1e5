@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c1af318_1b92ea48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-11-05T16:40:26Z",
+      "side": 1,
+      "message": "Yes it should just be a drop-in, just the name/path changes:\n   events/kmem/rss_stat -\u003e events/synthetic/rss_stat_throttled\n\nThe format is similar to rss_stat, with a few offsets different:\n\n$cat events/synthetic/rss_stat_throttled\n\nname: rss_stat_throttled\nID: 1492\nformat:\n        field:unsigned short common_type;       offset:0;       size:2; signed:0;\n        field:unsigned char common_flags;       offset:2;       size:1; signed:0;\n        field:unsigned char common_preempt_count;       offset:3;       size:1; signed:0;\n        field:int common_pid;   offset:4;       size:4; signed:1;\n\n        field:unsigned int mm_id;       offset:8;       size:4; signed:0;\n        field:unsigned int curr;        offset:16;      size:4; signed:0;\n        field:int member;       offset:24;      size:4; signed:1;\n        field:long size;        offset:32;      size:8; signed:1;",
+      "parentUuid": "183c25ab_6dd783cb",
+      "revId": "61eff6b74b9f9a49e7ea27af0fcb060bf713f1e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "beeaca0c_098c7ce7",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-11-05T13:46:49Z",
       "side": 1,
       "message": "This is really cool.\n\n- How is it used from a consumer\u0027s point of view? Do we need to enable rss_stat_throttled?\n- Are there kernel version dependencies? Should we aim to make this transparent on a different layer?",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 128
+      },
+      "revId": "61eff6b74b9f9a49e7ea27af0fcb060bf713f1e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1132a249_26b47987",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-11-05T16:40:26Z",
+      "side": 1,
+      "message": "It should be the same as how we use rss_stat.\n\nrss_stat doesn\u0027t need to enabled for rss_stat_throttled to work.\n\nThere are kernel dependencies, but I think we can just detect it at runtime\n\n    cat event/kmem/rss_stat/trigger | grep \u0027rss_stat_throttled\u0027\n\nif the kernel doesn\u0027t support this the trigger for rss_stat_throttled won\u0027t be created.",
+      "parentUuid": "beeaca0c_098c7ce7",
       "range": {
         "startLine": 274,
         "startChar": 0,
