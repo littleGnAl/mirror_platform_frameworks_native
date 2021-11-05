@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73e9dd54_ce1c81e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-05T01:06:00Z",
+      "side": 1,
+      "message": "Yah, this looks much better. Public APIs no longer have the extra nesting, while private APIs are all kept under binder_impl.",
+      "revId": "3418de3d8ed444d0b8344f44d98c453eca6e9e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
