@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edc25b56_20925b0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-11-08T21:57:26Z",
+      "side": 1,
+      "message": "PTAL - cherrypicking fix into android12-gsi",
+      "revId": "05b048ec43de32286bfa010cb7c6f7f856840d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
