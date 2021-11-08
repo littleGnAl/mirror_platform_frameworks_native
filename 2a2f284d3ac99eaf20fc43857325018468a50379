@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fba0dab_881470d6",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-11-08T16:57:18Z",
+      "side": 1,
+      "message": "Should these be defined as something? It\u0027s unclear what -1 and 0 should mean.",
+      "range": {
+        "startLine": 1005,
+        "startChar": 48,
+        "endLine": 1005,
+        "endChar": 50
+      },
+      "revId": "2a2f284d3ac99eaf20fc43857325018468a50379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
