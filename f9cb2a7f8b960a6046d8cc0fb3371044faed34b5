@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a03fa9f3_3ed2225e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-11-09T16:23:42Z",
+      "side": 1,
+      "message": "Yeah, this is already like that in master (",
+      "parentUuid": "47d791b3_a7313c27",
+      "range": {
+        "startLine": 27,
+        "startChar": 54,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "f9cb2a7f8b960a6046d8cc0fb3371044faed34b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a158117d_4fa9444a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
