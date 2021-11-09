@@ -70,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14133c59_5a3144c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-11-09T14:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65957f64_aff6a64f",
+      "revId": "61eff6b74b9f9a49e7ea27af0fcb060bf713f1e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "beeaca0c_098c7ce7",
@@ -107,6 +125,30 @@
       "side": 1,
       "message": "It should be the same as how we use rss_stat.\n\nrss_stat doesn\u0027t need to enabled for rss_stat_throttled to work.\n\nThere are kernel dependencies, but I think we can just detect it at runtime\n\n    cat event/kmem/rss_stat/trigger | grep \u0027rss_stat_throttled\u0027\n\nif the kernel doesn\u0027t support this the trigger for rss_stat_throttled won\u0027t be created.",
       "parentUuid": "beeaca0c_098c7ce7",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 128
+      },
+      "revId": "61eff6b74b9f9a49e7ea27af0fcb060bf713f1e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dae0fc6_55440638",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-11-09T14:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1132a249_26b47987",
       "range": {
         "startLine": 274,
         "startChar": 0,
