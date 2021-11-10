@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f37d843_4e4efce6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2021-11-10T19:32:16Z",
+      "side": 1,
+      "message": "I guess I meant why was the GPU emitting a fence error? I might expect a GPU hang could mean the fence is never signaled until the GPU recovers, and signal the fence with a valid timestamp afterwards",
+      "parentUuid": "2b0525d7_0b76c719",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "fce89c09631ee13b1356d7bb302998fcb7bb4548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0771b131_5edcd010",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
