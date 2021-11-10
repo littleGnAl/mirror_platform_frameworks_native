@@ -261,6 +261,7 @@ cc_benchmark {
         "libbinder_tls_test_utils",
         "libbinder_tls_static",
     ],
+    test_suites: ["device-tests"],
 }
 
 cc_test {
