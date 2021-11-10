@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be4766f0_0960d1c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2021-11-10T06:42:51Z",
+      "side": 1,
+      "message": "Fix already merged in aosp/1886185: Specify type when calling ConsumeIntegralInRange | https://android-review.googlesource.com/c/platform/frameworks/native/+/1886185",
+      "revId": "00434e28048e14d9564f9e33058b8692b52860d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
