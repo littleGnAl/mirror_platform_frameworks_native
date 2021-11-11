@@ -140,6 +140,8 @@ public:
      */
     virtual std::vector<PhysicalDisplayId> getPhysicalDisplayIds() const = 0;
 
+    virtual status_t getPrimaryPhysicalDisplayId(PhysicalDisplayId*) const = 0;
+
     // TODO(b/74619554): Remove this stopgap once the framework is display-agnostic.
     std::optional<PhysicalDisplayId> getInternalDisplayId() const {
         const auto displayIds = getPhysicalDisplayIds();
@@ -624,6 +626,12 @@ public:
         ON_PULL_ATOM,
         ADD_TUNNEL_MODE_ENABLED_LISTENER,
         REMOVE_TUNNEL_MODE_ENABLED_LISTENER,
+<<<<<<< HEAD
+=======
+        ADD_WINDOW_INFOS_LISTENER,
+        REMOVE_WINDOW_INFOS_LISTENER,
+        GET_PRIMARY_PHYSICAL_DISPLAY_ID,
+>>>>>>> d74454956f (SF: Temporarily expose primary display id)
         // Always append new enum to the end.
     };
 

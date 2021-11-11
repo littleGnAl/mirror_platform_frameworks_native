@@ -613,7 +613,16 @@ private:
     sp<ISurfaceComposerClient> createConnection() override;
     sp<IBinder> createDisplay(const String8& displayName, bool secure) override;
     void destroyDisplay(const sp<IBinder>& displayToken) override;
+<<<<<<< HEAD
     std::vector<PhysicalDisplayId> getPhysicalDisplayIds() const override;
+=======
+    std::vector<PhysicalDisplayId> getPhysicalDisplayIds() const override EXCLUDES(mStateLock) {
+        Mutex::Autolock lock(mStateLock);
+        return getPhysicalDisplayIdsLocked();
+    }
+    status_t getPrimaryPhysicalDisplayId(PhysicalDisplayId*) const override EXCLUDES(mStateLock);
+
+>>>>>>> d74454956f (SF: Temporarily expose primary display id)
     sp<IBinder> getPhysicalDisplayToken(PhysicalDisplayId displayId) const override;
     status_t setTransactionState(const FrameTimelineInfo& frameTimelineInfo,
                                  const Vector<ComposerState>& state,
