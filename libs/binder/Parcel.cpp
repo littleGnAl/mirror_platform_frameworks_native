@@ -33,12 +33,15 @@
 
 #include <binder/Binder.h>
 #include <binder/BpBinder.h>
-#include <binder/IPCThreadState.h>
 #include <binder/Parcel.h>
-#include <binder/ProcessState.h>
 #include <binder/Stability.h>
 #include <binder/Status.h>
 #include <binder/TextOutput.h>
+
+#ifndef LIBBINDER_SDK
+#include <binder/IPCThreadState.h>
+#include <binder/ProcessState.h>
+#endif
 
 #include <cutils/ashmem.h>
 #include <cutils/compiler.h>
@@ -98,6 +101,7 @@ enum {
     BLOB_ASHMEM_MUTABLE = 2,
 };
 
+#ifndef LIBBINDER_SDK
 static void acquire_object(const sp<ProcessState>& proc, const flat_binder_object& obj,
                            const void* who) {
     switch (obj.hdr.type) {
@@ -150,6 +154,7 @@ static void release_object(const sp<ProcessState>& proc, const flat_binder_objec
 
     ALOGE("Invalid object type 0x%08x", obj.hdr.type);
 }
+#endif
 
 status_t Parcel::finishFlattenBinder(const sp<IBinder>& binder)
 {
@@ -173,9 +178,11 @@ status_t Parcel::finishUnflattenBinder(
     return OK;
 }
 
+#ifndef LIBBINDER_SDK
 static constexpr inline int schedPolicyMask(int policy, int priority) {
     return (priority & FLAT_BINDER_FLAG_PRIORITY_MASK) | ((policy & 3) << FLAT_BINDER_FLAG_SCHED_POLICY_SHIFT);
 }
+#endif
 
 status_t Parcel::flattenBinder(const sp<IBinder>& binder) {
     BBinder* local = nullptr;
@@ -199,6 +206,7 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder) {
         return finishFlattenBinder(binder);
     }
 
+#ifndef LIBBINDER_SDK
     flat_binder_object obj;
     obj.flags = FLAT_BINDER_FLAG_ACCEPTS_FDS;
 
@@ -253,6 +261,9 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder) {
     if (status != OK) return status;
 
     return finishFlattenBinder(binder);
+#else
+    return UNKNOWN_ERROR;
+#endif
 }
 
 status_t Parcel::unflattenBinder(sp<IBinder>* out) const
@@ -280,6 +291,9 @@ status_t Parcel::unflattenBinder(sp<IBinder>* out) const
         return finishUnflattenBinder(binder, out);
     }
 
+#ifdef LIBBINDER_SDK
+    return UNKNOWN_ERROR;
+#else
     const flat_binder_object* flat = readObject(false);
 
     if (flat) {
@@ -297,6 +311,7 @@ status_t Parcel::unflattenBinder(sp<IBinder>* out) const
         }
     }
     return BAD_TYPE;
+#endif
 }
 
 // ---------------------------------------------------------------------------
@@ -469,6 +484,11 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
     err = NO_ERROR;
 
     if (numObjects > 0) {
+        // FIXME: shouldn't be able to happen
+#ifdef LIBBINDER_SDK
+        (void)startPos;
+        return UNKNOWN_ERROR;
+#else
         const sp<ProcessState> proc(ProcessState::self());
         // grow objects
         if (mObjectsCapacity < mObjectsSize + numObjects) {
@@ -508,6 +528,7 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
                 }
             }
         }
+#endif
     }
 
     return err;
@@ -628,12 +649,14 @@ void Parcel::updateWorkSourceRequestHeaderPosition() const {
     }
 }
 
+#ifndef LIBBINDER_SDK
 #if defined(__ANDROID_VNDK__)
 constexpr int32_t kHeader = B_PACK_CHARS('V', 'N', 'D', 'R');
 #elif defined(__ANDROID_RECOVERY__)
 constexpr int32_t kHeader = B_PACK_CHARS('R', 'E', 'C', 'O');
 #else
 constexpr int32_t kHeader = B_PACK_CHARS('S', 'Y', 'S', 'T');
+#endif
 #endif
 
 // Write RPC headers.  (previously just the interface token)
@@ -644,12 +667,16 @@ status_t Parcel::writeInterfaceToken(const String16& interface)
 
 status_t Parcel::writeInterfaceToken(const char16_t* str, size_t len) {
     if (CC_LIKELY(!isForRpc())) {
+#ifndef LIBBINDER_SDK
         const IPCThreadState* threadState = IPCThreadState::self();
         writeInt32(threadState->getStrictModePolicy() | STRICT_MODE_PENALTY_GATHER);
         updateWorkSourceRequestHeaderPosition();
         writeInt32(threadState->shouldPropagateWorkSource() ? threadState->getCallingWorkSourceUid()
                                                             : IPCThreadState::kUnsetWorkSource);
         writeInt32(kHeader);
+#else
+        LOG_ALWAYS_FATAL("libbinder_sdk only supports RPC");
+#endif
     }
 
     // currently the interface identification token is just its name as a string
@@ -672,7 +699,7 @@ bool Parcel::replaceCallingWorkSourceUid(uid_t uid)
 uid_t Parcel::readCallingWorkSourceUid() const
 {
     if (!mRequestHeaderPresent) {
-        return IPCThreadState::kUnsetWorkSource;
+        return -1; // FIXME: IPCThreadState::kUnsetWorkSource;
     }
 
     const size_t initialPosition = dataPosition();
@@ -698,6 +725,10 @@ bool Parcel::enforceInterface(const char16_t* interface,
                               IPCThreadState* threadState) const
 {
     if (CC_LIKELY(!isForRpc())) {
+#ifdef LIBBINDER_SDK
+        (void)threadState;
+        return false;
+#else
         // StrictModePolicy.
         int32_t strictPolicy = readInt32();
         if (threadState == nullptr) {
@@ -723,6 +754,7 @@ bool Parcel::enforceInterface(const char16_t* interface,
                   header);
             return false;
         }
+#endif
     }
 
     // Interface descriptor.
@@ -1347,6 +1379,11 @@ status_t Parcel::write(const FlattenableHelperInterface& val)
 
 status_t Parcel::writeObject(const flat_binder_object& val, bool nullMetaData)
 {
+#ifdef LIBBINDER_SDK
+    (void)val;
+    (void)nullMetaData;
+    return UNKNOWN_ERROR;
+#else
     const bool enoughData = (mDataPos+sizeof(val)) <= mDataCapacity;
     const bool enoughObjects = mObjectsSize < mObjectsCapacity;
     if (enoughData && enoughObjects) {
@@ -1388,6 +1425,7 @@ restart_write:
     }
 
     goto restart_write;
+#endif
 }
 
 status_t Parcel::writeNoException()
@@ -2244,6 +2282,7 @@ void Parcel::print(TextOutput& to, uint32_t /*flags*/) const
 
 void Parcel::releaseObjects()
 {
+#ifndef LIBBINDER_SDK
     size_t i = mObjectsSize;
     if (i == 0) {
         return;
@@ -2257,10 +2296,12 @@ void Parcel::releaseObjects()
             = reinterpret_cast<flat_binder_object*>(data+objects[i]);
         release_object(proc, *flat, this);
     }
+#endif
 }
 
 void Parcel::acquireObjects()
 {
+#ifndef LIBBINDER_SDK
     size_t i = mObjectsSize;
     if (i == 0) {
         return;
@@ -2274,6 +2315,7 @@ void Parcel::acquireObjects()
             = reinterpret_cast<flat_binder_object*>(data+objects[i]);
         acquire_object(proc, *flat, this);
     }
+#endif
 }
 
 void Parcel::freeData()
@@ -2468,6 +2510,8 @@ status_t Parcel::continueWrite(size_t desired)
 
     } else if (mData) {
         if (objectsSize < mObjectsSize) {
+            // FIXME: should be impossible
+#ifndef LIBBINDER_SDK
             // Need to release refs on any objects we are dropping.
             const sp<ProcessState> proc(ProcessState::self());
             for (size_t i=objectsSize; i<mObjectsSize; i++) {
@@ -2495,6 +2539,7 @@ status_t Parcel::continueWrite(size_t desired)
             mObjectsSize = objectsSize;
             mNextObjectHint = 0;
             mObjectsSorted = false;
+#endif
         }
 
         // We own the data, so we can just do a realloc().
