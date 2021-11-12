@@ -53,7 +53,7 @@ extern "C" pid_t gettid();
 #endif
 #endif
 
-#ifndef __ANDROID_RECOVERY__
+#if !defined(__ANDROID_RECOVERY__) && !defined(LIBBINDER_SDK)
 #include <android_runtime/vm.h>
 #include <jni.h>
 #endif
@@ -355,7 +355,7 @@ RpcSession::PreJoinSetupResult RpcSession::preJoinSetup(
 }
 
 namespace {
-#ifdef __ANDROID_RECOVERY__
+#if defined(__ANDROID_RECOVERY__) || defined(LIBBINDER_SDK)
 class JavaThreadAttacher {};
 #else
 // RAII object for attaching / detaching current thread to JVM if Android Runtime exists. If
