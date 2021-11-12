@@ -34,6 +34,24 @@
       "parentUuid": "ce2e0ae7_36bc778b",
       "revId": "a4c56f8d9f9354ed5bb3e2e87ab5300c143721ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe8a748_c66cb516",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-11-12T23:31:19Z",
+      "side": 1,
+      "message": "Android is already built with Os right? - yeah - leaving this as a rough upper bound for now (didn\u0027t want to create a static binary yet - we would need to remove dependencies on liblog/libvndksupport which gets heavier).",
+      "parentUuid": "16d046ae_c82b4a7a",
+      "revId": "a4c56f8d9f9354ed5bb3e2e87ab5300c143721ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
