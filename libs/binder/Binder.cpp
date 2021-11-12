@@ -239,7 +239,9 @@ public:
 
     // for below objects
     Mutex mLock;
+#ifndef BINDER_NO_KERNEL_IPC
     std::set<sp<RpcServerLink>> mRpcServerLinks;
+#endif
     BpBinder::ObjectManager mObjects;
 };
 
@@ -289,10 +291,12 @@ status_t BBinder::transact(
             CHECK(reply != nullptr);
             err = reply->writeInt32(getDebugPid());
             break;
+#ifndef BINDER_NO_KERNEL_IPC
         case SET_RPC_CLIENT_TRANSACTION: {
             err = setRpcClientDebug(data);
             break;
         }
+#endif
         default:
             err = onTransact(code, data, reply, flags);
             break;
@@ -495,6 +499,7 @@ void BBinder::setParceled() {
     mParceled = true;
 }
 
+#ifndef BINDER_NO_KERNEL_IPC
 status_t BBinder::setRpcClientDebug(const Parcel& data) {
     if constexpr (!kEnableRpcDevServers) {
         ALOGW("%s: disallowed because RPC is not enabled", __PRETTY_FUNCTION__);
@@ -579,6 +584,7 @@ void BBinder::removeRpcServerLink(const sp<RpcServerLink>& link) {
     AutoMutex _l(e->mLock);
     (void)e->mRpcServerLinks.erase(link);
 }
+#endif
 
 BBinder::~BBinder()
 {
