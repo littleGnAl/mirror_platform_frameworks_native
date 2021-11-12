@@ -48,7 +48,9 @@ public:
     virtual const Descriptor& getInterfaceDescriptor() const;
     virtual bool        isBinderAlive() const;
     virtual status_t    pingBinder();
+#ifndef LIBBINDER_SDK
     virtual status_t    dump(int fd, const Vector<String16>& args);
+#endif
 
     // NOLINTNEXTLINE(google-default-arguments)
     virtual status_t    transact(   uint32_t code,
