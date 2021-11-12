@@ -22,7 +22,6 @@
 #include <android-base/macros.h>
 #include <android-base/scopeguard.h>
 #include <binder/BpBinder.h>
-#include <binder/IPCThreadState.h>
 #include <binder/RpcServer.h>
 
 #include "Debug.h"
@@ -32,9 +31,11 @@
 
 #include <inttypes.h>
 
-namespace android {
+#ifndef LIBBINDER_SDK
+#include <binder/IPCThreadState.h>
+#endif
 
-using base::ScopeGuard;
+namespace android {
 
 #if RPC_FLAKE_PRONE
 void rpcMaybeWaitToFlake() {
@@ -678,6 +679,7 @@ status_t RpcState::drainCommands(const sp<RpcSession::RpcConnection>& connection
 status_t RpcState::processCommand(const sp<RpcSession::RpcConnection>& connection,
                                   const sp<RpcSession>& session, const RpcWireHeader& command,
                                   CommandType type) {
+#ifndef LIBBINDER_SDK
     IPCThreadState* kernelBinderState = IPCThreadState::selfOrNull();
     IPCThreadState::SpGuard spGuard{
             .address = __builtin_frame_address(0),
@@ -687,11 +689,13 @@ status_t RpcState::processCommand(const sp<RpcSession::RpcConnection>& connectio
     if (kernelBinderState != nullptr) {
         origGuard = kernelBinderState->pushGetCallingSpGuard(&spGuard);
     }
-    ScopeGuard guardUnguard = [&]() {
+
+    base::ScopeGuard guardUnguard = [&]() {
         if (kernelBinderState != nullptr) {
             kernelBinderState->restoreGetCallingSpGuard(origGuard);
         }
     };
+#endif
 
     switch (command.command) {
         case RPC_COMMAND_TRANSACT:
