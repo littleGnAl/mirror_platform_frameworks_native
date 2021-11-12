@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2e0ae7_36bc778b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-11-12T23:14:27Z",
+      "side": 1,
+      "message": "First thought: I wonder if this is built with -O2 or -Os? (I\u0027d expect the former, I wonder how much it shrinks with the latter)",
+      "revId": "a4c56f8d9f9354ed5bb3e2e87ab5300c143721ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
