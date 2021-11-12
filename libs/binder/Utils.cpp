@@ -29,6 +29,7 @@ void zeroMemory(uint8_t* data, size_t size) {
 }
 
 Result<void> setNonBlocking(android::base::borrowed_fd fd) {
+#ifndef __TRUSTY__
     int flags = TEMP_FAILURE_RETRY(fcntl(fd.get(), F_GETFL));
     if (flags == -1) {
         return ErrnoError() << "Could not get flags for fd";
@@ -36,6 +37,9 @@ Result<void> setNonBlocking(android::base::borrowed_fd fd) {
     if (int ret = TEMP_FAILURE_RETRY(fcntl(fd.get(), F_SETFL, flags | O_NONBLOCK)); ret == -1) {
         return ErrnoError() << "Could not set non-blocking flag for fd";
     }
+#else
+    // TODO: something Trusty-specific if needed
+#endif
     return {};
 }
 
