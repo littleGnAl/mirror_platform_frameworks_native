@@ -49,10 +49,12 @@ static_assert(sizeof(IBinder) == 12);
 static_assert(sizeof(BBinder) == 20);
 #endif
 
+#ifndef BINDER_NO_KERNEL_IPC
 #ifdef BINDER_RPC_DEV_SERVERS
 constexpr const bool kEnableRpcDevServers = true;
 #else
 constexpr const bool kEnableRpcDevServers = false;
+#endif
 #endif
 
 // Log any reply transactions for which the data exceeds this size
@@ -154,6 +156,7 @@ status_t IBinder::getDebugPid(pid_t* out) {
     return OK;
 }
 
+#ifndef BINDER_NO_KERNEL_IPC
 status_t IBinder::setRpcClientDebug(android::base::unique_fd socketFd,
                                     const sp<IBinder>& keepAliveBinder) {
     if constexpr (!kEnableRpcDevServers) {
@@ -181,6 +184,7 @@ status_t IBinder::setRpcClientDebug(android::base::unique_fd socketFd,
     if (status = data.writeStrongBinder(keepAliveBinder); status != OK) return status;
     return transact(SET_RPC_CLIENT_TRANSACTION, data, &reply);
 }
+#endif
 
 void IBinder::withLock(const std::function<void()>& doWithLock) {
     BBinder* local = localBinder();
@@ -239,7 +243,9 @@ public:
 
     // for below objects
     Mutex mLock;
+#ifndef BINDER_NO_KERNEL_IPC
     std::set<sp<RpcServerLink>> mRpcServerLinks;
+#endif
     BpBinder::ObjectManager mObjects;
 };
 
@@ -289,10 +295,12 @@ status_t BBinder::transact(
             CHECK(reply != nullptr);
             err = reply->writeInt32(getDebugPid());
             break;
+#ifndef BINDER_NO_KERNEL_IPC
         case SET_RPC_CLIENT_TRANSACTION: {
             err = setRpcClientDebug(data);
             break;
         }
+#endif
         default:
             err = onTransact(code, data, reply, flags);
             break;
@@ -495,6 +503,7 @@ void BBinder::setParceled() {
     mParceled = true;
 }
 
+#ifndef BINDER_NO_KERNEL_IPC
 status_t BBinder::setRpcClientDebug(const Parcel& data) {
     if constexpr (!kEnableRpcDevServers) {
         ALOGW("%s: disallowed because RPC is not enabled", __PRETTY_FUNCTION__);
@@ -579,6 +588,7 @@ void BBinder::removeRpcServerLink(const sp<RpcServerLink>& link) {
     AutoMutex _l(e->mLock);
     (void)e->mRpcServerLinks.erase(link);
 }
+#endif
 
 BBinder::~BBinder()
 {
