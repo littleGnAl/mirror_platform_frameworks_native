@@ -16,6 +16,24 @@
       "message": "merge conflict needs to be resolved - you probably need to rebase on top of a fresh version of aosp-master",
       "revId": "587eea90f8b4b3a733cb79fe3569995e51c5904c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e81544_c5e7aafd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1902884
+      },
+      "writtenOn": "2021-11-12T02:42:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a48eac85_d747e54f",
+      "revId": "587eea90f8b4b3a733cb79fe3569995e51c5904c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

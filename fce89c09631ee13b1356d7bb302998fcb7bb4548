@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e2490a_3bd0bb42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1902884
+      },
+      "writtenOn": "2021-11-12T02:42:23Z",
+      "side": 1,
+      "message": "Yes, the graphics driver could choose not to signal the fence in case of error e.g., GPU hang and rely upon GPU recovery completing the fence without an error. But chances are the fence will keep getting error in some cases (e.g., user commands intentionally or unintentionally cause GPU hang) and never get completed w/o an error. This might not be what we want. So another option for the GFX driver would be to skip the commands that causes the GPU hang and mark the fence as complete with an error. So essentially, the user space got a signaled fence w/ an error attached. This is exactly what we are talking about here. When Android sees a fence with an error, should it proceed with buffer latching with keeping in mind it\u0027s an error fence, or just waiting for an error being cleared which probably will never happen. \nAnd as far as I know, there is no prevention from the kernel (drm) perspective that a fence be signaled w/ an error. It sees inevitable that Android needs to tackle a fence signaled w/ an error.",
+      "parentUuid": "2f37d843_4e4efce6",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "fce89c09631ee13b1356d7bb302998fcb7bb4548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0771b131_5edcd010",
