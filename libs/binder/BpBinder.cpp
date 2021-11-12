@@ -19,14 +19,18 @@
 
 #include <binder/BpBinder.h>
 
-#include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
+#include <binder/Parcel.h>
 #include <binder/RpcSession.h>
 #include <binder/Stability.h>
 #include <cutils/compiler.h>
 #include <utils/Log.h>
 
 #include <stdio.h>
+
+#ifndef LIBBINDER_SDK
+#include <binder/IPCThreadState.h>
+#endif
 
 //#undef ALOGV
 //#define ALOGV(...) fprintf(stderr, __VA_ARGS__)
@@ -115,6 +119,10 @@ void BpBinder::ObjectManager::kill()
 // ---------------------------------------------------------------------------
 
 sp<BpBinder> BpBinder::create(int32_t handle) {
+#ifdef LIBBINDER_SDK
+    (void)handle;
+    return nullptr;
+#else
     int32_t trackedUid = -1;
     if (sCountByUidEnabled) {
         trackedUid = IPCThreadState::self()->getCallingUid();
@@ -153,6 +161,7 @@ sp<BpBinder> BpBinder::create(int32_t handle) {
         sTrackingMap[trackedUid]++;
     }
     return sp<BpBinder>::make(BinderHandle{handle}, trackedUid);
+#endif
 }
 
 sp<BpBinder> BpBinder::create(const sp<RpcSession>& session, uint64_t address) {
@@ -179,9 +188,11 @@ BpBinder::BpBinder(Handle&& handle)
 BpBinder::BpBinder(BinderHandle&& handle, int32_t trackedUid) : BpBinder(Handle(handle)) {
     mTrackedUid = trackedUid;
 
+#ifndef LIBBINDER_SDK
     ALOGV("Creating BpBinder %p handle %d\n", this, this->binderHandle());
 
     IPCThreadState::self()->incWeakHandle(this->binderHandle(), this);
+#endif
 }
 
 BpBinder::BpBinder(RpcHandle&& handle) : BpBinder(Handle(handle)) {
@@ -262,6 +273,7 @@ status_t BpBinder::pingBinder()
     return transact(PING_TRANSACTION, data, &reply);
 }
 
+#ifndef LIBBINDER_SDK
 status_t BpBinder::dump(int fd, const Vector<String16>& args)
 {
     Parcel send;
@@ -275,6 +287,7 @@ status_t BpBinder::dump(int fd, const Vector<String16>& args)
     status_t err = transact(DUMP_TRANSACTION, send, &reply);
     return err;
 }
+#endif
 
 // NOLINTNEXTLINE(google-default-arguments)
 status_t BpBinder::transact(
@@ -284,7 +297,7 @@ status_t BpBinder::transact(
     if (mAlive) {
         bool privateVendor = flags & FLAG_PRIVATE_VENDOR;
         // don't send userspace flags to the kernel
-        flags = flags & ~FLAG_PRIVATE_VENDOR;
+        flags = flags & ~static_cast<uint32_t>(FLAG_PRIVATE_VENDOR);
 
         // user transactions require a given stability level
         if (code >= FIRST_CALL_TRANSACTION && code <= LAST_CALL_TRANSACTION) {
@@ -312,7 +325,11 @@ status_t BpBinder::transact(
             status = rpcSession()->transact(sp<IBinder>::fromExisting(this), code, data, reply,
                                             flags);
         } else {
+#ifdef LIBBINDER_SDK
+            status = UNKNOWN_ERROR;
+#else
             status = IPCThreadState::self()->transact(binderHandle(), code, data, reply, flags);
+#endif
         }
         if (data.dataSize() > LOG_TRANSACTIONS_OVER_SIZE) {
             Mutex::Autolock _l(mLock);
@@ -342,6 +359,11 @@ status_t BpBinder::linkToDeath(
 {
     if (isRpcBinder()) return UNKNOWN_TRANSACTION;
 
+#ifdef LIBBINDER_SDK
+    (void)recipient;
+    (void)cookie;
+    (void)flags;
+#else
     Obituary ob;
     ob.recipient = recipient;
     ob.cookie = cookie;
@@ -369,6 +391,7 @@ status_t BpBinder::linkToDeath(
             return res >= (ssize_t)NO_ERROR ? (status_t)NO_ERROR : res;
         }
     }
+#endif
 
     return DEAD_OBJECT;
 }
@@ -380,6 +403,12 @@ status_t BpBinder::unlinkToDeath(
 {
     if (isRpcBinder()) return UNKNOWN_TRANSACTION;
 
+#ifdef LIBBINDER_SDK
+    (void)recipient;
+    (void)cookie;
+    (void)flags;
+    (void)outRecipient;
+#else
     AutoMutex _l(mLock);
 
     if (mObitsSent) {
@@ -407,12 +436,14 @@ status_t BpBinder::unlinkToDeath(
             return NO_ERROR;
         }
     }
+#endif
 
     return NAME_NOT_FOUND;
 }
 
 void BpBinder::sendObituary()
 {
+#ifndef LIBBINDER_SDK
     LOG_ALWAYS_FATAL_IF(isRpcBinder(), "Cannot send obituary for remote binder.");
 
     ALOGV("Sending obituary for proxy %p handle %d, mObitsSent=%s\n", this, binderHandle(),
@@ -444,6 +475,7 @@ void BpBinder::sendObituary()
 
         delete obits;
     }
+#endif
 }
 
 void BpBinder::reportOneDeath(const Obituary& obit)
@@ -485,9 +517,10 @@ BpBinder* BpBinder::remoteBinder()
 
 BpBinder::~BpBinder()
 {
-    ALOGV("Destroying BpBinder %p handle %d\n", this, binderHandle());
-
     if (CC_UNLIKELY(isRpcBinder())) return;
+
+#ifndef LIBBINDER_SDK
+    ALOGV("Destroying BpBinder %p handle %d\n", this, binderHandle());
 
     IPCThreadState* ipc = IPCThreadState::self();
 
@@ -517,23 +550,29 @@ BpBinder::~BpBinder()
         ipc->expungeHandle(binderHandle(), this);
         ipc->decWeakHandle(binderHandle());
     }
+#endif
 }
 
 void BpBinder::onFirstRef()
 {
-    ALOGV("onFirstRef BpBinder %p handle %d\n", this, binderHandle());
     if (CC_UNLIKELY(isRpcBinder())) return;
+
+#ifndef LIBBINDER_SDK
+    ALOGV("onFirstRef BpBinder %p handle %d\n", this, binderHandle());
     IPCThreadState* ipc = IPCThreadState::self();
     if (ipc) ipc->incStrongHandle(binderHandle(), this);
+#endif
 }
 
 void BpBinder::onLastStrongRef(const void* /*id*/)
 {
-    ALOGV("onLastStrongRef BpBinder %p handle %d\n", this, binderHandle());
     if (CC_UNLIKELY(isRpcBinder())) {
         (void)rpcSession()->sendDecStrong(this);
         return;
     }
+
+#ifndef LIBBINDER_SDK
+    ALOGV("onLastStrongRef BpBinder %p handle %d\n", this, binderHandle());
     IF_ALOGV() {
         printRefs();
     }
@@ -565,6 +604,7 @@ void BpBinder::onLastStrongRef(const void* /*id*/)
         // are no longer linked?
         delete obits;
     }
+#endif
 }
 
 bool BpBinder::onIncStrongAttempted(uint32_t /*flags*/, const void* /*id*/)
@@ -572,9 +612,13 @@ bool BpBinder::onIncStrongAttempted(uint32_t /*flags*/, const void* /*id*/)
     // RPC binder doesn't currently support inc from weak binders
     if (CC_UNLIKELY(isRpcBinder())) return false;
 
+#ifdef LIBBINDER_SDK
+    return false;
+#else
     ALOGV("onIncStrongAttempted BpBinder %p handle %d\n", this, binderHandle());
     IPCThreadState* ipc = IPCThreadState::self();
     return ipc ? ipc->attemptIncStrongHandle(binderHandle()) == NO_ERROR : false;
+#endif
 }
 
 uint32_t BpBinder::getBinderProxyCount(uint32_t uid)
