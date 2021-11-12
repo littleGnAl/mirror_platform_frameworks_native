@@ -23,7 +23,6 @@
 #include <android-base/unique_fd.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
-#include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
 #include <binder/IShellCallback.h>
 #include <binder/Parcel.h>
@@ -32,10 +31,14 @@
 #include <utils/misc.h>
 
 #include <inttypes.h>
-#include <linux/sched.h>
 #include <stdio.h>
 
 #include "RpcState.h"
+
+#ifndef LIBBINDER_SDK
+#include <binder/IPCThreadState.h>
+#include <linux/sched.h>
+#endif
 
 namespace android {
 
@@ -91,6 +94,7 @@ bool IBinder::checkSubclass(const void* /*subclassID*/) const
 }
 
 
+#ifndef LIBBINDER_SDK
 status_t IBinder::shellCommand(const sp<IBinder>& target, int in, int out, int err,
     Vector<String16>& args, const sp<IShellCallback>& callback,
     const sp<IResultReceiver>& resultReceiver)
@@ -109,6 +113,7 @@ status_t IBinder::shellCommand(const sp<IBinder>& target, int in, int out, int e
     send.writeStrongBinder(resultReceiver != nullptr ? IInterface::asBinder(resultReceiver) : nullptr);
     return target->transact(SHELL_COMMAND_TRANSACTION, send, &reply);
 }
+#endif
 
 status_t IBinder::getExtension(sp<IBinder>* out) {
     BBinder* local = this->localBinder();
@@ -128,6 +133,7 @@ status_t IBinder::getExtension(sp<IBinder>* out) {
     return reply.readNullableStrongBinder(out);
 }
 
+#ifndef LIBBINDER_SDK
 status_t IBinder::getDebugPid(pid_t* out) {
     BBinder* local = this->localBinder();
     if (local != nullptr) {
@@ -153,6 +159,7 @@ status_t IBinder::getDebugPid(pid_t* out) {
     *out = pid;
     return OK;
 }
+#endif
 
 status_t IBinder::setRpcClientDebug(android::base::unique_fd socketFd,
                                     const sp<IBinder>& keepAliveBinder) {
@@ -234,7 +241,9 @@ public:
     bool mRequestingSid = false;
     bool mInheritRt = false;
     sp<IBinder> mExtension;
+#ifndef LIBBINDER_SDK
     int mPolicy = SCHED_NORMAL;
+#endif
     int mPriority = 0;
 
     // for below objects
@@ -285,6 +294,7 @@ status_t BBinder::transact(
             CHECK(reply != nullptr);
             err = reply->writeStrongBinder(getExtension());
             break;
+#ifndef LIBBINDER_SDK
         case DEBUG_PID_TRANSACTION:
             CHECK(reply != nullptr);
             err = reply->writeInt32(getDebugPid());
@@ -293,6 +303,7 @@ status_t BBinder::transact(
             err = setRpcClientDebug(data);
             break;
         }
+#endif
         default:
             err = onTransact(code, data, reply, flags);
             break;
@@ -326,10 +337,12 @@ status_t BBinder::unlinkToDeath(
     return INVALID_OPERATION;
 }
 
+#ifndef LIBBINDER_SDK
 status_t BBinder::dump(int /*fd*/, const Vector<String16>& /*args*/)
 {
     return NO_ERROR;
 }
+#endif
 
 void* BBinder::attachObject(const void* objectID, void* object, void* cleanupCookie,
                             object_cleanup_func func) {
@@ -404,6 +417,7 @@ sp<IBinder> BBinder::getExtension() {
     return e->mExtension;
 }
 
+#ifndef LIBBINDER_SDK
 void BBinder::setMinSchedulerPolicy(int policy, int priority) {
     LOG_ALWAYS_FATAL_IF(mParceled,
                         "setMinSchedulerPolicy() should not be called after a binder object "
@@ -442,6 +456,7 @@ int BBinder::getMinSchedulerPolicy() {
     if (e == nullptr) return SCHED_NORMAL;
     return e->mPolicy;
 }
+#endif
 
 int BBinder::getMinSchedulerPriority() {
     Extras* e = mExtras.load(std::memory_order_acquire);
@@ -475,7 +490,11 @@ void BBinder::setInheritRt(bool inheritRt) {
 }
 
 pid_t BBinder::getDebugPid() {
+#ifdef _POSIX_VERSION
     return getpid();
+#else
+    return 0;
+#endif
 }
 
 void BBinder::setExtension(const sp<IBinder>& extension) {
@@ -495,6 +514,7 @@ void BBinder::setParceled() {
     mParceled = true;
 }
 
+#ifndef LIBBINDER_SDK
 status_t BBinder::setRpcClientDebug(const Parcel& data) {
     if constexpr (!kEnableRpcDevServers) {
         ALOGW("%s: disallowed because RPC is not enabled", __PRETTY_FUNCTION__);
@@ -572,6 +592,7 @@ status_t BBinder::setRpcClientDebug(android::base::unique_fd socketFd,
     LOG_RPC_DETAIL("%s(fd=%d) successful", __PRETTY_FUNCTION__, socketFdForPrint);
     return OK;
 }
+#endif
 
 void BBinder::removeRpcServerLink(const sp<RpcServerLink>& link) {
     Extras* e = mExtras.load(std::memory_order_acquire);
@@ -601,6 +622,7 @@ status_t BBinder::onTransact(
             reply->writeString16(getInterfaceDescriptor());
             return NO_ERROR;
 
+#ifndef LIBBINDER_SDK
         case DUMP_TRANSACTION: {
             int fd = data.readFileDescriptor();
             int argc = data.readInt32();
@@ -627,13 +649,13 @@ status_t BBinder::onTransact(
 
             // XXX can't add virtuals until binaries are updated.
             //return shellCommand(in, out, err, args, resultReceiver);
-            (void)in;
-            (void)out;
-            (void)err;
 
             if (resultReceiver != nullptr) {
                 resultReceiver->send(INVALID_OPERATION);
             }
+            (void)in;
+            (void)out;
+            (void)err;
 
             return NO_ERROR;
         }
@@ -642,6 +664,7 @@ status_t BBinder::onTransact(
             report_sysprop_change();
             return NO_ERROR;
         }
+#endif
 
         default:
             return UNKNOWN_TRANSACTION;
