@@ -66,8 +66,131 @@ libbinder_device_interface_sources = [
     "PermissionController.cpp",
 ]
 
+cc_defaults {
+    name: "libbinder_defaults",
+
+    // libbinder does not offer a stable wire protocol.
+    // if a second copy of it is installed, then it may break after security
+    // or dessert updates. Instead, apex users should use libbinder_ndk.
+    apex_available: [
+        "//apex_available:platform",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wextra-semi",
+        "-Werror",
+        "-Wzero-as-null-pointer-constant",
+        "-DANDROID_BASE_UNIQUE_FD_DISABLE_IMPLICIT_CONVERSION",
+        "-DANDROID_UTILS_REF_BASE_DISABLE_IMPLICIT_CONSTRUCTION",
+    ],
+    product_variables: {
+        binder32bit: {
+            cflags: ["-DBINDER_IPC_32BIT=1"],
+        },
+
+        debuggable: {
+            cflags: ["-DBINDER_RPC_DEV_SERVERS"],
+        },
+    },
+
+    header_libs: [
+        "libbinder_headers",
+    ],
+
+    export_header_lib_headers: [
+        "libbinder_headers",
+    ],
+
+    sanitize: {
+        misc_undefined: ["integer"],
+    },
+    min_sdk_version: "29",
+
+    tidy: true,
+    tidy_flags: [
+        // Only check our headers
+        "--header-filter=^.*frameworks/native/libs/binder/.*.h$",
+    ],
+    tidy_checks: [
+        "-performance-no-int-to-ptr",
+    ],
+    tidy_checks_as_errors: [
+        // Explicitly list the checks that should not occur in this module.
+        "abseil-*",
+        "android-*",
+        "bugprone-*",
+        "cert-*",
+        "clang-analyzer-*",
+        "google-*",
+        "misc-*",
+        "performance*",
+        "portability*",
+    ],
+}
+
+// DO NOT SUBMIT: would need a lot of cleanup
+cc_library {
+    name: "libbinder_sdk",
+    defaults: ["libbinder_defaults"],
+    cflags: ["-DLIBBINDER_SDK"],
+
+    // FIXME: remove these
+    include_dirs: [
+        "bionic/libc/kernel/android/uapi/",
+        "bionic/libc/kernel/uapi/",
+    ],
+
+    shared_libs: [
+        "libcgrouprc",
+        "liblog",
+        "libvndksupport",
+    ],
+
+    // FIXME: this is mostly for size-testing - may not actually be functional
+    static_libs: [
+        "libbase",
+        "liblog",
+        "libcutils",
+        "libjsoncpp",
+        "libutils",
+        "libprocessgroup",
+    ],
+
+    // FIXME: split apart headers ???
+
+    srcs: [
+        "Binder.cpp",
+        "BpBinder.cpp",
+        "BufferedTextOutput.cpp", // FIXME: should be able to drop
+        "Debug.cpp", // FIXME: should be able to drop
+        "FdTrigger.cpp",
+        "IInterface.cpp",
+        "IResultReceiver.cpp", // FIXME: compile out?
+        "IShellCallback.cpp", // FIXME: compile out?
+        "Parcel.cpp",
+        "ParcelableHolder.cpp",
+        "ParcelFileDescriptor.cpp",
+        "RpcSession.cpp",
+        "RpcServer.cpp",
+        "RpcState.cpp",
+        "RpcTransportRaw.cpp",
+        "Static.cpp", // FIXME: should be able to drop
+        "Stability.cpp",
+        "Status.cpp",
+        "TextOutput.cpp", // FIXME: should be able to drop
+        "Utils.cpp",
+
+        // FIXME: should be able to remove by ifdef'ing out references to them from Binder.cpp, Parcel.cpp, and BpBinder.cpp
+        "IPCThreadState.cpp",
+        "ProcessState.cpp",
+    ],
+}
+
 cc_library {
     name: "libbinder",
+    defaults: ["libbinder_defaults"],
 
     version_script: "libbinder.map",
 
@@ -86,13 +209,6 @@ cc_library {
     include_dirs: [
         "bionic/libc/kernel/android/uapi/",
         "bionic/libc/kernel/uapi/",
-    ],
-
-    // libbinder does not offer a stable wire protocol.
-    // if a second copy of it is installed, then it may break after security
-    // or dessert updates. Instead, apex users should use libbinder_ndk.
-    apex_available: [
-        "//apex_available:platform",
     ],
 
     srcs: [
@@ -160,25 +276,6 @@ cc_library {
         export_aidl_headers: true,
     },
 
-    cflags: [
-        "-Wall",
-        "-Wextra",
-        "-Wextra-semi",
-        "-Werror",
-        "-Wzero-as-null-pointer-constant",
-        "-DANDROID_BASE_UNIQUE_FD_DISABLE_IMPLICIT_CONVERSION",
-        "-DANDROID_UTILS_REF_BASE_DISABLE_IMPLICIT_CONSTRUCTION",
-    ],
-    product_variables: {
-        binder32bit: {
-            cflags: ["-DBINDER_IPC_32BIT=1"],
-        },
-
-        debuggable: {
-            cflags: ["-DBINDER_RPC_DEV_SERVERS"],
-        },
-    },
-
     shared_libs: [
         "liblog",
         "libcutils",
@@ -190,39 +287,7 @@ cc_library {
     ],
 
     header_libs: [
-        "libbinder_headers",
         "libandroid_runtime_vm_headers",
-    ],
-
-    export_header_lib_headers: [
-        "libbinder_headers",
-    ],
-
-    clang: true,
-    sanitize: {
-        misc_undefined: ["integer"],
-    },
-    min_sdk_version: "29",
-
-    tidy: true,
-    tidy_flags: [
-        // Only check our headers
-        "--header-filter=^.*frameworks/native/libs/binder/.*.h$",
-    ],
-    tidy_checks: [
-        "-performance-no-int-to-ptr",
-    ],
-    tidy_checks_as_errors: [
-        // Explicitly list the checks that should not occur in this module.
-        "abseil-*",
-        "android-*",
-        "bugprone-*",
-        "cert-*",
-        "clang-analyzer-*",
-        "google-*",
-        "misc-*",
-        "performance*",
-        "portability*",
     ],
 
     pgo: {
