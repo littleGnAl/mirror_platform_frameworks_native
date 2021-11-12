@@ -493,6 +493,10 @@ void BBinder::setParceled() {
 }
 
 status_t BBinder::setRpcClientDebug(const Parcel& data) {
+#ifdef LIBBINDER_SDK
+    (void)data;
+    return INVALID_OPERATION;
+#else
     if constexpr (!kEnableRpcDevServers) {
         ALOGW("%s: disallowed because RPC is not enabled", __PRETTY_FUNCTION__);
         return INVALID_OPERATION;
@@ -514,10 +518,16 @@ status_t BBinder::setRpcClientDebug(const Parcel& data) {
     if (status = data.readNullableStrongBinder(&keepAliveBinder); status != OK) return status;
 
     return setRpcClientDebug(std::move(clientFd), keepAliveBinder);
+#endif
 }
 
 status_t BBinder::setRpcClientDebug(android::base::unique_fd socketFd,
                                     const sp<IBinder>& keepAliveBinder) {
+#ifdef LIBBINDER_SDK
+    (void)socketFd;
+    (void)keepAliveBinder;
+    return INVALID_OPERATION;
+#else
     if constexpr (!kEnableRpcDevServers) {
         ALOGW("%s: disallowed because RPC is not enabled", __PRETTY_FUNCTION__);
         return INVALID_OPERATION;
@@ -568,6 +578,7 @@ status_t BBinder::setRpcClientDebug(android::base::unique_fd socketFd,
     e->mRpcServerLinks.emplace(link);
     LOG_RPC_DETAIL("%s(fd=%d) successful", __PRETTY_FUNCTION__, socketFdForPrint);
     return OK;
+#endif
 }
 
 void BBinder::removeRpcServerLink(const sp<RpcServerLink>& link) {
