@@ -23,7 +23,6 @@
 #include <android-base/unique_fd.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
-#include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
 #include <binder/IShellCallback.h>
 #include <binder/Parcel.h>
@@ -32,10 +31,14 @@
 #include <utils/misc.h>
 
 #include <inttypes.h>
-#include <linux/sched.h>
 #include <stdio.h>
 
 #include "RpcState.h"
+
+#ifndef BINDER_NO_KERNEL_IPC
+#include <binder/IPCThreadState.h>
+#include <linux/sched.h>
+#endif
 
 namespace android {
 
@@ -51,7 +54,7 @@ static_assert(sizeof(BBinder) == 20);
 
 #ifdef BINDER_RPC_DEV_SERVERS
 constexpr const bool kEnableRpcDevServers = true;
-#else
+#elif !defined(BINDER_NO_KERNEL_IPC)
 constexpr const bool kEnableRpcDevServers = false;
 #endif
 
@@ -91,6 +94,7 @@ bool IBinder::checkSubclass(const void* /*subclassID*/) const
 }
 
 
+#ifndef BINDER_NO_KERNEL_IPC
 status_t IBinder::shellCommand(const sp<IBinder>& target, int in, int out, int err,
     Vector<String16>& args, const sp<IShellCallback>& callback,
     const sp<IResultReceiver>& resultReceiver)
@@ -109,6 +113,7 @@ status_t IBinder::shellCommand(const sp<IBinder>& target, int in, int out, int e
     send.writeStrongBinder(resultReceiver != nullptr ? IInterface::asBinder(resultReceiver) : nullptr);
     return target->transact(SHELL_COMMAND_TRANSACTION, send, &reply);
 }
+#endif
 
 status_t IBinder::getExtension(sp<IBinder>* out) {
     BBinder* local = this->localBinder();
@@ -128,6 +133,7 @@ status_t IBinder::getExtension(sp<IBinder>* out) {
     return reply.readNullableStrongBinder(out);
 }
 
+#ifndef BINDER_NO_KERNEL_IPC
 status_t IBinder::getDebugPid(pid_t* out) {
     BBinder* local = this->localBinder();
     if (local != nullptr) {
@@ -226,20 +232,25 @@ private:
     sp<IBinder> mKeepAliveBinder; // hold to avoid automatically unlinking
     wp<BBinder> mBinder;
 };
+#endif
 
 class BBinder::Extras
 {
 public:
     // unlocked objects
-    bool mRequestingSid = false;
-    bool mInheritRt = false;
     sp<IBinder> mExtension;
+#ifndef BINDER_NO_KERNEL_IPC
     int mPolicy = SCHED_NORMAL;
     int mPriority = 0;
+    bool mRequestingSid = false;
+    bool mInheritRt = false;
+#endif
 
     // for below objects
     Mutex mLock;
+#ifndef BINDER_NO_KERNEL_IPC
     std::set<sp<RpcServerLink>> mRpcServerLinks;
+#endif
     BpBinder::ObjectManager mObjects;
 };
 
@@ -285,6 +296,7 @@ status_t BBinder::transact(
             CHECK(reply != nullptr);
             err = reply->writeStrongBinder(getExtension());
             break;
+#ifndef BINDER_NO_KERNEL_IPC
         case DEBUG_PID_TRANSACTION:
             CHECK(reply != nullptr);
             err = reply->writeInt32(getDebugPid());
@@ -293,6 +305,7 @@ status_t BBinder::transact(
             err = setRpcClientDebug(data);
             break;
         }
+#endif
         default:
             err = onTransact(code, data, reply, flags);
             break;
@@ -326,10 +339,12 @@ status_t BBinder::unlinkToDeath(
     return INVALID_OPERATION;
 }
 
+#ifndef BINDER_NO_KERNEL_IPC
 status_t BBinder::dump(int /*fd*/, const Vector<String16>& /*args*/)
 {
     return NO_ERROR;
 }
+#endif
 
 void* BBinder::attachObject(const void* objectID, void* object, void* cleanupCookie,
                             object_cleanup_func func) {
@@ -370,6 +385,30 @@ BBinder* BBinder::localBinder()
     return this;
 }
 
+sp<IBinder> BBinder::getExtension() {
+    Extras* e = mExtras.load(std::memory_order_acquire);
+    if (e == nullptr) return nullptr;
+    return e->mExtension;
+}
+
+void BBinder::setExtension(const sp<IBinder>& extension) {
+    LOG_ALWAYS_FATAL_IF(mParceled,
+                        "setExtension() should not be called after a binder object "
+                        "is parceled/sent to another process");
+
+    Extras* e = getOrCreateExtras();
+    e->mExtension = extension;
+}
+
+bool BBinder::wasParceled() {
+    return mParceled;
+}
+
+void BBinder::setParceled() {
+    mParceled = true;
+}
+
+#ifndef BINDER_NO_KERNEL_IPC
 bool BBinder::isRequestingSid()
 {
     Extras* e = mExtras.load(std::memory_order_acquire);
@@ -396,12 +435,6 @@ void BBinder::setRequestingSid(bool requestingSid)
     }
 
     e->mRequestingSid = requestingSid;
-}
-
-sp<IBinder> BBinder::getExtension() {
-    Extras* e = mExtras.load(std::memory_order_acquire);
-    if (e == nullptr) return nullptr;
-    return e->mExtension;
 }
 
 void BBinder::setMinSchedulerPolicy(int policy, int priority) {
@@ -475,24 +508,11 @@ void BBinder::setInheritRt(bool inheritRt) {
 }
 
 pid_t BBinder::getDebugPid() {
+#ifdef _POSIX_VERSION
     return getpid();
-}
-
-void BBinder::setExtension(const sp<IBinder>& extension) {
-    LOG_ALWAYS_FATAL_IF(mParceled,
-                        "setExtension() should not be called after a binder object "
-                        "is parceled/sent to another process");
-
-    Extras* e = getOrCreateExtras();
-    e->mExtension = extension;
-}
-
-bool BBinder::wasParceled() {
-    return mParceled;
-}
-
-void BBinder::setParceled() {
-    mParceled = true;
+#else
+    return 0;
+#endif
 }
 
 status_t BBinder::setRpcClientDebug(const Parcel& data) {
@@ -579,6 +599,7 @@ void BBinder::removeRpcServerLink(const sp<RpcServerLink>& link) {
     AutoMutex _l(e->mLock);
     (void)e->mRpcServerLinks.erase(link);
 }
+#endif
 
 BBinder::~BBinder()
 {
@@ -601,6 +622,7 @@ status_t BBinder::onTransact(
             reply->writeString16(getInterfaceDescriptor());
             return NO_ERROR;
 
+#ifndef BINDER_NO_KERNEL_IPC
         case DUMP_TRANSACTION: {
             int fd = data.readFileDescriptor();
             int argc = data.readInt32();
@@ -627,13 +649,13 @@ status_t BBinder::onTransact(
 
             // XXX can't add virtuals until binaries are updated.
             //return shellCommand(in, out, err, args, resultReceiver);
-            (void)in;
-            (void)out;
-            (void)err;
 
             if (resultReceiver != nullptr) {
                 resultReceiver->send(INVALID_OPERATION);
             }
+            (void)in;
+            (void)out;
+            (void)err;
 
             return NO_ERROR;
         }
@@ -642,6 +664,7 @@ status_t BBinder::onTransact(
             report_sysprop_change();
             return NO_ERROR;
         }
+#endif
 
         default:
             return UNKNOWN_TRANSACTION;
