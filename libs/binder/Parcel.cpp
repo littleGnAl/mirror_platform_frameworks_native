@@ -101,6 +101,7 @@ enum {
     BLOB_ASHMEM_MUTABLE = 2,
 };
 
+#ifndef BINDER_NO_KERNEL_IPC
 static void acquire_object(const sp<ProcessState>& proc, const flat_binder_object& obj,
                            const void* who) {
     switch (obj.hdr.type) {
@@ -153,6 +154,7 @@ static void release_object(const sp<ProcessState>& proc, const flat_binder_objec
 
     ALOGE("Invalid object type 0x%08x", obj.hdr.type);
 }
+#endif
 
 status_t Parcel::finishFlattenBinder(const sp<IBinder>& binder)
 {
@@ -176,9 +178,11 @@ status_t Parcel::finishUnflattenBinder(
     return OK;
 }
 
+#ifndef BINDER_NO_KERNEL_IPC
 static constexpr inline int schedPolicyMask(int policy, int priority) {
     return (priority & FLAT_BINDER_FLAG_PRIORITY_MASK) | ((policy & 3) << FLAT_BINDER_FLAG_SCHED_POLICY_SHIFT);
 }
+#endif
 
 status_t Parcel::flattenBinder(const sp<IBinder>& binder) {
     BBinder* local = nullptr;
@@ -202,6 +206,7 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder) {
         return finishFlattenBinder(binder);
     }
 
+#ifndef BINDER_NO_KERNEL_IPC
     flat_binder_object obj;
 
     int schedBits = 0;
@@ -258,6 +263,9 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder) {
     if (status != OK) return status;
 
     return finishFlattenBinder(binder);
+#else
+    return UNKNOWN_ERROR;
+#endif
 }
 
 status_t Parcel::unflattenBinder(sp<IBinder>* out) const
@@ -285,6 +293,9 @@ status_t Parcel::unflattenBinder(sp<IBinder>* out) const
         return finishUnflattenBinder(binder, out);
     }
 
+#ifdef BINDER_NO_KERNEL_IPC
+    return UNKNOWN_ERROR;
+#else
     const flat_binder_object* flat = readObject(false);
 
     if (flat) {
@@ -302,6 +313,7 @@ status_t Parcel::unflattenBinder(sp<IBinder>* out) const
         }
     }
     return BAD_TYPE;
+#endif
 }
 
 // ---------------------------------------------------------------------------
@@ -424,8 +436,6 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
 
     status_t err;
     const uint8_t *data = parcel->mData;
-    const binder_size_t *objects = parcel->mObjects;
-    size_t size = parcel->mObjectsSize;
     int startPos = mDataPos;
     int firstIndex = -1, lastIndex = -2;
 
@@ -447,6 +457,9 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
     }
 
     // Count objects in range
+#ifndef BINDER_NO_KERNEL_IPC
+    const binder_size_t* objects = parcel->mObjects;
+    size_t size = parcel->mObjectsSize;
     for (int i = 0; i < (int) size; i++) {
         size_t off = objects[i];
         if ((off >= offset) && (off + sizeof(flat_binder_object) <= offset + len)) {
@@ -456,6 +469,7 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
             lastIndex = i;
         }
     }
+#endif
     int numObjects = lastIndex - firstIndex + 1;
 
     if ((mDataSize+len) > mDataCapacity) {
@@ -474,6 +488,11 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
     err = NO_ERROR;
 
     if (numObjects > 0) {
+#ifdef BINDER_NO_KERNEL_IPC
+        LOG_ALWAYS_FATAL("Non-zero numObjects for RPC Parcel");
+        (void)startPos;
+        return UNKNOWN_ERROR;
+#else
         const sp<ProcessState> proc(ProcessState::self());
         // grow objects
         if (mObjectsCapacity < mObjectsSize + numObjects) {
@@ -513,6 +532,7 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
                 }
             }
         }
+#endif
     }
 
     return err;
@@ -572,6 +592,7 @@ bool Parcel::hasFileDescriptors() const
     return mHasFds;
 }
 
+#ifndef BINDER_NO_KERNEL_IPC
 std::vector<sp<IBinder>> Parcel::debugReadAllStrongBinders() const {
     std::vector<sp<IBinder>> ret;
 
@@ -612,6 +633,7 @@ std::vector<int> Parcel::debugReadAllFileDescriptors() const {
     setDataPosition(initPosition);
     return ret;
 }
+#endif
 
 status_t Parcel::hasFileDescriptorsInRange(size_t offset, size_t len, bool* result) const {
     if (len > INT32_MAX || offset > INT32_MAX) {
@@ -624,6 +646,7 @@ status_t Parcel::hasFileDescriptorsInRange(size_t offset, size_t len, bool* resu
         return BAD_VALUE;
     }
     *result = false;
+#ifndef BINDER_NO_KERNEL_IPC
     for (size_t i = 0; i < mObjectsSize; i++) {
         size_t pos = mObjects[i];
         if (pos < offset) continue;
@@ -637,6 +660,7 @@ status_t Parcel::hasFileDescriptorsInRange(size_t offset, size_t len, bool* resu
             break;
         }
     }
+#endif
     return NO_ERROR;
 }
 
@@ -674,12 +698,14 @@ void Parcel::updateWorkSourceRequestHeaderPosition() const {
     }
 }
 
+#ifndef BINDER_NO_KERNEL_IPC
 #if defined(__ANDROID_VNDK__)
 constexpr int32_t kHeader = B_PACK_CHARS('V', 'N', 'D', 'R');
 #elif defined(__ANDROID_RECOVERY__)
 constexpr int32_t kHeader = B_PACK_CHARS('R', 'E', 'C', 'O');
 #else
 constexpr int32_t kHeader = B_PACK_CHARS('S', 'Y', 'S', 'T');
+#endif
 #endif
 
 // Write RPC headers.  (previously just the interface token)
@@ -690,12 +716,16 @@ status_t Parcel::writeInterfaceToken(const String16& interface)
 
 status_t Parcel::writeInterfaceToken(const char16_t* str, size_t len) {
     if (CC_LIKELY(!isForRpc())) {
+#ifndef BINDER_NO_KERNEL_IPC
         const IPCThreadState* threadState = IPCThreadState::self();
         writeInt32(threadState->getStrictModePolicy() | STRICT_MODE_PENALTY_GATHER);
         updateWorkSourceRequestHeaderPosition();
         writeInt32(threadState->shouldPropagateWorkSource() ? threadState->getCallingWorkSourceUid()
                                                             : IPCThreadState::kUnsetWorkSource);
         writeInt32(kHeader);
+#else
+        LOG_ALWAYS_FATAL("BINDER_NO_KERNEL_IPC only supports RPC");
+#endif
     }
 
     // currently the interface identification token is just its name as a string
@@ -744,6 +774,10 @@ bool Parcel::enforceInterface(const char16_t* interface,
                               IPCThreadState* threadState) const
 {
     if (CC_LIKELY(!isForRpc())) {
+#ifdef BINDER_NO_KERNEL_IPC
+        (void)threadState;
+        return false;
+#else
         // StrictModePolicy.
         int32_t strictPolicy = readInt32();
         if (threadState == nullptr) {
@@ -769,6 +803,7 @@ bool Parcel::enforceInterface(const char16_t* interface,
                   header);
             return false;
         }
+#endif
     }
 
     // Interface descriptor.
@@ -1247,6 +1282,7 @@ status_t Parcel::writeFileDescriptor(int fd, bool takeOwnership)
         return BAD_TYPE;
     }
 
+#ifndef BINDER_NO_KERNEL_IPC
     flat_binder_object obj;
     obj.hdr.type = BINDER_TYPE_FD;
     obj.flags = 0x7f | FLAT_BINDER_FLAG_ACCEPTS_FDS;
@@ -1254,6 +1290,11 @@ status_t Parcel::writeFileDescriptor(int fd, bool takeOwnership)
     obj.handle = fd;
     obj.cookie = takeOwnership ? 1 : 0;
     return writeObject(obj, true);
+#else
+    (void)fd;
+    (void)takeOwnership;
+    return BAD_TYPE;
+#endif
 }
 
 status_t Parcel::writeDupFileDescriptor(int fd)
@@ -1404,6 +1445,11 @@ status_t Parcel::write(const FlattenableHelperInterface& val)
 
 status_t Parcel::writeObject(const flat_binder_object& val, bool nullMetaData)
 {
+#ifdef BINDER_NO_KERNEL_IPC
+    (void)val;
+    (void)nullMetaData;
+    return UNKNOWN_ERROR;
+#else
     const bool enoughData = (mDataPos+sizeof(val)) <= mDataCapacity;
     const bool enoughObjects = mObjectsSize < mObjectsCapacity;
     if (enoughData && enoughObjects) {
@@ -1445,6 +1491,7 @@ restart_write:
     }
 
     goto restart_write;
+#endif
 }
 
 status_t Parcel::writeNoException()
@@ -1460,6 +1507,7 @@ status_t Parcel::validateReadData(size_t upperBound) const
 data_sorted:
         // Expect to check only against the next object
         if (mNextObjectHint < mObjectsSize && upperBound > mObjects[mNextObjectHint]) {
+#ifndef BINDER_NO_KERNEL_IPC
             // For some reason the current read position is greater than the next object
             // hint. Iterate until we find the right object
             size_t nextObject = mNextObjectHint;
@@ -1472,6 +1520,7 @@ data_sorted:
                 nextObject++;
             } while (nextObject < mObjectsSize && upperBound > mObjects[nextObject]);
             mNextObjectHint = nextObject;
+#endif
         }
         return NO_ERROR;
     }
@@ -1970,11 +2019,13 @@ native_handle* Parcel::readNativeHandle() const
 
 int Parcel::readFileDescriptor() const
 {
+#ifndef BINDER_NO_KERNEL_IPC
     const flat_binder_object* flat = readObject(true);
 
     if (flat && flat->hdr.type == BINDER_TYPE_FD) {
         return flat->handle;
     }
+#endif
 
     return BAD_TYPE;
 }
@@ -2133,6 +2184,8 @@ status_t Parcel::read(FlattenableHelperInterface& val) const
 
     return err;
 }
+
+#ifndef BINDER_NO_KERNEL_IPC
 const flat_binder_object* Parcel::readObject(bool nullMetaData) const
 {
     const size_t DPOS = mDataPos;
@@ -2193,9 +2246,11 @@ const flat_binder_object* Parcel::readObject(bool nullMetaData) const
     }
     return nullptr;
 }
+#endif
 
 void Parcel::closeFileDescriptors()
 {
+#ifndef BINDER_NO_KERNEL_IPC
     size_t i = mObjectsSize;
     if (i > 0) {
         //ALOGI("Closing file descriptors for %zu objects...", i);
@@ -2209,6 +2264,7 @@ void Parcel::closeFileDescriptors()
             close(flat->handle);
         }
     }
+#endif
 }
 
 uintptr_t Parcel::ipcData() const
@@ -2245,6 +2301,7 @@ void Parcel::ipcSetDataReference(const uint8_t* data, size_t dataSize,
     mObjectsSize = mObjectsCapacity = objectsCount;
     mOwner = relFunc;
 
+#ifndef BINDER_NO_KERNEL_IPC
     binder_size_t minOffset = 0;
     for (size_t i = 0; i < mObjectsSize; i++) {
         binder_size_t offset = mObjects[i];
@@ -2275,8 +2332,10 @@ void Parcel::ipcSetDataReference(const uint8_t* data, size_t dataSize,
         minOffset = offset + sizeof(flat_binder_object);
     }
     scanForFds();
+#endif
 }
 
+#ifndef BINDER_NO_KERNEL_IPC
 void Parcel::print(TextOutput& to, uint32_t /*flags*/) const
 {
     to << "Parcel(";
@@ -2302,9 +2361,11 @@ void Parcel::print(TextOutput& to, uint32_t /*flags*/) const
 
     to << ")";
 }
+#endif
 
 void Parcel::releaseObjects()
 {
+#ifndef BINDER_NO_KERNEL_IPC
     size_t i = mObjectsSize;
     if (i == 0) {
         return;
@@ -2318,10 +2379,12 @@ void Parcel::releaseObjects()
             = reinterpret_cast<flat_binder_object*>(data+objects[i]);
         release_object(proc, *flat, this);
     }
+#endif
 }
 
 void Parcel::acquireObjects()
 {
+#ifndef BINDER_NO_KERNEL_IPC
     size_t i = mObjectsSize;
     if (i == 0) {
         return;
@@ -2335,6 +2398,7 @@ void Parcel::acquireObjects()
             = reinterpret_cast<flat_binder_object*>(data+objects[i]);
         acquire_object(proc, *flat, this);
     }
+#endif
 }
 
 void Parcel::freeData()
@@ -2529,6 +2593,9 @@ status_t Parcel::continueWrite(size_t desired)
 
     } else if (mData) {
         if (objectsSize < mObjectsSize) {
+#ifdef BINDER_NO_KERNEL_IPC
+            LOG_ALWAYS_FATAL("objectsSize overflow for RPC Parcel");
+#else
             // Need to release refs on any objects we are dropping.
             const sp<ProcessState> proc(ProcessState::self());
             for (size_t i=objectsSize; i<mObjectsSize; i++) {
@@ -2556,6 +2623,7 @@ status_t Parcel::continueWrite(size_t desired)
             mObjectsSize = objectsSize;
             mNextObjectHint = 0;
             mObjectsSorted = false;
+#endif
         }
 
         // We own the data, so we can just do a realloc().
@@ -2634,6 +2702,7 @@ void Parcel::initState()
     mWorkSourceRequestHeaderPosition = 0;
     mRequestHeaderPresent = false;
 
+#ifndef BINDER_NO_KERNEL_IPC
     // racing multiple init leads only to multiple identical write
     if (gMaxFds == 0) {
         struct rlimit result;
@@ -2645,6 +2714,7 @@ void Parcel::initState()
             gMaxFds = 1024;
         }
     }
+#endif
 }
 
 void Parcel::scanForFds() const {
@@ -2653,6 +2723,7 @@ void Parcel::scanForFds() const {
     mFdsKnown = true;
 }
 
+#ifndef BINDER_NO_KERNEL_IPC
 size_t Parcel::getBlobAshmemSize() const
 {
     // This used to return the size of all blobs that were written to ashmem, now we're returning
@@ -2680,6 +2751,7 @@ size_t Parcel::getOpenAshmemSize() const
     }
     return openAshmemSize;
 }
+#endif
 
 // --- Parcel::Blob ---
 
