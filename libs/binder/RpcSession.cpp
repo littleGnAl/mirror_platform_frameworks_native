@@ -324,7 +324,7 @@ RpcSession::PreJoinSetupResult RpcSession::preJoinSetup(
 }
 
 namespace {
-#ifdef __ANDROID_RECOVERY__
+#if defined(__ANDROID_RECOVERY__) || defined(BINDER_NO_KERNEL_IPC)
 class JavaThreadAttacher {};
 #else
 // RAII object for attaching / detaching current thread to JVM if Android Runtime exists. If
