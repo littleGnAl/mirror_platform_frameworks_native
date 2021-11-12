@@ -35,8 +35,6 @@
 
 namespace android {
 
-using base::ScopeGuard;
-
 #if RPC_FLAKE_PRONE
 void rpcMaybeWaitToFlake() {
     [[clang::no_destroy]] static std::random_device r;
@@ -696,6 +694,7 @@ status_t RpcState::drainCommands(const sp<RpcSession::RpcConnection>& connection
 status_t RpcState::processCommand(const sp<RpcSession::RpcConnection>& connection,
                                   const sp<RpcSession>& session, const RpcWireHeader& command,
                                   CommandType type) {
+#ifdef BINDER_WITH_KERNEL_IPC
     IPCThreadState* kernelBinderState = IPCThreadState::selfOrNull();
     IPCThreadState::SpGuard spGuard{
             .address = __builtin_frame_address(0),
@@ -705,11 +704,13 @@ status_t RpcState::processCommand(const sp<RpcSession::RpcConnection>& connectio
     if (kernelBinderState != nullptr) {
         origGuard = kernelBinderState->pushGetCallingSpGuard(&spGuard);
     }
-    ScopeGuard guardUnguard = [&]() {
+
+    base::ScopeGuard guardUnguard = [&]() {
         if (kernelBinderState != nullptr) {
             kernelBinderState->restoreGetCallingSpGuard(origGuard);
         }
     };
+#endif // BINDER_WITH_KERNEL_IPC
 
     switch (command.command) {
         case RPC_COMMAND_TRANSACT:
