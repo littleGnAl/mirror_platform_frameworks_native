@@ -35,7 +35,9 @@ public:
     virtual const String16& getInterfaceDescriptor() const;
     virtual bool        isBinderAlive() const;
     virtual status_t    pingBinder();
+#ifndef BINDER_NO_KERNEL_IPC
     virtual status_t    dump(int fd, const Vector<String16>& args);
+#endif
 
     // NOLINTNEXTLINE(google-default-arguments)
     virtual status_t    transact(   uint32_t code,

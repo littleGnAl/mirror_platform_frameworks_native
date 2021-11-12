@@ -301,12 +301,18 @@ void printHexData(int32_t indent, const void *buf, size_t length,
 }
 
 ssize_t getBinderKernelReferences(size_t count, uintptr_t* buf) {
+#ifdef BINDER_NO_KERNEL_IPC
+    (void)count;
+    (void)buf;
+    return 0;
+#else
     sp<ProcessState> proc = ProcessState::selfOrNull();
     if (proc.get() == nullptr) {
         return 0;
     }
 
     return proc->getKernelReferences(count, buf);
+#endif
 }
 
 } // namespace android
