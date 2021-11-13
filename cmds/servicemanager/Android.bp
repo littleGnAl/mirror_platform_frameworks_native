@@ -41,6 +41,7 @@ cc_defaults {
 
 cc_binary {
     name: "servicemanager",
+    recovery_available: true,
     defaults: ["servicemanager_defaults"],
     init_rc: ["servicemanager.rc"],
     srcs: ["main.cpp"],
