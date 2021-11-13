@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ab4036_45f8c7c8",
+        "filename": "cmds/servicemanager/main.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-11-13T08:25:21Z",
+      "side": 1,
+      "message": "Doesn\u0027t work yet",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 66
+      },
+      "revId": "1486c94e39878b5f07cff4cfe69b4544e3a0feea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
