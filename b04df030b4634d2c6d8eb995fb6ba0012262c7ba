@@ -52,6 +52,24 @@
       "parentUuid": "dcf38ccb_6a829a32",
       "revId": "b04df030b4634d2c6d8eb995fb6ba0012262c7ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bc08fdd_475f284c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2021-11-15T18:28:43Z",
+      "side": 1,
+      "message": "Hey Aaron, thanks for providing the additional details.\n\nI just verified that setting the size override to something larger than the native resolution is also working as intended. Could you please file a bug to Android Framework so that we can look into this case specifically?\n\nFile a bug: https://source.android.com/setup/contribute/report-bugs#filing-a-bug\n\nIdeally, if you could attach a bug report (https://developer.android.com/studio/debug/bug-report) or at least an input dump (https://developer.android.com/studio/command-line/dumpsys#input) that was taken during the broken state, that would help a lot.\n\nThanks!",
+      "parentUuid": "b8d1cca7_9f187b17",
+      "revId": "b04df030b4634d2c6d8eb995fb6ba0012262c7ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
