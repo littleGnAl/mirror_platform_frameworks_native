@@ -16,6 +16,29 @@
       "message": "Hey! Please review these CLs for the restorecon optimizations. I have added a couple of changes, please feel free to drop a comment if there is any issue. I will try to briefly address both the changes here:\n\n- As mentioned in the commit message, I was able to see 6 restorecon calls per package before the first change, which rose to 8 of them due to a change in the ordering of the cache dir restorecon calls. This might be due to the fact that we check if the label has changed or not first and then proceed with the recursive restorecon on the direcotry resulting in processing of the parent directory twice. By changing the ordering of the restorecon operations in this CL, I was able to bring back the count to 6.",
       "revId": "c7908518566274a9193fc27873cb64e239423482",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb94394_66548053",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-11-15T10:23:55Z",
+      "side": 1,
+      "message": "this still seems sub-optimal to me because you have to do the lookup 3 times each time an app data dir is created. If you instead created all three dirs and then did a restorecon of the parent dir you would save 2 lookups.",
+      "range": {
+        "startLine": 553,
+        "startChar": 8,
+        "endLine": 553,
+        "endChar": 40
+      },
+      "revId": "c7908518566274a9193fc27873cb64e239423482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
