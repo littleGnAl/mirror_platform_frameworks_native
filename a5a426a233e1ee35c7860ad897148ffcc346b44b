@@ -93,6 +93,30 @@
       },
       "revId": "a5a426a233e1ee35c7860ad897148ffcc346b44b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8baa0bea_92e5a9ec",
+        "filename": "cmds/installd/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-15T15:09:56Z",
+      "side": 1,
+      "message": "I\u0027d still prefer to avoid the new object.\n\nIs it possible to add an overload like prepare_app_cache_dir_without_restorecon() for dexopt.cpp to use?",
+      "parentUuid": "25f68aa6_9515a359",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 33
+      },
+      "revId": "a5a426a233e1ee35c7860ad897148ffcc346b44b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
