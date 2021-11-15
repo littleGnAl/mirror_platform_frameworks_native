@@ -16,6 +16,29 @@
       "message": "Hey! Please review these CLs for the restorecon optimizations. I have added a couple of changes, please feel free to drop a comment if there is any issue. I will try to briefly address both the changes here:\n\n- As mentioned in the previous CL, the recursive restorecon call results in processing the parent directory twice (one for detecting if label has changed and other while recursive processing). With this CL, I check if the directory is newly created and force a recursive restorecon if that is the case, saving the duplicate selabel lookup.",
       "revId": "ae4fad7755ceed2a1d72d3a18fdd75b5251c739d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e706384_e0d40ef6",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-11-15T10:23:08Z",
+      "side": 1,
+      "message": "this only works if the labels never change. However, labels can change if selinux policy changes (e.g. after an OTA), so this is not safe.",
+      "range": {
+        "startLine": 324,
+        "startChar": 9,
+        "endLine": 324,
+        "endChar": 17
+      },
+      "revId": "ae4fad7755ceed2a1d72d3a18fdd75b5251c739d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
