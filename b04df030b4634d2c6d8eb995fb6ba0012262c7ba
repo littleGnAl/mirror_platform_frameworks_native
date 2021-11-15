@@ -16,6 +16,24 @@
       "message": "Looks like this still might be an open issue. Mind adding a test for this Aaron?",
       "revId": "b04df030b4634d2c6d8eb995fb6ba0012262c7ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf38ccb_6a829a32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2021-11-15T11:36:57Z",
+      "side": 1,
+      "message": "In general, the existing code looks correct to me, and this doesn\u0027t look like the right fix. I\u0027m not sure that this is an actual issue in S. I just tested on a device and setting the size through `adb shell wm size` makes the touchscreen work as expected.\n\nLooks like the StackOverflow post is talking about Q. Perhaps this is no longer an issue? Aaron, could you confirm? Thanks!",
+      "parentUuid": "35a5fb8e_15a639f6",
+      "revId": "b04df030b4634d2c6d8eb995fb6ba0012262c7ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
