@@ -34,6 +34,24 @@
       "parentUuid": "35a5fb8e_15a639f6",
       "revId": "b04df030b4634d2c6d8eb995fb6ba0012262c7ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d1cca7_9f187b17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1637924
+      },
+      "writtenOn": "2021-11-15T15:43:45Z",
+      "side": 1,
+      "message": "It was still an issue on R. I have not brought up an affected device to S yet, so cannot confirm it\u0027s still an issue. When I submitted the change to master, the code did not look like it had changed since R.\n\nThe specific use case for me is handheld gaming devices running android tv. Prior to S, the ui was mandated to run at 1920x1080 regardless of native panel resolution. So ro.config.size_override was set to 1920,1080 in \u0027on fs\u0027 on a device with a native resolution of 1280x720. That would result in the touch window being a portion of the uppper-left with the far right and far lower regions not responding to touch.",
+      "parentUuid": "dcf38ccb_6a829a32",
+      "revId": "b04df030b4634d2c6d8eb995fb6ba0012262c7ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
