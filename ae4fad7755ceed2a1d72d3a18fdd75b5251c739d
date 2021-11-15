@@ -39,6 +39,30 @@
       },
       "revId": "ae4fad7755ceed2a1d72d3a18fdd75b5251c739d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5229c01_453cb8dc",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-11-15T12:16:59Z",
+      "side": 1,
+      "message": "This code block would only be executed if the parent directory is newly created. If not, this will be ignored and the current code (to check if the label has changed and then restorecon) will be executed -- which should work fine for the OTA case as well.\n\nThis change was added only to ensure we don\u0027t waste operations by doing an additional restorecon when we already know that the dir is newly created and hence the label assigned is incorrect. This should only affect the user creation flow/new package install flow/cache recreation flow, when the dir is newly created.",
+      "parentUuid": "5e706384_e0d40ef6",
+      "range": {
+        "startLine": 324,
+        "startChar": 9,
+        "endLine": 324,
+        "endChar": 17
+      },
+      "revId": "ae4fad7755ceed2a1d72d3a18fdd75b5251c739d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
