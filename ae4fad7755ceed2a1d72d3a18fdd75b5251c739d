@@ -63,6 +63,30 @@
       },
       "revId": "ae4fad7755ceed2a1d72d3a18fdd75b5251c739d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "798a8755_185dbbf3",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-11-15T14:28:42Z",
+      "side": 1,
+      "message": "Ack. Yeah, I totally misread. Thanks for the explanation.",
+      "parentUuid": "f5229c01_453cb8dc",
+      "range": {
+        "startLine": 324,
+        "startChar": 9,
+        "endLine": 324,
+        "endChar": 17
+      },
+      "revId": "ae4fad7755ceed2a1d72d3a18fdd75b5251c739d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
