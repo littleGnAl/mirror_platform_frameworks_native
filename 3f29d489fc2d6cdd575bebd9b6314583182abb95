@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "685780e5_8052c685",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-15T14:31:08Z",
+      "side": 1,
+      "message": "I believe this issue must be fixed before we can globally enable a formatting operation; has progress been made here?\n\n* https://b.corp.google.com/issues/68153696",
+      "revId": "3f29d489fc2d6cdd575bebd9b6314583182abb95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
