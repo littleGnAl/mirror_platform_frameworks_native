@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af6e8a2_cbc41692",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-11-16T00:43:25Z",
+      "side": 1,
+      "message": "Is this stripped? The total size does not add up to 863k.",
+      "revId": "b97e192d4c4924b9c50a7c71160aaa6744324a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ce651f7_8917f837",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-11-16T00:43:25Z",
+      "side": 1,
+      "message": "70k for the dynamic symbol string table? Wow. Does it need to export that much?",
+      "revId": "b97e192d4c4924b9c50a7c71160aaa6744324a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849ff89f_7ca032ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-11-16T00:43:25Z",
+      "side": 1,
+      "message": "So about 260k for .text alone? That\u0027s not that bad, but should get smaller.",
+      "revId": "b97e192d4c4924b9c50a7c71160aaa6744324a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
