@@ -16,6 +16,29 @@
       "message": "PING :)",
       "revId": "58f8507e355c06391dd34217f4eea0f2b4efc65f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "301d67aa_9ced8c27",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2757,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-11-16T13:10:15Z",
+      "side": 1,
+      "message": "To avoid writing CloseArchive twice, could you do:\n\nint result \u003d FindEntry(zip, \"primary.prof\", \u0026entry);\nCloseArchive(zip);\nreturn result !\u003d 0 ? false : true;",
+      "range": {
+        "startLine": 2750,
+        "startChar": 0,
+        "endLine": 2757,
+        "endChar": 1
+      },
+      "revId": "58f8507e355c06391dd34217f4eea0f2b4efc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
