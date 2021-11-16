@@ -39,6 +39,30 @@
       },
       "revId": "58f8507e355c06391dd34217f4eea0f2b4efc65f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3226479b_4322e3f5",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2757,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-16T14:39:56Z",
+      "side": 1,
+      "message": "Or consider using ScopeGuard (https://cs.android.com/android/platform/superproject/+/master:system/libbase/include/android-base/scopeguard.h).",
+      "parentUuid": "301d67aa_9ced8c27",
+      "range": {
+        "startLine": 2750,
+        "startChar": 0,
+        "endLine": 2757,
+        "endChar": 1
+      },
+      "revId": "58f8507e355c06391dd34217f4eea0f2b4efc65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
