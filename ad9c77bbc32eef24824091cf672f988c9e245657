@@ -16,6 +16,24 @@
       "message": "Any ideas how to best test this?",
       "revId": "ad9c77bbc32eef24824091cf672f988c9e245657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "071edade_019480f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-11-16T19:20:59Z",
+      "side": 1,
+      "message": "Seems like we can consider two pieces that could be tested:\n\n1. We can test the is_handling_transaction inside the non-async rust binder test by calling it once from a normal #[test] and expect it to be false, and once inside the implementation of one of the dummy services and expect it to be true.\n2. For async, the main thing we want to test is that in the event of a cycle in the callchain, the thread is the same. This would be a bit annoying to write as a test, but I think it could look something like this:\n\nProcess A publishes a service with a function\n\nf(b: interfaceB)\n\nwhere interfaceB has a function\n\ng() -\u003e u64\n\nProcess B has a TLS variable, with states:\nInit - base state\nPoisoned - This is a thread I do not expect g() to run on\nMatching(u64)\n\nProcess B creates a binder b with interfaceB, g() defined to:\n\nchecks TLS. If it is Init, it transitions to Matching(0). If it is Poisoned, it panics\nNext, it sets TLS from Matching(n) to Matching(n + 1) and returns n\n\nProcess B checks that TLS state is Init and transitions to Poisoned (if it\u0027s not Init, we panic), then calls f(b)\n\nProcess A calls b.g(), stores the result (this could be nonzero if the test has used this blocking thread before)\nProcess A calls b.g() repeatedly some number of times, expecting exactly incrementing by 1 and never poisoning.\nProcess A returns.\n\nProcess B reverts its state from Poisoned to init (if it\u0027s not poisoned, we panic)\n\nThis checks both halves of the problem, namely \"within the same callchain, the same thread is used for the servicing requests\" and \"we do not move to another thread when making a call, since that would break the callchain from the kernel PoV\"",
+      "parentUuid": "2720a547_7d0868c4",
+      "revId": "ad9c77bbc32eef24824091cf672f988c9e245657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
