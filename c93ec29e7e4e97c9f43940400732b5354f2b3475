@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d48e92a9_61c464b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-16T11:35:00Z",
+      "side": 1,
+      "message": "I\u0027m just curious why this isn\u0027t done in a more common way: creating temporary files for writing and moving them to the final location when the compilation succeeds, but I\u0027m fine with either way if other reviewers are okay with this \"open-and-backup\" approach.",
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e8da9a_8a9567f8",
+        "filename": "cmds/installd/tests/installd_unique_file_test.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-16T11:35:00Z",
+      "side": 1,
+      "message": "\u003e Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\nPlease fix.",
+      "parentUuid": "66c26add_d0b9e4aa",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 107
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a69ccb_a2fea2da",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-16T11:35:00Z",
+      "side": 1,
+      "message": "Nit: kBackupFileSuffix",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a29558cb_501cc862",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-16T11:35:00Z",
+      "side": 1,
+      "message": "Nit: \"U\" should be in lowercase.",
+      "range": {
+        "startLine": 31,
+        "startChar": 12,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb5961f_52701c80",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-16T11:35:00Z",
+      "side": 1,
+      "message": "I\u0027d prefer logging the error if the backup file exists but cannot be removed.",
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e89ca5c_1cf95ee5",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-16T11:35:00Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c51981f_f3069df4",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-16T11:35:00Z",
+      "side": 1,
+      "message": "Nit: Add a space after the colon.",
+      "range": {
+        "startLine": 114,
+        "startChar": 42,
+        "endLine": 114,
+        "endChar": 43
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b67fcd82_be125da6",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-16T11:35:00Z",
+      "side": 1,
+      "message": "Ditto, please log errors if any.",
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bffc3f2_8c19d6a1",
+        "filename": "cmds/installd/unique_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-16T11:35:00Z",
+      "side": 1,
+      "message": "Is this unused?",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 15
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
