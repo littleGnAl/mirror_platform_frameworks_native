@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32d2584b_0a45110b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-11-16T19:07:35Z",
+      "side": 1,
+      "message": "Oh no! I accidentally deleted the update in the commit message. PS2 -\u003e PS3 goes down to 460k or so.",
+      "parentUuid": "4af6e8a2_cbc41692",
+      "revId": "b97e192d4c4924b9c50a7c71160aaa6744324a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ce651f7_8917f837",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7120b83e_d684a941",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-11-16T19:07:35Z",
+      "side": 1,
+      "message": "We would be dropping this for your project. See also b/206145174 (longtime issue).",
+      "parentUuid": "2ce651f7_8917f837",
+      "revId": "b97e192d4c4924b9c50a7c71160aaa6744324a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "849ff89f_7ca032ae",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-16T00:43:25Z",
       "side": 1,
       "message": "So about 260k for .text alone? That\u0027s not that bad, but should get smaller.",
+      "revId": "b97e192d4c4924b9c50a7c71160aaa6744324a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2173d0_45fd250d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-11-16T19:07:35Z",
+      "side": 1,
+      "message": "yeah, though the other things I mention can be removed in the Android.bp file start getting more intrusive.",
+      "parentUuid": "849ff89f_7ca032ae",
       "revId": "b97e192d4c4924b9c50a7c71160aaa6744324a5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
