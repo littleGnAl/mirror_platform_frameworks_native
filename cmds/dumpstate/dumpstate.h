@@ -25,6 +25,7 @@
 #include <string>
 #include <vector>
 
+#include <aidl/android/hardware/dumpstate/DumpstateMode.h>
 #include <android-base/macros.h>
 #include <android-base/unique_fd.h>
 #include <android/hardware/dumpstate/1.1/types.h>
@@ -405,6 +406,9 @@ class Dumpstate {
         // The HAL is actually an API surface that can be validated, while the AIDL is not (@hide).
         ::android::hardware::dumpstate::V1_1::DumpstateMode dumpstate_hal_mode =
             ::android::hardware::dumpstate::V1_1::DumpstateMode::DEFAULT;
+        // The mode we'll use when calling AIDL IDumpstateDevice::dumpstateBoard.
+        ::aidl::android::hardware::dumpstate::DumpstateMode dumpstate_aidl_hal_mode =
+            ::aidl::android::hardware::dumpstate::DumpstateMode::DEFAULT;
         // File descriptor to output zip file. Takes precedence over out_dir.
         android::base::unique_fd bugreport_fd;
         // File descriptor to screenshot file.
