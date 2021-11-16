@@ -52,6 +52,24 @@
       "parentUuid": "16d046ae_c82b4a7a",
       "revId": "a4c56f8d9f9354ed5bb3e2e87ab5300c143721ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd6306e6_517bd6e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-11-16T02:06:22Z",
+      "side": 1,
+      "message": "From a brief look at Soong, it looks like ARM Thumb code is built with -Os, but everything else uses -O2.",
+      "parentUuid": "0fe8a748_c66cb516",
+      "revId": "a4c56f8d9f9354ed5bb3e2e87ab5300c143721ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
