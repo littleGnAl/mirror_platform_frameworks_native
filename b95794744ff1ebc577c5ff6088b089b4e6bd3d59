@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ba74a1_4a34c297",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2021-11-16T15:15:32Z",
+      "side": 1,
+      "message": "The group for the throttled event should be \u0027synthetic\u0027",
+      "range": {
+        "startLine": 242,
+        "startChar": 28,
+        "endLine": 242,
+        "endChar": 32
+      },
+      "revId": "b95794744ff1ebc577c5ff6088b089b4e6bd3d59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
