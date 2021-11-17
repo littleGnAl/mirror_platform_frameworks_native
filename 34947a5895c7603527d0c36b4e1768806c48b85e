@@ -22,6 +22,30 @@
       },
       "revId": "34947a5895c7603527d0c36b4e1768806c48b85e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f655d8_69a19e12",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-11-17T00:50:38Z",
+      "side": 1,
+      "message": "Bn (local interface) is never remote. This is a virtual method.",
+      "parentUuid": "8cb6f2bf_6cf340c6",
+      "range": {
+        "startLine": 195,
+        "startChar": 9,
+        "endLine": 195,
+        "endChar": 17
+      },
+      "revId": "34947a5895c7603527d0c36b4e1768806c48b85e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
