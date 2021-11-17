@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1d9a041_8545e537",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-11-17T00:43:29Z",
+      "side": 1,
+      "message": "I think Elliott is saying add an option to libcutils which causes all users to use memfd. Do we need any additional support other than that? If we could transparently move more users to memfd, it seems simpler, and it would also avoid having copies of this memfd code. Or maybe Elliott can clarify?",
+      "parentUuid": "5b76c05a_d291d672",
+      "range": {
+        "startLine": 11,
+        "startChar": 43,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6722a706_7fa2db4f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1

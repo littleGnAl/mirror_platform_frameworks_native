@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11fb9de_b7735d2e",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-11-17T00:43:29Z",
+      "side": 1,
+      "message": "nit: separate patch (we can merge it immediately, if there are any other issues here, avoid coupling this with other changes)",
+      "revId": "8d1062894f32847f9c4e445a4fff911bdc04576e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
