@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b782b3d6_2a1e3eea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-11-17T01:27:35Z",
+      "side": 1,
+      "message": "/me didn\u0027t realize that no-one had ever flipped the switch...\n```\n    # sys.memfd_use set to false by default, which keeps it disabled\n    # until it is confirmed that apps and vendor processes don\u0027t make\n    # IOCTLs on ashmem fds any more.\n    setprop sys.use_memfd false\n```\n/facepalm\n\ngiven *that* i\u0027m tempted to *delete* the unused memfd code from cutils. in which case, yeah, code like this \"duplicating\" the memfd_create() stuff is perhaps the least worst choice :-(\n\nbut if anyone is planning on trying to move the ashmem -\u003e memfd thing forward, yeah, let\u0027s improve the cutils API so a caller like this can use libcutils but explicitly \"always prefer to give me memfd please, and only fall back to ashmem if you absolutely have to...",
+      "parentUuid": "f1d9a041_8545e537",
+      "range": {
+        "startLine": 11,
+        "startChar": 43,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6722a706_7fa2db4f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
