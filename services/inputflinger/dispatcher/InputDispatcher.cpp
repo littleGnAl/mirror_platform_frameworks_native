@@ -4816,6 +4816,8 @@ void InputDispatcher::doDispatchCycleFinishedLockedInterruptible(CommandEntry* c
         MotionEntry* motionEntry = static_cast<MotionEntry*>(dispatchEntry->eventEntry);
         restartEvent = afterMotionEventLockedInterruptible(connection, dispatchEntry, motionEntry,
                                                            handled);
+    } else if (dispatchEntry->eventEntry->type == EventEntry::Type::FOCUS) {
+        resetNoFocusedWindowTimeoutLocked();
     } else {
         restartEvent = false;
     }
