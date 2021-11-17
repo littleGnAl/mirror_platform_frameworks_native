@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ab2f03_b07c2a6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-11-17T01:52:59Z",
+      "side": 1,
+      "message": "LGTM, but before merging this CL, can you work with martschneider and team ensure that our VPN tests pass?",
+      "revId": "9cdf539b28729d71e528a90878934c3f7212a56e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe31278_9fe16923",
+        "filename": "cmds/ip-up-vpn/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-11-17T01:52:59Z",
+      "side": 1,
+      "message": "Any reason this is not SPDX-license-identifier-Apache-2.0? That seems more accurate since it\u0027s only one file and that file is Apache licensed (and it\u0027s what the Android.mk used).",
+      "range": {
+        "startLine": 16,
+        "startChar": 35,
+        "endLine": 16,
+        "endChar": 60
+      },
+      "revId": "9cdf539b28729d71e528a90878934c3f7212a56e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
