@@ -1,0 +1,584 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "96690b71_a4128628",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2214,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2214,
+        "startChar": 0,
+        "endLine": 2214,
+        "endChar": 12
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368423",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "3f2256fa_fd881081",
+          "description": "Change to \"cmds/dumpstate/dumpstate.cpp\"",
+          "replacements": [
+            {
+              "path": "cmds/dumpstate/dumpstate.cpp",
+              "range": {
+                "startLine": 2219,
+                "startChar": 39,
+                "endLine": 2219,
+                "endChar": 45
+              },
+              "replacement": " don\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "921d9a49_a7c26122",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2219,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Common typo found: \" dont \" -- should it be \" don\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 2219,
+        "startChar": 39,
+        "endLine": 2219,
+        "endChar": 45
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "665660d4_005b6791",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2219,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2219,
+        "startChar": 0,
+        "endLine": 2219,
+        "endChar": 101
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "402ce4be_591b14ac",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2220,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2220,
+        "startChar": 93,
+        "endLine": 2220,
+        "endChar": 94
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "bdab9846_f046f5de",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2228,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2228,
+        "startChar": 0,
+        "endLine": 2228,
+        "endChar": 4
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "026f99ea_f9841a38",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2232,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2232,
+        "startChar": 0,
+        "endLine": 2232,
+        "endChar": 4
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b987f5af_ec251ae8",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2243,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2243,
+        "startChar": 0,
+        "endLine": 2243,
+        "endChar": 126
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "0f0eb67d_9bb1a9f2",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2251,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2251,
+        "startChar": 0,
+        "endLine": 2251,
+        "endChar": 106
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "10e645b2_0fc13694",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2273,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2273,
+        "startChar": 0,
+        "endLine": 2273,
+        "endChar": 104
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1e96f6eb_551be969",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2292,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2292,
+        "startChar": 0,
+        "endLine": 2292,
+        "endChar": 12
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f0b39eef_f7fd8bb7",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2302,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2302,
+        "startChar": 0,
+        "endLine": 2302,
+        "endChar": 4
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "85f850af_9445229c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2306,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2306,
+        "startChar": 58,
+        "endLine": 2306,
+        "endChar": 59
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8d2470bf_e759c81c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2307,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2307,
+        "startChar": 55,
+        "endLine": 2307,
+        "endChar": 59
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b091ad34_d7bd14c3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2308,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2308,
+        "startChar": 0,
+        "endLine": 2308,
+        "endChar": 20
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4f97a052_8d85cadf",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2310,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2310,
+        "startChar": 87,
+        "endLine": 2310,
+        "endChar": 88
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "437c036f_9bfde5bb",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2324,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2324,
+        "startChar": 0,
+        "endLine": 2324,
+        "endChar": 109
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "63701e1a_ce1f7985",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2341,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2341,
+        "startChar": 0,
+        "endLine": 2341,
+        "endChar": 102
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368423",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "4ecdcd27_7dbeb29c",
+          "description": "Change to \"cmds/dumpstate/dumpstate.cpp\"",
+          "replacements": [
+            {
+              "path": "cmds/dumpstate/dumpstate.cpp",
+              "range": {
+                "startLine": 2428,
+                "startChar": 10,
+                "endLine": 2428,
+                "endChar": 15
+              },
+              "replacement": " i.e. "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "6698bf83_dfe43a82",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2428,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Common typo found: \" i.e \" -- should it be \" i.e. \"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 2428,
+        "startChar": 10,
+        "endLine": 2428,
+        "endChar": 15
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ede3c0f2_3ce1771a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2755,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2755,
+        "startChar": 0,
+        "endLine": 2755,
+        "endChar": 104
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8faf8435_6c4140ca",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 4
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017368421",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "50977398_94885130",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:20:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 4
+      },
+      "revId": "dce997cabf25e643e08459f20f438579b56918a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
