@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017369464",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b033f20f_6261a169",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2219,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:51:08Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 2219,
+        "startChar": 0,
+        "endLine": 2219,
+        "endChar": 102
+      },
+      "revId": "cf9ad7484ec43dcd75bd359e57eaff95b351fe30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017369464",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "37bb4f42_82a6027e",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:51:08Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 4
+      },
+      "revId": "cf9ad7484ec43dcd75bd359e57eaff95b351fe30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017369464",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1895035?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a442f659_11c320a4",
+        "filename": "cmds/dumpstate/tests/dumpstate_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-17T06:51:08Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 4
+      },
+      "revId": "cf9ad7484ec43dcd75bd359e57eaff95b351fe30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
