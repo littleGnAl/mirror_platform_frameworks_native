@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27a313ef_2867fea5",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2008,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "It was cleaned up before. I am not sure if we should keep it or delete it. I will leave it to  ngeoffray@ to decide whether to keep it or delete it for error case.",
+      "parentUuid": "e132c186_9d229a47",
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a9f63a5_59629287",
         "filename": "cmds/installd/tests/installd_unique_file_test.cpp",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2021-11-16T17:20:50Z",
       "side": 1,
       "message": "final?",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e77faa_732ad4a9",
+        "filename": "cmds/installd/tests/installd_unique_file_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "it cannot as gtest macros inherit this in each test method impl.",
+      "parentUuid": "0a9f63a5_59629287",
       "range": {
         "startLine": 46,
         "startChar": 6,
@@ -82,6 +124,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4e3a360_45da8947",
+        "filename": "cmds/installd/tests/installd_unique_file_test.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54e8da9a_8a9567f8",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 107
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69a69ccb_a2fea2da",
@@ -95,6 +161,30 @@
       "writtenOn": "2021-11-16T11:35:00Z",
       "side": 1,
       "message": "Nit: kBackupFileSuffix",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9390bd81_b9740f0c",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69a69ccb_a2fea2da",
       "range": {
         "startLine": 29,
         "startChar": 15,
@@ -128,6 +218,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab37f2d7_5fa8171c",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a29558cb_501cc862",
+      "range": {
+        "startLine": 31,
+        "startChar": 12,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7445d51f_607dd7fc",
@@ -141,6 +255,30 @@
       "writtenOn": "2021-11-16T17:20:50Z",
       "side": 1,
       "message": "nit: one more space",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e418de_59bb174e",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7445d51f_607dd7fc",
       "range": {
         "startLine": 35,
         "startChar": 1,
@@ -168,6 +306,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa33a60_038dd1de",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "I will log error other than file not existing case.",
+      "parentUuid": "6cb5961f_52701c80",
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e89ca5c_1cf95ee5",
@@ -181,6 +337,24 @@
       "writtenOn": "2021-11-16T11:35:00Z",
       "side": 1,
       "message": "Ditto.",
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bdd3783_5f45ac81",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e89ca5c_1cf95ee5",
       "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -208,6 +382,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dbfaef7_046d2a60",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c51981f_f3069df4",
+      "range": {
+        "startLine": 114,
+        "startChar": 42,
+        "endLine": 114,
+        "endChar": 43
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b67fcd82_be125da6",
@@ -221,6 +419,24 @@
       "writtenOn": "2021-11-16T11:35:00Z",
       "side": 1,
       "message": "Ditto, please log errors if any.",
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93bf0b89_1e9259a3",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b67fcd82_be125da6",
       "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -248,6 +464,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c23384_3fc220d9",
+        "filename": "cmds/installd/unique_file.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "this is static method without the instance. So no member to clear.",
+      "parentUuid": "fa522b15_e539059b",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 1
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bffc3f2_8c19d6a1",
@@ -261,6 +501,30 @@
       "writtenOn": "2021-11-16T11:35:00Z",
       "side": 1,
       "message": "Is this unused?",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 15
+      },
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c0ac73_6f8875ab",
+        "filename": "cmds/installd/unique_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-17T01:11:57Z",
+      "side": 1,
+      "message": "yes, I ended up not using it.",
+      "parentUuid": "6bffc3f2_8c19d6a1",
       "range": {
         "startLine": 103,
         "startChar": 4,
