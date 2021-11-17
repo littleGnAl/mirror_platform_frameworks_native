@@ -4580,6 +4580,10 @@ void InputDispatcher::onFocusChangedLocked(const sp<InputWindowHandle>& oldFocus
     commandEntry->oldToken = oldToken;
     commandEntry->newToken = newToken;
     postCommandLocked(std::move(commandEntry));
+    if (newToken) {
+        //Reset NoFocusWindowAnr at new window focused
+        resetNoFocusedWindowTimeoutLocked();
+    }
 }
 
 void InputDispatcher::onAnrLocked(const Connection& connection) {
