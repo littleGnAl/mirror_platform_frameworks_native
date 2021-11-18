@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8efca29_2b4ba595",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2021-11-18T07:19:19Z",
+      "side": 1,
+      "message": "nit: remove the b/ prefix. Otherwise this cl will not correctly get linked with the buganizer bug. Typically we can see comments on pending/merged cls on the buganizer bug when properly linked.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "3f90694e37f57c3239ec6d86e6f7d2cbace36eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
