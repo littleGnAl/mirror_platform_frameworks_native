@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb7cf0f_6fa4bc2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-18T23:58:41Z",
+      "side": 1,
+      "message": "Could you tell us what is the reason for the bump? This usually isn\u0027t required because you can use newer APIs with __builtin_available guards.",
+      "revId": "3eda87a4d9b610dc2c14dfa5b85f8e2938b73f44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
