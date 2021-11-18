@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "26fde029_4824724c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2349,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-11-18T02:44:58Z",
+      "side": 1,
+      "message": "Nit: weird spacing\n\nclang-format should pick up that there\u0027s a config file for it in the project root",
+      "range": {
+        "startLine": 2349,
+        "startChar": 6,
+        "endLine": 2349,
+        "endChar": 7
+      },
+      "revId": "60f72e266ea141dcb955018f1c62623937af367e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9813fa91_837326af",
@@ -42,6 +65,52 @@
         "startChar": 8,
         "endLine": 2402,
         "endChar": 14
+      },
+      "revId": "60f72e266ea141dcb955018f1c62623937af367e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e91420f_fbb25973",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-11-18T02:44:58Z",
+      "side": 1,
+      "message": "This should probably be a bit more structured like:\n\n```\nif (aidl) {\n  do_aidl_stuff();\n} else if (hidl) {\n  do_hidl_stuff();\n}\n```",
+      "range": {
+        "startLine": 2449,
+        "startChar": 4,
+        "endLine": 2449,
+        "endChar": 6
+      },
+      "revId": "60f72e266ea141dcb955018f1c62623937af367e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8b9e49_0d5158c7",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-11-18T02:44:58Z",
+      "side": 1,
+      "message": "Hmm, this extra field feels a bit odd. Can/should we just static_cast\u003c\u003e from one type to the other? The HIDL VTS test already enforces that the HIDL version of the HAL rejects any unrecognized DumpstateMode values (e.g. `static_cast\u003cHidlDumpstateMode\u003e(-1)`, see `TestInvalidModeArgument_*` test cases), so I think static_cast-ing from the AIDL enum back into the HIDL enum in dumpstate.cpp is reasonable to do rather than adding yet another field to the options.\n\nb/148168577 remains relevant as eventual follow-up, we\u0027d just update the IDumpstate AIDL file and BugreportManager to reference the HAL enum, which is an actual API surface, and get rid of those old BUGREPORT_MODE_* constants that are not.",
+      "range": {
+        "startLine": 410,
+        "startChar": 60,
+        "endLine": 410,
+        "endChar": 83
       },
       "revId": "60f72e266ea141dcb955018f1c62623937af367e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
