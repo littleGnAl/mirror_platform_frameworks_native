@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69e11ad0_4cbd375b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2021-11-19T00:03:14Z",
+      "side": 1,
+      "message": "My understanding was that the intent of wrapping ashmem-dev in libcutils was to prepare for the memfd migration by swapping ashmem under the hood to memfd. We don\u0027t really need this under the hood behavior for memfd.\n\nThe status of the migration non-withstanding, the code to open a memfd region and set it to a specific size seems clearer to explicitly enumerate where relevant (it is only two system calls, and is the explicitly documented flow of interacting with memfd provided in man), as opposed to wrapping in a libcutils library (the code here seems intended for legacy, compatibility, and android specific implementation).\n\nThat being said, if moving the function to a library better fits future development direction, I don\u0027t think it makes too much of a difference.\n\nAs a side note -- I am still not thrilled with checking if we are on the host side. The newer versions of glibc include the function, but, the versions we build host with do not -- I am not sure if we can update the library we build on, so I can\u0027t think of any much better alternatives.",
+      "parentUuid": "b782b3d6_2a1e3eea",
+      "range": {
+        "startLine": 11,
+        "startChar": 43,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6722a706_7fa2db4f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
