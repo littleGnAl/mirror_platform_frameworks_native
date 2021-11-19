@@ -189,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee5c1fc_9ccf7b6f",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-19T07:20:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0a98fb8_5e41b99d",
+      "range": {
+        "startLine": 2449,
+        "startChar": 4,
+        "endLine": 2449,
+        "endChar": 6
+      },
+      "revId": "60f72e266ea141dcb955018f1c62623937af367e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f8b9e49_0d5158c7",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Yes, indeed this is messy.\n\nLooking a bit more at the code, My recommendation is below, remove both \"dumpstate_hal_mode\" and \"dumpstate_aidl_mode\" from \"options_\" and instead put BugreportMode in options_\n\nAnd then have two static utility functions, which translates BugreportMode to HAL mode, it would be a quick translation and not called frequently so ok to do it in a function when needed, than one-time upfront like its done now.\nDumpstateModeHidl GetHidlDumpstateHalMode(BugreportMode mode)\nDumpstateModeAidl GetAidlDumpstateHalMode(BugreportMode mode)\n\nI am not very comfortable with static cast of one enum to another.This makes the code readability difficult.\nThe HIDL interface and AIDL interface as such are different, and over time AIDL interface may add more modes which could then make it messy.\nThe error handling will return error, yes, but still it will need some investigation in the code for users to figure out what went wrong.\n\nLet me know if this is ok and I will make the change",
       "parentUuid": "5f8b9e49_0d5158c7",
+      "range": {
+        "startLine": 410,
+        "startChar": 60,
+        "endLine": 410,
+        "endChar": 83
+      },
+      "revId": "60f72e266ea141dcb955018f1c62623937af367e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b12f5164_4f7c1f7d",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-19T07:20:06Z",
+      "side": 1,
+      "message": "I have done cleanup as mentioned above. Please a look and let me know if this is fine.",
+      "parentUuid": "90c86f49_d10d3694",
       "range": {
         "startLine": 410,
         "startChar": 60,
