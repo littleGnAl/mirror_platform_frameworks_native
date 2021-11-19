@@ -107,6 +107,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a5405be_0a233a23",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2008,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-11-19T18:16:06Z",
+      "side": 1,
+      "message": "Yes, it is crash or other exit with error case. SO keep the old behavior but keep the profile when it is explicitly cancelled.",
+      "parentUuid": "85618c2c_cc102b22",
+      "revId": "c93ec29e7e4e97c9f43940400732b5354f2b3475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a9f63a5_59629287",
