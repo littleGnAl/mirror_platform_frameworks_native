@@ -16,6 +16,24 @@
       "message": "Could you tell us what is the reason for the bump? This usually isn\u0027t required because you can use newer APIs with __builtin_available guards.",
       "revId": "3eda87a4d9b610dc2c14dfa5b85f8e2938b73f44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca99bca_93b83e6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2021-11-19T00:22:56Z",
+      "side": 1,
+      "message": "Reason is https://r.android.com/1851674. smoreland@ recommended bumping the API version rather than using the guards since there was no reason to depend on 29.",
+      "parentUuid": "adb7cf0f_6fa4bc2a",
+      "revId": "3eda87a4d9b610dc2c14dfa5b85f8e2938b73f44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
