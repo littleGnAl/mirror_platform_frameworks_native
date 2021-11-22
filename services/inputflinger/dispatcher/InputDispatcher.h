@@ -516,6 +516,7 @@ private:
         bool hasBlockingOcclusion;
         float obscuringOpacity;
         std::string obscuringPackage;
+        std::string obscuringWindowName;
         int32_t obscuringUid;
         std::vector<std::string> debugInfo;
     };
