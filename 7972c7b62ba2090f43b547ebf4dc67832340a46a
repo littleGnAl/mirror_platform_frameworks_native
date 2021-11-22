@@ -33,6 +33,29 @@
       "message": "I will be OOO for the whole next week, so any comments will be addressed after I come back.",
       "revId": "7972c7b62ba2090f43b547ebf4dc67832340a46a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0855a07f_1e52160a",
+        "filename": "cmds/installd/unique_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-11-22T09:20:22Z",
+      "side": 1,
+      "message": "This looks like piggy-backing a feature into a existing clean abstraction of a UniqueFile. Could you instead introduce a wrapper?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 31
+      },
+      "revId": "7972c7b62ba2090f43b547ebf4dc67832340a46a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
