@@ -179,8 +179,19 @@ public:
 
     binder::Status migrateLegacyObbData();
 
+    struct RefLock : public RefBase {
+        void lock() { mLock.lock(); }
+        void unlock() { mLock.unlock(); }
+
+    private:
+        std::recursive_mutex mLock;
+    };
+
 private:
     std::recursive_mutex mLock;
+
+    std::unordered_map<userid_t, android::wp<RefLock>> mUserIdLock;
+    std::unordered_map<std::string, android::wp<RefLock>> mPackageNameLock;
 
     std::recursive_mutex mMountsLock;
     std::recursive_mutex mQuotasLock;
