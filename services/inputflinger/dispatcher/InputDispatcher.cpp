@@ -2059,8 +2059,9 @@ InputEventInjectionResult InputDispatcher::findTouchedWindowTargetsLocked(
                 }
                 onUntrustedTouchLocked(occlusionInfo.obscuringPackage);
                 if (mBlockUntrustedTouchesMode == BlockUntrustedTouchesMode::BLOCK) {
-                    ALOGW("Dropping untrusted touch event due to %s/%d",
-                          occlusionInfo.obscuringPackage.c_str(), occlusionInfo.obscuringUid);
+                    ALOGW("Dropping untrusted touch event due to %s/%d, window name is %s",
+                          occlusionInfo.obscuringPackage.c_str(), occlusionInfo.obscuringUid,
+                          occlusionInfo.obscuringWindowName.c_str());
                     newTouchedWindowHandle = nullptr;
                 }
             }
@@ -2600,6 +2601,7 @@ InputDispatcher::TouchOcclusionInfo InputDispatcher::computeTouchOcclusionInfoLo
                 info.hasBlockingOcclusion = true;
                 info.obscuringUid = otherInfo->ownerUid;
                 info.obscuringPackage = otherInfo->packageName;
+                info.obscuringWindowName = otherInfo->name;
                 break;
             }
             if (otherInfo->touchOcclusionMode == TouchOcclusionMode::USE_OPACITY) {
@@ -2614,6 +2616,7 @@ InputDispatcher::TouchOcclusionInfo InputDispatcher::computeTouchOcclusionInfoLo
                     info.obscuringOpacity = opacity;
                     info.obscuringUid = uid;
                     info.obscuringPackage = otherInfo->packageName;
+                    info.obscuringWindowName = otherInfo->name;
                 }
             }
         }
@@ -2645,15 +2648,16 @@ std::string InputDispatcher::dumpWindowForTouchOcclusion(const InputWindowInfo* 
 
 bool InputDispatcher::isTouchTrustedLocked(const TouchOcclusionInfo& occlusionInfo) const {
     if (occlusionInfo.hasBlockingOcclusion) {
-        ALOGW("Untrusted touch due to occlusion by %s/%d", occlusionInfo.obscuringPackage.c_str(),
-              occlusionInfo.obscuringUid);
+        ALOGW("Untrusted touch due to occlusion by %s/%d, window name is %s", occlusionInfo.obscuringPackage.c_str(),
+              occlusionInfo.obscuringUid, occlusionInfo.obscuringWindowName.c_str());
         return false;
     }
     if (occlusionInfo.obscuringOpacity > mMaximumObscuringOpacityForTouch) {
         ALOGW("Untrusted touch due to occlusion by %s/%d (obscuring opacity = "
-              "%.2f, maximum allowed = %.2f)",
+              "%.2f, maximum allowed = %.2f), window name is %s",
               occlusionInfo.obscuringPackage.c_str(), occlusionInfo.obscuringUid,
-              occlusionInfo.obscuringOpacity, mMaximumObscuringOpacityForTouch);
+              occlusionInfo.obscuringOpacity, mMaximumObscuringOpacityForTouch,
+              occlusionInfo.obscuringWindowName.c_str());
         return false;
     }
     return true;
