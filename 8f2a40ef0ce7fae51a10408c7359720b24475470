@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed6f1cd_56457a7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1899755
+      },
+      "writtenOn": "2021-11-22T07:35:30Z",
+      "side": 1,
+      "message": "Sorry for the late resolve.",
+      "revId": "8f2a40ef0ce7fae51a10408c7359720b24475470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
