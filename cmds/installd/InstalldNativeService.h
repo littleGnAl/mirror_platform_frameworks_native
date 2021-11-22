@@ -31,6 +31,8 @@
 #include "android/os/BnInstalld.h"
 #include "installd_constants.h"
 
+// #define MT
+
 namespace android {
 namespace installd {
 
@@ -180,7 +182,12 @@ public:
     binder::Status migrateLegacyObbData();
 
 private:
+#ifdef MT
+    std::unordered_map<int, std::recursive_mutex> mUserIdLock;
+    std::unordered_map<std::string, std::recursive_mutex> mPackageNameLock;
+#else
     std::recursive_mutex mLock;
+#endif // MT
 
     std::recursive_mutex mMountsLock;
     std::recursive_mutex mQuotasLock;
