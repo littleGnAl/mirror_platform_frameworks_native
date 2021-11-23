@@ -320,16 +320,23 @@ private:
 };
 
 #define LOCK_USER()                                                      \
+    std::shared_lock globalLock(mGlobalLock);                            \
     LocalLockHolder<userid_t> localUserLock(userId, mUserIdLock, mLock); \
     std::lock_guard userLock(localUserLock)
 
 #define LOCK_PACKAGE()                                                                   \
+    std::shared_lock globalLock(mGlobalLock);                                            \
     LocalLockHolder<std::string> localPackageLock(packageName, mPackageNameLock, mLock); \
     std::lock_guard packageLock(localPackageLock)
 
-#define LOCK_PACKAGE_USER() \
-    LOCK_PACKAGE();         \
-    LOCK_USER()
+#define LOCK_PACKAGE_USER()                                              \
+    std::shared_lock globalLock(mGlobalLock);                            \
+    LocalLockHolder<userid_t> localUserLock(userId, mUserIdLock, mLock); \
+    std::lock_guard userLock(localUserLock) LocalLockHolder<std::string> \
+            localPackageLock(packageName, mPackageNameLock, mLock);      \
+    std::lock_guard packageLock(localPackageLock)
+
+#define LOCK_GLOBAL() std::unique_lock globalLock(mGlobalLock)
 
 #else
 
@@ -340,6 +347,8 @@ private:
 #define LOCK_PACKAGE_USER() \
     (void)userId;           \
     std::lock_guard lock(mLock)
+
+#define LOCK_GLOBAL() std::lock_guard lock(mLock)
 
 #endif // GRANULAR_LOCKS
 
@@ -698,6 +707,7 @@ binder::Status InstalldNativeService::createAppData(
         const android::os::CreateAppDataArgs& args,
         android::os::CreateAppDataResult* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    // Locking is performed depeer in the callstack.
 
     int64_t ceDataInode = -1;
     auto status = createAppData(args.uuid, args.packageName, args.userId, args.flags, args.appId,
@@ -712,6 +722,7 @@ binder::Status InstalldNativeService::createAppDataBatched(
         const std::vector<android::os::CreateAppDataArgs>& args,
         std::vector<android::os::CreateAppDataResult>* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    // Locking is performed depeer in the callstack.
 
     std::vector<android::os::CreateAppDataResult> results;
     for (const auto &arg : args) {
@@ -977,11 +988,11 @@ binder::Status InstalldNativeService::fixupAppData(const std::optional<std::stri
         int32_t flags) {
     ENFORCE_UID(AID_SYSTEM);
     CHECK_ARGUMENT_UUID(uuid);
+    LOCK_GLOBAL();
 
     const char* uuid_ = uuid ? uuid->c_str() : nullptr;
     for (auto userId : get_known_users(uuid_)) {
         ATRACE_BEGIN("fixup user");
-        LOCK_USER();
         FTS* fts;
         FTSENT* p;
         auto ce_path = create_data_user_ce_path(uuid_, userId);
@@ -1541,6 +1552,7 @@ binder::Status InstalldNativeService::freeCache(const std::optional<std::string>
         int64_t targetFreeBytes, int64_t cacheReservedBytes, int32_t flags) {
     ENFORCE_UID(AID_SYSTEM);
     CHECK_ARGUMENT_UUID(uuid);
+    LOCK_GLOBAL();
 
     auto uuidString = uuid.value_or("");
     const char* uuid_ = uuid ? uuid->c_str() : nullptr;
@@ -1569,8 +1581,6 @@ binder::Status InstalldNativeService::freeCache(const std::optional<std::string>
         ATRACE_BEGIN("create");
         std::unordered_map<uid_t, std::shared_ptr<CacheTracker>> trackers;
         for (auto userId : get_known_users(uuid_)) {
-            LOCK_USER(); // ?????????
-
             FTS *fts;
             FTSENT *p;
             auto ce_path = create_data_user_ce_path(uuid_, userId);
