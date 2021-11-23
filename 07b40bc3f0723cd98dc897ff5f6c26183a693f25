@@ -22,6 +22,30 @@
       },
       "revId": "07b40bc3f0723cd98dc897ff5f6c26183a693f25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdbabc5f_495ffd71",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2021-11-23T23:34:43Z",
+      "side": 1,
+      "message": "get list of users, lock all of them, do whatever the method is doing, unlock?\nthis is a lot of added complexity and potential edgecases, e.g. new user added while waiting for other user\u0027s lock. not worth it.",
+      "parentUuid": "cda5c562_206e3f51",
+      "range": {
+        "startLine": 1555,
+        "startChar": 4,
+        "endLine": 1555,
+        "endChar": 15
+      },
+      "revId": "07b40bc3f0723cd98dc897ff5f6c26183a693f25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
