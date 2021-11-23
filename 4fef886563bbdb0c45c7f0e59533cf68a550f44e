@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3bcab61_6f798d03",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-23T14:25:08Z",
+      "side": 1,
+      "message": "Hm, this still seems like quite a broad lock, effectively meaning that for a single-user device there\u0027s no real benefit?  (All calls would be blocked by \"user 0\".)\n\nPerhaps you were thinking of nesting the user ID lock deeper inside each package lock?",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 29
+      },
+      "revId": "4fef886563bbdb0c45c7f0e59533cf68a550f44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49095547_e41d9de7",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-23T14:25:08Z",
+      "side": 1,
+      "message": "For the broader \"fix the world\" or \"large-scale mutations\" like these, what do you think of a system-wide reader/writer lock (or possibly per-user, your choice), where all other calls in installd are acquiring the read lock (keeping them fast and flowing), and these large-scale mutations acquire the write side of that same lock.",
+      "revId": "4fef886563bbdb0c45c7f0e59533cf68a550f44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5260cbc8_2bd163e2",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-23T14:25:08Z",
+      "side": 1,
+      "message": "nit: does this match the style guide applied by this rule?\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/scripts/system-clang-format?q\u003dsystem-clang-format\u0026ss\u003dandroid%2Fplatform%2Fsuperproject\n\nIt looks like no .clang-format file has been defined; can you add one as a symlink to that location in a future CL?  Here\u0027s an example:\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/vold/.clang-format",
+      "revId": "4fef886563bbdb0c45c7f0e59533cf68a550f44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "148057d3_6d4f5180",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-11-23T14:25:08Z",
+      "side": 1,
+      "message": "Hm, this seems a bit suspicious; did you intend to merge like this?  Or is there an actionable bug to follow up on?\n\nPlease write a TODO that explains why this operation seems questionable.",
+      "range": {
+        "startLine": 1572,
+        "startChar": 34,
+        "endLine": 1572,
+        "endChar": 35
+      },
+      "revId": "4fef886563bbdb0c45c7f0e59533cf68a550f44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
