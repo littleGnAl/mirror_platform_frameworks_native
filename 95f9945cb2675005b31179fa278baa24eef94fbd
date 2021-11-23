@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6be3557d_c4d6b177",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2021-11-23T19:35:51Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "4a3ccf42_bb1e52aa",
+      "range": {
+        "startLine": 625,
+        "startChar": 42,
+        "endLine": 625,
+        "endChar": 50
+      },
+      "revId": "95f9945cb2675005b31179fa278baa24eef94fbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9ae8e25_9f83e3c1",
@@ -84,6 +108,24 @@
       "writtenOn": "2021-11-23T14:25:08Z",
       "side": 0,
       "message": "Ditto here, comment explaining locking in deeper call.",
+      "revId": "95f9945cb2675005b31179fa278baa24eef94fbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be99e679_87f4603c",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2021-11-23T19:35:51Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "a9ae8e25_9f83e3c1",
       "revId": "95f9945cb2675005b31179fa278baa24eef94fbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

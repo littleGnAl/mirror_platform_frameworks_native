@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a1cc8ab_0bc6abe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2021-11-23T19:35:51Z",
+      "side": 1,
+      "message": "addressed the comments in aosp/1901110",
+      "revId": "4fef886563bbdb0c45c7f0e59533cf68a550f44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3bcab61_6f798d03",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-11-23T14:25:08Z",
       "side": 1,
       "message": "Hm, this still seems like quite a broad lock, effectively meaning that for a single-user device there\u0027s no real benefit?  (All calls would be blocked by \"user 0\".)\n\nPerhaps you were thinking of nesting the user ID lock deeper inside each package lock?",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 29
+      },
+      "revId": "4fef886563bbdb0c45c7f0e59533cf68a550f44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da9187f8_dc0042a9",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2021-11-23T19:35:51Z",
+      "side": 1,
+      "message": "The contention in the bug was: rmPackageDir vs dexopt. rmPackageDir only locks package, not user.\nI will change to read/write locks later so that multiple methods can read-only lock on user.",
+      "parentUuid": "c3bcab61_6f798d03",
       "range": {
         "startLine": 330,
         "startChar": 0,
@@ -41,6 +82,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39923b66_6fdbc0fb",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2021-11-23T19:35:51Z",
+      "side": 1,
+      "message": "Sounds good, and it\u0027s better than to lock all users.\nSee aosp/1901110",
+      "parentUuid": "49095547_e41d9de7",
+      "revId": "4fef886563bbdb0c45c7f0e59533cf68a550f44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5260cbc8_2bd163e2",
@@ -58,6 +117,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4511a15d_de1131fc",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2021-11-23T19:35:51Z",
+      "side": 1,
+      "message": "The format file is defined under frameworks/native: https://cs.android.com/android/platform/superproject/+/master:frameworks/native/.clang-format\nI already added cmds/installd/ to the PREUPLOAD.cfg.",
+      "parentUuid": "5260cbc8_2bd163e2",
+      "revId": "4fef886563bbdb0c45c7f0e59533cf68a550f44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "148057d3_6d4f5180",
@@ -71,6 +148,30 @@
       "writtenOn": "2021-11-23T14:25:08Z",
       "side": 1,
       "message": "Hm, this seems a bit suspicious; did you intend to merge like this?  Or is there an actionable bug to follow up on?\n\nPlease write a TODO that explains why this operation seems questionable.",
+      "range": {
+        "startLine": 1572,
+        "startChar": 34,
+        "endLine": 1572,
+        "endChar": 35
+      },
+      "revId": "4fef886563bbdb0c45c7f0e59533cf68a550f44e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "693d19ef_91ed39c7",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2021-11-23T19:35:51Z",
+      "side": 1,
+      "message": "Changed to global lock.",
+      "parentUuid": "148057d3_6d4f5180",
       "range": {
         "startLine": 1572,
         "startChar": 34,
