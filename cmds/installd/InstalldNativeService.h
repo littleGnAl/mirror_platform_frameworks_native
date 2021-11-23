@@ -21,8 +21,9 @@
 #include <inttypes.h>
 #include <unistd.h>
 
-#include <vector>
+#include <shared_mutex>
 #include <unordered_map>
+#include <vector>
 
 #include <android-base/macros.h>
 #include <binder/BinderService.h>
@@ -180,8 +181,10 @@ public:
     binder::Status migrateLegacyObbData();
 
 private:
-    std::recursive_mutex mLock;
+    // Global read-write mutex for large-scale mutations e.g. freeCache.
+    std::shared_mutex mGlobalLock;
 
+    std::recursive_mutex mLock;
     std::unordered_map<userid_t, std::weak_ptr<std::recursive_mutex>> mUserIdLock;
     std::unordered_map<std::string, std::weak_ptr<std::recursive_mutex>> mPackageNameLock;
 
