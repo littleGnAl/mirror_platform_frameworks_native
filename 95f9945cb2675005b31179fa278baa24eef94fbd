@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d8094f_10865b83",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-11-23T04:26:31Z",
+      "side": 0,
+      "message": "This TODO is still relevant, please keep it",
+      "range": {
+        "startLine": 404,
+        "startChar": 11,
+        "endLine": 405,
+        "endChar": 98
+      },
+      "revId": "95f9945cb2675005b31179fa278baa24eef94fbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

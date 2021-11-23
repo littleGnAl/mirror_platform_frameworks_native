@@ -282,6 +282,30 @@
       },
       "revId": "60f72e266ea141dcb955018f1c62623937af367e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b880abf1_df7861f9",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-11-23T04:26:31Z",
+      "side": 1,
+      "message": "Personally I\u0027d still go with a static_cast but the separate converter methods at the time of use is effectively what was going on previously with the extra options fields, just happening in a different location. Reasonable enough to me.",
+      "parentUuid": "90c86f49_d10d3694",
+      "range": {
+        "startLine": 410,
+        "startChar": 60,
+        "endLine": 410,
+        "endChar": 83
+      },
+      "revId": "60f72e266ea141dcb955018f1c62623937af367e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
