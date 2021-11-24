@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2752d737_df513f49",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-24T16:11:53Z",
+      "side": 1,
+      "message": "This was a regression unnoticed. fix: aosp/1900588",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 9
+      },
+      "revId": "0eb7302850bc83ccc6ca3e97a75e024fc2b9080d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32850221_e85fe3fd",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-24T16:11:53Z",
+      "side": 1,
+      "message": "And this too.",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 9
+      },
+      "revId": "0eb7302850bc83ccc6ca3e97a75e024fc2b9080d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
