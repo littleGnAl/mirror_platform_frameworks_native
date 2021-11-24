@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb70f44d_8810ef55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-24T06:01:21Z",
+      "side": 1,
+      "message": "I ran below to format and only took the functions where I have modified code\nclang-format -style\u003dfile dumpstate.cpp\n\nThere is a \".clang-format\" file in frameworks/native/cmds/dumpstate so it took that as the style.",
+      "parentUuid": "ea69db50_21e00346",
+      "revId": "e870fdf2004ba4b0369352448c087f631c64cf05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9e8a4d9_0a6c3eb4",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-23T04:26:31Z",
       "side": 1,
       "message": "Super nit - how about using namespace aliases to produce nice and short namespaces to reference these two a bit more explicitly as `hidl::*` and `aidl::*`?\n\n```\nnamespace hidl \u003d ::android::hardware::dumpstate::V1_1;\nnamespace hidl_1_0 \u003d ::android::hardware::dumpstate::V1_0;\nusing IDumpstateDevice_1_1 \u003d hidl::IDumpstateDevice;\nusing IDumpstateDevice_1_0 \u003d hidl_1_0::IDumpstateDevice;\nnamespace aidl \u003d ::aidl::android::hardware::dumpstate;\n\n...\nstatic hidl::DumpstateMode GetDumpstateHalModeHidl(...) { ... }\nstatic aidl::DumpstateMode GetDumpstateHalModeAidl(...) { ... }\n```\n\nhttps://en.cppreference.com/w/cpp/language/namespace_alias",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 0
+      },
+      "revId": "e870fdf2004ba4b0369352448c087f631c64cf05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b2ba89_dc941b83",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-24T06:01:21Z",
+      "side": 1,
+      "message": "Good idea, only I wont name simply as hidl and aidl since there could be other hidl and aidl used within this module in future",
+      "parentUuid": "e9e8a4d9_0a6c3eb4",
       "range": {
         "startLine": 95,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c52fdca_ae15cb73",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2250,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-24T06:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5de7a330_2e0f1655",
+      "range": {
+        "startLine": 2250,
+        "startChar": 8,
+        "endLine": 2250,
+        "endChar": 11
+      },
+      "revId": "e870fdf2004ba4b0369352448c087f631c64cf05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01fb90b0_fdd14e27",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-11-23T04:26:31Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 2251,
+        "startChar": 8,
+        "endLine": 2251,
+        "endChar": 17
+      },
+      "revId": "e870fdf2004ba4b0369352448c087f631c64cf05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e8cdb8a_c5125f9f",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2251,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-24T06:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01fb90b0_fdd14e27",
       "range": {
         "startLine": 2251,
         "startChar": 8,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba9ae1f_93ecc606",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2335,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-24T06:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b13d3ff0_36acad13",
+      "range": {
+        "startLine": 2335,
+        "startChar": 12,
+        "endLine": 2335,
+        "endChar": 32
+      },
+      "revId": "e870fdf2004ba4b0369352448c087f631c64cf05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae89e871_76e37848",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-11-23T04:26:31Z",
       "side": 1,
       "message": "Nit - does this error message need to change? They\u0027re still both called IDumpstateDevice",
+      "range": {
+        "startLine": 2447,
+        "startChar": 15,
+        "endLine": 2447,
+        "endChar": 69
+      },
+      "revId": "e870fdf2004ba4b0369352448c087f631c64cf05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b980fa88_5a5b2d9c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2447,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-24T06:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae89e871_76e37848",
       "range": {
         "startLine": 2447,
         "startChar": 15,
