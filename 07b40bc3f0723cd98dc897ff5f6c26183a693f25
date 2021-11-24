@@ -70,6 +70,30 @@
       },
       "revId": "07b40bc3f0723cd98dc897ff5f6c26183a693f25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "122aac1d_ec91d0fa",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2021-11-24T04:17:06Z",
+      "side": 1,
+      "message": "yeah, that was yesterday\u0027s code. one reason why I agreed with Jeff on adding a new RW lock was because I saw all these potential issues with multiple per-user locks and didn\u0027t want to have them around.",
+      "parentUuid": "15eed044_e1a6d2c9",
+      "range": {
+        "startLine": 1555,
+        "startChar": 4,
+        "endLine": 1555,
+        "endChar": 15
+      },
+      "revId": "07b40bc3f0723cd98dc897ff5f6c26183a693f25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
