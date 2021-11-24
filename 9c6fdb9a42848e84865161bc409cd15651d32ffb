@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f09358a3_8c12fde9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-11-24T10:43:42Z",
+      "side": 1,
+      "message": "nit: we tend to follow some guidelines for commit messages\n\neg: https://chris.beams.io/posts/git-commit/\n\nso, subject should be a short imperative sentence (within 50 chars ideally)",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 102
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25fdfceb_f9692b98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-11-24T10:43:42Z",
+      "side": 1,
+      "message": "nit: please wrap at 70 chars, also use imperative",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba51a5c_48c09358",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-11-24T10:43:42Z",
+      "side": 1,
+      "message": "mostly nits. overall LGTM",
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e9602f9_e67ec8f4",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2248,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-11-24T10:43:42Z",
+      "side": 1,
+      "message": "nit: per C++ style guide, input by ref should be const ref\n\ngo/cstyle#Inputs_and_Outputs",
+      "range": {
+        "startLine": 2248,
+        "startChar": 4,
+        "endLine": 2248,
+        "endChar": 46
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb7207f_b2c20f0b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2291,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-11-24T10:43:42Z",
+      "side": 1,
+      "message": "should we indicate this is HIDL in the log messages?",
+      "range": {
+        "startLine": 2291,
+        "startChar": 28,
+        "endLine": 2291,
+        "endChar": 42
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed9a1df_058b4610",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2352,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-11-24T10:43:42Z",
+      "side": 1,
+      "message": "nit: more idiomatic to say !status.isOk()",
+      "range": {
+        "startLine": 2352,
+        "startChar": 12,
+        "endLine": 2352,
+        "endChar": 34
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab16f13_5885ef4f",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2383,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-11-24T10:43:42Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 2383,
+        "startChar": 4,
+        "endLine": 2383,
+        "endChar": 14
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ba4217_00f782d3",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2430,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-11-24T10:43:42Z",
+      "side": 1,
+      "message": "should we do this only if the HIDL handle is not found?",
+      "range": {
+        "startLine": 2425,
+        "startChar": 1,
+        "endLine": 2430,
+        "endChar": 5
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08bff628_89724fea",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2479,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-11-24T10:43:42Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 2479,
+        "startChar": 15,
+        "endLine": 2479,
+        "endChar": 19
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
