@@ -1940,7 +1940,21 @@ static void collectManualExternalStatsForUser(const std::string& path, struct st
     }
     fts_close(fts);
 }
+static bool isMediaApp(int32_t appId) {
+    // Fetch Media Package AppID and check if it is the same as the
+    //  current appId whose size is calculated
+    struct stat s;
+    auto _picDir = StringPrintf("%s/Pictures", create_data_media_path(nullptr, 0).c_str());
 
+    const char* picDir = _picDir.c_str();
+    // check if the stat are present
+    if (stat(picDir, &s) == 0) {
+        // fetch the appId from the uid of thr media app
+        int32_t mediaAppId = multiuser_get_app_id(s.st_uid);
+        return mediaAppId == appId;
+    }
+    return false;
+}
 binder::Status InstalldNativeService::getAppSize(const std::optional<std::string>& uuid,
         const std::vector<std::string>& packageNames, int32_t userId, int32_t flags,
         int32_t appId, const std::vector<int64_t>& ceDataInodes,
@@ -1996,7 +2010,7 @@ binder::Status InstalldNativeService::getAppSize(const std::optional<std::string
     }
     ATRACE_END();
 
-    if (flags & FLAG_USE_QUOTA && appId >= AID_APP_START) {
+    if (flags & FLAG_USE_QUOTA && appId >= AID_APP_START && !isMediaApp(appId)) {
         ATRACE_BEGIN("code");
         for (const auto& codePath : codePaths) {
             calculate_tree_size(codePath, &stats.codeSize, -1,
@@ -2005,7 +2019,9 @@ binder::Status InstalldNativeService::getAppSize(const std::optional<std::string
         ATRACE_END();
 
         ATRACE_BEGIN("quota");
+
         collectQuotaStats(uuidString, userId, appId, &stats, &extStats);
+
         ATRACE_END();
     } else {
         ATRACE_BEGIN("code");
