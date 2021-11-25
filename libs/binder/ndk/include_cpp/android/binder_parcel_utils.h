@@ -31,6 +31,7 @@
 #include <android/binder_internal_logging.h>
 #include <android/binder_parcel.h>
 
+#include <array>
 #include <optional>
 #include <string>
 #include <type_traits>
@@ -86,9 +87,76 @@ static inline constexpr bool is_nullable_parcelable_v = is_parcelable_v<first_te
                                                         (is_specialization_v<T, std::optional> ||
                                                          is_specialization_v<T, std::unique_ptr>);
 
+// Tells if T is a fixed-size array.
+template <typename T>
+struct is_fixed_array : std::false_type {};
+
+template <typename T, size_t N>
+struct is_fixed_array<std::array<T, N>> : std::true_type {};
+
+template <typename T>
+static inline constexpr bool is_fixed_array_v = is_fixed_array<T>::value;
+
 template <typename T>
 static inline constexpr bool dependent_false_v = false;
 }  // namespace
+
+template <typename T, size_t N>
+static inline bool AParcel_stdArrayAllocator(void* arrayData, int32_t length, T** outBuffer) {
+    if (length < 0) return false;
+
+    if (length != static_cast<int32_t>(N)) {
+        return false;
+    }
+
+    std::array<T, N>* arr = static_cast<std::array<T, N>*>(arrayData);
+    *outBuffer = arr->data();
+    return true;
+}
+
+template <typename T, size_t N>
+static inline bool AParcel_nullableStdArrayAllocator(void* arrayData, int32_t length,
+                                                     T** outBuffer) {
+    std::optional<std::array<T, N>>* arr = static_cast<std::optional<std::array<T, N>>*>(arrayData);
+    if (length < 0) {
+        *arr = std::nullopt;
+        return true;
+    }
+
+    if (length != static_cast<int32_t>(N)) {
+        return false;
+    }
+
+    (*arr)->emplace();
+    *outBuffer = (*arr)->data();
+    return true;
+}
+
+/**
+ * This retrieves and allocates a vector to size 'length' and returns the underlying buffer.
+ */
+template <typename T, size_t N>
+static inline bool AParcel_stdArrayExternalAllocator(void* arrayData, int32_t length) {
+    (void)arrayData;
+    return length == static_cast<int32_t>(N);
+}
+
+template <typename T, size_t N>
+static inline bool AParcel_nullableStdArrayExternalAllocator(void* arrayData, int32_t length) {
+    std::optional<std::array<T, N>>* arr = static_cast<std::optional<std::array<T, N>>*>(arrayData);
+
+    if (length < 0) {
+        *arr = std::nullopt;
+        return true;
+    }
+
+    if (length != static_cast<int32_t>(N)) {
+        return false;
+    }
+
+    arr->emplace();
+    return true;
+}
 
 /**
  * This retrieves and allocates a vector to size 'length' and returns the underlying buffer.
@@ -571,6 +639,49 @@ static inline binder_status_t AParcel_readNullableParcelable(const AParcel* parc
         *p = std::make_unique<first_template_type_t<P>>();
         return (*p)->readFromParcel(parcel);
     }
+}
+
+// Forward decls
+template <typename T>
+static inline binder_status_t AParcel_writeData(AParcel* parcel, const T& value);
+template <typename T>
+static inline binder_status_t AParcel_writeNullableData(AParcel* parcel, const T& value);
+template <typename T>
+static inline binder_status_t AParcel_readData(const AParcel* parcel, T* value);
+template <typename T>
+static inline binder_status_t AParcel_readNullableData(const AParcel* parcel, T* value);
+
+template <typename T, size_t N>
+binder_status_t AParcel_readStdArrayData(const AParcel* parcel, void* arrayData, size_t index) {
+    std::array<T, N>* arr = static_cast<std::array<T, N>*>(arrayData);
+    return AParcel_readData(parcel, &arr->at(index));
+}
+
+template <typename T, size_t N>
+binder_status_t AParcel_readStdArrayNullableData(const AParcel* parcel, void* arrayData,
+                                                 size_t index) {
+    std::array<T, N>* arr = static_cast<std::array<T, N>*>(arrayData);
+    return AParcel_readNullableData(parcel, &arr->at(index));
+}
+
+template <typename T, size_t N>
+binder_status_t AParcel_readNullableStdArrayNullableData(const AParcel* parcel, void* arrayData,
+                                                         size_t index) {
+    std::optional<std::array<T, N>>* arr = static_cast<std::optional<std::array<T, N>>*>(arrayData);
+    return AParcel_readNullableData(parcel, &(*arr)->at(index));
+}
+
+template <typename T, size_t N>
+binder_status_t AParcel_writeStdArrayData(AParcel* parcel, const void* arrayData, size_t index) {
+    const std::array<T, N>* arr = static_cast<const std::array<T, N>*>(arrayData);
+    return AParcel_writeData(parcel, arr->at(index));
+}
+
+template <typename T, size_t N>
+binder_status_t AParcel_writeStdArrayNullableData(AParcel* parcel, const void* arrayData,
+                                                  size_t index) {
+    const std::array<T, N>* arr = static_cast<const std::array<T, N>*>(arrayData);
+    return AParcel_writeNullableData(parcel, arr->at(index));
 }
 
 /**
@@ -1198,12 +1309,105 @@ static inline binder_status_t AParcel_resizeVector(const AParcel* parcel,
 }
 
 /**
+ * Writes a fixed-size array of T.
+ */
+template <typename T, size_t N>
+static inline binder_status_t AParcel_writeFixedArray(AParcel* parcel,
+                                                      const std::array<T, N>& arr) {
+    if constexpr (std::is_same_v<T, uint8_t>) {
+        return AParcel_writeByteArray(parcel, reinterpret_cast<const int8_t*>(arr.data()),
+                                      static_cast<int32_t>(arr.size()));
+    } else {
+        const void* arrayData = static_cast<const void*>(&arr);
+        return AParcel_writeParcelableArray(parcel, arrayData, static_cast<int32_t>(N),
+                                            &AParcel_writeStdArrayData<T, N>);
+    }
+}
+
+/**
+ * Writes a fixed-size array of (possibly nullable) T. This happens when handling nested arrays.
+ * e.g.) std::optional<std::array<std::array<T, N>, M>>
+ */
+template <typename T, size_t N>
+static inline binder_status_t AParcel_writeFixedArrayWithNullableData(AParcel* parcel,
+                                                                      const std::array<T, N>& arr) {
+    if constexpr (std::is_same_v<T, uint8_t>) {
+        return AParcel_writeFixedArray(parcel, arr);
+    } else {
+        const void* arrayData = static_cast<const void*>(&arr);
+        return AParcel_writeParcelableArray(parcel, arrayData, static_cast<int32_t>(N),
+                                            &AParcel_writeStdArrayNullableData<T, N>);
+    }
+}
+
+/**
+ * Writes a nullable fixed-size array of (possibly nullable) T.
+ * e.g.) std::optional<std::array<std::array<T, N>, M>>
+ */
+template <typename T, size_t N>
+static inline binder_status_t AParcel_writeNullableFixedArrayWithNullableData(
+        AParcel* parcel, const std::optional<std::array<T, N>>& arr) {
+    if (!arr) return AParcel_writeInt32(parcel, -1);
+    return AParcel_writeFixedArrayWithNullableData(parcel, arr.value());
+}
+
+/**
+ * Reads a fixed-size array of T.
+ */
+template <typename T, size_t N>
+static inline binder_status_t AParcel_readFixedArray(const AParcel* parcel, std::array<T, N>* arr) {
+    void* arrayData = static_cast<void*>(arr);
+    if constexpr (std::is_same_v<T, uint8_t>) {
+        return AParcel_readByteArray(parcel, arrayData, &AParcel_stdArrayAllocator<int8_t, N>);
+    } else {
+        return AParcel_readParcelableArray(parcel, arrayData,
+                                           &AParcel_stdArrayExternalAllocator<T, N>,
+                                           &AParcel_readStdArrayData<T, N>);
+    }
+}
+
+/**
+ * Reads a fixed-size array of T.
+ */
+template <typename T, size_t N>
+static inline binder_status_t AParcel_readFixedArrayWithNullableData(const AParcel* parcel,
+                                                                     std::array<T, N>* arr) {
+    void* arrayData = static_cast<void*>(arr);
+    if constexpr (std::is_same_v<T, uint8_t>) {
+        return AParcel_readByteArray(parcel, arrayData, &AParcel_stdArrayAllocator<int8_t, N>);
+    } else {
+        return AParcel_readParcelableArray(parcel, arrayData,
+                                           &AParcel_stdArrayExternalAllocator<T, N>,
+                                           &AParcel_readStdArrayNullableData<T, N>);
+    }
+}
+
+/**
+ * Reads a fixed-size array of T.
+ */
+template <typename T, size_t N>
+static inline binder_status_t AParcel_readNullableFixedArrayWithNullableData(
+        const AParcel* parcel, std::optional<std::array<T, N>>* arr) {
+    void* arrayData = static_cast<void*>(arr);
+    if constexpr (std::is_same_v<T, uint8_t>) {
+        return AParcel_readByteArray(parcel, arrayData,
+                                     &AParcel_nullableStdArrayAllocator<int8_t, N>);
+    } else {
+        return AParcel_readParcelableArray(parcel, arrayData,
+                                           &AParcel_nullableStdArrayExternalAllocator<T, N>,
+                                           &AParcel_readStdArrayNullableData<T, N>);
+    }
+}
+
+/**
  * Convenience API for writing a value of any type.
  */
 template <typename T>
 static inline binder_status_t AParcel_writeData(AParcel* parcel, const T& value) {
     if constexpr (is_specialization_v<T, std::vector>) {
         return AParcel_writeVector(parcel, value);
+    } else if constexpr (is_fixed_array_v<T>) {
+        return AParcel_writeFixedArray(parcel, value);
     } else if constexpr (std::is_same_v<std::string, T>) {
         return AParcel_writeString(parcel, value);
     } else if constexpr (std::is_same_v<bool, T>) {
@@ -1245,6 +1449,11 @@ static inline binder_status_t AParcel_writeNullableData(AParcel* parcel, const T
                   is_specialization_v<first_template_type_t<T>, std::vector>) {
         return AParcel_writeVector(parcel, value);
     } else if constexpr (is_specialization_v<T, std::optional> &&
+                         is_fixed_array_v<first_template_type_t<T>>) {
+        return AParcel_writeNullableFixedArrayWithNullableData(parcel, value);
+    } else if constexpr (is_fixed_array_v<T>) {  // happens with a nullable multi-dimensional array.
+        return AParcel_writeFixedArrayWithNullableData(parcel, value);
+    } else if constexpr (is_specialization_v<T, std::optional> &&
                          std::is_same_v<first_template_type_t<T>, std::string>) {
         return AParcel_writeString(parcel, value);
     } else if constexpr (is_nullable_parcelable_v<T> || is_interface_v<T>) {
@@ -1265,6 +1474,8 @@ template <typename T>
 static inline binder_status_t AParcel_readData(const AParcel* parcel, T* value) {
     if constexpr (is_specialization_v<T, std::vector>) {
         return AParcel_readVector(parcel, value);
+    } else if constexpr (is_fixed_array_v<T>) {
+        return AParcel_readFixedArray(parcel, value);
     } else if constexpr (std::is_same_v<std::string, T>) {
         return AParcel_readString(parcel, value);
     } else if constexpr (std::is_same_v<bool, T>) {
@@ -1305,6 +1516,11 @@ static inline binder_status_t AParcel_readNullableData(const AParcel* parcel, T*
     if constexpr (is_specialization_v<T, std::optional> &&
                   is_specialization_v<first_template_type_t<T>, std::vector>) {
         return AParcel_readVector(parcel, value);
+    } else if constexpr (is_specialization_v<T, std::optional> &&
+                         is_fixed_array_v<first_template_type_t<T>>) {
+        return AParcel_readNullableFixedArrayWithNullableData(parcel, value);
+    } else if constexpr (is_fixed_array_v<T>) {  // happens with a nullable multi-dimensional array.
+        return AParcel_readFixedArrayWithNullableData(parcel, value);
     } else if constexpr (is_specialization_v<T, std::optional> &&
                          std::is_same_v<first_template_type_t<T>, std::string>) {
         return AParcel_readString(parcel, value);
