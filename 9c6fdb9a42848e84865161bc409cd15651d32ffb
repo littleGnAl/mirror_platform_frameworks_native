@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c3e13b1_af11152b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-25T08:00:16Z",
+      "side": 1,
+      "message": "Done\n\nThanks for the tip, will take care for this and subsequent commits.",
+      "parentUuid": "f09358a3_8c12fde9",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 102
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25fdfceb_f9692b98",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-24T10:43:42Z",
       "side": 1,
       "message": "nit: please wrap at 70 chars, also use imperative",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d058c1_a21c0d38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-25T08:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25fdfceb_f9692b98",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dc03534_84ad1a6e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2248,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-25T08:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e9602f9_e67ec8f4",
+      "range": {
+        "startLine": 2248,
+        "startChar": 4,
+        "endLine": 2248,
+        "endChar": 46
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cb7207f_b2c20f0b",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-24T10:43:42Z",
       "side": 1,
       "message": "should we indicate this is HIDL in the log messages?",
+      "range": {
+        "startLine": 2291,
+        "startChar": 28,
+        "endLine": 2291,
+        "endChar": 42
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2e23abe_060e99b5",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2291,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-25T08:00:16Z",
+      "side": 1,
+      "message": "I did have HIDL and AIDL in the logs in a earlier patchset, but then I felt going ahead if all are AIDL, then this bit of info is not needed. I do have a info log to print which implementation was used, I have this as the only log which tells AIDL or HIDL was used and have kept other logs agnostic of AIDL or HIDL. Within HIDL there is also the bit of which HIDL version got used 1.0 or 1.1. Again info log tells HIDL 1.0 or 1.1\n\nI will mark as resolved, and can change if there is strong opinion to put the HIDL or AIDL tag in error logs.",
+      "parentUuid": "6cb7207f_b2c20f0b",
       "range": {
         "startLine": 2291,
         "startChar": 28,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a73011de_2c767482",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2352,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-25T08:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ed9a1df_058b4610",
+      "range": {
+        "startLine": 2352,
+        "startChar": 12,
+        "endLine": 2352,
+        "endChar": 34
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ab16f13_5885ef4f",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-11-24T10:43:42Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 2383,
+        "startChar": 4,
+        "endLine": 2383,
+        "endChar": 14
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e13fd411_019beef1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2383,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-25T08:00:16Z",
+      "side": 1,
+      "message": "This comes form my embedded C background where using explicit checks was encouraged :). Fixed it.",
+      "parentUuid": "9ab16f13_5885ef4f",
       "range": {
         "startLine": 2383,
         "startChar": 4,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1743c6fa_c57998cb",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2430,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-25T08:00:16Z",
+      "side": 1,
+      "message": "The logic is to first check for AIDL, if AIDL is found then skip HIDL, else check for HIDL.\n\nI dont have preference for first checking HIDL and then AIDL. Since AIDL is the recommended one going forward, I thought maybe better to check AIDL first.",
+      "parentUuid": "41ba4217_00f782d3",
+      "range": {
+        "startLine": 2425,
+        "startChar": 1,
+        "endLine": 2430,
+        "endChar": 5
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08bff628_89724fea",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-11-24T10:43:42Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 2479,
+        "startChar": 15,
+        "endLine": 2479,
+        "endChar": 19
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5044dcfe_feaddedc",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2479,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-25T08:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08bff628_89724fea",
       "range": {
         "startLine": 2479,
         "startChar": 15,
