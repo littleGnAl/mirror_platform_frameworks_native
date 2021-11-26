@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017697159",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1903713?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8974dd49_9294bd5e",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-26T07:29:12Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 104
+      },
+      "revId": "e7c2e92a6a11155383992336c29dc9db33185002",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
