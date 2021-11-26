@@ -556,8 +556,11 @@ int get_min_buffer_count(ANativeWindow* window,
         return err;
     }
 
-    *out_min_buffer_count =
-        static_cast<uint32_t>(min_undequeued_buffers + kExtraBuffers);
+    int min_buffer_count = (min_undequeued_buffers == 1) ?
+        min_undequeued_buffers : min_undequeued_buffers + kExtraBuffers;
+
+    *out_min_buffer_count = static_cast<uint32_t>(min_buffer_count);
+
     return android::OK;
 }
 
