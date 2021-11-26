@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48ff0a2e_baca0345",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2021-11-26T18:14:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4c1a21a_2e5a7e7d",
+      "range": {
+        "startLine": 1943,
+        "startChar": 12,
+        "endLine": 1943,
+        "endChar": 22
+      },
+      "revId": "fa9beceb0116ee764ffedf67eee84eb3243613bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd7baed0_bbb1e6cd",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-11-26T08:24:13Z",
       "side": 1,
       "message": "this is just a nit, in general Android coding style would not introduce a variable for this, but just use stat(_picDir.c_str(), ...)",
+      "range": {
+        "startLine": 1949,
+        "startChar": 4,
+        "endLine": 1949,
+        "endChar": 41
+      },
+      "revId": "fa9beceb0116ee764ffedf67eee84eb3243613bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1f6480_69bf3136",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2021-11-26T18:14:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd7baed0_bbb1e6cd",
       "range": {
         "startLine": 1949,
         "startChar": 4,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "357765df_c355c37b",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1954,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2021-11-26T18:14:05Z",
+      "side": 1,
+      "message": "it gives me unsigned conversion exception, typecasting works:\nreturn (int32_t)multiuser_get_app_id(s.st_uid) \u003d\u003d appId;",
+      "parentUuid": "489d3e05_952afcb1",
+      "range": {
+        "startLine": 1954,
+        "startChar": 15,
+        "endLine": 1954,
+        "endChar": 25
+      },
+      "revId": "fa9beceb0116ee764ffedf67eee84eb3243613bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "156b16f4_a9e81c78",
@@ -117,6 +189,24 @@
       "writtenOn": "2021-11-26T08:24:13Z",
       "side": 1,
       "message": "I think I\u0027d add a comment here explaining that, we can\u0027t use the quota feature for the app that owns external storage, because the calculation based on UID will wrongly include that external storage.",
+      "revId": "fa9beceb0116ee764ffedf67eee84eb3243613bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e2b3862_cdac9610",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2013,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2021-11-26T18:14:05Z",
+      "side": 1,
+      "message": "Added",
+      "parentUuid": "156b16f4_a9e81c78",
       "revId": "fa9beceb0116ee764ffedf67eee84eb3243613bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
