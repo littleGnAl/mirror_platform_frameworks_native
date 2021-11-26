@@ -2460,6 +2460,9 @@ FloatRect SurfaceFlinger::getLayerClipBoundsForDisplay(const DisplayDevice& disp
 void SurfaceFlinger::computeLayerBounds() {
     for (const auto& pair : ON_MAIN_THREAD(mDisplays)) {
         const auto& displayDevice = pair.second;
+        if (displayDevice->isVirtual()) {
+            continue;
+        }
         const auto display = displayDevice->getCompositionDisplay();
         for (const auto& layer : mDrawingState.layersSortedByZ) {
             // only consider the layers on the given layer stack
