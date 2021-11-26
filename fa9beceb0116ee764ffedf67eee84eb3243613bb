@@ -16,6 +16,109 @@
       "message": "Please review the fix. I have tested the existing tests and they all run fine.",
       "revId": "fa9beceb0116ee764ffedf67eee84eb3243613bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf70d15_f656c9e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-11-26T08:24:13Z",
+      "side": 1,
+      "message": "Thanks, LGTM with some minor things!",
+      "revId": "fa9beceb0116ee764ffedf67eee84eb3243613bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c1a21a_2e5a7e7d",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-11-26T08:24:13Z",
+      "side": 1,
+      "message": "I\u0027d call this something like: \"ownsExternalStorage()\". The reason is that technically, OEMs are allowed to implement external storage in a different process, not necessarily the media process.\n\nSo what we really care about here is whether the passed in app id is the owner of external storage directories.",
+      "range": {
+        "startLine": 1943,
+        "startChar": 12,
+        "endLine": 1943,
+        "endChar": 22
+      },
+      "revId": "fa9beceb0116ee764ffedf67eee84eb3243613bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd7baed0_bbb1e6cd",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-11-26T08:24:13Z",
+      "side": 1,
+      "message": "this is just a nit, in general Android coding style would not introduce a variable for this, but just use stat(_picDir.c_str(), ...)",
+      "range": {
+        "startLine": 1949,
+        "startChar": 4,
+        "endLine": 1949,
+        "endChar": 41
+      },
+      "revId": "fa9beceb0116ee764ffedf67eee84eb3243613bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489d3e05_952afcb1",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1954,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-11-26T08:24:13Z",
+      "side": 1,
+      "message": "same here with the return, can do return appId \u003d\u003d multiuser_get_app_id(s.st_uid);",
+      "range": {
+        "startLine": 1954,
+        "startChar": 15,
+        "endLine": 1954,
+        "endChar": 25
+      },
+      "revId": "fa9beceb0116ee764ffedf67eee84eb3243613bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156b16f4_a9e81c78",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2013,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-11-26T08:24:13Z",
+      "side": 1,
+      "message": "I think I\u0027d add a comment here explaining that, we can\u0027t use the quota feature for the app that owns external storage, because the calculation based on UID will wrongly include that external storage.",
+      "revId": "fa9beceb0116ee764ffedf67eee84eb3243613bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
