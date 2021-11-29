@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8e29822_1a5f4b30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2021-11-29T17:53:15Z",
+      "side": 1,
+      "message": "Extend the commit message to include why this virtual display needs to skip computelayerbounds. And add tests.",
+      "revId": "b12b08d6a8176517791b6c4d2622858fa365e4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
