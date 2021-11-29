@@ -347,6 +347,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4d063a_8a936e42",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2430,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2021-11-29T15:50:55Z",
+      "side": 1,
+      "message": "I didn\u0027t realize AIDL is preferred. anyway the point I was trying to make (rather inffectively) was that dumpstate_hal_handle_hidl_1_0  is only used in lin 2479, so isn\u0027t it better to create it there?",
+      "parentUuid": "1743c6fa_c57998cb",
+      "range": {
+        "startLine": 2425,
+        "startChar": 1,
+        "endLine": 2430,
+        "endChar": 5
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08bff628_89724fea",
