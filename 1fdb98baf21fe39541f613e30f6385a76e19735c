@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f11c0c_0bd59780",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151059
+      },
+      "writtenOn": "2021-11-29T09:05:25Z",
+      "side": 1,
+      "message": "Hello, Dear Steven Moreland\n\nI understand that if increase binderpoolthread once, can NOT reduce it again, right?\nCan you tell me why you\u0027ve submitted this code? ( just Wondering :-) )\n\nStability? Or Is there any issue about binder thread pool?\n\nThanks~",
+      "revId": "1fdb98baf21fe39541f613e30f6385a76e19735c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
