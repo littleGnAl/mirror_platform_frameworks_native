@@ -51,6 +51,24 @@
       "parentUuid": "bd6dfecd_78f60575",
       "revId": "b12b08d6a8176517791b6c4d2622858fa365e4c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d555ddd7_0e6f13d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2021-11-29T23:57:46Z",
+      "side": 1,
+      "message": "replied on the bug. the relevant cl is https://partner-android.googlesource.com/platform/frameworks/native/+/b09c655797f24a9e6f272f27f63d161e575349ae",
+      "parentUuid": "3429f5e5_56091d14",
+      "revId": "b12b08d6a8176517791b6c4d2622858fa365e4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
