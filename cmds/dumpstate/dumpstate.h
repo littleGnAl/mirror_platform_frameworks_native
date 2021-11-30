@@ -341,6 +341,15 @@ class Dumpstate {
      */
     RunStatus Run(int32_t calling_uid, const std::string& calling_package);
 
+    /*
+     * Entry point for retrieving a previous-generated bugreport.
+     *
+     * Initialize() dumpstate before calling this method.
+     */
+    RunStatus Retrieve(int32_t calling_uid, const std::string& calling_package);
+
+
+
     RunStatus ParseCommandlineAndRun(int argc, char* argv[]);
 
     /* Deletes in-progress files */
@@ -384,6 +393,7 @@ class Dumpstate {
         bool progress_updates_to_socket = false;
         bool do_screenshot = false;
         bool is_screenshot_copied = false;
+        bool is_consent_deferred = false;
         bool is_remote_mode = false;
         bool show_header_only = false;
         bool telephony_only = false;
@@ -416,7 +426,7 @@ class Dumpstate {
         /* Initializes options from the requested mode. */
         void Initialize(BugreportMode bugreport_mode, const android::base::unique_fd& bugreport_fd,
                         const android::base::unique_fd& screenshot_fd,
-                        bool is_screenshot_requested);
+                        bool is_screenshot_requested, bool is_consent_deferred);
 
         /* Returns true if the options set so far are consistent. */
         bool ValidateOptions() const;
@@ -530,6 +540,7 @@ class Dumpstate {
 
   private:
     RunStatus RunInternal(int32_t calling_uid, const std::string& calling_package);
+    RunStatus RetrieveInternal(int32_t calling_uid, const std::string& calling_package);
 
     RunStatus DumpstateDefaultAfterCritical();
 
@@ -550,6 +561,8 @@ class Dumpstate {
     void ShutdownDumpPool();
 
     RunStatus HandleUserConsentDenied();
+
+    void HandleRunStatus(RunStatus status);
 
     // Copies bugreport artifacts over to the caller's directories provided there is user consent or
     // called by Shell.

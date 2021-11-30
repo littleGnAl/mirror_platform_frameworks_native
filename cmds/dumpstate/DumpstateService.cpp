@@ -58,6 +58,13 @@ static binder::Status exception(uint32_t code, const std::string& msg,
     exit(0);
 }
 
+[[noreturn]] static void* dumpstate_thread_retrieve(void* data) {
+    std::unique_ptr<DumpstateInfo> ds_info(static_cast<DumpstateInfo*>(data));
+    ds_info->ds->Retrieve(ds_info->calling_uid, ds_info->calling_package);
+    MYLOGD("Finished retrieving a bugreport. Exiting.\n");
+    exit(0);
+}
+
 [[noreturn]] static void signalErrorAndExit(sp<IDumpstateListener> listener, int error_code) {
     listener->onError(error_code);
     exit(0);
@@ -90,7 +97,8 @@ binder::Status DumpstateService::startBugreport(int32_t calling_uid,
                                                 android::base::unique_fd screenshot_fd,
                                                 int bugreport_mode,
                                                 const sp<IDumpstateListener>& listener,
-                                                bool is_screenshot_requested) {
+                                                bool is_screenshot_requested,
+                                                bool is_consent_deferred) {
     MYLOGI("startBugreport() with mode: %d\n", bugreport_mode);
 
     // Ensure there is only one bugreport in progress at a time.
@@ -124,7 +132,7 @@ binder::Status DumpstateService::startBugreport(int32_t calling_uid,
 
     std::unique_ptr<Dumpstate::DumpOptions> options = std::make_unique<Dumpstate::DumpOptions>();
     options->Initialize(static_cast<Dumpstate::BugreportMode>(bugreport_mode), bugreport_fd,
-                        screenshot_fd, is_screenshot_requested);
+                        screenshot_fd, is_screenshot_requested, is_consent_deferred);
 
     if (bugreport_fd.get() == -1 || (options->do_screenshot && screenshot_fd.get() == -1)) {
         MYLOGE("Invalid filedescriptor");
@@ -173,6 +181,40 @@ binder::Status DumpstateService::cancelBugreport(int32_t calling_uid,
             StringPrintf("started by %d/%s", calling_uid_, calling_package_.c_str()));
     }
     ds_->Cancel();
+    return binder::Status::ok();
+}
+
+binder::Status DumpstateService::retrieveBugreport(
+    int32_t calling_uid, const std::string& calling_package,
+    android::base::unique_fd bugreport_fd,
+    android::base::unique_fd screenshot_fd,
+    const std::string& bugreport_file,
+    const std::string& screenshot_file,
+    const sp<IDumpstateListener>& listener
+) {
+    ds_ = &(Dumpstate::GetInstance());
+    DumpstateInfo* ds_info = new DumpstateInfo();
+    ds_info->ds = ds_;
+    ds_info->calling_uid = calling_uid;
+    ds_info->calling_package = calling_package;
+    ds_->listener_ = listener;
+    std::unique_ptr<Dumpstate::DumpOptions> options = std::make_unique<Dumpstate::DumpOptions>();
+    options->Initialize(Dumpstate::BugreportMode::BUGREPORT_DEFAULT, bugreport_fd,
+                        screenshot_fd, screenshot_fd.get() != -1, false);
+
+    if (bugreport_fd.get() == -1 || (options->do_screenshot && screenshot_fd.get() == -1)) {
+        MYLOGE("Invalid filedescriptor");
+        signalErrorAndExit(listener, IDumpstateListener::BUGREPORT_ERROR_INVALID_INPUT);
+    }
+    ds_->SetOptions(std::move(options));
+    ds_->path_ = bugreport_file;
+    ds_->screenshot_path_ = screenshot_file;
+    pthread_t thread;
+    status_t err = pthread_create(&thread, nullptr, dumpstate_thread_retrieve, ds_info);
+    if (err != 0) {
+        MYLOGE("Could not create a thread");
+        signalErrorAndExit(listener, IDumpstateListener::BUGREPORT_ERROR_RUNTIME_ERROR);
+    }
     return binder::Status::ok();
 }
 
