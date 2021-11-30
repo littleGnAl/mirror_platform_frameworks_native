@@ -349,6 +349,15 @@ class Dumpstate {
      */
     RunStatus Run(int32_t calling_uid, const std::string& calling_package);
 
+    /*
+     * Entry point for retrieving a previous-generated bugreport.
+     *
+     * Initalize() dumpstate before calling this method.
+     */
+    RunStatus Retrieve(int32_t calling_uid, const std::string& calling_package);
+
+
+
     RunStatus ParseCommandlineAndRun(int argc, char* argv[]);
 
     /* Deletes in-progress files */
@@ -539,6 +548,7 @@ class Dumpstate {
 
   private:
     RunStatus RunInternal(int32_t calling_uid, const std::string& calling_package);
+    RunStatus RetrieveInternal(int32_t calling_uid, const std::string& calling_package);
 
     RunStatus DumpstateDefaultAfterCritical();
 
@@ -559,6 +569,8 @@ class Dumpstate {
     void ShutdownDumpPool();
 
     RunStatus HandleUserConsentDenied();
+
+    void HandleRunStatus(RunStatus status);
 
     // Copies bugreport artifacts over to the caller's directories provided there is user consent or
     // called by Shell.

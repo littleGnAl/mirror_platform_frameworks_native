@@ -50,6 +50,9 @@ interface IDumpstateListener {
     /* There is currently a bugreport running. The caller should try again later. */
     const int BUGREPORT_ERROR_ANOTHER_REPORT_IN_PROGRESS = 5;
 
+    /* There is no bugreport to retrieve for the given caller. */
+    const int BUGREPORT_ERROR_NO_BUGREPORT_TO_RETRIEVE = 6;
+
     /**
      * Called on an error condition with one of the error codes listed above.
      */

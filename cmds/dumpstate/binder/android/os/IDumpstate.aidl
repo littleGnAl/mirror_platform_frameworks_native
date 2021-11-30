@@ -82,4 +82,23 @@ interface IDumpstate {
      * @param callingPackage package of the original application that requested the cancellation.
      */
     void cancelBugreport(int callingUid, @utf8InCpp String callingPackage);
+
+    /**
+     * Retrieves a previously generated bugreport.
+     *
+     * <p>The caller must have previously generated a bugreport using
+     * requestBugreport.
+     *
+     * @param callingUid UID of the original application that requested the report.
+     * @param callingPackage package of the original application that requested the report.
+     * @param bugreportFd the file to which the zipped bugreport should be written
+     * @param screenshotFd the file to which screenshot should be written
+     * @param listener callback for updates; optional
+     */
+    void retrieveBugreport(int callingUid, @utf8InCpp String callingPackage,
+                           FileDescriptor bugreportFd,
+                           FileDescriptor screenshotFd,
+                           @utf8InCpp String bugreportFile,
+                           @utf8InCpp String screenshotFile,
+                           IDumpstateListener listener);
 }
