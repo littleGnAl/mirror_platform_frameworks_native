@@ -371,6 +371,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "300b5e1b_68f89b3b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2430,
+      "author": {
+        "id": 1900005
+      },
+      "writtenOn": "2021-11-30T05:47:36Z",
+      "side": 1,
+      "message": "Actually the usage is on line 2442 in a way right after creating it. \n\nIf the neither HIDL nor AIDL service is found then the function returns immediately and does not try to open output files, i.e the successful creation of dumpstate_hal_handle_hidl_1_0 (or dumpstate_hal_handle_aidl) is used determine if output file handles need to be opened/created.  \n\nSo I would say the dumpstate_hal_handle_hidl_1_0 is created as late as possible with the intent that we dont open/create output file handles unless they are really needed.",
+      "parentUuid": "6c4d063a_8a936e42",
+      "range": {
+        "startLine": 2425,
+        "startChar": 1,
+        "endLine": 2430,
+        "endChar": 5
+      },
+      "revId": "9c6fdb9a42848e84865161bc409cd15651d32ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08bff628_89724fea",
