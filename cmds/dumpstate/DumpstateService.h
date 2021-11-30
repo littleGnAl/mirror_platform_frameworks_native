@@ -42,7 +42,17 @@ class DumpstateService : public BinderService<DumpstateService>, public BnDumpst
                                   android::base::unique_fd bugreport_fd,
                                   android::base::unique_fd screenshot_fd, int bugreport_mode,
                                   const sp<IDumpstateListener>& listener,
-                                  bool is_screenshot_requested) override;
+                                  bool is_screenshot_requested,
+                                  bool is_consent_deferred) override;
+
+    binder::Status retrieveBugreport(int32_t calling_uid,
+                                     const std::string& calling_package,
+                                     android::base::unique_fd bugreport_fd,
+                                     android::base::unique_fd screenshot_fd,
+                                     const std::string& bugreport_file,
+                                     const std::string& screenshot_file,
+                                     const sp<IDumpstateListener>& listener)
+                                  override;
 
     binder::Status cancelBugreport(int32_t calling_uid, const std::string& calling_package);
 

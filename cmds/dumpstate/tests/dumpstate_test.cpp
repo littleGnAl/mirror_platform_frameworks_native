@@ -70,7 +70,7 @@ class DumpstateListenerMock : public IDumpstateListener {
   public:
     MOCK_METHOD1(onProgress, binder::Status(int32_t progress));
     MOCK_METHOD1(onError, binder::Status(int32_t error_code));
-    MOCK_METHOD0(onFinished, binder::Status());
+    MOCK_METHOD2(onFinished, binder::Status(const std::string& bugreport_file, const std::string& screenshot_file));
     MOCK_METHOD1(onScreenshotTaken, binder::Status(bool success));
     MOCK_METHOD0(onUiIntensiveBugreportDumpsFinished, binder::Status());
 
@@ -237,7 +237,7 @@ TEST_F(DumpOptionsTest, InitializeAdbShellBugreport) {
 }
 
 TEST_F(DumpOptionsTest, InitializeFullBugReport) {
-    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_FULL, fd, fd, true);
+    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_FULL, fd, fd, true, false);
     EXPECT_TRUE(options_.do_screenshot);
 
     // Other options retain default values
@@ -251,7 +251,7 @@ TEST_F(DumpOptionsTest, InitializeFullBugReport) {
 }
 
 TEST_F(DumpOptionsTest, InitializeInteractiveBugReport) {
-    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_INTERACTIVE, fd, fd, true);
+    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_INTERACTIVE, fd, fd, true, false);
     EXPECT_TRUE(options_.do_progress_updates);
     EXPECT_TRUE(options_.do_screenshot);
 
@@ -265,7 +265,7 @@ TEST_F(DumpOptionsTest, InitializeInteractiveBugReport) {
 }
 
 TEST_F(DumpOptionsTest, InitializeRemoteBugReport) {
-    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_REMOTE, fd, fd, false);
+    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_REMOTE, fd, fd, false, false);
     EXPECT_TRUE(options_.is_remote_mode);
     EXPECT_FALSE(options_.do_vibrate);
     EXPECT_FALSE(options_.do_screenshot);
@@ -279,7 +279,7 @@ TEST_F(DumpOptionsTest, InitializeRemoteBugReport) {
 }
 
 TEST_F(DumpOptionsTest, InitializeWearBugReport) {
-    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_WEAR, fd, fd, true);
+    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_WEAR, fd, fd, true, false);
     EXPECT_TRUE(options_.do_screenshot);
     EXPECT_TRUE(options_.do_progress_updates);
 
@@ -294,7 +294,7 @@ TEST_F(DumpOptionsTest, InitializeWearBugReport) {
 }
 
 TEST_F(DumpOptionsTest, InitializeTelephonyBugReport) {
-    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_TELEPHONY, fd, fd, false);
+    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_TELEPHONY, fd, fd, false, false);
     EXPECT_FALSE(options_.do_screenshot);
     EXPECT_TRUE(options_.telephony_only);
     EXPECT_TRUE(options_.do_progress_updates);
@@ -309,7 +309,7 @@ TEST_F(DumpOptionsTest, InitializeTelephonyBugReport) {
 }
 
 TEST_F(DumpOptionsTest, InitializeWifiBugReport) {
-    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_WIFI, fd, fd, false);
+    options_.Initialize(Dumpstate::BugreportMode::BUGREPORT_WIFI, fd, fd, false, false);
     EXPECT_FALSE(options_.do_screenshot);
     EXPECT_TRUE(options_.wifi_only);
 

@@ -160,7 +160,8 @@ class DumpstateListener : public BnDumpstateListener {
         return binder::Status::ok();
     }
 
-    binder::Status onFinished() override {
+    binder::Status onFinished([[maybe_unused]] const std::string& bugreport_file,
+                              [[maybe_unused]] const std::string& screenshot_file) override {
         std::lock_guard<std::mutex> lock(lock_);
         is_finished_ = true;
         dprintf(out_fd_, "\rFinished");
@@ -504,7 +505,7 @@ TEST_F(DumpstateBinderTest, Baseline) {
     sp<DumpstateListener> listener(new DumpstateListener(dup(fileno(stdout))));
     android::binder::Status status =
         ds_binder->startBugreport(123, "com.dummy.package", std::move(bugreport_fd), std::move(screenshot_fd),
-                                  Dumpstate::BugreportMode::BUGREPORT_INTERACTIVE, listener, true);
+                                  Dumpstate::BugreportMode::BUGREPORT_INTERACTIVE, listener, true, false);
     // startBugreport is an async call. Verify binder call succeeded first, then wait till listener
     // gets expected callbacks.
     EXPECT_TRUE(status.isOk());
@@ -541,7 +542,7 @@ TEST_F(DumpstateBinderTest, ServiceDies_OnInvalidInput) {
     android::binder::Status status =
         ds_binder->startBugreport(123, "com.dummy.package", std::move(bugreport_fd), std::move(screenshot_fd),
                                   2000,  // invalid bugreport mode
-                                  listener, false);
+                                  listener, false, false);
     EXPECT_EQ(listener->getErrorCode(), IDumpstateListener::BUGREPORT_ERROR_INVALID_INPUT);
 
     // The service should have died, freeing itself up for a new invocation.
@@ -572,13 +573,13 @@ TEST_F(DumpstateBinderTest, SimultaneousBugreportsNotAllowed) {
     sp<DumpstateListener> listener1(new DumpstateListener(dup(fileno(stdout))));
     android::binder::Status status =
         ds_binder->startBugreport(123, "com.dummy.package", std::move(bugreport_fd), std::move(screenshot_fd),
-                                  Dumpstate::BugreportMode::BUGREPORT_INTERACTIVE, listener1, true);
+                                  Dumpstate::BugreportMode::BUGREPORT_INTERACTIVE, listener1, true, false);
     EXPECT_TRUE(status.isOk());
 
     // try to make another call to startBugreport. This should fail.
     sp<DumpstateListener> listener2(new DumpstateListener(dup(fileno(stdout))));
     status = ds_binder->startBugreport(123, "com.dummy.package", std::move(bugreport_fd2), std::move(screenshot_fd2),
-                                       Dumpstate::BugreportMode::BUGREPORT_INTERACTIVE, listener2, true);
+                                       Dumpstate::BugreportMode::BUGREPORT_INTERACTIVE, listener2, true, false);
     EXPECT_FALSE(status.isOk());
     WaitTillExecutionComplete(listener2.get());
     EXPECT_EQ(listener2->getErrorCode(),
