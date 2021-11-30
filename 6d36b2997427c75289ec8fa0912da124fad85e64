@@ -16,6 +16,69 @@
       "message": "Thanks, please re-review!",
       "revId": "6d36b2997427c75289ec8fa0912da124fad85e64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe740e7_00c27a92",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1944,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-11-30T08:42:02Z",
+      "side": 1,
+      "message": "nit: still says media here, I\u0027d say \"external storage owner appid\"",
+      "range": {
+        "startLine": 1944,
+        "startChar": 13,
+        "endLine": 1944,
+        "endChar": 18
+      },
+      "revId": "6d36b2997427c75289ec8fa0912da124fad85e64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e8b310_abc4714e",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2009,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-11-30T08:42:02Z",
+      "side": 1,
+      "message": "\"external storage owning app\"",
+      "range": {
+        "startLine": 2009,
+        "startChar": 39,
+        "endLine": 2009,
+        "endChar": 44
+      },
+      "revId": "6d36b2997427c75289ec8fa0912da124fad85e64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dda97d74_28fc5b92",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2020,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-11-30T08:42:02Z",
+      "side": 1,
+      "message": "nit: could technically remove these, or if you like it better this way, make a separate CL for it :)",
+      "revId": "6d36b2997427c75289ec8fa0912da124fad85e64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
