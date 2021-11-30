@@ -16,6 +16,23 @@
       "message": "This looks like an acceptable quick fix, but I would like something more permanent to need sooner rather than later.\n\nLGTM",
       "revId": "bfb7199b594c705116571744c1504f29d5cfebef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bcbb364_d121a29b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2021-11-30T18:40:29Z",
+      "side": 1,
+      "message": "Possibly-temporary NAK, need more time to look at this.",
+      "revId": "bfb7199b594c705116571744c1504f29d5cfebef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
