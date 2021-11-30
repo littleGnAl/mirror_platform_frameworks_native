@@ -89,9 +89,8 @@ class SpAIBinder {
     void set(AIBinder* binder) {
         AIBinder* old = *const_cast<AIBinder* volatile*>(&mBinder);
         if (old != nullptr) AIBinder_decStrong(old);
-        if (old != *const_cast<AIBinder* volatile*>(&mBinder)) {
-            __assert(__FILE__, __LINE__, "Race detected.");
-        }
+        bool no_race = old == *const_cast<AIBinder* volatile*>(&mBinder);
+        assert(no_race);
         mBinder = binder;
     }
 
