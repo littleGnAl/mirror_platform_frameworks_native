@@ -34,6 +34,7 @@ cc_defaults {
     cflags: [
         "-O0",
         "-g",
+        "-UNDEBUG", // re-enabling assertions
     ],
 }
 
