@@ -16,6 +16,24 @@
       "message": "Also change frameworks/native/libs/binder/ndk/include_cpp/android/binder_interface_utils.h?",
       "revId": "9b5fcb3d67e4e97b104af2bae79a29839a610377",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60419cb9_d6b37427",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1789250
+      },
+      "writtenOn": "2021-11-30T11:04:03Z",
+      "side": 1,
+      "message": "Mark as unresolved.",
+      "parentUuid": "54e5b640_55eaf5b5",
+      "revId": "9b5fcb3d67e4e97b104af2bae79a29839a610377",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
