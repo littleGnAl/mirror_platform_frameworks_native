@@ -31,7 +31,14 @@
 #include <android/binder_parcel.h>
 #include <android/binder_status.h>
 
+// Clear NDEBUG to always check the assertions
+#ifdef NDEBUG
+#undef NDEBUG
 #include <assert.h>
+#define NDEBUG
+#else
+#include <assert.h>
+#endif
 
 #include <unistd.h>
 #include <cstddef>
@@ -89,9 +96,8 @@ class SpAIBinder {
     void set(AIBinder* binder) {
         AIBinder* old = *const_cast<AIBinder* volatile*>(&mBinder);
         if (old != nullptr) AIBinder_decStrong(old);
-        if (old != *const_cast<AIBinder* volatile*>(&mBinder)) {
-            __assert(__FILE__, __LINE__, "Race detected.");
-        }
+        bool no_race = old == *const_cast<AIBinder* volatile*>(&mBinder);
+        assert(no_race);
         mBinder = binder;
     }
 
