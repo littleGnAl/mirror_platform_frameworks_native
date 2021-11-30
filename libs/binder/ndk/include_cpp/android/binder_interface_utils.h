@@ -52,15 +52,12 @@ class SharedRefBase {
    public:
     SharedRefBase() {}
     virtual ~SharedRefBase() {
-        std::call_once(mFlagThis, [&]() {
-            __assert(__FILE__, __LINE__, "SharedRefBase: no ref created during lifetime");
-        });
+        std::call_once(mFlagThis,
+                       [&]() { assert(("SharedRefBase: no ref created during lifetime", false)); });
 
-        if (ref() != nullptr) {
-            __assert(__FILE__, __LINE__,
-                     "SharedRefBase: destructed but still able to lock weak_ptr. Is this object "
-                     "double-owned?");
-        }
+        assert(("SharedRefBase: destructed but still able to lock weak_ptr. Is this object "
+                "double-owned?",
+                ref() == nullptr));
     }
 
     /**
