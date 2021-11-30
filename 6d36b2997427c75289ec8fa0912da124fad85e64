@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8499dc1_7d743555",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-11-30T08:44:40Z",
+      "side": 1,
+      "message": "You can put the bug number in a separate line above \"Test:\", eg \"Bug: 195804288\".\n\nTitle can then be something like \"Manually calculate stats for app owning external storage\".\n\nAnd a short description why this is necessary - explain why the calculation is wrong (eg we calculate storage by using quota APIs that give all disk usage for a particular uid, but in case of the app that owns external storage, that wrongly includes external storage).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "6d36b2997427c75289ec8fa0912da124fad85e64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "485e307b_9d34ffb7",
