@@ -93,6 +93,7 @@ std::atomic_uint64_t SensorService::completedCallbackSeq(0);
 #define SENSOR_SERVICE_DIR "/data/system/sensor_service"
 #define SENSOR_SERVICE_HMAC_KEY_FILE  SENSOR_SERVICE_DIR "/hmac_key"
 #define SENSOR_SERVICE_SCHED_FIFO_PRIORITY 10
+#define SENSOR_MODE_PROPERTY "sys.sensor.mode"
 
 // Permissions.
 static const String16 sAccessHighSensorSamplingRatePermission(
@@ -291,6 +292,7 @@ void SensorService::onFirstRef() {
             mSensorEventScratch = new sensors_event_t[minBufferSize];
             mMapFlushEventsToConnections = new wp<const SensorEventConnection> [minBufferSize];
             mCurrentOperatingMode = NORMAL;
+            property_set(SENSOR_MODE_PROPERTY, std::to_string(NORMAL).c_str());
 
             mNextSensorRegIndex = 0;
             for (int i = 0; i < SENSOR_REGISTRATIONS_BUF_SIZE; ++i) {
@@ -408,6 +410,7 @@ status_t SensorService::dump(int fd, const Vector<String16>& args) {
             }
 
             mCurrentOperatingMode = RESTRICTED;
+            property_set(SENSOR_MODE_PROPERTY, std::to_string(RESTRICTED).c_str());
             // temporarily stop all sensor direct report and disable sensors
             disableAllSensorsLocked(&connLock);
             mWhiteListedPackage.setTo(String8(args[1]));
@@ -416,6 +419,7 @@ status_t SensorService::dump(int fd, const Vector<String16>& args) {
             // If currently in restricted mode, reset back to NORMAL mode else ignore.
             if (mCurrentOperatingMode == RESTRICTED) {
                 mCurrentOperatingMode = NORMAL;
+                property_set(SENSOR_MODE_PROPERTY, std::to_string(NORMAL).c_str());
                 // enable sensors and recover all sensor direct report
                 enableAllSensorsLocked(&connLock);
             }
@@ -430,6 +434,7 @@ status_t SensorService::dump(int fd, const Vector<String16>& args) {
                 status_t err = dev.setMode(DATA_INJECTION);
                 if (err == NO_ERROR) {
                     mCurrentOperatingMode = DATA_INJECTION;
+                    property_set(SENSOR_MODE_PROPERTY, std::to_string(DATA_INJECTION).c_str());
                 } else {
                     // Re-enable sensors.
                     dev.enableAllSensors();
@@ -1537,6 +1542,7 @@ status_t SensorService::resetToNormalModeLocked() {
     status_t err = dev.setMode(NORMAL);
     if (err == NO_ERROR) {
         mCurrentOperatingMode = NORMAL;
+        property_set(SENSOR_MODE_PROPERTY, std::to_string(NORMAL).c_str());
         dev.enableAllSensors();
         mSensors.forEachEntry([](const SensorServiceUtil::SensorList::Entry& e) {
             e.si->didEnableAllSensors();
