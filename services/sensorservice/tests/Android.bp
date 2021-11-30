@@ -20,3 +20,25 @@ cc_binary {
         "libandroid",
     ],
 }
+
+cc_test {
+    name: "sensorservice_cts_autotest",
+    srcs: ["sensorservice_cts_autotest.cpp"],
+
+    shared_libs: [
+        "libcutils",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+
+    test_suites: ["general-tests"],
+    host_supported: true,
+    // Do not mark as unit tests, to use as a validation in test mapping
+    // and test harness in some situations.
+    test_options: {
+        unit_test: false,
+    },
+}
