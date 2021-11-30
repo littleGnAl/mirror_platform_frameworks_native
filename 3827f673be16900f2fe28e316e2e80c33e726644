@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017823894",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1906274?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "a052af9c_88642ec1",
+          "description": "Change to \"cmds/dumpstate/dumpstate.h\"",
+          "replacements": [
+            {
+              "path": "cmds/dumpstate/dumpstate.h",
+              "range": {
+                "startLine": 355,
+                "startChar": 7,
+                "endLine": 355,
+                "endChar": 16
+              },
+              "replacement": "Initialize"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "a0cc6855_08a7c340",
+        "filename": "cmds/dumpstate/dumpstate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-30T12:46:30Z",
+      "side": 1,
+      "message": "Common typo found: \"Initalize\" -- should it be \"Initialize\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 355,
+        "startChar": 7,
+        "endLine": 355,
+        "endChar": 16
+      },
+      "revId": "3827f673be16900f2fe28e316e2e80c33e726644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
