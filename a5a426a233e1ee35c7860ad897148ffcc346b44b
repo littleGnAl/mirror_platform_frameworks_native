@@ -141,6 +141,30 @@
       },
       "revId": "a5a426a233e1ee35c7860ad897148ffcc346b44b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85f37cf_e2055eb6",
+        "filename": "cmds/installd/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-01T15:07:03Z",
+      "side": 1,
+      "message": "There was another suggestion by jeffv@ regarding maintaining the order of restorecon operations that was done before i,e. maintaining the code-flow as follows:\n- Prepare parent dir\n- prepare cache dirs\n- Restorecon parent recursively\n- Restorecon cache dirs recursively if they have just been created\nThus restorecon on cache dirs would be done during the recursive restorecon on the parent directory, thereby saving some selabel lookups too (as the label on parent dir would be re-used). This would have resulted in some further changes in the code-flow if we were to follow the approach used in this CL. Hence, abandoning this CL in favour of a much cleaner approach here - https://android-review.googlesource.com/c/platform/frameworks/native/+/1906522",
+      "parentUuid": "0def66be_6b7a12a3",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 33
+      },
+      "revId": "a5a426a233e1ee35c7860ad897148ffcc346b44b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
