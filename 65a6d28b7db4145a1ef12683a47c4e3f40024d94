@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aba0cb5_24cf8ebb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-01T15:12:43Z",
+      "side": 1,
+      "message": "Hey!\nI have added the following CL as a follow-up to the comments I received on the previous one. As suggested by Jeffrey, I have combined all the changes into a single CL. Also, have added the stat commands to check if the cache dirs existed before preparing them (in a similar way as to what was done with the parent dir earlier), which makes the code more cleaner. Please feel free to comment or reach out to me directly in case there are any doubts. Thanks! ",
+      "revId": "65a6d28b7db4145a1ef12683a47c4e3f40024d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
