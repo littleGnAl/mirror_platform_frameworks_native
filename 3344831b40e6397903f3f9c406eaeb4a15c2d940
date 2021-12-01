@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b48ff1_cab3060c",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-01T15:07:17Z",
+      "side": 1,
+      "message": "Adding the stat command to check if the directory exists or not makes the code much more readable as compared to what was done in the prev. CL (https://android-review.googlesource.com/c/platform/frameworks/native/+/1876196) with not much cost (additional 10 ms on a wembley device).",
+      "revId": "3344831b40e6397903f3f9c406eaeb4a15c2d940",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
