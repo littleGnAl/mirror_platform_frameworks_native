@@ -16,6 +16,23 @@
       "message": "Per Yiwei\u0027s request, this duplicates the effect of ag/16367864 for the state of aosp/master.  The only difference is that this CL reverts 1 previous CL, not 2 (since only 1 had made it to aosp/master).\n\nAfter approved, I\u0027ll wait to land this until after ag/16367864 lands.",
       "revId": "f5737986ae9cfd65fbee2aa0ca7d55f762b5efa9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "779594f3_f7cbd762",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2021-12-01T22:44:10Z",
+      "side": 1,
+      "message": "I see that the internal CL landed in a downstream branch of master.  I think it\u0027s safe to land this now.",
+      "revId": "f5737986ae9cfd65fbee2aa0ca7d55f762b5efa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
