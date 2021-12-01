@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd35476_2055d213",
+        "filename": "cmds/dumpstate/Android.bp",
+        "patchSetId": 12
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-12-01T05:37:49Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this. Clients should consult AServiceManager_isDeclared() to understand if a HAL is required or not.\n\nIt doesn\u0027t hurt to add the dependency, though.",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "f46dd50be3eaac225a9faaca93402ae79f45e592",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
