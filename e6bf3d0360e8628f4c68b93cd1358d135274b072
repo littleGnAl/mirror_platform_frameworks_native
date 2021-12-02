@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "037f5093_a0466f88",
+        "filename": "services/gpuservice/gpustats/GpuStats.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-12-02T18:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07d4d847_557b61a4",
+      "range": {
+        "startLine": 158,
+        "startChar": 12,
+        "endLine": 158,
+        "endChar": 31
+      },
+      "revId": "e6bf3d0360e8628f4c68b93cd1358d135274b072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7db5a6d_140ee951",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Looks like it is generated here:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/proto_logging/stats/stats_log_api_gen/native_writer.cpp",
       "parentUuid": "b7db5a6d_140ee951",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 90
+      },
+      "revId": "e6bf3d0360e8628f4c68b93cd1358d135274b072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4861f70b_990865d5",
+        "filename": "services/gpuservice/gpustats/GpuStats.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-12-02T18:15:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to run that to regenerate the APIs though.   I came across \u0027make update-api\u0027 in moma, but that doesn\u0027t seem to do anything.\n\nI may need to just email the people in the stats_log_api_gen/OWNERS file and see what they say.",
+      "parentUuid": "6de8e325_63b26cd7",
       "range": {
         "startLine": 335,
         "startChar": 0,
