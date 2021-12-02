@@ -192,6 +192,24 @@
       "parentUuid": "dda97d74_28fc5b92",
       "revId": "6d36b2997427c75289ec8fa0912da124fad85e64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b588d2_011396fe",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2020,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2021-12-02T16:36:25Z",
+      "side": 1,
+      "message": "Okay, understood it is for the extra lines, removed those now.",
+      "parentUuid": "0261cc47_a6777f99",
+      "revId": "6d36b2997427c75289ec8fa0912da124fad85e64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
