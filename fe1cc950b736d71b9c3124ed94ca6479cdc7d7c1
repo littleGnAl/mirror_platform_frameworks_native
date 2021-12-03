@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "520e4057_4f9b6b37",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-12-03T00:32:59Z",
+      "side": 1,
+      "message": "This part of the CL seems unrelated (and potentially reduces readability).  Did bpformat suggest it?",
+      "revId": "fe1cc950b736d71b9c3124ed94ca6479cdc7d7c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
