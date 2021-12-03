@@ -2087,7 +2087,12 @@ void SurfaceFlinger::onMessageRefresh() {
 
     refreshArgs.updatingOutputGeometryThisFrame = mVisibleRegionsDirty;
     refreshArgs.updatingGeometryThisFrame = mGeometryInvalid || mVisibleRegionsDirty;
-    refreshArgs.blursAreExpensive = mBlursAreExpensive;
+
+    refreshArgs.colorTransformMatrix =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
+
+    refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
     refreshArgs.internalDisplayRotationFlags = DisplayDevice::getPrimaryDisplayRotationFlags();
 
     if (CC_UNLIKELY(mDrawingState.colorMatrixChanged)) {
