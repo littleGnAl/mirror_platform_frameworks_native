@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f183d91e_dd5ec718",
+        "filename": "services/gpuservice/gpustats/GpuStats.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2021-12-03T19:29:54Z",
+      "side": 1,
+      "message": "stats",
+      "range": {
+        "startLine": 158,
+        "startChar": 74,
+        "endLine": 158,
+        "endChar": 78
+      },
+      "revId": "768f88544300e0f5692179b2576856f8bc415efd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
