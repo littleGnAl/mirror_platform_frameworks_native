@@ -34,6 +34,24 @@
       "parentUuid": "520e4057_4f9b6b37",
       "revId": "fe1cc950b736d71b9c3124ed94ca6479cdc7d7c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c56a2fe2_beccdba9",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-12-03T00:36:15Z",
+      "side": 1,
+      "message": "Ack (unless Steve wants to avoid running it).",
+      "parentUuid": "4913fa04_c0002ac4",
+      "revId": "fe1cc950b736d71b9c3124ed94ca6479cdc7d7c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
