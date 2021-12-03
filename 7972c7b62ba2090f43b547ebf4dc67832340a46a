@@ -56,6 +56,30 @@
       },
       "revId": "7972c7b62ba2090f43b547ebf4dc67832340a46a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb439df3_801ba916",
+        "filename": "cmds/installd/unique_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-03T00:23:33Z",
+      "side": 1,
+      "message": "inheritance did not work well as I had to change order. So it is added as wrapper instead.",
+      "parentUuid": "0855a07f_1e52160a",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 31
+      },
+      "revId": "7972c7b62ba2090f43b547ebf4dc67832340a46a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
