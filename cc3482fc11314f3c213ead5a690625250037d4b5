@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5434a6d2_9d4efca8",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-04T01:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb34e958_a692fe0d",
+      "range": {
+        "startLine": 1108,
+        "startChar": 40,
+        "endLine": 1108,
+        "endChar": 41
+      },
+      "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93a2e6fd_016bf71d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-03T12:12:48Z",
       "side": 1,
       "message": "I think all these can be done by UniqueFile. You don\u0027t have to do them yourself. For example, the file can be automatically closed by UniqueFile if you don\u0027t do `DisableAutoClose()` in the constructor, and `UnlinkPossiblyNonExistingFile` can be done as the CleanUpFunction.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 1
+      },
+      "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c88dea63_cb08baef",
+        "filename": "cmds/installd/restorable_file.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-04T01:17:22Z",
+      "side": 1,
+      "message": "Commit() requires closing tmp file and rename it while destructor requires tmp file to be closed and deleted. So exiting reset() cannot handle this behavior for two cases. I will use reset for closing part while other part should be done here.",
+      "parentUuid": "93a2e6fd_016bf71d",
       "range": {
         "startLine": 78,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac19f62f_1cc36f41",
+        "filename": "cmds/installd/restorable_file.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-04T01:17:22Z",
+      "side": 1,
+      "message": "explained above.",
+      "parentUuid": "2afb0e5e_63374aa1",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 20
+      },
+      "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7395cfb0_b654a162",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-12-03T12:12:48Z",
       "side": 1,
       "message": "Does this constructor initializes the class in an invalid state? If so, please add some comments.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfe8933_d57bba13",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-04T01:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7395cfb0_b654a162",
       "range": {
         "startLine": 40,
         "startChar": 4,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67792371_2f0dc884",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-04T01:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1f577ed_60aaa06f",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83329a84_f4e2355c",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-12-03T12:12:48Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "636e6629_0b125e76",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-04T01:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83329a84_f4e2355c",
       "range": {
         "startLine": 47,
         "startChar": 4,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca5b83f_3b3e7f62",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-04T01:17:22Z",
+      "side": 1,
+      "message": "Yes, in my use case, I don\u0027t need cleanup. So this can be removed. I thought that it may be better to keep the API consistent with UniqueFile but it can be removed for now.",
+      "parentUuid": "6ca9a79f_cae4b387",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 60
+      },
+      "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bff786ff_c4ca862a",
@@ -192,6 +360,24 @@
       "writtenOn": "2021-12-03T12:12:48Z",
       "side": 1,
       "message": "Isn\u0027t the original supposed to be kept?",
+      "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad49f05b_ad19a1b1",
+        "filename": "cmds/installd/tests/installd_file_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-04T01:17:22Z",
+      "side": 1,
+      "message": "This is the case where cleanup is enabled by default. So original file is also removed. We can remove this test case if we always keep the original file for ResotableFile.",
+      "parentUuid": "bff786ff_c4ca862a",
       "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
