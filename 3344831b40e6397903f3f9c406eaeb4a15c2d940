@@ -16,6 +16,24 @@
       "message": "Adding the stat command to check if the directory exists or not makes the code much more readable as compared to what was done in the prev. CL (https://android-review.googlesource.com/c/platform/frameworks/native/+/1876196) with not much cost (additional 10 ms on a wembley device).",
       "revId": "3344831b40e6397903f3f9c406eaeb4a15c2d940",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90bb65a3_4a5bf73c",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-12-06T16:10:23Z",
+      "side": 1,
+      "message": "Can you use access(2) with F_OK for all these checks instead of filling out the entire struct stat?  (It\u0027s slightly cheaper to do the lighter-weight access() syscall.)\n\n* https://man7.org/linux/man-pages/man2/access.2.html",
+      "parentUuid": "12b48ff1_cab3060c",
+      "revId": "3344831b40e6397903f3f9c406eaeb4a15c2d940",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
