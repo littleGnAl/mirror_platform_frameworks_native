@@ -22,6 +22,30 @@
       },
       "revId": "8b769bbea2b62a46333f5afc3e5184c4546f051d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ad2723_24dd9358",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2021-12-06T20:59:20Z",
+      "side": 1,
+      "message": "755 is for directories. Because they are changed to 750 by the kernel patch.\n666 is for files.",
+      "parentUuid": "a944f492_7d76b022",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "8b769bbea2b62a46333f5afc3e5184c4546f051d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
