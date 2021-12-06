@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a94ab6fd_f9b0eaad",
+        "filename": "cmds/installd/restorable_file.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-06T20:24:51Z",
+      "side": 1,
+      "message": "Yes but it requires too deep interaction with UniqueFile. I would rather rely on UniqueFile only for closing / managing files.",
+      "parentUuid": "77c3a4d0_3495eec7",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 1
+      },
+      "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2afb0e5e_63374aa1",
         "filename": "cmds/installd/restorable_file.cpp",
         "patchSetId": 4
