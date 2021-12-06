@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "198d02b7_a7399a41",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1979,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-06T12:31:48Z",
+      "side": 1,
+      "message": "Please handle the case where the files cannot be committed (e.g., failed to move the files to the destination).",
+      "range": {
+        "startLine": 1976,
+        "startChar": 4,
+        "endLine": 1979,
+        "endChar": 31
+      },
+      "revId": "36c6a5015292c458c1b2b2fcafe1dd55c638ef02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
