@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77c3a4d0_3495eec7",
+        "filename": "cmds/installd/restorable_file.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-06T12:20:48Z",
+      "side": 1,
+      "message": "I believe removing the file automatically is exactly what the CleanUpFunction in UniqueFile is used for. It covers the case where you don\u0027t want to keep the file.\n\nTo cover the other case, you can call `unique_file_.DisableCleanup()` in CommitWorkFile() before you call `unique_file_.reset()`, so that the file will be kept.\n\nWill this work?",
+      "parentUuid": "c88dea63_cb08baef",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 1
+      },
+      "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2afb0e5e_63374aa1",
         "filename": "cmds/installd/restorable_file.cpp",
         "patchSetId": 4
