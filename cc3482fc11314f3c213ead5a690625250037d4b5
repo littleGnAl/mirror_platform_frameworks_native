@@ -160,6 +160,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a9f112_bcde34ab",
+        "filename": "cmds/installd/restorable_file.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-06T20:30:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a94ab6fd_f9b0eaad",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 1
+      },
+      "revId": "cc3482fc11314f3c213ead5a690625250037d4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2afb0e5e_63374aa1",
