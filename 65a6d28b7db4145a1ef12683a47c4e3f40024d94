@@ -64,6 +64,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c87d691_0e3e5f17",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-07T22:02:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff3f2aa7_b5a599be",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 70
+      },
+      "revId": "65a6d28b7db4145a1ef12683a47c4e3f40024d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc5d7309_008aade7",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-07T22:02:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b79d5c24_4d0c97a9",
+      "range": {
+        "startLine": 559,
+        "startChar": 33,
+        "endLine": 559,
+        "endChar": 46
+      },
+      "revId": "65a6d28b7db4145a1ef12683a47c4e3f40024d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2498db95_abc6ad6c",
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ed4a45a_f4a2741c",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-07T22:02:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2498db95_abc6ad6c",
+      "range": {
+        "startLine": 560,
+        "startChar": 47,
+        "endLine": 560,
+        "endChar": 51
+      },
+      "revId": "65a6d28b7db4145a1ef12683a47c4e3f40024d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cac9eb5f_83ab5f6a",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 2
@@ -100,6 +172,30 @@
       "writtenOn": "2021-12-06T16:10:23Z",
       "side": 1,
       "message": "ditto all 3 of the above comments on this block too",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 75
+      },
+      "revId": "65a6d28b7db4145a1ef12683a47c4e3f40024d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ef7b8e_1ed0e525",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-07T22:02:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cac9eb5f_83ab5f6a",
       "range": {
         "startLine": 566,
         "startChar": 0,
