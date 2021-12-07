@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f50980_77049944",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2021-12-07T11:18:21Z",
+      "side": 1,
+      "message": "Maybe add a comment and say that readtracefs is used for attachign BPF programs",
+      "revId": "0141a3ed4d49e964bcfffa3d73024b71dc81a244",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
