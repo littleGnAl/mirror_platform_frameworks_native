@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "409a561e_b2ad3f1d",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-07T18:00:00Z",
+      "side": 1,
+      "message": "Ideally, could we:\n\nvoid saveOldFiles() {\n  mv existing_file.oat existing_file.oat.tmp\n  mv existing_file.vdex existing_file.vdex.tmp\n  mv existing_file.art existing_file.art.tmp\n}\n\nsaveOldFiles();\nif (!commitAllNewFiles()) {\n  restoreOldFiles();\n}",
+      "parentUuid": "d5c1351e_3c07e671",
+      "range": {
+        "startLine": 1982,
+        "startChar": 0,
+        "endLine": 1982,
+        "endChar": 73
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26c5fc7e_48f55a5f",
         "filename": "cmds/installd/dexopt.cpp",
         "patchSetId": 8
