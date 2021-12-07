@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2fa9bdb_5ebfe89f",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-07T17:34:19Z",
+      "side": 1,
+      "message": "yes, this is a separate bug fix. I will update the comment",
+      "parentUuid": "262439c9_5239e54f",
+      "range": {
+        "startLine": 1812,
+        "startChar": 0,
+        "endLine": 1812,
+        "endChar": 34
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca0495b9_2c308fc0",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-07T13:38:10Z",
       "side": 1,
       "message": "Can you expand on the comment? Are you saying out_oat got removed, but we still keep out_image and ou_vdex? If yes, why?",
+      "range": {
+        "startLine": 1982,
+        "startChar": 0,
+        "endLine": 1982,
+        "endChar": 73
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c1351e_3c07e671",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-07T17:34:19Z",
+      "side": 1,
+      "message": "When out_oat commit fails, both tmp file and old file are removed as we don\u0027t know why it fails and better to clean up old file to allow update in future. For others, it can be done in other way of removing all old files. What is your preference?",
+      "parentUuid": "c8f33205_8daffa74",
       "range": {
         "startLine": 1982,
         "startChar": 0,
@@ -100,6 +148,24 @@
       "writtenOn": "2021-12-07T13:38:10Z",
       "side": 1,
       "message": "Ditto: I guess that\u0027s because we\u0027ve committed the two others but not this one?",
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c31e63b1_5c632322",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1993,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-07T17:34:19Z",
+      "side": 1,
+      "message": "Yes, when it fails, RestorableFile deletes both tmp and old file for the reason explained above.",
+      "parentUuid": "574c6345_4852bce0",
       "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
