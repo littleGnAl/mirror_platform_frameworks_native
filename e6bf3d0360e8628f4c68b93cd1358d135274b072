@@ -141,6 +141,30 @@
       },
       "revId": "e6bf3d0360e8628f4c68b93cd1358d135274b072",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af971a2_98be527e",
+        "filename": "services/gpuservice/gpustats/GpuStats.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-12-07T18:18:19Z",
+      "side": 1,
+      "message": "Thanks much, that seems to be working.",
+      "parentUuid": "58b895f2_31979fc1",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 90
+      },
+      "revId": "e6bf3d0360e8628f4c68b93cd1358d135274b072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

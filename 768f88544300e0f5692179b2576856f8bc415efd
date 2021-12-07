@@ -22,6 +22,30 @@
       },
       "revId": "768f88544300e0f5692179b2576856f8bc415efd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f70059a_54459b6f",
+        "filename": "services/gpuservice/gpustats/GpuStats.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-12-07T18:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f183d91e_dd5ec718",
+      "range": {
+        "startLine": 158,
+        "startChar": 74,
+        "endLine": 158,
+        "endChar": 78
+      },
+      "revId": "768f88544300e0f5692179b2576856f8bc415efd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
