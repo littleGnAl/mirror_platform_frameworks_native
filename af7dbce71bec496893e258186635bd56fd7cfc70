@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe1af1db_77b71fb5",
+        "filename": "services/gpuservice/gpustats/GpuStats.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1431413
+      },
+      "writtenOn": "2021-12-07T19:23:57Z",
+      "side": 1,
+      "message": "nit: you can use structured bindings here I think for better readability.",
+      "range": {
+        "startLine": 99,
+        "startChar": 20,
+        "endLine": 99,
+        "endChar": 35
+      },
+      "revId": "af7dbce71bec496893e258186635bd56fd7cfc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
