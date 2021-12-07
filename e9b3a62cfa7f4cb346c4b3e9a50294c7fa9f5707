@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262439c9_5239e54f",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-07T13:38:10Z",
+      "side": 1,
+      "message": "Unrelated change / fix ? If this is related to the CL, please add a comment.",
+      "range": {
+        "startLine": 1812,
+        "startChar": 0,
+        "endLine": 1812,
+        "endChar": 34
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca0495b9_2c308fc0",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-07T13:38:10Z",
+      "side": 1,
+      "message": "ditto: unrelated? Or add a comment.",
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f33205_8daffa74",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-07T13:38:10Z",
+      "side": 1,
+      "message": "Can you expand on the comment? Are you saying out_oat got removed, but we still keep out_image and ou_vdex? If yes, why?",
+      "range": {
+        "startLine": 1982,
+        "startChar": 0,
+        "endLine": 1982,
+        "endChar": 73
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c5fc7e_48f55a5f",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-07T13:38:10Z",
+      "side": 1,
+      "message": "ditto, please expand.",
+      "range": {
+        "startLine": 1987,
+        "startChar": 0,
+        "endLine": 1987,
+        "endChar": 74
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574c6345_4852bce0",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1993,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-07T13:38:10Z",
+      "side": 1,
+      "message": "Ditto: I guess that\u0027s because we\u0027ve committed the two others but not this one?",
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a3af272_ce4de0bc",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-07T13:38:10Z",
+      "side": 1,
+      "message": "Create",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5afc2784_0cfdfcc3",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-07T13:38:10Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "626fa67a_2ba483ad",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-07T13:38:10Z",
+      "side": 1,
+      "message": "a",
+      "range": {
+        "startLine": 60,
+        "startChar": 43,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "376660aa_18f09392",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-07T13:38:10Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 68,
+        "startChar": 37,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
