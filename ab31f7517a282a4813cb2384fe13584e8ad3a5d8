@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27150c7d_d26e411e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-08T16:39:49Z",
+      "side": 1,
+      "message": "Please use libbinder_ndk_host_user instead. \u0027assert\u0027 should not be used b/c it is a no-op w/o compiler flags set.",
+      "revId": "ab31f7517a282a4813cb2384fe13584e8ad3a5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
