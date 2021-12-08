@@ -37,6 +37,9 @@
 #include <binder/IServiceManager.h>
 #include <binder/PermissionCache.h>
 #include <compositionengine/CompositionEngine.h>
+
+
+
 #include <compositionengine/CompositionRefreshArgs.h>
 #include <compositionengine/Display.h>
 #include <compositionengine/DisplayColorProfile.h>
@@ -2094,6 +2097,10 @@ void SurfaceFlinger::onMessageRefresh() {
         refreshArgs.colorTransformMatrix = mDrawingState.colorMatrix;
         mDrawingState.colorMatrixChanged = false;
     }
+
+    refreshArgs.colorTransformMatrix =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
 
