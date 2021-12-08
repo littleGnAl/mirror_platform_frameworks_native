@@ -22,6 +22,30 @@
       },
       "revId": "af7dbce71bec496893e258186635bd56fd7cfc70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3c1a842_0bf14b01",
+        "filename": "services/gpuservice/gpustats/GpuStats.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2021-12-08T00:09:28Z",
+      "side": 1,
+      "message": "Hadn\u0027t heard of that before.\n\nDone.",
+      "parentUuid": "fe1af1db_77b71fb5",
+      "range": {
+        "startLine": 99,
+        "startChar": 20,
+        "endLine": 99,
+        "endChar": 35
+      },
+      "revId": "af7dbce71bec496893e258186635bd56fd7cfc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
