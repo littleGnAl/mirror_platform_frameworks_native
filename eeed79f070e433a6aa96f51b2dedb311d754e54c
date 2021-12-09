@@ -69,6 +69,30 @@
       },
       "revId": "eeed79f070e433a6aa96f51b2dedb311d754e54c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90c5d1d6_1ff730d9",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-09T23:53:12Z",
+      "side": 1,
+      "message": "Could we assert that the type is not a string vector? Or list the allowed types here? (Or will AParcel_readStdVectorParcelableElement be doing this for us?).",
+      "parentUuid": "79e2c685_211198d8",
+      "range": {
+        "startLine": 755,
+        "startChar": 6,
+        "endLine": 755,
+        "endChar": 10
+      },
+      "revId": "eeed79f070e433a6aa96f51b2dedb311d754e54c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
