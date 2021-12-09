@@ -16,6 +16,29 @@
       "message": "Ping?",
       "revId": "412c6cc1935732a4d954238c2d60b0d6c1cad1fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a988085_ce7e2d6b",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-09T23:42:25Z",
+      "side": 1,
+      "message": "So I guess the idea is that the behavior is the same, but it isn\u0027t necessarily guaranteed to be. For instance, theoretically now, if we wanted to, we could remove the excess stride from writes of char[] (char16_t[]) which are written 4 bytes per type. After this change, we close off that possibility. Maybe it\u0027s okay, but do we need to do that?",
+      "range": {
+        "startLine": 1346,
+        "startChar": 15,
+        "endLine": 1346,
+        "endChar": 43
+      },
+      "revId": "412c6cc1935732a4d954238c2d60b0d6c1cad1fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
