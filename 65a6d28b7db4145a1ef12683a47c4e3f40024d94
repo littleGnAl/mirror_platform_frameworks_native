@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf140a20_beda67a3",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-12-09T04:41:50Z",
+      "side": 1,
+      "message": "Hm, this does not appear to be done; the indenting and style still appears to be off.  😞  Here\u0027s an example from elsewhere in the file:\n\n    if (getxattr(ce_path.c_str(), kXattrDefault, nullptr, 0) \u003d\u003d -1\n            \u0026\u0026 getxattr(de_path.c_str(), kXattrDefault, nullptr, 0) \u003d\u003d -1) {",
+      "parentUuid": "0c87d691_0e3e5f17",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 70
+      },
+      "revId": "65a6d28b7db4145a1ef12683a47c4e3f40024d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2498db95_abc6ad6c",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 2
@@ -220,6 +244,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "cac9eb5f_83ab5f6a",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 75
+      },
+      "revId": "65a6d28b7db4145a1ef12683a47c4e3f40024d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f0946d5_4925e459",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2021-12-09T04:41:50Z",
+      "side": 1,
+      "message": "Same as above: indenting and style appear to be off.",
+      "parentUuid": "b2ef7b8e_1ed0e525",
       "range": {
         "startLine": 566,
         "startChar": 0,
