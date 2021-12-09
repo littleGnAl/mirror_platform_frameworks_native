@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "759d69b2_529166da",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-09T12:57:21Z",
+      "side": 1,
+      "message": "Ahh, now I get what you were saying exactly, thanks for the example. Strange that the linter is not pointing this out though.",
+      "parentUuid": "bf140a20_beda67a3",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 70
+      },
+      "revId": "65a6d28b7db4145a1ef12683a47c4e3f40024d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2498db95_abc6ad6c",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 2
