@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84031d6c_4b076de0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-09T23:32:28Z",
+      "side": 1,
+      "message": "Do we need to do this? This would be a backwards compatible change for libbinder_ndk, right?\n\nAlso - I\u0027m surprised, it did not break any tests? Are we missing tests for this case?",
+      "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
