@@ -1279,6 +1279,8 @@ void SurfaceFlinger::performSetActiveMode() {
 
     // Scheduler will submit an empty frame to HWC if needed.
     mSetActiveModePending = true;
+
+    mEventQueue->invalidate();
 }
 
 void SurfaceFlinger::disableExpensiveRendering() {
