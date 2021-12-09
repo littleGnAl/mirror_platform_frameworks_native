@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d1a53eb_5ceea715",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-12-09T12:32:18Z",
+      "side": 1,
+      "message": "LGTM once jsharkey\u0027s comments are addressed.\n\nThanks for putting together this great optimization!",
+      "revId": "bf84c145d420b5967a25de436c3164434781832d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
