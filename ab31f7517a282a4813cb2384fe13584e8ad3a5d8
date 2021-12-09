@@ -16,6 +16,24 @@
       "message": "Please use libbinder_ndk_host_user instead. \u0027assert\u0027 should not be used b/c it is a no-op w/o compiler flags set.",
       "revId": "ab31f7517a282a4813cb2384fe13584e8ad3a5d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c5ffb1_efb71dae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-09T07:40:05Z",
+      "side": 1,
+      "message": "yep. b/208360850 \n\nI thought you want to assert only during testing, but it seems not.",
+      "parentUuid": "27150c7d_d26e411e",
+      "revId": "ab31f7517a282a4813cb2384fe13584e8ad3a5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
