@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54337371_9d6ced41",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-09T22:36:46Z",
+      "side": 1,
+      "message": "I hope it was just about adding a tabspace/indent. I could only find that one according to the style guide. Please let me know if there\u0027s something else too.",
+      "parentUuid": "759d69b2_529166da",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 70
+      },
+      "revId": "65a6d28b7db4145a1ef12683a47c4e3f40024d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2498db95_abc6ad6c",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 2
