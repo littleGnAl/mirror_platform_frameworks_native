@@ -34,6 +34,24 @@
       "parentUuid": "84031d6c_4b076de0",
       "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0ced028_dd6787a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-09T23:55:06Z",
+      "side": 1,
+      "message": "Instead of changing AParcel_readParcelable, which is used by other things, we should switch the compiler to uing AParcelable_readNullableParcelable for IBinder/interfaces, right?\n\n(and maybe add a test that MyFooParcelable[] without @nullable returns the expected error when a null parcelable is sent from Java)",
+      "parentUuid": "f689815a_88150878",
+      "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
