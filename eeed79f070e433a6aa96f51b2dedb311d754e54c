@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ed5befd_9c4bdbee",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-09T23:35:32Z",
+      "side": 1,
+      "message": "nit: add something like , \"unrecognized type\" (took me a second to realize what dependent false meant)",
+      "range": {
+        "startLine": 730,
+        "startChar": 46,
+        "endLine": 730,
+        "endChar": 48
+      },
+      "revId": "eeed79f070e433a6aa96f51b2dedb311d754e54c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "396b57e7_81978dee",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-09T23:35:32Z",
+      "side": 1,
+      "message": "this no longer reads string vectors?",
+      "range": {
+        "startLine": 755,
+        "startChar": 6,
+        "endLine": 755,
+        "endChar": 10
+      },
+      "revId": "eeed79f070e433a6aa96f51b2dedb311d754e54c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
