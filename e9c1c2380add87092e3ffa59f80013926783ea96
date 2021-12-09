@@ -16,6 +16,24 @@
       "message": "Just checking in, is this superseded by aosp/1906522 or are you still looking for feedback?",
       "revId": "e9c1c2380add87092e3ffa59f80013926783ea96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f88573_0966bd4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-09T09:34:42Z",
+      "side": 1,
+      "message": "Yes, my bad, will abandon this.",
+      "parentUuid": "9e26abc0_490de0f7",
+      "revId": "e9c1c2380add87092e3ffa59f80013926783ea96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
