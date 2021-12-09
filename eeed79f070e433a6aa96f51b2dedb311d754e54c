@@ -45,6 +45,30 @@
       },
       "revId": "eeed79f070e433a6aa96f51b2dedb311d754e54c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e2c685_211198d8",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-12-09T23:50:29Z",
+      "side": 1,
+      "message": "String vectors are handled specialized functions at L440",
+      "parentUuid": "396b57e7_81978dee",
+      "range": {
+        "startLine": 755,
+        "startChar": 6,
+        "endLine": 755,
+        "endChar": 10
+      },
+      "revId": "eeed79f070e433a6aa96f51b2dedb311d754e54c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
