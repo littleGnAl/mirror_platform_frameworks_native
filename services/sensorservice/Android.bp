@@ -44,6 +44,7 @@ cc_library_shared {
     ],
 
     shared_libs: [
+        "apex_aidl_interface-cpp",
         "libcutils",
         "libhardware",
         "libhardware_legacy",
