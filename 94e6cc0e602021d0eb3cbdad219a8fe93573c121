@@ -70,6 +70,24 @@
       "parentUuid": "c0ced028_dd6787a1",
       "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4efc59f5_7ea2a515",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-10T23:11:01Z",
+      "side": 1,
+      "message": "Sure, it may be more complicated, but this is backwards incompatible, no?",
+      "parentUuid": "019cee65_65bffae6",
+      "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
