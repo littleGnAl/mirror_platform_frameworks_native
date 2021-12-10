@@ -911,10 +911,13 @@ bool SensorService::threadLoop() {
 
     const int halVersion = device.getHalDeviceVersion();
     do {
+        if (device.isReconnecting()) {
+            device.reconnect();
+            continue;
+        }
         ssize_t count = device.poll(mSensorEventBuffer, numEventMax);
         if (count < 0) {
-            if(count == DEAD_OBJECT && device.isReconnecting()) {
-                device.reconnect();
+            if (count == DEAD_OBJECT) {
                 continue;
             } else {
                 ALOGE("sensor poll failed (%s)", strerror(-count));
