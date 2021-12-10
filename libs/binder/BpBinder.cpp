@@ -19,14 +19,18 @@
 
 #include <binder/BpBinder.h>
 
-#include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
+#include <binder/Parcel.h>
 #include <binder/RpcSession.h>
 #include <binder/Stability.h>
 #include <cutils/compiler.h>
 #include <utils/Log.h>
 
 #include <stdio.h>
+
+#ifndef LIBBINDER_SDK
+#include <binder/IPCThreadState.h>
+#endif
 
 //#undef ALOGV
 //#define ALOGV(...) fprintf(stderr, __VA_ARGS__)

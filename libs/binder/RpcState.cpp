@@ -22,7 +22,6 @@
 #include <android-base/macros.h>
 #include <android-base/scopeguard.h>
 #include <binder/BpBinder.h>
-#include <binder/IPCThreadState.h>
 #include <binder/RpcServer.h>
 
 #include "Debug.h"
@@ -31,6 +30,10 @@
 #include <random>
 
 #include <inttypes.h>
+
+#ifndef LIBBINDER_SDK
+#include <binder/IPCThreadState.h>
+#endif
 
 namespace android {
 
@@ -123,8 +126,8 @@ status_t RpcState::onBinderLeaving(const sp<RpcSession>& session, const sp<IBind
         auto&& [it, inserted] = mNodeForAddress.insert({RpcWireAddress::toRaw(address),
                                                         BinderNode{
                                                                 .binder = binder,
-                                                                .timesSent = 1,
                                                                 .sentRef = binder,
+                                                                .timesSent = 1,
                                                         }});
         if (inserted) {
             *outAddress = it->first;
