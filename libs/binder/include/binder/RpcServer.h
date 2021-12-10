@@ -43,7 +43,7 @@ class RpcSocketAddress;
  *     }
  *     server->join();
  */
-class RpcServer final : public virtual RefBase, private RpcSession::EventListener {
+class RpcServer : public virtual RefBase, private RpcSession::EventListener {
 public:
     static sp<RpcServer> make(
             std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
@@ -173,7 +173,7 @@ public:
 
     ~RpcServer();
 
-private:
+protected:
     friend sp<RpcServer>;
     explicit RpcServer(std::unique_ptr<RpcTransportCtx> ctx);
 
