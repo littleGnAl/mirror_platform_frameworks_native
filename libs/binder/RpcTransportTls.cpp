@@ -275,7 +275,7 @@ public:
     RpcTransportTls(android::base::unique_fd socket, Ssl ssl)
           : mSocket(std::move(socket)), mSsl(std::move(ssl)) {}
     Result<size_t> peek(void* buf, size_t size) override;
-    status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size,
+    status_t interruptableWriteFully(FdTrigger* fdTrigger, const std::vector<struct iovec>& iov,
                                      const std::function<status_t()>& altPoll) override;
     status_t interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size,
                                     const std::function<status_t()>& altPoll) override;
@@ -303,23 +303,34 @@ Result<size_t> RpcTransportTls::peek(void* buf, size_t size) {
     return ret;
 }
 
-status_t RpcTransportTls::interruptableWriteFully(FdTrigger* fdTrigger, const void* data,
-                                                  size_t size,
+status_t RpcTransportTls::interruptableWriteFully(FdTrigger* fdTrigger,
+                                                  const std::vector<struct iovec>& iov,
                                                   const std::function<status_t()>& altPoll) {
-    auto buffer = reinterpret_cast<const uint8_t*>(data);
-    const uint8_t* end = buffer + size;
-
     MAYBE_WAIT_IN_FLAKE_MODE;
 
     // Before doing any I/O, check trigger once. This ensures the trigger is checked at least
     // once. The trigger is also checked via triggerablePoll() after every SSL_write().
     if (fdTrigger->isTriggered()) return DEAD_OBJECT;
 
-    while (buffer < end) {
-        size_t todo = std::min<size_t>(end - buffer, std::numeric_limits<int>::max());
+    size_t iovIdx = 0;
+    size_t iovOfs = 0;
+    size_t size = 0;
+    while (iovIdx < iov.size()) {
+        auto& curr_iov = iov[iovIdx];
+        auto buffer = reinterpret_cast<char*>(curr_iov.iov_base) + iovOfs;
+        auto left = curr_iov.iov_len - iovOfs;
+        size_t todo = std::min<size_t>(left, std::numeric_limits<int>::max());
         auto [writeSize, errorQueue] = mSsl.call(SSL_write, buffer, todo);
         if (writeSize > 0) {
-            buffer += writeSize;
+            if (writeSize == left) {
+                iovIdx++;
+                iovOfs = 0;
+
+                // Update the total size
+                size += curr_iov.iov_len;
+            } else {
+                iovOfs += writeSize;
+            }
             errorQueue.clear();
             continue;
         }
