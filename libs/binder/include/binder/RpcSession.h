@@ -203,7 +203,9 @@ private:
         void waitForShutdown(std::unique_lock<std::mutex>& lock, const sp<RpcSession>& session);
 
     private:
+#ifndef __TRUSTY__
         std::condition_variable mCv;
+#endif
     };
     friend WaitForShutdownListener;
 
@@ -327,7 +329,10 @@ private:
     size_t mMaxOutgoingThreads = kDefaultMaxOutgoingThreads;
     std::optional<uint32_t> mProtocolVersion;
 
+#ifndef __TRUSTY__
+    // Condition variables are completely unsupported on Trusty
     std::condition_variable mAvailableConnectionCv; // for mWaitingThreads
+#endif
 
     struct ThreadState {
         size_t mWaitingThreads = 0;
