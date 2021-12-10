@@ -24,6 +24,8 @@
 #include <optional>
 #include <queue>
 
+#include <sys/uio.h>
+
 namespace android {
 
 struct RpcWireHeader;
@@ -178,11 +180,11 @@ private:
 
     [[nodiscard]] status_t rpcSend(const sp<RpcSession::RpcConnection>& connection,
                                    const sp<RpcSession>& session, const char* what,
-                                   const void* data, size_t size,
+                                   RpcTransport::IoVecList iovs,
                                    const std::function<status_t()>& altPoll = nullptr);
     [[nodiscard]] status_t rpcRec(const sp<RpcSession::RpcConnection>& connection,
-                                  const sp<RpcSession>& session, const char* what, void* data,
-                                  size_t size);
+                                  const sp<RpcSession>& session, const char* what,
+                                  RpcTransport::IoVecList iovs);
 
     [[nodiscard]] status_t waitForReply(const sp<RpcSession::RpcConnection>& connection,
                                         const sp<RpcSession>& session, Parcel* reply);
