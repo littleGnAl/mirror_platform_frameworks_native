@@ -21,8 +21,11 @@
 #include "android/hardware/sensors/2.1/types.h"
 #include "convertV2_1.h"
 
+#include <android/apex/IApexService.h>
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <android/util/ProtoOutputStream.h>
+#include <binder/IServiceManager.h>
 #include <frameworks/base/core/proto/android/service/sensor_service.proto.h>
 #include <sensors/convert.h>
 #include <cutils/atomic.h>
@@ -121,6 +124,11 @@ SensorDevice::SensorDevice()
           mEventQueueFlag(nullptr),
           mWakeLockQueueFlag(nullptr),
           mReconnecting(false) {
+    mApexService = waitForService<android::apex::IApexService>(String16("apexservice"));
+    if (mApexService == nullptr) {
+        ALOGE("unable to get apexservice");
+        return;
+    }
     if (!connectHidlService()) {
         return;
     }
@@ -210,6 +218,23 @@ bool SensorDevice::connectHidlService() {
     if (status == HalConnectionStatus::DOES_NOT_EXIST) {
         status = connectHidlServiceV1_0();
     }
+
+    int64_t apex_version;
+    mApexService->getHalPackageVersion("android.hardware.sensors@2.1::ISensors/default",
+                                       &apex_version);
+    if (apex_version != 0) {
+        mSensors->getSensorsList(
+            [&](const auto &list) {
+              if (list.size() > 0) {
+                mApexService->certifyHalPackage("android.hardware.sensors@2.1::ISensors/default",
+                                            apex_version);
+              } else {
+                mApexService->rollbackHalPackage("android.hardware.sensors@2.1::ISensors/default",
+                                             apex_version);
+              }
+            });
+    }
+
     return (status == HalConnectionStatus::CONNECTED);
 }
 
@@ -310,6 +335,8 @@ SensorDevice::HalConnectionStatus SensorDevice::initializeHidlServiceV2_X() {
 
 void SensorDevice::prepareForReconnect() {
     mReconnecting = true;
+    mPreviousActivationCount = mActivationCount;
+    mPreviousSensorList = mSensorList;
 
     // Wake up the polling thread so it returns and allows the SensorService to initiate
     // a reconnect.
@@ -320,22 +347,19 @@ void SensorDevice::reconnect() {
     Mutex::Autolock _l(mLock);
     mSensors = nullptr;
 
-    auto previousActivations = mActivationCount;
-    auto previousSensorList = mSensorList;
-
     mActivationCount.clear();
     mSensorList.clear();
 
     if (connectHidlService()) {
         initializeSensorList();
 
-        if (sensorHandlesChanged(previousSensorList, mSensorList)) {
+        if (sensorHandlesChanged(mPreviousSensorList, mSensorList)) {
             LOG_ALWAYS_FATAL("Sensor handles changed, cannot re-enable sensors.");
         } else {
-            reactivateSensors(previousActivations);
+            reactivateSensors(mPreviousActivationCount);
         }
+        mReconnecting = false;
     }
-    mReconnecting = false;
 }
 
 bool SensorDevice::sensorHandlesChanged(const Vector<sensor_t>& oldSensorList,
