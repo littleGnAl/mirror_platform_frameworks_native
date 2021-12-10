@@ -28,6 +28,8 @@
 
 #include <binder/RpcCertificateFormat.h>
 
+#include <sys/uio.h>
+
 namespace android {
 
 class FdTrigger;
@@ -41,6 +43,36 @@ public:
     // replacement of ::recv(MSG_PEEK). Error code may not be set if TLS is enabled.
     [[nodiscard]] virtual android::base::Result<size_t> peek(void *buf, size_t size) = 0;
 
+    struct IoVecList {
+        iovec *head;
+        size_t len;
+
+        IoVecList() = delete;
+
+        /**
+         * Constructor for a single iovec.
+         *
+         * The IoVecList holds a pointer to the iovec until the former
+         * gets destroyed. To avoid dereferencing a dead pointer, the iovec
+         * needs to outlive the IoVecList. The latter may also mutate
+         * the iovec.
+         */
+        explicit IoVecList(iovec &iov) : head(&iov), len(1) {}
+
+        /**
+         * Constructor for an array of iovecs.
+         *
+         * The IoVecList holds a pointer to the array until the former
+         * gets destroyed. To avoid dereferencing a dead pointer, the array
+         * needs to outlive the IoVecList. The latter may also mutate
+         * the iovec.
+         */
+        template <size_t N>
+        explicit IoVecList(iovec (&iovs)[N]) : head(iovs), len(N) {}
+
+        iovec &operator[](size_t idx) { return head[idx]; }
+    };
+
     /**
      * Read (or write), but allow to be interrupted by a trigger.
      *
@@ -53,11 +85,9 @@ public:
      *   error - interrupted (failure or trigger)
      */
     [[nodiscard]] virtual status_t interruptableWriteFully(
-            FdTrigger *fdTrigger, const void *buf, size_t size,
-            const std::function<status_t()> &altPoll) = 0;
+            FdTrigger *fdTrigger, IoVecList iovs, const std::function<status_t()> &altPoll) = 0;
     [[nodiscard]] virtual status_t interruptableReadFully(
-            FdTrigger *fdTrigger, void *buf, size_t size,
-            const std::function<status_t()> &altPoll) = 0;
+            FdTrigger *fdTrigger, IoVecList iovs, const std::function<status_t()> &altPoll) = 0;
 
 protected:
     RpcTransport() = default;
