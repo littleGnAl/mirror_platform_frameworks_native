@@ -65,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8bb503_ede783cf",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-10T22:16:19Z",
+      "side": 1,
+      "message": "updated comment",
+      "parentUuid": "ca0495b9_2c308fc0",
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8f33205_8daffa74",
@@ -136,6 +154,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60ed31c3_59d05a9a",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-10T22:16:19Z",
+      "side": 1,
+      "message": "We get three final states: all files kept original. all files get new version. all files removed.",
+      "parentUuid": "409a561e_b2ad3f1d",
+      "range": {
+        "startLine": 1982,
+        "startChar": 0,
+        "endLine": 1982,
+        "endChar": 73
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26c5fc7e_48f55a5f",
@@ -149,6 +191,30 @@
       "writtenOn": "2021-12-07T13:38:10Z",
       "side": 1,
       "message": "ditto, please expand.",
+      "range": {
+        "startLine": 1987,
+        "startChar": 0,
+        "endLine": 1987,
+        "endChar": 74
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fecc7af_bcfa6386",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-10T22:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26c5fc7e_48f55a5f",
       "range": {
         "startLine": 1987,
         "startChar": 0,
@@ -194,6 +260,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "300a3220_9374c6ec",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1993,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-10T22:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31e63b1_5c632322",
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a3af272_ce4de0bc",
@@ -207,6 +291,30 @@
       "writtenOn": "2021-12-07T13:38:10Z",
       "side": 1,
       "message": "Create",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c557a0a_d75dd62b",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-10T22:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a3af272_ce4de0bc",
       "range": {
         "startLine": 40,
         "startChar": 7,
@@ -240,6 +348,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d96fe0_08ba8ac3",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-10T22:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5afc2784_0cfdfcc3",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "626fa67a_2ba483ad",
@@ -263,6 +395,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bb0d52a_31da3b9c",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-10T22:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "626fa67a_2ba483ad",
+      "range": {
+        "startLine": 60,
+        "startChar": 43,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "376660aa_18f09392",
@@ -276,6 +432,30 @@
       "writtenOn": "2021-12-07T13:38:10Z",
       "side": 1,
       "message": "const?",
+      "range": {
+        "startLine": 68,
+        "startChar": 37,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "e9b3a62cfa7f4cb346c4b3e9a50294c7fa9f5707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73074dc_667b1e34",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-10T22:16:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "376660aa_18f09392",
       "range": {
         "startLine": 68,
         "startChar": 37,
