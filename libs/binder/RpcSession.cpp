@@ -615,8 +615,8 @@ status_t RpcSession::initAndAddConnection(unique_fd fd, const std::vector<uint8_
         header.options |= RPC_CONNECTION_OPTION_INCOMING;
     }
 
-    auto sendHeaderStatus =
-            server->interruptableWriteFully(mShutdownTrigger.get(), &header, sizeof(header), {});
+    auto sendHeaderStatus = server->interruptableWriteFully(mShutdownTrigger.get(),
+                                                            {{&header, sizeof(header)}}, {});
     if (sendHeaderStatus != OK) {
         ALOGE("Could not write connection header to socket: %s",
               statusToString(sendHeaderStatus).c_str());
@@ -625,8 +625,10 @@ status_t RpcSession::initAndAddConnection(unique_fd fd, const std::vector<uint8_
 
     if (sessionId.size() > 0) {
         auto sendSessionIdStatus =
-                server->interruptableWriteFully(mShutdownTrigger.get(), sessionId.data(),
-                                                sessionId.size(), {});
+                server->interruptableWriteFully(mShutdownTrigger.get(),
+                                                {{const_cast<uint8_t*>(sessionId.data()),
+                                                  sessionId.size()}},
+                                                {});
         if (sendSessionIdStatus != OK) {
             ALOGE("Could not write session ID ('%s') to socket: %s",
                   base::HexString(sessionId.data(), sessionId.size()).c_str(),

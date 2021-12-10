@@ -43,6 +43,82 @@ public:
         return ret;
     }
 
+    status_t interruptableWriteFully(FdTrigger* fdTrigger, const std::vector<struct iovec>& iov,
+                                     const std::function<status_t()>& altPoll) override {
+        MAYBE_WAIT_IN_FLAKE_MODE;
+
+        // Since we didn't poll, we need to manually check to see if it was triggered. Otherwise, we
+        // may never know we should be shutting down.
+        if (fdTrigger->isTriggered()) {
+            return DEAD_OBJECT;
+        }
+
+        // We need a mutable copy of iov so we can modify the current iovec in
+        // place. The elements all need to have non-zero length because the
+        // position update algorithm below requires it.
+        std::vector<struct iovec> iovCopy;
+        std::copy_if(iov.begin(), iov.end(), std::back_inserter(iovCopy),
+                     [](struct iovec iov) { return iov.iov_len != 0; });
+        if (iovCopy.empty()) {
+            // The iovecs are all empty, so we have nothing to send.
+            return OK;
+        }
+
+        size_t iovIdx = 0;
+        bool havePolled = false;
+        while (true) {
+            struct msghdr msg {
+                .msg_name = nullptr, .msg_namelen = 0, .msg_iov = iovCopy.data() + iovIdx,
+                .msg_iovlen = iovCopy.size() - iovIdx, .msg_control = nullptr, .msg_controllen = 0,
+                .msg_flags = 0,
+            };
+            ssize_t processSize = TEMP_FAILURE_RETRY(::sendmsg(mSocket.get(), &msg, MSG_NOSIGNAL));
+
+            if (processSize < 0) {
+                int savedErrno = errno;
+
+                // Still return the error on later passes, since it would expose
+                // a problem with polling
+                if (havePolled ||
+                    (!havePolled && savedErrno != EAGAIN && savedErrno != EWOULDBLOCK)) {
+                    LOG_RPC_DETAIL("RpcTransport sendmsg(): %s", strerror(savedErrno));
+                    return -savedErrno;
+                }
+            } else if (processSize == 0) {
+                return DEAD_OBJECT;
+            } else {
+                while (processSize > 0) {
+                    auto& iov = iovCopy[iovIdx];
+                    if (static_cast<size_t>(processSize) < iov.iov_len) {
+                        // Advance the base of the current iovec
+                        iov.iov_base = reinterpret_cast<char*>(iov.iov_base) + processSize;
+                        iov.iov_len -= processSize;
+                        break;
+                    }
+
+                    // The current iovec was fully written
+                    processSize -= iov.iov_len;
+                    iovIdx++;
+                }
+                if (iovIdx == iovCopy.size()) {
+                    return OK;
+                }
+            }
+
+            if (altPoll) {
+                if (status_t status = altPoll(); status != OK) return status;
+                if (fdTrigger->isTriggered()) {
+                    return DEAD_OBJECT;
+                }
+            } else {
+                if (status_t status = fdTrigger->triggerablePoll(mSocket.get(), POLLOUT);
+                    status != OK)
+                    return status;
+                if (!havePolled) havePolled = true;
+            }
+        }
+    }
+
     template <typename Buffer, typename SendOrReceive>
     status_t interruptableReadOrWrite(FdTrigger* fdTrigger, Buffer buffer, size_t size,
                                       SendOrReceive sendOrReceiveFun, const char* funName,
@@ -93,12 +169,6 @@ public:
                 if (!havePolled) havePolled = true;
             }
         }
-    }
-
-    status_t interruptableWriteFully(FdTrigger* fdTrigger, const void* data, size_t size,
-                                     const std::function<status_t()>& altPoll) override {
-        return interruptableReadOrWrite(fdTrigger, reinterpret_cast<const uint8_t*>(data), size,
-                                        send, "send", POLLOUT, altPoll);
     }
 
     status_t interruptableReadFully(FdTrigger* fdTrigger, void* data, size_t size,
