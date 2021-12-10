@@ -28,10 +28,12 @@ namespace android {
 
 std::unique_ptr<FdTrigger> FdTrigger::make() {
     auto ret = std::make_unique<FdTrigger>();
+#ifndef __TRUSTY__
     if (!android::base::Pipe(&ret->mRead, &ret->mWrite)) {
         ALOGE("Could not create pipe %s", strerror(errno));
         return nullptr;
     }
+#endif
     return ret;
 }
 
@@ -40,10 +42,15 @@ void FdTrigger::trigger() {
 }
 
 bool FdTrigger::isTriggered() {
+#ifndef __TRUSTY__
     return mWrite == -1;
+#else
+    return false;
+#endif
 }
 
 status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
+#ifndef __TRUSTY__
     LOG_ALWAYS_FATAL_IF(event == 0, "triggerablePoll %d with event 0 is not allowed", fd.get());
     pollfd pfd[]{{.fd = fd.get(), .events = static_cast<int16_t>(event), .revents = 0},
                  {.fd = mRead.get(), .events = 0, .revents = 0}};
@@ -91,6 +98,9 @@ status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
     // POLLHUP: Peer closed connection. Treat as DEAD_OBJECT.
     // This is a very common case, so don't log.
     return DEAD_OBJECT;
+#else
+    return OK;
+#endif
 }
 
 } // namespace android
