@@ -33,6 +33,7 @@ class RpcServer;
 class RpcSocketAddress;
 class RpcState;
 class RpcTransport;
+class RpcTrustyServer;
 class FdTrigger;
 
 constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION_NEXT = 0;
@@ -184,6 +185,7 @@ private:
     friend sp<RpcSession>;
     friend RpcServer;
     friend RpcState;
+    friend RpcTrustyServer;
     explicit RpcSession(std::unique_ptr<RpcTransportCtx> ctx);
 
     // for 'target', see RpcState::sendDecStrongToTarget
