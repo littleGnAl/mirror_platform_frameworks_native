@@ -28,6 +28,8 @@
 
 #include <binder/RpcCertificateFormat.h>
 
+#include <sys/uio.h>
+
 namespace android {
 
 class FdTrigger;
@@ -41,6 +43,26 @@ public:
     // replacement of ::recv(MSG_PEEK). Error code may not be set if TLS is enabled.
     [[nodiscard]] virtual android::base::Result<size_t> peek(void *buf, size_t size) = 0;
 
+    struct IoVecList {
+        const iovec *head;
+        size_t len;
+
+        IoVecList() = delete;
+
+        /**
+         * Constructor for a single iovec
+         */
+        explicit IoVecList(const iovec &iov) : head(&iov), len(1) {}
+
+        /**
+         * Constructor for an array of iovecs
+         */
+        template <size_t N>
+        explicit IoVecList(const iovec (&iovs)[N]) : head(iovs), len(N) {}
+
+        const iovec &operator[](size_t idx) const { return head[idx]; }
+    };
+
     /**
      * Read (or write), but allow to be interrupted by a trigger.
      *
@@ -53,11 +75,17 @@ public:
      *   error - interrupted (failure or trigger)
      */
     [[nodiscard]] virtual status_t interruptableWriteFully(
-            FdTrigger *fdTrigger, const void *buf, size_t size,
-            const std::function<status_t()> &altPoll) = 0;
+            FdTrigger *fdTrigger, IoVecList iovs, const std::function<status_t()> &altPoll) = 0;
     [[nodiscard]] virtual status_t interruptableReadFully(
             FdTrigger *fdTrigger, void *buf, size_t size,
             const std::function<status_t()> &altPoll) = 0;
+
+    [[nodiscard]] status_t interruptableWriteFully(FdTrigger *fdTrigger, const void *data,
+                                                   size_t size,
+                                                   const std::function<status_t()> &altPoll) {
+        iovec iov{const_cast<void *>(data), size};
+        return interruptableWriteFully(fdTrigger, IoVecList(iov), altPoll);
+    }
 
 protected:
     RpcTransport() = default;
