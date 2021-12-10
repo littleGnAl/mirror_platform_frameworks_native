@@ -19,7 +19,10 @@
 #include <binder/IBinder.h>
 #include <utils/KeyedVector.h>
 #include <utils/Mutex.h>
+
+#if !defined(__TRUSTY__)
 #include <utils/threads.h>
+#endif
 
 #include <unordered_map>
 #include <variant>
