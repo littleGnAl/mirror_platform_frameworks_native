@@ -331,8 +331,9 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
                     .version = protocolVersion,
             };
 
-            status = client->interruptableWriteFully(server->mShutdownTrigger.get(), &response,
-                                                     sizeof(response), {});
+            iovec iov{&response, sizeof(response)};
+            status = client->interruptableWriteFully(server->mShutdownTrigger.get(),
+                                                     RpcTransport::IoVecList(iov), {});
             if (status != OK) {
                 ALOGE("Failed to send new session response: %s", statusToString(status).c_str());
                 // still need to cleanup before we can return
