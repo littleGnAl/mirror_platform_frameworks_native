@@ -124,8 +124,9 @@ protected:
     void onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
     void onSessionIncomingThreadEnded() override;
 
-    static void establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd,
-                                    std::vector<uint8_t>&& addr);
+    static void establishConnection(
+            sp<RpcServer>&& server, base::unique_fd clientFd, std::vector<uint8_t>&& addr,
+            std::function<void(sp<RpcSession>&&, RpcSession::PreJoinSetupResult&&)>&& joinFn);
 
     const std::unique_ptr<RpcTransportCtx> mCtx;
     size_t mMaxThreads = 1;
