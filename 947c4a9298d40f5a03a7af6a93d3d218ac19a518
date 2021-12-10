@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb87498_a8d6e583",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-12-10T09:40:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21b63741_5c743d9c",
+      "revId": "947c4a9298d40f5a03a7af6a93d3d218ac19a518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afc9934a_7bd4ad33",
@@ -78,6 +96,24 @@
       "writtenOn": "2021-11-23T19:13:05Z",
       "side": 1,
       "message": "Document that it is up to the implementor to ensure that binders corresponding to this type are convertible, otherwise into_sync may panic",
+      "revId": "947c4a9298d40f5a03a7af6a93d3d218ac19a518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38f7afdd_478d5cf7",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2021-12-10T09:40:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5ea340d_49e9ccd8",
       "revId": "947c4a9298d40f5a03a7af6a93d3d218ac19a518",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
