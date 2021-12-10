@@ -44,6 +44,10 @@
 
 #ifdef __GLIBC__
 extern "C" pid_t gettid();
+#elif __TRUSTY__
+static inline pid_t gettid() {
+    return 0;
+}
 #endif
 
 #ifndef __ANDROID_RECOVERY__
@@ -525,6 +529,7 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
     return OK;
 }
 
+#ifndef LIBBINDER_SDK
 status_t RpcSession::setupSocketClient(const RpcSocketAddress& addr) {
     return setupClient([&](const std::vector<uint8_t>& sessionId, bool incoming) {
         return setupOneSocketConnection(addr, sessionId, incoming);
@@ -590,6 +595,7 @@ status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
     ALOGE("Ran out of retries to connect to %s", addr.toString().c_str());
     return UNKNOWN_ERROR;
 }
+#endif
 
 status_t RpcSession::initAndAddConnection(unique_fd fd, const std::vector<uint8_t>& sessionId,
                                           bool incoming) {
@@ -858,7 +864,9 @@ status_t RpcSession::ExclusiveConnection::find(const sp<RpcSession>& session, Co
         LOG_RPC_DETAIL("No available connections (have %zu clients and %zu servers). Waiting...",
                        session->mConnections.mOutgoing.size(),
                        session->mConnections.mIncoming.size());
+#ifndef __TRUSTY__
         session->mAvailableConnectionCv.wait(_l);
+#endif
     }
     session->mConnections.mWaitingThreads--;
 
@@ -901,7 +909,9 @@ RpcSession::ExclusiveConnection::~ExclusiveConnection() {
         mConnection->exclusiveTid = std::nullopt;
         if (mSession->mConnections.mWaitingThreads > 0) {
             _l.unlock();
+#ifndef __TRUSTY__
             mSession->mAvailableConnectionCv.notify_one();
+#endif
         }
     }
 }

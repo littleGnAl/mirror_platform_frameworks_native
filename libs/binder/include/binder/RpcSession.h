@@ -326,7 +326,10 @@ private:
     size_t mMaxOutgoingThreads = kDefaultMaxOutgoingThreads;
     std::optional<uint32_t> mProtocolVersion;
 
+#ifndef __TRUSTY__
+    // Condition variables are completely unsupported on Trusty
     std::condition_variable mAvailableConnectionCv; // for mWaitingThreads
+#endif
 
     struct ThreadState {
         size_t mWaitingThreads = 0;

@@ -20,8 +20,6 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <inttypes.h>
-#include <linux/sched.h>
-#include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,12 +34,6 @@
 #include <binder/Parcel.h>
 #include <binder/Stability.h>
 #include <binder/Status.h>
-#include <binder/TextOutput.h>
-
-#ifndef LIBBINDER_SDK
-#include <binder/IPCThreadState.h>
-#include <binder/ProcessState.h>
-#endif
 
 #include <cutils/ashmem.h>
 #include <cutils/compiler.h>
@@ -52,9 +44,19 @@
 #include <utils/misc.h>
 
 #include "RpcState.h"
-#include "Static.h"
 #include "Utils.h"
 #include "binder_module.h"
+
+#ifndef LIBBINDER_SDK
+#include <linux/sched.h>
+#include <pthread.h>
+
+#include <binder/IPCThreadState.h>
+#include <binder/ProcessState.h>
+#include <binder/TextOutput.h>
+
+#include "Static.h"
+#endif
 
 #define LOG_REFS(...)
 //#define LOG_REFS(...) ALOG(LOG_DEBUG, LOG_TAG, __VA_ARGS__)
@@ -434,8 +436,6 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
 
     status_t err;
     const uint8_t *data = parcel->mData;
-    const binder_size_t *objects = parcel->mObjects;
-    size_t size = parcel->mObjectsSize;
     int startPos = mDataPos;
     int firstIndex = -1, lastIndex = -2;
 
@@ -457,6 +457,9 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
     }
 
     // Count objects in range
+#ifndef LIBBINDER_SDK
+    const binder_size_t* objects = parcel->mObjects;
+    size_t size = parcel->mObjectsSize;
     for (int i = 0; i < (int) size; i++) {
         size_t off = objects[i];
         if ((off >= offset) && (off + sizeof(flat_binder_object) <= offset + len)) {
@@ -466,6 +469,7 @@ status_t Parcel::appendFrom(const Parcel *parcel, size_t offset, size_t len)
             lastIndex = i;
         }
     }
+#endif
     int numObjects = lastIndex - firstIndex + 1;
 
     if ((mDataSize+len) > mDataCapacity) {
@@ -599,6 +603,7 @@ status_t Parcel::hasFileDescriptorsInRange(size_t offset, size_t len, bool* resu
         return BAD_VALUE;
     }
     *result = false;
+#ifndef LIBBINDER_SDK
     for (size_t i = 0; i < mObjectsSize; i++) {
         size_t pos = mObjects[i];
         if (pos < offset) continue;
@@ -612,6 +617,7 @@ status_t Parcel::hasFileDescriptorsInRange(size_t offset, size_t len, bool* resu
             break;
         }
     }
+#endif
     return NO_ERROR;
 }
 
@@ -1222,6 +1228,7 @@ status_t Parcel::writeFileDescriptor(int fd, bool takeOwnership)
         return BAD_TYPE;
     }
 
+#ifndef LIBBINDER_SDK
     flat_binder_object obj;
     obj.hdr.type = BINDER_TYPE_FD;
     obj.flags = 0x7f | FLAT_BINDER_FLAG_ACCEPTS_FDS;
@@ -1229,6 +1236,9 @@ status_t Parcel::writeFileDescriptor(int fd, bool takeOwnership)
     obj.handle = fd;
     obj.cookie = takeOwnership ? 1 : 0;
     return writeObject(obj, true);
+#else
+    return BAD_TYPE;
+#endif
 }
 
 status_t Parcel::writeDupFileDescriptor(int fd)
@@ -1441,6 +1451,7 @@ status_t Parcel::validateReadData(size_t upperBound) const
 data_sorted:
         // Expect to check only against the next object
         if (mNextObjectHint < mObjectsSize && upperBound > mObjects[mNextObjectHint]) {
+#ifndef LIBBINDER_SDK
             // For some reason the current read position is greater than the next object
             // hint. Iterate until we find the right object
             size_t nextObject = mNextObjectHint;
@@ -1453,6 +1464,7 @@ data_sorted:
                 nextObject++;
             } while (nextObject < mObjectsSize && upperBound > mObjects[nextObject]);
             mNextObjectHint = nextObject;
+#endif
         }
         return NO_ERROR;
     }
@@ -1949,11 +1961,13 @@ native_handle* Parcel::readNativeHandle() const
 
 int Parcel::readFileDescriptor() const
 {
+#ifndef LIBBINDER_SDK
     const flat_binder_object* flat = readObject(true);
 
     if (flat && flat->hdr.type == BINDER_TYPE_FD) {
         return flat->handle;
     }
+#endif
 
     return BAD_TYPE;
 }
@@ -2112,6 +2126,8 @@ status_t Parcel::read(FlattenableHelperInterface& val) const
 
     return err;
 }
+
+#ifndef LIBBINDER_SDK
 const flat_binder_object* Parcel::readObject(bool nullMetaData) const
 {
     const size_t DPOS = mDataPos;
@@ -2172,9 +2188,11 @@ const flat_binder_object* Parcel::readObject(bool nullMetaData) const
     }
     return nullptr;
 }
+#endif
 
 void Parcel::closeFileDescriptors()
 {
+#ifndef LIBBINDER_SDK
     size_t i = mObjectsSize;
     if (i > 0) {
         //ALOGI("Closing file descriptors for %zu objects...", i);
@@ -2188,6 +2206,7 @@ void Parcel::closeFileDescriptors()
             close(flat->handle);
         }
     }
+#endif
 }
 
 uintptr_t Parcel::ipcData() const
@@ -2210,6 +2229,7 @@ size_t Parcel::ipcObjectsCount() const
     return mObjectsSize;
 }
 
+#ifndef LIBBINDER_SDK
 void Parcel::ipcSetDataReference(const uint8_t* data, size_t dataSize,
     const binder_size_t* objects, size_t objectsCount, release_func relFunc)
 {
@@ -2279,6 +2299,7 @@ void Parcel::print(TextOutput& to, uint32_t /*flags*/) const
 
     to << ")";
 }
+#endif
 
 void Parcel::releaseObjects()
 {
@@ -2637,6 +2658,7 @@ void Parcel::scanForFds() const {
     mFdsKnown = true;
 }
 
+#ifndef LIBBINDER_SDK
 size_t Parcel::getBlobAshmemSize() const
 {
     // This used to return the size of all blobs that were written to ashmem, now we're returning
@@ -2664,6 +2686,7 @@ size_t Parcel::getOpenAshmemSize() const
     }
     return openAshmemSize;
 }
+#endif
 
 // --- Parcel::Blob ---
 
