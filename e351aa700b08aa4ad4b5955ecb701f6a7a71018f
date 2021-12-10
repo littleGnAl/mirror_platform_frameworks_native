@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "941347cc_ca9c7c8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-12-10T10:37:35Z",
+      "side": 1,
+      "message": "btw, is this the root cause?\n\nThe existence of T\u0027s copy ctor and its vector-ability aren\u0027t related.\n\nI think the culprit was in frameworks/native/libs/binder/ndk/include_cpp/android/binder_parcel_utils.h\n\nIt relies on \"copying\" when creating an instance of T when it\u0027s wrapped by std::optional.\nSo, if we fix it to use std::optional::emplace, probably, we wouldn\u0027t need copy ctor.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 72
+      },
+      "revId": "e351aa700b08aa4ad4b5955ecb701f6a7a71018f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b17da945_5c522cfc",
         "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
         "patchSetId": 1
