@@ -46,6 +46,16 @@ class AParcelableHolder {
     AParcelableHolder() = delete;
     explicit AParcelableHolder(parcelable_stability_t stability)
         : mParcel(AParcel_create()), mStability(stability) {}
+
+    AParcelableHolder(const AParcelableHolder& other)
+        : mParcel(AParcel_create()), mStability(other.mStability) {
+        // AParcelableHolder has been introduced in 31.
+        if (__builtin_available(android 31, *)) {
+            AParcel_appendFrom(other.mParcel.get(), this->mParcel.get(), 0,
+                               AParcel_getDataSize(other.mParcel.get()));
+        }
+    }
+
     AParcelableHolder(AParcelableHolder&& other) = default;
     virtual ~AParcelableHolder() = default;
 
