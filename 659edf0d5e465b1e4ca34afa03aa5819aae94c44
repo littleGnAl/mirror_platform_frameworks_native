@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d11d8d83_a99eaa7b",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-10T07:26:52Z",
+      "side": 1,
+      "message": "Why don\u0027t we do this inside the header file and guard these behind __BIONIC__ because __assert is exclusive to bionic?\n\n#ifdef __BIONIC__\n#define always_assert(a, b, c) __assert(a, b, c)\n#else\n#define always_assert(a, b, c) do {...}\n#endif",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 94
+      },
+      "revId": "659edf0d5e465b1e4ca34afa03aa5819aae94c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
