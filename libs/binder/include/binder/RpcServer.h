@@ -42,7 +42,7 @@ class RpcSocketAddress;
  *     }
  *     server->join();
  */
-class RpcServer final : public virtual RefBase, private RpcSession::EventListener {
+class RpcServer : public virtual RefBase, private RpcSession::EventListener {
 public:
     static sp<RpcServer> make(
             std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
@@ -172,15 +172,16 @@ public:
 
     ~RpcServer();
 
-private:
+protected:
     friend sp<RpcServer>;
     explicit RpcServer(std::unique_ptr<RpcTransportCtx> ctx);
 
     void onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
     void onSessionIncomingThreadEnded() override;
 
-    static void establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd,
-                                    std::vector<uint8_t>&& addr);
+    static void establishConnection(
+            sp<RpcServer>&& server, base::unique_fd clientFd, std::vector<uint8_t>&& addr,
+            std::function<void(sp<RpcSession>&&, RpcSession::PreJoinSetupResult&&)>&& joinFn);
 
 #ifndef BINDER_RPC_NO_SOCKET_API
     [[nodiscard]] status_t setupSocketServer(const RpcSocketAddress& address);
