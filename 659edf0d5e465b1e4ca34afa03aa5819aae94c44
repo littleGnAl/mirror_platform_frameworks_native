@@ -22,6 +22,30 @@
       },
       "revId": "659edf0d5e465b1e4ca34afa03aa5819aae94c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88aae878_7185f1f9",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-10T20:20:21Z",
+      "side": 1,
+      "message": "Hey - yeah, I think that\u0027s a great idea. Will do it (though might submit this first, so that we catch any host cases hitting assert - I don\u0027t expect any).",
+      "parentUuid": "d11d8d83_a99eaa7b",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 94
+      },
+      "revId": "659edf0d5e465b1e4ca34afa03aa5819aae94c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
