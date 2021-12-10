@@ -46,6 +46,30 @@
       },
       "revId": "659edf0d5e465b1e4ca34afa03aa5819aae94c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88cfeae5_ec88a5c3",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-10T23:10:27Z",
+      "side": 1,
+      "message": "Jiyong - I will follow-up, since this is done. I want to do the functional change separate from getting rid of these defaults.",
+      "parentUuid": "88aae878_7185f1f9",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 94
+      },
+      "revId": "659edf0d5e465b1e4ca34afa03aa5819aae94c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
