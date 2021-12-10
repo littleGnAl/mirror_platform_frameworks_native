@@ -309,10 +309,15 @@ RpcState::CommandData::CommandData(size_t size) : mSize(size) {
 }
 
 status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
-                           const sp<RpcSession>& session, const char* what, const void* data,
-                           size_t size, const std::function<status_t()>& altPoll) {
-    LOG_RPC_DETAIL("Sending %s on RpcTransport %p: %s", what, connection->rpcTransport.get(),
-                   android::base::HexString(data, size).c_str());
+                           const sp<RpcSession>& session, const char* what,
+                           const std::vector<struct iovec>& iov,
+                           const std::function<status_t()>& altPoll) {
+    size_t size = 0;
+    for (auto& iov : iov) {
+        LOG_RPC_DETAIL("Sending %s on RpcTransport %p: %s", what, connection->rpcTransport.get(),
+                       android::base::HexString(iov.iov_base, iov.iov_len).c_str());
+        size += iov.iov_len;
+    }
 
     if (size > std::numeric_limits<ssize_t>::max()) {
         ALOGE("Cannot send %s at size %zu (too big)", what, size);
@@ -322,7 +327,7 @@ status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
 
     if (status_t status =
                 connection->rpcTransport->interruptableWriteFully(session->mShutdownTrigger.get(),
-                                                                  data, size, altPoll);
+                                                                  iov, altPoll);
         status != OK) {
         LOG_RPC_DETAIL("Failed to write %s (%zu bytes) on RpcTransport %p, error: %s", what, size,
                        connection->rpcTransport.get(), statusToString(status).c_str());
@@ -374,7 +379,7 @@ status_t RpcState::sendConnectionInit(const sp<RpcSession::RpcConnection>& conne
     RpcOutgoingConnectionInit init{
             .msg = RPC_CONNECTION_INIT_OKAY,
     };
-    return rpcSend(connection, session, "connection init", &init, sizeof(init));
+    return rpcSend(connection, session, "connection init", {{&init, sizeof(init)}});
 }
 
 status_t RpcState::readConnectionInit(const sp<RpcSession::RpcConnection>& connection,
@@ -514,17 +519,12 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
             .flags = flags,
             .asyncNumber = asyncNumber,
     };
-    CommandData transactionData(sizeof(RpcWireHeader) + sizeof(RpcWireTransaction) +
-                                data.dataSize());
-    if (!transactionData.valid()) {
-        return NO_MEMORY;
-    }
 
-    memcpy(transactionData.data() + 0, &command, sizeof(RpcWireHeader));
-    memcpy(transactionData.data() + sizeof(RpcWireHeader), &transaction,
-           sizeof(RpcWireTransaction));
-    memcpy(transactionData.data() + sizeof(RpcWireHeader) + sizeof(RpcWireTransaction), data.data(),
-           data.dataSize());
+    std::vector<struct iovec> iov{
+            {&command, sizeof(RpcWireHeader)},
+            {&transaction, sizeof(RpcWireTransaction)},
+            {const_cast<uint8_t*>(data.data()), data.dataSize()},
+    };
 
     constexpr size_t kWaitMaxUs = 1000000;
     constexpr size_t kWaitLogUs = 10000;
@@ -550,8 +550,7 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
         return drainCommands(connection, session, CommandType::CONTROL_ONLY);
     };
 
-    if (status_t status = rpcSend(connection, session, "transaction", transactionData.data(),
-                                  transactionData.size(), drainRefs);
+    if (status_t status = rpcSend(connection, session, "transaction", iov, drainRefs);
         status != OK) {
         // TODO(b/167966510): need to undo onBinderLeaving - we know the
         // refcount isn't successfully transferred.
@@ -653,11 +652,11 @@ status_t RpcState::sendDecStrongToTarget(const sp<RpcSession::RpcConnection>& co
             .command = RPC_COMMAND_DEC_STRONG,
             .bodySize = sizeof(RpcDecStrong),
     };
-    if (status_t status = rpcSend(connection, session, "dec ref header", &cmd, sizeof(cmd));
+    if (status_t status = rpcSend(connection, session, "dec ref header", {{&cmd, sizeof(cmd)}});
         status != OK)
         return status;
 
-    return rpcSend(connection, session, "dec ref body", &body, sizeof(body));
+    return rpcSend(connection, session, "dec ref body", {{&body, sizeof(body)}});
 }
 
 status_t RpcState::getAndExecuteCommand(const sp<RpcSession::RpcConnection>& connection,
@@ -965,16 +964,12 @@ processTransactInternalTailCall:
             .status = replyStatus,
     };
 
-    CommandData replyData(sizeof(RpcWireHeader) + sizeof(RpcWireReply) + reply.dataSize());
-    if (!replyData.valid()) {
-        return NO_MEMORY;
-    }
-    memcpy(replyData.data() + 0, &cmdReply, sizeof(RpcWireHeader));
-    memcpy(replyData.data() + sizeof(RpcWireHeader), &rpcReply, sizeof(RpcWireReply));
-    memcpy(replyData.data() + sizeof(RpcWireHeader) + sizeof(RpcWireReply), reply.data(),
-           reply.dataSize());
-
-    return rpcSend(connection, session, "reply", replyData.data(), replyData.size());
+    std::vector<struct iovec> iov{
+            {&cmdReply, sizeof(RpcWireHeader)},
+            {&rpcReply, sizeof(RpcWireReply)},
+            {const_cast<uint8_t*>(reply.data()), reply.dataSize()},
+    };
+    return rpcSend(connection, session, "reply", iov);
 }
 
 status_t RpcState::processDecStrong(const sp<RpcSession::RpcConnection>& connection,

@@ -28,6 +28,8 @@
 
 #include <binder/RpcCertificateFormat.h>
 
+#include <sys/uio.h>
+
 namespace android {
 
 class FdTrigger;
@@ -53,11 +55,18 @@ public:
      *   error - interrupted (failure or trigger)
      */
     [[nodiscard]] virtual status_t interruptableWriteFully(
-            FdTrigger *fdTrigger, const void *buf, size_t size,
+            FdTrigger *fdTrigger, const std::vector<struct iovec> &iov,
             const std::function<status_t()> &altPoll) = 0;
     [[nodiscard]] virtual status_t interruptableReadFully(
             FdTrigger *fdTrigger, void *buf, size_t size,
             const std::function<status_t()> &altPoll) = 0;
+
+    [[nodiscard]] status_t interruptableWriteFully(FdTrigger *fdTrigger, const void *data,
+                                                   size_t size,
+                                                   const std::function<status_t()> &altPoll) {
+        std::vector<struct iovec> iov{{const_cast<void *>(data), size}};
+        return interruptableWriteFully(fdTrigger, iov, altPoll);
+    }
 
 protected:
     RpcTransport() = default;
