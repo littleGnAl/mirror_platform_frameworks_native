@@ -22,6 +22,7 @@
 #include "SensorServiceUtils.h"
 #include "ISensorsWrapper.h"
 
+#include <android/apex/IApexService.h>
 #include <fmq/MessageQueue.h>
 #include <sensor/SensorEventQueue.h>
 #include <sensor/Sensor.h>
@@ -136,7 +137,9 @@ private:
     friend class Singleton<SensorDevice>;
 
     sp<::android::hardware::sensors::V2_1::implementation::ISensorsWrapperBase> mSensors;
+    sp<android::apex::IApexService> mApexService;
     Vector<sensor_t> mSensorList;
+    Vector<sensor_t> mPreviousSensorList;
     std::unordered_map<int32_t, sensor_t*> mConnectedDynamicSensors;
 
     // A bug in the Sensors HIDL spec which marks onDynamicSensorsConnected as oneway causes dynamic
@@ -204,6 +207,7 @@ private:
         int numActiveClients() const;
     };
     DefaultKeyedVector<int, Info> mActivationCount;
+    DefaultKeyedVector<int, Info> mPreviousActivationCount;
 
     // Keep track of any hidl transport failures
     SensorServiceUtil::RingBuffer<HidlTransportErrorLog> mHidlTransportErrors;
