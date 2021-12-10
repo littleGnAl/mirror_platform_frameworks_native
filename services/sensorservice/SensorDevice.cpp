@@ -22,6 +22,7 @@
 #include "convertV2_1.h"
 
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <android/util/ProtoOutputStream.h>
 #include <frameworks/base/core/proto/android/service/sensor_service.proto.h>
 #include <sensors/convert.h>
@@ -202,6 +203,7 @@ SensorDevice::~SensorDevice() {
 }
 
 bool SensorDevice::connectHidlService() {
+    std::string apex_version = android::base::GetProperty("debug.apex.sensorhal.version", "");
     HalConnectionStatus status = connectHidlServiceV2_1();
     if (status == HalConnectionStatus::DOES_NOT_EXIST) {
         status = connectHidlServiceV2_0();
@@ -209,6 +211,13 @@ bool SensorDevice::connectHidlService() {
 
     if (status == HalConnectionStatus::DOES_NOT_EXIST) {
         status = connectHidlServiceV1_0();
+    }
+    if (!apex_version.empty()) {
+        if (status == HalConnectionStatus::CONNECTED) {
+            android::base::SetProperty("debug.apex.sensorhal.certify_hal", apex_version);
+        } else {
+            android::base::SetProperty("debug.apex.sensorhal.rollback_hal", apex_version);
+        }
     }
     return (status == HalConnectionStatus::CONNECTED);
 }
@@ -310,6 +319,8 @@ SensorDevice::HalConnectionStatus SensorDevice::initializeHidlServiceV2_X() {
 
 void SensorDevice::prepareForReconnect() {
     mReconnecting = true;
+    mPreviousActivationCount = mActivationCount;
+    mPreviousSensorList = mSensorList;
 
     // Wake up the polling thread so it returns and allows the SensorService to initiate
     // a reconnect.
@@ -320,22 +331,19 @@ void SensorDevice::reconnect() {
     Mutex::Autolock _l(mLock);
     mSensors = nullptr;
 
-    auto previousActivations = mActivationCount;
-    auto previousSensorList = mSensorList;
-
     mActivationCount.clear();
     mSensorList.clear();
 
     if (connectHidlService()) {
         initializeSensorList();
 
-        if (sensorHandlesChanged(previousSensorList, mSensorList)) {
+        if (sensorHandlesChanged(mPreviousSensorList, mSensorList)) {
             LOG_ALWAYS_FATAL("Sensor handles changed, cannot re-enable sensors.");
         } else {
-            reactivateSensors(previousActivations);
+            reactivateSensors(mPreviousActivationCount);
         }
+        mReconnecting = false;
     }
-    mReconnecting = false;
 }
 
 bool SensorDevice::sensorHandlesChanged(const Vector<sensor_t>& oldSensorList,

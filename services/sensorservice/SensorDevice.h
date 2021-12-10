@@ -137,6 +137,7 @@ private:
 
     sp<::android::hardware::sensors::V2_1::implementation::ISensorsWrapperBase> mSensors;
     Vector<sensor_t> mSensorList;
+    Vector<sensor_t> mPreviousSensorList;
     std::unordered_map<int32_t, sensor_t*> mConnectedDynamicSensors;
 
     static const nsecs_t MINIMUM_EVENTS_PERIOD =   1000000; // 1000 Hz
@@ -196,6 +197,7 @@ private:
         int numActiveClients() const;
     };
     DefaultKeyedVector<int, Info> mActivationCount;
+    DefaultKeyedVector<int, Info> mPreviousActivationCount;
 
     // Keep track of any hidl transport failures
     SensorServiceUtil::RingBuffer<HidlTransportErrorLog> mHidlTransportErrors;
