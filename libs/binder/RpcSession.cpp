@@ -44,6 +44,10 @@
 
 #ifdef __GLIBC__
 extern "C" pid_t gettid();
+#elif __TRUSTY__
+static inline pid_t gettid() {
+    return 0;
+}
 #endif
 
 #ifndef __ANDROID_RECOVERY__
