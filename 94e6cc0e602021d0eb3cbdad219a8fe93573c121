@@ -52,6 +52,24 @@
       "parentUuid": "f689815a_88150878",
       "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019cee65_65bffae6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-12-10T07:30:15Z",
+      "side": 1,
+      "message": "\u003e Instead of changing AParcel_readParcelable, which is used by other things, we should switch the compiler to uing AParcelable_readNullableParcelable for IBinder/interfaces, right?\n\nI thought that way, but figured out it makes things more complicated when handling vectors of interfaces. And since there\u0027s a guard to check if it\u0027s \"interface\" using AParcel_readParcelable seems to be okay.",
+      "parentUuid": "c0ced028_dd6787a1",
+      "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
