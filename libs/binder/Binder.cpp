@@ -22,7 +22,6 @@
 #include <android-base/unique_fd.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
-#include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
 #include <binder/IShellCallback.h>
 #include <binder/Parcel.h>
@@ -31,10 +30,14 @@
 #include <utils/misc.h>
 
 #include <inttypes.h>
-#include <linux/sched.h>
 #include <stdio.h>
 
 #include "RpcState.h"
+
+#ifndef LIBBINDER_SDK
+#include <binder/IPCThreadState.h>
+#include <linux/sched.h>
+#endif
 
 namespace android {
 
@@ -233,7 +236,9 @@ public:
     bool mRequestingSid = false;
     bool mInheritRt = false;
     sp<IBinder> mExtension;
+#ifndef LIBBINDER_SDK
     int mPolicy = SCHED_NORMAL;
+#endif
     int mPriority = 0;
 
     // for below objects
@@ -401,6 +406,7 @@ sp<IBinder> BBinder::getExtension() {
     return e->mExtension;
 }
 
+#ifndef LIBBINDER_SDK
 void BBinder::setMinSchedulerPolicy(int policy, int priority) {
     LOG_ALWAYS_FATAL_IF(mParceled,
                         "setMinSchedulerPolicy() should not be called after a binder object "
@@ -439,6 +445,7 @@ int BBinder::getMinSchedulerPolicy() {
     if (e == nullptr) return SCHED_NORMAL;
     return e->mPolicy;
 }
+#endif
 
 int BBinder::getMinSchedulerPriority() {
     Extras* e = mExtras.load(std::memory_order_acquire);
@@ -472,7 +479,11 @@ void BBinder::setInheritRt(bool inheritRt) {
 }
 
 pid_t BBinder::getDebugPid() {
+#ifdef __TRUSTY__
+    return 0;
+#else
     return getpid();
+#endif
 }
 
 void BBinder::setExtension(const sp<IBinder>& extension) {
@@ -623,6 +634,7 @@ status_t BBinder::onTransact(
             for (int i = 0; i < argc && data.dataAvail() > 0; i++) {
                args.add(data.readString16());
             }
+#ifndef __TRUSTY__
             sp<IShellCallback> shellCallback = IShellCallback::asInterface(
                     data.readStrongBinder());
             sp<IResultReceiver> resultReceiver = IResultReceiver::asInterface(
@@ -630,19 +642,22 @@ status_t BBinder::onTransact(
 
             // XXX can't add virtuals until binaries are updated.
             //return shellCommand(in, out, err, args, resultReceiver);
-            (void)in;
-            (void)out;
-            (void)err;
 
             if (resultReceiver != nullptr) {
                 resultReceiver->send(INVALID_OPERATION);
             }
+#endif
+            (void)in;
+            (void)out;
+            (void)err;
 
             return NO_ERROR;
         }
 
         case SYSPROPS_TRANSACTION: {
+#ifndef __TRUSTY__
             report_sysprop_change();
+#endif
             return NO_ERROR;
         }
 
