@@ -22,7 +22,6 @@
 #include <android-base/unique_fd.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
-#include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
 #include <binder/IShellCallback.h>
 #include <binder/Parcel.h>
@@ -31,10 +30,14 @@
 #include <utils/misc.h>
 
 #include <inttypes.h>
-#include <linux/sched.h>
 #include <stdio.h>
 
 #include "RpcState.h"
+
+#ifndef LIBBINDER_SDK
+#include <binder/IPCThreadState.h>
+#include <linux/sched.h>
+#endif
 
 namespace android {
 
@@ -231,7 +234,9 @@ public:
     bool mRequestingSid = false;
     bool mInheritRt = false;
     sp<IBinder> mExtension;
+#ifndef LIBBINDER_SDK
     int mPolicy = SCHED_NORMAL;
+#endif
     int mPriority = 0;
 
     // for below objects
@@ -395,6 +400,7 @@ sp<IBinder> BBinder::getExtension() {
     return e->mExtension;
 }
 
+#ifndef LIBBINDER_SDK
 void BBinder::setMinSchedulerPolicy(int policy, int priority) {
     LOG_ALWAYS_FATAL_IF(mParceled,
                         "setMinSchedulerPolicy() should not be called after a binder object "
@@ -433,6 +439,7 @@ int BBinder::getMinSchedulerPolicy() {
     if (e == nullptr) return SCHED_NORMAL;
     return e->mPolicy;
 }
+#endif
 
 int BBinder::getMinSchedulerPriority() {
     Extras* e = mExtras.load(std::memory_order_acquire);

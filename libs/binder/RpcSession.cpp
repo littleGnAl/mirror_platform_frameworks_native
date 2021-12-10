@@ -44,6 +44,10 @@
 
 #ifdef __GLIBC__
 extern "C" pid_t gettid();
+#elif __TRUSTY__
+static inline pid_t gettid() {
+    return 0;
+}
 #endif
 
 #ifndef __ANDROID_RECOVERY__
@@ -275,11 +279,14 @@ void RpcSession::WaitForShutdownListener::onSessionAllIncomingThreadsEnded(
 }
 
 void RpcSession::WaitForShutdownListener::onSessionIncomingThreadEnded() {
+#ifndef __TRUSTY__
     mCv.notify_all();
+#endif
 }
 
 void RpcSession::WaitForShutdownListener::waitForShutdown(std::unique_lock<std::mutex>& lock,
                                                           const sp<RpcSession>& session) {
+#ifndef __TRUSTY__
     while (session->mConnections.mIncoming.size() > 0) {
         if (std::cv_status::timeout == mCv.wait_for(lock, std::chrono::seconds(1))) {
             ALOGE("Waiting for RpcSession to shut down (1s w/o progress): %zu incoming connections "
@@ -287,6 +294,7 @@ void RpcSession::WaitForShutdownListener::waitForShutdown(std::unique_lock<std::
                   session->mConnections.mIncoming.size());
         }
     }
+#endif
 }
 
 void RpcSession::preJoinThreadOwnership(std::thread thread) {
@@ -403,7 +411,9 @@ void RpcSession::join(sp<RpcSession>&& session, PreJoinSetupResult&& setupResult
         std::lock_guard<std::mutex> _l(session->mMutex);
         auto it = session->mConnections.mThreads.find(std::this_thread::get_id());
         LOG_ALWAYS_FATAL_IF(it == session->mConnections.mThreads.end());
+#ifndef __TRUSTY__
         it->second.detach();
+#endif
         session->mConnections.mThreads.erase(it);
 
         listener = session->mEventListener.promote();
@@ -525,6 +535,7 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
     return OK;
 }
 
+#ifndef LIBBINDER_SDK
 status_t RpcSession::setupSocketClient(const RpcSocketAddress& addr) {
     return setupClient([&](const std::vector<uint8_t>& sessionId, bool incoming) {
         return setupOneSocketConnection(addr, sessionId, incoming);
@@ -590,6 +601,7 @@ status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
     ALOGE("Ran out of retries to connect to %s", addr.toString().c_str());
     return UNKNOWN_ERROR;
 }
+#endif
 
 status_t RpcSession::initAndAddConnection(unique_fd fd, const std::vector<uint8_t>& sessionId,
                                           bool incoming) {
@@ -647,11 +659,12 @@ status_t RpcSession::initAndAddConnection(unique_fd fd, const std::vector<uint8_
 }
 
 status_t RpcSession::addIncomingConnection(std::unique_ptr<RpcTransport> rpcTransport) {
+    sp<RpcSession> thiz = sp<RpcSession>::fromExisting(this);
+#ifndef __TRUSTY__
     std::mutex mutex;
     std::condition_variable joinCv;
     std::unique_lock<std::mutex> lock(mutex);
     std::thread thread;
-    sp<RpcSession> thiz = sp<RpcSession>::fromExisting(this);
     bool ownershipTransferred = false;
     thread = std::thread([&]() {
         std::unique_lock<std::mutex> threadLock(mutex);
@@ -672,6 +685,11 @@ status_t RpcSession::addIncomingConnection(std::unique_ptr<RpcTransport> rpcTran
     });
     joinCv.wait(lock, [&] { return ownershipTransferred; });
     LOG_ALWAYS_FATAL_IF(!ownershipTransferred);
+#else
+    sp<RpcSession> session = thiz;
+    auto setupResult = session->preJoinSetup(std::move(rpcTransport));
+    RpcSession::join(std::move(session), std::move(setupResult));
+#endif
     return OK;
 }
 
@@ -858,7 +876,9 @@ status_t RpcSession::ExclusiveConnection::find(const sp<RpcSession>& session, Co
         LOG_RPC_DETAIL("No available connections (have %zu clients and %zu servers). Waiting...",
                        session->mConnections.mOutgoing.size(),
                        session->mConnections.mIncoming.size());
+#ifndef __TRUSTY__
         session->mAvailableConnectionCv.wait(_l);
+#endif
     }
     session->mConnections.mWaitingThreads--;
 
@@ -901,7 +921,9 @@ RpcSession::ExclusiveConnection::~ExclusiveConnection() {
         mConnection->exclusiveTid = std::nullopt;
         if (mSession->mConnections.mWaitingThreads > 0) {
             _l.unlock();
+#ifndef __TRUSTY__
             mSession->mAvailableConnectionCv.notify_one();
+#endif
         }
     }
 }
