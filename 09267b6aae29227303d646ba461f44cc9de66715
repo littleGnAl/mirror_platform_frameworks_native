@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fd0e273_3532624c",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-11T05:18:50Z",
+      "side": 1,
+      "message": "Was it ever needed? send() also takes a size_t for size, does it reject buffers larger than the maximum of ssize_t? I know sendfile() has a 2G limit, but that function is special.\n\nAnyway, I can remove this if it\u0027s safe to.",
+      "parentUuid": "0a447c45_3e560848",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 0
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7257a19_3fd82c15",
         "filename": "libs/binder/RpcTransportRaw.cpp",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-11T04:26:21Z",
       "side": 1,
       "message": "const struct iovec\u0026 ?",
+      "range": {
+        "startLine": 61,
+        "startChar": 24,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb63067_7a0f2246",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-11T05:18:50Z",
+      "side": 1,
+      "message": "The docs for std::copy_if say that a type of VT\u0026 is not allowed, but I think I misread that as forbidding const VT\u0026 too.",
+      "parentUuid": "c7257a19_3fd82c15",
       "range": {
         "startLine": 61,
         "startChar": 24,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e2213e_cab658f4",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-11T05:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8fb1291_2be18c23",
+      "range": {
+        "startLine": 83,
+        "startChar": 21,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "437a2fdd_673946f2",
@@ -117,6 +189,24 @@
       "writtenOn": "2021-12-11T04:26:21Z",
       "side": 1,
       "message": "nit: this will never happen in practice, but from a static-analysis point of view, iovIdx could exceed the size of the vector\n\n```\nwhile (processSize \u003e 0 \u0026\u0026 iovIdx \u003c iovCopy.size())\n```",
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d91cab8_530972fc",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-11T05:18:50Z",
+      "side": 1,
+      "message": "Right, sendmsg should never return more than the total size of the iovecs. I considered adding an assertion instead, but would assert() be better or something like LOG_ALWAYS_FATAL_IF? If that doesn\u0027t work, I\u0027ll change the condition.",
+      "parentUuid": "437a2fdd_673946f2",
       "revId": "09267b6aae29227303d646ba461f44cc9de66715",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -144,6 +234,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b23b7613_7331f5bc",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-11T05:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d3f4c3f_23f32582",
+      "range": {
+        "startLine": 103,
+        "startChar": 27,
+        "endLine": 103,
+        "endChar": 29
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b45976db_0bd89db0",
@@ -157,6 +271,30 @@
       "writtenOn": "2021-12-11T04:26:21Z",
       "side": 1,
       "message": "nit: IMHO, the following would be a bit more readable, because you don\u0027t need the extra 3 variables.\n\n```\n    MAYBE_WAIT_IN_FLAKE_MODE;\n\n    // Before doing any I/O, check trigger once. This ensures the trigger is checked at least\n    // once. The trigger is also checked via triggerablePoll() after every SSL_write().\n    if (fdTrigger-\u003eisTriggered()) return DEAD_OBJECT;\n\n    for (const auto\u0026 e : iov) {\n        // The following can even be in its own function\n        auto buffer \u003d reinterpret_cast\u003cconst uint8_t*\u003e(e.iov_base);\n        const uint8_t* end \u003d buffer + e.iov_len;\n        while (buffer \u003c end) {\n            // existing code\n        }\n    }\n    LOG_TLS_DETAIL(\"TLS: Sent %zu bytes!\", size);\n    return OK;\n```",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 33
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6be1c36_bd0cb507",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-11T05:18:50Z",
+      "side": 1,
+      "message": "Done. size was still needed for the LOG_TLS_DETAIL at the end, I could remove that too but I left it in for now.",
+      "parentUuid": "b45976db_0bd89db0",
       "range": {
         "startLine": 315,
         "startChar": 0,
@@ -251,6 +389,54 @@
       "side": 1,
       "message": "+1, but the vector is small and short-lived. I personally don\u0027t feel strongly against having it.",
       "parentUuid": "66799525_73686e49",
+      "range": {
+        "startLine": 58,
+        "startChar": 40,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0bb6756_861d119c",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-11T05:18:50Z",
+      "side": 1,
+      "message": "I know, but it\u0027s a C structure defined that way in the system headers. Is just \"iovec\" preferable in this situation (as a matter of coding style)?",
+      "parentUuid": "e67f921a_33bd27b5",
+      "range": {
+        "startLine": 58,
+        "startChar": 52,
+        "endLine": 58,
+        "endChar": 58
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f2ace1_2d740d55",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-11T05:18:50Z",
+      "side": 1,
+      "message": "I considered std::array, but then the whole method would need to be generic over N (the size of the array). Would that be preferable to vector?",
+      "parentUuid": "bb1ba607_29c9dbb1",
       "range": {
         "startLine": 58,
         "startChar": 40,
