@@ -1168,6 +1168,7 @@ void SurfaceFlinger::setActiveModeInternal() {
     }
 
     if (display->getActiveMode()->getSize() != upcomingMode->getSize()) {
+        std::lock_guard<std::mutex> lock(mActiveModeLock);
         auto& state = mCurrentState.displays.editValueFor(display->getDisplayToken());
         // We need to generate new sequenceId in order to recreate the display (and this
         // way the framebuffer).
@@ -1722,6 +1723,7 @@ void SurfaceFlinger::onComposerHalVsync(hal::HWDisplayId hwcDisplayId, int64_t t
     Mutex::Autolock lock(mStateLock);
 
     if (const auto displayId = getHwComposer().toPhysicalDisplayId(hwcDisplayId)) {
+        std::lock_guard<std::mutex> lock(mActiveModeLock);
         auto token = getPhysicalDisplayTokenLocked(*displayId);
         auto display = getDisplayDeviceLocked(token);
         display->onVsync(timestamp);
