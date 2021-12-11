@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1306df0_94b30ed4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-11T03:32:24Z",
+      "side": 1,
+      "message": "This eliminates one copy operation when sending transactions and replies. Benchmarks are coming later, need to run this on an actual device.",
+      "revId": "ed9006a5eeefd0743f4b6e4bbab1bc57d13f1d0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
