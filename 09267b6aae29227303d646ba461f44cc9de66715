@@ -235,6 +235,30 @@
       },
       "revId": "09267b6aae29227303d646ba461f44cc9de66715",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb1ba607_29c9dbb1",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-11T04:43:20Z",
+      "side": 1,
+      "message": "+1, but the vector is small and short-lived. I personally don\u0027t feel strongly against having it.",
+      "parentUuid": "66799525_73686e49",
+      "range": {
+        "startLine": 58,
+        "startChar": 40,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
