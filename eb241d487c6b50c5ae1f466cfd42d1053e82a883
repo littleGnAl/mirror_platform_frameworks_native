@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e64640_0d6e8556",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1983,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-11T14:25:34Z",
+      "side": 1,
+      "message": "nit for readability: one per line. Ditto for other checks below.",
+      "range": {
+        "startLine": 1982,
+        "startChar": 8,
+        "endLine": 1983,
+        "endChar": 38
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8cad09b_35894bed",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-11T14:25:34Z",
+      "side": 1,
+      "message": "Should this be a warning instead? ditto for below.",
+      "range": {
+        "startLine": 1984,
+        "startChar": 12,
+        "endLine": 1984,
+        "endChar": 17
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d091f00_185aa317",
+        "filename": "cmds/installd/restorable_file.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-11T14:25:34Z",
+      "side": 1,
+      "message": "FileExists?",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab351180_fa4919a1",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-11T14:25:34Z",
+      "side": 1,
+      "message": "nit: deletes it and resets all",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64185e8_86d1b6da",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-11T14:25:34Z",
+      "side": 1,
+      "message": "Reset() ?",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b77b913_dfb4dd4c",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-11T14:25:34Z",
+      "side": 1,
+      "message": "closes",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba5c8a0f_60058687",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-11T14:25:34Z",
+      "side": 1,
+      "message": "makes",
+      "range": {
+        "startLine": 74,
+        "startChar": 37,
+        "endLine": 74,
+        "endChar": 41
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db88b211_cc84234f",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-11T14:25:34Z",
+      "side": 1,
+      "message": "restores",
+      "range": {
+        "startLine": 81,
+        "startChar": 32,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
