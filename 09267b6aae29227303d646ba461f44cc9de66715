@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad66f40c_fc306437",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-11T05:32:04Z",
+      "side": 1,
+      "message": "I found this in the write() man page, I guess it also applies to sendmsg():\n```\n        On Linux, write() (and similar system calls) will transfer at\n       most 0x7ffff000 (2,147,479,552) bytes, returning the number of\n       bytes actually transferred.  (This is true on both 32-bit and\n       64-bit systems.)\n```",
+      "parentUuid": "7fd0e273_3532624c",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 0
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7257a19_3fd82c15",
         "filename": "libs/binder/RpcTransportRaw.cpp",
         "patchSetId": 4
