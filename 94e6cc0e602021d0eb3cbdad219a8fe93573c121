@@ -88,6 +88,24 @@
       "parentUuid": "019cee65_65bffae6",
       "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "298702ef_c1564372",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-12-11T01:04:33Z",
+      "side": 1,
+      "message": "No, this is backward compatible. In fact, the problem was introduced when interface[] support was added. It should have been fixed then.\n\nI just found this was missing when working with the follow-up change (aosp/1900580). \n\nThe problem is.\n* When sending an interface, interface::writeToParcel is used and null is okay regardless of nullability.\n* When sending an interface[], AParcel_writeVector() is used, which calls AParcel_writeParcelable for each interface. Now, AParcel_writeParcelable should just call interface::writeToParcel. But when I implemented it, I did a mistake by adding a nullcheck there.",
+      "parentUuid": "4efc59f5_7ea2a515",
+      "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
