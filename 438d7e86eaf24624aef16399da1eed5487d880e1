@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceb7a847_5c4c6639",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2021-12-11T00:23:33Z",
+      "side": 1,
+      "message": "Please look at https://android-review.googlesource.com/c/platform/frameworks/native/+/1909855\n\nWe believe that CL addresses the underlying problem that this CL is trying to fix",
+      "revId": "438d7e86eaf24624aef16399da1eed5487d880e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
