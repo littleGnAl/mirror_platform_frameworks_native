@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fada229_79d43a21",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-11T03:36:17Z",
+      "side": 1,
+      "message": "The other benefit of this change: this is also the API for sending file descriptors over UNIX sockets (the ancillary data in msg_control can contain fds).",
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
