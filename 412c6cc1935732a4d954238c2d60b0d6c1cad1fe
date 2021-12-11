@@ -87,6 +87,30 @@
       },
       "revId": "412c6cc1935732a4d954238c2d60b0d6c1cad1fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "837d8399_0a085b85",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-12-11T00:36:41Z",
+      "side": 1,
+      "message": "Rewrote to call read/write\u003cType\u003eArray() APIs. Steven, PTAL.",
+      "parentUuid": "f76da15b_1583eac3",
+      "range": {
+        "startLine": 1346,
+        "startChar": 15,
+        "endLine": 1346,
+        "endChar": 43
+      },
+      "revId": "412c6cc1935732a4d954238c2d60b0d6c1cad1fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
