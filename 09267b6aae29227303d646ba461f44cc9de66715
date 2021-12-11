@@ -211,6 +211,30 @@
       },
       "revId": "09267b6aae29227303d646ba461f44cc9de66715",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0323725c_c664bf1a",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-12-11T04:29:58Z",
+      "side": 1,
+      "message": "e.g.\n```\nvirtual status_t interruptableWriteFully(FdTrigger*, IovecList iov);\nstatus_t interruptableWriteFully(FdTrigger* fdTrigger, const void* buf, size_t len) {\n    iovec arr[1] \u003d {{.iov_base \u003d buf, .iov_len \u003d len}};\n    interruptableWriteFully(fdTrigger, {arr, arraysize(arr)});\n}\n```",
+      "parentUuid": "66799525_73686e49",
+      "range": {
+        "startLine": 58,
+        "startChar": 40,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
