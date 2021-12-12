@@ -168,6 +168,12 @@ typedef enum OMX_COLOR_FORMATTYPE {
     // 10-bit or 12-bit YUV format, LSB-justified (0's on higher bits)
     OMX_COLOR_FormatYUV420Planar16 = 0x7F42016B,
 
+    /** P010 is a 4:2:0 YCbCr semiplanar format comprised of a WxH Y plane
+     *  followed by a Wx(H/2) CbCr plane. Each sample is represented by a 16-bit
+     *  little-endian value, with the lower 6 bits set to zero.
+     * */
+    OMX_COLOR_FormatYCbCrP010 = 0x7F430000,
+
     // Packed 10-bit YUV444 representation that includes 2 bits of alpha. Each pixel is
     // 32-bit. Bits 0-9 contain the U sample, bits 10-19 contain the Y sample,
     // bits 20-29 contain the V sample, and bits 30-31 contain the alpha value.
