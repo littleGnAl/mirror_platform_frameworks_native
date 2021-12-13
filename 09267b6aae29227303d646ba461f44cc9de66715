@@ -469,6 +469,30 @@
       },
       "revId": "09267b6aae29227303d646ba461f44cc9de66715",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b8393e_dce240e2",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-13T00:40:23Z",
+      "side": 1,
+      "message": "It\u0027s a pretty big method, so I don\u0027t feel good about having multiple copies of the method.",
+      "parentUuid": "24f2ace1_2d740d55",
+      "range": {
+        "startLine": 58,
+        "startChar": 40,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
