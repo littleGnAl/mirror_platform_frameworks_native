@@ -124,6 +124,24 @@
       "parentUuid": "298702ef_c1564372",
       "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a5f61b_e12892c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-13T19:14:23Z",
+      "side": 1,
+      "message": "Jooyung, sorry for the delay, you are right!\n\nI missed this was in the \u0027if constexpr (is_interface_v\u003cP\u003e)\u0027 branch.",
+      "parentUuid": "23f48611_df98b995",
+      "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
