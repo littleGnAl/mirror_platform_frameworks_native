@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4dddd75_f08e6e31",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-13T22:09:35Z",
+      "side": 1,
+      "message": "How would pwritev2() work here? The offset argument is the file offset, not the iovecs. How does that work with a socket? Wouldn\u0027t we need to advance the iovecs even with pwritev2?\n\nAnother question: is \"flags\" in pwritev2 the same as \"flags\" in sendmsg? It doesn\u0027t seem that way to me, from reading the pwritev2 man page.",
+      "parentUuid": "eb15d2f3_de55c8c8",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81fc8b0a_27684536",
         "filename": "libs/binder/RpcTransportRaw.cpp",
         "patchSetId": 6
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c07022c0_8af167fb",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-13T22:09:35Z",
+      "side": 1,
+      "message": "From one of the other comments: should it be an assert() or LOG_ALWAYS_FATAL_IF()?",
+      "parentUuid": "81fc8b0a_27684536",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 47
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dfc11a5_65a2d583",
         "filename": "libs/binder/RpcTransportRaw.cpp",
         "patchSetId": 6
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-13T18:44:39Z",
       "side": 1,
       "message": "is it possible to refactor that with this or combine them?",
+      "range": {
+        "startLine": 122,
+        "startChar": 13,
+        "endLine": 122,
+        "endChar": 37
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9faaacb2_685fca0d",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-13T22:09:35Z",
+      "side": 1,
+      "message": "It should be (it looks like your CL did that), I didn\u0027t want to touch the receive code path in this CL but I could.",
+      "parentUuid": "7dfc11a5_65a2d583",
       "range": {
         "startLine": 122,
         "startChar": 13,
