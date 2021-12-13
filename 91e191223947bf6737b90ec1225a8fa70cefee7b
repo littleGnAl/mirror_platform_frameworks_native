@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04be41c4_fbed9e37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-13T18:55:45Z",
+      "side": 1,
+      "message": "see b/190084016 - most likely we won\u0027t be updating glibc",
+      "parentUuid": "69e11ad0_4cbd375b",
+      "range": {
+        "startLine": 11,
+        "startChar": 43,
+        "endLine": 12,
+        "endChar": 64
+      },
+      "revId": "91e191223947bf6737b90ec1225a8fa70cefee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6722a706_7fa2db4f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
