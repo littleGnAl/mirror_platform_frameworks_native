@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb15d2f3_de55c8c8",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-13T18:44:39Z",
+      "side": 1,
+      "message": "nice! also note b/202878542 + b/203002492. The kernel will handle most of this complex logic for us, if you want. Though, super happy to get this in now instead!",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81fc8b0a_27684536",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-13T18:44:39Z",
+      "side": 1,
+      "message": "assert if processSize !\u003d 0 here?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 47
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dfc11a5_65a2d583",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-13T18:44:39Z",
+      "side": 1,
+      "message": "is it possible to refactor that with this or combine them?",
+      "range": {
+        "startLine": 122,
+        "startChar": 13,
+        "endLine": 122,
+        "endChar": 37
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed441ff2_a558e75c",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-13T18:44:39Z",
+      "side": 1,
+      "message": "even if we don\u0027t use it, we might as well make the APIs at parity now (if we only support reading or only support writing, aborting is okay",
+      "range": {
+        "startLine": 61,
+        "startChar": 34,
+        "endLine": 61,
+        "endChar": 57
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8cba10_0b633c40",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-13T18:44:39Z",
+      "side": 1,
+      "message": "nit: we can update the clients everywhere and avoid this extra layer. Explicitly construcing the iovecs there will make it more clear what is happening (especially as code is refactored).",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

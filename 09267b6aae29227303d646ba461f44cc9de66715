@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27f9d8c0_67b5e000",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-13T18:44:39Z",
+      "side": 1,
+      "message": "We would be making multiple writes in that case. The previous check was in order to justify the size_t to ssize_t cast only.",
+      "parentUuid": "ad66f40c_fc306437",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 0
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7257a19_3fd82c15",
         "filename": "libs/binder/RpcTransportRaw.cpp",
         "patchSetId": 4
@@ -149,6 +173,24 @@
       "writtenOn": "2021-12-11T03:36:17Z",
       "side": 1,
       "message": "The other benefit of this change: this is also the API for sending file descriptors over UNIX sockets (the ancillary data in msg_control can contain fds).",
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f987ba6_19df0d48",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-13T18:44:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3fada229_79d43a21",
       "revId": "09267b6aae29227303d646ba461f44cc9de66715",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -485,6 +527,30 @@
       "side": 1,
       "message": "It\u0027s a pretty big method, so I don\u0027t feel good about having multiple copies of the method.",
       "parentUuid": "24f2ace1_2d740d55",
+      "range": {
+        "startLine": 58,
+        "startChar": 40,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de149f2_4fba1a30",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-13T18:44:39Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "f3b8393e_dce240e2",
       "range": {
         "startLine": 58,
         "startChar": 40,
