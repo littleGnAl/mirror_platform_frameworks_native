@@ -22,6 +22,30 @@
       },
       "revId": "40f8f4c2b25e70fd0870e16a9d9af9c8c4f292fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "427ddfdd_12ba8dd9",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-12-13T04:25:22Z",
+      "side": 1,
+      "message": "FYI, it\u0027s a clang bug: https://bugs.llvm.org/show_bug.cgi?id\u003d35748",
+      "parentUuid": "95d1fe57_0528dfc1",
+      "range": {
+        "startLine": 563,
+        "startChar": 0,
+        "endLine": 563,
+        "endChar": 21
+      },
+      "revId": "40f8f4c2b25e70fd0870e16a9d9af9c8c4f292fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
