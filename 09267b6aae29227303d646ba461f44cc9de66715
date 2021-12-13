@@ -279,6 +279,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92a4a4a4_b72ced08",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-12-13T22:35:41Z",
+      "side": 1,
+      "message": "You may use LOG_ALWAYS_FATAL_IF. It is used in many places in libbinder already.",
+      "parentUuid": "5d91cab8_530972fc",
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d3f4c3f_23f32582",
         "filename": "libs/binder/RpcTransportRaw.cpp",
         "patchSetId": 4
