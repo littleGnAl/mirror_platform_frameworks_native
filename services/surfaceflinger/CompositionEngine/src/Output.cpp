@@ -679,6 +679,9 @@ void Output::setReleasedLayers(const compositionengine::CompositionRefreshArgs&)
 }
 
 void Output::updateLayerStateFromFE(const CompositionRefreshArgs& args) const {
+    if (!getState().isEnabled) {
+        return;
+    }
     for (auto* layer : getOutputLayersOrderedByZ()) {
         layer->getLayerFE().prepareCompositionState(
                 args.updatingGeometryThisFrame ? LayerFE::StateSubset::GeometryAndContent
