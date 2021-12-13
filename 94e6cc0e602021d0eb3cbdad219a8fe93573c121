@@ -106,6 +106,24 @@
       "parentUuid": "4efc59f5_7ea2a515",
       "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f48611_df98b995",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-12-13T00:50:48Z",
+      "side": 1,
+      "message": "Oh, btw, given that we\u0027ll have new entry functions(readData/writeData) in the following CL, we can make writeParcelable() work with only parcelables and move interface-related code(interface::writeToParcel) to writeData()\u0027s interface-type branch. writeVector\u003cP\u003e() should be modified together (element_writer(AParcel_writeStdVectorParcelableElement) should call writeData() instead of writeParcelable() so that writeVector\u003cP\u003e() can work with writeData()-able types.)\n\nThis fixes the mistake of aosp/1878148 and refactoring(described above) might be a separate change on top of aosp/1900580.",
+      "parentUuid": "298702ef_c1564372",
+      "revId": "94e6cc0e602021d0eb3cbdad219a8fe93573c121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
