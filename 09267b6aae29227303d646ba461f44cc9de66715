@@ -559,6 +559,54 @@
       },
       "revId": "09267b6aae29227303d646ba461f44cc9de66715",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476f0db8_8f7458ff",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-12-13T22:31:41Z",
+      "side": 1,
+      "message": "I think so, though I can\u0027t find evidence in https://google.github.io/styleguide/cppguide.html",
+      "parentUuid": "c0bb6756_861d119c",
+      "range": {
+        "startLine": 58,
+        "startChar": 52,
+        "endLine": 58,
+        "endChar": 58
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebd55bcb_7476d359",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-12-13T22:31:41Z",
+      "side": 1,
+      "message": "I don\u0027t mean to use std::array (where the size is part of the type) but a C-style \"array\" (aka pointer + length).\n\nThe vector is small and short-lived, but every vector is a malloc. And because we are changing the function signature here, we are paying the price of this additional malloc in all callers as we can see in this CL. Usually I wouldn\u0027t care about that, but this CL addresses performance, so it gives me the sense of paying the price elsewhere to save the copying in one place.",
+      "parentUuid": "8de149f2_4fba1a30",
+      "range": {
+        "startLine": 58,
+        "startChar": 40,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -186,6 +186,30 @@
       },
       "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "184f62eb_5bb114b2",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-12-13T22:31:41Z",
+      "side": 1,
+      "message": "I suggested this to avoid updating the clients. Though, I suggested it also to avoid creating the std::vector, but it seems that in this patchset, the std::vector is still created any way.",
+      "parentUuid": "5f8cba10_0b633c40",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
