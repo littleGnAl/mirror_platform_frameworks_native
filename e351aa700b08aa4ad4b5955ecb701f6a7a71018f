@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a98bc5_e2ac899b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-12-13T06:23:12Z",
+      "side": 1,
+      "message": "Yeah, I misunderstood the bug, it doesn\u0027t affect being vector because it is movable anyway.\n\n\u003e So, if we fix it to use std::optional::emplace, probably, we wouldn\u0027t need copy ctor.\nWe need not only std::optional::emplace, but also std::move.\n\nBut it looks like there is a use-case to use copy instead of move.\n\nupdated commit meesage.",
+      "parentUuid": "941347cc_ca9c7c8a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 72
+      },
+      "revId": "e351aa700b08aa4ad4b5955ecb701f6a7a71018f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b17da945_5c522cfc",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "\u003e Or guard this constructor behind #if __ANDROID_API__ \u003e\u003d 31\n\n+1",
       "parentUuid": "5c3db658_bb9c34cc",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 9
+      },
+      "revId": "e351aa700b08aa4ad4b5955ecb701f6a7a71018f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3393e158_07a96529",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-12-13T06:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fa8bebc_2e646ccd",
       "range": {
         "startLine": 56,
         "startChar": 8,
