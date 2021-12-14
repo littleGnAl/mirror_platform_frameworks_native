@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceb772c5_9aa5b4cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-14T01:46:15Z",
+      "side": 1,
+      "message": " -",
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43e64640_0d6e8556",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-12-11T14:25:34Z",
       "side": 1,
       "message": "nit for readability: one per line. Ditto for other checks below.",
+      "range": {
+        "startLine": 1982,
+        "startChar": 8,
+        "endLine": 1983,
+        "endChar": 38
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c73dbc4_1c29b408",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1983,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-14T01:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43e64640_0d6e8556",
       "range": {
         "startLine": 1982,
         "startChar": 8,
@@ -47,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a03d9e51_e99c237d",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1984,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-14T01:46:15Z",
+      "side": 1,
+      "message": "This is an error: We cannot access out files for renaming and it can be problematic as we may not be able to update the file if the state persists. If the file does not exist, it returns true. I will make error msg more clear.",
+      "parentUuid": "f8cad09b_35894bed",
+      "range": {
+        "startLine": 1984,
+        "startChar": 12,
+        "endLine": 1984,
+        "endChar": 17
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d091f00_185aa317",
@@ -70,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe5a941_52ab9f0d",
+        "filename": "cmds/installd/restorable_file.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-14T01:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d091f00_185aa317",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab351180_fa4919a1",
@@ -83,6 +172,30 @@
       "writtenOn": "2021-12-11T14:25:34Z",
       "side": 1,
       "message": "nit: deletes it and resets all",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 44
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4410d04_f25017fa",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-14T01:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab351180_fa4919a1",
       "range": {
         "startLine": 64,
         "startChar": 25,
@@ -118,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56115789_7cb0425f",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-14T01:46:15Z",
+      "side": 1,
+      "message": "UniqueFile has that naming. So I followed that. If you still want Reset, I will change it and all others (Three methods: fd(), path(), reset() are done in that way in UniqueFile)",
+      "parentUuid": "c64185e8_86d1b6da",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b77b913_dfb4dd4c",
         "filename": "cmds/installd/restorable_file.h",
         "patchSetId": 10
@@ -129,6 +266,30 @@
       "writtenOn": "2021-12-11T14:25:34Z",
       "side": 1,
       "message": "closes",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64fba491_3322b5f7",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-14T01:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b77b913_dfb4dd4c",
       "range": {
         "startLine": 67,
         "startChar": 28,
@@ -162,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "644053d8_a117edb6",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-14T01:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba5c8a0f_60058687",
+      "range": {
+        "startLine": 74,
+        "startChar": 37,
+        "endLine": 74,
+        "endChar": 41
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db88b211_cc84234f",
@@ -175,6 +360,30 @@
       "writtenOn": "2021-12-11T14:25:34Z",
       "side": 1,
       "message": "restores",
+      "range": {
+        "startLine": 81,
+        "startChar": 32,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73413a72_1c2dfd2f",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-14T01:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db88b211_cc84234f",
       "range": {
         "startLine": 81,
         "startChar": 32,
