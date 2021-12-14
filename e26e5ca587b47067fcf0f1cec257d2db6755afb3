@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c38d46_c79c740a",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-14T21:30:16Z",
+      "side": 1,
+      "message": "nit: this is missing optimizations for some data types. For instance, byte[32] will be 32*4 bytes on the wire. Do we want to commit to this?",
+      "range": {
+        "startLine": 1004,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 13
+      },
+      "revId": "e26e5ca587b47067fcf0f1cec257d2db6755afb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
