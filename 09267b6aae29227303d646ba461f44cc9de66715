@@ -319,6 +319,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "490f63bf_5f95efb6",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-14T03:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92a4a4a4_b72ced08",
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d3f4c3f_23f32582",
@@ -713,6 +731,54 @@
       "side": 1,
       "message": "I\u0027m working on getting rid of the vectors, should have a new patchset up shortly.",
       "parentUuid": "bf76578a_7c6326ee",
+      "range": {
+        "startLine": 58,
+        "startChar": 40,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9bc7cd9_4cf23f73",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-14T03:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "476f0db8_8f7458ff",
+      "range": {
+        "startLine": 58,
+        "startChar": 52,
+        "endLine": 58,
+        "endChar": 58
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67d9472f_f837f338",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-14T03:46:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7358fa48_03992465",
       "range": {
         "startLine": 58,
         "startChar": 40,
