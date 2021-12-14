@@ -234,6 +234,30 @@
       },
       "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50c32b68_15d089a4",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-14T03:51:18Z",
+      "side": 1,
+      "message": "I replaced the std::vector with a new IoVecList. Should I get rid of this wrapper?",
+      "parentUuid": "184f62eb_5bb114b2",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
