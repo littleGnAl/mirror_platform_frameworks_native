@@ -39,6 +39,30 @@
       },
       "revId": "0542ef60c3ff18a96defc7dc008034daf1361310",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5640d443_39a053f9",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-14T06:41:08Z",
+      "side": 1,
+      "message": "std::initializer_list\u003ciovec\u003e just wraps the values in a temporary array, wouldn\u0027t we still need a permanent data structure somewhere? Where would that be stored?\n\nAlternatively, I think interruptableWriteFully could take an std::initializer_list\u003ciovec\u003e directly, but then the iovec array would always be fixed per call site.",
+      "parentUuid": "26778c67_6162201e",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 49
+      },
+      "revId": "0542ef60c3ff18a96defc7dc008034daf1361310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
