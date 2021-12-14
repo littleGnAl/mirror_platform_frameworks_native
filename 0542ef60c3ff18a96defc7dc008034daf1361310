@@ -87,6 +87,30 @@
       },
       "revId": "0542ef60c3ff18a96defc7dc008034daf1361310",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c19c19d_5584ae99",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-14T21:20:43Z",
+      "side": 1,
+      "message": "I looked at vanilla LLVM libcxx, and std::initializer_list is implemented as a pointer+size pair. The thing with this type is that afaik it\u0027s a magic type where the pointer points to a temporary array holding the values, and the compiler extends the lifetime of that array to match the lifetime of the std::initializer_list object, but only as a temporary. It\u0027s recommended against (I think it\u0027s UB) to store the initializer_list anywhere permanent, like a class member.",
+      "parentUuid": "764ea613_b267ff0e",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 49
+      },
+      "revId": "0542ef60c3ff18a96defc7dc008034daf1361310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
