@@ -277,6 +277,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "885b9e69_77daf541",
+        "filename": "cmds/installd/restorable_file.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-12-14T10:35:14Z",
+      "side": 1,
+      "message": "OK to keep it as reset() for consistency.",
+      "parentUuid": "56115789_7cb0425f",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b77b913_dfb4dd4c",
