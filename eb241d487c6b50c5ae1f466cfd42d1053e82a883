@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5af9e17_3a1f54e0",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1983,
+      "author": {
+        "id": 1010465
+      },
+      "writtenOn": "2021-12-14T01:48:42Z",
+      "side": 1,
+      "message": "actually clang_format keep fixing in this way.",
+      "parentUuid": "6c73dbc4_1c29b408",
+      "range": {
+        "startLine": 1982,
+        "startChar": 8,
+        "endLine": 1983,
+        "endChar": 38
+      },
+      "revId": "eb241d487c6b50c5ae1f466cfd42d1053e82a883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8cad09b_35894bed",
