@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8958fa5_232da87a",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-14T02:08:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27f9d8c0_67b5e000",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 0
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7257a19_3fd82c15",
@@ -665,6 +689,30 @@
       "side": 1,
       "message": "Exactly, so it is nice if we can get rid of unnecessary mallocs, even if they are small and short-lived.",
       "parentUuid": "dd1119db_b97c4256",
+      "range": {
+        "startLine": 58,
+        "startChar": 40,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7358fa48_03992465",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-14T02:08:40Z",
+      "side": 1,
+      "message": "I\u0027m working on getting rid of the vectors, should have a new patchset up shortly.",
+      "parentUuid": "bf76578a_7c6326ee",
       "range": {
         "startLine": 58,
         "startChar": 40,
