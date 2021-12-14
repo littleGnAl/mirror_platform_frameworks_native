@@ -625,6 +625,30 @@
       },
       "revId": "09267b6aae29227303d646ba461f44cc9de66715",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1119db_b97c4256",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-14T01:48:35Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t mean to use std::array (where the size is part of the type) but a C-style \"array\" (aka pointer + length).\n\nI got that part, I was just proposing std::array as an alternative 😊\nConsidering all the alternatives, it does look like C pointer+length is the best option since std::span is not available.\n\n\u003e I assume this CL addresses performance\nThe other motivation is memory usage. Having 2 copies of every outgoing Parcel would have been problematic on Trusty, where apps have a low amount of heap memory, e.g., 8-16K.",
+      "parentUuid": "ebd55bcb_7476d359",
+      "range": {
+        "startLine": 58,
+        "startChar": 40,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "09267b6aae29227303d646ba461f44cc9de66715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
