@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c646b732_0e664bad",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-12-14T05:52:16Z",
+      "side": 1,
+      "message": "Maybe add a comment that the passed-in value must be maintained by the caller? Otherwise, a caller may do\n\n```\nIoVecList({.iov_base \u003d ..., .iov_len \u003d ...})\n``` \n\nwhich breaks because we are only taking the pointer to head, not copying the head.\n\n(Same for the one below)",
+      "revId": "0542ef60c3ff18a96defc7dc008034daf1361310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26778c67_6162201e",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-12-14T05:52:16Z",
+      "side": 1,
+      "message": "I think this can be std::initializer_list\u003ciovec\u003e to avoid the templates on each integer.",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 49
+      },
+      "revId": "0542ef60c3ff18a96defc7dc008034daf1361310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
