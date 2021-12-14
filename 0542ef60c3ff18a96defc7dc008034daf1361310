@@ -63,6 +63,30 @@
       },
       "revId": "0542ef60c3ff18a96defc7dc008034daf1361310",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "764ea613_b267ff0e",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-12-14T20:44:24Z",
+      "side": 1,
+      "message": "Good point. https://en.cppreference.com/w/cpp/utility/initializer_list says:\n\n\u003e The underlying array is a temporary array of type const T[N], in which each element is copy-initialized\n\nAn SO answer https://stackoverflow.com/a/61826197 even suggests that it can be allocated on the data segment.\n\nBut, since the storage is NOT specified, we don\u0027t know how Android\u0027s libc++ implements it. (You could poke into the implementation though) \n\nPlease disregard the original comment I have. This is looks good to me. We only need N\u003d1 and N\u003d3 cases right now, right?\n\nI\u0027ll also leave this to Jiyong / Steven to comment.",
+      "parentUuid": "5640d443_39a053f9",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 49
+      },
+      "revId": "0542ef60c3ff18a96defc7dc008034daf1361310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
