@@ -184,6 +184,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "034409fb_06bb0a9a",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-15T09:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54337371_9d6ced41",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 70
+      },
+      "revId": "65a6d28b7db4145a1ef12683a47c4e3f40024d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2498db95_abc6ad6c",
@@ -316,6 +340,30 @@
       "side": 1,
       "message": "Same as above: indenting and style appear to be off.",
       "parentUuid": "b2ef7b8e_1ed0e525",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 566,
+        "endChar": 75
+      },
+      "revId": "65a6d28b7db4145a1ef12683a47c4e3f40024d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "318c20d6_6183e298",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1884540
+      },
+      "writtenOn": "2021-12-15T09:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f0946d5_4925e459",
       "range": {
         "startLine": 566,
         "startChar": 0,
