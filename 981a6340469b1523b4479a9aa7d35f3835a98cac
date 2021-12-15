@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d77e7f6_0bd235f6",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-15T22:12:41Z",
+      "side": 1,
+      "message": "I think this is calling T::serialize_array here and automatically coercing to a slice, but I\u0027d like to be sure. It might be useful to make the types explicit: \u003cT as SerializeArray\u003e::serialize_array(self, parcel).\n\nSerialize and SerializeArray aren\u0027t exactly equivalent for a T: the former serializes a single T, while the latter serializes an array of Ts. I\u0027d like to be sure the correct serialize_array is called.",
+      "revId": "981a6340469b1523b4479a9aa7d35f3835a98cac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
