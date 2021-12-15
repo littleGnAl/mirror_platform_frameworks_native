@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b65842e3_e51ad814",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-12-15T23:55:47Z",
+      "side": 1,
+      "message": "Yeah, I think CPP/PFD and NDK/SFD are the same regarding the eq operator: they are eq?able only to satisfy holding struct\u0027s eq.",
+      "parentUuid": "284b121c_2703880b",
+      "revId": "35efa0e3e42f66736515b1bb4f172d7e6ece4260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48c96ccc_917742c1",
         "filename": "libs/binder/rust/src/parcel/file_descriptor.rs",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-15T19:36:24Z",
       "side": 1,
       "message": "If you\u0027re doing this, I think it\u0027s safe to also implement Eq (they\u0027re usually either both implemented or none, it\u0027s rare to only want PartialEq):\n```\nimpl Eq for ParcelFileDescriptor {}\n```",
+      "revId": "35efa0e3e42f66736515b1bb4f172d7e6ece4260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3c6256_4ca4c9cf",
+        "filename": "libs/binder/rust/src/parcel/file_descriptor.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-12-15T23:55:47Z",
+      "side": 1,
+      "message": "Thank you!",
+      "parentUuid": "48c96ccc_917742c1",
       "revId": "35efa0e3e42f66736515b1bb4f172d7e6ece4260",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
