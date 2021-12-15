@@ -34,6 +34,24 @@
       "parentUuid": "8d77e7f6_0bd235f6",
       "revId": "981a6340469b1523b4479a9aa7d35f3835a98cac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe7baae1_47abb07a",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-12-15T23:51:57Z",
+      "side": 1,
+      "message": "Done. (added a comment)",
+      "parentUuid": "32f0b9fd_fc0b9bef",
+      "revId": "981a6340469b1523b4479a9aa7d35f3835a98cac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
