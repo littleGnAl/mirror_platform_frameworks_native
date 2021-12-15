@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "284b121c_2703880b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-15T21:38:32Z",
+      "side": 1,
+      "message": "Since ParcelFileDescriptors own the FD, if this function ever returns true (and it is used to compare two different objects), then it would imply that an FD is double-owned.",
+      "revId": "35efa0e3e42f66736515b1bb4f172d7e6ece4260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48c96ccc_917742c1",
         "filename": "libs/binder/rust/src/parcel/file_descriptor.rs",
         "patchSetId": 1
