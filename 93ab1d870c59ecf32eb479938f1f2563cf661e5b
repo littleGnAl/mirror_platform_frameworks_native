@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b9d309_def5f171",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2021-12-15T23:38:20Z",
+      "side": 1,
+      "message": "This function changes the display, so it needs to lock mStateLock.\nWe can hold the mStateLock for the entire duration on this function. Can you please try this, and let me know if this solves the issue you are seeing?",
+      "revId": "93ab1d870c59ecf32eb479938f1f2563cf661e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
