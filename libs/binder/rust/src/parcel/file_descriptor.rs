@@ -60,6 +60,12 @@ impl IntoRawFd for ParcelFileDescriptor {
     }
 }
 
+impl PartialEq for ParcelFileDescriptor {
+    fn eq(&self, other: &Self) -> bool {
+        self.as_raw_fd() == other.as_raw_fd()
+    }
+}
+
 impl Serialize for ParcelFileDescriptor {
     fn serialize(&self, parcel: &mut BorrowedParcel<'_>) -> Result<()> {
         let fd = self.0.as_raw_fd();
