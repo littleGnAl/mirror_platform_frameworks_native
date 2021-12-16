@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35403e83_0861959a",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2021-12-16T01:15:42Z",
+      "side": 1,
+      "message": "Ugly: the count we put in the error message is not the count we called native_window_set_buffer_count() with, if it was clamped for a shared mode?",
+      "revId": "5396b701192a4d5b4cb91faabf39328c22b43913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
