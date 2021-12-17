@@ -16,6 +16,24 @@
       "message": "This function changes the display, so it needs to lock mStateLock.\nWe can hold the mStateLock for the entire duration on this function. Can you please try this, and let me know if this solves the issue you are seeing?",
       "revId": "93ab1d870c59ecf32eb479938f1f2563cf661e5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbedfcd0_0503c10a",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1786490
+      },
+      "writtenOn": "2021-12-17T09:14:48Z",
+      "side": 1,
+      "message": "The function of setActiveModeInternal() already requires mStateLock in SurfaceFlinger.h, so we can not acquire mStateLock in the function, which will bring build fail.\n\nBut now calling the function of setActiveModeInternal() in onMessageInvalidate() is in the way of ON_MAIN_THREAD(setActiveModeInternal()), which will in fact not acquire the mStateLock for the function.\n\nCan we just call the function of  setActiveModeInternal()  in a simple block with mStateLock instead of using ON_MAIN_THREAD?  This modification can solve the problem too.\n\nFor ex,\n\n        {\n            Mutex::Autolock lock(mStateLock);\n            setActiveModeInternal();\n        }",
+      "parentUuid": "06b9d309_def5f171",
+      "revId": "93ab1d870c59ecf32eb479938f1f2563cf661e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
