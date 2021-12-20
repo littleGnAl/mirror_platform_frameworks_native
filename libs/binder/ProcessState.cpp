@@ -413,6 +413,7 @@ size_t ProcessState::getThreadPoolMaxThreadCount() const {
 bool ProcessState::isDriverFeatureEnabled(const DriverFeature feature) {
     static const char* const names[] = {
         [DriverFeature::ONEWAY_SPAM_DETECTION] = "oneway_spam_detection",
+        [DriverFeature::EXTENDED_ERROR] = "extended_error",
     };
     std::string path = "/dev/binderfs/features/";
     std::ifstream fin (path.append(names[feature]));
