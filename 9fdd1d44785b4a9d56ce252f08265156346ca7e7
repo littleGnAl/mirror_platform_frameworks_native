@@ -16,6 +16,29 @@
       "message": "RFC: Hi Steven, this is still a quick draft. However, I would appreciate some early comments, specially on:\n * Is IPCThreadSate the appropriate area to add this support?\n * Is after a failure to talkWithDriver a good place to pull the error?\n * It seems I need to whitelist this ioctl in somewhere in a selinux policy file?\n\nNote: I\u0027ll add some tests along with the patch later on today.",
       "revId": "9fdd1d44785b4a9d56ce252f08265156346ca7e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1895a0_1c656204",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2021-12-20T15:15:59Z",
+      "side": 1,
+      "message": "This needs to be resolved before merge. I suppose we want to add some generic api to determine whether a particular feature is enabled or not. So, Steven do you have any thoughts on this?",
+      "range": {
+        "startLine": 1457,
+        "startChar": 7,
+        "endLine": 1457,
+        "endChar": 11
+      },
+      "revId": "9fdd1d44785b4a9d56ce252f08265156346ca7e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
