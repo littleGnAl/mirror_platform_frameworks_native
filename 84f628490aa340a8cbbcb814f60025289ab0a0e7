@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018560581",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1930537?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7c1070d9_3804d1f5",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-20T14:54:44Z",
+      "side": 1,
+      "message": "TODO statements should not reference a specific human; consider using a bug number instead; see https://source.android.com/setup/contribute/code-style#use-todo-comments for more details.",
+      "range": {
+        "startLine": 1457,
+        "startChar": 7,
+        "endLine": 1457,
+        "endChar": 21
+      },
+      "revId": "84f628490aa340a8cbbcb814f60025289ab0a0e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018560584",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1930537?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "fb3efea0_0f0d9167",
+          "description": "Change to \"libs/binder/binder_module.h\"",
+          "replacements": [
+            {
+              "path": "libs/binder/binder_module.h",
+              "range": {
+                "startLine": 112,
+                "startChar": 47,
+                "endLine": 112,
+                "endChar": 57
+              },
+              "replacement": "transaction"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "965c7d92_7c6acbe4",
+        "filename": "libs/binder/binder_module.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-20T14:54:44Z",
+      "side": 1,
+      "message": "Common typo found: \"transation\" -- should it be \"transaction\"?\nor alternatively, \u0027translation\u0027\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 112,
+        "startChar": 47,
+        "endLine": 112,
+        "endChar": 57
+      },
+      "revId": "84f628490aa340a8cbbcb814f60025289ab0a0e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
