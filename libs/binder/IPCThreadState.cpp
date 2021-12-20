@@ -1104,6 +1104,8 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
         return NO_ERROR;
     }
 
+    getExtendedError(NULL);
+
     return err;
 }
 
@@ -1445,6 +1447,30 @@ status_t IPCThreadState::freeze(pid_t pid, bool enable, uint32_t timeout_ms) {
     // ret==-EAGAIN indicates that transactions have not drained.
     // Call again to poll for completion.
     //
+    return ret;
+}
+
+status_t IPCThreadState::getExtendedError(int32_t *ee_errno) {
+    struct binder_extended_error ee = {.ee_errno = BINDER_EE_OK};
+    status_t ret = NO_ERROR;
+
+    // TODO(28321379): how and when do we want to do this?
+    if (access("/dev/binderfs/features/extended_error", R_OK) == -1) {
+        ALOGE("Failed to access extended_error: %s", strerror(errno));
+	return -errno;
+    }
+
+#if defined(__ANDROID__)
+    if (ioctl(self()->mProcess->mDriverFD, BINDER_GET_EXTENDED_ERROR, &ee) < 0) {
+        ALOGE("Failed to get extended error: %s", strerror(errno));
+        return -errno;
+    }
+#endif
+
+    ALOGE_IF(ee.ee_errno != BINDER_EE_OK, "%s", ee.ee_strerr);
+    if (ee_errno)
+        *ee_errno = ee.ee_errno;
+
     return ret;
 }
 
