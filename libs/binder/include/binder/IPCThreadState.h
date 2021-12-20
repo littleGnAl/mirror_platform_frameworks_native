@@ -54,6 +54,9 @@ public:
     static  status_t            getProcessFreezeInfo(pid_t pid, uint32_t *sync_received,
                                                     uint32_t *async_received);
 
+    // Provide extended error information from the driver upon a failed transaction
+    static  status_t            getExtendedError(int32_t *ee_errno);
+
             sp<ProcessState>    process();
 
             status_t            clearLastError();
