@@ -16,6 +16,24 @@
       "message": "Since the previous CL was cherry-picked to this branch, I\u0027m guessing that this CL also needs a cherry-pick.  True?",
       "revId": "1bf1482e3bdf9cfb9b9f3c891bf1174ed9daed64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b2dd70_7cc83019",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2021-12-20T19:22:03Z",
+      "side": 1,
+      "message": "Yes, looks correct. You probably won\u0027t *see* the failures (cts-on-gsi no longer runs deqp) but we should have this fix to be correct.",
+      "parentUuid": "928dfee3_0e226b55",
+      "revId": "1bf1482e3bdf9cfb9b9f3c891bf1174ed9daed64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
