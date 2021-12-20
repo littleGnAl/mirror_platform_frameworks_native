@@ -34,6 +34,24 @@
       "parentUuid": "928dfee3_0e226b55",
       "revId": "1bf1482e3bdf9cfb9b9f3c891bf1174ed9daed64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb003c44_ff25eb93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2021-12-20T19:25:10Z",
+      "side": 1,
+      "message": "Thanks for the clarification.  Want to upvote this CL then?",
+      "parentUuid": "b2b2dd70_7cc83019",
+      "revId": "1bf1482e3bdf9cfb9b9f3c891bf1174ed9daed64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
