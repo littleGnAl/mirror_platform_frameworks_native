@@ -93,6 +93,7 @@ public:
 
     enum DriverFeature {
         ONEWAY_SPAM_DETECTION,
+        EXTENDED_ERROR,
     };
     // Determine whether a feature is supported by the binder driver.
     static bool isDriverFeatureEnabled(const DriverFeature feature);
