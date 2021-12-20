@@ -39,6 +39,7 @@
 #include <sys/ioctl.h>
 #include <sys/resource.h>
 #include <unistd.h>
+#include <fstream>
 
 #include "Static.h"
 #include "binder_module.h"
@@ -277,6 +278,22 @@ static const void* printCommand(TextOutput& out, const void* _cmd)
 
     out << endl;
     return cmd;
+}
+
+static bool isKernelFeatureEnabled(const char *fname) {
+    std::string path = "/dev/binderfs/features/";
+    std::ifstream fin (path.append(fname));
+    char on;
+
+    if (!fin) {
+        ALOGE_IF(errno != ENOENT, "%s: %s", path.c_str(), strerror(errno));
+        return false;
+    }
+
+    fin >> on;
+    fin.close();
+
+    return on == '1';
 }
 
 static pthread_mutex_t gTLSMutex = PTHREAD_MUTEX_INITIALIZER;
@@ -1099,6 +1116,8 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
         return NO_ERROR;
     }
 
+    getExtendedError(nullptr, nullptr);
+
     return err;
 }
 
@@ -1441,6 +1460,26 @@ status_t IPCThreadState::freeze(pid_t pid, bool enable, uint32_t timeout_ms) {
     // Call again to poll for completion.
     //
     return ret;
+}
+
+status_t IPCThreadState::getExtendedError(uint32_t *code, uint32_t *type) {
+    struct binder_extended_error ee = {.ee_code = BINDER_EE_CODE_OK};
+
+    if (!isKernelFeatureEnabled("extended_error"))
+        return -errno;
+
+#if defined(__ANDROID__)
+    if (ioctl(self()->mProcess->mDriverFD, BINDER_GET_EXTENDED_ERROR, &ee) < 0) {
+        ALOGE("Failed to get extended error: %s", strerror(errno));
+        return -errno;
+    }
+#endif
+
+    if (code != nullptr) *code = ee.ee_code;
+    if (type != nullptr) *type = ee.ee_type;
+    ALOGE_IF(ee.ee_code != BINDER_EE_CODE_OK, "%s", ee.ee_string);
+
+    return NO_ERROR;
 }
 
 void IPCThreadState::freeBuffer(Parcel* parcel, const uint8_t* data,
