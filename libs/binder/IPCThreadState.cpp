@@ -39,6 +39,7 @@
 #include <sys/ioctl.h>
 #include <sys/resource.h>
 #include <unistd.h>
+#include <fstream>
 
 #include "Static.h"
 #include "binder_module.h"
@@ -277,6 +278,38 @@ static const void* printCommand(TextOutput& out, const void* _cmd)
 
     out << endl;
     return cmd;
+}
+
+static bool isDriverFeatureEnabled(const char *fname) {
+    static std::unordered_map<std::string, char> m = {
+        {"oneway_spam_detection", 0},
+        {"extended_error", 0},
+    };
+    static std::mutex mlock;
+
+    std::unique_lock<std::mutex> lock(mlock);
+    auto it = m.find(fname);
+    if (it == m.end()) {
+        ALOGE("%s: cannot find feature: %s", __func__, fname);
+	return false;
+    }
+
+    if (!it->second) {
+        std::string path = "/dev/binderfs/features/";
+        std::ifstream fin (path.append(it->first));
+
+        if (!fin) {
+	    it->second = '0';
+            ALOGE_IF(errno != ENOENT, "%s: cannot open %s: %s",
+                     __func__, path.c_str(), strerror(errno));
+            return false;
+        }
+
+        fin >> it->second;
+        fin.close();
+    }
+
+    return it->second == '1';
 }
 
 static pthread_mutex_t gTLSMutex = PTHREAD_MUTEX_INITIALIZER;
@@ -990,6 +1023,7 @@ finish:
         if (acquireResult) *acquireResult = err;
         if (reply) reply->setError(err);
         mLastError = err;
+        logExtendedError();
     }
 
     return err;
@@ -1441,6 +1475,23 @@ status_t IPCThreadState::freeze(pid_t pid, bool enable, uint32_t timeout_ms) {
     // Call again to poll for completion.
     //
     return ret;
+}
+
+void IPCThreadState::logExtendedError() {
+    struct binder_extended_error ee = {.command = BR_OK};
+
+    if (!isDriverFeatureEnabled("extended_error"))
+        return;
+
+#if defined(__ANDROID__)
+    if (ioctl(self()->mProcess->mDriverFD, BINDER_GET_EXTENDED_ERROR, &ee) < 0) {
+        ALOGE("Failed to get extended error: %s", strerror(errno));
+        return;
+    }
+#endif
+
+    ALOGE_IF(ee.command != BR_OK, "%s: %d/%d: %s",
+             __func__, ee.command, ee.param, ee.string);
 }
 
 void IPCThreadState::freeBuffer(Parcel* parcel, const uint8_t* data,
