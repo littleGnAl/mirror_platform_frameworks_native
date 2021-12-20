@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "129fb95d_eff62868",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2021-12-20T15:13:06Z",
+      "side": 1,
+      "message": "RFC: Hi Steven, this is still a quick draft. However, I would appreciate some early comments, specially on:\n * Is IPCThreadSate the appropriate area to add this support?\n * Is after a failure to talkWithDriver a good place to pull the error?\n * It seems I need to whitelist this ioctl in somewhere in a selinux policy file?\n\nNote: I\u0027ll add some tests along with the patch later on today.",
+      "revId": "9fdd1d44785b4a9d56ce252f08265156346ca7e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
