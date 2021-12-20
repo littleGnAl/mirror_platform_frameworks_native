@@ -508,6 +508,20 @@ TEST_F(BinderLibTest, Freeze) {
     EXPECT_EQ(NO_ERROR, m_server->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, &reply));
 }
 
+TEST_F(BinderLibTest, GetExtendedError) {
+    std::ifstream fin ("/dev/binderfs/features/extended_error");
+    uint32_t code, type;
+
+    if (!fin) {
+        GTEST_SKIP() << "BINDER_GET_EXTENDED_ERROR is not supported";
+        return;
+    }
+
+    EXPECT_EQ(IPCThreadState::self()->getExtendedError(&code, &type), NO_ERROR);
+    EXPECT_EQ(code, BINDER_EE_CODE_OK);
+    EXPECT_EQ(type, BINDER_EE_TYPE_NONE);
+}
+
 TEST_F(BinderLibTest, SetError) {
     int32_t testValue[] = { 0, -123, 123 };
     for (size_t i = 0; i < ARRAY_SIZE(testValue); i++) {

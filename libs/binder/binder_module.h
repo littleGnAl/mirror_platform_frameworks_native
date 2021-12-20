@@ -100,4 +100,35 @@ struct binder_frozen_status_info {
 #define BINDER_ENABLE_ONEWAY_SPAM_DETECTION _IOW('b', 16, __u32)
 #endif // BINDER_ENABLE_ONEWAY_SPAM_DETECTION
 
+#ifndef BINDER_GET_EXTENDED_ERROR
+#define BINDER_STRERR_MAXLEN 256
+
+/* struct binder_extened_error - extended error information
+ * @ee_code:    error code as defined by enum binder_ee_code
+ * @ee_type:    error type as defined by enum binder_ee_type
+ * @ee_string:  NULL-terminated string describing the error
+ *
+ * Used with BINDER_GET_EXTENDED_ERROR. This extends the error information
+ * returned by the driver upon a failed operation. Userspace can pull this
+ * data to proprely handle specific error scenarios.
+ */
+struct binder_extended_error {
+    __u32 ee_code;
+    __u32 ee_type;
+    char  ee_string[BINDER_STRERR_MAXLEN];
+};
+
+enum binder_ee_code {
+    BINDER_EE_CODE_OK = 0,
+    BINDER_EE_CODE_RETRY = 1,
+};
+
+enum binder_ee_type {
+    BINDER_EE_TYPE_NONE = 0,
+    BINDER_EE_TYPE_WRITE_READ = 1,
+};
+
+#define BINDER_GET_EXTENDED_ERROR _IOWR('b', 17, struct binder_extended_error)
+#endif // BINDER_GET_EXTENDED_ERROR
+
 #endif // _BINDER_MODULE_H_
