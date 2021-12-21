@@ -39,6 +39,30 @@
       },
       "revId": "9fdd1d44785b4a9d56ce252f08265156346ca7e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97807bc_9069c5a6",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2021-12-21T21:42:48Z",
+      "side": 1,
+      "message": "I pulled this into a separate routine. However, there is still the question of whether we want to cache the features enabled (where?) as opposed to reading the files every time.",
+      "parentUuid": "0b1895a0_1c656204",
+      "range": {
+        "startLine": 1457,
+        "startChar": 7,
+        "endLine": 1457,
+        "endChar": 11
+      },
+      "revId": "9fdd1d44785b4a9d56ce252f08265156346ca7e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
