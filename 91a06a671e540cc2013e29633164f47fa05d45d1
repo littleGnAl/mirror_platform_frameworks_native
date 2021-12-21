@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d532abb7_27f5ea75",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-21T05:08:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e4dddd75_f08e6e31",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81fc8b0a_27684536",
@@ -190,6 +214,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "751c1bc0_06fd4074",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-21T05:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6bcfd73_38fd3c5a",
+      "range": {
+        "startLine": 122,
+        "startChar": 13,
+        "endLine": 122,
+        "endChar": 37
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed441ff2_a558e75c",
@@ -227,6 +275,30 @@
       "side": 1,
       "message": "One thing on my mind w.r.t combining: is there ever a situation where someone would call interruptableReadFully with multiple iovecs? You can\u0027t really merge reading the header + payload into a single operation if the size if the latter is stored in the header.",
       "parentUuid": "ed441ff2_a558e75c",
+      "range": {
+        "startLine": 61,
+        "startChar": 34,
+        "endLine": 61,
+        "endChar": 57
+      },
+      "revId": "91a06a671e540cc2013e29633164f47fa05d45d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a34059e_49759a2b",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-21T05:08:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e014863_54351324",
       "range": {
         "startLine": 61,
         "startChar": 34,
