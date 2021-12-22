@@ -1222,6 +1222,7 @@ VkResult CreateSwapchainKHR(VkDevice device,
     // In shared mode the num_images must be one regardless of how many
     // buffers were allocated for the buffer queue.
     if (swapchain_image_usage & VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_ANDROID) {
+        // make num_images 1
         num_images = 1;
     }
 
