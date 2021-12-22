@@ -51,8 +51,8 @@ static constexpr const char* kMinidebugDex2oatFlag = "--generate-mini-debug-info
 static constexpr const char* kDisableCompactDexFlag = "--compact-dex-level=none";
 
 // Location of the JIT Zygote image.
-static const char* kJitZygoteImage =
-    "boot.art:/nonx/boot-framework.art!/system/etc/boot-image.prof";
+static const char* kJitZygoteImage = "-Ximage:/nonx/boot.art!/apex/com.android.art/etc/"
+                                     "boot-image.prof!/system/etc/boot-image.prof";
 
 std::vector<std::string> SplitBySpaces(const std::string& str) {
     if (str.empty()) {
