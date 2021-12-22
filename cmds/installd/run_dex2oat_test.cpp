@@ -175,6 +175,7 @@ class RunDex2OatTest : public testing::Test {
         default_expected_flags_["--swap-fd"] = FLAG_UNUSED;
         default_expected_flags_["--class-loader-context"] = FLAG_UNUSED;
         default_expected_flags_["--class-loader-context-fds"] = FLAG_UNUSED;
+        default_expected_flags_["--boot-image"] = FLAG_UNUSED;
 
         // Arch
         default_expected_flags_["--instruction-set"] = "=arm64";
@@ -204,6 +205,7 @@ class RunDex2OatTest : public testing::Test {
         default_expected_flags_["-Xtarget-sdk-version"] = FLAG_UNUSED;
         default_expected_flags_["-Xhidden-api-policy"] = FLAG_UNUSED;
         default_expected_flags_["-Xnorelocate"] = FLAG_UNUSED;
+        default_expected_flags_["-Xusejitzygoteimage"] = FLAG_UNUSED;
 
         // Test only
         default_expected_flags_["--foo"] = FLAG_UNUSED;
@@ -554,6 +556,23 @@ TEST_F(RunDex2OatTest, ExtraFlags) {
     SetExpectedFlagUsed("--foo", "=123");
     SetExpectedFlagUsed("--bar", ":456");
     SetExpectedFlagUsed("--baz", "");
+    VerifyExpectedFlags();
+}
+
+TEST_F(RunDex2OatTest, UseJitZygoteImage) {
+    auto args = RunDex2OatArgs::MakeDefaultTestArgs();
+    args->use_jitzygote_image = true;
+    CallRunDex2Oat(std::move(args));
+
+    SetExpectedFlagUsed("-Xusejitzygoteimage", ":true");
+    VerifyExpectedFlags();
+}
+
+TEST_F(RunDex2OatTest, BootImage) {
+    setSystemProperty("dalvik.vm.boot-image", "foo.art:bar.art");
+    CallRunDex2Oat(RunDex2OatArgs::MakeDefaultTestArgs());
+
+    SetExpectedFlagUsed("--boot-image", "=foo.art:bar.art");
     VerifyExpectedFlags();
 }
 
