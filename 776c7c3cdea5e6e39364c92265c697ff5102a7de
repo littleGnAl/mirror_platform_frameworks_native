@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849bf66f_873a4263",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-22T20:32:50Z",
+      "side": 1,
+      "message": "this is a bit off. Why do we skip past them here, but if the first iovec is 0-length, we would still pass it in L66?",
+      "range": {
+        "startLine": 92,
+        "startChar": 53,
+        "endLine": 93,
+        "endChar": 46
+      },
+      "revId": "776c7c3cdea5e6e39364c92265c697ff5102a7de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59219dd5_870f9ab1",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-22T20:32:50Z",
+      "side": 1,
+      "message": "Can we avoid adding this type? This is an abstraction (API complexity) without introducing any specific functionality added. For instance, I feel like it obscures the mutability requirement?",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "776c7c3cdea5e6e39364c92265c697ff5102a7de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
