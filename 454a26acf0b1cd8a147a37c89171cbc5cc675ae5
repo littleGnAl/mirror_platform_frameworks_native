@@ -16,6 +16,23 @@
       "message": "presubmit failure is known ToT",
       "revId": "454a26acf0b1cd8a147a37c89171cbc5cc675ae5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "debf7815_480d2705",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-22T19:14:34Z",
+      "side": 1,
+      "message": "Friendly ping for NDK API Review",
+      "revId": "454a26acf0b1cd8a147a37c89171cbc5cc675ae5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
