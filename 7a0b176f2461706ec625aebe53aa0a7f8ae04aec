@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33061a5_8988d890",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-23T23:41:52Z",
+      "side": 1,
+      "message": "a",
+      "revId": "7a0b176f2461706ec625aebe53aa0a7f8ae04aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "254fbd6e_e2193e13",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "This doesn\u0027t read anything. how does fuzzing work with this kind of functions?",
       "parentUuid": "254fbd6e_e2193e13",
+      "range": {
+        "startLine": 742,
+        "startChar": 23,
+        "endLine": 742,
+        "endChar": 41
+      },
+      "revId": "7a0b176f2461706ec625aebe53aa0a7f8ae04aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fba4d03_05befdc5",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-12-23T23:41:52Z",
+      "side": 1,
+      "message": "It ensures that the function does not crash given any parcel state. For instance, if there is an overflow triggering a ubsan case. dataAvail is also fuzzed there.",
+      "parentUuid": "ab05b00f_35fad6a7",
       "range": {
         "startLine": 742,
         "startChar": 23,
