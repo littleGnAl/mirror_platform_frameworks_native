@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d841c1_f7a38913",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2021-12-23T02:41:59Z",
+      "side": 1,
+      "message": "I believe that the problem you are trying to deal with was fixed with recent CLs.  Please try the following CLs and let me know if they do not solve the problem you are dealing with:\n\n- https://android-review.googlesource.com/c/platform/frameworks/native/+/1907991/\n\n- https://android-review.googlesource.com/c/platform/frameworks/native/+/1921342/",
+      "revId": "cbb4e2ca147c0eb0f0756c0721a63710c7176bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
