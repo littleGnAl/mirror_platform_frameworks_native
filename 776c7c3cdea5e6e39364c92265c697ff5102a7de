@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de4a9f2f_14d6d221",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-23T01:26:00Z",
+      "side": 1,
+      "message": "If the first iovec is 0 then we skip it on L90-95 and then continue with the second vector. It\u0027s fine to pass empty vectors to {send,recv}msg, those syscalls just ignore them. The problem was in the algorithm here.\n\nConcretely, the problem I ran into was that the 3rd vector (data) from transactAddress() was empty in some cases (and I think it generalizes to any suffix of vectors being all empty). If that happens, we eventually pass an all-empty vector set to sendmsg and that returns processSize \u003d\u003d 0, which we return as DEAD_OBJECT instead of incrementing to the end and returning OK.",
+      "parentUuid": "849bf66f_873a4263",
+      "range": {
+        "startLine": 92,
+        "startChar": 53,
+        "endLine": 93,
+        "endChar": 46
+      },
+      "revId": "776c7c3cdea5e6e39364c92265c697ff5102a7de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59219dd5_870f9ab1",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 12
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-22T20:32:50Z",
       "side": 1,
       "message": "Can we avoid adding this type? This is an abstraction (API complexity) without introducing any specific functionality added. For instance, I feel like it obscures the mutability requirement?",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "776c7c3cdea5e6e39364c92265c697ff5102a7de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae8c3d2d_0f828be1",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-23T01:26:00Z",
+      "side": 1,
+      "message": "Since we don\u0027t have std::span, I think the alternative is to explicitly pass the pointer+length everywhere. Would that be better? I thought having the abstraction makes it less likely to misuse.",
+      "parentUuid": "59219dd5_870f9ab1",
       "range": {
         "startLine": 46,
         "startChar": 11,
