@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42358a2b_215059d3",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-23T16:47:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b4559d9_ecc16231",
+      "range": {
+        "startLine": 111,
+        "startChar": 44,
+        "endLine": 111,
+        "endChar": 63
+      },
+      "revId": "3f265a32096d754af07511c5b65d17dee9018760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e757e086_efeff1ae",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-23T15:31:39Z",
       "side": 1,
       "message": "Add a comment why we don\u0027t pass a boot image when running jitzygote. Alternatively, we could still pass the argument, but it will be ignored by dex2oat.",
+      "revId": "3f265a32096d754af07511c5b65d17dee9018760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d032662_dd73fa0f",
+        "filename": "cmds/installd/run_dex2oat.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-23T16:47:47Z",
+      "side": 1,
+      "message": "I want `--force-jit-zygote` and `--boot-image` to be mutually exclusive because it will be confusing if both are passed while one of them is ignored. Added a comment.",
+      "parentUuid": "e757e086_efeff1ae",
       "revId": "3f265a32096d754af07511c5b65d17dee9018760",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
