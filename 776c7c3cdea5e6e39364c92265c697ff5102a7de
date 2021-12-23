@@ -93,6 +93,30 @@
       },
       "revId": "776c7c3cdea5e6e39364c92265c697ff5102a7de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47697101_58ea5cd6",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-23T04:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae8c3d2d_0f828be1",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "776c7c3cdea5e6e39364c92265c697ff5102a7de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
