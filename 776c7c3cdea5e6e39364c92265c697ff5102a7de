@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72552763_6a058574",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2021-12-23T04:39:18Z",
+      "side": 1,
+      "message": "Now that I think of it, this is only a problem for empty vectors at the end of iovs. I rewrote the code to check for that at the beginning of the function and decrease niovs down to one past the last non-empty iovec.",
+      "parentUuid": "de4a9f2f_14d6d221",
+      "range": {
+        "startLine": 92,
+        "startChar": 53,
+        "endLine": 93,
+        "endChar": 46
+      },
+      "revId": "776c7c3cdea5e6e39364c92265c697ff5102a7de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59219dd5_870f9ab1",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 12
