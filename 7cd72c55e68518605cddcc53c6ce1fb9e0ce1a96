@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3567a527_f4750313",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-12-24T07:45:43Z",
+      "side": 1,
+      "message": "Global-Approval as part of AFDO build rules cleanup.",
+      "revId": "7cd72c55e68518605cddcc53c6ce1fb9e0ce1a96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
