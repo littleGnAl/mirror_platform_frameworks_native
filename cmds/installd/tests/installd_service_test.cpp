@@ -316,6 +316,9 @@ TEST_F(ServiceTest, GetAppSize) {
         // check that the size before adding the file and after should be the same, as the app size
         // is not changed.
         for (size_t i = 0; i < externalStorageSize.size(); i++) {
+            LOG(INFO) << "Size before i[" << i << "]";
+            LOG(INFO) << "Before: " << externalStorageSize[i];
+            LOG(INFO) << "After: " << externalStorageSizeAfterAddingExternalFile[i];
             ASSERT_TRUE(externalStorageSize[i] == externalStorageSizeAfterAddingExternalFile[i]);
         }
         // remove the external file
