@@ -40,7 +40,7 @@ bool RunRpcServerCallback(AIBinder* service, unsigned int port, void (*readyCall
 bool RunRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* context),
                           void* factoryContext, unsigned int port);
 
-AIBinder* RpcClient(unsigned int cid, unsigned int port);
+AIBinder* RpcClient(unsigned int cid, unsigned int port, unsigned int incomingThreads);
 
 // Connect to an RPC server with preconnected file descriptors.
 //
