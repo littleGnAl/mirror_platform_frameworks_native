@@ -33,6 +33,24 @@
       "message": "could you please provide more information about the issue you are trying to solve? do you have a bug where this problem is reported?",
       "revId": "b354cb18bbbe41f252938536e1f259444d99dac4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2878c3d_dd1a79bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1838859
+      },
+      "writtenOn": "2021-12-30T08:38:30Z",
+      "side": 1,
+      "message": "Let\u0027s discuss in the issue:212504745.",
+      "parentUuid": "15e085cc_b5bafd87",
+      "revId": "b354cb18bbbe41f252938536e1f259444d99dac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
