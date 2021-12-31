@@ -199,6 +199,11 @@ bool RefreshRateOverlay::createLayer() {
     mLayer->setFrameRate(Layer::FrameRate(Fps(0.0f), Layer::FrameRateCompatibility::NoVote));
     mLayer->setIsAtRoot(true);
 
+    // set window's touch occlusion mode allow to propagate the touch events
+    InputWindowInfo info;
+    info.touchOcclusionMode = TouchOcclusionMode::ALLOW;
+    mLayer->setInputInfo(info);
+
     // setting Layer's Z requires resorting layersSortedByZ
     ssize_t idx = mFlinger.mDrawingState.layersSortedByZ.indexOf(mLayer);
     if (mLayer->setLayer(INT32_MAX - 2) && idx >= 0) {
