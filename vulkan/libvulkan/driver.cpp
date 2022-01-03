@@ -979,8 +979,6 @@ VkResult EnumerateInstanceExtensionProperties(
 void QueryPresentationProperties(
     VkPhysicalDevice physicalDevice,
     VkPhysicalDevicePresentationPropertiesANDROID* presentation_properties) {
-    ATRACE_CALL();
-
     // Request the android-specific presentation properties via GPDP2
     VkPhysicalDeviceProperties2 properties = {
         VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2,
@@ -996,17 +994,7 @@ void QueryPresentationProperties(
     presentation_properties->pNext = nullptr;
     presentation_properties->sharedImage = VK_FALSE;
 
-    const auto& driver = GetData(physicalDevice).driver;
-
-    if (driver.GetPhysicalDeviceProperties2) {
-        // >= 1.1 driver, supports core GPDP2 entrypoint.
-        driver.GetPhysicalDeviceProperties2(physicalDevice, &properties);
-    } else if (driver.GetPhysicalDeviceProperties2KHR) {
-        // Old driver, but may support presentation properties
-        // if we have the GPDP2 extension. Otherwise, no presentation
-        // properties supported.
-        driver.GetPhysicalDeviceProperties2KHR(physicalDevice, &properties);
-    }
+    GetPhysicalDeviceProperties2(physicalDevice, &properties);
 }
 
 VkResult EnumerateDeviceExtensionProperties(
