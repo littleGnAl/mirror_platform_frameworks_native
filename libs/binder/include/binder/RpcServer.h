@@ -47,6 +47,20 @@ public:
      */
     virtual void setRootObjectWeak(const wp<IBinder>& binder) = 0;
     virtual sp<IBinder> getRootObject() = 0;
+
+protected:
+    static constexpr size_t kSessionIdBytes = 32;
+
+    struct EstablishConnectionResult {
+        std::vector<uint8_t> sessionId;
+        uint32_t protocolVersion;
+        bool incoming;
+        bool requestingNewSession;
+    };
+
+    status_t establishConnectionHandshake(RpcTransport* transport, FdTrigger* fdTrigger,
+                                          std::optional<uint32_t> serverProtocolVersion,
+                                          EstablishConnectionResult* result);
 };
 
 /**

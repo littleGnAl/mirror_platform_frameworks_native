@@ -165,6 +165,7 @@ cc_library {
         "FdTrigger.cpp",
         "IInterface.cpp",
         "IResultReceiver.cpp", // FIXME: compile out?
+        "IRpcServer.cpp",
         "IShellCallback.cpp", // FIXME: compile out?
         "Parcel.cpp",
         "ParcelableHolder.cpp",
@@ -214,6 +215,7 @@ cc_library {
         "IMemory.cpp",
         "IPCThreadState.cpp",
         "IResultReceiver.cpp",
+        "IRpcServer.cpp",
         "IServiceManager.cpp",
         "IShellCallback.cpp",
         "LazyServiceRegistrar.cpp",

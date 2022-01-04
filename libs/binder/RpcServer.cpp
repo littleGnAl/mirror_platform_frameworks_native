@@ -39,8 +39,6 @@
 
 namespace android {
 
-constexpr size_t kSessionIdBytes = 32;
-
 using base::ScopeGuard;
 using base::unique_fd;
 
@@ -165,7 +163,6 @@ void RpcServer::start() {
 }
 
 void RpcServer::join() {
-
     {
         std::lock_guard<std::mutex> _l(mLock);
         LOG_ALWAYS_FATAL_IF(!mServer.ok(), "RpcServer must be setup to join.");
@@ -285,59 +282,10 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
         LOG_RPC_DETAIL("Created RpcTransport %p for client fd %d", client.get(), clientFdForLog);
     }
 
-    RpcConnectionHeader header;
+    EstablishConnectionResult establishResult;
     if (status == OK) {
-        status = client->interruptableReadFully(server->mShutdownTrigger.get(), &header,
-                                                sizeof(header), {});
-        if (status != OK) {
-            ALOGE("Failed to read ID for client connecting to RPC server: %s",
-                  statusToString(status).c_str());
-            // still need to cleanup before we can return
-        }
-    }
-
-    std::vector<uint8_t> sessionId;
-    if (status == OK) {
-        if (header.sessionIdSize > 0) {
-            if (header.sessionIdSize == kSessionIdBytes) {
-                sessionId.resize(header.sessionIdSize);
-                status = client->interruptableReadFully(server->mShutdownTrigger.get(),
-                                                        sessionId.data(), sessionId.size(), {});
-                if (status != OK) {
-                    ALOGE("Failed to read session ID for client connecting to RPC server: %s",
-                          statusToString(status).c_str());
-                    // still need to cleanup before we can return
-                }
-            } else {
-                ALOGE("Malformed session ID. Expecting session ID of size %zu but got %" PRIu16,
-                      kSessionIdBytes, header.sessionIdSize);
-                status = BAD_VALUE;
-            }
-        }
-    }
-
-    bool incoming = false;
-    uint32_t protocolVersion = 0;
-    bool requestingNewSession = false;
-
-    if (status == OK) {
-        incoming = header.options & RPC_CONNECTION_OPTION_INCOMING;
-        protocolVersion = std::min(header.version,
-                                   server->mProtocolVersion.value_or(RPC_WIRE_PROTOCOL_VERSION));
-        requestingNewSession = sessionId.empty();
-
-        if (requestingNewSession) {
-            RpcNewSessionResponse response{
-                    .version = protocolVersion,
-            };
-
-            status = client->interruptableWriteFully(server->mShutdownTrigger.get(), &response,
-                                                     sizeof(response), {});
-            if (status != OK) {
-                ALOGE("Failed to send new session response: %s", statusToString(status).c_str());
-                // still need to cleanup before we can return
-            }
-        }
+        status = server->establishConnectionHandshake(client.get(), server->mShutdownTrigger.get(),
+                                                      server->mProtocolVersion, &establishResult);
     }
 
     std::thread thisThread;
@@ -360,8 +308,8 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             return;
         }
 
-        if (requestingNewSession) {
-            if (incoming) {
+        if (establishResult.requestingNewSession) {
+            if (establishResult.incoming) {
                 ALOGE("Cannot create a new session with an incoming connection, would leak");
                 return;
             }
@@ -369,6 +317,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             // Uniquely identify session at the application layer. Even if a
             // client/server use the same certificates, if they create multiple
             // sessions, we still want to distinguish between them.
+            std::vector<uint8_t> sessionId;
             sessionId.resize(kSessionIdBytes);
             size_t tries = 0;
             do {
@@ -389,7 +338,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
 
             session = RpcSession::make();
             session->setMaxIncomingThreads(server->mMaxThreads);
-            if (!session->setProtocolVersion(protocolVersion)) return;
+            if (!session->setProtocolVersion(establishResult.protocolVersion)) return;
 
             // if null, falls back to server root
             sp<IBinder> sessionSpecificRoot;
@@ -413,16 +362,18 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
 
             server->mSessions[sessionId] = session;
         } else {
-            auto it = server->mSessions.find(sessionId);
+            auto it = server->mSessions.find(establishResult.sessionId);
             if (it == server->mSessions.end()) {
                 ALOGE("Cannot add thread, no record of session with ID %s",
-                      base::HexString(sessionId.data(), sessionId.size()).c_str());
+                      base::HexString(establishResult.sessionId.data(),
+                                      establishResult.sessionId.size())
+                              .c_str());
                 return;
             }
             session = it->second;
         }
 
-        if (incoming) {
+        if (establishResult.incoming) {
             LOG_ALWAYS_FATAL_IF(OK != session->addOutgoingConnection(std::move(client), true),
                                 "server state must already be initialized");
             return;
