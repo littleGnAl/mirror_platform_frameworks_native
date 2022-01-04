@@ -31,6 +31,25 @@ class FdTrigger;
 class RpcSocketAddress;
 
 /**
+ * This is the base interface common to all concrete RPC server implementations.
+ */
+class IRpcServer : public virtual RefBase {
+public:
+    /**
+     * The root object can be retrieved by any client, without any
+     * authentication. TODO(b/183988761)
+     *
+     * Holds a strong reference to the root object.
+     */
+    virtual void setRootObject(const sp<IBinder>& binder) = 0;
+    /**
+     * Holds a weak reference to the root object.
+     */
+    virtual void setRootObjectWeak(const wp<IBinder>& binder) = 0;
+    virtual sp<IBinder> getRootObject() = 0;
+};
+
+/**
  * This represents a server of an interface, which may be connected to by any
  * number of clients over sockets.
  *
@@ -42,7 +61,7 @@ class RpcSocketAddress;
  *     }
  *     server->join();
  */
-class RpcServer final : public virtual RefBase, private RpcSession::EventListener {
+class RpcServer final : public IRpcServer, private RpcSession::EventListener {
 public:
     static sp<RpcServer> make(
             std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
@@ -113,22 +132,13 @@ public:
      */
     void setProtocolVersion(uint32_t version);
 
-    /**
-     * The root object can be retrieved by any client, without any
-     * authentication. TODO(b/183988761)
-     *
-     * Holds a strong reference to the root object.
-     */
-    void setRootObject(const sp<IBinder>& binder);
-    /**
-     * Holds a weak reference to the root object.
-     */
-    void setRootObjectWeak(const wp<IBinder>& binder);
+    void setRootObject(const sp<IBinder>& binder) override;
+    void setRootObjectWeak(const wp<IBinder>& binder) override;
     /**
      * Allows a root object to be created for each session
      */
     void setPerSessionRootObject(std::function<sp<IBinder>(const sockaddr*, socklen_t)>&& object);
-    sp<IBinder> getRootObject();
+    sp<IBinder> getRootObject() override;
 
     /**
      * See RpcTransportCtx::getCertificate

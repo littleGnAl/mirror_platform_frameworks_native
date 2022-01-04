@@ -29,6 +29,7 @@
 namespace android {
 
 class Parcel;
+class IRpcServer;
 class RpcServer;
 class RpcSocketAddress;
 class RpcState;
@@ -175,7 +176,7 @@ public:
      * Server if this session is created as part of a server (symmetrical to
      * client servers). Otherwise, nullptr.
      */
-    sp<RpcServer> server();
+    sp<IRpcServer> server();
 
     // internal only
     const std::unique_ptr<RpcState>& state() { return mRpcBinderState; }
@@ -250,7 +251,7 @@ private:
     [[nodiscard]] status_t addIncomingConnection(std::unique_ptr<RpcTransport> rpcTransport);
     [[nodiscard]] status_t addOutgoingConnection(std::unique_ptr<RpcTransport> rpcTransport,
                                                  bool init);
-    [[nodiscard]] bool setForServer(const wp<RpcServer>& server,
+    [[nodiscard]] bool setForServer(const wp<IRpcServer>& server,
                                     const wp<RpcSession::EventListener>& eventListener,
                                     const std::vector<uint8_t>& sessionId,
                                     const sp<IBinder>& sessionSpecificRoot);
@@ -306,7 +307,7 @@ private:
     // For a more complicated case, the client might itself open up a thread to
     // serve calls to the server at all times (e.g. if it hosts a callback)
 
-    wp<RpcServer> mForServer; // maybe null, for client sessions
+    wp<IRpcServer> mForServer;                     // maybe null, for client sessions
     sp<WaitForShutdownListener> mShutdownListener; // used for client sessions
     wp<EventListener> mEventListener; // mForServer if server, mShutdownListener if client
 

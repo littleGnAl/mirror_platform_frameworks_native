@@ -422,9 +422,9 @@ void RpcSession::join(sp<RpcSession>&& session, PreJoinSetupResult&& setupResult
     }
 }
 
-sp<RpcServer> RpcSession::server() {
-    RpcServer* unsafeServer = mForServer.unsafe_get();
-    sp<RpcServer> server = mForServer.promote();
+sp<IRpcServer> RpcSession::server() {
+    IRpcServer* unsafeServer = mForServer.unsafe_get();
+    sp<IRpcServer> server = mForServer.promote();
 
     LOG_ALWAYS_FATAL_IF((unsafeServer == nullptr) != (server == nullptr),
                         "wp<> is to avoid strong cycle only");
@@ -709,7 +709,7 @@ status_t RpcSession::addOutgoingConnection(std::unique_ptr<RpcTransport> rpcTran
     return status;
 }
 
-bool RpcSession::setForServer(const wp<RpcServer>& server, const wp<EventListener>& eventListener,
+bool RpcSession::setForServer(const wp<IRpcServer>& server, const wp<EventListener>& eventListener,
                               const std::vector<uint8_t>& sessionId,
                               const sp<IBinder>& sessionSpecificRoot) {
     LOG_ALWAYS_FATAL_IF(mForServer != nullptr);
