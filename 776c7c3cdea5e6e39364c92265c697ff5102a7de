@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c35b5f_91f83ac1",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-01-04T22:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72552763_6a058574",
+      "range": {
+        "startLine": 92,
+        "startChar": 53,
+        "endLine": 93,
+        "endChar": 46
+      },
+      "revId": "776c7c3cdea5e6e39364c92265c697ff5102a7de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59219dd5_870f9ab1",

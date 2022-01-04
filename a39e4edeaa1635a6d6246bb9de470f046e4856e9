@@ -22,6 +22,30 @@
       },
       "revId": "a39e4edeaa1635a6d6246bb9de470f046e4856e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "205994a8_973bc216",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-01-04T22:50:09Z",
+      "side": 1,
+      "message": "The others aren\u0027t arrays, I\u0027m taking a pointer to a single element. I could refactor them, just wasn\u0027t sure it was worth it.",
+      "parentUuid": "76c2411a_16a88590",
+      "range": {
+        "startLine": 542,
+        "startChar": 66,
+        "endLine": 542,
+        "endChar": 75
+      },
+      "revId": "a39e4edeaa1635a6d6246bb9de470f046e4856e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
