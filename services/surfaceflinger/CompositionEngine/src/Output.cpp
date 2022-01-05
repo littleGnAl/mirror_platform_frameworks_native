@@ -925,6 +925,18 @@ std::optional<base::unique_fd> Output::composeSurfaces(
                                     buf->getNativeBuffer(), /*useFramebufferCache=*/true,
                                     std::move(fd), &readyFence);
 
+
+    //Blacken when empty layer stack, avoiding the random pixels buffer
+    if (buf != nullptr && clientCompositionLayerPointers.empty()) {
+        void *vaddr;
+        int32_t bytesPerPixel;
+        status_t err = buf->lock(GRALLOC_USAGE_SW_WRITE_OFTEN, &vaddr, &bytesPerPixel);
+        if (err == NO_ERROR) {
+            size_t n = buf->getWidth() * buf->getHeight() * static_cast<uint32_t>(bytesPerPixel);
+            memset(vaddr, 0, n);
+        }
+    }
+
     if (status != NO_ERROR && mClientCompositionRequestCache) {
         // If rendering was not successful, remove the request from the cache.
         mClientCompositionRequestCache->remove(buf->getId());
