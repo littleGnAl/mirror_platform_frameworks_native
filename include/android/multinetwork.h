@@ -216,6 +216,45 @@ int android_res_nresult(int fd,
  */
 void android_res_cancel(int nsend_fd) __INTRODUCED_IN(29);
 
+/*
+ * Set tags (and owning UIDs) as statistics parameters for network sockets.
+ * Return errno on failure. Subsequent calls always replace any
+ * existing parameters. The socket tag is kept when the socket is sent to
+ * another process using binder IPCs or other mechanisms such as UNIX socket fd
+ * passing. Any app can accept blame for future traffic performed on a socket
+ * originally created by another app by calling this method with its own UID.
+ * However, only apps holding the
+ * android.Manifest.permission#UPDATE_DEVICE_STATS permission may assign blame
+ * to another UIDs.
+ *
+ * Available since API level 32.
+ */
+int android_tag_socket_with_uid(int sockfd, int tag, uid_t uid) __INTRODUCED_IN(32);
+
+/*
+ * This function tags the socket with the caller's UID (accepting blame for
+ * future traffic performed on this socket) even if the socket was originally
+ * opened by another UID or was previously tagged by another UID. Return errno
+ * on failure. Subsequent calls always replace any existing parameters. The
+ * socket tag is kept when the socket is sent to another process using binder
+ * IPCs or other mechanisms such as UNIX socket fd passing.
+ *
+ * Available since API level 32.
+ */
+int android_tag_socket(int sockfd, int tag) __INTRODUCED_IN(32);
+
+/*
+ * Untag a network socket. This will remove any statistics parameters from
+ * traffic performed on this socket in the future. If the socket was created by
+ * another UID or was previously tagged by another UID, calling this function
+ * will clear the statistics parameters, and thus the UID blamed for traffic on
+ * the socket will be the UID that originally created the socket, even if the
+ * socket was subsequently tagged by a different UID.
+ *
+ * Available since API level 32.
+ */
+int android_untag_socket(int sockfd) __INTRODUCED_IN(32);
+
 __END_DECLS
 
 #endif  // ANDROID_MULTINETWORK_H
