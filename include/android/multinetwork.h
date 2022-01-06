@@ -216,6 +216,32 @@ int android_res_nresult(int fd,
  */
 void android_res_cancel(int nsend_fd) __INTRODUCED_IN(29);
 
+/*
+ * Set tags (and owning UIDs) as statistics parameters for network sockets. Return -1 and set errno
+ * on failure. Subsequent calls always replace any existing parameters. When finished, call
+ * untagSocket(int sockfd) to remove statistics. The socket tag is kept when the socket is sent to
+ * another process using binder IPC.
+ *
+ * Available since API level 32.
+ */
+int android_tag_socket_with_uid(int sockfd, int tag, uid_t uid) __INTRODUCED_IN(32);
+
+/*
+ * Similar to android_tag_socket_with_uid. But no need to specify UID. The function tags socket with
+ * caller's UID.
+ *
+ * Available since API level 32.
+ */
+int android_tag_socket(int sockfd, int tag) __INTRODUCED_IN(32);
+
+/*
+ * Untag a network socket before closing. This will remove any statistics parameters from the given
+ * Socket.
+ *
+ * Available since API level 32.
+ */
+int android_untag_socket(int sockfd) __INTRODUCED_IN(32);
+
 __END_DECLS
 
 #endif  // ANDROID_MULTINETWORK_H
