@@ -216,6 +216,16 @@ int android_res_nresult(int fd,
  */
 void android_res_cancel(int nsend_fd) __INTRODUCED_IN(29);
 
+/*
+ * Set tags (and owning UIDs) for network sockets. Return -1 and set errno on failure.
+ */
+extern int android_tagSocket_with_uid(int sockfd, int tag, uid_t uid) __INTRODUCED_IN(32);
+
+/*
+ * Untag a network socket before closing.
+ */
+extern int android_untagSocket(int sockfd) __INTRODUCED_IN(32);
+
 __END_DECLS
 
 #endif  // ANDROID_MULTINETWORK_H
