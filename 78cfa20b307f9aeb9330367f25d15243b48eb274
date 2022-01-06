@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fecae63_1a3d0564",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-01-06T23:02:59Z",
+      "side": 1,
+      "message": "It\u0027s going to be impossible to update virtual functions here shortly (clients in prebuilts freeze virtual table layouts). So, we couldn\u0027t rely on being able to add new virtual functions here. Can you avoid making the RPC server related functions part of the public interface of RpcServer?",
+      "range": {
+        "startLine": 44,
+        "startChar": 58,
+        "endLine": 44,
+        "endChar": 62
+      },
+      "revId": "78cfa20b307f9aeb9330367f25d15243b48eb274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
