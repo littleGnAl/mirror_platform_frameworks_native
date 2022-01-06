@@ -39,6 +39,30 @@
       },
       "revId": "bf78563ce6a1ba8825294796ee9a914c5f2cebf7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "131b5c3c_4ace129d",
+        "filename": "services/surfaceflinger/CompositionEngine/src/Output.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1707594
+      },
+      "writtenOn": "2022-01-06T09:28:54Z",
+      "side": 1,
+      "message": "The test cannot pass, and I\u0027ve removed this change. Please check patchset 2. Thanks.",
+      "parentUuid": "f9576c5b_6ae5bd14",
+      "range": {
+        "startLine": 682,
+        "startChar": 3,
+        "endLine": 684,
+        "endChar": 5
+      },
+      "revId": "bf78563ce6a1ba8825294796ee9a914c5f2cebf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
