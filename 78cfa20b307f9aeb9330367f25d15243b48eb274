@@ -22,6 +22,30 @@
       },
       "revId": "78cfa20b307f9aeb9330367f25d15243b48eb274",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f5262f_c2cddc82",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-01-06T23:56:51Z",
+      "side": 1,
+      "message": "In that case, how about having an RpcSession::IServer interface with just these specific methods, and make RpcServer either derive that directly or provide a \"sp\u003cRpcSession::IServer\u003e getSessionInterface()\" method that returns a proxy?",
+      "parentUuid": "5fecae63_1a3d0564",
+      "range": {
+        "startLine": 44,
+        "startChar": 58,
+        "endLine": 44,
+        "endChar": 62
+      },
+      "revId": "78cfa20b307f9aeb9330367f25d15243b48eb274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
