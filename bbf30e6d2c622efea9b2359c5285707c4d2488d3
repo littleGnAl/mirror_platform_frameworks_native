@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b33c7384_d17fc730",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-07T09:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebc8f5d8_02acdf10",
+      "range": {
+        "startLine": 220,
+        "startChar": 85,
+        "endLine": 220,
+        "endChar": 86
+      },
+      "revId": "bbf30e6d2c622efea9b2359c5285707c4d2488d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "131f4f3a_a4bbc4bc",
@@ -118,6 +142,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67d4629d_110d4e8a",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-07T09:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "131f4f3a_a4bbc4bc",
+      "range": {
+        "startLine": 222,
+        "startChar": 19,
+        "endLine": 222,
+        "endChar": 37
+      },
+      "revId": "bbf30e6d2c622efea9b2359c5285707c4d2488d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7660e7_b49dd0ed",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-07T09:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd1b0c56_610466f9",
+      "range": {
+        "startLine": 222,
+        "startChar": 29,
+        "endLine": 222,
+        "endChar": 37
+      },
+      "revId": "bbf30e6d2c622efea9b2359c5285707c4d2488d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d4ec9cb_af075001",
@@ -131,6 +203,30 @@
       "writtenOn": "2022-01-07T01:58:15Z",
       "side": 1,
       "message": "Ditto, we should probably have the same docs as TrafficStats. Again, feel free to adapt from the following javadoc snippets:\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nRemove any statistics parameters from the given Socket.\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d",
+      "range": {
+        "startLine": 225,
+        "startChar": 26,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "bbf30e6d2c622efea9b2359c5285707c4d2488d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44857e9_7ff60d53",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-07T09:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d4ec9cb_af075001",
       "range": {
         "startLine": 225,
         "startChar": 26,
