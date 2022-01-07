@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd1b0c56_610466f9",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-01-07T02:10:52Z",
+      "side": 1,
+      "message": "http://cs/aosp-master/system/netd/server/FwmarkServer.cpp?l\u003d309\u0026rcl\u003dda12b9dce183a6fab45a3b15fa22eff6a98f13c1\n\nstatic inline int android_tagSocket(int, int) { return android_tagSocketWithUid(x,x,-1); }",
+      "parentUuid": "7c94ad6b_e1f862a5",
+      "range": {
+        "startLine": 222,
+        "startChar": 29,
+        "endLine": 222,
+        "endChar": 37
+      },
+      "revId": "bbf30e6d2c622efea9b2359c5285707c4d2488d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d4ec9cb_af075001",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 2
