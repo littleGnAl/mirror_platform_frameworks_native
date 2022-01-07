@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebc8f5d8_02acdf10",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-07T01:58:15Z",
+      "side": 1,
+      "message": "This comment should mirror at least some of the documentation in the equivalent TrafficStats methods. Suggest reusing/adapting some of the following which I copied from TrafficStats (but note that this code does *not* get the parameters from the thread, it takes the parameters as arguments):\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTag the given Socket with any statistics parameters active for the current thread. Subsequent calls always replace any existing parameters. When finished, call untagSocket(java.net.Socket) to remove statistics parameters.\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nAny app can accept blame for traffic performed on a socket originally created by another app by calling this method with the Os.getuid() value. However, only apps holding the android.Manifest.permission#UPDATE_DEVICE_STATS permission may assign blame to another UIDs.\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nThe socket tag is kept when the socket is sent to another process using binder IPC.\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d",
+      "range": {
+        "startLine": 220,
+        "startChar": 85,
+        "endLine": 220,
+        "endChar": 86
+      },
+      "revId": "bbf30e6d2c622efea9b2359c5285707c4d2488d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131f4f3a_a4bbc4bc",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-07T01:58:15Z",
+      "side": 1,
+      "message": "It\u0027s strange to have both camelCase and snake_case in the same function name. Suggest picking only one of the two, so either android_tagSocketWithUid or android_tag_socket_with_uid.",
+      "range": {
+        "startLine": 222,
+        "startChar": 19,
+        "endLine": 222,
+        "endChar": 37
+      },
+      "revId": "bbf30e6d2c622efea9b2359c5285707c4d2488d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c94ad6b_e1f862a5",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-07T01:58:15Z",
+      "side": 1,
+      "message": "The set of apps that can pass in a UID is very limited. Can we provide a method that only takes the tag? The implementation can combine the tag with the calling app\u0027s UID.",
+      "range": {
+        "startLine": 222,
+        "startChar": 29,
+        "endLine": 222,
+        "endChar": 37
+      },
+      "revId": "bbf30e6d2c622efea9b2359c5285707c4d2488d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d4ec9cb_af075001",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-07T01:58:15Z",
+      "side": 1,
+      "message": "Ditto, we should probably have the same docs as TrafficStats. Again, feel free to adapt from the following javadoc snippets:\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nRemove any statistics parameters from the given Socket.\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d",
+      "range": {
+        "startLine": 225,
+        "startChar": 26,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "bbf30e6d2c622efea9b2359c5285707c4d2488d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
