@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56798a02_f4225b1b",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-01-07T14:50:21Z",
+      "side": 1,
+      "message": "see other CL, let\u0027s remove inline and implementation, and move this to the lib instead.  that\u0027s more future proof and there\u0027s actually no performance impact.",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 6
+      },
+      "revId": "79a43296a081a76e8cfbd44554491d9098aa862f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
