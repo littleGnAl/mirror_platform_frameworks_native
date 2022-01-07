@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f96d697_43426ef0",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-07T02:10:12Z",
+      "side": 1,
+      "message": "Specifically, passing in a uid of -1 will work. See:\n\nhttps://source.corp.google.com/aosp-master/frameworks/base/core/java/com/android/server/NetworkManagementSocketTagger.java;rcl\u003d0cf9e87c796ba136977f22adb805cb74ed9a1275;l\u003d109",
+      "parentUuid": "7c94ad6b_e1f862a5",
+      "range": {
+        "startLine": 222,
+        "startChar": 29,
+        "endLine": 222,
+        "endChar": 37
+      },
+      "revId": "bbf30e6d2c622efea9b2359c5285707c4d2488d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d4ec9cb_af075001",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 2
