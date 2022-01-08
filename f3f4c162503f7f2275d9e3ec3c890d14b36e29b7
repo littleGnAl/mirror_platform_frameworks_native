@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1cd8e1e_dae8b9e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-01-08T08:40:12Z",
+      "side": 1,
+      "message": "Code looks fine, but the comments about untag before closing are weird.\nWhat happens if one closes without untagging the socket?",
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
