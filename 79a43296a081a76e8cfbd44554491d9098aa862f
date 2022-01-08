@@ -22,6 +22,30 @@
       },
       "revId": "79a43296a081a76e8cfbd44554491d9098aa862f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0615127a_b29376c4",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-08T03:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56798a02_f4225b1b",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 6
+      },
+      "revId": "79a43296a081a76e8cfbd44554491d9098aa862f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
