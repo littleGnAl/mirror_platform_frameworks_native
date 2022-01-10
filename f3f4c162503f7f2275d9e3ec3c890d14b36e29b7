@@ -33,6 +33,42 @@
       "message": "The existing methods seem to have a mix of error reporting behavior, which is unfortunate. Some return negative error codes, others return -1 and set errno.\n\nI\u0027d personally prefer the former, since the latter requires checking two variables, so why not just return the error code directly instead of just -1? And I don\u0027t recall other NDK methods using errno anywhere, though I may just not know about it.\n",
       "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01249b9_f97ce855",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-10T13:25:59Z",
+      "side": 1,
+      "message": "Yes, we do have mixed bug reporting behavior. But they are already public and there are apps like Facebook using them. We probably have no way to unify existing functions. For three newly added functions, they do return the errno directly.",
+      "parentUuid": "b2f1e2ca_ee35f1cf",
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29f703ad_39c2b641",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-10T13:25:59Z",
+      "side": 1,
+      "message": "The statistic will be deleted when a socket is closed, no matter the socket is untagged or not. Users can call android_untag_socket to remove stats at any time if they are no longer interested.",
+      "parentUuid": "c1cd8e1e_dae8b9e9",
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
