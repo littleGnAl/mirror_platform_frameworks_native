@@ -16,6 +16,23 @@
       "message": "Code looks fine, but the comments about untag before closing are weird.\nWhat happens if one closes without untagging the socket?",
       "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2f1e2ca_ee35f1cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2022-01-10T03:58:27Z",
+      "side": 1,
+      "message": "The existing methods seem to have a mix of error reporting behavior, which is unfortunate. Some return negative error codes, others return -1 and set errno.\n\nI\u0027d personally prefer the former, since the latter requires checking two variables, so why not just return the error code directly instead of just -1? And I don\u0027t recall other NDK methods using errno anywhere, though I may just not know about it.\n",
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
