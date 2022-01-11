@@ -69,6 +69,29 @@
       "parentUuid": "c1cd8e1e_dae8b9e9",
       "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead8e2f0_e2a58be3",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-01-11T04:32:30Z",
+      "side": 1,
+      "message": "AFAICT this doc is bad - all this does is call into:\n\nhttp://cs/aosp-master/system/netd/server/TrafficController.cpp?l\u003d393\u0026rcl\u003d5851b0354406e28993ee18ff37364b70ec474a84\n\nso \u0027before closing\u0027 is spurious - indeed we can\u0027t rely on userspace correctly calling this before close(), because a process terminating closes all sockets (in the kernel) without calling this.\n\nAdditionally, it doesn\u0027t remove any statistics parameters.  It just breaks the link between the socket and any existent uid/tag.\n\nuntag(fd) is basically nearly equivalent to tag(fd, 0, -1), since I think that\u0027s the default behaviour for an untagged socket (ie. tag 0, and use socket owner\u0027s uid) - at least for unpriv processes (ie. ignoring special cases like dns/clat)",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 99
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
