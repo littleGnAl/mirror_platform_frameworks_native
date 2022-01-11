@@ -73,6 +73,139 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cb28c59_288250a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-11T06:51:57Z",
+      "side": 1,
+      "message": "In what sense are these functions already public and have apps using them? These functions are being introduced in this CL, so apps can\u0027t be using them. Do you mean that apps are already calling functions that behave the same way as the ones being introduced in this CL? If so, what are the functions that they are already calling?",
+      "parentUuid": "c01249b9_f97ce855",
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02dc9c35_200a59bf",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-11T06:51:57Z",
+      "side": 1,
+      "message": "I think this text is incorrect. Untagging the socket does not remove statistics, it only removes the statistics parameters from the socket. Maybe just remove this sentence?",
+      "range": {
+        "startLine": 222,
+        "startChar": 27,
+        "endLine": 222,
+        "endChar": 47
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca8721d_3a3c900d",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-11T06:51:57Z",
+      "side": 1,
+      "message": "This should contain the information in the Java documentation about accepting and assigning blame. Perhaps:\n\n\u003d\u003d\u003d\u003d\u003d\u003d\nAny app can accept blame for future traffic performed on a socket originally created by another app by calling this method with its own UID. However, only apps holding the android.Manifest.permission#UPDATE_DEVICE_STATS permission may assign blame to another UIDs.",
+      "range": {
+        "startLine": 223,
+        "startChar": 35,
+        "endLine": 223,
+        "endChar": 36
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd052d79_49206b5e",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-11T06:51:57Z",
+      "side": 1,
+      "message": "binder IPCs or other mechanisms such as UNIX socket fd passing.",
+      "range": {
+        "startLine": 223,
+        "startChar": 25,
+        "endLine": 223,
+        "endChar": 35
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5540aee8_f4ffe686",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-11T06:51:57Z",
+      "side": 1,
+      "message": "I think it would be better to repeat the relevant documentation here instead of saying \"Similar to android_tag_socket_with_uid\". Most apps won\u0027t have permission to call android_tag_socket_with_uid anyway (at least, they won\u0027t have permission to call it with any UID that is not their own UID).",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 230,
+        "endChar": 41
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18a0412_cb03370c",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-11T06:51:57Z",
+      "side": 1,
+      "message": "This should say what happens if the socket was originally created by another UID, or previously tagged by another UID. Maybe something like the following (but first please check that it\u0027s correct):\n\n\u003d\u003d\u003d\u003d\u003d\nThis function tags the socket with the caller\u0027s UID (accepting blame for future traffic performed on this socket) even if the socket was originally opened by another UID or was previously tagged by another UID.\n\u003d\u003d\u003d\u003d\u003d",
+      "range": {
+        "startLine": 231,
+        "startChar": 15,
+        "endLine": 231,
+        "endChar": 16
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ead8e2f0_e2a58be3",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 5
@@ -89,6 +222,76 @@
         "startChar": 0,
         "endLine": 238,
         "endChar": 99
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f0cab36_20d99d5a",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-11T06:51:57Z",
+      "side": 1,
+      "message": "+1 on removing the words \"before closing\".\n\nI think it\u0027s fine to use the words \"statistics parameters\" because the documentation for tagSocket says that UID and tag are statistics parameters. Maybe say something like:\n\nUntag a network socket. This will remove any statistics parameters from traffic performed on this socket in the future.",
+      "parentUuid": "ead8e2f0_e2a58be3",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 99
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5a0b95f_3257935b",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-11T06:51:57Z",
+      "side": 1,
+      "message": "Socket should have a small s.",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 239,
+        "endChar": 9
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8549dd_7da3c677",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-11T06:51:57Z",
+      "side": 1,
+      "message": "This should say what happens if the socket was created by another UID or was previously tagged by another UID. It looks like it will clear the statistics parameters, and thus the UID blamed for traffic on the socket will be the UID that originally created the socket, even if the socket was subsequently tagged by a different UID.",
+      "range": {
+        "startLine": 239,
+        "startChar": 9,
+        "endLine": 239,
+        "endChar": 10
       },
       "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
