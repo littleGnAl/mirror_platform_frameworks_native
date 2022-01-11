@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82d330f0_608f5b21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2022-01-11T19:08:14Z",
+      "side": 1,
+      "message": "I was talking about the existing NDK methods in the network group - some return error codes, others return -1 and set errno.  It\u0027s unfortunate they\u0027re not even locally consistent.\n\nI strongly prefer returning error codes directly instead of using errno - you already have a return value available, so why not just use it directly instead of requiring using errno too?",
+      "parentUuid": "0cb28c59_288250a2",
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02dc9c35_200a59bf",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 5
