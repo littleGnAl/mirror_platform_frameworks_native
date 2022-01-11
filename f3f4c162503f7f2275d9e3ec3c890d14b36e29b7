@@ -107,6 +107,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01dd5f67_34b1515b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-11T19:08:22Z",
+      "side": 1,
+      "message": "I meant other existing functions in this file.\n\nandroid_res_nquery and android_res_nsend return errno directly.\nandroid_getaddrinfofornetwork and others returns -1 and set errno.",
+      "parentUuid": "0cb28c59_288250a2",
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02dc9c35_200a59bf",
@@ -120,6 +138,30 @@
       "writtenOn": "2022-01-11T06:51:57Z",
       "side": 1,
       "message": "I think this text is incorrect. Untagging the socket does not remove statistics, it only removes the statistics parameters from the socket. Maybe just remove this sentence?",
+      "range": {
+        "startLine": 222,
+        "startChar": 27,
+        "endLine": 222,
+        "endChar": 47
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5154e8_02ac4d68",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-11T19:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02dc9c35_200a59bf",
       "range": {
         "startLine": 222,
         "startChar": 27,
@@ -176,6 +218,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fcf40a6_76c47901",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-11T19:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd052d79_49206b5e",
+      "range": {
+        "startLine": 223,
+        "startChar": 25,
+        "endLine": 223,
+        "endChar": 35
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "047f27cf_d572f9f4",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-11T19:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ca8721d_3a3c900d",
+      "range": {
+        "startLine": 223,
+        "startChar": 35,
+        "endLine": 223,
+        "endChar": 36
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5540aee8_f4ffe686",
@@ -199,6 +289,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1245954_198b3006",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-11T19:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5540aee8_f4ffe686",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 230,
+        "endChar": 41
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e18a0412_cb03370c",
@@ -212,6 +326,30 @@
       "writtenOn": "2022-01-11T06:51:57Z",
       "side": 1,
       "message": "This should say what happens if the socket was originally created by another UID, or previously tagged by another UID. Maybe something like the following (but first please check that it\u0027s correct):\n\n\u003d\u003d\u003d\u003d\u003d\nThis function tags the socket with the caller\u0027s UID (accepting blame for future traffic performed on this socket) even if the socket was originally opened by another UID or was previously tagged by another UID.\n\u003d\u003d\u003d\u003d\u003d",
+      "range": {
+        "startLine": 231,
+        "startChar": 15,
+        "endLine": 231,
+        "endChar": 16
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "641eb334_6d170493",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-11T19:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e18a0412_cb03370c",
       "range": {
         "startLine": 231,
         "startChar": 15,
@@ -269,6 +407,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23a8515_2d3208c2",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-11T19:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f0cab36_20d99d5a",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 99
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5a0b95f_3257935b",
@@ -305,6 +467,54 @@
       "writtenOn": "2022-01-11T06:51:57Z",
       "side": 1,
       "message": "This should say what happens if the socket was created by another UID or was previously tagged by another UID. It looks like it will clear the statistics parameters, and thus the UID blamed for traffic on the socket will be the UID that originally created the socket, even if the socket was subsequently tagged by a different UID.",
+      "range": {
+        "startLine": 239,
+        "startChar": 9,
+        "endLine": 239,
+        "endChar": 10
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce5af69_ff68934f",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-11T19:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5a0b95f_3257935b",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 239,
+        "endChar": 9
+      },
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c512102_b1a453da",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-11T19:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d8549dd_7da3c677",
       "range": {
         "startLine": 239,
         "startChar": 9,
