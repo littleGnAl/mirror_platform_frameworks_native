@@ -125,6 +125,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f4a146a_cfe19dcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-11T19:17:45Z",
+      "side": 1,
+      "message": "For three newly added functions, they do return the error code directly. The implementation is here https://osscs.corp.google.com/android/platform/superproject/+/master:system/netd/server/TrafficController.cpp?q\u003d%22TrafficController::tagSocket%22.\n\nI updated comments accordingly.",
+      "parentUuid": "01dd5f67_34b1515b",
+      "revId": "f3f4c162503f7f2275d9e3ec3c890d14b36e29b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02dc9c35_200a59bf",
