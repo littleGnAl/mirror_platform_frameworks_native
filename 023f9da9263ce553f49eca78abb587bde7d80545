@@ -51,6 +51,24 @@
       "parentUuid": "1ca0ac43_5d60c0f6",
       "revId": "023f9da9263ce553f49eca78abb587bde7d80545",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5653932e_cda57738",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2022-01-11T11:12:02Z",
+      "side": 1,
+      "message": "Yeah I know. What I was trying to say is: the lack of scheD_process_free is mostly an oversight that was caught by accident in the process of dealing with this kernel issue. \nIIRC it works in userdebug but not on user, that\u0027s why I was suggesting, this should stay (land only the other CL on top of this)",
+      "parentUuid": "9c715814_48577254",
+      "revId": "023f9da9263ce553f49eca78abb587bde7d80545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
