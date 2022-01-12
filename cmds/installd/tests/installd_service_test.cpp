@@ -300,6 +300,7 @@ TEST_F(ServiceTest, GetAppSize) {
         ceDataInodes.push_back(0);
         // initialise the mounts
         service->invalidateMounts();
+        service->setFirstBoot();
         // call the getAppSize to get the current size of the external storage owning app
         service->getAppSize(std::nullopt, packageNames, 0, InstalldNativeService::FLAG_USE_QUOTA,
                             externalStorageAppId, ceDataInodes, codePaths, &externalStorageSize);
@@ -316,6 +317,9 @@ TEST_F(ServiceTest, GetAppSize) {
         // check that the size before adding the file and after should be the same, as the app size
         // is not changed.
         for (size_t i = 0; i < externalStorageSize.size(); i++) {
+            LOG(INFO) << "Size before i[" << i << "]";
+            LOG(INFO) << "Before: " << externalStorageSize[i];
+            LOG(INFO) << "After: " << externalStorageSizeAfterAddingExternalFile[i];
             ASSERT_TRUE(externalStorageSize[i] == externalStorageSizeAfterAddingExternalFile[i]);
         }
         // remove the external file

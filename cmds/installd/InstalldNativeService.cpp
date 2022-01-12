@@ -466,12 +466,31 @@ done:
     return res;
 }
 
-static int prepare_app_dir(const std::string& path, mode_t target_mode, uid_t uid) {
+static int prepare_app_dir(const std::string& path, mode_t target_mode, uid_t uid,
+                           long project_id) {
     if (fs_prepare_dir_strict(path.c_str(), target_mode, uid, uid) != 0) {
         PLOG(ERROR) << "Failed to prepare " << path;
         return -1;
     }
+    if (!supports_sdcardfs()) {
+        LOG(INFO) << "Setting quota project id for id:" << project_id;
+        return set_quota_project_id(path, project_id, true);
+    }
     return 0;
+}
+
+static int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t target_mode,
+                                 uid_t uid, gid_t gid, long project_id) {
+    auto path = StringPrintf("%s/%s", parent.c_str(), name);
+    PLOG(ERROR) << "prepare_app_cache_dir: path" << path << " project id: " << project_id;
+    int ret = prepare_app_cache_dir(parent, name, target_mode, uid, gid);
+    PLOG(ERROR) << "after creating the app cache dir: ret: " << ret
+                << " supports_sdcardfs: " << supports_sdcardfs();
+    if (ret == 0 && !supports_sdcardfs()) {
+        LOG(INFO) << "Setting quota project id for cache, project_id:" << project_id;
+        return set_quota_project_id(path, project_id, true);
+    }
+    return ret;
 }
 
 static bool prepare_app_profile_dir(const std::string& packageName, int32_t appId, int32_t userId) {
@@ -633,9 +652,12 @@ static binder::Status createAppDataDirs(const std::string& path,
     }
 
     // Prepare only the parent app directory
-    if (prepare_app_dir(path, targetMode, uid) ||
-            prepare_app_cache_dir(path, "cache", 02771, uid, cacheGid) ||
-            prepare_app_cache_dir(path, "code_cache", 02771, uid, cacheGid)) {
+    long project_id_app = get_project_id(uid, PROJECT_ID_APP_START);
+    long project_id_cache_app = get_project_id(uid, PROJECT_ID_APP_CACHE_START);
+    LOG(INFO) << "pi app: " << project_id_app << "pi cache app" << project_id_cache_app;
+    if (prepare_app_dir(path, targetMode, uid, project_id_app) ||
+        prepare_app_cache_dir(path, "cache", 02771, uid, cacheGid, project_id_cache_app) ||
+        prepare_app_cache_dir(path, "code_cache", 02771, uid, cacheGid, project_id_cache_app)) {
         return error("Failed to prepare " + path);
     }
 
@@ -1821,18 +1843,60 @@ static std::string toString(std::vector<int64_t> values) {
 }
 #endif
 
+static bool supports_project_id() {
+    // The following path is populated in setFirstBoot, so if this file is present
+    // then project ids can be used.
+    if (supports_sdcardfs()) {
+        auto first_boot_path = StringPrintf("%smisc/installd/first_boot", android_data_dir.c_str());
+        return access(first_boot_path.c_str(), F_OK) == 0;
+    }
+    return false;
+}
+
+static void deductDoubleSpaceIfNeeded(stats* p_stats, int64_t deleted, uid_t uid,
+                                      const std::string& basic_string);
 static void collectQuotaStats(const std::string& uuid, int32_t userId,
         int32_t appId, struct stats* stats, struct stats* extStats) {
-    int64_t space;
+    int64_t space, doubleSpaceToBeDeleted = 0;
     uid_t uid = multiuser_get_uid(userId, appId);
-    if (stats != nullptr) {
-        if ((space = GetOccupiedSpaceForUid(uuid, uid)) != -1) {
-            stats->dataSize += space;
+    static const bool supportsProjectId = supports_project_id();
+
+    if (extStats != nullptr) {
+        space = get_occupied_app_space_external(uuid, userId, appId);
+
+        if (space != -1) {
+            extStats->dataSize += space;
+            doubleSpaceToBeDeleted += space;
         }
 
-        int cacheGid = multiuser_get_cache_gid(userId, appId);
-        if (cacheGid != -1) {
-            if ((space = GetOccupiedSpaceForGid(uuid, cacheGid)) != -1) {
+        space = get_occupied_app_cache_space_external(uuid, userId, appId);
+        if (space != -1) {
+            extStats->dataSize += space; // cache counts for "data"
+            extStats->cacheSize += space;
+            doubleSpaceToBeDeleted += space;
+        }
+    }
+
+    if (stats != nullptr) {
+        if (!supportsProjectId) {
+            if ((space = GetOccupiedSpaceForUid(uuid, uid)) != -1) {
+                stats->dataSize += space;
+            }
+            deductDoubleSpaceIfNeeded(stats, doubleSpaceToBeDeleted, uid, uuid);
+            int cacheGid = multiuser_get_cache_gid(userId, appId);
+            if (cacheGid != -1) {
+                if ((space = GetOccupiedSpaceForGid(uuid, cacheGid)) != -1) {
+                    stats->cacheSize += space;
+                }
+            }
+        } else {
+            long projectId = get_project_id(uid, PROJECT_ID_APP_START);
+            if ((space = GetOccupiedSpaceForProjectId(uuid, projectId)) != -1) {
+                stats->dataSize += space;
+            }
+
+            projectId = get_project_id(uid, PROJECT_ID_APP_CACHE_START);
+            if ((space = GetOccupiedSpaceForProjectId(uuid, projectId)) != -1) {
                 stats->cacheSize += space;
             }
         }
@@ -1844,46 +1908,20 @@ static void collectQuotaStats(const std::string& uuid, int32_t userId,
             }
         }
     }
+}
+// On devices without sdcardfs, if internal and external are on
+// the same volume, a uid such as u0_a123 is used for both
+// internal and external storage; therefore, subtract that
+// amount from internal to make sure we don't count it double.
+// This needs to happen for data, cache and OBB
+static void deductDoubleSpaceIfNeeded(stats* stats, int64_t doubleSpaceToBeDeleted, uid_t uid,
+                                      const std::string& uuid) {
+    if (!supports_sdcardfs()) {
+        stats->dataSize -= doubleSpaceToBeDeleted;
 
-    if (extStats != nullptr) {
-        static const bool supportsSdCardFs = supports_sdcardfs();
-        space = get_occupied_app_space_external(uuid, userId, appId);
-
-        if (space != -1) {
-            extStats->dataSize += space;
-            if (!supportsSdCardFs && stats != nullptr) {
-                // On devices without sdcardfs, if internal and external are on
-                // the same volume, a uid such as u0_a123 is used for
-                // application dirs on both internal and external storage;
-                // therefore, substract that amount from internal to make sure
-                // we don't count it double.
-                stats->dataSize -= space;
-            }
-        }
-
-        space = get_occupied_app_cache_space_external(uuid, userId, appId);
-        if (space != -1) {
-            extStats->dataSize += space; // cache counts for "data"
-            extStats->cacheSize += space;
-            if (!supportsSdCardFs && stats != nullptr) {
-                // On devices without sdcardfs, if internal and external are on
-                // the same volume, a uid such as u0_a123 is used for both
-                // internal and external storage; therefore, substract that
-                // amount from internal to make sure we don't count it double.
-                stats->dataSize -= space;
-            }
-        }
-
-        if (!supportsSdCardFs && stats != nullptr) {
-            // On devices without sdcardfs, the UID of OBBs on external storage
-            // matches the regular app UID (eg u0_a123); therefore, to avoid
-            // OBBs being include in stats->dataSize, compute the OBB size for
-            // this app, and substract it from the size reported on internal
-            // storage
-            long obbProjectId = uid - AID_APP_START + PROJECT_ID_EXT_OBB_START;
-            int64_t appObbSize = GetOccupiedSpaceForProjectId(uuid, obbProjectId);
-            stats->dataSize -= appObbSize;
-        }
+        long obbProjectId = get_project_id(uid, PROJECT_ID_EXT_OBB_START);
+        int64_t appObbSize = GetOccupiedSpaceForProjectId(uuid, obbProjectId);
+        stats->dataSize -= appObbSize;
     }
 }
 
@@ -2005,6 +2043,11 @@ static void collectManualExternalStatsForUser(const std::string& path, struct st
     fts_close(fts);
 }
 static bool ownsExternalStorage(int32_t appId) {
+    // if project id calculation is supported then, there is no need to
+    // calculate in a different way and project_id based calculation can work
+    if (supports_project_id()) {
+        return false;
+    }
     //  Fetch external storage owner appid  and check if it is the same as the
     //  current appId whose size is calculated
     struct stat s;
@@ -3126,6 +3169,15 @@ binder::Status InstalldNativeService::hashSecondaryDexFile(
     bool result = android::installd::hash_secondary_dex_file(
         dexPath, packageName, uid, volumeUuid, storageFlag, _aidl_return);
     return result ? ok() : error();
+}
+
+binder::Status InstalldNativeService::setFirstBoot() {
+    std::lock_guard<std::recursive_mutex> lock(mMountsLock);
+    auto first_boot_path = StringPrintf("%smisc/installd/first_boot", android_data_dir.c_str());
+    if (access(first_boot_path.c_str(), F_OK) != 0) {
+        open(first_boot_path.c_str(), O_CREAT | O_TRUNC | O_RDWR | O_CLOEXEC, 0644);
+    }
+    return ok();
 }
 
 binder::Status InstalldNativeService::invalidateMounts() {
