@@ -112,6 +112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "910c6d12_c7625d76",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T01:14:14Z",
+      "side": 1,
+      "message": "(of course this is true for all the functions being introduced here)",
+      "parentUuid": "e4e00bdf_b7120223",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 3
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0a4317b_31abea4a",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 7
