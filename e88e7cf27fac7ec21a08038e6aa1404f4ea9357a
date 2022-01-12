@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87a6a3d9_ec6e0e55",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-12T08:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a93c41cc_3ee3e73f",
+      "range": {
+        "startLine": 224,
+        "startChar": 16,
+        "endLine": 224,
+        "endChar": 18
+      },
+      "revId": "e88e7cf27fac7ec21a08038e6aa1404f4ea9357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2646e38_ba9e2d14",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afca8ccd_a8cb4195",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-12T08:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2646e38_ba9e2d14",
+      "range": {
+        "startLine": 231,
+        "startChar": 10,
+        "endLine": 231,
+        "endChar": 18
+      },
+      "revId": "e88e7cf27fac7ec21a08038e6aa1404f4ea9357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05cdae55_f922796e",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-01-12T08:32:42Z",
       "side": 1,
       "message": "Nit: and",
+      "range": {
+        "startLine": 261,
+        "startChar": 29,
+        "endLine": 261,
+        "endChar": 30
+      },
+      "revId": "e88e7cf27fac7ec21a08038e6aa1404f4ea9357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0e2d13c_f6c68f09",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-12T08:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05cdae55_f922796e",
       "range": {
         "startLine": 261,
         "startChar": 29,
