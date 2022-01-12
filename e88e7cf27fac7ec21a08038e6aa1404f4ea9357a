@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e5659e1_c0b7aa6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T08:32:42Z",
+      "side": 1,
+      "message": "LGTM assuming nits addressed.",
+      "revId": "e88e7cf27fac7ec21a08038e6aa1404f4ea9357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a93c41cc_3ee3e73f",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T08:32:42Z",
+      "side": 1,
+      "message": "Nit: are",
+      "range": {
+        "startLine": 224,
+        "startChar": 16,
+        "endLine": 224,
+        "endChar": 18
+      },
+      "revId": "e88e7cf27fac7ec21a08038e6aa1404f4ea9357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2646e38_ba9e2d14",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T08:32:42Z",
+      "side": 1,
+      "message": "Nit: creator\u0027s",
+      "range": {
+        "startLine": 231,
+        "startChar": 10,
+        "endLine": 231,
+        "endChar": 18
+      },
+      "revId": "e88e7cf27fac7ec21a08038e6aa1404f4ea9357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05cdae55_f922796e",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T08:32:42Z",
+      "side": 1,
+      "message": "Nit: and",
+      "range": {
+        "startLine": 261,
+        "startChar": 29,
+        "endLine": 261,
+        "endChar": 30
+      },
+      "revId": "e88e7cf27fac7ec21a08038e6aa1404f4ea9357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
