@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd44a4e_0dd999b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T01:13:41Z",
+      "side": 1,
+      "message": "LGTM assuming comments addressed.",
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d63aa2b_1cef8415",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T01:13:41Z",
+      "side": 1,
+      "message": "Why tags plural? There is only one tag. Maybe:\n\nSet the socket tag and owning UID for traffic statistics on the specified socket.",
+      "range": {
+        "startLine": 220,
+        "startChar": 7,
+        "endLine": 220,
+        "endChar": 11
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "186af671_118198b0",
@@ -49,6 +89,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4e00bdf_b7120223",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T01:13:41Z",
+      "side": 1,
+      "message": "The documentation should say what the function returns. Presumably it returns 0 on success. But what about failure? Does it return -1 and set errno? Or does it return negative errno? android_res_nresult and android_res_nquery are examples of how this can be worded.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 3
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0a4317b_31abea4a",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T01:13:41Z",
+      "side": 1,
+      "message": "I think you need a summary at the beginning here. Something like:\n\nSet the socket tag for traffic statistics on the specified socket.",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 2
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "780871fc_374a9c8b",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 7
@@ -72,6 +158,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14a03d61_c17d3878",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T01:13:41Z",
+      "side": 1,
+      "message": "Actually I think convention is for documentation to be duplicated so that folks looking at the docs on developer.android.com can easily find complete documentation for each function. So I think this is fine.",
+      "parentUuid": "780871fc_374a9c8b",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 29
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04279c07_1355e4d1",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 7
@@ -83,6 +193,30 @@
       "writtenOn": "2022-01-11T23:12:19Z",
       "side": 1,
       "message": "I don\u0027t understand this statement.\n\nPerhaps\n\nFuture traffic on this socket will no longer be associated with the previously configured tag \u0026 uid.",
+      "range": {
+        "startLine": 246,
+        "startChar": 48,
+        "endLine": 247,
+        "endChar": 49
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8046a195_31b78887",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-12T01:13:41Z",
+      "side": 1,
+      "message": "+1, except I would change \"the previously configured\" to \"any previously configured\".",
+      "parentUuid": "04279c07_1355e4d1",
       "range": {
         "startLine": 246,
         "startChar": 48,
