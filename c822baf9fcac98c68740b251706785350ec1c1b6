@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95a5138a_ea25495b",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-12T04:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d63aa2b_1cef8415",
+      "range": {
+        "startLine": 220,
+        "startChar": 7,
+        "endLine": 220,
+        "endChar": 11
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "186af671_118198b0",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff380434_d6f7d94f",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-12T04:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "186af671_118198b0",
+      "range": {
+        "startLine": 221,
+        "startChar": 71,
+        "endLine": 221,
+        "endChar": 74
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9239bd90_77baed65",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-01-11T23:12:19Z",
       "side": 1,
       "message": "maybe add something like \n(or -1 or just use the variant without _with_uid())",
+      "range": {
+        "startLine": 225,
+        "startChar": 36,
+        "endLine": 225,
+        "endChar": 39
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26713b5a_421fad86",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-12T04:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9239bd90_77baed65",
       "range": {
         "startLine": 225,
         "startChar": 36,
@@ -134,6 +206,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda5d063_bb2fa473",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-12T04:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "910c6d12_c7625d76",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 3
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0a4317b_31abea4a",
@@ -147,6 +243,30 @@
       "writtenOn": "2022-01-12T01:13:41Z",
       "side": 1,
       "message": "I think you need a summary at the beginning here. Something like:\n\nSet the socket tag for traffic statistics on the specified socket.",
+      "range": {
+        "startLine": 234,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 2
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d31074c_1857e857",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-12T04:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0a4317b_31abea4a",
       "range": {
         "startLine": 234,
         "startChar": 1,
@@ -204,6 +324,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b687d0c8_c42310d9",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-12T04:38:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "14a03d61_c17d3878",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 29
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04279c07_1355e4d1",
@@ -241,6 +385,30 @@
       "side": 1,
       "message": "+1, except I would change \"the previously configured\" to \"any previously configured\".",
       "parentUuid": "04279c07_1355e4d1",
+      "range": {
+        "startLine": 246,
+        "startChar": 48,
+        "endLine": 247,
+        "endChar": 49
+      },
+      "revId": "c822baf9fcac98c68740b251706785350ec1c1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "718ca2a4_343f980a",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-01-12T04:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8046a195_31b78887",
       "range": {
         "startLine": 246,
         "startChar": 48,
