@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f868aee_b0086b7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-01-13T14:01:43Z",
+      "side": 1,
+      "message": "for the commit message: Do a title of max 1 line, 70 chars, then empty line, then description below. You could also include some rationale why we are doing this - eg it will increase performance, and make storage quota calculation easier in the long term.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 2
+      },
+      "revId": "76d70a1280bc097b5e43c1b312a0981ee94393cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08151c51_3e54ed4a",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-01-13T14:01:43Z",
+      "side": 1,
+      "message": "I was thinking - we can do project ids on internal storage even for existing devices that have sdcardfs - as long as they wipe userdata (which your patch ensures already).",
+      "range": {
+        "startLine": 472,
+        "startChar": 9,
+        "endLine": 472,
+        "endChar": 26
+      },
+      "revId": "76d70a1280bc097b5e43c1b312a0981ee94393cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b89d0521_095e8f17",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-01-13T14:01:43Z",
+      "side": 1,
+      "message": "we can probably remove this one.",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 85
+      },
+      "revId": "76d70a1280bc097b5e43c1b312a0981ee94393cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c9b7b9_bf34c2f5",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-01-13T14:01:43Z",
+      "side": 1,
+      "message": "(can get rid of these and other debug prints)",
+      "range": {
+        "startLine": 664,
+        "startChar": 0,
+        "endLine": 664,
+        "endChar": 88
+      },
+      "revId": "76d70a1280bc097b5e43c1b312a0981ee94393cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
