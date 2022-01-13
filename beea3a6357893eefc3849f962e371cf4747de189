@@ -16,6 +16,24 @@
       "message": "Where do you need this change for?",
       "revId": "beea3a6357893eefc3849f962e371cf4747de189",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a72d655_18aab37a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1653796
+      },
+      "writtenOn": "2022-01-13T02:39:42Z",
+      "side": 1,
+      "message": "It is needed for the below change in hardware/interfaces/health/aidl/default/health-convert.cpp\n\nvoid convert(const HealthInfo\u0026 info, struct ::android::BatteryProperties* p) {\n...\n+    p-\u003echargerDockOnline \u003d info.chargerDockOnline;\n\nhere is the error without it\n\nhardware/interfaces/health/aidl/default/health-convert.cpp:25:8: error: no member named \u0027chargerDockOnlin\ne\u0027 in \u0027android::BatteryProperties\u0027; did you mean \u0027chargerAcOnline\u0027?\n    p-\u003echargerDockOnline \u003d info.chargerDockOnline;\n       ^~~~~~~~~~~~~~~~~\n       chargerAcOnline\nframeworks/native/services/batteryservice/include/batteryservice/BatteryService.h:40:10: note: \u0027chargerAc\nOnline\u0027 declared here\n    bool chargerAcOnline;",
+      "parentUuid": "b4f4553d_09794cb9",
+      "revId": "beea3a6357893eefc3849f962e371cf4747de189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
