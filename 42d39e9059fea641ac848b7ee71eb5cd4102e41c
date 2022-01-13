@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a2050b_9151d30f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-01-13T12:54:49Z",
+      "side": 1,
+      "message": "maybe internal_storage_has_project_id() ? Since external storage already did this.",
+      "range": {
+        "startLine": 469,
+        "startChar": 12,
+        "endLine": 469,
+        "endChar": 31
+      },
+      "revId": "42d39e9059fea641ac848b7ee71eb5cd4102e41c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc2104e_b529e890",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-01-13T12:54:49Z",
+      "side": 1,
+      "message": "also add to dataSize like external? Because cache dirs do have the same uid.",
+      "range": {
+        "startLine": 1895,
+        "startChar": 23,
+        "endLine": 1895,
+        "endChar": 32
+      },
+      "revId": "42d39e9059fea641ac848b7ee71eb5cd4102e41c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8ec0d7_adb02d2c",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-01-13T12:54:49Z",
+      "side": 1,
+      "message": "maybe pass this in as part of doubleSpaceToBeDeleted?",
+      "range": {
+        "startLine": 1919,
+        "startChar": 27,
+        "endLine": 1919,
+        "endChar": 38
+      },
+      "revId": "42d39e9059fea641ac848b7ee71eb5cd4102e41c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe25edd_ca2c4cce",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3170,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-01-13T12:54:49Z",
+      "side": 1,
+      "message": "it\u0027s probably also a good idea to add \"    ENFORCE_UID(AID_SYSTEM);\" here -\u003e this ensures that only the system process can call your new API.",
+      "revId": "42d39e9059fea641ac848b7ee71eb5cd4102e41c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387718a2_f050851e",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3171,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-01-13T12:54:49Z",
+      "side": 1,
+      "message": "maybe we can make this name a bit more descriptive - \"using_project_ids\"?",
+      "range": {
+        "startLine": 3171,
+        "startChar": 57,
+        "endLine": 3171,
+        "endChar": 67
+      },
+      "revId": "42d39e9059fea641ac848b7ee71eb5cd4102e41c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
