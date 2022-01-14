@@ -34,6 +34,24 @@
       "parentUuid": "a1a87317_6efb4ca7",
       "revId": "669bea5448d0fbb9ad9d5ddbab032aaa17be674b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e85a13bd_ae32fd6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2022-01-14T01:23:17Z",
+      "side": 1,
+      "message": "We no longer accept patch for Android R, you can apply the patch locally to your image.",
+      "parentUuid": "6aa6a048_f13eb65c",
+      "revId": "669bea5448d0fbb9ad9d5ddbab032aaa17be674b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
