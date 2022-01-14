@@ -16,6 +16,24 @@
       "message": "Please file a bug and provide reproducible steps with the latest Android version.",
       "revId": "669bea5448d0fbb9ad9d5ddbab032aaa17be674b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa6a048_f13eb65c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932715
+      },
+      "writtenOn": "2022-01-14T01:21:00Z",
+      "side": 1,
+      "message": "This issue just can be reproduced on R(Verified on ‘Ohm’, ‘txlx’ yet), it\u0027s normal above S.",
+      "parentUuid": "a1a87317_6efb4ca7",
+      "revId": "669bea5448d0fbb9ad9d5ddbab032aaa17be674b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
