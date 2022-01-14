@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a75137e5_20bc8150",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2022-01-14T12:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f868aee_b0086b7e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 2
+      },
+      "revId": "76d70a1280bc097b5e43c1b312a0981ee94393cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08151c51_3e54ed4a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-13T14:01:43Z",
       "side": 1,
       "message": "I was thinking - we can do project ids on internal storage even for existing devices that have sdcardfs - as long as they wipe userdata (which your patch ensures already).",
+      "range": {
+        "startLine": 472,
+        "startChar": 9,
+        "endLine": 472,
+        "endChar": 26
+      },
+      "revId": "76d70a1280bc097b5e43c1b312a0981ee94393cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f77fabad_960a1f99",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2022-01-14T12:22:01Z",
+      "side": 1,
+      "message": "Checking if this works, deleting the doubled data already checks if sdcardfs is not supported then only subtract it, so it should work fine.\n\nEDIT: Everything works fine without that check too, so removed it",
+      "parentUuid": "08151c51_3e54ed4a",
       "range": {
         "startLine": 472,
         "startChar": 9,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b3e4bbe_2289aa64",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2022-01-14T12:22:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b89d0521_095e8f17",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 85
+      },
+      "revId": "76d70a1280bc097b5e43c1b312a0981ee94393cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7c9b7b9_bf34c2f5",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-13T14:01:43Z",
       "side": 1,
       "message": "(can get rid of these and other debug prints)",
+      "range": {
+        "startLine": 664,
+        "startChar": 0,
+        "endLine": 664,
+        "endChar": 88
+      },
+      "revId": "76d70a1280bc097b5e43c1b312a0981ee94393cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d31375_7047f381",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2022-01-14T12:22:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a7c9b7b9_bf34c2f5",
       "range": {
         "startLine": 664,
         "startChar": 0,

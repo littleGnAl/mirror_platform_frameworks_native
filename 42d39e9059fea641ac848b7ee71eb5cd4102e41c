@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df1068c_381f137f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2022-01-14T12:22:01Z",
+      "side": 1,
+      "message": "It solves the problem, checked it with a test too.",
+      "parentUuid": "f6d800d1_f0907a35",
+      "range": {
+        "startLine": 1895,
+        "startChar": 23,
+        "endLine": 1895,
+        "endChar": 32
+      },
+      "revId": "42d39e9059fea641ac848b7ee71eb5cd4102e41c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d8ec0d7_adb02d2c",
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "ah yeah, I see that now. Fine with me to leave as is then.",
       "parentUuid": "efa4e951_2dfd4236",
+      "range": {
+        "startLine": 1919,
+        "startChar": 27,
+        "endLine": 1919,
+        "endChar": 38
+      },
+      "revId": "42d39e9059fea641ac848b7ee71eb5cd4102e41c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf0bd4ba_d5d2d482",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2022-01-14T12:22:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "17823294_04362632",
       "range": {
         "startLine": 1919,
         "startChar": 27,
