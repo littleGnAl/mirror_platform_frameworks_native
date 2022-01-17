@@ -16,6 +16,24 @@
       "message": "Would it make more sense to  tie it to the size of i32 (in case we want to change the type later), instead of the constant 4? You can use std::mem::size_of::\u003ci32\u003e() for the latter.",
       "revId": "6d9e0778a1b3f06d45250739f1da4168fb355540",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8230bc1a_f6e94193",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-01-17T00:32:08Z",
+      "side": 1,
+      "message": "+1 Or at least add a comment about where this 4 is from?",
+      "parentUuid": "c1f3cd54_f45eb1be",
+      "revId": "6d9e0778a1b3f06d45250739f1da4168fb355540",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
