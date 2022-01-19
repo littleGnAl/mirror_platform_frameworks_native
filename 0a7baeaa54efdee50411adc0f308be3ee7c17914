@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482d3847_53ebcbc4",
+        "filename": "services/surfaceflinger/tests/unittests/RefreshRateConfigsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2239,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-01-19T18:48:02Z",
+      "side": 1,
+      "message": "same as this comment: https://android-review.googlesource.com/c/platform/frameworks/native/+/1953900/comments/e0d1652e_a7cc7c93",
+      "range": {
+        "startLine": 2233,
+        "startChar": 4,
+        "endLine": 2239,
+        "endChar": 0
+      },
+      "revId": "0a7baeaa54efdee50411adc0f308be3ee7c17914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
