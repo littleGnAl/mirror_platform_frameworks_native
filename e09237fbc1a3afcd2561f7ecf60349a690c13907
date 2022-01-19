@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66574e32_17295fef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2022-01-19T02:43:13Z",
+      "side": 1,
+      "message": "Merge conflict on sc-v2-dev addressed by: https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/native/+/16667169",
+      "revId": "e09237fbc1a3afcd2561f7ecf60349a690c13907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
