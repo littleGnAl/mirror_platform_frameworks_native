@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d1652e_a7cc7c93",
+        "filename": "services/surfaceflinger/tests/unittests/RefreshRateConfigsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2238,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-01-19T18:47:35Z",
+      "side": 1,
+      "message": "should these be set as part of constructing the layers vector itself?\n\nE.g. std::vector\u003cLayerRequirement\u003e{LayerRequirement{.desiredRefreshRate \u003d 43_Hz, ...}};",
+      "range": {
+        "startLine": 2233,
+        "startChar": 4,
+        "endLine": 2238,
+        "endChar": 26
+      },
+      "revId": "c63e340a48458f93a1235878d9f46823707eb809",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
