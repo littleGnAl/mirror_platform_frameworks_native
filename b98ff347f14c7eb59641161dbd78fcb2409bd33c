@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c52b993a_6da47112",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-01-20T00:00:51Z",
+      "side": 1,
+      "message": "Mikhail,\nFailures seen in patchset 1\u0027s run were unrelated to the current CL, i have triggered another run.\nCan you please take a look and approve?\nThanks.",
+      "revId": "b98ff347f14c7eb59641161dbd78fcb2409bd33c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
