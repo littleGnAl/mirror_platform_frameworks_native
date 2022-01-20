@@ -22,6 +22,30 @@
       },
       "revId": "6e79d4fbccf90b4b7a8830586e068fcb2b0ac75d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c82a9b2_cb5d175a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2022-01-20T00:56:09Z",
+      "side": 1,
+      "message": "This change doesn\u0027t conflict with other branches. But it would be better noting that it is already merged at another branch.",
+      "parentUuid": "a0d24252_fee45f25",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "6e79d4fbccf90b4b7a8830586e068fcb2b0ac75d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
