@@ -50,6 +50,24 @@
       "message": "nit: can we just move this line to 2411, so we would just call cleanupPostRender once?",
       "revId": "d9e54691c35c715c096d25e656911f818e1fb706",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e7f33d_59ffc724",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2433,
+      "author": {
+        "id": 1041495
+      },
+      "writtenOn": "2022-01-20T07:46:39Z",
+      "side": 1,
+      "message": "We could, but I don\u0027t really want to bring this all the way back to our verification team to re-test, so it would have to be on your judgement: is it safe?",
+      "parentUuid": "5b795231_002f58ff",
+      "revId": "d9e54691c35c715c096d25e656911f818e1fb706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
