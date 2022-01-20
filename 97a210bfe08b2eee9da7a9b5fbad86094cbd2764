@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c55fa00_0254e9af",
+        "filename": "cmds/installd/tests/installd_service_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-01-20T08:30:08Z",
+      "side": 1,
+      "message": "did you want to leave this in?",
+      "range": {
+        "startLine": 319,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 84
+      },
+      "revId": "97a210bfe08b2eee9da7a9b5fbad86094cbd2764",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca6c087_6a290001",
+        "filename": "cmds/installd/tests/installd_service_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-01-20T08:30:08Z",
+      "side": 1,
+      "message": "mmm, I\u0027m wondering if this is an issue, because some engineers may run this test locally for other reasons, and it\u0027ll prevent their device from using project IDs (and they will file storage bugs in the future, not knowing the test caused this). Wonder if we can have some sort of test override where we resort back to the old quota calculation without removing this file?",
+      "range": {
+        "startLine": 373,
+        "startChar": 8,
+        "endLine": 374,
+        "endChar": 83
+      },
+      "revId": "97a210bfe08b2eee9da7a9b5fbad86094cbd2764",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
