@@ -68,6 +68,24 @@
       "parentUuid": "5b795231_002f58ff",
       "revId": "d9e54691c35c715c096d25e656911f818e1fb706",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ff0fc1_a65f7cdc",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2433,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2022-01-21T01:56:38Z",
+      "side": 1,
+      "message": "I think it is safe, but it\u0027s a minor nit, we don\u0027t have to change this",
+      "parentUuid": "b1e7f33d_59ffc724",
+      "revId": "d9e54691c35c715c096d25e656911f818e1fb706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
