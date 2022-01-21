@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71b1376_461cf1d5",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1139038
+      },
+      "writtenOn": "2022-01-21T13:32:24Z",
+      "side": 1,
+      "message": "I would never have figured that out!",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "5e5a01d946b4c0d82cbb448ba0dbb422904f597f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7ba203_eb177424",
+        "filename": "cmds/servicemanager/servicemanager.microdroid.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1139038
+      },
+      "writtenOn": "2022-01-21T13:32:24Z",
+      "side": 1,
+      "message": "There are definitely no audioserver and gatekeeperd in microdroid (I see the failure logs when they fail to boot) and we don\u0027t seem to use classes but prefer to list everything in init.rc?",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "5e5a01d946b4c0d82cbb448ba0dbb422904f597f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
