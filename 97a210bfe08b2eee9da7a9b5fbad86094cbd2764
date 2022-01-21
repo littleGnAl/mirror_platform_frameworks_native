@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6e0201f_78cf71db",
+        "filename": "cmds/installd/tests/installd_service_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2022-01-21T23:53:30Z",
+      "side": 1,
+      "message": "removed!",
+      "parentUuid": "3c55fa00_0254e9af",
+      "range": {
+        "startLine": 319,
+        "startChar": 1,
+        "endLine": 321,
+        "endChar": 84
+      },
+      "revId": "97a210bfe08b2eee9da7a9b5fbad86094cbd2764",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ca6c087_6a290001",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-20T08:30:08Z",
       "side": 1,
       "message": "mmm, I\u0027m wondering if this is an issue, because some engineers may run this test locally for other reasons, and it\u0027ll prevent their device from using project IDs (and they will file storage bugs in the future, not knowing the test caused this). Wonder if we can have some sort of test override where we resort back to the old quota calculation without removing this file?",
+      "range": {
+        "startLine": 373,
+        "startChar": 8,
+        "endLine": 374,
+        "endChar": 83
+      },
+      "revId": "97a210bfe08b2eee9da7a9b5fbad86094cbd2764",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ba3f98_079a259d",
+        "filename": "cmds/installd/tests/installd_service_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2022-01-21T23:53:30Z",
+      "side": 1,
+      "message": "you are right, as discussed, setting it back if it was initially set up",
+      "parentUuid": "5ca6c087_6a290001",
       "range": {
         "startLine": 373,
         "startChar": 8,
