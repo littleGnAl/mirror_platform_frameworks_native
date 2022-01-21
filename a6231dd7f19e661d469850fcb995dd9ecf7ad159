@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bf03203_55fd490d",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-01-21T04:42:20Z",
+      "side": 1,
+      "message": "fyi: b/215458170 is to fix ParcelableHolder.readFromParcel.",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 75
+      },
+      "revId": "a6231dd7f19e661d469850fcb995dd9ecf7ad159",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
