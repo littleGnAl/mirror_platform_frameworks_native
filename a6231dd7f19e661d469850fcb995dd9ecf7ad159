@@ -22,6 +22,30 @@
       },
       "revId": "a6231dd7f19e661d469850fcb995dd9ecf7ad159",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e89dca61_9972022b",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-01-21T05:07:36Z",
+      "side": 1,
+      "message": "Good to know, thanks!",
+      "parentUuid": "8bf03203_55fd490d",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 75
+      },
+      "revId": "a6231dd7f19e661d469850fcb995dd9ecf7ad159",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
