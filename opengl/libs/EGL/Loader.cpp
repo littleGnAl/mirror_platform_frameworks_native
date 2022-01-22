@@ -389,11 +389,13 @@ static void* load_system_driver(const char* kind, const char* suffix, const bool
         static std::string find(const char* libraryName, const bool exact) {
             const char* const searchPaths[] = {
 #if defined(__LP64__)
-                    "/vendor/lib64/egl",
-                    "/system/lib64/egl"
+                "/apex/com.android.hardware.graphics/lib64/egl",
+                "/vendor/lib64/egl",
+                "/system/lib64/egl"
 #else
-                    "/vendor/lib/egl",
-                    "/system/lib/egl"
+                "/apex/com.android.hardware.graphics/lib/egl",
+                "/vendor/lib/egl",
+                "/system/lib/egl"
 #endif
             };
 
