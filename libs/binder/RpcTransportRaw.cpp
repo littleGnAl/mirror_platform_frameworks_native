@@ -74,7 +74,7 @@ public:
         while (true) {
             msghdr msg{
                     .msg_iov = iovs,
-                    .msg_iovlen = niovs,
+                    .msg_iovlen = static_cast<int>(niovs), // posix uses int, glibc uses size_t
             };
             ssize_t processSize =
                     TEMP_FAILURE_RETRY(sendOrReceiveFun(mSocket.get(), &msg, MSG_NOSIGNAL));
