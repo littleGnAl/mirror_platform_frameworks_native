@@ -40,17 +40,17 @@ namespace android {
 /*
  * EGL userspace drivers must be provided either:
  * - as a single library:
- *      /vendor/lib/egl/libGLES.so
+ *      {partition}/lib(64)?/egl/libGLES.so
  *
  * - as separate libraries:
- *      /vendor/lib/egl/libEGL.so
- *      /vendor/lib/egl/libGLESv1_CM.so
- *      /vendor/lib/egl/libGLESv2.so
+ *      {partition}/lib(64)?/egl/libEGL.so
+ *      {partition}/lib(64)?/egl/libGLESv1_CM.so
+ *      {partition}/lib(64)?/egl/libGLESv2.so
  *
- * For backward compatibility and to facilitate the transition to
- * this new naming scheme, the loader will additionally look for:
- *
- *      /{vendor|system}/lib/egl/lib{GLES | [EGL|GLESv1_CM|GLESv2]}_*.so
+ * {partition} can be one of the following, searched in order:
+ * - /vendor
+ * - /system
+ * - /apex/{ro.hardware.egl.apex}
  *
  */
 
@@ -389,17 +389,33 @@ static void* load_system_driver(const char* kind, const char* suffix, const bool
         static std::string find(const char* libraryName, const bool exact) {
             const char* const searchPaths[] = {
 #if defined(__LP64__)
-                    "/vendor/lib64/egl",
-                    "/system/lib64/egl"
+                "/vendor/lib64/egl",
+                "/system/lib64/egl"
 #else
-                    "/vendor/lib/egl",
-                    "/system/lib/egl"
+                "/vendor/lib/egl",
+                "/system/lib/egl"
 #endif
             };
 
             for (auto dir : searchPaths) {
                 std::string absolutePath;
                 if (find(absolutePath, libraryName, dir, exact)) {
+                    return absolutePath;
+                }
+            }
+
+            // Check the APEX name provided by ro.hardware.egl.apex.
+            auto prop = base::GetProperty("ro.hardware.egl.apex", "");
+            if (prop != "") {
+                std::string apexPath = "/apex/" + prop +
+#if defined(__LP64__)
+                        "/lib64" +
+#else
+                        "/lib" +
+#endif
+                        "/egl";
+                std::string absolutePath;
+                if (find(absolutePath, libraryName, apexPath.c_str(), exact)) {
                     return absolutePath;
                 }
             }
