@@ -40,17 +40,24 @@ namespace android {
 /*
  * EGL userspace drivers must be provided either:
  * - as a single library:
- *      /vendor/lib/egl/libGLES.so
+ *      {partition}/lib(64)?/egl/libGLES.so
  *
  * - as separate libraries:
- *      /vendor/lib/egl/libEGL.so
- *      /vendor/lib/egl/libGLESv1_CM.so
- *      /vendor/lib/egl/libGLESv2.so
+ *      {partition}/lib(64)?/egl/libEGL.so
+ *      {partition}/lib(64)?/egl/libGLESv1_CM.so
+ *      {partition}/lib(64)?/egl/libGLESv2.so
  *
- * For backward compatibility and to facilitate the transition to
- * this new naming scheme, the loader will additionally look for:
+ * {partition} can be one of the following, searched in order:
+ * - /apex/com.android.hardware.graphics
+ * - /vendor
+ * - /system
  *
- *      /{vendor|system}/lib/egl/lib{GLES | [EGL|GLESv1_CM|GLESv2]}_*.so
+ * The APEX 'com.android.hardware.graphics' should be a vendor APEX
+ * containing the EGL libraries and the sphal linkerconfig contribution.
+ * The contents of this APEX may be expanded in future releases to
+ * contain more artifacts for other graphics use cases. The expected
+ * APEX name may also be changed, but this file will remain backwards
+ * compatible with previous names.
  *
  */
 
@@ -389,11 +396,13 @@ static void* load_system_driver(const char* kind, const char* suffix, const bool
         static std::string find(const char* libraryName, const bool exact) {
             const char* const searchPaths[] = {
 #if defined(__LP64__)
-                    "/vendor/lib64/egl",
-                    "/system/lib64/egl"
+                "/apex/com.android.hardware.graphics/lib64/egl",
+                "/vendor/lib64/egl",
+                "/system/lib64/egl"
 #else
-                    "/vendor/lib/egl",
-                    "/system/lib/egl"
+                "/apex/com.android.hardware.graphics/lib/egl",
+                "/vendor/lib/egl",
+                "/system/lib/egl"
 #endif
             };
 
