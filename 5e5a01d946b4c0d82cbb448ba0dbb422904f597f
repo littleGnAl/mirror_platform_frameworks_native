@@ -45,6 +45,30 @@
       },
       "revId": "5e5a01d946b4c0d82cbb448ba0dbb422904f597f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "443c178e_2cfa478f",
+        "filename": "cmds/servicemanager/servicemanager.microdroid.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-01-23T14:39:46Z",
+      "side": 1,
+      "message": "Will remove the unnecessary lines in a follow-up change just to not lose +2.",
+      "parentUuid": "ad7ba203_eb177424",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "5e5a01d946b4c0d82cbb448ba0dbb422904f597f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
