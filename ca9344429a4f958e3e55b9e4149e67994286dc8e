@@ -49,6 +49,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "987ff3ca_4c7a47f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2022-01-24T11:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d0dfbfa_d061180f",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "ca9344429a4f958e3e55b9e4149e67994286dc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14c67f42_3d4e6183",
@@ -96,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2effac3d_cbf2ead3",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2022-01-24T11:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d49a731d_11af3c2b",
+      "range": {
+        "startLine": 247,
+        "startChar": 80,
+        "endLine": 247,
+        "endChar": 87
+      },
+      "revId": "ca9344429a4f958e3e55b9e4149e67994286dc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5e1ca4a_0270dc36",
@@ -133,6 +181,30 @@
       "side": 1,
       "message": "Fixed.",
       "parentUuid": "c5e1ca4a_0270dc36",
+      "range": {
+        "startLine": 471,
+        "startChar": 80,
+        "endLine": 471,
+        "endChar": 87
+      },
+      "revId": "ca9344429a4f958e3e55b9e4149e67994286dc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a758fa0_afe90dd6",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2022-01-24T11:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cbc0e3f_1cb5f76a",
       "range": {
         "startLine": 471,
         "startChar": 80,
