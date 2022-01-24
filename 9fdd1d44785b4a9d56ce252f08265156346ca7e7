@@ -87,6 +87,30 @@
       },
       "revId": "9fdd1d44785b4a9d56ce252f08265156346ca7e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9ebfc0_93e0f7da",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1457,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2022-01-24T18:43:36Z",
+      "side": 1,
+      "message": "Yes. The contents (1/0) of these \"binder-feature\" files are not dynamic (as of now). So my note here was that maybe we want to store these flags somewhere within userspace binder as opposed to be reading the files over and over again.",
+      "parentUuid": "b8476405_2abf1996",
+      "range": {
+        "startLine": 1457,
+        "startChar": 7,
+        "endLine": 1457,
+        "endChar": 11
+      },
+      "revId": "9fdd1d44785b4a9d56ce252f08265156346ca7e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
