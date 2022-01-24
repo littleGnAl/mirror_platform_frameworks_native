@@ -1,0 +1,97 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e4fe5aa_e1256c6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2022-01-24T10:53:19Z",
+      "side": 1,
+      "message": "\u003e Prefer to use inclusive terms like \u0027valid\u0027, \u0027validity check\u0027 or \u0027initial check\u0027; see https://source.android.com/setup/contribute/respectful-code for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.\n\nPlease fix.",
+      "parentUuid": "4c4b3c1f_0691b23d",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "ca9344429a4f958e3e55b9e4149e67994286dc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c67f42_3d4e6183",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2022-01-24T10:53:19Z",
+      "side": 1,
+      "message": "nit: let\u0027s change this to \"validity\"",
+      "range": {
+        "startLine": 247,
+        "startChar": 80,
+        "endLine": 247,
+        "endChar": 87
+      },
+      "revId": "ca9344429a4f958e3e55b9e4149e67994286dc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e1ca4a_0270dc36",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2022-01-24T10:53:19Z",
+      "side": 1,
+      "message": "nit: replace with \"validity\".",
+      "range": {
+        "startLine": 471,
+        "startChar": 80,
+        "endLine": 471,
+        "endChar": 87
+      },
+      "revId": "ca9344429a4f958e3e55b9e4149e67994286dc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9366e095_6542299f",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2022-01-24T10:53:19Z",
+      "side": 1,
+      "message": "nit: let\u0027s just remove the word so that it says: \"Argument check\" or replace with \"validity\". Using the word \"initial\" gives the impression that there will be more checks done on the args later on.",
+      "range": {
+        "startLine": 832,
+        "startChar": 16,
+        "endLine": 832,
+        "endChar": 23
+      },
+      "revId": "ca9344429a4f958e3e55b9e4149e67994286dc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
