@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e43fabff_9e908842",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-01-24T17:54:53Z",
+      "side": 1,
+      "message": "could we comment what values these might take on or have a version of the enums in a public file? Also - this will only be available on new kernels, what will it return when it is not implemented?\n\nAlso - when is it expected to be set? How will a user know it corresponds to a given action?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 81
+      },
+      "revId": "fe2cf7941010522eb7051d976e4b995005e60bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
