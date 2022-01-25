@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "929cebae_52ff612b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2022-01-25T00:42:42Z",
+      "side": 1,
+      "message": "I don\u0027t know either.\n\nDaniel/Jason - Is ANGLE being moved to apex/?   If so, why (and why isn\u0027t it staying in vendor/)?",
+      "parentUuid": "59731e5b_2dfb8b11",
+      "revId": "281ed2df0464785b483e98558cd0b2132b6490bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0eff0c0_dadbe677",
         "filename": "opengl/libs/EGL/Loader.cpp",
         "patchSetId": 5
