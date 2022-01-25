@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4f5b75_114b8694",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2022-01-25T21:31:23Z",
+      "side": 1,
+      "message": "As discussed in chat, we\u0027re attempting to bundle the entirety of vendor.img into vendor APEXes for each feature area. I\u0027ve updated the comment in this file with the expected content of the APEX, as well as created http://b/216345121 to check with Graphics teams (Google \u0026 ecosystem) about their thoughts on the granularity of this APEX.",
+      "parentUuid": "929cebae_52ff612b",
+      "revId": "281ed2df0464785b483e98558cd0b2132b6490bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0eff0c0_dadbe677",
@@ -67,6 +85,30 @@
       "side": 1,
       "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
       "parentUuid": "4166fa14_896b04f4",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "281ed2df0464785b483e98558cd0b2132b6490bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf4112e_a1b02ef0",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2022-01-25T21:31:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0eff0c0_dadbe677",
       "range": {
         "startLine": 56,
         "startChar": 2,
