@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec4e66a_bffacb43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2022-01-25T21:56:53Z",
+      "side": 1,
+      "message": "-2 until we have a better understanding on what this implies on the graphics drivers plus all the dependencies. We should also get feedback from vendors.",
+      "revId": "8094ddc95e6068be5566d0b3da3e60e3a1b7441b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
