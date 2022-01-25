@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93843dee_632fc5a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2022-01-25T00:07:04Z",
+      "side": 1,
+      "message": "Hi Peiyong \u0026 Jason,\nThis change allows the EGL Loader to look inside an APEX for the EGL libs. This is part of the https://preview.source.android.com/devices/tech/ota/vendor-apex vendor APEX project to convert vendor artifacts into being provided inside APEXes.",
+      "revId": "281ed2df0464785b483e98558cd0b2132b6490bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
