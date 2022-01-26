@@ -118,6 +118,30 @@
       },
       "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4554256_88c8f28a",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2022-01-26T23:07:28Z",
+      "side": 1,
+      "message": "Sure, understood now.\n\nI would say this shouldn\u0027t be something that the platform teams need to worry about; if a platform team decides to create a platform APEX and require that APEX on the device in the CDD, then any OEM using the same name would just have to change their APEX name when they update to the new platform.\n\nNote that \"Change their APEX name\" isn\u0027t possible in a singular APEX update, but is straightforward in a full OTA which would be when the new platform APEX appears in the first place anyway.\n\nI think there was no previous need for a separate vendor /apex mount path (factory versions are separate, /system/apex and /vendor/apex, but they\u0027re all mounted/activated at /apex) since the framework under the hood can determine if the APEX is a vendor APEX by checking the APEX\u0027s factory package location.\n\nI personally think it\u0027s a fine idea to just add CDD language that \"com.android.*\" APEXes must come from the platform to prevent this (hopefully rare but otherwise low impact) scenario from happening, so I can follow up on that if you are interested.",
+      "parentUuid": "5011c4f4_3bb46fd0",
+      "range": {
+        "startLine": 407,
+        "startChar": 12,
+        "endLine": 421,
+        "endChar": 13
+      },
+      "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
