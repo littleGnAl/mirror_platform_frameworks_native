@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c19e4261_67859113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-26T01:09:25Z",
+      "side": 1,
+      "message": "LGTM. Please work with martschneider@ and team to check that our tests still pass.",
+      "revId": "d931ef6c4602b9cd0f51d032c78128c76762e14f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7350a3c6_80c5f095",
+        "filename": "cmds/ip-up-vpn/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2022-01-26T01:09:25Z",
+      "side": 1,
+      "message": "2022?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d931ef6c4602b9cd0f51d032c78128c76762e14f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
