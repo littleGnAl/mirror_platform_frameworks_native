@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf6d86c_0295638a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-26T23:22:10Z",
+      "side": 1,
+      "message": "Do we need this for OMX components? By now most implementations would use C2 perhaps especially in the 8K range.",
+      "revId": "b397b83bcc5b9670a12cd33a82b6716b1e9b8b08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
