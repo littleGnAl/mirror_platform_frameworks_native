@@ -70,6 +70,30 @@
       },
       "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "761182d9_451088db",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2022-01-26T22:25:32Z",
+      "side": 1,
+      "message": "I believe ro.hardware.* is already treated as a (legacy?) vendor prefix: https://cs.android.com/android/platform/superproject/+/master:system/sepolicy/private/property_contexts;drc\u003d0f30f3d8ff3860c3e2e0a305c7cb803545386292;l\u003d224\n\nWe could use something like ro.vendor.egl.apex (or ro.vendor.hardware.egl.apex?) if you think those are more clear.",
+      "parentUuid": "8b8edbac_af9ced49",
+      "range": {
+        "startLine": 407,
+        "startChar": 12,
+        "endLine": 421,
+        "endChar": 13
+      },
+      "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
