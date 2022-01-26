@@ -46,6 +46,30 @@
       },
       "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b8edbac_af9ced49",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-01-26T22:10:42Z",
+      "side": 1,
+      "message": "We possibly want to enforce a namespace of some kind though? Since vendors are the ones implementing \u0026 supplying this apex, it seems they should be force-prefixed with something like \u0027vendor\u0027 to ensure they don\u0027t later conflict with a platform apex",
+      "parentUuid": "bd3c93b9_9737d0ca",
+      "range": {
+        "startLine": 407,
+        "startChar": 12,
+        "endLine": 421,
+        "endChar": 13
+      },
+      "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
