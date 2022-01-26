@@ -22,6 +22,30 @@
       },
       "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd3c93b9_9737d0ca",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2022-01-26T21:27:01Z",
+      "side": 1,
+      "message": "There are discussions in the doc about avoiding hardcoding a specific name; this is my current proposal to avoid that.",
+      "parentUuid": "280406f2_c1b90c9c",
+      "range": {
+        "startLine": 407,
+        "startChar": 12,
+        "endLine": 421,
+        "endChar": 13
+      },
+      "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
