@@ -94,6 +94,30 @@
       },
       "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5011c4f4_3bb46fd0",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-01-26T22:35:46Z",
+      "side": 1,
+      "message": "no, I meant enforce a similar namespace for the apex name itself. That is, so no OEM tries to claim \"com.android.graphics\" or \"android.graphics\" or anything similarly vague and likely to conflict with the platform graphics team putting their own stuff in an apex module.\n\nOr maybe vendor apex\u0027s should go in their own partition path instead of /apex ?",
+      "parentUuid": "761182d9_451088db",
+      "range": {
+        "startLine": 407,
+        "startChar": 12,
+        "endLine": 421,
+        "endChar": 13
+      },
+      "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
