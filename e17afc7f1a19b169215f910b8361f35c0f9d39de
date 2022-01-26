@@ -142,6 +142,30 @@
       },
       "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e5d1429_5c1acca6",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-01-26T23:33:31Z",
+      "side": 1,
+      "message": "Yeah I think it\u0027d be good to have some reserved namespaces here. Even though conceptually a platform update with a collision would just force an OEM to change, that falls apart in terms of the platform\u0027s own ongoing evolution. Eg, if Pixel or Cuttlefish happens to take com.android.graphics for their EGL APEX, then renaming those must necessarily happen before the platform can start using com.android.graphics as otherwise there\u0027s build failures blocking the submission.",
+      "parentUuid": "c4554256_88c8f28a",
+      "range": {
+        "startLine": 407,
+        "startChar": 12,
+        "endLine": 421,
+        "endChar": 13
+      },
+      "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
