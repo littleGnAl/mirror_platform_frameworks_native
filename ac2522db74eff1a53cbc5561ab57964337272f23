@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41f25305_530968dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1336554
+      },
+      "writtenOn": "2022-01-27T11:14:46Z",
+      "side": 1,
+      "message": "\"at least 30s\" seems super arbitrary in the first place. feel free to go even further low like 10s. Checking contents and file size are much better tests than min time, and we already have those, I think",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "ac2522db74eff1a53cbc5561ab57964337272f23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
