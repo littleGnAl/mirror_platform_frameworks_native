@@ -3,6 +3,91 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ded82d4b_f0795534",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2022-01-29T00:25:43Z",
+      "side": 1,
+      "message": "will this be overly spammy if there is an error?",
+      "revId": "fe2cf7941010522eb7051d976e4b995005e60bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f5503d_0d2ca7e8",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2022-01-29T00:25:43Z",
+      "side": 1,
+      "message": "this doesn\u0027t look like we are \"getting\" anything. Should it be \"logExtendedError()\"?",
+      "revId": "fe2cf7941010522eb7051d976e4b995005e60bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "941ce467_1a6c2649",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1469,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2022-01-29T00:25:43Z",
+      "side": 1,
+      "message": "Is -errno appropriate for a `status_t`?\n\nIs the return value just for testing? (it is ignored above)",
+      "revId": "fe2cf7941010522eb7051d976e4b995005e60bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "321cf8e6_ce20ccce",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2022-01-29T00:25:43Z",
+      "side": 1,
+      "message": "what is ee.ee_type and ee.ee_string if !defined(__ANDROID__)?",
+      "revId": "fe2cf7941010522eb7051d976e4b995005e60bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652c2e35_0667783d",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2022-01-29T00:25:43Z",
+      "side": 1,
+      "message": "Does this log message have enough context to be useful? Seems like at minimum, it should prepend something like \"Binder Transaction Failed: \"",
+      "revId": "fe2cf7941010522eb7051d976e4b995005e60bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e43fabff_9e908842",
         "filename": "libs/binder/include/binder/IPCThreadState.h",
         "patchSetId": 4
@@ -14,6 +99,30 @@
       "writtenOn": "2022-01-24T17:54:53Z",
       "side": 1,
       "message": "could we comment what values these might take on or have a version of the enums in a public file? Also - this will only be available on new kernels, what will it return when it is not implemented?\n\nAlso - when is it expected to be set? How will a user know it corresponds to a given action?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 81
+      },
+      "revId": "fe2cf7941010522eb7051d976e4b995005e60bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35118ce9_0d2e08ab",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2022-01-29T00:25:43Z",
+      "side": 1,
+      "message": "Is there a reason the signature doesn\u0027t use `(enum binder_ee_code *code, enum binder_ee_type *type)`?",
+      "parentUuid": "e43fabff_9e908842",
       "range": {
         "startLine": 58,
         "startChar": 0,
