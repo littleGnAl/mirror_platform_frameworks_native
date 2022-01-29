@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efc9d1e6_38a00b6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2022-01-29T04:02:47Z",
+      "side": 1,
+      "message": "Reviving this since testing the time_in_state.o BTF change reminded me that with isTrackingUidTimesSupported() it\u0027s now straightforward to skip only on devices with legitimate reasons for tracking not to be active.",
+      "revId": "7d38252d15a041626ae18a03e23236e6b8065570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
