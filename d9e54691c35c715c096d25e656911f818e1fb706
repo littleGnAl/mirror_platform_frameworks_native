@@ -157,6 +157,24 @@
       "parentUuid": "b1e7f33d_59ffc724",
       "revId": "d9e54691c35c715c096d25e656911f818e1fb706",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3991b052_c2f0b9b3",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2433,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-01-31T23:58:51Z",
+      "side": 1,
+      "message": "this is safe but I\u0027d really recommend either moving this up or using RAII in case we miss a return later on down the road",
+      "parentUuid": "69ff0fc1_a65f7cdc",
+      "revId": "d9e54691c35c715c096d25e656911f818e1fb706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
