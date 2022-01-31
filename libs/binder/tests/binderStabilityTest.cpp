@@ -267,6 +267,18 @@ TEST(BinderStability, CantCallVendorBinderInSystemContext) {
     EXPECT_EQ(BAD_TYPE, BadStableBinder::doUserTransaction(out));
 }
 
+TEST(ServiceNotifications, Unregister) {
+    auto sm = defaultServiceManager();
+    using LocalRegistrationCallback = IServiceManager::LocalRegistrationCallback;
+    class LocalRegistrationCallbackImpl : public virtual LocalRegistrationCallback {
+        void onServiceRegistration(const String16&, const sp<IBinder>&) override {}
+        virtual ~LocalRegistrationCallbackImpl() {}
+    };
+    sp<LocalRegistrationCallback> cb = sp<LocalRegistrationCallbackImpl>::make();
+
+    EXPECT_EQ(sm->registerForNotifications(String16("RogerRafa"), cb), OK);
+    EXPECT_EQ(sm->unregisterForNotifications(String16("RogerRafa"), cb), OK);
+}
 // This is handwritten so that we can test different stability levels w/o having the AIDL
 // compiler assign them. Hand-writing binder interfaces is considered a bad practice
 // sanity reasons. YOU SHOULD DEFINE AN AIDL INTERFACE INSTEAD!
