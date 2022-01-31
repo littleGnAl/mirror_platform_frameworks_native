@@ -166,6 +166,30 @@
       },
       "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffbf8eba_1c84ffff",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2022-01-31T19:42:01Z",
+      "side": 1,
+      "message": "Sure thing. Created http://b/217220230 to codify some rules regarding APEX naming. I\u0027ll add proposals there \u0026 discuss with the rest of the team after LNY holiday ends.",
+      "parentUuid": "1e5d1429_5c1acca6",
+      "range": {
+        "startLine": 407,
+        "startChar": 12,
+        "endLine": 421,
+        "endChar": 13
+      },
+      "revId": "e17afc7f1a19b169215f910b8361f35c0f9d39de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
