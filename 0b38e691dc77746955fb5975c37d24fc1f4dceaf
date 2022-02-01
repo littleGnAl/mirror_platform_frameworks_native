@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f8f569_bb053028",
+        "filename": "libs/binder/tests/binderStabilityTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2022-02-01T23:09:53Z",
+      "side": 1,
+      "message": "should I be creating a new test file for this, or is this fine here ?",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 39
+      },
+      "revId": "0b38e691dc77746955fb5975c37d24fc1f4dceaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
