@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c1d4bbb_7253b177",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1889245
+      },
+      "writtenOn": "2022-02-02T15:27:00Z",
+      "side": 1,
+      "message": "\u003e Checking if this works, deleting the doubled data already checks if sdcardfs is not supported then only subtract it, so it should work fine.\n\u003e \n\u003e EDIT: Everything works fine without that check too, so removed it",
+      "parentUuid": "f77fabad_960a1f99",
+      "range": {
+        "startLine": 472,
+        "startChar": 9,
+        "endLine": 472,
+        "endChar": 26
+      },
+      "revId": "76d70a1280bc097b5e43c1b312a0981ee94393cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b89d0521_095e8f17",
