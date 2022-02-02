@@ -235,7 +235,7 @@ void android_res_cancel(int nsend_fd) __INTRODUCED_IN(29);
  *
  * Available since API level 33.
  */
-int android_tag_socket_with_uid(int sockfd, int tag, uid_t uid) __INTRODUCED_IN(33);
+int android_tag_socket_with_uid(int sockfd, int tag, uid_t uid) __INTRODUCED_IN(__ANDROID_API_T__);
 
 /*
  * Set the socket tag for traffic statistics on the specified socket.
@@ -252,7 +252,7 @@ int android_tag_socket_with_uid(int sockfd, int tag, uid_t uid) __INTRODUCED_IN(
  *
  * Available since API level 33.
  */
-int android_tag_socket(int sockfd, int tag) __INTRODUCED_IN(33);
+int android_tag_socket(int sockfd, int tag) __INTRODUCED_IN(__ANDROID_API_T__);
 
 /*
  * Untag a network socket.
@@ -269,7 +269,7 @@ int android_tag_socket(int sockfd, int tag) __INTRODUCED_IN(33);
  *
  * Available since API level 33.
  */
-int android_untag_socket(int sockfd) __INTRODUCED_IN(33);
+int android_untag_socket(int sockfd) __INTRODUCED_IN(__ANDROID_API_T__);
 
 __END_DECLS
 
