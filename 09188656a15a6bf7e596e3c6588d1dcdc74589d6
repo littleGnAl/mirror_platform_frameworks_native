@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020008093",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1967963?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "1ce5b282_f031e2e3",
+          "description": "Change to \"cmds/dumpstate/dumpstate.cpp\"",
+          "replacements": [
+            {
+              "path": "cmds/dumpstate/dumpstate.cpp",
+              "range": {
+                "startLine": 2904,
+                "startChar": 50,
+                "endLine": 2904,
+                "endChar": 60
+              },
+              "replacement": "supported"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "4688a3d9_da942a53",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2904,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-02T02:23:59Z",
+      "side": 1,
+      "message": "Common typo found: \"suppported\" -- should it be \"supported\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 2904,
+        "startChar": 50,
+        "endLine": 2904,
+        "endChar": 60
+      },
+      "revId": "09188656a15a6bf7e596e3c6588d1dcdc74589d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
