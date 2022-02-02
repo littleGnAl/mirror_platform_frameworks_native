@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb368d8_064d00c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2022-02-02T20:49:33Z",
+      "side": 1,
+      "message": "Pre-submit failure seems unrelated.",
+      "revId": "30700944f8b6527946e139a0c5710c0a6031a4e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
