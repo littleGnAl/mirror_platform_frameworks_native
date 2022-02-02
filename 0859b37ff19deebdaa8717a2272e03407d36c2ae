@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2099900_5f190264",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2022-02-02T12:46:18Z",
+      "side": 1,
+      "message": "I\u0027d probably update the comments to say something like `Available since Android T.`",
+      "range": {
+        "startLine": 253,
+        "startChar": 19,
+        "endLine": 253,
+        "endChar": 31
+      },
+      "revId": "0859b37ff19deebdaa8717a2272e03407d36c2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
