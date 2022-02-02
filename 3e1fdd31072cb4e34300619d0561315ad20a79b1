@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f449c7_66befb49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-02-02T13:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c2df952_d6d75d9c",
+      "revId": "3e1fdd31072cb4e34300619d0561315ad20a79b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a44d61b_ca330356",
@@ -162,6 +180,30 @@
       "side": 1,
       "message": "I think useless leftover from a previous attempt.",
       "parentUuid": "8fc6167c_a40f9e72",
+      "range": {
+        "startLine": 1283,
+        "startChar": 0,
+        "endLine": 1283,
+        "endChar": 44
+      },
+      "revId": "3e1fdd31072cb4e34300619d0561315ad20a79b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b69c4e5_7e458da5",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-02-02T13:23:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "331130bd_983960c1",
       "range": {
         "startLine": 1283,
         "startChar": 0,
