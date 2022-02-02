@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b27da922_fb63024d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2022-02-02T04:15:32Z",
+      "side": 1,
+      "message": "Fixed dumpsys_test.cpp compilation error.",
+      "revId": "5c05a05ebd2964d84182113169b1edb315eefc45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
