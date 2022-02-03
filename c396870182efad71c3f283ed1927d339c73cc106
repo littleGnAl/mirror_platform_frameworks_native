@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1aef078b_e3b799a5",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-02-03T15:17:40Z",
+      "side": 1,
+      "message": "btw, wondering whether I should also add the check here for the incoming data Parcel. Even though we do that in the proxy, the proxy often doesn\u0027t have the interface descriptor cached, so the information isn\u0027t that useful. Whereas if we log here on the receiving end, we should always have a good descriptor.",
+      "revId": "c396870182efad71c3f283ed1927d339c73cc106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "062eaa88_92259aa1",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 3
