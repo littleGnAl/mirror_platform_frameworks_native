@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "663c070e_43721d2c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1448822
+      },
+      "writtenOn": "2022-02-04T12:37:52Z",
+      "side": 1,
+      "message": "Could you please remove this line too?",
+      "range": {
+        "startLine": 378,
+        "startChar": 4,
+        "endLine": 378,
+        "endChar": 56
+      },
+      "revId": "89f551d3f46fbcf54e2f2bc6c0866a98d2c00146",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
