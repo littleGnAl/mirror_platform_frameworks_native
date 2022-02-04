@@ -2098,6 +2098,9 @@ void SurfaceFlinger::onMessageRefresh() {
         mDrawingState.colorMatrixChanged = false;
     }
 
+    mClientColorMatrix = mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                              vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
+
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
 
     if (mDebugRegion != 0) {
@@ -5170,6 +5173,7 @@ void SurfaceFlinger::dumpAllLocked(const DumpArgs& args, std::string& result) co
     colorizer.bold(result);
     result.append("h/w composer state:\n");
     colorizer.reset(result);
+
     bool hwcDisabled = mDebugDisableHWC || mDebugRegion;
     StringAppendF(&result, "  h/w composer %s\n", hwcDisabled ? "disabled" : "enabled");
     getHwComposer().dump(result);
