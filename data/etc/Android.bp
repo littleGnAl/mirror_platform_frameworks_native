@@ -255,3 +255,9 @@ prebuilt_etc {
     src: "handheld_core_hardware.xml",
     defaults: ["frameworks_native_data_etc_defaults"],
 }
+
+prebuilt_etc {
+    name: "android.hardware.keystore.app_attest_key.prebuilt.xml",
+    src: "android.hardware.keystore.app_attest_key.xml",
+    defaults: ["frameworks_native_data_etc_defaults"],
+}
