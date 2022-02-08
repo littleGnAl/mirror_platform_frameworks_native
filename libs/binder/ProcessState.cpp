@@ -368,7 +368,7 @@ String8 ProcessState::makeBinderThreadName() {
     int32_t s = android_atomic_add(1, &mThreadPoolSeq);
     pid_t pid = getpid();
     String8 name;
-    name.appendFormat("Binder:%d_%X", pid, s);
+    name.appendFormat("%s:%d_%X", mDriverName.c_str(), pid, s);
     return name;
 }
 
