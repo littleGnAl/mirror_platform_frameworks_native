@@ -16,6 +16,23 @@
       "message": "LGTM but not an owner",
       "revId": "b0506c4f7d3a6af244a162971e69c2df1155bca5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a358fa6e_0c5c97b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-02-09T03:45:27Z",
+      "side": 1,
+      "message": "2 build targets timed out, which is indicative of some sort of infra failure.\n\nThere\u0027s nothing device specific about this change, so cheetah-userdebug building should be enough to \u0027prove\u0027 that bramble-userdebug should also build instead of timing out (also note that aosp_bramble-userdebug did finish the build successfully).",
+      "revId": "b0506c4f7d3a6af244a162971e69c2df1155bca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
