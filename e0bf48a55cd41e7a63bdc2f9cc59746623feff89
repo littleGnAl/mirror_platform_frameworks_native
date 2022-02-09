@@ -16,6 +16,24 @@
       "message": "lgtm, any issue that we need this change?",
       "revId": "e0bf48a55cd41e7a63bdc2f9cc59746623feff89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a6562b_da8e6617",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1249526
+      },
+      "writtenOn": "2022-02-09T09:53:05Z",
+      "side": 1,
+      "message": "cc-ed you to the email chain. Basically, I\u0027d like to try to significantly expand the use of the DumpPool by having most bugreport entries be processed by it instead of just a few of them.",
+      "parentUuid": "b8acb792_dcb4b51c",
+      "revId": "e0bf48a55cd41e7a63bdc2f9cc59746623feff89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
