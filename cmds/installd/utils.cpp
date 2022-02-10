@@ -22,9 +22,10 @@
 #include <stdlib.h>
 #include <sys/capability.h>
 #include <sys/stat.h>
+#include <sys/statvfs.h>
 #include <sys/wait.h>
 #include <sys/xattr.h>
-#include <sys/statvfs.h>
+#include <uuid/uuid.h>
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
@@ -47,6 +48,7 @@
 
 #define DEBUG_XATTRS 0
 
+using android::base::Dirname;
 using android::base::EndsWith;
 using android::base::Fdopendir;
 using android::base::StringPrintf;
@@ -54,6 +56,8 @@ using android::base::unique_fd;
 
 namespace android {
 namespace installd {
+
+using namespace std::literals;
 
 /**
  * Check that given string is valid filename, and that it attempts no
@@ -593,6 +597,84 @@ int delete_dir_contents(const char *pathname,
         }
     }
     return res;
+}
+
+static std::string make_unique_name(std::string_view suffix) {
+    static constexpr auto uuidStringSize = 36;
+
+    uuid_t guid;
+    uuid_generate(guid);
+
+    std::string name;
+    const auto suffixSize = suffix.size();
+    name.reserve(uuidStringSize + suffixSize);
+
+    name.resize(uuidStringSize);
+    uuid_unparse(guid, name.data());
+    name.append(suffix);
+
+    return name;
+}
+
+struct Constants {
+    static constexpr auto deletedSuffix = "==deleted=="sv;
+};
+
+static int rename_delete_dir_contents(const std::string& pathname,
+                                      int (*exclusion_predicate)(const char*, const int),
+                                      bool ignore_if_missing) {
+    auto temp_dir_name = make_unique_name(Constants::deletedSuffix);
+    auto temp_dir_path =
+            base::StringPrintf("%s/%s", Dirname(pathname).c_str(), temp_dir_name.c_str());
+
+    if (::rename(pathname.c_str(), temp_dir_path.c_str())) {
+        if (ignore_if_missing && (errno == ENOENT)) {
+            return 0;
+        }
+        ALOGE("Couldn't rename %s -> %s: %s \n", pathname.c_str(), temp_dir_path.c_str(),
+              strerror(errno));
+        return -errno;
+    }
+
+    return delete_dir_contents(temp_dir_path.c_str(), 1, exclusion_predicate, ignore_if_missing);
+}
+
+bool is_renamed_deleted_dir(std::string_view path) {
+    return path.ends_with(Constants::deletedSuffix);
+}
+
+int rename_delete_dir_contents_and_dir(const std::string& pathname, bool ignore_if_missing) {
+    return rename_delete_dir_contents(pathname, nullptr, ignore_if_missing);
+}
+
+void find_and_delete_renamed_deleted_dir(const char* path) {
+    auto d = opendir(path);
+    if (d == nullptr) {
+        return;
+    }
+    int dfd = dirfd(d);
+    if (dfd < 0) {
+        ALOGE("Couldn't dirfd %s: %s\n", path, strerror(errno));
+        return;
+    }
+
+    struct dirent* de;
+    while ((de = readdir(d))) {
+        if (de->d_type != DT_DIR) {
+            continue;
+        }
+        const char* name = de->d_name;
+        if (is_renamed_deleted_dir({name})) {
+            LOG(INFO) << "Deleting renamed data directory: " << name;
+            // Deleting the content.
+            delete_dir_contents_fd(dfd, name);
+            // Deleting the directory
+            if (unlinkat(dfd, name, AT_REMOVEDIR) < 0) {
+                ALOGE("Couldn't unlinkat %s: %s\n", name, strerror(errno));
+            }
+        }
+    }
+    closedir(d);
 }
 
 int delete_dir_contents_fd(int dfd, const char *name)
