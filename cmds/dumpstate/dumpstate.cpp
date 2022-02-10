@@ -46,6 +46,7 @@
 
 #include <chrono>
 #include <cmath>
+#include <filesystem>
 #include <fstream>
 #include <functional>
 #include <future>
@@ -54,6 +55,7 @@
 #include <regex>
 #include <set>
 #include <string>
+#include <system_error>
 #include <utility>
 #include <vector>
 
@@ -79,6 +81,7 @@
 #include <debuggerd/client.h>
 #include <dumpsys.h>
 #include <dumputils/dump_utils.h>
+#include <fmt/core.h>
 #include <hardware_legacy/power.h>
 #include <hidl/ServiceManagement.h>
 #include <log/log.h>
@@ -88,13 +91,18 @@
 #include <private/android_logger.h>
 #include <serviceutils/PriorityDumper.h>
 #include <utils/StrongPointer.h>
+
+#include "BugreportEntries.h"
 #include "DumpstateInternal.h"
 #include "DumpstateService.h"
+#include "EntryList.h"
+
 #include "dumpstate.h"
 
 namespace dumpstate_hal_hidl_1_0 = android::hardware::dumpstate::V1_0;
 namespace dumpstate_hal_hidl = android::hardware::dumpstate::V1_1;
 namespace dumpstate_hal_aidl = aidl::android::hardware::dumpstate;
+namespace fs = std::filesystem;
 
 using ::std::literals::chrono_literals::operator""ms;
 using ::std::literals::chrono_literals::operator""s;
@@ -115,12 +123,12 @@ using android::UNKNOWN_ERROR;
 using android::Vector;
 using android::base::StringPrintf;
 using android::os::IDumpstateListener;
+using namespace android::os::dumpstate;
 using android::os::dumpstate::CommandOptions;
 using android::os::dumpstate::DumpFileToFd;
 using android::os::dumpstate::DumpPool;
 using android::os::dumpstate::PropertiesHelper;
 using android::os::dumpstate::TaskQueue;
-using android::os::dumpstate::WaitForTask;
 
 // Keep in sync with
 // frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java
@@ -159,6 +167,9 @@ static const uint64_t TELEPHONY_REPORT_USER_CONSENT_TIMEOUT_MS = 2 * 60 * 1000;
 
 static std::set<std::string> mount_points;
 void add_mountinfo();
+
+/* Returns a function that runs "showmap" for a process */
+std::function<void(int, const char *)> get_showmap_func(int out_fd);
 
 #define PSTORE_LAST_KMSG "/sys/fs/pstore/console-ramoops"
 #define ALT_PSTORE_LAST_KMSG "/sys/fs/pstore/console-ramoops-0"
@@ -217,11 +228,6 @@ static const std::string ANR_FILE_PREFIX = "anr_";
 #define RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK_AND_LOG(log_title, func_ptr, ...) \
     RETURN_IF_USER_DENIED_CONSENT();                                           \
     RUN_SLOW_FUNCTION_AND_LOG(log_title, func_ptr, __VA_ARGS__);               \
-    RETURN_IF_USER_DENIED_CONSENT();
-
-#define WAIT_TASK_WITH_CONSENT_CHECK(future) \
-    RETURN_IF_USER_DENIED_CONSENT();                      \
-    WaitForTask(future);                     \
     RETURN_IF_USER_DENIED_CONSENT();
 
 static const char* WAKE_LOCK_NAME = "dumpstate_wakelock";
@@ -348,9 +354,6 @@ static void RunDumpsys(const std::string& title, const std::vector<std::string>&
 static void RunDumpsys(const std::string& title, const std::vector<std::string>& dumpsysArgs,
                        int out_fd) {
     return ds.RunDumpsys(title, dumpsysArgs, Dumpstate::DEFAULT_DUMPSYS, 0, out_fd);
-}
-static int DumpFile(const std::string& title, const std::string& path) {
-    return ds.DumpFile(title, path);
 }
 
 // Relative directory (inside the zip) for all files copied as-is into the bugreport.
@@ -485,26 +488,16 @@ void add_mountinfo() {
     MYLOGD("%s: %d entries added to zip file\n", title.c_str(), (int)mount_points.size());
 }
 
-static void dump_dev_files(const char *title, const char *driverpath, const char *filename)
-{
-    DIR *d;
-    struct dirent *de;
-    char path[PATH_MAX];
-
-    d = opendir(driverpath);
-    if (d == nullptr) {
-        return;
-    }
-
-    while ((de = readdir(d))) {
-        if (de->d_type != DT_LNK) {
-            continue;
+static EntryList DevFileEntries(const std::string& title, const std::string& driverpath,
+                                         const std::string& filename) {
+    EntryList entries;
+    std::error_code ec;
+    for (auto const& dir_entry : std::filesystem::directory_iterator(driverpath, ec)) {
+        if (dir_entry.is_symlink()) {
+            entries.push_back(MakeFileEntry(title, dir_entry.path()/filename));
         }
-        snprintf(path, sizeof(path), "%s/%s/%s", driverpath, de->d_name, filename);
-        DumpFile(title, path);
     }
-
-    closedir(d);
+    return entries;
 }
 
 static bool skip_not_stat(const char *path) {
@@ -944,25 +937,32 @@ bool Dumpstate::AddTextZipEntry(const std::string& entry_name, const std::string
     return true;
 }
 
-static void DoKmsg() {
+static std::unique_ptr<BugreportEntry> KmsgEntry() {
     struct stat st;
+    std::string file;
     if (!stat(PSTORE_LAST_KMSG, &st)) {
         /* Also TODO: Make console-ramoops CAP_SYSLOG protected. */
-        DumpFile("LAST KMSG", PSTORE_LAST_KMSG);
+        file = PSTORE_LAST_KMSG;
     } else if (!stat(ALT_PSTORE_LAST_KMSG, &st)) {
-        DumpFile("LAST KMSG", ALT_PSTORE_LAST_KMSG);
+        file = ALT_PSTORE_LAST_KMSG;
     } else {
         /* TODO: Make last_kmsg CAP_SYSLOG protected. b/5555691 */
-        DumpFile("LAST KMSG", "/proc/last_kmsg");
+        file = "/proc/last_kmsg";
     }
+    return MakeFileEntry("LAST KMSG", file);
 }
 
-static void DoKernelLogcat() {
-    unsigned long timeout_ms = logcat_timeout({"kernel"});
-    RunCommand(
-        "KERNEL LOG",
-        {"logcat", "-b", "kernel", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
-        CommandOptions::WithTimeoutInMs(timeout_ms).Build());
+const std::vector<std::string> COMMON_LOGCAT_ARGUMENTS =
+        {"-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"};
+
+static std::vector<std::string> MakeLogcatCmdline(const std::vector<std::string>& arguments) {
+    std::vector<std::string> cmdline = {{"logcat"}};
+    cmdline.insert(cmdline.end(), arguments.begin(),
+                                  arguments.end());
+    cmdline.insert(cmdline.end(), COMMON_LOGCAT_ARGUMENTS.begin(),
+                                  COMMON_LOGCAT_ARGUMENTS.end());
+
+    return cmdline;
 }
 
 static void DoSystemLogcat(time_t since) {
@@ -970,45 +970,31 @@ static void DoSystemLogcat(time_t since) {
     strftime(since_str, sizeof(since_str), "%Y-%m-%d %H:%M:%S.000", localtime(&since));
 
     unsigned long timeout_ms = logcat_timeout({"main", "system", "crash"});
-    RunCommand("SYSTEM LOG",
-               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v", "-T",
-                since_str},
+    RunCommand("SYSTEM LOG", MakeLogcatCmdline({"-T", since_str}),
                CommandOptions::WithTimeoutInMs(timeout_ms).Build());
 }
 
-static void DoRadioLogcat() {
-    unsigned long timeout_ms = logcat_timeout({"radio"});
-    RunCommand(
-        "RADIO LOG",
-        {"logcat", "-b", "radio", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
-        CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
+static std::unique_ptr<BugreportEntry> MakeLogcatEntry(std::string name, const std::vector<std::string>& buffers) {
+    unsigned long timout_ms = logcat_timeout(buffers);
+    std::vector<std::string> buffer_args;
+    for (auto& buffer: buffers) {
+        buffer_args.push_back("-b");
+        buffer_args.push_back(buffer);
+    }
+    return MakeCommandOutputEntry(std::move(name), MakeLogcatCmdline(buffer_args),
+            CommandOptions::WithTimeoutInMs(timout_ms).Build());
 }
 
-static void DoLogcat() {
-    unsigned long timeout_ms;
-    // DumpFile("EVENT LOG TAGS", "/etc/event-log-tags");
-    // calculate timeout
-    timeout_ms = logcat_timeout({"main", "system", "crash"});
-    RunCommand("SYSTEM LOG",
-               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
-               CommandOptions::WithTimeoutInMs(timeout_ms).Build());
-    timeout_ms = logcat_timeout({"events"});
-    RunCommand(
-        "EVENT LOG",
-        {"logcat", "-b", "events", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
-        CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
-    timeout_ms = logcat_timeout({"stats"});
-    RunCommand(
-        "STATS LOG",
-        {"logcat", "-b", "stats", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
-        CommandOptions::WithTimeoutInMs(timeout_ms).Build(), true /* verbose_duration */);
-    DoRadioLogcat();
-
-    RunCommand("LOG STATISTICS", {"logcat", "-b", "all", "-S"});
-
-    /* kernels must set CONFIG_PSTORE_PMSG, slice up pstore with device tree */
-    RunCommand("LAST LOGCAT", {"logcat", "-L", "-b", "all", "-v", "threadtime", "-v", "printable",
-                               "-v", "uid", "-d", "*:v"});
+static EntryList LogcatEntries() {
+    return MakeEntryList( (std::unique_ptr<BugreportEntry>[]) {
+        MakeLogcatEntry("SYSTEM LOG", {"main", "system", "crash"}),
+        MakeLogcatEntry("EVENT LOG", {"events"}),
+        MakeLogcatEntry("STATS LOG", {"stats"}),
+        MakeLogcatEntry("RADIO LOG", {"radio"}),
+        MakeCommandOutputEntry("LOG STATISTICS", {"logcat", "-b", "all", "-S"}),
+        /* kernels must set CONFIG_PSTORE_PMSG, slice up pstore with device tree */
+        MakeCommandOutputEntry("LAST LOGCAT", MakeLogcatCmdline({"-L", "-b", "all"})),
+    });
 }
 
 static void DumpIncidentReport() {
@@ -1068,24 +1054,27 @@ static void DumpVisibleWindowViews() {
     unlink(path.c_str());
 }
 
-static void DumpIpTablesAsRoot() {
-    RunCommand("IPTABLES", {"iptables", "-L", "-nvx"});
-    RunCommand("IP6TABLES", {"ip6tables", "-L", "-nvx"});
-    RunCommand("IPTABLES NAT", {"iptables", "-t", "nat", "-L", "-nvx"});
-    /* no ip6 nat */
-    RunCommand("IPTABLES MANGLE", {"iptables", "-t", "mangle", "-L", "-nvx"});
-    RunCommand("IP6TABLES MANGLE", {"ip6tables", "-t", "mangle", "-L", "-nvx"});
-    RunCommand("IPTABLES RAW", {"iptables", "-t", "raw", "-L", "-nvx"});
-    RunCommand("IP6TABLES RAW", {"ip6tables", "-t", "raw", "-L", "-nvx"});
+static EntryList IpTablesAsRootEntries() {
+    return MakeEntryList( (std::unique_ptr<BugreportEntry>[]) {
+        MakeCommandOutputEntry("IPTABLES", {"iptables", "-L", "-nvx"}),
+        MakeCommandOutputEntry("IP6TABLES", {"ip6tables", "-L", "-nvx"}),
+        MakeCommandOutputEntry("IPTABLES NAT", {"iptables", "-t", "nat", "-L", "-nvx"}),
+        /* no ip6 nat */
+        MakeCommandOutputEntry("IPTABLES MANGLE", {"iptables", "-t", "mangle", "-L", "-nvx"}),
+        MakeCommandOutputEntry("IP6TABLES MANGLE", {"ip6tables", "-t", "mangle", "-L", "-nvx"}),
+        MakeCommandOutputEntry("IPTABLES RAW", {"iptables", "-t", "raw", "-L", "-nvx"}),
+        MakeCommandOutputEntry("IP6TABLES RAW", {"ip6tables", "-t", "raw", "-L", "-nvx"}),
+    });
 }
 
-static void DumpDynamicPartitionInfo() {
+static EntryList DynamicPartitionInfoEntries() {
     if (!::android::base::GetBoolProperty("ro.boot.dynamic_partitions", false)) {
-        return;
+        return {};
     }
-
-    RunCommand("LPDUMP", {"lpdump", "--all"});
-    RunCommand("DEVICE-MAPPER", {"gsid", "dump-device-mapper"});
+    return MakeEntryList( (std::unique_ptr<BugreportEntry>[]) {
+        MakeCommandOutputEntry("LPDUMP", {"lpdump", "--all"}),
+        MakeCommandOutputEntry("DEVICE-MAPPER", {"gsid", "dump-device-mapper"}),
+    });
 }
 
 static void AddAnrTraceDir(const std::string& anr_traces_dir) {
@@ -1169,17 +1158,16 @@ static void DumpBlockStatFiles() {
      return;
 }
 
-static void DumpPacketStats() {
-    DumpFile("NETWORK DEV INFO", "/proc/net/dev");
-}
-
-static void DumpIpAddrAndRules() {
+static EntryList IpAddrAndRulesEntries() {
     /* The following have a tendency to get wedged when wifi drivers/fw goes belly-up. */
-    RunCommand("NETWORK INTERFACES", {"ip", "link"});
-    RunCommand("IPv4 ADDRESSES", {"ip", "-4", "addr", "show"});
-    RunCommand("IPv6 ADDRESSES", {"ip", "-6", "addr", "show"});
-    RunCommand("IP RULES", {"ip", "rule", "show"});
-    RunCommand("IP RULES v6", {"ip", "-6", "rule", "show"});
+    return MakeEntryList((std::unique_ptr<BugreportEntry>[]) {
+        MakeCommandOutputEntry("NETWORK INTERFACES", {"ip", "link"}),
+        MakeCommandOutputEntry("IPv4 ADDRESSES", {"ip", "-4", "addr", "show"}),
+        MakeCommandOutputEntry("IPv6 ADDRESSES", {"ip", "-6", "addr", "show"}),
+        MakeCommandOutputEntry("IP RULES", {"ip", "rule", "show"}),
+        MakeCommandOutputEntry("IP RULES v6", {"ip", "-6", "rule", "show"}),
+    });
+
 }
 
 static Dumpstate::RunStatus RunDumpsysTextByPriority(const std::string& title, int priority,
@@ -1442,13 +1430,11 @@ static void DumpstateLimitedOnly() {
     unsigned long timeout_ms;
     // calculate timeout
     timeout_ms = logcat_timeout({"main", "system", "crash"});
-    RunCommand("SYSTEM LOG",
-               {"logcat", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+    RunCommand("SYSTEM LOG", MakeLogcatCmdline({}),
                CommandOptions::WithTimeoutInMs(timeout_ms).Build());
     timeout_ms = logcat_timeout({"events"});
     RunCommand(
-        "EVENT LOG",
-        {"logcat", "-b", "events", "-v", "threadtime", "-v", "printable", "-v", "uid", "-d", "*:v"},
+        "EVENT LOG", MakeLogcatCmdline({"-b", "events"}),
         CommandOptions::WithTimeoutInMs(timeout_ms).Build());
 
     printf("========================================================\n");
@@ -1548,155 +1534,108 @@ static void DumpAppInfos(int out_fd = STDOUT_FILENO) {
 // be distributed fairly evenly throughout the function.
 static Dumpstate::RunStatus dumpstate() {
     DurationReporter duration_reporter("DUMPSTATE");
+    auto dynamic_duration_reporter = std::make_unique<DurationReporter>("DUMPSTATE 1");
 
-    // Enqueue slow functions into the thread pool, if the parallel run is enabled.
-    std::future<std::string> dump_hals, dump_incident_report, dump_board, dump_checkins;
-    if (ds.dump_pool_) {
-        // Pool was shutdown in DumpstateDefaultAfterCritical method in order to
-        // drop root user. Restarts it with two threads for the parallel run.
-        ds.dump_pool_->start(/* thread_counts = */2);
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("DUMPSTATE 2");
 
-        dump_hals = ds.dump_pool_->enqueueTaskWithFd(DUMP_HALS_TASK, &DumpHals, _1);
-        dump_incident_report = ds.dump_pool_->enqueueTask(
-            DUMP_INCIDENT_REPORT_TASK, &DumpIncidentReport);
-        dump_board = ds.dump_pool_->enqueueTaskWithFd(
-            DUMP_BOARD_TASK, &Dumpstate::DumpstateBoard, &ds, _1);
-        dump_checkins = ds.dump_pool_->enqueueTaskWithFd(DUMP_CHECKINS_TASK, &DumpCheckins, _1);
-    }
+    RunnableEntryList entry_list;
+    entry_list.Extend(DevFileEntries("TRUSTY VERSION", "/sys/bus/platform/drivers/trusty", "trusty_version"));
+    entry_list.Extend((std::unique_ptr<BugreportEntry>[]) {
+        MakeNoOutputEntry(DUMP_INCIDENT_REPORT_TASK, DumpIncidentReport),
+        MakeCommandOutputEntry("UPTIME", {"uptime"}),
+        MakeLegacyStdoutEntry("DUMP BLOCK STAT", DumpBlockStatFiles),
+        MakeFileEntry("MEMORY INFO", "/proc/meminfo"),
+        MakeCommandOutputEntry("CPU INFO", {"top", "-b", "-n", "1", "-H", "-s", "6", "-o",
+                            "pid,tid,user,pr,ni,%cpu,s,virt,res,pcy,cmd,name"}),
+        MakeCommandOutputEntry("PROCRANK", {"procrank"}, AS_ROOT_20),
+        MakeFileEntry("VIRTUAL MEMORY STATS", "/proc/vmstat"),
+        MakeFileEntry("VMALLOC INFO", "/proc/vmallocinfo"),
+        MakeFileEntry("SLAB INFO", "/proc/slabinfo"),
+        MakeFileEntry("ZONEINFO", "/proc/zoneinfo"),
+        MakeFileEntry("PAGETYPEINFO", "/proc/pagetypeinfo"),
+        MakeFileEntry("BUDDYINFO", "/proc/buddyinfo"),
+        // TODO(cmtm): (change this function)
+        MakeLegacyStdoutEntry("EXTERNAL FRAGMENTATION INFO", DumpExternalFragmentationInfo),
+        MakeFileEntry("KERNEL WAKE SOURCES", "/d/wakeup_sources"),
+        MakeFileEntry("KERNEL CPUFREQ", "/sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state"),
+        MakeCommandOutputEntry("PROCESSES AND THREADS",
+               {"ps", "-A", "-T", "-Z", "-O", "pri,nice,rtprio,sched,pcy,time"}),
+        MakeCommandOutputEntry("LIBRANK", {"librank"}, CommandOptions::AS_ROOT),
+        MakeLegacyTmpfileEntry(DUMP_HALS_TASK, DumpHals),
+        MakeCommandOutputEntry("PRINTENV", {"printenv"}),
+        MakeCommandOutputEntry("NETSTAT", {"netstat", "-nW"}),
+    });
 
-    // Dump various things. Note that anything that takes "long" (i.e. several seconds) should
-    // check intermittently (if it's intrerruptable like a foreach on pids) and/or should be wrapped
-    // in a consent check (via RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK).
-    dump_dev_files("TRUSTY VERSION", "/sys/bus/platform/drivers/trusty", "trusty_version");
-    RunCommand("UPTIME", {"uptime"});
-    DumpBlockStatFiles();
-    DumpFile("MEMORY INFO", "/proc/meminfo");
-    RunCommand("CPU INFO", {"top", "-b", "-n", "1", "-H", "-s", "6", "-o",
-                            "pid,tid,user,pr,ni,%cpu,s,virt,res,pcy,cmd,name"});
-
-    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(RunCommand, "PROCRANK", {"procrank"}, AS_ROOT_20);
-
-    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(DumpVisibleWindowViews);
-
-    DumpFile("VIRTUAL MEMORY STATS", "/proc/vmstat");
-    DumpFile("VMALLOC INFO", "/proc/vmallocinfo");
-    DumpFile("SLAB INFO", "/proc/slabinfo");
-    DumpFile("ZONEINFO", "/proc/zoneinfo");
-    DumpFile("PAGETYPEINFO", "/proc/pagetypeinfo");
-    DumpFile("BUDDYINFO", "/proc/buddyinfo");
-    DumpExternalFragmentationInfo();
-
-    DumpFile("KERNEL CPUFREQ", "/sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state");
-
-    RunCommand("PROCESSES AND THREADS",
-               {"ps", "-A", "-T", "-Z", "-O", "pri,nice,rtprio,sched,pcy,time"});
-
-    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(RunCommand, "LIBRANK", {"librank"},
-                                         CommandOptions::AS_ROOT);
-
-    if (ds.dump_pool_) {
-        WAIT_TASK_WITH_CONSENT_CHECK(std::move(dump_hals));
-    } else {
-        RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK_AND_LOG(DUMP_HALS_TASK, DumpHals);
-    }
-
-    RunCommand("PRINTENV", {"printenv"});
-    RunCommand("NETSTAT", {"netstat", "-nW"});
+    // TODO(cmtm): pull this out into a function
     struct stat s;
     if (stat("/proc/modules", &s) != 0) {
         MYLOGD("Skipping 'lsmod' because /proc/modules does not exist\n");
     } else {
-        RunCommand("LSMOD", {"lsmod"});
-        RunCommand("MODULES INFO",
+        entry_list.Extend((std::unique_ptr<BugreportEntry>[]) {
+            MakeCommandOutputEntry("LSMOD", {"lsmod"}),
+            MakeCommandOutputEntry("MODULES INFO",
                    {"sh", "-c", "cat /proc/modules | cut -d' ' -f1 | "
                     "    while read MOD ; do echo modinfo:$MOD ; modinfo $MOD ; "
-                    "done"}, CommandOptions::AS_ROOT);
+                    "done"}, CommandOptions::AS_ROOT)
+        });
     }
-
+    // TODO(cmtm): factor this all out into a function that returns the right command.
     if (android::base::GetBoolProperty("ro.logd.kernel", false)) {
-        DoKernelLogcat();
+        unsigned long timeout_ms = logcat_timeout({"kernel"});
+        entry_list.push_back(
+            MakeCommandOutputEntry("KERNEL LOG", MakeLogcatCmdline({"-b", "kernel"}),
+                CommandOptions::WithTimeoutInMs(timeout_ms).Build()));
     } else {
-        do_dmesg();
+        entry_list.push_back(
+            MakeLegacyTmpfileEntry("KERNEL LOG (dmesg)", do_dmesg)
+        );
     }
+    entry_list.Extend((std::unique_ptr<BugreportEntry>[]) {
+        MakeCommandOutputEntry("LIST OF OPEN FILES", {"lsof"}, CommandOptions::AS_ROOT),
+        MakeLegacyTmpfileEntry("SMAPS OF ALL PROCESSES", [](int fd) { for_each_pid(get_showmap_func(fd), "SMAPS OF ALL PROCESSES"); }),
+        MakeLegacyStdoutEntry("BLOCKED PROCESS WAIT-CHANNELS", []() { for_each_tid(show_wchan, "BLOCKED PROCESS WAIT-CHANNELS"); }),
+        MakeLegacyStdoutEntry("PROCESS TIMES (pid cmd user system iowait+percentage)", []() { for_each_pid(show_showtime, "PROCESS TIMES (pid cmd user system iowait+percentage)"); }),
+        // TODO(cmtm): this function also add other files to zip. That should be pulled out
+        MakeLegacyStdoutEntry("AddAnrTraceDir", AddAnrTraceFiles),
+        MakeFileEntry("NETWORK DEV INFO", "/proc/net/dev"),
+        MakeDumpsysEntry("EBPF MAP STATS", {"netd", "trafficcontroller"}),
+        // TODO(cmtm): below two/three are very easy to convert
+        KmsgEntry(),
+    });
+    entry_list.Extend(IpAddrAndRulesEntries());
+    entry_list.Extend((std::unique_ptr<BugreportEntry>[]) {
+        MakeLegacyStdoutEntry("DUMP ROUTE TABLES", dump_route_tables),
+        MakeCommandOutputEntry("ARP CACHE", {"ip", "-4", "neigh", "show"}),
+        MakeCommandOutputEntry("IPv6 ND CACHE", {"ip", "-6", "neigh", "show"}),
+        MakeCommandOutputEntry("MULTICAST ADDRESSES", {"ip", "maddr"}),
+        MakeLegacyStdoutEntry("DUMPSYS HIGH", RunDumpsysHigh),
+        // The dump mechanism in connectivity is refactored due to modularization work. Connectivity can
+        // only register with a default priority(NORMAL priority). Dumpstate has to call connectivity
+        // dump with priority parameters to dump high priority information.
+        MakeDumpsysEntry("SERVICE HIGH connectivity", {"connectivity", "--dump-priority", "HIGH"},
+                CommandOptions::WithTimeout(10).Build()),
+        MakeCommandOutputEntry("SYSTEM PROPERTIES", {"getprop"}),
+        MakeCommandOutputEntry("STORAGED IO INFO", {"storaged", "-u", "-p"}),
+        MakeCommandOutputEntry("FILESYSTEMS & FREE SPACE", {"df"}),
+    });
 
-    RunCommand("LIST OF OPEN FILES", {"lsof"}, CommandOptions::AS_ROOT);
-
-    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(for_each_pid, do_showmap, "SMAPS OF ALL PROCESSES");
-
-    for_each_tid(show_wchan, "BLOCKED PROCESS WAIT-CHANNELS");
-    for_each_pid(show_showtime, "PROCESS TIMES (pid cmd user system iowait+percentage)");
-
-    /* Dump Nfc NCI logs */
-    ds.AddDir("/data/misc/nfc/logs", true);
-
-    if (ds.options_->do_screenshot && !ds.do_early_screenshot_) {
-        MYLOGI("taking late screenshot\n");
-        ds.TakeScreenshot();
-    }
-
-    AddAnrTraceFiles();
-
-    MaybeAddSystemTraceToZip();
-
-    // NOTE: tombstones are always added as separate entries in the zip archive
-    // and are not interspersed with the main report.
-    const bool tombstones_dumped = AddDumps(ds.tombstone_data_.begin(), ds.tombstone_data_.end(),
-                                            "TOMBSTONE", true /* add_to_zip */);
-    if (!tombstones_dumped) {
-        printf("*** NO TOMBSTONES to dump in %s\n\n", TOMBSTONE_DIR.c_str());
-    }
-
-    DumpPacketStats();
-
-    RunDumpsys("EBPF MAP STATS", {"netd", "trafficcontroller"});
-
-    DoKmsg();
-
-    DumpIpAddrAndRules();
-
-    dump_route_tables();
-
-    RunCommand("ARP CACHE", {"ip", "-4", "neigh", "show"});
-    RunCommand("IPv6 ND CACHE", {"ip", "-6", "neigh", "show"});
-    RunCommand("MULTICAST ADDRESSES", {"ip", "maddr"});
-
-    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(RunDumpsysHigh);
-
-    // The dump mechanism in connectivity is refactored due to modularization work. Connectivity can
-    // only register with a default priority(NORMAL priority). Dumpstate has to call connectivity
-    // dump with priority parameters to dump high priority information.
-    RunDumpsys("SERVICE HIGH connectivity", {"connectivity", "--dump-priority", "HIGH"},
-                   CommandOptions::WithTimeout(10).Build());
-
-    RunCommand("SYSTEM PROPERTIES", {"getprop"});
-
-    RunCommand("STORAGED IO INFO", {"storaged", "-u", "-p"});
-
-    RunCommand("FILESYSTEMS & FREE SPACE", {"df"});
-
+    // TODO(cmtm): put this into function
     /* Binder state is expensive to look at as it uses a lot of memory. */
     std::string binder_logs_dir = access("/dev/binderfs/binder_logs", R_OK) ?
             "/sys/kernel/debug/binder" : "/dev/binderfs/binder_logs";
+    entry_list.Extend((std::unique_ptr<BugreportEntry>[]) {
+        MakeFileEntry("BINDER FAILED TRANSACTION LOG", binder_logs_dir + "/failed_transaction_log"),
+        MakeFileEntry("BINDER TRANSACTION LOG", binder_logs_dir + "/transaction_log"),
+        MakeFileEntry("BINDER TRANSACTIONS", binder_logs_dir + "/transactions"),
+        MakeFileEntry("BINDER STATS", binder_logs_dir + "/stats"),
+        MakeFileEntry("BINDER STATE", binder_logs_dir + "/state"),
+    });
 
-    DumpFile("BINDER FAILED TRANSACTION LOG", binder_logs_dir + "/failed_transaction_log");
-    DumpFile("BINDER TRANSACTION LOG", binder_logs_dir + "/transaction_log");
-    DumpFile("BINDER TRANSACTIONS", binder_logs_dir + "/transactions");
-    DumpFile("BINDER STATS", binder_logs_dir + "/stats");
-    DumpFile("BINDER STATE", binder_logs_dir + "/state");
+    entry_list.Extend((std::unique_ptr<BugreportEntry>[]) {
+        MakeLegacyTmpfileEntry(DUMP_BOARD_TASK, [](int fd) { ds.DumpstateBoard(fd); }),
+    });
 
-    /* Add window and surface trace files. */
-    if (!PropertiesHelper::IsUserBuild()) {
-        ds.AddDir(WMTRACE_DATA_DIR, false);
-    }
-
-    ds.AddDir(SNAPSHOTCTL_LOG_DIR, false);
-
-    if (ds.dump_pool_) {
-        WAIT_TASK_WITH_CONSENT_CHECK(std::move(dump_board));
-    } else {
-        RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK_AND_LOG(DUMP_BOARD_TASK, ds.DumpstateBoard);
-    }
-
+    // TODO(cmtm): pull this out into a function
     /* Migrate the ril_dumpstate to a device specific dumpstate? */
     int rilDumpstateTimeout = android::base::GetIntProperty("ril.dumpstate.timeout", 0);
     if (rilDumpstateTimeout > 0) {
@@ -1708,33 +1647,82 @@ static Dumpstate::RunStatus dumpstate() {
         if (!PropertiesHelper::IsUserBuild()) {
             options.AsRoot();
         }
-        RunCommand("DUMP VENDOR RIL LOGS", {"vril-dump"}, options.Build());
+        MakeCommandOutputEntry("DUMP VENDOR RIL LOGS", {"vril-dump"}, options.Build());
     }
 
-    printf("========================================================\n");
-    printf("== Android Framework Services\n");
-    printf("========================================================\n");
-
-    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(RunDumpsysNormal);
-
+    entry_list.Extend((std::unique_ptr<BugreportEntry>[]) {
+        MakeBigSectionHeader("Android Framework Services"),
+        MakeLegacyStdoutEntry("DUMPSYS NORMAL", RunDumpsysNormal),
+    });
+    // TODO(cmtm): handle the ordering of this, which just adds to zip file. Maybe we can add at the very end?
     /* Dump Bluetooth HCI logs after getting bluetooth_manager dumpsys */
     ds.AddDir("/data/misc/bluetooth/logs", true);
+    entry_list.Extend((std::unique_ptr<BugreportEntry>[]) {
+        MakeLegacyTmpfileEntry(DUMP_CHECKINS_TASK, DumpCheckins),
+        MakeLegacyTmpfileEntry("DUMP APP INFO", DumpAppInfos),
+    });
+
+    entry_list.Extend((std::unique_ptr<BugreportEntry>[]) {
+        MakeBigSectionHeader("Dropbox crashes"),
+        MakeDumpsysEntry("DROPBOX SYSTEM SERVER CRASHES", {"dropbox", "-p", "system_server_crash"}),
+        MakeDumpsysEntry("DROPBOX SYSTEM APP CRASHES", {"dropbox", "-p", "system_app_crash"}),
+    });
+
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("DUMPSTATE 3");
+
 
     if (ds.dump_pool_) {
-        WAIT_TASK_WITH_CONSENT_CHECK(std::move(dump_checkins));
+        ds.dump_pool_->start(/* thread_counts = */20);
+        entry_list.ScheduleOnDumpPool(ds.dump_pool_.get());
+        entry_list.WaitAndWriteToFile(stdout);
+
     } else {
-        RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK_AND_LOG(DUMP_CHECKINS_TASK, DumpCheckins);
+        entry_list.RunAllSingleThreaded(stdout);
     }
 
-    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(DumpAppInfos);
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("DUMPSTATE 4");
 
-    printf("========================================================\n");
-    printf("== Dropbox crashes\n");
-    printf("========================================================\n");
 
-    RunDumpsys("DROPBOX SYSTEM SERVER CRASHES", {"dropbox", "-p", "system_server_crash"});
-    RunDumpsys("DROPBOX SYSTEM APP CRASHES", {"dropbox", "-p", "system_app_crash"});
+    ////////////////////////////////////////
+    // These don't affect the flat file
+    ////////////////////////////////////////
+    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(DumpVisibleWindowViews);
+    /* Dump Nfc NCI logs */
+    ds.AddDir("/data/misc/nfc/logs", true);
 
+    if (ds.options_->do_screenshot && !ds.do_early_screenshot_) {
+        MYLOGI("taking late screenshot\n");
+        ds.TakeScreenshot();
+    }
+    MaybeAddSystemTraceToZip();
+
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("DUMPSTATE 5");
+
+
+    // NOTE: tombstones are always added as separate entries in the zip archive
+    // and are not interspersed with the main report.
+    const bool tombstones_dumped = AddDumps(ds.tombstone_data_.begin(), ds.tombstone_data_.end(),
+                                            "TOMBSTONE", true /* add_to_zip */);
+    if (!tombstones_dumped) {
+        printf("*** NO TOMBSTONES to dump in %s\n\n", TOMBSTONE_DIR.c_str());
+    }
+    /* Add window and surface trace files. */
+    if (!PropertiesHelper::IsUserBuild()) {
+        ds.AddDir(WMTRACE_DATA_DIR, false);
+    }
+    ds.AddDir(SNAPSHOTCTL_LOG_DIR, false);
+        // Add linker configuration directory
+    ds.AddDir(LINKERCONFIG_DIR, true);
+    /* Dump frozen cgroupfs */
+    dump_frozen_cgroupfs();
+
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("DUMPSTATE 6");
+
+
+
+    ////////////////////////////////////////
+    // TODO(cmtm): fix this
+    ////////////////////////////////////////
     printf("========================================================\n");
     printf("== Final progress (pid %d): %d/%d (estimated %d)\n", ds.pid_, ds.progress_->Get(),
            ds.progress_->GetMax(), ds.progress_->GetInitialMax());
@@ -1748,18 +1736,7 @@ static Dumpstate::RunStatus dumpstate() {
     // This differs from the usual dumpsys stats, which is the stats report data.
     RunDumpsys("STATSDSTATS", {"stats", "--metadata"});
 
-    // Add linker configuration directory
-    ds.AddDir(LINKERCONFIG_DIR, true);
-
-    /* Dump frozen cgroupfs */
-    dump_frozen_cgroupfs();
-
-    if (ds.dump_pool_) {
-        WAIT_TASK_WITH_CONSENT_CHECK(std::move(dump_incident_report));
-    } else {
-        RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK_AND_LOG(DUMP_INCIDENT_REPORT_TASK,
-                DumpIncidentReport);
-    }
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("DUMPSTATE 7");
 
     return Dumpstate::RunStatus::OK;
 }
@@ -1773,33 +1750,56 @@ static Dumpstate::RunStatus dumpstate() {
  * with the caller.
  */
 Dumpstate::RunStatus Dumpstate::DumpstateDefaultAfterCritical() {
+    DurationReporter duration_reporter("Default after critical");
+    auto dynamic_duration_reporter = std::make_unique<DurationReporter>("Default after critical 1");
+
+
+    RunnableEntryList entry_list;
     // Capture first logcat early on; useful to take a snapshot before dumpstate logs take over the
     // buffer.
-    DoLogcat();
+    entry_list.Extend(LogcatEntries());
     // Capture timestamp after first logcat to use in next logcat
     time_t logcat_ts = time(nullptr);
 
     /* collect stack traces from Dalvik and native processes (needs root) */
-    std::future<std::string> dump_traces;
-    if (dump_pool_) {
-        RETURN_IF_USER_DENIED_CONSENT();
-        // One thread is enough since we only need to enqueue DumpTraces here.
-        dump_pool_->start(/* thread_counts = */1);
+    entry_list.push_back(MakeNoOutputEntry(DUMP_TRACES_TASK, [] { ds.DumpTraces(&dump_traces_path); } ));
+    entry_list.Extend(IpTablesAsRootEntries());
+    entry_list.Extend(DynamicPartitionInfoEntries());
+    entry_list.Extend( (std::unique_ptr<BugreportEntry>[]) {
+        // Capture any IPSec policies in play. No keys are exposed here.
+        MakeCommandOutputEntry("IP XFRM POLICY", {"ip", "xfrm", "policy"},
+                CommandOptions::WithTimeout(10).Build()),
+        // Dump IPsec stats. No keys are exposed here.
+        MakeFileEntry("XFRM STATS", XFRM_STAT_PROC_FILE),
+        // Run ss as root so we can see socket marks.
+        MakeCommandOutputEntry("DETAILED SOCKET STATE", {"ss", "-eionptu"}, CommandOptions::WithTimeout(10).Build()),
+        // Run iotop as root to show top 100 IO threads
+        MakeCommandOutputEntry("IOTOP", {"iotop", "-n", "1", "-m", "100"}),
+        // Gather shared memory buffer info if the product implements it
+        MakeCommandOutputEntry("Dmabuf dump", {"dmabuf_dump"}),
+        MakeCommandOutputEntry("Dmabuf per-buffer/per-exporter/per-device stats", {"dmabuf_dump", "-b"}),
+        MakeFileEntry("PSI cpu", "/proc/pressure/cpu"),
+        MakeFileEntry("PSI memory", "/proc/pressure/memory"),
+        MakeFileEntry("PSI io", "/proc/pressure/io"),
+    });
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("Default after critical 2");
 
-        // DumpTraces takes long time, post it to the another thread in the
-        // pool, if pool is available
-        dump_traces = dump_pool_->enqueueTask(
-            DUMP_TRACES_TASK, &Dumpstate::DumpTraces, &ds, &dump_traces_path);
+    if (dump_pool_) {
+        dump_pool_->start(/* thread_counts = */10);
+        entry_list.ScheduleOnDumpPool(dump_pool_.get());
     } else {
-        RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK_AND_LOG(DUMP_TRACES_TASK, ds.DumpTraces,
-                &dump_traces_path);
+        entry_list.RunAllSingleThreaded(stdout);
     }
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("Default after critical 3");
+
 
     /* Run some operations that require root. */
     if (!PropertiesHelper::IsDryRun()) {
         ds.tombstone_data_ = GetDumpFds(TOMBSTONE_DIR, TOMBSTONE_FILE_PREFIX);
         ds.anr_data_ = GetDumpFds(ANR_DIR, ANR_FILE_PREFIX);
     }
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("Default after critical 4");
+
 
     ds.AddDir(RECOVERY_DIR, true);
     ds.AddDir(RECOVERY_DATA_DIR, true);
@@ -1810,40 +1810,25 @@ Dumpstate::RunStatus Dumpstate::DumpstateDefaultAfterCritical() {
         ds.AddDir(PROFILE_DATA_DIR_REF, true);
         ds.AddZipEntry(ZIP_ROOT_DIR + PACKAGE_DEX_USE_LIST, PACKAGE_DEX_USE_LIST);
     }
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("Default after critical 5");
+
     ds.AddDir(PREREBOOT_DATA_DIR, false);
     add_mountinfo();
-    DumpIpTablesAsRoot();
-    DumpDynamicPartitionInfo();
     ds.AddDir(OTA_METADATA_DIR, true);
 
-    // Capture any IPSec policies in play. No keys are exposed here.
-    RunCommand("IP XFRM POLICY", {"ip", "xfrm", "policy"}, CommandOptions::WithTimeout(10).Build());
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("Default after critical 6");
 
-    // Dump IPsec stats. No keys are exposed here.
-    DumpFile("XFRM STATS", XFRM_STAT_PROC_FILE);
-
-    // Run ss as root so we can see socket marks.
-    RunCommand("DETAILED SOCKET STATE", {"ss", "-eionptu"}, CommandOptions::WithTimeout(10).Build());
-
-    // Run iotop as root to show top 100 IO threads
-    RunCommand("IOTOP", {"iotop", "-n", "1", "-m", "100"});
-
-    // Gather shared memory buffer info if the product implements it
-    RunCommand("Dmabuf dump", {"dmabuf_dump"});
-    RunCommand("Dmabuf per-buffer/per-exporter/per-device stats", {"dmabuf_dump", "-b"});
-
-    DumpFile("PSI cpu", "/proc/pressure/cpu");
-    DumpFile("PSI memory", "/proc/pressure/memory");
-    DumpFile("PSI io", "/proc/pressure/io");
 
     if (dump_pool_) {
         RETURN_IF_USER_DENIED_CONSENT();
-        WaitForTask(std::move(dump_traces));
+        entry_list.WaitAndWriteToFile(stdout);
 
         // Current running thread in the pool is the root user also. Delete
         // the pool and make a new one later to ensure none of threads in the pool are root.
-        dump_pool_ = std::make_unique<DumpPool>(bugreport_internal_dir_);
+        dump_pool_ = std::make_unique<DumpPool>();
     }
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("Default after critical 7");
+
     if (!DropRootUser()) {
         return Dumpstate::RunStatus::ERROR;
     }
@@ -1852,50 +1837,44 @@ Dumpstate::RunStatus Dumpstate::DumpstateDefaultAfterCritical() {
     Dumpstate::RunStatus status = dumpstate();
     // Capture logcat since the last time we did it.
     DoSystemLogcat(logcat_ts);
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("Default after critical 8");
+
     return status;
 }
 
 // Common states for telephony and wifi which are needed to be collected before
 // dumpstate drop the root user.
 static void DumpstateRadioAsRoot() {
-    DumpIpTablesAsRoot();
+    RunnableEntryList entry_list(IpTablesAsRootEntries());
+    entry_list.RunAllSingleThreaded(stdout);
     ds.AddDir(LOGPERSIST_DATA_DIR, false);
 }
 
 // This method collects common dumpsys for telephony and wifi. Typically, wifi
 // reports are fine to include all information, but telephony reports on user
 // builds need to strip some content (see DumpstateTelephonyOnly).
-static void DumpstateRadioCommon(bool include_sensitive_info = true) {
+static EntryList CommonRadioEntries(bool include_sensitive_info = true) {
+    EntryList entry_list;
     // We need to be picky about some stuff for telephony reports on user builds.
     if (!include_sensitive_info) {
         // Only dump the radio log buffer (other buffers and dumps contain too much unrelated info).
-        DoRadioLogcat();
+        entry_list.push_back(MakeLogcatEntry("RADIO LOG", {"radio"}));
     } else {
-        // DumpHals takes long time, post it to the another thread in the pool,
-        // if pool is available.
-        std::future<std::string> dump_hals;
-        if (ds.dump_pool_) {
-            dump_hals = ds.dump_pool_->enqueueTaskWithFd(DUMP_HALS_TASK, &DumpHals, _1);
-        }
-        // Contains various system properties and process startup info.
-        do_dmesg();
+        // Contains various system properties and process startup inFfo.
+        entry_list.push_back(MakeLegacyTmpfileEntry("KERNEL LOG (dmesg)", do_dmesg));
         // Logs other than the radio buffer may contain package/component names and potential PII.
-        DoLogcat();
+        ExtendEntryList(entry_list, LogcatEntries());
         // Too broad for connectivity problems.
-        DoKmsg();
+        entry_list.push_back(KmsgEntry());
         // DumpHals contains unrelated hardware info (camera, NFC, biometrics, ...).
-        if (ds.dump_pool_) {
-            WaitForTask(std::move(dump_hals));
-        } else {
-            RUN_SLOW_FUNCTION_AND_LOG(DUMP_HALS_TASK, DumpHals);
-        }
+        entry_list.push_back(MakeLegacyTmpfileEntry(DUMP_HALS_TASK, DumpHals));
     }
-
-    DumpPacketStats();
-    DumpIpAddrAndRules();
-    dump_route_tables();
-    RunDumpsys("NETWORK DIAGNOSTICS", {"connectivity", "--diag"},
-               CommandOptions::WithTimeout(10).Build());
+    entry_list.push_back(MakeFileEntry("NETWORK DEV INFO", "/proc/net/dev"));
+    ExtendEntryList(entry_list, IpAddrAndRulesEntries());
+    entry_list.push_back(MakeLegacyStdoutEntry("DUMP ROUTE TABLES", dump_route_tables));
+    entry_list.push_back(MakeDumpsysEntry("NETWORK DIAGNOSTICS", {"connectivity", "--diag"},
+               CommandOptions::WithTimeout(10).Build()));
+    return entry_list;
 }
 
 // We use "telephony" here for legacy reasons, though this now really means "connectivity" (cellular
@@ -1917,101 +1896,83 @@ static void DumpstateTelephonyOnly(const std::string& calling_package) {
         return;
     }
 
-    // Starts thread pool after the root user is dropped, and two additional threads
-    // are created for DumpHals in the DumpstateRadioCommon and DumpstateBoard.
-    std::future<std::string> dump_board;
-    if (ds.dump_pool_) {
-        ds.dump_pool_->start(/*thread_counts =*/2);
-
-        // DumpstateBoard takes long time, post it to the another thread in the pool,
-        // if pool is available.
-        dump_board = ds.dump_pool_->enqueueTaskWithFd(
-            DUMP_BOARD_TASK, &Dumpstate::DumpstateBoard, &ds, _1);
-    }
-
-    DumpstateRadioCommon(include_sensitive_info);
+    RunnableEntryList entry_list(CommonRadioEntries(include_sensitive_info));
 
     if (include_sensitive_info) {
         // Contains too much unrelated PII, and given the unstructured nature of sysprops, we can't
         // really cherrypick all of the connectivity-related ones. Apps generally have no business
         // reading these anyway, and there should be APIs to supply the info in a more app-friendly
         // way.
-        RunCommand("SYSTEM PROPERTIES", {"getprop"});
+        entry_list.push_back(MakeCommandOutputEntry("SYSTEM PROPERTIES", {"getprop"}));
     }
+    entry_list.Extend( (std::unique_ptr<BugreportEntry>[]) {
+        MakeBigSectionHeader("Android Framework Services"),
+        MakeDumpsysEntry("DUMPSYS", {"connectivity"}, CommandOptions::WithTimeout(90).Build()),
+        MakeDumpsysEntry("DUMPSYS", {"vcn_management"}, CommandOptions::WithTimeout(90).Build()),
+    });
 
-    printf("========================================================\n");
-    printf("== Android Framework Services\n");
-    printf("========================================================\n");
-
-    RunDumpsys("DUMPSYS", {"connectivity"}, CommandOptions::WithTimeout(90).Build(),
-               SEC_TO_MSEC(10));
-    RunDumpsys("DUMPSYS", {"vcn_management"}, CommandOptions::WithTimeout(90).Build(),
-               SEC_TO_MSEC(10));
+    // TODO(cmtm): factor this out into one call and inline into Extend above.
     if (include_sensitive_info) {
         // Carrier apps' services will be dumped below in dumpsys activity service all-non-platform.
-        RunDumpsys("DUMPSYS", {"carrier_config"}, CommandOptions::WithTimeout(90).Build(),
-                   SEC_TO_MSEC(10));
+        entry_list.push_back(MakeDumpsysEntry("DUMPSYS", {"carrier_config"},
+                CommandOptions::WithTimeout(90).Build()));
     } else {
         // If the caller is a carrier app and has a carrier service, dump it here since we aren't
         // running dumpsys activity service all-non-platform below. Due to the increased output, we
         // give a higher timeout as well.
-        RunDumpsys("DUMPSYS", {"carrier_config", "--requesting-package", calling_package},
-                   CommandOptions::WithTimeout(90).Build(), SEC_TO_MSEC(30));
+        entry_list.push_back(MakeDumpsysEntry("DUMPSYS",
+                {"carrier_config", "--requesting-package", calling_package},
+                CommandOptions::WithTimeout(90).Build()));
     }
-    RunDumpsys("DUMPSYS", {"wifi"}, CommandOptions::WithTimeout(90).Build(), SEC_TO_MSEC(10));
-    RunDumpsys("DUMPSYS", {"netpolicy"}, CommandOptions::WithTimeout(90).Build(), SEC_TO_MSEC(10));
-    RunDumpsys("DUMPSYS", {"network_management"}, CommandOptions::WithTimeout(90).Build(),
-               SEC_TO_MSEC(10));
-    RunDumpsys("DUMPSYS", {"telephony.registry"}, CommandOptions::WithTimeout(90).Build(),
-               SEC_TO_MSEC(10));
+    entry_list.Extend( (std::unique_ptr<BugreportEntry>[]) {
+        MakeDumpsysEntry("DUMPSYS", {"wifi"}, CommandOptions::WithTimeout(90).Build()),
+        MakeDumpsysEntry("DUMPSYS", {"netpolicy"}, CommandOptions::WithTimeout(90).Build()),
+        MakeDumpsysEntry("DUMPSYS", {"network_management"}, CommandOptions::WithTimeout(90).Build()),
+        MakeDumpsysEntry("DUMPSYS", {"telephony.registry"}, CommandOptions::WithTimeout(90).Build()),
+    });
     if (include_sensitive_info) {
-        // Contains raw IP addresses, omit from reports on user builds.
-        RunDumpsys("DUMPSYS", {"netd"}, CommandOptions::WithTimeout(90).Build(), SEC_TO_MSEC(10));
-        // Contains raw destination IP/MAC addresses, omit from reports on user builds.
-        RunDumpsys("DUMPSYS", {"connmetrics"}, CommandOptions::WithTimeout(90).Build(),
-                   SEC_TO_MSEC(10));
-        // Contains package/component names, omit from reports on user builds.
-        RunDumpsys("BATTERYSTATS", {"batterystats"}, CommandOptions::WithTimeout(90).Build(),
-                   SEC_TO_MSEC(10));
-        // Contains package names, but should be relatively simple to remove them (also contains
-        // UIDs already), omit from reports on user builds.
-        RunDumpsys("BATTERYSTATS", {"deviceidle"}, CommandOptions::WithTimeout(90).Build(),
-                   SEC_TO_MSEC(10));
+        entry_list.Extend( (std::unique_ptr<BugreportEntry>[]) {
+            // Contains raw IP addresses, omit from reports on user builds.
+            MakeDumpsysEntry("DUMPSYS", {"netd"}, CommandOptions::WithTimeout(90).Build()),
+            // Contains raw destination IP/MAC addresses, omit from reports on user builds.
+            MakeDumpsysEntry("DUMPSYS", {"connmetrics"}, CommandOptions::WithTimeout(90).Build()),
+            // Contains package/component names, omit from reports on user builds.
+            MakeDumpsysEntry("BATTERYSTATS", {"batterystats"}, CommandOptions::WithTimeout(90).Build()),
+            // Contains package names, but should be relatively simple to remove them (also contains
+            // UIDs already), omit from reports on user builds.
+            MakeDumpsysEntry("BATTERYSTATS", {"deviceidle"}, CommandOptions::WithTimeout(90).Build()),
+        });
     }
 
-    printf("========================================================\n");
-    printf("== Running Application Services\n");
-    printf("========================================================\n");
-
-    RunDumpsys("TELEPHONY SERVICES", {"activity", "service", "TelephonyDebugService"});
+    entry_list.Extend( (std::unique_ptr<BugreportEntry>[]) {
+        MakeBigSectionHeader("Running Application Services"),
+        MakeDumpsysEntry("TELEPHONY SERVICES", {"activity", "service", "TelephonyDebugService"}),
+    });
 
     if (include_sensitive_info) {
-        printf("========================================================\n");
-        printf("== Running Application Services (non-platform)\n");
-        printf("========================================================\n");
+        entry_list.Extend( (std::unique_ptr<BugreportEntry>[]) {
+            MakeBigSectionHeader("Running Application Services (non-platform)"),
+            MakeDumpsysEntry("TELEPHONY SERVICES", {"activity", "service", "TelephonyDebugService"}),
+            // Contains package/component names and potential PII, omit from reports on user builds.
+            // To get dumps of the active CarrierService(s) on user builds, we supply an argument to the
+            // carrier_config dumpsys instead.
+            MakeDumpsysEntry("APP SERVICES NON-PLATFORM", {"activity", "service", "all-non-platform"},
+                    DUMPSYS_COMPONENTS_OPTIONS),
+            MakeBigSectionHeader("Checkins"),
+            // Contains package/component names, omit from reports on user builds.
+            MakeDumpsysEntry("CHECKIN BATTERYSTATS", {"batterystats", "-c"}),
+        });
 
-        // Contains package/component names and potential PII, omit from reports on user builds.
-        // To get dumps of the active CarrierService(s) on user builds, we supply an argument to the
-        // carrier_config dumpsys instead.
-        RunDumpsys("APP SERVICES NON-PLATFORM", {"activity", "service", "all-non-platform"},
-                   DUMPSYS_COMPONENTS_OPTIONS);
-
-        printf("========================================================\n");
-        printf("== Checkins\n");
-        printf("========================================================\n");
-
-        // Contains package/component names, omit from reports on user builds.
-        RunDumpsys("CHECKIN BATTERYSTATS", {"batterystats", "-c"});
     }
-
-    printf("========================================================\n");
-    printf("== dumpstate: done (id %d)\n", ds.id_);
-    printf("========================================================\n");
+    entry_list.push_back(MakeBigSectionHeader(fmt::format("dumpstate: done (id {})", ds.id_)));
+    entry_list.push_back(MakeLegacyTmpfileEntry(DUMP_BOARD_TASK, [](int fd) { ds.DumpstateBoard(fd); }));
 
     if (ds.dump_pool_) {
-        WaitForTask(std::move(dump_board));
+        ds.dump_pool_->start(/*thread_counts =*/8);
+        entry_list.ScheduleOnDumpPool(ds.dump_pool_.get());
+        entry_list.WaitAndWriteToFile(stdout);
     } else {
-        RUN_SLOW_FUNCTION_AND_LOG(DUMP_BOARD_TASK, ds.DumpstateBoard);
+        entry_list.RunAllSingleThreaded(stdout);
     }
 }
 
@@ -2024,26 +1985,24 @@ static void DumpstateWifiOnly() {
         return;
     }
 
-    // Starts thread pool after the root user is dropped. Only one additional
-    // thread is needed for DumpHals in the DumpstateRadioCommon.
+    RunnableEntryList entry_list(CommonRadioEntries());
+
+    entry_list.Extend(CommonRadioEntries());
+    entry_list.Extend( (std::unique_ptr<BugreportEntry>[]) {
+        MakeBigSectionHeader("Android Framework Services"),
+        MakeDumpsysEntry("DUMPSYS", {"connectivity"}, CommandOptions::WithTimeout(90).Build()),
+        MakeDumpsysEntry("DUMPSYS", {"wifi"}, CommandOptions::WithTimeout(90).Build()),
+        MakeBigSectionHeader(fmt::format("dumpstate: done (id {})", ds.id_)),
+    });
+
+    // Starts thread pool after the root user is dropped.
     if (ds.dump_pool_) {
-        ds.dump_pool_->start(/*thread_counts =*/1);
+        ds.dump_pool_->start(/*thread_counts =*/8);
+        entry_list.ScheduleOnDumpPool(ds.dump_pool_.get());
+        entry_list.WaitAndWriteToFile(stdout);
+    } else {
+        entry_list.RunAllSingleThreaded(stdout);
     }
-
-    DumpstateRadioCommon();
-
-    printf("========================================================\n");
-    printf("== Android Framework Services\n");
-    printf("========================================================\n");
-
-    RunDumpsys("DUMPSYS", {"connectivity"}, CommandOptions::WithTimeout(90).Build(),
-               SEC_TO_MSEC(10));
-    RunDumpsys("DUMPSYS", {"wifi"}, CommandOptions::WithTimeout(90).Build(),
-               SEC_TO_MSEC(10));
-
-    printf("========================================================\n");
-    printf("== dumpstate: done (id %d)\n", ds.id_);
-    printf("========================================================\n");
 }
 
 Dumpstate::RunStatus Dumpstate::DumpTraces(const char** path) {
@@ -2847,12 +2806,6 @@ void Dumpstate::Cancel() {
     }
     tombstone_data_.clear();
     anr_data_.clear();
-
-    // Instead of shutdown the pool, we delete temporary files directly since
-    // shutdown blocking the call.
-    if (dump_pool_) {
-        dump_pool_->deleteTempFiles();
-    }
     if (zip_entry_tasks_) {
         zip_entry_tasks_->run(/*do_cancel =*/ true);
     }
@@ -2880,6 +2833,7 @@ void Dumpstate::Cancel() {
 Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
                                             const std::string& calling_package) {
     DurationReporter duration_reporter("RUN INTERNAL", /* logcat_only = */true);
+    auto dynamic_duration_reporter = std::make_unique<DurationReporter>("RUN INTERNAL 1");
     LogDumpOptions(*options_);
     if (!options_->ValidateOptions()) {
         MYLOGE("Invalid options specified\n");
@@ -3033,6 +2987,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     // In particular, DurationReport objects should be created passing 'title, NULL', so their
     // duration is logged into MYLOG instead.
     PrintHeader();
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("RUN INTERNAL 2");
 
     bool is_dumpstate_restricted = options_->telephony_only
                                    || options_->wifi_only
@@ -3062,6 +3017,7 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     } else if (options_->limited_only) {
         DumpstateLimitedOnly();
     } else {
+        dynamic_duration_reporter = std::make_unique<DurationReporter>("RUN INTERNAL 3");
         // Dump state for the default case. This also drops root.
         RunStatus s = DumpstateDefaultAfterCritical();
         if (s != RunStatus::OK) {
@@ -3071,6 +3027,8 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
             return s;
         }
     }
+    dynamic_duration_reporter = std::make_unique<DurationReporter>("RUN INTERNAL 4");
+
 
     /* close output if needed */
     TEMP_FAILURE_RETRY(dup2(dup_stdout_fd, fileno(stdout)));
@@ -3227,7 +3185,7 @@ void Dumpstate::EnableParallelRunIfNeeded() {
     if (!PropertiesHelper::IsParallelRun()) {
         return;
     }
-    dump_pool_ = std::make_unique<DumpPool>(bugreport_internal_dir_);
+    dump_pool_ = std::make_unique<DumpPool>();
     zip_entry_tasks_ = std::make_unique<TaskQueue>();
 }
 
@@ -3554,7 +3512,7 @@ void for_each_userid(void (*func)(int), const char *header) {
     closedir(d);
 }
 
-static void __for_each_pid(void (*helper)(int, const char *, void *), const char *header, void *arg) {
+static void __for_each_pid(for_each_pid_func func, const char *header) {
     DIR *d;
     struct dirent *de;
 
@@ -3587,7 +3545,7 @@ static void __for_each_pid(void (*helper)(int, const char *, void *), const char
             TEMP_FAILURE_RETRY(read(fd, cmdline, sizeof(cmdline) - 2));
             close(fd);
             if (cmdline[0]) {
-                helper(pid, cmdline, arg);
+                func(pid, cmdline);
                 continue;
             }
         }
@@ -3607,15 +3565,10 @@ static void __for_each_pid(void (*helper)(int, const char *, void *), const char
         if (!cmdline[0]) {
             strcpy(cmdline, "N/A");
         }
-        helper(pid, cmdline, arg);
+        func(pid, cmdline);
     }
 
     closedir(d);
-}
-
-static void for_each_pid_helper(int pid, const char *cmdline, void *arg) {
-    for_each_pid_func *func = (for_each_pid_func*) arg;
-    func(pid, cmdline);
 }
 
 void for_each_pid(for_each_pid_func func, const char *header) {
@@ -3624,14 +3577,13 @@ void for_each_pid(for_each_pid_func func, const char *header) {
     DurationReporter duration_reporter(title);
     if (PropertiesHelper::IsDryRun()) return;
 
-    __for_each_pid(for_each_pid_helper, header, (void *) func);
+    __for_each_pid(std::move(func), header);
 }
 
-static void for_each_tid_helper(int pid, const char *cmdline, void *arg) {
+static void for_each_tid_helper(int pid, const char *cmdline, for_each_tid_func func) {
     DIR *d;
     struct dirent *de;
     char taskpath[255];
-    for_each_tid_func *func = (for_each_tid_func *) arg;
 
     snprintf(taskpath, sizeof(taskpath), "/proc/%d/task", pid);
 
@@ -3688,7 +3640,12 @@ void for_each_tid(for_each_tid_func func, const char *header) {
 
     if (PropertiesHelper::IsDryRun()) return;
 
-    __for_each_pid(for_each_tid_helper, header, (void *) func);
+    auto for_each_pid_func = [func = std::move(func)] (int pid, const char *cmdline) {
+        for_each_tid_helper(pid, cmdline, std::move(func));
+    };
+
+    __for_each_pid(std::move(for_each_pid_func), header);
+
 }
 
 void show_wchan(int pid, int tid, const char *name) {
@@ -3822,43 +3779,46 @@ void show_showtime(int pid, const char *name) {
     return;
 }
 
-void do_dmesg() {
+void do_dmesg(int out_fd) {
     const char *title = "KERNEL LOG (dmesg)";
     DurationReporter duration_reporter(title);
-    printf("------ %s ------\n", title);
+    dprintf(out_fd, "------ %s ------\n", title);
 
     if (PropertiesHelper::IsDryRun()) return;
 
     /* Get size of kernel buffer */
     int size = klogctl(KLOG_SIZE_BUFFER, nullptr, 0);
     if (size <= 0) {
-        printf("Unexpected klogctl return value: %d\n\n", size);
+        dprintf(out_fd, "Unexpected klogctl return value: %d\n\n", size);
         return;
     }
     char *buf = (char *) malloc(size + 1);
     if (buf == nullptr) {
-        printf("memory allocation failed\n\n");
+        dprintf(out_fd, "memory allocation failed\n\n");
         return;
     }
     int retval = klogctl(KLOG_READ_ALL, buf, size);
     if (retval < 0) {
-        printf("klogctl failure\n\n");
+        dprintf(out_fd, "klogctl failure\n\n");
         free(buf);
         return;
     }
     buf[retval] = '\0';
-    printf("%s\n\n", buf);
+    dprintf(out_fd, "%s\n\n", buf);
     free(buf);
     return;
 }
 
-void do_showmap(int pid, const char *name) {
-    char title[255];
-    char arg[255];
+std::function<void(int, const char *)> get_showmap_func(int out_fd) {
+    return ([=] (int pid, const char *name) {
+        char title[255];
+        char arg[255];
 
-    snprintf(title, sizeof(title), "SHOW MAP %d (%s)", pid, name);
-    snprintf(arg, sizeof(arg), "%d", pid);
-    RunCommand(title, {"showmap", "-q", arg}, CommandOptions::AS_ROOT);
+        snprintf(title, sizeof(title), "SHOW MAP %d (%s)", pid, name);
+        snprintf(arg, sizeof(arg), "%d", pid);
+        RunCommandToFd(out_fd, title, {"showmap", "-q", arg}, CommandOptions::AS_ROOT);
+
+    });
 }
 
 int Dumpstate::DumpFile(const std::string& title, const std::string& path) {

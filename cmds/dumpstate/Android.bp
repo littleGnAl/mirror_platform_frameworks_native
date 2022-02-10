@@ -108,6 +108,7 @@ cc_defaults {
         "DumpstateService.cpp",
     ],
     static_libs: [
+        "libc++fs",
         "libincidentcompanion",
         "libdumpsys",
         "libserviceutils",
@@ -118,7 +119,9 @@ cc_binary {
     name: "dumpstate",
     defaults: ["dumpstate_defaults"],
     srcs: [
+        "BugreportEntries.cpp",
         "DumpPool.cpp",
+        "EntryList.cpp",
         "TaskQueue.cpp",
         "dumpstate.cpp",
         "main.cpp",

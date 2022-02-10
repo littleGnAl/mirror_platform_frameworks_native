@@ -563,11 +563,10 @@ class Dumpstate {
     DISALLOW_COPY_AND_ASSIGN(Dumpstate);
 };
 
-// for_each_pid_func = void (*)(int, const char*);
-// for_each_tid_func = void (*)(int, int, const char*);
 
-typedef void(for_each_pid_func)(int, const char*);
-typedef void(for_each_tid_func)(int, int, const char*);
+using for_each_pid_func = std::function<void(int, const char*)>;
+using for_each_tid_func = std::function<void(int, int, const char*)>;
+
 
 /* saves the the contents of a file as a long */
 int read_file_as_long(const char *path, long int *output);
@@ -615,11 +614,8 @@ void show_wchan(int pid, int tid, const char *name);
 /* Displays a processes times */
 void show_showtime(int pid, const char *name);
 
-/* Runs "showmap" for a process */
-void do_showmap(int pid, const char *name);
-
 /* Gets the dmesg output for the kernel */
-void do_dmesg();
+void do_dmesg(int out_fd);
 
 /* Prints the contents of all the routing tables, both IPv4 and IPv6. */
 void dump_route_tables();
