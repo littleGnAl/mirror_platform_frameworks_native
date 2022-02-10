@@ -16,6 +16,24 @@
       "message": "This should be the last change :)",
       "revId": "33b48a50fa35065995e4ac2c8e33b5901b85a34a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ab8776_5774a023",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2022-02-10T00:43:47Z",
+      "side": 1,
+      "message": "Always happy to review deleted code.",
+      "parentUuid": "98c6c697_9a9c6a90",
+      "revId": "33b48a50fa35065995e4ac2c8e33b5901b85a34a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
