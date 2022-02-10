@@ -10,6 +10,7 @@ package {
 cc_defaults {
     name: "installd_defaults",
 
+    cpp_std: "c++2a",
     cflags: [
         "-Wall",
         "-Werror",
@@ -41,6 +42,7 @@ cc_defaults {
         "libbinder",
         "libcrypto",
         "libcutils",
+        "libext2_uuid",
         "liblog",
         "liblogwrap",
         "libprocessgroup",
