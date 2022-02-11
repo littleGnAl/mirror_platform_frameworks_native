@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ca0d32_fb5f2953",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2022-02-11T20:35:49Z",
+      "side": 1,
+      "message": "why so? only because we need to block the call until this is done so the user can remove the card?",
+      "range": {
+        "startLine": 1007,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 84
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70af4f3a_ed8c674b",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3328,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2022-02-11T20:35:49Z",
+      "side": 1,
+      "message": "better to use something other than \u0027_\u0027 as it\u0027s often used for member variables\n|uuid_cstr| is better IMO",
+      "range": {
+        "startLine": 3328,
+        "startChar": 16,
+        "endLine": 3328,
+        "endChar": 21
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1031983_0582cc9a",
+        "filename": "cmds/installd/tests/installd_service_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2022-02-11T20:35:49Z",
+      "side": 1,
+      "message": "access(path, F_OK) is simpler IMO",
+      "range": {
+        "startLine": 137,
+        "startChar": 14,
+        "endLine": 137,
+        "endChar": 18
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d9055d_273c1bcc",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2022-02-11T20:35:49Z",
+      "side": 1,
+      "message": "nit: why struct? do we even need a scope for a file-local constant?",
+      "range": {
+        "startLine": 619,
+        "startChar": 0,
+        "endLine": 619,
+        "endChar": 18
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1428514_87e5aa16",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2022-02-11T20:35:49Z",
+      "side": 1,
+      "message": "is this supposed to remove the |path| directory as well? I assumed by the name it should, but there\u0027s no deletion in the body",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 650,
+        "endChar": 40
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63a0bdae_32aa7a5d",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2022-02-11T20:35:49Z",
+      "side": 1,
+      "message": "this leaks the open directory struct\nplease make it a RAII wrapper",
+      "range": {
+        "startLine": 658,
+        "startChar": 8,
+        "endLine": 658,
+        "endChar": 14
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f82959_c09b3f2c",
+        "filename": "cmds/installd/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1080076
+      },
+      "writtenOn": "2022-02-11T20:35:49Z",
+      "side": 1,
+      "message": "why so different string types? Is there a specific reason, or it just happened to be convenient?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 59
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
