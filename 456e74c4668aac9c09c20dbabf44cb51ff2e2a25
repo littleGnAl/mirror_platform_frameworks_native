@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "165b6dc3_77eff1c2",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2022-02-11T21:09:03Z",
+      "side": 1,
+      "message": "i don\u0027t see a good way to cleanup external storage after reboot\n\nthis means if an app writes something during dir removal then it\u0027ll end up under:\n(current state): /data/\u003cpackage\u003e/... folder,\n(rename-delete): /data/\u003crandom name\u003e\u003d\u003ddeleted\u003d\u003d/ folder.\n\nif we have garbage on external storage, i think it\u0027s better if it\u0027ll be under package then under some random name\n\nthoughts?",
+      "parentUuid": "26ca0d32_fb5f2953",
+      "range": {
+        "startLine": 1007,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 84
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70af4f3a_ed8c674b",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-11T20:35:49Z",
       "side": 1,
       "message": "better to use something other than \u0027_\u0027 as it\u0027s often used for member variables\n|uuid_cstr| is better IMO",
+      "range": {
+        "startLine": 3328,
+        "startChar": 16,
+        "endLine": 3328,
+        "endChar": 21
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe2bb96_949614bb",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3328,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2022-02-11T21:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70af4f3a_ed8c674b",
       "range": {
         "startLine": 3328,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57454d5b_05d74f29",
+        "filename": "cmds/installd/tests/installd_service_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2022-02-11T21:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1031983_0582cc9a",
+      "range": {
+        "startLine": 137,
+        "startChar": 14,
+        "endLine": 137,
+        "endChar": 18
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4d9055d_273c1bcc",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-11T20:35:49Z",
       "side": 1,
       "message": "nit: why struct? do we even need a scope for a file-local constant?",
+      "range": {
+        "startLine": 619,
+        "startChar": 0,
+        "endLine": 619,
+        "endChar": 18
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "830f4104_af13b532",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2022-02-11T21:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4d9055d_273c1bcc",
       "range": {
         "startLine": 619,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea4f270_8f478f15",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2022-02-11T21:09:03Z",
+      "side": 1,
+      "message": "this is supposed to find and delete all previously renamed dirs under the path. renamed the function",
+      "parentUuid": "f1428514_87e5aa16",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 650,
+        "endChar": 40
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63a0bdae_32aa7a5d",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d480af4_5093b5ae",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2022-02-11T21:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63a0bdae_32aa7a5d",
+      "range": {
+        "startLine": 658,
+        "startChar": 8,
+        "endLine": 658,
+        "endChar": 14
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8f82959_c09b3f2c",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-02-11T20:35:49Z",
       "side": 1,
       "message": "why so different string types? Is there a specific reason, or it just happened to be convenient?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 59
+      },
+      "revId": "456e74c4668aac9c09c20dbabf44cb51ff2e2a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b687b64_795e9fe7",
+        "filename": "cmds/installd/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2022-02-11T21:09:03Z",
+      "side": 1,
+      "message": "made more consistent",
+      "parentUuid": "d8f82959_c09b3f2c",
       "range": {
         "startLine": 123,
         "startChar": 0,
