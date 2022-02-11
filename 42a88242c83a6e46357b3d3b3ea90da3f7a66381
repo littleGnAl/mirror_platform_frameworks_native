@@ -46,6 +46,30 @@
       },
       "revId": "42a88242c83a6e46357b3d3b3ea90da3f7a66381",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce948447_a6b62e0b",
+        "filename": "libs/gralloc/types/Gralloc4.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-02-11T18:50:14Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "48fb9b82_f2e30c42",
+      "range": {
+        "startLine": 307,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 20
+      },
+      "revId": "42a88242c83a6e46357b3d3b3ea90da3f7a66381",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
