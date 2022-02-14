@@ -58,10 +58,6 @@ class ZippedBugReportStreamTest;
 
 class ZipWriter;
 
-// TODO: remove once moved to HAL
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /*
  * Helper class used to report how long it takes for a section to finish.
@@ -645,9 +641,5 @@ void format_args(int argc, const char *argv[], std::string *args);
 
 /** Main entry point for dumpstate. */
 int run_main(int argc, char* argv[]);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* FRAMEWORK_NATIVE_CMD_DUMPSTATE_H_ */
