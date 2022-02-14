@@ -948,7 +948,6 @@ binder::Status InstalldNativeService::destroyAppData(const std::optional<std::st
         const std::string& packageName, int32_t userId, int32_t flags, int64_t ceDataInode) {
     ENFORCE_UID(AID_SYSTEM);
     CHECK_ARGUMENT_UUID(uuid);
-    CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     LOCK_PACKAGE_USER();
 
     const char* uuid_ = uuid ? uuid->c_str() : nullptr;
@@ -3176,16 +3175,20 @@ binder::Status InstalldNativeService::migrateLegacyObbData() {
     return ok();
 }
 
-binder::Status InstalldNativeService::cleanupDeletedDirs(const std::optional<std::string>& uuid) {
+binder::Status InstalldNativeService::cleanupDeletedDirs(const std::optional<std::string>& uuid,
+                                                         int32_t userId, int32_t flags) {
     const char* uuid_cstr = uuid ? uuid->c_str() : nullptr;
-    const auto users = get_known_users(uuid_cstr);
-    for (auto userId : users) {
-        auto ce_path = create_data_user_ce_path(uuid_cstr, userId);
-        auto de_path = create_data_user_de_path(uuid_cstr, userId);
 
+    if (flags & FLAG_STORAGE_CE) {
+        auto ce_path = create_data_user_ce_path(uuid_cstr, userId);
         find_and_delete_renamed_deleted_dirs_under_path(ce_path);
+    }
+
+    if (flags & FLAG_STORAGE_DE) {
+        auto de_path = create_data_user_de_path(uuid_cstr, userId);
         find_and_delete_renamed_deleted_dirs_under_path(de_path);
     }
+
     return ok();
 }
 

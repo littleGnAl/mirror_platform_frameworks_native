@@ -327,7 +327,7 @@ TEST_F(ServiceTest, CleanupDeletedDirs) {
 
     EXPECT_TRUE(exists_renamed_deleted_dir());
 
-    service->cleanupDeletedDirs(testUuid);
+    service->cleanupDeletedDirs(testUuid, 0, FLAG_STORAGE_CE | FLAG_STORAGE_DE);
 
     EXPECT_EQ(::close(fd), 0);
 
