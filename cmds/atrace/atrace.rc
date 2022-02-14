@@ -394,3 +394,10 @@ on property:persist.debug.atrace.boottrace=1
 service boottrace /system/bin/atrace --async_start -f /data/misc/boottrace/categories
     disabled
     oneshot
+
+# Allow atrace binary access to tracefs
+service atrace /system/bin/atrace
+    disabled
+    oneshot
+    user nobody
+    group readtracefs
