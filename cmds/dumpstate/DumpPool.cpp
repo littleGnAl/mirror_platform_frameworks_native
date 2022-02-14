@@ -75,9 +75,6 @@ DumpPool::~DumpPool() {
 void DumpPool::start(int thread_counts) {
     assert(thread_counts > 0);
     assert(threads_.empty());
-    if (thread_counts > MAX_THREAD_COUNT) {
-        thread_counts = MAX_THREAD_COUNT;
-    }
     MYLOGI("Start thread pool:%d\n", thread_counts);
     shutdown_ = false;
     for (int i = 0; i < thread_counts; i++) {

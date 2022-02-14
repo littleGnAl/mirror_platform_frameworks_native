@@ -96,7 +96,7 @@ class DumpPool {
      *
      * |thread_counts| the number of threads to start.
      */
-    void start(int thread_counts = MAX_THREAD_COUNT);
+    void start(int thread_counts = 4);
 
     /*
      * Adds a task into the queue of the thread pool.
@@ -188,7 +188,6 @@ class DumpPool {
     void setLogDuration(bool log_duration);
 
   private:
-    static const int MAX_THREAD_COUNT = 4;
 
     /* A path to a temporary folder for threads to create temporary files. */
     std::string tmp_root_;
