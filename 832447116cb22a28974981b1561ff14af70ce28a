@@ -16,6 +16,40 @@
       "message": "@mmaurer adding you to review the unsafe rust here, don\u0027t know if that\u0027s you or someone else here.",
       "revId": "832447116cb22a28974981b1561ff14af70ce28a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb2dff6_c505dbc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-02-15T20:57:29Z",
+      "side": 1,
+      "message": "I\u0027ve reviewed the unsafe portions and they seem fine to me.",
+      "revId": "832447116cb22a28974981b1561ff14af70ce28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a51b08a0_373dd67c",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-02-15T20:57:29Z",
+      "side": 1,
+      "message": "This will error out the *entire* result, not just the non-UTF-8 string. This might be what we want, but I wanted to double check, because it might be surprising that a single bad declared instance can poison everything.",
+      "revId": "832447116cb22a28974981b1561ff14af70ce28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
