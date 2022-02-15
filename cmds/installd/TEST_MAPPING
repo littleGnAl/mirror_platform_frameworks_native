@@ -30,6 +30,10 @@
     },
     {
       "name": "CtsCompilationTestCases"
+    },
+    // ExternalStorageHostTest
+    {
+      "name": "CtsAppSecurityHostTestCases"
     }
   ]
 }
