@@ -50,6 +50,24 @@
       "message": "This will error out the *entire* result, not just the non-UTF-8 string. This might be what we want, but I wanted to double check, because it might be surprising that a single bad declared instance can poison everything.",
       "revId": "832447116cb22a28974981b1561ff14af70ce28a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6516dc36_9bf155b5",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-02-15T22:18:24Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be a single bad declaration. It would have to be a bug (the type unfortunately doesn\u0027t encode this).",
+      "parentUuid": "a51b08a0_373dd67c",
+      "revId": "832447116cb22a28974981b1561ff14af70ce28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
