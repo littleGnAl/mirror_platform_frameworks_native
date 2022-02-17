@@ -184,8 +184,7 @@ public:
 
     binder::Status migrateLegacyObbData();
 
-    binder::Status cleanupInvalidPackageDirs(const std::optional<std::string>& uuid, int32_t userId,
-                                             int32_t flags);
+    binder::Status cleanupDeletedDirs(const std::optional<std::string>& uuid);
 
 private:
     std::recursive_mutex mLock;
