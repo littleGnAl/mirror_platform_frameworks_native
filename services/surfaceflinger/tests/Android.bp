@@ -25,6 +25,14 @@ cc_test {
     name: "SurfaceFlinger_test",
     defaults: ["surfaceflinger_defaults"],
     test_suites: ["device-tests"],
+    tidy_disabled_srcs: [ // timed out after 90 seconds
+        "LayerCallback_test.cpp",
+        "LayerRenderTypeTransaction_test.cpp",
+        "LayerTypeAndRenderTypeTransaction_test.cpp",
+        "LayerUpdate_test.cpp",
+        "ScreenCapture_test.cpp",
+        "SurfaceInterceptor_test.cpp",
+    ],
     srcs: [
         "BufferGenerator.cpp",
         "CommonTypes_test.cpp",

@@ -11,11 +11,14 @@ cc_test {
     name: "sffakehwc_test",
     defaults: ["surfaceflinger_defaults"],
     test_suites: ["device-tests"],
+    tidy_disabled_srcs: [ // timed out after 90 seconds
+        "SFFakeHwc_test.cpp",
+    ],
     srcs: [
-         "FakeComposerClient.cpp",
-         "FakeComposerService.cpp",
-         "FakeComposerUtils.cpp",
-         "SFFakeHwc_test.cpp"
+        "FakeComposerClient.cpp",
+        "FakeComposerService.cpp",
+        "FakeComposerUtils.cpp",
+        "SFFakeHwc_test.cpp",
     ],
     require_root: true,
     shared_libs: [
