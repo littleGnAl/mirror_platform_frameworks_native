@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d56ddbb_23a7ccb2",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1017430
+      },
+      "writtenOn": "2022-02-17T20:22:34Z",
+      "side": 1,
+      "message": "blah, will look at updating those...",
+      "parentUuid": "a65f8154_81d59f47",
+      "revId": "00ff352c34cb46d96156cdef69a6acf0bdfa5356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbaf5887_47150884",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67db2c7b_a8957264",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1017430
+      },
+      "writtenOn": "2022-02-17T20:22:34Z",
+      "side": 1,
+      "message": "alas, 4.19 is alive for a few more years at least.",
+      "parentUuid": "dbaf5887_47150884",
+      "revId": "00ff352c34cb46d96156cdef69a6acf0bdfa5356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6f967bd_f04be2f3",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-02-17T20:07:51Z",
       "side": 1,
       "message": "(bionic has an RAII answer to this problem because it comes up a lot in libc, but https://source.corp.google.com/search?q\u003dsigprocmask.*old%20file:cpp$%20-file:test%20-file:toolchain%2F%20-file:bionic%20-file:external\u0026sq\u003dpackage:%5Eandroid$ implies that the only non-bionic use is copies \u0026 pastes of this function, so probably still not worth promoting to libbase.)",
+      "revId": "00ff352c34cb46d96156cdef69a6acf0bdfa5356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "511aac27_4e8b202d",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1017430
+      },
+      "writtenOn": "2022-02-17T20:22:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6f967bd_f04be2f3",
       "revId": "00ff352c34cb46d96156cdef69a6acf0bdfa5356",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
