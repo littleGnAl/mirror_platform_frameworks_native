@@ -103,6 +103,15 @@ cc_test {
     name: "libcompositionengine_test",
     test_suites: ["device-tests"],
     defaults: ["libcompositionengine_defaults"],
+    tidy_timeout_srcs: [
+        "tests/planner/CachedSetTest.cpp",
+        "tests/planner/FlattenerTest.cpp",
+        "tests/planner/LayerStateTest.cpp",
+        "tests/planner/PredictorTest.cpp",
+        "tests/DisplayTest.cpp",
+        "tests/OutputLayerTest.cpp",
+        "tests/OutputTest.cpp",
+    ],
     srcs: [
         "tests/planner/CachedSetTest.cpp",
         "tests/planner/FlattenerTest.cpp",

@@ -1,4 +1,3 @@
-
 package {
     // See: http://go/android-license-faq
     // A large-scale-change added 'default_applicable_licenses' to import
@@ -12,6 +11,9 @@ cc_test {
 
     name: "EGL_test",
 
+    tidy_timeout_srcs: [
+        "EGL_test.cpp",
+    ],
     srcs: [
         "egl_cache_test.cpp",
         "EGL_test.cpp",

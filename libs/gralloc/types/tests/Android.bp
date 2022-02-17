@@ -29,6 +29,10 @@ cc_test {
         "libgralloctypes",
         "libhidlbase",
     ],
+    tidy_timeout_srcs: ["Gralloc4_test.cpp"],
     srcs: ["Gralloc4_test.cpp"],
-    cflags: ["-Wall", "-Werror"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
 }

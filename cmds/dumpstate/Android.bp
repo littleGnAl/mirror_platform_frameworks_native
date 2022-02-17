@@ -147,6 +147,9 @@ cc_binary {
 cc_test {
     name: "dumpstate_test",
     defaults: ["dumpstate_defaults"],
+    tidy_timeout_srcs: [
+        "tests/dumpstate_test.cpp",
+    ],
     srcs: [
         "DumpPool.cpp",
         "TaskQueue.cpp",

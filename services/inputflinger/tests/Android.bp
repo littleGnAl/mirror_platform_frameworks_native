@@ -35,6 +35,10 @@ cc_test {
         "libinputdispatcher_defaults",
         "libinputflinger_defaults",
     ],
+    tidy_timeout_srcs: [
+        "InputDispatcher_test.cpp",
+        "InputReader_test.cpp",
+    ],
     srcs: [
         "AnrTracker_test.cpp",
         "BlockingQueue_test.cpp",

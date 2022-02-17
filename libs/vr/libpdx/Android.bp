@@ -48,6 +48,11 @@ cc_test {
         "-Wextra",
         "-Werror",
     ],
+    tidy_timeout_srcs: [
+        "client_tests.cpp",
+        "serialization_tests.cpp",
+        "service_tests.cpp",
+    ],
     srcs: [
         "client_tests.cpp",
         "mock_tests.cpp",

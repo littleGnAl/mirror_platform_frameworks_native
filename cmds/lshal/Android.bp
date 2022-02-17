@@ -69,15 +69,18 @@ cc_defaults {
         "liblshal",
         "libprocpartition",
     ],
-    cflags: ["-Wall", "-Werror"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
 }
 
 cc_binary {
     name: "lshal",
     defaults: ["lshal_defaults"],
     srcs: [
-        "main.cpp"
-    ]
+        "main.cpp",
+    ],
 }
 
 cc_test {
@@ -85,7 +88,7 @@ cc_test {
     test_suites: ["device-tests"],
     defaults: [
         "libvintf_static_user_defaults",
-        "lshal_defaults"
+        "lshal_defaults",
     ],
     gtest: true,
     static_libs: [
@@ -96,7 +99,10 @@ cc_test {
     shared_libs: [
         "libhidlbase",
     ],
+    tidy_timeout_srcs: [
+        "test.cpp",
+    ],
     srcs: [
-        "test.cpp"
-    ]
+        "test.cpp",
+    ],
 }

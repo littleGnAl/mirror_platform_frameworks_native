@@ -12,6 +12,7 @@ cc_test {
     name: "installd_utils_test",
     test_suites: ["device-tests"],
     clang: true,
+    tidy_timeout_srcs: ["installd_utils_test.cpp"],
     srcs: ["installd_utils_test.cpp"],
     cflags: [
         "-Wall",
@@ -82,6 +83,7 @@ cc_test {
     name: "installd_service_test",
     test_suites: ["device-tests"],
     clang: true,
+    tidy_timeout_srcs: ["installd_service_test.cpp"],
     srcs: ["installd_service_test.cpp"],
     cflags: [
         "-Wall",
@@ -129,6 +131,7 @@ cc_test {
     name: "installd_dexopt_test",
     test_suites: ["device-tests"],
     clang: true,
+    tidy_timeout_srcs: ["installd_dexopt_test.cpp"],
     srcs: ["installd_dexopt_test.cpp"],
     cflags: [
         "-Wall",
@@ -197,6 +200,7 @@ cc_test {
     name: "installd_file_test",
     test_suites: ["device-tests"],
     clang: true,
+    tidy_timeout_srcs: ["installd_file_test.cpp"],
     srcs: ["installd_file_test.cpp"],
     cflags: [
         "-Wall",

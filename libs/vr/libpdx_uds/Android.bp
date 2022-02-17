@@ -47,6 +47,9 @@ cc_test {
         "-Wextra",
         "-Werror",
     ],
+    tidy_timeout_srcs: [
+        "ipc_helper_tests.cpp",
+    ],
     srcs: [
         "client_channel_tests.cpp",
         "ipc_helper_tests.cpp",
