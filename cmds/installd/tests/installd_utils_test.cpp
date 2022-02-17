@@ -638,5 +638,23 @@ TEST_F(UtilsTest, TestCreateDirIfNeeded) {
     ASSERT_NE(0, create_dir_if_needed("/data/local/tmp/user/0/bar/baz", 0700));
 }
 
+TEST_F(UtilsTest, TestIsRenamedDeletedDir) {
+    EXPECT_FALSE(is_renamed_deleted_dir(""));
+    EXPECT_FALSE(is_renamed_deleted_dir("1"));
+    EXPECT_FALSE(is_renamed_deleted_dir("="));
+    EXPECT_FALSE(is_renamed_deleted_dir("=="));
+    EXPECT_FALSE(is_renamed_deleted_dir("d=="));
+    EXPECT_FALSE(is_renamed_deleted_dir("ed=="));
+    EXPECT_FALSE(is_renamed_deleted_dir("ted=="));
+    EXPECT_FALSE(is_renamed_deleted_dir("eted=="));
+    EXPECT_FALSE(is_renamed_deleted_dir("leted=="));
+    EXPECT_FALSE(is_renamed_deleted_dir("eleted=="));
+    EXPECT_FALSE(is_renamed_deleted_dir("deleted=="));
+    EXPECT_FALSE(is_renamed_deleted_dir("=deleted=="));
+    EXPECT_TRUE(is_renamed_deleted_dir("==deleted=="));
+    EXPECT_TRUE(is_renamed_deleted_dir("123==deleted=="));
+    EXPECT_TRUE(is_renamed_deleted_dir("5b14b6458a44==deleted=="));
+}
+
 }  // namespace installd
 }  // namespace android
