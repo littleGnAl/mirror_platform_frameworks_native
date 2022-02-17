@@ -26,6 +26,7 @@ package {
 cc_test {
     name: "prioritydumper_test",
     test_suites: ["device-tests"],
+    tidy_timeout_srcs: ["PriorityDumper_test.cpp"],
     srcs: ["PriorityDumper_test.cpp"],
     shared_libs: [
         "libutils",

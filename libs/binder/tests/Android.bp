@@ -65,6 +65,7 @@ cc_test {
 cc_test {
     name: "binderLibTest_IPC_32",
     defaults: ["binder_test_defaults"],
+    tidy_timeout_srcs: ["binderLibTest.cpp"],
     srcs: ["binderLibTest.cpp"],
     shared_libs: [
         "libbase",
@@ -95,6 +96,9 @@ cc_test {
             enabled: false,
         },
     },
+    tidy_timeout_srcs: [
+        "binderParcelUnitTest.cpp",
+    ],
     srcs: [
         "binderParcelUnitTest.cpp",
         "binderBinderUnitTest.cpp",
@@ -117,6 +121,7 @@ cc_test {
         },
     },
 
+    tidy_timeout_srcs: ["binderLibTest.cpp"],
     srcs: ["binderLibTest.cpp"],
     shared_libs: [
         "libbase",
@@ -200,6 +205,9 @@ cc_test {
         "libbinder_tls_shared_deps",
     ],
 
+    tidy_timeout_srcs: [
+        "binderRpcTest.cpp",
+    ],
     srcs: [
         "binderRpcTest.cpp",
     ],
@@ -330,6 +338,7 @@ cc_test {
 cc_test {
     name: "binderTextOutputTest",
     defaults: ["binder_test_defaults"],
+    tidy_timeout_srcs: ["binderTextOutputTest.cpp"],
     srcs: ["binderTextOutputTest.cpp"],
     shared_libs: [
         "libbinder",

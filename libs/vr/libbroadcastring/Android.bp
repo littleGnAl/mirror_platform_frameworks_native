@@ -32,6 +32,9 @@ cc_test {
         "-Wextra",
         "-Werror",
     ],
+    tidy_timeout_srcs: [
+        "broadcast_ring_test.cc",
+    ],
     srcs: [
         "broadcast_ring_test.cc",
     ],

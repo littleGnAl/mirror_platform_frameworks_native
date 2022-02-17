@@ -129,6 +129,9 @@ cc_test_host {
     name: "run_dex2oat_test",
     test_suites: ["general-tests"],
     clang: true,
+    tidy_timeout_srcs: [
+        "run_dex2oat_test.cpp",
+    ],
     srcs: [
         "run_dex2oat_test.cpp",
         "run_dex2oat.cpp",

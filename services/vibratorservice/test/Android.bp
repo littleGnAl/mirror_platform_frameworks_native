@@ -24,6 +24,9 @@ package {
 cc_test {
     name: "libvibratorservice_test",
     test_suites: ["device-tests"],
+    tidy_timeout_srcs: [
+        "VibratorHalWrapperAidlTest.cpp",
+    ],
     srcs: [
         "VibratorCallbackSchedulerTest.cpp",
         "VibratorHalControllerTest.cpp",

@@ -12,8 +12,12 @@ cc_test {
     name: "dumpsys_test",
     test_suites: ["device-tests"],
 
+    tidy_timeout_srcs: ["dumpsys_test.cpp"],
     srcs: ["dumpsys_test.cpp"],
-    cflags: ["-Wall", "-Werror"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
 
     shared_libs: [
         "libbase",

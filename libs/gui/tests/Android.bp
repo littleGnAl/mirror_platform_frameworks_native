@@ -21,6 +21,14 @@ cc_test {
         "-Werror",
     ],
 
+    tidy_timeout_srcs: [
+        "BLASTBufferQueue_test.cpp",
+        "BufferQueue_test.cpp",
+        "IGraphicBufferProducer_test.cpp",
+        "Surface_test.cpp",
+        "SurfaceTextureClient_test.cpp",
+        "SurfaceTextureMultiContextGL_test.cpp",
+    ],
     srcs: [
         "BLASTBufferQueue_test.cpp",
         "BufferItemConsumer_test.cpp",

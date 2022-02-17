@@ -31,6 +31,7 @@ cc_defaults {
 cc_test {
     name: "installd_utils_test",
     defaults: ["installd_tests_defaults"],
+    tidy_timeout_srcs: ["installd_utils_test.cpp"],
     srcs: ["installd_utils_test.cpp"],
     static_libs: [
         "libasync_safe",
@@ -79,6 +80,7 @@ cc_test {
 cc_test {
     name: "installd_service_test",
     defaults: ["installd_tests_defaults"],
+    tidy_timeout_srcs: ["installd_service_test.cpp"],
     srcs: ["installd_service_test.cpp"],
     shared_libs: [
         "libbinder",
@@ -116,6 +118,7 @@ cc_test {
 cc_test {
     name: "installd_dexopt_test",
     defaults: ["installd_tests_defaults"],
+    tidy_timeout_srcs: ["installd_dexopt_test.cpp"],
     srcs: ["installd_dexopt_test.cpp"],
     shared_libs: [
         "libbinder",
@@ -165,6 +168,7 @@ cc_test {
 cc_test {
     name: "installd_file_test",
     defaults: ["installd_tests_defaults"],
+    tidy_timeout_srcs: ["installd_file_test.cpp"],
     srcs: ["installd_file_test.cpp"],
     static_libs: [
         "libinstalld",
