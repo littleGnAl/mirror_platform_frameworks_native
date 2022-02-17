@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65f8154_81d59f47",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-02-17T20:07:51Z",
+      "side": 1,
+      "message": "note that code search suggests this has been copy \u0026 pasted a few times already...",
+      "revId": "00ff352c34cb46d96156cdef69a6acf0bdfa5356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbaf5887_47150884",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-02-17T20:07:51Z",
+      "side": 1,
+      "message": "if anyone rewrites this (or factors out the multiple copies and pastes), https://man7.org/linux/man-pages/man2/pidfd_open.2.html is probably a better way to do this. (although i think 4.19 kernels aren\u0027t quite dead yet? :-( )\n\nbut this seems like an improvement for now.",
+      "revId": "00ff352c34cb46d96156cdef69a6acf0bdfa5356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f967bd_f04be2f3",
+        "filename": "cmds/dumpstate/DumpstateUtil.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-02-17T20:07:51Z",
+      "side": 1,
+      "message": "(bionic has an RAII answer to this problem because it comes up a lot in libc, but https://source.corp.google.com/search?q\u003dsigprocmask.*old%20file:cpp$%20-file:test%20-file:toolchain%2F%20-file:bionic%20-file:external\u0026sq\u003dpackage:%5Eandroid$ implies that the only non-bionic use is copies \u0026 pastes of this function, so probably still not worth promoting to libbase.)",
+      "revId": "00ff352c34cb46d96156cdef69a6acf0bdfa5356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
