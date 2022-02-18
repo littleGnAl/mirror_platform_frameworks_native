@@ -16,6 +16,24 @@
       "message": "I\u0027m fairly sure this is going to create a huge number of threads that end up contending elsewhere in the system--lots of the expensive system_server service dumps will contend with each other, for example, and concurrent showmaps will be a mess of lock contentions inside rmap in the kernel.",
       "revId": "c56352bfeacafdeaaca7fc05045321a69dc7ad5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3ebdb4_3f1beb45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1249526
+      },
+      "writtenOn": "2022-02-18T22:07:23Z",
+      "side": 1,
+      "message": "This won\u0027t change the number of threads. It just allows users of DumpPool to specify a thread count higher than four. I\u0027ve tried with thread counts from 8 to 20 and they worked fine.\n\nThe current API is surprising. If you pass a thread count higher than 4, it silently sets it to 4.",
+      "parentUuid": "9165b99c_d2007f49",
+      "revId": "c56352bfeacafdeaaca7fc05045321a69dc7ad5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
