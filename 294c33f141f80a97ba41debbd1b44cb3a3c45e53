@@ -16,6 +16,24 @@
       "message": "I saw the comment in your other code review that we still need to support kernel 4.3\nUnfortunately, sigprocmask won\u0027t work in dumpsys since it\u0027s multithreaded.",
       "revId": "294c33f141f80a97ba41debbd1b44cb3a3c45e53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38088715_1fd4c4fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1249526
+      },
+      "writtenOn": "2022-02-18T23:29:40Z",
+      "side": 1,
+      "message": "If we need to support 4.3, I think the best thing to do would be to have a kernel version check, and use pidfd_open if we\u0027re at or above 5.3. If we\u0027re below, we can use the old way, and run dumpstate in single threaded mode.",
+      "parentUuid": "168e3b17_5bd4a3a2",
+      "revId": "294c33f141f80a97ba41debbd1b44cb3a3c45e53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
