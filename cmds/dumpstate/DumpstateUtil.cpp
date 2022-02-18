@@ -20,7 +20,9 @@
 
 #include <dirent.h>
 #include <fcntl.h>
+#include <poll.h>
 #include <sys/prctl.h>
+#include <sys/syscall.h>
 #include <sys/wait.h>
 #include <unistd.h>
 
@@ -43,51 +45,29 @@ namespace {
 
 static constexpr const char* kSuPath = "/system/xbin/su";
 
-static bool waitpid_with_timeout(pid_t pid, int timeout_ms, int* status) {
-    sigset_t child_mask, old_mask;
-    sigemptyset(&child_mask);
-    sigaddset(&child_mask, SIGCHLD);
+static int pidfd_open(pid_t pid, unsigned int flags) {
+    return syscall(__NR_pidfd_open, pid, flags);
+}
 
-    // block SIGCHLD before we check if a process has exited
-    if (sigprocmask(SIG_BLOCK, &child_mask, &old_mask) == -1) {
-        printf("*** sigprocmask failed: %s\n", strerror(errno));
+static bool waitpid_with_timeout(pid_t pid, int timeout_ms, int* status) {
+    int pidfd = pidfd_open(pid, 0);
+    if (pidfd == -1) {
+        printf("*** pidfd_open failed: %s\n", strerror(errno));
         return false;
     }
 
-    // if the child has exited already, handle and reset signals before leaving
-    pid_t child_pid = waitpid(pid, status, WNOHANG);
-    if (child_pid != pid) {
-        if (child_pid > 0) {
-            printf("*** Waiting for pid %d, got pid %d instead\n", pid, child_pid);
-            sigprocmask(SIG_SETMASK, &old_mask, nullptr);
-            return false;
-        }
-    } else {
-        sigprocmask(SIG_SETMASK, &old_mask, nullptr);
-        return true;
+    struct pollfd pollfd;
+    pollfd.fd = pidfd;
+    pollfd.events = POLLIN;
+
+    int ready = poll(&pollfd, 1, timeout_ms);
+    if (ready == -1) {
+        printf("*** poll failed: %s\n", strerror(errno));
+        return false;
     }
 
-    // wait for a SIGCHLD
-    timespec ts;
-    ts.tv_sec = MSEC_TO_SEC(timeout_ms);
-    ts.tv_nsec = (timeout_ms % 1000) * 1000000;
-    int ret = TEMP_FAILURE_RETRY(sigtimedwait(&child_mask, nullptr, &ts));
-    int saved_errno = errno;
-
-    // Set the signals back the way they were.
-    if (sigprocmask(SIG_SETMASK, &old_mask, nullptr) == -1) {
-        printf("*** sigprocmask failed: %s\n", strerror(errno));
-        if (ret == 0) {
-            return false;
-        }
-    }
-    if (ret == -1) {
-        errno = saved_errno;
-        if (errno == EAGAIN) {
-            errno = ETIMEDOUT;
-        } else {
-            printf("*** sigtimedwait failed: %s\n", strerror(errno));
-        }
+    if (ready == 0) {
+        errno = ETIMEDOUT;
         return false;
     }
 
