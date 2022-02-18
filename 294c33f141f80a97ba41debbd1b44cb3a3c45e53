@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "168e3b17_5bd4a3a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1249526
+      },
+      "writtenOn": "2022-02-18T12:06:58Z",
+      "side": 1,
+      "message": "I saw the comment in your other code review that we still need to support kernel 4.3\nUnfortunately, sigprocmask won\u0027t work in dumpsys since it\u0027s multithreaded.",
+      "revId": "294c33f141f80a97ba41debbd1b44cb3a3c45e53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
