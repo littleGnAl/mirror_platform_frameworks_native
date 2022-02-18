@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9165b99c_d2007f49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1017430
+      },
+      "writtenOn": "2022-02-18T16:49:42Z",
+      "side": 1,
+      "message": "I\u0027m fairly sure this is going to create a huge number of threads that end up contending elsewhere in the system--lots of the expensive system_server service dumps will contend with each other, for example, and concurrent showmaps will be a mess of lock contentions inside rmap in the kernel.",
+      "revId": "c56352bfeacafdeaaca7fc05045321a69dc7ad5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
