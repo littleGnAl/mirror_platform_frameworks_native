@@ -68,6 +68,24 @@
       "parentUuid": "a51b08a0_373dd67c",
       "revId": "832447116cb22a28974981b1561ff14af70ce28a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56bafe72_92ceaf6c",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2022-02-19T01:36:19Z",
+      "side": 1,
+      "message": "I added error logging here to indicate a bug. Alternatively we could panic instead of returning an error? I think a panic is overkill here, but I don\u0027t know how quickly this needs to be caught if it occurs.",
+      "parentUuid": "6516dc36_9bf155b5",
+      "revId": "832447116cb22a28974981b1561ff14af70ce28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
