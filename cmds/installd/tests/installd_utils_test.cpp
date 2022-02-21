@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
+#include <errno.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include <android-base/logging.h>
 #include <android-base/scopeguard.h>
@@ -654,6 +656,45 @@ TEST_F(UtilsTest, TestCreateDirIfNeeded) {
 
     // Check that call fails if parent doesn't exist.
     ASSERT_NE(0, create_dir_if_needed("/data/local/tmp/user/0/bar/baz", 0700));
+}
+
+TEST_F(UtilsTest, WaitChild) {
+    pid_t pid = fork();
+    if (pid == 0) {
+        /* child */
+        // Do nothing.
+        _exit(0);
+    }
+    /* parent */
+    int return_code = wait_child(pid, /*timeout_ms=*/100);
+    EXPECT_TRUE(WIFEXITED(return_code));
+    EXPECT_EQ(WEXITSTATUS(return_code), 0);
+}
+
+TEST_F(UtilsTest, WaitChildTimeout) {
+    pid_t pid = fork();
+    if (pid == 0) {
+        /* child */
+        sleep(1);
+        _exit(0);
+    }
+    /* parent */
+    int return_code = wait_child(pid, /*timeout_ms=*/100);
+    EXPECT_FALSE(WIFEXITED(return_code));
+    EXPECT_EQ(WTERMSIG(return_code), SIGKILL);
+    EXPECT_EQ(errno, ETIMEDOUT);
+}
+
+TEST_F(UtilsTest, RemoveFileAtFd) {
+    std::string filename = "/data/local/tmp/user/0/tempfile-XXXXXX";
+    int fd = mkstemp(filename.data());
+    ASSERT_GE(fd, 0);
+    ASSERT_EQ(access(filename.c_str(), F_OK), 0);
+
+    remove_file_at_fd(fd);
+    EXPECT_NE(access(filename.c_str(), F_OK), 0);
+
+    close(fd);
 }
 
 }  // namespace installd
