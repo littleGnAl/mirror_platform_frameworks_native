@@ -78,6 +78,14 @@ using android::base::unique_fd;
 
 namespace {
 
+// Timeout for short operations, such as merging profiles.
+constexpr int kShortTimeoutMs = 60000; // 1 minute.
+
+// Timeout for long operations, such as compilation. This should be smaller than the Package Manager
+// watchdog (PackageManagerService.WATCHDOG_TIMEOUT, 10 minutes), so that the operation will be
+// aborted before that watchdog would take down the system server.
+constexpr int kLongTimeoutMs = 570000; // 9.5 minutes.
+
 class DexOptStatus {
  public:
     // Check if dexopt is cancelled and fork if it is not cancelled.
@@ -657,13 +665,25 @@ static int analyze_profiles(uid_t uid, const std::string& package_name,
         profman_merge.Exec();
     }
     /* parent */
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     bool need_to_compile = false;
     bool empty_profiles = false;
     bool should_clear_current_profiles = false;
     bool should_clear_reference_profile = false;
     if (!WIFEXITED(return_code)) {
         LOG(WARNING) << "profman failed for location " << location << ": " << return_code;
+        if (WTERMSIG(return_code) == SIGKILL) {
+            // If the subprocess is killed while it's writing to the file, the file is likely
+            // corrupted, so we should remove it.
+            // If the subprocess is killed while it's acquiring a flock on the file, there is
+            // probably a deadlock, so it's also good to remove the file so that later operations
+            // won't encounter the same problem. It's safe to do so because the process that is
+            // holding the flock will still have access to the file until the file descriptor is
+            // closed.
+            // We can't do `clear_reference_profile` here because that also requires a flock and is
+            // therefore likely to be stuck in the second case.
+            remove_file_at_fd(reference_profile_fd.get());
+        }
     } else {
         return_code = WEXITSTATUS(return_code);
         switch (return_code) {
@@ -797,10 +817,13 @@ bool dump_profiles(int32_t uid, const std::string& pkgname, const std::string& p
         profman_dump.Exec();
     }
     /* parent */
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     if (!WIFEXITED(return_code)) {
         LOG(WARNING) << "profman failed for package " << pkgname << ": "
                 << return_code;
+        if (WTERMSIG(return_code) == SIGKILL) {
+            remove_file_at_fd(output_fd.get());
+        }
         return false;
     }
     return true;
@@ -871,7 +894,22 @@ bool copy_system_profile(const std::string& system_profile,
         _exit(0);
     }
     /* parent */
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
+    if (!WIFEXITED(return_code)) {
+        if (WTERMSIG(return_code) == SIGKILL) {
+            // If the subprocess is killed while it's writing to the file, the file is likely
+            // corrupted, so we should remove it.
+            // If the subprocess is killed while it's acquiring a flock on the file, there is
+            // probably a deadlock, so it's also good to remove the file so that later operations
+            // won't encounter the same problem. It's safe to do so because the process that is
+            // holding the flock will still have access to the file until the file descriptor is
+            // closed.
+            // We can't do `clear_reference_profile` here because that also requires a flock and is
+            // therefore likely to be stuck in the second case.
+            remove_file_at_fd(out_fd.get());
+        }
+        return false;
+    }
     return return_code == 0;
 }
 
@@ -1521,7 +1559,7 @@ static bool get_class_loader_context_dex_paths(const char* class_loader_context,
     }
     pipe_read.reset();
 
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     if (!WIFEXITED(return_code)) {
         PLOG(ERROR) << "Error waiting for child dexoptanalyzer process";
         return false;
@@ -1695,7 +1733,7 @@ static SecondaryDexOptProcessResult process_secondary_dex_dexopt(const std::stri
     }
 
     /* parent */
-    int result = wait_child(pid);
+    int result = wait_child(pid, kShortTimeoutMs);
     cancelled = dexopt_status_->check_if_killed_and_remove_dexopt_pid(pid);
     if (!WIFEXITED(result)) {
         if ((WTERMSIG(result) == SIGKILL) && cancelled) {
@@ -1954,7 +1992,7 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
 
         runner.Exec(DexoptReturnCodes::kDex2oatExec);
     } else {
-        int res = wait_child(pid);
+        int res = wait_child(pid, kLongTimeoutMs);
         bool cancelled = dexopt_status_->check_if_killed_and_remove_dexopt_pid(pid);
         if (res == 0) {
             LOG(VERBOSE) << "DexInv: --- END '" << dex_path << "' (success) ---";
@@ -2143,7 +2181,7 @@ bool reconcile_secondary_dex_file(const std::string& dex_path,
         _exit(result ? kReconcileSecondaryDexCleanedUp : kReconcileSecondaryDexAccessIOError);
     }
 
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     if (!WIFEXITED(return_code)) {
         LOG(WARNING) << "reconcile dex failed for location " << dex_path << ": " << return_code;
     } else {
@@ -2261,7 +2299,7 @@ bool hash_secondary_dex_file(const std::string& dex_path, const std::string& pkg
     if (!ReadFully(pipe_read, out_secondary_dex_hash->data(), out_secondary_dex_hash->size())) {
         out_secondary_dex_hash->clear();
     }
-    return wait_child(pid) == 0;
+    return wait_child(pid, kShortTimeoutMs) == 0;
 }
 
 // Helper for move_ab, so that we can have common failure-case cleanup.
@@ -2591,9 +2629,19 @@ static bool create_app_profile_snapshot(int32_t app_id,
     }
 
     /* parent */
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     if (!WIFEXITED(return_code)) {
         LOG(WARNING) << "profman failed for " << package_name << ":" << profile_name;
+        if (WTERMSIG(return_code) == SIGKILL) {
+            // If the subprocess is killed while it's writing to the file, the file is likely
+            // corrupted, so we should remove it.
+            // If the subprocess is killed while it's acquiring a flock on the file, there is
+            // probably a deadlock, so it's also good to remove the file so that later operations
+            // won't encounter the same problem. It's safe to do so because the process that is
+            // holding the flock will still have access to the file until the file descriptor is
+            // closed.
+            remove_file_at_fd(snapshot_fd.get());
+        }
         return false;
     }
 
@@ -2700,10 +2748,20 @@ static bool create_boot_image_profile_snapshot(const std::string& package_name,
         }
 
         /* parent */
-        int return_code = wait_child(pid);
+        int return_code = wait_child(pid, kShortTimeoutMs);
 
         if (!WIFEXITED(return_code)) {
             PLOG(WARNING) << "profman failed for " << package_name << ":" << profile_name;
+            if (WTERMSIG(return_code) == SIGKILL) {
+                // If the subprocess is killed while it's writing to the file, the file is likely
+                // corrupted, so we should remove it.
+                // If the subprocess is killed while it's acquiring a flock on the file, there is
+                // probably a deadlock, so it's also good to remove the file so that later
+                // operations won't encounter the same problem. It's safe to do so because the
+                // process that is holding the flock will still have access to the file until the
+                // file descriptor is closed.
+                remove_file_at_fd(snapshot_fd.get());
+            }
             return false;
         }
 
@@ -2789,9 +2847,21 @@ bool prepare_app_profile(const std::string& package_name,
     }
 
     /* parent */
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     if (!WIFEXITED(return_code)) {
         PLOG(WARNING) << "profman failed for " << package_name << ":" << profile_name;
+        if (WTERMSIG(return_code) == SIGKILL) {
+            // If the subprocess is killed while it's writing to the file, the file is likely
+            // corrupted, so we should remove it.
+            // If the subprocess is killed while it's acquiring a flock on the file, there is
+            // probably a deadlock, so it's also good to remove the file so that later operations
+            // won't encounter the same problem. It's safe to do so because the process that is
+            // holding the flock will still have access to the file until the file descriptor is
+            // closed.
+            // We can't do `clear_reference_profile` here because that also requires a flock and is
+            // therefore likely to be stuck in the second case.
+            remove_file_at_fd(ref_profile_fd.get());
+        }
         return false;
     }
     return true;

@@ -19,18 +19,23 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <fts.h>
+#include <linux/time.h>
+#include <linux/wait.h>
 #include <stdlib.h>
 #include <sys/capability.h>
 #include <sys/stat.h>
 #include <sys/statvfs.h>
 #include <sys/wait.h>
 #include <sys/xattr.h>
+#include <unistd.h>
 #include <uuid/uuid.h>
+
+#include <csignal>
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
-#include <android-base/strings.h>
 #include <android-base/stringprintf.h>
+#include <android-base/strings.h>
 #include <android-base/unique_fd.h>
 #include <cutils/fs.h>
 #include <cutils/properties.h>
@@ -1059,30 +1064,69 @@ int ensure_config_user_dirs(userid_t userid) {
     return fs_prepare_dir(path.c_str(), 0750, uid, gid);
 }
 
-int wait_child(pid_t pid)
-{
+static int wait_child(pid_t pid) {
     int status;
-    pid_t got_pid;
+    pid_t got_pid = TEMP_FAILURE_RETRY(waitpid(pid, &status, 0));
 
-    while (1) {
-        got_pid = waitpid(pid, &status, 0);
-        if (got_pid == -1 && errno == EINTR) {
-            printf("waitpid interrupted, retrying\n");
-        } else {
-            break;
-        }
-    }
     if (got_pid != pid) {
-        ALOGW("waitpid failed: wanted %d, got %d: %s\n",
-            (int) pid, (int) got_pid, strerror(errno));
-        return 1;
+        ALOGW("waitpid failed: wanted %d, got %d: %s\n", (int)pid, (int)got_pid, strerror(errno));
+        return W_EXITCODE(/*exit_code=*/255, /*signal_number=*/0);
     }
 
-    if (WIFEXITED(status) && WEXITSTATUS(status) == 0) {
-        return 0;
-    } else {
-        return status;      /* always nonzero */
+    return status;
+}
+
+int wait_child(pid_t pid, int timeout_ms) {
+    sigset_t child_mask, old_mask;
+    sigemptyset(&child_mask);
+    sigaddset(&child_mask, SIGCHLD);
+
+    if (sigprocmask(SIG_BLOCK, &child_mask, &old_mask) == -1) {
+        ALOGW("sigprocmask failed: %s", strerror(errno));
+        kill(pid, SIGKILL);
+        return wait_child(pid);
     }
+
+    auto reset_signal_mask = [&]() {
+        // Set the signals back the way they were.
+        if (sigprocmask(SIG_SETMASK, &old_mask, nullptr) == -1) {
+            ALOGW("sigprocmask failed: %s", strerror(errno));
+        }
+    };
+
+    // if the child has exited already, handle and reset signals before leaving.
+    int status;
+    pid_t got_pid = waitpid(pid, &status, WNOHANG);
+    if (got_pid != 0) {
+        reset_signal_mask();
+        if (got_pid != pid) {
+            ALOGW("waitpid failed: wanted %d, got %d: %s\n", (int)pid, (int)got_pid,
+                  strerror(errno));
+            return W_EXITCODE(/*exit_code=*/255, /*signal_number=*/0);
+        }
+        return status;
+    }
+
+    timespec ts;
+    ts.tv_sec = timeout_ms / 1000;
+    ts.tv_nsec = (timeout_ms % 1000) * 1000000;
+    int ret = TEMP_FAILURE_RETRY(sigtimedwait(&child_mask, nullptr, &ts));
+    int saved_errno = errno;
+
+    reset_signal_mask();
+
+    if (ret == -1) {
+        errno = saved_errno;
+        if (errno == EAGAIN) {
+            ALOGW("Child process %d timed out, killing it", pid);
+        } else {
+            ALOGW("sigtimedwait failed: %s", strerror(errno));
+        }
+        kill(pid, SIGKILL);
+        return wait_child(pid);
+    }
+
+    return wait_child(pid);
 }
 
 /**
@@ -1293,6 +1337,26 @@ void drop_capabilities(uid_t uid) {
         PLOG(ERROR) << "capset failed";
         exit(DexoptReturnCodes::kCapSet);
     }
+}
+
+bool remove_file_at_fd(int fd) {
+    char path[PATH_MAX + 1];
+    std::string proc_path = android::base::StringPrintf("/proc/self/fd/%d", fd);
+    ssize_t len = readlink(proc_path.c_str(), path, sizeof(path));
+    if (len < 0) {
+        PLOG(WARNING) << "Could not remove file at fd " << fd << ": Failed to get file path";
+        return false;
+    }
+    path[len] = '\0';
+    LOG(INFO) << "Removing file at path " << path;
+    if (unlink(path) != 0) {
+        if (errno == ENOENT) {
+            return true;
+        }
+        PLOG(WARNING) << "Could not remove file at path " << path;
+        return false;
+    }
+    return true;
 }
 
 }  // namespace installd
