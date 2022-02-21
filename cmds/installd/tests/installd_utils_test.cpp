@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
+#include <errno.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include <android-base/logging.h>
 #include <android-base/scopeguard.h>
@@ -54,10 +56,9 @@ protected:
         init_globals_from_data_and_root(TEST_DATA_DIR, TEST_ROOT_DIR);
     }
 
-    virtual void TearDown() {
-    }
+    virtual void TearDown() {}
 
-    std::string create_too_long_path(const std::string& seed) {
+    std::string create_too_long_path(const std::string &seed) {
         std::string result = seed;
         for (size_t i = seed.size(); i < PKG_PATH_MAX; i++) {
             result += "a";
@@ -88,21 +89,17 @@ TEST_F(UtilsTest, IsValidApkPath_BadPrefix) {
 TEST_F(UtilsTest, IsValidApkPath_Internal) {
     // Internal directories
     const char *internal1 = TEST_APP_DIR "example.apk";
-    EXPECT_EQ(0, validate_apk_path(internal1))
-            << internal1 << " should be allowed as a valid path";
+    EXPECT_EQ(0, validate_apk_path(internal1)) << internal1 << " should be allowed as a valid path";
 
     // b/16888084
     const char *path2 = TEST_APP_DIR "example.com/example.apk";
-    EXPECT_EQ(0, validate_apk_path(path2))
-            << path2 << " should be allowed as a valid path";
+    EXPECT_EQ(0, validate_apk_path(path2)) << path2 << " should be allowed as a valid path";
 
     const char *badint1 = TEST_APP_DIR "../example.apk";
-    EXPECT_EQ(-1, validate_apk_path(badint1))
-            << badint1 << " should be rejected as a invalid path";
+    EXPECT_EQ(-1, validate_apk_path(badint1)) << badint1 << " should be rejected as a invalid path";
 
     const char *badint2 = TEST_APP_DIR "/../example.apk";
-    EXPECT_EQ(-1, validate_apk_path(badint2))
-            << badint2 << " should be rejected as a invalid path";
+    EXPECT_EQ(-1, validate_apk_path(badint2)) << badint2 << " should be rejected as a invalid path";
 
     // Should not have more than two sub directories
     const char *bad_path3 = TEST_APP_DIR "random/example.com/subdir/pkg.apk";
@@ -152,26 +149,26 @@ TEST_F(UtilsTest, IsValidApkPath_OatDirDir) {
 
 TEST_F(UtilsTest, IsValidApkPath_OatDirDirFile) {
     EXPECT_EQ(0, validate_apk_path_subdirs(TEST_DATA_DIR "app/com.example/oat/arm64/base.odex"));
-    EXPECT_EQ(0, validate_apk_path_subdirs(TEST_DATA_DIR "app/random/com.example/oat/arm64/base.odex"));
+    EXPECT_EQ(0,
+              validate_apk_path_subdirs(TEST_DATA_DIR
+                                        "app/random/com.example/oat/arm64/base.odex"));
     EXPECT_EQ(0, validate_apk_path_subdirs(TEST_EXPAND_DIR "app/com.example/oat/arm64/base.odex"));
     EXPECT_EQ(-1, validate_apk_path_subdirs(TEST_DATA_DIR "data/com.example/oat/arm64/base.odex"));
-    EXPECT_EQ(-1, validate_apk_path_subdirs(TEST_EXPAND_DIR "data/com.example/oat/arm64/base.odex"));
+    EXPECT_EQ(-1,
+              validate_apk_path_subdirs(TEST_EXPAND_DIR "data/com.example/oat/arm64/base.odex"));
 }
 
 TEST_F(UtilsTest, IsValidApkPath_Private) {
     // Internal directories
     const char *private1 = TEST_APP_PRIVATE_DIR "example.apk";
-    EXPECT_EQ(0, validate_apk_path(private1))
-            << private1 << " should be allowed as a valid path";
+    EXPECT_EQ(0, validate_apk_path(private1)) << private1 << " should be allowed as a valid path";
 
     // b/16888084
     const char *path2 = TEST_APP_DIR "example.com/example.apk";
-    EXPECT_EQ(0, validate_apk_path(path2))
-            << path2 << " should be allowed as a valid path";
+    EXPECT_EQ(0, validate_apk_path(path2)) << path2 << " should be allowed as a valid path";
 
     const char *path3 = TEST_APP_DIR "random/example.com/example.apk";
-    EXPECT_EQ(0, validate_apk_path(path3))
-            << path3 << " should be allowed as a valid path";
+    EXPECT_EQ(0, validate_apk_path(path3)) << path3 << " should be allowed as a valid path";
 
     const char *badpriv1 = TEST_APP_PRIVATE_DIR "../example.apk";
     EXPECT_EQ(-1, validate_apk_path(badpriv1))
@@ -195,17 +192,14 @@ TEST_F(UtilsTest, IsValidApkPath_Private) {
             << bad_path5 << " should be rejected as a invalid path";
 }
 
-
 TEST_F(UtilsTest, IsValidApkPath_AsecGood1) {
     const char *asec1 = TEST_ASEC_DIR "example.apk";
-    EXPECT_EQ(0, validate_apk_path(asec1))
-            << asec1 << " should be allowed as a valid path";
+    EXPECT_EQ(0, validate_apk_path(asec1)) << asec1 << " should be allowed as a valid path";
 }
 
 TEST_F(UtilsTest, IsValidApkPath_AsecGood2) {
     const char *asec2 = TEST_ASEC_DIR "com.example.asec/pkg.apk";
-    EXPECT_EQ(0, validate_apk_path(asec2))
-            << asec2 << " should be allowed as a valid path";
+    EXPECT_EQ(0, validate_apk_path(asec2)) << asec2 << " should be allowed as a valid path";
 }
 
 TEST_F(UtilsTest, IsValidApkPath_EscapeFail) {
@@ -217,7 +211,7 @@ TEST_F(UtilsTest, IsValidApkPath_EscapeFail) {
 TEST_F(UtilsTest, IsValidApkPath_SubdirEscapeFail) {
     const char *badasec3 = TEST_ASEC_DIR "com.example.asec/../../../pkg.apk";
     EXPECT_EQ(-1, validate_apk_path(badasec3))
-            << badasec3  << " should be rejected as a invalid path";
+            << badasec3 << " should be rejected as a invalid path";
 }
 
 TEST_F(UtilsTest, IsValidApkPath_SlashEscapeFail) {
@@ -240,8 +234,7 @@ TEST_F(UtilsTest, IsValidApkPath_SubdirEscapeSingleFail) {
 
 TEST_F(UtilsTest, IsValidApkPath_TwoSubdir) {
     const char *badasec7 = TEST_ASEC_DIR "random/com.example.asec/pkg.apk";
-    EXPECT_EQ(0, validate_apk_path(badasec7))
-            << badasec7 << " should be allowed as a valid path";
+    EXPECT_EQ(0, validate_apk_path(badasec7)) << badasec7 << " should be allowed as a valid path";
 }
 
 TEST_F(UtilsTest, IsValidApkPath_ThreeSubdirFail) {
@@ -301,14 +294,14 @@ TEST_F(UtilsTest, CheckSystemApp_Subdir) {
 TEST_F(UtilsTest, CreateDataPath) {
     EXPECT_EQ("/data", create_data_path(nullptr));
     EXPECT_EQ("/mnt/expand/57f8f4bc-abf4-655f-bf67-946fc0f9f25b",
-            create_data_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b"));
+              create_data_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b"));
 }
 
 TEST_F(UtilsTest, CreateDataAppPath) {
     EXPECT_EQ("/data/app", create_data_app_path(nullptr));
 
     EXPECT_EQ("/mnt/expand/57f8f4bc-abf4-655f-bf67-946fc0f9f25b/app",
-            create_data_app_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b"));
+              create_data_app_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b"));
 }
 
 TEST_F(UtilsTest, CreateDataUserPath) {
@@ -316,9 +309,9 @@ TEST_F(UtilsTest, CreateDataUserPath) {
     EXPECT_EQ("/data/user/10", create_data_user_ce_path(nullptr, 10));
 
     EXPECT_EQ("/mnt/expand/57f8f4bc-abf4-655f-bf67-946fc0f9f25b/user/0",
-            create_data_user_ce_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 0));
+              create_data_user_ce_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 0));
     EXPECT_EQ("/mnt/expand/57f8f4bc-abf4-655f-bf67-946fc0f9f25b/user/10",
-            create_data_user_ce_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 10));
+              create_data_user_ce_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 10));
 }
 
 TEST_F(UtilsTest, CreateDataMediaPath) {
@@ -326,19 +319,23 @@ TEST_F(UtilsTest, CreateDataMediaPath) {
     EXPECT_EQ("/data/media/10", create_data_media_path(nullptr, 10));
 
     EXPECT_EQ("/mnt/expand/57f8f4bc-abf4-655f-bf67-946fc0f9f25b/media/0",
-            create_data_media_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 0));
+              create_data_media_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 0));
     EXPECT_EQ("/mnt/expand/57f8f4bc-abf4-655f-bf67-946fc0f9f25b/media/10",
-            create_data_media_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 10));
+              create_data_media_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 10));
 }
 
 TEST_F(UtilsTest, CreateDataUserPackagePath) {
-    EXPECT_EQ("/data/data/com.example", create_data_user_ce_package_path(nullptr, 0, "com.example"));
-    EXPECT_EQ("/data/user/10/com.example", create_data_user_ce_package_path(nullptr, 10, "com.example"));
+    EXPECT_EQ("/data/data/com.example",
+              create_data_user_ce_package_path(nullptr, 0, "com.example"));
+    EXPECT_EQ("/data/user/10/com.example",
+              create_data_user_ce_package_path(nullptr, 10, "com.example"));
 
     EXPECT_EQ("/mnt/expand/57f8f4bc-abf4-655f-bf67-946fc0f9f25b/user/0/com.example",
-            create_data_user_ce_package_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 0, "com.example"));
+              create_data_user_ce_package_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 0,
+                                               "com.example"));
     EXPECT_EQ("/mnt/expand/57f8f4bc-abf4-655f-bf67-946fc0f9f25b/user/10/com.example",
-            create_data_user_ce_package_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 10, "com.example"));
+              create_data_user_ce_package_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 10,
+                                               "com.example"));
 }
 
 TEST_F(UtilsTest, IsValidPackageName) {
@@ -367,9 +364,9 @@ TEST_F(UtilsTest, CreateDataUserProfilePath) {
 
 TEST_F(UtilsTest, CreateDataUserProfilePackagePath) {
     EXPECT_EQ("/data/misc/profiles/cur/0/com.example",
-            create_primary_current_profile_package_dir_path(0, "com.example"));
+              create_primary_current_profile_package_dir_path(0, "com.example"));
     EXPECT_EQ("/data/misc/profiles/cur/1/com.example",
-            create_primary_current_profile_package_dir_path(1, "com.example"));
+              create_primary_current_profile_package_dir_path(1, "com.example"));
 }
 
 TEST_F(UtilsTest, CreateDataRefProfilePath) {
@@ -378,68 +375,69 @@ TEST_F(UtilsTest, CreateDataRefProfilePath) {
 
 TEST_F(UtilsTest, CreateDataRefProfilePackagePath) {
     EXPECT_EQ("/data/misc/profiles/ref/com.example",
-        create_primary_reference_profile_package_dir_path("com.example"));
+              create_primary_reference_profile_package_dir_path("com.example"));
 }
 
 TEST_F(UtilsTest, CreatePrimaryCurrentProfile) {
     std::string expected_base =
-        create_primary_current_profile_package_dir_path(0, "com.example") + "/primary.prof";
+            create_primary_current_profile_package_dir_path(0, "com.example") + "/primary.prof";
     EXPECT_EQ(expected_base,
-            create_current_profile_path(/*user*/0, "com.example", "primary.prof",
-                    /*is_secondary*/false));
+              create_current_profile_path(/*user*/ 0, "com.example", "primary.prof",
+                                          /*is_secondary*/ false));
 
     std::string expected_split =
-        create_primary_current_profile_package_dir_path(0, "com.example") + "/split.prof";
+            create_primary_current_profile_package_dir_path(0, "com.example") + "/split.prof";
     EXPECT_EQ(expected_split,
-            create_current_profile_path(/*user*/0, "com.example", "split.prof",
-                    /*is_secondary*/false));
+              create_current_profile_path(/*user*/ 0, "com.example", "split.prof",
+                                          /*is_secondary*/ false));
 }
 
 TEST_F(UtilsTest, CreatePrimaryReferenceProfile) {
     std::string expected_base =
-        create_primary_reference_profile_package_dir_path("com.example") + "/primary.prof";
+            create_primary_reference_profile_package_dir_path("com.example") + "/primary.prof";
     EXPECT_EQ(expected_base,
-            create_reference_profile_path("com.example", "primary.prof", /*is_secondary*/false));
+              create_reference_profile_path("com.example", "primary.prof", /*is_secondary*/ false));
 
     std::string expected_split =
-        create_primary_reference_profile_package_dir_path("com.example") + "/split.prof";
+            create_primary_reference_profile_package_dir_path("com.example") + "/split.prof";
     EXPECT_EQ(expected_split,
-            create_reference_profile_path("com.example", "split.prof", /*is_secondary*/false));
+              create_reference_profile_path("com.example", "split.prof", /*is_secondary*/ false));
 }
 
 TEST_F(UtilsTest, CreateProfileSnapshot) {
-    std::string expected_base =
-        create_primary_reference_profile_package_dir_path("com.example") + "/primary.prof.snapshot";
+    std::string expected_base = create_primary_reference_profile_package_dir_path("com.example") +
+            "/primary.prof.snapshot";
     EXPECT_EQ(expected_base, create_snapshot_profile_path("com.example", "primary.prof"));
 
-    std::string expected_split =
-        create_primary_reference_profile_package_dir_path("com.example") + "/split.prof.snapshot";
+    std::string expected_split = create_primary_reference_profile_package_dir_path("com.example") +
+            "/split.prof.snapshot";
     EXPECT_EQ(expected_split, create_snapshot_profile_path("com.example", "split.prof"));
 }
 
 TEST_F(UtilsTest, CreateSecondaryCurrentProfile) {
     EXPECT_EQ("/data/user/0/com.example/oat/secondary.dex.cur.prof",
-            create_current_profile_path(/*user*/0, "com.example",
-                    "/data/user/0/com.example/secondary.dex", /*is_secondary*/true));
+              create_current_profile_path(/*user*/ 0, "com.example",
+                                          "/data/user/0/com.example/secondary.dex",
+                                          /*is_secondary*/ true));
 }
 
 TEST_F(UtilsTest, CreateSecondaryReferenceProfile) {
     EXPECT_EQ("/data/user/0/com.example/oat/secondary.dex.prof",
-            create_reference_profile_path("com.example",
-                    "/data/user/0/com.example/secondary.dex", /*is_secondary*/true));
+              create_reference_profile_path("com.example", "/data/user/0/com.example/secondary.dex",
+                                            /*is_secondary*/ true));
 }
 
-static void pass_secondary_dex_validation(const std::string& package_name,
-        const std::string& dex_path, int uid, int storage_flag) {
+static void pass_secondary_dex_validation(const std::string &package_name,
+                                          const std::string &dex_path, int uid, int storage_flag) {
     EXPECT_TRUE(validate_secondary_dex_path(package_name, dex_path, /*volume_uuid*/ nullptr, uid,
-            storage_flag))
+                                            storage_flag))
             << dex_path << " should be allowed as a valid secondary dex path";
 }
 
-static void fail_secondary_dex_validation(const std::string& package_name,
-        const std::string& dex_path, int uid, int storage_flag) {
+static void fail_secondary_dex_validation(const std::string &package_name,
+                                          const std::string &dex_path, int uid, int storage_flag) {
     EXPECT_FALSE(validate_secondary_dex_path(package_name, dex_path, /*volume_uuid*/ nullptr, uid,
-            storage_flag))
+                                             storage_flag))
             << dex_path << " should not be allowed as a valid secondary dex path";
 }
 
@@ -453,66 +451,64 @@ TEST_F(UtilsTest, ValidateSecondaryDexFilesPath) {
     std::string app_dir_de_user_10 = "/data/user_de/10/" + package_name;
 
     EXPECT_EQ(app_dir_ce_user_0,
-            create_data_user_ce_package_path(nullptr, 0, package_name.c_str()));
+              create_data_user_ce_package_path(nullptr, 0, package_name.c_str()));
     EXPECT_EQ(app_dir_ce_user_10,
-            create_data_user_ce_package_path(nullptr, 10, package_name.c_str()));
+              create_data_user_ce_package_path(nullptr, 10, package_name.c_str()));
 
     EXPECT_EQ(app_dir_de_user_0,
-            create_data_user_de_package_path(nullptr, 0, package_name.c_str()));
+              create_data_user_de_package_path(nullptr, 0, package_name.c_str()));
     EXPECT_EQ(app_dir_de_user_10,
-            create_data_user_de_package_path(nullptr, 10, package_name.c_str()));
+              create_data_user_de_package_path(nullptr, 10, package_name.c_str()));
 
-    uid_t app_uid_for_user_0 = multiuser_get_uid(/*user_id*/0, /*app_id*/ 1234);
-    uid_t app_uid_for_user_10 = multiuser_get_uid(/*user_id*/10, /*app_id*/ 1234);
+    uid_t app_uid_for_user_0 = multiuser_get_uid(/*user_id*/ 0, /*app_id*/ 1234);
+    uid_t app_uid_for_user_10 = multiuser_get_uid(/*user_id*/ 10, /*app_id*/ 1234);
 
     // Standard path for user 0 on CE storage.
-    pass_secondary_dex_validation(
-        package_name, app_dir_ce_user_0 + "/ce0.dex", app_uid_for_user_0, FLAG_STORAGE_CE);
-    pass_secondary_dex_validation(
-        package_name, app_dir_ce_user_0_link + "/ce0.dex", app_uid_for_user_0, FLAG_STORAGE_CE);
+    pass_secondary_dex_validation(package_name, app_dir_ce_user_0 + "/ce0.dex", app_uid_for_user_0,
+                                  FLAG_STORAGE_CE);
+    pass_secondary_dex_validation(package_name, app_dir_ce_user_0_link + "/ce0.dex",
+                                  app_uid_for_user_0, FLAG_STORAGE_CE);
     // Standard path for user 10 on CE storage.
-    pass_secondary_dex_validation(
-        package_name, app_dir_ce_user_10 + "/ce10.dex", app_uid_for_user_10, FLAG_STORAGE_CE);
+    pass_secondary_dex_validation(package_name, app_dir_ce_user_10 + "/ce10.dex",
+                                  app_uid_for_user_10, FLAG_STORAGE_CE);
 
     // Standard path for user 0 on DE storage.
-    pass_secondary_dex_validation(
-        package_name, app_dir_de_user_0 + "/de0.dex", app_uid_for_user_0, FLAG_STORAGE_DE);
+    pass_secondary_dex_validation(package_name, app_dir_de_user_0 + "/de0.dex", app_uid_for_user_0,
+                                  FLAG_STORAGE_DE);
     // Standard path for user 10 on DE storage.
-    pass_secondary_dex_validation(
-        package_name, app_dir_de_user_10 + "/de0.dex", app_uid_for_user_10, FLAG_STORAGE_DE);
+    pass_secondary_dex_validation(package_name, app_dir_de_user_10 + "/de0.dex",
+                                  app_uid_for_user_10, FLAG_STORAGE_DE);
 
     // Dex path for user 0 accessed from user 10.
-    fail_secondary_dex_validation(
-        package_name, app_dir_ce_user_0 + "/path0_from10.dex",
-        app_uid_for_user_10, FLAG_STORAGE_CE);
+    fail_secondary_dex_validation(package_name, app_dir_ce_user_0 + "/path0_from10.dex",
+                                  app_uid_for_user_10, FLAG_STORAGE_CE);
 
     // Dex path for CE storage accessed with DE.
-    fail_secondary_dex_validation(
-        package_name, app_dir_ce_user_0 + "/ce_from_de.dex", app_uid_for_user_0, FLAG_STORAGE_DE);
+    fail_secondary_dex_validation(package_name, app_dir_ce_user_0 + "/ce_from_de.dex",
+                                  app_uid_for_user_0, FLAG_STORAGE_DE);
 
     // Dex path for DE storage accessed with CE.
-    fail_secondary_dex_validation(
-        package_name, app_dir_de_user_0 + "/de_from_ce.dex", app_uid_for_user_0, FLAG_STORAGE_CE);
+    fail_secondary_dex_validation(package_name, app_dir_de_user_0 + "/de_from_ce.dex",
+                                  app_uid_for_user_0, FLAG_STORAGE_CE);
 
     // Location which does not start with '/'.
-    fail_secondary_dex_validation(
-        package_name, "without_slash.dex", app_uid_for_user_10, FLAG_STORAGE_DE);
+    fail_secondary_dex_validation(package_name, "without_slash.dex", app_uid_for_user_10,
+                                  FLAG_STORAGE_DE);
 
     // The dex file is not in the specified package directory.
-    fail_secondary_dex_validation(
-        "another.package", app_dir_ce_user_0 + "/for_another_package.dex",
-        app_uid_for_user_0, FLAG_STORAGE_DE);
+    fail_secondary_dex_validation("another.package", app_dir_ce_user_0 + "/for_another_package.dex",
+                                  app_uid_for_user_0, FLAG_STORAGE_DE);
 
     // The dex path contains indirect directories.
-    fail_secondary_dex_validation(
-        package_name, app_dir_ce_user_0 + "/1/../foo.dex", app_uid_for_user_0, FLAG_STORAGE_CE);
-    fail_secondary_dex_validation(
-        package_name, app_dir_ce_user_0 + "/1/./foo.dex", app_uid_for_user_0, FLAG_STORAGE_CE);
+    fail_secondary_dex_validation(package_name, app_dir_ce_user_0 + "/1/../foo.dex",
+                                  app_uid_for_user_0, FLAG_STORAGE_CE);
+    fail_secondary_dex_validation(package_name, app_dir_ce_user_0 + "/1/./foo.dex",
+                                  app_uid_for_user_0, FLAG_STORAGE_CE);
 
     // Super long path.
     std::string too_long = create_too_long_path("too_long_");
-    fail_secondary_dex_validation(
-        package_name, app_dir_ce_user_10 + "/" + too_long, app_uid_for_user_10, FLAG_STORAGE_CE);
+    fail_secondary_dex_validation(package_name, app_dir_ce_user_10 + "/" + too_long,
+                                  app_uid_for_user_10, FLAG_STORAGE_CE);
 }
 
 TEST_F(UtilsTest, ValidateApkPath) {
@@ -575,33 +571,30 @@ TEST_F(UtilsTest, TestIsRenamedDeletedDir) {
 
 TEST_F(UtilsTest, TestRollbackPaths) {
     EXPECT_EQ("/data/misc_ce/0/rollback/239/com.foo",
-            create_data_misc_ce_rollback_package_path(nullptr, 0, 239, "com.foo"));
+              create_data_misc_ce_rollback_package_path(nullptr, 0, 239, "com.foo"));
     EXPECT_EQ("/data/misc_ce/10/rollback/37/com.foo",
-            create_data_misc_ce_rollback_package_path(nullptr, 10, 37, "com.foo"));
+              create_data_misc_ce_rollback_package_path(nullptr, 10, 37, "com.foo"));
 
     EXPECT_EQ("/data/misc_de/0/rollback/73/com.foo",
-            create_data_misc_de_rollback_package_path(nullptr, 0, 73, "com.foo"));
+              create_data_misc_de_rollback_package_path(nullptr, 0, 73, "com.foo"));
     EXPECT_EQ("/data/misc_de/10/rollback/13/com.foo",
-            create_data_misc_de_rollback_package_path(nullptr, 10, 13, "com.foo"));
+              create_data_misc_de_rollback_package_path(nullptr, 10, 13, "com.foo"));
 
-    EXPECT_EQ("/data/misc_ce/0/rollback/57",
-            create_data_misc_ce_rollback_path(nullptr, 0, 57));
+    EXPECT_EQ("/data/misc_ce/0/rollback/57", create_data_misc_ce_rollback_path(nullptr, 0, 57));
     EXPECT_EQ("/data/misc_ce/10/rollback/1543",
-            create_data_misc_ce_rollback_path(nullptr, 10, 1543));
+              create_data_misc_ce_rollback_path(nullptr, 10, 1543));
 
-    EXPECT_EQ("/data/misc_de/0/rollback/43",
-            create_data_misc_de_rollback_path(nullptr, 0, 43));
-    EXPECT_EQ("/data/misc_de/10/rollback/41",
-            create_data_misc_de_rollback_path(nullptr, 10, 41));
+    EXPECT_EQ("/data/misc_de/0/rollback/43", create_data_misc_de_rollback_path(nullptr, 0, 43));
+    EXPECT_EQ("/data/misc_de/10/rollback/41", create_data_misc_de_rollback_path(nullptr, 10, 41));
 
     EXPECT_EQ("/data/misc_ce/0/rollback/17/com.foo",
-            create_data_misc_ce_rollback_package_path(nullptr, 0, 17, "com.foo", 0));
+              create_data_misc_ce_rollback_package_path(nullptr, 0, 17, "com.foo", 0));
     EXPECT_EQ("/data/misc_ce/0/rollback/19/com.foo",
-            create_data_misc_ce_rollback_package_path(nullptr, 0, 19, "com.foo", 239));
+              create_data_misc_ce_rollback_package_path(nullptr, 0, 19, "com.foo", 239));
 
     auto rollback_ce_path = create_data_misc_ce_rollback_path(nullptr, 0, 53);
-    auto rollback_ce_package_path = create_data_misc_ce_rollback_package_path(nullptr, 0, 53,
-            "com.foo");
+    auto rollback_ce_package_path =
+            create_data_misc_ce_rollback_package_path(nullptr, 0, 53, "com.foo");
     auto deleter = [&rollback_ce_path]() {
         delete_dir_contents_and_dir(rollback_ce_path, true /* ignore_if_missing */);
     };
@@ -614,21 +607,21 @@ TEST_F(UtilsTest, TestRollbackPaths) {
     EXPECT_EQ(0, get_path_inode(rollback_ce_package_path, &ce_data_inode));
 
     EXPECT_EQ("/data/misc_ce/0/rollback/53/com.foo",
-            create_data_misc_ce_rollback_package_path(nullptr, 0, 53, "com.foo", ce_data_inode));
+              create_data_misc_ce_rollback_package_path(nullptr, 0, 53, "com.foo", ce_data_inode));
     // Check that path defined by inode is picked even if it's not the same as
     // the fallback one.
     EXPECT_EQ("/data/misc_ce/0/rollback/53/com.foo",
-            create_data_misc_ce_rollback_package_path(nullptr, 0, 53, "com.bar", ce_data_inode));
+              create_data_misc_ce_rollback_package_path(nullptr, 0, 53, "com.bar", ce_data_inode));
 
     // These last couple of cases are never exercised in production because we
     // only snapshot apps in the primary data partition. Exercise them here for
     // the sake of completeness.
     EXPECT_EQ("/mnt/expand/57f8f4bc-abf4-655f-bf67-946fc0f9f25b/misc_ce/0/rollback/7/com.example",
-            create_data_misc_ce_rollback_package_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 0, 7,
-                    "com.example"));
+              create_data_misc_ce_rollback_package_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 0,
+                                                        7, "com.example"));
     EXPECT_EQ("/mnt/expand/57f8f4bc-abf4-655f-bf67-946fc0f9f25b/misc_de/0/rollback/11/com.example",
-            create_data_misc_de_rollback_package_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 0, 11,
-                    "com.example"));
+              create_data_misc_de_rollback_package_path("57f8f4bc-abf4-655f-bf67-946fc0f9f25b", 0,
+                                                        11, "com.example"));
 }
 
 TEST_F(UtilsTest, TestCreateDirIfNeeded) {
@@ -656,5 +649,45 @@ TEST_F(UtilsTest, TestCreateDirIfNeeded) {
     ASSERT_NE(0, create_dir_if_needed("/data/local/tmp/user/0/bar/baz", 0700));
 }
 
-}  // namespace installd
-}  // namespace android
+TEST_F(UtilsTest, WaitChild) {
+    pid_t pid = fork();
+    if (pid == 0) {
+        /* child */
+        // Do nothing.
+        _exit(0);
+    }
+    /* parent */
+    int return_code = wait_child_with_timeout(pid, /*timeout_ms=*/100);
+    EXPECT_TRUE(WIFEXITED(return_code));
+    EXPECT_EQ(WEXITSTATUS(return_code), 0);
+}
+
+TEST_F(UtilsTest, WaitChildTimeout) {
+    pid_t pid = fork();
+    if (pid == 0) {
+        /* child */
+        sleep(1);
+        _exit(0);
+    }
+    /* parent */
+    int return_code = wait_child_with_timeout(pid, /*timeout_ms=*/1);
+    EXPECT_FALSE(WIFEXITED(return_code));
+    EXPECT_EQ(WTERMSIG(return_code), SIGKILL);
+}
+
+TEST_F(UtilsTest, RemoveFileAtFd) {
+    std::string filename = "/data/local/tmp/tempfile-XXXXXX";
+    int fd = mkstemp(filename.data());
+    ASSERT_GE(fd, 0);
+    ASSERT_EQ(access(filename.c_str(), F_OK), 0);
+
+    std::string actual_filename;
+    remove_file_at_fd(fd, &actual_filename);
+    EXPECT_NE(access(filename.c_str(), F_OK), 0);
+    EXPECT_EQ(filename, actual_filename);
+
+    close(fd);
+}
+
+} // namespace installd
+} // namespace android
