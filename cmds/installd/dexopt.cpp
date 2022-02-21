@@ -78,6 +78,9 @@ using android::base::unique_fd;
 
 namespace {
 
+constexpr int kShortTimeoutMs = 60000;
+constexpr int kLongTimeoutMs = 300000;
+
 class DexOptStatus {
  public:
     // Check if dexopt is cancelled and fork if it is not cancelled.
@@ -657,7 +660,7 @@ static int analyze_profiles(uid_t uid, const std::string& package_name,
         profman_merge.Exec();
     }
     /* parent */
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     bool need_to_compile = false;
     bool empty_profiles = false;
     bool should_clear_current_profiles = false;
@@ -797,7 +800,7 @@ bool dump_profiles(int32_t uid, const std::string& pkgname, const std::string& p
         profman_dump.Exec();
     }
     /* parent */
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     if (!WIFEXITED(return_code)) {
         LOG(WARNING) << "profman failed for package " << pkgname << ": "
                 << return_code;
@@ -871,7 +874,7 @@ bool copy_system_profile(const std::string& system_profile,
         _exit(0);
     }
     /* parent */
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     return return_code == 0;
 }
 
@@ -1521,7 +1524,7 @@ static bool get_class_loader_context_dex_paths(const char* class_loader_context,
     }
     pipe_read.reset();
 
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     if (!WIFEXITED(return_code)) {
         PLOG(ERROR) << "Error waiting for child dexoptanalyzer process";
         return false;
@@ -1695,7 +1698,7 @@ static SecondaryDexOptProcessResult process_secondary_dex_dexopt(const std::stri
     }
 
     /* parent */
-    int result = wait_child(pid);
+    int result = wait_child(pid, kShortTimeoutMs);
     cancelled = dexopt_status_->check_if_killed_and_remove_dexopt_pid(pid);
     if (!WIFEXITED(result)) {
         if ((WTERMSIG(result) == SIGKILL) && cancelled) {
@@ -1954,7 +1957,7 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
 
         runner.Exec(DexoptReturnCodes::kDex2oatExec);
     } else {
-        int res = wait_child(pid);
+        int res = wait_child(pid, kLongTimeoutMs);
         bool cancelled = dexopt_status_->check_if_killed_and_remove_dexopt_pid(pid);
         if (res == 0) {
             LOG(VERBOSE) << "DexInv: --- END '" << dex_path << "' (success) ---";
@@ -2143,7 +2146,7 @@ bool reconcile_secondary_dex_file(const std::string& dex_path,
         _exit(result ? kReconcileSecondaryDexCleanedUp : kReconcileSecondaryDexAccessIOError);
     }
 
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     if (!WIFEXITED(return_code)) {
         LOG(WARNING) << "reconcile dex failed for location " << dex_path << ": " << return_code;
     } else {
@@ -2261,7 +2264,7 @@ bool hash_secondary_dex_file(const std::string& dex_path, const std::string& pkg
     if (!ReadFully(pipe_read, out_secondary_dex_hash->data(), out_secondary_dex_hash->size())) {
         out_secondary_dex_hash->clear();
     }
-    return wait_child(pid) == 0;
+    return wait_child(pid, kShortTimeoutMs) == 0;
 }
 
 // Helper for move_ab, so that we can have common failure-case cleanup.
@@ -2591,7 +2594,7 @@ static bool create_app_profile_snapshot(int32_t app_id,
     }
 
     /* parent */
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     if (!WIFEXITED(return_code)) {
         LOG(WARNING) << "profman failed for " << package_name << ":" << profile_name;
         return false;
@@ -2700,7 +2703,7 @@ static bool create_boot_image_profile_snapshot(const std::string& package_name,
         }
 
         /* parent */
-        int return_code = wait_child(pid);
+        int return_code = wait_child(pid, kShortTimeoutMs);
 
         if (!WIFEXITED(return_code)) {
             PLOG(WARNING) << "profman failed for " << package_name << ":" << profile_name;
@@ -2789,7 +2792,7 @@ bool prepare_app_profile(const std::string& package_name,
     }
 
     /* parent */
-    int return_code = wait_child(pid);
+    int return_code = wait_child(pid, kShortTimeoutMs);
     if (!WIFEXITED(return_code)) {
         PLOG(WARNING) << "profman failed for " << package_name << ":" << profile_name;
         return false;

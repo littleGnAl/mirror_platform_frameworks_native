@@ -153,7 +153,7 @@ int validate_apk_path_subdirs(const char *path);
 
 int ensure_config_user_dirs(userid_t userid);
 
-int wait_child(pid_t pid);
+int wait_child(pid_t pid, int timeout_ms);
 
 int prepare_app_cache_dir(const std::string& parent, const char* name, mode_t target_mode,
         uid_t uid, gid_t gid);

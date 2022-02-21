@@ -33,7 +33,13 @@
 namespace android {
 namespace installd {
 
-using base::unique_fd;
+namespace {
+
+using ::android::base::unique_fd;
+
+constexpr int kTimeoutMs = 300000;
+
+} // namespace
 
 bool view_compiler(const char* apk_path, const char* package_name, const char* out_dex_file,
                    int uid) {
@@ -88,7 +94,7 @@ bool view_compiler(const char* apk_path, const char* package_name, const char* o
         _exit(1);
     }
 
-    return wait_child(pid) == 0;
+    return wait_child(pid, kTimeoutMs) == 0;
 }
 
 } // namespace installd

@@ -19,18 +19,22 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <fts.h>
+#include <linux/time.h>
 #include <stdlib.h>
 #include <sys/capability.h>
 #include <sys/stat.h>
 #include <sys/statvfs.h>
 #include <sys/wait.h>
 #include <sys/xattr.h>
+#include <unistd.h>
 #include <uuid/uuid.h>
+
+#include <csignal>
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
-#include <android-base/strings.h>
 #include <android-base/stringprintf.h>
+#include <android-base/strings.h>
 #include <android-base/unique_fd.h>
 #include <cutils/fs.h>
 #include <cutils/properties.h>
@@ -1059,19 +1063,43 @@ int ensure_config_user_dirs(userid_t userid) {
     return fs_prepare_dir(path.c_str(), 0750, uid, gid);
 }
 
-int wait_child(pid_t pid)
-{
-    int status;
-    pid_t got_pid;
+int wait_child(pid_t pid, int timeout_ms) {
+    sigset_t child_mask, old_mask;
+    sigemptyset(&child_mask);
+    sigaddset(&child_mask, SIGCHLD);
 
-    while (1) {
-        got_pid = waitpid(pid, &status, 0);
-        if (got_pid == -1 && errno == EINTR) {
-            printf("waitpid interrupted, retrying\n");
-        } else {
-            break;
+    if (sigprocmask(SIG_BLOCK, &child_mask, &old_mask) == -1) {
+        ALOGW("sigprocmask failed: %s", strerror(errno));
+        return 1;
+    }
+
+    timespec ts;
+    ts.tv_sec = timeout_ms / 1000;
+    ts.tv_nsec = (timeout_ms % 1000) * 1000000;
+    int ret = TEMP_FAILURE_RETRY(sigtimedwait(&child_mask, nullptr, &ts));
+    int saved_errno = errno;
+
+    // Set the signals back the way they were.
+    if (sigprocmask(SIG_SETMASK, &old_mask, nullptr) == -1) {
+        ALOGW("sigprocmask failed: %s", strerror(errno));
+        if (ret == 0) {
+            return 1;
         }
     }
+
+    if (ret == -1) {
+        errno = saved_errno;
+        if (errno == EAGAIN) {
+            errno = ETIMEDOUT;
+            ALOGW("Child process %d timed out", pid);
+        } else {
+            ALOGW("sigtimedwait failed: %s", strerror(errno));
+        }
+        return 1;
+    }
+
+    int status;
+    pid_t got_pid = waitpid(pid, &status, WNOHANG);
     if (got_pid != pid) {
         ALOGW("waitpid failed: wanted %d, got %d: %s\n",
             (int) pid, (int) got_pid, strerror(errno));

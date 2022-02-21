@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
+#include <errno.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #include <android-base/logging.h>
 #include <android-base/scopeguard.h>
@@ -654,6 +656,29 @@ TEST_F(UtilsTest, TestCreateDirIfNeeded) {
 
     // Check that call fails if parent doesn't exist.
     ASSERT_NE(0, create_dir_if_needed("/data/local/tmp/user/0/bar/baz", 0700));
+}
+
+TEST_F(UtilsTest, WaitChild) {
+    pid_t pid = fork();
+    if (pid == 0) {
+        /* child */
+        // Do nothing.
+        _exit(0);
+    }
+    /* parent */
+    ASSERT_TRUE(WIFEXITED(wait_child(pid, /*timeout_ms*/ 100)));
+}
+
+TEST_F(UtilsTest, WaitChildTimeout) {
+    pid_t pid = fork();
+    if (pid == 0) {
+        /* child */
+        sleep(1);
+        _exit(0);
+    }
+    /* parent */
+    ASSERT_EQ(wait_child(pid, /*timeout_ms*/ 100), 1);
+    ASSERT_EQ(errno, ETIMEDOUT);
 }
 
 }  // namespace installd
