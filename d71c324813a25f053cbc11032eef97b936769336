@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d473a6b_ec95b6e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-21T20:27:47Z",
+      "side": 1,
+      "message": "Need to land on internal first to avoid merge conflicts: ag/16969305",
+      "revId": "d71c324813a25f053cbc11032eef97b936769336",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
