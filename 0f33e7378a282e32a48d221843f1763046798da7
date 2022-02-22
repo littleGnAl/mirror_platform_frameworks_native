@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff6d7d7e_677d3b0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1936000
+      },
+      "writtenOn": "2022-02-22T14:50:25Z",
+      "side": 1,
+      "message": "You didn\u0027t need to add a reviewer to this change as it\u0027s something that will not be merged in.\n\nYou just need to post link to: \nhttps://docs.google.com/spreadsheets/d/1tId2WaJ1jKCTUfPCh7zwzvdw0Ofb-ydrC8iiuNNXqpM/edit#gid\u003d0\n\nAnd then abandon this change.",
+      "revId": "0f33e7378a282e32a48d221843f1763046798da7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
