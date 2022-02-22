@@ -318,7 +318,7 @@ int RunCommandToFd(int fd, const std::string& title, const std::vector<std::stri
     const char* path = args[0];
 
     uint64_t start = Nanotime();
-    pid_t pid = vfork();
+    pid_t pid = fork();
 
     /* handle error case */
     if (pid < 0) {
