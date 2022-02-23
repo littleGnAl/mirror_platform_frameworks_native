@@ -51,6 +51,24 @@
       "parentUuid": "8796fe07_511a1965",
       "revId": "7f07226a06f0c983f1bcfa696a4528c93984a8ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a333e7b_435dfcd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887356
+      },
+      "writtenOn": "2022-02-23T05:17:02Z",
+      "side": 1,
+      "message": "change notes:\n//the last pointer up is not resampling,\n//dispatchInputEvent last pointer up x[0]\u003d432.39944, y[0]\u003d741.53656 is not the same as the last pointer move(last resampl pointer move is x[0]\u003d436.36673, y[0]\u003d720.94055)",
+      "parentUuid": "6ed46ced_0a1b25e5",
+      "revId": "7f07226a06f0c983f1bcfa696a4528c93984a8ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
