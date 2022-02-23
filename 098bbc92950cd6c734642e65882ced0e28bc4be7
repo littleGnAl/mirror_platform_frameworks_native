@@ -16,6 +16,24 @@
       "message": "Someone needs to +2 this, unless there are other issues?",
       "revId": "098bbc92950cd6c734642e65882ced0e28bc4be7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a3ab406_2f8eba74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2022-02-23T23:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb6a7dda_444272d3",
+      "revId": "098bbc92950cd6c734642e65882ced0e28bc4be7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
