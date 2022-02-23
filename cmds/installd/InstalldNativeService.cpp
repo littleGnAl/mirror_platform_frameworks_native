@@ -3193,5 +3193,21 @@ binder::Status InstalldNativeService::cleanupInvalidPackageDirs(
     return ok();
 }
 
+binder::Status InstalldNativeService::getOdexVisibility(
+        const std::string& apkPath, const std::string& instructionSet,
+        const std::optional<std::string>& outputPath, int32_t* _aidl_return) {
+    ENFORCE_UID(AID_SYSTEM);
+    CHECK_ARGUMENT_PATH(apkPath);
+    CHECK_ARGUMENT_PATH(outputPath);
+    LOCK_PACKAGE();
+
+    const char* apk_path = apkPath.c_str();
+    const char* instruction_set = instructionSet.c_str();
+    const char* oat_dir = outputPath ? outputPath->c_str() : nullptr;
+
+    *_aidl_return = get_odex_visibility(apk_path, instruction_set, oat_dir);
+    return *_aidl_return == -1 ? error() : ok();
+}
+
 }  // namespace installd
 }  // namespace android
