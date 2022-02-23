@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41962dfb_9fc69ec1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887356
+      },
+      "writtenOn": "2022-02-23T02:57:54Z",
+      "side": 1,
+      "message": "input resample issue only in some low-end devices",
+      "revId": "9a330f61b56d29c9bc03711fdd5028f4f0975425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
