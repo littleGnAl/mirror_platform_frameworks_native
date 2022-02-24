@@ -16,6 +16,23 @@
       "message": "use aosp dialer can also reproduce this issue in Android S",
       "revId": "98c7ea9aeeaef797fad36442b721158143cea334",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b373314b_ac9dcffa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887356
+      },
+      "writtenOn": "2022-02-24T10:08:08Z",
+      "side": 1,
+      "message": "add issues ID: https://partnerissuetracker.corp.google.com/issues/221177658\n\nthe issue still happen in Android 12 OS + Android 12 aosp dialer, pixel also have this issue, more detail log and video you check in https://partnerissuetracker.corp.google.com/issues/221177658\n\nThanks",
+      "revId": "98c7ea9aeeaef797fad36442b721158143cea334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
