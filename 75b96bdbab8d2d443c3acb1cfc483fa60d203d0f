@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56fba255_60c3e5bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2022-02-24T18:03:30Z",
+      "side": 1,
+      "message": "getting back to this now... I\u0027ve lowered the scope of this change to only log the extended errors as private for now. PTAL",
+      "revId": "75b96bdbab8d2d443c3acb1cfc483fa60d203d0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
