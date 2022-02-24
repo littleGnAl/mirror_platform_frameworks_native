@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47273f16_ebee4da0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-02-24T19:43:32Z",
+      "side": 1,
+      "message": "friendly ping owner reviewers\nMaybe not all owners of modules in frameworks/native want this optional feature.\nPlease feel free to vote yes or no on any file. We can make partial changes.\n",
+      "revId": "6f5bb222515ca27ec56c5c38065ae6f0cc920e16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
