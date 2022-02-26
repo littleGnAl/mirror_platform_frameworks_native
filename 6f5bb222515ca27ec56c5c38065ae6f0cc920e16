@@ -51,6 +51,23 @@
       "message": "LGTM, though I don\u0027t know what any of this actually affects.",
       "revId": "6f5bb222515ca27ec56c5c38065ae6f0cc920e16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512cfbf5_99041a85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-02-26T02:20:45Z",
+      "side": 1,
+      "message": "We\u0027re going to revisit this plan. I don\u0027t think that we want to add so many individual entries when the final result will be to remove them all anyways.",
+      "revId": "6f5bb222515ca27ec56c5c38065ae6f0cc920e16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
