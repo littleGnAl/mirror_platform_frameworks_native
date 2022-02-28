@@ -19,14 +19,18 @@
 
 #include <binder/BpBinder.h>
 
-#include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
+#include <binder/Parcel.h>
 #include <binder/RpcSession.h>
 #include <binder/Stability.h>
 #include <cutils/compiler.h>
 #include <utils/Log.h>
 
 #include <stdio.h>
+
+#ifndef LIBBINDER_SDK
+#include <binder/IPCThreadState.h>
+#endif
 
 //#undef ALOGV
 //#define ALOGV(...) fprintf(stderr, __VA_ARGS__)
@@ -184,9 +188,9 @@ BpBinder::BpBinder(Handle&& handle)
 BpBinder::BpBinder(BinderHandle&& handle, int32_t trackedUid) : BpBinder(Handle(handle)) {
     mTrackedUid = trackedUid;
 
+#ifndef LIBBINDER_SDK
     ALOGV("Creating BpBinder %p handle %d\n", this, this->binderHandle());
 
-#ifndef LIBBINDER_SDK
     IPCThreadState::self()->incWeakHandle(this->binderHandle(), this);
 #endif
 }
@@ -264,6 +268,7 @@ status_t BpBinder::pingBinder()
     return transact(PING_TRANSACTION, data, &reply);
 }
 
+#ifndef __TRUSTY__
 status_t BpBinder::dump(int fd, const Vector<String16>& args)
 {
     Parcel send;
@@ -277,6 +282,7 @@ status_t BpBinder::dump(int fd, const Vector<String16>& args)
     status_t err = transact(DUMP_TRANSACTION, send, &reply);
     return err;
 }
+#endif
 
 // NOLINTNEXTLINE(google-default-arguments)
 status_t BpBinder::transact(
@@ -286,7 +292,7 @@ status_t BpBinder::transact(
     if (mAlive) {
         bool privateVendor = flags & FLAG_PRIVATE_VENDOR;
         // don't send userspace flags to the kernel
-        flags = flags & ~FLAG_PRIVATE_VENDOR;
+        flags = flags & ~static_cast<uint32_t>(FLAG_PRIVATE_VENDOR);
 
         // user transactions require a given stability level
         if (code >= FIRST_CALL_TRANSACTION && code <= LAST_CALL_TRANSACTION) {
@@ -297,10 +303,12 @@ status_t BpBinder::transact(
                 : Stability::getLocalLevel();
 
             if (CC_UNLIKELY(!Stability::check(stability, required))) {
+#ifndef __TRUSTY__
                 ALOGE("Cannot do a user transaction on a %s binder (%s) in a %s context.",
                       Stability::levelString(stability).c_str(),
                       String8(getInterfaceDescriptor()).c_str(),
                       Stability::levelString(required).c_str());
+#endif
                 return BAD_TYPE;
             }
         }
@@ -316,6 +324,7 @@ status_t BpBinder::transact(
             status = IPCThreadState::self()->transact(binderHandle(), code, data, reply, flags);
 #endif
         }
+#ifndef __TRUSTY__
         if (data.dataSize() > LOG_TRANSACTIONS_OVER_SIZE) {
             Mutex::Autolock _l(mLock);
             ALOGW("Large outgoing transaction of %zu bytes, interface descriptor %s, code %d",
@@ -324,6 +333,7 @@ status_t BpBinder::transact(
                                           : "<uncached descriptor>",
                   code);
         }
+#endif
 
         if (status == DEAD_OBJECT) mAlive = 0;
 
@@ -497,11 +507,11 @@ BpBinder* BpBinder::remoteBinder()
 
 BpBinder::~BpBinder()
 {
-    ALOGV("Destroying BpBinder %p handle %d\n", this, binderHandle());
-
     if (CC_UNLIKELY(isRpcBinder())) return;
 
 #ifndef LIBBINDER_SDK
+    ALOGV("Destroying BpBinder %p handle %d\n", this, binderHandle());
+
     IPCThreadState* ipc = IPCThreadState::self();
 
     if (mTrackedUid >= 0) {
@@ -535,10 +545,10 @@ BpBinder::~BpBinder()
 
 void BpBinder::onFirstRef()
 {
-    ALOGV("onFirstRef BpBinder %p handle %d\n", this, binderHandle());
     if (CC_UNLIKELY(isRpcBinder())) return;
 
 #ifndef LIBBINDER_SDK
+    ALOGV("onFirstRef BpBinder %p handle %d\n", this, binderHandle());
     IPCThreadState* ipc = IPCThreadState::self();
     if (ipc) ipc->incStrongHandle(binderHandle(), this);
 #endif
@@ -546,13 +556,13 @@ void BpBinder::onFirstRef()
 
 void BpBinder::onLastStrongRef(const void* /*id*/)
 {
-    ALOGV("onLastStrongRef BpBinder %p handle %d\n", this, binderHandle());
     if (CC_UNLIKELY(isRpcBinder())) {
         (void)rpcSession()->sendDecStrong(this);
         return;
     }
 
 #ifndef LIBBINDER_SDK
+    ALOGV("onLastStrongRef BpBinder %p handle %d\n", this, binderHandle());
     IF_ALOGV() {
         printRefs();
     }
