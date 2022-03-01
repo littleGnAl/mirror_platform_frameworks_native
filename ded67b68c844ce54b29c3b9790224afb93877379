@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd69ecf_45ab0e9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074038
+      },
+      "writtenOn": "2022-03-01T15:09:36Z",
+      "side": 1,
+      "message": "Hi Oscar, can you file a bug noting the issue you\u0027re seeing in CTS that is causing you to propose this CL? In general, exposing this isn\u0027t a problem, but it shouldn\u0027t be used to WAR CTS issues.\n\nFor some more background, putting SensorService into restricted mode is primarily intended to provide a direct mapping between the requested sampling rate and batching latency parameters made by CTS and those passed on to the HAL. Keep in mind that the API contracts for the sensors HAL need to be upheld regardless of other clients to the sensors subsystem.",
+      "revId": "ded67b68c844ce54b29c3b9790224afb93877379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
