@@ -2098,7 +2098,14 @@ void SurfaceFlinger::onMessageRefresh() {
         mDrawingState.colorMatrixChanged = false;
     }
 
+    // refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
+    // // Hacked by zhesong@
+    refreshArgs.colorTransformMatrix =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
+
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
+    // // End of hack section.
 
     if (mDebugRegion != 0) {
         refreshArgs.devOptFlashDirtyRegionsDelay =
@@ -6327,7 +6334,13 @@ status_t SurfaceFlinger::renderScreenImplLocked(
     clientCompositionDisplay.maxLuminance = DisplayDevice::sDefaultMaxLumiance;
 
     const float colorSaturation = grayscale ? 0 : 1;
+    // clientCompositionDisplay.colorTransform = calculateColorMatrix(colorSaturation);
+    // // Begin of hack section by zhesong@
     clientCompositionDisplay.colorTransform = calculateColorMatrix(colorSaturation);
+    clientCompositionDisplay.colorTransform =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
+    // // End of hack section by zhesong@.
 
     const float alpha = RenderArea::getCaptureFillValue(renderArea.getCaptureFill());
 
