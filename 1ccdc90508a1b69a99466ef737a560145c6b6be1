@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6949b33c_2c5cfe38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-03-02T19:09:18Z",
+      "side": 1,
+      "message": "GA+1 for toolchain update (and no semantic change)",
+      "revId": "1ccdc90508a1b69a99466ef737a560145c6b6be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
