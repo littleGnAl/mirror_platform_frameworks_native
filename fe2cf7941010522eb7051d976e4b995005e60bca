@@ -176,6 +176,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b3f23f_edb64034",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2022-03-03T17:41:26Z",
+      "side": 1,
+      "message": "`__func__` is logExtendedError -- I think \"Binder\" needs to be in the log message for the average developer to associate it with the transaction. How about replacing __func__ with \"binder txn failure:\"",
+      "parentUuid": "9b14baa7_0163d001",
+      "revId": "fe2cf7941010522eb7051d976e4b995005e60bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e43fabff_9e908842",
