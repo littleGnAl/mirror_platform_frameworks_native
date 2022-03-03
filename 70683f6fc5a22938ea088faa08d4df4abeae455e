@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac966453_f81ac2d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-03-03T19:19:47Z",
+      "side": 1,
+      "message": "we should probably have a CTS verifying that AHardwareBuffer_lockPlanes works too",
+      "revId": "70683f6fc5a22938ea088faa08d4df4abeae455e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
