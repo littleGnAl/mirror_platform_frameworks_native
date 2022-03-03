@@ -16,6 +16,24 @@
       "message": "we should probably have a CTS verifying that AHardwareBuffer_lockPlanes works too",
       "revId": "70683f6fc5a22938ea088faa08d4df4abeae455e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c4c2cd_f4762e81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561731
+      },
+      "writtenOn": "2022-03-03T23:09:46Z",
+      "side": 1,
+      "message": "Added a test in aosp/2008091 which also helped to catch missing setting `pixelStride` correctly in the Y plane.\n\nI didn\u0027t catch this originally because SwiftShader on Cuttlefish was just assuming 2 when it saw the P010 format.",
+      "parentUuid": "ac966453_f81ac2d3",
+      "revId": "70683f6fc5a22938ea088faa08d4df4abeae455e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
