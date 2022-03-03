@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5042af_eecce8c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-03-03T23:13:06Z",
+      "side": 1,
+      "message": "Porting to AOSP.  Will wait till vulkan-header change land before landing this.",
+      "revId": "bca165921e627d48302856adb08768bb3db33e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
