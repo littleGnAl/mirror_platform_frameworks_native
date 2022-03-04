@@ -130,6 +130,11 @@ void AStorageManager_mountObb(AStorageManager* mgr, const char* filename, const 
 
 /**
  * Attempts to unmount an OBB file. This is an asynchronous operation.
+ *
+ * Since API level 33, this function can only be used to mount unencrypted OBBs,
+ * i.e. the {@code key} parameter must be {@code null} or an empty string. Note
+ * that even before API level 33, mounting encrypted OBBs didn't work on many
+ * Android device implementations.
  */
 void AStorageManager_unmountObb(AStorageManager* mgr, const char* filename, const int force,
         AStorageManager_obbCallbackFunc cb, void* data);
