@@ -1199,6 +1199,7 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
 
     case BR_DECREFS:
         refs = (RefBase::weakref_type*)mIn.readPointer();
+        // NOLINTNEXTLINE(clang-analyzer-deadcode.DeadStores) 'obj' not used
         obj = (BBinder*)mIn.readPointer();
         // NOTE: This assertion is not valid, because the object may no
         // longer exist (thus the (BBinder*)cast above resulting in a different
@@ -1416,6 +1417,7 @@ status_t IPCThreadState::getProcessFreezeInfo(pid_t pid, uint32_t *sync_received
     if (ioctl(self()->mProcess->mDriverFD, BINDER_GET_FROZEN_INFO, &info) < 0)
         ret = -errno;
 #endif
+    // NOLINTNEXTLINE(clang-analyzer-core.uninitialized.Assign) sync_recv not fully initialized
     *sync_received = info.sync_recv;
     *async_received = info.async_recv;
 

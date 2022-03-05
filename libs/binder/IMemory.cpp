@@ -57,6 +57,7 @@ private:
     struct heap_info_t {
         sp<IMemoryHeap> heap;
         int32_t         count;
+        heap_info_t() : count(0) {}
         // Note that this cannot be meaningfully copied.
     };
 

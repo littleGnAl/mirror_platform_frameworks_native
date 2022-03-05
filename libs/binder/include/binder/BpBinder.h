@@ -108,6 +108,7 @@ public:
             void* object;
             void* cleanupCookie;
             IBinder::object_cleanup_func func;
+            entry_t() : object(nullptr), cleanupCookie(nullptr), func(nullptr) {}
         };
 
         KeyedVector<const void*, entry_t> mObjects;
