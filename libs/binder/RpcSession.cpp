@@ -154,6 +154,7 @@ status_t RpcSession::setupInetClient(const char* addr, unsigned int port) {
 status_t RpcSession::setupPreconnectedClient(unique_fd fd, std::function<unique_fd()>&& request) {
     return setupClient([&](const std::vector<uint8_t>& sessionId, bool incoming) -> status_t {
         // std::move'd from fd becomes -1 (!ok())
+        // NOLINTNEXTLINE(clang-analyzer-cplusplus.Move)
         if (!fd.ok()) {
             fd = request();
             if (!fd.ok()) return BAD_VALUE;

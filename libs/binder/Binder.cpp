@@ -281,9 +281,11 @@ status_t BBinder::transact(
             err = pingBinder();
             break;
         case EXTENSION_TRANSACTION:
+            // NOLINTNEXTLINE(clang-analyzer-core.CallAndMessage) reply != nullptr
             err = reply->writeStrongBinder(getExtension());
             break;
         case DEBUG_PID_TRANSACTION:
+            // NOLINTNEXTLINE(clang-analyzer-core.CallAndMessage) reply != nullptr
             err = reply->writeInt32(getDebugPid());
             break;
         case SET_RPC_CLIENT_TRANSACTION: {
@@ -590,6 +592,7 @@ status_t BBinder::onTransact(
 {
     switch (code) {
         case INTERFACE_TRANSACTION:
+            // NOLINTNEXTLINE(clang-analyzer-core.CallAndMessage) reply != nullptr
             reply->writeString16(getInterfaceDescriptor());
             return NO_ERROR;
 
