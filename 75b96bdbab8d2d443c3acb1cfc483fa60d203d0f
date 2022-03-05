@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f534dc05_82a4b46b",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2022-03-05T00:17:05Z",
+      "side": 1,
+      "message": "I suppose you are thinking of a 16-bit bitmap and have enums map to each bit? I think this is a good option and I remember looking into this first. However, we would also need a separate array to get the filenames for each feature adding to the global static memory anyway.\n\nIt seems to me this option would generate about the same cache misses as the current implementation?\n\nI don\u0027t know, perhaps it\u0027s not worth caching/locking on every process and instead we just want to read files every time. After all, it\u0027s simpler to read a file than to try and fail an unsupported ioctl()?",
+      "parentUuid": "c6c36bf9_d6421ed0",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 10
+      },
+      "revId": "75b96bdbab8d2d443c3acb1cfc483fa60d203d0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96a8dd38_af372952",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 5
