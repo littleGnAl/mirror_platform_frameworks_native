@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd6ebca_d4bef7d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-03-07T08:59:49Z",
+      "side": 1,
+      "message": "We should fix/suppress these warnings in source file, or change Androud.bp file to exclude these checks in tidy_checks_as_errors or tidy_checks.\n",
+      "revId": "55ba038fe11694fda30e36ff920bcaf778367309",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
