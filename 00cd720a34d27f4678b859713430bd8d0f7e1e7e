@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64c8190_4aef6af4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-07T19:42:28Z",
+      "side": 1,
+      "message": "can we also set these to be errors now? Is this related to a clang upgrade?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "00cd720a34d27f4678b859713430bd8d0f7e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89741650_83fc6dda",
+        "filename": "libs/binder/IMemory.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-07T19:42:28Z",
+      "side": 1,
+      "message": "same as the other - could we use a designated initializer in HeapCache::find_heap?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "00cd720a34d27f4678b859713430bd8d0f7e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6049ac9_f4afc4ee",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-07T19:42:28Z",
+      "side": 1,
+      "message": "we should remove this and instead have:\n\n    binder_frozen_status_info info \u003d {\n        .pid \u003d pid,\n    };",
+      "range": {
+        "startLine": 1420,
+        "startChar": 0,
+        "endLine": 1420,
+        "endChar": 95
+      },
+      "revId": "00cd720a34d27f4678b859713430bd8d0f7e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd184cf_a134fd51",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-07T19:42:28Z",
+      "side": 1,
+      "message": "we could probably fix this and make the code clearer by not reusing this variable\n\n(declare a local unique_fd here)",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 56
+      },
+      "revId": "00cd720a34d27f4678b859713430bd8d0f7e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "532fbac9_5b819562",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-07T19:42:28Z",
+      "side": 1,
+      "message": "Is this needed because the implicit constructor is used by KeyedVector? Or could we delete this and instead switch to a designated constructor in BpBinder::ObjectManager::attach?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 81
+      },
+      "revId": "00cd720a34d27f4678b859713430bd8d0f7e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
