@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "237f0ee9_68662c18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-03-07T20:49:47Z",
+      "side": 1,
+      "message": "Without this CL, these source locations will be warnings-as-errors if WITH_TIDY is not set and CLANG_ANALYZER_CHECKS\u003d1 is set. These warngins-as-errors were missed due to a recent change to WITH_TIDY implications. There may be more warnings in every clang upgrade, but i don\u0027t think all of these are from new upgrade.\nWe are working on another fix to WITH_TIDY\u0027s implication, so that you can still catch such warnings-as-errors even with WITH_TIDY\u003d1.",
+      "parentUuid": "d64c8190_4aef6af4",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "00cd720a34d27f4678b859713430bd8d0f7e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89741650_83fc6dda",
