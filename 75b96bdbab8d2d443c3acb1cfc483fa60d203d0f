@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2d519d0_550168f7",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-07T22:24:48Z",
+      "side": 1,
+      "message": "It\u0027s okay to add read-only global memory. However, if we make a heap allocation in global memory, we\u0027ll get a copy of this on the heap in almost every process on Android.\n\n\u003e perhaps it\u0027s not worth caching/locking on every process and instead we just want to read files every time.\n\nI\u0027m 100% okay with this, especially since the existing cases (at startup + at error time) are rare.",
+      "parentUuid": "f534dc05_82a4b46b",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 10
+      },
+      "revId": "75b96bdbab8d2d443c3acb1cfc483fa60d203d0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96a8dd38_af372952",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 5
