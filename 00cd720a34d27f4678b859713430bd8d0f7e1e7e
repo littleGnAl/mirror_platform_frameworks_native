@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19bf78ea_e59fbf17",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-08T01:11:27Z",
+      "side": 1,
+      "message": "Agreed! The check on L274 is for bad in-process users IIRC. In these places, we should guarantee that reply can\u0027t be nullptr (IPCThreadState/RpcSession should). Though, honestly, a CHECK or returning an appropriate error would be okay.",
+      "parentUuid": "52da6478_f4ba9d33",
+      "range": {
+        "startLine": 284,
+        "startChar": 66,
+        "endLine": 284,
+        "endChar": 82
+      },
+      "revId": "00cd720a34d27f4678b859713430bd8d0f7e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89741650_83fc6dda",
         "filename": "libs/binder/IMemory.cpp",
         "patchSetId": 2
