@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "939cbe58_75f247b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-03-08T16:57:58Z",
+      "side": 1,
+      "message": "\u003e can we also set these to be errors now?\n\nAre you asking how about turning these into errors during platform builds so you can catch them early?  If so, copy checks in `tidy_checks_as_errors` to `tidy_checks` (in https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/Android.bp;l\u003d211?q\u003dlibs%2Fbinder%2FAndroid.bp\u0026ss\u003dandroid%2Fplatform%2Fsuperproject).  Note that these checks are expensive so will increase build times (local _and_ go/ab/ builds).\n\nAlternatively, if you do not care about these errors, just remove them from `tidy_checks_as_errors`.",
+      "parentUuid": "237f0ee9_68662c18",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "00cd720a34d27f4678b859713430bd8d0f7e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52da6478_f4ba9d33",
