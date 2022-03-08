@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a6463f_821e138f",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2022-03-08T21:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45b9d92e_cb39ab13",
+      "range": {
+        "startLine": 1448,
+        "startChar": 0,
+        "endLine": 1448,
+        "endChar": 63
+      },
+      "revId": "16b778884eb2ccf84c87d9bb011a797fabd129d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3909a34_cee9080b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-08T19:23:13Z",
       "side": 1,
       "message": "nit: We check here to save the log right? I wonder, could we remove the allocations of the std::string and read the file into a buffer, if we\u0027ll call this in this case?",
+      "range": {
+        "startLine": 1451,
+        "startChar": 0,
+        "endLine": 1452,
+        "endChar": 15
+      },
+      "revId": "16b778884eb2ccf84c87d9bb011a797fabd129d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685087a3_80d755cf",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2022-03-08T21:33:02Z",
+      "side": 1,
+      "message": "We are trying to avoid calling the ioctl() here, sorry I don\u0027t follow the removing the string allocs?",
+      "parentUuid": "a3909a34_cee9080b",
       "range": {
         "startLine": 1451,
         "startChar": 0,
