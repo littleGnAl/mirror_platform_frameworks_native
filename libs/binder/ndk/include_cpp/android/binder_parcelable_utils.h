@@ -51,7 +51,11 @@ class AParcelableHolder {
     AParcelableHolder(const AParcelableHolder& other)
         : mParcel(AParcel_create()), mStability(other.mStability) {
         // AParcelableHolder has been introduced in 31.
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
         if (__builtin_available(android 31, *)) {
+#else
+        if (__ANDROID_API__ >= 31) {
+#endif
             AParcel_appendFrom(other.mParcel.get(), this->mParcel.get(), 0,
                                AParcel_getDataSize(other.mParcel.get()));
         }
@@ -63,7 +67,11 @@ class AParcelableHolder {
 
     binder_status_t writeToParcel(AParcel* parcel) const {
         RETURN_ON_FAILURE(AParcel_writeInt32(parcel, static_cast<int32_t>(this->mStability)));
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
         if (__builtin_available(android 31, *)) {
+#else
+        if (__ANDROID_API__ >= 31) {
+#endif
             int32_t size = AParcel_getDataSize(this->mParcel.get());
             RETURN_ON_FAILURE(AParcel_writeInt32(parcel, size));
         } else {
@@ -79,7 +87,11 @@ class AParcelableHolder {
     }
 
     binder_status_t readFromParcel(const AParcel* parcel) {
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
         if (__builtin_available(android 31, *)) {
+#else
+        if (__ANDROID_API__ >= 31) {
+#endif
             AParcel_reset(mParcel.get());
         } else {
             return STATUS_INVALID_OPERATION;
@@ -99,7 +111,11 @@ class AParcelableHolder {
             return STATUS_BAD_VALUE;
         }
 
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
         if (__builtin_available(android 31, *)) {
+#else
+        if (__ANDROID_API__ >= 31) {
+#endif
             status = AParcel_appendFrom(parcel, mParcel.get(), dataStartPos, dataSize);
         } else {
             status = STATUS_INVALID_OPERATION;
@@ -115,7 +131,11 @@ class AParcelableHolder {
         if (this->mStability > T::_aidl_stability) {
             return STATUS_BAD_VALUE;
         }
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
         if (__builtin_available(android 31, *)) {
+#else
+        if (__ANDROID_API__ >= 31) {
+#endif
             AParcel_reset(mParcel.get());
         } else {
             return STATUS_INVALID_OPERATION;
@@ -129,7 +149,11 @@ class AParcelableHolder {
     binder_status_t getParcelable(std::optional<T>* ret) const {
         const std::string parcelableDesc(T::descriptor);
         AParcel_setDataPosition(mParcel.get(), 0);
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
         if (__builtin_available(android 31, *)) {
+#else
+        if (__ANDROID_API__ >= 31) {
+#endif
             if (AParcel_getDataSize(mParcel.get()) == 0) {
                 *ret = std::nullopt;
                 return STATUS_OK;
@@ -153,7 +177,11 @@ class AParcelableHolder {
     }
 
     void reset() {
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
         if (__builtin_available(android 31, *)) {
+#else
+        if (__ANDROID_API__ >= 31) {
+#endif
             AParcel_reset(mParcel.get());
         }
     }
