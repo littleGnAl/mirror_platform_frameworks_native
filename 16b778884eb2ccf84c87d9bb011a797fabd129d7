@@ -117,6 +117,30 @@
       },
       "revId": "16b778884eb2ccf84c87d9bb011a797fabd129d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57cbac5b_d6739c3d",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2022-03-08T22:59:38Z",
+      "side": 1,
+      "message": "oh! you are absolutely right. We don\u0027t need that append logic anymore. I can use a define for the path and let preprocessor concat the filenames. Thanks much better, thanks!",
+      "parentUuid": "46f9f275_b1054916",
+      "range": {
+        "startLine": 1451,
+        "startChar": 0,
+        "endLine": 1452,
+        "endChar": 15
+      },
+      "revId": "16b778884eb2ccf84c87d9bb011a797fabd129d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
