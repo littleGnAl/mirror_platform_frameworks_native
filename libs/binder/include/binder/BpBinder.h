@@ -17,9 +17,9 @@
 #pragma once
 
 #include <binder/IBinder.h>
-#include <utils/KeyedVector.h>
 #include <utils/Mutex.h>
 
+#include <map>
 #include <unordered_map>
 #include <variant>
 
@@ -109,7 +109,7 @@ public:
             IBinder::object_cleanup_func func;
         };
 
-        KeyedVector<const void*, entry_t> mObjects;
+        std::map<const void*, entry_t> mObjects;
     };
 
     class PrivateAccessor {
