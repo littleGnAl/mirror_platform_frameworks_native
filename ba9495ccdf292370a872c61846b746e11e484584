@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c458ba61_d7d656c9",
+        "filename": "services/inputflinger/tests/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-03-08T20:04:23Z",
+      "side": 1,
+      "message": "mind changing this to \"android-framework-input@\" Anis? This way, a larger group would be notified in case I\u0027m not available",
+      "range": {
+        "startLine": 46,
+        "startChar": 13,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "ba9495ccdf292370a872c61846b746e11e484584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
