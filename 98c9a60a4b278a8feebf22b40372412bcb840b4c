@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb734d0f_b82bb85d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-08T23:21:21Z",
+      "side": 1,
+      "message": "Can you add this to the Android.bp file as well? - we can make sure to always do this",
+      "revId": "98c9a60a4b278a8feebf22b40372412bcb840b4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
