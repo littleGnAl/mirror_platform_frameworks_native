@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae25b807_8c31d2b0",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-08T22:36:52Z",
+      "side": 1,
+      "message": "make this change separately on ToT? we can land it immediately",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 45
+      },
+      "revId": "8b91282eb2e97fd7dab56bf6b43135bbe82f8e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00bd64af_d4c31efd",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-08T22:36:52Z",
+      "side": 1,
+      "message": "this is because of \u0027sizeof(flat_binder_object)\u0027?\n\n(this code would be broken if it ran with a kernel - if object size \u003e 0, we should probably return an error - might be some other cases like this as well)",
+      "range": {
+        "startLine": 460,
+        "startChar": 8,
+        "endLine": 460,
+        "endChar": 21
+      },
+      "revId": "8b91282eb2e97fd7dab56bf6b43135bbe82f8e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a744d4_5fb600ef",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-08T22:36:52Z",
+      "side": 1,
+      "message": "can this be made on ToT? (the order is wrong right? btw - if this is from a cflag that you add to Trusty, go ahead and add it to the ToT build. We can start making sure libbinder always follows those)",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 79
+      },
+      "revId": "8b91282eb2e97fd7dab56bf6b43135bbe82f8e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11835aea_91e159c1",
+        "filename": "libs/binder/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-08T22:36:52Z",
+      "side": 1,
+      "message": "did you run binderRpcTest on trusty?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 48
+      },
+      "revId": "8b91282eb2e97fd7dab56bf6b43135bbe82f8e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a11a2b_cbc2d339",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-08T22:36:52Z",
+      "side": 1,
+      "message": "could this be removed entirely, separately?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "8b91282eb2e97fd7dab56bf6b43135bbe82f8e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
