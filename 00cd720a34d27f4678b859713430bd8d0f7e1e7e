@@ -50,6 +50,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52da6478_f4ba9d33",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-08T00:59:37Z",
+      "side": 1,
+      "message": "Yeah, why don\u0027t we check the null pointer, instead of suppressing it, as already being done in #274.\n\nThe same applies to other places in this change.",
+      "range": {
+        "startLine": 284,
+        "startChar": 66,
+        "endLine": 284,
+        "endChar": 82
+      },
+      "revId": "00cd720a34d27f4678b859713430bd8d0f7e1e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89741650_83fc6dda",
         "filename": "libs/binder/IMemory.cpp",
         "patchSetId": 2
