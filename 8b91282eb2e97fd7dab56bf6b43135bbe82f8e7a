@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "762703b4_6d18831d",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-08T23:19:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae25b807_8c31d2b0",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 45
+      },
+      "revId": "8b91282eb2e97fd7dab56bf6b43135bbe82f8e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00bd64af_d4c31efd",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-08T22:36:52Z",
       "side": 1,
       "message": "this is because of \u0027sizeof(flat_binder_object)\u0027?\n\n(this code would be broken if it ran with a kernel - if object size \u003e 0, we should probably return an error - might be some other cases like this as well)",
+      "range": {
+        "startLine": 460,
+        "startChar": 8,
+        "endLine": 460,
+        "endChar": 21
+      },
+      "revId": "8b91282eb2e97fd7dab56bf6b43135bbe82f8e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c0b2ac2_e5e0bde0",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-08T23:19:23Z",
+      "side": 1,
+      "message": "\u003e this is because of \u0027sizeof(flat_binder_object)\u0027?\nExactly.\n\nIs the SDK supposed to have support for the kernel driver?",
+      "parentUuid": "00bd64af_d4c31efd",
       "range": {
         "startLine": 460,
         "startChar": 8,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "Looks like https://android-review.googlesource.com/c/platform/build/soong/+/1164431/ added -Wno-reorder-init-list on Android, and Trusty doesn\u0027t have that flag so I got an error here. The order is indeed wrong. Afaict the plan is to add that warning back on Android later.",
       "parentUuid": "53a744d4_5fb600ef",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 79
+      },
+      "revId": "8b91282eb2e97fd7dab56bf6b43135bbe82f8e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb58367_9ff12bc8",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-08T23:19:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20db51f9_0d7acdd1",
       "range": {
         "startLine": 130,
         "startChar": 0,
