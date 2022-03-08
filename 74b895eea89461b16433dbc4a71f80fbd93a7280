@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba6543e_b2c243af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-03-08T19:58:52Z",
+      "side": 1,
+      "message": "Thanks for the quick fix.\n",
+      "revId": "74b895eea89461b16433dbc4a71f80fbd93a7280",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07fb5777_e519c3d1",
