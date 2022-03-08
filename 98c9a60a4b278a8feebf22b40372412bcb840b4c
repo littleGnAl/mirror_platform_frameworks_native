@@ -16,6 +16,24 @@
       "message": "Can you add this to the Android.bp file as well? - we can make sure to always do this",
       "revId": "98c9a60a4b278a8feebf22b40372412bcb840b4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5022993_1bc71b98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-08T23:26:25Z",
+      "side": 1,
+      "message": "Afaik the plan is to enable the flag Android-wide at some point in the future. Do you want to have the flag here until then, or wait?",
+      "parentUuid": "fb734d0f_b82bb85d",
+      "revId": "98c9a60a4b278a8feebf22b40372412bcb840b4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
