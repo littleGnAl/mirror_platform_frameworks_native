@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6651617a_1de0fd61",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2022-03-08T21:32:47Z",
+      "side": 1,
+      "message": "Right, it sounds like a legit error then. Upgraded to ALOGE. Done",
+      "parentUuid": "a720cf99_7cf2425e",
+      "range": {
+        "startLine": 473,
+        "startChar": 12,
+        "endLine": 473,
+        "endChar": 13
+      },
+      "revId": "7fb600c86a2b91bff76360b578eee83a9deecfbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b29c079_f7809203",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-08T19:20:17Z",
       "side": 1,
       "message": "nit: enum class (for more type safety)",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "7fb600c86a2b91bff76360b578eee83a9deecfbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58fed397_9a23e9be",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2022-03-08T21:32:47Z",
+      "side": 1,
+      "message": "ok, I\u0027ll add the explicit cast for indexing with it.",
+      "parentUuid": "4b29c079_f7809203",
       "range": {
         "startLine": 94,
         "startChar": 8,
