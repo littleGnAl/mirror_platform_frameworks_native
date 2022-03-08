@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a720cf99_7cf2425e",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-08T19:20:17Z",
+      "side": 1,
+      "message": "this log won\u0027t show up normally (it\u0027s a verbose log). I think if the feature is enabled, but we fail to enable it, we could show a stricter log?",
+      "range": {
+        "startLine": 473,
+        "startChar": 12,
+        "endLine": 473,
+        "endChar": 13
+      },
+      "revId": "7fb600c86a2b91bff76360b578eee83a9deecfbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b29c079_f7809203",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-08T19:20:17Z",
+      "side": 1,
+      "message": "nit: enum class (for more type safety)",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "7fb600c86a2b91bff76360b578eee83a9deecfbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
