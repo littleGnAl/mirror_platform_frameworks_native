@@ -93,6 +93,30 @@
       },
       "revId": "16b778884eb2ccf84c87d9bb011a797fabd129d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f9f275_b1054916",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-08T22:33:11Z",
+      "side": 1,
+      "message": "isDriverFeatureEnabled makes allocations internally, but they\u0027re not necessary (these are added in the CL above this, but it\u0027s only a few allocations per process startup, rather this which happens potentially per operation, and in an error condition).\n\nFor instance, this line while make an allocation (depending on the libc++ implementation):\n        std::string path \u003d \"/dev/binderfs/features/\";\n\nso will .append. Potentially also ifstream (we could read a single byte using the C APIs without allocations). We could add an error case to binderAllocationLimits to check this, though honestly it\u0027s not extremely critical (hence nit).",
+      "parentUuid": "685087a3_80d755cf",
+      "range": {
+        "startLine": 1451,
+        "startChar": 0,
+        "endLine": 1452,
+        "endChar": 15
+      },
+      "revId": "16b778884eb2ccf84c87d9bb011a797fabd129d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
