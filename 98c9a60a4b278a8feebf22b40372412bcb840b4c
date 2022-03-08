@@ -34,6 +34,24 @@
       "parentUuid": "fb734d0f_b82bb85d",
       "revId": "98c9a60a4b278a8feebf22b40372412bcb840b4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "780b52e7_63c35299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-08T23:30:33Z",
+      "side": 1,
+      "message": "One line of config to prevent regressions seems like a win to me, regardless of what may or may not happen in the future.",
+      "parentUuid": "b5022993_1bc71b98",
+      "revId": "98c9a60a4b278a8feebf22b40372412bcb840b4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
