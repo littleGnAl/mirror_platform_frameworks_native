@@ -1307,8 +1307,48 @@ VkResult CreateSwapchainKHR(VkDevice device,
         num_images = 1;
     }
 
-    int32_t legacy_usage = 0;
-    if (dispatch.GetSwapchainGrallocUsage2ANDROID) {
+    void* usage_info_pNext = nullptr;
+    VkImageCompressionControlEXT image_compression = {};
+    uint64_t native_usage = 0;
+    if (dispatch.GetSwapchainGrallocUsage3ANDROID) {
+        ATRACE_BEGIN("GetSwapchainGrallocUsage3ANDROID");
+        VkGrallocUsageInfoANDROID gralloc_usage_info = {};
+        gralloc_usage_info.sType = VK_STRUCTURE_TYPE_GRALLOC_USAGE_INFO_ANDROID;
+        gralloc_usage_info.imageFormat = create_info->imageFormat;
+        gralloc_usage_info.imageUsage = create_info->imageUsage;
+
+        // Look through the pNext chain for an image compression control struct
+        // if one is found AND the appropriate extenstions are enabled,
+        // append it to be the gralloc usage pNext chain
+        const VkSwapchainCreateInfoKHR* create_infos = create_info;
+        while (create_infos->pNext) {
+            create_infos = reinterpret_cast<const VkSwapchainCreateInfoKHR*>(
+                create_infos->pNext);
+            switch (create_infos->sType) {
+                case VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT: {
+                    const VkImageCompressionControlEXT* compression_infos =
+                        reinterpret_cast<const VkImageCompressionControlEXT*>(
+                            create_infos);
+                    image_compression = *compression_infos;
+                    image_compression.pNext = nullptr;
+                    usage_info_pNext = &image_compression;
+                } break;
+
+                default:
+                    // Ignore all other info structs
+                    break;
+            }
+        }
+        gralloc_usage_info.pNext = usage_info_pNext;
+
+        result = dispatch.GetSwapchainGrallocUsage3ANDROID(
+            device, &gralloc_usage_info, &native_usage);
+        ATRACE_END();
+        if (result != VK_SUCCESS) {
+            ALOGE("vkGetSwapchainGrallocUsage3ANDROID failed: %d", result);
+            return VK_ERROR_SURFACE_LOST_KHR;
+        }
+    } else if (dispatch.GetSwapchainGrallocUsage2ANDROID) {
         uint64_t consumer_usage, producer_usage;
         ATRACE_BEGIN("GetSwapchainGrallocUsage2ANDROID");
         result = dispatch.GetSwapchainGrallocUsage2ANDROID(
@@ -1319,9 +1359,11 @@ VkResult CreateSwapchainKHR(VkDevice device,
             ALOGE("vkGetSwapchainGrallocUsage2ANDROID failed: %d", result);
             return VK_ERROR_SURFACE_LOST_KHR;
         }
-        legacy_usage =
+        int32_t legacy_usage =
             android_convertGralloc1To0Usage(producer_usage, consumer_usage);
+        native_usage = static_cast<uint64_t>(legacy_usage);
     } else if (dispatch.GetSwapchainGrallocUsageANDROID) {
+        int32_t legacy_usage;
         ATRACE_BEGIN("GetSwapchainGrallocUsageANDROID");
         result = dispatch.GetSwapchainGrallocUsageANDROID(
             device, create_info->imageFormat, create_info->imageUsage,
@@ -1331,8 +1373,8 @@ VkResult CreateSwapchainKHR(VkDevice device,
             ALOGE("vkGetSwapchainGrallocUsageANDROID failed: %d", result);
             return VK_ERROR_SURFACE_LOST_KHR;
         }
+        native_usage = static_cast<uint64_t>(legacy_usage);
     }
-    uint64_t native_usage = static_cast<uint64_t>(legacy_usage);
 
     bool createProtectedSwapchain = false;
     if (create_info->flags & VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR) {
@@ -1364,6 +1406,7 @@ VkResult CreateSwapchainKHR(VkDevice device,
     Swapchain* swapchain = new (mem)
         Swapchain(surface, num_images, create_info->presentMode,
                   TranslateVulkanToNativeTransform(create_info->preTransform));
+
     // -- Dequeue all buffers and create a VkImage for each --
     // Any failures during or after this must cancel the dequeued buffers.
 
@@ -1372,7 +1415,7 @@ VkResult CreateSwapchainKHR(VkDevice device,
 #pragma clang diagnostic ignored "-Wold-style-cast"
         .sType = VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_ANDROID,
 #pragma clang diagnostic pop
-        .pNext = nullptr,
+        .pNext = usage_info_pNext,
         .usage = swapchain_image_usage,
     };
     VkNativeBufferANDROID image_native_buffer = {
@@ -1430,6 +1473,7 @@ VkResult CreateSwapchainKHR(VkDevice device,
         android_convertGralloc0To1Usage(int(img.buffer->usage),
             &image_native_buffer.usage2.producer,
             &image_native_buffer.usage2.consumer);
+        image_native_buffer.usage3 = img.buffer->usage;
 
         ATRACE_BEGIN("CreateImage");
         result =
