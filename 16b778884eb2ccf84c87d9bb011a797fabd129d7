@@ -141,6 +141,30 @@
       },
       "revId": "16b778884eb2ccf84c87d9bb011a797fabd129d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7fcadaf_dd542188",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2022-03-09T00:56:44Z",
+      "side": 1,
+      "message": "Maybe something like this would shrink heap/stack usage, what do you think?\n```\n#define DRIVER_FEATURES_PATH \"/dev/binderfs/features/\"\nbool ProcessState::isDriverFeatureEnabled(const DriverFeature feature) {\n    static const char* const names[] \u003d {\n        [static_cast\u003cint\u003e(DriverFeature::ONEWAY_SPAM_DETECTION)] \u003d\n            DRIVER_FEATURES_PATH \"oneway_spam_detection\",\n        [static_cast\u003cint\u003e(DriverFeature::EXTENDED_ERROR)] \u003d\n            DRIVER_FEATURES_PATH \"extended_error\",\n    };\n    int fd \u003d open(names[static_cast\u003cint\u003e(feature)], O_RDONLY | O_CLOEXEC);\n    char on;\n    if (fd \u003d\u003d -1) {\n        ALOGE_IF(errno !\u003d ENOENT, \"%s: cannot open %s: %s\", __func__,\n                 names[static_cast\u003cint\u003e(feature)], strerror(errno));\n        return false;\n    }\n    if (read(fd, \u0026on, sizeof(on)) !\u003d sizeof(on)) {\n        ALOGE(\"%s: error reading to %s: %s\", __func__,\n                 names[static_cast\u003cint\u003e(feature)], strerror(errno));\n        return false;\n    }\n    close(fd);\n    return on \u003d\u003d \u00271\u0027;\n}\n```",
+      "parentUuid": "57cbac5b_d6739c3d",
+      "range": {
+        "startLine": 1451,
+        "startChar": 0,
+        "endLine": 1452,
+        "endChar": 15
+      },
+      "revId": "16b778884eb2ccf84c87d9bb011a797fabd129d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
