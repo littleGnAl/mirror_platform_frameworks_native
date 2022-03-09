@@ -234,6 +234,7 @@ bool InitDispatchTable(
     INIT_PROC(true, dev, CreateImage);
     INIT_PROC(true, dev, DestroyImage);
     INIT_PROC(true, dev, GetImageSubresourceLayout);
+    INIT_PROC(true, dev, GetImageSubresourceLayout2EXT);
     INIT_PROC(true, dev, CreateImageView);
     INIT_PROC(true, dev, DestroyImageView);
     INIT_PROC(true, dev, CreateShaderModule);
@@ -412,6 +413,7 @@ VKAPI_ATTR void DestroyBufferView(VkDevice device, VkBufferView bufferView, cons
 VKAPI_ATTR VkResult CreateImage(VkDevice device, const VkImageCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkImage* pImage);
 VKAPI_ATTR void DestroyImage(VkDevice device, VkImage image, const VkAllocationCallbacks* pAllocator);
 VKAPI_ATTR void GetImageSubresourceLayout(VkDevice device, VkImage image, const VkImageSubresource* pSubresource, VkSubresourceLayout* pLayout);
+VKAPI_ATTR void GetImageSubresourceLayout2EXT(VkDevice device, VkImage image, const VkImageSubresource* pSubresource, VkSubresourceLayout2EXT* pLayout);
 VKAPI_ATTR VkResult CreateImageView(VkDevice device, const VkImageViewCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkImageView* pView);
 VKAPI_ATTR void DestroyImageView(VkDevice device, VkImageView imageView, const VkAllocationCallbacks* pAllocator);
 VKAPI_ATTR VkResult CreateShaderModule(VkDevice device, const VkShaderModuleCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkShaderModule* pShaderModule);
@@ -804,6 +806,7 @@ VKAPI_ATTR PFN_vkVoidFunction GetInstanceProcAddr(VkInstance instance, const cha
         { "vkGetImageSparseMemoryRequirements", reinterpret_cast<PFN_vkVoidFunction>(GetImageSparseMemoryRequirements) },
         { "vkGetImageSparseMemoryRequirements2", reinterpret_cast<PFN_vkVoidFunction>(GetImageSparseMemoryRequirements2) },
         { "vkGetImageSubresourceLayout", reinterpret_cast<PFN_vkVoidFunction>(GetImageSubresourceLayout) },
+        { "vkGetImageSubresourceLayout2EXT", reinterpret_cast<PFN_vkVoidFunction>(GetImageSubresourceLayout2EXT) },
         { "vkGetInstanceProcAddr", reinterpret_cast<PFN_vkVoidFunction>(GetInstanceProcAddr) },
         { "vkGetMemoryAndroidHardwareBufferANDROID", reinterpret_cast<PFN_vkVoidFunction>(GetMemoryAndroidHardwareBufferANDROID) },
         { "vkGetPipelineCacheData", reinterpret_cast<PFN_vkVoidFunction>(GetPipelineCacheData) },
@@ -1037,6 +1040,10 @@ VKAPI_ATTR void DestroyImage(VkDevice device, VkImage image, const VkAllocationC
 
 VKAPI_ATTR void GetImageSubresourceLayout(VkDevice device, VkImage image, const VkImageSubresource* pSubresource, VkSubresourceLayout* pLayout) {
     GetData(device).dispatch.GetImageSubresourceLayout(device, image, pSubresource, pLayout);
+}
+
+VKAPI_ATTR void GetImageSubresourceLayout2EXT(VkDevice device, VkImage image, const VkImageSubresource* pSubresource, VkSubresourceLayout2EXT* pLayout) {
+    GetData(device).dispatch.GetImageSubresourceLayout2EXT(device, image, pSubresource, pLayout);
 }
 
 VKAPI_ATTR VkResult CreateImageView(VkDevice device, const VkImageViewCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkImageView* pView) {
@@ -1886,6 +1893,11 @@ VKAPI_ATTR void vkDestroyImage(VkDevice device, VkImage image, const VkAllocatio
 __attribute__((visibility("default")))
 VKAPI_ATTR void vkGetImageSubresourceLayout(VkDevice device, VkImage image, const VkImageSubresource* pSubresource, VkSubresourceLayout* pLayout) {
     vulkan::api::GetImageSubresourceLayout(device, image, pSubresource, pLayout);
+}
+
+__attribute__((visibility("default")))
+VKAPI_ATTR void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, const VkImageSubresource* pSubresource, VkSubresourceLayout2EXT* pLayout) {
+    vulkan::api::GetImageSubresourceLayout2EXT(device, image, pSubresource, pLayout);
 }
 
 __attribute__((visibility("default")))

@@ -1364,15 +1364,56 @@ VkResult CreateSwapchainKHR(VkDevice device,
     Swapchain* swapchain = new (mem)
         Swapchain(surface, num_images, create_info->presentMode,
                   TranslateVulkanToNativeTransform(create_info->preTransform));
+
     // -- Dequeue all buffers and create a VkImage for each --
     // Any failures during or after this must cancel the dequeued buffers.
+
+    const VkSwapchainCreateInfoKHR* create_infos = create_info;
+    VkImageCompressionControlEXT image_compression = {};
+    bool swapchain_compression_exts =
+        GetData(device).hook_extensions.test(
+            ProcHook::EXT_image_compression_control) &&
+        GetData(device).hook_extensions.test(
+            ProcHook::EXT_image_compression_control_swapchain);
+    void* swapchain_image_create_pNext = nullptr;
+    while (create_infos->pNext) {
+        create_infos = reinterpret_cast<const VkSwapchainCreateInfoKHR*>(
+            create_infos->pNext);
+        switch (create_infos->sType) {
+            case VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT: {
+                if (swapchain_compression_exts) {
+                    const VkImageCompressionControlEXT* compression_infos =
+                        reinterpret_cast<const VkImageCompressionControlEXT*>(
+                            create_infos);
+                    image_compression.sType =
+                        VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT;
+                    image_compression.pNext = nullptr;
+                    image_compression.flags = compression_infos->flags;
+                    image_compression.compressionControlPlaneCount =
+                        compression_infos->compressionControlPlaneCount;
+                    image_compression.pFixedRateFlags =
+                        compression_infos->pFixedRateFlags;
+                    swapchain_image_create_pNext = &image_compression;
+                } else {
+                    ALOGE(
+                        "vkCreateSwapchainKHR failed: "
+                        "VkImageCompressionControlEXT chained into "
+                        "VkImageCreateInfo without feature support");
+                }
+            } break;
+
+            default:
+                // Ignore all other info structs
+                break;
+        }
+    }
 
     VkSwapchainImageCreateInfoANDROID swapchain_image_create = {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wold-style-cast"
         .sType = VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_ANDROID,
 #pragma clang diagnostic pop
-        .pNext = nullptr,
+        .pNext = swapchain_image_create_pNext,
         .usage = swapchain_image_usage,
     };
     VkNativeBufferANDROID image_native_buffer = {
