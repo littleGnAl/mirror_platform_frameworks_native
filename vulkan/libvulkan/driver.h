@@ -107,6 +107,13 @@ void QueryPresentationProperties(
     VkPhysicalDevice physicalDevice,
     VkPhysicalDevicePresentationPropertiesANDROID* presentation_properties);
 
+bool GetAndroidNativeBufferSpecVersion9Support(
+    const InstanceData& data,
+    VkPhysicalDevice physicalDevice,
+    const char* pLayerName,
+    uint32_t* pPropertyCount,
+    VkExtensionProperties* pProperties);
+
 VKAPI_ATTR PFN_vkVoidFunction GetInstanceProcAddr(VkInstance instance,
                                                   const char* pName);
 VKAPI_ATTR PFN_vkVoidFunction GetDeviceProcAddr(VkDevice device,
