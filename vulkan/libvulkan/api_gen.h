@@ -107,6 +107,7 @@ struct DeviceDispatchTable {
     PFN_vkCreateImage CreateImage;
     PFN_vkDestroyImage DestroyImage;
     PFN_vkGetImageSubresourceLayout GetImageSubresourceLayout;
+    PFN_vkGetImageSubresourceLayout2EXT GetImageSubresourceLayout2EXT;
     PFN_vkCreateImageView CreateImageView;
     PFN_vkDestroyImageView DestroyImageView;
     PFN_vkCreateShaderModule CreateShaderModule;

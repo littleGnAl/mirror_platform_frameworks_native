@@ -624,6 +624,8 @@ void CreateInfoWrapper::FilterExtension(const char* name) {
         switch (ext_bit) {
             case ProcHook::KHR_android_surface:
             case ProcHook::KHR_surface:
+            case ProcHook::EXT_image_compression_control:
+            case ProcHook::EXT_image_compression_control_swapchain:
             case ProcHook::EXT_swapchain_colorspace:
             case ProcHook::KHR_get_surface_capabilities2:
                 hook_extensions_.set(ext_bit);
@@ -702,6 +704,8 @@ void CreateInfoWrapper::FilterExtension(const char* name) {
             case ProcHook::KHR_get_surface_capabilities2:
             case ProcHook::KHR_surface:
             case ProcHook::EXT_debug_report:
+            case ProcHook::EXT_image_compression_control:
+            case ProcHook::EXT_image_compression_control_swapchain:
             case ProcHook::EXT_swapchain_colorspace:
             case ProcHook::ANDROID_native_buffer:
             case ProcHook::EXTENSION_CORE_1_0:
@@ -916,6 +920,12 @@ VkResult EnumerateInstanceExtensionProperties(
     loader_extensions.push_back({
         VK_KHR_ANDROID_SURFACE_EXTENSION_NAME,
         VK_KHR_ANDROID_SURFACE_SPEC_VERSION});
+    loader_extensions.push_back(
+        {VK_EXT_IMAGE_COMPRESSION_CONTROL_EXTENSION_NAME,
+         VK_EXT_IMAGE_COMPRESSION_CONTROL_SPEC_VERSION});
+    loader_extensions.push_back(
+        {VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_EXTENSION_NAME,
+         VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_SPEC_VERSION});
     loader_extensions.push_back({
         VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME,
         VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION});
