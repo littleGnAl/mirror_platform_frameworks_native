@@ -137,6 +137,10 @@ VKAPI_ATTR VkResult disabledGetMemoryAndroidHardwareBufferANDROID(VkDevice devic
     return VK_SUCCESS;
 }
 
+VKAPI_ATTR void disabledGetImageSubresourceLayout2EXT(VkDevice device, VkImage, const VkImageSubresource2EXT*, VkSubresourceLayout2EXT*) {
+    driver::Logger(device).Err(device, "VK_EXT_image_compression_control not enabled. Exported vkGetImageSubresourceLayout2EXT not executed.");
+}
+
 // clang-format on
 
 }  // namespace
@@ -389,6 +393,7 @@ bool InitDispatchTable(
     INIT_PROC(false, dev, CmdWriteTimestamp2);
     INIT_PROC(false, dev, CmdBeginRendering);
     INIT_PROC(false, dev, CmdEndRendering);
+    INIT_PROC_EXT(EXT_image_compression_control, true, dev, GetImageSubresourceLayout2EXT);
     // clang-format on
 
     return success;
@@ -622,6 +627,7 @@ VKAPI_ATTR VkResult QueueSubmit2(VkQueue queue, uint32_t submitCount, const VkSu
 VKAPI_ATTR void CmdWriteTimestamp2(VkCommandBuffer commandBuffer, VkPipelineStageFlags2 stage, VkQueryPool queryPool, uint32_t query);
 VKAPI_ATTR void CmdBeginRendering(VkCommandBuffer commandBuffer, const VkRenderingInfo* pRenderingInfo);
 VKAPI_ATTR void CmdEndRendering(VkCommandBuffer commandBuffer);
+VKAPI_ATTR void GetImageSubresourceLayout2EXT(VkDevice device, VkImage image, const VkImageSubresource2EXT* pSubresource, VkSubresourceLayout2EXT* pLayout);
 
 VKAPI_ATTR VkResult EnumeratePhysicalDevices(VkInstance instance, uint32_t* pPhysicalDeviceCount, VkPhysicalDevice* pPhysicalDevices) {
     return GetData(instance).dispatch.EnumeratePhysicalDevices(instance, pPhysicalDeviceCount, pPhysicalDevices);
@@ -916,6 +922,7 @@ VKAPI_ATTR PFN_vkVoidFunction GetInstanceProcAddr(VkInstance instance, const cha
         { "vkGetImageSparseMemoryRequirements", reinterpret_cast<PFN_vkVoidFunction>(GetImageSparseMemoryRequirements) },
         { "vkGetImageSparseMemoryRequirements2", reinterpret_cast<PFN_vkVoidFunction>(GetImageSparseMemoryRequirements2) },
         { "vkGetImageSubresourceLayout", reinterpret_cast<PFN_vkVoidFunction>(GetImageSubresourceLayout) },
+        { "vkGetImageSubresourceLayout2EXT", reinterpret_cast<PFN_vkVoidFunction>(GetImageSubresourceLayout2EXT) },
         { "vkGetInstanceProcAddr", reinterpret_cast<PFN_vkVoidFunction>(GetInstanceProcAddr) },
         { "vkGetMemoryAndroidHardwareBufferANDROID", reinterpret_cast<PFN_vkVoidFunction>(GetMemoryAndroidHardwareBufferANDROID) },
         { "vkGetPipelineCacheData", reinterpret_cast<PFN_vkVoidFunction>(GetPipelineCacheData) },
@@ -1844,6 +1851,10 @@ VKAPI_ATTR void CmdBeginRendering(VkCommandBuffer commandBuffer, const VkRenderi
 
 VKAPI_ATTR void CmdEndRendering(VkCommandBuffer commandBuffer) {
     GetData(commandBuffer).dispatch.CmdEndRendering(commandBuffer);
+}
+
+VKAPI_ATTR void GetImageSubresourceLayout2EXT(VkDevice device, VkImage image, const VkImageSubresource2EXT* pSubresource, VkSubresourceLayout2EXT* pLayout) {
+    GetData(device).dispatch.GetImageSubresourceLayout2EXT(device, image, pSubresource, pLayout);
 }
 
 
@@ -3014,6 +3025,11 @@ VKAPI_ATTR void vkCmdBeginRendering(VkCommandBuffer commandBuffer, const VkRende
 __attribute__((visibility("default")))
 VKAPI_ATTR void vkCmdEndRendering(VkCommandBuffer commandBuffer) {
     vulkan::api::CmdEndRendering(commandBuffer);
+}
+
+__attribute__((visibility("default")))
+VKAPI_ATTR void vkGetImageSubresourceLayout2EXT(VkDevice device, VkImage image, const VkImageSubresource2EXT* pSubresource, VkSubresourceLayout2EXT* pLayout) {
+    vulkan::api::GetImageSubresourceLayout2EXT(device, image, pSubresource, pLayout);
 }
 
 // clang-format on

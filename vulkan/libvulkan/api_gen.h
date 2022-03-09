@@ -262,6 +262,7 @@ struct DeviceDispatchTable {
     PFN_vkCmdWriteTimestamp2 CmdWriteTimestamp2;
     PFN_vkCmdBeginRendering CmdBeginRendering;
     PFN_vkCmdEndRendering CmdEndRendering;
+    PFN_vkGetImageSubresourceLayout2EXT GetImageSubresourceLayout2EXT;
     // clang-format on
 };
 

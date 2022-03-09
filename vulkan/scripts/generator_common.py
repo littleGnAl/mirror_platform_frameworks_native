@@ -63,12 +63,14 @@ _EXPORTED_EXTENSIONS = [
     'VK_KHR_android_surface',
     'VK_KHR_surface',
     'VK_KHR_swapchain',
+    'VK_EXT_image_compression_control',
 ]
 
 # Functions optional on Android even if extension is advertised.
 _OPTIONAL_COMMANDS = [
     'vkGetSwapchainGrallocUsageANDROID',
     'vkGetSwapchainGrallocUsage2ANDROID',
+    'vkGetSwapchainGrallocUsage3ANDROID',
 ]
 
 # Dict for mapping dispatch table to a type.

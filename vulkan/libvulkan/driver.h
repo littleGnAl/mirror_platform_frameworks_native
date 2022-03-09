@@ -107,6 +107,8 @@ void QueryPresentationProperties(
     VkPhysicalDevice physicalDevice,
     VkPhysicalDevicePresentationPropertiesANDROID* presentation_properties);
 
+bool GetAndroidNativeBufferSpecVersion9Support(VkPhysicalDevice physicalDevice);
+
 VKAPI_ATTR PFN_vkVoidFunction GetInstanceProcAddr(VkInstance instance,
                                                   const char* pName);
 VKAPI_ATTR PFN_vkVoidFunction GetDeviceProcAddr(VkDevice device,
@@ -192,6 +194,11 @@ VKAPI_ATTR void GetPhysicalDeviceExternalFenceProperties(
     VkPhysicalDevice physicalDevice,
     const VkPhysicalDeviceExternalFenceInfo* pExternalFenceInfo,
     VkExternalFenceProperties* pExternalFenceProperties);
+VKAPI_ATTR void GetImageSubresourceLayout2EXT(
+    VkDevice device,
+    VkImage image,
+    const VkImageSubresource2EXT* pSubresource,
+    VkSubresourceLayout2EXT* pLayout);
 
 template <typename DispatchableType>
 void StaticAssertDispatchable(DispatchableType) {
