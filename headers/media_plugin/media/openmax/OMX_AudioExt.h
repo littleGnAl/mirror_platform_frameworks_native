@@ -49,6 +49,7 @@ typedef enum OMX_AUDIO_CODINGEXTTYPE {
     OMX_AUDIO_CodingAndroidOPUS,        /**< OPUS encoded data */
     OMX_AUDIO_CodingAndroidEAC3,        /**< EAC3 encoded data */
     OMX_AUDIO_CodingAndroidAC4,         /**< AC4 encoded data */
+    OMX_AUDIO_CodingAndroidDTS,         /**< DTS encoded data */
 } OMX_AUDIO_CODINGEXTTYPE;
 
 typedef struct OMX_AUDIO_PARAM_ANDROID_AC3TYPE {
@@ -119,6 +120,15 @@ typedef struct OMX_AUDIO_PARAM_ANDROID_AACDRCPRESENTATIONTYPE {
     OMX_S32 nDrcOutputLoudness;    /**< MPEG-D DRC Output Loudness, between -1 and 231, -2 if unspecified */
     OMX_S32 nDrcAlbumMode;         /**< MPEG-D DRC Album Mode, between 0 and 1, -1 if unspecified */
 } OMX_AUDIO_PARAM_ANDROID_AACDRCPRESENTATIONTYPE;
+
+typedef struct OMX_AUDIO_PARAM_ANDROID_DTSTYPE {
+    OMX_U32 nSize;                 /**< size of the structure in bytes */
+    OMX_VERSIONTYPE nVersion;      /**< OMX specification version information */
+    OMX_U32 nPortIndex;            /**< port that this structure applies to */
+    OMX_U32 nChannels;             /**< Number of channels */
+    OMX_U32 nSampleRate;           /**< Sampling rate of the source data.  Use 0 for
+                                        variable or unknown sampling rate. */
+} OMX_AUDIO_PARAM_ANDROID_DTSTYPE;
 
 typedef struct OMX_AUDIO_PARAM_ANDROID_PROFILETYPE {
    OMX_U32 nSize;
