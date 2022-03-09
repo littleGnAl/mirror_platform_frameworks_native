@@ -39,6 +39,8 @@ struct ProcHook {
         ANDROID_native_buffer,
         EXT_debug_report,
         EXT_hdr_metadata,
+        EXT_image_compression_control,
+        EXT_image_compression_control_swapchain,
         EXT_swapchain_colorspace,
         GOOGLE_display_timing,
         GOOGLE_surfaceless_query,
@@ -122,6 +124,7 @@ struct DeviceDriverTable {
     PFN_vkGetDeviceQueue2 GetDeviceQueue2;
     PFN_vkGetSwapchainGrallocUsageANDROID GetSwapchainGrallocUsageANDROID;
     PFN_vkGetSwapchainGrallocUsage2ANDROID GetSwapchainGrallocUsage2ANDROID;
+    PFN_vkGetSwapchainGrallocUsage3ANDROID GetSwapchainGrallocUsage3ANDROID;
     PFN_vkAcquireImageANDROID AcquireImageANDROID;
     PFN_vkQueueSignalReleaseImageANDROID QueueSignalReleaseImageANDROID;
     // clang-format on
