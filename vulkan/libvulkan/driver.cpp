@@ -625,6 +625,8 @@ void CreateInfoWrapper::FilterExtension(const char* name) {
             case ProcHook::KHR_android_surface:
             case ProcHook::KHR_surface:
             case ProcHook::KHR_surface_protected_capabilities:
+            case ProcHook::EXT_image_compression_control:
+            case ProcHook::EXT_image_compression_control_swapchain:
             case ProcHook::EXT_swapchain_colorspace:
             case ProcHook::KHR_get_surface_capabilities2:
             case ProcHook::GOOGLE_surfaceless_query:
@@ -705,6 +707,8 @@ void CreateInfoWrapper::FilterExtension(const char* name) {
             case ProcHook::KHR_surface:
             case ProcHook::KHR_surface_protected_capabilities:
             case ProcHook::EXT_debug_report:
+            case ProcHook::EXT_image_compression_control:
+            case ProcHook::EXT_image_compression_control_swapchain:
             case ProcHook::EXT_swapchain_colorspace:
             case ProcHook::GOOGLE_surfaceless_query:
             case ProcHook::ANDROID_native_buffer:
@@ -923,6 +927,12 @@ VkResult EnumerateInstanceExtensionProperties(
     loader_extensions.push_back({
         VK_KHR_ANDROID_SURFACE_EXTENSION_NAME,
         VK_KHR_ANDROID_SURFACE_SPEC_VERSION});
+    loader_extensions.push_back(
+        {VK_EXT_IMAGE_COMPRESSION_CONTROL_EXTENSION_NAME,
+         VK_EXT_IMAGE_COMPRESSION_CONTROL_SPEC_VERSION});
+    loader_extensions.push_back(
+        {VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_EXTENSION_NAME,
+         VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_SPEC_VERSION});
     loader_extensions.push_back({
         VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME,
         VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION});
@@ -1245,15 +1255,18 @@ VkResult CreateDevice(VkPhysicalDevice physicalDevice,
         return VK_ERROR_INCOMPATIBLE_DRIVER;
     }
 
-    // sanity check ANDROID_native_buffer implementation, whose set of
+    // Confirming ANDROID_native_buffer implementation, whose set of
     // entrypoints varies according to the spec version.
     if ((wrapper.GetHalExtensions()[ProcHook::ANDROID_native_buffer]) &&
         !data->driver.GetSwapchainGrallocUsageANDROID &&
-        !data->driver.GetSwapchainGrallocUsage2ANDROID) {
-        ALOGE("Driver's implementation of ANDROID_native_buffer is broken;"
-              " must expose at least one of "
-              "vkGetSwapchainGrallocUsageANDROID or "
-              "vkGetSwapchainGrallocUsage2ANDROID");
+        !data->driver.GetSwapchainGrallocUsage2ANDROID &&
+        !data->driver.GetSwapchainGrallocUsage3ANDROID) {
+        ALOGE(
+            "Driver's implementation of ANDROID_native_buffer is broken;"
+            " must expose at least one of "
+            "vkGetSwapchainGrallocUsageANDROID or "
+            "vkGetSwapchainGrallocUsage2ANDROID or "
+            "vkGetSwapchainGrallocUsage3ANDROID");
 
         data->driver.DestroyDevice(dev, pAllocator);
         FreeDeviceData(data, data_allocator);
