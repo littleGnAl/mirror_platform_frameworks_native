@@ -165,6 +165,30 @@
       },
       "revId": "16b778884eb2ccf84c87d9bb011a797fabd129d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4136686c_77817d6f",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-09T16:21:18Z",
+      "side": 1,
+      "message": "yeah - exactly. You can add a test in binderAllocationLimits that returns a failure as well, if you want to assert that there are no allocations, but that\u0027s probably a bit too intense. Still, it\u0027s a nice property.",
+      "parentUuid": "d7fcadaf_dd542188",
+      "range": {
+        "startLine": 1451,
+        "startChar": 0,
+        "endLine": 1452,
+        "endChar": 15
+      },
+      "revId": "16b778884eb2ccf84c87d9bb011a797fabd129d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
