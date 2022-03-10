@@ -8,7 +8,7 @@ mathias@google.com
 racarr@google.com
 vishnun@google.com
 
-per-file EndToEndNativeInputTest.cpp = svv@google.com
+per-file EndToEndNativeInputTest.cpp = file:platform/frameworks/base:/INPUT_OWNERS
 
 # BufferQueue is feature-frozen
 per-file BufferQueue* = set noparent
