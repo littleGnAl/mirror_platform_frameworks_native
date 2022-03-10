@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fbfc8d8_9f9d05f6",
+        "filename": "libs/binder/include/binder/Status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-10T21:50:21Z",
+      "side": 0,
+      "message": "Could break prebuilts removing this?",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
