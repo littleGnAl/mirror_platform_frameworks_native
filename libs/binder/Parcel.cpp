@@ -638,6 +638,7 @@ constexpr int32_t kHeader = B_PACK_CHARS('R', 'E', 'C', 'O');
 constexpr int32_t kHeader = B_PACK_CHARS('S', 'Y', 'S', 'T');
 #endif
 
+#ifndef __TRUSTY__
 // Write RPC headers.  (previously just the interface token)
 status_t Parcel::writeInterfaceToken(const String16& interface)
 {
@@ -657,6 +658,12 @@ status_t Parcel::writeInterfaceToken(const char16_t* str, size_t len) {
     // currently the interface identification token is just its name as a string
     return writeString16(str, len);
 }
+#else
+status_t Parcel::writeInterfaceToken(const std::string& interface)
+{
+    return writeUtf8AsUtf16(interface);
+}
+#endif
 
 bool Parcel::replaceCallingWorkSourceUid(uid_t uid)
 {
@@ -689,6 +696,7 @@ bool Parcel::checkInterface(IBinder* binder) const
     return enforceInterface(binder->getInterfaceDescriptor());
 }
 
+#ifndef __TRUSTY__
 bool Parcel::enforceInterface(const String16& interface,
                               IPCThreadState* threadState) const
 {
@@ -740,6 +748,18 @@ bool Parcel::enforceInterface(const char16_t* interface,
         return false;
     }
 }
+#else
+bool Parcel::enforceInterface(const std::string& interface,
+                              IPCThreadState* threadState) const
+{
+    std::string other;
+    auto res = readUtf8FromUtf16(&other);
+    if (res != OK) {
+        return false;
+    }
+    return interface == other;
+}
+#endif
 
 binder::Status Parcel::enforceNoDataAvail() const {
     const auto n = dataAvail();

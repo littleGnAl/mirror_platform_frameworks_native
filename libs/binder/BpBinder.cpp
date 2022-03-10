@@ -217,7 +217,7 @@ bool BpBinder::isDescriptorCached() const {
     return mDescriptorCache.size() ? true : false;
 }
 
-const String16& BpBinder::getInterfaceDescriptor() const
+const IBinder::Descriptor& BpBinder::getInterfaceDescriptor() const
 {
     if (isDescriptorCached() == false) {
         sp<BpBinder> thiz = sp<BpBinder>::fromExisting(const_cast<BpBinder*>(this));
@@ -228,7 +228,12 @@ const String16& BpBinder::getInterfaceDescriptor() const
         // do the IPC without a lock held.
         status_t err = thiz->transact(INTERFACE_TRANSACTION, data, &reply);
         if (err == NO_ERROR) {
+#ifndef __TRUSTY__
             String16 res(reply.readString16());
+#else
+            std::string res;
+            reply.readUtf8FromUtf16(&res);
+#endif
             Mutex::Autolock _l(mLock);
             // mDescriptorCache could have been assigned while the lock was
             // released.
