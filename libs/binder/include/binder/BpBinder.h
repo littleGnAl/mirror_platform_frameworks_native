@@ -49,7 +49,7 @@ public:
      */
     bool isRpcBinder() const;
 
-    virtual const String16&    getInterfaceDescriptor() const;
+    virtual const Descriptor& getInterfaceDescriptor() const;
     virtual bool        isBinderAlive() const;
     virtual status_t    pingBinder();
 #ifndef __TRUSTY__
@@ -191,7 +191,7 @@ private:
             volatile int32_t    mObitsSent;
             Vector<Obituary>*   mObituaries;
             ObjectManager       mObjects;
-    mutable String16            mDescriptorCache;
+    mutable Descriptor          mDescriptorCache;
             int32_t             mTrackedUid;
 
     static Mutex                                sTrackingLock;
