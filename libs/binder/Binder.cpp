@@ -70,7 +70,7 @@ IBinder::~IBinder()
 
 // ---------------------------------------------------------------------------
 
-sp<IInterface>  IBinder::queryLocalInterface(const String16& /*descriptor*/)
+sp<IInterface>  IBinder::queryLocalInterface(const Descriptor& /*descriptor*/)
 {
     return nullptr;
 }
@@ -257,11 +257,11 @@ status_t BBinder::pingBinder()
     return NO_ERROR;
 }
 
-const String16& BBinder::getInterfaceDescriptor() const
+const IBinder::Descriptor& BBinder::getInterfaceDescriptor() const
 {
     // This is a local static rather than a global static,
     // to avoid static initializer ordering issues.
-    static String16 sEmptyDescriptor;
+    static Descriptor sEmptyDescriptor;
     ALOGW("reached BBinder::getInterfaceDescriptor (this=%p)", this);
     return sEmptyDescriptor;
 }
@@ -594,7 +594,11 @@ status_t BBinder::onTransact(
     switch (code) {
         case INTERFACE_TRANSACTION:
             CHECK(reply != nullptr);
+#ifndef __TRUSTY__
             reply->writeString16(getInterfaceDescriptor());
+#else
+            reply->writeUtf8AsUtf16(getInterfaceDescriptor());
+#endif
             return NO_ERROR;
 
         case DUMP_TRANSACTION: {
