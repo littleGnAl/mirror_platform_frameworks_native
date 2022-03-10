@@ -22,8 +22,11 @@
 #include <ostream>
 
 #include <binder/Parcel.h>
-#include <utils/String8.h>
 #include <string>
+
+#ifndef BINDER_STATUS_USE_STDSTRING
+#include <utils/String8.h>
+#endif
 
 namespace android {
 namespace binder {
@@ -53,6 +56,12 @@ namespace binder {
 //
 class Status final {
 public:
+#ifdef BINDER_STATUS_USE_STDSTRING
+    using String = std::string;
+#else
+    using String = String8;
+#endif
+
     // Keep the exception codes in sync with android/os/Parcel.java.
     enum Exception {
         EX_NONE = 0,
@@ -87,7 +96,7 @@ public:
     //  Java clients.
     static Status fromExceptionCode(int32_t exceptionCode);
     static Status fromExceptionCode(int32_t exceptionCode,
-                                    const String8& message);
+                                    const String& message);
     static Status fromExceptionCode(int32_t exceptionCode,
                                     const char* message);
 
@@ -96,7 +105,7 @@ public:
     // error codes
     static Status fromServiceSpecificError(int32_t serviceSpecificErrorCode);
     static Status fromServiceSpecificError(int32_t serviceSpecificErrorCode,
-                                           const String8& message);
+                                           const String& message);
     static Status fromServiceSpecificError(int32_t serviceSpecificErrorCode,
                                            const char* message);
 
@@ -122,9 +131,9 @@ public:
     status_t writeOverParcel(Parcel* parcel) const;
 
     // Set one of the pre-defined exception types defined above.
-    void setException(int32_t ex, const String8& message);
+    void setException(int32_t ex, const String& message);
     // Set a service specific exception with error code.
-    void setServiceSpecificError(int32_t errorCode, const String8& message);
+    void setServiceSpecificError(int32_t errorCode, const String& message);
     // Setting a |status| != OK causes generated code to return |status|
     // from Binder transactions, rather than writing an exception into the
     // reply Parcel.  This is the least preferable way of reporting errors.
@@ -132,7 +141,7 @@ public:
 
     // Get information about an exception.
     int32_t exceptionCode() const  { return mException; }
-    const String8& exceptionMessage() const { return mMessage; }
+    const String& exceptionMessage() const { return mMessage; }
     status_t transactionError() const {
         return mException == EX_TRANSACTION_FAILED ? mErrorCode : OK;
     }
@@ -143,11 +152,13 @@ public:
     bool isOk() const { return mException == EX_NONE; }
 
     // For logging.
-    String8 toString8() const;
+    // TODO: rename this to toString, we need to keep the name
+    // for backward compatibility for now.
+    String toString8() const;
 
 private:
     Status(int32_t exceptionCode, int32_t errorCode);
-    Status(int32_t exceptionCode, int32_t errorCode, const String8& message);
+    Status(int32_t exceptionCode, int32_t errorCode, const String& message);
 
     // If |mException| == EX_TRANSACTION_FAILED, generated code will return
     // |mErrorCode| as the result of the transaction rather than write an
@@ -158,7 +169,7 @@ private:
     // If |mException| == EX_SERVICE_SPECIFIC we write |mErrorCode| as well.
     int32_t mException = EX_NONE;
     int32_t mErrorCode = 0;
-    String8 mMessage;
+    String mMessage;
 };  // class Status
 
 static inline std::ostream& operator<< (std::ostream& o, const Status& s) {

@@ -31,7 +31,7 @@ Status Status::fromExceptionCode(int32_t exceptionCode) {
 }
 
 Status Status::fromExceptionCode(int32_t exceptionCode,
-                                 const String8& message) {
+                                 const String& message) {
     if (exceptionCode == EX_TRANSACTION_FAILED) {
         return Status(exceptionCode, FAILED_TRANSACTION, message);
     }
@@ -40,7 +40,7 @@ Status Status::fromExceptionCode(int32_t exceptionCode,
 
 Status Status::fromExceptionCode(int32_t exceptionCode,
                                  const char* message) {
-    return fromExceptionCode(exceptionCode, String8(message));
+    return fromExceptionCode(exceptionCode, String(message));
 }
 
 Status Status::fromServiceSpecificError(int32_t serviceSpecificErrorCode) {
@@ -48,13 +48,13 @@ Status Status::fromServiceSpecificError(int32_t serviceSpecificErrorCode) {
 }
 
 Status Status::fromServiceSpecificError(int32_t serviceSpecificErrorCode,
-                                        const String8& message) {
+                                        const String& message) {
     return Status(EX_SERVICE_SPECIFIC, serviceSpecificErrorCode, message);
 }
 
 Status Status::fromServiceSpecificError(int32_t serviceSpecificErrorCode,
                                         const char* message) {
-    return fromServiceSpecificError(serviceSpecificErrorCode, String8(message));
+    return fromServiceSpecificError(serviceSpecificErrorCode, String(message));
 }
 
 Status Status::fromStatusT(status_t status) {
@@ -87,7 +87,7 @@ Status::Status(int32_t exceptionCode, int32_t errorCode)
     : mException(exceptionCode),
       mErrorCode(errorCode) {}
 
-Status::Status(int32_t exceptionCode, int32_t errorCode, const String8& message)
+Status::Status(int32_t exceptionCode, int32_t errorCode, const String& message)
     : mException(exceptionCode),
       mErrorCode(errorCode),
       mMessage(message) {}
@@ -130,13 +130,22 @@ status_t Status::readFromParcel(const Parcel& parcel) {
     }
 
     // The remote threw an exception.  Get the message back.
+#ifdef BINDER_STATUS_USE_STDSTRING
+    std::optional<std::string> message;
+    status = parcel.readUtf8FromUtf16(&message);
+#else
     std::optional<String16> message;
     status = parcel.readString16(&message);
+#endif
     if (status != OK) {
         setFromStatusT(status);
         return status;
     }
+#ifdef BINDER_STATUS_USE_STDSTRING
+    mMessage = message.value_or(std::string());
+#else
     mMessage = String8(message.value_or(String16()));
+#endif
 
     // Skip over the remote stack trace data
     int32_t remote_stack_trace_header_size;
@@ -198,7 +207,11 @@ status_t Status::writeToParcel(Parcel* parcel) const {
         // We have no more information to write.
         return status;
     }
+#ifdef BINDER_STATUS_USE_STDSTRING
+    status = parcel->writeUtf8AsUtf16(mMessage);
+#else
     status = parcel->writeString16(String16(mMessage));
+#endif
     if (status != OK) return status;
     status = parcel->writeInt32(0); // Empty remote stack trace header
     if (status != OK) return status;
@@ -217,13 +230,13 @@ status_t Status::writeOverParcel(Parcel* parcel) const {
     return writeToParcel(parcel);
 }
 
-void Status::setException(int32_t ex, const String8& message) {
+void Status::setException(int32_t ex, const String& message) {
     mException = ex;
     mErrorCode = ex == EX_TRANSACTION_FAILED ? FAILED_TRANSACTION : NO_ERROR;
-    mMessage.setTo(message);
+    mMessage = message;
 }
 
-void Status::setServiceSpecificError(int32_t errorCode, const String8& message) {
+void Status::setServiceSpecificError(int32_t errorCode, const String& message) {
     setException(EX_SERVICE_SPECIFIC, message);
     mErrorCode = errorCode;
 }
@@ -234,18 +247,24 @@ void Status::setFromStatusT(status_t status) {
     mMessage.clear();
 }
 
-String8 Status::toString8() const {
-    String8 ret;
+Status::String Status::toString8() const {
+    String ret;
     if (mException == EX_NONE) {
         ret.append("No error");
     } else {
-        ret.appendFormat("Status(%d, %s): '", mException, exceptionToString(mException).c_str());
+        ret.append("Status(");
+        ret.append(std::to_string(mException).c_str());
+        ret.append(", ");
+        ret.append(exceptionToString(mException).c_str());
+        ret.append("): '");
         if (mException == EX_SERVICE_SPECIFIC) {
-            ret.appendFormat("%d: ", mErrorCode);
+            ret.append(std::to_string(mErrorCode).c_str());
+            ret.append(": ");
         } else if (mException == EX_TRANSACTION_FAILED) {
-            ret.appendFormat("%s: ", statusToString(mErrorCode).c_str());
+            ret.append(statusToString(mErrorCode).c_str());
+            ret.append(": ");
         }
-        ret.append(String8(mMessage));
+        ret.append(mMessage);
         ret.append("'");
     }
     return ret;
