@@ -90,7 +90,7 @@ Status::Status(int32_t exceptionCode, int32_t errorCode)
 Status::Status(int32_t exceptionCode, int32_t errorCode, const String8& message)
     : mException(exceptionCode),
       mErrorCode(errorCode),
-      mMessage(message) {}
+      mMessage(message.c_str()) {}
 
 status_t Status::readFromParcel(const Parcel& parcel) {
     status_t status = parcel.readInt32(&mException);
@@ -130,13 +130,22 @@ status_t Status::readFromParcel(const Parcel& parcel) {
     }
 
     // The remote threw an exception.  Get the message back.
+#ifndef __TRUSTY__
     std::optional<String16> message;
     status = parcel.readString16(&message);
+#else
+    std::optional<std::string> message;
+    status = parcel.readUtf8FromUtf16(&message);
+#endif
     if (status != OK) {
         setFromStatusT(status);
         return status;
     }
-    mMessage = String8(message.value_or(String16()));
+#ifndef __TRUSTY__
+    mMessage = message.value_or(String16());
+#else
+    mMessage = message.value_or(std::string());
+#endif
 
     // Skip over the remote stack trace data
     int32_t remote_stack_trace_header_size;
@@ -198,7 +207,11 @@ status_t Status::writeToParcel(Parcel* parcel) const {
         // We have no more information to write.
         return status;
     }
+#ifndef __TRUSTY__
     status = parcel->writeString16(String16(mMessage));
+#else
+    status = parcel->writeUtf8AsUtf16(mMessage);
+#endif
     if (status != OK) return status;
     status = parcel->writeInt32(0); // Empty remote stack trace header
     if (status != OK) return status;
@@ -220,7 +233,7 @@ status_t Status::writeOverParcel(Parcel* parcel) const {
 void Status::setException(int32_t ex, const String8& message) {
     mException = ex;
     mErrorCode = ex == EX_TRANSACTION_FAILED ? FAILED_TRANSACTION : NO_ERROR;
-    mMessage.setTo(message);
+    mMessage = message.c_str();
 }
 
 void Status::setServiceSpecificError(int32_t errorCode, const String8& message) {
@@ -245,7 +258,7 @@ String8 Status::toString8() const {
         } else if (mException == EX_TRANSACTION_FAILED) {
             ret.appendFormat("%s: ", statusToString(mErrorCode).c_str());
         }
-        ret.append(String8(mMessage));
+        ret.append(String8(mMessage.data(), mMessage.size()));
         ret.append("'");
     }
     return ret;

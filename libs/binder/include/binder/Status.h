@@ -132,7 +132,7 @@ public:
 
     // Get information about an exception.
     int32_t exceptionCode() const  { return mException; }
-    const String8& exceptionMessage() const { return mMessage; }
+    const String8 exceptionMessage() const { return String8(mMessage.data(), mMessage.size()); }
     status_t transactionError() const {
         return mException == EX_TRANSACTION_FAILED ? mErrorCode : OK;
     }
@@ -158,7 +158,7 @@ private:
     // If |mException| == EX_SERVICE_SPECIFIC we write |mErrorCode| as well.
     int32_t mException = EX_NONE;
     int32_t mErrorCode = 0;
-    String8 mMessage;
+    std::string mMessage;
 };  // class Status
 
 static inline std::ostream& operator<< (std::ostream& o, const Status& s) {
