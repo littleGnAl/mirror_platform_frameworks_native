@@ -188,6 +188,30 @@
       },
       "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d870d608_babde005",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-10T06:08:33Z",
+      "side": 1,
+      "message": "I am +1 on disabling the sanitizer here.",
+      "parentUuid": "33a359ae_b23be37e",
+      "range": {
+        "startLine": 1634,
+        "startChar": 4,
+        "endLine": 1634,
+        "endChar": 48
+      },
+      "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
