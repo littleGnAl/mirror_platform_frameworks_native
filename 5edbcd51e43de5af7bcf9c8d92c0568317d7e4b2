@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "507bac0d_dca433c9",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-10T05:23:37Z",
+      "side": 1,
+      "message": "It definitely could, it\u0027s that all the other macros are in log/log.h and this one is in android-base/logging.h and I haven\u0027t written that one for Trusty yet.",
+      "parentUuid": "a469a6f0_aab2f2fb",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 6
+      },
+      "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e600865_d3504a2c",
         "filename": "libs/binder/BpBinder.cpp",
         "patchSetId": 2
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a94cfda1_d77c7d6a",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-10T05:23:37Z",
+      "side": 1,
+      "message": "The macro was fine, String8 or getInterfaceDescriptor were the problem (don\u0027t remember which). I\u0027m trying to get rid of String8 anyway.",
+      "parentUuid": "2e600865_d3504a2c",
+      "range": {
+        "startLine": 307,
+        "startChar": 16,
+        "endLine": 307,
+        "endChar": 21
+      },
+      "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f19b7959_cf0e58da",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-10T05:03:41Z",
       "side": 1,
       "message": "Why is this change required?",
+      "range": {
+        "startLine": 1634,
+        "startChar": 4,
+        "endLine": 1634,
+        "endChar": 48
+      },
+      "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9cd6f61_883f1723",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-10T05:23:37Z",
+      "side": 1,
+      "message": "Pointer alignment violation reported by UBSan (mData+mDataPos is not aligned for a T*). I don\u0027t remember exactly where or why it was happening, I can look into it.",
+      "parentUuid": "f19b7959_cf0e58da",
       "range": {
         "startLine": 1634,
         "startChar": 4,
