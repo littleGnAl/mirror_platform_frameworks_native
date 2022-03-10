@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a469a6f0_aab2f2fb",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-10T05:03:41Z",
+      "side": 1,
+      "message": "Can\u0027t Trusty have this macro?",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 6
+      },
+      "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e600865_d3504a2c",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-10T05:03:41Z",
+      "side": 1,
+      "message": "This as well. Can\u0027t Trusty have this macro (it should be fine if it\u0027s implemented as a no-op)?",
+      "range": {
+        "startLine": 307,
+        "startChar": 16,
+        "endLine": 307,
+        "endChar": 21
+      },
+      "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19b7959_cf0e58da",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-10T05:03:41Z",
+      "side": 1,
+      "message": "Why is this change required?",
+      "range": {
+        "startLine": 1634,
+        "startChar": 4,
+        "endLine": 1634,
+        "endChar": 48
+      },
+      "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
