@@ -52,7 +52,10 @@ status_t ParcelableHolder::writeToParcel(Parcel* p) const {
 }
 
 status_t ParcelableHolder::readFromParcel(const Parcel* p) {
-    this->mStability = static_cast<Stability>(p->readInt32());
+    if (this->mStability != static_cast<Stability>(p->readInt32())) {
+        return BAD_VALUE;
+    }
+
     this->mParcelable = nullptr;
     this->mParcelableName = std::nullopt;
     int32_t rawDataSize;
