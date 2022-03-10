@@ -16,6 +16,29 @@
       "message": "Sorry for resurrecting, got waylaid by feature deadlines. \n\nTest modified to function on both host and device.\n\nCleaned up a bit.",
       "revId": "c220fcbf64780114f9adbd06ba1b6e2a8508d3ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86922bc1_cb34ceb3",
+        "filename": "libs/binder/tests/binderMemoryHeapBaseUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-10T17:48:29Z",
+      "side": 1,
+      "message": "there are no tests we can run on host and device?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "c220fcbf64780114f9adbd06ba1b6e2a8508d3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
