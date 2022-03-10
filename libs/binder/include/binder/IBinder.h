@@ -17,6 +17,7 @@
 #pragma once
 
 #include <android-base/unique_fd.h>
+#include <string>
 #include <utils/Errors.h>
 #include <utils/RefBase.h>
 #include <utils/String16.h>
@@ -87,18 +88,24 @@ public:
 
     IBinder();
 
+#ifdef BINDER_DESCRIPTOR_USE_STDSTRING
+    using Descriptor = std::string;
+#else
+    using Descriptor = String16;
+#endif
+
     /**
      * Check if this IBinder implements the interface named by
      * @a descriptor.  If it does, the base pointer to it is returned,
      * which you can safely static_cast<> to the concrete C++ interface.
      */
-    virtual sp<IInterface>  queryLocalInterface(const String16& descriptor);
+    virtual sp<IInterface>  queryLocalInterface(const Descriptor& descriptor);
 
     /**
      * Return the canonical name of the interface provided by this IBinder
      * object.
      */
-    virtual const String16& getInterfaceDescriptor() const = 0;
+    virtual const Descriptor& getInterfaceDescriptor() const = 0;
 
     virtual bool            isBinderAlive() const = 0;
     virtual status_t        pingBinder() = 0;
