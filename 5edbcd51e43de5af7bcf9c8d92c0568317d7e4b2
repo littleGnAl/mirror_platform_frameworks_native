@@ -140,6 +140,30 @@
       },
       "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "accc9d95_22862a44",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-10T05:50:01Z",
+      "side": 1,
+      "message": "I see, but this code is not equivalent to the previous one in case when T (or any member of it) has a copy assignment operator defined.",
+      "parentUuid": "a9cd6f61_883f1723",
+      "range": {
+        "startLine": 1634,
+        "startChar": 4,
+        "endLine": 1634,
+        "endChar": 48
+      },
+      "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
