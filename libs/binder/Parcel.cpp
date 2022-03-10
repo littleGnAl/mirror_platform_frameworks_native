@@ -638,6 +638,13 @@ constexpr int32_t kHeader = B_PACK_CHARS('R', 'E', 'C', 'O');
 constexpr int32_t kHeader = B_PACK_CHARS('S', 'Y', 'S', 'T');
 #endif
 
+#ifdef BINDER_DESCRIPTOR_USE_STDSTRING
+status_t Parcel::writeInterfaceToken(const std::string& interface)
+{
+    LOG_ALWAYS_FATAL_IF(!isForRpc(), "std::string for descriptors is only supported by RPC");
+    return writeUtf8AsUtf16(interface);
+}
+#else
 // Write RPC headers.  (previously just the interface token)
 status_t Parcel::writeInterfaceToken(const String16& interface)
 {
@@ -657,6 +664,7 @@ status_t Parcel::writeInterfaceToken(const char16_t* str, size_t len) {
     // currently the interface identification token is just its name as a string
     return writeString16(str, len);
 }
+#endif
 
 bool Parcel::replaceCallingWorkSourceUid(uid_t uid)
 {
@@ -689,6 +697,20 @@ bool Parcel::checkInterface(IBinder* binder) const
     return enforceInterface(binder->getInterfaceDescriptor());
 }
 
+#ifdef BINDER_DESCRIPTOR_USE_STDSTRING
+bool Parcel::enforceInterface(const std::string& interface,
+                              IPCThreadState* threadState) const
+{
+    LOG_ALWAYS_FATAL_IF(!isForRpc(), "std::string for descriptors is only supported by RPC");
+
+    std::string other;
+    auto res = readUtf8FromUtf16(&other);
+    if (res != OK) {
+        return false;
+    }
+    return interface == other;
+}
+#else
 bool Parcel::enforceInterface(const String16& interface,
                               IPCThreadState* threadState) const
 {
@@ -740,6 +762,7 @@ bool Parcel::enforceInterface(const char16_t* interface,
         return false;
     }
 }
+#endif
 
 binder::Status Parcel::enforceNoDataAvail() const {
     const auto n = dataAvail();

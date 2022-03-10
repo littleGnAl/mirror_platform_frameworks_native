@@ -117,7 +117,7 @@ public:
     bool isForRpc() const;
 
     // Writes the IPC/RPC header.
-    status_t            writeInterfaceToken(const String16& interface);
+    status_t            writeInterfaceToken(const IBinder::Descriptor& interface);
     status_t            writeInterfaceToken(const char16_t* str, size_t len);
 
     // Parses the RPC header, returning true if the interface name
@@ -127,7 +127,7 @@ public:
     // propagating the StrictMode policy mask, populating the current
     // IPCThreadState, which as an optimization may optionally be
     // passed in.
-    bool                enforceInterface(const String16& interface,
+    bool                enforceInterface(const IBinder::Descriptor& interface,
                                          IPCThreadState* threadState = nullptr) const;
     bool                enforceInterface(const char16_t* interface,
                                          size_t len,
