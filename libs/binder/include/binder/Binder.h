@@ -18,6 +18,7 @@
 
 #include <atomic>
 #include <stdint.h>
+#include <string>
 #include <binder/IBinder.h>
 
 // ---------------------------------------------------------------------------
@@ -32,7 +33,7 @@ class BBinder : public IBinder
 public:
                         BBinder();
 
-    virtual const String16& getInterfaceDescriptor() const;
+    virtual const Descriptor& getInterfaceDescriptor() const;
     virtual bool        isBinderAlive() const;
     virtual status_t    pingBinder();
     virtual status_t    dump(int fd, const Vector<String16>& args);

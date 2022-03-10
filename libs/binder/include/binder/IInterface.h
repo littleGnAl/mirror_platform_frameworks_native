@@ -70,8 +70,8 @@ template<typename INTERFACE>
 class BnInterface : public INTERFACE, public BBinder
 {
 public:
-    virtual sp<IInterface>      queryLocalInterface(const String16& _descriptor);
-    virtual const String16&     getInterfaceDescriptor() const;
+    virtual sp<IInterface>      queryLocalInterface(const Descriptor& _descriptor);
+    virtual const Descriptor&   getInterfaceDescriptor() const;
 
 protected:
     typedef INTERFACE           BaseInterface;
@@ -95,9 +95,9 @@ protected:
 
 #define DECLARE_META_INTERFACE(INTERFACE)                                                         \
 public:                                                                                           \
-    static const ::android::String16 descriptor;                                                  \
+    static const ::android::IBinder::Descriptor descriptor;                                       \
     static ::android::sp<I##INTERFACE> asInterface(const ::android::sp<::android::IBinder>& obj); \
-    virtual const ::android::String16& getInterfaceDescriptor() const;                            \
+    virtual const ::android::IBinder::Descriptor& getInterfaceDescriptor() const;                 \
     I##INTERFACE();                                                                               \
     virtual ~I##INTERFACE();                                                                      \
     static bool setDefaultImpl(::android::sp<I##INTERFACE> impl);                                 \
@@ -131,7 +131,7 @@ public:
 
 // Macro to be used by both IMPLEMENT_META_INTERFACE and IMPLEMENT_META_NESTED_INTERFACE
 #define DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE0(ITYPE, INAME, BPTYPE)                     \
-    const ::android::String16& ITYPE::getInterfaceDescriptor() const { return ITYPE::descriptor; } \
+    const ::android::IBinder::Descriptor& ITYPE::getInterfaceDescriptor() const { return ITYPE::descriptor; } \
     ::android::sp<ITYPE> ITYPE::asInterface(const ::android::sp<::android::IBinder>& obj) {        \
         ::android::sp<ITYPE> intr;                                                                 \
         if (obj != nullptr) {                                                                      \
@@ -158,19 +158,25 @@ public:
     ITYPE::INAME() {}                                                                              \
     ITYPE::~INAME() {}
 
+#ifdef BINDER_DESCRIPTOR_USE_STDSTRING
+#define DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE(INTERFACE, NAME)                        \
+    const ::std::string I##INTERFACE::descriptor(NAME);                                         \
+    DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE0(I##INTERFACE, I##INTERFACE, Bp##INTERFACE)
+#else
 // Macro for an interface type.
 #define DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE(INTERFACE, NAME)                        \
     const ::android::StaticString16 I##INTERFACE##_descriptor_static_str16(                     \
             __IINTF_CONCAT(u, NAME));                                                           \
     const ::android::String16 I##INTERFACE::descriptor(I##INTERFACE##_descriptor_static_str16); \
     DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE0(I##INTERFACE, I##INTERFACE, Bp##INTERFACE)
+#endif
 
 // Macro for "nested" interface type.
 // For example,
 //   class Parent .. { class INested .. { }; };
 // DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_NESTED_INTERFACE(Parent, Nested, "Parent.INested")
 #define DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_NESTED_INTERFACE(PARENT, INTERFACE, NAME)  \
-    const ::android::String16 PARENT::I##INTERFACE::descriptor(NAME);                    \
+    const ::android::IBinder::Descriptor PARENT::I##INTERFACE::descriptor(NAME);         \
     DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE0(PARENT::I##INTERFACE, I##INTERFACE, \
                                                      PARENT::Bp##INTERFACE)
 
@@ -185,14 +191,14 @@ public:
 
 template<typename INTERFACE>
 inline sp<IInterface> BnInterface<INTERFACE>::queryLocalInterface(
-        const String16& _descriptor)
+        const IBinder::Descriptor& _descriptor)
 {
     if (_descriptor == INTERFACE::descriptor) return sp<IInterface>::fromExisting(this);
     return nullptr;
 }
 
 template<typename INTERFACE>
-inline const String16& BnInterface<INTERFACE>::getInterfaceDescriptor() const
+inline const IBinder::Descriptor& BnInterface<INTERFACE>::getInterfaceDescriptor() const
 {
     return INTERFACE::getInterfaceDescriptor();
 }
