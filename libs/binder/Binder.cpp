@@ -70,7 +70,7 @@ IBinder::~IBinder()
 
 // ---------------------------------------------------------------------------
 
-sp<IInterface>  IBinder::queryLocalInterface(const String16& /*descriptor*/)
+sp<IInterface>  IBinder::queryLocalInterface(const Descriptor& /*descriptor*/)
 {
     return nullptr;
 }
@@ -257,11 +257,11 @@ status_t BBinder::pingBinder()
     return NO_ERROR;
 }
 
-const String16& BBinder::getInterfaceDescriptor() const
+const IBinder::Descriptor& BBinder::getInterfaceDescriptor() const
 {
     // This is a local static rather than a global static,
     // to avoid static initializer ordering issues.
-    static String16 sEmptyDescriptor;
+    static Descriptor sEmptyDescriptor;
     ALOGW("reached BBinder::getInterfaceDescriptor (this=%p)", this);
     return sEmptyDescriptor;
 }
@@ -303,7 +303,11 @@ status_t BBinder::transact(
         reply->setDataPosition(0);
         if (reply->dataSize() > LOG_REPLIES_OVER_SIZE) {
             ALOGW("Large reply transaction of %zu bytes, interface descriptor %s, code %d",
+#if BINDER_DESCRIPTOR_USE_STDSTRING
+                  reply->dataSize(), getInterfaceDescriptor().c_str(), code);
+#else
                   reply->dataSize(), String8(getInterfaceDescriptor()).c_str(), code);
+#endif
         }
     }
 
@@ -594,7 +598,11 @@ status_t BBinder::onTransact(
     switch (code) {
         case INTERFACE_TRANSACTION:
             CHECK(reply != nullptr);
+#ifdef BINDER_DESCRIPTOR_USE_STDSTRING
+            reply->writeUtf8AsUtf16(getInterfaceDescriptor());
+#else
             reply->writeString16(getInterfaceDescriptor());
+#endif
             return NO_ERROR;
 
         case DUMP_TRANSACTION: {
