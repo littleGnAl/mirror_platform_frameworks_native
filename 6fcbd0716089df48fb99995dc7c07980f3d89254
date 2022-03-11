@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc15b65_10104ff2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-03-11T17:53:55Z",
+      "side": 1,
+      "message": "This CL needs a +2 as well.\n\nThis can land after I verify that the other \"frameworks/native\" CL (aosp/2020281) lands.",
+      "revId": "6fcbd0716089df48fb99995dc7c07980f3d89254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
