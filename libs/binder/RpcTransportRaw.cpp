@@ -35,12 +35,14 @@ namespace {
 class RpcTransportRaw : public RpcTransport {
 public:
     explicit RpcTransportRaw(android::base::unique_fd socket) : mSocket(std::move(socket)) {}
-    Result<size_t> peek(void *buf, size_t size) override {
+    status_t peek(void *buf, size_t size, size_t *out_size) override {
         ssize_t ret = TEMP_FAILURE_RETRY(::recv(mSocket.get(), buf, size, MSG_PEEK));
         if (ret < 0) {
-            return ErrnoError() << "recv(MSG_PEEK)";
+            return DEAD_OBJECT;
         }
-        return ret;
+
+        *out_size = static_cast<size_t>(ret);
+        return OK;
     }
 
     template <typename SendOrReceive>
