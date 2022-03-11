@@ -22,6 +22,30 @@
       },
       "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6370c5e8_6608873f",
+        "filename": "libs/binder/include/binder/Status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-11T06:49:56Z",
+      "side": 0,
+      "message": "Other options could be to lazily build a String8 in this method (maybe also stored in Status), or just replace String8 everywhere in this file with std::string but only when building for the SDK?",
+      "parentUuid": "8fbfc8d8_9f9d05f6",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
