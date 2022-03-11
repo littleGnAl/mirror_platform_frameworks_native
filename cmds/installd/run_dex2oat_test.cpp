@@ -116,6 +116,7 @@ class RunDex2OatTest : public testing::Test {
         bool generate_compact_dex = true;
         bool use_jitzygote = false;
         const char* compilation_reason = nullptr;
+        bool compile_without_layout = false;
     };
 
     class FakeExecVHelper : public ExecVHelper {
@@ -259,7 +260,8 @@ class RunDex2OatTest : public testing::Test {
                           args->enable_hidden_api_checks,
                           args->generate_compact_dex,
                           args->use_jitzygote,
-                          args->compilation_reason);
+                          args->compilation_reason,
+                          args->compile_without_layout);
         runner.Exec(/*exit_code=*/ 0);
     }
 

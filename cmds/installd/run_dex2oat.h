@@ -51,7 +51,8 @@ class RunDex2Oat {
                     bool enable_hidden_api_checks,
                     bool generate_compact_dex,
                     bool use_jitzygote,
-                    const char* compilation_reason);
+                    const char* compilation_reason,
+                    bool compile_without_layout);
 
     void Exec(int exit_code);
 

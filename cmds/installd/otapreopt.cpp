@@ -82,8 +82,9 @@ static_assert(DEXOPT_ENABLE_HIDDEN_API_CHECKS == 1 << 10,
         "DEXOPT_ENABLE_HIDDEN_API_CHECKS unexpected");
 static_assert(DEXOPT_GENERATE_COMPACT_DEX == 1 << 11, "DEXOPT_GENERATE_COMPACT_DEX unexpected");
 static_assert(DEXOPT_GENERATE_APP_IMAGE == 1 << 12, "DEXOPT_GENERATE_APP_IMAGE unexpected");
+static_assert(DEXOPT_DISABLE_DEXLAYOUT == 1 << 14, "DEXOPT_DISABLE_DEXLAYOUT unexpected");
 
-static_assert(DEXOPT_MASK           == (0x3dfe | DEXOPT_IDLE_BACKGROUND_JOB),
+static_assert(DEXOPT_MASK           == (0x7dfe | DEXOPT_IDLE_BACKGROUND_JOB),
               "DEXOPT_MASK unexpected.");
 
 

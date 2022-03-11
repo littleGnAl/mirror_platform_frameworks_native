@@ -1793,6 +1793,7 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
     bool generate_compact_dex = (dexopt_flags & DEXOPT_GENERATE_COMPACT_DEX) != 0;
     bool generate_app_image = (dexopt_flags & DEXOPT_GENERATE_APP_IMAGE) != 0;
     bool for_restore = (dexopt_flags & DEXOPT_FOR_RESTORE) != 0;
+    bool disable_dexlayout = (dexopt_flags & DEXOPT_DISABLE_DEXLAYOUT) != 0;
 
     // Check if we're dealing with a secondary dex file and if we need to compile it.
     std::string oat_dir_str;
@@ -1929,7 +1930,7 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
                       join_fds(context_input_fds), swap_fd.get(), instruction_set, compiler_filter,
                       debuggable, boot_complete, for_restore, target_sdk_version,
                       enable_hidden_api_checks, generate_compact_dex, use_jitzygote_image,
-                      compilation_reason);
+                      compilation_reason,disable_dexlayout);
 
     bool cancelled = false;
     pid_t pid = dexopt_status_->check_cancellation_and_fork(&cancelled);
