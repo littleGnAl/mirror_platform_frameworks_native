@@ -81,8 +81,12 @@ void RunDex2Oat::Initialize(const UniqueFile& output_oat,
                             bool enable_hidden_api_checks,
                             bool generate_compact_dex,
                             bool use_jitzygote,
-                            const char* compilation_reason) {
+                            const char* compilation_reason,
+                            bool compile_disable_layout) {
     PrepareBootImageFlags(use_jitzygote);
+    if (compile_disable_layout) {
+       AddArg(StringPrintf("--compile-disable-dexlayout"));//TODO
+    }
 
     PrepareInputFileFlags(output_oat, output_vdex, output_image, input_dex, input_vdex,
                           dex_metadata, profile, swap_fd, class_loader_context,
