@@ -260,6 +260,30 @@
       },
       "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce89d2e2_2bc69b15",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-12T04:14:21Z",
+      "side": 1,
+      "message": "Never mind, I did a clean rebuild and the UBSan violation came back. I added the is_trivially_copyable_v idea I had.",
+      "parentUuid": "4bc9e913_6c350324",
+      "range": {
+        "startLine": 1634,
+        "startChar": 4,
+        "endLine": 1634,
+        "endChar": 48
+      },
+      "revId": "5edbcd51e43de5af7bcf9c8d92c0568317d7e4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
