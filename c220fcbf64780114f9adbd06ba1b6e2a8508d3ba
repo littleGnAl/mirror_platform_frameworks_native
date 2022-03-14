@@ -39,6 +39,30 @@
       },
       "revId": "c220fcbf64780114f9adbd06ba1b6e2a8508d3ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01f4b6f_bf95052d",
+        "filename": "libs/binder/tests/binderMemoryHeapBaseUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2022-03-14T13:37:00Z",
+      "side": 1,
+      "message": "The flag has different semantics on host and device (and I think this makes the most sense). In particular, since we don\u0027t have memfd on host, if we are forcing memfd, stubbing (like in the ashmem case) makes the most sense, so that we don\u0027t fail at runtime.",
+      "parentUuid": "86922bc1_cb34ceb3",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "c220fcbf64780114f9adbd06ba1b6e2a8508d3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
