@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e25f029_ca493b90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1874250
+      },
+      "writtenOn": "2022-03-14T17:01:25Z",
+      "side": 1,
+      "message": "Re-assigning because original reviewer is OOO.",
+      "revId": "8523ea02f29935105102fd21e84ea2f8ffdcf5e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
