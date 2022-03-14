@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baa16e34_370eafe7",
+        "filename": "libs/binder/ParcelableHolder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-14T04:51:16Z",
+      "side": 1,
+      "message": "Can we use readInt32(int*) version and check the result(status_t) before using the read value?",
+      "range": {
+        "startLine": 55,
+        "startChar": 51,
+        "endLine": 55,
+        "endChar": 65
+      },
+      "revId": "288dba562cc4288bc56316c0176cfb42a5ae87bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
