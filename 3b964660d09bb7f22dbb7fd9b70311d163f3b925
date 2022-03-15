@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b097cf9_eb51917b",
+        "filename": "services/surfaceflinger/RegionSamplingThread.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-03-15T22:35:29Z",
+      "side": 1,
+      "message": "nit: consider using __func__. E.g.,\n\nALOGE(\"%s: failed to get valid display device\", __func__);",
+      "range": {
+        "startLine": 278,
+        "startChar": 19,
+        "endLine": 278,
+        "endChar": 32
+      },
+      "revId": "3b964660d09bb7f22dbb7fd9b70311d163f3b925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
