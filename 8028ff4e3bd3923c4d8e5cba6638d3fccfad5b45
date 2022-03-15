@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b65cb58_fc23da31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-15T18:11:21Z",
+      "side": 1,
+      "message": "Andrei - were you able to build/test other targets? We can trigger some builds, to check this per merging - in case there is another failure after that one",
+      "revId": "8028ff4e3bd3923c4d8e5cba6638d3fccfad5b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
