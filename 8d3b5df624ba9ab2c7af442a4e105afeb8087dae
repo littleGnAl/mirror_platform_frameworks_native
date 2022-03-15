@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eeffbb8_569b4859",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-15T23:59:11Z",
+      "side": 1,
+      "message": "let\u0027s see",
+      "revId": "8d3b5df624ba9ab2c7af442a4e105afeb8087dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f4f7c1_2bb2ffae",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-15T23:59:11Z",
+      "side": 1,
+      "message": "nit: this would be an extra heap allocation",
+      "range": {
+        "startLine": 248,
+        "startChar": 19,
+        "endLine": 248,
+        "endChar": 26
+      },
+      "revId": "8d3b5df624ba9ab2c7af442a4e105afeb8087dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
