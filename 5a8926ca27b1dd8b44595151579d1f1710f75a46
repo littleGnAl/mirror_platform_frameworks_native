@@ -122,6 +122,30 @@
       },
       "revId": "5a8926ca27b1dd8b44595151579d1f1710f75a46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc2ea6a_8ee42f86",
+        "filename": "include/android/storage_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-03-15T21:01:44Z",
+      "side": 1,
+      "message": "i think we could at least say that applications should not assume any particular behavior - there could be a no-op or there\u0027s an error reported. if the error reporting is fixed then the doc could be adjusted accordingly to say that the behavior is well-defined after X api level.\n\nor alternatively if https://r.android.com/2003052 indicates that OBBs are deprecated and these apis are indeed seldom used then could these apis also be deprecated with a pointer for what to use instead?",
+      "parentUuid": "cd7c56f9_699c2697",
+      "range": {
+        "startLine": 135,
+        "startChar": 12,
+        "endLine": 135,
+        "endChar": 73
+      },
+      "revId": "5a8926ca27b1dd8b44595151579d1f1710f75a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
