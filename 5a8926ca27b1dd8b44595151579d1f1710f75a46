@@ -39,6 +39,30 @@
       },
       "revId": "5a8926ca27b1dd8b44595151579d1f1710f75a46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236f859f_7df02884",
+        "filename": "include/android/storage_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2022-03-15T19:06:45Z",
+      "side": 1,
+      "message": "It\u0027s a no-op, just like the case where there is no OBB file at the given path.  I\u0027m not sure we should specifically document this, as the fact that these errors don\u0027t cause an error to be reported via the AStorageManager_obbCallbackFunc seems like a bug.  I didn\u0027t intend to fix this bug, but I could see someone doing it in the future.  Any thoughts?",
+      "parentUuid": "613033e6_a8983ff9",
+      "range": {
+        "startLine": 135,
+        "startChar": 12,
+        "endLine": 135,
+        "endChar": 73
+      },
+      "revId": "5a8926ca27b1dd8b44595151579d1f1710f75a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
