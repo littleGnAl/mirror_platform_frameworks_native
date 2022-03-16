@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94b7a38_d0581f5f",
+        "filename": "libs/binder/include/binder/Status.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-16T17:50:51Z",
+      "side": 1,
+      "message": "hey - I see we have similar branches in the child CL (and it maybe could be simpler ifdefs to have \"String8InAndroid\" or \"String16InAndroid\" which both map to std::string - I don\u0027t think we\u0027d ever use std::string descriptor, but not Status w/ std::string - unless you have a case in mind).\n\nAnyway - if possible, given how invasive this change is, could we merge the other stuff separately and leave this as a stack until we\u0027re sure we have a path forward for it?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 6
+      },
+      "revId": "848b1fa78a49141606392252986c77283144cc8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
