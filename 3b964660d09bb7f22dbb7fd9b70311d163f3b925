@@ -22,6 +22,30 @@
       },
       "revId": "3b964660d09bb7f22dbb7fd9b70311d163f3b925",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9a8f4d_f4ee1457",
+        "filename": "services/surfaceflinger/RegionSamplingThread.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1934857
+      },
+      "writtenOn": "2022-03-16T01:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b097cf9_eb51917b",
+      "range": {
+        "startLine": 278,
+        "startChar": 19,
+        "endLine": 278,
+        "endChar": 32
+      },
+      "revId": "3b964660d09bb7f22dbb7fd9b70311d163f3b925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
