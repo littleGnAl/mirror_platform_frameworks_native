@@ -56,6 +56,30 @@
       },
       "revId": "8d3b5df624ba9ab2c7af442a4e105afeb8087dae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "708098f2_21c057f6",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-16T05:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91f4f7c1_2bb2ffae",
+      "range": {
+        "startLine": 248,
+        "startChar": 19,
+        "endLine": 248,
+        "endChar": 26
+      },
+      "revId": "8d3b5df624ba9ab2c7af442a4e105afeb8087dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
