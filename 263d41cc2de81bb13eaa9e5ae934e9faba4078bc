@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38fda0fb_1704e616",
+        "filename": "libs/ui/Gralloc4.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-03-17T23:53:06Z",
+      "side": 0,
+      "message": "Does this all work properly with a new libui but old gralloc4 implementation?",
+      "revId": "263d41cc2de81bb13eaa9e5ae934e9faba4078bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

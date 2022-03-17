@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "4120991d92a0265ce480672f704612556328057e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4be1ada_8df9a21d",
+        "filename": "libs/nativewindow/AHardwareBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-03-17T23:53:06Z",
+      "side": 1,
+      "message": "Is unfortunate that android_ycbcr doesnt have a luma_step field you can use here.",
+      "revId": "4120991d92a0265ce480672f704612556328057e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
