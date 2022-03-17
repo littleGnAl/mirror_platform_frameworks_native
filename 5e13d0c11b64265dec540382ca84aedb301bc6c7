@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49b2dca8_233898d6",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-03-17T03:33:56Z",
+      "side": 1,
+      "message": "I uploaded ag/17230614 to resolve this and the below merge conflict.",
+      "parentUuid": "eb0c0875_ad506b8d",
+      "revId": "5e13d0c11b64265dec540382ca84aedb301bc6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba7db75d_8b71618a",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Here\u0027s what the aosp code is like:\n```\n    }\n    wide_color_support \u003d wide_color_support \u0026\u0026 swapchain_ext;\n\n    AHardwareBuffer_Desc desc \u003d {};\n```\n\nand here\u0027s the tm-dev code:\n```\n    }\n    wide_color_support \u003d\n        wide_color_support \u0026\u0026\n        instance_data.hook_extensions.test(ProcHook::EXT_swapchain_colorspace);\n\n    AHardwareBuffer_Desc desc \u003d {};\n```",
       "parentUuid": "ba7db75d_8b71618a",
+      "revId": "5e13d0c11b64265dec540382ca84aedb301bc6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bff87e97_7a599c36",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-03-17T03:33:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db46fbd2_a7a8df10",
       "revId": "5e13d0c11b64265dec540382ca84aedb301bc6c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
