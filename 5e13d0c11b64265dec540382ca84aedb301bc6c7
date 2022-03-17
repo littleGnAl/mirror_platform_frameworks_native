@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb0c0875_ad506b8d",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-03-17T03:20:56Z",
+      "side": 1,
+      "message": "Here\u0027s what the AOSP code is like (before your CL):\n```\n    uint64_t consumer_usage \u003d 0;\n    bool swapchain_ext \u003d\n        instance_data.hook_extensions.test(ProcHook::EXT_swapchain_colorspace);\n    if (surface_handle \u003d\u003d VK_NULL_HANDLE) {\n```\n\nand here\u0027s what the tm-dev code is like:\n```\n    uint64_t consumer_usage \u003d 0;\n    if (surface_handle \u003d\u003d VK_NULL_HANDLE) {\n```",
+      "parentUuid": "91352178_73d3fefe",
+      "revId": "5e13d0c11b64265dec540382ca84aedb301bc6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba7db75d_8b71618a",
         "filename": "vulkan/libvulkan/swapchain.cpp",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-17T03:18:20Z",
       "side": 1,
       "message": "Here\u0027s the other merge conflict:\n\n...\n        ALOGV(\"wide_color_support is: %d\", wide_color_support);\n\n        consumer_usage \u003d surface.consumer_usage;\n    }\n\u003c\u003c\u003c\u003c\u003c\u003c\u003c HEAD\n    wide_color_support \u003d\n        wide_color_support \u0026\u0026\n        instance_data.hook_extensions.test(ProcHook::EXT_swapchain_colorspace);\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n    wide_color_support \u003d wide_color_support \u0026\u0026 colorspace_ext;\n\u003e\u003e\u003e\u003e\u003e\u003e\u003e 5e13d0c11b (Add conditional BT709 support to the vulkan swapchain)\n\n    AHardwareBuffer_Desc desc \u003d {};\n...",
+      "revId": "5e13d0c11b64265dec540382ca84aedb301bc6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db46fbd2_a7a8df10",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-03-17T03:20:56Z",
+      "side": 1,
+      "message": "Here\u0027s what the aosp code is like:\n```\n    }\n    wide_color_support \u003d wide_color_support \u0026\u0026 swapchain_ext;\n\n    AHardwareBuffer_Desc desc \u003d {};\n```\n\nand here\u0027s the tm-dev code:\n```\n    }\n    wide_color_support \u003d\n        wide_color_support \u0026\u0026\n        instance_data.hook_extensions.test(ProcHook::EXT_swapchain_colorspace);\n\n    AHardwareBuffer_Desc desc \u003d {};\n```",
+      "parentUuid": "ba7db75d_8b71618a",
       "revId": "5e13d0c11b64265dec540382ca84aedb301bc6c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
