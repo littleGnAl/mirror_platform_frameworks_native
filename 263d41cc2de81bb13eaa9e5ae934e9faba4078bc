@@ -16,6 +16,24 @@
       "message": "Does this all work properly with a new libui but old gralloc4 implementation?",
       "revId": "263d41cc2de81bb13eaa9e5ae934e9faba4078bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ac09c4_b755cb5f",
+        "filename": "libs/ui/Gralloc4.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1561731
+      },
+      "writtenOn": "2022-03-18T00:14:17Z",
+      "side": 0,
+      "message": "This works with Cuttlefish with gralloc4. In case I misunderstood, were you looking for something specific for testing?",
+      "parentUuid": "38fda0fb_1704e616",
+      "revId": "263d41cc2de81bb13eaa9e5ae934e9faba4078bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
