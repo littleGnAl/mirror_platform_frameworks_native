@@ -34,6 +34,24 @@
       "parentUuid": "086fde87_40a4d726",
       "revId": "ba2cc88e5c55ae09b232b2d6eca7ad6bf9c47e33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6880c9ec_feab743f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-18T18:37:44Z",
+      "side": 1,
+      "message": "See also b/172502290. We can do it, but there are a lot of cases where we actually do need the utf-16 representation in order for code to work in existing APIs. We could refactor String16 to lazily convert strings to utf-16, but it\u0027ll be messy.",
+      "parentUuid": "fc6d9c4d_915ffb4c",
+      "revId": "ba2cc88e5c55ae09b232b2d6eca7ad6bf9c47e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
