@@ -22,6 +22,30 @@
       },
       "revId": "ac2d2857a1a56bc020917c6b6ba4d063050de4c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6615da9_0bbf6202",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-18T18:23:18Z",
+      "side": 1,
+      "message": "These are more common. The cpp backend doesn\u0027t expose the sub-error rn:\n\nstatus_t ServiceManagerShim::addService(const String16\u0026 name, const sp\u003cIBinder\u003e\u0026 service,\n                                        bool allowIsolated, int dumpsysPriority)\n{\n    Status status \u003d mTheRealServiceManager-\u003eaddService(\n        String8(name).c_str(), service, allowIsolated, dumpsysPriority);\n    return status.exceptionCode();\n}\n\nKind of meant this as a small \u0026 quick incremental improvement, since I saw the errors that we do have in a log.",
+      "parentUuid": "43a6763d_8b228e7d",
+      "range": {
+        "startLine": 311,
+        "startChar": 8,
+        "endLine": 311,
+        "endChar": 55
+      },
+      "revId": "ac2d2857a1a56bc020917c6b6ba4d063050de4c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
