@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a6763d_8b228e7d",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-03-18T18:20:59Z",
+      "side": 1,
+      "message": "Are these logs (this and linToDeath bellow) special? Do we want to remove them now, or add similar logs to the other errors?",
+      "range": {
+        "startLine": 311,
+        "startChar": 8,
+        "endLine": 311,
+        "endChar": 55
+      },
+      "revId": "ac2d2857a1a56bc020917c6b6ba4d063050de4c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
