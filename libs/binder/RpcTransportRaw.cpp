@@ -32,16 +32,29 @@ namespace {
 class RpcTransportRaw : public RpcTransport {
 public:
     explicit RpcTransportRaw(android::base::unique_fd socket) : mSocket(std::move(socket)) {}
-    status_t peek(void* buf, size_t size, size_t* out_size) override {
-        ssize_t ret = TEMP_FAILURE_RETRY(::recv(mSocket.get(), buf, size, MSG_PEEK));
+    status_t pollRead(void) override {
+        pollfd pfd{.fd = mSocket.get(), .events = static_cast<int16_t>(POLLIN), .revents = 0};
+        ssize_t ret = TEMP_FAILURE_RETRY(::poll(&pfd, 1, 0));
         if (ret < 0) {
             int savedErrno = errno;
-            LOG_RPC_DETAIL("RpcTransport peek(): %s", strerror(savedErrno));
+            LOG_RPC_DETAIL("RpcTransport poll(): %s", strerror(savedErrno));
             return -savedErrno;
         }
 
-        *out_size = static_cast<size_t>(ret);
-        return OK;
+        if (pfd.revents & POLLNVAL) {
+            return BAD_VALUE;
+        }
+        if (pfd.revents & POLLERR) {
+            return DEAD_OBJECT;
+        }
+        if (pfd.revents & POLLHUP) {
+            return DEAD_OBJECT;
+        }
+        if (pfd.revents & POLLIN) {
+            return OK;
+        }
+
+        return WOULD_BLOCK;
     }
 
     template <typename SendOrReceive>
