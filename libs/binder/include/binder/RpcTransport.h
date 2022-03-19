@@ -40,7 +40,7 @@ public:
     virtual ~RpcTransport() = default;
 
     // replacement of ::recv(MSG_PEEK). Error code may not be set if TLS is enabled.
-    [[nodiscard]] virtual status_t peek(void *buf, size_t size, size_t *out_size) = 0;
+    [[nodiscard]] virtual status_t pollRead(void) = 0;
 
     /**
      * Read (or write), but allow to be interrupted by a trigger.
