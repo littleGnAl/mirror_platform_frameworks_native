@@ -659,17 +659,14 @@ status_t RpcState::getAndExecuteCommand(const sp<RpcSession::RpcConnection>& con
 
 status_t RpcState::drainCommands(const sp<RpcSession::RpcConnection>& connection,
                                  const sp<RpcSession>& session, CommandType type) {
-    uint8_t buf;
     while (true) {
-        size_t num_bytes;
-        status_t status = connection->rpcTransport->peek(&buf, sizeof(buf), &num_bytes);
+        status_t status = connection->rpcTransport->pollRead();
         if (status == WOULD_BLOCK) break;
         if (status != OK) {
             // TODO: we should return the error here,
             // but that breaks binderRpcTest
             break;
         }
-        if (!num_bytes) break;
 
         status = getAndExecuteCommand(connection, session, type);
         if (status != OK) return status;
