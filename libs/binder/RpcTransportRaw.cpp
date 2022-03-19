@@ -90,14 +90,8 @@ public:
 
         bool havePolled = false;
         while (true) {
-            msghdr msg{
-                    .msg_iov = iovs,
-                    // posix uses int, glibc uses size_t.  niovs is a
-                    // non-negative int and can be cast to either.
-                    .msg_iovlen = static_cast<decltype(msg.msg_iovlen)>(niovs),
-            };
             ssize_t processSize =
-                    TEMP_FAILURE_RETRY(sendOrReceiveFun(mSocket.get(), &msg, MSG_NOSIGNAL));
+                    TEMP_FAILURE_RETRY(sendOrReceiveFun(mSocket.get(), iovs, niovs));
 
             if (processSize < 0) {
                 int savedErrno = errno;
@@ -150,13 +144,13 @@ public:
 
     status_t interruptableWriteFully(FdTrigger* fdTrigger, iovec* iovs, int niovs,
                                      const std::function<status_t()>& altPoll) override {
-        return interruptableReadOrWrite(fdTrigger, iovs, niovs, sendmsg, "sendmsg", POLLOUT,
+        return interruptableReadOrWrite(fdTrigger, iovs, niovs, writev, "writev", POLLOUT,
                                         altPoll);
     }
 
     status_t interruptableReadFully(FdTrigger* fdTrigger, iovec* iovs, int niovs,
                                     const std::function<status_t()>& altPoll) override {
-        return interruptableReadOrWrite(fdTrigger, iovs, niovs, recvmsg, "recvmsg", POLLIN,
+        return interruptableReadOrWrite(fdTrigger, iovs, niovs, readv, "readv", POLLIN,
                                         altPoll);
     }
 

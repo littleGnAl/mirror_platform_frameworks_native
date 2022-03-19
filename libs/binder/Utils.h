@@ -36,4 +36,6 @@ void zeroMemory(uint8_t* data, size_t size);
 
 android::base::Result<void> setNonBlocking(android::base::borrowed_fd fd);
 
+android::base::Result<void> blockThreadSigPipe(void);
+
 }   // namespace android

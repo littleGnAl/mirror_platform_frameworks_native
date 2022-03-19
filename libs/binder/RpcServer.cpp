@@ -36,6 +36,7 @@
 #include "RpcSocketAddress.h"
 #include "RpcState.h"
 #include "RpcWireFormat.h"
+#include "Utils.h"
 
 namespace android {
 
@@ -283,6 +284,15 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
         // still need to cleanup before we can return
     } else {
         LOG_RPC_DETAIL("Created RpcTransport %p for client fd %d", client.get(), clientFdForLog);
+    }
+
+    if (status == OK) {
+        auto res = blockThreadSigPipe();
+        if (!res.ok()) {
+            ALOGE("Failed to block SIGPIPE");
+            status = res.error().code() ? -res.error().code() : UNKNOWN_ERROR;
+            // still need to cleanup before we can return
+        }
     }
 
     RpcConnectionHeader header;

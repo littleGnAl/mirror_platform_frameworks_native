@@ -16,6 +16,7 @@
 
 #include "Utils.h"
 
+#include <signal.h>
 #include <string.h>
 
 using android::base::ErrnoError;
@@ -34,6 +35,16 @@ Result<void> setNonBlocking(android::base::borrowed_fd fd) {
     }
     if (int ret = TEMP_FAILURE_RETRY(fcntl(fd.get(), F_SETFL, flags | O_NONBLOCK)); ret == -1) {
         return ErrnoError() << "Could not set non-blocking flag for fd";
+    }
+    return {};
+}
+
+Result<void> blockThreadSigPipe(void) {
+    sigset_t sigpipe_mask;
+    sigemptyset(&sigpipe_mask);
+    sigaddset(&sigpipe_mask, SIGPIPE);
+    if (int ret = pthread_sigmask(SIG_BLOCK, &sigpipe_mask, nullptr); ret == -1) {
+        return ErrnoError() << "Could not block SIGPIPE for thread";
     }
     return {};
 }

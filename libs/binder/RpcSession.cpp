@@ -659,6 +659,9 @@ status_t RpcSession::addIncomingConnection(std::unique_ptr<RpcTransport> rpcTran
     sp<RpcSession> thiz = sp<RpcSession>::fromExisting(this);
     bool ownershipTransferred = false;
     thread = std::thread([&]() {
+        auto res = blockThreadSigPipe();
+        LOG_ALWAYS_FATAL_IF(!res.ok());
+
         std::unique_lock<std::mutex> threadLock(mutex);
         std::unique_ptr<RpcTransport> movedRpcTransport = std::move(rpcTransport);
         // NOLINTNEXTLINE(performance-unnecessary-copy-initialization)
