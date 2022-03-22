@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ae457e_8dcc9ebc",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-03-22T23:32:00Z",
+      "side": 1,
+      "message": "These don\u0027t go in this function, which is for \"instance extensions.\"  They go in EnumerateDeviceExtensionProperties(), and need to be conditionally enabled, based on whether the underlying driver supports lossy compression (may need more ANB/gralloc changes???)",
+      "range": {
+        "startLine": 930,
+        "startChar": 0,
+        "endLine": 936,
+        "endChar": 0
+      },
+      "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
