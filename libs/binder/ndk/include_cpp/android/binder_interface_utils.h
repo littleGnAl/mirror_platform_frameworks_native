@@ -324,4 +324,15 @@ SpAIBinder BpCInterface<INTERFACE>::asBinder() {
 
 }  // namespace ndk
 
+namespace std {
+
+template <typename T, typename... Args,
+          std::enable_if_t<std::is_base_of<ndk::SharedRefBase, T>::value, bool> = true>
+shared_ptr<T> make_shared(Args...) {
+    static_assert(!std::is_base_of<ndk::SharedRefBase, T>::value,
+                  "Prefer SharedRefBase::make<T>(...) if possible.");
+}
+
+}  // namespace std
+
 /** @} */
