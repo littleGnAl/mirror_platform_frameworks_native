@@ -624,7 +624,7 @@ static void chown_app_profile_dir(const std::string &packageName, int32_t appId,
 }
 
 static binder::Status createAppDataDirs(const std::string& path, int32_t uid, int32_t gid,
-                                        int32_t* previousUid, int32_t cacheGid,
+                                        int32_t previousUid, int32_t cacheGid,
                                         const std::string& seInfo, mode_t targetMode) {
     struct stat st{};
     bool parent_dir_exists = (stat(path.c_str(), &st) == 0);
@@ -635,14 +635,8 @@ static binder::Status createAppDataDirs(const std::string& path, int32_t uid, in
     bool code_cache_exists = (access(code_cache_path.c_str(), F_OK) == 0);
 
     if (parent_dir_exists) {
-        if (*previousUid < 0) {
-            // If previousAppId is -1 in CreateAppDataArgs, we will assume the current owner
-            // of the directory as previousUid. This is required because it is not always possible
-            // to chown app data during app upgrade (e.g. secondary users' CE storage not unlocked)
-            *previousUid = st.st_uid;
-        }
-        if (*previousUid != uid) {
-            if (!chown_app_dir(path, uid, *previousUid, cacheGid)) {
+        if (previousUid > 0 && previousUid != uid) {
+            if (!chown_app_dir(path, uid, previousUid, cacheGid)) {
                 return error("Failed to chown " + path);
             }
         }
@@ -694,12 +688,9 @@ binder::Status InstalldNativeService::createAppDataLocked(
 
     int32_t uid = multiuser_get_uid(userId, appId);
 
-    // If previousAppId < 0, we will use the existing app data owner as previousAppUid
-    // If previousAppId == 0, we use uid as previousUid (no data migration will happen)
-    // if previousAppId > 0, an app is upgrading and changing its app ID
-    int32_t previousUid = previousAppId > 0
-        ? (int32_t) multiuser_get_uid(userId, previousAppId)
-        : (previousAppId == 0 ? uid : -1);
+    // If previousAppId > 0, an app is changing its app ID
+    int32_t previousUid =
+            previousAppId > 0 ? (int32_t)multiuser_get_uid(userId, previousAppId) : -1;
 
     int32_t cacheGid = multiuser_get_cache_gid(userId, appId);
     mode_t targetMode = targetSdkVersion >= MIN_RESTRICTED_HOME_SDK_VERSION ? 0700 : 0751;
@@ -712,7 +703,7 @@ binder::Status InstalldNativeService::createAppDataLocked(
     if (flags & FLAG_STORAGE_CE) {
         auto path = create_data_user_ce_package_path(uuid_, userId, pkgname);
 
-        auto status = createAppDataDirs(path, uid, uid, &previousUid, cacheGid, seInfo, targetMode);
+        auto status = createAppDataDirs(path, uid, uid, previousUid, cacheGid, seInfo, targetMode);
         if (!status.isOk()) {
             return status;
         }
@@ -737,11 +728,11 @@ binder::Status InstalldNativeService::createAppDataLocked(
     if (flags & FLAG_STORAGE_DE) {
         auto path = create_data_user_de_package_path(uuid_, userId, pkgname);
 
-        auto status = createAppDataDirs(path, uid, uid, &previousUid, cacheGid, seInfo, targetMode);
+        auto status = createAppDataDirs(path, uid, uid, previousUid, cacheGid, seInfo, targetMode);
         if (!status.isOk()) {
             return status;
         }
-        if (previousUid != uid) {
+        if (previousUid > 0 && previousUid != uid) {
             chown_app_profile_dir(packageName, appId, userId);
         }
 
@@ -813,7 +804,7 @@ binder::Status InstalldNativeService::createSdkSandboxDataPackageDirectory(
                              StringPrintf("cacheGid cannot be -1 for sdksandbox data"));
         }
         auto status = createAppDataDirs(sharedPath, sdkSandboxUid, AID_NOBODY,
-                                        &previousSdkSandboxUid, cacheGid, seInfo, 0700 | S_ISGID);
+                                        previousSdkSandboxUid, cacheGid, seInfo, 0700 | S_ISGID);
         if (!status.isOk()) {
             return status;
         }
@@ -992,7 +983,7 @@ binder::Status InstalldNativeService::reconcileSdkData(
             }
             const int32_t sandboxUid = multiuser_get_sdk_sandbox_uid(userId, appId);
             int32_t previousSandboxUid = multiuser_get_sdk_sandbox_uid(userId, previousAppId);
-            auto status = createAppDataDirs(path, sandboxUid, AID_NOBODY, &previousSandboxUid,
+            auto status = createAppDataDirs(path, sandboxUid, AID_NOBODY, previousSandboxUid,
                                             cacheGid, seInfo, 0700 | S_ISGID);
             if (!status.isOk()) {
                 res = status;
