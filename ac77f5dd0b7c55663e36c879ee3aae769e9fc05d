@@ -22,6 +22,57 @@
       },
       "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9259c1dc_8367e36e",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-03-23T00:50:42Z",
+      "side": 1,
+      "message": "I don\u0027t see any logic for whether to expose this extension. It should be our code\u0027s choice based on whether EXT_image_compression_control is exposed, and the ANB version?",
+      "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0e6ee0_460c40da",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-03-23T00:50:42Z",
+      "side": 1,
+      "message": "Just copy the whole struct?",
+      "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbacaf1e_320a7833",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1487,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-03-23T00:50:42Z",
+      "side": 1,
+      "message": "We\u0027re accumulating these.. do we want to do a replacement struct in this new ANB version or do we just accept the mess?",
+      "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
