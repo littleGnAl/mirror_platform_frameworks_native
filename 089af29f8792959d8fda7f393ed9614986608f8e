@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b9d4eab_089896e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2022-03-23T04:46:38Z",
+      "side": 1,
+      "message": "Hu Alec, John, could you please help with the owner vote? this one has been applied to android 12 but missing from 12L",
+      "revId": "089af29f8792959d8fda7f393ed9614986608f8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
