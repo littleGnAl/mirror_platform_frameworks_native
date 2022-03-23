@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72ace8cc_d87729c3",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-23T00:36:50Z",
+      "side": 1,
+      "message": "we\u0027ll want \u0027make_unique\u0027 as well",
+      "range": {
+        "startLine": 331,
+        "startChar": 14,
+        "endLine": 331,
+        "endChar": 25
+      },
+      "revId": "5e5db9ed58ab9312f0d05c50f2fb007322c92a7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
