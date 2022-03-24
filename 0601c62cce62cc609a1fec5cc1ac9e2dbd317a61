@@ -33,6 +33,24 @@
       "message": "Can this same logic be used in \"driver.cpp\" to determine whether to return these extensions in EnumerateDeviceExtensionProperties()?\n\nI\u0027ll propose a code snippet there.",
       "revId": "0601c62cce62cc609a1fec5cc1ac9e2dbd317a61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29af04a1_e85077fe",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-03-24T22:26:10Z",
+      "side": 1,
+      "message": "No-- this is fishing around in the device\u0027s dispatch table. The device (by definition) doesn\u0027t exist yet at the point where you have to decide which device extensions are going to be exposed.\n\nYou have to do it instead based on extensions/features exposed by the underlying driver (things you can query off instance/physicaldevice).",
+      "parentUuid": "b6c51b3a_b84ebf00",
+      "revId": "0601c62cce62cc609a1fec5cc1ac9e2dbd317a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
