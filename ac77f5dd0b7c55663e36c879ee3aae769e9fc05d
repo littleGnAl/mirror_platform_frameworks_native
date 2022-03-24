@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c82f7b27_e2d0148b",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-03-24T18:45:13Z",
+      "side": 1,
+      "message": "As discussed offline, this has been deliberately omited (for now), as the priority is to get this out the door.\n\nThe logic for this should be moved into EnumerateDeviceExtensionProperties",
+      "parentUuid": "9259c1dc_8367e36e",
+      "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e0e6ee0_460c40da",
         "filename": "vulkan/libvulkan/swapchain.cpp",
         "patchSetId": 5
@@ -54,6 +72,24 @@
       "writtenOn": "2022-03-23T00:50:42Z",
       "side": 1,
       "message": "Just copy the whole struct?",
+      "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd2cb85_2ca8a1a6",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-03-24T18:45:13Z",
+      "side": 1,
+      "message": "Copying the whole struct has been added.\nI am still nullifying the pNext chain.",
+      "parentUuid": "7e0e6ee0_460c40da",
       "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -71,6 +107,24 @@
       "writtenOn": "2022-03-23T00:50:42Z",
       "side": 1,
       "message": "We\u0027re accumulating these.. do we want to do a replacement struct in this new ANB version or do we just accept the mess?",
+      "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e6c466_142b995e",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1487,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-03-24T18:45:13Z",
+      "side": 1,
+      "message": "As discussed offline, we\u0027re just going to live with the mess for now",
+      "parentUuid": "bbacaf1e_320a7833",
       "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
