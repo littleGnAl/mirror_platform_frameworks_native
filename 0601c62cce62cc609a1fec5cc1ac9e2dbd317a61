@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0aa19d1_ba22e659",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-03-24T22:20:43Z",
+      "side": 1,
+      "message": "Proposed code snippet:\n\n    const auto\u0026 dispatch \u003d GetData(physicalDevice).driver;\n\n    if (dispatch.GetSwapchainGrallocUsage3ANDROID) {\n        loader_extensions.push_back(\n            {VK_EXT_IMAGE_COMPRESSION_CONTROL_EXTENSION_NAME,\n             VK_EXT_IMAGE_COMPRESSION_CONTROL_SPEC_VERSION});\n        loader_extensions.push_back(\n            {VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_EXTENSION_NAME,\n             VK_EXT_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_SPEC_VERSION});\n    }",
+      "revId": "0601c62cce62cc609a1fec5cc1ac9e2dbd317a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c51b3a_b84ebf00",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-03-24T22:20:43Z",
+      "side": 1,
+      "message": "Can this same logic be used in \"driver.cpp\" to determine whether to return these extensions in EnumerateDeviceExtensionProperties()?\n\nI\u0027ll propose a code snippet there.",
+      "revId": "0601c62cce62cc609a1fec5cc1ac9e2dbd317a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
