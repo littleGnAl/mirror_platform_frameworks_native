@@ -16,6 +16,23 @@
       "message": "Just noticed this seemed wrong while skimming around, I don\u0027t think actually causing a problem in practice.",
       "revId": "e658d330c5c2aac5682e528bef3a373dc21b7aa9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e2804b_733d4599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-03-25T22:44:10Z",
+      "side": 1,
+      "message": "Bypassing the lint because it seems unrelated and there is an open bug about it giving this error as a false positive.",
+      "revId": "e658d330c5c2aac5682e528bef3a373dc21b7aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
