@@ -34,6 +34,24 @@
       "parentUuid": "90d776fa_1f5eb62d",
       "revId": "ab0a190b009cb2feba6d01af043151a6a3723d9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5025e8fb_987a901f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-28T13:14:59Z",
+      "side": 1,
+      "message": "The problem is that we used `DEX2OATBOOTCLASSPATH` in Android 10 but the `--updatable-bcp-packages` was introduced in Android 11. So apps that contain classes with the same name as classes in updatable boot class path components in Android 10 can indeed hit this issue.\n\nHowever, the WiFi module was unsupported in Android 10, so you should not run into the problem with the particular classes you reference unless you\u0027re creating an unsupported configuration, either by trying to use the WiFi module on Android 10, or by using a misconfigured `/system/etc/updatable-bcp-packages.txt` on Android 11. (Note that if you do not pass `--updatable-bcp-packages` to dex2oat at all, there is a hard-coded list in Android 11 that includes `android.net`.)",
+      "parentUuid": "cf785423_9e8971fe",
+      "revId": "ab0a190b009cb2feba6d01af043151a6a3723d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
