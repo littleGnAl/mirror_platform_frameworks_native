@@ -16,6 +16,24 @@
       "message": "Hi Nicolas,\n\nWhy did you using the DEX2OATBOOTCLASSPATH for installd in Android 10, and then remove it from Android 12? We met an issue caused by installd using DEX2OATBOOTCLASSPATH. \n\nBelow is the scenario:\n1. An App has an android.net.wifi.WifiManage and its method getConnectionInfo(), whose names are same with another WifiManage Class and its method in BOOTCLASSPATH but no in DEX2OATBOOTCLASSPATH.\n2. If we compile this app with quicken and speed-profile filter, the app will running into a wrong method WifiManager.addNetwork() and then crash; While if compiled with verify and speed filter, it works fine.\n\nBy analyzing the log and codes, we found that the App\u0027s calling to WifiManage.getConnectionInfo() will be optimized to vtable index when the App was compiled with quicken and speed-profile filter.\n\nBelow is the dex-to-dex compiling log in this case:\ndex2oat32: Quickening invoke-virtual(android.net.wifi.WifiInfo android.net.wifi.WifiManager.getConnectionInfo()) to invoke-virtual-quick by replacing method index 1580 by vtable index 11 at dex pc 0x15 in method void com.zhihu.honor.MainActivity.onCreate(android.os.Bundle)\n\nIn summary: \n1. In dex2oat compiling state, converting calling to WifiManage.getConnectionInfo() to a vtable index calling.\n2. In app running state, calling vtable index is misleaded to WifiManager.addNetwork().\n\nWe found it may be caused by DEX2OATBOOTCLASSPATH does not contain the WifiManager Class, which contains in BOOTCLASSPATH. If we remove the bootclasspath setting with DEX2OATBOOTCLASSPATH in installd, it works fine by any filter.\n\nSo it seems that the compiling state doesn\u0027t have the right WifiManager, which cause generate wrong vtable idx and runtime crashinig. \n\nCould we remove the bootclasspath setting with DEX2OATBOOTCLASSPATH in installd in our Android 10 devices?",
       "revId": "ab0a190b009cb2feba6d01af043151a6a3723d9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf785423_9e8971fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-28T12:46:13Z",
+      "side": 1,
+      "message": "The scenario you are describing does not happen with the use of --updatable-bcp-packages. \n\nYou should have a file in /system/etc called updatable-bcp-packages.txt which contains Java package names of classes that are in mainline modules. dex2oat will not resolve any class at the application level which are defined in these packages.",
+      "parentUuid": "90d776fa_1f5eb62d",
+      "revId": "ab0a190b009cb2feba6d01af043151a6a3723d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
