@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45504ce1_ec7814a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-29T23:27:23Z",
+      "side": 1,
+      "message": "From https://en.cppreference.com/w/cpp/language/copy_constructor#Trivial_copy_constructor\n\n\u003e TriviallyCopyable objects can be copied by copying their object representations manually, e.g. with std::memmove. \n\nSo, this should be fine. But I would like let Steven +2.",
+      "revId": "bff5c13fa7bc05030eb96dce3ae5b8437c8b2261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
