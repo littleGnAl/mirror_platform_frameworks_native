@@ -533,13 +533,20 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
         return drainCommands(connection, session, CommandType::CONTROL_ONLY);
     };
 
+    iovec headerIov{&command, sizeof(RpcWireHeader)};
+    if (status_t status =
+                rpcSend(connection, session, "transaction header", &headerIov, 1, drainRefs);
+        status != OK) {
+        // TODO(b/167966510): need to undo onBinderLeaving - we know the
+        // refcount isn't successfully transferred.
+        return status;
+    }
+
     iovec iovs[]{
-            {&command, sizeof(RpcWireHeader)},
             {&transaction, sizeof(RpcWireTransaction)},
             {const_cast<uint8_t*>(data.data()), data.dataSize()},
     };
-    if (status_t status =
-                rpcSend(connection, session, "transaction", iovs, arraysize(iovs), drainRefs);
+    if (status_t status = rpcSend(connection, session, "transaction", iovs, arraysize(iovs));
         status != OK) {
         // TODO(b/167966510): need to undo onBinderLeaving - we know the
         // refcount isn't successfully transferred.
@@ -641,8 +648,14 @@ status_t RpcState::sendDecStrongToTarget(const sp<RpcSession::RpcConnection>& co
             .command = RPC_COMMAND_DEC_STRONG,
             .bodySize = sizeof(RpcDecStrong),
     };
-    iovec iovs[]{{&cmd, sizeof(cmd)}, {&body, sizeof(body)}};
-    return rpcSend(connection, session, "dec ref", iovs, arraysize(iovs));
+    iovec headerIov{&cmd, sizeof(cmd)};
+    auto status = rpcSend(connection, session, "dec ref header", &headerIov, 1);
+    if (status != OK) {
+        return status;
+    }
+
+    iovec bodyIov{&body, sizeof(body)};
+    return rpcSend(connection, session, "dec ref", &bodyIov, 1);
 }
 
 status_t RpcState::getAndExecuteCommand(const sp<RpcSession::RpcConnection>& connection,
@@ -951,12 +964,16 @@ processTransactInternalTailCall:
             .command = RPC_COMMAND_REPLY,
             .bodySize = static_cast<uint32_t>(sizeof(RpcWireReply) + reply.dataSize()),
     };
+    iovec headerIov{&cmdReply, sizeof(RpcWireHeader)};
+    auto status = rpcSend(connection, session, "reply header", &headerIov, 1);
+    if (status != OK) {
+        return status;
+    }
+
     RpcWireReply rpcReply{
             .status = replyStatus,
     };
-
     iovec iovs[]{
-            {&cmdReply, sizeof(RpcWireHeader)},
             {&rpcReply, sizeof(RpcWireReply)},
             {const_cast<uint8_t*>(reply.data()), reply.dataSize()},
     };
