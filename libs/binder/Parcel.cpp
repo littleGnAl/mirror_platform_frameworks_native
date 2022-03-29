@@ -1597,7 +1597,11 @@ status_t Parcel::readAligned(T *pArg) const {
 
         const void* data = mData+mDataPos;
         mDataPos += sizeof(T);
-        *pArg =  *reinterpret_cast<const T*>(data);
+        if constexpr (std::is_trivially_copyable_v<T>) {
+            memcpy(pArg, data, sizeof(T));
+        } else {
+            *pArg = *reinterpret_cast<const T*>(data);
+        }
         return NO_ERROR;
     } else {
         return NOT_ENOUGH_DATA;
@@ -1620,7 +1624,11 @@ status_t Parcel::writeAligned(T val) {
 
     if ((mDataPos+sizeof(val)) <= mDataCapacity) {
 restart_write:
-        *reinterpret_cast<T*>(mData+mDataPos) = val;
+        if constexpr (std::is_trivially_copyable_v<T>) {
+            memcpy(mData + mDataPos, &val, sizeof(val));
+        } else {
+            *reinterpret_cast<T*>(mData + mDataPos) = val;
+        }
         return finishWrite(sizeof(val));
     }
 
