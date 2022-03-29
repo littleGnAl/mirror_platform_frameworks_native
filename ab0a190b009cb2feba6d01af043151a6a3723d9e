@@ -52,6 +52,41 @@
       "parentUuid": "cf785423_9e8971fe",
       "revId": "ab0a190b009cb2feba6d01af043151a6a3723d9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9e154c_73a994bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1942415
+      },
+      "writtenOn": "2022-03-29T01:58:12Z",
+      "side": 1,
+      "message": "\u003e The problem is that we used `DEX2OATBOOTCLASSPATH` in Android 10 but the `--updatable-bcp-packages` was introduced in Android 11. So apps that contain classes with the same name as classes in updatable boot class path components in Android 10 can indeed hit this issue.\n\u003e \n\u003e However, the WiFi module was unsupported in Android 10, so you should not run into the problem with the particular classes you reference unless you\u0027re creating an unsupported configuration, either by trying to use the WiFi module on Android 10, or by using a misconfigured `/system/etc/updatable-bcp-packages.txt` on Android 11. (Note that if you do not pass `--updatable-bcp-packages` to dex2oat at all, there is a hard-coded list in Android 11 that includes `android.net`.)",
+      "parentUuid": "5025e8fb_987a901f",
+      "revId": "ab0a190b009cb2feba6d01af043151a6a3723d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f808fbff_c2eee292",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1942415
+      },
+      "writtenOn": "2022-03-29T01:58:12Z",
+      "side": 1,
+      "message": "Hi Nicolas and Vladimir,\n\nThank you both! It works fine after adding file `/system/etc/updatable-bcp-packages.txt`.\n\nBut it seems that dex2oat.cc\u0027s PrepareUpdatableBcpPackages method may have some issue. As Vladimir said, it only fallbacks to default packages list when not passing `--updatable-bcp-packages`. Maybe it also should fallback to default packages list if `/system/etc/updatable-bcp-packages.txt` doesn\u0027t exit.",
+      "revId": "ab0a190b009cb2feba6d01af043151a6a3723d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
