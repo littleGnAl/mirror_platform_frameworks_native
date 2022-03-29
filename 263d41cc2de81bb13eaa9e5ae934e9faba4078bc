@@ -34,6 +34,24 @@
       "parentUuid": "38fda0fb_1704e616",
       "revId": "263d41cc2de81bb13eaa9e5ae934e9faba4078bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c637fa_af065858",
+        "filename": "libs/ui/Gralloc4.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-03-29T19:59:02Z",
+      "side": 0,
+      "message": "This code has to run atop other frozen gralloc4 HAL implementations. There is therefore a risk of exposing odd behavior in the vendor implementation that was previously masked by erroring out here.\n\nI believe the actual risk in this case is fairly low.",
+      "parentUuid": "62ac09c4_b755cb5f",
+      "revId": "263d41cc2de81bb13eaa9e5ae934e9faba4078bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
