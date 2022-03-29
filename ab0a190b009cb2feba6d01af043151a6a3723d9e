@@ -87,6 +87,24 @@
       "message": "Hi Nicolas and Vladimir,\n\nThank you both! It works fine after adding file `/system/etc/updatable-bcp-packages.txt`.\n\nBut it seems that dex2oat.cc\u0027s PrepareUpdatableBcpPackages method may have some issue. As Vladimir said, it only fallbacks to default packages list when not passing `--updatable-bcp-packages`. Maybe it also should fallback to default packages list if `/system/etc/updatable-bcp-packages.txt` doesn\u0027t exit.",
       "revId": "ab0a190b009cb2feba6d01af043151a6a3723d9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b49ff436_5fe52c87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1942415
+      },
+      "writtenOn": "2022-03-29T03:31:12Z",
+      "side": 1,
+      "message": "It seems that `input_file` existence checking is not working, the dex2oat process doesn\u0027t mid-return when the file is absent and `--updatable-bcp-packages` is passed.\n\nIs `input_file.get() \u003d\u003d nullptr` good enough to check the file\u0027s existence?\n\n   static std::unique_ptr\u003cT\u003e ReadCommentedInputFromFile(\n       const char* input_filename, std::function\u003cstd::string(const char*)\u003e* process) {\n     std::unique_ptr\u003cstd::ifstream\u003e input_file(new std::ifstream(input_filename, std::ifstream::in));\n     if (input_file.get() \u003d\u003d nullptr) {\n       LOG(ERROR) \u003c\u003c \"Failed to open input file \" \u003c\u003c input_filename;\n       return nullptr;\n     }\n     std::unique_ptr\u003cT\u003e result \u003d ReadCommentedInputStream\u003cT\u003e(*input_file, process);\n     input_file-\u003eclose();\n     return result;\n   }",
+      "parentUuid": "f808fbff_c2eee292",
+      "revId": "ab0a190b009cb2feba6d01af043151a6a3723d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
