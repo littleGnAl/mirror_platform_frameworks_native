@@ -105,6 +105,24 @@
       "parentUuid": "f808fbff_c2eee292",
       "revId": "ab0a190b009cb2feba6d01af043151a6a3723d9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6058e5b7_4c20758e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2022-03-29T08:53:54Z",
+      "side": 1,
+      "message": "No, that check is useless.\n\nIt seems I have fixed this for Android 12 as part of another change: https://android-review.googlesource.com/c/platform/art/+/1394009/5/dex2oat/dex2oat.cc . (Though this was later replaced by code using `FILE` instead of `std::fstream`.)",
+      "parentUuid": "b49ff436_5fe52c87",
+      "revId": "ab0a190b009cb2feba6d01af043151a6a3723d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
