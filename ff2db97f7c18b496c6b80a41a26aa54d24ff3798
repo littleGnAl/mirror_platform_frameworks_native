@@ -45,6 +45,30 @@
       },
       "revId": "ff2db97f7c18b496c6b80a41a26aa54d24ff3798",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "771df400_5854ec54",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-30T00:43:55Z",
+      "side": 1,
+      "message": "\u003e Do we need to support datagrams?\n\nI was wondering that too. Is that something that libbinder might want to support (now or in the future), or will it always require a streaming protocol/socket?\n\n\u003e We should be able to unwrap this in a custom transport layer?\nI can wrap Trusty IPC in a streaming mini-protocol, just wasn\u0027t sure if I needed to.",
+      "parentUuid": "de24e500_71df3331",
+      "range": {
+        "startLine": 549,
+        "startChar": 26,
+        "endLine": 549,
+        "endChar": 33
+      },
+      "revId": "ff2db97f7c18b496c6b80a41a26aa54d24ff3798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
