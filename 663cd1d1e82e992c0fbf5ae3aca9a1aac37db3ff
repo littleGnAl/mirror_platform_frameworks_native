@@ -51,6 +51,24 @@
       "message": "No, https://android-review.googlesource.com/c/platform/art/+/2033886 ",
       "revId": "663cd1d1e82e992c0fbf5ae3aca9a1aac37db3ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1723acff_10d7fa61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-03-30T15:29:17Z",
+      "side": 1,
+      "message": "Ok, then I take the liberty to abandon it.",
+      "parentUuid": "a42fbc7b_3b3419d8",
+      "revId": "663cd1d1e82e992c0fbf5ae3aca9a1aac37db3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
