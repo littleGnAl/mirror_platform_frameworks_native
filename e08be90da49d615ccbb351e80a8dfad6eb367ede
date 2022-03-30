@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b3bb3c_5b0ab9e3",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-30T18:43:08Z",
+      "side": 1,
+      "message": "nit: consider - (\"Sending %s (part %d of %d) on ... \", what, i+1, niovs...) - to include total count and also explain what the indexing means",
+      "range": {
+        "startLine": 315,
+        "startChar": 31,
+        "endLine": 315,
+        "endChar": 38
+      },
+      "revId": "e08be90da49d615ccbb351e80a8dfad6eb367ede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
