@@ -16,6 +16,29 @@
       "message": "From https://en.cppreference.com/w/cpp/language/copy_constructor#Trivial_copy_constructor\n\n\u003e TriviallyCopyable objects can be copied by copying their object representations manually, e.g. with std::memmove. \n\nSo, this should be fine. But I would like let Steven +2.",
       "revId": "bff5c13fa7bc05030eb96dce3ae5b8437c8b2261",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6748052f_5f7c8d86",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-30T00:26:46Z",
+      "side": 1,
+      "message": "could you add: static_assert(std::is_trivially_copyable_v\u003cT\u003e...); on L1545? This should always be the case, and we can drop the branch and only use the memcpy.",
+      "range": {
+        "startLine": 1559,
+        "startChar": 22,
+        "endLine": 1559,
+        "endChar": 53
+      },
+      "revId": "bff5c13fa7bc05030eb96dce3ae5b8437c8b2261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
