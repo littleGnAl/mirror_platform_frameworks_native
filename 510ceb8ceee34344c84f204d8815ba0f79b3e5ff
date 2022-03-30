@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6428dc8b_a41f8112",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-03-30T23:01:29Z",
+      "side": 1,
+      "message": "Just noticed that this is probably the wrong spot for these (as these extensions DO REQUIRE HAL support)",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 0
+      },
+      "revId": "510ceb8ceee34344c84f204d8815ba0f79b3e5ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02dd7913_f966c6ed",
         "filename": "vulkan/libvulkan/driver.cpp",
         "patchSetId": 7
