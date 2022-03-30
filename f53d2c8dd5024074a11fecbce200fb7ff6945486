@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef32aa34_e8510b03",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-30T00:28:33Z",
+      "side": 1,
+      "message": "what error shows here and what test does it break? or could you turn this into a bug? Let\u0027s not lose this.",
+      "range": {
+        "startLine": 668,
+        "startChar": 0,
+        "endLine": 669,
+        "endChar": 44
+      },
+      "revId": "f53d2c8dd5024074a11fecbce200fb7ff6945486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
