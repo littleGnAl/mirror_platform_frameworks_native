@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02dd7913_f966c6ed",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-03-30T19:55:53Z",
+      "side": 1,
+      "message": "This will only be set if pProperties !\u003d nullptr.  That means that the extensions won\u0027t be added or counted for when pProperties \u003d\u003d nullptr.\n\nWould also be good to restructure the code so there isn\u0027t so much duplication.  Maybe we could use a utility function to check for ANB and for the features.",
+      "range": {
+        "startLine": 1108,
+        "startChar": 16,
+        "endLine": 1108,
+        "endChar": 27
+      },
+      "revId": "510ceb8ceee34344c84f204d8815ba0f79b3e5ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
