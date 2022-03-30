@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db02e8d_bb976e79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-03-30T19:11:40Z",
+      "side": 1,
+      "message": "Ah, it\u0027s in a different CL. Sorry, the split between frameworks/native and frameworks/base always screws me up.",
+      "parentUuid": "ae0a012d_b4619603",
+      "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67c56e1d_a27d7c45",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-30T19:01:02Z",
       "side": 1,
       "message": "We don\u0027t have a guideline that covers this, but delegating to the man pages seems fine to me. I sent https://critique.corp.google.com/cl/438360006 to see if the other councilors agree. If there is agreement this will still need to link to the man7.org page 😊",
+      "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98889c67_3d4155e4",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-03-30T19:11:40Z",
+      "side": 1,
+      "message": "Yeah, we\u0027re okay with this. Please do link the man page though.",
+      "parentUuid": "ac0ad5c5_1167ebd8",
       "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
