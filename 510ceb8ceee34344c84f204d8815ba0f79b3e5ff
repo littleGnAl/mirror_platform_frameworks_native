@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ac32115_8eb32f8d",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-03-30T23:31:19Z",
+      "side": 1,
+      "message": "Indeed it is.",
+      "parentUuid": "6428dc8b_a41f8112",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 0
+      },
+      "revId": "510ceb8ceee34344c84f204d8815ba0f79b3e5ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02dd7913_f966c6ed",
         "filename": "vulkan/libvulkan/driver.cpp",
         "patchSetId": 7
