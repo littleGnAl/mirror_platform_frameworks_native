@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "140be095_096811d3",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-03-30T23:39:20Z",
+      "side": 1,
+      "message": "Moved down to break code, rather than return code.",
+      "parentUuid": "0ac32115_8eb32f8d",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 0
+      },
+      "revId": "510ceb8ceee34344c84f204d8815ba0f79b3e5ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02dd7913_f966c6ed",
