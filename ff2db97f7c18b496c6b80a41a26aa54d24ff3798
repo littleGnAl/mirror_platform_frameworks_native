@@ -69,6 +69,30 @@
       },
       "revId": "ff2db97f7c18b496c6b80a41a26aa54d24ff3798",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d039878_5a162494",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-30T18:44:54Z",
+      "side": 1,
+      "message": "FDs can be sent w/ streaming protocol, right? Then, I think a thin wrapper is always possible.",
+      "parentUuid": "771df400_5854ec54",
+      "range": {
+        "startLine": 549,
+        "startChar": 26,
+        "endLine": 549,
+        "endChar": 33
+      },
+      "revId": "ff2db97f7c18b496c6b80a41a26aa54d24ff3798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
