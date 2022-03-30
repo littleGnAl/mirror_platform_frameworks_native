@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c410e9_29d7f7b0",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-03-30T18:57:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2ae457e_8dcc9ebc",
+      "range": {
+        "startLine": 930,
+        "startChar": 0,
+        "endLine": 936,
+        "endChar": 0
+      },
+      "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9259c1dc_8367e36e",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "As discussed offline, this has been deliberately omited (for now), as the priority is to get this out the door.\n\nThe logic for this should be moved into EnumerateDeviceExtensionProperties",
       "parentUuid": "9259c1dc_8367e36e",
+      "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d6655a_cca3c236",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-03-30T18:57:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c82f7b27_e2d0148b",
       "revId": "ac77f5dd0b7c55663e36c879ee3aae769e9fc05d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

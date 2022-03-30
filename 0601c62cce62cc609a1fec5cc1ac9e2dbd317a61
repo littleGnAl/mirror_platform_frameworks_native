@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8658f35_8aa6605c",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-03-30T18:57:11Z",
+      "side": 1,
+      "message": "Not implemented due to no device existing at the recommended call time",
+      "parentUuid": "b4a72de9_17e05716",
+      "revId": "0601c62cce62cc609a1fec5cc1ac9e2dbd317a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6c51b3a_b84ebf00",
         "filename": "vulkan/libvulkan/swapchain.cpp",
         "patchSetId": 6
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Thanks, my knowledge of ANB is weak at best.",
       "parentUuid": "29af04a1_e85077fe",
+      "revId": "0601c62cce62cc609a1fec5cc1ac9e2dbd317a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d634c30b_e6e7daf6",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-03-30T18:57:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8887621c_eb25c633",
       "revId": "0601c62cce62cc609a1fec5cc1ac9e2dbd317a61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
