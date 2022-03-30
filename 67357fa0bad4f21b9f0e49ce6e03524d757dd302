@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae0a012d_b4619603",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-03-30T19:01:02Z",
+      "side": 1,
+      "message": "Missing the fix for one of the API review comments:\n\n\u003e Fix comment in version script to say LL-NDK, not NDK",
+      "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c56e1d_a27d7c45",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-03-30T19:01:02Z",
+      "side": 1,
+      "message": "Who are the expected callers? I assume this is for whatever implements network use tracking for the settings page? If that\u0027s the case, how does that service actually get the app\u0027s sockets to tag them, and how does it differentiate them enough to tag them usefully?\n\nOr is this only for tagging sockets used by system processes, and services are expected to tag their own sockets?\n\nAside from the new question the doc update does help, thanks!",
+      "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac0ad5c5_1167ebd8",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-03-30T19:01:02Z",
+      "side": 1,
+      "message": "We don\u0027t have a guideline that covers this, but delegating to the man pages seems fine to me. I sent https://critique.corp.google.com/cl/438360006 to see if the other councilors agree. If there is agreement this will still need to link to the man7.org page 😊",
+      "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
