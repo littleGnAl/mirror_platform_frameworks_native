@@ -16,6 +16,24 @@
       "message": "nit: I would suggest\n\n```\nif (savedErrno \u003d\u003d EAGAIN || savedErrno \u003d\u003d EWOULDBLOCK)\n```\nfor the sake of clarity. A reader might not immediately know that `WOULD_BLOCK \u003d\u003d -EWOULDBLOCK`. And EAGAIN and EWOULDBLOCK should be treated as the same error code and share the same code path [1]\n\n[1] https://linux.die.net/man/3/recv, \"EAGAIN or EWOULDBLOCK\"\n\nExample: https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/input/InputTransport.cpp;l\u003d372?q\u003dWOULD_BLOCK\u0026ss\u003dandroid%2Fplatform%2Fsuperproject\u0026ct\u003dos\u0026sq\u003dUSE_DEFAULT_STORED_QUERY",
       "revId": "91fc9f25f2a3378a1fd1c78ea10342cc895909c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da86b0b5_9e2e4469",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-03-30T04:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78d64dd1_bd3e2f0e",
+      "revId": "91fc9f25f2a3378a1fd1c78ea10342cc895909c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
