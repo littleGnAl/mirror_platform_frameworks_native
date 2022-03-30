@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52dde860_6826ac10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-30T00:32:38Z",
+      "side": 1,
+      "message": "this test doesn\u0027t currently test the property being added in this CL. See other comment, but we should add a datagram socket here.",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "ff2db97f7c18b496c6b80a41a26aa54d24ff3798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de24e500_71df3331",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-03-30T00:32:38Z",
+      "side": 1,
+      "message": "We need to keep one syscall here for performance (iovecs were important for this, right). Do we need to support datagrams? We should be able to unwrap this in a custom transport layer?",
+      "range": {
+        "startLine": 549,
+        "startChar": 26,
+        "endLine": 549,
+        "endChar": 33
+      },
+      "revId": "ff2db97f7c18b496c6b80a41a26aa54d24ff3798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
