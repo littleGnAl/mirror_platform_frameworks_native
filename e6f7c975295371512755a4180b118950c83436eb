@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42dafbcd_a7e83340",
+        "filename": "vulkan/libvulkan/driver_gen.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368430
+      },
+      "writtenOn": "2022-03-31T16:23:38Z",
+      "side": 1,
+      "message": "Drive-by (since I\u0027m still getting some notifications and saw these extension names):\n\nIf the extension names haven\u0027t been set in stone yet, it would be good if the full name of one wasn\u0027t a valid substring of the other.\n\nThis is based on the issues we saw with the framebuffer fetch extension names:\n\n    GL_EXT_shader_framebuffer_fetch\n    GL_EXT_shader_framebuffer_fetch_non_coherent\n    \nApps would check for `GL_EXT_shader_framebuffer_fetch` in the list of supported extension names by checking substring rather than full string matches.   This led them to incorrectly believe that ANGLE supported `GL_EXT_shader_framebuffer_fetch` since `GL_EXT_shader_framebuffer_fetch` is a substring of `GL_EXT_shader_framebuffer_fetch_non_coherent`.   While this is a bug in the app, it still caused some pain for ANGLE development.   It would be good to prevent it for other extensions if it\u0027s possible to rename these in a way that still makes sense.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 48
+      },
+      "revId": "e6f7c975295371512755a4180b118950c83436eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
