@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d18499d_1ae41494",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-03-31T03:22:12Z",
+      "side": 1,
+      "message": "The expected callers are processes who want to account its own data traffic. Currently apps can only do it by the Java API TrafficStats.setThreadStatsTag (in-process call, not by service). This function provides the equivalent NDK for native process. Actually, the implementation of the Java API TrafficStats.setThreadStatsTag also calls to this NDK.",
+      "parentUuid": "67c56e1d_a27d7c45",
+      "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac0ad5c5_1167ebd8",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Yeah, we\u0027re okay with this. Please do link the man page though.",
       "parentUuid": "ac0ad5c5_1167ebd8",
+      "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e68bcfd_ae24f208",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-03-31T03:22:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98889c67_3d4155e4",
       "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
