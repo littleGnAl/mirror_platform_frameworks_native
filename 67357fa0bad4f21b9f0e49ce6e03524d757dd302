@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "681888e1_577631bf",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-03-31T18:06:38Z",
+      "side": 1,
+      "message": "\u003e This function provides the equivalent NDK for native process.\n\nNo it doesn\u0027t. This API is not available to the NDK: https://android-review.googlesource.com/c/platform/frameworks/base/+/2049804/1/native/android/libandroid_net.map.txt. If this is intended for apps the version script needs to be updated and we need to re-review this, because it was not reviewed as an app API, which have different restrictions than vendor APIs do.",
+      "parentUuid": "4d18499d_1ae41494",
+      "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac0ad5c5_1167ebd8",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 2
