@@ -22,6 +22,30 @@
       },
       "revId": "e6f7c975295371512755a4180b118950c83436eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed82125_73e4766e",
+        "filename": "vulkan/libvulkan/driver_gen.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-03-31T16:30:24Z",
+      "side": 1,
+      "message": "Ah, yeah. That is a fantastic point. I\u0027ll add a comment to the khr issue",
+      "parentUuid": "42dafbcd_a7e83340",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 48
+      },
+      "revId": "e6f7c975295371512755a4180b118950c83436eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
