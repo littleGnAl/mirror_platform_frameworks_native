@@ -107,6 +107,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5187da69_26dd4599",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-04-01T08:01:21Z",
+      "side": 1,
+      "message": "Ah, I\u0027d only seen libandroid_net. That clarifies a lot, thanks.",
+      "parentUuid": "9ebd93b9_3abc667d",
+      "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac0ad5c5_1167ebd8",
