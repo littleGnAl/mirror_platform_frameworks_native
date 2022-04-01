@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ebd93b9_3abc667d",
+        "filename": "include/android/multinetwork.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1349877
+      },
+      "writtenOn": "2022-04-01T02:23:01Z",
+      "side": 1,
+      "message": "The API is both NDK and LL-NDK. It\u0027s exposed in libandroid and libandroid_net, which is consistent with all the other native networking APIs.\nhttps://osscs.corp.google.com/android/platform/superproject/+/master:frameworks/base/native/android/libandroid.map.txt;l\u003d303?q\u003dlibandroid.map.txt\u0026ss\u003dandroid",
+      "parentUuid": "681888e1_577631bf",
+      "revId": "67357fa0bad4f21b9f0e49ce6e03524d757dd302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac0ad5c5_1167ebd8",
         "filename": "include/android/multinetwork.h",
         "patchSetId": 2
