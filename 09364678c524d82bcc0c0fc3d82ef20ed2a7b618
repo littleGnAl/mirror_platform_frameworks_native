@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c58ef04_0e5b773f",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-04T23:52:08Z",
+      "side": 1,
+      "message": "We need a change in the AIDL compiler too. Otherwise, we will experience a null pointer error at runtime.",
+      "revId": "09364678c524d82bcc0c0fc3d82ef20ed2a7b618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
