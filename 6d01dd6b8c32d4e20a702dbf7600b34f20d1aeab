@@ -34,6 +34,24 @@
       "parentUuid": "7c26b54b_179a9a76",
       "revId": "6d01dd6b8c32d4e20a702dbf7600b34f20d1aeab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb3d7c17_ed4ccfe5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-04T23:55:44Z",
+      "side": 1,
+      "message": "\u003e \u0027AIBinder_forceDowngradeToSystemStability\u0027 has been marked as being introduced in Android 31 here, but the deployment target is Android 30\nvoid AIBinder_forceDowngradeToSystemStability(AIBinder* binder) __INTRODUCED_IN(31);\n\nThese errors indicates that we are actually calling these new functions on old platforms. Such calls must be guarded using __builtin_available.",
+      "parentUuid": "fe9d9c42_482fa5f4",
+      "revId": "6d01dd6b8c32d4e20a702dbf7600b34f20d1aeab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
