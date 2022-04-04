@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c26b54b_179a9a76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-04T16:34:10Z",
+      "side": 1,
+      "message": "hmmm - this breaks the device build",
+      "revId": "6d01dd6b8c32d4e20a702dbf7600b34f20d1aeab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
