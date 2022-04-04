@@ -39,7 +39,7 @@ enum {
 /**
  * This interface has the stability of the vendor image.
  */
-void AIBinder_markVendorStability(AIBinder* binder);
+void AIBinder_markVendorStability(AIBinder* binder) __INTRODUCED_IN(30);
 
 static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
     AIBinder_markVendorStability(binder);
@@ -51,7 +51,7 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
  * VINTF stability binder is required to be in the VINTF manifest. This API
  * can be called to use that same interface within the vendor partition.
  */
-void AIBinder_forceDowngradeToVendorStability(AIBinder* binder);
+void AIBinder_forceDowngradeToVendorStability(AIBinder* binder) __INTRODUCED_IN(31);
 
 static inline void AIBinder_forceDowngradeToLocalStability(AIBinder* binder) {
     AIBinder_forceDowngradeToVendorStability(binder);
@@ -66,7 +66,7 @@ enum {
 /**
  * This interface has the stability of the system image.
  */
-__attribute__((weak)) void AIBinder_markSystemStability(AIBinder* binder);
+__attribute__((weak)) void AIBinder_markSystemStability(AIBinder* binder) __INTRODUCED_IN(30);
 
 static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
     if (AIBinder_markSystemStability == nullptr) return;
@@ -80,7 +80,7 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
  * VINTF stability binder is required to be in the VINTF manifest. This API
  * can be called to use that same interface within the system partition.
  */
-void AIBinder_forceDowngradeToSystemStability(AIBinder* binder);
+void AIBinder_forceDowngradeToSystemStability(AIBinder* binder) __INTRODUCED_IN(31);
 
 static inline void AIBinder_forceDowngradeToLocalStability(AIBinder* binder) {
     AIBinder_forceDowngradeToSystemStability(binder);
@@ -97,6 +97,10 @@ static inline void AIBinder_forceDowngradeToLocalStability(AIBinder* binder) {
  *
  * This interface has system<->vendor stability
  */
+// b/227835797 - can't use __INTRODUCED_IN(30) because old targets load this code
+#if __ANDROID_MIN_SDK_VERSION__ < 30
+__attribute__((weak))
+#endif  // __ANDROID_MIN_SDK_VERSION__ < 30
 void AIBinder_markVintfStability(AIBinder* binder);
 
 __END_DECLS
