@@ -1,0 +1,6 @@
+LIBBINDER_TRUSTY {
+  global:
+    RpcClientTrusty; # llndk
+  local:
+    *;
+};
