@@ -1,0 +1,6 @@
+LIBBINDER_TRUSTY_SHIM { # platform-only
+  global:
+    RpcClientTrusty;
+  local:
+    *;
+};
