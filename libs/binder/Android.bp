@@ -335,6 +335,32 @@ cc_library_shared {
     defaults: ["libbinder_tls_defaults"],
 }
 
+cc_library_shared {
+    name: "libbinder_trusty",
+    vendor_available: true,
+    host_supported: false,
+
+    header_libs: [
+        "libbinder_headers",
+    ],
+    export_header_lib_headers: [
+        "libbinder_headers",
+    ],
+    export_include_dirs: ["include_trusty"],
+    static_libs: [
+        "libbase",
+    ],
+    shared_libs: [
+        "libbinder",
+        "liblog",
+        "libtrusty",
+        "libutils",
+    ],
+    srcs: [
+        "RpcTransportTipcAndroid.cpp",
+    ],
+}
+
 // For testing
 cc_library_static {
     name: "libbinder_tls_static",
