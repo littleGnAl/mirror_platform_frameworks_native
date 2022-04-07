@@ -229,6 +229,7 @@ private:
         // CASE A - local binder we are serving
         //
 
+#ifndef BINDER_RPC_DISABLE_ASYNC
         // async transaction queue, _only_ for local binder
         struct AsyncTodo {
             sp<IBinder> ref;
@@ -240,6 +241,7 @@ private:
             }
         };
         std::priority_queue<AsyncTodo> asyncTodo;
+#endif
 
         //
         // CASE B - remote binder, we are sending transactions to
