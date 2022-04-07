@@ -17,13 +17,13 @@
 
 #include <android-base/unique_fd.h>
 #include <binder/IBinder.h>
+#include <binder/RpcThreads.h>
 #include <binder/RpcTransport.h>
 #include <utils/Errors.h>
 #include <utils/RefBase.h>
 
 #include <map>
 #include <optional>
-#include <thread>
 #include <vector>
 
 namespace android {
@@ -46,7 +46,11 @@ constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION = RPC_WIRE_PROTOCOL_VERSION_EXPERIM
  */
 class RpcSession final : public virtual RefBase {
 public:
+#ifndef BINDER_RPC_NO_THREADS
+    static constexpr size_t kDefaultMaxOutgoingThreads = 1;
+#else
     static constexpr size_t kDefaultMaxOutgoingThreads = 10;
+#endif
 
     // Create an RpcSession with default configuration (raw sockets).
     static sp<RpcSession> make();
@@ -199,10 +203,10 @@ private:
     public:
         void onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
         void onSessionIncomingThreadEnded() override;
-        void waitForShutdown(std::unique_lock<std::mutex>& lock, const sp<RpcSession>& session);
+        void waitForShutdown(RpcMutexUniqueLock& lock, const sp<RpcSession>& session);
 
     private:
-        std::condition_variable mCv;
+        RpcConditionVariable mCv;
     };
     friend WaitForShutdownListener;
 
@@ -211,7 +215,7 @@ private:
 
         // whether this or another thread is currently using this fd to make
         // or receive transactions.
-        std::optional<std::thread::id> exclusiveTid;
+        std::optional<RpcThread::id> exclusiveTid;
 
         bool allowNested = false;
     };
@@ -225,7 +229,7 @@ private:
     //
     // transfer ownership of thread (usually done while a lock is taken on the
     // structure which originally owns the thread)
-    void preJoinThreadOwnership(std::thread thread);
+    void preJoinThreadOwnership(RpcThread thread);
     // pass FD to thread and read initial connection information
     struct PreJoinSetupResult {
         // Server connection object associated with this
@@ -276,7 +280,7 @@ private:
         const sp<RpcConnection>& get() { return mConnection; }
 
     private:
-        static void findConnection(std::thread::id tid, sp<RpcConnection>* exclusive,
+        static void findConnection(RpcThread::id tid, sp<RpcConnection>* exclusive,
                                    sp<RpcConnection>* available,
                                    std::vector<sp<RpcConnection>>& sockets,
                                    size_t socketsIndexHint);
@@ -320,13 +324,13 @@ private:
 
     std::unique_ptr<RpcState> mRpcBinderState;
 
-    std::mutex mMutex; // for all below
+    RpcMutex mMutex; // for all below
 
     size_t mMaxIncomingThreads = 0;
     size_t mMaxOutgoingThreads = kDefaultMaxOutgoingThreads;
     std::optional<uint32_t> mProtocolVersion;
 
-    std::condition_variable mAvailableConnectionCv; // for mWaitingThreads
+    RpcConditionVariable mAvailableConnectionCv; // for mWaitingThreads
 
     struct ThreadState {
         size_t mWaitingThreads = 0;
@@ -335,7 +339,7 @@ private:
         std::vector<sp<RpcConnection>> mOutgoing;
         size_t mMaxIncoming = 0;
         std::vector<sp<RpcConnection>> mIncoming;
-        std::map<std::thread::id, std::thread> mThreads;
+        std::map<RpcThread::id, RpcThread> mThreads;
     } mConnections;
 };
 
