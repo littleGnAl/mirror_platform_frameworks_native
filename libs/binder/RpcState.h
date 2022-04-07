@@ -259,7 +259,10 @@ private:
     // false - session shutdown, halt
     [[nodiscard]] bool nodeProgressAsyncNumber(BinderNode* node);
 
+#ifndef BINDER_RPC_SINGLE_THREADED
     std::mutex mNodeMutex;
+#endif
+
     bool mTerminated = false;
     uint32_t mNextId = 0;
     // binders known by both sides of a session

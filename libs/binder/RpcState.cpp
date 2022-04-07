@@ -77,7 +77,9 @@ status_t RpcState::onBinderLeaving(const sp<RpcSession>& session, const sp<IBind
         return INVALID_OPERATION;
     }
 
+#ifndef BINDER_RPC_SINGLE_THREADED
     std::lock_guard<std::mutex> _l(mNodeMutex);
+#endif
     if (mTerminated) return DEAD_OBJECT;
 
     // TODO(b/182939933): maybe move address out of BpBinder, and keep binder->address map
@@ -153,7 +155,9 @@ status_t RpcState::onBinderEntering(const sp<RpcSession>& session, uint64_t addr
         return BAD_VALUE;
     }
 
+#ifndef BINDER_RPC_SINGLE_THREADED
     std::lock_guard<std::mutex> _l(mNodeMutex);
+#endif
     if (mTerminated) return DEAD_OBJECT;
 
     if (auto it = mNodeForAddress.find(address); it != mNodeForAddress.end()) {
@@ -188,7 +192,9 @@ status_t RpcState::flushExcessBinderRefs(const sp<RpcSession>& session, uint64_t
     // extra reference counting packets now.
     if (binder->remoteBinder()) return OK;
 
+#ifndef BINDER_RPC_SINGLE_THREADED
     std::unique_lock<std::mutex> _l(mNodeMutex);
+#endif
     if (mTerminated) return DEAD_OBJECT;
 
     auto it = mNodeForAddress.find(address);
@@ -207,7 +213,9 @@ status_t RpcState::flushExcessBinderRefs(const sp<RpcSession>& session, uint64_t
     // received it. Once (or if) it has no other refcounts, it would reply with
     // its own decStrong so that it could be removed from this session.
     if (it->second.timesRecd != 0) {
+#ifndef BINDER_RPC_SINGLE_THREADED
         _l.unlock();
+#endif
 
         return session->sendDecStrongToTarget(address, 0);
     }
@@ -216,17 +224,23 @@ status_t RpcState::flushExcessBinderRefs(const sp<RpcSession>& session, uint64_t
 }
 
 size_t RpcState::countBinders() {
+#ifndef BINDER_RPC_SINGLE_THREADED
     std::lock_guard<std::mutex> _l(mNodeMutex);
+#endif
     return mNodeForAddress.size();
 }
 
 void RpcState::dump() {
+#ifndef BINDER_RPC_SINGLE_THREADED
     std::lock_guard<std::mutex> _l(mNodeMutex);
+#endif
     dumpLocked();
 }
 
 void RpcState::clear() {
+#ifndef BINDER_RPC_SINGLE_THREADED
     std::unique_lock<std::mutex> _l(mNodeMutex);
+#endif
 
     if (mTerminated) {
         LOG_ALWAYS_FATAL_IF(!mNodeForAddress.empty(),
@@ -256,7 +270,9 @@ void RpcState::clear() {
 
     mNodeForAddress.clear();
 
+#ifndef BINDER_RPC_SINGLE_THREADED
     _l.unlock();
+#endif
     tempHoldBinder.clear(); // explicit
 }
 
@@ -477,7 +493,9 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
     uint64_t asyncNumber = 0;
 
     if (address != 0) {
+#ifndef BINDER_RPC_SINGLE_THREADED
         std::unique_lock<std::mutex> _l(mNodeMutex);
+#endif
         if (mTerminated) return DEAD_OBJECT; // avoid fatal only, otherwise races
         auto it = mNodeForAddress.find(address);
         LOG_ALWAYS_FATAL_IF(it == mNodeForAddress.end(),
@@ -623,7 +641,9 @@ status_t RpcState::sendDecStrongToTarget(const sp<RpcSession::RpcConnection>& co
     };
 
     {
+#ifndef BINDER_RPC_SINGLE_THREADED
         std::lock_guard<std::mutex> _l(mNodeMutex);
+#endif
         if (mTerminated) return DEAD_OBJECT; // avoid fatal only, otherwise races
         auto it = mNodeForAddress.find(addr);
         LOG_ALWAYS_FATAL_IF(it == mNodeForAddress.end(),
@@ -786,7 +806,9 @@ processTransactInternalTailCall:
             ALOGE("Oneway transactions disabled at build time.");
             return INVALID_OPERATION;
 #else
+#ifndef BINDER_RPC_SINGLE_THREADED
             std::unique_lock<std::mutex> _l(mNodeMutex);
+#endif
             auto it = mNodeForAddress.find(addr);
             if (it->second.binder.promote() != target) {
                 ALOGE("Binder became invalid during transaction. Bad client? %" PRIu64, addr);
@@ -905,7 +927,9 @@ processTransactInternalTailCall:
         // downside: asynchronous transactions may drown out synchronous
         // transactions.
         {
+#ifndef BINDER_RPC_SINGLE_THREADED
             std::unique_lock<std::mutex> _l(mNodeMutex);
+#endif
             auto it = mNodeForAddress.find(addr);
             // last refcount dropped after this transaction happened
             if (it == mNodeForAddress.end()) return OK;
@@ -994,7 +1018,9 @@ status_t RpcState::processDecStrong(const sp<RpcSession::RpcConnection>& connect
     RpcDecStrong* body = reinterpret_cast<RpcDecStrong*>(commandData.data());
 
     uint64_t addr = RpcWireAddress::toRaw(body->address);
+#ifndef BINDER_RPC_SINGLE_THREADED
     std::unique_lock<std::mutex> _l(mNodeMutex);
+#endif
     auto it = mNodeForAddress.find(addr);
     if (it == mNodeForAddress.end()) {
         ALOGE("Unknown binder address %" PRIu64 " for dec strong.", addr);
@@ -1006,7 +1032,9 @@ status_t RpcState::processDecStrong(const sp<RpcSession::RpcConnection>& connect
         ALOGE("While requesting dec strong, binder has been deleted at address %" PRIu64
               ". Terminating!",
               addr);
+#ifndef BINDER_RPC_SINGLE_THREADED
         _l.unlock();
+#endif
         (void)session->shutdownAndWait(false);
         return BAD_VALUE;
     }
@@ -1025,7 +1053,9 @@ status_t RpcState::processDecStrong(const sp<RpcSession::RpcConnection>& connect
 
     it->second.timesSent -= body->amount;
     sp<IBinder> tempHold = tryEraseNode(it);
+#ifndef BINDER_RPC_SINGLE_THREADED
     _l.unlock();
+#endif
     tempHold = nullptr; // destructor may make binder calls on this session
 
     return OK;
