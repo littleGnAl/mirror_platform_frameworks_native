@@ -484,12 +484,17 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
                             "Sending transact on unknown address %" PRIu64, address);
 
         if (flags & IBinder::FLAG_ONEWAY) {
+#ifdef BINDER_RPC_NO_ASYNC
+            ALOGE("Oneway transactions disabled at build time.");
+            return INVALID_OPERATION;
+#else
             asyncNumber = it->second.asyncNumber;
             if (!nodeProgressAsyncNumber(&it->second)) {
                 _l.unlock();
                 (void)session->shutdownAndWait(false);
                 return DEAD_OBJECT;
             }
+#endif
         }
     }
 
@@ -777,6 +782,10 @@ processTransactInternalTailCall:
             (void)session->shutdownAndWait(false);
             replyStatus = BAD_VALUE;
         } else if (oneway) {
+#ifdef BINDER_RPC_NO_ASYNC
+            ALOGE("Oneway transactions disabled at build time.");
+            return INVALID_OPERATION;
+#else
             RpcMutexUniqueLock _l(mNodeMutex);
             auto it = mNodeForAddress.find(addr);
             if (it->second.binder.promote() != target) {
@@ -814,6 +823,7 @@ processTransactInternalTailCall:
                 }
                 return OK;
             }
+#endif
         }
     }
 
@@ -875,6 +885,7 @@ processTransactInternalTailCall:
         }
     }
 
+#ifndef BINDER_RPC_NO_ASYNC
     if (oneway) {
         if (replyStatus != OK) {
             ALOGW("Oneway call failed with error: %d", replyStatus);
@@ -933,6 +944,7 @@ processTransactInternalTailCall:
 
         return OK;
     }
+#endif
 
     // Binder refs are flushed for oneway calls only after all calls which are
     // built up are executed. Otherwise, they fill up the binder buffer.
@@ -1026,8 +1038,10 @@ sp<IBinder> RpcState::tryEraseNode(std::map<uint64_t, BinderNode>::iterator& it)
         ref = std::move(it->second.sentRef);
 
         if (it->second.timesRecd == 0) {
+#ifndef BINDER_RPC_NO_ASYNC
             LOG_ALWAYS_FATAL_IF(!it->second.asyncTodo.empty(),
                                 "Can't delete binder w/ pending async transactions");
+#endif
             mNodeForAddress.erase(it);
         }
     }
