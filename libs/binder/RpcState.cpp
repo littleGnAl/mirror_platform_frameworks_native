@@ -43,7 +43,7 @@ void rpcMaybeWaitToFlake() {
     [[clang::no_destroy]] static std::mutex m;
     unsigned num;
     {
-        std::lock_guard<std::mutex> lock(m);
+        RpcMutexLockGuard lock(m);
         num = r();
     }
     if (num % 10 == 0) usleep(num % 1000);
@@ -78,7 +78,7 @@ status_t RpcState::onBinderLeaving(const sp<RpcSession>& session, const sp<IBind
         return INVALID_OPERATION;
     }
 
-    std::lock_guard<std::mutex> _l(mNodeMutex);
+    RpcMutexLockGuard _l(mNodeMutex);
     if (mTerminated) return DEAD_OBJECT;
 
     // TODO(b/182939933): maybe move address out of BpBinder, and keep binder->address map
@@ -154,7 +154,7 @@ status_t RpcState::onBinderEntering(const sp<RpcSession>& session, uint64_t addr
         return BAD_VALUE;
     }
 
-    std::lock_guard<std::mutex> _l(mNodeMutex);
+    RpcMutexLockGuard _l(mNodeMutex);
     if (mTerminated) return DEAD_OBJECT;
 
     if (auto it = mNodeForAddress.find(address); it != mNodeForAddress.end()) {
@@ -189,7 +189,7 @@ status_t RpcState::flushExcessBinderRefs(const sp<RpcSession>& session, uint64_t
     // extra reference counting packets now.
     if (binder->remoteBinder()) return OK;
 
-    std::unique_lock<std::mutex> _l(mNodeMutex);
+    RpcMutexUniqueLock _l(mNodeMutex);
     if (mTerminated) return DEAD_OBJECT;
 
     auto it = mNodeForAddress.find(address);
@@ -217,17 +217,17 @@ status_t RpcState::flushExcessBinderRefs(const sp<RpcSession>& session, uint64_t
 }
 
 size_t RpcState::countBinders() {
-    std::lock_guard<std::mutex> _l(mNodeMutex);
+    RpcMutexLockGuard _l(mNodeMutex);
     return mNodeForAddress.size();
 }
 
 void RpcState::dump() {
-    std::lock_guard<std::mutex> _l(mNodeMutex);
+    RpcMutexLockGuard _l(mNodeMutex);
     dumpLocked();
 }
 
 void RpcState::clear() {
-    std::unique_lock<std::mutex> _l(mNodeMutex);
+    RpcMutexUniqueLock _l(mNodeMutex);
 
     if (mTerminated) {
         LOG_ALWAYS_FATAL_IF(!mNodeForAddress.empty(),
@@ -478,7 +478,7 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
     uint64_t asyncNumber = 0;
 
     if (address != 0) {
-        std::unique_lock<std::mutex> _l(mNodeMutex);
+        RpcMutexUniqueLock _l(mNodeMutex);
         if (mTerminated) return DEAD_OBJECT; // avoid fatal only, otherwise races
         auto it = mNodeForAddress.find(address);
         LOG_ALWAYS_FATAL_IF(it == mNodeForAddress.end(),
@@ -639,7 +639,7 @@ status_t RpcState::sendDecStrongToTarget(const sp<RpcSession::RpcConnection>& co
     };
 
     {
-        std::lock_guard<std::mutex> _l(mNodeMutex);
+        RpcMutexLockGuard _l(mNodeMutex);
         if (mTerminated) return DEAD_OBJECT; // avoid fatal only, otherwise races
         auto it = mNodeForAddress.find(addr);
         LOG_ALWAYS_FATAL_IF(it == mNodeForAddress.end(),
@@ -798,7 +798,7 @@ processTransactInternalTailCall:
             (void)session->shutdownAndWait(false);
             replyStatus = BAD_VALUE;
         } else if (oneway) {
-            std::unique_lock<std::mutex> _l(mNodeMutex);
+            RpcMutexUniqueLock _l(mNodeMutex);
             auto it = mNodeForAddress.find(addr);
             if (it->second.binder.promote() != target) {
                 ALOGE("Binder became invalid during transaction. Bad client? %" PRIu64, addr);
@@ -923,7 +923,7 @@ processTransactInternalTailCall:
         // downside: asynchronous transactions may drown out synchronous
         // transactions.
         {
-            std::unique_lock<std::mutex> _l(mNodeMutex);
+            RpcMutexUniqueLock _l(mNodeMutex);
             auto it = mNodeForAddress.find(addr);
             // last refcount dropped after this transaction happened
             if (it == mNodeForAddress.end()) return OK;
@@ -1018,7 +1018,7 @@ status_t RpcState::processDecStrong(const sp<RpcSession::RpcConnection>& connect
         return status;
 
     uint64_t addr = RpcWireAddress::toRaw(body.address);
-    std::unique_lock<std::mutex> _l(mNodeMutex);
+    RpcMutexUniqueLock _l(mNodeMutex);
     auto it = mNodeForAddress.find(addr);
     if (it == mNodeForAddress.end()) {
         ALOGE("Unknown binder address %" PRIu64 " for dec strong.", addr);
