@@ -56,7 +56,11 @@ public:
                                            bool ignore_pollerr);
 
 private:
+#ifdef BINDER_RPC_SINGLE_THREADED
+    bool mTriggered = false;
+#else
     base::unique_fd mWrite;
     base::unique_fd mRead;
+#endif
 };
 } // namespace android
