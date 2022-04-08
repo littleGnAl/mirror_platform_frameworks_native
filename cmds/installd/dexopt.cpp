@@ -442,22 +442,22 @@ static unique_fd open_current_profile(uid_t uid, userid_t user, const std::strin
 static unique_fd open_reference_profile(uid_t uid, const std::string& package_name,
         const std::string& location, bool read_write, bool is_secondary_dex) {
     std::string profile = create_reference_profile_path(package_name, location, is_secondary_dex);
-    return open_profile(
-        uid,
-        profile,
-        read_write ? (O_CREAT | O_RDWR) : O_RDONLY,
-        S_IRUSR | S_IWUSR | S_IRGRP);  // so that ART can also read it when apps run.
+    return open_profile(uid, profile, read_write ? (O_CREAT | O_RDWR) : O_RDONLY,
+                        // - S_IRGRP so that ART can also read it when apps run.
+                        // - S_IROTH to allow dumping of app profiles from the shell (cf.
+                        //   profman_profile_dump sepolicy context).
+                        S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 }
 
 static UniqueFile open_reference_profile_as_unique_file(uid_t uid, const std::string& package_name,
         const std::string& location, bool read_write, bool is_secondary_dex) {
     std::string profile_path = create_reference_profile_path(package_name, location,
                                                              is_secondary_dex);
-    unique_fd ufd = open_profile(
-        uid,
-        profile_path,
-        read_write ? (O_CREAT | O_RDWR) : O_RDONLY,
-        S_IRUSR | S_IWUSR | S_IRGRP);  // so that ART can also read it when apps run.
+    unique_fd ufd = open_profile(uid, profile_path, read_write ? (O_CREAT | O_RDWR) : O_RDONLY,
+                                 // - S_IRGRP so that ART can also read it when apps run.
+                                 // - S_IROTH to allow dumping of app profiles from the shell (cf.
+                                 //   profman_profile_dump sepolicy context).
+                                 S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 
     return UniqueFile(ufd.release(), profile_path, [](const std::string& path) {
         clear_profile(path);
