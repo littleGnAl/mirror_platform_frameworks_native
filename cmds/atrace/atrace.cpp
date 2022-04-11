@@ -249,6 +249,7 @@ static const TracingCategory k_categories[] = {
         { REQ,      "events/thermal/thermal_temperature/enable" },
         { OPT,      "events/thermal/cdev_update/enable" },
     } },
+    { "fingerprint",   "Fingerprint",         ATRACE_TAG_FINGERPRINT, {}},
 };
 
 struct TracingVendorCategory {
