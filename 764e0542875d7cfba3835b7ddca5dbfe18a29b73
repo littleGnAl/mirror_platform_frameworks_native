@@ -16,6 +16,24 @@
       "message": "LGTM ... except: How broadly have you tested this?  Will this cause problems on some of the 90/120 Hz phones?",
       "revId": "764e0542875d7cfba3835b7ddca5dbfe18a29b73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39584603_da8e3f3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2022-04-11T23:14:33Z",
+      "side": 1,
+      "message": "Nope, I only tested on Chromebooks, and it\u0027s required backport for us to pass cts because we are going to support shared present in Android 11.\n\nI don\u0027t foresee this can be problematic for 90/120 devices since it\u0027s about shared present. Those devices will only be unable to pass the tests without this (once they enable shared present).",
+      "parentUuid": "6dabc2b9_d9d4cc81",
+      "revId": "764e0542875d7cfba3835b7ddca5dbfe18a29b73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
