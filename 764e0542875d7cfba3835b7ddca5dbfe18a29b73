@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dabc2b9_d9d4cc81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-04-11T23:07:15Z",
+      "side": 1,
+      "message": "LGTM ... except: How broadly have you tested this?  Will this cause problems on some of the 90/120 Hz phones?",
+      "revId": "764e0542875d7cfba3835b7ddca5dbfe18a29b73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
