@@ -38,7 +38,11 @@
 #include <sys/ioctl.h>
 #include <sys/resource.h>
 #include <unistd.h>
-
+#include <thread>
+#include <sys/prctl.h>
+#include <cutils/properties.h>
+#include <linux/ioctl.h>
+#include <binder/IServiceManager.h>
 #include "Static.h"
 #include "binder_module.h"
 
@@ -523,15 +527,179 @@ bool IPCThreadState::flushIfNeeded()
     return true;
 }
 
+static const char *skipProcNames[] = {
+    "/system/bin/surfaceflinger",
+    "/system/bin/netd",
+    "/system/bin/servicemanager",
+    "/system/bin/hwservicemanager"
+ };
+
+static bool gCurProcSystemServer = false;
+static bool gCheckProcName = false;
+
+ struct binder_trans_info {
+     bool kill;
+     int pid;
+     int ppid;
+ };
+
+ #define BINDER_GET_SERVER_INFO _IOWR('b', 20, struct binder_trans_info)
+
+ static bool getProcNameByPid(char *pName, int len, int pid) {
+     char procName[256] = {0};
+     int ret = 0;
+     if (!pName) {
+         return false;
+     }
+
+     memset(pName, 0, len);
+     sprintf(procName, "/proc/%d/cmdline", pid);
+     int fd = open(procName, O_RDONLY | O_CLOEXEC);
+     if (fd > 0) {
+         ret = read(fd, pName, len);
+         close(fd);
+		  if (ret > 0) {
+		      return true;
+		  }
+         return false;
+     } else {
+         ALOGW("fail to open file %s error:%d", procName, errno);
+         return false;
+     }
+ }
+
+ static bool enableMonitorSystemServer() {
+     char value[PROPERTY_VALUE_MAX] = {0};
+     bool enable = false;
+
+     property_get("ro.monitor.binder.enable", value, "1");
+     enable = strtol(value,NULL,10) ? true : false;
+     if (enable) {
+         char procName[256] = {0};
+         bool ret = getProcNameByPid(procName, sizeof(procName), getpid());
+         //ALOGD("procName====%s", procName);
+         if (ret && 0 == strcmp(procName, "system_server")) {
+             return true;
+         }
+    }
+    return false;
+ }
+
+static int dumpProcStackTrace(int serverPid, int fd, int ppid) {
+    const String16 name("activity");
+    const String16 token("android.app.IActivityManager");
+    bool javaPid = false;
+    char procName[256] = {0};
+    bool ret = false;
+    bool killJavaPid = false;
+
+    if (1 == ppid) { // native pid
+
+    } else if (ppid > 2) { // idle, kthreadd
+        ret = getProcNameByPid(procName, sizeof(procName), ppid);
+        if (ret && 0 == strncmp(procName, "zygote", 6)) {
+            javaPid = true;
+        }
+    }
+
+    sp<IBinder> activity(defaultServiceManager()->getService(name));
+    if (activity != nullptr) {
+        Parcel data, reply;
+        data.writeInterfaceToken(token);
+        data.writeInt32(serverPid);
+        data.writeBool(javaPid);
+        status_t err = activity->transact(IBinder::FIRST_CALL_TRANSACTION + 13145, data, &reply);
+
+        if (err != NO_ERROR) {
+            ALOGW("activity->transact error:%d", err);
+            return err;
+        }
+
+        if (javaPid && reply.readInt32() > 0) {
+            killJavaPid = true;
+        }
+    }
+
+    if (javaPid && !killJavaPid) {
+        ALOGD("skip proc %d", serverPid);
+        return -1;
+    }
+    // whether we should skip some process with a white list
+    ret = getProcNameByPid(procName, sizeof(procName), serverPid);
+    if (ret) {
+        for (size_t i = 0; i < sizeof(skipProcNames) / sizeof(skipProcNames[0]); i++) {
+            if (0 == strcmp(skipProcNames[i], procName)) {
+                ALOGW("skip proc: %s", procName);
+                return NO_ERROR;
+            }
+        }
+    }
+
+    #if defined(__ANDROID__)
+       struct binder_trans_info info;
+       info.pid = serverPid;
+       info.kill = true;
+       int ret2 = ioctl(fd, BINDER_GET_SERVER_INFO, &info);
+       ALOGW("dumpProcStackTrace:kill target pid %d,procName=%s", serverPid, procName);
+       if (ret2 < 0) {
+           ALOGW("dumpProcStackTrace:ioctl ret=%d,error=%d", ret2, errno);
+       }
+    #else
+       fd = -1;
+    #endif
+    return NO_ERROR;
+}
+
 void IPCThreadState::blockUntilThreadAvailable()
 {
     pthread_mutex_lock(&mProcess->mThreadCountLock);
     mProcess->mWaitingForThreads++;
+        if (!gCheckProcName) {
+        gCurProcSystemServer = enableMonitorSystemServer();
+        gCheckProcName = true;
+    }
+    //ALOGD("gCheckProcName=%d, gCurProcSystemServer=%d", gCheckProcName, gCurProcSystemServer);
+    const static int64_t MAX_WAIT_TIMEOUT_MS = 40000;
+    int64_t startTime = uptimeMillis();
+    int64_t timeOut = 0;
+    struct timespec ts;
+    int ret = -1;
+    bool enable = true;
     while (mProcess->mExecutingThreadsCount >= mProcess->mMaxThreads) {
         ALOGW("Waiting for thread to be free. mExecutingThreadsCount=%lu mMaxThreads=%lu\n",
                 static_cast<unsigned long>(mProcess->mExecutingThreadsCount),
                 static_cast<unsigned long>(mProcess->mMaxThreads));
-        pthread_cond_wait(&mProcess->mThreadCountDecrement, &mProcess->mThreadCountLock);
+                 if (gCurProcSystemServer) {
+             if (timeOut != -1) {
+                 timeOut =  MAX_WAIT_TIMEOUT_MS - (uptimeMillis() - startTime);
+             }
+             //ALOGD("timeout is %lld ms", timeOut);
+             if (timeOut > 0) {
+                 clock_gettime(CLOCK_REALTIME, &ts);
+                 ts.tv_sec += (timeOut / 1000);
+                 ret = pthread_cond_timedwait(&mProcess->mThreadCountDecrement, &mProcess->mThreadCountLock, &ts);
+             }
+
+             if (ret == ETIMEDOUT || timeOut < 0) {
+                 if (enable && mProcess->mDriverFD > 0) {
+                     struct binder_trans_info info;
+                     memset(&info, 0, sizeof(info));
+                     info.pid = getpid();
+                     info.kill = false;
+                #if defined(__ANDROID__)
+                     ret = ioctl(mProcess->mDriverFD, BINDER_GET_SERVER_INFO, &info);
+                #endif
+                     if (ret >= 0 && info.pid > 0) {
+                         dumpProcStackTrace(info.pid, mProcess->mDriverFD, info.ppid);
+                         enable = false;
+                         timeOut = -1; //reset time out
+                    }
+                }
+                pthread_cond_wait(&mProcess->mThreadCountDecrement, &mProcess->mThreadCountLock);
+            }
+         } else {
+            pthread_cond_wait(&mProcess->mThreadCountDecrement, &mProcess->mThreadCountLock);
+        }
     }
     mProcess->mWaitingForThreads--;
     pthread_mutex_unlock(&mProcess->mThreadCountLock);
