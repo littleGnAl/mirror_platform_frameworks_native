@@ -100,8 +100,7 @@ void* BpBinder::ObjectManager::detach(const void* objectID) {
 
 void BpBinder::ObjectManager::kill()
 {
-    const size_t N = mObjects.size();
-    ALOGV("Killing %zu objects in manager %p", N, this);
+    ALOGV("Killing %zu objects in manager %p", mObjects.size(), this);
     for (auto i : mObjects) {
         const entry_t& e = i.second;
         if (e.func != nullptr) {
