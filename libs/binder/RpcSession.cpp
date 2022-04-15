@@ -139,6 +139,7 @@ std::optional<uint32_t> RpcSession::getProtocolVersion() {
     return mProtocolVersion;
 }
 
+#ifndef BINDER_RPC_NO_SOCKET_API
 status_t RpcSession::setupUnixDomainClient(const char* path) {
     return setupSocketClient(UnixSocketAddress(path));
 }
@@ -157,6 +158,7 @@ status_t RpcSession::setupInetClient(const char* addr, unsigned int port) {
     ALOGE("None of the socket address resolved for %s:%u can be added as inet client.", addr, port);
     return NAME_NOT_FOUND;
 }
+#endif
 
 status_t RpcSession::setupPreconnectedClient(unique_fd fd, std::function<unique_fd()>&& request) {
     // Why passing raw fd? When fd is passed as reference, Clang analyzer sees that the variable
@@ -544,6 +546,7 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
     return OK;
 }
 
+#ifndef BINDER_RPC_NO_SOCKET_API
 status_t RpcSession::setupSocketClient(const RpcSocketAddress& addr) {
     return setupClient([&](const std::vector<uint8_t>& sessionId, bool incoming) {
         return setupOneSocketConnection(addr, sessionId, incoming);
@@ -609,6 +612,7 @@ status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
     ALOGE("Ran out of retries to connect to %s", addr.toString().c_str());
     return UNKNOWN_ERROR;
 }
+#endif
 
 status_t RpcSession::initAndAddConnection(unique_fd fd, const std::vector<uint8_t>& sessionId,
                                           bool incoming) {
