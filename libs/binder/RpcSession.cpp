@@ -79,6 +79,18 @@ sp<RpcSession> RpcSession::make(std::unique_ptr<RpcTransportCtxFactory> rpcTrans
     return sp<RpcSession>::make(std::move(ctx));
 }
 
+sp<RpcSocketSession> RpcSocketSession::make() {
+    // Default is without TLS.
+    return make(RpcTransportCtxFactoryRaw::make());
+}
+
+sp<RpcSocketSession> RpcSocketSession::make(
+        std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
+    auto ctx = rpcTransportCtxFactory->newClientCtx();
+    if (ctx == nullptr) return nullptr;
+    return sp<RpcSocketSession>::make(std::move(ctx));
+}
+
 void RpcSession::setMaxIncomingThreads(size_t threads) {
     std::lock_guard<std::mutex> _l(mMutex);
     LOG_ALWAYS_FATAL_IF(!mConnections.mOutgoing.empty() || !mConnections.mIncoming.empty(),
@@ -132,15 +144,15 @@ std::optional<uint32_t> RpcSession::getProtocolVersion() {
     return mProtocolVersion;
 }
 
-status_t RpcSession::setupUnixDomainClient(const char* path) {
+status_t RpcSocketSession::setupUnixDomainClient(const char* path) {
     return setupSocketClient(UnixSocketAddress(path));
 }
 
-status_t RpcSession::setupVsockClient(unsigned int cid, unsigned int port) {
+status_t RpcSocketSession::setupVsockClient(unsigned int cid, unsigned int port) {
     return setupSocketClient(VsockSocketAddress(cid, port));
 }
 
-status_t RpcSession::setupInetClient(const char* addr, unsigned int port) {
+status_t RpcSocketSession::setupInetClient(const char* addr, unsigned int port) {
     auto aiStart = InetSocketAddress::getAddrInfo(addr, port);
     if (aiStart == nullptr) return UNKNOWN_ERROR;
     for (auto ai = aiStart.get(); ai != nullptr; ai = ai->ai_next) {
@@ -528,15 +540,15 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
     return OK;
 }
 
-status_t RpcSession::setupSocketClient(const RpcSocketAddress& addr) {
+status_t RpcSocketSession::setupSocketClient(const RpcSocketAddress& addr) {
     return setupClient([&](const std::vector<uint8_t>& sessionId, bool incoming) {
         return setupOneSocketConnection(addr, sessionId, incoming);
     });
 }
 
-status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
-                                              const std::vector<uint8_t>& sessionId,
-                                              bool incoming) {
+status_t RpcSocketSession::setupOneSocketConnection(const RpcSocketAddress& addr,
+                                                    const std::vector<uint8_t>& sessionId,
+                                                    bool incoming) {
     for (size_t tries = 0; tries < 5; tries++) {
         if (tries > 0) usleep(10000);
 

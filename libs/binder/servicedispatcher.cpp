@@ -34,7 +34,7 @@
 using android::BBinder;
 using android::defaultServiceManager;
 using android::OK;
-using android::RpcServer;
+using android::RpcSocketServer;
 using android::sp;
 using android::status_t;
 using android::statusToString;
@@ -85,7 +85,7 @@ int Dispatch(const char* name, const ServiceRetriever& serviceRetriever) {
         LOG(ERROR) << "No service \"" << name << "\"";
         return EX_SOFTWARE;
     }
-    auto rpcServer = RpcServer::make();
+    auto rpcServer = RpcSocketServer::make();
     if (nullptr == rpcServer) {
         LOG(ERROR) << "Cannot create RpcServer";
         return EX_SOFTWARE;
@@ -205,7 +205,7 @@ int wrapServiceManager(const ServiceRetriever& serviceRetriever) {
     interface = sp<ServiceManagerProxyToNative>::make(interface);
     service = ServiceManagerProxyToNative::asBinder(interface);
 
-    auto rpcServer = RpcServer::make();
+    auto rpcServer = RpcSocketServer::make();
     rpcServer->setRootObject(service);
     unsigned int port;
     if (status_t status = rpcServer->setupInetServer(kLocalInetAddress, 0, &port); status != OK) {

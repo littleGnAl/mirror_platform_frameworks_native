@@ -50,8 +50,8 @@ using android::RpcAuthPreSigned;
 using android::RpcCertificateFormat;
 using android::RpcCertificateVerifier;
 using android::RpcCertificateVerifierNoOp;
-using android::RpcServer;
-using android::RpcSession;
+using android::RpcSocketServer;
+using android::RpcSocketSession;
 using android::RpcTransportCtxFactory;
 using android::RpcTransportCtxFactoryRaw;
 using android::RpcTransportCtxFactoryTls;
@@ -101,10 +101,10 @@ std::unique_ptr<RpcTransportCtxFactory> makeFactoryTls() {
     return RpcTransportCtxFactoryTls::make(verifier, std::move(auth));
 }
 
-static sp<RpcSession> gSession = RpcSession::make();
+static sp<RpcSocketSession> gSession = RpcSocketSession::make();
 // Certificate validation happens during handshake and does not affect the result of benchmarks.
 // Skip certificate validation to simplify the setup process.
-static sp<RpcSession> gSessionTls = RpcSession::make(makeFactoryTls());
+static sp<RpcSocketSession> gSessionTls = RpcSocketSession::make(makeFactoryTls());
 #ifdef __BIONIC__
 static const String16 kKernelBinderInstance = String16(u"binderRpcBenchmark-control");
 static sp<IBinder> gKernelBinder;
@@ -202,7 +202,7 @@ void BM_repeatBinder(benchmark::State& state) {
 }
 BENCHMARK(BM_repeatBinder)->ArgsProduct({kTransportList});
 
-void forkRpcServer(const char* addr, const sp<RpcServer>& server) {
+void forkRpcServer(const char* addr, const sp<RpcSocketServer>& server) {
     if (0 == fork()) {
         prctl(PR_SET_PDEATHSIG, SIGHUP); // racey, okay
         server->setRootObject(sp<MyBinderRpcBenchmark>::make());
@@ -212,7 +212,7 @@ void forkRpcServer(const char* addr, const sp<RpcServer>& server) {
     }
 }
 
-void setupClient(const sp<RpcSession>& session, const char* addr) {
+void setupClient(const sp<RpcSocketSession>& session, const char* addr) {
     status_t status;
     for (size_t tries = 0; tries < 5; tries++) {
         usleep(10000);
@@ -252,12 +252,12 @@ int main(int argc, char** argv) {
 
     std::string addr = tmp + "/binderRpcBenchmark";
     (void)unlink(addr.c_str());
-    forkRpcServer(addr.c_str(), RpcServer::make(RpcTransportCtxFactoryRaw::make()));
+    forkRpcServer(addr.c_str(), RpcSocketServer::make(RpcTransportCtxFactoryRaw::make()));
     setupClient(gSession, addr.c_str());
 
     std::string tlsAddr = tmp + "/binderRpcTlsBenchmark";
     (void)unlink(tlsAddr.c_str());
-    forkRpcServer(tlsAddr.c_str(), RpcServer::make(makeFactoryTls()));
+    forkRpcServer(tlsAddr.c_str(), RpcSocketServer::make(makeFactoryTls()));
     setupClient(gSessionTls, tlsAddr.c_str());
 
     ::benchmark::RunSpecifiedBenchmarks();

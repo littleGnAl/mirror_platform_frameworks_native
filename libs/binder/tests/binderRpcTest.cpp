@@ -109,7 +109,7 @@ public:
 TEST_P(BinderRpcSimple, SetExternalServerTest) {
     base::unique_fd sink(TEMP_FAILURE_RETRY(open("/dev/null", O_RDWR)));
     int sinkFd = sink.get();
-    auto server = RpcServer::make(newFactory(GetParam()));
+    auto server = RpcSocketServer::make(newFactory(GetParam()));
     ASSERT_FALSE(server->hasServer());
     ASSERT_EQ(OK, server->setupExternalServer(std::move(sink)));
     ASSERT_TRUE(server->hasServer());
@@ -119,7 +119,7 @@ TEST_P(BinderRpcSimple, SetExternalServerTest) {
 }
 
 TEST(BinderRpc, CannotUseNextWireVersion) {
-    auto session = RpcSession::make();
+    auto session = RpcSocketSession::make();
     EXPECT_FALSE(session->setProtocolVersion(RPC_WIRE_PROTOCOL_VERSION_NEXT));
     EXPECT_FALSE(session->setProtocolVersion(RPC_WIRE_PROTOCOL_VERSION_NEXT + 1));
     EXPECT_FALSE(session->setProtocolVersion(RPC_WIRE_PROTOCOL_VERSION_NEXT + 2));
@@ -127,7 +127,7 @@ TEST(BinderRpc, CannotUseNextWireVersion) {
 }
 
 TEST(BinderRpc, CanUseExperimentalWireVersion) {
-    auto session = RpcSession::make();
+    auto session = RpcSocketSession::make();
     EXPECT_TRUE(session->setProtocolVersion(RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL));
 }
 
@@ -375,7 +375,7 @@ struct ProcessSession {
     Process host;
 
     struct SessionInfo {
-        sp<RpcSession> session;
+        sp<RpcSocketSession> session;
         sp<IBinder> root;
     };
 
@@ -390,7 +390,7 @@ struct ProcessSession {
         }
 
         for (auto& info : sessions) {
-            sp<RpcSession>& session = info.session;
+            sp<RpcSocketSession>& session = info.session;
 
             EXPECT_NE(nullptr, session);
             EXPECT_NE(nullptr, session->state());
@@ -528,7 +528,8 @@ public:
     // This creates a new process serving an interface on a certain number of
     // threads.
     ProcessSession createRpcTestSocketServerProcess(
-            const Options& options, const std::function<void(const sp<RpcServer>&)>& configure) {
+            const Options& options,
+            const std::function<void(const sp<RpcSocketServer>&)>& configure) {
         CHECK_GE(options.numSessions, 1) << "Must have at least one session to a server";
 
         SocketType socketType = std::get<0>(GetParam());
@@ -541,7 +542,8 @@ public:
                 .host = Process([&](android::base::borrowed_fd writeEnd,
                                     android::base::borrowed_fd readEnd) {
                     auto certVerifier = std::make_shared<RpcCertificateVerifierSimple>();
-                    sp<RpcServer> server = RpcServer::make(newFactory(rpcSecurity, certVerifier));
+                    sp<RpcSocketServer> server =
+                            RpcSocketServer::make(newFactory(rpcSecurity, certVerifier));
 
                     server->setMaxThreads(options.numThreads);
 
@@ -589,10 +591,10 @@ public:
                 }),
         };
 
-        std::vector<sp<RpcSession>> sessions;
+        std::vector<sp<RpcSocketSession>> sessions;
         auto certVerifier = std::make_shared<RpcCertificateVerifierSimple>();
         for (size_t i = 0; i < options.numSessions; i++) {
-            sessions.emplace_back(RpcSession::make(newFactory(rpcSecurity, certVerifier)));
+            sessions.emplace_back(RpcSocketSession::make(newFactory(rpcSecurity, certVerifier)));
         }
 
         auto serverInfo = readFromFd<BinderRpcTestServerInfo>(ret.host.readEnd());
@@ -649,7 +651,7 @@ public:
         BinderRpcTestProcessSession ret{
                 .proc = createRpcTestSocketServerProcess(
                         options,
-                        [&](const sp<RpcServer>& server) {
+                        [&](const sp<RpcSocketServer>& server) {
                             server->setPerSessionRootObject([&](const void* addrPtr, size_t len) {
                                 const sockaddr* addr = reinterpret_cast<const sockaddr*>(addrPtr);
                                 sp<MyBinderRpcTest> service = sp<MyBinderRpcTest>::make();
@@ -1382,7 +1384,7 @@ TEST_P(BinderRpc, AidlDelegatorTest) {
 static bool testSupportVsockLoopback() {
     // We don't need to enable TLS to know if vsock is supported.
     unsigned int vsockPort = allocateVsockPort();
-    sp<RpcServer> server = RpcServer::make(RpcTransportCtxFactoryRaw::make());
+    sp<RpcSocketServer> server = RpcSocketServer::make(RpcTransportCtxFactoryRaw::make());
     if (status_t status = server->setupVsockServer(vsockPort); status != OK) {
         if (status == -EAFNOSUPPORT) {
             return false;
@@ -1391,7 +1393,7 @@ static bool testSupportVsockLoopback() {
     }
     server->start();
 
-    sp<RpcSession> session = RpcSession::make(RpcTransportCtxFactoryRaw::make());
+    sp<RpcSocketSession> session = RpcSocketSession::make(RpcTransportCtxFactoryRaw::make());
     status_t status = session->setupVsockClient(VMADDR_CID_LOCAL, vsockPort);
     while (!server->shutdown()) usleep(10000);
     ALOGE("Detected vsock loopback supported: %s", statusToString(status).c_str());
@@ -1427,7 +1429,7 @@ TEST_P(BinderRpcServerRootObject, WeakRootObject) {
     };
 
     auto [isStrong1, isStrong2, rpcSecurity] = GetParam();
-    auto server = RpcServer::make(newFactory(rpcSecurity));
+    auto server = RpcSocketServer::make(newFactory(rpcSecurity));
     auto binder1 = sp<BBinder>::make();
     IBinder* binderRaw1 = binder1.get();
     setRootObject(isStrong1)(server.get(), binder1);
@@ -1470,7 +1472,7 @@ private:
 
 TEST_P(BinderRpcSimple, Shutdown) {
     auto addr = allocateSocketAddress();
-    auto server = RpcServer::make(newFactory(GetParam()));
+    auto server = RpcSocketServer::make(newFactory(GetParam()));
     ASSERT_EQ(OK, server->setupUnixDomainServer(addr.c_str()));
     auto joinEnds = std::make_shared<OneOffSignal>();
 
@@ -1509,7 +1511,7 @@ TEST(BinderRpc, Java) {
     ASSERT_GE(descriptor.size(), 0);
     ASSERT_EQ(OK, binder->pingBinder());
 
-    auto rpcServer = RpcServer::make();
+    auto rpcServer = RpcSocketServer::make();
     unsigned int port;
     ASSERT_EQ(OK, rpcServer->setupInetServer(kLocalInetAddress, 0, &port));
     auto socket = rpcServer->releaseServer();
@@ -1528,7 +1530,7 @@ TEST(BinderRpc, Java) {
 
     ASSERT_EQ(OK, setRpcClientDebugStatus);
 
-    auto rpcSession = RpcSession::make();
+    auto rpcSession = RpcSocketSession::make();
     ASSERT_EQ(OK, rpcSession->setupInetClient("127.0.0.1", port));
     auto rpcBinder = rpcSession->getRootObject();
     ASSERT_NE(nullptr, rpcBinder);
@@ -1558,7 +1560,7 @@ public:
                 const Param& param,
                 std::unique_ptr<RpcAuth> auth = std::make_unique<RpcAuthSelfSigned>()) {
             auto [socketType, rpcSecurity, certificateFormat] = param;
-            auto rpcServer = RpcServer::make(newFactory(rpcSecurity));
+            auto rpcServer = RpcSocketServer::make(newFactory(rpcSecurity));
             switch (socketType) {
                 case SocketType::PRECONNECTED: {
                     return AssertionFailure() << "Not supported by this test";

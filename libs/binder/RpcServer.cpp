@@ -49,28 +49,29 @@ RpcServer::~RpcServer() {
     (void)shutdown();
 }
 
-sp<RpcServer> RpcServer::make(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
+sp<RpcSocketServer> RpcSocketServer::make(
+        std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
     // Default is without TLS.
     if (rpcTransportCtxFactory == nullptr)
         rpcTransportCtxFactory = RpcTransportCtxFactoryRaw::make();
     auto ctx = rpcTransportCtxFactory->newServerCtx();
     if (ctx == nullptr) return nullptr;
-    return sp<RpcServer>::make(std::move(ctx));
+    return sp<RpcSocketServer>::make(std::move(ctx));
 }
 
-status_t RpcServer::setupUnixDomainServer(const char* path) {
+status_t RpcSocketServer::setupUnixDomainServer(const char* path) {
     return setupSocketServer(UnixSocketAddress(path));
 }
 
-status_t RpcServer::setupVsockServer(unsigned int port) {
+status_t RpcSocketServer::setupVsockServer(unsigned int port) {
     // realizing value w/ this type at compile time to avoid ubsan abort
     constexpr unsigned int kAnyCid = VMADDR_CID_ANY;
 
     return setupSocketServer(VsockSocketAddress(kAnyCid, port));
 }
 
-status_t RpcServer::setupInetServer(const char* address, unsigned int port,
-                                    unsigned int* assignedPort) {
+status_t RpcSocketServer::setupInetServer(const char* address, unsigned int port,
+                                          unsigned int* assignedPort) {
     if (assignedPort != nullptr) *assignedPort = 0;
     auto aiStart = InetSocketAddress::getAddrInfo(address, port);
     if (aiStart == nullptr) return UNKNOWN_ERROR;
@@ -154,18 +155,18 @@ std::vector<uint8_t> RpcServer::getCertificate(RpcCertificateFormat format) {
     return mCtx->getCertificate(format);
 }
 
-static void joinRpcServer(sp<RpcServer>&& thiz) {
+static void joinRpcServer(sp<RpcSocketServer>&& thiz) {
     thiz->join();
 }
 
-void RpcServer::start() {
+void RpcSocketServer::start() {
     std::lock_guard<std::mutex> _l(mLock);
     LOG_ALWAYS_FATAL_IF(mJoinThread.get(), "Already started!");
-    mJoinThread = std::make_unique<std::thread>(&joinRpcServer, sp<RpcServer>::fromExisting(this));
+    mJoinThread =
+            std::make_unique<std::thread>(&joinRpcServer, sp<RpcSocketServer>::fromExisting(this));
 }
 
-void RpcServer::join() {
-
+void RpcSocketServer::join() {
     {
         std::lock_guard<std::mutex> _l(mLock);
         LOG_ALWAYS_FATAL_IF(!mServer.ok(), "RpcServer must be setup to join.");
@@ -389,7 +390,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
                 }
             } while (server->mSessions.end() != server->mSessions.find(sessionId));
 
-            session = RpcSession::make();
+            session = RpcSocketSession::make();
             session->setMaxIncomingThreads(server->mMaxThreads);
             if (!session->setProtocolVersion(protocolVersion)) return;
 
@@ -440,7 +441,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
     RpcSession::join(std::move(session), std::move(setupResult));
 }
 
-status_t RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
+status_t RpcSocketServer::setupSocketServer(const RpcSocketAddress& addr) {
     LOG_RPC_DETAIL("Setting up socket server %s", addr.toString().c_str());
     LOG_ALWAYS_FATAL_IF(hasServer(), "Each RpcServer can only have one server.");
 

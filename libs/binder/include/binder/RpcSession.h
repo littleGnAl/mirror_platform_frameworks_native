@@ -44,11 +44,11 @@ constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION = RPC_WIRE_PROTOCOL_VERSION_EXPERIM
  * and a server. Multiple connections are needed for multiple parallel "binder"
  * calls which may also have nested calls.
  */
-class RpcSession final : public virtual RefBase {
+class RpcSession : public virtual RefBase {
 public:
     static constexpr size_t kDefaultMaxOutgoingThreads = 10;
 
-    // Create an RpcSession with default configuration (raw sockets).
+    // Create an RpcSession with default configuration.
     static sp<RpcSession> make();
 
     // Create an RpcSession with the given configuration. |serverRpcCertificateFormat| and
@@ -87,22 +87,6 @@ public:
      */
     [[nodiscard]] bool setProtocolVersion(uint32_t version);
     std::optional<uint32_t> getProtocolVersion();
-
-    /**
-     * This should be called once per thread, matching 'join' in the remote
-     * process.
-     */
-    [[nodiscard]] status_t setupUnixDomainClient(const char* path);
-
-    /**
-     * Connects to an RPC server at the CVD & port.
-     */
-    [[nodiscard]] status_t setupVsockClient(unsigned int cvd, unsigned int port);
-
-    /**
-     * Connects to an RPC server at the given address and port.
-     */
-    [[nodiscard]] status_t setupInetClient(const char* addr, unsigned int port);
 
     /**
      * Starts talking to an RPC server which has already been connected to. This
@@ -180,7 +164,7 @@ public:
     // internal only
     const std::unique_ptr<RpcState>& state() { return mRpcBinderState; }
 
-private:
+protected:
     friend sp<RpcSession>;
     friend RpcServer;
     friend RpcState;
@@ -240,10 +224,6 @@ private:
     [[nodiscard]] status_t setupClient(
             const std::function<status_t(const std::vector<uint8_t>& sessionId, bool incoming)>&
                     connectAndInit);
-    [[nodiscard]] status_t setupSocketClient(const RpcSocketAddress& address);
-    [[nodiscard]] status_t setupOneSocketConnection(const RpcSocketAddress& address,
-                                                    const std::vector<uint8_t>& sessionId,
-                                                    bool incoming);
     [[nodiscard]] status_t initAndAddConnection(base::unique_fd fd,
                                                 const std::vector<uint8_t>& sessionId,
                                                 bool incoming);
@@ -337,6 +317,43 @@ private:
         std::vector<sp<RpcConnection>> mIncoming;
         std::map<std::thread::id, std::thread> mThreads;
     } mConnections;
+};
+
+class RpcSocketSession final : public RpcSession {
+public:
+    // Create an RpcSocketSession with default configuration (raw sockets).
+    static sp<RpcSocketSession> make();
+
+    // Create an RpcSocketSession with the given configuration. |serverRpcCertificateFormat| and
+    // |serverCertificate| must have values or be nullopt simultaneously. If they have values, set
+    // server certificate.
+    static sp<RpcSocketSession> make(
+            std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory);
+
+    /**
+     * This should be called once per thread, matching 'join' in the remote
+     * process.
+     */
+    [[nodiscard]] status_t setupUnixDomainClient(const char* path);
+
+    /**
+     * Connects to an RPC server at the CVD & port.
+     */
+    [[nodiscard]] status_t setupVsockClient(unsigned int cvd, unsigned int port);
+
+    /**
+     * Connects to an RPC server at the given address and port.
+     */
+    [[nodiscard]] status_t setupInetClient(const char* addr, unsigned int port);
+
+private:
+    friend sp<RpcSocketSession>;
+    explicit RpcSocketSession(std::unique_ptr<RpcTransportCtx> ctx) : RpcSession(std::move(ctx)) {}
+
+    [[nodiscard]] status_t setupSocketClient(const RpcSocketAddress& address);
+    [[nodiscard]] status_t setupOneSocketConnection(const RpcSocketAddress& address,
+                                                    const std::vector<uint8_t>& sessionId,
+                                                    bool incoming);
 };
 
 } // namespace android

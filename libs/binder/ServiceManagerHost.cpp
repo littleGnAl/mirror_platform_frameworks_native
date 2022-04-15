@@ -158,7 +158,7 @@ sp<IBinder> getDeviceService(std::vector<std::string>&& serviceDispatcherArgs,
     }
     LOG_ALWAYS_FATAL_IF(!forwardResult->hostPort().has_value());
 
-    auto rpcSession = RpcSession::make();
+    auto rpcSession = RpcSocketSession::make();
     if (options.maxOutgoingThreads.has_value()) {
         rpcSession->setMaxOutgoingThreads(*options.maxOutgoingThreads);
     }

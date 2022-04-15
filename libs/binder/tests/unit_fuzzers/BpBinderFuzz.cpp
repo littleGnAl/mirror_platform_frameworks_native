@@ -38,7 +38,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     std::string addr = std::string(getenv("TMPDIR") ?: "/tmp") + "/binderRpcBenchmark";
     (void)unlink(addr.c_str());
 
-    sp<RpcServer> server = RpcServer::make();
+    sp<RpcSocketServer> server = RpcSocketServer::make();
 
     // use RPC binder because fuzzer can't get coverage from another process.
     auto thread = std::thread([&]() {
@@ -48,7 +48,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
         server->join();
     });
 
-    sp<RpcSession> session = RpcSession::make();
+    sp<RpcSocketSession> session = RpcSocketSession::make();
     status_t status;
     for (size_t tries = 0; tries < 5; tries++) {
         usleep(10000);

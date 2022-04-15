@@ -42,7 +42,7 @@ static void fillRandomParcelData(Parcel* p, FuzzedDataProvider&& provider) {
 void fillRandomParcel(Parcel* p, FuzzedDataProvider&& provider,
                       const RandomParcelOptions& options) {
     if (provider.ConsumeBool()) {
-        auto session = RpcSession::make(RpcTransportCtxFactoryRaw::make());
+        auto session = RpcSocketSession::make(RpcTransportCtxFactoryRaw::make());
         CHECK_EQ(OK, session->addNullDebuggingClient());
         p->markForRpc(session);
 

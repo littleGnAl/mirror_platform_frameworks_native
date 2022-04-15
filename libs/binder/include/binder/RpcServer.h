@@ -35,50 +35,15 @@ class RpcSocketAddress;
  * number of clients over sockets.
  *
  * Usage:
- *     auto server = RpcServer::make();
+ *     auto server = Rpc*Server::make();
  *     // only supports one now
  *     if (!server->setup*Server(...)) {
  *         :(
  *     }
  *     server->join();
  */
-class RpcServer final : public virtual RefBase, private RpcSession::EventListener {
+class RpcServer : public virtual RefBase, private RpcSession::EventListener {
 public:
-    static sp<RpcServer> make(
-            std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
-
-    /**
-     * This represents a session for responses, e.g.:
-     *
-     *     process A serves binder a
-     *     process B opens a session to process A
-     *     process B makes binder b and sends it to A
-     *     A uses this 'back session' to send things back to B
-     */
-    [[nodiscard]] status_t setupUnixDomainServer(const char* path);
-
-    /**
-     * Creates an RPC server at the current port.
-     */
-    [[nodiscard]] status_t setupVsockServer(unsigned int port);
-
-    /**
-     * Creates an RPC server at the current port using IPv4.
-     *
-     * TODO(b/182914638): IPv6 support
-     *
-     * Set |port| to 0 to pick an ephemeral port; see discussion of
-     * /proc/sys/net/ipv4/ip_local_port_range in ip(7). In this case, |assignedPort|
-     * will be set to the picked port number, if it is not null.
-     *
-     * Set the IPv4 address for the socket to be listening on.
-     * "127.0.0.1" allows for local connections from the same device.
-     * "0.0.0.0" allows for connections on any IP address that the device may
-     * have
-     */
-    [[nodiscard]] status_t setupInetServer(const char* address, unsigned int port,
-                                           unsigned int* assignedPort = nullptr);
-
     /**
      * If setup*Server has been successful, return true. Otherwise return false.
      */
@@ -136,6 +101,87 @@ public:
     std::vector<uint8_t> getCertificate(RpcCertificateFormat);
 
     /**
+     * Shut down any existing join(). Return true if successfully shut down, false otherwise
+     * (e.g. no join() is running). Will wait for the server to be fully
+     * shutdown.
+     *
+     * Warning: this will hang if it is called from its own thread.
+     */
+    [[nodiscard]] bool shutdown();
+
+    /**
+     * For debugging!
+     */
+    std::vector<sp<RpcSession>> listSessions();
+    size_t numUninitializedSessions();
+
+    ~RpcServer();
+
+protected:
+    friend sp<RpcServer>;
+    explicit RpcServer(std::unique_ptr<RpcTransportCtx> ctx);
+
+    void onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
+    void onSessionIncomingThreadEnded() override;
+
+    static void establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd,
+                                    std::vector<uint8_t>&& addr);
+
+    const std::unique_ptr<RpcTransportCtx> mCtx;
+    size_t mMaxThreads = 1;
+    std::optional<uint32_t> mProtocolVersion;
+    base::unique_fd mServer; // socket we are accepting sessions on
+
+    std::mutex mLock; // for below
+    std::unique_ptr<std::thread> mJoinThread;
+    bool mJoinThreadRunning = false;
+    std::map<std::thread::id, std::thread> mConnectingThreads;
+    sp<IBinder> mRootObject;
+    wp<IBinder> mRootObjectWeak;
+    std::function<sp<IBinder>(const void*, size_t)> mRootObjectFactory;
+    std::map<std::vector<uint8_t>, sp<RpcSession>> mSessions;
+    std::unique_ptr<FdTrigger> mShutdownTrigger;
+    std::condition_variable mShutdownCv;
+};
+
+class RpcSocketServer final : public RpcServer {
+public:
+    static sp<RpcSocketServer> make(
+            std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
+
+    /**
+     * This represents a session for responses, e.g.:
+     *
+     *     process A serves binder a
+     *     process B opens a session to process A
+     *     process B makes binder b and sends it to A
+     *     A uses this 'back session' to send things back to B
+     */
+    [[nodiscard]] status_t setupUnixDomainServer(const char* path);
+
+    /**
+     * Creates an RPC server at the current port.
+     */
+    [[nodiscard]] status_t setupVsockServer(unsigned int port);
+
+    /**
+     * Creates an RPC server at the current port using IPv4.
+     *
+     * TODO(b/182914638): IPv6 support
+     *
+     * Set |port| to 0 to pick an ephemeral port; see discussion of
+     * /proc/sys/net/ipv4/ip_local_port_range in ip(7). In this case, |assignedPort|
+     * will be set to the picked port number, if it is not null.
+     *
+     * Set the IPv4 address for the socket to be listening on.
+     * "127.0.0.1" allows for local connections from the same device.
+     * "0.0.0.0" allows for connections on any IP address that the device may
+     * have
+     */
+    [[nodiscard]] status_t setupInetServer(const char* address, unsigned int port,
+                                           unsigned int* assignedPort = nullptr);
+
+    /**
      * Runs join() in a background thread. Immediately returns.
      */
     void start();
@@ -153,49 +199,11 @@ public:
      */
     void join();
 
-    /**
-     * Shut down any existing join(). Return true if successfully shut down, false otherwise
-     * (e.g. no join() is running). Will wait for the server to be fully
-     * shutdown.
-     *
-     * Warning: this will hang if it is called from its own thread.
-     */
-    [[nodiscard]] bool shutdown();
-
-    /**
-     * For debugging!
-     */
-    std::vector<sp<RpcSession>> listSessions();
-    size_t numUninitializedSessions();
-
-    ~RpcServer();
-
 private:
-    friend sp<RpcServer>;
-    explicit RpcServer(std::unique_ptr<RpcTransportCtx> ctx);
+    friend sp<RpcSocketServer>;
+    explicit RpcSocketServer(std::unique_ptr<RpcTransportCtx> ctx) : RpcServer(std::move(ctx)) {}
 
-    void onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
-    void onSessionIncomingThreadEnded() override;
-
-    static void establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd,
-                                    std::vector<uint8_t>&& addr);
     [[nodiscard]] status_t setupSocketServer(const RpcSocketAddress& address);
-
-    const std::unique_ptr<RpcTransportCtx> mCtx;
-    size_t mMaxThreads = 1;
-    std::optional<uint32_t> mProtocolVersion;
-    base::unique_fd mServer; // socket we are accepting sessions on
-
-    std::mutex mLock; // for below
-    std::unique_ptr<std::thread> mJoinThread;
-    bool mJoinThreadRunning = false;
-    std::map<std::thread::id, std::thread> mConnectingThreads;
-    sp<IBinder> mRootObject;
-    wp<IBinder> mRootObjectWeak;
-    std::function<sp<IBinder>(const void*, size_t)> mRootObjectFactory;
-    std::map<std::vector<uint8_t>, sp<RpcSession>> mSessions;
-    std::unique_ptr<FdTrigger> mShutdownTrigger;
-    std::condition_variable mShutdownCv;
 };
 
 } // namespace android

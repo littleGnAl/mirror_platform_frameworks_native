@@ -162,7 +162,7 @@ static const std::vector<std::function<void(Parcel* p)>> kFillFuns {
 // clang-format on
 
 static void setParcelForRpc(Parcel* p, uint32_t version) {
-    auto session = RpcSession::make();
+    auto session = RpcSocketSession::make();
     CHECK(session->setProtocolVersion(version));
     CHECK_EQ(OK, session->addNullDebuggingClient());
     p->markForRpc(session);

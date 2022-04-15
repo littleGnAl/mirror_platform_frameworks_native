@@ -117,7 +117,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
 
     unlink(kSock.c_str());
 
-    sp<RpcServer> server = RpcServer::make(makeTransportCtxFactory(&provider));
+    sp<RpcSocketServer> server = RpcSocketServer::make(makeTransportCtxFactory(&provider));
     server->setRootObject(sp<SomeBinder>::make());
     CHECK_EQ(OK, server->setupUnixDomainServer(kSock.c_str()));
 

@@ -1245,7 +1245,7 @@ public:
     }
 
     std::tuple<android::base::unique_fd, unsigned int> CreateSocket() {
-        auto rpcServer = RpcServer::make();
+        auto rpcServer = RpcSocketServer::make();
         EXPECT_NE(nullptr, rpcServer);
         if (rpcServer == nullptr) return {};
         unsigned int port;

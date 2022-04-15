@@ -22,8 +22,8 @@
 #include <linux/vm_sockets.h>
 
 using android::OK;
-using android::RpcServer;
-using android::RpcSession;
+using android::RpcSocketServer;
+using android::RpcSocketSession;
 using android::status_t;
 using android::statusToString;
 using android::base::unique_fd;
@@ -32,7 +32,7 @@ extern "C" {
 
 bool RunRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* context),
                              void* factoryContext, unsigned int port) {
-    auto server = RpcServer::make();
+    auto server = RpcSocketServer::make();
     if (status_t status = server->setupVsockServer(port); status != OK) {
         LOG(ERROR) << "Failed to set up vsock server with port " << port
                    << " error: " << statusToString(status).c_str();
@@ -55,7 +55,7 @@ bool RunRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* contex
 
 bool RunRpcServerCallback(AIBinder* service, unsigned int port, void (*readyCallback)(void* param),
                           void* param) {
-    auto server = RpcServer::make();
+    auto server = RpcSocketServer::make();
     if (status_t status = server->setupVsockServer(port); status != OK) {
         LOG(ERROR) << "Failed to set up vsock server with port " << port
                    << " error: " << statusToString(status).c_str();
@@ -76,7 +76,7 @@ bool RunRpcServer(AIBinder* service, unsigned int port) {
 }
 
 AIBinder* RpcClient(unsigned int cid, unsigned int port) {
-    auto session = RpcSession::make();
+    auto session = RpcSocketSession::make();
     if (status_t status = session->setupVsockClient(cid, port); status != OK) {
         LOG(ERROR) << "Failed to set up vsock client with CID " << cid << " and port " << port
                    << " error: " << statusToString(status).c_str();
@@ -86,7 +86,7 @@ AIBinder* RpcClient(unsigned int cid, unsigned int port) {
 }
 
 AIBinder* RpcPreconnectedClient(int (*requestFd)(void* param), void* param) {
-    auto session = RpcSession::make();
+    auto session = RpcSocketSession::make();
     auto request = [=] { return unique_fd{requestFd(param)}; };
     if (status_t status = session->setupPreconnectedClient(unique_fd{}, request); status != OK) {
         LOG(ERROR) << "Failed to set up vsock client. error: " << statusToString(status).c_str();
