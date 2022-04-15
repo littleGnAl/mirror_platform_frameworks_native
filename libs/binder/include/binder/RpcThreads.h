@@ -15,9 +15,7 @@
  */
 #pragma once
 
-#ifndef BINDER_RPC_NO_THREADS
 #include <thread>
-#endif
 
 namespace android {
 
@@ -34,10 +32,60 @@ class RpcMutexLockGuard {
 public:
     RpcMutexLockGuard(RpcMutex&) {}
 };
+
+class RpcConditionVariable {
+public:
+    void notify_one() {}
+    void notify_all() {}
+
+    void wait(RpcMutexUniqueLock&) {}
+
+    template <typename Predicate>
+    void wait(RpcMutexUniqueLock&, Predicate) {}
+
+    template <typename Duration>
+    std::cv_status wait_for(RpcMutexUniqueLock&, const Duration&) {
+        return std::cv_status::no_timeout;
+    }
+};
+
+class RpcThread {
+public:
+    RpcThread() {}
+
+    template <typename Function, typename... Args>
+    RpcThread(Function&& f, Args&&... args) {
+        (void)f(std::forward<Args>(args)...);
+    }
+
+    void join() {}
+    void detach() {}
+
+    class id {
+    public:
+        bool operator==(const id&) const { return true; }
+        bool operator!=(const id&) const { return false; }
+        bool operator<(const id&) const { return false; }
+        bool operator<=(const id&) const { return true; }
+        bool operator>(const id&) const { return false; }
+        bool operator>=(const id&) const { return true; }
+    };
+
+    id get_id() const { return id(); }
+};
+
+namespace rpc_this_thread {
+static inline RpcThread::id get_id() {
+    return RpcThread::id();
+}
+} // namespace rpc_this_thread
 #else
 using RpcMutex = std::mutex;
 using RpcMutexUniqueLock = std::unique_lock<std::mutex>;
 using RpcMutexLockGuard = std::lock_guard<std::mutex>;
+using RpcConditionVariable = std::condition_variable;
+using RpcThread = std::thread;
+using rpc_this_thread = std::this_thread;
 #endif
 
 } // namespace android
