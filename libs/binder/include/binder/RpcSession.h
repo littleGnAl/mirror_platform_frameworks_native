@@ -92,6 +92,7 @@ public:
     [[nodiscard]] bool setProtocolVersion(uint32_t version);
     std::optional<uint32_t> getProtocolVersion();
 
+#ifndef BINDER_RPC_NO_SOCKET_API
     /**
      * This should be called once per thread, matching 'join' in the remote
      * process.
@@ -107,6 +108,7 @@ public:
      * Connects to an RPC server at the given address and port.
      */
     [[nodiscard]] status_t setupInetClient(const char* addr, unsigned int port);
+#endif
 
     /**
      * Starts talking to an RPC server which has already been connected to. This
@@ -252,10 +254,12 @@ private:
     [[nodiscard]] status_t setupClient(
             const std::function<status_t(const std::vector<uint8_t>& sessionId, bool incoming)>&
                     connectAndInit);
+#ifndef BINDER_RPC_NO_SOCKET_API
     [[nodiscard]] status_t setupSocketClient(const RpcSocketAddress& address);
     [[nodiscard]] status_t setupOneSocketConnection(const RpcSocketAddress& address,
                                                     const std::vector<uint8_t>& sessionId,
                                                     bool incoming);
+#endif
     [[nodiscard]] status_t initAndAddConnection(base::unique_fd fd,
                                                 const std::vector<uint8_t>& sessionId,
                                                 bool incoming);
