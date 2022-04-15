@@ -15,9 +15,7 @@
  */
 #pragma once
 
-#ifndef BINDER_RPC_NO_THREADS
 #include <thread>
-#endif
 
 namespace android {
 
@@ -34,10 +32,27 @@ class RpcMutexLockGuard {
 public:
     RpcMutexLockGuard(RpcMutex&) {}
 };
+
+class RpcConditionVariable {
+public:
+    void notify_one() {}
+    void notify_all() {}
+
+    void wait(RpcMutexUniqueLock&) {}
+
+    template <typename Predicate>
+    void wait(RpcMutexUniqueLock&, Predicate) {}
+
+    template <typename Duration>
+    std::cv_status wait_for(RpcMutexUniqueLock&, const Duration&) {
+        return std::cv_status::no_timeout;
+    }
+};
 #else
 using RpcMutex = std::mutex;
 using RpcMutexUniqueLock = std::unique_lock<std::mutex>;
 using RpcMutexLockGuard = std::lock_guard<std::mutex>;
+using RpcConditionVariable = std::condition_variable;
 #endif
 
 } // namespace android

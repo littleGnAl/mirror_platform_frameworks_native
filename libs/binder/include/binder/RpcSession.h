@@ -17,13 +17,13 @@
 
 #include <android-base/unique_fd.h>
 #include <binder/IBinder.h>
+#include <binder/RpcThreads.h>
 #include <binder/RpcTransport.h>
 #include <utils/Errors.h>
 #include <utils/RefBase.h>
 
 #include <map>
 #include <optional>
-#include <thread>
 #include <vector>
 
 namespace android {
@@ -46,7 +46,11 @@ constexpr uint32_t RPC_WIRE_PROTOCOL_VERSION = RPC_WIRE_PROTOCOL_VERSION_EXPERIM
  */
 class RpcSession final : public virtual RefBase {
 public:
+#ifndef BINDER_RPC_NO_THREADS
+    static constexpr size_t kDefaultMaxOutgoingThreads = 1;
+#else
     static constexpr size_t kDefaultMaxOutgoingThreads = 10;
+#endif
 
     // Create an RpcSession with default configuration (raw sockets).
     static sp<RpcSession> make();
@@ -199,10 +203,10 @@ private:
     public:
         void onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
         void onSessionIncomingThreadEnded() override;
-        void waitForShutdown(std::unique_lock<std::mutex>& lock, const sp<RpcSession>& session);
+        void waitForShutdown(RpcMutexUniqueLock& lock, const sp<RpcSession>& session);
 
     private:
-        std::condition_variable mCv;
+        RpcConditionVariable mCv;
     };
     friend WaitForShutdownListener;
 
@@ -218,6 +222,7 @@ private:
 
     [[nodiscard]] status_t readId();
 
+#ifndef BINDER_RPC_NO_THREADS
     // A thread joining a server must always call these functions in order, and
     // cleanup is only programmed once into join. These are in separate
     // functions in order to allow for different locks to be taken during
@@ -226,6 +231,8 @@ private:
     // transfer ownership of thread (usually done while a lock is taken on the
     // structure which originally owns the thread)
     void preJoinThreadOwnership(std::thread thread);
+#endif
+
     // pass FD to thread and read initial connection information
     struct PreJoinSetupResult {
         // Server connection object associated with this
@@ -234,8 +241,11 @@ private:
         status_t status;
     };
     PreJoinSetupResult preJoinSetup(std::unique_ptr<RpcTransport> rpcTransport);
+
+#ifndef BINDER_RPC_NO_THREADS
     // join on thread passed to preJoinThreadOwnership
     static void join(sp<RpcSession>&& session, PreJoinSetupResult&& result);
+#endif
 
     [[nodiscard]] status_t setupClient(
             const std::function<status_t(const std::vector<uint8_t>& sessionId, bool incoming)>&
@@ -320,13 +330,13 @@ private:
 
     std::unique_ptr<RpcState> mRpcBinderState;
 
-    std::mutex mMutex; // for all below
+    RpcMutex mMutex; // for all below
 
     size_t mMaxIncomingThreads = 0;
     size_t mMaxOutgoingThreads = kDefaultMaxOutgoingThreads;
     std::optional<uint32_t> mProtocolVersion;
 
-    std::condition_variable mAvailableConnectionCv; // for mWaitingThreads
+    RpcConditionVariable mAvailableConnectionCv; // for mWaitingThreads
 
     struct ThreadState {
         size_t mWaitingThreads = 0;
@@ -335,7 +345,9 @@ private:
         std::vector<sp<RpcConnection>> mOutgoing;
         size_t mMaxIncoming = 0;
         std::vector<sp<RpcConnection>> mIncoming;
+#ifndef BINDER_RPC_NO_THREADS
         std::map<std::thread::id, std::thread> mThreads;
+#endif
     } mConnections;
 };
 
