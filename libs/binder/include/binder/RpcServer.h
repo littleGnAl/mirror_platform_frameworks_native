@@ -47,6 +47,7 @@ public:
     static sp<RpcServer> make(
             std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
 
+#ifndef BINDER_RPC_NO_SOCKET_API
     /**
      * This represents a session for responses, e.g.:
      *
@@ -78,6 +79,7 @@ public:
      */
     [[nodiscard]] status_t setupInetServer(const char* address, unsigned int port,
                                            unsigned int* assignedPort = nullptr);
+#endif
 
     /**
      * If setup*Server has been successful, return true. Otherwise return false.
@@ -179,7 +181,10 @@ private:
 
     static void establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd,
                                     std::vector<uint8_t>&& addr);
+
+#ifndef BINDER_RPC_NO_SOCKET_API
     [[nodiscard]] status_t setupSocketServer(const RpcSocketAddress& address);
+#endif
 
     const std::unique_ptr<RpcTransportCtx> mCtx;
     size_t mMaxThreads = 1;
