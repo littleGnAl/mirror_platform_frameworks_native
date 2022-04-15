@@ -60,6 +60,7 @@ sp<RpcServer> RpcServer::make(std::unique_ptr<RpcTransportCtxFactory> rpcTranspo
     return sp<RpcServer>::make(std::move(ctx));
 }
 
+#ifndef BINDER_RPC_NO_SOCKET_API
 status_t RpcServer::setupUnixDomainServer(const char* path) {
     return setupSocketServer(UnixSocketAddress(path));
 }
@@ -108,6 +109,7 @@ status_t RpcServer::setupInetServer(const char* address, unsigned int port,
           port);
     return UNKNOWN_ERROR;
 }
+#endif
 
 void RpcServer::setMaxThreads(size_t threads) {
     LOG_ALWAYS_FATAL_IF(threads <= 0, "RpcServer is useless without threads");
@@ -461,6 +463,7 @@ void RpcServer::establishConnection(
     joinFn(std::move(session), std::move(setupResult));
 }
 
+#ifndef BINDER_RPC_NO_SOCKET_API
 status_t RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
     LOG_RPC_DETAIL("Setting up socket server %s", addr.toString().c_str());
     LOG_ALWAYS_FATAL_IF(hasServer(), "Each RpcServer can only have one server.");
@@ -497,6 +500,7 @@ status_t RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
     }
     return OK;
 }
+#endif
 
 void RpcServer::onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) {
     const std::vector<uint8_t>& id = session->mId;
