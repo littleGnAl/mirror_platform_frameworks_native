@@ -18,6 +18,7 @@
 #include <android-base/unique_fd.h>
 #include <binder/IBinder.h>
 #include <binder/RpcSession.h>
+#include <binder/RpcThreads.h>
 #include <binder/RpcTransport.h>
 #include <utils/Errors.h>
 #include <utils/RefBase.h>
@@ -135,6 +136,7 @@ public:
      */
     std::vector<uint8_t> getCertificate(RpcCertificateFormat);
 
+#ifndef BINDER_RPC_NO_THREADS
     /**
      * Runs join() in a background thread. Immediately returns.
      */
@@ -161,6 +163,7 @@ public:
      * Warning: this will hang if it is called from its own thread.
      */
     [[nodiscard]] bool shutdown();
+#endif
 
     /**
      * For debugging!
@@ -177,8 +180,10 @@ private:
     void onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
     void onSessionIncomingThreadEnded() override;
 
-    static void establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd,
-                                    const sockaddr_storage addr, socklen_t addrLen);
+    static void establishConnection(
+            sp<RpcServer>&& server, base::unique_fd clientFd, const sockaddr_storage addr,
+            socklen_t addrLen,
+            std::function<void(sp<RpcSession>&&, RpcSession::PreJoinSetupResult&&)>&& joinFn);
     [[nodiscard]] status_t setupSocketServer(const RpcSocketAddress& address);
 
     const std::unique_ptr<RpcTransportCtx> mCtx;
@@ -186,16 +191,19 @@ private:
     std::optional<uint32_t> mProtocolVersion;
     base::unique_fd mServer; // socket we are accepting sessions on
 
-    std::mutex mLock; // for below
+    RpcMutex mLock; // for below
+#ifndef BINDER_RPC_NO_THREADS
     std::unique_ptr<std::thread> mJoinThread;
     bool mJoinThreadRunning = false;
     std::map<std::thread::id, std::thread> mConnectingThreads;
+#endif
+
     sp<IBinder> mRootObject;
     wp<IBinder> mRootObjectWeak;
     std::function<sp<IBinder>(const sockaddr*, socklen_t)> mRootObjectFactory;
     std::map<std::vector<uint8_t>, sp<RpcSession>> mSessions;
     std::unique_ptr<FdTrigger> mShutdownTrigger;
-    std::condition_variable mShutdownCv;
+    RpcConditionVariable mShutdownCv;
 };
 
 } // namespace android
