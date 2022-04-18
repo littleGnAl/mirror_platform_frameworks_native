@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d8ade1c_c6e8b56c",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-18T22:26:18Z",
+      "side": 1,
+      "message": "There are a few significant differences in this code, mainly because tipc works like a message-oriented transport (the closest thing in Linux sockets would be SOCK_SEQPACKET, but the tipc file is not a socket):\n* tipc doesn\u0027t support reading a message with multiple reads, every message needs to be read with a single call. For this reason, I split messages at the sender and transmit each iovec as a separate message (assuming that the receiver won\u0027t attempt to read a message partially).\n* The receiver can read multiple messages with one interruptableReadFully call, but assumes that an iovec doesn\u0027t end in the middle of a message (or vice versa).\n\nThe simplest way to handle this is here in the RPC transport, but there are other alternatives that we can discuss.",
+      "parentUuid": "fe04403c_b43b60b3",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adfe0502_bf75efa4",
         "filename": "libs/binder/RpcTransportTrusty.cpp",
         "patchSetId": 2
@@ -107,6 +131,30 @@
       "writtenOn": "2022-04-18T19:42:56Z",
       "side": 1,
       "message": "is this the only thing forked from the raw transport? I\u0027m wondering if you can move the interruptableReadOrWrite function into maybe a common header so that we can reuse the logic? (a lot seems duplicated - maybe I\u0027m missing another reason)",
+      "range": {
+        "startLine": 133,
+        "startChar": 64,
+        "endLine": 133,
+        "endChar": 84
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39fa4bba_3b37238c",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-18T22:26:18Z",
+      "side": 1,
+      "message": "There are a few differences, some discussed in the other comment. Another one is pollRead(). Sockets support MSG_PEEK but the TIPC device doesn\u0027t (it\u0027s basically a device file with some extra ioctl\u0027s).",
+      "parentUuid": "adfe0502_bf75efa4",
       "range": {
         "startLine": 133,
         "startChar": 64,
