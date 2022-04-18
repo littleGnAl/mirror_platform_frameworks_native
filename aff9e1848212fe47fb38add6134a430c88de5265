@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d19b712_17a87fb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-18T19:42:56Z",
+      "side": 1,
+      "message": "where is this test? Do we have a way to test this in upstream Android? Can binderLibTest be modified or can the tests there be reused?",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e84bec_0339e9fb",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-18T19:42:56Z",
+      "side": 1,
+      "message": "nit: do we need this if it\u0027s only used once?",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 38
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe04403c_b43b60b3",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-18T19:42:56Z",
+      "side": 1,
+      "message": "nit: should we use this same logic in RpcTransportRaw? Seems we use a different way of handling it there",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adfe0502_bf75efa4",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-18T19:42:56Z",
+      "side": 1,
+      "message": "is this the only thing forked from the raw transport? I\u0027m wondering if you can move the interruptableReadOrWrite function into maybe a common header so that we can reuse the logic? (a lot seems duplicated - maybe I\u0027m missing another reason)",
+      "range": {
+        "startLine": 133,
+        "startChar": 64,
+        "endLine": 133,
+        "endChar": 84
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
