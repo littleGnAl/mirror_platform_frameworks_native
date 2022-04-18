@@ -33,6 +33,24 @@
       "message": "Hmm there are two things here:\n\n1. compat-wise This is a risky change, for two reasons:\n 1A:  By doing this change the sync marker will come last. This might break assumptions of various tools consuming atrace, which might expect the sync marker to be there first. \n 1B: This really violates the principle of least surprise [1] as a cmdline that has nothing to do with clock sync now affects where the sync marker is located within the trace.\n\n2. At this point atrace is really in mainteinance mode and we are not taking any more features, just regressions and security fixes. It looks like this behaviour has been there since forever, so doesn\u0027t really qualify as a regression. Everything tracing-related has been moved to Perfetto (https://perfetto.dev). We\u0027ll deprecate atrace in future versions of Android (still giving some releases to people to adapt so they can migrate away from atrace).\n\nThis specific problem you are trying to solve has been solved by Perfetto which guarantees that clock snapshots are always present as they go into a dedicated internal buffer [2]. See https://perfetto.dev/docs/quickstart/android-tracing.\n\n\n[1] https://en.wikipedia.org/wiki/Principle_of_least_astonishment\n[2] https://cs.android.com/android/platform/superproject/+/master:external/perfetto/src/tracing/core/tracing_service_impl.cc;drc\u003d9bdd48a3173c6ead68d6887b14f2d4e300e99f01;l\u003d3033?q\u003df:tracing_service_impl.cc%20clock",
       "revId": "802b29a107afd2aae72c20a9de4c0ec7b079f1b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc9e3176_83462803",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1947675
+      },
+      "writtenOn": "2022-04-18T16:11:41Z",
+      "side": 1,
+      "message": "I understand the concerns. I will hold off on this change then",
+      "parentUuid": "007ace77_edfffef0",
+      "revId": "802b29a107afd2aae72c20a9de4c0ec7b079f1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
