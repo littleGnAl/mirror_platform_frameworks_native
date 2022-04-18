@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fbc3e46_30828741",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-18T22:15:30Z",
+      "side": 1,
+      "message": "The test lives under system/core/trusty in the CL at https://android-review.googlesource.com/c/platform/system/core/+/2045930. I could move it to the binder directory if that would be useful.\n\nThere are a few complications: one is that the test is a client that requires a service on the Trusty side (CL at https://android-review.googlesource.com/c/trusty/app/sample/+/1932245).\n\nThe second is that Trusty doesn\u0027t run under Cuttlefish, but on an arm64 qemu built for Trusty which runs a specific AOSP build (lunch qemu_trusty_arm64-userdebug). I\u0027ve been running the test manually, still have to figure it out how to automate that since atest doesn\u0027t run on the Trusty build.",
+      "parentUuid": "8d19b712_17a87fb5",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76e84bec_0339e9fb",
         "filename": "libs/binder/Android.bp",
         "patchSetId": 2
