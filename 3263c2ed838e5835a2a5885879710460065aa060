@@ -85,6 +85,30 @@
       },
       "revId": "3263c2ed838e5835a2a5885879710460065aa060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db15eb11_27bf6b2f",
+        "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-19T04:09:51Z",
+      "side": 1,
+      "message": "Definitely, I\u0027m just not sure where to put it. Utils.cpp could work but Utils.h is in the parent directory and not Trusty-specific.",
+      "parentUuid": "2e8cfd15_cd255c2d",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
