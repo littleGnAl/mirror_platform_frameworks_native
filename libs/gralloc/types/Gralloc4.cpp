@@ -380,6 +380,12 @@ status_t decodeOptionalMetadata(const MetadataType& metadataType, const hidl_vec
         return BAD_VALUE;
     }
 
+    if (input.size() <= 0) {
+        output->reset();
+        ALOGE("matt output reset no_error");
+        return NO_ERROR;
+    }
+
     InputHidlVec inputHidlVec{&input};
 
     status_t err = validateMetadataType(&inputHidlVec, metadataType);
