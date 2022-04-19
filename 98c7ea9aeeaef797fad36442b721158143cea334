@@ -33,6 +33,29 @@
       "message": "add issues ID: https://partnerissuetracker.corp.google.com/issues/221177658\n\nthe issue still happen in Android 12 OS + Android 12 aosp dialer, pixel also have this issue, more detail log and video you check in https://partnerissuetracker.corp.google.com/issues/221177658\n\nThanks",
       "revId": "98c7ea9aeeaef797fad36442b721158143cea334",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c9bef9_49322e56",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-04-19T18:09:47Z",
+      "side": 1,
+      "message": "We can\u0027t do this, because it will break the following behaviour promise [0](https://developer.android.com/reference/android/view/MotionEvent#getHistorySize()) :\n\n```\ngetHistorySize\nAdded in API level 1\n\npublic int getHistorySize ()\nReturns the number of historical points in this event. These are movements that have occurred between this event and the previous event. This only applies to ACTION_MOVE events -- all other actions will have a size of 0.\n```\n\nSo I think the solution should be to overwrite the coordinates instead, like this:\n\n```\nvoid InputConsumer::rewriteMessage(TouchState\u0026 state, InputMessage\u0026 msg) {\n    nsecs_t eventTime \u003d msg.body.motion.eventTime;\n    for (uint32_t i \u003d 0; i \u003c msg.body.motion.pointerCount; i++) {\n        uint32_t id \u003d msg.body.motion.pointers[i].properties.id;\n        if (state.lastResample.idBits.hasBit(id)) {\n            if (eventTime \u003c state.lastResample.eventTime ||\n                    state.recentCoordinatesAreIdentical(id) ||\n                    msg.body.motion.action \u003d\u003d AMOTION_EVENT_ACTION_UP) {\n                PointerCoords\u0026 msgCoords \u003d msg.body.motion.pointers[i].coords;\n                const PointerCoords\u0026 resampleCoords \u003d state.lastResample.getPointerById(id);\n```\n\n\nI will work on submitting that CL internally and will cherry-pick to aosp. I will update you.",
+      "range": {
+        "startLine": 1003,
+        "startChar": 72,
+        "endLine": 1003,
+        "endChar": 95
+      },
+      "revId": "98c7ea9aeeaef797fad36442b721158143cea334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
