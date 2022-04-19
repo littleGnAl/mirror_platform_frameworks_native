@@ -56,6 +56,8 @@ __attribute__((warn_unused_result)) AIBinder* AIBinder_fromJavaBinder(JNIEnv* en
  * If the binder is null, null is returned. If this binder object was originally an IBinder object,
  * the original java object will be returned.
  *
+ * WARNING: this function returns global and local references
+ *
  * Available since API level 29.
  *
  * \param env Java environment. Must not be null.
