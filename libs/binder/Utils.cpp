@@ -16,6 +16,7 @@
 
 #include "Utils.h"
 
+#include <android-base/file.h>
 #include <string.h>
 
 using android::base::ErrnoError;
@@ -36,6 +37,19 @@ Result<void> setNonBlocking(android::base::borrowed_fd fd) {
         return ErrnoError() << "Could not set non-blocking flag for fd";
     }
     return {};
+}
+
+status_t getRandomBytes(void* data, size_t byte_count) {
+    int ret = TEMP_FAILURE_RETRY(open("/dev/urandom", O_RDONLY | O_CLOEXEC | O_NOFOLLOW));
+    if (ret == -1) {
+        return -errno;
+    }
+
+    base::unique_fd fd(ret);
+    if (!base::ReadFully(fd, data, byte_count)) {
+        return -errno;
+    }
+    return OK;
 }
 
 } // namespace android
