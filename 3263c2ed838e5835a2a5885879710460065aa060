@@ -109,6 +109,30 @@
       },
       "revId": "3263c2ed838e5835a2a5885879710460065aa060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5941e252_194b1494",
+        "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-19T16:30:38Z",
+      "side": 1,
+      "message": "Why can\u0027t we have the declaration in Utils.h and wrap it with #if __TRUSTY__ (or something that is equivalent to it)?",
+      "parentUuid": "db15eb11_27bf6b2f",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
