@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0562059b_904d96cc",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-19T04:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ef6e54f_b033c0fe",
+      "range": {
+        "startLine": 460,
+        "startChar": 8,
+        "endLine": 460,
+        "endChar": 21
+      },
+      "revId": "8b91282eb2e97fd7dab56bf6b43135bbe82f8e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53a744d4_5fb600ef",
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "No, it looks like that would also need to be ported as well (plus I\u0027m not sure trusty has its dependencies like googletest).",
       "parentUuid": "11835aea_91e159c1",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 48
+      },
+      "revId": "8b91282eb2e97fd7dab56bf6b43135bbe82f8e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f29ed9a_328f3760",
+        "filename": "libs/binder/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-19T04:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afa704ac_71d51c81",
       "range": {
         "startLine": 40,
         "startChar": 0,
