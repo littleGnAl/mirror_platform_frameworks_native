@@ -155,6 +155,9 @@ public:
     Rect getBounds() const              { return Rect(width, height); }
     uint64_t getId() const              { return mId; }
 
+    status_t getVulkanImageLayout(uint64_t* outImageLayout) const;
+    status_t setVulkanImageLayout(uint64_t imageLayout);
+
     uint32_t getGenerationNumber() const { return mGenerationNumber; }
     void setGenerationNumber(uint32_t generation) {
         mGenerationNumber = generation;

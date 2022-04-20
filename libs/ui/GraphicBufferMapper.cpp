@@ -301,6 +301,16 @@ status_t GraphicBufferMapper::getSmpte2094_40(
     return mMapper->getSmpte2094_40(bufferHandle, outSmpte2094_40);
 }
 
+status_t GraphicBufferMapper::getVulkanImageLayout(
+        buffer_handle_t bufferHandle, uint64_t* outImageLayout) const {
+    return mMapper->getVulkanImageLayout(bufferHandle, outImageLayout);
+}
+
+status_t GraphicBufferMapper::setVulkanImageLayout(
+        buffer_handle_t bufferHandle, uint64_t imageLayout) {
+    return mMapper->setVulkanImageLayout(bufferHandle, imageLayout);
+}
+
 status_t GraphicBufferMapper::getDefaultPixelFormatFourCC(uint32_t width, uint32_t height,
                                                           PixelFormat format, uint32_t layerCount,
                                                           uint64_t usage,

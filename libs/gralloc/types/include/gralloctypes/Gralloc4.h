@@ -134,6 +134,12 @@ static const android::hardware::graphics::mapper::V4_0::IMapper::MetadataType
                                              aidl::android::hardware::graphics::common::
                                                      StandardMetadataType::SMPTE2094_40)};
 
+static const android::hardware::graphics::mapper::V4_0::IMapper::MetadataType
+        MetadataType_VulkanImageLayout = {GRALLOC4_STANDARD_METADATA_TYPE,
+                                          static_cast<int64_t>(
+                                             aidl::android::hardware::graphics::common::
+                                                     StandardMetadataType::VULKAN_IMAGE_LAYOUT)};
+
 /*---------------------------------------------------------------------------------------------*/
 
 /**
@@ -326,6 +332,11 @@ status_t encodeSmpte2094_40(const std::optional<std::vector<uint8_t>>& smpte2094
                             android::hardware::hidl_vec<uint8_t>* outSmpte2094_40);
 status_t decodeSmpte2094_40(const android::hardware::hidl_vec<uint8_t>& smpte2094_40,
                             std::optional<std::vector<uint8_t>>* outSmpte2094_40);
+
+status_t encodeVulkanImageLayout(uint64_t imageLayout, 
+                                 android::hardware::hidl_vec<uint8_t>* outImageLayout);
+status_t decodeVulkanImageLayout(const android::hardware::hidl_vec<uint8_t>& imageLayout,
+                                 uint64_t* outImageLayout);
 
 /**
  * The functions below can be used to encode and decode vendor metadata types.

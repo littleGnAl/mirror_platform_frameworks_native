@@ -6,6 +6,8 @@ LIBNATIVEWINDOW {
     AHardwareBuffer_describe;
     AHardwareBuffer_getId; # introduced=31
     AHardwareBuffer_getNativeHandle; # llndk # apex
+    AHardwareBuffer_getVulkanImageLayout; # introduced=32
+    AHardwareBuffer_setVulkanImageLayout; # introduced=32
     AHardwareBuffer_isSupported; # introduced=29
     AHardwareBuffer_lock;
     AHardwareBuffer_lockAndGetInfo; # introduced=29
