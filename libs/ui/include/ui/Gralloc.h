@@ -178,6 +178,14 @@ public:
             std::optional<std::vector<uint8_t>>* /*outSmpte2094_40*/) const {
         return INVALID_OPERATION;
     }
+    virtual status_t getVulkanImageLayout(buffer_handle_t /*bufferHandle*/,
+                                          uint64_t* /*outImageLayout*/) const {
+        return INVALID_OPERATION;
+    }
+    virtual status_t setVulkanImageLayout(buffer_handle_t /*bufferHandle*/,
+                                          uint64_t /*imageLayout*/) const {
+        return INVALID_OPERATION;
+    }
 
     virtual status_t getDefaultPixelFormatFourCC(uint32_t /*width*/, uint32_t /*height*/,
                                                  PixelFormat /*format*/, uint32_t /*layerCount*/,

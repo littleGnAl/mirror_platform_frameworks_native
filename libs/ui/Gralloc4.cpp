@@ -461,6 +461,28 @@ status_t Gralloc4Mapper::get(buffer_handle_t bufferHandle, const MetadataType& m
     return decodeFunction(vec, outMetadata);
 }
 
+template <class T>
+status_t Gralloc4Mapper::set(buffer_handle_t bufferHandle, const MetadataType& metadataType,
+                             EncodeFunction<T> encodeFunction, const T* metadata) const {
+    hidl_vec<uint8_t> vec;
+    status_t status = encodeFunction(*metadata, &vec);
+    if (status != NO_ERROR) {
+        return status;
+    }
+
+    Error error = Error::NONE;
+    auto ret = mMapper->set(const_cast<native_handle_t*>(bufferHandle), metadataType, vec);
+    if (!ret.isOk()) {
+        error = kTransactionError;
+    }
+
+    if (error != Error::NONE) {
+        ALOGE("set(%s, %" PRIu64 ", ...) failed with %d", metadataType.name.c_str(),
+              metadataType.value, error);
+    }
+    return static_cast<status_t>(error);
+}
+
 status_t Gralloc4Mapper::getBufferId(buffer_handle_t bufferHandle, uint64_t* outBufferId) const {
     return get(bufferHandle, gralloc4::MetadataType_BufferId, gralloc4::decodeBufferId,
                outBufferId);
@@ -632,6 +654,18 @@ status_t Gralloc4Mapper::getSmpte2094_40(
         buffer_handle_t bufferHandle, std::optional<std::vector<uint8_t>>* outSmpte2094_40) const {
     return get(bufferHandle, gralloc4::MetadataType_Smpte2094_40, gralloc4::decodeSmpte2094_40,
                outSmpte2094_40);
+}
+
+status_t Gralloc4Mapper::getVulkanImageLayout(
+        buffer_handle_t bufferHandle, uint64_t* outImageLayout) const {
+    return get(bufferHandle, gralloc4::MetadataType_VulkanImageLayout, gralloc4::decodeVulkanImageLayout,
+               outImageLayout);
+}
+
+status_t Gralloc4Mapper::setVulkanImageLayout(
+        buffer_handle_t bufferHandle, uint64_t imageLayout) const {
+    return set(bufferHandle, gralloc4::MetadataType_VulkanImageLayout, gralloc4::encodeVulkanImageLayout,
+               &imageLayout);
 }
 
 template <class T>

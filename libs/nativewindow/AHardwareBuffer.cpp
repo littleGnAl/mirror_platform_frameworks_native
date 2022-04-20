@@ -412,6 +412,26 @@ int AHardwareBuffer_getId(const AHardwareBuffer* buffer, uint64_t* outId) {
     return OK;
 }
 
+int AHardwareBuffer_getVulkanImageLayout(const AHardwareBuffer* buffer,
+                                         uint64_t* outImageLayout) {
+    if (!buffer || !outImageLayout) return BAD_VALUE;
+
+    const GraphicBuffer* gb = AHardwareBuffer_to_GraphicBuffer(buffer);
+    if (!gb) return BAD_VALUE;
+
+    return gb->getVulkanImageLayout(outImageLayout);
+}
+
+int AHardwareBuffer_setVulkanImageLayout(AHardwareBuffer* buffer,
+                                         uint64_t imageLayout) {
+    if (!buffer) return BAD_VALUE;
+
+    GraphicBuffer* gb = AHardwareBuffer_to_GraphicBuffer(buffer);
+    if (!gb) return BAD_VALUE;
+
+    return gb->setVulkanImageLayout(imageLayout);
+}
+
 // ----------------------------------------------------------------------------
 // VNDK functions
 // ----------------------------------------------------------------------------

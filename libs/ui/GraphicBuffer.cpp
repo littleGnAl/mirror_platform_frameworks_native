@@ -143,6 +143,14 @@ ANativeWindowBuffer* GraphicBuffer::getNativeBuffer() const
             const_cast<GraphicBuffer*>(this));
 }
 
+status_t GraphicBuffer::getVulkanImageLayout(uint64_t* outImageLayout) const {
+    return getBufferMapper().getVulkanImageLayout(handle, outImageLayout);
+}
+
+status_t GraphicBuffer::setVulkanImageLayout(uint64_t imageLayout) {
+    return getBufferMapper().setVulkanImageLayout(handle, imageLayout);
+}
+
 status_t GraphicBuffer::reallocate(uint32_t inWidth, uint32_t inHeight,
         PixelFormat inFormat, uint32_t inLayerCount, uint64_t inUsage)
 {

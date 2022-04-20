@@ -108,6 +108,10 @@ public:
                          std::optional<ui::Cta861_3>* outCta861_3) const override;
     status_t getSmpte2094_40(buffer_handle_t bufferHandle,
                              std::optional<std::vector<uint8_t>>* outSmpte2094_40) const override;
+    status_t getVulkanImageLayout(buffer_handle_t bufferHandle,
+                                  uint64_t* outVulkanImageLayout) const override;
+    status_t setVulkanImageLayout(buffer_handle_t bufferHandle,
+                                  uint64_t vulkanImageLayout) const override;
 
     status_t getDefaultPixelFormatFourCC(uint32_t width, uint32_t height, PixelFormat format,
                                          uint32_t layerCount, uint64_t usage,
@@ -160,6 +164,9 @@ private:
     using DecodeFunction = status_t (*)(const hardware::hidl_vec<uint8_t>& input, T* output);
 
     template <class T>
+    using EncodeFunction = status_t (*)(T input, hardware::hidl_vec<uint8_t>* output);
+
+    template <class T>
     status_t get(
             buffer_handle_t bufferHandle,
             const android::hardware::graphics::mapper::V4_0::IMapper::MetadataType& metadataType,
@@ -171,6 +178,12 @@ private:
             uint64_t usage,
             const android::hardware::graphics::mapper::V4_0::IMapper::MetadataType& metadataType,
             DecodeFunction<T> decodeFunction, T* outMetadata) const;
+
+    template <class T>
+    status_t set(
+            buffer_handle_t bufferHandle,
+            const android::hardware::graphics::mapper::V4_0::IMapper::MetadataType& metadataType,
+            EncodeFunction<T> encodeFunction, const T* metadata) const;
 
     template <class T>
     status_t metadataDumpHelper(

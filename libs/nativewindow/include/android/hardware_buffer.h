@@ -575,6 +575,19 @@ int AHardwareBuffer_lockAndGetInfo(AHardwareBuffer* _Nonnull buffer, uint64_t us
 int AHardwareBuffer_getId(const AHardwareBuffer* _Nonnull buffer, uint64_t* _Nonnull outId)
         __INTRODUCED_IN(31);
 
+/**
+ * Get the current Vulkan VkImageLayout for an AHardwareBuffer.
+ *
+ * Available since API level 32.
+ *
+ * \return 0 on success, -EINVAL if \a buffer or \a outImageLayout is NULL, or an error number if
+ * the operation fails for any reason.
+ */
+int AHardwareBuffer_getVulkanImageLayout(const AHardwareBuffer* _Nonnull buffer,
+                                         uint64_t* _Nonnull outImageLayout) __INTRODUCED_IN(32);
+
+int AHardwareBuffer_setVulkanImageLayout(AHardwareBuffer* _Nonnull buffer,
+                                         uint64_t imageLayout) __INTRODUCED_IN(32);
 __END_DECLS
 
 #endif // ANDROID_HARDWARE_BUFFER_H

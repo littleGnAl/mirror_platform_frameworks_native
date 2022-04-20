@@ -1189,6 +1189,18 @@ status_t decodeSmpte2094_40(const hidl_vec<uint8_t>& smpte2094_40,
                           decodeByteVector);
 }
 
+status_t encodeVulkanImageLayout(uint64_t imageLayout, 
+                                 android::hardware::hidl_vec<uint8_t>* outImageLayout) {
+    return encodeMetadata(MetadataType_VulkanImageLayout, imageLayout, outImageLayout,
+                          encodeInteger);
+}
+
+status_t decodeVulkanImageLayout(const android::hardware::hidl_vec<uint8_t>& imageLayout,
+                                 uint64_t* outImageLayout) {
+    return decodeMetadata(MetadataType_VulkanImageLayout, imageLayout, outImageLayout,
+                          decodeInteger);
+}
+
 status_t encodeUint32(const MetadataType& metadataType, uint32_t input,
                       hidl_vec<uint8_t>* output) {
     return encodeMetadata(metadataType, input, output, encodeInteger);
