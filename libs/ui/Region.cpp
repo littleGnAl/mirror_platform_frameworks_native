@@ -252,7 +252,7 @@ bool Region::contains(int x, int y) const {
     const_iterator cur = begin();
     const_iterator const tail = end();
     while (cur != tail) {
-        if (y >= cur->top && y < cur->bottom && x >= cur->left && x < cur->right) {
+        if (y >= cur->top && y <= cur->bottom && x >= cur->left && x <= cur->right) {
             return true;
         }
         cur++;
