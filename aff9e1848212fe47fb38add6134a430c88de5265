@@ -216,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a44f3fee_c5989c16",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-21T01:55:41Z",
+      "side": 1,
+      "message": "Ah, I missed this detail. If we are doing one send per-iovec b/c this isn\u0027t a stream socket, it means that this adds the constraint on the existing clients that we can\u0027t split existing calls into multiple io_vecs right? It still adds a constraint on the io_vecs themselves? Is there a way we can add this without this requirement?",
+      "parentUuid": "2ce6e47c_e7bc3d69",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adfe0502_bf75efa4",
         "filename": "libs/binder/RpcTransportTrusty.cpp",
         "patchSetId": 2
