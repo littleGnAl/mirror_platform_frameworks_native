@@ -135,7 +135,7 @@ void RpcServer::setRootObjectWeak(const wp<IBinder>& binder) {
     mRootObjectWeak = binder;
 }
 void RpcServer::setPerSessionRootObject(
-        std::function<sp<IBinder>(const sockaddr*, socklen_t)>&& makeObject) {
+        std::function<sp<IBinder>(const void*, size_t)>&& makeObject) {
     std::lock_guard<std::mutex> _l(mLock);
     mRootObject.clear();
     mRootObjectWeak.clear();
@@ -178,14 +178,16 @@ void RpcServer::join() {
 
     status_t status;
     while ((status = mShutdownTrigger->triggerablePoll(mServer, POLLIN)) == OK) {
-        sockaddr_storage addr;
-        socklen_t addrLen = sizeof(addr);
+        socklen_t addrLen = sizeof(sockaddr_storage);
+        std::vector<uint8_t> addr(addrLen);
 
         unique_fd clientFd(
-                TEMP_FAILURE_RETRY(accept4(mServer.get(), reinterpret_cast<sockaddr*>(&addr),
+                TEMP_FAILURE_RETRY(accept4(mServer.get(), reinterpret_cast<sockaddr*>(addr.data()),
                                            &addrLen, SOCK_CLOEXEC | SOCK_NONBLOCK)));
 
-        LOG_ALWAYS_FATAL_IF(addrLen > static_cast<socklen_t>(sizeof(addr)), "Truncated address");
+        LOG_ALWAYS_FATAL_IF(addrLen > static_cast<socklen_t>(sizeof(sockaddr_storage)),
+                            "Truncated address");
+        addr.resize(static_cast<size_t>(addrLen));
 
         if (clientFd < 0) {
             ALOGE("Could not accept4 socket: %s", strerror(errno));
@@ -197,7 +199,7 @@ void RpcServer::join() {
             std::lock_guard<std::mutex> _l(mLock);
             std::thread thread =
                     std::thread(&RpcServer::establishConnection, sp<RpcServer>::fromExisting(this),
-                                std::move(clientFd), addr, addrLen);
+                                std::move(clientFd), std::move(addr));
             mConnectingThreads[thread.get_id()] = std::move(thread);
         }
     }
@@ -268,7 +270,7 @@ size_t RpcServer::numUninitializedSessions() {
 }
 
 void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd,
-                                    const sockaddr_storage addr, socklen_t addrLen) {
+                                    std::vector<uint8_t>&& addr) {
     // mShutdownTrigger can only be cleared once connection threads have joined.
     // It must be set before this thread is started
     LOG_ALWAYS_FATAL_IF(server->mShutdownTrigger == nullptr);
@@ -395,9 +397,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             // if null, falls back to server root
             sp<IBinder> sessionSpecificRoot;
             if (server->mRootObjectFactory != nullptr) {
-                sessionSpecificRoot =
-                        server->mRootObjectFactory(reinterpret_cast<const sockaddr*>(&addr),
-                                                   addrLen);
+                sessionSpecificRoot = server->mRootObjectFactory(addr.data(), addr.size());
                 if (sessionSpecificRoot == nullptr) {
                     ALOGE("Warning: server returned null from root object factory");
                 }

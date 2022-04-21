@@ -38,7 +38,8 @@ bool RunRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* contex
                    << " error: " << statusToString(status).c_str();
         return false;
     }
-    server->setPerSessionRootObject([=](const sockaddr* addr, socklen_t addrlen) {
+    server->setPerSessionRootObject([=](const void* addrPtr, size_t addrlen) {
+        const sockaddr* addr = reinterpret_cast<const sockaddr*>(addrPtr);
         LOG_ALWAYS_FATAL_IF(addr->sa_family != AF_VSOCK, "address is not a vsock");
         LOG_ALWAYS_FATAL_IF(addrlen < sizeof(sockaddr_vm), "sockaddr is truncated");
         const sockaddr_vm* vaddr = reinterpret_cast<const sockaddr_vm*>(addr);
