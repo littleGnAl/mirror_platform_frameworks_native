@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8dfabb1_f49f92e2",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-21T02:03:18Z",
+      "side": 1,
+      "message": "would this still be an applicable check for recursive calls into this function",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "52215837d18014f87898efe5cc54449534a49ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16350661_edfb0d6c",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-21T02:03:18Z",
+      "side": 1,
+      "message": "unrelated change to abstract this out here",
+      "range": {
+        "startLine": 206,
+        "startChar": 68,
+        "endLine": 206,
+        "endChar": 84
+      },
+      "revId": "52215837d18014f87898efe5cc54449534a49ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "409a5d0f_ed7d2c32",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-21T02:03:18Z",
+      "side": 1,
+      "message": "this could be 0 or 1, right?",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 13
+      },
+      "revId": "52215837d18014f87898efe5cc54449534a49ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
