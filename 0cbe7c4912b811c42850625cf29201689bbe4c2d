@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dfc0a71_0528f0ee",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1060206
+      },
+      "writtenOn": "2022-04-21T16:12:49Z",
+      "side": 1,
+      "message": "Nit: Formatting.  You should indent the second line to indicate a continuation and put returnFlags on a separate line.",
+      "range": {
+        "startLine": 609,
+        "startChar": 12,
+        "endLine": 610,
+        "endChar": 61
+      },
+      "revId": "0cbe7c4912b811c42850625cf29201689bbe4c2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
