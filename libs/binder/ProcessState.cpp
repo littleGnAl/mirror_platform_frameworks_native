@@ -395,6 +395,7 @@ status_t ProcessState::setThreadPoolMaxThreadCount(size_t maxThreads) {
     status_t result = NO_ERROR;
     if (ioctl(mDriverFD, BINDER_SET_MAX_THREADS, &maxThreads) != -1) {
         mMaxThreads = maxThreads;
+        mCurrentThreads = maxThreads;
     } else {
         result = -errno;
         ALOGE("Binder ioctl to set max threads failed: %s", strerror(-result));
@@ -408,6 +409,15 @@ size_t ProcessState::getThreadPoolMaxThreadCount() const {
     // must not be initialized or maybe has poll thread setup, we
     // currently don't track this in libbinder
     return 0;
+}
+
+void ProcessState::setThreadPoolCurrentThreadCount(size_t currentThreads) {
+    AutoMutex _l(mLock);
+    mCurrentThreads = currentThreads;
+}
+
+size_t ProcessState::getThreadPoolCurrentThreadCount() const {
+    return mCurrentThreads;
 }
 
 #define DRIVER_FEATURES_PATH "/dev/binderfs/features/"
@@ -491,6 +501,7 @@ ProcessState::ProcessState(const char* driver)
         mExecutingThreadsCount(0),
         mWaitingForThreads(0),
         mMaxThreads(DEFAULT_MAX_BINDER_THREADS),
+        mCurrentThreads(0),
         mStarvationStartTimeMs(0),
         mForked(false),
         mThreadPoolStarted(false),
