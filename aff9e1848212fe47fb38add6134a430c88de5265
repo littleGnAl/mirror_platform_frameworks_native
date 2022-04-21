@@ -264,6 +264,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0aad192_46253181",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-04-21T20:58:19Z",
+      "side": 1,
+      "message": "IIUC, the iovecs don\u0027t need to be symmetric atm. In one of the common cases with the current code, you are going to have a send with {header, command, data} and then, on the other side, a recv for {header} followed by a recv for {command, data}.\n\nMy instinct is that you either need to buffer in the transport so that the messages look like a stream or change the contract of the transport class to be message oriented so that callers are forced to make the same # of send and recv calls.",
+      "parentUuid": "f7fd1d86_563acbb5",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adfe0502_bf75efa4",
         "filename": "libs/binder/RpcTransportTrusty.cpp",
         "patchSetId": 2
