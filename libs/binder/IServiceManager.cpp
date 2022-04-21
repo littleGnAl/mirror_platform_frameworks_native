@@ -280,7 +280,6 @@ sp<IBinder> ServiceManagerShim::getService(const String16& name) const
     }
     // retry interval in millisecond; note that vendor services stay at 100ms
     const useconds_t sleepTime = gSystemBootCompleted ? 1000 : 100;
-
     ALOGI("Waiting for service '%s' on '%s'...", String8(name).string(),
           ProcessState::self()->getDriverName().c_str());
 
@@ -397,7 +396,10 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             if (waiter->mBinder != nullptr) return waiter->mBinder;
         }
 
-        ALOGW("Waited one second for %s (is service started? are binder threads started and available?)", name.c_str());
+        ALOGW("Waited one second for %s (is service started?)", name.c_str());
+        if (ProcessState::self()->getThreadPoolMaxTotalThreadCount() == 0) {
+            ALOGW("Threadpool was not started or maxThreads == 0 in ProcessState.");
+        }
 
         // Handle race condition for lazy services. Here is what can happen:
         // - the service dies (not processed by init yet).
