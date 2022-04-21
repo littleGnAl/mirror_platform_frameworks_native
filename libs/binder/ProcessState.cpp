@@ -178,7 +178,7 @@ void ProcessState::startThreadPool()
 {
     AutoMutex _l(mLock);
     if (!mThreadPoolStarted) {
-        if (mMaxThreads == 0) {
+        if (mMaxLazyThreads == 0) {
             ALOGW("Extra binder thread started, but 0 threads requested. Do not use "
                   "*startThreadPool when zero threads are requested.");
         }
@@ -390,11 +390,12 @@ void ProcessState::spawnPooledThread(bool isMain)
 }
 
 status_t ProcessState::setThreadPoolMaxThreadCount(size_t maxThreads) {
-    LOG_ALWAYS_FATAL_IF(mThreadPoolStarted && maxThreads < mMaxThreads,
-           "Binder threadpool cannot be shrunk after starting");
+    LOG_ALWAYS_FATAL_IF(mThreadPoolStarted && maxThreads < mMaxLazyThreads,
+                        "Binder threadpool cannot be shrunk after starting");
     status_t result = NO_ERROR;
     if (ioctl(mDriverFD, BINDER_SET_MAX_THREADS, &maxThreads) != -1) {
-        mMaxThreads = maxThreads;
+        mMaxLazyThreads = maxThreads;
+        mMaxThreads += maxThreads;
     } else {
         result = -errno;
         ALOGE("Binder ioctl to set max threads failed: %s", strerror(-result));
@@ -404,10 +405,23 @@ status_t ProcessState::setThreadPoolMaxThreadCount(size_t maxThreads) {
 
 size_t ProcessState::getThreadPoolMaxThreadCount() const {
     // may actually be one more than this, if join is called
-    if (mThreadPoolStarted) return mMaxThreads;
+    if (mThreadPoolStarted) return mMaxLazyThreads;
     // must not be initialized or maybe has poll thread setup, we
     // currently don't track this in libbinder
     return 0;
+}
+
+size_t ProcessState::getThreadPoolCurrentThreadCount() const {
+    ALOGI("CurrentThreadCount = %i", static_cast<int>(mCurrentThreads));
+    return mCurrentThreads;
+}
+
+size_t ProcessState::getThreadPoolCurrentMaxThreadCount() const {
+    // Max number of threads in the threadpool. Takes into account joined
+    // threads and poll thread setup.
+    // This "max" is variable and will expand when threads join, and shrink when
+    // they exit.
+    return mMaxThreads;
 }
 
 #define DRIVER_FEATURES_PATH "/dev/binderfs/features/"
@@ -490,7 +504,9 @@ ProcessState::ProcessState(const char* driver)
         mThreadCountDecrement(PTHREAD_COND_INITIALIZER),
         mExecutingThreadsCount(0),
         mWaitingForThreads(0),
-        mMaxThreads(DEFAULT_MAX_BINDER_THREADS),
+        mMaxLazyThreads(DEFAULT_MAX_BINDER_THREADS),
+        mMaxThreads(0),
+        mCurrentThreads(0),
         mStarvationStartTimeMs(0),
         mForked(false),
         mThreadPoolStarted(false),

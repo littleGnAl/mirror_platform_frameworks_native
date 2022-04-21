@@ -89,6 +89,10 @@ public:
      * Note: this is the lower bound. Additional threads may be started.
      */
     size_t getThreadPoolMaxThreadCount() const;
+    // Get the current number of threads that have joined the thread pool.
+    size_t getThreadPoolCurrentThreadCount() const;
+    // Get the max number of threads that can be active in the thread pool.
+    size_t getThreadPoolCurrentMaxThreadCount() const;
 
     enum class DriverFeature {
         ONEWAY_SPAM_DETECTION,
@@ -132,8 +136,12 @@ private:
     size_t mExecutingThreadsCount;
     // Number of threads calling IPCThreadState::blockUntilThreadAvailable()
     size_t mWaitingForThreads;
+    // Maximum number of lazy threads to be started in the threadpool for this process.
+    size_t mMaxLazyThreads;
     // Maximum number for binder threads allowed for this process.
     size_t mMaxThreads;
+    // Current number of binder threads inside the thread pool.
+    size_t mCurrentThreads;
     // Time when thread pool was emptied
     int64_t mStarvationStartTimeMs;
 

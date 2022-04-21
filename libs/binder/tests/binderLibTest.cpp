@@ -115,6 +115,11 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_ECHO_VECTOR,
     BINDER_LIB_TEST_REJECT_OBJECTS,
     BINDER_LIB_TEST_CAN_GET_SID,
+    BINDER_LIB_TEST_GET_MAX_THREAD_COUNT,
+    BINDER_LIB_TEST_GET_CURRENT_THREAD_COUNT,
+    BINDER_LIB_TEST_SET_MAX_THREAD_COUNT,
+    BINDER_LIB_TEST_START_THREAD_POOL,
+    BINDER_LIB_TEST_EMPTY_THREAD_POOL,
 };
 
 pid_t start_server_process(int arg2, bool usePoll = false)
@@ -243,6 +248,8 @@ class BinderLibTest : public ::testing::Test {
         virtual void TearDown() {
         }
     protected:
+        std::mutex blockMutex;
+
         sp<IBinder> addServerEtc(int32_t *idPtr, int code)
         {
             int32_t id;
@@ -276,6 +283,11 @@ class BinderLibTest : public ::testing::Test {
             pfd.events = POLLIN;
             ret = poll(&pfd, 1, timeout_ms);
             EXPECT_EQ(1, ret);
+        }
+
+        status_t lockUnlock() {
+            std::lock_guard<std::mutex> _l(blockMutex);
+            return NO_ERROR;
         }
 
         sp<IBinder> m_server;
@@ -1232,6 +1244,41 @@ TEST(ServiceNotifications, Unregister) {
     EXPECT_EQ(sm->unregisterForNotifications(String16("RogerRafa"), cb), OK);
 }
 
+TEST_F(BinderLibTest, ThreadPoolAvailableThreads) {
+    Parcel data, reply;
+    int32_t replyi;
+    sp<IBinder> server = addServer();
+    EXPECT_THAT(server->transact(BINDER_LIB_TEST_START_THREAD_POOL, data, &reply),
+                StatusEq(NO_ERROR));
+
+    EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_MAX_THREAD_COUNT, data, &reply),
+                StatusEq(NO_ERROR));
+    replyi = reply.readInt32();
+    EXPECT_EQ(replyi, 15);
+
+    EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_CURRENT_THREAD_COUNT, data, &reply),
+                StatusEq(NO_ERROR));
+    replyi = reply.readInt32();
+    EXPECT_NE(replyi, 0);
+    data.writeInt32(replyi);
+    EXPECT_THAT(server->transact(BINDER_LIB_TEST_EMPTY_THREAD_POOL, data, &reply), NO_ERROR);
+    EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_CURRENT_THREAD_COUNT, data, &reply),
+                StatusEq(NO_ERROR));
+    replyi = reply.readInt32();
+    EXPECT_EQ(replyi, 0);
+}
+
+TEST_F(BinderLibTest, HangingServices) {
+    sp<IBinder> server = addServer();
+    // EXPECT_EQ(NO_ERROR, status);
+}
+
+/*
+ * TODO: Add test to check for non-started service.
+ * Add new process with 0 threads? check for deadlock OR for non-started
+ * process?
+ */
+
 class BinderLibRpcTestBase : public BinderLibTest {
 public:
     void SetUp() override {
@@ -1637,6 +1684,33 @@ public:
             }
             case BINDER_LIB_TEST_CAN_GET_SID: {
                 return IPCThreadState::self()->getCallingSid() == nullptr ? BAD_VALUE : NO_ERROR;
+            }
+            case BINDER_LIB_TEST_GET_CURRENT_THREAD_COUNT: {
+                reply->writeInt32(ProcessState::self()->getThreadPoolCurrentThreadCount());
+                return NO_ERROR;
+            }
+            case BINDER_LIB_TEST_GET_MAX_THREAD_COUNT: {
+                ALOGI("GET MAX COUNT");
+                reply->writeInt32(ProcessState::self()->getThreadPoolMaxThreadCount());
+                ALOGI("SUCCESS");
+                return NO_ERROR;
+            }
+            case BINDER_LIB_TEST_START_THREAD_POOL: {
+                ProcessState::self()->startThreadPool();
+                return NO_ERROR;
+            }
+            case BINDER_LIB_TEST_EMPTY_THREAD_POOL: {
+                std::vector<std::thread> ts;
+                for (int i = 0; i < data.readInt32(); i++) {
+                    ts.push_back(std::thread([&] {}));
+                }
+                if ((ProcessState::self()->getThreadPoolCurrentThreadCount() -
+                     ProcessState::self()->getThreadPoolCurrentMaxThreadCount()) == 0) {
+                    for (auto &t : ts) t.join();
+                    return NO_ERROR;
+                } else {
+                    return BAD_VALUE;
+                }
             }
             default:
                 return UNKNOWN_TRANSACTION;

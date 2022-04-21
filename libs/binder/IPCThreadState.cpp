@@ -527,10 +527,10 @@ void IPCThreadState::blockUntilThreadAvailable()
 {
     pthread_mutex_lock(&mProcess->mThreadCountLock);
     mProcess->mWaitingForThreads++;
-    while (mProcess->mExecutingThreadsCount >= mProcess->mMaxThreads) {
-        ALOGW("Waiting for thread to be free. mExecutingThreadsCount=%lu mMaxThreads=%lu\n",
-                static_cast<unsigned long>(mProcess->mExecutingThreadsCount),
-                static_cast<unsigned long>(mProcess->mMaxThreads));
+    while (mProcess->mExecutingThreadsCount >= mProcess->mMaxLazyThreads) {
+        ALOGW("Waiting for thread to be free. mExecutingThreadsCount=%lu mMaxLazyThreads=%lu\n",
+              static_cast<unsigned long>(mProcess->mExecutingThreadsCount),
+              static_cast<unsigned long>(mProcess->mMaxLazyThreads));
         pthread_cond_wait(&mProcess->mThreadCountDecrement, &mProcess->mThreadCountLock);
     }
     mProcess->mWaitingForThreads--;
@@ -554,8 +554,8 @@ status_t IPCThreadState::getAndExecuteCommand()
 
         pthread_mutex_lock(&mProcess->mThreadCountLock);
         mProcess->mExecutingThreadsCount++;
-        if (mProcess->mExecutingThreadsCount >= mProcess->mMaxThreads &&
-                mProcess->mStarvationStartTimeMs == 0) {
+        if (mProcess->mExecutingThreadsCount >= mProcess->mMaxLazyThreads &&
+            mProcess->mStarvationStartTimeMs == 0) {
             mProcess->mStarvationStartTimeMs = uptimeMillis();
         }
         pthread_mutex_unlock(&mProcess->mThreadCountLock);
@@ -564,12 +564,12 @@ status_t IPCThreadState::getAndExecuteCommand()
 
         pthread_mutex_lock(&mProcess->mThreadCountLock);
         mProcess->mExecutingThreadsCount--;
-        if (mProcess->mExecutingThreadsCount < mProcess->mMaxThreads &&
-                mProcess->mStarvationStartTimeMs != 0) {
+        if (mProcess->mExecutingThreadsCount < mProcess->mMaxLazyThreads &&
+            mProcess->mStarvationStartTimeMs != 0) {
             int64_t starvationTimeMs = uptimeMillis() - mProcess->mStarvationStartTimeMs;
             if (starvationTimeMs > 100) {
                 ALOGE("binder thread pool (%zu threads) starved for %" PRId64 " ms",
-                      mProcess->mMaxThreads, starvationTimeMs);
+                      mProcess->mMaxLazyThreads, starvationTimeMs);
             }
             mProcess->mStarvationStartTimeMs = 0;
         }
@@ -638,7 +638,9 @@ void IPCThreadState::processPostWriteDerefs()
 void IPCThreadState::joinThreadPool(bool isMain)
 {
     LOG_THREADPOOL("**** THREAD %p (PID %d) IS JOINING THE THREAD POOL\n", (void*)pthread_self(), getpid());
-
+    pthread_mutex_lock(&mProcess->mThreadCountLock);
+    mProcess->mCurrentThreads++;
+    pthread_mutex_unlock(&mProcess->mThreadCountLock);
     mOut.writeInt32(isMain ? BC_ENTER_LOOPER : BC_REGISTER_LOOPER);
 
     mIsLooper = true;
@@ -666,6 +668,13 @@ void IPCThreadState::joinThreadPool(bool isMain)
     mOut.writeInt32(BC_EXIT_LOOPER);
     mIsLooper = false;
     talkWithDriver(false);
+    LOG_ALWAYS_FATAL_IF(mProcess->getThreadPoolCurrentThreadCount() == 0,
+                        "Threadpool thread count = 0. Thread cannot exist and exit in empty "
+                        "threadpool\n"
+                        "Misconfiguration. Increase threadpool max threads configuration\n");
+    pthread_mutex_lock(&mProcess->mThreadCountLock);
+    mProcess->mCurrentThreads--;
+    pthread_mutex_unlock(&mProcess->mThreadCountLock);
 }
 
 status_t IPCThreadState::setupPolling(int* fd)
@@ -677,6 +686,7 @@ status_t IPCThreadState::setupPolling(int* fd)
     mOut.writeInt32(BC_ENTER_LOOPER);
     flushCommands();
     *fd = mProcess->mDriverFD;
+    mProcess->mCurrentThreads++;
     return 0;
 }
 
