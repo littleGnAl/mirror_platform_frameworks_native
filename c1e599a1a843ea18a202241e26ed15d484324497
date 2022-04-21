@@ -22,6 +22,30 @@
       },
       "revId": "c1e599a1a843ea18a202241e26ed15d484324497",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a197c06d_60d82b73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-21T20:21:22Z",
+      "side": 1,
+      "message": "I think we could, just wondering how useful they would be. If I understand the RPC code correctly, incoming oneway calls need a second thread. If every RpcSession only has one thread (the outgoing one), then we have a few bad options (unless I\u0027m missing something):\n* don\u0027t handle any incoming async calls at all, since that second thread doesn\u0027t exist\n* handle async incoming calls immediately before/after outgoing calls, i.e., run drainCommands in transact(), but that seems to me like basically the same as non-oneway\n* add an explicit API for user code to pick \"oneway flush points\" that explicitly handles all pending incoming async calls",
+      "parentUuid": "1ea25967_1e6d57fa",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "c1e599a1a843ea18a202241e26ed15d484324497",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
