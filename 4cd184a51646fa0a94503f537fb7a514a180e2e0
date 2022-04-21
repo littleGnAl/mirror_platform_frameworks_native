@@ -22,6 +22,30 @@
       },
       "revId": "4cd184a51646fa0a94503f537fb7a514a180e2e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f53095_04f5a4da",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-21T20:11:01Z",
+      "side": 1,
+      "message": "Just compile or also run it? Would Soong build a libbinder_nothreads without anything using it?\n\nI was thinking of adding a single-threaded binderRpcTest but afaict that would require the following:\n* build a no-threads version of libbinder (as a static library?)\n* refactor or rewrite binderRpcTest into a subset that supports no-threads\n* build and run single-threaded binderRpcTest\n\nDoes that sound about right? Would it make sense to do it?",
+      "parentUuid": "c01af273_8e6a3f83",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "4cd184a51646fa0a94503f537fb7a514a180e2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
