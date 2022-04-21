@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5404cfe8_c1d74d80",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-21T02:06:48Z",
+      "side": 1,
+      "message": "nit: can you change the API of this to look more like the API to ReadFully, to avoid requiring the client to use std::vector?\n\nnit: use pointer not reference for out parameter",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 52
+      },
+      "revId": "2192584bf49198c8bf4334d66c46611be203f2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
