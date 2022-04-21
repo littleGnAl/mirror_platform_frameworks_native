@@ -638,7 +638,8 @@ void IPCThreadState::processPostWriteDerefs()
 void IPCThreadState::joinThreadPool(bool isMain)
 {
     LOG_THREADPOOL("**** THREAD %p (PID %d) IS JOINING THE THREAD POOL\n", (void*)pthread_self(), getpid());
-
+    ProcessState::self()->setThreadPoolCurrentThreadCount(ProcessState::self()->mCurrentThreads +
+                                                          1);
     mOut.writeInt32(isMain ? BC_ENTER_LOOPER : BC_REGISTER_LOOPER);
 
     mIsLooper = true;
@@ -666,6 +667,12 @@ void IPCThreadState::joinThreadPool(bool isMain)
     mOut.writeInt32(BC_EXIT_LOOPER);
     mIsLooper = false;
     talkWithDriver(false);
+    LOG_ALWAYS_FATAL_IF(ProcessState::self()->getThreadPoolCurrentThreadCount() == 0,
+                        "Threadpool thread count = 0. Thread cannot exist and exit in empty "
+                        "threadpool\n"
+                        "Misconfiguration. Increase threadpool max threads configurationi\n");
+    ProcessState::self()->setThreadPoolCurrentThreadCount(ProcessState::self()->mCurrentThreads -
+                                                          1);
 }
 
 status_t IPCThreadState::setupPolling(int* fd)

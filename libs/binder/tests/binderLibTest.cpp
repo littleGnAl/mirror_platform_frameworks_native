@@ -1232,6 +1232,30 @@ TEST(ServiceNotifications, Unregister) {
     EXPECT_EQ(sm->unregisterForNotifications(String16("RogerRafa"), cb), OK);
 }
 
+TEST_F(BinderLibTest, ThreadPoolAvailableThreads) {
+    EXPECT_NE(ProcessState::self()->getThreadPoolCurrentThreadCount(),
+              0); // make sure 1 thread available to serve.
+}
+
+/*
+ * TEST_F(BinderLibTest, HangingServices) {
+ *     auto sm = defaultServiceManager();
+ *     sp<IBinder> service = sm->waitForService(SomeUnstartedService);
+ *     EXPECT_EQ(service, nullptr);
+ *     size_t currentCount = ProcessState::self()->getThreadPoolCurrentThreadCount();
+ *     service = sm->addService(SomeUnstartedService);
+ *     EXPECT_NE(service, nullptr);
+ *     EXPECT_EQ(ProcessState::self()->getThreadPoolCurrentThreadCount(),
+ *     currentCount - 1); // 1 thread reserved for running service.
+ * }
+ */
+
+/*
+ * TODO: Add test to check for non-started service.
+ * Add new process with 0 threads? check for deadlock OR for non-started
+ * process?
+ */
+
 class BinderLibRpcTestBase : public BinderLibTest {
 public:
     void SetUp() override {
