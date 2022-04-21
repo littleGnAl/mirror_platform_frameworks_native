@@ -56,6 +56,7 @@ public:
     void spawnPooledThread(bool isMain);
 
     status_t setThreadPoolMaxThreadCount(size_t maxThreads);
+    void setThreadPoolCurrentThreadCount(size_t currentThreads);
     status_t enableOnewaySpamDetection(bool enable);
     void giveThreadPoolName();
 
@@ -89,6 +90,7 @@ public:
      * Note: this is the lower bound. Additional threads may be started.
      */
     size_t getThreadPoolMaxThreadCount() const;
+    size_t getThreadPoolCurrentThreadCount() const;
 
     enum class DriverFeature {
         ONEWAY_SPAM_DETECTION,
@@ -134,6 +136,8 @@ private:
     size_t mWaitingForThreads;
     // Maximum number for binder threads allowed for this process.
     size_t mMaxThreads;
+    // Current number for binder threads inside the thread pool.
+    size_t mCurrentThreads;
     // Time when thread pool was emptied
     int64_t mStarvationStartTimeMs;
 
