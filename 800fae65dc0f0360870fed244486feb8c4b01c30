@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3250449_6db5a749",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-21T02:00:02Z",
+      "side": 1,
+      "message": "could we do this w/ the typedefs, like you do in the other CL? or is it too intrusive",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 6
+      },
+      "revId": "800fae65dc0f0360870fed244486feb8c4b01c30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "201b4017_4c1dd7c5",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-21T02:00:02Z",
+      "side": 1,
+      "message": "can we avoid diffs by having a single mOutgoing RpcConnection? it really requires a lot of ifdefs (we\u0027d like to move as much as possible into a type-safe abstraction, so that we don\u0027t break the other mode of compilation etc)",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 5
+      },
+      "revId": "800fae65dc0f0360870fed244486feb8c4b01c30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
