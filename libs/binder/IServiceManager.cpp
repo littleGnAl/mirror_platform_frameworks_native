@@ -381,7 +381,7 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
     Defer unregister ([&] {
         mTheRealServiceManager->unregisterForNotifications(name, waiter);
     });
-
+    int timeWaited = 0;
     while(true) {
         {
             // It would be really nice if we could read binder commands on this
@@ -396,7 +396,12 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             });
             if (waiter->mBinder != nullptr) return waiter->mBinder;
         }
-
+        timeWaited++;
+        if (timeWaited == 5) {
+            ALOGW("Make sure the service is started, and enough threads are configured in the "
+                  "pool.");
+            return nullptr;
+        }
         ALOGW("Waited one second for %s (is service started? are binder threads started and available?)", name.c_str());
 
         // Handle race condition for lazy services. Here is what can happen:
