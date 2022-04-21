@@ -133,8 +133,12 @@ private:
     size_t mExecutingThreadsCount;
     // Number of threads calling IPCThreadState::blockUntilThreadAvailable()
     size_t mWaitingForThreads;
-    // Maximum number for binder threads allowed for this process.
+    // Maximum number of lazy threads to be started in the threadpool by the kernel.
     size_t mMaxThreads;
+    // Current number of threads inside the thread pool.
+    size_t mCurrentThreads;
+    // Current number of pooled threads inside the thread pool.
+    size_t mKernelStartedThreads;
     // Time when thread pool was emptied
     int64_t mStarvationStartTimeMs;
 
