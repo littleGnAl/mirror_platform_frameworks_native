@@ -280,7 +280,9 @@ sp<IBinder> ServiceManagerShim::getService(const String16& name) const
     }
     // retry interval in millisecond; note that vendor services stay at 100ms
     const useconds_t sleepTime = gSystemBootCompleted ? 1000 : 100;
-
+    LOG_ALWAYS_FATAL_IF(ProcessState::self()->getThreadPoolMaxTotalThreadCount() == 0,
+                        "No threads available to get service. Increase maxThreads configured in "
+                        "ProcessState.");
     ALOGI("Waiting for service '%s' on '%s'...", String8(name).string(),
           ProcessState::self()->getDriverName().c_str());
 
