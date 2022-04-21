@@ -240,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7fd1d86_563acbb5",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-21T20:00:50Z",
+      "side": 1,
+      "message": "\u003e we can\u0027t split existing calls into multiple io_vecs right? It still adds a constraint on the io_vecs themselves?\n\nThat\u0027s right, the iovecs have to be symmetric between senders and receivers, which is true right now.\n\n\u003e Is there a way we can add this without this requirement?\n\nOne thing we could do is try to emulate streams by buffering messages at the receiver, but that would increase memory usage. If e.g. we sent all 2-3 iovecs as one message, we could save that data on the other end until libbinder makes enough calls to read all of it. I think that would increase the complexity of the RPC transport code though (at least both instances of RpcTransportTrusty), but it\u0027s doable.",
+      "parentUuid": "a44f3fee_c5989c16",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adfe0502_bf75efa4",
         "filename": "libs/binder/RpcTransportTrusty.cpp",
         "patchSetId": 2
