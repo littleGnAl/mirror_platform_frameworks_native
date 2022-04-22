@@ -16,6 +16,24 @@
       "message": "is there a way we can do this without large cdefs? also - if we do need cdefs, we should have a local compile test here that uses the option",
       "revId": "87973bc6d5aafbb3275b7a2431e0b4f06f0e1427",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e7a957_e51b99ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-22T01:46:49Z",
+      "side": 1,
+      "message": "Would it make sense to split all the socket code into a sub-class called RpcSocketServer (or RpcServerSocket)? RpcServerTrusty also inherits from RpcServer, so the latter class could keep all the common code.\n\nAlternatively, all the socket code including parts of RpcServer::join() could be moved into RpcTransportRaw. Thoughts?",
+      "parentUuid": "2e25cd2c_794b8a6e",
+      "revId": "87973bc6d5aafbb3275b7a2431e0b4f06f0e1427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
