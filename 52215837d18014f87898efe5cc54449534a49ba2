@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca36d6ba_bd74d9d6",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-22T05:32:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8dfabb1_f49f92e2",
+      "range": {
+        "startLine": 117,
+        "startChar": 24,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "52215837d18014f87898efe5cc54449534a49ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16350661_edfb0d6c",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "890e18fc_9a2ba88d",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-22T05:32:52Z",
+      "side": 1,
+      "message": "It feels like part of the bigger discussion on 1) refactoring this function to support other kinds of servers, and/or 2) moving the socket code out of RpcServer.",
+      "parentUuid": "16350661_edfb0d6c",
+      "range": {
+        "startLine": 206,
+        "startChar": 68,
+        "endLine": 206,
+        "endChar": 84
+      },
+      "revId": "52215837d18014f87898efe5cc54449534a49ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "409a5d0f_ed7d2c32",
         "filename": "libs/binder/RpcServer.cpp",
         "patchSetId": 12
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-21T02:03:18Z",
       "side": 1,
       "message": "this could be 0 or 1, right?",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 13
+      },
+      "revId": "52215837d18014f87898efe5cc54449534a49ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dcccf07_0e475a05",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-22T05:32:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "409a5d0f_ed7d2c32",
       "range": {
         "startLine": 274,
         "startChar": 0,
