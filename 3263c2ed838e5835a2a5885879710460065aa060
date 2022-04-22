@@ -133,6 +133,30 @@
       },
       "revId": "3263c2ed838e5835a2a5885879710460065aa060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20d304a_9116d118",
+        "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-22T06:09:14Z",
+      "side": 1,
+      "message": "I added trusty/Utils.h, it\u0027s cleaner now.",
+      "parentUuid": "5941e252_194b1494",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 1
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
