@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d672ea9_b05c8117",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-04-23T03:10:30Z",
+      "side": 1,
+      "message": "Isn\u0027t this no-op? (See outer #if) :-)",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "0cdcfe8980203b0141dfa9e1b925e9d6fab87f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
