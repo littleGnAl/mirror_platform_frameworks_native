@@ -46,7 +46,7 @@
 extern "C" pid_t gettid();
 #endif
 
-#ifndef __ANDROID_RECOVERY__
+#if !defined(__ANDROID_RECOVERY__) && !defined(BINDER_NO_KERNEL_IPC)
 #include <android_runtime/vm.h>
 #include <jni.h>
 #endif
@@ -696,7 +696,7 @@ status_t RpcSession::addOutgoingConnection(std::unique_ptr<RpcTransport> rpcTran
     {
         std::lock_guard<std::mutex> _l(mMutex);
         connection->rpcTransport = std::move(rpcTransport);
-        connection->exclusiveTid = gettid();
+        connection->exclusiveTid = std::this_thread::get_id();
         mConnections.mOutgoing.push_back(connection);
     }
 
@@ -753,7 +753,7 @@ sp<RpcSession::RpcConnection> RpcSession::assignIncomingConnectionToThisThread(
 
     sp<RpcConnection> session = sp<RpcConnection>::make();
     session->rpcTransport = std::move(rpcTransport);
-    session->exclusiveTid = gettid();
+    session->exclusiveTid = std::this_thread::get_id();
 
     mConnections.mIncoming.push_back(session);
     mConnections.mMaxIncoming = mConnections.mIncoming.size();
@@ -789,7 +789,7 @@ status_t RpcSession::ExclusiveConnection::find(const sp<RpcSession>& session, Co
     connection->mConnection = nullptr;
     connection->mReentrant = false;
 
-    pid_t tid = gettid();
+    std::thread::id tid = std::this_thread::get_id();
     std::unique_lock<std::mutex> _l(session->mMutex);
 
     session->mConnections.mWaitingThreads++;
@@ -876,7 +876,8 @@ status_t RpcSession::ExclusiveConnection::find(const sp<RpcSession>& session, Co
     return OK;
 }
 
-void RpcSession::ExclusiveConnection::findConnection(pid_t tid, sp<RpcConnection>* exclusive,
+void RpcSession::ExclusiveConnection::findConnection(std::thread::id tid,
+                                                     sp<RpcConnection>* exclusive,
                                                      sp<RpcConnection>* available,
                                                      std::vector<sp<RpcConnection>>& sockets,
                                                      size_t socketsIndexHint) {
