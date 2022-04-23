@@ -211,7 +211,7 @@ private:
 
         // whether this or another thread is currently using this fd to make
         // or receive transactions.
-        std::optional<pid_t> exclusiveTid;
+        std::optional<std::thread::id> exclusiveTid;
 
         bool allowNested = false;
     };
@@ -276,7 +276,7 @@ private:
         const sp<RpcConnection>& get() { return mConnection; }
 
     private:
-        static void findConnection(pid_t tid, sp<RpcConnection>* exclusive,
+        static void findConnection(std::thread::id tid, sp<RpcConnection>* exclusive,
                                    sp<RpcConnection>* available,
                                    std::vector<sp<RpcConnection>>& sockets,
                                    size_t socketsIndexHint);
