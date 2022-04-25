@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd69bc36_9ac5edea",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:19:52Z",
+      "side": 1,
+      "message": "Note specifically, the race is that mCurrentThreads will be read from two threads, say as 2. Each thread will increment this and write 3, under the lock inside of this function.\n\nAlso, consider adding a CHECK here, for instance the current threadcount (excluding polling threads) should always be \u003c\u003d maxThreads + numberOfExplicitJoins",
+      "parentUuid": "aa9e2d23_87ae9a7a",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 642,
+        "endChar": 61
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac55b24e_5b1b1f95",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 1
