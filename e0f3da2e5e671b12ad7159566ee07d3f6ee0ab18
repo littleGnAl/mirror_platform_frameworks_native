@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26821c9a_c4066ea5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 55
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-25T20:47:14Z",
+      "side": 1,
+      "message": "I think this is the only build option that\u0027s left (if we also get rid of single-threaded), and it might be the only one that\u0027s required.",
+      "revId": "e0f3da2e5e671b12ad7159566ee07d3f6ee0ab18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
