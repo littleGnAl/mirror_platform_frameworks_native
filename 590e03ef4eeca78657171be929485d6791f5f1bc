@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e854402a_ba10df6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:17:24Z",
+      "side": 1,
+      "message": "you\u0027ll want to add it to binderLibTest, can you add a case that checks it for the main process, or a case that returns the value for a spawned process?",
+      "range": {
+        "startLine": 8,
+        "startChar": 6,
+        "endLine": 8,
+        "endChar": 9
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3e8e80a_ee79b6b6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -26,6 +49,138 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "028ecc29_80265125",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:17:24Z",
+      "side": 1,
+      "message": "This is problematic, because it doesn\u0027t take into account if a process does this:\n\n    setThreadPoolMaxThreadCount(1); // kernel can start one\n    joinThreadPool(); // adds one more\n\nHowever, the current threadpool count would be able to tell this apart.",
+      "range": {
+        "startLine": 542,
+        "startChar": 38,
+        "endLine": 542,
+        "endChar": 90
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa9e2d23_87ae9a7a",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:17:24Z",
+      "side": 1,
+      "message": "this will be racey - please use \u0027mLock\u0027 or std::atomic",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 642,
+        "endChar": 61
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac55b24e_5b1b1f95",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:17:24Z",
+      "side": 1,
+      "message": "configuration",
+      "range": {
+        "startLine": 673,
+        "startChar": 75,
+        "endLine": 673,
+        "endChar": 89
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfea53b8_7baa5d11",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:17:24Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 675,
+        "endChar": 61
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "649ef4bc_7508c7a3",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:17:24Z",
+      "side": 1,
+      "message": "you\u0027ll also want to keep track of these threads (I\u0027m curious also if any process calls setupPolling multiple times)",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 1
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b197582_ce6a9e74",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:17:24Z",
+      "side": 1,
+      "message": "here, we should check that:\n\n    numberOfThreads - (isCurrentThreadABinderThread() ? 1 : 0)\n\nIs a positive number (expectation that a thread will be able to serve)",
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b4f2162_f3eb7a7f",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 1
@@ -42,6 +197,99 @@
         "startChar": 8,
         "endLine": 398,
         "endChar": 37
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cda6b09_cb83a2cc",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:17:24Z",
+      "side": 1,
+      "message": "Right, we should avoid setting it here",
+      "parentUuid": "6b4f2162_f3eb7a7f",
+      "range": {
+        "startLine": 398,
+        "startChar": 8,
+        "endLine": 398,
+        "endChar": 37
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f182c0_6202adc5",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:17:24Z",
+      "side": 1,
+      "message": "so this is one of the bugs we want to solve",
+      "range": {
+        "startLine": 407,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 60
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9c38404_3fe1093a",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:17:24Z",
+      "side": 1,
+      "message": "and this",
+      "range": {
+        "startLine": 409,
+        "startChar": 34,
+        "endLine": 409,
+        "endChar": 61
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5754fafb_2005a532",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-25T23:17:24Z",
+      "side": 1,
+      "message": "we should avoid making this method public, because it\u0027s an internal implementation detail (it\u0027s fine to not have a setter - this will actually make threading easier)",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 64
       },
       "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
