@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e8e80a_ee79b6b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-04-25T18:07:41Z",
+      "side": 1,
+      "message": "Delete this line in `git commit --amend`.\n\nThis seems to happen when there are other lines of text directly above \"Test:\" and the hook adds another \"Change-Id:\" line.\nI mad a bug for it when I first joined and no one cared 😊\nhttps://buganizer.corp.google.com/issues/154343841\n\nSo try to have those lines with \"Test:\"/\"Bug:\" next to each other always starting with \"Test:\" or \"Bug:\" and keep an empty line between the CL description and the \"Test:\"/\"Bug:\" lines.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4f2162_f3eb7a7f",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-04-25T18:07:41Z",
+      "side": 1,
+      "message": "This is the call to the kernel driver to tell it what the max threads should be so it can know if it can ask userspace to spawn more threads.\nI imagine that the threads are spawned later and would use joinThreadPool, so does this make the CurrentThreadCount 2x what it should be?",
+      "range": {
+        "startLine": 398,
+        "startChar": 8,
+        "endLine": 398,
+        "endChar": 37
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3f6538f_c3b74d62",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-04-25T18:07:41Z",
+      "side": 1,
+      "message": "Add a comment describing this new function.",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 51
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0489245c_e95c02a7",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-04-25T18:07:41Z",
+      "side": 1,
+      "message": "nit: of",
+      "range": {
+        "startLine": 139,
+        "startChar": 22,
+        "endLine": 139,
+        "endChar": 25
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
