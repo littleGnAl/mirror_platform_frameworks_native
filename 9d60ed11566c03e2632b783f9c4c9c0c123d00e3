@@ -22,6 +22,30 @@
       },
       "revId": "9d60ed11566c03e2632b783f9c4c9c0c123d00e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dffe50e_fd9a8379",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-26T01:25:42Z",
+      "side": 1,
+      "message": "\u003e Were there any interesting issues about ordering?\n\nYes, there was one: https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/RpcSession.cpp;l\u003d661 has an interesting ordering between the parent and child thread, where the parent creates the thread with a lock held, assigns the result to the \"thread\" variable, then releases the lock. The child blocks immediately on creation and waits until that lock is released. We can\u0027t exactly replicate this ordering without threads (or some simulation thereof e.g. with longjmp), but everything mostly works out anyway (need to guarantee that thread.get_id() from https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/RpcSession.cpp;l\u003d296 returns a valid thread id even before the thread variable has been copied).",
+      "parentUuid": "b10111e5_c3e25d4a",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "9d60ed11566c03e2632b783f9c4c9c0c123d00e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
