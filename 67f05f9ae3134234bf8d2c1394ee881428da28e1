@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80800ef9_6756ea52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 56
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-26T01:10:29Z",
+      "side": 1,
+      "message": "There\u0027s a lot of code that deals with the kernel driver and IPCThreadState. Some of it could stay in but is there any point to that?",
+      "parentUuid": "7025d7bf_56c8ff40",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "67f05f9ae3134234bf8d2c1394ee881428da28e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35619203_43532910",
         "filename": "libs/binder/include/binder/Binder.h",
         "patchSetId": 56
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-26T00:53:20Z",
       "side": 1,
       "message": "keep dump for orthogonality?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "67f05f9ae3134234bf8d2c1394ee881428da28e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56101a24_4a5b360d",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 56
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-26T01:10:29Z",
+      "side": 1,
+      "message": "There are a few inconvenient things about dump:\n* the first argument is a file descriptor, which isn\u0027t supported yet\n* the second argument is a Vector and it would be nice to not need that type as a dependency (I don\u0027t think it\u0027s used anywhere else)\n\nWe can keep it but it would be great if we could get rid of it or make it optional.",
+      "parentUuid": "35619203_43532910",
       "range": {
         "startLine": 38,
         "startChar": 0,
