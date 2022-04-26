@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "374e78c3_deaa3acb",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-26T00:52:05Z",
+      "side": 1,
+      "message": "Can we avoid the extra allocations?\n\nConsider:\n\n    union RpcAddressStorage {\n        sockaddr_storage ...;\n        foo ...;\n        bar ...;\n    };",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 43
+      },
+      "revId": "a8452895067f1af7e0e727704b630bf355d947b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d049d11a_68974a77",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-26T00:52:05Z",
+      "side": 1,
+      "message": "these are now potential UAF\n\none qq - could we use std::any?",
+      "range": {
+        "startLine": 43,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 51
+      },
+      "revId": "a8452895067f1af7e0e727704b630bf355d947b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
