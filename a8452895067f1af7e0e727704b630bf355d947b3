@@ -45,6 +45,30 @@
       },
       "revId": "a8452895067f1af7e0e727704b630bf355d947b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81803107_3a0d5bfc",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-26T00:54:24Z",
+      "side": 1,
+      "message": "s/UAF/OOR/\n\nstd::any would also probably not work here, b/c heap",
+      "parentUuid": "d049d11a_68974a77",
+      "range": {
+        "startLine": 43,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 51
+      },
+      "revId": "a8452895067f1af7e0e727704b630bf355d947b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
