@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1660d95c_c7c8fcd7",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-26T01:14:38Z",
+      "side": 1,
+      "message": "The problem with that approach is it still puts an upper bound on the size of address, determined by the set of all known address kinds. That\u0027s not exactly generic (the problem wasn\u0027t Trusty anyway, its UUID addresses fit in the existing sockaddr_storage).\n\nThe other goal was to stop having to include \u003csys/socket.h\u003e (which is problematic on Trusty).",
+      "parentUuid": "374e78c3_deaa3acb",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 43
+      },
+      "revId": "a8452895067f1af7e0e727704b630bf355d947b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d049d11a_68974a77",
         "filename": "libs/binder/libbinder_rpc_unstable.cpp",
         "patchSetId": 10
