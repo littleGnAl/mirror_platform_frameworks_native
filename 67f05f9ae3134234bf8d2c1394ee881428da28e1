@@ -93,6 +93,30 @@
       },
       "revId": "67f05f9ae3134234bf8d2c1394ee881428da28e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "966b5175_3e38918a",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 56
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-26T01:39:34Z",
+      "side": 1,
+      "message": "Update: I enabled dump() again but added a comment in the next CL to get rid of dump() so we can skip VectorImpl.cpp.",
+      "parentUuid": "56101a24_4a5b360d",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "67f05f9ae3134234bf8d2c1394ee881428da28e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
