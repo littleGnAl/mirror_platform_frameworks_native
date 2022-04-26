@@ -46,6 +46,30 @@
       },
       "revId": "4cd184a51646fa0a94503f537fb7a514a180e2e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "876f30d1_45ac565c",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-26T01:00:13Z",
+      "side": 1,
+      "message": "We probably want to test all combinations of flags we are adding, if we want to be able to rely on having them in the future.\n\n\u003e refactor or rewrite binderRpcTest into a subset that supports no-threads\n\nMaybe skip tests which require multiple threads if support isn\u0027t there wouldn\u0027t be so intrusive.",
+      "parentUuid": "c1f53095_04f5a4da",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "4cd184a51646fa0a94503f537fb7a514a180e2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

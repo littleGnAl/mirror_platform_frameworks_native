@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10111e5_c3e25d4a",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-26T01:00:13Z",
+      "side": 1,
+      "message": "hey, it\u0027s actually really cool this code reduces to singlethreadedness like this! Were there any interesting issues about ordering?\n\nWDYT about s/RpcThread/RpcMaybeThread/ so that it\u0027s more clear in the client code something tricky might be going on?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "9d60ed11566c03e2632b783f9c4c9c0c123d00e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
