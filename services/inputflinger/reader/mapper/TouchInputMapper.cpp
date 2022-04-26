@@ -823,8 +823,16 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
               mSurfaceOrientation, mDeviceMode, mViewport.displayId);
 
         // Configure X and Y factors.
-        mXScale = float(mRawSurfaceWidth) / rawWidth;
-        mYScale = float(mRawSurfaceHeight) / rawHeight;
+        if (!mParameters.orientationAware && \
+             (mViewport.orientation == DISPLAY_ORIENTATION_90 || \
+              mViewport.orientation == DISPLAY_ORIENTATION_270)) {
+            mXScale = float(mSurfaceHeight) / rawWidth;
+            mYScale = float(mSurfaceWidth) / rawHeight;
+        }
+        else {
+            mXScale = float(mSurfaceWidth) / rawWidth;
+            mYScale = float(mSurfaceHeight) / rawHeight;
+        }
         mXTranslate = -mSurfaceLeft;
         mYTranslate = -mSurfaceTop;
         mXPrecision = 1.0f / mXScale;
@@ -1006,7 +1014,7 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
         // Compute oriented precision, scales and ranges.
         // Note that the maximum value reported is an inclusive maximum value so it is one
         // unit less than the total width or height of surface.
-        switch (mSurfaceOrientation) {
+        switch (mViewport.orientation) {
             case DISPLAY_ORIENTATION_90:
             case DISPLAY_ORIENTATION_270:
                 mOrientedXPrecision = mYPrecision;
