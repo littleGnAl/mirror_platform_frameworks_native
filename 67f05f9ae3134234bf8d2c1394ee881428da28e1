@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7025d7bf_56c8ff40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 56
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-26T00:53:20Z",
+      "side": 1,
+      "message": "this really adds a lot of ifdefs to the codebase. What\u0027s the need to remove these?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "67f05f9ae3134234bf8d2c1394ee881428da28e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35619203_43532910",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 56
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-26T00:53:20Z",
+      "side": 1,
+      "message": "keep dump for orthogonality?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "67f05f9ae3134234bf8d2c1394ee881428da28e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
