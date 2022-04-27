@@ -229,6 +229,86 @@ cc_library {
     afdo: true,
 }
 
+cc_library_static {
+    name: "libbinder_rpc_single_threaded",
+    host_supported: true,
+
+    // TODO(b/31559095): get headers from bionic on host
+    include_dirs: [
+        "bionic/libc/kernel/android/uapi/",
+        "bionic/libc/kernel/uapi/",
+    ],
+
+    srcs: [
+        "Binder.cpp",
+        "BpBinder.cpp",
+        "Debug.cpp",
+        "FdTrigger.cpp",
+        "IInterface.cpp",
+        "IResultReceiver.cpp",
+        "IShellCallback.cpp",
+        "Parcel.cpp",
+        "RpcSession.cpp",
+        "RpcServer.cpp",
+        "RpcState.cpp",
+        "RpcTransportRaw.cpp",
+        "Stability.cpp",
+        "Status.cpp",
+        "TextOutput.cpp",
+        "Utils.cpp",
+    ],
+
+    target: {
+        host: {
+            srcs: [
+                "UtilsHost.cpp",
+            ],
+        },
+    },
+
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wextra-semi",
+        "-Werror",
+        "-Wzero-as-null-pointer-constant",
+        "-Wreorder-init-list",
+        "-DANDROID_BASE_UNIQUE_FD_DISABLE_IMPLICIT_CONVERSION",
+        "-DANDROID_UTILS_REF_BASE_DISABLE_IMPLICIT_CONSTRUCTION",
+        "-DBINDER_RPC_SINGLE_THREADED",
+    ],
+    product_variables: {
+        binder32bit: {
+            cflags: ["-DBINDER_IPC_32BIT=1"],
+        },
+    },
+
+    shared_libs: [
+        // Has an internal dependency on libvndksupport
+        "libutils",
+    ],
+
+    static_libs: [
+        "libbase",
+        "liblog",
+        "libcutils",
+    ],
+
+    header_libs: [
+        "libbinder_headers",
+        "libandroid_runtime_vm_headers",
+    ],
+
+    export_header_lib_headers: [
+        "libbinder_headers",
+    ],
+
+    clang: true,
+    sanitize: {
+        misc_undefined: ["integer"],
+    },
+}
+
 cc_defaults {
     name: "libbinder_tls_shared_deps",
     shared_libs: [
