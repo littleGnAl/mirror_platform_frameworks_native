@@ -167,7 +167,6 @@ cc_library_static {
         "libbinder_tls_shared_deps",
     ],
     shared_libs: [
-        "libbinder",
         "libbase",
         "liblog",
     ],
@@ -213,6 +212,47 @@ cc_test {
         "liblog",
     ],
     static_libs: [
+        "libbinder_tls_static",
+        "libbinder_tls_test_utils",
+        "binderRpcTestIface-cpp",
+        "binderRpcTestIface-ndk",
+    ],
+    test_suites: ["general-tests"],
+    require_root: true,
+}
+
+cc_test {
+    name: "binderRpcTest_NO_THREADS",
+    host_supported: true,
+    target: {
+        darwin: {
+            enabled: false,
+        },
+        android: {
+            test_suites: ["vts"],
+        },
+    },
+    defaults: [
+        "binder_test_defaults",
+    ],
+
+    srcs: [
+        "binderRpcTest.cpp",
+    ],
+    cflags: [
+        "-DBINDER_RPC_NO_THREADS",
+        "-DBINDER_NO_KERNEL_IPC",
+    ],
+    shared_libs: [
+        "libbase",
+        "libutils",
+        "libcutils",
+        "liblog",
+        "libcrypto",
+        "libssl",
+    ],
+    static_libs: [
+        "libbinder_rpc_no_threads",
         "libbinder_tls_static",
         "libbinder_tls_test_utils",
         "binderRpcTestIface-cpp",
