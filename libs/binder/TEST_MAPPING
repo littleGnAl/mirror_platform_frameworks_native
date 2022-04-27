@@ -31,6 +31,9 @@
       "name": "binderRpcTest"
     },
     {
+      "name": "binderRpcTest_NO_THREADS"
+    },
+    {
       "name": "binderStabilityTest"
     },
     {
