@@ -52,10 +52,12 @@ static_assert(sizeof(IBinder) == 12);
 static_assert(sizeof(BBinder) == 20);
 #endif
 
+#ifndef BINDER_NO_KERNEL_IPC
 #ifdef BINDER_RPC_DEV_SERVERS
 constexpr const bool kEnableRpcDevServers = true;
 #elif !defined(BINDER_NO_KERNEL_IPC)
 constexpr const bool kEnableRpcDevServers = false;
+#endif
 #endif
 
 // Log any reply transactions for which the data exceeds this size

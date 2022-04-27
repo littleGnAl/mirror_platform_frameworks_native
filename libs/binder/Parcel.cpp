@@ -1295,6 +1295,8 @@ status_t Parcel::writeFileDescriptor(int fd, bool takeOwnership)
     obj.cookie = takeOwnership ? 1 : 0;
     return writeObject(obj, true);
 #else
+    (void)fd;
+    (void)takeOwnership;
     return BAD_TYPE;
 #endif
 }
