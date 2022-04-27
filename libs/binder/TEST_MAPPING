@@ -31,6 +31,15 @@
       "name": "binderRpcTest"
     },
     {
+      "name": "binderRpcTestNoKernel"
+    },
+    {
+      "name": "binderRpcTestSingleThreaded"
+    },
+    {
+      "name": "binderRpcTestSingleThreadedNoKernel"
+    },
+    {
       "name": "binderStabilityTest"
     },
     {
