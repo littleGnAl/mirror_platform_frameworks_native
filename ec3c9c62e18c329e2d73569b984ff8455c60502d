@@ -22,6 +22,30 @@
       },
       "revId": "ec3c9c62e18c329e2d73569b984ff8455c60502d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f2cec9f_51848c3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-27T00:47:44Z",
+      "side": 1,
+      "message": "You can print std::thread::id via an ostringstream (it implements operator\u003c\u003c). I\u0027m not sure the output is the tid, though.\n\ngettid() isn\u0027t really portable, maybe we could wrap it? rpc_gettid() or something like that?",
+      "parentUuid": "9270201e_4885bc3c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "ec3c9c62e18c329e2d73569b984ff8455c60502d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
