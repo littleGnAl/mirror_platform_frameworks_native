@@ -22,7 +22,11 @@
 namespace android {
 
 #ifdef BINDER_RPC_NO_THREADS
-class RpcMutex {};
+class RpcMutex {
+public:
+    void lock() {}
+    void unlock() {}
+};
 
 class RpcMutexUniqueLock {
 public:
