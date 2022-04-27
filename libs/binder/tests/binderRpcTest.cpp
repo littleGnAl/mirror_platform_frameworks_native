@@ -32,6 +32,7 @@
 #include <binder/ProcessState.h>
 #include <binder/RpcServer.h>
 #include <binder/RpcSession.h>
+#include <binder/RpcThreads.h>
 #include <binder/RpcTlsTestUtils.h>
 #include <binder/RpcTlsUtils.h>
 #include <binder/RpcTransport.h>
@@ -61,6 +62,18 @@ using testing::AssertionResult;
 using testing::AssertionSuccess;
 
 namespace android {
+
+#ifdef BINDER_RPC_SINGLE_THREADED
+constexpr bool kDisableRpcThreads = true;
+#else
+constexpr bool kDisableRpcThreads = false;
+#endif
+
+#ifdef BINDER_WITH_KERNEL_IPC
+constexpr bool kEnableKernelIpc = true;
+#else
+constexpr bool kEnableKernelIpc = false;
+#endif
 
 static_assert(RPC_WIRE_PROTOCOL_VERSION + 1 == RPC_WIRE_PROTOCOL_VERSION_NEXT ||
               RPC_WIRE_PROTOCOL_VERSION == RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL);
@@ -157,7 +170,7 @@ std::atomic<int32_t> MyBinderRpcSession::gNum;
 
 class MyBinderRpcCallback : public BnBinderRpcCallback {
     Status sendCallback(const std::string& value) {
-        std::unique_lock _l(mMutex);
+        RpcMutexUniqueLock _l(mMutex);
         mValues.push_back(value);
         _l.unlock();
         mCv.notify_one();
@@ -166,8 +179,8 @@ class MyBinderRpcCallback : public BnBinderRpcCallback {
     Status sendOnewayCallback(const std::string& value) { return sendCallback(value); }
 
 public:
-    std::mutex mMutex;
-    std::condition_variable mCv;
+    RpcMutex mMutex;
+    RpcConditionVariable mCv;
     std::vector<std::string> mValues;
 };
 
@@ -239,7 +252,7 @@ public:
         return Status::ok();
     }
 
-    std::mutex blockMutex;
+    RpcMutex blockMutex;
     Status lock() override {
         blockMutex.lock();
         return Status::ok();
@@ -250,7 +263,7 @@ public:
         return Status::ok();
     }
     Status lockUnlock() override {
-        std::lock_guard<std::mutex> _l(blockMutex);
+        RpcMutexLockGuard _l(blockMutex);
         return Status::ok();
     }
 
@@ -276,7 +289,7 @@ public:
         }
 
         if (delayed) {
-            std::thread([=]() {
+            RpcThread([=]() {
                 ALOGE("Executing delayed callback: '%s'", value.c_str());
                 Status status = doCallback(callback, oneway, false, value);
                 ALOGE("Delayed callback status: '%s'", status.toString8().c_str());
@@ -309,7 +322,7 @@ public:
         if (strongServer == nullptr) {
             return Status::fromExceptionCode(Status::EX_NULL_POINTER);
         }
-        std::thread([=] {
+        RpcThread([=] {
             LOG_ALWAYS_FATAL_IF(!strongServer->shutdown(), "Could not shutdown");
         }).detach();
         return Status::ok();
@@ -319,7 +332,9 @@ public:
         // this is WRONG! It does not make sense when using RPC binder, and
         // because it is SO wrong, and so much code calls this, it should abort!
 
-        (void)IPCThreadState::self()->getCallingPid();
+        if constexpr (kEnableKernelIpc) {
+            (void)IPCThreadState::self()->getCallingPid();
+        }
         return Status::ok();
     }
 };
@@ -697,6 +712,18 @@ public:
                                      size_t sleepMs = 500);
 };
 
+// Test fixture for tests that start multiple threads.
+// This includes tests with one thread but multiple sessions,
+// since a server uses one thread per session.
+class BinderRpcThreads : public BinderRpc {
+public:
+    void SetUp() override {
+        if constexpr (kDisableRpcThreads) {
+            GTEST_SKIP() << "Test skipped because threads were disabled at build time";
+        }
+    }
+};
+
 TEST_P(BinderRpc, Ping) {
     auto proc = createRpcTestSocketServerProcess({});
     ASSERT_NE(proc.rootBinder, nullptr);
@@ -709,7 +736,7 @@ TEST_P(BinderRpc, GetInterfaceDescriptor) {
     EXPECT_EQ(IBinderRpcTest::descriptor, proc.rootBinder->getInterfaceDescriptor());
 }
 
-TEST_P(BinderRpc, MultipleSessions) {
+TEST_P(BinderRpcThreads, MultipleSessions) {
     auto proc = createRpcTestSocketServerProcess({.numThreads = 1, .numSessions = 5});
     for (auto session : proc.proc.sessions) {
         ASSERT_NE(nullptr, session.root);
@@ -717,7 +744,7 @@ TEST_P(BinderRpc, MultipleSessions) {
     }
 }
 
-TEST_P(BinderRpc, SeparateRootObject) {
+TEST_P(BinderRpcThreads, SeparateRootObject) {
     SocketType type = std::get<0>(GetParam());
     if (type == SocketType::PRECONNECTED || type == SocketType::UNIX) {
         // we can't get port numbers for unix sockets
@@ -893,7 +920,7 @@ TEST_P(BinderRpc, CannotMixBindersBetweenUnrelatedSocketSessions) {
               proc1.rootIface->repeatBinder(proc2.rootBinder, &outBinder).transactionError());
 }
 
-TEST_P(BinderRpc, CannotMixBindersBetweenTwoSessionsToTheSameServer) {
+TEST_P(BinderRpcThreads, CannotMixBindersBetweenTwoSessionsToTheSameServer) {
     auto proc = createRpcTestSocketServerProcess({.numThreads = 1, .numSessions = 2});
 
     sp<IBinder> outBinder;
@@ -903,6 +930,11 @@ TEST_P(BinderRpc, CannotMixBindersBetweenTwoSessionsToTheSameServer) {
 }
 
 TEST_P(BinderRpc, CannotSendRegularBinderOverSocketBinder) {
+    if constexpr (!kEnableKernelIpc) {
+        GTEST_SKIP() << "Test disabled because Binder kernel driver was disabled "
+                        "at build time.";
+    }
+
     auto proc = createRpcTestSocketServerProcess({});
 
     sp<IBinder> someRealBinder = IInterface::asBinder(defaultServiceManager());
@@ -912,6 +944,11 @@ TEST_P(BinderRpc, CannotSendRegularBinderOverSocketBinder) {
 }
 
 TEST_P(BinderRpc, CannotSendSocketBinderOverRegularBinder) {
+    if constexpr (!kEnableKernelIpc) {
+        GTEST_SKIP() << "Test disabled because Binder kernel driver was disabled "
+                        "at build time.";
+    }
+
     auto proc = createRpcTestSocketServerProcess({});
 
     // for historical reasons, IServiceManager interface only returns the
@@ -1033,7 +1070,7 @@ size_t epochMillis() {
     return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 }
 
-TEST_P(BinderRpc, ThreadPoolGreaterThanEqualRequested) {
+TEST_P(BinderRpcThreads, ThreadPoolGreaterThanEqualRequested) {
     constexpr size_t kNumThreads = 10;
 
     auto proc = createRpcTestSocketServerProcess({.numThreads = kNumThreads});
@@ -1084,14 +1121,14 @@ void BinderRpc::testThreadPoolOverSaturated(sp<IBinderRpcTest> iface, size_t num
     EXPECT_LE(epochMsAfter, epochMsBefore + 3 * sleepMs);
 }
 
-TEST_P(BinderRpc, ThreadPoolOverSaturated) {
+TEST_P(BinderRpcThreads, ThreadPoolOverSaturated) {
     constexpr size_t kNumThreads = 10;
     constexpr size_t kNumCalls = kNumThreads + 3;
     auto proc = createRpcTestSocketServerProcess({.numThreads = kNumThreads});
     testThreadPoolOverSaturated(proc.rootIface, kNumCalls);
 }
 
-TEST_P(BinderRpc, ThreadPoolLimitOutgoing) {
+TEST_P(BinderRpcThreads, ThreadPoolLimitOutgoing) {
     constexpr size_t kNumThreads = 20;
     constexpr size_t kNumOutgoingConnections = 10;
     constexpr size_t kNumCalls = kNumOutgoingConnections + 3;
@@ -1100,7 +1137,7 @@ TEST_P(BinderRpc, ThreadPoolLimitOutgoing) {
     testThreadPoolOverSaturated(proc.rootIface, kNumCalls);
 }
 
-TEST_P(BinderRpc, ThreadingStressTest) {
+TEST_P(BinderRpcThreads, ThreadingStressTest) {
     constexpr size_t kNumClientThreads = 10;
     constexpr size_t kNumServerThreads = 10;
     constexpr size_t kNumCalls = 100;
@@ -1129,7 +1166,7 @@ static void saturateThreadPool(size_t threadCount, const sp<IBinderRpcTest>& ifa
     for (auto& t : threads) t.join();
 }
 
-TEST_P(BinderRpc, OnewayStressTest) {
+TEST_P(BinderRpcThreads, OnewayStressTest) {
     constexpr size_t kNumClientThreads = 10;
     constexpr size_t kNumServerThreads = 10;
     constexpr size_t kNumCalls = 1000;
@@ -1164,7 +1201,7 @@ TEST_P(BinderRpc, OnewayCallDoesNotWait) {
     EXPECT_LT(epochMsAfter, epochMsBefore + kReallyLongTimeMs);
 }
 
-TEST_P(BinderRpc, OnewayCallQueueing) {
+TEST_P(BinderRpcThreads, OnewayCallQueueing) {
     constexpr size_t kNumSleeps = 10;
     constexpr size_t kNumExtraServerThreads = 4;
     constexpr size_t kSleepMs = 50;
@@ -1193,7 +1230,7 @@ TEST_P(BinderRpc, OnewayCallQueueing) {
     saturateThreadPool(1 + kNumExtraServerThreads, proc.rootIface);
 }
 
-TEST_P(BinderRpc, OnewayCallExhaustion) {
+TEST_P(BinderRpcThreads, OnewayCallExhaustion) {
     constexpr size_t kNumClients = 2;
     constexpr size_t kTooLongMs = 1000;
 
@@ -1233,7 +1270,7 @@ TEST_P(BinderRpc, OnewayCallExhaustion) {
     proc.proc.sessions.erase(proc.proc.sessions.begin() + 1);
 }
 
-TEST_P(BinderRpc, Callbacks) {
+TEST_P(BinderRpcThreads, Callbacks) {
     const static std::string kTestString = "good afternoon!";
 
     for (bool callIsOneway : {true, false}) {
@@ -1252,7 +1289,7 @@ TEST_P(BinderRpc, Callbacks) {
                 }
 
                 using std::literals::chrono_literals::operator""s;
-                std::unique_lock<std::mutex> _l(cb->mMutex);
+                RpcMutexUniqueLock _l(cb->mMutex);
                 cb->mCv.wait_for(_l, 1s, [&] { return !cb->mValues.empty(); });
 
                 EXPECT_EQ(cb->mValues.size(), 1)
@@ -1307,6 +1344,11 @@ TEST_P(BinderRpc, Die) {
 }
 
 TEST_P(BinderRpc, UseKernelBinderCallingId) {
+    if constexpr (!kEnableKernelIpc) {
+        GTEST_SKIP() << "Test disabled because Binder kernel driver was disabled "
+                        "at build time.";
+    }
+
     bool okToFork = ProcessState::selfOrNull() == nullptr;
 
     auto proc = createRpcTestSocketServerProcess({});
@@ -1329,6 +1371,11 @@ TEST_P(BinderRpc, UseKernelBinderCallingId) {
 }
 
 TEST_P(BinderRpc, WorksWithLibbinderNdkPing) {
+    if constexpr (!kEnableKernelIpc) {
+        GTEST_SKIP() << "Test disabled because Binder kernel driver was disabled "
+                        "at build time.";
+    }
+
     auto proc = createRpcTestSocketServerProcess({});
 
     ndk::SpAIBinder binder = ndk::SpAIBinder(AIBinder_fromPlatformBinder(proc.rootBinder));
@@ -1338,6 +1385,11 @@ TEST_P(BinderRpc, WorksWithLibbinderNdkPing) {
 }
 
 TEST_P(BinderRpc, WorksWithLibbinderNdkUserTransaction) {
+    if constexpr (!kEnableKernelIpc) {
+        GTEST_SKIP() << "Test disabled because Binder kernel driver was disabled "
+                        "at build time.";
+    }
+
     auto proc = createRpcTestSocketServerProcess({});
 
     ndk::SpAIBinder binder = ndk::SpAIBinder(AIBinder_fromPlatformBinder(proc.rootBinder));
@@ -1362,7 +1414,7 @@ ssize_t countFds() {
     return ret;
 }
 
-TEST_P(BinderRpc, Fds) {
+TEST_P(BinderRpcThreads, Fds) {
     ssize_t beforeFds = countFds();
     ASSERT_GE(beforeFds, 0);
     {
@@ -1383,6 +1435,11 @@ TEST_P(BinderRpc, AidlDelegatorTest) {
 }
 
 static bool testSupportVsockLoopback() {
+    if constexpr (kDisableRpcThreads) {
+        // The check below needs at least 2 threads (1 for server and 1 for client)
+        return false;
+    }
+
     // We don't need to enable TLS to know if vsock is supported.
     unsigned int vsockPort = allocateVsockPort();
     sp<RpcServer> server = RpcServer::make(RpcTransportCtxFactoryRaw::make());
@@ -1416,6 +1473,11 @@ static std::vector<SocketType> testSocketTypes(bool hasPreconnected = true) {
 }
 
 INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
+                        ::testing::Combine(::testing::ValuesIn(testSocketTypes()),
+                                           ::testing::ValuesIn(RpcSecurityValues())),
+                        BinderRpc::PrintParamInfo);
+
+INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpcThreads,
                         ::testing::Combine(::testing::ValuesIn(testSocketTypes()),
                                            ::testing::ValuesIn(RpcSecurityValues())),
                         BinderRpc::PrintParamInfo);
@@ -1472,6 +1534,10 @@ private:
 };
 
 TEST_P(BinderRpcSimple, Shutdown) {
+    if constexpr (kDisableRpcThreads) {
+        GTEST_SKIP() << "Test skipped because threads were disabled at build time";
+    }
+
     auto addr = allocateSocketAddress();
     auto server = RpcServer::make(newFactory(GetParam()));
     ASSERT_EQ(OK, server->setupUnixDomainServer(addr.c_str()));
@@ -1502,6 +1568,11 @@ TEST(BinderRpc, Java) {
                     "createRpcDelegateServiceManager() with a device attached, such test belongs "
                     "to binderHostDeviceTest. Hence, just disable this test on host.";
 #endif // !__ANDROID__
+    if constexpr (!kEnableKernelIpc) {
+        GTEST_SKIP() << "Test disabled because Binder kernel driver was disabled "
+                        "at build time.";
+    }
+
     sp<IServiceManager> sm = defaultServiceManager();
     ASSERT_NE(nullptr, sm);
     // Any Java service with non-empty getInterfaceDescriptor() would do.
@@ -1787,6 +1858,11 @@ public:
         auto [socketType, rpcSecurity, certificateFormat] = GetParam();
         return RpcTransportTestUtils::trust(rpcSecurity, certificateFormat, a, b);
     }
+    void SetUp() override {
+        if constexpr (kDisableRpcThreads) {
+            GTEST_SKIP() << "Test skipped because threads were disabled at build time";
+        }
+    }
 };
 
 TEST_P(RpcTransportTest, GoodCertificate) {
@@ -1981,6 +2057,10 @@ public:
 };
 
 TEST_P(RpcTransportTlsKeyTest, PreSignedCertificate) {
+    if constexpr (kDisableRpcThreads) {
+        GTEST_SKIP() << "Test skipped because threads were disabled at build time";
+    }
+
     auto [socketType, certificateFormat, keyFormat] = GetParam();
 
     std::vector<uint8_t> pkeyData, certData;
