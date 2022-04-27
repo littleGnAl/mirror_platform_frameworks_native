@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9270201e_4885bc3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-27T00:37:00Z",
+      "side": 1,
+      "message": "This is true, but we do want the actually tid for debugging purposes/logs (because gettid can be used to easily look up information about the thread), but the std::thread id didn\u0027t seem to be as useful.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "ec3c9c62e18c329e2d73569b984ff8455c60502d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
