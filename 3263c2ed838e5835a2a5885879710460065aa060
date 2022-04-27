@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3dc36e6_0357bf39",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-27T01:17:44Z",
+      "side": 1,
+      "message": "In the most common use case, port is a pointer to a constant string and acl is a pointer to a static const structure (and so are its fields, mainly uuids). Here\u0027s one example of what that looks like: https://android.googlesource.com/trusty/lib/+/refs/heads/master/app/acvp/acvp.cpp#107\n\nI think it would be fine if we required port and acl to point to constant globals, I\u0027m just not sure what that looks like in C++ (this made me think of Rust where we could just slap a \u0027static on both parameters).",
+      "parentUuid": "6a43758a_22479655",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e8cfd15_cd255c2d",
         "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
         "patchSetId": 56
