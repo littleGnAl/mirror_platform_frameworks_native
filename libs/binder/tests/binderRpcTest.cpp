@@ -32,6 +32,7 @@
 #include <binder/ProcessState.h>
 #include <binder/RpcServer.h>
 #include <binder/RpcSession.h>
+#include <binder/RpcThreads.h>
 #include <binder/RpcTlsTestUtils.h>
 #include <binder/RpcTlsUtils.h>
 #include <binder/RpcTransport.h>
@@ -157,7 +158,7 @@ std::atomic<int32_t> MyBinderRpcSession::gNum;
 
 class MyBinderRpcCallback : public BnBinderRpcCallback {
     Status sendCallback(const std::string& value) {
-        std::unique_lock _l(mMutex);
+        RpcMutexUniqueLock _l(mMutex);
         mValues.push_back(value);
         _l.unlock();
         mCv.notify_one();
@@ -166,8 +167,8 @@ class MyBinderRpcCallback : public BnBinderRpcCallback {
     Status sendOnewayCallback(const std::string& value) { return sendCallback(value); }
 
 public:
-    std::mutex mMutex;
-    std::condition_variable mCv;
+    RpcMutex mMutex;
+    RpcConditionVariable mCv;
     std::vector<std::string> mValues;
 };
 
@@ -239,7 +240,7 @@ public:
         return Status::ok();
     }
 
-    std::mutex blockMutex;
+    RpcMutex blockMutex;
     Status lock() override {
         blockMutex.lock();
         return Status::ok();
@@ -250,7 +251,7 @@ public:
         return Status::ok();
     }
     Status lockUnlock() override {
-        std::lock_guard<std::mutex> _l(blockMutex);
+        RpcMutexLockGuard _l(blockMutex);
         return Status::ok();
     }
 
@@ -276,7 +277,7 @@ public:
         }
 
         if (delayed) {
-            std::thread([=]() {
+            RpcThread([=]() {
                 ALOGE("Executing delayed callback: '%s'", value.c_str());
                 Status status = doCallback(callback, oneway, false, value);
                 ALOGE("Delayed callback status: '%s'", status.toString8().c_str());
@@ -309,7 +310,7 @@ public:
         if (strongServer == nullptr) {
             return Status::fromExceptionCode(Status::EX_NULL_POINTER);
         }
-        std::thread([=] {
+        RpcThread([=] {
             LOG_ALWAYS_FATAL_IF(!strongServer->shutdown(), "Could not shutdown");
         }).detach();
         return Status::ok();
@@ -319,7 +320,9 @@ public:
         // this is WRONG! It does not make sense when using RPC binder, and
         // because it is SO wrong, and so much code calls this, it should abort!
 
+#ifndef BINDER_NO_KERNEL_IPC
         (void)IPCThreadState::self()->getCallingPid();
+#endif
         return Status::ok();
     }
 };
@@ -706,6 +709,7 @@ TEST_P(BinderRpc, GetInterfaceDescriptor) {
     EXPECT_EQ(IBinderRpcTest::descriptor, proc.rootBinder->getInterfaceDescriptor());
 }
 
+#ifndef BINDER_RPC_NO_THREADS
 TEST_P(BinderRpc, MultipleSessions) {
     auto proc = createRpcTestSocketServerProcess({.numThreads = 1, .numSessions = 5});
     for (auto session : proc.proc.sessions) {
@@ -734,6 +738,7 @@ TEST_P(BinderRpc, SeparateRootObject) {
     // session, because we use setPerSessionRootObject
     EXPECT_NE(port1, port2);
 }
+#endif
 
 TEST_P(BinderRpc, TransactionsMustBeMarkedRpc) {
     auto proc = createRpcTestSocketServerProcess({});
@@ -890,6 +895,7 @@ TEST_P(BinderRpc, CannotMixBindersBetweenUnrelatedSocketSessions) {
               proc1.rootIface->repeatBinder(proc2.rootBinder, &outBinder).transactionError());
 }
 
+#ifndef BINDER_RPC_NO_THREADS
 TEST_P(BinderRpc, CannotMixBindersBetweenTwoSessionsToTheSameServer) {
     auto proc = createRpcTestSocketServerProcess({.numThreads = 1, .numSessions = 2});
 
@@ -898,7 +904,9 @@ TEST_P(BinderRpc, CannotMixBindersBetweenTwoSessionsToTheSameServer) {
               proc.rootIface->repeatBinder(proc.proc.sessions.at(1).root, &outBinder)
                       .transactionError());
 }
+#endif
 
+#ifndef BINDER_NO_KERNEL_IPC
 TEST_P(BinderRpc, CannotSendRegularBinderOverSocketBinder) {
     auto proc = createRpcTestSocketServerProcess({});
 
@@ -916,6 +924,7 @@ TEST_P(BinderRpc, CannotSendSocketBinderOverRegularBinder) {
     EXPECT_EQ(binder::Status::EX_TRANSACTION_FAILED,
               defaultServiceManager()->addService(String16("not_suspicious"), proc.rootBinder));
 }
+#endif
 
 // END TESTS FOR LIMITATIONS OF SOCKET BINDER
 
@@ -1030,6 +1039,7 @@ size_t epochMillis() {
     return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 }
 
+#ifndef BINDER_RPC_NO_THREADS
 TEST_P(BinderRpc, ThreadPoolGreaterThanEqualRequested) {
     constexpr size_t kNumThreads = 10;
 
@@ -1275,6 +1285,7 @@ TEST_P(BinderRpc, Callbacks) {
         }
     }
 }
+#endif
 
 TEST_P(BinderRpc, OnewayCallbackWithNoThread) {
     auto proc = createRpcTestSocketServerProcess({});
@@ -1284,6 +1295,7 @@ TEST_P(BinderRpc, OnewayCallbackWithNoThread) {
     EXPECT_EQ(WOULD_BLOCK, status.transactionError());
 }
 
+#ifndef BINDER_RPC_NO_THREADS
 TEST_P(BinderRpc, Die) {
     for (bool doDeathCleanup : {true, false}) {
         auto proc = createRpcTestSocketServerProcess({});
@@ -1368,6 +1380,7 @@ TEST_P(BinderRpc, Fds) {
     }
     ASSERT_EQ(beforeFds, countFds()) << (system("ls -l /proc/self/fd/"), "fd leak?");
 }
+#endif
 
 TEST_P(BinderRpc, AidlDelegatorTest) {
     auto proc = createRpcTestSocketServerProcess({});
@@ -1380,6 +1393,11 @@ TEST_P(BinderRpc, AidlDelegatorTest) {
 }
 
 static bool testSupportVsockLoopback() {
+#ifdef BINDER_RPC_NO_THREADS
+    // The check below needs at least 2 threads (1 for server and 1 for client)
+    return false;
+#endif
+
     // We don't need to enable TLS to know if vsock is supported.
     unsigned int vsockPort = allocateVsockPort();
     sp<RpcServer> server = RpcServer::make(RpcTransportCtxFactoryRaw::make());
@@ -1447,6 +1465,7 @@ INSTANTIATE_TEST_CASE_P(BinderRpc, BinderRpcServerRootObject,
                         ::testing::Combine(::testing::Bool(), ::testing::Bool(),
                                            ::testing::ValuesIn(RpcSecurityValues())));
 
+#ifndef BINDER_RPC_NO_THREADS
 class OneOffSignal {
 public:
     // If notify() was previously called, or is called within |duration|, return true; else false.
@@ -1492,7 +1511,9 @@ TEST_P(BinderRpcSimple, Shutdown) {
     ASSERT_TRUE(joinEnds->wait(2s))
             << "After server->shutdown() returns true, join() did not stop after 2s";
 }
+#endif
 
+#ifndef BINDER_NO_KERNEL_IPC
 TEST(BinderRpc, Java) {
 #if !defined(__ANDROID__)
     GTEST_SKIP() << "This test is only run on Android. Though it can technically run on host on"
@@ -1539,10 +1560,12 @@ TEST(BinderRpc, Java) {
             << "getInterfaceDescriptor should not crash system_server";
     ASSERT_EQ(OK, rpcBinder->pingBinder());
 }
+#endif
 
 INSTANTIATE_TEST_CASE_P(BinderRpc, BinderRpcSimple, ::testing::ValuesIn(RpcSecurityValues()),
                         BinderRpcSimple::PrintTestParam);
 
+#ifndef BINDER_RPC_NO_THREADS
 class RpcTransportTestUtils {
 public:
     using Param = std::tuple<SocketType, RpcSecurity, std::optional<RpcCertificateFormat>>;
@@ -2015,6 +2038,7 @@ INSTANTIATE_TEST_CASE_P(
                          testing::Values(RpcCertificateFormat::PEM, RpcCertificateFormat::DER),
                          testing::Values(RpcKeyFormat::PEM, RpcKeyFormat::DER)),
         RpcTransportTlsKeyTest::PrintParamInfo);
+#endif
 
 } // namespace android
 
