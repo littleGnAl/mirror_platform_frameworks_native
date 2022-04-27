@@ -70,6 +70,30 @@
       },
       "revId": "ec3c9c62e18c329e2d73569b984ff8455c60502d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5cccb2_31a251b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-27T01:39:55Z",
+      "side": 1,
+      "message": "How about this one? I can add an #ifdef __TRUSTY__ to GetThreadId().",
+      "parentUuid": "e83abd0c_eb524126",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "ec3c9c62e18c329e2d73569b984ff8455c60502d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
