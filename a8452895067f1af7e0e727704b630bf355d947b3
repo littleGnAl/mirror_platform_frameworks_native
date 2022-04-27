@@ -144,6 +144,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ec2c238_c497f302",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-27T23:10:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e7caa4b_a1ee5ab7",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 43
+      },
+      "revId": "a8452895067f1af7e0e727704b630bf355d947b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d049d11a_68974a77",
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "s/UAF/OOR/\n\nstd::any would also probably not work here, b/c heap",
       "parentUuid": "d049d11a_68974a77",
+      "range": {
+        "startLine": 43,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 51
+      },
+      "revId": "a8452895067f1af7e0e727704b630bf355d947b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d364c1cb_16834f00",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-27T23:10:42Z",
+      "side": 1,
+      "message": "I moved the checks around, should guarantee that no out-of-bounds reads happen.",
+      "parentUuid": "81803107_3a0d5bfc",
       "range": {
         "startLine": 43,
         "startChar": 33,
