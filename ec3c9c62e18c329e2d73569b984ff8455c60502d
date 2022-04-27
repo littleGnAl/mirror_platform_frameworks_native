@@ -46,6 +46,30 @@
       },
       "revId": "ec3c9c62e18c329e2d73569b984ff8455c60502d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e83abd0c_eb524126",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-27T01:20:31Z",
+      "side": 1,
+      "message": "Right, it\u0027s not. So, one more layer of abstraction sounds good!",
+      "parentUuid": "9f2cec9f_51848c3a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "ec3c9c62e18c329e2d73569b984ff8455c60502d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
