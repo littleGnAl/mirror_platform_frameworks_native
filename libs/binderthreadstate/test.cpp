@@ -16,6 +16,7 @@
 
 #include <BnAidlStuff.h>
 #include <android-base/logging.h>
+#include <android-base/test_utils.h>
 #include <binder/IServiceManager.h>
 #include <binderthreadstate/CallerUtils.h>
 #include <binderthreadstateutilstest/1.0/IHidlStuff.h>
@@ -151,6 +152,7 @@ TEST(BindThreadState, RemoteNestedStartHidlCall) {
     ASSERT_TRUE(stuff->call(100).isOk());
 }
 TEST(BindThreadState, RemoteNestedStartAidlCall) {
+    SKIP_WITH_HWASAN;  // TODO(b/230393161): Remove.
     sp<IAidlStuff> stuff;
     ASSERT_EQ(OK, android::getService<IAidlStuff>(String16(id2name(kP1Id).c_str()), &stuff));
     ASSERT_NE(nullptr, stuff);
