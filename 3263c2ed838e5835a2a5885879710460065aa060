@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95781004_07db99a9",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-28T01:07:47Z",
+      "side": 1,
+      "message": "Changing the type to std::shared_ptr?\n\nThen wrapping the static const struct in shared_ptr with a no-op deleter.\n\nstd::shared_ptr\u003cconst struct tipc_port_acl\u003e acl{\u0026kAcvpPortAcl, [](auto p){}};",
+      "parentUuid": "f3dc36e6_0357bf39",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e8cfd15_cd255c2d",
         "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
         "patchSetId": 56
