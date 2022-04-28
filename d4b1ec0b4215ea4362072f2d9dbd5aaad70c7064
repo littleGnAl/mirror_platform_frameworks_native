@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae8a83a_67df61fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948495
+      },
+      "writtenOn": "2022-04-28T02:52:37Z",
+      "side": 1,
+      "message": "The ANR on system with 9 cpus was fixed with this patch.",
+      "revId": "d4b1ec0b4215ea4362072f2d9dbd5aaad70c7064",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
