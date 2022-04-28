@@ -70,6 +70,30 @@
       },
       "revId": "4cd184a51646fa0a94503f537fb7a514a180e2e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "889ed1bb_a2da0635",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-28T22:35:00Z",
+      "side": 1,
+      "message": "Next CL adds this.",
+      "parentUuid": "876f30d1_45ac565c",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "4cd184a51646fa0a94503f537fb7a514a180e2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

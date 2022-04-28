@@ -63,6 +63,30 @@
       },
       "revId": "9d60ed11566c03e2632b783f9c4c9c0c123d00e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18819f6e_0f964bf6",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-28T22:35:00Z",
+      "side": 1,
+      "message": "There were some more ordering issues that the new binderRpcTest_NO_THREADS revealed. I added rpc_run_thread() as a way to force the thread to be executed at a specific point in single-threaded mode.",
+      "parentUuid": "3dffe50e_fd9a8379",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "9d60ed11566c03e2632b783f9c4c9c0c123d00e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
