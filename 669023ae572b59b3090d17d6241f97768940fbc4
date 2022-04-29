@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce848dc_5c02c517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-29T01:42:53Z",
+      "side": 1,
+      "message": "nits ...",
+      "revId": "669023ae572b59b3090d17d6241f97768940fbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "655da796_32c67252",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-29T01:42:53Z",
+      "side": 1,
+      "message": "Why don\u0027t you statically link to them?",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 18
+      },
+      "revId": "669023ae572b59b3090d17d6241f97768940fbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e246ea8_e0338648",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-29T01:42:53Z",
+      "side": 1,
+      "message": "We have the same condition at #58",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 28
+      },
+      "revId": "669023ae572b59b3090d17d6241f97768940fbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1321cc74_29d38d1b",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-29T01:42:53Z",
+      "side": 1,
+      "message": "And here as well",
+      "revId": "669023ae572b59b3090d17d6241f97768940fbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
