@@ -90,6 +90,7 @@ public:
      * Note: this is the lower bound. Additional threads may be started.
      */
     size_t getThreadPoolMaxThreadCount() const;
+    // Get the current number of threads that have joined the thread pool.
     size_t getThreadPoolCurrentThreadCount() const;
 
     enum class DriverFeature {
@@ -136,7 +137,7 @@ private:
     size_t mWaitingForThreads;
     // Maximum number for binder threads allowed for this process.
     size_t mMaxThreads;
-    // Current number for binder threads inside the thread pool.
+    // Current number of binder threads inside the thread pool.
     size_t mCurrentThreads;
     // Time when thread pool was emptied
     int64_t mStarvationStartTimeMs;
