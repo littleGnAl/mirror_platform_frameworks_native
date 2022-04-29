@@ -16,6 +16,23 @@
       "message": "\u003e Patch Set 3: Code-Review+2\n\u003e \n\u003e (1 comment)\n\u003e \n\u003e By voting Code-Review+2 the following files are now code-owner approved by \u003cGERRIT_ACCOUNT_1470474\u003e:\n\u003e * services/surfaceflinger/RegionSamplingThread.cpp\n\u003e \n\nDone,thanks",
       "revId": "4d29b7c685bd5255db2c0562fd6a48682c183600",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd9d77f_cb70f585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934857
+      },
+      "writtenOn": "2022-04-29T07:19:35Z",
+      "side": 1,
+      "message": "\u003e Patch Set 3: Code-Review+2\n\u003e \n\u003e By voting Code-Review+2 the following files are now code-owner approved by \u003cGERRIT_ACCOUNT_1388190\u003e:\n\u003e * services/surfaceflinger/RegionSamplingThread.cpp\n\u003e \n\nHi Ady, please help review this CL again, thanks",
+      "revId": "4d29b7c685bd5255db2c0562fd6a48682c183600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
