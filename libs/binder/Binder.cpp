@@ -653,10 +653,12 @@ status_t BBinder::onTransact(
             return NO_ERROR;
         }
 
+#ifdef __ANDROID__
         case SYSPROPS_TRANSACTION: {
             report_sysprop_change();
             return NO_ERROR;
         }
+#endif
 
         default:
             return UNKNOWN_TRANSACTION;
