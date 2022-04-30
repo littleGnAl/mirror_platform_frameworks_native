@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea7010a_94a60ecf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-04-30T00:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e854402a_ba10df6a",
+      "range": {
+        "startLine": 8,
+        "startChar": 6,
+        "endLine": 8,
+        "endChar": 9
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3e8e80a_ee79b6b6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-25T18:07:41Z",
       "side": 1,
       "message": "Delete this line in `git commit --amend`.\n\nThis seems to happen when there are other lines of text directly above \"Test:\" and the hook adds another \"Change-Id:\" line.\nI mad a bug for it when I first joined and no one cared 😊\nhttps://buganizer.corp.google.com/issues/154343841\n\nSo try to have those lines with \"Test:\"/\"Bug:\" next to each other always starting with \"Test:\" or \"Bug:\" and keep an empty line between the CL description and the \"Test:\"/\"Bug:\" lines.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e61830_9843d6ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-04-30T00:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3e8e80a_ee79b6b6",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -332,6 +380,30 @@
       "writtenOn": "2022-04-25T18:07:41Z",
       "side": 1,
       "message": "Add a comment describing this new function.",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 51
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "318e70e2_fb313c52",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-04-30T00:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3f6538f_c3b74d62",
       "range": {
         "startLine": 93,
         "startChar": 4,
