@@ -20,6 +20,7 @@
 #include <map> // for legacy reasons
 #include <string>
 #include <type_traits>
+#include <variant>
 #include <vector>
 
 #include <android-base/unique_fd.h>
@@ -100,6 +101,8 @@ public:
     // returns all file descriptors in the Parcel
     // does not dup
     std::vector<int> debugReadAllFileDescriptors() const;
+
+    std::vector<base::borrowed_fd> readRpcFileDescriptions() const;
 
     // Zeros data when reallocating. Other mitigations may be added
     // in the future.
@@ -600,9 +603,10 @@ private:
     size_t              ipcDataSize() const;
     uintptr_t           ipcObjects() const;
     size_t              ipcObjectsCount() const;
-    void                ipcSetDataReference(const uint8_t* data, size_t dataSize,
-                                            const binder_size_t* objects, size_t objectsCount,
-                                            release_func relFunc);
+    void ipcSetDataReference(const uint8_t* data, size_t dataSize, const binder_size_t* objects,
+                             size_t objectsCount, release_func relFunc);
+    void rpcSetDataReference(const sp<RpcSession>& session, const uint8_t* data, size_t dataSize,
+                             std::vector<base::unique_fd> ancillaryFds, release_func relFunc);
 
     status_t            finishWrite(size_t len);
     void                releaseObjects();
@@ -1247,28 +1251,46 @@ private:
     uint8_t*            mData;
     size_t              mDataSize;
     size_t              mDataCapacity;
-    mutable size_t      mDataPos;
-    binder_size_t*      mObjects;
-    size_t              mObjectsSize;
-    size_t              mObjectsCapacity;
-    mutable size_t      mNextObjectHint;
-    mutable bool        mObjectsSorted;
+    mutable size_t mDataPos;
 
-    mutable bool        mRequestHeaderPresent;
+    // Fields only needed when parcelling for "kernel Binder".
+    struct KernelFields {
+        binder_size_t* mObjects;
+        size_t mObjectsSize;
+        size_t mObjectsCapacity;
+        mutable size_t mNextObjectHint;
+        mutable bool mObjectsSorted;
+        mutable bool mFdsKnown;
+        mutable bool mHasFds;
+    };
+    // Fields only needed when parcelling for RPC Binder.
+    struct RpcFields {
+        // Should always be non-null.
+        sp<RpcSession> mSession;
+        // In RPC-enabled mode, FDs will be stored in mFds instead of as objects.
+        std::vector<std::variant<base::unique_fd, base::borrowed_fd>> mFds;
+    };
+    std::variant<KernelFields, RpcFields> mVariantFields;
 
-    mutable size_t      mWorkSourceRequestHeaderPosition;
+    KernelFields* maybeKernelFields() { return std::get_if<KernelFields>(&mVariantFields); }
+    const KernelFields* maybeKernelFields() const {
+        return std::get_if<KernelFields>(&mVariantFields);
+    }
+    RpcFields* maybeRpcFields() { return std::get_if<RpcFields>(&mVariantFields); }
+    const RpcFields* maybeRpcFields() const { return std::get_if<RpcFields>(&mVariantFields); }
 
-    mutable bool        mFdsKnown;
-    mutable bool        mHasFds;
     bool                mAllowFds;
 
     // if this parcelable is involved in a secure transaction, force the
     // data to be overridden with zero when deallocated
     mutable bool        mDeallocZero;
 
+    mutable bool mRequestHeaderPresent;
+
+    mutable size_t mWorkSourceRequestHeaderPosition;
+
     release_func        mOwner;
 
-    sp<RpcSession> mSession;
     size_t mReserved;
 
     class Blob {
