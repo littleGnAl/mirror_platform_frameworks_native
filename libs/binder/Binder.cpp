@@ -32,8 +32,11 @@
 #include <utils/misc.h>
 
 #include <inttypes.h>
-#include <linux/sched.h>
 #include <stdio.h>
+
+#ifdef __linux__
+#include <linux/sched.h>
+#endif
 
 #include "RpcState.h"
 
@@ -231,11 +234,13 @@ class BBinder::Extras
 {
 public:
     // unlocked objects
-    bool mRequestingSid = false;
-    bool mInheritRt = false;
     sp<IBinder> mExtension;
+#ifdef __linux__
     int mPolicy = SCHED_NORMAL;
     int mPriority = 0;
+#endif
+    bool mRequestingSid = false;
+    bool mInheritRt = false;
 
     // for below objects
     Mutex mLock;
@@ -404,6 +409,7 @@ sp<IBinder> BBinder::getExtension() {
     return e->mExtension;
 }
 
+#ifdef __linux__
 void BBinder::setMinSchedulerPolicy(int policy, int priority) {
     LOG_ALWAYS_FATAL_IF(mParceled,
                         "setMinSchedulerPolicy() should not be called after a binder object "
@@ -448,6 +454,7 @@ int BBinder::getMinSchedulerPriority() {
     if (e == nullptr) return 0;
     return e->mPriority;
 }
+#endif // __linux__
 
 bool BBinder::isInheritRt() {
     Extras* e = mExtras.load(std::memory_order_acquire);
@@ -475,7 +482,12 @@ void BBinder::setInheritRt(bool inheritRt) {
 }
 
 pid_t BBinder::getDebugPid() {
+#ifdef __linux__
     return getpid();
+#else
+    // TODO: handle other OSes
+    return 0;
+#endif // __linux__
 }
 
 void BBinder::setExtension(const sp<IBinder>& extension) {
