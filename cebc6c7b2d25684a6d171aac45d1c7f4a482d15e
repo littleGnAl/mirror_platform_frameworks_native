@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37bbfd2d_471dbf61",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-30T00:41:49Z",
+      "side": 1,
+      "message": "Btw, we do want to deadlock (to make debugging easier - sent you the disgracefully explode doc on chat). The problem that we have no signal for now is if we wait 1s for a service to start and then we get the service (very hard to notice a 1s delay that happens randomly)",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 27
+      },
+      "revId": "cebc6c7b2d25684a6d171aac45d1c7f4a482d15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a1b88e_2ca99102",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-30T00:41:49Z",
+      "side": 1,
+      "message": "This would need to be something like String16(\"SomeUnstartedService\")",
+      "range": {
+        "startLine": 1245,
+        "startChar": 48,
+        "endLine": 1245,
+        "endChar": 68
+      },
+      "revId": "cebc6c7b2d25684a6d171aac45d1c7f4a482d15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40539e98_a35ea653",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-30T00:41:49Z",
+      "side": 1,
+      "message": "e.g. \u0027sm-\u003eaddService(\"...\", sp\u003cBBinder\u003e::make())\u0027\n\nwould add a new empty service\n\n\nMaybe this is what you mean:\n\n    sp\u003cIBinder\u003e service \u003d sp\u003cBBinder\u003e::make();\n    status_t status \u003d sm-\u003eaddService(String16(\"SomeUnstartedService\"), service);\n    EXPECT_EQ(OK, status);\n\n\nBtw, I suspect the confusion is that I told you that \u0027addService\u0027 creates a new service, but it is actually \u0027::addServer()\u0027 which does that. \u0027sm-\u003eaddService\u0027 registers an already created service with servicemanager.",
+      "range": {
+        "startLine": 1248,
+        "startChar": 32,
+        "endLine": 1248,
+        "endChar": 52
+      },
+      "revId": "cebc6c7b2d25684a6d171aac45d1c7f4a482d15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e51635_9f0c74fa",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-04-30T00:41:49Z",
+      "side": 1,
+      "message": "I would expect this to happen sometimes (with some chance, if the kernel asks for a new thread to be started)",
+      "range": {
+        "startLine": 1250,
+        "startChar": 6,
+        "endLine": 1251,
+        "endChar": 67
+      },
+      "revId": "cebc6c7b2d25684a6d171aac45d1c7f4a482d15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
