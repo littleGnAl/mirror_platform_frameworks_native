@@ -20,7 +20,6 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <inttypes.h>
-#include <linux/sched.h>
 #include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -30,6 +29,10 @@
 #include <sys/types.h>
 #include <sys/resource.h>
 #include <unistd.h>
+
+#ifdef __linux__
+#include <linux/sched.h>
+#endif
 
 #include <binder/Binder.h>
 #include <binder/BpBinder.h>
