@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2f7b864_a4ea3170",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 56
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-04-30T04:33:58Z",
+      "side": 1,
+      "message": "I moved as much of the non-IPC ifdef\u0027s to separate CLs, all that\u0027s left is stuff that relies on IPCThreadState.\nThere are a few alternatives to the remaining conditionals, if we really need to get rid of them:\n* we could move the IPC-specific code into separate files (most of it is in Parcel, so we could at least add IPCParcel.cpp and RpcParcel.cpp), or\n* remove the #ifdef\u0027s and require that other OSes provide their own IPCThreadState (most of the operations could be no-ops). I\u0027d prefer we didn\u0027t do this because it might add a lot of unused code.",
+      "parentUuid": "80800ef9_6756ea52",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "67f05f9ae3134234bf8d2c1394ee881428da28e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35619203_43532910",
         "filename": "libs/binder/include/binder/Binder.h",
         "patchSetId": 56
