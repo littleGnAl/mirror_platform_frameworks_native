@@ -2631,6 +2631,7 @@ void Parcel::initState()
     mWorkSourceRequestHeaderPosition = 0;
     mRequestHeaderPresent = false;
 
+#if defined(__linux__) || defined(__APPLE__)
     // racing multiple init leads only to multiple identical write
     if (gMaxFds == 0) {
         struct rlimit result;
@@ -2642,6 +2643,7 @@ void Parcel::initState()
             gMaxFds = 1024;
         }
     }
+#endif
 }
 
 void Parcel::scanForFds() const {
