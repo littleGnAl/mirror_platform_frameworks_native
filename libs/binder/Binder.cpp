@@ -32,8 +32,11 @@
 #include <utils/misc.h>
 
 #include <inttypes.h>
-#include <linux/sched.h>
 #include <stdio.h>
+
+#ifdef __linux__
+#include <linux/sched.h>
+#endif
 
 #include "RpcState.h"
 
@@ -231,11 +234,13 @@ class BBinder::Extras
 {
 public:
     // unlocked objects
-    bool mRequestingSid = false;
-    bool mInheritRt = false;
     sp<IBinder> mExtension;
+#ifdef __linux__
     int mPolicy = SCHED_NORMAL;
     int mPriority = 0;
+    bool mRequestingSid = false;
+    bool mInheritRt = false;
+#endif
 
     // for below objects
     Mutex mLock;
@@ -285,10 +290,12 @@ status_t BBinder::transact(
             CHECK(reply != nullptr);
             err = reply->writeStrongBinder(getExtension());
             break;
+#ifdef __linux__
         case DEBUG_PID_TRANSACTION:
             CHECK(reply != nullptr);
             err = reply->writeInt32(getDebugPid());
             break;
+#endif
         case SET_RPC_CLIENT_TRANSACTION: {
             err = setRpcClientDebug(data);
             break;
@@ -370,6 +377,7 @@ BBinder* BBinder::localBinder()
     return this;
 }
 
+#ifdef __linux__
 bool BBinder::isRequestingSid()
 {
     Extras* e = mExtras.load(std::memory_order_acquire);
@@ -396,12 +404,6 @@ void BBinder::setRequestingSid(bool requestingSid)
     }
 
     e->mRequestingSid = requestingSid;
-}
-
-sp<IBinder> BBinder::getExtension() {
-    Extras* e = mExtras.load(std::memory_order_acquire);
-    if (e == nullptr) return nullptr;
-    return e->mExtension;
 }
 
 void BBinder::setMinSchedulerPolicy(int policy, int priority) {
@@ -476,6 +478,13 @@ void BBinder::setInheritRt(bool inheritRt) {
 
 pid_t BBinder::getDebugPid() {
     return getpid();
+}
+#endif
+
+sp<IBinder> BBinder::getExtension() {
+    Extras* e = mExtras.load(std::memory_order_acquire);
+    if (e == nullptr) return nullptr;
+    return e->mExtension;
 }
 
 void BBinder::setExtension(const sp<IBinder>& extension) {
