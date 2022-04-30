@@ -69,7 +69,8 @@ const char* kLocalInetAddress = "127.0.0.1";
 enum class RpcSecurity { RAW, TLS };
 
 static inline std::vector<RpcSecurity> RpcSecurityValues() {
-    return {RpcSecurity::RAW, RpcSecurity::TLS};
+    return {RpcSecurity::RAW};
+    // return {RpcSecurity::RAW, RpcSecurity::TLS};
 }
 
 static inline std::unique_ptr<RpcTransportCtxFactory> newFactory(
@@ -322,6 +323,17 @@ public:
         (void)IPCThreadState::self()->getCallingPid();
         return Status::ok();
     }
+
+    Status getHelloFile(android::os::ParcelFileDescriptor* file) override {
+        android::base::unique_fd readFd, writeFd;
+        CHECK(android::base::Pipe(&readFd, &writeFd)) << strerror(errno);
+        std::thread([writeFd = std::move(writeFd)]() {
+            usleep(1000 * 1000);
+            CHECK(WriteStringToFd("hello", writeFd));
+        }).detach();
+        file->reset(std::move(readFd));
+        return Status::ok();
+    }
 };
 sp<IBinder> MyBinderRpcTest::mHeldBinder;
 
@@ -342,6 +354,7 @@ public:
 
             exit(0);
         }
+        ALOGE("FMAYLE: forked, child is %d", mPid);
     }
     ~Process() {
         if (mPid != 0) {
@@ -1325,6 +1338,20 @@ TEST_P(BinderRpc, UseKernelBinderCallingId) {
     proc.expectAlreadyShutdown = true;
 }
 
+TEST_P(BinderRpc, GetFile) {
+    auto proc = createRpcTestSocketServerProcess({});
+
+    ASSERT_EQ(OK, proc.rootBinder->pingBinder());
+
+    android::os::ParcelFileDescriptor fd;
+    auto status = proc.rootIface->getHelloFile(&fd);
+    ASSERT_TRUE(status.isOk()) << status;
+
+    std::string result;
+    CHECK(android::base::ReadFdToString(fd.get(), &result));
+    EXPECT_EQ(result, "hello");
+}
+
 TEST_P(BinderRpc, WorksWithLibbinderNdkPing) {
     auto proc = createRpcTestSocketServerProcess({});
 
@@ -1399,6 +1426,7 @@ static bool testSupportVsockLoopback() {
 }
 
 static std::vector<SocketType> testSocketTypes(bool hasPreconnected = true) {
+    return {SocketType::UNIX};
     std::vector<SocketType> ret = {SocketType::UNIX, SocketType::INET};
 
     if (hasPreconnected) ret.push_back(SocketType::PRECONNECTED);

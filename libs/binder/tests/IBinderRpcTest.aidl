@@ -64,4 +64,6 @@ interface IBinderRpcTest {
     void scheduleShutdown();
 
     void useKernelBinderCallingId();
+
+    ParcelFileDescriptor getHelloFile();
 }

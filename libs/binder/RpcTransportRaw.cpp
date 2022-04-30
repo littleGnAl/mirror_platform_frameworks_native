@@ -18,6 +18,7 @@
 #include <log/log.h>
 
 #include <poll.h>
+#include <stddef.h>
 
 #include <binder/RpcTransportRaw.h>
 
@@ -81,15 +82,7 @@ public:
 
         bool havePolled = false;
         while (true) {
-            msghdr msg{
-                    .msg_iov = iovs,
-                    // posix uses int, glibc uses size_t.  niovs is a
-                    // non-negative int and can be cast to either.
-                    .msg_iovlen = static_cast<decltype(msg.msg_iovlen)>(niovs),
-            };
-            ssize_t processSize =
-                    TEMP_FAILURE_RETRY(sendOrReceiveFun(mSocket.get(), &msg, MSG_NOSIGNAL));
-
+            ssize_t processSize = sendOrReceiveFun(iovs, niovs);
             if (processSize < 0) {
                 int savedErrno = errno;
 
@@ -141,18 +134,118 @@ public:
 
     status_t interruptableWriteFully(FdTrigger* fdTrigger, iovec* iovs, int niovs,
                                      const std::function<status_t()>& altPoll) override {
-        return interruptableReadOrWrite(fdTrigger, iovs, niovs, sendmsg, "sendmsg", POLLOUT,
-                                        altPoll);
+        ALOGE("FMAYLE: interruptableWriteFully");
+        auto send = [&](iovec* iovs, int niovs) -> status_t {
+            if (!mFdsPendingWrite.empty()) {
+                std::vector<int> fd_buf;
+                fd_buf.reserve(mFdsPendingWrite.size());
+                for (const auto& fd : mFdsPendingWrite) {
+                    fd_buf.push_back(fd.get());
+                }
+                const size_t fd_buf_size = sizeof(int) * fd_buf.size();
+
+                mFdsPendingWrite.clear();
+
+                // The buffer needs to be aligned properly for `cmsghdr`, which
+                // the C++ allocator does by default as long as the following
+                // static assert passes.
+                static_assert(alignof(cmsghdr) <= alignof(max_align_t));
+                std::vector<char> msg_control_buf;
+                msg_control_buf.resize(CMSG_SPACE(fd_buf_size), 0);
+
+                msghdr msg{
+                        .msg_iov = iovs,
+                        .msg_iovlen = static_cast<decltype(msg.msg_iovlen)>(niovs),
+                        .msg_control = msg_control_buf.data(),
+                        .msg_controllen = msg_control_buf.size(),
+                };
+
+                cmsghdr* cmsg = CMSG_FIRSTHDR(&msg);
+                cmsg->cmsg_level = SOL_SOCKET;
+                cmsg->cmsg_type = SCM_RIGHTS;
+                cmsg->cmsg_len = CMSG_LEN(fd_buf_size);
+                memcpy(CMSG_DATA(cmsg), fd_buf.data(), fd_buf_size);
+
+                return TEMP_FAILURE_RETRY(sendmsg(mSocket.get(), &msg, MSG_NOSIGNAL));
+            }
+
+            msghdr msg{
+                    .msg_iov = iovs,
+                    // posix uses int, glibc uses size_t.  niovs is a
+                    // non-negative int and can be cast to either.
+                    .msg_iovlen = static_cast<decltype(msg.msg_iovlen)>(niovs),
+            };
+            return TEMP_FAILURE_RETRY(sendmsg(mSocket.get(), &msg, MSG_NOSIGNAL));
+        };
+        return interruptableReadOrWrite(fdTrigger, iovs, niovs, send, "sendmsg", POLLOUT, altPoll);
     }
 
     status_t interruptableReadFully(FdTrigger* fdTrigger, iovec* iovs, int niovs,
                                     const std::function<status_t()>& altPoll) override {
-        return interruptableReadOrWrite(fdTrigger, iovs, niovs, recvmsg, "recvmsg", POLLIN,
-                                        altPoll);
+        ALOGE("FMAYLE: interruptableReadFully");
+        auto recv = [&](iovec* iovs, int niovs) -> status_t {
+            // TODO: Check socket type.
+
+            static_assert(alignof(cmsghdr) <= alignof(max_align_t));
+            std::vector<char> msg_control_buf;
+            // TODO: Move max FDs to constant.
+            msg_control_buf.resize(CMSG_SPACE(sizeof(int) * 128), 0);
+
+            msghdr msg{
+                    .msg_iov = iovs,
+                    // posix uses int, glibc uses size_t.  niovs is a
+                    // non-negative int and can be cast to either.
+                    .msg_iovlen = static_cast<decltype(msg.msg_iovlen)>(niovs),
+                    .msg_control = msg_control_buf.data(),
+                    .msg_controllen = msg_control_buf.size(),
+            };
+            ssize_t processSize = TEMP_FAILURE_RETRY(recvmsg(mSocket.get(), &msg, MSG_NOSIGNAL));
+
+            for (cmsghdr* cmsg = CMSG_FIRSTHDR(&msg); cmsg != nullptr;
+                 cmsg = CMSG_NXTHDR(&msg, cmsg)) {
+                if (cmsg->cmsg_level == SOL_SOCKET && cmsg->cmsg_type == SCM_RIGHTS) {
+                    // NOTE: cmsg(3) explicitly asks application devs to memcpy the data before
+                    // interpreting it to ensure memory alignment.
+                    size_t num_fds = cmsg->cmsg_len / sizeof(int);
+                    // TODO: Just stack allocate the array here and above since
+                    // there is a fixed max.
+                    std::unique_ptr<int[]> fds(new int[num_fds]);
+                    memcpy(fds.get(), CMSG_DATA(cmsg), cmsg->cmsg_len);
+                    for (size_t i = 0; i < num_fds; i++) {
+                        // cmsg_len includes padding, so we need to ignore FDs with value 0.
+                        if (fds[i] != 0) {
+                            mFdsPendingRead.emplace_back(fds[i]);
+                        }
+                    }
+                    break;
+                }
+            }
+
+            return processSize;
+        };
+        return interruptableReadOrWrite(fdTrigger, iovs, niovs, recv, "recvmsg", POLLIN, altPoll);
+    }
+
+    status_t queueAncillarydata(const std::vector<base::borrowed_fd>& fds) override {
+        ALOGE("FMAYLE: queuing %zu FDs", fds.size());
+        // TODO: Check socket type.
+        mFdsPendingWrite.insert(mFdsPendingWrite.end(), fds.begin(), fds.end());
+        return OK;
+    }
+    status_t consumePendingAncillarydata(std::vector<base::unique_fd>* fds) override {
+        ALOGE("FMAYLE: consuming %zu FDs", mFdsPendingRead.size());
+        // TODO: Check socket type.
+        for (auto& fd : mFdsPendingRead) {
+            fds->emplace_back(std::move(fd));
+        }
+        mFdsPendingRead.clear();
+        return OK;
     }
 
 private:
     base::unique_fd mSocket;
+    std::vector<base::borrowed_fd> mFdsPendingWrite;
+    std::vector<base::unique_fd> mFdsPendingRead;
 };
 
 // RpcTransportCtx with TLS disabled.
@@ -174,7 +267,7 @@ std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryRaw::newClientCtx() const
     return std::make_unique<RpcTransportCtxRaw>();
 }
 
-const char *RpcTransportCtxFactoryRaw::toCString() const {
+const char* RpcTransportCtxFactoryRaw::toCString() const {
     return "raw";
 }
 
