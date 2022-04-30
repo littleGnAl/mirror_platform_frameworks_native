@@ -20,6 +20,7 @@
 #include <map> // for legacy reasons
 #include <string>
 #include <type_traits>
+#include <variant>
 #include <vector>
 
 #include <android-base/unique_fd.h>
@@ -100,6 +101,8 @@ public:
     // returns all file descriptors in the Parcel
     // does not dup
     std::vector<int> debugReadAllFileDescriptors() const;
+
+    std::vector<base::borrowed_fd> readRpcFileDescriptions() const;
 
     // Zeros data when reallocating. Other mitigations may be added
     // in the future.
@@ -600,9 +603,9 @@ private:
     size_t              ipcDataSize() const;
     uintptr_t           ipcObjects() const;
     size_t              ipcObjectsCount() const;
-    void                ipcSetDataReference(const uint8_t* data, size_t dataSize,
-                                            const binder_size_t* objects, size_t objectsCount,
-                                            release_func relFunc);
+    void ipcSetDataReference(const uint8_t* data, size_t dataSize, const binder_size_t* objects,
+                             size_t objectsCount, std::vector<base::unique_fd> ancillaryFds,
+                             release_func relFunc);
 
     status_t            finishWrite(size_t len);
     void                releaseObjects();
@@ -1261,6 +1264,9 @@ private:
     mutable bool        mFdsKnown;
     mutable bool        mHasFds;
     bool                mAllowFds;
+
+    // In RPC-enabled mode, FDs will be stored in mRpcFds instead of as objects.
+    std::vector<std::variant<base::unique_fd, base::borrowed_fd>> mRpcFds;
 
     // if this parcelable is involved in a secure transaction, force the
     // data to be overridden with zero when deallocated

@@ -287,7 +287,6 @@ void RpcState::dumpLocked() {
     ALOGE("END DUMP OF RpcState");
 }
 
-
 RpcState::CommandData::CommandData(size_t size) : mSize(size) {
     // The maximum size for regular binder is 1MB for all concurrent
     // transactions. A very small proportion of transactions are even
@@ -313,8 +312,8 @@ status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
                            const sp<RpcSession>& session, const char* what, iovec* iovs, int niovs,
                            const std::function<status_t()>& altPoll) {
     for (int i = 0; i < niovs; i++) {
-        LOG_RPC_DETAIL("Sending %s (part %d of %d) on RpcTransport %p: %s",
-                       what, i + 1, niovs, connection->rpcTransport.get(),
+        LOG_RPC_DETAIL("Sending %s (part %d of %d) on RpcTransport %p: %s", what, i + 1, niovs,
+                       connection->rpcTransport.get(),
                        android::base::HexString(iovs[i].iov_base, iovs[i].iov_len).c_str());
     }
 
@@ -344,8 +343,8 @@ status_t RpcState::rpcRec(const sp<RpcSession::RpcConnection>& connection,
     }
 
     for (int i = 0; i < niovs; i++) {
-        LOG_RPC_DETAIL("Received %s (part %d of %d) on RpcTransport %p: %s",
-                       what, i + 1, niovs, connection->rpcTransport.get(),
+        LOG_RPC_DETAIL("Received %s (part %d of %d) on RpcTransport %p: %s", what, i + 1, niovs,
+                       connection->rpcTransport.get(),
                        android::base::HexString(iovs[i].iov_base, iovs[i].iov_len).c_str());
     }
     return OK;
@@ -539,6 +538,12 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
             {&transaction, sizeof(RpcWireTransaction)},
             {const_cast<uint8_t*>(data.data()), data.dataSize()},
     };
+    std::vector<base::borrowed_fd> fds = data.readRpcFileDescriptions();
+    if (!fds.empty()) {
+        if (status_t status = connection->rpcTransport->queueAncillarydata(fds); status != OK) {
+            return status;
+        }
+    }
     if (status_t status =
                 rpcSend(connection, session, "transaction", iovs, arraysize(iovs), drainRefs);
         status != OK) {
@@ -601,9 +606,16 @@ status_t RpcState::waitForReply(const sp<RpcSession::RpcConnection>& connection,
     RpcWireReply* rpcReply = reinterpret_cast<RpcWireReply*>(data.data());
     if (rpcReply->status != OK) return rpcReply->status;
 
+    // Check if the reply came with any ancillary data.
+    std::vector<base::unique_fd> pending_fds;
+    if (status_t status = connection->rpcTransport->consumePendingAncillarydata(&pending_fds);
+        status != OK) {
+        return status;
+    }
+
     data.release();
     reply->ipcSetDataReference(rpcReply->data, command.bodySize - offsetof(RpcWireReply, data),
-                               nullptr, 0, cleanup_reply_data);
+                               nullptr, 0, std::move(pending_fds), cleanup_reply_data);
 
     reply->markForRpc(session);
 
@@ -824,13 +836,20 @@ processTransactInternalTailCall:
     reply.markForRpc(session);
 
     if (replyStatus == OK) {
+        // Check if the transaction came with any ancillary data.
+        std::vector<base::unique_fd> pending_fds;
+        if (status_t status = connection->rpcTransport->consumePendingAncillarydata(&pending_fds);
+            status != OK) {
+            return status;
+        }
+
         Parcel data;
         // transaction->data is owned by this function. Parcel borrows this data and
         // only holds onto it for the duration of this function call. Parcel will be
         // deleted before the 'transactionData' object.
         data.ipcSetDataReference(transaction->data,
                                  transactionData.size() - offsetof(RpcWireTransaction, data),
-                                 nullptr /*object*/, 0 /*objectCount*/,
+                                 nullptr /*object*/, 0 /*objectCount*/, std::move(pending_fds),
                                  do_nothing_to_transact_data);
         data.markForRpc(session);
 
@@ -961,6 +980,12 @@ processTransactInternalTailCall:
             {&rpcReply, sizeof(RpcWireReply)},
             {const_cast<uint8_t*>(reply.data()), reply.dataSize()},
     };
+    std::vector<base::borrowed_fd> fds = reply.readRpcFileDescriptions();
+    if (!fds.empty()) {
+        if (status_t status = connection->rpcTransport->queueAncillarydata(fds); status != OK) {
+            return status;
+        }
+    }
     return rpcSend(connection, session, "reply", iovs, arraysize(iovs));
 }
 

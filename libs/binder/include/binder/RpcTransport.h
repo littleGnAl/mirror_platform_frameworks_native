@@ -21,6 +21,7 @@
 #include <functional>
 #include <memory>
 #include <string>
+#include <vector>
 
 #include <android-base/unique_fd.h>
 #include <utils/Errors.h>
@@ -62,6 +63,21 @@ public:
     [[nodiscard]] virtual status_t interruptableReadFully(
             FdTrigger *fdTrigger, iovec *iovs, int niovs,
             const std::function<status_t()> &altPoll) = 0;
+
+    // Add ancillary data to be send along with the next
+    // `interruptableWriteFully` call.
+    //
+    // FDs must stay open until the next write call.
+    virtual status_t queueAncillarydata(const std::vector<base::borrowed_fd> &) {
+        return INVALID_OPERATION;
+    }
+    // Consume the ancillary data that was accumulated from previous
+    // `interruptableReadFully` calls.
+    //
+    // Appends to `fds`.
+    virtual status_t consumePendingAncillarydata(std::vector<base::unique_fd> *) {
+        return INVALID_OPERATION;
+    }
 
 protected:
     RpcTransport() = default;

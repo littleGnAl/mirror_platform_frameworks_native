@@ -132,15 +132,31 @@ std::optional<uint32_t> RpcSession::getProtocolVersion() {
     return mProtocolVersion;
 }
 
+void RpcSession::setEnableAncilleryFileDescriptors(bool enable) {
+    mEnableAncilleryFileDescriptors = enable;
+}
+
+bool RpcSession::getEnableAncilleryFileDescriptors() {
+    return mEnableAncilleryFileDescriptors;
+}
+
 status_t RpcSession::setupUnixDomainClient(const char* path) {
     return setupSocketClient(UnixSocketAddress(path));
 }
 
 status_t RpcSession::setupVsockClient(unsigned int cid, unsigned int port) {
+    if (mEnableAncilleryFileDescriptors) {
+        return BAD_VALUE;
+    }
+
     return setupSocketClient(VsockSocketAddress(cid, port));
 }
 
 status_t RpcSession::setupInetClient(const char* addr, unsigned int port) {
+    if (mEnableAncilleryFileDescriptors) {
+        return BAD_VALUE;
+    }
+
     auto aiStart = InetSocketAddress::getAddrInfo(addr, port);
     if (aiStart == nullptr) return UNKNOWN_ERROR;
     for (auto ai = aiStart.get(); ai != nullptr; ai = ai->ai_next) {
