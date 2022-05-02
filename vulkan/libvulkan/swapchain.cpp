@@ -1789,6 +1789,19 @@ VkResult QueuePresentKHR(VkQueue queue, const VkPresentInfoKHR* present_info) {
                     }
                 }
 
+                // "Before an application can present an image, the image's layout must be
+                //  transitioned to the VK_IMAGE_LAYOUT_PRESENT_SRC_KHR layout, or for a
+                //  shared presentable image the VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR layout."
+                const uint64_t layout =
+                    swapchain.shared ?
+                        VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR :
+                        VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
+                AHardwareBuffer* ahb = ANativeWindowBuffer_getHardwareBuffer(img.buffer.get());
+                if (AHardwareBuffer_setVulkanImageLayout(ahb, layout) != 0) {
+                    ALOGE("Failed to update AHB Vulkan image layout.");
+                    // Non fatal?
+                }
+
                 err = window->queueBuffer(window, img.buffer.get(), fence);
                 // queueBuffer always closes fence, even on error
                 if (err != android::OK) {
