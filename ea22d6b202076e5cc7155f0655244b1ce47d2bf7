@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "909f2a55_6eafbd24",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-03T05:29:23Z",
+      "side": 1,
+      "message": "nit: can we have consistency here and the other places?\n\n#ifndef BINDER_NO_KERNEL_IPC\n/* original code */\n#else\n/* added fallback code if needed */\n#endif",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 780,
+        "endChar": 5
+      },
+      "revId": "ea22d6b202076e5cc7155f0655244b1ce47d2bf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
