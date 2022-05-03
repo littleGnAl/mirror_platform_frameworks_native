@@ -465,7 +465,7 @@ status_t GraphicBuffer::unflatten(void const*& buffer, size_t& size, int const*&
         if (flattenWordCount == 13) {
             usage = (uint64_t(buf[12]) << 32) | uint32_t(buf[6]);
         } else {
-            usage = uint64_t(usage_deprecated);
+            usage = static_cast<uint64_t>(static_cast<uint32_t>(usage_deprecated));
         }
         native_handle* h =
                 native_handle_create(static_cast<int>(numFds), static_cast<int>(numInts));
