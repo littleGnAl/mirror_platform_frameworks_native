@@ -81,7 +81,7 @@ cc_test {
             suffix: "",
         },
     },
-    cflags: ["-DBINDER_IPC_32BIT=1"],
+    cflags: ["-DBINDER_WITH_KERNEL_IPC", "-DBINDER_IPC_32BIT=1"],
     test_suites: ["vts"],
     require_root: true,
 }
@@ -128,6 +128,7 @@ cc_test {
     static_libs: [
         "libgmock",
     ],
+    cflags: ["-DBINDER_WITH_KERNEL_IPC"],
     test_suites: [
         "device-tests",
         "vts",
