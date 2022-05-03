@@ -29,8 +29,11 @@
 #undef B_PACK_CHARS
 #endif
 
-#include <linux/android/binder.h>
+#include <stdint.h>
 #include <sys/ioctl.h>
+
+#ifdef BINDER_WITH_KERNEL_IPC
+#include <linux/android/binder.h>
 
 #ifndef BR_FROZEN_REPLY
 // Temporary definition of BR_FROZEN_REPLY. For production
@@ -99,5 +102,8 @@ struct binder_frozen_status_info {
  */
 #define BINDER_ENABLE_ONEWAY_SPAM_DETECTION _IOW('b', 16, __u32)
 #endif // BINDER_ENABLE_ONEWAY_SPAM_DETECTION
+#else
+typedef uintptr_t binder_uintptr_t;
+#endif // BINDER_WITH_KERNEL_IPC
 
 #endif // _BINDER_MODULE_H_
