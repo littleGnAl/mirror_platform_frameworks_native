@@ -251,9 +251,8 @@ class BinderLibTest : public ::testing::Test {
 
             EXPECT_THAT(m_server->transact(code, data, &reply), StatusEq(NO_ERROR));
 
-            EXPECT_FALSE(binder != nullptr);
             binder = reply.readStrongBinder();
-            EXPECT_TRUE(binder != nullptr);
+            EXPECT_NE(nullptr, binder);
             EXPECT_THAT(reply.readInt32(&id), StatusEq(NO_ERROR));
             if (idPtr)
                 *idPtr = id;
