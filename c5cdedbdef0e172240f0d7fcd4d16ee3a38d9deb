@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb045120_f48e8ad1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-03T04:06:52Z",
+      "side": 1,
+      "message": "Looking at the comment in test [1], I am not sure if not running on non-Android was a deliberate and permanent decision.\n\n```\n    GTEST_SKIP() \u003c\u003c \"This test is only run on Android. Though it can technically run on host on\"\n                    \"createRpcDelegateServiceManager() with a device attached, such test belongs \"\n                    \"to binderHostDeviceTest. Hence, just disable this test on host.\";\n```\n\n[1] https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/tests/binderRpcTest.cpp;drc\u003de3caaf2dca61716c450cc651b9c75bcfc87c3e0c;l\u003d1497",
+      "range": {
+        "startLine": 11,
+        "startChar": 47,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "c5cdedbdef0e172240f0d7fcd4d16ee3a38d9deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f754be80_04f93116",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-03T04:06:52Z",
+      "side": 1,
+      "message": "We have used !__ANDROID__ to mean host (i.e. off-device), but you seem to be adding another meaning (on-device-but-Trusty) to it, which sounds not right.",
+      "revId": "c5cdedbdef0e172240f0d7fcd4d16ee3a38d9deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
