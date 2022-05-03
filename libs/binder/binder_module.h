@@ -29,8 +29,17 @@
 #undef B_PACK_CHARS
 #endif
 
-#include <linux/android/binder.h>
+#include <stddef.h>
+#include <stdint.h>
 #include <sys/ioctl.h>
+
+#ifdef BINDER_WITH_KERNEL_IPC
+#include <linux/android/binder.h>
+#else
+typedef uintptr_t binder_uintptr_t;
+typedef uint32_t __u32;
+typedef uint64_t __u64;
+#endif // BINDER_WITH_KERNEL_IPC
 
 #ifndef BR_FROZEN_REPLY
 // Temporary definition of BR_FROZEN_REPLY. For production
