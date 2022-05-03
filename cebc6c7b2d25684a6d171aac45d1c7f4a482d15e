@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2a1ca18_c1364f14",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-03T16:54:55Z",
+      "side": 1,
+      "message": "I left it as is right now and not as a String as I\u0027m not sure if we have a mock Service that isn\u0027t run and we could use. However this makes me want to ask, are we able to insert ANY name and it\u0027ll be interpreted as a service? (thus your recommendation).",
+      "parentUuid": "d6a1b88e_2ca99102",
+      "range": {
+        "startLine": 1245,
+        "startChar": 48,
+        "endLine": 1245,
+        "endChar": 68
+      },
+      "revId": "cebc6c7b2d25684a6d171aac45d1c7f4a482d15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40539e98_a35ea653",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "writtenOn": "2022-04-30T00:41:49Z",
       "side": 1,
       "message": "e.g. \u0027sm-\u003eaddService(\"...\", sp\u003cBBinder\u003e::make())\u0027\n\nwould add a new empty service\n\n\nMaybe this is what you mean:\n\n    sp\u003cIBinder\u003e service \u003d sp\u003cBBinder\u003e::make();\n    status_t status \u003d sm-\u003eaddService(String16(\"SomeUnstartedService\"), service);\n    EXPECT_EQ(OK, status);\n\n\nBtw, I suspect the confusion is that I told you that \u0027addService\u0027 creates a new service, but it is actually \u0027::addServer()\u0027 which does that. \u0027sm-\u003eaddService\u0027 registers an already created service with servicemanager.",
+      "range": {
+        "startLine": 1248,
+        "startChar": 32,
+        "endLine": 1248,
+        "endChar": 52
+      },
+      "revId": "cebc6c7b2d25684a6d171aac45d1c7f4a482d15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c39ca669_c2b28d7a",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-03T16:54:55Z",
+      "side": 1,
+      "message": "The confusion actually stems from \u0027addServer\u0027 returning a pointer to a Binder instance. That\u0027s why I thought more of \u0027addService\u0027 over \u0027addServer\u0027.\n\nFollowing that logic, would I need to \u0027addServer\u0027 followed by the rest? (still confused)",
+      "parentUuid": "40539e98_a35ea653",
       "range": {
         "startLine": 1248,
         "startChar": 32,
