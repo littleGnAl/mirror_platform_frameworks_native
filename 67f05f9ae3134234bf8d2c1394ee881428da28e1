@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02c00580_c51e3baa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 56
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-03T02:53:08Z",
+      "side": 1,
+      "message": "Looking at what\u0027s left, it basically falls into two categories:\n* code that calls into IPCThreadState. An alternative to all the #ifdef\u0027s could be to write a second implementation of IPCThreadState full of no-ops, and use that on other OSes like Trusty.\n* code that uses flat_binder_object, all of it in Parcel.cpp. This could be handled by moving all that code into a second file, e.g., IPCParcel.cpp, or providing a definition of flat_binder_object. The latter option seems a bit pointless though, since the code using that definition would be dead code outside Android.",
+      "parentUuid": "10e5d3f5_1527e79b",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "67f05f9ae3134234bf8d2c1394ee881428da28e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35619203_43532910",
         "filename": "libs/binder/include/binder/Binder.h",
         "patchSetId": 56
