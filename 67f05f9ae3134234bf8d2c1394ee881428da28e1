@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10e5d3f5_1527e79b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 56
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-03T02:34:55Z",
+      "side": 1,
+      "message": "One alternative to the new BINDER_NO_KERNEL_IPC option is to just check for __ANDROID__. Any errors introduced by that would be caught by host binderRpcTest.",
+      "parentUuid": "b2f7b864_a4ea3170",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "67f05f9ae3134234bf8d2c1394ee881428da28e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35619203_43532910",
         "filename": "libs/binder/include/binder/Binder.h",
         "patchSetId": 56
