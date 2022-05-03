@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e24254_43ee6572",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-03T18:08:48Z",
+      "side": 1,
+      "message": "nit: we could instantiate this directly on L254 (sp\u003cIBinder\u003e binder \u003d reply.readStrongBinder()) - this is the old C style, not really needed here.",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 31
+      },
+      "revId": "365272fc16d96111c0ff7b80fa37073010c9c0f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
