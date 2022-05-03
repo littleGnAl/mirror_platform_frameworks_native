@@ -57,6 +57,24 @@
       "parentUuid": "f754be80_04f93116",
       "revId": "c5cdedbdef0e172240f0d7fcd4d16ee3a38d9deb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04680e36_93049028",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-03T05:25:47Z",
+      "side": 1,
+      "message": "New macro would be better if you expect more of this case. If not, I think adding a comment that !__ANDROID__ here actually means both host and non-Android device builds like Trusty is enough.\n\nSteven to make a final judgement though.",
+      "parentUuid": "19291a3d_9fe3bf93",
+      "revId": "c5cdedbdef0e172240f0d7fcd4d16ee3a38d9deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
