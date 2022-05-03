@@ -39,6 +39,24 @@
       "message": "We have used !__ANDROID__ to mean host (i.e. off-device), but you seem to be adding another meaning (on-device-but-Trusty) to it, which sounds not right.",
       "revId": "c5cdedbdef0e172240f0d7fcd4d16ee3a38d9deb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19291a3d_9fe3bf93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-03T04:44:13Z",
+      "side": 1,
+      "message": "Right, I guess that macro is overloaded: I was interpreting it as Android-the-OS but I guess it could also mean Android-the-platform. Trusty does not define __ANDROID__, and changing that might break a few apps like keymaster and teeui. Maybe there should be a new macro?",
+      "parentUuid": "f754be80_04f93116",
+      "revId": "c5cdedbdef0e172240f0d7fcd4d16ee3a38d9deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
