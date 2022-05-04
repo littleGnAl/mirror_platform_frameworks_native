@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e765e54b_2ca388b3",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-04T21:38:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f5dcdae7_4ff32ca5",
+      "range": {
+        "startLine": 1245,
+        "startChar": 48,
+        "endLine": 1245,
+        "endChar": 68
+      },
+      "revId": "cebc6c7b2d25684a6d171aac45d1c7f4a482d15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40539e98_a35ea653",
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Right, you\u0027ll want to use \u0027addServer\u0027 to create another process and get ahold of a server that is there.\n\nThen you could:\n- add a transaction which returns the threadpool count\n- add some code which makes many transactions at the same time, to force the threadpool count to the max\n\nThough to get this patch started, it might be easier to add an invariant elsewhere, so that each tests tests the threadcount in real time when new threads get started/created.",
       "parentUuid": "c39ca669_c2b28d7a",
+      "range": {
+        "startLine": 1248,
+        "startChar": 32,
+        "endLine": 1248,
+        "endChar": 52
+      },
+      "revId": "cebc6c7b2d25684a6d171aac45d1c7f4a482d15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df27f073_dd031394",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-04T21:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0755736f_bad704e3",
       "range": {
         "startLine": 1248,
         "startChar": 32,
