@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afea9b8f_9f62045a",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-04T20:30:29Z",
+      "side": 1,
+      "message": "I think you\u0027ve assumed that this lambda will always be called exactly once, however, it can be called zero or many times. Before, the lambda would modify the original `fd` object when it `move`\u0027d it and then subsequent calls would see that and allocate a new fd. Also, it would properly close the fd when if the lambda was never called.\n\nInstead, you probably once something like\n\n```\nreturn setupClient([\u0026, fd \u003d std::move(fd)](\n    const std::vector\u003cuint8_t\u003e\u0026 sessionId, bool incoming) mutable -\u003e status_t {\n```\n\nMaybe can explicitly reset the fd after moving to avoid the use-after-move warning.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 26
+      },
+      "revId": "5970d0a5dc54ec30b3434dd6a23305233698c9c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
