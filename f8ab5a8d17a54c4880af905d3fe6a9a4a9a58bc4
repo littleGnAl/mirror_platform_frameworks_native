@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ff46ea_56e386c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-04T23:42:25Z",
+      "side": 1,
+      "message": "You mentioned you were getting DEAD_OBJECT here. When you see that, try \u0027adb logcat *:F\u0027 and see what the error is.",
+      "revId": "f8ab5a8d17a54c4880af905d3fe6a9a4a9a58bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0797730c_46c007bd",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-04T23:42:25Z",
+      "side": 1,
+      "message": "the count is not written here (will need \u0027data.writeInt32...\u0027)\n\nbtw, by the time addServer returns, the threadcount will already be set and the threadpool will be started. It will only be possible to increase the threadpool size (unless you pipe through arguments through addServer, but I would say focus on getting the test done w/ the larger threadpool).\n\nYou can see an example of how to force it to go to the max in ThreadPoolGreaterThanEqualRequested in binderRpcTest (lock, many threads trying lockUnlock which will run in parallel, then unlock).",
+      "range": {
+        "startLine": 1245,
+        "startChar": 71,
+        "endLine": 1245,
+        "endChar": 75
+      },
+      "revId": "f8ab5a8d17a54c4880af905d3fe6a9a4a9a58bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
