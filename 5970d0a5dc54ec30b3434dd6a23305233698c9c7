@@ -22,6 +22,30 @@
       },
       "revId": "5970d0a5dc54ec30b3434dd6a23305233698c9c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a694997_6813fefb",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-05T01:27:10Z",
+      "side": 1,
+      "message": "Sent https://r.android.com/2085793\n\n(my suggestion above doesn\u0027t work because we are using `std::function`. would be nice if something like `absl::FunctionRef` was available)",
+      "parentUuid": "afea9b8f_9f62045a",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 26
+      },
+      "revId": "5970d0a5dc54ec30b3434dd6a23305233698c9c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
