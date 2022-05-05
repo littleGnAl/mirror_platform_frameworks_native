@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e508012_4a7e7e33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-05T23:53:42Z",
+      "side": 1,
+      "message": "Thanks, and your guess in the 2nd comment of Patchset 7 actually guessed the issue -\u003e setThreadPoolMaxThreadCount was indeed the breaking point.",
+      "parentUuid": "f6ff46ea_56e386c7",
+      "revId": "f8ab5a8d17a54c4880af905d3fe6a9a4a9a58bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0797730c_46c007bd",
