@@ -19,130 +19,127 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <binder/IBinder.h>
 #include <gtest/gtest.h>
 #include <linux/android/binder.h>
-#include <binder/IBinder.h>
-#include <sys/mman.h>
 #include <poll.h>
+#include <sys/mman.h>
 
 #include "binderAbiHelper.h"
 
 #define BINDER_DEV_NAME "/dev/binder"
 
-testing::Environment* binder_env;
+testing::Environment *binder_env;
 
 class BinderDriverInterfaceTestEnv : public ::testing::Environment {
-        virtual void SetUp() {
-            int ret;
-            uint32_t max_threads = 0;
+    virtual void SetUp() {
+        int ret;
+        uint32_t max_threads = 0;
 
-            m_binderFd = open(BINDER_DEV_NAME, O_RDWR | O_NONBLOCK | O_CLOEXEC);
-            ASSERT_GE(m_binderFd, 0);
-            m_buffer = mmap(nullptr, 64*1024, PROT_READ, MAP_SHARED, m_binderFd, 0);
-            ASSERT_NE(m_buffer, (void *)nullptr);
-            ret = ioctl(m_binderFd, BINDER_SET_MAX_THREADS, &max_threads);
-            EXPECT_EQ(0, ret);
-            EnterLooper();
-        }
-        virtual void TearDown() {
-            close(m_binderFd);
-        }
-    private:
-        int m_binderFd;
-        void *m_buffer;
-    public:
-        int getBinderFd(void) {
-            return m_binderFd;
-        }
-        void EnterLooper(void) {
-            int ret;
-            const uint32_t bc[] = {
+        m_binderFd = open(BINDER_DEV_NAME, O_RDWR | O_NONBLOCK | O_CLOEXEC);
+        ASSERT_GE(m_binderFd, 0);
+        m_buffer = mmap(nullptr, 64 * 1024, PROT_READ, MAP_SHARED, m_binderFd, 0);
+        ASSERT_NE(m_buffer, (void *)nullptr);
+        ret = ioctl(m_binderFd, BINDER_SET_MAX_THREADS, &max_threads);
+        EXPECT_EQ(0, ret);
+        EnterLooper();
+    }
+    virtual void TearDown() { close(m_binderFd); }
+
+private:
+    int m_binderFd;
+    void *m_buffer;
+
+public:
+    int getBinderFd(void) { return m_binderFd; }
+    void EnterLooper(void) {
+        int ret;
+        const uint32_t bc[] = {
                 BC_ENTER_LOOPER,
-            };
-            struct binder_write_read bwr = binder_write_read();
-            bwr.write_buffer = (uintptr_t)bc;
-            bwr.write_size = sizeof(bc);
-            ret = ioctl(m_binderFd, BINDER_WRITE_READ, &bwr);
-            EXPECT_EQ(0, ret);
-            if (ret < 0) {
-                    EXPECT_EQ(0, errno);
-            }
-            EXPECT_EQ(sizeof(bc), bwr.write_consumed);
+        };
+        struct binder_write_read bwr = binder_write_read();
+        bwr.write_buffer = (uintptr_t)bc;
+        bwr.write_size = sizeof(bc);
+        ret = ioctl(m_binderFd, BINDER_WRITE_READ, &bwr);
+        EXPECT_EQ(0, ret);
+        if (ret < 0) {
+            EXPECT_EQ(0, errno);
         }
+        EXPECT_EQ(sizeof(bc), bwr.write_consumed);
+    }
 };
 
 class BinderDriverInterfaceTest : public ::testing::Test {
-    public:
-        virtual void SetUp() {
-            m_binderFd = static_cast<BinderDriverInterfaceTestEnv *>(binder_env)->getBinderFd();
-        }
-        virtual void TearDown() {
-        }
-    protected:
-        /* The ioctl must either return 0, or if it doesn't errno should be accepted_errno */
-        void binderTestIoctlSuccessOrError(int cmd, void *arg, int accepted_errno) {
-            int ret;
+public:
+    virtual void SetUp() {
+        m_binderFd = static_cast<BinderDriverInterfaceTestEnv *>(binder_env)->getBinderFd();
+    }
+    virtual void TearDown() {}
 
-            ret = ioctl(m_binderFd, cmd, arg);
-            if (ret != 0) {
-                EXPECT_EQ(errno, accepted_errno);
-            }
-        }
+protected:
+    /* The ioctl must either return 0, or if it doesn't errno should be accepted_errno */
+    void binderTestIoctlSuccessOrError(int cmd, void *arg, int accepted_errno) {
+        int ret;
 
-        void binderTestIoctlRetErr2(int cmd, void *arg, int expect_ret, int expect_errno, int accept_errno) {
-            int ret;
+        ret = ioctl(m_binderFd, cmd, arg);
+        if (ret != 0) {
+            EXPECT_EQ(errno, accepted_errno);
+        }
+    }
 
-            ret = ioctl(m_binderFd, cmd, arg);
-            EXPECT_EQ(expect_ret, ret);
-            if (ret < 0) {
-                if (errno != accept_errno)
-                    EXPECT_EQ(expect_errno, errno);
-            }
-        }
-        void binderTestIoctlErr2(int cmd, void *arg, int expect_errno, int accept_errno) {
-            binderTestIoctlRetErr2(cmd, arg, -1, expect_errno, accept_errno);
-        }
-        void binderTestIoctlErr1(int cmd, void *arg, int expect_errno) {
-            binderTestIoctlErr2(cmd, arg, expect_errno, expect_errno);
-        }
-        void binderTestIoctl(int cmd, void *arg) {
-            binderTestIoctlRetErr2(cmd, arg, 0, 0, 0);
-        }
-        void binderTestIoctlUnimplemented(int cmd, void *arg) {
-            int ret;
+    void binderTestIoctlRetErr2(int cmd, void *arg, int expect_ret, int expect_errno,
+                                int accept_errno) {
+        int ret;
 
-            ret = ioctl(m_binderFd, cmd, arg);
-            if (ret < 0) {
-                /* Not currently implmented. Allow ret == -1, errno == EINVAL */
-                EXPECT_EQ(-1, ret);
-                EXPECT_EQ(EINVAL, errno);
-            }
+        ret = ioctl(m_binderFd, cmd, arg);
+        EXPECT_EQ(expect_ret, ret);
+        if (ret < 0) {
+            if (errno != accept_errno) EXPECT_EQ(expect_errno, errno);
         }
-        void binderTestReadEmpty(void) {
-            size_t i;
-            uint32_t br[32];
-            struct binder_write_read bwr = binder_write_read();
-            SCOPED_TRACE("TestReadEmpty");
-            bwr.read_buffer = (uintptr_t)br;
-            bwr.read_size = sizeof(br);
-            binderTestIoctlErr1(BINDER_WRITE_READ, &bwr, EAGAIN);
-            EXPECT_EQ(0u, bwr.read_consumed);
-            for (i = 0; i * sizeof(uint32_t) < bwr.read_consumed; i++) {
-                SCOPED_TRACE(testing::Message() << "i = " << i);
-                EXPECT_EQ(BR_NOOP, br[i]);
-            }
-        }
-        void binderWaitForReadData(int timeout_ms) {
-            int ret;
-            pollfd pfd = pollfd();
+    }
+    void binderTestIoctlErr2(int cmd, void *arg, int expect_errno, int accept_errno) {
+        binderTestIoctlRetErr2(cmd, arg, -1, expect_errno, accept_errno);
+    }
+    void binderTestIoctlErr1(int cmd, void *arg, int expect_errno) {
+        binderTestIoctlErr2(cmd, arg, expect_errno, expect_errno);
+    }
+    void binderTestIoctl(int cmd, void *arg) { binderTestIoctlRetErr2(cmd, arg, 0, 0, 0); }
+    void binderTestIoctlUnimplemented(int cmd, void *arg) {
+        int ret;
 
-            pfd.fd = m_binderFd;
-            pfd.events = POLLIN;
-            ret = poll(&pfd, 1, timeout_ms);
-            EXPECT_EQ(1, ret);
+        ret = ioctl(m_binderFd, cmd, arg);
+        if (ret < 0) {
+            /* Not currently implmented. Allow ret == -1, errno == EINVAL */
+            EXPECT_EQ(-1, ret);
+            EXPECT_EQ(EINVAL, errno);
         }
-    private:
-        int m_binderFd;
+    }
+    void binderTestReadEmpty(void) {
+        size_t i;
+        uint32_t br[32];
+        struct binder_write_read bwr = binder_write_read();
+        SCOPED_TRACE("TestReadEmpty");
+        bwr.read_buffer = (uintptr_t)br;
+        bwr.read_size = sizeof(br);
+        binderTestIoctlErr1(BINDER_WRITE_READ, &bwr, EAGAIN);
+        EXPECT_EQ(0u, bwr.read_consumed);
+        for (i = 0; i * sizeof(uint32_t) < bwr.read_consumed; i++) {
+            SCOPED_TRACE(testing::Message() << "i = " << i);
+            EXPECT_EQ(BR_NOOP, br[i]);
+        }
+    }
+    void binderWaitForReadData(int timeout_ms) {
+        int ret;
+        pollfd pfd = pollfd();
+
+        pfd.fd = m_binderFd;
+        pfd.events = POLLIN;
+        ret = poll(&pfd, 1, timeout_ms);
+        EXPECT_EQ(1, ret);
+    }
+
+private:
+    int m_binderFd;
 };
 
 TEST_F(BinderDriverInterfaceTest, Version) {
@@ -166,7 +163,8 @@ TEST_F(BinderDriverInterfaceTest, SetIdleTimeoutNull) {
 }
 
 TEST_F(BinderDriverInterfaceTest, SetMaxThreadsNull) {
-    binderTestIoctlErr2(BINDER_SET_MAX_THREADS, nullptr, EFAULT, EINVAL); /* TODO: don't accept EINVAL */
+    binderTestIoctlErr2(BINDER_SET_MAX_THREADS, nullptr, EFAULT,
+                        EINVAL); /* TODO: don't accept EINVAL */
 }
 
 TEST_F(BinderDriverInterfaceTest, SetIdlePriorityNull) {
@@ -214,14 +212,7 @@ TEST_F(BinderDriverInterfaceTest, Read) {
 
 TEST_F(BinderDriverInterfaceTest, IncRefsAcquireReleaseDecRefs) {
     const uint32_t bc[] = {
-        BC_INCREFS,
-        0,
-        BC_ACQUIRE,
-        0,
-        BC_RELEASE,
-        0,
-        BC_DECREFS,
-        0,
+            BC_INCREFS, 0, BC_ACQUIRE, 0, BC_RELEASE, 0, BC_DECREFS, 0,
     };
     struct binder_write_read bwr = binder_write_read();
     bwr.write_buffer = (uintptr_t)bc;
@@ -236,20 +227,22 @@ TEST_F(BinderDriverInterfaceTest, Transaction) {
         uint32_t cmd1;
         struct binder_transaction_data arg1;
     } __attribute__((packed)) bc1 = {
-        .cmd1 = BC_TRANSACTION,
-        .arg1 = {
-            .target = { 0 },
-            .cookie = 0,
-            .code = android::IBinder::PING_TRANSACTION,
-            .flags = 0,
-            .sender_pid = 0,
-            .sender_euid = 0,
-            .data_size = 0,
-            .offsets_size = 0,
-            .data = {
-                .ptr = {0, 0},
-            },
-        },
+            .cmd1 = BC_TRANSACTION,
+            .arg1 =
+                    {
+                            .target = {0},
+                            .cookie = 0,
+                            .code = android::IBinder::PING_TRANSACTION,
+                            .flags = 0,
+                            .sender_pid = 0,
+                            .sender_euid = 0,
+                            .data_size = 0,
+                            .offsets_size = 0,
+                            .data =
+                                    {
+                                            .ptr = {0, 0},
+                                    },
+                    },
     };
     struct {
         uint32_t cmd0;
@@ -276,12 +269,9 @@ TEST_F(BinderDriverInterfaceTest, Transaction) {
         binderTestIoctl(BINDER_WRITE_READ, &bwr);
     }
     EXPECT_EQ(offsetof(typeof(br), pad), bwr.read_consumed);
-    if (bwr.read_consumed > offsetof(typeof(br), cmd0))
-        EXPECT_EQ(BR_NOOP, br.cmd0);
-    if (bwr.read_consumed > offsetof(typeof(br), cmd1))
-        EXPECT_EQ(BR_TRANSACTION_COMPLETE, br.cmd1);
-    if (bwr.read_consumed > offsetof(typeof(br), cmd2))
-        EXPECT_EQ(BR_REPLY, br.cmd2);
+    if (bwr.read_consumed > offsetof(typeof(br), cmd0)) EXPECT_EQ(BR_NOOP, br.cmd0);
+    if (bwr.read_consumed > offsetof(typeof(br), cmd1)) EXPECT_EQ(BR_TRANSACTION_COMPLETE, br.cmd1);
+    if (bwr.read_consumed > offsetof(typeof(br), cmd2)) EXPECT_EQ(BR_REPLY, br.cmd2);
     if (bwr.read_consumed >= offsetof(typeof(br), pad)) {
         EXPECT_EQ(0u, br.arg2.target.ptr);
         EXPECT_EQ(0u, br.arg2.cookie);
@@ -298,8 +288,8 @@ TEST_F(BinderDriverInterfaceTest, Transaction) {
             uint32_t cmd1;
             binder_uintptr_t arg1;
         } __attribute__((packed)) bc2 = {
-            .cmd1 = BC_FREE_BUFFER,
-            .arg1 = br.arg2.data.ptr.buffer,
+                .cmd1 = BC_FREE_BUFFER,
+                .arg1 = br.arg2.data.ptr.buffer,
         };
 
         bwr.write_buffer = (uintptr_t)&bc2;
@@ -325,20 +315,22 @@ TEST_F(BinderDriverInterfaceTest, RequestDeathNotification) {
         uint32_t cmd3;
         uint32_t arg3;
     } __attribute__((packed)) bc = {
-        .cmd0 = BC_INCREFS,
-        .arg0 = 0,
-        .cmd1 = BC_REQUEST_DEATH_NOTIFICATION,
-        .arg1 = {
-            .handle = 0,
-            .cookie = cookie,
-        },
-        .cmd2 = BC_CLEAR_DEATH_NOTIFICATION,
-        .arg2 = {
-            .handle = 0,
-            .cookie = cookie,
-        },
-        .cmd3 = BC_DECREFS,
-        .arg3 = 0,
+            .cmd0 = BC_INCREFS,
+            .arg0 = 0,
+            .cmd1 = BC_REQUEST_DEATH_NOTIFICATION,
+            .arg1 =
+                    {
+                            .handle = 0,
+                            .cookie = cookie,
+                    },
+            .cmd2 = BC_CLEAR_DEATH_NOTIFICATION,
+            .arg2 =
+                    {
+                            .handle = 0,
+                            .cookie = cookie,
+                    },
+            .cmd3 = BC_DECREFS,
+            .arg3 = 0,
     };
     struct {
         uint32_t cmd0;

@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
+#include <android-base/logging.h>
 #include <android/binder_manager.h>
+#include <binder/IServiceManager.h>
+#include <binder/LazyServiceRegistrar.h>
 
 #include "ibinder_internal.h"
 #include "status_internal.h"
-
-#include <android-base/logging.h>
-#include <binder/IServiceManager.h>
-#include <binder/LazyServiceRegistrar.h>
 
 using ::android::defaultServiceManager;
 using ::android::IBinder;

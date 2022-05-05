@@ -16,18 +16,16 @@
 
 #pragma once
 
-#include <stdlib.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 #include <binder/IMemory.h>
-
 
 namespace android {
 
 // ---------------------------------------------------------------------------
 
-class MemoryHeapBase : public virtual BnMemoryHeap
-{
+class MemoryHeapBase : public virtual BnMemoryHeap {
 public:
     enum {
         READ_ONLY = IMemoryHeap::READ_ONLY,
@@ -72,36 +70,35 @@ public:
     virtual ~MemoryHeapBase();
 
     /* implement IMemoryHeap interface */
-    int         getHeapID() const override;
+    int getHeapID() const override;
 
     /* virtual address of the heap. returns MAP_FAILED in case of error */
-    void*       getBase() const override;
+    void* getBase() const override;
 
-    size_t      getSize() const override;
-    uint32_t    getFlags() const override;
-    off_t       getOffset() const override;
+    size_t getSize() const override;
+    uint32_t getFlags() const override;
+    off_t getOffset() const override;
 
-    const char*         getDevice() const;
+    const char* getDevice() const;
 
     /* this closes this heap -- use carefully */
     void dispose();
 
 protected:
-            MemoryHeapBase();
+    MemoryHeapBase();
     // init() takes ownership of fd
-    status_t init(int fd, void *base, size_t size,
-            int flags = 0, const char* device = nullptr);
+    status_t init(int fd, void* base, size_t size, int flags = 0, const char* device = nullptr);
 
 private:
     status_t mapfd(int fd, bool writeableByCaller, size_t size, off_t offset = 0);
 
-    int         mFD;
-    size_t      mSize;
-    void*       mBase;
-    uint32_t    mFlags;
+    int mFD;
+    size_t mSize;
+    void* mBase;
+    uint32_t mFlags;
     const char* mDevice;
-    bool        mNeedUnmap;
-    off_t       mOffset;
+    bool mNeedUnmap;
+    off_t mOffset;
 };
 
 // ---------------------------------------------------------------------------

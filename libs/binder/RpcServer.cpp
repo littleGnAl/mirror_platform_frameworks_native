@@ -165,7 +165,6 @@ void RpcServer::start() {
 }
 
 void RpcServer::join() {
-
     {
         std::lock_guard<std::mutex> _l(mLock);
         LOG_ALWAYS_FATAL_IF(!mServer.ok(), "RpcServer must be setup to join.");

@@ -18,16 +18,16 @@
 
 #include <android/binder_ibinder.h>
 #include <android/binder_shell.h>
-#include "ibinder_internal.h"
+#include <binder/Binder.h>
+#include <binder/IBinder.h>
+#include <utils/Vector.h>
 
 #include <atomic>
 #include <mutex>
 #include <optional>
 #include <vector>
 
-#include <binder/Binder.h>
-#include <binder/IBinder.h>
-#include <utils/Vector.h>
+#include "ibinder_internal.h"
 
 inline bool isUserCommand(transaction_code_t code) {
     return code >= FIRST_CALL_TRANSACTION && code <= LAST_CALL_TRANSACTION;

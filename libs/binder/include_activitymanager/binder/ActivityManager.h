@@ -25,26 +25,23 @@
 // ---------------------------------------------------------------------------
 namespace android {
 
-#define DECLARE_PROCESS_STATE(name) \
-    PROCESS_STATE_##name = (int32_t) app::ProcessStateEnum::name
+#define DECLARE_PROCESS_STATE(name) PROCESS_STATE_##name = (int32_t)app::ProcessStateEnum::name
 
-class ActivityManager
-{
+class ActivityManager {
 public:
-
     enum {
         // Flag for registerUidObserver: report uid state changed
-        UID_OBSERVER_PROCSTATE = 1<<0,
+        UID_OBSERVER_PROCSTATE = 1 << 0,
         // Flag for registerUidObserver: report uid gone
-        UID_OBSERVER_GONE = 1<<1,
+        UID_OBSERVER_GONE = 1 << 1,
         // Flag for registerUidObserver: report uid has become idle
-        UID_OBSERVER_IDLE = 1<<2,
+        UID_OBSERVER_IDLE = 1 << 2,
         // Flag for registerUidObserver: report uid has become active
-        UID_OBSERVER_ACTIVE = 1<<3,
+        UID_OBSERVER_ACTIVE = 1 << 3,
         // Flag for registerUidObserver: report uid cached state has changed
-        UID_OBSERVER_CACHED = 1<<4,
+        UID_OBSERVER_CACHED = 1 << 4,
         // Flag for registerUidObserver: report uid capability has changed
-        UID_OBSERVER_CAPABILITY = 1<<5,
+        UID_OBSERVER_CAPABILITY = 1 << 5,
     };
 
     // PROCESS_STATE_* must come from frameworks/base/core/java/android/app/ProcessStateEnum.aidl.
@@ -77,14 +74,13 @@ public:
     ActivityManager();
 
     int openContentUri(const String16& stringUri);
-    status_t registerUidObserver(const sp<IUidObserver>& observer,
-                             const int32_t event,
-                             const int32_t cutpoint,
-                             const String16& callingPackage);
+    status_t registerUidObserver(const sp<IUidObserver>& observer, const int32_t event,
+                                 const int32_t cutpoint, const String16& callingPackage);
     status_t unregisterUidObserver(const sp<IUidObserver>& observer);
     bool isUidActive(const uid_t uid, const String16& callingPackage);
     int getUidProcessState(const uid_t uid, const String16& callingPackage);
-    status_t checkPermission(const String16& permission, const pid_t pid, const uid_t uid, int32_t* outResult);
+    status_t checkPermission(const String16& permission, const pid_t pid, const uid_t uid,
+                             int32_t* outResult);
 
     status_t linkToDeath(const sp<IBinder::DeathRecipient>& recipient);
     status_t unlinkToDeath(const sp<IBinder::DeathRecipient>& recipient);
@@ -94,7 +90,6 @@ private:
     sp<IActivityManager> mService;
     sp<IActivityManager> getService();
 };
-
 
 } // namespace android
 // ---------------------------------------------------------------------------

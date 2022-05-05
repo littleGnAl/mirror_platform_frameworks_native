@@ -19,16 +19,15 @@
 #ifndef __ANDROID_VNDK__
 
 #include <processinfo/IProcessInfoService.h>
+#include <sys/types.h>
 #include <utils/Errors.h>
 #include <utils/Singleton.h>
-#include <sys/types.h>
 
 namespace android {
 
 // ----------------------------------------------------------------------
 
 class ProcessInfoService : public Singleton<ProcessInfoService> {
-
     friend class Singleton<ProcessInfoService>;
     sp<IProcessInfoService> mProcessInfoService;
     Mutex mProcessInfoLock;
@@ -37,13 +36,12 @@ class ProcessInfoService : public Singleton<ProcessInfoService> {
 
     status_t getProcessStatesImpl(size_t length, /*in*/ int32_t* pids, /*out*/ int32_t* states);
     status_t getProcessStatesScoresImpl(size_t length, /*in*/ int32_t* pids,
-            /*out*/ int32_t* states, /*out*/ int32_t *scores);
+                                        /*out*/ int32_t* states, /*out*/ int32_t* scores);
     void updateBinderLocked();
 
     static const int BINDER_ATTEMPT_LIMIT = 5;
 
 public:
-
     /**
      * For each PID in the given "pids" input array, write the current process state
      * for that process into the "states" output array, or
@@ -53,9 +51,9 @@ public:
      * Returns NO_ERROR if this operation was successful, or a negative error code otherwise.
      */
     static status_t getProcessStatesFromPids(size_t length, /*in*/ int32_t* pids,
-            /*out*/ int32_t* states) {
+                                             /*out*/ int32_t* states) {
         return ProcessInfoService::getInstance().getProcessStatesImpl(length, /*in*/ pids,
-                /*out*/ states);
+                                                                      /*out*/ states);
     }
 
     /**
@@ -69,9 +67,11 @@ public:
      * Returns NO_ERROR if this operation was successful, or a negative error code otherwise.
      */
     static status_t getProcessStatesScoresFromPids(size_t length, /*in*/ int32_t* pids,
-            /*out*/ int32_t* states, /*out*/ int32_t *scores) {
-        return ProcessInfoService::getInstance().getProcessStatesScoresImpl(
-                length, /*in*/ pids, /*out*/ states, /*out*/ scores);
+                                                   /*out*/ int32_t* states,
+                                                   /*out*/ int32_t* scores) {
+        return ProcessInfoService::getInstance().getProcessStatesScoresImpl(length, /*in*/ pids,
+                                                                            /*out*/ states,
+                                                                            /*out*/ scores);
     }
 };
 

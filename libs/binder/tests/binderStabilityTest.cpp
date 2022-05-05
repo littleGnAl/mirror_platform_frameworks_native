@@ -27,8 +27,8 @@
 
 #include <sys/prctl.h>
 
-#include "aidl/BnBinderStabilityTest.h"
 #include "BnBinderStabilityTest.h"
+#include "aidl/BnBinderStabilityTest.h"
 
 using namespace android;
 using namespace ndk;
@@ -50,11 +50,10 @@ public:
     static status_t doUserTransaction(const sp<IBinder>& binder) {
         Parcel data, reply;
         data.writeInterfaceToken(kDescriptor);
-        return binder->transact(USER_TRANSACTION, data, &reply, 0/*flags*/);
+        return binder->transact(USER_TRANSACTION, data, &reply, 0 /*flags*/);
     }
 
-    status_t onTransact(uint32_t code,
-            const Parcel& data, Parcel* reply, uint32_t flags) override {
+    status_t onTransact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags) override {
         if (code == USER_TRANSACTION) {
             // not interested in this kind of stability. Make sure
             // we have a test failure
@@ -98,9 +97,7 @@ String16 BadStableBinder::kDescriptor = String16("BadStableBinder.test");
 // it would ruin everything!
 class MyBinderStabilityTest : public BnBinderStabilityTest {
 public:
-    Status sendBinder(const sp<IBinder>& /*binder*/) override {
-        return Status::ok();
-    }
+    Status sendBinder(const sp<IBinder>& /*binder*/) override { return Status::ok(); }
     Status sendAndCallBinder(const sp<IBinder>& binder) override {
         ALOGI("Debug log stability: %s", Stability::debugToString(binder).c_str());
         return Status::fromExceptionCode(BadStableBinder::doUserTransaction(binder));
@@ -184,13 +181,12 @@ TEST(BinderStability, ForceDowngradeToVendorStability) {
 TEST(BinderStability, VintfStabilityServerMustBeDeclaredInManifest) {
     sp<IBinder> vintfServer = BadStableBinder::vintf();
 
-    for (const char* instance8 : {
-        ".", "/", "/.", "a.d.IFoo", "foo", "a.d.IFoo/foo"
-    }) {
-        String16 instance (instance8);
+    for (const char* instance8 : {".", "/", "/.", "a.d.IFoo", "foo", "a.d.IFoo/foo"}) {
+        String16 instance(instance8);
 
         EXPECT_EQ(Status::EX_ILLEGAL_ARGUMENT,
-            android::defaultServiceManager()->addService(String16("."), vintfServer)) << instance8;
+                  android::defaultServiceManager()->addService(String16("."), vintfServer))
+                << instance8;
         EXPECT_FALSE(android::defaultServiceManager()->isDeclared(instance)) << instance8;
         EXPECT_EQ(std::nullopt, android::defaultServiceManager()->updatableViaApex(instance))
                 << instance8;
@@ -288,9 +284,8 @@ NdkBinderStable_DataClass* NdkBadStableBinder_getUserData(AIBinder* binder) {
 
     return static_cast<NdkBinderStable_DataClass*>(userData);
 }
-binder_status_t NdkBadStableBinder_Class_onTransact(
-    AIBinder* binder, transaction_code_t code, const AParcel* /*in*/, AParcel* /*out*/) {
-
+binder_status_t NdkBadStableBinder_Class_onTransact(AIBinder* binder, transaction_code_t code,
+                                                    const AParcel* /*in*/, AParcel* /*out*/) {
     if (code == BadStableBinder::USER_TRANSACTION) {
         ALOGE("ndk binder stability: Got user transaction");
         NdkBadStableBinder_getUserData(binder)->gotUserTransaction = true;
@@ -301,20 +296,19 @@ binder_status_t NdkBadStableBinder_Class_onTransact(
 }
 
 static AIBinder_Class* kNdkBadStableBinder =
-    AIBinder_Class_define(String8(BadStableBinder::kDescriptor).c_str(),
-                          NdkBadStableBinder_Class_onCreate,
-                          NdkBadStableBinder_Class_onDestroy,
-                          NdkBadStableBinder_Class_onTransact);
+        AIBinder_Class_define(String8(BadStableBinder::kDescriptor).c_str(),
+                              NdkBadStableBinder_Class_onCreate, NdkBadStableBinder_Class_onDestroy,
+                              NdkBadStableBinder_Class_onTransact);
 
 // for testing only to get around __ANDROID_VNDK__ guard.
 extern "C" void AIBinder_markVendorStability(AIBinder* binder); // <- BAD DO NOT COPY
 
 TEST(BinderStability, NdkCantCallVendorBinderInSystemContext) {
-    SpAIBinder binder = SpAIBinder(AServiceManager_getService(
-        String8(kSystemStabilityServer).c_str()));
+    SpAIBinder binder =
+            SpAIBinder(AServiceManager_getService(String8(kSystemStabilityServer).c_str()));
 
     std::shared_ptr<aidl::IBinderStabilityTest> remoteServer =
-        aidl::IBinderStabilityTest::fromBinder(binder);
+            aidl::IBinderStabilityTest::fromBinder(binder);
 
     ASSERT_NE(nullptr, remoteServer.get());
 
@@ -334,12 +328,8 @@ class MarksStabilityInConstructor : public BBinder {
 public:
     static bool gDestructed;
 
-    MarksStabilityInConstructor() {
-        Stability::markCompilationUnit(this);
-    }
-    ~MarksStabilityInConstructor() {
-        gDestructed = true;
-    }
+    MarksStabilityInConstructor() { Stability::markCompilationUnit(this); }
+    ~MarksStabilityInConstructor() { gDestructed = true; }
 };
 bool MarksStabilityInConstructor::gDestructed = false;
 
@@ -359,11 +349,13 @@ TEST(BinderStability, MarkingObjectNoDestructTest) {
 }
 
 TEST(BinderStability, RemarkDies) {
-    ASSERT_DEATH({
-        sp<IBinder> binder = new BBinder();
-        Stability::markCompilationUnit(binder.get()); // <-- only called for tests
-        Stability::markVndk(binder.get()); // <-- only called for tests
-    }, "Should only mark known object.");
+    ASSERT_DEATH(
+            {
+                sp<IBinder> binder = new BBinder();
+                Stability::markCompilationUnit(binder.get()); // <-- only called for tests
+                Stability::markVndk(binder.get());            // <-- only called for tests
+            },
+            "Should only mark known object.");
 }
 
 int main(int argc, char** argv) {
@@ -377,7 +369,7 @@ int main(int argc, char** argv) {
         android::defaultServiceManager()->addService(kSystemStabilityServer, server);
 
         IPCThreadState::self()->joinThreadPool(true);
-        exit(1);  // should not reach
+        exit(1); // should not reach
     }
 
     // This is not racey. Just giving these services some time to register before we call

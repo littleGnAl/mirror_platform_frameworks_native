@@ -33,13 +33,14 @@
 #include <binder/IResultReceiver.h>
 #include <binder/IServiceManager.h>
 #include <binder/IShellCallback.h>
-
 #include <sys/prctl.h>
+
 #include <chrono>
 #include <condition_variable>
 #include <iostream>
 #include <mutex>
 #include <thread>
+
 #include "android/binder_ibinder.h"
 
 using namespace android;

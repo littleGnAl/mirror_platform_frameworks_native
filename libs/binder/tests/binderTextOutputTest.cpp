@@ -17,40 +17,37 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits>
 #include <cstddef>
+#include <limits>
 
+#include <gtest/gtest.h>
 #include "android-base/file.h"
 #include "android-base/test_utils.h"
-#include <gtest/gtest.h>
 
 #include <binder/Parcel.h>
 #include <binder/TextOutput.h>
 
-static void CheckMessage(CapturedStderr& cap,
-                         const char* expected,
-                         bool singleline) {
+static void CheckMessage(CapturedStderr& cap, const char* expected, bool singleline) {
     cap.Stop();
     std::string output = cap.str();
-    if (singleline)
-        output.erase(std::remove(output.begin(), output.end(), '\n'));
+    if (singleline) output.erase(std::remove(output.begin(), output.end(), '\n'));
     ASSERT_EQ(output, expected);
 }
 
 #define CHECK_LOG_(input, expect, singleline)    \
-{                                                \
-    CapturedStderr cap;                          \
-    android::aerr << input << android::endl;     \
-    CheckMessage(cap, expect, singleline);       \
-}                                                \
+    {                                            \
+        CapturedStderr cap;                      \
+        android::aerr << input << android::endl; \
+        CheckMessage(cap, expect, singleline);   \
+    }
 
-#define CHECK_VAL_(val, singleline)              \
-{                                                \
-    std::stringstream ss;                        \
-    ss << val;                                   \
-    std::string s = ss.str();                    \
-    CHECK_LOG_(val, s.c_str(), singleline);      \
-}                                                \
+#define CHECK_VAL_(val, singleline)             \
+    {                                           \
+        std::stringstream ss;                   \
+        ss << val;                              \
+        std::string s = ss.str();               \
+        CHECK_LOG_(val, s.c_str(), singleline); \
+    }
 
 #define CHECK_LOG(input, expect) CHECK_LOG_(input, expect, true)
 #define CHECK_VAL(val) CHECK_VAL_(val, true)
@@ -64,7 +61,8 @@ TEST(TextOutput, HandlesStdEndl) {
 
 TEST(TextOutput, HandlesCEndl) {
     CapturedStderr cap;
-    android::aerr << "foobar" << "\n";
+    android::aerr << "foobar"
+                  << "\n";
     cap.Stop();
     ASSERT_EQ(cap.str(), "foobar\n");
 }
@@ -102,13 +100,13 @@ TEST(TextOutput, HandleParcel) {
 }
 
 TEST(TextOutput, HandleHexDump) {
-    const char buf[16] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+    const char buf[16] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
     android::HexDump val(buf, sizeof(buf));
     CHECK_LOG(val, "03020100 07060504 0b0a0908 0f0e0d0c '................'");
 }
 
 TEST(TextOutput, HandleHexDumpCustom) {
-    const char buf[4] = {0x11,0x22,0x33,0x44};
+    const char buf[4] = {0x11, 0x22, 0x33, 0x44};
     android::HexDump val(buf, sizeof(buf), 4);
     CHECK_LOG(val, "11 22 33 44 '.\"3D'");
 }
@@ -119,7 +117,7 @@ TEST(TextOutput, HandleTypeCode) {
 }
 
 TEST(TextOutput, HandleCookie) {
-    int32_t val = 321; //0x141
+    int32_t val = 321; // 0x141
     CHECK_LOG((void*)(long)val, "0x141");
 }
 
@@ -136,33 +134,27 @@ TEST(TextOutput, HandleString16) {
 template <typename T>
 class TextTest : public testing::Test {};
 
-typedef testing::Types<short, unsigned short,
-                       int, unsigned int,
-                       long, unsigned long,
-                       long long, unsigned long long,
-                       float, double, long double> TestTypes;
+typedef testing::Types<short, unsigned short, int, unsigned int, long, unsigned long, long long,
+                       unsigned long long, float, double, long double>
+        TestTypes;
 TYPED_TEST_CASE(TextTest, TestTypes);
 
-TYPED_TEST(TextTest, TextMax)
-{
+TYPED_TEST(TextTest, TextMax) {
     TypeParam max = std::numeric_limits<TypeParam>::max();
     CHECK_VAL(max);
 }
 
-TYPED_TEST(TextTest, TestMin)
-{
+TYPED_TEST(TextTest, TestMin) {
     TypeParam min = std::numeric_limits<TypeParam>::min();
     CHECK_VAL(min);
 }
 
-TYPED_TEST(TextTest, TestDenom)
-{
+TYPED_TEST(TextTest, TestDenom) {
     TypeParam min = std::numeric_limits<TypeParam>::denorm_min();
     CHECK_VAL(min);
 }
 
-TYPED_TEST(TextTest, TestEpsilon)
-{
+TYPED_TEST(TextTest, TestEpsilon) {
     TypeParam eps = std::numeric_limits<TypeParam>::epsilon();
     CHECK_VAL(eps);
 }

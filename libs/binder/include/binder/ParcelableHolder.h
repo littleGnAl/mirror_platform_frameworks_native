@@ -31,7 +31,7 @@ namespace os {
 class ParcelableHolder : public android::Parcelable {
 public:
     ParcelableHolder() = delete;
-    explicit ParcelableHolder(Stability stability) : mStability(stability){}
+    explicit ParcelableHolder(Stability stability) : mStability(stability) {}
     virtual ~ParcelableHolder() = default;
     ParcelableHolder(const ParcelableHolder& other) {
         mParcelable = other.mParcelable;
@@ -111,24 +111,12 @@ public:
 
     Stability getStability() const override { return mStability; }
 
-    inline bool operator!=(const ParcelableHolder& rhs) const {
-        return this != &rhs;
-    }
-    inline bool operator<(const ParcelableHolder& rhs) const {
-        return this < &rhs;
-    }
-    inline bool operator<=(const ParcelableHolder& rhs) const {
-        return this <= &rhs;
-    }
-    inline bool operator==(const ParcelableHolder& rhs) const {
-        return this == &rhs;
-    }
-    inline bool operator>(const ParcelableHolder& rhs) const {
-        return this > &rhs;
-    }
-    inline bool operator>=(const ParcelableHolder& rhs) const {
-        return this >= &rhs;
-    }
+    inline bool operator!=(const ParcelableHolder& rhs) const { return this != &rhs; }
+    inline bool operator<(const ParcelableHolder& rhs) const { return this < &rhs; }
+    inline bool operator<=(const ParcelableHolder& rhs) const { return this <= &rhs; }
+    inline bool operator==(const ParcelableHolder& rhs) const { return this == &rhs; }
+    inline bool operator>(const ParcelableHolder& rhs) const { return this > &rhs; }
+    inline bool operator>=(const ParcelableHolder& rhs) const { return this >= &rhs; }
 
 private:
     mutable std::shared_ptr<Parcelable> mParcelable;

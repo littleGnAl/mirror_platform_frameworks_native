@@ -50,7 +50,9 @@ struct RpcWireHeader;
 void rpcMaybeWaitToFlake();
 #define MAYBE_WAIT_IN_FLAKE_MODE rpcMaybeWaitToFlake()
 #else
-#define MAYBE_WAIT_IN_FLAKE_MODE do {} while (false)
+#define MAYBE_WAIT_IN_FLAKE_MODE \
+    do {                         \
+    } while (false)
 #endif
 
 /**

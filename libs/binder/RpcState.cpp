@@ -287,7 +287,6 @@ void RpcState::dumpLocked() {
     ALOGE("END DUMP OF RpcState");
 }
 
-
 RpcState::CommandData::CommandData(size_t size) : mSize(size) {
     // The maximum size for regular binder is 1MB for all concurrent
     // transactions. A very small proportion of transactions are even
@@ -313,8 +312,8 @@ status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
                            const sp<RpcSession>& session, const char* what, iovec* iovs, int niovs,
                            const std::function<status_t()>& altPoll) {
     for (int i = 0; i < niovs; i++) {
-        LOG_RPC_DETAIL("Sending %s (part %d of %d) on RpcTransport %p: %s",
-                       what, i + 1, niovs, connection->rpcTransport.get(),
+        LOG_RPC_DETAIL("Sending %s (part %d of %d) on RpcTransport %p: %s", what, i + 1, niovs,
+                       connection->rpcTransport.get(),
                        android::base::HexString(iovs[i].iov_base, iovs[i].iov_len).c_str());
     }
 
@@ -344,8 +343,8 @@ status_t RpcState::rpcRec(const sp<RpcSession::RpcConnection>& connection,
     }
 
     for (int i = 0; i < niovs; i++) {
-        LOG_RPC_DETAIL("Received %s (part %d of %d) on RpcTransport %p: %s",
-                       what, i + 1, niovs, connection->rpcTransport.get(),
+        LOG_RPC_DETAIL("Received %s (part %d of %d) on RpcTransport %p: %s", what, i + 1, niovs,
+                       connection->rpcTransport.get(),
                        android::base::HexString(iovs[i].iov_base, iovs[i].iov_len).c_str());
     }
     return OK;

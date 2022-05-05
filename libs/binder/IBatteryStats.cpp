@@ -16,21 +16,17 @@
 
 #include <batterystats/IBatteryStats.h>
 
-#include <utils/Log.h>
 #include <binder/Parcel.h>
+#include <utils/Log.h>
 #include <utils/String8.h>
 
 namespace android {
 
 // ----------------------------------------------------------------------
 
-class BpBatteryStats : public BpInterface<IBatteryStats>
-{
+class BpBatteryStats : public BpInterface<IBatteryStats> {
 public:
-    explicit BpBatteryStats(const sp<IBinder>& impl)
-        : BpInterface<IBatteryStats>(impl)
-    {
-    }
+    explicit BpBatteryStats(const sp<IBinder>& impl) : BpInterface<IBatteryStats>(impl) {}
 
     virtual void noteStartSensor(int uid, int sensor) {
         Parcel data, reply;
@@ -127,7 +123,6 @@ public:
         data.writeInterfaceToken(IBatteryStats::getInterfaceDescriptor());
         remote()->transact(NOTE_RESET_FLASHLIGHT_TRANSACTION, data, &reply);
     }
-
 };
 
 IMPLEMENT_META_INTERFACE(BatteryStats, "com.android.internal.app.IBatteryStats")
@@ -135,10 +130,9 @@ IMPLEMENT_META_INTERFACE(BatteryStats, "com.android.internal.app.IBatteryStats")
 // ----------------------------------------------------------------------
 
 // NOLINTNEXTLINE(google-default-arguments)
-status_t BnBatteryStats::onTransact(
-    uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
-{
-    switch(code) {
+status_t BnBatteryStats::onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                    uint32_t flags) {
+    switch (code) {
         case NOTE_START_SENSOR_TRANSACTION: {
             CHECK_INTERFACE(IBatteryStats, data, reply);
             int uid = data.readInt32();

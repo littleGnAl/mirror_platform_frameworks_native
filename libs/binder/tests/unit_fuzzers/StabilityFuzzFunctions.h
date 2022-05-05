@@ -30,28 +30,28 @@ static bool marked = false;
  */
 static const std::vector<
         std::function<void(FuzzedDataProvider*, android::sp<android::IBinder> const&)>>
-        gStabilityOperations = {
-                [](FuzzedDataProvider*, android::sp<android::IBinder> const& bbinder) -> void {
-                    if (!marked) {
-                        android::internal::Stability::markCompilationUnit(bbinder.get());
-                        marked = true;
-                    }
-                },
-                [](FuzzedDataProvider*, android::sp<android::IBinder> const& bbinder) -> void {
-                    if (!marked) {
-                        android::internal::Stability::markVintf(bbinder.get());
-                        marked = true;
-                    }
-                },
-                [](FuzzedDataProvider*, android::sp<android::IBinder> const& bbinder) -> void {
-                    (void)android::internal::Stability::debugToString(bbinder);
-                },
-                [](FuzzedDataProvider*, android::sp<android::IBinder> const& bbinder) -> void {
-                    if (!marked) {
-                        android::internal::Stability::markVndk(bbinder.get());
-                        marked = true;
-                    }
-                },
-                [](FuzzedDataProvider*, android::sp<android::IBinder> const& bbinder) -> void {
-                    android::internal::Stability::requiresVintfDeclaration(bbinder);
-                }};
+        gStabilityOperations =
+                {[](FuzzedDataProvider*, android::sp<android::IBinder> const& bbinder) -> void {
+                     if (!marked) {
+                         android::internal::Stability::markCompilationUnit(bbinder.get());
+                         marked = true;
+                     }
+                 },
+                 [](FuzzedDataProvider*, android::sp<android::IBinder> const& bbinder) -> void {
+                     if (!marked) {
+                         android::internal::Stability::markVintf(bbinder.get());
+                         marked = true;
+                     }
+                 },
+                 [](FuzzedDataProvider*, android::sp<android::IBinder> const& bbinder) -> void {
+                     (void)android::internal::Stability::debugToString(bbinder);
+                 },
+                 [](FuzzedDataProvider*, android::sp<android::IBinder> const& bbinder) -> void {
+                     if (!marked) {
+                         android::internal::Stability::markVndk(bbinder.get());
+                         marked = true;
+                     }
+                 },
+                 [](FuzzedDataProvider*, android::sp<android::IBinder> const& bbinder) -> void {
+                     android::internal::Stability::requiresVintfDeclaration(bbinder);
+                 }};

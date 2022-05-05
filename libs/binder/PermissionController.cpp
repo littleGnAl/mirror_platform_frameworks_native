@@ -14,21 +14,18 @@
  * limitations under the License.
  */
 
-#include <mutex>
-#include <binder/PermissionController.h>
 #include <binder/Binder.h>
 #include <binder/IServiceManager.h>
+#include <binder/PermissionController.h>
+#include <mutex>
 
 #include <utils/SystemClock.h>
 
 namespace android {
 
-PermissionController::PermissionController()
-{
-}
+PermissionController::PermissionController() {}
 
-sp<IPermissionController> PermissionController::getService()
-{
+sp<IPermissionController> PermissionController::getService() {
     std::lock_guard<Mutex> scoped_lock(mLock);
     int64_t startTime = 0;
     sp<IPermissionController> service = mService;
@@ -53,34 +50,29 @@ sp<IPermissionController> PermissionController::getService()
     return service;
 }
 
-bool PermissionController::checkPermission(const String16& permission, int32_t pid, int32_t uid)
-{
+bool PermissionController::checkPermission(const String16& permission, int32_t pid, int32_t uid) {
     sp<IPermissionController> service = getService();
     return service != nullptr ? service->checkPermission(permission, pid, uid) : false;
 }
 
-int32_t PermissionController::noteOp(const String16& op, int32_t uid, const String16& packageName)
-{
+int32_t PermissionController::noteOp(const String16& op, int32_t uid, const String16& packageName) {
     sp<IPermissionController> service = getService();
     return service != nullptr ? service->noteOp(op, uid, packageName) : MODE_ERRORED;
 }
 
-void PermissionController::getPackagesForUid(const uid_t uid, Vector<String16> &packages)
-{
+void PermissionController::getPackagesForUid(const uid_t uid, Vector<String16>& packages) {
     sp<IPermissionController> service = getService();
     if (service != nullptr) {
         service->getPackagesForUid(uid, packages);
     }
 }
 
-bool PermissionController::isRuntimePermission(const String16& permission)
-{
+bool PermissionController::isRuntimePermission(const String16& permission) {
     sp<IPermissionController> service = getService();
     return service != nullptr ? service->isRuntimePermission(permission) : false;
 }
 
-int PermissionController::getPackageUid(const String16& package, int flags)
-{
+int PermissionController::getPackageUid(const String16& package, int flags) {
     sp<IPermissionController> service = getService();
     return service != nullptr ? service->getPackageUid(package, flags) : -1;
 }

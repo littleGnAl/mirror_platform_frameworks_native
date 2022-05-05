@@ -30,7 +30,7 @@ class ParcelFileDescriptor : public android::Parcelable {
 public:
     ParcelFileDescriptor();
     explicit ParcelFileDescriptor(android::base::unique_fd fd);
-    ParcelFileDescriptor(ParcelFileDescriptor&& other) noexcept : mFd(std::move(other.mFd)) { }
+    ParcelFileDescriptor(ParcelFileDescriptor&& other) noexcept : mFd(std::move(other.mFd)) {}
     ParcelFileDescriptor& operator=(ParcelFileDescriptor&& other) noexcept = default;
     ~ParcelFileDescriptor() override;
 
@@ -60,6 +60,7 @@ public:
     inline bool operator>=(const ParcelFileDescriptor& rhs) const {
         return mFd.get() >= rhs.mFd.get();
     }
+
 private:
     android::base::unique_fd mFd;
 };

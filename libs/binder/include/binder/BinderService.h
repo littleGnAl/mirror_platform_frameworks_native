@@ -21,10 +21,9 @@
 #include <utils/Errors.h>
 #include <utils/String16.h>
 
-#include <binder/IServiceManager.h>
 #include <binder/IPCThreadState.h>
-#include <binder/ProcessState.h>
 #include <binder/IServiceManager.h>
+#include <binder/ProcessState.h>
 
 // WARNING: deprecated - DO NOT USE - prefer to setup service directly.
 //
@@ -47,9 +46,8 @@
 // ---------------------------------------------------------------------------
 namespace android {
 
-template<typename SERVICE>
-class BinderService
-{
+template <typename SERVICE>
+class BinderService {
 public:
     static status_t publish(bool allowIsolated = false,
                             int dumpFlags = IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT) {
@@ -77,7 +75,6 @@ private:
         IPCThreadState::self()->joinThreadPool();
     }
 };
-
 
 } // namespace android
 // ---------------------------------------------------------------------------

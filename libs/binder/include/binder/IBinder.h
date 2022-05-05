@@ -27,9 +27,8 @@
 // linux/binder.h defines this, but we don't want to include it here in order to
 // avoid exporting the kernel headers
 #ifndef B_PACK_CHARS
-#define B_PACK_CHARS(c1, c2, c3, c4) \
-    ((((c1)<<24)) | (((c2)<<16)) | (((c3)<<8)) | (c4))
-#endif  // B_PACK_CHARS
+#define B_PACK_CHARS(c1, c2, c3, c4) ((((c1) << 24)) | (((c2) << 16)) | (((c3) << 8)) | (c4))
+#endif // B_PACK_CHARS
 
 // ---------------------------------------------------------------------------
 namespace android {
@@ -48,8 +47,7 @@ class IShellCallback;
  * (method calls, property get and set) is down through a low-level
  * protocol implemented on top of the transact() API.
  */
-class [[clang::lto_visibility_public]] IBinder : public virtual RefBase
-{
+class [[clang::lto_visibility_public]] IBinder : public virtual RefBase {
 public:
     enum {
         FIRST_CALL_TRANSACTION = 0x00000001,
@@ -92,7 +90,7 @@ public:
      * @a descriptor.  If it does, the base pointer to it is returned,
      * which you can safely static_cast<> to the concrete C++ interface.
      */
-    virtual sp<IInterface>  queryLocalInterface(const String16& descriptor);
+    virtual sp<IInterface> queryLocalInterface(const String16& descriptor);
 
     /**
      * Return the canonical name of the interface provided by this IBinder
@@ -100,12 +98,12 @@ public:
      */
     virtual const String16& getInterfaceDescriptor() const = 0;
 
-    virtual bool            isBinderAlive() const = 0;
-    virtual status_t        pingBinder() = 0;
-    virtual status_t        dump(int fd, const Vector<String16>& args) = 0;
-    static  status_t        shellCommand(const sp<IBinder>& target, int in, int out, int err,
-                                         Vector<String16>& args, const sp<IShellCallback>& callback,
-                                         const sp<IResultReceiver>& resultReceiver);
+    virtual bool isBinderAlive() const = 0;
+    virtual status_t pingBinder() = 0;
+    virtual status_t dump(int fd, const Vector<String16>& args) = 0;
+    static status_t shellCommand(const sp<IBinder>& target, int in, int out, int err,
+                                 Vector<String16>& args, const sp<IShellCallback>& callback,
+                                 const sp<IResultReceiver>& resultReceiver);
 
     /**
      * This allows someone to add their own additions to an interface without
@@ -148,12 +146,12 @@ public:
      *         // if bar is null, then there is no extension or a different
      *         // type of extension
      */
-    status_t                getExtension(sp<IBinder>* out);
+    status_t getExtension(sp<IBinder>* out);
 
     /**
      * Dump PID for a binder, for debugging.
      */
-    status_t                getDebugPid(pid_t* outPid);
+    status_t getDebugPid(pid_t* outPid);
 
     /**
      * Set the RPC client fd to this binder service, for debugging. This is only available on
@@ -177,28 +175,25 @@ public:
                                              const sp<IBinder>& keepAliveBinder);
 
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t        transact(   uint32_t code,
-                                        const Parcel& data,
-                                        Parcel* reply,
-                                        uint32_t flags = 0) = 0;
+    virtual status_t transact(uint32_t code, const Parcel& data, Parcel* reply,
+                              uint32_t flags = 0) = 0;
 
-    // DeathRecipient is pure abstract, there is no virtual method
-    // implementation to put in a translation unit in order to silence the
-    // weak vtables warning.
-    #if defined(__clang__)
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wweak-vtables"
-    #endif
+// DeathRecipient is pure abstract, there is no virtual method
+// implementation to put in a translation unit in order to silence the
+// weak vtables warning.
+#if defined(__clang__)
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wweak-vtables"
+#endif
 
-    class DeathRecipient : public virtual RefBase
-    {
+    class DeathRecipient : public virtual RefBase {
     public:
         virtual void binderDied(const wp<IBinder>& who) = 0;
     };
 
-    #if defined(__clang__)
-    #pragma clang diagnostic pop
-    #endif
+#if defined(__clang__)
+#pragma clang diagnostic pop
+#endif
 
     /**
      * Register the @a recipient for a notification if this binder
@@ -227,9 +222,8 @@ public:
      * directly do with it now that it has passed on.)
      */
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t        linkToDeath(const sp<DeathRecipient>& recipient,
-                                        void* cookie = nullptr,
-                                        uint32_t flags = 0) = 0;
+    virtual status_t linkToDeath(const sp<DeathRecipient>& recipient, void* cookie = nullptr,
+                                 uint32_t flags = 0) = 0;
 
     /**
      * Remove a previously registered death notification.
@@ -242,12 +236,11 @@ public:
      * the object will also unlink all death recipients.
      */
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t        unlinkToDeath(  const wp<DeathRecipient>& recipient,
-                                            void* cookie = nullptr,
-                                            uint32_t flags = 0,
-                                            wp<DeathRecipient>* outRecipient = nullptr) = 0;
+    virtual status_t unlinkToDeath(const wp<DeathRecipient>& recipient, void* cookie = nullptr,
+                                   uint32_t flags = 0,
+                                   wp<DeathRecipient>* outRecipient = nullptr) = 0;
 
-    virtual bool            checkSubclass(const void* subclassID) const;
+    virtual bool checkSubclass(const void* subclassID) const;
 
     typedef void (*object_cleanup_func)(const void* id, void* obj, void* cleanupCookie);
 
@@ -282,11 +275,11 @@ public:
      */
     void withLock(const std::function<void()>& doWithLock);
 
-    virtual BBinder*        localBinder();
-    virtual BpBinder*       remoteBinder();
+    virtual BBinder* localBinder();
+    virtual BpBinder* remoteBinder();
 
 protected:
-    virtual          ~IBinder();
+    virtual ~IBinder();
 
 private:
 };

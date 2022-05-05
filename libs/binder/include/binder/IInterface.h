@@ -24,16 +24,15 @@ namespace android {
 
 // ----------------------------------------------------------------------
 
-class IInterface : public virtual RefBase
-{
+class IInterface : public virtual RefBase {
 public:
-            IInterface();
-            static sp<IBinder>  asBinder(const IInterface*);
-            static sp<IBinder>  asBinder(const sp<IInterface>&);
+    IInterface();
+    static sp<IBinder> asBinder(const IInterface*);
+    static sp<IBinder> asBinder(const sp<IInterface>&);
 
 protected:
-    virtual                     ~IInterface();
-    virtual IBinder*            onAsBinder() = 0;
+    virtual ~IInterface();
+    virtual IBinder* onAsBinder() = 0;
 };
 
 // ----------------------------------------------------------------------
@@ -44,9 +43,8 @@ protected:
  * return a proxy to the interface without checking the interface descriptor.
  * This means that subsequent calls may fail with BAD_TYPE.
  */
-template<typename INTERFACE>
-inline sp<INTERFACE> interface_cast(const sp<IBinder>& obj)
-{
+template <typename INTERFACE>
+inline sp<INTERFACE> interface_cast(const sp<IBinder>& obj) {
     return INTERFACE::asInterface(obj);
 }
 
@@ -54,9 +52,8 @@ inline sp<INTERFACE> interface_cast(const sp<IBinder>& obj)
  * This is the same as interface_cast, except that it always checks to make sure
  * the descriptor matches, and if it doesn't match, it will return nullptr.
  */
-template<typename INTERFACE>
-inline sp<INTERFACE> checked_interface_cast(const sp<IBinder>& obj)
-{
+template <typename INTERFACE>
+inline sp<INTERFACE> checked_interface_cast(const sp<IBinder>& obj) {
     if (obj->getInterfaceDescriptor() != INTERFACE::descriptor) {
         return nullptr;
     }
@@ -66,29 +63,27 @@ inline sp<INTERFACE> checked_interface_cast(const sp<IBinder>& obj)
 
 // ----------------------------------------------------------------------
 
-template<typename INTERFACE>
-class BnInterface : public INTERFACE, public BBinder
-{
+template <typename INTERFACE>
+class BnInterface : public INTERFACE, public BBinder {
 public:
-    virtual sp<IInterface>      queryLocalInterface(const String16& _descriptor);
-    virtual const String16&     getInterfaceDescriptor() const;
+    virtual sp<IInterface> queryLocalInterface(const String16& _descriptor);
+    virtual const String16& getInterfaceDescriptor() const;
 
 protected:
-    typedef INTERFACE           BaseInterface;
-    virtual IBinder*            onAsBinder();
+    typedef INTERFACE BaseInterface;
+    virtual IBinder* onAsBinder();
 };
 
 // ----------------------------------------------------------------------
 
-template<typename INTERFACE>
-class BpInterface : public INTERFACE, public BpRefBase
-{
+template <typename INTERFACE>
+class BpInterface : public INTERFACE, public BpRefBase {
 public:
-    explicit                    BpInterface(const sp<IBinder>& remote);
+    explicit BpInterface(const sp<IBinder>& remote);
 
 protected:
-    typedef INTERFACE           BaseInterface;
-    virtual IBinder*            onAsBinder();
+    typedef INTERFACE BaseInterface;
+    virtual IBinder* onAsBinder();
 };
 
 // ----------------------------------------------------------------------
@@ -108,7 +103,7 @@ private:                                                                        
                                                                                                   \
 public:
 
-#define __IINTF_CONCAT(x, y) (x ## y)
+#define __IINTF_CONCAT(x, y) (x##y)
 
 #ifndef DO_NOT_CHECK_MANUAL_BINDER_INTERFACES
 
@@ -120,42 +115,46 @@ public:
                   "an .aidl file to auto-generate the interface. If "   \
                   "an interface must be manually written, add its "     \
                   "name to the whitelist.");                            \
-    DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE(INTERFACE, NAME)    \
+    DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE(INTERFACE, NAME)
 
 #else
 
-#define IMPLEMENT_META_INTERFACE(INTERFACE, NAME)                       \
-    DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE(INTERFACE, NAME)    \
+#define IMPLEMENT_META_INTERFACE(INTERFACE, NAME) \
+    DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE(INTERFACE, NAME)
 
 #endif
 
 // Macro to be used by both IMPLEMENT_META_INTERFACE and IMPLEMENT_META_NESTED_INTERFACE
-#define DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE0(ITYPE, INAME, BPTYPE)                     \
-    const ::android::String16& ITYPE::getInterfaceDescriptor() const { return ITYPE::descriptor; } \
-    ::android::sp<ITYPE> ITYPE::asInterface(const ::android::sp<::android::IBinder>& obj) {        \
-        ::android::sp<ITYPE> intr;                                                                 \
-        if (obj != nullptr) {                                                                      \
-            intr = ::android::sp<ITYPE>::cast(obj->queryLocalInterface(ITYPE::descriptor));        \
-            if (intr == nullptr) {                                                                 \
-                intr = ::android::sp<BPTYPE>::make(obj);                                           \
-            }                                                                                      \
-        }                                                                                          \
-        return intr;                                                                               \
-    }                                                                                              \
-    ::android::sp<ITYPE> ITYPE::default_impl;                                                      \
-    bool ITYPE::setDefaultImpl(::android::sp<ITYPE> impl) {                                        \
-        /* Only one user of this interface can use this function     */                            \
-        /* at a time. This is a heuristic to detect if two different */                            \
-        /* users in the same process use this function.              */                            \
-        assert(!ITYPE::default_impl);                                                              \
-        if (impl) {                                                                                \
-            ITYPE::default_impl = std::move(impl);                                                 \
-            return true;                                                                           \
-        }                                                                                          \
-        return false;                                                                              \
-    }                                                                                              \
-    const ::android::sp<ITYPE>& ITYPE::getDefaultImpl() { return ITYPE::default_impl; }            \
-    ITYPE::INAME() {}                                                                              \
+#define DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE0(ITYPE, INAME, BPTYPE)              \
+    const ::android::String16& ITYPE::getInterfaceDescriptor() const {                      \
+        return ITYPE::descriptor;                                                           \
+    }                                                                                       \
+    ::android::sp<ITYPE> ITYPE::asInterface(const ::android::sp<::android::IBinder>& obj) { \
+        ::android::sp<ITYPE> intr;                                                          \
+        if (obj != nullptr) {                                                               \
+            intr = ::android::sp<ITYPE>::cast(obj->queryLocalInterface(ITYPE::descriptor)); \
+            if (intr == nullptr) {                                                          \
+                intr = ::android::sp<BPTYPE>::make(obj);                                    \
+            }                                                                               \
+        }                                                                                   \
+        return intr;                                                                        \
+    }                                                                                       \
+    ::android::sp<ITYPE> ITYPE::default_impl;                                               \
+    bool ITYPE::setDefaultImpl(::android::sp<ITYPE> impl) {                                 \
+        /* Only one user of this interface can use this function     */                     \
+        /* at a time. This is a heuristic to detect if two different */                     \
+        /* users in the same process use this function.              */                     \
+        assert(!ITYPE::default_impl);                                                       \
+        if (impl) {                                                                         \
+            ITYPE::default_impl = std::move(impl);                                          \
+            return true;                                                                    \
+        }                                                                                   \
+        return false;                                                                       \
+    }                                                                                       \
+    const ::android::sp<ITYPE>& ITYPE::getDefaultImpl() {                                   \
+        return ITYPE::default_impl;                                                         \
+    }                                                                                       \
+    ITYPE::INAME() {}                                                                       \
     ITYPE::~INAME() {}
 
 // Macro for an interface type.
@@ -174,44 +173,37 @@ public:
     DO_NOT_DIRECTLY_USE_ME_IMPLEMENT_META_INTERFACE0(PARENT::I##INTERFACE, I##INTERFACE, \
                                                      PARENT::Bp##INTERFACE)
 
-#define CHECK_INTERFACE(interface, data, reply)                         \
-    do {                                                                \
-      if (!(data).checkInterface(this)) { return PERMISSION_DENIED; }   \
-    } while (false)                                                     \
-
+#define CHECK_INTERFACE(interface, data, reply) \
+    do {                                        \
+        if (!(data).checkInterface(this)) {     \
+            return PERMISSION_DENIED;           \
+        }                                       \
+    } while (false)
 
 // ----------------------------------------------------------------------
 // No user-serviceable parts after this...
 
-template<typename INTERFACE>
-inline sp<IInterface> BnInterface<INTERFACE>::queryLocalInterface(
-        const String16& _descriptor)
-{
+template <typename INTERFACE>
+inline sp<IInterface> BnInterface<INTERFACE>::queryLocalInterface(const String16& _descriptor) {
     if (_descriptor == INTERFACE::descriptor) return sp<IInterface>::fromExisting(this);
     return nullptr;
 }
 
-template<typename INTERFACE>
-inline const String16& BnInterface<INTERFACE>::getInterfaceDescriptor() const
-{
+template <typename INTERFACE>
+inline const String16& BnInterface<INTERFACE>::getInterfaceDescriptor() const {
     return INTERFACE::getInterfaceDescriptor();
 }
 
-template<typename INTERFACE>
-IBinder* BnInterface<INTERFACE>::onAsBinder()
-{
+template <typename INTERFACE>
+IBinder* BnInterface<INTERFACE>::onAsBinder() {
     return this;
 }
 
-template<typename INTERFACE>
-inline BpInterface<INTERFACE>::BpInterface(const sp<IBinder>& remote)
-    : BpRefBase(remote)
-{
-}
+template <typename INTERFACE>
+inline BpInterface<INTERFACE>::BpInterface(const sp<IBinder>& remote) : BpRefBase(remote) {}
 
-template<typename INTERFACE>
-inline IBinder* BpInterface<INTERFACE>::onAsBinder()
-{
+template <typename INTERFACE>
+inline IBinder* BpInterface<INTERFACE>::onAsBinder() {
     return remote();
 }
 
@@ -219,104 +211,103 @@ inline IBinder* BpInterface<INTERFACE>::onAsBinder()
 
 namespace internal {
 constexpr const char* const kManualInterfaces[] = {
-  "android.app.IActivityManager",
-  "android.app.IUidObserver",
-  "android.drm.IDrm",
-  "android.dvr.IVsyncCallback",
-  "android.dvr.IVsyncService",
-  "android.gfx.tests.ICallback",
-  "android.gfx.tests.IIPCTest",
-  "android.gfx.tests.ISafeInterfaceTest",
-  "android.graphicsenv.IGpuService",
-  "android.gui.DisplayEventConnection",
-  "android.gui.IConsumerListener",
-  "android.gui.IGraphicBufferConsumer",
-  "android.gui.IRegionSamplingListener",
-  "android.gui.ITransactionComposerListener",
-  "android.gui.SensorEventConnection",
-  "android.gui.SensorServer",
-  "android.hardware.ICamera",
-  "android.hardware.ICameraClient",
-  "android.hardware.ICameraRecordingProxy",
-  "android.hardware.ICameraRecordingProxyListener",
-  "android.hardware.ICrypto",
-  "android.hardware.IOMXObserver",
-  "android.hardware.IStreamListener",
-  "android.hardware.IStreamSource",
-  "android.media.IAudioService",
-  "android.media.IDataSource",
-  "android.media.IDrmClient",
-  "android.media.IMediaCodecList",
-  "android.media.IMediaDrmService",
-  "android.media.IMediaExtractor",
-  "android.media.IMediaExtractorService",
-  "android.media.IMediaHTTPConnection",
-  "android.media.IMediaHTTPService",
-  "android.media.IMediaLogService",
-  "android.media.IMediaMetadataRetriever",
-  "android.media.IMediaMetricsService",
-  "android.media.IMediaPlayer",
-  "android.media.IMediaPlayerClient",
-  "android.media.IMediaPlayerService",
-  "android.media.IMediaRecorder",
-  "android.media.IMediaRecorderClient",
-  "android.media.IMediaResourceMonitor",
-  "android.media.IMediaSource",
-  "android.media.IRemoteDisplay",
-  "android.media.IRemoteDisplayClient",
-  "android.media.IResourceManagerClient",
-  "android.media.IResourceManagerService",
-  "android.os.IComplexTypeInterface",
-  "android.os.IPermissionController",
-  "android.os.IPingResponder",
-  "android.os.IProcessInfoService",
-  "android.os.ISchedulingPolicyService",
-  "android.os.IStringConstants",
-  "android.os.storage.IObbActionListener",
-  "android.os.storage.IStorageEventListener",
-  "android.os.storage.IStorageManager",
-  "android.os.storage.IStorageShutdownObserver",
-  "android.service.vr.IPersistentVrStateCallbacks",
-  "android.service.vr.IVrManager",
-  "android.service.vr.IVrStateCallbacks",
-  "android.ui.ISurfaceComposer",
-  "android.ui.ISurfaceComposerClient",
-  "android.utils.IMemory",
-  "android.utils.IMemoryHeap",
-  "com.android.car.procfsinspector.IProcfsInspector",
-  "com.android.internal.app.IAppOpsCallback",
-  "com.android.internal.app.IAppOpsService",
-  "com.android.internal.app.IBatteryStats",
-  "com.android.internal.os.IResultReceiver",
-  "com.android.internal.os.IShellCallback",
-  "drm.IDrmManagerService",
-  "drm.IDrmServiceListener",
-  "IAAudioClient",
-  "IAAudioService",
-  "VtsFuzzer",
-  nullptr,
+        "android.app.IActivityManager",
+        "android.app.IUidObserver",
+        "android.drm.IDrm",
+        "android.dvr.IVsyncCallback",
+        "android.dvr.IVsyncService",
+        "android.gfx.tests.ICallback",
+        "android.gfx.tests.IIPCTest",
+        "android.gfx.tests.ISafeInterfaceTest",
+        "android.graphicsenv.IGpuService",
+        "android.gui.DisplayEventConnection",
+        "android.gui.IConsumerListener",
+        "android.gui.IGraphicBufferConsumer",
+        "android.gui.IRegionSamplingListener",
+        "android.gui.ITransactionComposerListener",
+        "android.gui.SensorEventConnection",
+        "android.gui.SensorServer",
+        "android.hardware.ICamera",
+        "android.hardware.ICameraClient",
+        "android.hardware.ICameraRecordingProxy",
+        "android.hardware.ICameraRecordingProxyListener",
+        "android.hardware.ICrypto",
+        "android.hardware.IOMXObserver",
+        "android.hardware.IStreamListener",
+        "android.hardware.IStreamSource",
+        "android.media.IAudioService",
+        "android.media.IDataSource",
+        "android.media.IDrmClient",
+        "android.media.IMediaCodecList",
+        "android.media.IMediaDrmService",
+        "android.media.IMediaExtractor",
+        "android.media.IMediaExtractorService",
+        "android.media.IMediaHTTPConnection",
+        "android.media.IMediaHTTPService",
+        "android.media.IMediaLogService",
+        "android.media.IMediaMetadataRetriever",
+        "android.media.IMediaMetricsService",
+        "android.media.IMediaPlayer",
+        "android.media.IMediaPlayerClient",
+        "android.media.IMediaPlayerService",
+        "android.media.IMediaRecorder",
+        "android.media.IMediaRecorderClient",
+        "android.media.IMediaResourceMonitor",
+        "android.media.IMediaSource",
+        "android.media.IRemoteDisplay",
+        "android.media.IRemoteDisplayClient",
+        "android.media.IResourceManagerClient",
+        "android.media.IResourceManagerService",
+        "android.os.IComplexTypeInterface",
+        "android.os.IPermissionController",
+        "android.os.IPingResponder",
+        "android.os.IProcessInfoService",
+        "android.os.ISchedulingPolicyService",
+        "android.os.IStringConstants",
+        "android.os.storage.IObbActionListener",
+        "android.os.storage.IStorageEventListener",
+        "android.os.storage.IStorageManager",
+        "android.os.storage.IStorageShutdownObserver",
+        "android.service.vr.IPersistentVrStateCallbacks",
+        "android.service.vr.IVrManager",
+        "android.service.vr.IVrStateCallbacks",
+        "android.ui.ISurfaceComposer",
+        "android.ui.ISurfaceComposerClient",
+        "android.utils.IMemory",
+        "android.utils.IMemoryHeap",
+        "com.android.car.procfsinspector.IProcfsInspector",
+        "com.android.internal.app.IAppOpsCallback",
+        "com.android.internal.app.IAppOpsService",
+        "com.android.internal.app.IBatteryStats",
+        "com.android.internal.os.IResultReceiver",
+        "com.android.internal.os.IShellCallback",
+        "drm.IDrmManagerService",
+        "drm.IDrmServiceListener",
+        "IAAudioClient",
+        "IAAudioService",
+        "VtsFuzzer",
+        nullptr,
 };
 
 constexpr const char* const kDownstreamManualInterfaces[] = {
-  // Add downstream interfaces here.
-  nullptr,
+        // Add downstream interfaces here.
+        nullptr,
 };
 
 constexpr bool equals(const char* a, const char* b) {
-  if (*a != *b) return false;
-  if (*a == '\0') return true;
-  return equals(a + 1, b + 1);
+    if (*a != *b) return false;
+    if (*a == '\0') return true;
+    return equals(a + 1, b + 1);
 }
 
 constexpr bool inList(const char* a, const char* const* whitelist) {
-  if (*whitelist == nullptr) return false;
-  if (equals(a, *whitelist)) return true;
-  return inList(a, whitelist + 1);
+    if (*whitelist == nullptr) return false;
+    if (equals(a, *whitelist)) return true;
+    return inList(a, whitelist + 1);
 }
 
 constexpr bool allowedManualInterface(const char* name) {
-  return inList(name, kManualInterfaces) ||
-         inList(name, kDownstreamManualInterfaces);
+    return inList(name, kManualInterfaces) || inList(name, kDownstreamManualInterfaces);
 }
 
 } // namespace internal

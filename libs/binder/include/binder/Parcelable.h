@@ -66,10 +66,10 @@ public:
     // WARNING: getStability() is only expected to be overridden by auto-generated
     // code. Returns true if this parcelable is stable.
     virtual Stability getStability() const { return Stability::STABILITY_LOCAL; }
-};  // class Parcelable
+}; // class Parcelable
 
 #if defined(__clang__)
 #pragma clang diagnostic pop
 #endif
 
-}  // namespace android
+} // namespace android

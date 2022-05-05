@@ -15,9 +15,9 @@
  */
 
 #include <android/binder_ibinder_jni.h>
-#include "ibinder_internal.h"
-
 #include <android_util_Binder.h>
+
+#include "ibinder_internal.h"
 
 using ::android::IBinder;
 using ::android::ibinderForJavaObject;

@@ -28,16 +28,16 @@
 #include "ParcelValTypes.h"
 
 using android::binder::VAL_BOOLEAN;
+using android::binder::VAL_BOOLEANARRAY;
+using android::binder::VAL_DOUBLE;
+using android::binder::VAL_DOUBLEARRAY;
+using android::binder::VAL_INTARRAY;
 using android::binder::VAL_INTEGER;
 using android::binder::VAL_LONG;
-using android::binder::VAL_DOUBLE;
-using android::binder::VAL_STRING;
-using android::binder::VAL_BOOLEANARRAY;
-using android::binder::VAL_INTARRAY;
 using android::binder::VAL_LONGARRAY;
-using android::binder::VAL_DOUBLEARRAY;
-using android::binder::VAL_STRINGARRAY;
 using android::binder::VAL_PERSISTABLEBUNDLE;
+using android::binder::VAL_STRING;
+using android::binder::VAL_STRINGARRAY;
 
 using std::map;
 using std::set;
@@ -67,7 +67,7 @@ set<android::String16> getKeys(const map<android::String16, T>& map) {
     }
     return keys;
 }
-}  // namespace
+} // namespace
 
 namespace android {
 
@@ -79,7 +79,7 @@ namespace os {
         if (returnStatus) {                                              \
             ALOGE("Failed at %s:%d (%s)", __FILE__, __LINE__, __func__); \
             return returnStatus;                                         \
-         }                                                               \
+        }                                                                \
     }
 
 #define RETURN_IF_ENTRY_ERASED(map, key)                                 \
@@ -88,7 +88,7 @@ namespace os {
         if (num_erased) {                                                \
             ALOGE("Failed at %s:%d (%s)", __FILE__, __LINE__, __func__); \
             return num_erased;                                           \
-         }                                                               \
+        }                                                                \
     }
 
 status_t PersistableBundle::writeToParcel(Parcel* parcel) const {
@@ -104,7 +104,7 @@ status_t PersistableBundle::writeToParcel(Parcel* parcel) const {
     }
 
     size_t length_pos = parcel->dataPosition();
-    RETURN_IF_FAILED(parcel->writeInt32(1));  // dummy, will hold length
+    RETURN_IF_FAILED(parcel->writeInt32(1)); // dummy, will hold length
     RETURN_IF_FAILED(parcel->writeInt32(BUNDLE_MAGIC_NATIVE));
 
     size_t start_pos = parcel->dataPosition();
@@ -142,16 +142,9 @@ bool PersistableBundle::empty() const {
 }
 
 size_t PersistableBundle::size() const {
-    return (mBoolMap.size() +
-            mIntMap.size() +
-            mLongMap.size() +
-            mDoubleMap.size() +
-            mStringMap.size() +
-            mBoolVectorMap.size() +
-            mIntVectorMap.size() +
-            mLongVectorMap.size() +
-            mDoubleVectorMap.size() +
-            mStringVectorMap.size() +
+    return (mBoolMap.size() + mIntMap.size() + mLongMap.size() + mDoubleMap.size() +
+            mStringMap.size() + mBoolVectorMap.size() + mIntVectorMap.size() +
+            mLongVectorMap.size() + mDoubleVectorMap.size() + mStringVectorMap.size() +
             mPersistableBundleMap.size());
 }
 
@@ -478,6 +471,6 @@ status_t PersistableBundle::readFromParcelInner(const Parcel* parcel, size_t len
     return NO_ERROR;
 }
 
-}  // namespace os
+} // namespace os
 
-}  // namespace android
+} // namespace android

@@ -22,28 +22,22 @@ namespace android {
 
 // ----------------------------------------------------------------------
 
-class IResultReceiver : public IInterface
-{
+class IResultReceiver : public IInterface {
 public:
     DECLARE_META_INTERFACE(ResultReceiver)
 
     virtual void send(int32_t resultCode) = 0;
 
-    enum {
-        OP_SEND = IBinder::FIRST_CALL_TRANSACTION
-    };
+    enum { OP_SEND = IBinder::FIRST_CALL_TRANSACTION };
 };
 
 // ----------------------------------------------------------------------
 
-class BnResultReceiver : public BnInterface<IResultReceiver>
-{
+class BnResultReceiver : public BnInterface<IResultReceiver> {
 public:
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t    onTransact( uint32_t code,
-                                    const Parcel& data,
-                                    Parcel* reply,
-                                    uint32_t flags = 0);
+    virtual status_t onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                uint32_t flags = 0);
 };
 
 // ----------------------------------------------------------------------

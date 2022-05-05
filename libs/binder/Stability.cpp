@@ -17,8 +17,8 @@
 
 #include <binder/Stability.h>
 
-#include <binder/BpBinder.h>
 #include <binder/Binder.h>
+#include <binder/BpBinder.h>
 
 namespace android {
 namespace internal {
@@ -170,13 +170,17 @@ bool Stability::isDeclaredLevel(int32_t stability) {
 
 std::string Stability::levelString(int32_t level) {
     switch (level) {
-        case Level::UNDECLARED: return "undeclared stability";
-        case Level::VENDOR: return "vendor stability";
-        case Level::SYSTEM: return "system stability";
-        case Level::VINTF: return "vintf stability";
+        case Level::UNDECLARED:
+            return "undeclared stability";
+        case Level::VENDOR:
+            return "vendor stability";
+        case Level::SYSTEM:
+            return "system stability";
+        case Level::VINTF:
+            return "vintf stability";
     }
     return "unknown stability " + std::to_string(level);
 }
 
-}  // namespace internal
-}  // namespace stability
+} // namespace internal
+} // namespace android

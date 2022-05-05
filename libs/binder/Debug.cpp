@@ -20,60 +20,53 @@
 
 #include <utils/misc.h>
 
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 namespace android {
 
 // ---------------------------------------------------------------------
 
 static const char indentStr[] =
-"                                                                            "
-"                                                                            ";
+        "                                                                            "
+        "                                                                            ";
 
-const char* stringForIndent(int32_t indentLevel)
-{
-    ssize_t off = sizeof(indentStr)-1-(indentLevel*2);
+const char* stringForIndent(int32_t indentLevel) {
+    ssize_t off = sizeof(indentStr) - 1 - (indentLevel * 2);
     return indentStr + (off < 0 ? 0 : off);
 }
 
 // ---------------------------------------------------------------------
 
-static void defaultPrintFunc(void* /*cookie*/, const char* txt)
-{
+static void defaultPrintFunc(void* /*cookie*/, const char* txt) {
     printf("%s", txt);
 }
 
 // ---------------------------------------------------------------------
 
-static inline int isident(int c)
-{
+static inline int isident(int c) {
     return isalnum(c) || c == '_';
 }
 
-static inline bool isasciitype(char c)
-{
-    if( c >= ' ' && c < 127 && c != '\'' && c != '\\' ) return true;
+static inline bool isasciitype(char c) {
+    if (c >= ' ' && c < 127 && c != '\'' && c != '\\') return true;
     return false;
 }
 
-static inline char makehexdigit(uint32_t val)
-{
-    return "0123456789abcdef"[val&0xF];
+static inline char makehexdigit(uint32_t val) {
+    return "0123456789abcdef"[val & 0xF];
 }
 
-static char* appendhexnum(uint32_t val, char* out)
-{
-    for( int32_t i=28; i>=0; i-=4 ) {
-        *out++ = makehexdigit( val>>i );
+static char* appendhexnum(uint32_t val, char* out) {
+    for (int32_t i = 28; i >= 0; i -= 4) {
+        *out++ = makehexdigit(val >> i);
     }
     *out = 0;
     return out;
 }
 
-static char* appendcharornum(char c, char* out, bool skipzero = true)
-{
+static char* appendcharornum(char c, char* out, bool skipzero = true) {
     if (skipzero && c == 0) return out;
 
     if (isasciitype(c)) {
@@ -83,34 +76,31 @@ static char* appendcharornum(char c, char* out, bool skipzero = true)
 
     *out++ = '\\';
     *out++ = 'x';
-    *out++ = makehexdigit(c>>4);
+    *out++ = makehexdigit(c >> 4);
     *out++ = makehexdigit(c);
     return out;
 }
 
-static char* typetostring(uint32_t type, char* out,
-                          bool fullContext = true,
-                          bool strict = false)
-{
+static char* typetostring(uint32_t type, char* out, bool fullContext = true, bool strict = false) {
     char* pos = out;
     char c[4];
-    c[0] = (char)((type>>24)&0xFF);
-    c[1] = (char)((type>>16)&0xFF);
-    c[2] = (char)((type>>8)&0xFF);
-    c[3] = (char)(type&0xFF);
+    c[0] = (char)((type >> 24) & 0xFF);
+    c[1] = (char)((type >> 16) & 0xFF);
+    c[2] = (char)((type >> 8) & 0xFF);
+    c[3] = (char)(type & 0xFF);
     bool valid;
-    if( !strict ) {
+    if (!strict) {
         // now even less strict!
         // valid = isasciitype(c[3]);
         valid = true;
         int32_t i = 0;
         bool zero = true;
-        while (valid && i<3) {
+        while (valid && i < 3) {
             if (c[i] == 0) {
                 if (!zero) valid = false;
             } else {
                 zero = false;
-                //if (!isasciitype(c[i])) valid = false;
+                // if (!isasciitype(c[i])) valid = false;
             }
             i++;
         }
@@ -120,7 +110,7 @@ static char* typetostring(uint32_t type, char* out,
         valid = isident(c[3]) ? true : false;
         int32_t i = 0;
         bool zero = true;
-        while (valid && i<3) {
+        while (valid && i < 3) {
             if (c[i] == 0) {
                 if (!zero) valid = false;
             } else {
@@ -130,47 +120,47 @@ static char* typetostring(uint32_t type, char* out,
             i++;
         }
     }
-    if( valid && (!fullContext || c[0] != '0' || c[1] != 'x') ) {
-        if( fullContext ) *pos++ = '\'';
+    if (valid && (!fullContext || c[0] != '0' || c[1] != 'x')) {
+        if (fullContext) *pos++ = '\'';
         pos = appendcharornum(c[0], pos);
         pos = appendcharornum(c[1], pos);
         pos = appendcharornum(c[2], pos);
         pos = appendcharornum(c[3], pos);
-        if( fullContext ) *pos++ = '\'';
+        if (fullContext) *pos++ = '\'';
         *pos = 0;
         return pos;
     }
 
-    if( fullContext ) {
+    if (fullContext) {
         *pos++ = '0';
         *pos++ = 'x';
     }
     return appendhexnum(type, pos);
 }
 
-void printTypeCode(uint32_t typeCode, debugPrintFunc func, void* cookie)
-{
+void printTypeCode(uint32_t typeCode, debugPrintFunc func, void* cookie) {
     char buffer[32];
     char* end = typetostring(typeCode, buffer);
     *end = 0;
     func ? (*func)(cookie, buffer) : defaultPrintFunc(cookie, buffer);
 }
 
-void printHexData(int32_t indent, const void *buf, size_t length,
-    size_t bytesPerLine, int32_t singleLineBytesCutoff,
-    size_t alignment, bool cStyle,
-    debugPrintFunc func, void* cookie)
-{
+void printHexData(int32_t indent, const void* buf, size_t length, size_t bytesPerLine,
+                  int32_t singleLineBytesCutoff, size_t alignment, bool cStyle, debugPrintFunc func,
+                  void* cookie) {
     if (alignment == 0) {
-        if (bytesPerLine >= 16) alignment = 4;
-        else if (bytesPerLine >= 8) alignment = 2;
-        else alignment = 1;
+        if (bytesPerLine >= 16)
+            alignment = 4;
+        else if (bytesPerLine >= 8)
+            alignment = 2;
+        else
+            alignment = 1;
     }
     if (func == nullptr) func = defaultPrintFunc;
 
     size_t offset;
 
-    unsigned char *pos = (unsigned char *)buf;
+    unsigned char* pos = (unsigned char*)buf;
 
     if (pos == nullptr) {
         if (singleLineBytesCutoff < 0) func(cookie, "\n");
@@ -193,7 +183,7 @@ void printHexData(int32_t indent, const void *buf, size_t length,
     }
 
     char buffer[256];
-    static const size_t maxBytesPerLine = (sizeof(buffer)-1-11-4)/(3+1);
+    static const size_t maxBytesPerLine = (sizeof(buffer) - 1 - 11 - 4) / (3 + 1);
 
     if (bytesPerLine > maxBytesPerLine) bytesPerLine = maxBytesPerLine;
 
@@ -208,7 +198,7 @@ void printHexData(int32_t indent, const void *buf, size_t length,
         newLine = true;
     }
 
-    for (offset = 0; ; offset += bytesPerLine, pos += bytesPerLine) {
+    for (offset = 0;; offset += bytesPerLine, pos += bytesPerLine) {
         ssize_t remain = length;
 
         char* c = buffer;
@@ -220,24 +210,23 @@ void printHexData(int32_t indent, const void *buf, size_t length,
         size_t index;
         size_t word;
 
-        for (word = 0; word < bytesPerLine; ) {
-
-            size_t align_offset = alignment-(alignment?1:0);
+        for (word = 0; word < bytesPerLine;) {
+            size_t align_offset = alignment - (alignment ? 1 : 0);
             if (remain > 0 && (size_t)remain <= align_offset) {
                 align_offset = remain - 1;
             }
-            const size_t startIndex = word+align_offset;
+            const size_t startIndex = word + align_offset;
 
-            for (index = 0; index < alignment || (alignment == 0 && index < bytesPerLine); index++) {
-
+            for (index = 0; index < alignment || (alignment == 0 && index < bytesPerLine);
+                 index++) {
                 if (!cStyle) {
                     if (index == 0 && word > 0 && alignment > 0) {
                         *c++ = ' ';
                     }
 
                     if (remain-- > 0) {
-                        const unsigned char val = *(pos+startIndex-index);
-                        *c++ = makehexdigit(val>>4);
+                        const unsigned char val = *(pos + startIndex - index);
+                        *c++ = makehexdigit(val >> 4);
                         *c++ = makehexdigit(val);
                     } else if (!oneLine) {
                         *c++ = ' ';
@@ -253,8 +242,8 @@ void printHexData(int32_t indent, const void *buf, size_t length,
                             *c++ = '0';
                             *c++ = 'x';
                         }
-                        const unsigned char val = *(pos+startIndex-index);
-                        *c++ = makehexdigit(val>>4);
+                        const unsigned char val = *(pos + startIndex - index);
+                        *c++ = makehexdigit(val >> 4);
                         *c++ = makehexdigit(val);
                         remain--;
                     }
@@ -269,7 +258,6 @@ void printHexData(int32_t indent, const void *buf, size_t length,
             *c++ = ' ';
             *c++ = '\'';
             for (index = 0; index < bytesPerLine; index++) {
-
                 if (remain-- > 0) {
                     const unsigned char val = pos[index];
                     *c++ = (val >= ' ' && val < 127) ? val : '.';
@@ -295,7 +283,7 @@ void printHexData(int32_t indent, const void *buf, size_t length,
     }
 
     if (cStyle) {
-        if (indent > 0) func(cookie, stringForIndent(indent-1));
+        if (indent > 0) func(cookie, stringForIndent(indent - 1));
         func(cookie, "};");
     }
 }
@@ -310,4 +298,3 @@ ssize_t getBinderKernelReferences(size_t count, uintptr_t* buf) {
 }
 
 } // namespace android
-

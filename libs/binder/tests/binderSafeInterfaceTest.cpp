@@ -816,7 +816,7 @@ TEST_F(SafeInterfaceTest, TestIncrementTwo) {
     ASSERT_EQ(b + 1, bPlusOne);
 }
 
-extern "C" int main(int argc, char **argv) {
+extern "C" int main(int argc, char** argv) {
     testing::InitGoogleTest(&argc, argv);
 
     if (fork() == 0) {

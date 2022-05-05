@@ -30,10 +30,9 @@
 #include <android/binder_internal_logging.h>
 #include <android/binder_parcel.h>
 #include <android/binder_status.h>
-
 #include <assert.h>
-
 #include <unistd.h>
+
 #include <cstddef>
 #include <string>
 
@@ -295,7 +294,9 @@ class ScopedAStatus : public impl::ScopedAResource<AStatus*, AStatus_delete, nul
     /**
      * Convenience methods for creating scoped statuses.
      */
-    static ScopedAStatus ok() { return ScopedAStatus(AStatus_newOk()); }
+    static ScopedAStatus ok() {
+        return ScopedAStatus(AStatus_newOk());
+    }
     static ScopedAStatus fromExceptionCode(binder_exception_t exception) {
         return ScopedAStatus(AStatus_fromExceptionCode(exception));
     }

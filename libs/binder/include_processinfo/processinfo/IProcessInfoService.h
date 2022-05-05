@@ -28,14 +28,14 @@ class IProcessInfoService : public IInterface {
 public:
     DECLARE_META_INTERFACE(ProcessInfoService)
 
-    virtual status_t    getProcessStatesFromPids( size_t length,
-                                                  /*in*/ int32_t* pids,
-                                                  /*out*/ int32_t* states) = 0;
+    virtual status_t getProcessStatesFromPids(size_t length,
+                                              /*in*/ int32_t* pids,
+                                              /*out*/ int32_t* states) = 0;
 
-    virtual status_t    getProcessStatesAndOomScoresFromPids( size_t length,
-                                                  /*in*/ int32_t* pids,
-                                                  /*out*/ int32_t* states,
-                                                  /*out*/ int32_t* scores) = 0;
+    virtual status_t getProcessStatesAndOomScoresFromPids(size_t length,
+                                                          /*in*/ int32_t* pids,
+                                                          /*out*/ int32_t* states,
+                                                          /*out*/ int32_t* scores) = 0;
 
     enum {
         GET_PROCESS_STATES_FROM_PIDS = IBinder::FIRST_CALL_TRANSACTION,

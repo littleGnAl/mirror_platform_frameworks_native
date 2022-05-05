@@ -16,26 +16,26 @@
 
 #define LOG_TAG "MemoryDealer"
 
-#include <binder/MemoryDealer.h>
 #include <binder/IPCThreadState.h>
 #include <binder/MemoryBase.h>
+#include <binder/MemoryDealer.h>
 
 #include <utils/Log.h>
 #include <utils/SortedVector.h>
 #include <utils/String8.h>
 
+#include <errno.h>
+#include <fcntl.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <errno.h>
 #include <string.h>
+#include <unistd.h>
 
+#include <sys/file.h>
+#include <sys/mman.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <sys/mman.h>
-#include <sys/file.h>
 
 namespace android {
 // ----------------------------------------------------------------------------
@@ -45,33 +45,36 @@ namespace android {
  */
 
 template <typename NODE>
-class LinkedList
-{
-    NODE*  mFirst;
-    NODE*  mLast;
+class LinkedList {
+    NODE* mFirst;
+    NODE* mLast;
 
 public:
-                LinkedList() : mFirst(nullptr), mLast(nullptr) { }
-    bool        isEmpty() const { return mFirst == nullptr; }
+    LinkedList() : mFirst(nullptr), mLast(nullptr) {}
+    bool isEmpty() const { return mFirst == nullptr; }
     NODE const* head() const { return mFirst; }
-    NODE*       head() { return mFirst; }
+    NODE* head() { return mFirst; }
     NODE const* tail() const { return mLast; }
-    NODE*       tail() { return mLast; }
+    NODE* tail() { return mLast; }
 
     void insertAfter(NODE* node, NODE* newNode) {
         newNode->prev = node;
         newNode->next = node->next;
-        if (node->next == nullptr) mLast = newNode;
-        else                 node->next->prev = newNode;
+        if (node->next == nullptr)
+            mLast = newNode;
+        else
+            node->next->prev = newNode;
         node->next = newNode;
     }
 
     void insertBefore(NODE* node, NODE* newNode) {
-         newNode->prev = node->prev;
-         newNode->next = node;
-         if (node->prev == nullptr)   mFirst = newNode;
-         else                   node->prev->next = newNode;
-         node->prev = newNode;
+        newNode->prev = node->prev;
+        newNode->next = node;
+        if (node->prev == nullptr)
+            mFirst = newNode;
+        else
+            node->prev->next = newNode;
+        node->prev = newNode;
     }
 
     void insertHead(NODE* newNode) {
@@ -98,10 +101,14 @@ public:
     }
 
     NODE* remove(NODE* node) {
-        if (node->prev == nullptr)    mFirst = node->next;
-        else                    node->prev->next = node->next;
-        if (node->next == nullptr)    mLast = node->prev;
-        else                    node->next->prev = node->prev;
+        if (node->prev == nullptr)
+            mFirst = node->next;
+        else
+            node->prev->next = node->next;
+        if (node->next == nullptr)
+            mLast = node->prev;
+        else
+            node->next->prev = node->prev;
         return node;
     }
 };
@@ -110,73 +117,67 @@ public:
 
 class Allocation : public MemoryBase {
 public:
-    Allocation(const sp<MemoryDealer>& dealer,
-            const sp<IMemoryHeap>& heap, ssize_t offset, size_t size);
+    Allocation(const sp<MemoryDealer>& dealer, const sp<IMemoryHeap>& heap, ssize_t offset,
+               size_t size);
     virtual ~Allocation();
+
 private:
     sp<MemoryDealer> mDealer;
 };
 
 // ----------------------------------------------------------------------------
 
-class SimpleBestFitAllocator
-{
-    enum {
-        PAGE_ALIGNED = 0x00000001
-    };
+class SimpleBestFitAllocator {
+    enum { PAGE_ALIGNED = 0x00000001 };
+
 public:
     explicit SimpleBestFitAllocator(size_t size);
     ~SimpleBestFitAllocator();
 
-    size_t      allocate(size_t size, uint32_t flags = 0);
-    status_t    deallocate(size_t offset);
-    size_t      size() const;
-    void        dump(const char* what) const;
-    void        dump(String8& res, const char* what) const;
+    size_t allocate(size_t size, uint32_t flags = 0);
+    status_t deallocate(size_t offset);
+    size_t size() const;
+    void dump(const char* what) const;
+    void dump(String8& res, const char* what) const;
 
     static size_t getAllocationAlignment() { return kMemoryAlign; }
 
 private:
-
     struct chunk_t {
         chunk_t(size_t start, size_t size)
-        : start(start), size(size), free(1), prev(nullptr), next(nullptr) {
-        }
-        size_t              start;
-        size_t              size : 28;
-        int                 free : 4;
-        mutable chunk_t*    prev;
-        mutable chunk_t*    next;
+              : start(start), size(size), free(1), prev(nullptr), next(nullptr) {}
+        size_t start;
+        size_t size : 28;
+        int free : 4;
+        mutable chunk_t* prev;
+        mutable chunk_t* next;
     };
 
-    ssize_t  alloc(size_t size, uint32_t flags);
+    ssize_t alloc(size_t size, uint32_t flags);
     chunk_t* dealloc(size_t start);
-    void     dump_l(const char* what) const;
-    void     dump_l(String8& res, const char* what) const;
+    void dump_l(const char* what) const;
+    void dump_l(String8& res, const char* what) const;
 
-    static const int    kMemoryAlign;
-    mutable Mutex       mLock;
+    static const int kMemoryAlign;
+    mutable Mutex mLock;
     LinkedList<chunk_t> mList;
-    size_t              mHeapSize;
+    size_t mHeapSize;
 };
 
 // ----------------------------------------------------------------------------
 
-Allocation::Allocation(
-        const sp<MemoryDealer>& dealer,
-        const sp<IMemoryHeap>& heap, ssize_t offset, size_t size)
-    : MemoryBase(heap, offset, size), mDealer(dealer)
-{
+Allocation::Allocation(const sp<MemoryDealer>& dealer, const sp<IMemoryHeap>& heap, ssize_t offset,
+                       size_t size)
+      : MemoryBase(heap, offset, size), mDealer(dealer) {
 #ifndef NDEBUG
     void* const start_ptr = (void*)(intptr_t(heap->base()) + offset);
     memset(start_ptr, 0xda, size);
 #endif
 }
 
-Allocation::~Allocation()
-{
+Allocation::~Allocation() {
     size_t freedOffset = getOffset();
-    size_t freedSize   = getSize();
+    size_t freedSize = getSize();
     if (freedSize) {
         /* NOTE: it's VERY important to not free allocations of size 0 because
          * they're special as they don't have any record in the allocator
@@ -186,22 +187,20 @@ Allocation::~Allocation()
         size_t pagesize = getpagesize();
         size_t start = freedOffset;
         size_t end = start + freedSize;
-        start &= ~(pagesize-1);
-        end = (end + pagesize-1) & ~(pagesize-1);
+        start &= ~(pagesize - 1);
+        end = (end + pagesize - 1) & ~(pagesize - 1);
 
         // give back to the kernel the pages we don't need
         size_t free_start = freedOffset;
         size_t free_end = free_start + freedSize;
-        if (start < free_start)
-            start = free_start;
-        if (end > free_end)
-            end = free_end;
-        start = (start + pagesize-1) & ~(pagesize-1);
-        end &= ~(pagesize-1);
+        if (start < free_start) start = free_start;
+        if (end > free_end) end = free_end;
+        start = (start + pagesize - 1) & ~(pagesize - 1);
+        end &= ~(pagesize - 1);
 
         if (start < end) {
             void* const start_ptr = (void*)(intptr_t(getHeap()->base()) + start);
-            size_t size = end-start;
+            size_t size = end - start;
 
 #ifndef NDEBUG
             memset(start_ptr, 0xdf, size);
@@ -211,8 +210,8 @@ Allocation::~Allocation()
 #ifdef MADV_REMOVE
             if (size) {
                 int err = madvise(start_ptr, size, MADV_REMOVE);
-                ALOGW_IF(err, "madvise(%p, %zu, MADV_REMOVE) returned %s",
-                        start_ptr, size, err<0 ? strerror(errno) : "Ok");
+                ALOGW_IF(err, "madvise(%p, %zu, MADV_REMOVE) returned %s", start_ptr, size,
+                         err < 0 ? strerror(errno) : "Ok");
             }
 #endif
         }
@@ -230,13 +229,11 @@ MemoryDealer::MemoryDealer(size_t size, const char* name, uint32_t flags)
       : mHeap(sp<MemoryHeapBase>::make(size, flags, name)),
         mAllocator(new SimpleBestFitAllocator(size)) {}
 
-MemoryDealer::~MemoryDealer()
-{
+MemoryDealer::~MemoryDealer() {
     delete mAllocator;
 }
 
-sp<IMemory> MemoryDealer::allocate(size_t size)
-{
+sp<IMemory> MemoryDealer::allocate(size_t size) {
     sp<IMemory> memory;
     const ssize_t offset = allocator()->allocate(size);
     if (offset >= 0) {
@@ -245,13 +242,11 @@ sp<IMemory> MemoryDealer::allocate(size_t size)
     return memory;
 }
 
-void MemoryDealer::deallocate(size_t offset)
-{
+void MemoryDealer::deallocate(size_t offset) {
     allocator()->deallocate(offset);
 }
 
-void MemoryDealer::dump(const char* what) const
-{
+void MemoryDealer::dump(const char* what) const {
     allocator()->dump(what);
 }
 
@@ -264,8 +259,7 @@ SimpleBestFitAllocator* MemoryDealer::allocator() const {
 }
 
 // static
-size_t MemoryDealer::getAllocationAlignment()
-{
+size_t MemoryDealer::getAllocationAlignment() {
     return SimpleBestFitAllocator::getAllocationAlignment();
 }
 
@@ -274,18 +268,16 @@ size_t MemoryDealer::getAllocationAlignment()
 // align all the memory blocks on a cache-line boundary
 const int SimpleBestFitAllocator::kMemoryAlign = 32;
 
-SimpleBestFitAllocator::SimpleBestFitAllocator(size_t size)
-{
+SimpleBestFitAllocator::SimpleBestFitAllocator(size_t size) {
     size_t pagesize = getpagesize();
-    mHeapSize = ((size + pagesize-1) & ~(pagesize-1));
+    mHeapSize = ((size + pagesize - 1) & ~(pagesize - 1));
 
     chunk_t* node = new chunk_t(0, mHeapSize / kMemoryAlign);
     mList.insertHead(node);
 }
 
-SimpleBestFitAllocator::~SimpleBestFitAllocator()
-{
-    while(!mList.isEmpty()) {
+SimpleBestFitAllocator::~SimpleBestFitAllocator() {
+    while (!mList.isEmpty()) {
         chunk_t* removed = mList.remove(mList.head());
 #ifdef __clang_analyzer__
         // Clang static analyzer gets confused in this loop
@@ -298,45 +290,40 @@ SimpleBestFitAllocator::~SimpleBestFitAllocator()
     }
 }
 
-size_t SimpleBestFitAllocator::size() const
-{
+size_t SimpleBestFitAllocator::size() const {
     return mHeapSize;
 }
 
-size_t SimpleBestFitAllocator::allocate(size_t size, uint32_t flags)
-{
+size_t SimpleBestFitAllocator::allocate(size_t size, uint32_t flags) {
     Mutex::Autolock _l(mLock);
     ssize_t offset = alloc(size, flags);
     return offset;
 }
 
-status_t SimpleBestFitAllocator::deallocate(size_t offset)
-{
+status_t SimpleBestFitAllocator::deallocate(size_t offset) {
     Mutex::Autolock _l(mLock);
-    chunk_t const * const freed = dealloc(offset);
+    chunk_t const* const freed = dealloc(offset);
     if (freed) {
         return NO_ERROR;
     }
     return NAME_NOT_FOUND;
 }
 
-ssize_t SimpleBestFitAllocator::alloc(size_t size, uint32_t flags)
-{
+ssize_t SimpleBestFitAllocator::alloc(size_t size, uint32_t flags) {
     if (size == 0) {
         return 0;
     }
-    size = (size + kMemoryAlign-1) / kMemoryAlign;
+    size = (size + kMemoryAlign - 1) / kMemoryAlign;
     chunk_t* free_chunk = nullptr;
     chunk_t* cur = mList.head();
 
     size_t pagesize = getpagesize();
     while (cur) {
         int extra = 0;
-        if (flags & PAGE_ALIGNED)
-            extra = ( -cur->start & ((pagesize/kMemoryAlign)-1) ) ;
+        if (flags & PAGE_ALIGNED) extra = (-cur->start & ((pagesize / kMemoryAlign) - 1));
 
         // best fit
-        if (cur->free && (cur->size >= (size+extra))) {
+        if (cur->free && (cur->size >= (size + extra))) {
             if ((!free_chunk) || (cur->size < free_chunk->size)) {
                 free_chunk = cur;
             }
@@ -354,38 +341,35 @@ ssize_t SimpleBestFitAllocator::alloc(size_t size, uint32_t flags)
         if (free_size > size) {
             int extra = 0;
             if (flags & PAGE_ALIGNED)
-                extra = ( -free_chunk->start & ((pagesize/kMemoryAlign)-1) ) ;
+                extra = (-free_chunk->start & ((pagesize / kMemoryAlign) - 1));
             if (extra) {
                 chunk_t* split = new chunk_t(free_chunk->start, extra);
                 free_chunk->start += extra;
                 mList.insertBefore(free_chunk, split);
             }
 
-            ALOGE_IF((flags&PAGE_ALIGNED) && 
-                    ((free_chunk->start*kMemoryAlign)&(pagesize-1)),
-                    "PAGE_ALIGNED requested, but page is not aligned!!!");
+            ALOGE_IF((flags & PAGE_ALIGNED) &&
+                             ((free_chunk->start * kMemoryAlign) & (pagesize - 1)),
+                     "PAGE_ALIGNED requested, but page is not aligned!!!");
 
-            const ssize_t tail_free = free_size - (size+extra);
+            const ssize_t tail_free = free_size - (size + extra);
             if (tail_free > 0) {
-                chunk_t* split = new chunk_t(
-                        free_chunk->start + free_chunk->size, tail_free);
+                chunk_t* split = new chunk_t(free_chunk->start + free_chunk->size, tail_free);
                 mList.insertAfter(free_chunk, split);
             }
         }
-        return (free_chunk->start)*kMemoryAlign;
+        return (free_chunk->start) * kMemoryAlign;
     }
     return NO_MEMORY;
 }
 
-SimpleBestFitAllocator::chunk_t* SimpleBestFitAllocator::dealloc(size_t start)
-{
+SimpleBestFitAllocator::chunk_t* SimpleBestFitAllocator::dealloc(size_t start) {
     start = start / kMemoryAlign;
     chunk_t* cur = mList.head();
     while (cur) {
         if (cur->start == start) {
-            LOG_FATAL_IF(cur->free,
-                "block at offset 0x%08lX of size 0x%08X already freed",
-                cur->start*kMemoryAlign, cur->size*kMemoryAlign);
+            LOG_FATAL_IF(cur->free, "block at offset 0x%08lX of size 0x%08X already freed",
+                         cur->start * kMemoryAlign, cur->size * kMemoryAlign);
 
             // merge freed blocks together
             chunk_t* freed = cur;
@@ -402,14 +386,13 @@ SimpleBestFitAllocator::chunk_t* SimpleBestFitAllocator::dealloc(size_t start)
                 cur = n;
             } while (cur && cur->free);
 
-            #ifndef NDEBUG
-                if (!freed->free) {
-                    dump_l("dealloc (!freed->free)");
-                }
-            #endif
-            LOG_FATAL_IF(!freed->free,
-                "freed block at offset 0x%08lX of size 0x%08X is not free!",
-                freed->start * kMemoryAlign, freed->size * kMemoryAlign);
+#ifndef NDEBUG
+            if (!freed->free) {
+                dump_l("dealloc (!freed->free)");
+            }
+#endif
+            LOG_FATAL_IF(!freed->free, "freed block at offset 0x%08lX of size 0x%08X is not free!",
+                         freed->start * kMemoryAlign, freed->size * kMemoryAlign);
 
             return freed;
         }
@@ -418,64 +401,51 @@ SimpleBestFitAllocator::chunk_t* SimpleBestFitAllocator::dealloc(size_t start)
     return nullptr;
 }
 
-void SimpleBestFitAllocator::dump(const char* what) const
-{
+void SimpleBestFitAllocator::dump(const char* what) const {
     Mutex::Autolock _l(mLock);
     dump_l(what);
 }
 
-void SimpleBestFitAllocator::dump_l(const char* what) const
-{
+void SimpleBestFitAllocator::dump_l(const char* what) const {
     String8 result;
     dump_l(result, what);
     ALOGD("%s", result.string());
 }
 
-void SimpleBestFitAllocator::dump(String8& result,
-        const char* what) const
-{
+void SimpleBestFitAllocator::dump(String8& result, const char* what) const {
     Mutex::Autolock _l(mLock);
     dump_l(result, what);
 }
 
-void SimpleBestFitAllocator::dump_l(String8& result,
-        const char* what) const
-{
+void SimpleBestFitAllocator::dump_l(String8& result, const char* what) const {
     size_t size = 0;
     int32_t i = 0;
     chunk_t const* cur = mList.head();
-    
+
     const size_t SIZE = 256;
     char buffer[SIZE];
-    snprintf(buffer, SIZE, "  %s (%p, size=%u)\n",
-            what, this, (unsigned int)mHeapSize);
-    
+    snprintf(buffer, SIZE, "  %s (%p, size=%u)\n", what, this, (unsigned int)mHeapSize);
+
     result.append(buffer);
-            
+
     while (cur) {
-        const char* errs[] = {"", "| link bogus NP",
-                            "| link bogus PN", "| link bogus NP+PN" };
+        const char* errs[] = {"", "| link bogus NP", "| link bogus PN", "| link bogus NP+PN"};
         int np = ((cur->next) && cur->next->prev != cur) ? 1 : 0;
         int pn = ((cur->prev) && cur->prev->next != cur) ? 2 : 0;
 
-        snprintf(buffer, SIZE, "  %3u: %p | 0x%08X | 0x%08X | %s %s\n",
-            i, cur, int(cur->start*kMemoryAlign),
-            int(cur->size*kMemoryAlign),
-                    int(cur->free) ? "F" : "A",
-                    errs[np|pn]);
-        
+        snprintf(buffer, SIZE, "  %3u: %p | 0x%08X | 0x%08X | %s %s\n", i, cur,
+                 int(cur->start * kMemoryAlign), int(cur->size * kMemoryAlign),
+                 int(cur->free) ? "F" : "A", errs[np | pn]);
+
         result.append(buffer);
 
-        if (!cur->free)
-            size += cur->size*kMemoryAlign;
+        if (!cur->free) size += cur->size * kMemoryAlign;
 
         i++;
         cur = cur->next;
     }
-    snprintf(buffer, SIZE,
-            "  size allocated: %u (%u KB)\n", int(size), int(size/1024));
+    snprintf(buffer, SIZE, "  size allocated: %u (%u KB)\n", int(size), int(size / 1024));
     result.append(buffer);
 }
-
 
 } // namespace android

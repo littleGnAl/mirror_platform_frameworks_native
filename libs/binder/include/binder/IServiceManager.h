@@ -16,8 +16,8 @@
 
 #pragma once
 #include <binder/IInterface.h>
-#include <utils/Vector.h>
 #include <utils/String16.h>
+#include <utils/Vector.h>
 #include <optional>
 
 namespace android {
@@ -29,8 +29,7 @@ namespace android {
  *
  * IInterface is only for legacy ABI compatibility
  */
-class IServiceManager : public IInterface
-{
+class IServiceManager : public IInterface {
 public:
     // for ABI compatibility
     virtual const String16& getInterfaceDescriptor() const;
@@ -67,12 +66,12 @@ public:
      * a system property, or in the case of services in the VINTF manifest, it can be checked
      * with isDeclared).
      */
-    virtual sp<IBinder>         getService( const String16& name) const = 0;
+    virtual sp<IBinder> getService(const String16& name) const = 0;
 
     /**
      * Retrieve an existing service, non-blocking.
      */
-    virtual sp<IBinder>         checkService( const String16& name) const = 0;
+    virtual sp<IBinder> checkService(const String16& name) const = 0;
 
     /**
      * Register a service.
@@ -146,13 +145,13 @@ sp<IServiceManager> defaultServiceManager();
  */
 void setDefaultServiceManager(const sp<IServiceManager>& sm);
 
-template<typename INTERFACE>
+template <typename INTERFACE>
 sp<INTERFACE> waitForService(const String16& name) {
     const sp<IServiceManager> sm = defaultServiceManager();
     return interface_cast<INTERFACE>(sm->waitForService(name));
 }
 
-template<typename INTERFACE>
+template <typename INTERFACE>
 sp<INTERFACE> waitForDeclaredService(const String16& name) {
     const sp<IServiceManager> sm = defaultServiceManager();
     if (!sm->isDeclared(name)) return nullptr;
@@ -166,23 +165,18 @@ sp<INTERFACE> checkDeclaredService(const String16& name) {
     return interface_cast<INTERFACE>(sm->checkService(name));
 }
 
-template<typename INTERFACE>
-sp<INTERFACE> waitForVintfService(
-        const String16& instance = String16("default")) {
-    return waitForDeclaredService<INTERFACE>(
-        INTERFACE::descriptor + String16("/") + instance);
+template <typename INTERFACE>
+sp<INTERFACE> waitForVintfService(const String16& instance = String16("default")) {
+    return waitForDeclaredService<INTERFACE>(INTERFACE::descriptor + String16("/") + instance);
 }
 
-template<typename INTERFACE>
-sp<INTERFACE> checkVintfService(
-        const String16& instance = String16("default")) {
-    return checkDeclaredService<INTERFACE>(
-        INTERFACE::descriptor + String16("/") + instance);
+template <typename INTERFACE>
+sp<INTERFACE> checkVintfService(const String16& instance = String16("default")) {
+    return checkDeclaredService<INTERFACE>(INTERFACE::descriptor + String16("/") + instance);
 }
 
-template<typename INTERFACE>
-status_t getService(const String16& name, sp<INTERFACE>* outService)
-{
+template <typename INTERFACE>
+status_t getService(const String16& name, sp<INTERFACE>* outService) {
     const sp<IServiceManager> sm = defaultServiceManager();
     if (sm != nullptr) {
         *outService = interface_cast<INTERFACE>(sm->getService(name));
@@ -192,8 +186,7 @@ status_t getService(const String16& name, sp<INTERFACE>* outService)
 }
 
 bool checkCallingPermission(const String16& permission);
-bool checkCallingPermission(const String16& permission,
-                            int32_t* outPid, int32_t* outUid);
+bool checkCallingPermission(const String16& permission, int32_t* outPid, int32_t* outUid);
 bool checkPermission(const String16& permission, pid_t pid, uid_t uid,
                      bool logPermissionFailure = true);
 

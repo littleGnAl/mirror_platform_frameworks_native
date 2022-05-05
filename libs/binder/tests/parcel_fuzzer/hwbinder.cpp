@@ -27,7 +27,8 @@ using ::android::base::HexString;
 
 // TODO: support scatter-gather types
 
-std::ostream& operator<<(std::ostream& os, const ::android::sp<::android::hardware::IBinder>& binder) {
+std::ostream& operator<<(std::ostream& os,
+                         const ::android::sp<::android::hardware::IBinder>& binder) {
     os << binder.get();
     return os;
 }
@@ -35,19 +36,19 @@ std::ostream& operator<<(std::ostream& os, const ::android::sp<::android::hardwa
 #define PARCEL_READ_OPT_STATUS(T, FUN) \
     PARCEL_READ_NO_STATUS(T, FUN), PARCEL_READ_WITH_STATUS(T, FUN)
 
-#define PARCEL_READ_NO_STATUS(T, FUN) \
-    [] (const ::android::hardware::Parcel& p, uint8_t /*data*/) {\
-        FUZZ_LOG() << "about to read " #T " using " #FUN " with no status";\
-        T t = p.FUN();\
-        FUZZ_LOG() << #T " value: " << t;\
+#define PARCEL_READ_NO_STATUS(T, FUN)                                       \
+    [](const ::android::hardware::Parcel& p, uint8_t /*data*/) {            \
+        FUZZ_LOG() << "about to read " #T " using " #FUN " with no status"; \
+        T t = p.FUN();                                                      \
+        FUZZ_LOG() << #T " value: " << t;                                   \
     }
 
-#define PARCEL_READ_WITH_STATUS(T, FUN) \
-    [] (const ::android::hardware::Parcel& p, uint8_t /*data*/) {\
-        FUZZ_LOG() << "about to read " #T " using " #FUN " with status";\
-        T t;\
-        status_t status = p.FUN(&t);\
-        FUZZ_LOG() << #T " status: " << status << " value: " << t;\
+#define PARCEL_READ_WITH_STATUS(T, FUN)                                  \
+    [](const ::android::hardware::Parcel& p, uint8_t /*data*/) {         \
+        FUZZ_LOG() << "about to read " #T " using " #FUN " with status"; \
+        T t;                                                             \
+        status_t status = p.FUN(&t);                                     \
+        FUZZ_LOG() << #T " status: " << status << " value: " << t;       \
     }
 
 // clang-format off

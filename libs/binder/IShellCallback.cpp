@@ -16,29 +16,25 @@
 
 #define LOG_TAG "ShellCallback"
 
-#include <unistd.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 #include <binder/IShellCallback.h>
 
-#include <utils/Log.h>
 #include <binder/Parcel.h>
+#include <utils/Log.h>
 #include <utils/String8.h>
 
 namespace android {
 
 // ----------------------------------------------------------------------
 
-class BpShellCallback : public BpInterface<IShellCallback>
-{
+class BpShellCallback : public BpInterface<IShellCallback> {
 public:
-    explicit BpShellCallback(const sp<IBinder>& impl)
-        : BpInterface<IShellCallback>(impl)
-    {
-    }
+    explicit BpShellCallback(const sp<IBinder>& impl) : BpInterface<IShellCallback>(impl) {}
 
     virtual int openFile(const String16& path, const String16& seLinuxContext,
-            const String16& mode) {
+                         const String16& mode) {
         Parcel data, reply;
         data.writeInterfaceToken(IShellCallback::getInterfaceDescriptor());
         data.writeString16(path);
@@ -48,7 +44,6 @@ public:
         reply.readExceptionCode();
         int fd = reply.readParcelFileDescriptor();
         return fd >= 0 ? fcntl(fd, F_DUPFD_CLOEXEC, 0) : fd;
-
     }
 };
 
@@ -57,10 +52,9 @@ IMPLEMENT_META_INTERFACE(ShellCallback, "com.android.internal.os.IShellCallback"
 // ----------------------------------------------------------------------
 
 // NOLINTNEXTLINE(google-default-arguments)
-status_t BnShellCallback::onTransact(
-    uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
-{
-    switch(code) {
+status_t BnShellCallback::onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                     uint32_t flags) {
+    switch (code) {
         case OP_OPEN_OUTPUT_FILE: {
             CHECK_INTERFACE(IShellCallback, data, reply);
             String16 path(data.readString16());

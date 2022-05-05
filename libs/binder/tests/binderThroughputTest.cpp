@@ -2,17 +2,17 @@
 #include <binder/IBinder.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
-#include <string>
-#include <cstring>
-#include <cstdlib>
 #include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <string>
 
 #include <iostream>
-#include <vector>
 #include <tuple>
+#include <vector>
 
-#include <unistd.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 using namespace std;
 using namespace android;
@@ -21,30 +21,28 @@ enum BinderWorkerServiceCode {
     BINDER_NOP = IBinder::FIRST_CALL_TRANSACTION,
 };
 
-#define ASSERT_TRUE(cond) \
-do { \
-    if (!(cond)) {\
-       cerr << __func__ << ":" << __LINE__ << " condition:" << #cond << " failed\n" << endl; \
-       exit(EXIT_FAILURE); \
-    } \
-} while (0)
+#define ASSERT_TRUE(cond)                                                                         \
+    do {                                                                                          \
+        if (!(cond)) {                                                                            \
+            cerr << __func__ << ":" << __LINE__ << " condition:" << #cond << " failed\n" << endl; \
+            exit(EXIT_FAILURE);                                                                   \
+        }                                                                                         \
+    } while (0)
 
-class BinderWorkerService : public BBinder
-{
+class BinderWorkerService : public BBinder {
 public:
     BinderWorkerService() {}
     ~BinderWorkerService() {}
-    virtual status_t onTransact(uint32_t code,
-                                const Parcel& data, Parcel* reply,
+    virtual status_t onTransact(uint32_t code, const Parcel& data, Parcel* reply,
                                 uint32_t flags = 0) {
         (void)flags;
         (void)data;
         (void)reply;
         switch (code) {
-        case BINDER_NOP:
-            return NO_ERROR;
-        default:
-            return UNKNOWN_TRANSACTION;
+            case BINDER_NOP:
+                return NO_ERROR;
+            default:
+                return UNKNOWN_TRANSACTION;
         };
     }
 };
@@ -53,9 +51,10 @@ class Pipe {
     int m_readFd;
     int m_writeFd;
     Pipe(int readFd, int writeFd) : m_readFd{readFd}, m_writeFd{writeFd} {}
-    Pipe(const Pipe &) = delete;
-    Pipe& operator=(const Pipe &) = delete;
-    Pipe& operator=(const Pipe &&) = delete;
+    Pipe(const Pipe&) = delete;
+    Pipe& operator=(const Pipe&) = delete;
+    Pipe& operator=(const Pipe&&) = delete;
+
 public:
     Pipe(Pipe&& rval) noexcept {
         m_readFd = rval.m_readFd;
@@ -64,10 +63,8 @@ public:
         rval.m_writeFd = 0;
     }
     ~Pipe() {
-        if (m_readFd)
-            close(m_readFd);
-        if (m_writeFd)
-            close(m_writeFd);
+        if (m_readFd) close(m_readFd);
+        if (m_writeFd) close(m_writeFd);
     }
     void signal() {
         bool val = true;
@@ -79,11 +76,13 @@ public:
         int error = read(m_readFd, &val, sizeof(val));
         ASSERT_TRUE(error >= 0);
     }
-    template <typename T> void send(const T& v) {
+    template <typename T>
+    void send(const T& v) {
         int error = write(m_writeFd, &v, sizeof(T));
         ASSERT_TRUE(error >= 0);
     }
-    template <typename T> void recv(T& v) {
+    template <typename T>
+    void recv(T& v) {
         int error = read(m_readFd, &v, sizeof(T));
         ASSERT_TRUE(error >= 0);
     }
@@ -136,8 +135,9 @@ struct ProcResults {
     }
     void dump() {
         if (m_long_transactions > 0) {
-            cout << (double)m_long_transactions / m_transactions << "% of transactions took longer "
-                "than estimated max latency. Consider setting -m to be higher than "
+            cout << (double)m_long_transactions / m_transactions
+                 << "% of transactions took longer "
+                    "than estimated max latency. Consider setting -m to be higher than "
                  << m_worst / 1000 << " microseconds" << endl;
         }
 
@@ -150,16 +150,20 @@ struct ProcResults {
         float time_per_bucket_ms = time_per_bucket / 1.0E6;
         for (int i = 0; i < num_buckets; i++) {
             float cur_time = time_per_bucket_ms * i + 0.5f * time_per_bucket_ms;
-            if ((cur_total < 0.5f * m_transactions) && (cur_total + m_buckets[i] >= 0.5f * m_transactions)) {
+            if ((cur_total < 0.5f * m_transactions) &&
+                (cur_total + m_buckets[i] >= 0.5f * m_transactions)) {
                 cout << "50%: " << cur_time << " ";
             }
-            if ((cur_total < 0.9f * m_transactions) && (cur_total + m_buckets[i] >= 0.9f * m_transactions)) {
+            if ((cur_total < 0.9f * m_transactions) &&
+                (cur_total + m_buckets[i] >= 0.9f * m_transactions)) {
                 cout << "90%: " << cur_time << " ";
             }
-            if ((cur_total < 0.95f * m_transactions) && (cur_total + m_buckets[i] >= 0.95f * m_transactions)) {
+            if ((cur_total < 0.95f * m_transactions) &&
+                (cur_total + m_buckets[i] >= 0.95f * m_transactions)) {
                 cout << "95%: " << cur_time << " ";
             }
-            if ((cur_total < 0.99f * m_transactions) && (cur_total + m_buckets[i] >= 0.99f * m_transactions)) {
+            if ((cur_total < 0.99f * m_transactions) &&
+                (cur_total + m_buckets[i] >= 0.99f * m_transactions)) {
                 cout << "99%: " << cur_time << " ";
             }
             cur_total += m_buckets[i];
@@ -168,21 +172,14 @@ struct ProcResults {
     }
 };
 
-String16 generateServiceName(int num)
-{
+String16 generateServiceName(int num) {
     char num_str[32];
     snprintf(num_str, sizeof(num_str), "%d", num);
     String16 serviceName = String16("binderWorker") + String16(num_str);
     return serviceName;
 }
 
-void worker_fx(int num,
-               int worker_count,
-               int iterations,
-               int payload_size,
-               bool cs_pair,
-               Pipe p)
-{
+void worker_fx(int num, int worker_count, int iterations, int payload_size, bool cs_pair, Pipe p) {
     // Create BinderWorkerService and for go.
     ProcessState::self()->startThreadPool();
     sp<IServiceManager> serviceMgr = defaultServiceManager();
@@ -202,8 +199,7 @@ void worker_fx(int num,
     (void)worker_count;
     vector<sp<IBinder> > workers;
     for (int i = 0; i < server_count; i++) {
-        if (num == i)
-            continue;
+        if (num == i) continue;
         workers.push_back(serviceMgr->getService(generateServiceName(i)));
     }
 
@@ -223,12 +219,13 @@ void worker_fx(int num,
         status_t ret = workers[target]->transact(BINDER_NOP, data, &reply);
         end = chrono::high_resolution_clock::now();
 
-        uint64_t cur_time = uint64_t(chrono::duration_cast<chrono::nanoseconds>(end - start).count());
+        uint64_t cur_time =
+                uint64_t(chrono::duration_cast<chrono::nanoseconds>(end - start).count());
         results.add_time(cur_time);
 
         if (ret != NO_ERROR) {
-           cout << "thread " << num << " failed " << ret << "i : " << i << endl;
-           exit(EXIT_FAILURE);
+            cout << "thread " << num << " failed " << ret << "i : " << i << endl;
+            exit(EXIT_FAILURE);
         }
     }
 
@@ -243,8 +240,7 @@ void worker_fx(int num,
     exit(EXIT_SUCCESS);
 }
 
-Pipe make_worker(int num, int iterations, int worker_count, int payload_size, bool cs_pair)
-{
+Pipe make_worker(int num, int iterations, int worker_count, int payload_size, bool cs_pair) {
     auto pipe_pair = Pipe::createPipePair();
     pid_t pid = fork();
     if (pid) {
@@ -256,29 +252,22 @@ Pipe make_worker(int num, int iterations, int worker_count, int payload_size, bo
         /* never get here */
         return move(get<0>(pipe_pair));
     }
-
 }
 
-void wait_all(vector<Pipe>& v)
-{
+void wait_all(vector<Pipe>& v) {
     for (int i = 0; i < v.size(); i++) {
         v[i].wait();
     }
 }
 
-void signal_all(vector<Pipe>& v)
-{
+void signal_all(vector<Pipe>& v) {
     for (int i = 0; i < v.size(); i++) {
         v[i].signal();
     }
 }
 
-void run_main(int iterations,
-              int workers,
-              int payload_size,
-              int cs_pair,
-              bool training_round=false)
-{
+void run_main(int iterations, int workers, int payload_size, int cs_pair,
+              bool training_round = false) {
     vector<Pipe> pipes;
     // Create all the workers and wait for them to spawn.
     for (int i = 0; i < workers; i++) {
@@ -295,7 +284,8 @@ void run_main(int iterations,
     end = chrono::high_resolution_clock::now();
 
     // Calculate overall throughput.
-    double iterations_per_sec = double(iterations * workers) / (chrono::duration_cast<chrono::nanoseconds>(end - start).count() / 1.0E9);
+    double iterations_per_sec = double(iterations * workers) /
+            (chrono::duration_cast<chrono::nanoseconds>(end - start).count() / 1.0E9);
     cout << "iterations per sec: " << iterations_per_sec << endl;
 
     // Collect all results from the workers.
@@ -325,12 +315,11 @@ void run_main(int iterations,
         time_per_bucket = max_time_bucket / num_buckets;
         cout << "Max latency during training: " << tot_results.m_worst / 1.0E6 << "ms" << endl;
     } else {
-            tot_results.dump();
+        tot_results.dump();
     }
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char* argv[]) {
     int workers = 2;
     int iterations = 10000;
     int payload_size = 0;
@@ -352,17 +341,17 @@ int main(int argc, char *argv[])
             return 0;
         }
         if (string(argv[i]) == "-w") {
-            workers = atoi(argv[i+1]);
+            workers = atoi(argv[i + 1]);
             i++;
             continue;
         }
         if (string(argv[i]) == "-i") {
-            iterations = atoi(argv[i+1]);
+            iterations = atoi(argv[i + 1]);
             i++;
             continue;
         }
         if (string(argv[i]) == "-s") {
-            payload_size = atoi(argv[i+1]);
+            payload_size = atoi(argv[i + 1]);
             i++;
         }
         if (string(argv[i]) == "-p") {
@@ -379,8 +368,8 @@ int main(int argc, char *argv[])
         if (string(argv[i]) == "-m") {
             // Caller specified the max latency in microseconds.
             // No need to run training round in this case.
-            if (atoi(argv[i+1]) > 0) {
-                max_time_bucket = strtoull(argv[i+1], (char **)nullptr, 10) * 1000;
+            if (atoi(argv[i + 1]) > 0) {
+                max_time_bucket = strtoull(argv[i + 1], (char**)nullptr, 10) * 1000;
                 time_per_bucket = max_time_bucket / num_buckets;
                 i++;
             } else {
@@ -392,7 +381,7 @@ int main(int argc, char *argv[])
 
     if (training_round) {
         cout << "Start training round" << endl;
-        run_main(iterations, workers, payload_size, cs_pair, training_round=true);
+        run_main(iterations, workers, payload_size, cs_pair, training_round = true);
         cout << "Completed training round" << endl << endl;
     }
 

@@ -114,7 +114,8 @@ TEST(Parcel, DebugReadAllFds) {
 
 // Tests a second operation results in a parcel at the same location as it
 // started.
-void parcelOpSameLength(const std::function<void(Parcel*)>& a, const std::function<void(Parcel*)>& b) {
+void parcelOpSameLength(const std::function<void(Parcel*)>& a,
+                        const std::function<void(Parcel*)>& b) {
     Parcel p;
     a(&p);
     size_t end = p.dataPosition();
@@ -125,33 +126,30 @@ void parcelOpSameLength(const std::function<void(Parcel*)>& a, const std::functi
 
 TEST(Parcel, InverseInterfaceToken) {
     const String16 token = String16("asdf");
-    parcelOpSameLength([&] (Parcel* p) {
-        p->writeInterfaceToken(token);
-    }, [&] (Parcel* p) {
-        EXPECT_TRUE(p->enforceInterface(token, IPCThreadState::self()));
-    });
+    parcelOpSameLength([&](Parcel* p) { p->writeInterfaceToken(token); },
+                       [&](Parcel* p) {
+                           EXPECT_TRUE(p->enforceInterface(token, IPCThreadState::self()));
+                       });
 }
 
 TEST(Parcel, Utf8FromUtf16Read) {
     const char* token = "asdf";
-    parcelOpSameLength([&] (Parcel* p) {
-        p->writeString16(String16(token));
-    }, [&] (Parcel* p) {
-        std::string s;
-        EXPECT_EQ(OK, p->readUtf8FromUtf16(&s));
-        EXPECT_EQ(token, s);
-    });
+    parcelOpSameLength([&](Parcel* p) { p->writeString16(String16(token)); },
+                       [&](Parcel* p) {
+                           std::string s;
+                           EXPECT_EQ(OK, p->readUtf8FromUtf16(&s));
+                           EXPECT_EQ(token, s);
+                       });
 }
 
 TEST(Parcel, Utf8AsUtf16Write) {
     std::string token = "asdf";
-    parcelOpSameLength([&] (Parcel* p) {
-        p->writeUtf8AsUtf16(token);
-    }, [&] (Parcel* p) {
-        String16 s;
-        EXPECT_EQ(OK, p->readString16(&s));
-        EXPECT_EQ(s, String16(token.c_str()));
-    });
+    parcelOpSameLength([&](Parcel* p) { p->writeUtf8AsUtf16(token); },
+                       [&](Parcel* p) {
+                           String16 s;
+                           EXPECT_EQ(OK, p->readString16(&s));
+                           EXPECT_EQ(s, String16(token.c_str()));
+                       });
 }
 
 template <typename T>
@@ -164,13 +162,12 @@ using copyWriteFunc = status_t (Parcel::*)(T in);
 template <typename T, typename WRITE_FUNC>
 void readWriteInverse(std::vector<T>&& ts, readFunc<T> r, WRITE_FUNC w) {
     for (const T& value : ts) {
-        parcelOpSameLength([&] (Parcel* p) {
-            (*p.*w)(value);
-        }, [&] (Parcel* p) {
-            T outValue;
-            EXPECT_EQ(OK, (*p.*r)(&outValue));
-            EXPECT_EQ(value, outValue);
-        });
+        parcelOpSameLength([&](Parcel* p) { (*p.*w)(value); },
+                           [&](Parcel* p) {
+                               T outValue;
+                               EXPECT_EQ(OK, (*p.*r)(&outValue));
+                               EXPECT_EQ(value, outValue);
+                           });
     }
 }
 
@@ -183,8 +180,8 @@ void readWriteInverse(std::vector<T>&& ts, readFunc<T> r, copyWriteFunc<T> w) {
     readWriteInverse<T, copyWriteFunc<T>>(std::move(ts), r, w);
 }
 
-#define TEST_READ_WRITE_INVERSE(type, name, ...) \
-    TEST(Parcel, Inverse##name) { \
+#define TEST_READ_WRITE_INVERSE(type, name, ...)                                        \
+    TEST(Parcel, Inverse##name) {                                                       \
         readWriteInverse<type>(__VA_ARGS__, &Parcel::read##name, &Parcel::write##name); \
     }
 

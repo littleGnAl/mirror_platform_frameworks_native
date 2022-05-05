@@ -30,7 +30,6 @@
 #include <binder/Stability.h>
 #include <binder/Status.h>
 #include <gtest/gtest.h>
-
 #include <sys/prctl.h>
 
 using namespace android;

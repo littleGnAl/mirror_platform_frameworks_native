@@ -41,6 +41,7 @@ public:
         mExampleExtraField++;
         return parcel->readInt64(&(this->mExampleUsedData));
     }
+
 private:
     int64_t mExampleExtraField = 0;
     int64_t mExampleUsedData = 0;
@@ -61,6 +62,7 @@ public:
         android::FlattenableUtils::read(buffer, size, mValue);
         return android::OK;
     }
+
 private:
     int32_t mValue = 0xFEEDBEEF;
 };
@@ -73,25 +75,24 @@ struct BigStruct {
     uint8_t data[1337];
 };
 
-#define PARCEL_READ_WITH_STATUS(T, FUN) \
-    [] (const ::android::Parcel& p, uint8_t /*data*/) {\
-        FUZZ_LOG() << "about to read " #T " using " #FUN " with status";\
-        T t{};\
-        status_t status = p.FUN(&t);\
-        FUZZ_LOG() << #T " status: " << status /* << " value: " << t*/;\
+#define PARCEL_READ_WITH_STATUS(T, FUN)                                  \
+    [](const ::android::Parcel& p, uint8_t /*data*/) {                   \
+        FUZZ_LOG() << "about to read " #T " using " #FUN " with status"; \
+        T t{};                                                           \
+        status_t status = p.FUN(&t);                                     \
+        FUZZ_LOG() << #T " status: " << status /* << " value: " << t*/;  \
     }
 
-#define PARCEL_READ_NO_STATUS(T, FUN) \
-    [] (const ::android::Parcel& p, uint8_t /*data*/) {\
-        FUZZ_LOG() << "about to read " #T " using " #FUN " with no status";\
-        T t = p.FUN();\
-        (void) t;\
-        FUZZ_LOG() << #T " done " /* << " value: " << t*/;\
+#define PARCEL_READ_NO_STATUS(T, FUN)                                       \
+    [](const ::android::Parcel& p, uint8_t /*data*/) {                      \
+        FUZZ_LOG() << "about to read " #T " using " #FUN " with no status"; \
+        T t = p.FUN();                                                      \
+        (void)t;                                                            \
+        FUZZ_LOG() << #T " done " /* << " value: " << t*/;                  \
     }
 
 #define PARCEL_READ_OPT_STATUS(T, FUN) \
-    PARCEL_READ_WITH_STATUS(T, FUN), \
-    PARCEL_READ_NO_STATUS(T, FUN)
+    PARCEL_READ_WITH_STATUS(T, FUN), PARCEL_READ_NO_STATUS(T, FUN)
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"

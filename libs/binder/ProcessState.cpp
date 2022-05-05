@@ -35,14 +35,14 @@
 
 #include <errno.h>
 #include <fcntl.h>
-#include <mutex>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <sys/ioctl.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <unistd.h>
+#include <mutex>
 
 #define BINDER_VM_SIZE ((1 * 1024 * 1024) - sysconf(_SC_PAGE_SIZE) * 2)
 #define DEFAULT_MAX_BINDER_THREADS 15
@@ -58,17 +58,12 @@ const char* kDefaultDriver = "/dev/binder";
 
 namespace android {
 
-class PoolThread : public Thread
-{
+class PoolThread : public Thread {
 public:
-    explicit PoolThread(bool isMain)
-        : mIsMain(isMain)
-    {
-    }
+    explicit PoolThread(bool isMain) : mIsMain(isMain) {}
 
 protected:
-    virtual bool threadLoop()
-    {
+    virtual bool threadLoop() {
         IPCThreadState::self()->joinThreadPool(mIsMain);
         return false;
     }
@@ -76,18 +71,15 @@ protected:
     const bool mIsMain;
 };
 
-sp<ProcessState> ProcessState::self()
-{
+sp<ProcessState> ProcessState::self() {
     return init(kDefaultDriver, false /*requireDefault*/);
 }
 
-sp<ProcessState> ProcessState::initWithDriver(const char* driver)
-{
+sp<ProcessState> ProcessState::initWithDriver(const char* driver) {
     return init(driver, true /*requireDefault*/);
 }
 
-sp<ProcessState> ProcessState::selfOrNull()
-{
+sp<ProcessState> ProcessState::selfOrNull() {
     return init(nullptr, false /*requireDefault*/);
 }
 
@@ -98,9 +90,7 @@ static void verifyNotForked(bool forked) {
     LOG_ALWAYS_FATAL_IF(forked, "libbinder ProcessState can not be used after fork");
 }
 
-sp<ProcessState> ProcessState::init(const char *driver, bool requireDefault)
-{
-
+sp<ProcessState> ProcessState::init(const char* driver, bool requireDefault) {
     if (driver == nullptr) {
         std::lock_guard<std::mutex> l(gProcessMutex);
         if (gProcess) {
@@ -110,7 +100,7 @@ sp<ProcessState> ProcessState::init(const char *driver, bool requireDefault)
     }
 
     [[clang::no_destroy]] static std::once_flag gProcessOnce;
-    std::call_once(gProcessOnce, [&](){
+    std::call_once(gProcessOnce, [&]() {
         if (access(driver, R_OK) == -1) {
             ALOGE("Binder driver %s is unavailable. Using /dev/binder instead.", driver);
             driver = "/dev/binder";
@@ -141,8 +131,7 @@ sp<ProcessState> ProcessState::init(const char *driver, bool requireDefault)
     return gProcess;
 }
 
-sp<IBinder> ProcessState::getContextObject(const sp<IBinder>& /*caller*/)
-{
+sp<IBinder> ProcessState::getContextObject(const sp<IBinder>& /*caller*/) {
     sp<IBinder> context = getStrongProxyForHandle(0);
 
     if (context) {
@@ -174,8 +163,7 @@ void ProcessState::childPostFork() {
     gProcessMutex.unlock();
 }
 
-void ProcessState::startThreadPool()
-{
+void ProcessState::startThreadPool() {
     AutoMutex _l(mLock);
     if (!mThreadPoolStarted) {
         if (mMaxThreads == 0) {
@@ -188,12 +176,11 @@ void ProcessState::startThreadPool()
     }
 }
 
-bool ProcessState::becomeContextManager()
-{
+bool ProcessState::becomeContextManager() {
     AutoMutex _l(mLock);
 
-    flat_binder_object obj {
-        .flags = FLAT_BINDER_FLAG_TXN_SECURITY_CTX,
+    flat_binder_object obj{
+            .flags = FLAT_BINDER_FLAG_TXN_SECURITY_CTX,
     };
 
     int result = ioctl(mDriverFD, BINDER_SET_CONTEXT_MGR_EXT, &obj);
@@ -219,8 +206,7 @@ bool ProcessState::becomeContextManager()
 // buf may be NULL if count is 0.  The pointers returned by this method
 // should only be used for debugging and not dereferenced, they may
 // already be invalid.
-ssize_t ProcessState::getKernelReferences(size_t buf_count, uintptr_t* buf)
-{
+ssize_t ProcessState::getKernelReferences(size_t buf_count, uintptr_t* buf) {
     binder_node_debug_info info = {};
 
     uintptr_t* end = buf ? buf + buf_count : nullptr;
@@ -232,11 +218,9 @@ ssize_t ProcessState::getKernelReferences(size_t buf_count, uintptr_t* buf)
             return -1;
         }
         if (info.ptr != 0) {
-            if (buf && buf < end)
-                *buf++ = info.ptr;
+            if (buf && buf < end) *buf++ = info.ptr;
             count++;
-            if (buf && buf < end)
-                *buf++ = info.cookie;
+            if (buf && buf < end) *buf++ = info.cookie;
             count++;
         }
     } while (info.ptr != 0);
@@ -261,8 +245,8 @@ ssize_t ProcessState::getStrongRefCountForNode(const sp<BpBinder>& binder) {
     if (result != OK) {
         static bool logged = false;
         if (!logged) {
-          ALOGW("Kernel does not support BINDER_GET_NODE_INFO_FOR_REF.");
-          logged = true;
+            ALOGW("Kernel does not support BINDER_GET_NODE_INFO_FOR_REF.");
+            logged = true;
         }
         return -1;
     }
@@ -272,26 +256,24 @@ ssize_t ProcessState::getStrongRefCountForNode(const sp<BpBinder>& binder) {
 
 void ProcessState::setCallRestriction(CallRestriction restriction) {
     LOG_ALWAYS_FATAL_IF(IPCThreadState::selfOrNull() != nullptr,
-        "Call restrictions must be set before the threadpool is started.");
+                        "Call restrictions must be set before the threadpool is started.");
 
     mCallRestriction = restriction;
 }
 
-ProcessState::handle_entry* ProcessState::lookupHandleLocked(int32_t handle)
-{
-    const size_t N=mHandleToObject.size();
+ProcessState::handle_entry* ProcessState::lookupHandleLocked(int32_t handle) {
+    const size_t N = mHandleToObject.size();
     if (N <= (size_t)handle) {
         handle_entry e;
         e.binder = nullptr;
         e.refs = nullptr;
-        status_t err = mHandleToObject.insertAt(e, N, handle+1-N);
+        status_t err = mHandleToObject.insertAt(e, N, handle + 1 - N);
         if (err < NO_ERROR) return nullptr;
     }
     return &mHandleToObject.editItemAt(handle);
 }
 
-sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
-{
+sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle) {
     sp<IBinder> result;
 
     AutoMutex _l(mLock);
@@ -329,13 +311,11 @@ sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
                 ipc->setCallRestriction(CallRestriction::NONE);
 
                 Parcel data;
-                status_t status = ipc->transact(
-                        0, IBinder::PING_TRANSACTION, data, nullptr, 0);
+                status_t status = ipc->transact(0, IBinder::PING_TRANSACTION, data, nullptr, 0);
 
                 ipc->setCallRestriction(originalCallRestriction);
 
-                if (status == DEAD_OBJECT)
-                   return nullptr;
+                if (status == DEAD_OBJECT) return nullptr;
             }
 
             sp<BpBinder> b = BpBinder::PrivateAccessor::create(handle);
@@ -354,8 +334,7 @@ sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
     return result;
 }
 
-void ProcessState::expungeHandle(int32_t handle, IBinder* binder)
-{
+void ProcessState::expungeHandle(int32_t handle, IBinder* binder) {
     AutoMutex _l(mLock);
 
     handle_entry* e = lookupHandleLocked(handle);
@@ -379,8 +358,7 @@ String8 ProcessState::makeBinderThreadName() {
     return name;
 }
 
-void ProcessState::spawnPooledThread(bool isMain)
-{
+void ProcessState::spawnPooledThread(bool isMain) {
     if (mThreadPoolStarted) {
         String8 name = makeBinderThreadName();
         ALOGV("Spawning new pooled thread, name=%s\n", name.string());
@@ -391,7 +369,7 @@ void ProcessState::spawnPooledThread(bool isMain)
 
 status_t ProcessState::setThreadPoolMaxThreadCount(size_t maxThreads) {
     LOG_ALWAYS_FATAL_IF(mThreadPoolStarted && maxThreads < mMaxThreads,
-           "Binder threadpool cannot be shrunk after starting");
+                        "Binder threadpool cannot be shrunk after starting");
     status_t result = NO_ERROR;
     if (ioctl(mDriverFD, BINDER_SET_MAX_THREADS, &maxThreads) != -1) {
         mMaxThreads = maxThreads;
@@ -413,8 +391,8 @@ size_t ProcessState::getThreadPoolMaxThreadCount() const {
 #define DRIVER_FEATURES_PATH "/dev/binderfs/features/"
 bool ProcessState::isDriverFeatureEnabled(const DriverFeature feature) {
     static const char* const names[] = {
-        [static_cast<int>(DriverFeature::ONEWAY_SPAM_DETECTION)] =
-            DRIVER_FEATURES_PATH "oneway_spam_detection",
+            [static_cast<int>(DriverFeature::ONEWAY_SPAM_DETECTION)] =
+                    DRIVER_FEATURES_PATH "oneway_spam_detection",
     };
     int fd = open(names[static_cast<int>(feature)], O_RDONLY | O_CLOEXEC);
     char on;
@@ -424,8 +402,8 @@ bool ProcessState::isDriverFeatureEnabled(const DriverFeature feature) {
         return false;
     }
     if (read(fd, &on, sizeof(on)) == -1) {
-        ALOGE("%s: error reading to %s: %s", __func__,
-                 names[static_cast<int>(feature)], strerror(errno));
+        ALOGE("%s: error reading to %s: %s", __func__, names[static_cast<int>(feature)],
+              strerror(errno));
         return false;
     }
     close(fd);
@@ -442,7 +420,7 @@ status_t ProcessState::enableOnewaySpamDetection(bool enable) {
 }
 
 void ProcessState::giveThreadPoolName() {
-    androidSetThreadName( makeBinderThreadName().string() );
+    androidSetThreadName(makeBinderThreadName().string());
 }
 
 String8 ProcessState::getDriverName() {
@@ -476,7 +454,7 @@ static base::Result<int> open_driver(const char* driver) {
     result = ioctl(fd, BINDER_ENABLE_ONEWAY_SPAM_DETECTION, &enable);
     if (result == -1) {
         ALOGE_IF(ProcessState::isDriverFeatureEnabled(
-                     ProcessState::DriverFeature::ONEWAY_SPAM_DETECTION),
+                         ProcessState::DriverFeature::ONEWAY_SPAM_DETECTION),
                  "Binder ioctl to enable oneway spam detection failed: %s", strerror(errno));
     }
     return fd;
@@ -521,8 +499,7 @@ ProcessState::ProcessState(const char* driver)
     }
 }
 
-ProcessState::~ProcessState()
-{
+ProcessState::~ProcessState() {
     if (mDriverFD >= 0) {
         if (mVMStart != MAP_FAILED) {
             munmap(mVMStart, BINDER_VM_SIZE);

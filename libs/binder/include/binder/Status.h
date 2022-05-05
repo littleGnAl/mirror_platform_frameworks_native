@@ -18,8 +18,8 @@
 #define ANDROID_BINDER_STATUS_H
 
 #include <cstdint>
-#include <sstream> // historical
 #include <ostream>
+#include <sstream> // historical
 
 #include <binder/Parcel.h>
 #include <utils/String8.h>
@@ -86,10 +86,8 @@ public:
     //  Exception codes and service specific errors map to nicer exceptions for
     //  Java clients.
     static Status fromExceptionCode(int32_t exceptionCode);
-    static Status fromExceptionCode(int32_t exceptionCode,
-                                    const String8& message);
-    static Status fromExceptionCode(int32_t exceptionCode,
-                                    const char* message);
+    static Status fromExceptionCode(int32_t exceptionCode, const String8& message);
+    static Status fromExceptionCode(int32_t exceptionCode, const char* message);
 
     // warning: this is still considered an error if it is constructed with a
     // zero value error code. Please use Status::ok() instead and avoid zero
@@ -97,8 +95,7 @@ public:
     static Status fromServiceSpecificError(int32_t serviceSpecificErrorCode);
     static Status fromServiceSpecificError(int32_t serviceSpecificErrorCode,
                                            const String8& message);
-    static Status fromServiceSpecificError(int32_t serviceSpecificErrorCode,
-                                           const char* message);
+    static Status fromServiceSpecificError(int32_t serviceSpecificErrorCode, const char* message);
 
     static Status fromStatusT(status_t status);
 
@@ -131,7 +128,7 @@ public:
     void setFromStatusT(status_t status);
 
     // Get information about an exception.
-    int32_t exceptionCode() const  { return mException; }
+    int32_t exceptionCode() const { return mException; }
     const String8& exceptionMessage() const { return mMessage; }
     status_t transactionError() const {
         return mException == EX_TRANSACTION_FAILED ? mErrorCode : OK;
@@ -159,13 +156,13 @@ private:
     int32_t mException = EX_NONE;
     int32_t mErrorCode = 0;
     String8 mMessage;
-};  // class Status
+}; // class Status
 
-static inline std::ostream& operator<< (std::ostream& o, const Status& s) {
+static inline std::ostream& operator<<(std::ostream& o, const Status& s) {
     return o << s.toString8();
 }
 
-}  // namespace binder
-}  // namespace android
+} // namespace binder
+} // namespace android
 
 #endif // ANDROID_BINDER_STATUS_H

@@ -38,7 +38,7 @@ bool RunRpcServerCallback(AIBinder* service, unsigned int port, void (*readyCall
 // whenever a client connects, making it possible to assign unique IBinder
 // object to each client.
 bool RunRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* context),
-                          void* factoryContext, unsigned int port);
+                             void* factoryContext, unsigned int port);
 
 AIBinder* RpcClient(unsigned int cid, unsigned int port);
 
@@ -50,5 +50,4 @@ AIBinder* RpcClient(unsigned int cid, unsigned int port);
 // param will be passed to requestFd. Callers can use param to pass contexts to
 // the requestFd function.
 AIBinder* RpcPreconnectedClient(int (*requestFd)(void* param), void* param);
-
 }

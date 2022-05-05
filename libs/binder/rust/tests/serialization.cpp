@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include "serialization.hpp"
 #include <android/binder_ibinder_platform.h>
 #include <android/binder_libbinder.h>
 #include <binder/IServiceManager.h>
@@ -25,7 +26,6 @@
 #include <utils/Errors.h>
 #include <utils/String16.h>
 #include "android-base/file.h"
-#include "serialization.hpp"
 
 #include <cmath>
 #include <cstdint>
@@ -40,12 +40,13 @@ using android::os::ParcelFileDescriptor;
 // defined in Rust
 extern "C" AIBinder *rust_service();
 
-
 const int8_t TESTDATA_I8[4] = {-128, 0, 117, 127};
 const uint8_t TESTDATA_U8[4] = {0, 42, 117, 255};
 const char16_t TESTDATA_CHARS[4] = {0, 42, 117, numeric_limits<char16_t>::max()};
-const int32_t TESTDATA_I32[4] = {numeric_limits<int32_t>::min(), 0, 117, numeric_limits<int32_t>::max()};
-const int64_t TESTDATA_I64[4] = {numeric_limits<int64_t>::min(), 0, 117, numeric_limits<int64_t>::max()};
+const int32_t TESTDATA_I32[4] = {numeric_limits<int32_t>::min(), 0, 117,
+                                 numeric_limits<int32_t>::max()};
+const int64_t TESTDATA_I64[4] = {numeric_limits<int64_t>::min(), 0, 117,
+                                 numeric_limits<int64_t>::max()};
 const uint64_t TESTDATA_U64[4] = {0, 42, 117, numeric_limits<uint64_t>::max()};
 const float TESTDATA_FLOAT[4] = {
         numeric_limits<float>::quiet_NaN(),
@@ -60,22 +61,19 @@ const double TESTDATA_DOUBLE[4] = {
         numeric_limits<double>::infinity(),
 };
 const bool TESTDATA_BOOL[4] = {true, false, false, true};
-const char* const TESTDATA_STRS[4] = {"", nullptr, "test", ""};
+const char *const TESTDATA_STRS[4] = {"", nullptr, "test", ""};
 
-static ::testing::Environment* gEnvironment;
+static ::testing::Environment *gEnvironment;
 
 class SerializationEnvironment : public ::testing::Environment {
 public:
-    void SetUp() override {
-        m_server = AIBinder_toPlatformBinder(rust_service());
-    }
+    void SetUp() override { m_server = AIBinder_toPlatformBinder(rust_service()); }
 
     sp<IBinder> getServer(void) { return m_server; }
 
 private:
     sp<IBinder> m_server;
 };
-
 
 class SerializationTest : public ::testing::Test {
 protected:
@@ -86,7 +84,6 @@ protected:
 
     sp<IBinder> m_server;
 };
-
 
 TEST_F(SerializationTest, SerializeBool) {
     android::Parcel data;

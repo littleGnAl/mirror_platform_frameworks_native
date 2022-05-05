@@ -52,11 +52,16 @@ using android::binder::Status;
 // because many places use its headers via include_dirs (meaning, without
 // declaring the dependency in the build system). So, for now, we can just check
 // the values here.
-static_assert(AidlServiceManager::DUMP_FLAG_PRIORITY_CRITICAL == IServiceManager::DUMP_FLAG_PRIORITY_CRITICAL);
-static_assert(AidlServiceManager::DUMP_FLAG_PRIORITY_HIGH == IServiceManager::DUMP_FLAG_PRIORITY_HIGH);
-static_assert(AidlServiceManager::DUMP_FLAG_PRIORITY_NORMAL == IServiceManager::DUMP_FLAG_PRIORITY_NORMAL);
-static_assert(AidlServiceManager::DUMP_FLAG_PRIORITY_DEFAULT == IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT);
-static_assert(AidlServiceManager::DUMP_FLAG_PRIORITY_ALL == IServiceManager::DUMP_FLAG_PRIORITY_ALL);
+static_assert(AidlServiceManager::DUMP_FLAG_PRIORITY_CRITICAL ==
+              IServiceManager::DUMP_FLAG_PRIORITY_CRITICAL);
+static_assert(AidlServiceManager::DUMP_FLAG_PRIORITY_HIGH ==
+              IServiceManager::DUMP_FLAG_PRIORITY_HIGH);
+static_assert(AidlServiceManager::DUMP_FLAG_PRIORITY_NORMAL ==
+              IServiceManager::DUMP_FLAG_PRIORITY_NORMAL);
+static_assert(AidlServiceManager::DUMP_FLAG_PRIORITY_DEFAULT ==
+              IServiceManager::DUMP_FLAG_PRIORITY_DEFAULT);
+static_assert(AidlServiceManager::DUMP_FLAG_PRIORITY_ALL ==
+              IServiceManager::DUMP_FLAG_PRIORITY_ALL);
 static_assert(AidlServiceManager::DUMP_FLAG_PROTO == IServiceManager::DUMP_FLAG_PROTO);
 
 const String16& IServiceManager::getInterfaceDescriptor() const {
@@ -66,15 +71,14 @@ IServiceManager::IServiceManager() {}
 IServiceManager::~IServiceManager() {}
 
 // From the old libbinder IServiceManager interface to IServiceManager.
-class ServiceManagerShim : public IServiceManager
-{
+class ServiceManagerShim : public IServiceManager {
 public:
-    explicit ServiceManagerShim (const sp<AidlServiceManager>& impl);
+    explicit ServiceManagerShim(const sp<AidlServiceManager>& impl);
 
     sp<IBinder> getService(const String16& name) const override;
     sp<IBinder> checkService(const String16& name) const override;
-    status_t addService(const String16& name, const sp<IBinder>& service,
-                        bool allowIsolated, int dumpsysPriority) override;
+    status_t addService(const String16& name, const sp<IBinder>& service, bool allowIsolated,
+                        int dumpsysPriority) override;
     Vector<String16> listServices(int dumpsysPriority) override;
     sp<IBinder> waitForService(const String16& name16) override;
     bool isDeclared(const String16& name) override;
@@ -103,9 +107,7 @@ public:
     const String16& getInterfaceDescriptor() const override {
         return mTheRealServiceManager->getInterfaceDescriptor();
     }
-    IBinder* onAsBinder() override {
-        return IInterface::asBinder(mTheRealServiceManager).get();
-    }
+    IBinder* onAsBinder() override { return IInterface::asBinder(mTheRealServiceManager).get(); }
 
 protected:
     sp<AidlServiceManager> mTheRealServiceManager;
@@ -135,14 +137,15 @@ protected:
 [[clang::no_destroy]] static std::once_flag gSmOnce;
 [[clang::no_destroy]] static sp<IServiceManager> gDefaultServiceManager;
 
-sp<IServiceManager> defaultServiceManager()
-{
+sp<IServiceManager> defaultServiceManager() {
     std::call_once(gSmOnce, []() {
         sp<AidlServiceManager> sm = nullptr;
         while (sm == nullptr) {
-            sm = interface_cast<AidlServiceManager>(ProcessState::self()->getContextObject(nullptr));
+            sm = interface_cast<AidlServiceManager>(
+                    ProcessState::self()->getContextObject(nullptr));
             if (sm == nullptr) {
-                ALOGE("Waiting 1s on context object on %s.", ProcessState::self()->getDriverName().c_str());
+                ALOGE("Waiting 1s on context object on %s.",
+                      ProcessState::self()->getDriverName().c_str());
                 sleep(1);
             }
         }
@@ -168,15 +171,13 @@ void setDefaultServiceManager(const sp<IServiceManager>& sm) {
 #if !defined(__ANDROID_VNDK__) && defined(__ANDROID__)
 // IPermissionController is not accessible to vendors
 
-bool checkCallingPermission(const String16& permission)
-{
+bool checkCallingPermission(const String16& permission) {
     return checkCallingPermission(permission, nullptr, nullptr);
 }
 
 static StaticString16 _permission(u"permission");
 
-bool checkCallingPermission(const String16& permission, int32_t* outPid, int32_t* outUid)
-{
+bool checkCallingPermission(const String16& permission, int32_t* outPid, int32_t* outUid) {
     IPCThreadState* ipcState = IPCThreadState::self();
     pid_t pid = ipcState->getCallingPid();
     uid_t uid = ipcState->getCallingUid();
@@ -202,8 +203,8 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid, bool logP
             if (res) {
                 if (startTime != 0) {
                     ALOGI("Check passed after %d seconds for %s from uid=%d pid=%d",
-                            (int)((uptimeMillis()-startTime)/1000),
-                            String8(permission).string(), uid, pid);
+                          (int)((uptimeMillis() - startTime) / 1000), String8(permission).string(),
+                          uid, pid);
                 }
                 return res;
             }
@@ -232,7 +233,7 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid, bool logP
             if (startTime == 0) {
                 startTime = uptimeMillis();
                 ALOGI("Waiting to check permission %s from uid=%d pid=%d",
-                        String8(permission).string(), uid, pid);
+                      String8(permission).string(), uid, pid);
             }
             sleep(1);
         } else {
@@ -250,22 +251,20 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid, bool logP
 // ----------------------------------------------------------------------
 
 ServiceManagerShim::ServiceManagerShim(const sp<AidlServiceManager>& impl)
- : mTheRealServiceManager(impl)
-{}
+      : mTheRealServiceManager(impl) {}
 
 // This implementation could be simplified and made more efficient by delegating
 // to waitForService. However, this changes the threading structure in some
 // cases and could potentially break prebuilts. Once we have higher logistical
 // complexity, this could be attempted.
-sp<IBinder> ServiceManagerShim::getService(const String16& name) const
-{
+sp<IBinder> ServiceManagerShim::getService(const String16& name) const {
     static bool gSystemBootCompleted = false;
 
     sp<IBinder> svc = checkService(name);
     if (svc != nullptr) return svc;
 
     const bool isVendorService =
-        strcmp(ProcessState::self()->getDriverName().c_str(), "/dev/vndbinder") == 0;
+            strcmp(ProcessState::self()->getDriverName().c_str(), "/dev/vndbinder") == 0;
     constexpr int64_t timeout = 5000;
     int64_t startTime = uptimeMillis();
     // Vendor code can't access system properties
@@ -287,7 +286,7 @@ sp<IBinder> ServiceManagerShim::getService(const String16& name) const
     int n = 0;
     while (uptimeMillis() - startTime < timeout) {
         n++;
-        usleep(1000*sleepTime);
+        usleep(1000 * sleepTime);
 
         sp<IBinder> svc = checkService(name);
         if (svc != nullptr) {
@@ -301,8 +300,7 @@ sp<IBinder> ServiceManagerShim::getService(const String16& name) const
     return nullptr;
 }
 
-sp<IBinder> ServiceManagerShim::checkService(const String16& name) const
-{
+sp<IBinder> ServiceManagerShim::checkService(const String16& name) const {
     sp<IBinder> ret;
     if (!mTheRealServiceManager->checkService(String8(name).c_str(), &ret).isOk()) {
         return nullptr;
@@ -311,15 +309,13 @@ sp<IBinder> ServiceManagerShim::checkService(const String16& name) const
 }
 
 status_t ServiceManagerShim::addService(const String16& name, const sp<IBinder>& service,
-                                        bool allowIsolated, int dumpsysPriority)
-{
-    Status status = mTheRealServiceManager->addService(
-        String8(name).c_str(), service, allowIsolated, dumpsysPriority);
+                                        bool allowIsolated, int dumpsysPriority) {
+    Status status = mTheRealServiceManager->addService(String8(name).c_str(), service,
+                                                       allowIsolated, dumpsysPriority);
     return status.exceptionCode();
 }
 
-Vector<String16> ServiceManagerShim::listServices(int dumpsysPriority)
-{
+Vector<String16> ServiceManagerShim::listServices(int dumpsysPriority) {
     std::vector<std::string> ret;
     if (!mTheRealServiceManager->listServices(dumpsysPriority, &ret).isOk()) {
         return {};
@@ -333,11 +329,9 @@ Vector<String16> ServiceManagerShim::listServices(int dumpsysPriority)
     return res;
 }
 
-sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
-{
+sp<IBinder> ServiceManagerShim::waitForService(const String16& name16) {
     class Waiter : public android::os::BnServiceCallback {
-        Status onRegistration(const std::string& /*name*/,
-                              const sp<IBinder>& binder) override {
+        Status onRegistration(const std::string& /*name*/, const sp<IBinder>& binder) override {
             std::unique_lock<std::mutex> lock(mMutex);
             mBinder = binder;
             lock.unlock();
@@ -346,6 +340,7 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             mCv.notify_one();
             return Status::ok();
         }
+
     public:
         sp<IBinder> mBinder;
         std::mutex mMutex;
@@ -357,6 +352,7 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
     public:
         explicit Defer(std::function<void()>&& f) : mF(std::move(f)) {}
         ~Defer() { mF(); }
+
     private:
         std::function<void()> mF;
     };
@@ -378,11 +374,9 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
               status.toString8().c_str());
         return nullptr;
     }
-    Defer unregister ([&] {
-        mTheRealServiceManager->unregisterForNotifications(name, waiter);
-    });
+    Defer unregister([&] { mTheRealServiceManager->unregisterForNotifications(name, waiter); });
 
-    while(true) {
+    while (true) {
         {
             // It would be really nice if we could read binder commands on this
             // thread instead of needing a threadpool to be started, but for
@@ -391,13 +385,13 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             // command, so we hang indefinitely.
             std::unique_lock<std::mutex> lock(waiter->mMutex);
             using std::literals::chrono_literals::operator""s;
-            waiter->mCv.wait_for(lock, 1s, [&] {
-                return waiter->mBinder != nullptr;
-            });
+            waiter->mCv.wait_for(lock, 1s, [&] { return waiter->mBinder != nullptr; });
             if (waiter->mBinder != nullptr) return waiter->mBinder;
         }
 
-        ALOGW("Waited one second for %s (is service started? are binder threads started and available?)", name.c_str());
+        ALOGW("Waited one second for %s (is service started? are binder threads started and "
+              "available?)",
+              name.c_str());
 
         // Handle race condition for lazy services. Here is what can happen:
         // - the service dies (not processed by init yet).

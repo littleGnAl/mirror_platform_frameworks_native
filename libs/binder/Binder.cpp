@@ -59,42 +59,31 @@ constexpr const bool kEnableRpcDevServers = false;
 #define LOG_REPLIES_OVER_SIZE (300 * 1024)
 // ---------------------------------------------------------------------------
 
-IBinder::IBinder()
-    : RefBase()
-{
-}
+IBinder::IBinder() : RefBase() {}
 
-IBinder::~IBinder()
-{
-}
+IBinder::~IBinder() {}
 
 // ---------------------------------------------------------------------------
 
-sp<IInterface>  IBinder::queryLocalInterface(const String16& /*descriptor*/)
-{
+sp<IInterface> IBinder::queryLocalInterface(const String16& /*descriptor*/) {
     return nullptr;
 }
 
-BBinder* IBinder::localBinder()
-{
+BBinder* IBinder::localBinder() {
     return nullptr;
 }
 
-BpBinder* IBinder::remoteBinder()
-{
+BpBinder* IBinder::remoteBinder() {
     return nullptr;
 }
 
-bool IBinder::checkSubclass(const void* /*subclassID*/) const
-{
+bool IBinder::checkSubclass(const void* /*subclassID*/) const {
     return false;
 }
 
-
 status_t IBinder::shellCommand(const sp<IBinder>& target, int in, int out, int err,
-    Vector<String16>& args, const sp<IShellCallback>& callback,
-    const sp<IResultReceiver>& resultReceiver)
-{
+                               Vector<String16>& args, const sp<IShellCallback>& callback,
+                               const sp<IResultReceiver>& resultReceiver) {
     Parcel send;
     Parcel reply;
     send.writeFileDescriptor(in);
@@ -106,7 +95,8 @@ status_t IBinder::shellCommand(const sp<IBinder>& target, int in, int out, int e
         send.writeString16(args[i]);
     }
     send.writeStrongBinder(callback != nullptr ? IInterface::asBinder(callback) : nullptr);
-    send.writeStrongBinder(resultReceiver != nullptr ? IInterface::asBinder(resultReceiver) : nullptr);
+    send.writeStrongBinder(resultReceiver != nullptr ? IInterface::asBinder(resultReceiver)
+                                                     : nullptr);
     return target->transact(SHELL_COMMAND_TRANSACTION, send, &reply);
 }
 
@@ -131,8 +121,8 @@ status_t IBinder::getExtension(sp<IBinder>* out) {
 status_t IBinder::getDebugPid(pid_t* out) {
     BBinder* local = this->localBinder();
     if (local != nullptr) {
-      *out = local->getDebugPid();
-      return OK;
+        *out = local->getDebugPid();
+        return OK;
     }
 
     BpBinder* proxy = this->remoteBinder();
@@ -227,8 +217,7 @@ private:
     wp<BBinder> mBinder;
 };
 
-class BBinder::Extras
-{
+class BBinder::Extras {
 public:
     // unlocked objects
     bool mRequestingSid = false;
@@ -247,18 +236,15 @@ public:
 
 BBinder::BBinder() : mExtras(nullptr), mStability(0), mParceled(false) {}
 
-bool BBinder::isBinderAlive() const
-{
+bool BBinder::isBinderAlive() const {
     return true;
 }
 
-status_t BBinder::pingBinder()
-{
+status_t BBinder::pingBinder() {
     return NO_ERROR;
 }
 
-const String16& BBinder::getInterfaceDescriptor() const
-{
+const String16& BBinder::getInterfaceDescriptor() const {
     // This is a local static rather than a global static,
     // to avoid static initializer ordering issues.
     static String16 sEmptyDescriptor;
@@ -267,9 +253,7 @@ const String16& BBinder::getInterfaceDescriptor() const
 }
 
 // NOLINTNEXTLINE(google-default-arguments)
-status_t BBinder::transact(
-    uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
-{
+status_t BBinder::transact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags) {
     data.setDataPosition(0);
 
     if (reply != nullptr && (flags & FLAG_CLEAR_BUF)) {
@@ -311,23 +295,18 @@ status_t BBinder::transact(
 }
 
 // NOLINTNEXTLINE(google-default-arguments)
-status_t BBinder::linkToDeath(
-    const sp<DeathRecipient>& /*recipient*/, void* /*cookie*/,
-    uint32_t /*flags*/)
-{
+status_t BBinder::linkToDeath(const sp<DeathRecipient>& /*recipient*/, void* /*cookie*/,
+                              uint32_t /*flags*/) {
     return INVALID_OPERATION;
 }
 
 // NOLINTNEXTLINE(google-default-arguments)
-status_t BBinder::unlinkToDeath(
-    const wp<DeathRecipient>& /*recipient*/, void* /*cookie*/,
-    uint32_t /*flags*/, wp<DeathRecipient>* /*outRecipient*/)
-{
+status_t BBinder::unlinkToDeath(const wp<DeathRecipient>& /*recipient*/, void* /*cookie*/,
+                                uint32_t /*flags*/, wp<DeathRecipient>* /*outRecipient*/) {
     return INVALID_OPERATION;
 }
 
-status_t BBinder::dump(int /*fd*/, const Vector<String16>& /*args*/)
-{
+status_t BBinder::dump(int /*fd*/, const Vector<String16>& /*args*/) {
     return NO_ERROR;
 }
 
@@ -340,8 +319,7 @@ void* BBinder::attachObject(const void* objectID, void* object, void* cleanupCoo
     return e->mObjects.attach(objectID, object, cleanupCookie, func);
 }
 
-void* BBinder::findObject(const void* objectID) const
-{
+void* BBinder::findObject(const void* objectID) const {
     Extras* e = mExtras.load(std::memory_order_acquire);
     if (!e) return nullptr;
 
@@ -365,20 +343,17 @@ void BBinder::withLock(const std::function<void()>& doWithLock) {
     doWithLock();
 }
 
-BBinder* BBinder::localBinder()
-{
+BBinder* BBinder::localBinder() {
     return this;
 }
 
-bool BBinder::isRequestingSid()
-{
+bool BBinder::isRequestingSid() {
     Extras* e = mExtras.load(std::memory_order_acquire);
 
     return e && e->mRequestingSid;
 }
 
-void BBinder::setRequestingSid(bool requestingSid)
-{
+void BBinder::setRequestingSid(bool requestingSid) {
     LOG_ALWAYS_FATAL_IF(mParceled,
                         "setRequestingSid() should not be called after a binder object "
                         "is parceled/sent to another process");
@@ -410,15 +385,17 @@ void BBinder::setMinSchedulerPolicy(int policy, int priority) {
                         "is parceled/sent to another process");
 
     switch (policy) {
-    case SCHED_NORMAL:
-      LOG_ALWAYS_FATAL_IF(priority < -20 || priority > 19, "Invalid priority for SCHED_NORMAL: %d", priority);
-      break;
-    case SCHED_RR:
-    case SCHED_FIFO:
-      LOG_ALWAYS_FATAL_IF(priority < 1 || priority > 99, "Invalid priority for sched %d: %d", policy, priority);
-      break;
-    default:
-      LOG_ALWAYS_FATAL("Unrecognized scheduling policy: %d", policy);
+        case SCHED_NORMAL:
+            LOG_ALWAYS_FATAL_IF(priority < -20 || priority > 19,
+                                "Invalid priority for SCHED_NORMAL: %d", priority);
+            break;
+        case SCHED_RR:
+        case SCHED_FIFO:
+            LOG_ALWAYS_FATAL_IF(priority < 1 || priority > 99, "Invalid priority for sched %d: %d",
+                                policy, priority);
+            break;
+        default:
+            LOG_ALWAYS_FATAL("Unrecognized scheduling policy: %d", policy);
     }
 
     Extras* e = mExtras.load(std::memory_order_acquire);
@@ -580,8 +557,7 @@ void BBinder::removeRpcServerLink(const sp<RpcServerLink>& link) {
     (void)e->mRpcServerLinks.erase(link);
 }
 
-BBinder::~BBinder()
-{
+BBinder::~BBinder() {
     if (!wasParceled() && getExtension()) {
         ALOGW("Binder %p destroyed with extension attached before being parceled.", this);
     }
@@ -590,11 +566,8 @@ BBinder::~BBinder()
     if (e) delete e;
 }
 
-
 // NOLINTNEXTLINE(google-default-arguments)
-status_t BBinder::onTransact(
-    uint32_t code, const Parcel& data, Parcel* reply, uint32_t /*flags*/)
-{
+status_t BBinder::onTransact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t /*flags*/) {
     switch (code) {
         case INTERFACE_TRANSACTION:
             CHECK(reply != nullptr);
@@ -606,7 +579,7 @@ status_t BBinder::onTransact(
             int argc = data.readInt32();
             Vector<String16> args;
             for (int i = 0; i < argc && data.dataAvail() > 0; i++) {
-               args.add(data.readString16());
+                args.add(data.readString16());
             }
             return dump(fd, args);
         }
@@ -618,15 +591,14 @@ status_t BBinder::onTransact(
             int argc = data.readInt32();
             Vector<String16> args;
             for (int i = 0; i < argc && data.dataAvail() > 0; i++) {
-               args.add(data.readString16());
+                args.add(data.readString16());
             }
-            sp<IShellCallback> shellCallback = IShellCallback::asInterface(
-                    data.readStrongBinder());
-            sp<IResultReceiver> resultReceiver = IResultReceiver::asInterface(
-                    data.readStrongBinder());
+            sp<IShellCallback> shellCallback = IShellCallback::asInterface(data.readStrongBinder());
+            sp<IResultReceiver> resultReceiver =
+                    IResultReceiver::asInterface(data.readStrongBinder());
 
             // XXX can't add virtuals until binaries are updated.
-            //return shellCommand(in, out, err, args, resultReceiver);
+            // return shellCommand(in, out, err, args, resultReceiver);
             (void)in;
             (void)out;
             (void)err;
@@ -648,18 +620,16 @@ status_t BBinder::onTransact(
     }
 }
 
-BBinder::Extras* BBinder::getOrCreateExtras()
-{
+BBinder::Extras* BBinder::getOrCreateExtras() {
     Extras* e = mExtras.load(std::memory_order_acquire);
 
     if (!e) {
         e = new Extras;
         Extras* expected = nullptr;
-        if (!mExtras.compare_exchange_strong(expected, e,
-                                             std::memory_order_release,
+        if (!mExtras.compare_exchange_strong(expected, e, std::memory_order_release,
                                              std::memory_order_acquire)) {
             delete e;
-            e = expected;  // Filled in by CAS
+            e = expected; // Filled in by CAS
         }
         if (e == nullptr) return nullptr; // out of memory
     }
@@ -676,41 +646,35 @@ enum {
     kRemoteAcquired = 0x00000001
 };
 
-BpRefBase::BpRefBase(const sp<IBinder>& o)
-    : mRemote(o.get()), mRefs(nullptr), mState(0)
-{
+BpRefBase::BpRefBase(const sp<IBinder>& o) : mRemote(o.get()), mRefs(nullptr), mState(0) {
     extendObjectLifetime(OBJECT_LIFETIME_WEAK);
 
     if (mRemote) {
-        mRemote->incStrong(this);           // Removed on first IncStrong().
-        mRefs = mRemote->createWeak(this);  // Held for our entire lifetime.
+        mRemote->incStrong(this);          // Removed on first IncStrong().
+        mRefs = mRemote->createWeak(this); // Held for our entire lifetime.
     }
 }
 
-BpRefBase::~BpRefBase()
-{
+BpRefBase::~BpRefBase() {
     if (mRemote) {
-        if (!(mState.load(std::memory_order_relaxed)&kRemoteAcquired)) {
+        if (!(mState.load(std::memory_order_relaxed) & kRemoteAcquired)) {
             mRemote->decStrong(this);
         }
         mRefs->decWeak(this);
     }
 }
 
-void BpRefBase::onFirstRef()
-{
+void BpRefBase::onFirstRef() {
     mState.fetch_or(kRemoteAcquired, std::memory_order_relaxed);
 }
 
-void BpRefBase::onLastStrongRef(const void* /*id*/)
-{
+void BpRefBase::onLastStrongRef(const void* /*id*/) {
     if (mRemote) {
         mRemote->decStrong(this);
     }
 }
 
-bool BpRefBase::onIncStrongAttempted(uint32_t /*flags*/, const void* /*id*/)
-{
+bool BpRefBase::onIncStrongAttempted(uint32_t /*flags*/, const void* /*id*/) {
     return mRemote ? mRefs->attemptIncStrong(this) : false;
 }
 

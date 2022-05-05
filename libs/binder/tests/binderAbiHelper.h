@@ -39,7 +39,8 @@ static inline void ExitIfWrongAbi() {
         std::cout << "[----------] Global test environment set-up." << std::endl;
         std::cout << "[----------] 1 tests from BinderLibTest" << std::endl;
         std::cout << "[ RUN      ] BinderTest.AbortForWrongAbi" << std::endl;
-        std::cout << "[ INFO     ] test build abi 32: " << kBuild32Abi << " runtime abi 32: " << runtime32Abi << " so, skipping tests " << std::endl;
+        std::cout << "[ INFO     ] test build abi 32: " << kBuild32Abi
+                  << " runtime abi 32: " << runtime32Abi << " so, skipping tests " << std::endl;
         std::cout << "[       OK ] BinderTest.AbortForWrongAbi (0 ms) " << std::endl;
         std::cout << "[----------] 1 tests from BinderTest (0 ms total)" << std::endl;
         std::cout << "" << std::endl;
@@ -49,4 +50,3 @@ static inline void ExitIfWrongAbi() {
         exit(0);
     }
 }
-

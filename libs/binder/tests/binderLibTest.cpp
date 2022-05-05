@@ -74,7 +74,7 @@ static ::testing::AssertionResult IsPageAligned(void *buf) {
         return ::testing::AssertionFailure() << buf << " is not page aligned";
 }
 
-static testing::Environment* binder_env;
+static testing::Environment *binder_env;
 static char *binderservername;
 static char *binderserversuffix;
 static char binderserverarg[] = "--binderserver";
@@ -117,8 +117,7 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_CAN_GET_SID,
 };
 
-pid_t start_server_process(int arg2, bool usePoll = false)
-{
+pid_t start_server_process(int arg2, bool usePoll = false) {
     int ret;
     pid_t pid;
     status_t status;
@@ -126,27 +125,18 @@ pid_t start_server_process(int arg2, bool usePoll = false)
     char stri[16];
     char strpipefd1[16];
     char usepoll[2];
-    char *childargv[] = {
-        binderservername,
-        binderserverarg,
-        stri,
-        strpipefd1,
-        usepoll,
-        binderserversuffix,
-        nullptr
-    };
+    char *childargv[] = {binderservername, binderserverarg,    stri,   strpipefd1,
+                         usepoll,          binderserversuffix, nullptr};
 
     ret = pipe(pipefd);
-    if (ret < 0)
-        return ret;
+    if (ret < 0) return ret;
 
     snprintf(stri, sizeof(stri), "%d", arg2);
     snprintf(strpipefd1, sizeof(strpipefd1), "%d", pipefd[1]);
     snprintf(usepoll, sizeof(usepoll), "%d", usePoll ? 1 : 0);
 
     pid = fork();
-    if (pid == -1)
-        return pid;
+    if (pid == -1) return pid;
     if (pid == 0) {
         prctl(PR_SET_PDEATHSIG, SIGHUP);
         close(pipefd[0]);
@@ -158,7 +148,7 @@ pid_t start_server_process(int arg2, bool usePoll = false)
     }
     close(pipefd[1]);
     ret = read(pipefd[0], &status, sizeof(status));
-    //printf("pipe read returned %d, status %d\n", ret, status);
+    // printf("pipe read returned %d, status %d\n", ret, status);
     close(pipefd[0]);
     if (ret == sizeof(status)) {
         ret = status;
@@ -190,203 +180,174 @@ android::base::Result<int32_t> GetId(sp<IBinder> service) {
 }
 
 class BinderLibTestEnv : public ::testing::Environment {
-    public:
-        BinderLibTestEnv() {}
-        sp<IBinder> getServer(void) {
-            return m_server;
+public:
+    BinderLibTestEnv() {}
+    sp<IBinder> getServer(void) { return m_server; }
+
+private:
+    virtual void SetUp() {
+        m_serverpid = start_server_process(0);
+        // printf("m_serverpid %d\n", m_serverpid);
+        ASSERT_GT(m_serverpid, 0);
+
+        sp<IServiceManager> sm = defaultServiceManager();
+        // printf("%s: pid %d, get service\n", __func__, m_pid);
+        m_server = sm->getService(binderLibTestServiceName);
+        ASSERT_TRUE(m_server != nullptr);
+        // printf("%s: pid %d, get service done\n", __func__, m_pid);
+    }
+    virtual void TearDown() {
+        status_t ret;
+        Parcel data, reply;
+        int exitStatus;
+        pid_t pid;
+
+        // printf("%s: pid %d\n", __func__, m_pid);
+        if (m_server != nullptr) {
+            ret = m_server->transact(BINDER_LIB_TEST_GET_STATUS_TRANSACTION, data, &reply);
+            EXPECT_EQ(0, ret);
+            ret = m_server->transact(BINDER_LIB_TEST_EXIT_TRANSACTION, data, &reply, TF_ONE_WAY);
+            EXPECT_EQ(0, ret);
         }
-
-    private:
-        virtual void SetUp() {
-            m_serverpid = start_server_process(0);
-            //printf("m_serverpid %d\n", m_serverpid);
-            ASSERT_GT(m_serverpid, 0);
-
-            sp<IServiceManager> sm = defaultServiceManager();
-            //printf("%s: pid %d, get service\n", __func__, m_pid);
-            m_server = sm->getService(binderLibTestServiceName);
-            ASSERT_TRUE(m_server != nullptr);
-            //printf("%s: pid %d, get service done\n", __func__, m_pid);
+        if (m_serverpid > 0) {
+            // printf("wait for %d\n", m_pids[i]);
+            pid = wait(&exitStatus);
+            EXPECT_EQ(m_serverpid, pid);
+            EXPECT_TRUE(WIFEXITED(exitStatus));
+            EXPECT_EQ(0, WEXITSTATUS(exitStatus));
         }
-        virtual void TearDown() {
-            status_t ret;
-            Parcel data, reply;
-            int exitStatus;
-            pid_t pid;
+    }
 
-            //printf("%s: pid %d\n", __func__, m_pid);
-            if (m_server != nullptr) {
-                ret = m_server->transact(BINDER_LIB_TEST_GET_STATUS_TRANSACTION, data, &reply);
-                EXPECT_EQ(0, ret);
-                ret = m_server->transact(BINDER_LIB_TEST_EXIT_TRANSACTION, data, &reply, TF_ONE_WAY);
-                EXPECT_EQ(0, ret);
-            }
-            if (m_serverpid > 0) {
-                //printf("wait for %d\n", m_pids[i]);
-                pid = wait(&exitStatus);
-                EXPECT_EQ(m_serverpid, pid);
-                EXPECT_TRUE(WIFEXITED(exitStatus));
-                EXPECT_EQ(0, WEXITSTATUS(exitStatus));
-            }
-        }
-
-        pid_t m_serverpid;
-        sp<IBinder> m_server;
+    pid_t m_serverpid;
+    sp<IBinder> m_server;
 };
 
 class BinderLibTest : public ::testing::Test {
-    public:
-        virtual void SetUp() {
-            m_server = static_cast<BinderLibTestEnv *>(binder_env)->getServer();
-            IPCThreadState::self()->restoreCallingWorkSource(0); 
-        }
-        virtual void TearDown() {
-        }
-    protected:
-        sp<IBinder> addServerEtc(int32_t *idPtr, int code)
-        {
-            int32_t id;
-            Parcel data, reply;
+public:
+    virtual void SetUp() {
+        m_server = static_cast<BinderLibTestEnv *>(binder_env)->getServer();
+        IPCThreadState::self()->restoreCallingWorkSource(0);
+    }
+    virtual void TearDown() {}
 
-            EXPECT_THAT(m_server->transact(code, data, &reply), StatusEq(NO_ERROR));
+protected:
+    sp<IBinder> addServerEtc(int32_t *idPtr, int code) {
+        int32_t id;
+        Parcel data, reply;
 
-            sp<IBinder> binder = reply.readStrongBinder();
-            EXPECT_NE(nullptr, binder);
-            EXPECT_THAT(reply.readInt32(&id), StatusEq(NO_ERROR));
-            if (idPtr)
-                *idPtr = id;
-            return binder;
-        }
+        EXPECT_THAT(m_server->transact(code, data, &reply), StatusEq(NO_ERROR));
 
-        sp<IBinder> addServer(int32_t *idPtr = nullptr)
-        {
-            return addServerEtc(idPtr, BINDER_LIB_TEST_ADD_SERVER);
-        }
+        sp<IBinder> binder = reply.readStrongBinder();
+        EXPECT_NE(nullptr, binder);
+        EXPECT_THAT(reply.readInt32(&id), StatusEq(NO_ERROR));
+        if (idPtr) *idPtr = id;
+        return binder;
+    }
 
-        sp<IBinder> addPollServer(int32_t *idPtr = nullptr)
-        {
-            return addServerEtc(idPtr, BINDER_LIB_TEST_ADD_POLL_SERVER);
-        }
+    sp<IBinder> addServer(int32_t *idPtr = nullptr) {
+        return addServerEtc(idPtr, BINDER_LIB_TEST_ADD_SERVER);
+    }
 
-        void waitForReadData(int fd, int timeout_ms) {
-            int ret;
-            pollfd pfd = pollfd();
+    sp<IBinder> addPollServer(int32_t *idPtr = nullptr) {
+        return addServerEtc(idPtr, BINDER_LIB_TEST_ADD_POLL_SERVER);
+    }
 
-            pfd.fd = fd;
-            pfd.events = POLLIN;
-            ret = poll(&pfd, 1, timeout_ms);
-            EXPECT_EQ(1, ret);
-        }
+    void waitForReadData(int fd, int timeout_ms) {
+        int ret;
+        pollfd pfd = pollfd();
 
-        sp<IBinder> m_server;
+        pfd.fd = fd;
+        pfd.events = POLLIN;
+        ret = poll(&pfd, 1, timeout_ms);
+        EXPECT_EQ(1, ret);
+    }
+
+    sp<IBinder> m_server;
 };
 
-class BinderLibTestBundle : public Parcel
-{
-    public:
-        BinderLibTestBundle(void) {}
-        explicit BinderLibTestBundle(const Parcel *source) : m_isValid(false) {
-            int32_t mark;
-            int32_t bundleLen;
-            size_t pos;
+class BinderLibTestBundle : public Parcel {
+public:
+    BinderLibTestBundle(void) {}
+    explicit BinderLibTestBundle(const Parcel *source) : m_isValid(false) {
+        int32_t mark;
+        int32_t bundleLen;
+        size_t pos;
 
-            if (source->readInt32(&mark))
-                return;
-            if (mark != MARK_START)
-                return;
-            if (source->readInt32(&bundleLen))
-                return;
-            pos = source->dataPosition();
-            if (Parcel::appendFrom(source, pos, bundleLen))
-                return;
-            source->setDataPosition(pos + bundleLen);
-            if (source->readInt32(&mark))
-                return;
-            if (mark != MARK_END)
-                return;
-            m_isValid = true;
-            setDataPosition(0);
-        }
-        void appendTo(Parcel *dest) {
-            dest->writeInt32(MARK_START);
-            dest->writeInt32(dataSize());
-            dest->appendFrom(this, 0, dataSize());
-            dest->writeInt32(MARK_END);
-        };
-        bool isValid(void) {
-            return m_isValid;
-        }
-    private:
-        enum {
-            MARK_START  = B_PACK_CHARS('B','T','B','S'),
-            MARK_END    = B_PACK_CHARS('B','T','B','E'),
-        };
-        bool m_isValid;
+        if (source->readInt32(&mark)) return;
+        if (mark != MARK_START) return;
+        if (source->readInt32(&bundleLen)) return;
+        pos = source->dataPosition();
+        if (Parcel::appendFrom(source, pos, bundleLen)) return;
+        source->setDataPosition(pos + bundleLen);
+        if (source->readInt32(&mark)) return;
+        if (mark != MARK_END) return;
+        m_isValid = true;
+        setDataPosition(0);
+    }
+    void appendTo(Parcel *dest) {
+        dest->writeInt32(MARK_START);
+        dest->writeInt32(dataSize());
+        dest->appendFrom(this, 0, dataSize());
+        dest->writeInt32(MARK_END);
+    };
+    bool isValid(void) { return m_isValid; }
+
+private:
+    enum {
+        MARK_START = B_PACK_CHARS('B', 'T', 'B', 'S'),
+        MARK_END = B_PACK_CHARS('B', 'T', 'B', 'E'),
+    };
+    bool m_isValid;
 };
 
-class BinderLibTestEvent
-{
-    public:
-        BinderLibTestEvent(void)
-            : m_eventTriggered(false)
-        {
-            pthread_mutex_init(&m_waitMutex, nullptr);
-            pthread_cond_init(&m_waitCond, nullptr);
+class BinderLibTestEvent {
+public:
+    BinderLibTestEvent(void) : m_eventTriggered(false) {
+        pthread_mutex_init(&m_waitMutex, nullptr);
+        pthread_cond_init(&m_waitCond, nullptr);
+    }
+    int waitEvent(int timeout_s) {
+        int ret;
+        pthread_mutex_lock(&m_waitMutex);
+        if (!m_eventTriggered) {
+            struct timespec ts;
+            clock_gettime(CLOCK_REALTIME, &ts);
+            ts.tv_sec += timeout_s;
+            pthread_cond_timedwait(&m_waitCond, &m_waitMutex, &ts);
         }
-        int waitEvent(int timeout_s)
-        {
-            int ret;
-            pthread_mutex_lock(&m_waitMutex);
-            if (!m_eventTriggered) {
-                struct timespec ts;
-                clock_gettime(CLOCK_REALTIME, &ts);
-                ts.tv_sec += timeout_s;
-                pthread_cond_timedwait(&m_waitCond, &m_waitMutex, &ts);
-            }
-            ret = m_eventTriggered ? NO_ERROR : TIMED_OUT;
-            pthread_mutex_unlock(&m_waitMutex);
-            return ret;
-        }
-        pthread_t getTriggeringThread()
-        {
-            return m_triggeringThread;
-        }
-    protected:
-        void triggerEvent(void) {
-            pthread_mutex_lock(&m_waitMutex);
-            pthread_cond_signal(&m_waitCond);
-            m_eventTriggered = true;
-            m_triggeringThread = pthread_self();
-            pthread_mutex_unlock(&m_waitMutex);
-        };
-    private:
-        pthread_mutex_t m_waitMutex;
-        pthread_cond_t m_waitCond;
-        bool m_eventTriggered;
-        pthread_t m_triggeringThread;
+        ret = m_eventTriggered ? NO_ERROR : TIMED_OUT;
+        pthread_mutex_unlock(&m_waitMutex);
+        return ret;
+    }
+    pthread_t getTriggeringThread() { return m_triggeringThread; }
+
+protected:
+    void triggerEvent(void) {
+        pthread_mutex_lock(&m_waitMutex);
+        pthread_cond_signal(&m_waitCond);
+        m_eventTriggered = true;
+        m_triggeringThread = pthread_self();
+        pthread_mutex_unlock(&m_waitMutex);
+    };
+
+private:
+    pthread_mutex_t m_waitMutex;
+    pthread_cond_t m_waitCond;
+    bool m_eventTriggered;
+    pthread_t m_triggeringThread;
 };
 
-class BinderLibTestCallBack : public BBinder, public BinderLibTestEvent
-{
-    public:
-        BinderLibTestCallBack()
-            : m_result(NOT_ENOUGH_DATA)
-            , m_prev_end(nullptr)
-        {
-        }
-        status_t getResult(void)
-        {
-            return m_result;
-        }
+class BinderLibTestCallBack : public BBinder, public BinderLibTestEvent {
+public:
+    BinderLibTestCallBack() : m_result(NOT_ENOUGH_DATA), m_prev_end(nullptr) {}
+    status_t getResult(void) { return m_result; }
 
-    private:
-        virtual status_t onTransact(uint32_t code,
-                                    const Parcel& data, Parcel* reply,
-                                    uint32_t flags = 0)
-        {
-            (void)reply;
-            (void)flags;
-            switch(code) {
+private:
+    virtual status_t onTransact(uint32_t code, const Parcel &data, Parcel *reply,
+                                uint32_t flags = 0) {
+        (void)reply;
+        (void)flags;
+        switch (code) {
             case BINDER_LIB_TEST_CALL_BACK: {
                 status_t status = data.readInt32(&m_result);
                 if (status != NO_ERROR) {
@@ -411,28 +372,26 @@ class BinderLibTestCallBack : public BBinder, public BinderLibTestEvent
 
                 if (size > 0) {
                     server = static_cast<BinderLibTestEnv *>(binder_env)->getServer();
-                    ret = server->transact(BINDER_LIB_TEST_INDIRECT_TRANSACTION,
-                                           data, reply);
+                    ret = server->transact(BINDER_LIB_TEST_INDIRECT_TRANSACTION, data, reply);
                     EXPECT_EQ(NO_ERROR, ret);
                 }
                 return NO_ERROR;
             }
             default:
                 return UNKNOWN_TRANSACTION;
-            }
         }
+    }
 
-        status_t m_result;
-        const uint8_t *m_prev_end;
+    status_t m_result;
+    const uint8_t *m_prev_end;
 };
 
-class TestDeathRecipient : public IBinder::DeathRecipient, public BinderLibTestEvent
-{
-    private:
-        virtual void binderDied(const wp<IBinder>& who) {
-            (void)who;
-            triggerEvent();
-        };
+class TestDeathRecipient : public IBinder::DeathRecipient, public BinderLibTestEvent {
+private:
+    virtual void binderDied(const wp<IBinder> &who) {
+        (void)who;
+        triggerEvent();
+    };
 };
 
 TEST_F(BinderLibTest, CannotUseBinderAfterFork) {
@@ -480,7 +439,9 @@ TEST_F(BinderLibTest, Freeze) {
     EXPECT_THAT(m_server->transact(BINDER_LIB_TEST_GETPID, data, &replypid), StatusEq(NO_ERROR));
     int32_t pid = replypid.readInt32();
     for (int i = 0; i < 10; i++) {
-        EXPECT_EQ(NO_ERROR, m_server->transact(BINDER_LIB_TEST_NOP_TRANSACTION_WAIT, data, &reply, TF_ONE_WAY));
+        EXPECT_EQ(NO_ERROR,
+                  m_server->transact(BINDER_LIB_TEST_NOP_TRANSACTION_WAIT, data, &reply,
+                                     TF_ONE_WAY));
     }
 
     // Pass test on devices where BINDER_FREEZE ioctl is not supported
@@ -493,12 +454,13 @@ TEST_F(BinderLibTest, Freeze) {
     EXPECT_EQ(-EAGAIN, IPCThreadState::self()->freeze(pid, true, 0));
     EXPECT_EQ(-EAGAIN, IPCThreadState::self()->freeze(pid, true, 0));
     EXPECT_EQ(NO_ERROR, IPCThreadState::self()->freeze(pid, true, 1000));
-    EXPECT_EQ(FAILED_TRANSACTION, m_server->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, &reply));
+    EXPECT_EQ(FAILED_TRANSACTION,
+              m_server->transact(BINDER_LIB_TEST_NOP_TRANSACTION, data, &reply));
 
     uint32_t sync_received, async_received;
 
-    EXPECT_EQ(NO_ERROR, IPCThreadState::self()->getProcessFreezeInfo(pid, &sync_received,
-                &async_received));
+    EXPECT_EQ(NO_ERROR,
+              IPCThreadState::self()->getProcessFreezeInfo(pid, &sync_received, &async_received));
 
     EXPECT_EQ(sync_received, 1);
     EXPECT_EQ(async_received, 0);
@@ -508,7 +470,7 @@ TEST_F(BinderLibTest, Freeze) {
 }
 
 TEST_F(BinderLibTest, SetError) {
-    int32_t testValue[] = { 0, -123, 123 };
+    int32_t testValue[] = {0, -123, 123};
     for (size_t i = 0; i < ARRAY_SIZE(testValue); i++) {
         Parcel data, reply;
         data.writeInt32(testValue[i]);
@@ -533,8 +495,7 @@ TEST_F(BinderLibTest, PtrSize) {
     RecordProperty("ServerPtrSize", sizeof(void *));
 }
 
-TEST_F(BinderLibTest, IndirectGetId2)
-{
+TEST_F(BinderLibTest, IndirectGetId2) {
     int32_t id;
     int32_t count;
     Parcel data, reply;
@@ -572,8 +533,7 @@ TEST_F(BinderLibTest, IndirectGetId2)
     EXPECT_EQ(reply.dataSize(), reply.dataPosition());
 }
 
-TEST_F(BinderLibTest, IndirectGetId3)
-{
+TEST_F(BinderLibTest, IndirectGetId3) {
     int32_t id;
     int32_t count;
     Parcel data, reply;
@@ -630,8 +590,7 @@ TEST_F(BinderLibTest, IndirectGetId3)
     EXPECT_EQ(reply.dataSize(), reply.dataPosition());
 }
 
-TEST_F(BinderLibTest, CallBack)
-{
+TEST_F(BinderLibTest, CallBack) {
     Parcel data, reply;
     sp<BinderLibTestCallBack> callBack = new BinderLibTestCallBack();
     data.writeStrongBinder(callBack);
@@ -648,14 +607,12 @@ TEST_F(BinderLibTest, BinderCallContextGuard) {
                 StatusEq(DEAD_OBJECT));
 }
 
-TEST_F(BinderLibTest, AddServer)
-{
+TEST_F(BinderLibTest, AddServer) {
     sp<IBinder> server = addServer();
     ASSERT_TRUE(server != nullptr);
 }
 
-TEST_F(BinderLibTest, DeathNotificationStrongRef)
-{
+TEST_F(BinderLibTest, DeathNotificationStrongRef) {
     sp<IBinder> sbinder;
 
     sp<TestDeathRecipient> testDeathRecipient = new TestDeathRecipient();
@@ -676,8 +633,7 @@ TEST_F(BinderLibTest, DeathNotificationStrongRef)
     EXPECT_THAT(sbinder->unlinkToDeath(testDeathRecipient), StatusEq(DEAD_OBJECT));
 }
 
-TEST_F(BinderLibTest, DeathNotificationMultiple)
-{
+TEST_F(BinderLibTest, DeathNotificationMultiple) {
     status_t ret;
     const int clientcount = 2;
     sp<IBinder> target;
@@ -723,8 +679,7 @@ TEST_F(BinderLibTest, DeathNotificationMultiple)
     }
 }
 
-TEST_F(BinderLibTest, DeathNotificationThread)
-{
+TEST_F(BinderLibTest, DeathNotificationThread) {
     status_t ret;
     sp<BinderLibTestCallBack> callback;
     sp<IBinder> target = addServer();
@@ -783,7 +738,7 @@ TEST_F(BinderLibTest, DeathNotificationThread)
 TEST_F(BinderLibTest, PassFile) {
     int ret;
     int pipefd[2];
-    uint8_t buf[1] = { 0 };
+    uint8_t buf[1] = {0};
     uint8_t write_value = 123;
 
     ret = pipe2(pipefd, O_NONBLOCK);
@@ -791,7 +746,7 @@ TEST_F(BinderLibTest, PassFile) {
 
     {
         Parcel data, reply;
-        uint8_t writebuf[1] = { write_value };
+        uint8_t writebuf[1] = {write_value};
 
         EXPECT_THAT(data.writeFileDescriptor(pipefd[1], true), StatusEq(NO_ERROR));
 
@@ -953,8 +908,7 @@ TEST_F(BinderLibTest, CheckNoHeaderMappedInUser) {
                 StatusEq(NO_ERROR));
 }
 
-TEST_F(BinderLibTest, OnewayQueueing)
-{
+TEST_F(BinderLibTest, OnewayQueueing) {
     Parcel data, data2;
 
     sp<IBinder> pollServer = addPollServer();
@@ -984,8 +938,7 @@ TEST_F(BinderLibTest, OnewayQueueing)
     EXPECT_THAT(callBack2->getResult(), StatusEq(NO_ERROR));
 }
 
-TEST_F(BinderLibTest, WorkSourceUnsetByDefault)
-{
+TEST_F(BinderLibTest, WorkSourceUnsetByDefault) {
     status_t ret;
     Parcel data, reply;
     data.writeInterfaceToken(binderLibTestServiceName);
@@ -994,8 +947,7 @@ TEST_F(BinderLibTest, WorkSourceUnsetByDefault)
     EXPECT_EQ(NO_ERROR, ret);
 }
 
-TEST_F(BinderLibTest, WorkSourceSet)
-{
+TEST_F(BinderLibTest, WorkSourceSet) {
     status_t ret;
     Parcel data, reply;
     IPCThreadState::self()->clearCallingWorkSource();
@@ -1008,8 +960,7 @@ TEST_F(BinderLibTest, WorkSourceSet)
     EXPECT_EQ(NO_ERROR, ret);
 }
 
-TEST_F(BinderLibTest, WorkSourceSetWithoutPropagation)
-{
+TEST_F(BinderLibTest, WorkSourceSetWithoutPropagation) {
     status_t ret;
     Parcel data, reply;
 
@@ -1023,8 +974,7 @@ TEST_F(BinderLibTest, WorkSourceSetWithoutPropagation)
     EXPECT_EQ(NO_ERROR, ret);
 }
 
-TEST_F(BinderLibTest, WorkSourceCleared)
-{
+TEST_F(BinderLibTest, WorkSourceCleared) {
     status_t ret;
     Parcel data, reply;
 
@@ -1039,8 +989,7 @@ TEST_F(BinderLibTest, WorkSourceCleared)
     EXPECT_EQ(NO_ERROR, ret);
 }
 
-TEST_F(BinderLibTest, WorkSourceRestored)
-{
+TEST_F(BinderLibTest, WorkSourceRestored) {
     status_t ret;
     Parcel data, reply;
 
@@ -1056,30 +1005,26 @@ TEST_F(BinderLibTest, WorkSourceRestored)
     EXPECT_EQ(NO_ERROR, ret);
 }
 
-TEST_F(BinderLibTest, PropagateFlagSet)
-{
+TEST_F(BinderLibTest, PropagateFlagSet) {
     IPCThreadState::self()->clearPropagateWorkSource();
     IPCThreadState::self()->setCallingWorkSourceUid(100);
     EXPECT_EQ(true, IPCThreadState::self()->shouldPropagateWorkSource());
 }
 
-TEST_F(BinderLibTest, PropagateFlagCleared)
-{
+TEST_F(BinderLibTest, PropagateFlagCleared) {
     IPCThreadState::self()->setCallingWorkSourceUid(100);
     IPCThreadState::self()->clearPropagateWorkSource();
     EXPECT_EQ(false, IPCThreadState::self()->shouldPropagateWorkSource());
 }
 
-TEST_F(BinderLibTest, PropagateFlagRestored)
-{
+TEST_F(BinderLibTest, PropagateFlagRestored) {
     int token = IPCThreadState::self()->setCallingWorkSourceUid(100);
     IPCThreadState::self()->restoreCallingWorkSource(token);
 
     EXPECT_EQ(false, IPCThreadState::self()->shouldPropagateWorkSource());
 }
 
-TEST_F(BinderLibTest, WorkSourcePropagatedForAllFollowingBinderCalls)
-{
+TEST_F(BinderLibTest, WorkSourcePropagatedForAllFollowingBinderCalls) {
     IPCThreadState::self()->setCallingWorkSourceUid(100);
 
     Parcel data, reply;
@@ -1114,9 +1059,7 @@ TEST_F(BinderLibTest, InheritRt) {
     sp<IBinder> server = addServer();
     ASSERT_TRUE(server != nullptr);
 
-    const struct sched_param param {
-        .sched_priority = kSchedPriorityMore,
-    };
+    const struct sched_param param { .sched_priority = kSchedPriorityMore, };
     EXPECT_EQ(0, sched_setscheduler(getpid(), SCHED_RR, &param));
 
     Parcel data, reply;
@@ -1135,7 +1078,7 @@ TEST_F(BinderLibTest, VectorSent) {
     sp<IBinder> server = addServer();
     ASSERT_TRUE(server != nullptr);
 
-    std::vector<uint64_t> const testValue = { std::numeric_limits<uint64_t>::max(), 0, 200 };
+    std::vector<uint64_t> const testValue = {std::numeric_limits<uint64_t>::max(), 0, 200};
     data.writeUint64Vector(testValue);
 
     EXPECT_THAT(server->transact(BINDER_LIB_TEST_ECHO_VECTOR, data, &reply), StatusEq(NO_ERROR));
@@ -1150,17 +1093,17 @@ TEST_F(BinderLibTest, BufRejected) {
     sp<IBinder> server = addServer();
     ASSERT_TRUE(server != nullptr);
 
-    binder_buffer_object obj {
-        .hdr = { .type = BINDER_TYPE_PTR },
-        .flags = 0,
-        .buffer = reinterpret_cast<binder_uintptr_t>((void*)&buf),
-        .length = 4,
+    binder_buffer_object obj{
+            .hdr = {.type = BINDER_TYPE_PTR},
+            .flags = 0,
+            .buffer = reinterpret_cast<binder_uintptr_t>((void *)&buf),
+            .length = 4,
     };
     data.setDataCapacity(1024);
     // Write a bogus object at offset 0 to get an entry in the offset table
     data.writeFileDescriptor(0);
     EXPECT_EQ(data.objectsCount(), 1);
-    uint8_t *parcelData = const_cast<uint8_t*>(data.data());
+    uint8_t *parcelData = const_cast<uint8_t *>(data.data());
     // And now, overwrite it with the buffer object
     memcpy(parcelData, &obj, sizeof(obj));
     data.setDataSize(sizeof(obj));
@@ -1655,8 +1598,7 @@ private:
     bool m_exitOnDestroy;
 };
 
-int run_server(int index, int readypipefd, bool usePoll)
-{
+int run_server(int index, int readypipefd, bool usePoll) {
     binderLibTestServiceName += String16(binderserversuffix);
 
     // Testing to make sure that calls that we are serving can use getCallin*
@@ -1669,7 +1611,7 @@ int run_server(int index, int readypipefd, bool usePoll)
 
     status_t ret;
     sp<IServiceManager> sm = defaultServiceManager();
-    BinderLibTestService* testServicePtr;
+    BinderLibTestService *testServicePtr;
     {
         sp<BinderLibTestService> testService = new BinderLibTestService(index);
 
@@ -1706,10 +1648,9 @@ int run_server(int index, int readypipefd, bool usePoll)
     }
     write(readypipefd, &ret, sizeof(ret));
     close(readypipefd);
-    //printf("%s: ret %d\n", __func__, ret);
-    if (ret)
-        return 1;
-    //printf("%s: joinThreadPool\n", __func__);
+    // printf("%s: ret %d\n", __func__, ret);
+    if (ret) return 1;
+    // printf("%s: joinThreadPool\n", __func__);
     if (usePoll) {
         int fd;
         struct epoll_event ev;
@@ -1731,33 +1672,33 @@ int run_server(int index, int readypipefd, bool usePoll)
         }
 
         while (1) {
-             /*
-              * We simulate a single-threaded process using the binder poll
-              * interface; besides handling binder commands, it can also
-              * issue outgoing transactions, by storing a callback in
-              * m_callback.
-              *
-              * processPendingCall() will then issue that transaction.
-              */
-             struct epoll_event events[1];
-             int numEvents = epoll_wait(epoll_fd, events, 1, 1000);
-             if (numEvents < 0) {
-                 if (errno == EINTR) {
-                     continue;
-                 }
-                 return 1;
-             }
-             if (numEvents > 0) {
-                 IPCThreadState::self()->handlePolledCommands();
-                 IPCThreadState::self()->flushCommands(); // flush BC_FREE_BUFFER
-                 testServicePtr->processPendingCall();
-             }
+            /*
+             * We simulate a single-threaded process using the binder poll
+             * interface; besides handling binder commands, it can also
+             * issue outgoing transactions, by storing a callback in
+             * m_callback.
+             *
+             * processPendingCall() will then issue that transaction.
+             */
+            struct epoll_event events[1];
+            int numEvents = epoll_wait(epoll_fd, events, 1, 1000);
+            if (numEvents < 0) {
+                if (errno == EINTR) {
+                    continue;
+                }
+                return 1;
+            }
+            if (numEvents > 0) {
+                IPCThreadState::self()->handlePolledCommands();
+                IPCThreadState::self()->flushCommands(); // flush BC_FREE_BUFFER
+                testServicePtr->processPendingCall();
+            }
         }
     } else {
         ProcessState::self()->startThreadPool();
         IPCThreadState::self()->joinThreadPool();
     }
-    //printf("%s: joinThreadPool returned\n", __func__);
+    // printf("%s: joinThreadPool returned\n", __func__);
     return 1; /* joinThreadPool should not return */
 }
 

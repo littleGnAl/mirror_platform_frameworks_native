@@ -96,7 +96,9 @@ class SharedRefBase {
         return t->template ref<T>();  // NOLINT(clang-analyzer-unix.Malloc)
     }
 
-    static void operator delete(void* p) { std::free(p); }
+    static void operator delete(void* p) {
+        std::free(p);
+    }
 
     // Once minSdkVersion is 30, we are guaranteed to be building with the
     // Android 11 AIDL compiler which supports the SharedRefBase::make API.
@@ -108,7 +110,9 @@ class SharedRefBase {
 #else
     [[deprecated("Prefer SharedRefBase::make<T>(...) if possible.")]]
 #endif
-    static void* operator new(size_t s) { return std::malloc(s); }
+    static void* operator new(size_t s) {
+        return std::malloc(s);
+    }
 
    private:
     std::once_flag mFlagThis;

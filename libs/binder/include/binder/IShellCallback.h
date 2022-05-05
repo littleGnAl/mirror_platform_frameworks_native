@@ -22,29 +22,23 @@ namespace android {
 
 // ----------------------------------------------------------------------
 
-class IShellCallback : public IInterface
-{
+class IShellCallback : public IInterface {
 public:
     DECLARE_META_INTERFACE(ShellCallback)
 
     virtual int openFile(const String16& path, const String16& seLinuxContext,
-            const String16& mode) = 0;
+                         const String16& mode) = 0;
 
-    enum {
-        OP_OPEN_OUTPUT_FILE = IBinder::FIRST_CALL_TRANSACTION
-    };
+    enum { OP_OPEN_OUTPUT_FILE = IBinder::FIRST_CALL_TRANSACTION };
 };
 
 // ----------------------------------------------------------------------
 
-class BnShellCallback : public BnInterface<IShellCallback>
-{
+class BnShellCallback : public BnInterface<IShellCallback> {
 public:
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t    onTransact( uint32_t code,
-                                    const Parcel& data,
-                                    Parcel* reply,
-                                    uint32_t flags = 0);
+    virtual status_t onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                uint32_t flags = 0);
 };
 
 // ----------------------------------------------------------------------

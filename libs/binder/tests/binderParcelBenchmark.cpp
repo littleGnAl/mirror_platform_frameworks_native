@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include <binder/Parcel.h>
 #include <benchmark/benchmark.h>
+#include <binder/Parcel.h>
 
 // Usage: atest binderParcelBenchmark
 
@@ -24,8 +24,8 @@
 template <typename T>
 constexpr bool dependent_false_v = false;
 
-template <template <typename ...> class V, typename T, typename... Args>
-void writeVector(android::Parcel &p, const V<T, Args...> &v) {
+template <template <typename...> class V, typename T, typename... Args>
+void writeVector(android::Parcel& p, const V<T, Args...>& v) {
     if constexpr (std::is_same_v<T, bool>) {
         p.writeBoolVector(v);
     } else if constexpr (std::is_same_v<T, uint8_t>) {
@@ -41,8 +41,8 @@ void writeVector(android::Parcel &p, const V<T, Args...> &v) {
     }
 }
 
-template <template <typename ...> class V, typename T, typename... Args>
-void readVector(android::Parcel &p, V<T, Args...> *v) {
+template <template <typename...> class V, typename T, typename... Args>
+void readVector(android::Parcel& p, V<T, Args...>* v) {
     if constexpr (std::is_same_v<T, bool>) {
         p.readBoolVector(v);
     } else if constexpr (std::is_same_v<T, uint8_t>) {

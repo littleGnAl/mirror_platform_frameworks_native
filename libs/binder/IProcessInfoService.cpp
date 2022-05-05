@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-#include <processinfo/IProcessInfoService.h>
 #include <binder/Parcel.h>
-#include <utils/Errors.h>
+#include <processinfo/IProcessInfoService.h>
 #include <sys/types.h>
+#include <utils/Errors.h>
 
 namespace android {
 
@@ -26,11 +26,10 @@ namespace android {
 class BpProcessInfoService : public BpInterface<IProcessInfoService> {
 public:
     explicit BpProcessInfoService(const sp<IBinder>& impl)
-        : BpInterface<IProcessInfoService>(impl) {}
+          : BpInterface<IProcessInfoService>(impl) {}
 
     virtual status_t getProcessStatesFromPids(size_t length, /*in*/ int32_t* pids,
-            /*out*/ int32_t* states)
-    {
+                                              /*out*/ int32_t* states) {
         Parcel data, reply;
         data.writeInterfaceToken(IProcessInfoService::getInterfaceDescriptor());
         data.writeInt32Array(length, pids);
@@ -50,34 +49,32 @@ public:
     }
 
     virtual status_t getProcessStatesAndOomScoresFromPids(size_t length,
-            /*in*/ int32_t* pids, /*out*/ int32_t* states, /*out*/ int32_t* scores)
-    {
+                                                          /*in*/ int32_t* pids,
+                                                          /*out*/ int32_t* states,
+                                                          /*out*/ int32_t* scores) {
         Parcel data, reply;
         data.writeInterfaceToken(IProcessInfoService::getInterfaceDescriptor());
         data.writeInt32Array(length, pids);
         // write length of output arrays, used by java AIDL stubs
         data.writeInt32(length);
         data.writeInt32(length);
-        status_t err = remote()->transact(
-                GET_PROCESS_STATES_AND_OOM_SCORES_FROM_PIDS, data, &reply);
-        if (err != NO_ERROR
-                || ((err = reply.readExceptionCode()) != NO_ERROR)) {
+        status_t err =
+                remote()->transact(GET_PROCESS_STATES_AND_OOM_SCORES_FROM_PIDS, data, &reply);
+        if (err != NO_ERROR || ((err = reply.readExceptionCode()) != NO_ERROR)) {
             return err;
         }
         int32_t replyLen = reply.readInt32();
         if (static_cast<size_t>(replyLen) != length) {
             return NOT_ENOUGH_DATA;
         }
-        if (replyLen > 0 && (err = reply.read(
-                states, length * sizeof(*states))) != NO_ERROR) {
+        if (replyLen > 0 && (err = reply.read(states, length * sizeof(*states))) != NO_ERROR) {
             return err;
         }
         replyLen = reply.readInt32();
         if (static_cast<size_t>(replyLen) != length) {
             return NOT_ENOUGH_DATA;
         }
-        if (replyLen > 0 && (err = reply.read(
-                scores, length * sizeof(*scores))) != NO_ERROR) {
+        if (replyLen > 0 && (err = reply.read(scores, length * sizeof(*scores))) != NO_ERROR) {
             return err;
         }
         return reply.readInt32();

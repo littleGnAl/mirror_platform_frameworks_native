@@ -15,11 +15,10 @@
  */
 
 #include <android/binder_stability.h>
-
 #include <binder/Stability.h>
-#include "ibinder_internal.h"
-
 #include <log/log.h>
+
+#include "ibinder_internal.h"
 
 using ::android::internal::Stability;
 

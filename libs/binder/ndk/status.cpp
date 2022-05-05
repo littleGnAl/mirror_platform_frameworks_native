@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-#include <android/binder_status.h>
-#include "status_internal.h"
-
 #include <android-base/logging.h>
+#include <android/binder_status.h>
+
+#include "status_internal.h"
 
 using ::android::status_t;
 using ::android::statusToString;

@@ -19,9 +19,9 @@
 
 #include "Static.h"
 
-#include "BufferedTextOutput.h"
 #include <binder/IPCThreadState.h>
 #include <utils/Log.h>
+#include "BufferedTextOutput.h"
 
 namespace android {
 
@@ -29,31 +29,27 @@ namespace android {
 
 Vector<int32_t> gTextBuffers;
 
-class LogTextOutput : public BufferedTextOutput
-{
+class LogTextOutput : public BufferedTextOutput {
 public:
-    LogTextOutput() : BufferedTextOutput(MULTITHREADED) { }
-    virtual ~LogTextOutput() { }
+    LogTextOutput() : BufferedTextOutput(MULTITHREADED) {}
+    virtual ~LogTextOutput() {}
 
 protected:
-    virtual status_t writeLines(const struct iovec& vec, size_t N)
-    {
-        //android_writevLog(&vec, N);       <-- this is now a no-op
+    virtual status_t writeLines(const struct iovec& vec, size_t N) {
+        // android_writevLog(&vec, N);       <-- this is now a no-op
         if (N != 1) ALOGI("WARNING: writeLines N=%zu\n", N);
-        ALOGI("%.*s", (int)vec.iov_len, (const char*) vec.iov_base);
+        ALOGI("%.*s", (int)vec.iov_len, (const char*)vec.iov_base);
         return NO_ERROR;
     }
 };
 
-class FdTextOutput : public BufferedTextOutput
-{
+class FdTextOutput : public BufferedTextOutput {
 public:
-    explicit FdTextOutput(int fd) : BufferedTextOutput(MULTITHREADED), mFD(fd) { }
-    virtual ~FdTextOutput() { }
+    explicit FdTextOutput(int fd) : BufferedTextOutput(MULTITHREADED), mFD(fd) {}
+    virtual ~FdTextOutput() {}
 
 protected:
-    virtual status_t writeLines(const struct iovec& vec, size_t N)
-    {
+    virtual status_t writeLines(const struct iovec& vec, size_t N) {
         ssize_t ret = writev(mFD, &vec, N);
         if (ret == -1) return -errno;
         if (static_cast<size_t>(ret) != N) return UNKNOWN_ERROR;
@@ -68,4 +64,4 @@ TextOutput& alog(*new LogTextOutput());
 TextOutput& aout(*new FdTextOutput(STDOUT_FILENO));
 TextOutput& aerr(*new FdTextOutput(STDERR_FILENO));
 
-}   // namespace android
+} // namespace android

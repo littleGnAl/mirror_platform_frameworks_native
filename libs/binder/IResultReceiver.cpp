@@ -18,21 +18,17 @@
 
 #include <binder/IResultReceiver.h>
 
-#include <utils/Log.h>
 #include <binder/Parcel.h>
+#include <utils/Log.h>
 #include <utils/String8.h>
 
 namespace android {
 
 // ----------------------------------------------------------------------
 
-class BpResultReceiver : public BpInterface<IResultReceiver>
-{
+class BpResultReceiver : public BpInterface<IResultReceiver> {
 public:
-    explicit BpResultReceiver(const sp<IBinder>& impl)
-        : BpInterface<IResultReceiver>(impl)
-    {
-    }
+    explicit BpResultReceiver(const sp<IBinder>& impl) : BpInterface<IResultReceiver>(impl) {}
 
     virtual void send(int32_t resultCode) {
         Parcel data;
@@ -47,10 +43,9 @@ IMPLEMENT_META_INTERFACE(ResultReceiver, "com.android.internal.os.IResultReceive
 // ----------------------------------------------------------------------
 
 // NOLINTNEXTLINE(google-default-arguments)
-status_t BnResultReceiver::onTransact(
-    uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
-{
-    switch(code) {
+status_t BnResultReceiver::onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                      uint32_t flags) {
+    switch (code) {
         case OP_SEND: {
             CHECK_INTERFACE(IResultReceiver, data, reply);
             int32_t resultCode = data.readInt32();

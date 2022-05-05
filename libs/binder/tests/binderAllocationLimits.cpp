@@ -15,8 +15,8 @@
  */
 
 #include <android-base/logging.h>
-#include <binder/Parcel.h>
 #include <binder/IServiceManager.h>
+#include <binder/Parcel.h>
 #include <gtest/gtest.h>
 #include <utils/CallStack.h>
 
@@ -27,6 +27,7 @@
 struct DestructionAction {
     DestructionAction(std::function<void()> f) : mF(std::move(f)) {}
     ~DestructionAction() { mF(); };
+
 private:
     std::function<void()> mF;
 };
@@ -38,8 +39,8 @@ struct MallocHooks {
 
     static MallocHooks save() {
         return {
-            .malloc_hook = __malloc_hook,
-            .realloc_hook = __realloc_hook,
+                .malloc_hook = __malloc_hook,
+                .realloc_hook = __realloc_hook,
         };
     }
 
@@ -53,41 +54,40 @@ static const MallocHooks orig_malloc_hooks = MallocHooks::save();
 
 // When malloc is hit, executes lambda.
 namespace LambdaHooks {
-    using AllocationHook = std::function<void(size_t)>;
-    static std::vector<AllocationHook> lambdas = {};
+using AllocationHook = std::function<void(size_t)>;
+static std::vector<AllocationHook> lambdas = {};
 
-    static void* lambda_realloc_hook(void* ptr, size_t bytes, const void* arg);
-    static void* lambda_malloc_hook(size_t bytes, const void* arg);
+static void* lambda_realloc_hook(void* ptr, size_t bytes, const void* arg);
+static void* lambda_malloc_hook(size_t bytes, const void* arg);
 
-    static const MallocHooks lambda_malloc_hooks = {
+static const MallocHooks lambda_malloc_hooks = {
         .malloc_hook = lambda_malloc_hook,
         .realloc_hook = lambda_realloc_hook,
-    };
+};
 
-    static void* lambda_malloc_hook(size_t bytes, const void* arg) {
-        {
-            orig_malloc_hooks.overwrite();
-            lambdas.at(lambdas.size() - 1)(bytes);
-            lambda_malloc_hooks.overwrite();
-        }
-        return orig_malloc_hooks.malloc_hook(bytes, arg);
+static void* lambda_malloc_hook(size_t bytes, const void* arg) {
+    {
+        orig_malloc_hooks.overwrite();
+        lambdas.at(lambdas.size() - 1)(bytes);
+        lambda_malloc_hooks.overwrite();
     }
-
-    static void* lambda_realloc_hook(void* ptr, size_t bytes, const void* arg) {
-        {
-            orig_malloc_hooks.overwrite();
-            lambdas.at(lambdas.size() - 1)(bytes);
-            lambda_malloc_hooks.overwrite();
-        }
-        return orig_malloc_hooks.realloc_hook(ptr, bytes, arg);
-    }
-
+    return orig_malloc_hooks.malloc_hook(bytes, arg);
 }
+
+static void* lambda_realloc_hook(void* ptr, size_t bytes, const void* arg) {
+    {
+        orig_malloc_hooks.overwrite();
+        lambdas.at(lambdas.size() - 1)(bytes);
+        lambda_malloc_hooks.overwrite();
+    }
+    return orig_malloc_hooks.realloc_hook(ptr, bytes, arg);
+}
+
+} // namespace LambdaHooks
 
 // Action to execute when malloc is hit. Supports nesting. Malloc is not
 // restricted when the allocation hook is being processed.
-__attribute__((warn_unused_result))
-DestructionAction OnMalloc(LambdaHooks::AllocationHook f) {
+__attribute__((warn_unused_result)) DestructionAction OnMalloc(LambdaHooks::AllocationHook f) {
     MallocHooks before = MallocHooks::save();
     LambdaHooks::lambdas.emplace_back(std::move(f));
     LambdaHooks::lambda_malloc_hooks.overwrite();
@@ -113,23 +113,22 @@ TEST(TestTheTest, OnMalloc) {
     EXPECT_EQ(mallocs, 1);
 }
 
-
-__attribute__((warn_unused_result))
-DestructionAction ScopeDisallowMalloc() {
+__attribute__((warn_unused_result)) DestructionAction ScopeDisallowMalloc() {
     return OnMalloc([&](size_t bytes) {
         ADD_FAILURE() << "Unexpected allocation: " << bytes;
         using android::CallStack;
-        std::cout << CallStack::stackToString("UNEXPECTED ALLOCATION", CallStack::getCurrent(4 /*ignoreDepth*/).get())
+        std::cout << CallStack::stackToString("UNEXPECTED ALLOCATION",
+                                              CallStack::getCurrent(4 /*ignoreDepth*/).get())
                   << std::endl;
     });
 }
 
-using android::IBinder;
-using android::Parcel;
-using android::String16;
 using android::defaultServiceManager;
-using android::sp;
+using android::IBinder;
 using android::IServiceManager;
+using android::Parcel;
+using android::sp;
+using android::String16;
 
 static sp<IBinder> GetRemoteBinder() {
     // This gets binder representing the service manager

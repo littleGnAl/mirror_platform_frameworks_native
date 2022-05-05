@@ -114,6 +114,7 @@ public:
     // Returns true if the binder needs to be declared in the VINTF manifest or
     // else false if the binder is local to the current partition.
     static bool requiresVintfDeclaration(const sp<IBinder>& binder);
+
 private:
     // Parcel needs to read/write stability level in an unstable format.
     friend ::android::Parcel;
@@ -145,9 +146,9 @@ private:
     static void forceDowngradeToStability(const sp<IBinder>& binder, Level level);
 
     enum {
-      REPR_NONE = 0,
-      REPR_LOG = 1,
-      REPR_ALLOW_DOWNGRADE = 2,
+        REPR_NONE = 0,
+        REPR_LOG = 1,
+        REPR_ALLOW_DOWNGRADE = 2,
     };
     // applies stability to binder if stability level is known
     __attribute__((warn_unused_result)) static status_t setRepr(IBinder* binder, int32_t setting,
@@ -166,5 +167,5 @@ private:
     Stability();
 };
 
-}  // namespace internal
-}  // namespace android
+} // namespace internal
+} // namespace android

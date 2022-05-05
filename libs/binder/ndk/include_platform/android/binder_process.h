@@ -16,10 +16,9 @@
 
 #pragma once
 
+#include <android/binder_status.h>
 #include <stdint.h>
 #include <sys/cdefs.h>
-
-#include <android/binder_status.h>
 
 __BEGIN_DECLS
 

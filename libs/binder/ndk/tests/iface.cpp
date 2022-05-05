@@ -15,10 +15,9 @@
  */
 
 #include <android-base/logging.h>
+#include <android/binder_auto_utils.h>
 #include <android/binder_manager.h>
 #include <iface/iface.h>
-
-#include <android/binder_auto_utils.h>
 
 using ::android::sp;
 using ::android::wp;

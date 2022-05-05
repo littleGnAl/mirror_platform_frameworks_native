@@ -56,15 +56,16 @@ static int memfd_create_region(const char* name, size_t size) {
 #endif
 
 MemoryHeapBase::MemoryHeapBase()
-    : mFD(-1), mSize(0), mBase(MAP_FAILED),
-      mDevice(nullptr), mNeedUnmap(false), mOffset(0)
-{
-}
+      : mFD(-1), mSize(0), mBase(MAP_FAILED), mDevice(nullptr), mNeedUnmap(false), mOffset(0) {}
 
-MemoryHeapBase::MemoryHeapBase(size_t size, uint32_t flags, char const * name)
-    : mFD(-1), mSize(0), mBase(MAP_FAILED), mFlags(flags),
-      mDevice(nullptr), mNeedUnmap(false), mOffset(0)
-{
+MemoryHeapBase::MemoryHeapBase(size_t size, uint32_t flags, char const* name)
+      : mFD(-1),
+        mSize(0),
+        mBase(MAP_FAILED),
+        mFlags(flags),
+        mDevice(nullptr),
+        mNeedUnmap(false),
+        mOffset(0) {
     const size_t pagesize = getpagesize();
     size = ((size + pagesize - 1) & ~(pagesize - 1));
     int fd = -1;
@@ -89,7 +90,7 @@ MemoryHeapBase::MemoryHeapBase(size_t size, uint32_t flags, char const * name)
 #endif
     }
     if (mFlags & MEMFD_ALLOW_SEALING) {
-      LOG_ALWAYS_FATAL("Invalid Flags. MEMFD_ALLOW_SEALING only valid with FORCE_MEMFD.");
+        LOG_ALWAYS_FATAL("Invalid Flags. MEMFD_ALLOW_SEALING only valid with FORCE_MEMFD.");
     }
     fd = ashmem_create_region(name ? name : "MemoryHeapBase", size);
     ALOGE_IF(fd < 0, "MemoryHeapBase: error creating ashmem region: %s", strerror(errno));
@@ -100,21 +101,24 @@ MemoryHeapBase::MemoryHeapBase(size_t size, uint32_t flags, char const * name)
 }
 
 MemoryHeapBase::MemoryHeapBase(const char* device, size_t size, uint32_t flags)
-    : mFD(-1), mSize(0), mBase(MAP_FAILED), mFlags(flags),
-      mDevice(nullptr), mNeedUnmap(false), mOffset(0)
-{
+      : mFD(-1),
+        mSize(0),
+        mBase(MAP_FAILED),
+        mFlags(flags),
+        mDevice(nullptr),
+        mNeedUnmap(false),
+        mOffset(0) {
     if (flags & (FORCE_MEMFD | MEMFD_ALLOW_SEALING)) {
         LOG_ALWAYS_FATAL("FORCE_MEMFD, MEMFD_ALLOW_SEALING only valid with creating constructor");
     }
     int open_flags = O_RDWR;
-    if (flags & NO_CACHING)
-        open_flags |= O_SYNC;
+    if (flags & NO_CACHING) open_flags |= O_SYNC;
 
     int fd = open(device, open_flags);
-    ALOGE_IF(fd<0, "error opening %s: %s", device, strerror(errno));
+    ALOGE_IF(fd < 0, "error opening %s: %s", device, strerror(errno));
     if (fd >= 0) {
         const size_t pagesize = getpagesize();
-        size = ((size + pagesize-1) & ~(pagesize-1));
+        size = ((size + pagesize - 1) & ~(pagesize - 1));
         if (mapfd(fd, false, size) == NO_ERROR) {
             mDevice = device;
         }
@@ -122,19 +126,22 @@ MemoryHeapBase::MemoryHeapBase(const char* device, size_t size, uint32_t flags)
 }
 
 MemoryHeapBase::MemoryHeapBase(int fd, size_t size, uint32_t flags, off_t offset)
-    : mFD(-1), mSize(0), mBase(MAP_FAILED), mFlags(flags),
-      mDevice(nullptr), mNeedUnmap(false), mOffset(0)
-{
+      : mFD(-1),
+        mSize(0),
+        mBase(MAP_FAILED),
+        mFlags(flags),
+        mDevice(nullptr),
+        mNeedUnmap(false),
+        mOffset(0) {
     if (flags & (FORCE_MEMFD | MEMFD_ALLOW_SEALING)) {
         LOG_ALWAYS_FATAL("FORCE_MEMFD, MEMFD_ALLOW_SEALING only valid with creating constructor");
     }
     const size_t pagesize = getpagesize();
-    size = ((size + pagesize-1) & ~(pagesize-1));
+    size = ((size + pagesize - 1) & ~(pagesize - 1));
     mapfd(fcntl(fd, F_DUPFD_CLOEXEC, 0), false, size, offset);
 }
 
-status_t MemoryHeapBase::init(int fd, void *base, size_t size, int flags, const char* device)
-{
+status_t MemoryHeapBase::init(int fd, void* base, size_t size, int flags, const char* device) {
     if (mFD != -1) {
         return INVALID_OPERATION;
     }
@@ -146,8 +153,7 @@ status_t MemoryHeapBase::init(int fd, void *base, size_t size, int flags, const 
     return NO_ERROR;
 }
 
-status_t MemoryHeapBase::mapfd(int fd, bool writeableByCaller, size_t size, off_t offset)
-{
+status_t MemoryHeapBase::mapfd(int fd, bool writeableByCaller, size_t size, off_t offset) {
     if (size == 0) {
         // try to figure out the size automatically
         struct stat sb;
@@ -155,8 +161,8 @@ status_t MemoryHeapBase::mapfd(int fd, bool writeableByCaller, size_t size, off_
             size = (size_t)sb.st_size;
             // sb.st_size is off_t which on ILP32 may be 64 bits while size_t is 32 bits.
             if ((off_t)size != sb.st_size) {
-                ALOGE("%s: size of file %lld cannot fit in memory",
-                        __func__, (long long)sb.st_size);
+                ALOGE("%s: size of file %lld cannot fit in memory", __func__,
+                      (long long)sb.st_size);
                 return INVALID_OPERATION;
             }
         }
@@ -168,18 +174,16 @@ status_t MemoryHeapBase::mapfd(int fd, bool writeableByCaller, size_t size, off_
         if (writeableByCaller || (mFlags & READ_ONLY) == 0) {
             prot |= PROT_WRITE;
         }
-        void* base = (uint8_t*)mmap(nullptr, size,
-                prot, MAP_SHARED, fd, offset);
+        void* base = (uint8_t*)mmap(nullptr, size, prot, MAP_SHARED, fd, offset);
         if (base == MAP_FAILED) {
-            ALOGE("mmap(fd=%d, size=%zu) failed (%s)",
-                    fd, size, strerror(errno));
+            ALOGE("mmap(fd=%d, size=%zu) failed (%s)", fd, size, strerror(errno));
             close(fd);
             return -errno;
         }
-        //ALOGD("mmap(fd=%d, base=%p, size=%zu)", fd, base, size);
+        // ALOGD("mmap(fd=%d, base=%p, size=%zu)", fd, base, size);
         mBase = base;
         mNeedUnmap = true;
-    } else  {
+    } else {
         mBase = nullptr; // not MAP_FAILED
         mNeedUnmap = false;
     }
@@ -189,17 +193,15 @@ status_t MemoryHeapBase::mapfd(int fd, bool writeableByCaller, size_t size, off_
     return NO_ERROR;
 }
 
-MemoryHeapBase::~MemoryHeapBase()
-{
+MemoryHeapBase::~MemoryHeapBase() {
     dispose();
 }
 
-void MemoryHeapBase::dispose()
-{
+void MemoryHeapBase::dispose() {
     int fd = android_atomic_or(-1, &mFD);
     if (fd >= 0) {
         if (mNeedUnmap) {
-            //ALOGD("munmap(fd=%d, base=%p, size=%zu)", fd, mBase, mSize);
+            // ALOGD("munmap(fd=%d, base=%p, size=%zu)", fd, mBase, mSize);
             munmap(mBase, mSize);
         }
         mBase = nullptr;

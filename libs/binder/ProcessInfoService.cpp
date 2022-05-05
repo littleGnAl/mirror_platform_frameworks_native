@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include <processinfo/ProcessInfoService.h>
 #include <binder/IServiceManager.h>
+#include <processinfo/ProcessInfoService.h>
 
 #include <utils/Log.h>
 #include <utils/String16.h>
@@ -27,7 +27,7 @@ ProcessInfoService::ProcessInfoService() {
 }
 
 status_t ProcessInfoService::getProcessStatesImpl(size_t length, /*in*/ int32_t* pids,
-        /*out*/ int32_t* states) {
+                                                  /*out*/ int32_t* states) {
     status_t err = NO_ERROR;
     sp<IProcessInfoService> pis;
     mProcessInfoLock.lock();
@@ -35,7 +35,6 @@ status_t ProcessInfoService::getProcessStatesImpl(size_t length, /*in*/ int32_t*
     mProcessInfoLock.unlock();
 
     for (int i = 0; i < BINDER_ATTEMPT_LIMIT; i++) {
-
         if (pis != nullptr) {
             err = pis->getProcessStatesFromPids(length, /*in*/ pids, /*out*/ states);
             if (err == NO_ERROR) return NO_ERROR; // success
@@ -52,14 +51,15 @@ status_t ProcessInfoService::getProcessStatesImpl(size_t length, /*in*/ int32_t*
     }
 
     ALOGW("%s: Could not retrieve process states from ProcessInfoService after %d retries.",
-            __FUNCTION__, BINDER_ATTEMPT_LIMIT);
+          __FUNCTION__, BINDER_ATTEMPT_LIMIT);
 
     return TIMED_OUT;
 }
 
 status_t ProcessInfoService::getProcessStatesScoresImpl(size_t length,
-        /*in*/ int32_t* pids, /*out*/ int32_t* states,
-        /*out*/ int32_t *scores) {
+                                                        /*in*/ int32_t* pids,
+                                                        /*out*/ int32_t* states,
+                                                        /*out*/ int32_t* scores) {
     status_t err = NO_ERROR;
     sp<IProcessInfoService> pis;
     mProcessInfoLock.lock();
@@ -67,10 +67,10 @@ status_t ProcessInfoService::getProcessStatesScoresImpl(size_t length,
     mProcessInfoLock.unlock();
 
     for (int i = 0; i < BINDER_ATTEMPT_LIMIT; i++) {
-
         if (pis != nullptr) {
             err = pis->getProcessStatesAndOomScoresFromPids(length,
-                    /*in*/ pids, /*out*/ states, /*out*/ scores);
+                                                            /*in*/ pids, /*out*/ states,
+                                                            /*out*/ scores);
             if (err == NO_ERROR) return NO_ERROR; // success
             if (IInterface::asBinder(pis)->isBinderAlive()) return err;
         }
@@ -85,8 +85,8 @@ status_t ProcessInfoService::getProcessStatesScoresImpl(size_t length,
     }
 
     ALOGW("%s: Could not retrieve process states and scores "
-            "from ProcessInfoService after %d retries.", __FUNCTION__,
-            BINDER_ATTEMPT_LIMIT);
+          "from ProcessInfoService after %d retries.",
+          __FUNCTION__, BINDER_ATTEMPT_LIMIT);
 
     return TIMED_OUT;
 }

@@ -17,11 +17,11 @@
 #include "log/log_main.h"
 #define LOG_TAG "AidlLazyServiceRegistrar"
 
-#include <binder/LazyServiceRegistrar.h>
-#include <binder/IPCThreadState.h>
-#include <binder/IServiceManager.h>
 #include <android/os/BnClientCallback.h>
 #include <android/os/IServiceManager.h>
+#include <binder/IPCThreadState.h>
+#include <binder/IServiceManager.h>
+#include <binder/LazyServiceRegistrar.h>
 #include <utils/Log.h>
 
 namespace android {
@@ -34,8 +34,8 @@ class ClientCounterCallbackImpl : public ::android::os::BnClientCallback {
 public:
     ClientCounterCallbackImpl() : mNumConnectedServices(0), mForcePersist(false) {}
 
-    bool registerService(const sp<IBinder>& service, const std::string& name,
-                         bool allowIsolated, int dumpFlags);
+    bool registerService(const sp<IBinder>& service, const std::string& name, bool allowIsolated,
+                         int dumpFlags);
     void forcePersist(bool persist);
 
     void setActiveServicesCallback(const std::function<bool(bool)>& activeServicesCallback);
@@ -103,8 +103,8 @@ class ClientCounterCallback {
 public:
     ClientCounterCallback();
 
-    bool registerService(const sp<IBinder>& service, const std::string& name,
-                                            bool allowIsolated, int dumpFlags);
+    bool registerService(const sp<IBinder>& service, const std::string& name, bool allowIsolated,
+                         int dumpFlags);
 
     /**
      * Set a flag to prevent services from automatically shutting down
@@ -122,7 +122,7 @@ private:
 };
 
 bool ClientCounterCallbackImpl::registerService(const sp<IBinder>& service, const std::string& name,
-                                            bool allowIsolated, int dumpFlags) {
+                                                bool allowIsolated, int dumpFlags) {
     std::lock_guard<std::mutex> lock(mMutex);
     return registerServiceLocked(service, name, allowIsolated, dumpFlags);
 }
@@ -154,25 +154,25 @@ bool ClientCounterCallbackImpl::registerServiceLocked(const sp<IBinder>& service
         }
 
         // Only add this when a service is added for the first time, as it is not removed
-        mRegisteredServices[name] = {
-              .service = service,
-              .allowIsolated = allowIsolated,
-              .dumpFlags = dumpFlags
-        };
+        mRegisteredServices[name] = {.service = service,
+                                     .allowIsolated = allowIsolated,
+                                     .dumpFlags = dumpFlags};
     }
 
     return true;
 }
 
-std::map<std::string, ClientCounterCallbackImpl::Service>::iterator ClientCounterCallbackImpl::assertRegisteredService(const sp<IBinder>& service) {
+std::map<std::string, ClientCounterCallbackImpl::Service>::iterator
+ClientCounterCallbackImpl::assertRegisteredService(const sp<IBinder>& service) {
     LOG_ALWAYS_FATAL_IF(service == nullptr, "Got onClients callback for null service");
     for (auto it = mRegisteredServices.begin(); it != mRegisteredServices.end(); ++it) {
         auto const& [name, registered] = *it;
-        (void) name;
+        (void)name;
         if (registered.service != service) continue;
         return it;
     }
-    LOG_ALWAYS_FATAL("Got callback on service which we did not register: %s", String8(service->getInterfaceDescriptor()).c_str());
+    LOG_ALWAYS_FATAL("Got callback on service which we did not register: %s",
+                     String8(service->getInterfaceDescriptor()).c_str());
     __builtin_unreachable();
 }
 
@@ -242,24 +242,26 @@ void ClientCounterCallbackImpl::maybeTryShutdownLocked() {
 
 Status ClientCounterCallbackImpl::onClients(const sp<IBinder>& service, bool clients) {
     std::lock_guard<std::mutex> lock(mMutex);
-    auto & [name, registered] = *assertRegisteredService(service);
+    auto& [name, registered] = *assertRegisteredService(service);
     if (registered.clients == clients) {
         LOG_ALWAYS_FATAL("Process already thought %s had clients: %d but servicemanager has "
-                         "notified has clients: %d", name.c_str(), registered.clients, clients);
+                         "notified has clients: %d",
+                         name.c_str(), registered.clients, clients);
     }
     registered.clients = clients;
 
     // update cache count of clients
     {
-         size_t numWithClients = 0;
-         for (const auto& [name, registered] : mRegisteredServices) {
-             (void) name;
-             if (registered.clients) numWithClients++;
-         }
-         mNumConnectedServices = numWithClients;
+        size_t numWithClients = 0;
+        for (const auto& [name, registered] : mRegisteredServices) {
+            (void)name;
+            if (registered.clients) numWithClients++;
+        }
+        mNumConnectedServices = numWithClients;
     }
 
-    ALOGI("Process has %zu (of %zu available) client(s) in use after notification %s has clients: %d",
+    ALOGI("Process has %zu (of %zu available) client(s) in use after notification %s has clients: "
+          "%d",
           mNumConnectedServices, mRegisteredServices.size(), name.c_str(), clients);
 
     maybeTryShutdownLocked();
@@ -277,14 +279,14 @@ void ClientCounterCallbackImpl::tryShutdownLocked() {
     reRegisterLocked();
 }
 
-void ClientCounterCallbackImpl::setActiveServicesCallback(const std::function<bool(bool)>&
-                                                          activeServicesCallback) {
+void ClientCounterCallbackImpl::setActiveServicesCallback(
+        const std::function<bool(bool)>& activeServicesCallback) {
     std::lock_guard<std::mutex> lock(mMutex);
     mActiveServicesCallback = activeServicesCallback;
 }
 
 ClientCounterCallback::ClientCounterCallback() {
-      mImpl = sp<ClientCounterCallbackImpl>::make();
+    mImpl = sp<ClientCounterCallbackImpl>::make();
 }
 
 bool ClientCounterCallback::registerService(const sp<IBinder>& service, const std::string& name,
@@ -296,8 +298,8 @@ void ClientCounterCallback::forcePersist(bool persist) {
     mImpl->forcePersist(persist);
 }
 
-void ClientCounterCallback::setActiveServicesCallback(const std::function<bool(bool)>&
-                                                      activeServicesCallback) {
+void ClientCounterCallback::setActiveServicesCallback(
+        const std::function<bool(bool)>& activeServicesCallback) {
     mImpl->setActiveServicesCallback(activeServicesCallback);
 }
 
@@ -313,7 +315,7 @@ void ClientCounterCallback::reRegister() {
     mImpl->reRegisterLocked();
 }
 
-}  // namespace internal
+} // namespace internal
 
 LazyServiceRegistrar::LazyServiceRegistrar() {
     mClientCC = std::make_shared<internal::ClientCounterCallback>();
@@ -336,8 +338,8 @@ void LazyServiceRegistrar::forcePersist(bool persist) {
     mClientCC->forcePersist(persist);
 }
 
-void LazyServiceRegistrar::setActiveServicesCallback(const std::function<bool(bool)>&
-                                                     activeServicesCallback) {
+void LazyServiceRegistrar::setActiveServicesCallback(
+        const std::function<bool(bool)>& activeServicesCallback) {
     mClientCC->setActiveServicesCallback(activeServicesCallback);
 }
 
@@ -349,5 +351,5 @@ void LazyServiceRegistrar::reRegister() {
     mClientCC->reRegister();
 }
 
-}  // namespace hardware
-}  // namespace android
+} // namespace binder
+} // namespace android

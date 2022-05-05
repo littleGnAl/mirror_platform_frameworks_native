@@ -17,63 +17,56 @@
 #pragma once
 
 #include <stdint.h>
-#include <sys/types.h>
 #include <sys/mman.h>
+#include <sys/types.h>
 
-#include <utils/RefBase.h>
-#include <utils/Errors.h>
 #include <binder/IInterface.h>
+#include <utils/Errors.h>
+#include <utils/RefBase.h>
 
 namespace android {
 
 // ----------------------------------------------------------------------------
 
-class IMemoryHeap : public IInterface
-{
+class IMemoryHeap : public IInterface {
 public:
     DECLARE_META_INTERFACE(MemoryHeap)
 
     // flags returned by getFlags()
-    enum {
-        READ_ONLY   = 0x00000001
-    };
+    enum { READ_ONLY = 0x00000001 };
 
-    virtual int         getHeapID() const = 0;
-    virtual void*       getBase() const = 0;
-    virtual size_t      getSize() const = 0;
-    virtual uint32_t    getFlags() const = 0;
-    virtual off_t       getOffset() const = 0;
+    virtual int getHeapID() const = 0;
+    virtual void* getBase() const = 0;
+    virtual size_t getSize() const = 0;
+    virtual uint32_t getFlags() const = 0;
+    virtual off_t getOffset() const = 0;
 
     // these are there just for backward source compatibility
     int32_t heapID() const { return getHeapID(); }
-    void*   base() const  { return getBase(); }
-    size_t  virtualSize() const { return getSize(); }
+    void* base() const { return getBase(); }
+    size_t virtualSize() const { return getSize(); }
 };
 
-class BnMemoryHeap : public BnInterface<IMemoryHeap>
-{
+class BnMemoryHeap : public BnInterface<IMemoryHeap> {
 public:
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t onTransact(
-            uint32_t code,
-            const Parcel& data,
-            Parcel* reply,
-            uint32_t flags = 0);
-    
+    virtual status_t onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                uint32_t flags = 0);
+
     BnMemoryHeap();
+
 protected:
     virtual ~BnMemoryHeap();
 };
 
 // ----------------------------------------------------------------------------
 
-class IMemory : public IInterface
-{
+class IMemory : public IInterface {
 public:
     DECLARE_META_INTERFACE(Memory)
 
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual sp<IMemoryHeap> getMemory(ssize_t* offset=nullptr, size_t* size=nullptr) const = 0;
+    virtual sp<IMemoryHeap> getMemory(ssize_t* offset = nullptr, size_t* size = nullptr) const = 0;
 
     // helpers
 
@@ -105,17 +98,14 @@ private:
     void* fastPointer(const sp<IBinder>& heap, ssize_t offset) const;
 };
 
-class BnMemory : public BnInterface<IMemory>
-{
+class BnMemory : public BnInterface<IMemory> {
 public:
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t onTransact(
-            uint32_t code,
-            const Parcel& data,
-            Parcel* reply,
-            uint32_t flags = 0);
+    virtual status_t onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                uint32_t flags = 0);
 
     BnMemory();
+
 protected:
     virtual ~BnMemory();
 };

@@ -25,4 +25,4 @@ namespace android {
 // For TextStream.cpp
 extern Vector<int32_t> gTextBuffers;
 
-}   // namespace android
+} // namespace android

@@ -18,24 +18,20 @@
 
 #include <binder/IPermissionController.h>
 
-#include <utils/Log.h>
 #include <binder/Parcel.h>
+#include <utils/Log.h>
 #include <utils/String8.h>
 
 namespace android {
 
 // ----------------------------------------------------------------------
 
-class BpPermissionController : public BpInterface<IPermissionController>
-{
+class BpPermissionController : public BpInterface<IPermissionController> {
 public:
     explicit BpPermissionController(const sp<IBinder>& impl)
-        : BpInterface<IPermissionController>(impl)
-    {
-    }
+          : BpInterface<IPermissionController>(impl) {}
 
-    virtual bool checkPermission(const String16& permission, int32_t pid, int32_t uid)
-    {
+    virtual bool checkPermission(const String16& permission, int32_t pid, int32_t uid) {
         Parcel data, reply;
         data.writeInterfaceToken(IPermissionController::getInterfaceDescriptor());
         data.writeString16(permission);
@@ -47,8 +43,7 @@ public:
         return reply.readInt32() != 0;
     }
 
-    virtual int32_t noteOp(const String16& op, int32_t uid, const String16& packageName)
-    {
+    virtual int32_t noteOp(const String16& op, int32_t uid, const String16& packageName) {
         Parcel data, reply;
         data.writeInterfaceToken(IPermissionController::getInterfaceDescriptor());
         data.writeString16(op);
@@ -60,8 +55,7 @@ public:
         return reply.readInt32();
     }
 
-    virtual void getPackagesForUid(const uid_t uid, Vector<String16>& packages)
-    {
+    virtual void getPackagesForUid(const uid_t uid, Vector<String16>& packages) {
         Parcel data, reply;
         data.writeInterfaceToken(IPermissionController::getInterfaceDescriptor());
         data.writeInt32(uid);
@@ -79,8 +73,7 @@ public:
         }
     }
 
-    virtual bool isRuntimePermission(const String16& permission)
-    {
+    virtual bool isRuntimePermission(const String16& permission) {
         Parcel data, reply;
         data.writeInterfaceToken(IPermissionController::getInterfaceDescriptor());
         data.writeString16(permission);
@@ -90,8 +83,7 @@ public:
         return reply.readInt32() != 0;
     }
 
-    virtual int getPackageUid(const String16& package, int flags)
-    {
+    virtual int getPackageUid(const String16& package, int flags) {
         Parcel data, reply;
         data.writeInterfaceToken(IPermissionController::getInterfaceDescriptor());
         data.writeString16(package);
@@ -108,10 +100,9 @@ IMPLEMENT_META_INTERFACE(PermissionController, "android.os.IPermissionController
 // ----------------------------------------------------------------------
 
 // NOLINTNEXTLINE(google-default-arguments)
-status_t BnPermissionController::onTransact(
-    uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
-{
-    switch(code) {
+status_t BnPermissionController::onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                            uint32_t flags) {
+    switch (code) {
         case CHECK_PERMISSION_TRANSACTION: {
             CHECK_INTERFACE(IPermissionController, data, reply);
             String16 permission = data.readString16();

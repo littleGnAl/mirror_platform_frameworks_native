@@ -25,8 +25,7 @@ namespace android {
 
 // ----------------------------------------------------------------------
 
-class IPermissionController : public IInterface
-{
+class IPermissionController : public IInterface {
 public:
     DECLARE_META_INTERFACE(PermissionController)
 
@@ -34,7 +33,7 @@ public:
 
     virtual int32_t noteOp(const String16& op, int32_t uid, const String16& packageName) = 0;
 
-    virtual void getPackagesForUid(const uid_t uid, Vector<String16> &packages) = 0;
+    virtual void getPackagesForUid(const uid_t uid, Vector<String16>& packages) = 0;
 
     virtual bool isRuntimePermission(const String16& permission) = 0;
 
@@ -51,14 +50,11 @@ public:
 
 // ----------------------------------------------------------------------
 
-class BnPermissionController : public BnInterface<IPermissionController>
-{
+class BnPermissionController : public BnInterface<IPermissionController> {
 public:
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t    onTransact( uint32_t code,
-                                    const Parcel& data,
-                                    Parcel* reply,
-                                    uint32_t flags = 0);
+    virtual status_t onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                uint32_t flags = 0);
 };
 
 // ----------------------------------------------------------------------

@@ -29,17 +29,16 @@ class SimpleBestFitAllocator;
 
 // ----------------------------------------------------------------------------
 
-class MemoryDealer : public RefBase
-{
+class MemoryDealer : public RefBase {
 public:
     explicit MemoryDealer(size_t size, const char* name = nullptr,
-            uint32_t flags = 0 /* or bits such as MemoryHeapBase::READ_ONLY */ );
+                          uint32_t flags = 0 /* or bits such as MemoryHeapBase::READ_ONLY */);
 
     virtual sp<IMemory> allocate(size_t size);
-    virtual void        dump(const char* what) const;
+    virtual void dump(const char* what) const;
 
     // allocations are aligned to some value. return that value so clients can account for it.
-    static size_t      getAllocationAlignment();
+    static size_t getAllocationAlignment();
 
     sp<IMemoryHeap> getMemoryHeap() const { return heap(); }
 
@@ -48,14 +47,13 @@ protected:
 
 private:
     friend class Allocation;
-    virtual void                deallocate(size_t offset);
-    const sp<IMemoryHeap>&      heap() const;
-    SimpleBestFitAllocator*     allocator() const;
+    virtual void deallocate(size_t offset);
+    const sp<IMemoryHeap>& heap() const;
+    SimpleBestFitAllocator* allocator() const;
 
-    sp<IMemoryHeap>             mHeap;
-    SimpleBestFitAllocator*     mAllocator;
+    sp<IMemoryHeap> mHeap;
+    SimpleBestFitAllocator* mAllocator;
 };
-
 
 // ----------------------------------------------------------------------------
 } // namespace android

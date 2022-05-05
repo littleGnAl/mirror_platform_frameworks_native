@@ -14,20 +14,19 @@
  * limitations under the License.
  */
 
+#include <android-base/logging.h>
 #include <android/binder_ibinder.h>
 #include <android/binder_ibinder_platform.h>
 #include <android/binder_libbinder.h>
-#include "ibinder_internal.h"
-
 #include <android/binder_stability.h>
 #include <android/binder_status.h>
-#include "parcel_internal.h"
-#include "status_internal.h"
-
-#include <android-base/logging.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
 #include <private/android_filesystem_config.h>
+
+#include "ibinder_internal.h"
+#include "parcel_internal.h"
+#include "status_internal.h"
 
 using DeathRecipient = ::android::IBinder::DeathRecipient;
 

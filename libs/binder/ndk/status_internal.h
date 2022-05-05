@@ -17,7 +17,6 @@
 #pragma once
 
 #include <android/binder_status.h>
-
 #include <binder/Status.h>
 #include <utils/Errors.h>
 

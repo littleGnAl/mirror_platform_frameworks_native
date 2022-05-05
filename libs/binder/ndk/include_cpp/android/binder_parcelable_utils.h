@@ -26,6 +26,7 @@
 
 #pragma once
 #include <android/binder_parcel_utils.h>
+
 #include <optional>
 
 namespace ndk {
@@ -195,12 +196,24 @@ class AParcelableHolder {
         }
     }
 
-    inline bool operator!=(const AParcelableHolder& rhs) const { return this != &rhs; }
-    inline bool operator<(const AParcelableHolder& rhs) const { return this < &rhs; }
-    inline bool operator<=(const AParcelableHolder& rhs) const { return this <= &rhs; }
-    inline bool operator==(const AParcelableHolder& rhs) const { return this == &rhs; }
-    inline bool operator>(const AParcelableHolder& rhs) const { return this > &rhs; }
-    inline bool operator>=(const AParcelableHolder& rhs) const { return this >= &rhs; }
+    inline bool operator!=(const AParcelableHolder& rhs) const {
+        return this != &rhs;
+    }
+    inline bool operator<(const AParcelableHolder& rhs) const {
+        return this < &rhs;
+    }
+    inline bool operator<=(const AParcelableHolder& rhs) const {
+        return this <= &rhs;
+    }
+    inline bool operator==(const AParcelableHolder& rhs) const {
+        return this == &rhs;
+    }
+    inline bool operator>(const AParcelableHolder& rhs) const {
+        return this > &rhs;
+    }
+    inline bool operator>=(const AParcelableHolder& rhs) const {
+        return this >= &rhs;
+    }
 
    private:
     mutable ndk::ScopedAParcel mParcel;

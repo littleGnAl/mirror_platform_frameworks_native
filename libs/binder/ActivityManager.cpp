@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include <mutex>
 #include <unistd.h>
+#include <mutex>
 
 #include <android/permission_manager.h>
 #include <binder/ActivityManager.h>
@@ -26,12 +26,9 @@
 
 namespace android {
 
-ActivityManager::ActivityManager()
-{
-}
+ActivityManager::ActivityManager() {}
 
-sp<IActivityManager> ActivityManager::getService()
-{
+sp<IActivityManager> ActivityManager::getService() {
     std::lock_guard<Mutex> scoped_lock(mLock);
     int64_t startTime = 0;
     sp<IActivityManager> service = mService;
@@ -56,17 +53,14 @@ sp<IActivityManager> ActivityManager::getService()
     return service;
 }
 
-int ActivityManager::openContentUri(const String16& stringUri)
-{
+int ActivityManager::openContentUri(const String16& stringUri) {
     sp<IActivityManager> service = getService();
     return service != nullptr ? service->openContentUri(stringUri) : -1;
 }
 
-status_t ActivityManager::registerUidObserver(const sp<IUidObserver>& observer,
-                                          const int32_t event,
-                                          const int32_t cutpoint,
-                                          const String16& callingPackage)
-{
+status_t ActivityManager::registerUidObserver(const sp<IUidObserver>& observer, const int32_t event,
+                                              const int32_t cutpoint,
+                                              const String16& callingPackage) {
     sp<IActivityManager> service = getService();
     if (service != nullptr) {
         return service->registerUidObserver(observer, event, cutpoint, callingPackage);
@@ -75,8 +69,7 @@ status_t ActivityManager::registerUidObserver(const sp<IUidObserver>& observer,
     return DEAD_OBJECT;
 }
 
-status_t ActivityManager::unregisterUidObserver(const sp<IUidObserver>& observer)
-{
+status_t ActivityManager::unregisterUidObserver(const sp<IUidObserver>& observer) {
     sp<IActivityManager> service = getService();
     if (service != nullptr) {
         return service->unregisterUidObserver(observer);
@@ -85,8 +78,7 @@ status_t ActivityManager::unregisterUidObserver(const sp<IUidObserver>& observer
     return DEAD_OBJECT;
 }
 
-bool ActivityManager::isUidActive(const uid_t uid, const String16& callingPackage)
-{
+bool ActivityManager::isUidActive(const uid_t uid, const String16& callingPackage) {
     sp<IActivityManager> service = getService();
     if (service != nullptr) {
         return service->isUidActive(uid, callingPackage);
@@ -94,8 +86,7 @@ bool ActivityManager::isUidActive(const uid_t uid, const String16& callingPackag
     return false;
 }
 
-int32_t ActivityManager::getUidProcessState(const uid_t uid, const String16& callingPackage)
-{
+int32_t ActivityManager::getUidProcessState(const uid_t uid, const String16& callingPackage) {
     sp<IActivityManager> service = getService();
     if (service != nullptr) {
         return service->getUidProcessState(uid, callingPackage);
@@ -103,10 +94,8 @@ int32_t ActivityManager::getUidProcessState(const uid_t uid, const String16& cal
     return PROCESS_STATE_UNKNOWN;
 }
 
-status_t ActivityManager::checkPermission(const String16& permission,
-                                     const pid_t pid,
-                                     const uid_t uid,
-                                     int32_t* outResult) {
+status_t ActivityManager::checkPermission(const String16& permission, const pid_t pid,
+                                          const uid_t uid, int32_t* outResult) {
     sp<IActivityManager> service = getService();
     if (service != nullptr) {
         return service->checkPermission(permission, pid, uid, outResult);

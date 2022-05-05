@@ -24,8 +24,7 @@ namespace android {
 
 // ----------------------------------------------------------------------
 
-class IBatteryStats : public IInterface
-{
+class IBatteryStats : public IInterface {
 public:
     DECLARE_META_INTERFACE(BatteryStats)
 
@@ -64,14 +63,11 @@ public:
 
 // ----------------------------------------------------------------------
 
-class BnBatteryStats : public BnInterface<IBatteryStats>
-{
+class BnBatteryStats : public BnInterface<IBatteryStats> {
 public:
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t    onTransact( uint32_t code,
-                                    const Parcel& data,
-                                    Parcel* reply,
-                                    uint32_t flags = 0);
+    virtual status_t onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                uint32_t flags = 0);
 };
 
 // ----------------------------------------------------------------------

@@ -30,16 +30,14 @@ Status Status::fromExceptionCode(int32_t exceptionCode) {
     return Status(exceptionCode, OK);
 }
 
-Status Status::fromExceptionCode(int32_t exceptionCode,
-                                 const String8& message) {
+Status Status::fromExceptionCode(int32_t exceptionCode, const String8& message) {
     if (exceptionCode == EX_TRANSACTION_FAILED) {
         return Status(exceptionCode, FAILED_TRANSACTION, message);
     }
     return Status(exceptionCode, OK, message);
 }
 
-Status Status::fromExceptionCode(int32_t exceptionCode,
-                                 const char* message) {
+Status Status::fromExceptionCode(int32_t exceptionCode, const char* message) {
     return fromExceptionCode(exceptionCode, String8(message));
 }
 
@@ -47,13 +45,11 @@ Status Status::fromServiceSpecificError(int32_t serviceSpecificErrorCode) {
     return Status(EX_SERVICE_SPECIFIC, serviceSpecificErrorCode);
 }
 
-Status Status::fromServiceSpecificError(int32_t serviceSpecificErrorCode,
-                                        const String8& message) {
+Status Status::fromServiceSpecificError(int32_t serviceSpecificErrorCode, const String8& message) {
     return Status(EX_SERVICE_SPECIFIC, serviceSpecificErrorCode, message);
 }
 
-Status Status::fromServiceSpecificError(int32_t serviceSpecificErrorCode,
-                                        const char* message) {
+Status Status::fromServiceSpecificError(int32_t serviceSpecificErrorCode, const char* message) {
     return fromServiceSpecificError(serviceSpecificErrorCode, String8(message));
 }
 
@@ -65,7 +61,9 @@ Status Status::fromStatusT(status_t status) {
 
 std::string Status::exceptionToString(int32_t exceptionCode) {
     switch (exceptionCode) {
-        #define EXCEPTION_TO_CASE(EXCEPTION) case EXCEPTION: return #EXCEPTION;
+#define EXCEPTION_TO_CASE(EXCEPTION) \
+    case EXCEPTION:                  \
+        return #EXCEPTION;
         EXCEPTION_TO_CASE(EX_NONE)
         EXCEPTION_TO_CASE(EX_SECURITY)
         EXCEPTION_TO_CASE(EX_BAD_PARCELABLE)
@@ -78,19 +76,17 @@ std::string Status::exceptionToString(int32_t exceptionCode) {
         EXCEPTION_TO_CASE(EX_PARCELABLE)
         EXCEPTION_TO_CASE(EX_HAS_REPLY_HEADER)
         EXCEPTION_TO_CASE(EX_TRANSACTION_FAILED)
-        #undef EXCEPTION_TO_CASE
-        default: return std::to_string(exceptionCode);
+#undef EXCEPTION_TO_CASE
+        default:
+            return std::to_string(exceptionCode);
     }
 }
 
 Status::Status(int32_t exceptionCode, int32_t errorCode)
-    : mException(exceptionCode),
-      mErrorCode(errorCode) {}
+      : mException(exceptionCode), mErrorCode(errorCode) {}
 
 Status::Status(int32_t exceptionCode, int32_t errorCode, const String8& message)
-    : mException(exceptionCode),
-      mErrorCode(errorCode),
-      mMessage(message) {}
+      : mException(exceptionCode), mErrorCode(errorCode), mMessage(message) {}
 
 status_t Status::readFromParcel(const Parcel& parcel) {
     status_t status = parcel.readInt32(&mException);
@@ -147,7 +143,6 @@ status_t Status::readFromParcel(const Parcel& parcel) {
     }
     if (remote_stack_trace_header_size < 0 ||
         static_cast<size_t>(remote_stack_trace_header_size) > parcel.dataAvail()) {
-
         android_errorWriteLog(0x534e4554, "132650049");
         setFromStatusT(UNKNOWN_ERROR);
         return UNKNOWN_ERROR;
@@ -251,5 +246,5 @@ String8 Status::toString8() const {
     return ret;
 }
 
-}  // namespace binder
-}  // namespace android
+} // namespace binder
+} // namespace android

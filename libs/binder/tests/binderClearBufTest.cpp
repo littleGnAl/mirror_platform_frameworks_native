@@ -32,7 +32,7 @@ using namespace android;
 const String16 kServerName = String16("binderClearBuf");
 
 class FooBar : public BBinder {
- public:
+public:
     enum {
         TRANSACTION_REPEAT_STRING = IBinder::FIRST_CALL_TRANSACTION,
     };
@@ -53,8 +53,7 @@ class FooBar : public BBinder {
         }
         return BBinder::onTransact(code, data, reply, flags);
     }
-    static std::string RepeatString(const sp<IBinder> binder,
-                                    const std::string& repeat,
+    static std::string RepeatString(const sp<IBinder> binder, const std::string& repeat,
                                     std::string* outBuffer) {
         Parcel data;
         data.writeCString(repeat.c_str());
@@ -101,7 +100,7 @@ int main(int argc, char** argv) {
         android::defaultServiceManager()->addService(kServerName, server);
 
         IPCThreadState::self()->joinThreadPool(true);
-        exit(1);  // should not reach
+        exit(1); // should not reach
     }
 
     // This is not racey. Just giving these services some time to register before we call

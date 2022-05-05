@@ -22,46 +22,38 @@ namespace android {
 
 // ------------------------------------------------------------------------------------
 
-class BpUidObserver : public BpInterface<IUidObserver>
-{
+class BpUidObserver : public BpInterface<IUidObserver> {
 public:
-    explicit BpUidObserver(const sp<IBinder>& impl)
-        : BpInterface<IUidObserver>(impl)
-    {
-    }
+    explicit BpUidObserver(const sp<IBinder>& impl) : BpInterface<IUidObserver>(impl) {}
 
-    virtual void onUidGone(uid_t uid, bool disabled)
-    {
+    virtual void onUidGone(uid_t uid, bool disabled) {
         Parcel data, reply;
         data.writeInterfaceToken(IUidObserver::getInterfaceDescriptor());
-        data.writeInt32((int32_t) uid);
+        data.writeInt32((int32_t)uid);
         data.writeInt32(disabled ? 1 : 0);
         remote()->transact(ON_UID_GONE_TRANSACTION, data, &reply, IBinder::FLAG_ONEWAY);
     }
 
-    virtual void onUidActive(uid_t uid)
-    {
+    virtual void onUidActive(uid_t uid) {
         Parcel data, reply;
         data.writeInterfaceToken(IUidObserver::getInterfaceDescriptor());
-        data.writeInt32((int32_t) uid);
+        data.writeInt32((int32_t)uid);
         remote()->transact(ON_UID_ACTIVE_TRANSACTION, data, &reply, IBinder::FLAG_ONEWAY);
     }
 
-    virtual void onUidIdle(uid_t uid, bool disabled)
-    {
+    virtual void onUidIdle(uid_t uid, bool disabled) {
         Parcel data, reply;
         data.writeInterfaceToken(IUidObserver::getInterfaceDescriptor());
-        data.writeInt32((int32_t) uid);
+        data.writeInt32((int32_t)uid);
         data.writeInt32(disabled ? 1 : 0);
         remote()->transact(ON_UID_IDLE_TRANSACTION, data, &reply, IBinder::FLAG_ONEWAY);
     }
 
     virtual void onUidStateChanged(uid_t uid, int32_t procState, int64_t procStateSeq,
-            int32_t capability)
-    {
+                                   int32_t capability) {
         Parcel data, reply;
         data.writeInterfaceToken(IUidObserver::getInterfaceDescriptor());
-        data.writeInt32((int32_t) uid);
+        data.writeInt32((int32_t)uid);
         data.writeInt32(procState);
         data.writeInt64(procStateSeq);
         data.writeInt32(capability);
@@ -76,10 +68,9 @@ IMPLEMENT_META_INTERFACE(UidObserver, "android.app.IUidObserver")
 // ----------------------------------------------------------------------
 
 // NOLINTNEXTLINE(google-default-arguments)
-status_t BnUidObserver::onTransact(
-    uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
-{
-    switch(code) {
+status_t BnUidObserver::onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                   uint32_t flags) {
+    switch (code) {
         case ON_UID_GONE_TRANSACTION: {
             CHECK_INTERFACE(IUidObserver, data, reply);
             uid_t uid = data.readInt32();

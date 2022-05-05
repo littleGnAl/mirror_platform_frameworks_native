@@ -26,25 +26,25 @@
 // ---------------------------------------------------------------------------
 namespace android {
 
-class TextOutput
-{
+class TextOutput {
 public:
-                        TextOutput();
-    virtual             ~TextOutput();
-    
-    virtual status_t    print(const char* txt, size_t len) = 0;
-    virtual void        moveIndent(int delta) = 0;
-    
+    TextOutput();
+    virtual ~TextOutput();
+
+    virtual status_t print(const char* txt, size_t len) = 0;
+    virtual void moveIndent(int delta) = 0;
+
     class Bundle {
     public:
         inline explicit Bundle(TextOutput& to) : mTO(to) { to.pushBundle(); }
         inline ~Bundle() { mTO.popBundle(); }
+
     private:
-        TextOutput&     mTO;
+        TextOutput& mTO;
     };
-    
-    virtual void        pushBundle() = 0;
-    virtual void        popBundle() = 0;
+
+    virtual void pushBundle() = 0;
+    virtual void popBundle() = 0;
 };
 
 // ---------------------------------------------------------------------------
@@ -70,9 +70,8 @@ TextOutput& endl(TextOutput& to);
 TextOutput& indent(TextOutput& to);
 TextOutput& dedent(TextOutput& to);
 
-template<typename T>
-TextOutput& operator<<(TextOutput& to, const T& val)
-{
+template <typename T>
+TextOutput& operator<<(TextOutput& to, const T& val) {
     std::stringstream strbuf;
     strbuf << val;
     std::string str = strbuf.str();
@@ -82,8 +81,7 @@ TextOutput& operator<<(TextOutput& to, const T& val)
 
 TextOutput& operator<<(TextOutput& to, TextOutputManipFunc func);
 
-class TypeCode
-{
+class TypeCode {
 public:
     inline explicit TypeCode(uint32_t code);
     inline ~TypeCode();
@@ -96,17 +94,16 @@ private:
 
 TextOutput& operator<<(TextOutput& to, const TypeCode& val);
 
-class HexDump
-{
+class HexDump {
 public:
-    HexDump(const void *buf, size_t size, size_t bytesPerLine=16);
+    HexDump(const void* buf, size_t size, size_t bytesPerLine = 16);
     inline ~HexDump();
-    
+
     inline HexDump& setBytesPerLine(size_t bytesPerLine);
     inline HexDump& setSingleLineCutoff(int32_t bytes);
     inline HexDump& setAlignment(size_t alignment);
     inline HexDump& setCArrayStyle(bool enabled);
-    
+
     inline const void* buffer() const;
     inline size_t size() const;
     inline size_t bytesPerLine() const;
@@ -124,29 +121,26 @@ private:
 };
 
 TextOutput& operator<<(TextOutput& to, const HexDump& val);
-inline TextOutput& operator<<(TextOutput& to,
-                              decltype(std::endl<char,
-                                       std::char_traits<char>>)
+inline TextOutput& operator<<(TextOutput& to, decltype(std::endl<char, std::char_traits<char>>)
                               /*val*/) {
     endl(to);
     return to;
 }
 
-inline TextOutput& operator<<(TextOutput& to, const char &c)
-{
+inline TextOutput& operator<<(TextOutput& to, const char& c) {
     to.print(&c, 1);
     return to;
 }
 
-inline TextOutput& operator<<(TextOutput& to, const bool &val)
-{
-    if (val) to.print("true", 4);
-    else to.print("false", 5);
+inline TextOutput& operator<<(TextOutput& to, const bool& val) {
+    if (val)
+        to.print("true", 4);
+    else
+        to.print("false", 5);
     return to;
 }
 
-inline TextOutput& operator<<(TextOutput& to, const String16& val)
-{
+inline TextOutput& operator<<(TextOutput& to, const String16& val) {
     to << String8(val).string();
     return to;
 }
@@ -154,54 +148,68 @@ inline TextOutput& operator<<(TextOutput& to, const String16& val)
 // ---------------------------------------------------------------------------
 // No user servicable parts below.
 
-inline TextOutput& endl(TextOutput& to)
-{
+inline TextOutput& endl(TextOutput& to) {
     to.print("\n", 1);
     return to;
 }
 
-inline TextOutput& indent(TextOutput& to)
-{
+inline TextOutput& indent(TextOutput& to) {
     to.moveIndent(1);
     return to;
 }
 
-inline TextOutput& dedent(TextOutput& to)
-{
+inline TextOutput& dedent(TextOutput& to) {
     to.moveIndent(-1);
     return to;
 }
 
-inline TextOutput& operator<<(TextOutput& to, TextOutputManipFunc func)
-{
+inline TextOutput& operator<<(TextOutput& to, TextOutputManipFunc func) {
     return (*func)(to);
 }
 
-inline TypeCode::TypeCode(uint32_t code) : mCode(code) { }
-inline TypeCode::~TypeCode() { }
-inline uint32_t TypeCode::typeCode() const { return mCode; }
+inline TypeCode::TypeCode(uint32_t code) : mCode(code) {}
+inline TypeCode::~TypeCode() {}
+inline uint32_t TypeCode::typeCode() const {
+    return mCode;
+}
 
-inline HexDump::~HexDump() { }
+inline HexDump::~HexDump() {}
 
 inline HexDump& HexDump::setBytesPerLine(size_t bytesPerLine) {
-    mBytesPerLine = bytesPerLine; return *this;
+    mBytesPerLine = bytesPerLine;
+    return *this;
 }
 inline HexDump& HexDump::setSingleLineCutoff(int32_t bytes) {
-    mSingleLineCutoff = bytes; return *this;
+    mSingleLineCutoff = bytes;
+    return *this;
 }
 inline HexDump& HexDump::setAlignment(size_t alignment) {
-    mAlignment = alignment; return *this;
+    mAlignment = alignment;
+    return *this;
 }
 inline HexDump& HexDump::setCArrayStyle(bool enabled) {
-    mCArrayStyle = enabled; return *this;
+    mCArrayStyle = enabled;
+    return *this;
 }
 
-inline const void* HexDump::buffer() const { return mBuffer; }
-inline size_t HexDump::size() const { return mSize; }
-inline size_t HexDump::bytesPerLine() const { return mBytesPerLine; }
-inline int32_t HexDump::singleLineCutoff() const { return mSingleLineCutoff; }
-inline size_t HexDump::alignment() const { return mAlignment; }
-inline bool HexDump::carrayStyle() const { return mCArrayStyle; }
+inline const void* HexDump::buffer() const {
+    return mBuffer;
+}
+inline size_t HexDump::size() const {
+    return mSize;
+}
+inline size_t HexDump::bytesPerLine() const {
+    return mBytesPerLine;
+}
+inline int32_t HexDump::singleLineCutoff() const {
+    return mSingleLineCutoff;
+}
+inline size_t HexDump::alignment() const {
+    return mAlignment;
+}
+inline bool HexDump::carrayStyle() const {
+    return mCArrayStyle;
+}
 
 // ---------------------------------------------------------------------------
 } // namespace android

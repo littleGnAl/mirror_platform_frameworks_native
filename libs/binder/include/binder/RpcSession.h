@@ -306,7 +306,7 @@ private:
     // For a more complicated case, the client might itself open up a thread to
     // serve calls to the server at all times (e.g. if it hosts a callback)
 
-    wp<RpcServer> mForServer; // maybe null, for client sessions
+    wp<RpcServer> mForServer;                      // maybe null, for client sessions
     sp<WaitForShutdownListener> mShutdownListener; // used for client sessions
     wp<EventListener> mEventListener; // mForServer if server, mShutdownListener if client
 

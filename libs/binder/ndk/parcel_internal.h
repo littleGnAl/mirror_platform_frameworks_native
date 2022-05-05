@@ -17,10 +17,9 @@
 #pragma once
 
 #include <android/binder_parcel.h>
-
+#include <binder/Parcel.h>
 #include <sys/cdefs.h>
 
-#include <binder/Parcel.h>
 #include "ibinder_internal.h"
 
 struct AParcel {

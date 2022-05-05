@@ -24,15 +24,13 @@
 // ---------------------------------------------------------------------------
 namespace android {
 
-class PermissionController
-{
+class PermissionController {
 public:
-
     enum {
-        MATCH_SYSTEM_ONLY = 1<<16,
-        MATCH_UNINSTALLED_PACKAGES = 1<<13,
-        MATCH_FACTORY_ONLY = 1<<21,
-        MATCH_INSTANT = 1<<23
+        MATCH_SYSTEM_ONLY = 1 << 16,
+        MATCH_UNINSTALLED_PACKAGES = 1 << 13,
+        MATCH_FACTORY_ONLY = 1 << 21,
+        MATCH_INSTANT = 1 << 23
     };
 
     enum {
@@ -56,7 +54,6 @@ private:
 
     sp<IPermissionController> getService();
 };
-
 
 } // namespace android
 // ---------------------------------------------------------------------------

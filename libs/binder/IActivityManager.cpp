@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include <unistd.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 #include <android/permission_manager.h>
 #include <binder/ActivityManager.h>
@@ -27,20 +27,15 @@ namespace android {
 
 // ------------------------------------------------------------------------------------
 
-class BpActivityManager : public BpInterface<IActivityManager>
-{
+class BpActivityManager : public BpInterface<IActivityManager> {
 public:
-    explicit BpActivityManager(const sp<IBinder>& impl)
-        : BpInterface<IActivityManager>(impl)
-    {
-    }
+    explicit BpActivityManager(const sp<IBinder>& impl) : BpInterface<IActivityManager>(impl) {}
 
-    virtual int openContentUri(const String16& stringUri)
-    {
+    virtual int openContentUri(const String16& stringUri) {
         Parcel data, reply;
         data.writeInterfaceToken(IActivityManager::getInterfaceDescriptor());
         data.writeString16(stringUri);
-        status_t ret = remote()->transact(OPEN_CONTENT_URI_TRANSACTION, data, & reply);
+        status_t ret = remote()->transact(OPEN_CONTENT_URI_TRANSACTION, data, &reply);
         int fd = -1;
         if (ret == NO_ERROR) {
             int32_t exceptionCode = reply.readExceptionCode();
@@ -52,57 +47,51 @@ public:
                 }
             } else {
                 // An exception was thrown back; fall through to return failure
-                ALOGD("openContentUri(%s) caught exception %d\n",
-                        String8(stringUri).string(), exceptionCode);
+                ALOGD("openContentUri(%s) caught exception %d\n", String8(stringUri).string(),
+                      exceptionCode);
             }
         }
         return fd;
     }
 
-    virtual status_t registerUidObserver(const sp<IUidObserver>& observer,
-                                     const int32_t event,
-                                     const int32_t cutpoint,
-                                     const String16& callingPackage)
-    {
-         Parcel data, reply;
-         data.writeInterfaceToken(IActivityManager::getInterfaceDescriptor());
-         data.writeStrongBinder(IInterface::asBinder(observer));
-         data.writeInt32(event);
-         data.writeInt32(cutpoint);
-         data.writeString16(callingPackage);
-         status_t err = remote()->transact(REGISTER_UID_OBSERVER_TRANSACTION, data, &reply);
-         if (err != NO_ERROR || ((err = reply.readExceptionCode()) != NO_ERROR)) {
-             return err;
-         }
-         return OK;
+    virtual status_t registerUidObserver(const sp<IUidObserver>& observer, const int32_t event,
+                                         const int32_t cutpoint, const String16& callingPackage) {
+        Parcel data, reply;
+        data.writeInterfaceToken(IActivityManager::getInterfaceDescriptor());
+        data.writeStrongBinder(IInterface::asBinder(observer));
+        data.writeInt32(event);
+        data.writeInt32(cutpoint);
+        data.writeString16(callingPackage);
+        status_t err = remote()->transact(REGISTER_UID_OBSERVER_TRANSACTION, data, &reply);
+        if (err != NO_ERROR || ((err = reply.readExceptionCode()) != NO_ERROR)) {
+            return err;
+        }
+        return OK;
     }
 
-    virtual status_t unregisterUidObserver(const sp<IUidObserver>& observer)
-    {
-         Parcel data, reply;
-         data.writeInterfaceToken(IActivityManager::getInterfaceDescriptor());
-         data.writeStrongBinder(IInterface::asBinder(observer));
-         status_t err = remote()->transact(UNREGISTER_UID_OBSERVER_TRANSACTION, data, &reply);
-         if (err != NO_ERROR || ((err = reply.readExceptionCode()) != NO_ERROR)) {
-             return err;
-         }
-         return OK;
+    virtual status_t unregisterUidObserver(const sp<IUidObserver>& observer) {
+        Parcel data, reply;
+        data.writeInterfaceToken(IActivityManager::getInterfaceDescriptor());
+        data.writeStrongBinder(IInterface::asBinder(observer));
+        status_t err = remote()->transact(UNREGISTER_UID_OBSERVER_TRANSACTION, data, &reply);
+        if (err != NO_ERROR || ((err = reply.readExceptionCode()) != NO_ERROR)) {
+            return err;
+        }
+        return OK;
     }
 
-    virtual bool isUidActive(const uid_t uid, const String16& callingPackage)
-    {
-         Parcel data, reply;
-         data.writeInterfaceToken(IActivityManager::getInterfaceDescriptor());
-         data.writeInt32(uid);
-         data.writeString16(callingPackage);
-         remote()->transact(IS_UID_ACTIVE_TRANSACTION, data, &reply);
-         // fail on exception
-         if (reply.readExceptionCode() != 0) return false;
-         return reply.readInt32() == 1;
+    virtual bool isUidActive(const uid_t uid, const String16& callingPackage) {
+        Parcel data, reply;
+        data.writeInterfaceToken(IActivityManager::getInterfaceDescriptor());
+        data.writeInt32(uid);
+        data.writeString16(callingPackage);
+        remote()->transact(IS_UID_ACTIVE_TRANSACTION, data, &reply);
+        // fail on exception
+        if (reply.readExceptionCode() != 0) return false;
+        return reply.readInt32() == 1;
     }
 
-    virtual int32_t getUidProcessState(const uid_t uid, const String16& callingPackage)
-    {
+    virtual int32_t getUidProcessState(const uid_t uid, const String16& callingPackage) {
         Parcel data, reply;
         data.writeInterfaceToken(IActivityManager::getInterfaceDescriptor());
         data.writeInt32(uid);
@@ -115,10 +104,8 @@ public:
         return reply.readInt32();
     }
 
-    virtual status_t checkPermission(const String16& permission,
-                                    const pid_t pid,
-                                    const uid_t uid,
-                                    int32_t* outResult) {
+    virtual status_t checkPermission(const String16& permission, const pid_t pid, const uid_t uid,
+                                     int32_t* outResult) {
         Parcel data, reply;
         data.writeInterfaceToken(IActivityManager::getInterfaceDescriptor());
         data.writeString16(permission);

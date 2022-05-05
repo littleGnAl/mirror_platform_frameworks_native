@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include <cstdint>
 #include <stddef.h>
+#include <cstdint>
 
 #include <android-base/result.h>
 #include <android-base/unique_fd.h>
@@ -36,4 +36,4 @@ void zeroMemory(uint8_t* data, size_t size);
 
 android::base::Result<void> setNonBlocking(android::base::borrowed_fd fd);
 
-}   // namespace android
+} // namespace android

@@ -412,7 +412,9 @@ private:
         }
         return writeInputs(data, std::forward<Remaining>(remaining)...);
     }
-    static status_t writeInputs(Parcel* /*data*/) { return NO_ERROR; }
+    static status_t writeInputs(Parcel* /*data*/) {
+        return NO_ERROR;
+    }
 
     template <typename T>
     typename std::enable_if<IsPointerIfDecayed<T>::value, status_t>::type readIfOutput(
@@ -435,7 +437,9 @@ private:
         }
         return readOutputs(reply, std::forward<Remaining>(remaining)...);
     }
-    static status_t readOutputs(const Parcel& /*data*/) { return NO_ERROR; }
+    static status_t readOutputs(const Parcel& /*data*/) {
+        return NO_ERROR;
+    }
 };
 
 template <typename Interface>

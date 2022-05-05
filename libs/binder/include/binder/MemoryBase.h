@@ -16,18 +16,16 @@
 
 #pragma once
 
-#include <stdlib.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 #include <binder/IMemory.h>
-
 
 namespace android {
 
 // ---------------------------------------------------------------------------
 
-class MemoryBase : public BnMemory 
-{
+class MemoryBase : public BnMemory {
 public:
     MemoryBase(const sp<IMemoryHeap>& heap, ssize_t offset, size_t size);
     virtual ~MemoryBase();
@@ -39,8 +37,8 @@ protected:
     const sp<IMemoryHeap>& getHeap() const { return mHeap; }
 
 private:
-    size_t          mSize;
-    ssize_t         mOffset;
+    size_t mSize;
+    ssize_t mOffset;
     sp<IMemoryHeap> mHeap;
 };
 

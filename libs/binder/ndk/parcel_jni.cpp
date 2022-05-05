@@ -15,9 +15,9 @@
  */
 
 #include <android/binder_parcel_jni.h>
-#include "parcel_internal.h"
-
 #include <android_os_Parcel.h>
+
+#include "parcel_internal.h"
 
 using ::android::Parcel;
 using ::android::parcelForJavaObject;

@@ -29,10 +29,10 @@
 #include <fuzzbinder/random_parcel.h>
 #include <fuzzer/FuzzedDataProvider.h>
 
-#include <cstdlib>
-#include <ctime>
 #include <sys/resource.h>
 #include <sys/time.h>
+#include <cstdlib>
+#include <ctime>
 
 using android::fillRandomParcel;
 using android::sp;
@@ -111,7 +111,7 @@ static AIBinder_Class* kNothingClass =
                               NothingClass_onTransact);
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
-    if (size <= 1) return 0;  // no use
+    if (size <= 1) return 0; // no use
 
     // avoid timeouts, see b/142617274, b/142473153
     if (size > 50000) return 0;

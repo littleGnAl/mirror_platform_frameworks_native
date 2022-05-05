@@ -18,8 +18,8 @@
 
 #include "Debug.h"
 
-#include <utils/String8.h>
 #include <utils/String16.h>
+#include <utils/String8.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,43 +29,39 @@ namespace android {
 
 // ---------------------------------------------------------------------------
 
-TextOutput::TextOutput() {
-}
+TextOutput::TextOutput() {}
 
-TextOutput::~TextOutput() {
-}
+TextOutput::~TextOutput() {}
 
 // ---------------------------------------------------------------------------
 
-static void textOutputPrinter(void* cookie, const char* txt)
-{
+static void textOutputPrinter(void* cookie, const char* txt) {
     ((TextOutput*)cookie)->print(txt, strlen(txt));
 }
 
-TextOutput& operator<<(TextOutput& to, const TypeCode& val)
-{
+TextOutput& operator<<(TextOutput& to, const TypeCode& val) {
     printTypeCode(val.typeCode(), textOutputPrinter, (void*)&to);
     return to;
 }
 
-HexDump::HexDump(const void *buf, size_t size, size_t bytesPerLine)
-    : mBuffer(buf)
-    , mSize(size)
-    , mBytesPerLine(bytesPerLine)
-    , mSingleLineCutoff(16)
-    , mAlignment(4)
-    , mCArrayStyle(false)
-{
-    if (bytesPerLine >= 16) mAlignment = 4;
-    else if (bytesPerLine >= 8) mAlignment = 2;
-    else mAlignment = 1;
+HexDump::HexDump(const void* buf, size_t size, size_t bytesPerLine)
+      : mBuffer(buf),
+        mSize(size),
+        mBytesPerLine(bytesPerLine),
+        mSingleLineCutoff(16),
+        mAlignment(4),
+        mCArrayStyle(false) {
+    if (bytesPerLine >= 16)
+        mAlignment = 4;
+    else if (bytesPerLine >= 8)
+        mAlignment = 2;
+    else
+        mAlignment = 1;
 }
 
-TextOutput& operator<<(TextOutput& to, const HexDump& val)
-{
-    printHexData(0, val.buffer(), val.size(), val.bytesPerLine(),
-        val.singleLineCutoff(), val.alignment(), val.carrayStyle(),
-        textOutputPrinter, (void*)&to);
+TextOutput& operator<<(TextOutput& to, const HexDump& val) {
+    printHexData(0, val.buffer(), val.size(), val.bytesPerLine(), val.singleLineCutoff(),
+                 val.alignment(), val.carrayStyle(), textOutputPrinter, (void*)&to);
     return to;
 }
 

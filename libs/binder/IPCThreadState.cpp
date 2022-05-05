@@ -28,7 +28,6 @@
 #include <utils/Log.h>
 #include <utils/SystemClock.h>
 
-#include <atomic>
 #include <errno.h>
 #include <inttypes.h>
 #include <pthread.h>
@@ -38,6 +37,7 @@
 #include <sys/ioctl.h>
 #include <sys/resource.h>
 #include <unistd.h>
+#include <atomic>
 
 #include "Static.h"
 #include "binder_module.h"
@@ -46,11 +46,11 @@
 
 #define IF_LOG_TRANSACTIONS() if (false)
 #define IF_LOG_COMMANDS() if (false)
-#define LOG_REMOTEREFS(...) 
+#define LOG_REMOTEREFS(...)
 #define IF_LOG_REMOTEREFS() if (false)
 
-#define LOG_THREADPOOL(...) 
-#define LOG_ONEWAY(...) 
+#define LOG_THREADPOOL(...)
+#define LOG_ONEWAY(...)
 
 #else
 
@@ -69,54 +69,51 @@ namespace android {
 
 // Static const and functions will be optimized out if not used,
 // when LOG_NDEBUG and references in IF_LOG_COMMANDS() are optimized out.
-static const char *kReturnStrings[] = {
-    "BR_ERROR",
-    "BR_OK",
-    "BR_TRANSACTION",
-    "BR_REPLY",
-    "BR_ACQUIRE_RESULT",
-    "BR_DEAD_REPLY",
-    "BR_TRANSACTION_COMPLETE",
-    "BR_INCREFS",
-    "BR_ACQUIRE",
-    "BR_RELEASE",
-    "BR_DECREFS",
-    "BR_ATTEMPT_ACQUIRE",
-    "BR_NOOP",
-    "BR_SPAWN_LOOPER",
-    "BR_FINISHED",
-    "BR_DEAD_BINDER",
-    "BR_CLEAR_DEATH_NOTIFICATION_DONE",
-    "BR_FAILED_REPLY",
-    "BR_FROZEN_REPLY",
-    "BR_ONEWAY_SPAM_SUSPECT",
-    "BR_TRANSACTION_SEC_CTX",
+static const char* kReturnStrings[] = {
+        "BR_ERROR",
+        "BR_OK",
+        "BR_TRANSACTION",
+        "BR_REPLY",
+        "BR_ACQUIRE_RESULT",
+        "BR_DEAD_REPLY",
+        "BR_TRANSACTION_COMPLETE",
+        "BR_INCREFS",
+        "BR_ACQUIRE",
+        "BR_RELEASE",
+        "BR_DECREFS",
+        "BR_ATTEMPT_ACQUIRE",
+        "BR_NOOP",
+        "BR_SPAWN_LOOPER",
+        "BR_FINISHED",
+        "BR_DEAD_BINDER",
+        "BR_CLEAR_DEATH_NOTIFICATION_DONE",
+        "BR_FAILED_REPLY",
+        "BR_FROZEN_REPLY",
+        "BR_ONEWAY_SPAM_SUSPECT",
+        "BR_TRANSACTION_SEC_CTX",
 };
 
-static const char *kCommandStrings[] = {
-    "BC_TRANSACTION",
-    "BC_REPLY",
-    "BC_ACQUIRE_RESULT",
-    "BC_FREE_BUFFER",
-    "BC_INCREFS",
-    "BC_ACQUIRE",
-    "BC_RELEASE",
-    "BC_DECREFS",
-    "BC_INCREFS_DONE",
-    "BC_ACQUIRE_DONE",
-    "BC_ATTEMPT_ACQUIRE",
-    "BC_REGISTER_LOOPER",
-    "BC_ENTER_LOOPER",
-    "BC_EXIT_LOOPER",
-    "BC_REQUEST_DEATH_NOTIFICATION",
-    "BC_CLEAR_DEATH_NOTIFICATION",
-    "BC_DEAD_BINDER_DONE"
-};
+static const char* kCommandStrings[] = {"BC_TRANSACTION",
+                                        "BC_REPLY",
+                                        "BC_ACQUIRE_RESULT",
+                                        "BC_FREE_BUFFER",
+                                        "BC_INCREFS",
+                                        "BC_ACQUIRE",
+                                        "BC_RELEASE",
+                                        "BC_DECREFS",
+                                        "BC_INCREFS_DONE",
+                                        "BC_ACQUIRE_DONE",
+                                        "BC_ATTEMPT_ACQUIRE",
+                                        "BC_REGISTER_LOOPER",
+                                        "BC_ENTER_LOOPER",
+                                        "BC_EXIT_LOOPER",
+                                        "BC_REQUEST_DEATH_NOTIFICATION",
+                                        "BC_CLEAR_DEATH_NOTIFICATION",
+                                        "BC_DEAD_BINDER_DONE"};
 
 static const int64_t kWorkSourcePropagatedBitIndex = 32;
 
-static const char* getReturnString(uint32_t cmd)
-{
+static const char* getReturnString(uint32_t cmd) {
     size_t idx = cmd & _IOC_NRMASK;
     if (idx < sizeof(kReturnStrings) / sizeof(kReturnStrings[0]))
         return kReturnStrings[idx];
@@ -124,10 +121,8 @@ static const char* getReturnString(uint32_t cmd)
         return "unknown";
 }
 
-static const void* printBinderTransactionData(TextOutput& out, const void* data)
-{
-    const binder_transaction_data* btd =
-        (const binder_transaction_data*)data;
+static const void* printBinderTransactionData(TextOutput& out, const void* data) {
+    const binder_transaction_data* btd = (const binder_transaction_data*)data;
     if (btd->target.handle < 1024) {
         /* want to print descriptors in decimal; guess based on value */
         out << "target.desc=" << btd->target.handle;
@@ -136,16 +131,13 @@ static const void* printBinderTransactionData(TextOutput& out, const void* data)
     }
     out << " (cookie " << btd->cookie << ")" << endl
         << "code=" << TypeCode(btd->code) << ", flags=" << (void*)(uint64_t)btd->flags << endl
-        << "data=" << btd->data.ptr.buffer << " (" << (void*)btd->data_size
-        << " bytes)" << endl
-        << "offsets=" << btd->data.ptr.offsets << " (" << (void*)btd->offsets_size
-        << " bytes)";
-    return btd+1;
+        << "data=" << btd->data.ptr.buffer << " (" << (void*)btd->data_size << " bytes)" << endl
+        << "offsets=" << btd->data.ptr.offsets << " (" << (void*)btd->offsets_size << " bytes)";
+    return btd + 1;
 }
 
-static const void* printReturnCommand(TextOutput& out, const void* _cmd)
-{
-    static const size_t N = sizeof(kReturnStrings)/sizeof(kReturnStrings[0]);
+static const void* printReturnCommand(TextOutput& out, const void* _cmd) {
+    static const size_t N = sizeof(kReturnStrings) / sizeof(kReturnStrings[0]);
     const int32_t* cmd = (const int32_t*)_cmd;
     uint32_t code = (uint32_t)*cmd++;
     size_t cmdIndex = code & 0xff;
@@ -162,7 +154,7 @@ static const void* printReturnCommand(TextOutput& out, const void* _cmd)
         case BR_TRANSACTION:
         case BR_REPLY: {
             out << ": " << indent;
-            cmd = (const int32_t *)printBinderTransactionData(out, cmd);
+            cmd = (const int32_t*)printBinderTransactionData(out, cmd);
             out << dedent;
         } break;
 
@@ -204,9 +196,8 @@ static const void* printReturnCommand(TextOutput& out, const void* _cmd)
     return cmd;
 }
 
-static const void* printCommand(TextOutput& out, const void* _cmd)
-{
-    static const size_t N = sizeof(kCommandStrings)/sizeof(kCommandStrings[0]);
+static const void* printCommand(TextOutput& out, const void* _cmd) {
+    static const size_t N = sizeof(kCommandStrings) / sizeof(kCommandStrings[0]);
     const int32_t* cmd = (const int32_t*)_cmd;
     uint32_t code = (uint32_t)*cmd++;
     size_t cmdIndex = code & 0xff;
@@ -221,7 +212,7 @@ static const void* printCommand(TextOutput& out, const void* _cmd)
         case BC_TRANSACTION:
         case BC_REPLY: {
             out << ": " << indent;
-            cmd = (const int32_t *)printBinderTransactionData(out, cmd);
+            cmd = (const int32_t*)printBinderTransactionData(out, cmd);
             out << dedent;
         } break;
 
@@ -284,10 +275,9 @@ static pthread_key_t gTLS = 0;
 static std::atomic<bool> gShutdown = false;
 static std::atomic<bool> gDisableBackgroundScheduling = false;
 
-IPCThreadState* IPCThreadState::self()
-{
+IPCThreadState* IPCThreadState::self() {
     if (gHaveTLS.load(std::memory_order_acquire)) {
-restart:
+    restart:
         const pthread_key_t k = gTLS;
         IPCThreadState* st = (IPCThreadState*)pthread_getspecific(k);
         if (st) return st;
@@ -306,7 +296,7 @@ restart:
         if (key_create_value != 0) {
             pthread_mutex_unlock(&gTLSMutex);
             ALOGW("IPCThreadState::self() unable to create TLS key, expect a crash: %s\n",
-                    strerror(key_create_value));
+                  strerror(key_create_value));
             return nullptr;
         }
         gHaveTLS.store(true, std::memory_order_release);
@@ -315,8 +305,7 @@ restart:
     goto restart;
 }
 
-IPCThreadState* IPCThreadState::selfOrNull()
-{
+IPCThreadState* IPCThreadState::selfOrNull() {
     if (gHaveTLS.load(std::memory_order_acquire)) {
         const pthread_key_t k = gTLS;
         IPCThreadState* st = (IPCThreadState*)pthread_getspecific(k);
@@ -325,8 +314,7 @@ IPCThreadState* IPCThreadState::selfOrNull()
     return nullptr;
 }
 
-void IPCThreadState::shutdown()
-{
+void IPCThreadState::shutdown() {
     gShutdown.store(true, std::memory_order_relaxed);
 
     if (gHaveTLS.load(std::memory_order_acquire)) {
@@ -341,37 +329,31 @@ void IPCThreadState::shutdown()
     }
 }
 
-void IPCThreadState::disableBackgroundScheduling(bool disable)
-{
+void IPCThreadState::disableBackgroundScheduling(bool disable) {
     gDisableBackgroundScheduling.store(disable, std::memory_order_relaxed);
 }
 
-bool IPCThreadState::backgroundSchedulingDisabled()
-{
+bool IPCThreadState::backgroundSchedulingDisabled() {
     return gDisableBackgroundScheduling.load(std::memory_order_relaxed);
 }
 
-status_t IPCThreadState::clearLastError()
-{
+status_t IPCThreadState::clearLastError() {
     const status_t err = mLastError;
     mLastError = NO_ERROR;
     return err;
 }
 
-pid_t IPCThreadState::getCallingPid() const
-{
+pid_t IPCThreadState::getCallingPid() const {
     checkContextIsBinderForUse(__func__);
     return mCallingPid;
 }
 
-const char* IPCThreadState::getCallingSid() const
-{
+const char* IPCThreadState::getCallingSid() const {
     checkContextIsBinderForUse(__func__);
     return mCallingSid;
 }
 
-uid_t IPCThreadState::getCallingUid() const
-{
+uid_t IPCThreadState::getCallingUid() const {
     checkContextIsBinderForUse(__func__);
     return mCallingUid;
 }
@@ -400,73 +382,61 @@ void IPCThreadState::checkContextIsBinderForUse(const char* use) const {
     // context, so we don't abort
 }
 
-int64_t IPCThreadState::clearCallingIdentity()
-{
+int64_t IPCThreadState::clearCallingIdentity() {
     // ignore mCallingSid for legacy reasons
-    int64_t token = ((int64_t)mCallingUid<<32) | mCallingPid;
+    int64_t token = ((int64_t)mCallingUid << 32) | mCallingPid;
     clearCaller();
     return token;
 }
 
-void IPCThreadState::setStrictModePolicy(int32_t policy)
-{
+void IPCThreadState::setStrictModePolicy(int32_t policy) {
     mStrictModePolicy = policy;
 }
 
-int32_t IPCThreadState::getStrictModePolicy() const
-{
+int32_t IPCThreadState::getStrictModePolicy() const {
     return mStrictModePolicy;
 }
 
-int64_t IPCThreadState::setCallingWorkSourceUid(uid_t uid)
-{
+int64_t IPCThreadState::setCallingWorkSourceUid(uid_t uid) {
     int64_t token = setCallingWorkSourceUidWithoutPropagation(uid);
     mPropagateWorkSource = true;
     return token;
 }
 
-int64_t IPCThreadState::setCallingWorkSourceUidWithoutPropagation(uid_t uid)
-{
+int64_t IPCThreadState::setCallingWorkSourceUidWithoutPropagation(uid_t uid) {
     const int64_t propagatedBit = ((int64_t)mPropagateWorkSource) << kWorkSourcePropagatedBitIndex;
     int64_t token = propagatedBit | mWorkSource;
     mWorkSource = uid;
     return token;
 }
 
-void IPCThreadState::clearPropagateWorkSource()
-{
+void IPCThreadState::clearPropagateWorkSource() {
     mPropagateWorkSource = false;
 }
 
-bool IPCThreadState::shouldPropagateWorkSource() const
-{
+bool IPCThreadState::shouldPropagateWorkSource() const {
     return mPropagateWorkSource;
 }
 
-uid_t IPCThreadState::getCallingWorkSourceUid() const
-{
+uid_t IPCThreadState::getCallingWorkSourceUid() const {
     return mWorkSource;
 }
 
-int64_t IPCThreadState::clearCallingWorkSource()
-{
+int64_t IPCThreadState::clearCallingWorkSource() {
     return setCallingWorkSourceUid(kUnsetWorkSource);
 }
 
-void IPCThreadState::restoreCallingWorkSource(int64_t token)
-{
+void IPCThreadState::restoreCallingWorkSource(int64_t token) {
     uid_t uid = (int)token;
     setCallingWorkSourceUidWithoutPropagation(uid);
     mPropagateWorkSource = ((token >> kWorkSourcePropagatedBitIndex) & 1) == 1;
 }
 
-void IPCThreadState::setLastTransactionBinderFlags(int32_t flags)
-{
+void IPCThreadState::setLastTransactionBinderFlags(int32_t flags) {
     mLastTransactionBinderFlags = flags;
 }
 
-int32_t IPCThreadState::getLastTransactionBinderFlags() const
-{
+int32_t IPCThreadState::getLastTransactionBinderFlags() const {
     return mLastTransactionBinderFlags;
 }
 
@@ -478,24 +448,20 @@ ProcessState::CallRestriction IPCThreadState::getCallRestriction() const {
     return mCallRestriction;
 }
 
-void IPCThreadState::restoreCallingIdentity(int64_t token)
-{
-    mCallingUid = (int)(token>>32);
-    mCallingSid = nullptr;  // not enough data to restore
+void IPCThreadState::restoreCallingIdentity(int64_t token) {
+    mCallingUid = (int)(token >> 32);
+    mCallingSid = nullptr; // not enough data to restore
     mCallingPid = (int)token;
 }
 
-void IPCThreadState::clearCaller()
-{
+void IPCThreadState::clearCaller() {
     mCallingPid = getpid();
-    mCallingSid = nullptr;  // expensive to lookup
+    mCallingSid = nullptr; // expensive to lookup
     mCallingUid = getuid();
 }
 
-void IPCThreadState::flushCommands()
-{
-    if (mProcess->mDriverFD < 0)
-        return;
+void IPCThreadState::flushCommands() {
+    if (mProcess->mDriverFD < 0) return;
     talkWithDriver(false);
     // The flush could have caused post-write refcount decrements to have
     // been executed, which in turn could result in BC_RELEASE/BC_DECREFS
@@ -508,8 +474,7 @@ void IPCThreadState::flushCommands()
     }
 }
 
-bool IPCThreadState::flushIfNeeded()
-{
+bool IPCThreadState::flushIfNeeded() {
     if (mIsLooper || mServingStackPointer != nullptr || mIsFlushing) {
         return false;
     }
@@ -523,22 +488,20 @@ bool IPCThreadState::flushIfNeeded()
     return true;
 }
 
-void IPCThreadState::blockUntilThreadAvailable()
-{
+void IPCThreadState::blockUntilThreadAvailable() {
     pthread_mutex_lock(&mProcess->mThreadCountLock);
     mProcess->mWaitingForThreads++;
     while (mProcess->mExecutingThreadsCount >= mProcess->mMaxThreads) {
         ALOGW("Waiting for thread to be free. mExecutingThreadsCount=%lu mMaxThreads=%lu\n",
-                static_cast<unsigned long>(mProcess->mExecutingThreadsCount),
-                static_cast<unsigned long>(mProcess->mMaxThreads));
+              static_cast<unsigned long>(mProcess->mExecutingThreadsCount),
+              static_cast<unsigned long>(mProcess->mMaxThreads));
         pthread_cond_wait(&mProcess->mThreadCountDecrement, &mProcess->mThreadCountLock);
     }
     mProcess->mWaitingForThreads--;
     pthread_mutex_unlock(&mProcess->mThreadCountLock);
 }
 
-status_t IPCThreadState::getAndExecuteCommand()
-{
+status_t IPCThreadState::getAndExecuteCommand() {
     status_t result;
     int32_t cmd;
 
@@ -548,14 +511,13 @@ status_t IPCThreadState::getAndExecuteCommand()
         if (IN < sizeof(int32_t)) return result;
         cmd = mIn.readInt32();
         IF_LOG_COMMANDS() {
-            alog << "Processing top-level Command: "
-                 << getReturnString(cmd) << endl;
+            alog << "Processing top-level Command: " << getReturnString(cmd) << endl;
         }
 
         pthread_mutex_lock(&mProcess->mThreadCountLock);
         mProcess->mExecutingThreadsCount++;
         if (mProcess->mExecutingThreadsCount >= mProcess->mMaxThreads &&
-                mProcess->mStarvationStartTimeMs == 0) {
+            mProcess->mStarvationStartTimeMs == 0) {
             mProcess->mStarvationStartTimeMs = uptimeMillis();
         }
         pthread_mutex_unlock(&mProcess->mThreadCountLock);
@@ -565,7 +527,7 @@ status_t IPCThreadState::getAndExecuteCommand()
         pthread_mutex_lock(&mProcess->mThreadCountLock);
         mProcess->mExecutingThreadsCount--;
         if (mProcess->mExecutingThreadsCount < mProcess->mMaxThreads &&
-                mProcess->mStarvationStartTimeMs != 0) {
+            mProcess->mStarvationStartTimeMs != 0) {
             int64_t starvationTimeMs = uptimeMillis() - mProcess->mStarvationStartTimeMs;
             if (starvationTimeMs > 100) {
                 ALOGE("binder thread pool (%zu threads) starved for %" PRId64 " ms",
@@ -586,8 +548,7 @@ status_t IPCThreadState::getAndExecuteCommand()
 }
 
 // When we've cleared the incoming command queue, process any pending derefs
-void IPCThreadState::processPendingDerefs()
-{
+void IPCThreadState::processPendingDerefs() {
     if (mIn.dataPosition() >= mIn.dataSize()) {
         /*
          * The decWeak()/decStrong() calls may cause a destructor to run,
@@ -620,8 +581,7 @@ void IPCThreadState::processPendingDerefs()
     }
 }
 
-void IPCThreadState::processPostWriteDerefs()
-{
+void IPCThreadState::processPostWriteDerefs() {
     for (size_t i = 0; i < mPostWriteWeakDerefs.size(); i++) {
         RefBase::weakref_type* refs = mPostWriteWeakDerefs[i];
         refs->decWeak(mProcess.get());
@@ -635,9 +595,9 @@ void IPCThreadState::processPostWriteDerefs()
     mPostWriteStrongDerefs.clear();
 }
 
-void IPCThreadState::joinThreadPool(bool isMain)
-{
-    LOG_THREADPOOL("**** THREAD %p (PID %d) IS JOINING THE THREAD POOL\n", (void*)pthread_self(), getpid());
+void IPCThreadState::joinThreadPool(bool isMain) {
+    LOG_THREADPOOL("**** THREAD %p (PID %d) IS JOINING THE THREAD POOL\n", (void*)pthread_self(),
+                   getpid());
 
     mOut.writeInt32(isMain ? BC_ENTER_LOOPER : BC_REGISTER_LOOPER);
 
@@ -648,28 +608,28 @@ void IPCThreadState::joinThreadPool(bool isMain)
         // now get the next command to be processed, waiting if necessary
         result = getAndExecuteCommand();
 
-        if (result < NO_ERROR && result != TIMED_OUT && result != -ECONNREFUSED && result != -EBADF) {
+        if (result < NO_ERROR && result != TIMED_OUT && result != -ECONNREFUSED &&
+            result != -EBADF) {
             LOG_ALWAYS_FATAL("getAndExecuteCommand(fd=%d) returned unexpected error %d, aborting",
-                  mProcess->mDriverFD, result);
+                             mProcess->mDriverFD, result);
         }
 
         // Let this thread exit the thread pool if it is no longer
         // needed and it is not the main process thread.
-        if(result == TIMED_OUT && !isMain) {
+        if (result == TIMED_OUT && !isMain) {
             break;
         }
     } while (result != -ECONNREFUSED && result != -EBADF);
 
     LOG_THREADPOOL("**** THREAD %p (PID %d) IS LEAVING THE THREAD POOL err=%d\n",
-        (void*)pthread_self(), getpid(), result);
+                   (void*)pthread_self(), getpid(), result);
 
     mOut.writeInt32(BC_EXIT_LOOPER);
     mIsLooper = false;
     talkWithDriver(false);
 }
 
-status_t IPCThreadState::setupPolling(int* fd)
-{
+status_t IPCThreadState::setupPolling(int* fd) {
     if (mProcess->mDriverFD < 0) {
         return -EBADF;
     }
@@ -680,8 +640,7 @@ status_t IPCThreadState::setupPolling(int* fd)
     return 0;
 }
 
-status_t IPCThreadState::handlePolledCommands()
-{
+status_t IPCThreadState::handlePolledCommands() {
     status_t result;
 
     do {
@@ -693,20 +652,17 @@ status_t IPCThreadState::handlePolledCommands()
     return result;
 }
 
-void IPCThreadState::stopProcess(bool /*immediate*/)
-{
-    //ALOGI("**** STOPPING PROCESS");
+void IPCThreadState::stopProcess(bool /*immediate*/) {
+    // ALOGI("**** STOPPING PROCESS");
     flushCommands();
     int fd = mProcess->mDriverFD;
     mProcess->mDriverFD = -1;
     close(fd);
-    //kill(getpid(), SIGKILL);
+    // kill(getpid(), SIGKILL);
 }
 
-status_t IPCThreadState::transact(int32_t handle,
-                                  uint32_t code, const Parcel& data,
-                                  Parcel* reply, uint32_t flags)
-{
+status_t IPCThreadState::transact(int32_t handle, uint32_t code, const Parcel& data, Parcel* reply,
+                                  uint32_t flags) {
     LOG_ALWAYS_FATAL_IF(data.isForRpc(), "Parcel constructed for RPC, but being used with binder.");
 
     status_t err;
@@ -715,13 +671,12 @@ status_t IPCThreadState::transact(int32_t handle,
 
     IF_LOG_TRANSACTIONS() {
         TextOutput::Bundle _b(alog);
-        alog << "BC_TRANSACTION thr " << (void*)pthread_self() << " / hand "
-            << handle << " / code " << TypeCode(code) << ": "
-            << indent << data << dedent << endl;
+        alog << "BC_TRANSACTION thr " << (void*)pthread_self() << " / hand " << handle << " / code "
+             << TypeCode(code) << ": " << indent << data << dedent << endl;
     }
 
     LOG_ONEWAY(">>>> SEND from pid %d uid %d %s", getpid(), getuid(),
-        (flags & TF_ONE_WAY) == 0 ? "READ REPLY" : "ONE WAY");
+               (flags & TF_ONE_WAY) == 0 ? "READ REPLY" : "ONE WAY");
     err = writeTransactionData(BC_TRANSACTION, flags, handle, code, data, nullptr);
 
     if (err != NO_ERROR) {
@@ -734,39 +689,40 @@ status_t IPCThreadState::transact(int32_t handle,
             if (mCallRestriction == ProcessState::CallRestriction::ERROR_IF_NOT_ONEWAY) {
                 ALOGE("Process making non-oneway call (code: %u) but is restricted.", code);
                 CallStack::logStack("non-oneway call", CallStack::getCurrent(10).get(),
-                    ANDROID_LOG_ERROR);
+                                    ANDROID_LOG_ERROR);
             } else /* FATAL_IF_NOT_ONEWAY */ {
                 LOG_ALWAYS_FATAL("Process may not make non-oneway calls (code: %u).", code);
             }
         }
 
-        #if 0
+#if 0
         if (code == 4) { // relayout
             ALOGI(">>>>>> CALLING transaction 4");
         } else {
             ALOGI(">>>>>> CALLING transaction %d", code);
         }
-        #endif
+#endif
         if (reply) {
             err = waitForResponse(reply);
         } else {
             Parcel fakeReply;
             err = waitForResponse(&fakeReply);
         }
-        #if 0
+#if 0
         if (code == 4) { // relayout
             ALOGI("<<<<<< RETURNING transaction 4");
         } else {
             ALOGI("<<<<<< RETURNING transaction %d", code);
         }
-        #endif
+#endif
 
         IF_LOG_TRANSACTIONS() {
             TextOutput::Bundle _b(alog);
-            alog << "BR_REPLY thr " << (void*)pthread_self() << " / hand "
-                << handle << ": ";
-            if (reply) alog << indent << *reply << dedent << endl;
-            else alog << "(none requested)" << endl;
+            alog << "BR_REPLY thr " << (void*)pthread_self() << " / hand " << handle << ": ";
+            if (reply)
+                alog << indent << *reply << dedent << endl;
+            else
+                alog << "(none requested)" << endl;
         }
     } else {
         err = waitForResponse(nullptr, nullptr);
@@ -775,8 +731,7 @@ status_t IPCThreadState::transact(int32_t handle,
     return err;
 }
 
-void IPCThreadState::incStrongHandle(int32_t handle, BpBinder *proxy)
-{
+void IPCThreadState::incStrongHandle(int32_t handle, BpBinder* proxy) {
     LOG_REMOTEREFS("IPCThreadState::incStrongHandle(%d)\n", handle);
     mOut.writeInt32(BC_ACQUIRE);
     mOut.writeInt32(handle);
@@ -787,16 +742,14 @@ void IPCThreadState::incStrongHandle(int32_t handle, BpBinder *proxy)
     }
 }
 
-void IPCThreadState::decStrongHandle(int32_t handle)
-{
+void IPCThreadState::decStrongHandle(int32_t handle) {
     LOG_REMOTEREFS("IPCThreadState::decStrongHandle(%d)\n", handle);
     mOut.writeInt32(BC_RELEASE);
     mOut.writeInt32(handle);
     flushIfNeeded();
 }
 
-void IPCThreadState::incWeakHandle(int32_t handle, BpBinder *proxy)
-{
+void IPCThreadState::incWeakHandle(int32_t handle, BpBinder* proxy) {
     LOG_REMOTEREFS("IPCThreadState::incWeakHandle(%d)\n", handle);
     mOut.writeInt32(BC_INCREFS);
     mOut.writeInt32(handle);
@@ -807,16 +760,14 @@ void IPCThreadState::incWeakHandle(int32_t handle, BpBinder *proxy)
     }
 }
 
-void IPCThreadState::decWeakHandle(int32_t handle)
-{
+void IPCThreadState::decWeakHandle(int32_t handle) {
     LOG_REMOTEREFS("IPCThreadState::decWeakHandle(%d)\n", handle);
     mOut.writeInt32(BC_DECREFS);
     mOut.writeInt32(handle);
     flushIfNeeded();
 }
 
-status_t IPCThreadState::attemptIncStrongHandle(int32_t handle)
-{
+status_t IPCThreadState::attemptIncStrongHandle(int32_t handle) {
 #if HAS_BC_ATTEMPT_ACQUIRE
     LOG_REMOTEREFS("IPCThreadState::attemptIncStrongHandle(%d)\n", handle);
     mOut.writeInt32(BC_ATTEMPT_ACQUIRE);
@@ -827,8 +778,8 @@ status_t IPCThreadState::attemptIncStrongHandle(int32_t handle)
     waitForResponse(NULL, &result);
 
 #if LOG_REFCOUNTS
-    ALOGV("IPCThreadState::attemptIncStrongHandle(%ld) = %s\n",
-        handle, result == NO_ERROR ? "SUCCESS" : "FAILURE");
+    ALOGV("IPCThreadState::attemptIncStrongHandle(%ld) = %s\n", handle,
+          result == NO_ERROR ? "SUCCESS" : "FAILURE");
 #endif
 
     return result;
@@ -839,24 +790,21 @@ status_t IPCThreadState::attemptIncStrongHandle(int32_t handle)
 #endif
 }
 
-void IPCThreadState::expungeHandle(int32_t handle, IBinder* binder)
-{
+void IPCThreadState::expungeHandle(int32_t handle, IBinder* binder) {
 #if LOG_REFCOUNTS
     ALOGV("IPCThreadState::expungeHandle(%ld)\n", handle);
 #endif
     self()->mProcess->expungeHandle(handle, binder); // NOLINT
 }
 
-status_t IPCThreadState::requestDeathNotification(int32_t handle, BpBinder* proxy)
-{
+status_t IPCThreadState::requestDeathNotification(int32_t handle, BpBinder* proxy) {
     mOut.writeInt32(BC_REQUEST_DEATH_NOTIFICATION);
     mOut.writeInt32((int32_t)handle);
     mOut.writePointer((uintptr_t)proxy);
     return NO_ERROR;
 }
 
-status_t IPCThreadState::clearDeathNotification(int32_t handle, BpBinder* proxy)
-{
+status_t IPCThreadState::clearDeathNotification(int32_t handle, BpBinder* proxy) {
     mOut.writeInt32(BC_CLEAR_DEATH_NOTIFICATION);
     mOut.writeInt32((int32_t)handle);
     mOut.writePointer((uintptr_t)proxy);
@@ -880,12 +828,9 @@ IPCThreadState::IPCThreadState()
     mOut.setDataCapacity(256);
 }
 
-IPCThreadState::~IPCThreadState()
-{
-}
+IPCThreadState::~IPCThreadState() {}
 
-status_t IPCThreadState::sendReply(const Parcel& reply, uint32_t flags)
-{
+status_t IPCThreadState::sendReply(const Parcel& reply, uint32_t flags) {
     status_t err;
     status_t statusBuffer;
     err = writeTransactionData(BC_REPLY, flags, -1, 0, reply, &statusBuffer);
@@ -894,13 +839,12 @@ status_t IPCThreadState::sendReply(const Parcel& reply, uint32_t flags)
     return waitForResponse(nullptr, nullptr);
 }
 
-status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
-{
+status_t IPCThreadState::waitForResponse(Parcel* reply, status_t* acquireResult) {
     uint32_t cmd;
     int32_t err;
 
     while (1) {
-        if ((err=talkWithDriver()) < NO_ERROR) break;
+        if ((err = talkWithDriver()) < NO_ERROR) break;
         err = mIn.errorCheck();
         if (err < NO_ERROR) break;
         if (mIn.dataAvail() == 0) continue;
@@ -908,43 +852,40 @@ status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
         cmd = (uint32_t)mIn.readInt32();
 
         IF_LOG_COMMANDS() {
-            alog << "Processing waitForResponse Command: "
-                << getReturnString(cmd) << endl;
+            alog << "Processing waitForResponse Command: " << getReturnString(cmd) << endl;
         }
 
         switch (cmd) {
-        case BR_ONEWAY_SPAM_SUSPECT:
-            ALOGE("Process seems to be sending too many oneway calls.");
-            CallStack::logStack("oneway spamming", CallStack::getCurrent().get(),
-                    ANDROID_LOG_ERROR);
-            [[fallthrough]];
-        case BR_TRANSACTION_COMPLETE:
-            if (!reply && !acquireResult) goto finish;
-            break;
+            case BR_ONEWAY_SPAM_SUSPECT:
+                ALOGE("Process seems to be sending too many oneway calls.");
+                CallStack::logStack("oneway spamming", CallStack::getCurrent().get(),
+                                    ANDROID_LOG_ERROR);
+                [[fallthrough]];
+            case BR_TRANSACTION_COMPLETE:
+                if (!reply && !acquireResult) goto finish;
+                break;
 
-        case BR_DEAD_REPLY:
-            err = DEAD_OBJECT;
-            goto finish;
+            case BR_DEAD_REPLY:
+                err = DEAD_OBJECT;
+                goto finish;
 
-        case BR_FAILED_REPLY:
-            err = FAILED_TRANSACTION;
-            goto finish;
+            case BR_FAILED_REPLY:
+                err = FAILED_TRANSACTION;
+                goto finish;
 
-        case BR_FROZEN_REPLY:
-            err = FAILED_TRANSACTION;
-            goto finish;
+            case BR_FROZEN_REPLY:
+                err = FAILED_TRANSACTION;
+                goto finish;
 
-        case BR_ACQUIRE_RESULT:
-            {
+            case BR_ACQUIRE_RESULT: {
                 ALOG_ASSERT(acquireResult != NULL, "Unexpected brACQUIRE_RESULT");
                 const int32_t result = mIn.readInt32();
                 if (!acquireResult) continue;
                 *acquireResult = result ? NO_ERROR : INVALID_OPERATION;
             }
-            goto finish;
+                goto finish;
 
-        case BR_REPLY:
-            {
+            case BR_REPLY: {
                 binder_transaction_data tr;
                 err = mIn.read(&tr, sizeof(tr));
                 ALOG_ASSERT(err == NO_ERROR, "Not enough command data for brREPLY");
@@ -952,35 +893,34 @@ status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
 
                 if (reply) {
                     if ((tr.flags & TF_STATUS_CODE) == 0) {
-                        reply->ipcSetDataReference(
-                            reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer),
-                            tr.data_size,
-                            reinterpret_cast<const binder_size_t*>(tr.data.ptr.offsets),
-                            tr.offsets_size/sizeof(binder_size_t),
-                            freeBuffer);
+                        reply->ipcSetDataReference(reinterpret_cast<const uint8_t*>(
+                                                           tr.data.ptr.buffer),
+                                                   tr.data_size,
+                                                   reinterpret_cast<const binder_size_t*>(
+                                                           tr.data.ptr.offsets),
+                                                   tr.offsets_size / sizeof(binder_size_t),
+                                                   freeBuffer);
                     } else {
                         err = *reinterpret_cast<const status_t*>(tr.data.ptr.buffer);
-                        freeBuffer(nullptr,
-                            reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer),
-                            tr.data_size,
-                            reinterpret_cast<const binder_size_t*>(tr.data.ptr.offsets),
-                            tr.offsets_size/sizeof(binder_size_t));
+                        freeBuffer(nullptr, reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer),
+                                   tr.data_size,
+                                   reinterpret_cast<const binder_size_t*>(tr.data.ptr.offsets),
+                                   tr.offsets_size / sizeof(binder_size_t));
                     }
                 } else {
-                    freeBuffer(nullptr,
-                        reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer),
-                        tr.data_size,
-                        reinterpret_cast<const binder_size_t*>(tr.data.ptr.offsets),
-                        tr.offsets_size/sizeof(binder_size_t));
+                    freeBuffer(nullptr, reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer),
+                               tr.data_size,
+                               reinterpret_cast<const binder_size_t*>(tr.data.ptr.offsets),
+                               tr.offsets_size / sizeof(binder_size_t));
                     continue;
                 }
             }
-            goto finish;
+                goto finish;
 
-        default:
-            err = executeCommand(cmd);
-            if (err != NO_ERROR) goto finish;
-            break;
+            default:
+                err = executeCommand(cmd);
+                if (err != NO_ERROR) goto finish;
+                break;
         }
     }
 
@@ -994,8 +934,7 @@ finish:
     return err;
 }
 
-status_t IPCThreadState::talkWithDriver(bool doReceive)
-{
+status_t IPCThreadState::talkWithDriver(bool doReceive) {
     if (mProcess->mDriverFD < 0) {
         return -EBADF;
     }
@@ -1027,13 +966,13 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
         if (outAvail != 0) {
             alog << "Sending commands to driver: " << indent;
             const void* cmds = (const void*)bwr.write_buffer;
-            const void* end = ((const uint8_t*)cmds)+bwr.write_size;
+            const void* end = ((const uint8_t*)cmds) + bwr.write_size;
             alog << HexDump(cmds, bwr.write_size) << endl;
             while (cmds < end) cmds = printCommand(alog, cmds);
             alog << dedent;
         }
-        alog << "Size of receive buffer: " << bwr.read_size
-            << ", needRead: " << needRead << ", doReceive: " << doReceive << endl;
+        alog << "Size of receive buffer: " << bwr.read_size << ", needRead: " << needRead
+             << ", doReceive: " << doReceive << endl;
     }
 
     // Return immediately if there is nothing to do.
@@ -1063,9 +1002,8 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
     } while (err == -EINTR);
 
     IF_LOG_COMMANDS() {
-        alog << "Our err: " << (void*)(intptr_t)err << ", write consumed: "
-            << bwr.write_consumed << " (of " << mOut.dataSize()
-                        << "), read consumed: " << bwr.read_consumed << endl;
+        alog << "Our err: " << (void*)(intptr_t)err << ", write consumed: " << bwr.write_consumed
+             << " (of " << mOut.dataSize() << "), read consumed: " << bwr.read_consumed << endl;
     }
 
     if (err >= NO_ERROR) {
@@ -1073,8 +1011,7 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
             if (bwr.write_consumed < mOut.dataSize())
                 LOG_ALWAYS_FATAL("Driver did not consume write buffer. "
                                  "err: %s consumed: %zu of %zu",
-                                 statusToString(err).c_str(),
-                                 (size_t)bwr.write_consumed,
+                                 statusToString(err).c_str(), (size_t)bwr.write_consumed,
                                  mOut.dataSize());
             else {
                 mOut.setDataSize(0);
@@ -1101,9 +1038,9 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
     return err;
 }
 
-status_t IPCThreadState::writeTransactionData(int32_t cmd, uint32_t binderFlags,
-    int32_t handle, uint32_t code, const Parcel& data, status_t* statusBuffer)
-{
+status_t IPCThreadState::writeTransactionData(int32_t cmd, uint32_t binderFlags, int32_t handle,
+                                              uint32_t code, const Parcel& data,
+                                              status_t* statusBuffer) {
     binder_transaction_data tr;
 
     tr.target.ptr = 0; /* Don't pass uninitialized stack data to a remote process */
@@ -1118,7 +1055,7 @@ status_t IPCThreadState::writeTransactionData(int32_t cmd, uint32_t binderFlags,
     if (err == NO_ERROR) {
         tr.data_size = data.ipcDataSize();
         tr.data.ptr.buffer = data.ipcData();
-        tr.offsets_size = data.ipcObjectsCount()*sizeof(binder_size_t);
+        tr.offsets_size = data.ipcObjectsCount() * sizeof(binder_size_t);
         tr.data.ptr.offsets = data.ipcObjects();
     } else if (statusBuffer) {
         tr.flags |= TF_STATUS_CODE;
@@ -1139,114 +1076,109 @@ status_t IPCThreadState::writeTransactionData(int32_t cmd, uint32_t binderFlags,
 
 sp<BBinder> the_context_object;
 
-void IPCThreadState::setTheContextObject(const sp<BBinder>& obj)
-{
+void IPCThreadState::setTheContextObject(const sp<BBinder>& obj) {
     the_context_object = obj;
 }
 
-status_t IPCThreadState::executeCommand(int32_t cmd)
-{
+status_t IPCThreadState::executeCommand(int32_t cmd) {
     BBinder* obj;
     RefBase::weakref_type* refs;
     status_t result = NO_ERROR;
 
     switch ((uint32_t)cmd) {
-    case BR_ERROR:
-        result = mIn.readInt32();
-        break;
+        case BR_ERROR:
+            result = mIn.readInt32();
+            break;
 
-    case BR_OK:
-        break;
+        case BR_OK:
+            break;
 
-    case BR_ACQUIRE:
-        refs = (RefBase::weakref_type*)mIn.readPointer();
-        obj = (BBinder*)mIn.readPointer();
-        ALOG_ASSERT(refs->refBase() == obj,
-                   "BR_ACQUIRE: object %p does not match cookie %p (expected %p)",
-                   refs, obj, refs->refBase());
-        obj->incStrong(mProcess.get());
-        IF_LOG_REMOTEREFS() {
-            LOG_REMOTEREFS("BR_ACQUIRE from driver on %p", obj);
-            obj->printRefs();
-        }
-        mOut.writeInt32(BC_ACQUIRE_DONE);
-        mOut.writePointer((uintptr_t)refs);
-        mOut.writePointer((uintptr_t)obj);
-        break;
+        case BR_ACQUIRE:
+            refs = (RefBase::weakref_type*)mIn.readPointer();
+            obj = (BBinder*)mIn.readPointer();
+            ALOG_ASSERT(refs->refBase() == obj,
+                        "BR_ACQUIRE: object %p does not match cookie %p (expected %p)", refs, obj,
+                        refs->refBase());
+            obj->incStrong(mProcess.get());
+            IF_LOG_REMOTEREFS() {
+                LOG_REMOTEREFS("BR_ACQUIRE from driver on %p", obj);
+                obj->printRefs();
+            }
+            mOut.writeInt32(BC_ACQUIRE_DONE);
+            mOut.writePointer((uintptr_t)refs);
+            mOut.writePointer((uintptr_t)obj);
+            break;
 
-    case BR_RELEASE:
-        refs = (RefBase::weakref_type*)mIn.readPointer();
-        obj = (BBinder*)mIn.readPointer();
-        ALOG_ASSERT(refs->refBase() == obj,
-                   "BR_RELEASE: object %p does not match cookie %p (expected %p)",
-                   refs, obj, refs->refBase());
-        IF_LOG_REMOTEREFS() {
-            LOG_REMOTEREFS("BR_RELEASE from driver on %p", obj);
-            obj->printRefs();
-        }
-        mPendingStrongDerefs.push(obj);
-        break;
+        case BR_RELEASE:
+            refs = (RefBase::weakref_type*)mIn.readPointer();
+            obj = (BBinder*)mIn.readPointer();
+            ALOG_ASSERT(refs->refBase() == obj,
+                        "BR_RELEASE: object %p does not match cookie %p (expected %p)", refs, obj,
+                        refs->refBase());
+            IF_LOG_REMOTEREFS() {
+                LOG_REMOTEREFS("BR_RELEASE from driver on %p", obj);
+                obj->printRefs();
+            }
+            mPendingStrongDerefs.push(obj);
+            break;
 
-    case BR_INCREFS:
-        refs = (RefBase::weakref_type*)mIn.readPointer();
-        obj = (BBinder*)mIn.readPointer();
-        refs->incWeak(mProcess.get());
-        mOut.writeInt32(BC_INCREFS_DONE);
-        mOut.writePointer((uintptr_t)refs);
-        mOut.writePointer((uintptr_t)obj);
-        break;
+        case BR_INCREFS:
+            refs = (RefBase::weakref_type*)mIn.readPointer();
+            obj = (BBinder*)mIn.readPointer();
+            refs->incWeak(mProcess.get());
+            mOut.writeInt32(BC_INCREFS_DONE);
+            mOut.writePointer((uintptr_t)refs);
+            mOut.writePointer((uintptr_t)obj);
+            break;
 
-    case BR_DECREFS:
-        refs = (RefBase::weakref_type*)mIn.readPointer();
-        // NOLINTNEXTLINE(clang-analyzer-deadcode.DeadStores)
-        obj = (BBinder*)mIn.readPointer(); // consume
-        // NOTE: This assertion is not valid, because the object may no
-        // longer exist (thus the (BBinder*)cast above resulting in a different
-        // memory address).
-        //ALOG_ASSERT(refs->refBase() == obj,
-        //           "BR_DECREFS: object %p does not match cookie %p (expected %p)",
-        //           refs, obj, refs->refBase());
-        mPendingWeakDerefs.push(refs);
-        break;
+        case BR_DECREFS:
+            refs = (RefBase::weakref_type*)mIn.readPointer();
+            // NOLINTNEXTLINE(clang-analyzer-deadcode.DeadStores)
+            obj = (BBinder*)mIn.readPointer(); // consume
+            // NOTE: This assertion is not valid, because the object may no
+            // longer exist (thus the (BBinder*)cast above resulting in a different
+            // memory address).
+            // ALOG_ASSERT(refs->refBase() == obj,
+            //           "BR_DECREFS: object %p does not match cookie %p (expected %p)",
+            //           refs, obj, refs->refBase());
+            mPendingWeakDerefs.push(refs);
+            break;
 
-    case BR_ATTEMPT_ACQUIRE:
-        refs = (RefBase::weakref_type*)mIn.readPointer();
-        obj = (BBinder*)mIn.readPointer();
+        case BR_ATTEMPT_ACQUIRE:
+            refs = (RefBase::weakref_type*)mIn.readPointer();
+            obj = (BBinder*)mIn.readPointer();
 
-        {
-            const bool success = refs->attemptIncStrong(mProcess.get());
-            ALOG_ASSERT(success && refs->refBase() == obj,
-                       "BR_ATTEMPT_ACQUIRE: object %p does not match cookie %p (expected %p)",
-                       refs, obj, refs->refBase());
+            {
+                const bool success = refs->attemptIncStrong(mProcess.get());
+                ALOG_ASSERT(success && refs->refBase() == obj,
+                            "BR_ATTEMPT_ACQUIRE: object %p does not match cookie %p (expected %p)",
+                            refs, obj, refs->refBase());
 
-            mOut.writeInt32(BC_ACQUIRE_RESULT);
-            mOut.writeInt32((int32_t)success);
-        }
-        break;
+                mOut.writeInt32(BC_ACQUIRE_RESULT);
+                mOut.writeInt32((int32_t)success);
+            }
+            break;
 
-    case BR_TRANSACTION_SEC_CTX:
-    case BR_TRANSACTION:
-        {
+        case BR_TRANSACTION_SEC_CTX:
+        case BR_TRANSACTION: {
             binder_transaction_data_secctx tr_secctx;
             binder_transaction_data& tr = tr_secctx.transaction_data;
 
-            if (cmd == (int) BR_TRANSACTION_SEC_CTX) {
+            if (cmd == (int)BR_TRANSACTION_SEC_CTX) {
                 result = mIn.read(&tr_secctx, sizeof(tr_secctx));
             } else {
                 result = mIn.read(&tr, sizeof(tr));
                 tr_secctx.secctx = 0;
             }
 
-            ALOG_ASSERT(result == NO_ERROR,
-                "Not enough command data for brTRANSACTION");
+            ALOG_ASSERT(result == NO_ERROR, "Not enough command data for brTRANSACTION");
             if (result != NO_ERROR) break;
 
             Parcel buffer;
-            buffer.ipcSetDataReference(
-                reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer),
-                tr.data_size,
-                reinterpret_cast<const binder_size_t*>(tr.data.ptr.offsets),
-                tr.offsets_size/sizeof(binder_size_t), freeBuffer);
+            buffer.ipcSetDataReference(reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer),
+                                       tr.data_size,
+                                       reinterpret_cast<const binder_size_t*>(tr.data.ptr.offsets),
+                                       tr.offsets_size / sizeof(binder_size_t), freeBuffer);
 
             const void* origServingStackPointer = mServingStackPointer;
             mServingStackPointer = __builtin_frame_address(0);
@@ -1276,22 +1208,20 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
             status_t error;
             IF_LOG_TRANSACTIONS() {
                 TextOutput::Bundle _b(alog);
-                alog << "BR_TRANSACTION thr " << (void*)pthread_self()
-                    << " / obj " << tr.target.ptr << " / code "
-                    << TypeCode(tr.code) << ": " << indent << buffer
-                    << dedent << endl
-                    << "Data addr = "
-                    << reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer)
-                    << ", offsets addr="
-                    << reinterpret_cast<const size_t*>(tr.data.ptr.offsets) << endl;
+                alog << "BR_TRANSACTION thr " << (void*)pthread_self() << " / obj " << tr.target.ptr
+                     << " / code " << TypeCode(tr.code) << ": " << indent << buffer << dedent
+                     << endl
+                     << "Data addr = " << reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer)
+                     << ", offsets addr=" << reinterpret_cast<const size_t*>(tr.data.ptr.offsets)
+                     << endl;
             }
             if (tr.target.ptr) {
                 // We only have a weak reference on the target object, so we must first try to
                 // safely acquire a strong reference before doing anything else with it.
-                if (reinterpret_cast<RefBase::weakref_type*>(
-                        tr.target.ptr)->attemptIncStrong(this)) {
-                    error = reinterpret_cast<BBinder*>(tr.cookie)->transact(tr.code, buffer,
-                            &reply, tr.flags);
+                if (reinterpret_cast<RefBase::weakref_type*>(tr.target.ptr)
+                            ->attemptIncStrong(this)) {
+                    error = reinterpret_cast<BBinder*>(tr.cookie)->transact(tr.code, buffer, &reply,
+                                                                            tr.flags);
                     reinterpret_cast<BBinder*>(tr.cookie)->decStrong(this);
                 } else {
                     error = UNKNOWN_TRANSACTION;
@@ -1301,8 +1231,8 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
                 error = the_context_object->transact(tr.code, buffer, &reply, tr.flags);
             }
 
-            //ALOGI("<<<< TRANSACT from pid %d restore pid %d sid %s uid %d\n",
-            //     mCallingPid, origPid, (origSid ? origSid : "<N/A>"), origUid);
+            // ALOGI("<<<< TRANSACT from pid %d restore pid %d sid %s uid %d\n",
+            //      mCallingPid, origPid, (origSid ? origSid : "<N/A>"), origUid);
 
             if ((tr.flags & TF_ONE_WAY) == 0) {
                 LOG_ONEWAY("Sending reply to %d!", mCallingPid);
@@ -1312,18 +1242,16 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
                 sendReply(reply, (tr.flags & kForwardReplyFlags));
             } else {
                 if (error != OK) {
-                    alog << "oneway function results for code " << tr.code
-                         << " on binder at "
+                    alog << "oneway function results for code " << tr.code << " on binder at "
                          << reinterpret_cast<void*>(tr.target.ptr)
-                         << " will be dropped but finished with status "
-                         << statusToString(error);
+                         << " will be dropped but finished with status " << statusToString(error);
 
                     // ideally we could log this even when error == OK, but it
                     // causes too much logspam because some manually-written
                     // interfaces have clients that call methods which always
                     // write results, sometimes as oneway methods.
                     if (reply.dataSize() != 0) {
-                         alog << " and reply parcel size " << reply.dataSize();
+                        alog << " and reply parcel size " << reply.dataSize();
                     }
 
                     alog << endl;
@@ -1342,42 +1270,39 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
 
             IF_LOG_TRANSACTIONS() {
                 TextOutput::Bundle _b(alog);
-                alog << "BC_REPLY thr " << (void*)pthread_self() << " / obj "
-                    << tr.target.ptr << ": " << indent << reply << dedent << endl;
+                alog << "BC_REPLY thr " << (void*)pthread_self() << " / obj " << tr.target.ptr
+                     << ": " << indent << reply << dedent << endl;
             }
 
-        }
-        break;
+        } break;
 
-    case BR_DEAD_BINDER:
-        {
-            BpBinder *proxy = (BpBinder*)mIn.readPointer();
+        case BR_DEAD_BINDER: {
+            BpBinder* proxy = (BpBinder*)mIn.readPointer();
             proxy->sendObituary();
             mOut.writeInt32(BC_DEAD_BINDER_DONE);
             mOut.writePointer((uintptr_t)proxy);
         } break;
 
-    case BR_CLEAR_DEATH_NOTIFICATION_DONE:
-        {
-            BpBinder *proxy = (BpBinder*)mIn.readPointer();
+        case BR_CLEAR_DEATH_NOTIFICATION_DONE: {
+            BpBinder* proxy = (BpBinder*)mIn.readPointer();
             proxy->getWeakRefs()->decWeak(proxy);
         } break;
 
-    case BR_FINISHED:
-        result = TIMED_OUT;
-        break;
+        case BR_FINISHED:
+            result = TIMED_OUT;
+            break;
 
-    case BR_NOOP:
-        break;
+        case BR_NOOP:
+            break;
 
-    case BR_SPAWN_LOOPER:
-        mProcess->spawnPooledThread(false);
-        break;
+        case BR_SPAWN_LOOPER:
+            mProcess->spawnPooledThread(false);
+            break;
 
-    default:
-        ALOGE("*** BAD COMMAND %d received from Binder driver\n", cmd);
-        result = UNKNOWN_ERROR;
-        break;
+        default:
+            ALOGE("*** BAD COMMAND %d received from Binder driver\n", cmd);
+            result = UNKNOWN_ERROR;
+            break;
     }
 
     if (result != NO_ERROR) {
@@ -1388,33 +1313,30 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
 }
 
 const void* IPCThreadState::getServingStackPointer() const {
-     return mServingStackPointer;
+    return mServingStackPointer;
 }
 
-void IPCThreadState::threadDestructor(void *st)
-{
-        IPCThreadState* const self = static_cast<IPCThreadState*>(st);
-        if (self) {
-                self->flushCommands();
+void IPCThreadState::threadDestructor(void* st) {
+    IPCThreadState* const self = static_cast<IPCThreadState*>(st);
+    if (self) {
+        self->flushCommands();
 #if defined(__ANDROID__)
         if (self->mProcess->mDriverFD >= 0) {
             ioctl(self->mProcess->mDriverFD, BINDER_THREAD_EXIT, 0);
         }
 #endif
-                delete self;
-        }
+        delete self;
+    }
 }
 
-status_t IPCThreadState::getProcessFreezeInfo(pid_t pid, uint32_t *sync_received,
-                                              uint32_t *async_received)
-{
+status_t IPCThreadState::getProcessFreezeInfo(pid_t pid, uint32_t* sync_received,
+                                              uint32_t* async_received) {
     int ret = 0;
     binder_frozen_status_info info = {};
     info.pid = pid;
 
 #if defined(__ANDROID__)
-    if (ioctl(self()->mProcess->mDriverFD, BINDER_GET_FROZEN_INFO, &info) < 0)
-        ret = -errno;
+    if (ioctl(self()->mProcess->mDriverFD, BINDER_GET_FROZEN_INFO, &info) < 0) ret = -errno;
 #endif
     *sync_received = info.sync_recv;
     *async_received = info.async_recv;
@@ -1430,10 +1352,8 @@ status_t IPCThreadState::freeze(pid_t pid, bool enable, uint32_t timeout_ms) {
     info.enable = enable;
     info.timeout_ms = timeout_ms;
 
-
 #if defined(__ANDROID__)
-    if (ioctl(self()->mProcess->mDriverFD, BINDER_FREEZE, &info) < 0)
-        ret = -errno;
+    if (ioctl(self()->mProcess->mDriverFD, BINDER_FREEZE, &info) < 0) ret = -errno;
 #endif
 
     //
@@ -1443,12 +1363,9 @@ status_t IPCThreadState::freeze(pid_t pid, bool enable, uint32_t timeout_ms) {
     return ret;
 }
 
-void IPCThreadState::freeBuffer(Parcel* parcel, const uint8_t* data,
-                                size_t /*dataSize*/,
-                                const binder_size_t* /*objects*/,
-                                size_t /*objectsSize*/)
-{
-    //ALOGI("Freeing parcel %p", &parcel);
+void IPCThreadState::freeBuffer(Parcel* parcel, const uint8_t* data, size_t /*dataSize*/,
+                                const binder_size_t* /*objects*/, size_t /*objectsSize*/) {
+    // ALOGI("Freeing parcel %p", &parcel);
     IF_LOG_COMMANDS() {
         alog << "Writing BC_FREE_BUFFER for " << data << endl;
     }

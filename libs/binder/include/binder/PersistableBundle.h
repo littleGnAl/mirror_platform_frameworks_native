@@ -124,6 +124,6 @@ private:
     std::map<String16, PersistableBundle> mPersistableBundleMap;
 };
 
-}  // namespace os
+} // namespace os
 
-}  // namespace android
+} // namespace android

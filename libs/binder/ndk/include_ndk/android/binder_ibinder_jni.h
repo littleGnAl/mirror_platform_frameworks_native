@@ -27,7 +27,6 @@
 #pragma once
 
 #include <android/binder_ibinder.h>
-
 #include <jni.h>
 
 __BEGIN_DECLS

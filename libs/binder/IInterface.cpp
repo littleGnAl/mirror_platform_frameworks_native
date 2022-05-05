@@ -15,34 +15,28 @@
  */
 
 #define LOG_TAG "IInterface"
-#include <utils/Log.h>
 #include <binder/IInterface.h>
+#include <utils/Log.h>
 
 namespace android {
 
 // ---------------------------------------------------------------------------
 
-IInterface::IInterface() 
-    : RefBase() {
-}
+IInterface::IInterface() : RefBase() {}
 
-IInterface::~IInterface() {
-}
+IInterface::~IInterface() {}
 
 // static
-sp<IBinder> IInterface::asBinder(const IInterface* iface)
-{
+sp<IBinder> IInterface::asBinder(const IInterface* iface) {
     if (iface == nullptr) return nullptr;
     return sp<IBinder>::fromExisting(const_cast<IInterface*>(iface)->onAsBinder());
 }
 
 // static
-sp<IBinder> IInterface::asBinder(const sp<IInterface>& iface)
-{
+sp<IBinder> IInterface::asBinder(const sp<IInterface>& iface) {
     if (iface == nullptr) return nullptr;
     return sp<IBinder>::fromExisting(iface->onAsBinder());
 }
-
 
 // ---------------------------------------------------------------------------
 

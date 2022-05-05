@@ -174,7 +174,7 @@ std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryRaw::newClientCtx() const
     return std::make_unique<RpcTransportCtxRaw>();
 }
 
-const char *RpcTransportCtxFactoryRaw::toCString() const {
+const char* RpcTransportCtxFactoryRaw::toCString() const {
     return "raw";
 }
 

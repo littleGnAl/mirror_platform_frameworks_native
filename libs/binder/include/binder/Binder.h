@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include <atomic>
-#include <stdint.h>
 #include <binder/IBinder.h>
+#include <stdint.h>
+#include <atomic>
 
 // ---------------------------------------------------------------------------
 namespace android {
@@ -27,48 +27,42 @@ namespace internal {
 class Stability;
 }
 
-class BBinder : public IBinder
-{
+class BBinder : public IBinder {
 public:
-                        BBinder();
+    BBinder();
 
     virtual const String16& getInterfaceDescriptor() const;
-    virtual bool        isBinderAlive() const;
-    virtual status_t    pingBinder();
-    virtual status_t    dump(int fd, const Vector<String16>& args);
+    virtual bool isBinderAlive() const;
+    virtual status_t pingBinder();
+    virtual status_t dump(int fd, const Vector<String16>& args);
 
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t    transact(   uint32_t code,
-                                    const Parcel& data,
-                                    Parcel* reply,
-                                    uint32_t flags = 0) final;
+    virtual status_t transact(uint32_t code, const Parcel& data, Parcel* reply,
+                              uint32_t flags = 0) final;
 
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t    linkToDeath(const sp<DeathRecipient>& recipient,
-                                    void* cookie = nullptr,
-                                    uint32_t flags = 0);
+    virtual status_t linkToDeath(const sp<DeathRecipient>& recipient, void* cookie = nullptr,
+                                 uint32_t flags = 0);
 
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t    unlinkToDeath(  const wp<DeathRecipient>& recipient,
-                                        void* cookie = nullptr,
-                                        uint32_t flags = 0,
-                                        wp<DeathRecipient>* outRecipient = nullptr);
+    virtual status_t unlinkToDeath(const wp<DeathRecipient>& recipient, void* cookie = nullptr,
+                                   uint32_t flags = 0, wp<DeathRecipient>* outRecipient = nullptr);
 
     virtual void* attachObject(const void* objectID, void* object, void* cleanupCookie,
                                object_cleanup_func func) final;
-    virtual void*       findObject(const void* objectID) const final;
+    virtual void* findObject(const void* objectID) const final;
     virtual void* detachObject(const void* objectID) final;
     void withLock(const std::function<void()>& doWithLock);
 
-    virtual BBinder*    localBinder();
+    virtual BBinder* localBinder();
 
-    bool                isRequestingSid();
+    bool isRequestingSid();
     // This must be called before the object is sent to another process. Not thread safe.
-    void                setRequestingSid(bool requestSid);
+    void setRequestingSid(bool requestSid);
 
-    sp<IBinder>         getExtension();
+    sp<IBinder> getExtension();
     // This must be called before the object is sent to another process. Not thread safe.
-    void                setExtension(const sp<IBinder>& extension);
+    void setExtension(const sp<IBinder>& extension);
 
     // This must be called before the object is sent to another process. Not thread safe.
     //
@@ -82,16 +76,16 @@ public:
     // Appropriate values are:
     // SCHED_NORMAL: -20 <= priority <= 19
     // SCHED_RR/SCHED_FIFO: 1 <= priority <= 99
-    void                setMinSchedulerPolicy(int policy, int priority);
-    int                 getMinSchedulerPolicy();
-    int                 getMinSchedulerPriority();
+    void setMinSchedulerPolicy(int policy, int priority);
+    int getMinSchedulerPolicy();
+    int getMinSchedulerPriority();
 
     // Whether realtime scheduling policies are inherited.
-    bool                isInheritRt();
+    bool isInheritRt();
     // This must be called before the object is sent to another process. Not thread safe.
-    void                setInheritRt(bool inheritRt);
+    void setInheritRt(bool inheritRt);
 
-    pid_t               getDebugPid();
+    pid_t getDebugPid();
 
     // Whether this binder has been sent to another process.
     bool wasParceled();
@@ -104,22 +98,20 @@ public:
                                              const sp<IBinder>& keepAliveBinder);
 
 protected:
-    virtual             ~BBinder();
+    virtual ~BBinder();
 
     // NOLINTNEXTLINE(google-default-arguments)
-    virtual status_t    onTransact( uint32_t code,
-                                    const Parcel& data,
-                                    Parcel* reply,
-                                    uint32_t flags = 0);
+    virtual status_t onTransact(uint32_t code, const Parcel& data, Parcel* reply,
+                                uint32_t flags = 0);
 
 private:
-                        BBinder(const BBinder& o);
-            BBinder&    operator=(const BBinder& o);
+    BBinder(const BBinder& o);
+    BBinder& operator=(const BBinder& o);
 
     class RpcServerLink;
     class Extras;
 
-    Extras*             getOrCreateExtras();
+    Extras* getOrCreateExtras();
 
     [[nodiscard]] status_t setRpcClientDebug(const Parcel& data);
     void removeRpcServerLink(const sp<RpcServerLink>& link);
@@ -138,25 +130,24 @@ private:
 
 // ---------------------------------------------------------------------------
 
-class BpRefBase : public virtual RefBase
-{
+class BpRefBase : public virtual RefBase {
 protected:
-    explicit                BpRefBase(const sp<IBinder>& o);
-    virtual                 ~BpRefBase();
-    virtual void            onFirstRef();
-    virtual void            onLastStrongRef(const void* id);
-    virtual bool            onIncStrongAttempted(uint32_t flags, const void* id);
+    explicit BpRefBase(const sp<IBinder>& o);
+    virtual ~BpRefBase();
+    virtual void onFirstRef();
+    virtual void onLastStrongRef(const void* id);
+    virtual bool onIncStrongAttempted(uint32_t flags, const void* id);
 
     inline IBinder* remote() const { return mRemote; }
     inline sp<IBinder> remoteStrong() const { return sp<IBinder>::fromExisting(mRemote); }
 
 private:
-                            BpRefBase(const BpRefBase& o);
-    BpRefBase&              operator=(const BpRefBase& o);
+    BpRefBase(const BpRefBase& o);
+    BpRefBase& operator=(const BpRefBase& o);
 
-    IBinder* const          mRemote;
-    RefBase::weakref_type*  mRefs;
-    std::atomic<int32_t>    mState;
+    IBinder* const mRemote;
+    RefBase::weakref_type* mRefs;
+    std::atomic<int32_t> mState;
 };
 
 } // namespace android

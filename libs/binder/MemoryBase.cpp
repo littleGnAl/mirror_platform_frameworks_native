@@ -14,33 +14,25 @@
  * limitations under the License.
  */
 
-
-#include <stdlib.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 #include <binder/MemoryBase.h>
-
 
 namespace android {
 
 // ---------------------------------------------------------------------------
 
-MemoryBase::MemoryBase(const sp<IMemoryHeap>& heap,
-        ssize_t offset, size_t size)
-    : mSize(size), mOffset(offset), mHeap(heap)
-{
-}
+MemoryBase::MemoryBase(const sp<IMemoryHeap>& heap, ssize_t offset, size_t size)
+      : mSize(size), mOffset(offset), mHeap(heap) {}
 
-sp<IMemoryHeap> MemoryBase::getMemory(ssize_t* offset, size_t* size) const
-{
+sp<IMemoryHeap> MemoryBase::getMemory(ssize_t* offset, size_t* size) const {
     if (offset) *offset = mOffset;
-    if (size)   *size = mSize;
+    if (size) *size = mSize;
     return mHeap;
 }
 
-MemoryBase::~MemoryBase()
-{
-}
+MemoryBase::~MemoryBase() {}
 
 // ---------------------------------------------------------------------------
 } // namespace android
