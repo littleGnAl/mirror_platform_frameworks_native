@@ -3034,6 +3034,8 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
     // duration is logged into MYLOG instead.
     PrintHeader();
 
+    MaybeTakeEarlyScreenshot();
+
     bool is_dumpstate_restricted = options_->telephony_only
                                    || options_->wifi_only
                                    || options_->limited_only;
@@ -3041,7 +3043,6 @@ Dumpstate::RunStatus Dumpstate::RunInternal(int32_t calling_uid,
         // Invoke critical dumpsys first to preserve system state, before doing anything else.
         RunDumpsysCritical();
     }
-    MaybeTakeEarlyScreenshot();
 
     if (!is_dumpstate_restricted) {
         // Snapshot the system trace now (if running) to avoid that dumpstate's
