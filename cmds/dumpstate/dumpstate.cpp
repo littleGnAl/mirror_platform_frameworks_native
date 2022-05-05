@@ -141,6 +141,9 @@ static int RunCommand(const std::string& title, const std::vector<std::string>& 
 static const int STATS_MAX_N_RUNS = 1000;
 static const long STATS_MAX_AVERAGE = 100000;
 
+// Compression level for zlib (0-9); default is 6.
+static const int COMPRESSION_LEVEL = 6;
+
 CommandOptions Dumpstate::DEFAULT_DUMPSYS = CommandOptions::WithTimeout(30).Build();
 
 typedef Dumpstate::ConsentCallback::ConsentResult UserConsentResult;
@@ -830,7 +833,7 @@ status_t Dumpstate::AddZipEntryFromFd(const std::string& entry_name, int fd,
     // Logging statement  below is useful to time how long each entry takes, but it's too verbose.
     // MYLOGD("Adding zip entry %s\n", entry_name.c_str());
     int32_t err = zip_writer_->StartEntryWithTime(valid_name.c_str(), ZipWriter::kCompress,
-                                                  get_mtime(fd, ds.now_));
+                                                  get_mtime(fd, ds.now_), COMPRESSION_LEVEL);
     if (err != 0) {
         MYLOGE("zip_writer_->StartEntryWithTime(%s): %s\n", valid_name.c_str(),
                ZipWriter::ErrorCodeString(err));
@@ -921,7 +924,8 @@ void Dumpstate::AddDir(const std::string& dir, bool recursive) {
 
 bool Dumpstate::AddTextZipEntry(const std::string& entry_name, const std::string& content) {
     MYLOGD("Adding zip text entry %s\n", entry_name.c_str());
-    int32_t err = zip_writer_->StartEntryWithTime(entry_name.c_str(), ZipWriter::kCompress, ds.now_);
+    int32_t err = zip_writer_->StartEntryWithTime(entry_name.c_str(), ZipWriter::kCompress, ds.now_,
+                                                  COMPRESSION_LEVEL);
     if (err != 0) {
         MYLOGE("zip_writer_->StartEntryWithTime(%s): %s\n", entry_name.c_str(),
                ZipWriter::ErrorCodeString(err));
