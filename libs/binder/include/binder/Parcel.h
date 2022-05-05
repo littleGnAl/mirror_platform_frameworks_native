@@ -1172,7 +1172,19 @@ private:
             auto data = reinterpret_cast<const T*>(
                     readInplace(static_cast<size_t>(size) * sizeof(T)));
             if (data == nullptr) return BAD_VALUE;
-            c->insert(c->begin(), data, data + size); // insert should do a reserve().
+            if constexpr (std::is_trivially_copyable_v<T>) {
+                // std::vector::insert and similar methods will require type-dependent
+                // byte alignment when inserting from a const iterator such as `data`,
+                // e.g. 8 byte alignment for int64_t, and so will not work if `data`
+                // is 4 byte aligned (which is all Parcel guarantees). Copying
+                // the contents into the vector directly, where possible, circumvents
+                // this.
+                c->resize(size);
+                memcpy(c->data(), data, static_cast<size_t>(size) * sizeof(T));
+            } else {
+                c->insert(c->begin(), data,
+                          data + static_cast<size_t>(size)); // insert should do a reserve().
+            }
         } else if constexpr (std::is_same_v<T, bool>
                 || std::is_same_v<T, char16_t>) {
             c->reserve(size); // avoids default initialization
