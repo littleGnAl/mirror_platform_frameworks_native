@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d31c001_8f2a2da0",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:25:44Z",
+      "side": 1,
+      "message": "this will cause linker errors, right? I guess we are okay with that for trusty?",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 16
+      },
+      "revId": "a62988ffcb82209859c831affa561911b0d64ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
