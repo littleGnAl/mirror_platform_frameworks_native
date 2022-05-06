@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d43e969_847e7a4e",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:28:37Z",
+      "side": 1,
+      "message": "if\u0027n\u0027def \u0027NO\u0027 (double negative), pref:\n\n#ifdef BINDER_RPC_NO_THREADS\n...10\n#else\n...1\n#endif\n\n(but is this condition actually reversed?)\n\nbtw - could we move this out of the header, since it would require all clients to have the same flags (ideally for feature flags, everything that differs is in cpp classes)",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "a89a68b16e692b4087272cc5ae54d8839021376f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
