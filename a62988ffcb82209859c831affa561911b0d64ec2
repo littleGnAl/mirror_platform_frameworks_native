@@ -22,6 +22,30 @@
       },
       "revId": "a62988ffcb82209859c831affa561911b0d64ec2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20347c26_7ea9c9a8",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-06T00:32:32Z",
+      "side": 1,
+      "message": "They only cause linker errors if they\u0027re either virtual (they\u0027re not) or if they\u0027re called from somewhere else. Some of these are called from other places in libbinder, but those call sites are disabled too (e.g. isRequestingSid which is called from Parcel.cpp from code that deals with flat_binder_object) or in files that aren\u0027t compiled on Trusty.",
+      "parentUuid": "8d31c001_8f2a2da0",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 16
+      },
+      "revId": "a62988ffcb82209859c831affa561911b0d64ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
