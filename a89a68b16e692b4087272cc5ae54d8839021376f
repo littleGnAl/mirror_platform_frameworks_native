@@ -22,6 +22,29 @@
       },
       "revId": "a89a68b16e692b4087272cc5ae54d8839021376f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f5125c_79241d4d",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:33:05Z",
+      "side": 1,
+      "message": "nit: can we call this \u0027single_threaded\u0027 instead of \u0027no_threads\u0027?",
+      "range": {
+        "startLine": 26,
+        "startChar": 18,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "a89a68b16e692b4087272cc5ae54d8839021376f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
