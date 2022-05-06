@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3861a89_405d49e8",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-06T20:41:23Z",
+      "side": 1,
+      "message": "can you document the rationale for what is and isn\u0027t ifndef\u0027d somewhere. outside the context of this CL, it wouldn\u0027t be obvious to me that the goal is to remove uses of flat_binder_object as opposed to removing as much non-RPC binder stuff as possible",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53246230_fd15cdce",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-06T20:41:23Z",
+      "side": 1,
+      "message": "this one seems like overkill since it should compile out. are the constants not available?",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee1a11d_0d050aad",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-06T20:41:23Z",
+      "side": 1,
+      "message": "it would be more churn, so someone else disagree, but maybe move all the object code together into one ifndef block\n\n```\n    // ...\n\n    memcpy(mData + mDataPos, data + offset, len);\n    mDataPos +\u003d len;\n    mDataSize +\u003d len;\n\n    err \u003d NO_ERROR;\n    \n#ifndef BINDER_NO_KERNEL_IPC\n    const binder_size_t *objects \u003d parcel-\u003emObjects;\n    size_t size \u003d parcel-\u003emObjectsSize;\n    int firstIndex \u003d -1, lastIndex \u003d -2;\n    for (int i \u003d 0; i \u003c (int) size; i++) {\n       // ...\n    }\n    int numObjects \u003d lastIndex - firstIndex + 1;\n    if (numObjects \u003e 0) {\n       // ...\n    }\n#endif\n\n    return err;\n```",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b810a1c_c0cfdaba",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-06T20:41:23Z",
+      "side": 1,
+      "message": "what\u0027s the rationale for completely removing these two functions vs removing most of their implementations (as done in most other cases in this CL)?\n\ni think it is probably fine either way, but these will become relevant for RPC binder soon and we\u0027ll bring them back at least part way",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba8b60c8_e3c67de1",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-06T20:41:23Z",
+      "side": 1,
+      "message": "is this necessary? wouldn\u0027t expect it to add any bloat if unused",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef86549_71ff2ee9",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-06T20:41:23Z",
+      "side": 1,
+      "message": "some extra reason to prefer abort in this case: this could leak FDs",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7971d6fd_3407e4ae",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-06T20:41:23Z",
+      "side": 1,
+      "message": "IIUC, this whole function body is irrelevant for RPC binder, so you can ifndef more and just return NO_ERROR immediately for the else branch (which I think would make the code easier to understand and maintain)",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f9939b_0732784e",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2357,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-06T20:41:23Z",
+      "side": 1,
+      "message": "can you ifndef just this block?",
+      "range": {
+        "startLine": 2349,
+        "startChar": 0,
+        "endLine": 2357,
+        "endChar": 9
+      },
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
