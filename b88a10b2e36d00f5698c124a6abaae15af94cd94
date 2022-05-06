@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4775ea4_f62f6c01",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:31:46Z",
+      "side": 1,
+      "message": "nit: could you add the pairs on these, e.g. \"// __ANDROID__\"",
+      "revId": "b88a10b2e36d00f5698c124a6abaae15af94cd94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
