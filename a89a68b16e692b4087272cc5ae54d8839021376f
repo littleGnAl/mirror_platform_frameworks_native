@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "887ad82e_7ffe06c4",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-06T19:40:34Z",
+      "side": 0,
+      "message": "nice bug fix. guess no one runs RPC binder with verbose logging enabled",
+      "revId": "a89a68b16e692b4087272cc5ae54d8839021376f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

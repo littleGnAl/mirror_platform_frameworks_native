@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "093c079b_079fa7ad",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-06T19:40:34Z",
+      "side": 1,
+      "message": "+1, i\u0027d recommend that for all the cases, or at least the methods that only make sense for kernel binder, like this and the ctor accepting BinderHandle",
+      "parentUuid": "ef5b5720_93eb10c6",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 17
+      },
+      "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29eb24c6_09a109b4",
         "filename": "libs/binder/BpBinder.cpp",
         "patchSetId": 75
@@ -66,6 +90,23 @@
         "endLine": 187,
         "endChar": 28
       },
+      "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfc9fe26_2e88d4ed",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-06T19:40:34Z",
+      "side": 1,
+      "message": "i\u0027d lean towards putting the return statement inside the conditional block and having the other branch abort (with its own separate return statement if needed to make the compiler happy). same elsewhere",
       "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
