@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd041b2_f3218104",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 21
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:35:21Z",
+      "side": 1,
+      "message": "can you refactor to use cc_defaults?",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 16
+      },
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5692df83_592ae371",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 21
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:35:21Z",
+      "side": 1,
+      "message": "nit:binderRpcTestSingleThreaded",
+      "range": {
+        "startLine": 225,
+        "startChar": 23,
+        "endLine": 225,
+        "endChar": 35
+      },
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d58274fd_2f1581a0",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 21
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:35:21Z",
+      "side": 1,
+      "message": "same, cc_defaults",
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f23d5e47_dcfd5b5f",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 21
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:35:21Z",
+      "side": 1,
+      "message": "do we have a test for compatibility between the single threaded variant and the no thread variant? if we have both flags, can we test all combinations?",
+      "range": {
+        "startLine": 243,
+        "startChar": 10,
+        "endLine": 243,
+        "endChar": 32
+      },
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86fb6ff0_7c1519ca",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:35:21Z",
+      "side": 1,
+      "message": "nit: could we move this into a variable and use GTEST_SKIP (for compilation?). Same elsewhere",
+      "range": {
+        "startLine": 712,
+        "startChar": 8,
+        "endLine": 712,
+        "endChar": 29
+      },
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52904448_ac67c131",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 1400,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:35:21Z",
+      "side": 1,
+      "message": "should this be based on no kernel?",
+      "range": {
+        "startLine": 1400,
+        "startChar": 7,
+        "endLine": 1400,
+        "endChar": 28
+      },
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
