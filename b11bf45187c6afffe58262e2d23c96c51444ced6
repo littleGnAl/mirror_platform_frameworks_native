@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6894ec23_f6f69c75",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:23:39Z",
+      "side": 1,
+      "message": "this should have a size check as well?",
+      "range": {
+        "startLine": 656,
+        "startChar": 40,
+        "endLine": 656,
+        "endChar": 55
+      },
+      "revId": "b11bf45187c6afffe58262e2d23c96c51444ced6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
