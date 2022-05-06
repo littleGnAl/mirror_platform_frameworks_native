@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "422659c7_04256125",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-06T00:39:08Z",
+      "side": 1,
+      "message": "\u003e (but is this condition actually reversed?)\n\nHuh good catch, I think it is.\n\n\u003e btw - could we move this out of the header, since it would require all clients to have the same flags (ideally for feature flags, everything that differs is in cpp classes)\n\nI already ran into that problem where I was building the same headers once with a virtual method disabled and once with it enabled (got rid of that particular #ifdef for this reason). Should it be a static instead, or just move it altogether into RpcSession.cpp (which would break clients that read this constant)?\n\nThe bigger issue is RpcThreads, which needs to be in include/binder because some of the other Rpc*.h headers include it.",
+      "parentUuid": "8d43e969_847e7a4e",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "a89a68b16e692b4087272cc5ae54d8839021376f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98f5125c_79241d4d",
         "filename": "libs/binder/include/binder/RpcThreads.h",
         "patchSetId": 35
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-06T00:33:05Z",
       "side": 1,
       "message": "nit: can we call this \u0027single_threaded\u0027 instead of \u0027no_threads\u0027?",
+      "range": {
+        "startLine": 26,
+        "startChar": 18,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "a89a68b16e692b4087272cc5ae54d8839021376f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84369eba_7152ac87",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-06T00:39:08Z",
+      "side": 1,
+      "message": "It was called BINDER_RPC_SINGLE_THREADED in a previous version, I changed it to NO for consistency with the other variables (at some point we had BINDER_RPC_NO_ASYNC, BINDER_RPC_NO_SOCKET_API, and BINDER_NO_KERNEL_IPC). I\u0027ll change it back.",
+      "parentUuid": "98f5125c_79241d4d",
       "range": {
         "startLine": 26,
         "startChar": 18,
