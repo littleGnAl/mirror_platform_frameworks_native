@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c5ac03_f3cc673c",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:30:25Z",
+      "side": 1,
+      "message": "could we reverse the flag, since it\u0027s only used in cpp files? BINDER_KERNEL_IPC as a feature?",
+      "range": {
+        "startLine": 118,
+        "startChar": 14,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef5b5720_93eb10c6",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:30:25Z",
+      "side": 1,
+      "message": "pref abort for case that should never be hit?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 17
+      },
+      "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29eb24c6_09a109b4",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-06T00:30:25Z",
+      "side": 1,
+      "message": "is it possible to do a boolean define at the top of the file and then if statements in the code, so that we still type check everything on both sides?",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 28
+      },
+      "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
