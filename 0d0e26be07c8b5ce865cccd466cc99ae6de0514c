@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71133d9_926d339c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2022-05-06T17:03:25Z",
+      "side": 1,
+      "message": "Hi Jeff, this change decreases the amount of compression performed on bug reports. Can you take a look when you get a chance? Thanks!",
+      "revId": "0d0e26be07c8b5ce865cccd466cc99ae6de0514c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
