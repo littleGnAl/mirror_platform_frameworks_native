@@ -53,6 +53,7 @@
 #include "../RpcSocketAddress.h" // for testing preconnected clients
 #include "../RpcState.h"         // for debugging
 #include "../vm_sockets.h"       // for VMADDR_*
+#include "utils/Errors.h"
 
 using namespace std::chrono_literals;
 using namespace std::placeholders;
@@ -69,7 +70,8 @@ const char* kLocalInetAddress = "127.0.0.1";
 enum class RpcSecurity { RAW, TLS };
 
 static inline std::vector<RpcSecurity> RpcSecurityValues() {
-    return {RpcSecurity::RAW, RpcSecurity::TLS};
+    return {RpcSecurity::RAW};
+    // return {RpcSecurity::RAW, RpcSecurity::TLS};
 }
 
 static inline std::unique_ptr<RpcTransportCtxFactory> newFactory(
@@ -90,6 +92,16 @@ static inline std::unique_ptr<RpcTransportCtxFactory> newFactory(
         default:
             LOG_ALWAYS_FATAL("Unknown RpcSecurity %d", rpcSecurity);
     }
+}
+
+// Create an FD that returns `contents` when read.
+static base::unique_fd mockFileDescriptor(std::string contents) {
+    android::base::unique_fd readFd, writeFd;
+    CHECK(android::base::Pipe(&readFd, &writeFd)) << strerror(errno);
+    std::thread([writeFd = std::move(writeFd), contents = std::move(contents)]() {
+        CHECK(WriteStringToFd(contents, writeFd));
+    }).detach();
+    return std::move(readFd);
 }
 
 TEST(BinderRpcParcel, EntireParcelFormatted) {
@@ -322,6 +334,23 @@ public:
         (void)IPCThreadState::self()->getCallingPid();
         return Status::ok();
     }
+
+    Status getHelloFile(android::os::ParcelFileDescriptor* out) override {
+        out->reset(mockFileDescriptor("hello"));
+        return Status::ok();
+    }
+
+    Status concatFiles(const std::vector<android::os::ParcelFileDescriptor>& files,
+                       android::os::ParcelFileDescriptor* out) override {
+        std::string acc;
+        for (const auto& file : files) {
+            std::string result;
+            CHECK(android::base::ReadFdToString(file.get(), &result));
+            acc.append(result);
+        }
+        out->reset(mockFileDescriptor(acc));
+        return Status::ok();
+    }
 };
 sp<IBinder> MyBinderRpcTest::mHeldBinder;
 
@@ -487,6 +516,7 @@ public:
         size_t numSessions = 1;
         size_t numIncomingConnections = 0;
         size_t numOutgoingConnections = SIZE_MAX;
+        bool enableAncilleryParcelFileDescriptors = false;
     };
 
     static inline std::string PrintParamInfo(const testing::TestParamInfo<ParamType>& info) {
@@ -544,6 +574,8 @@ public:
                     sp<RpcServer> server = RpcServer::make(newFactory(rpcSecurity, certVerifier));
 
                     server->setMaxThreads(options.numThreads);
+                    server->setEnableAncilleryFileDescriptors(
+                            options.enableAncilleryParcelFileDescriptors);
 
                     unsigned int outPort = 0;
 
@@ -620,6 +652,8 @@ public:
         for (const auto& session : sessions) {
             session->setMaxIncomingThreads(options.numIncomingConnections);
             session->setMaxOutgoingThreads(options.numOutgoingConnections);
+            session->setEnableAncilleryFileDescriptors(
+                    options.enableAncilleryParcelFileDescriptors);
 
             switch (socketType) {
                 case SocketType::PRECONNECTED:
@@ -1323,6 +1357,98 @@ TEST_P(BinderRpc, UseKernelBinderCallingId) {
     EXPECT_EQ(DEAD_OBJECT, proc.rootIface->useKernelBinderCallingId().transactionError());
 
     proc.expectAlreadyShutdown = true;
+}
+
+TEST_P(BinderRpc, ReceiveFile) {
+    SocketType type = std::get<0>(GetParam());
+    if (type != SocketType::PRECONNECTED && type != SocketType::UNIX) {
+        // DO NOT SUBMIT: Test this case.
+        return;
+    }
+    auto proc = createRpcTestSocketServerProcess({
+            .enableAncilleryParcelFileDescriptors = true,
+    });
+
+    android::os::ParcelFileDescriptor out;
+    auto status = proc.rootIface->getHelloFile(&out);
+    ASSERT_TRUE(status.isOk()) << status;
+
+    std::string result;
+    CHECK(android::base::ReadFdToString(out.get(), &result));
+    EXPECT_EQ(result, "hello");
+}
+
+TEST_P(BinderRpc, SendFiles) {
+    SocketType type = std::get<0>(GetParam());
+    if (type != SocketType::PRECONNECTED && type != SocketType::UNIX) {
+        // DO NOT SUBMIT: Test this case.
+        return;
+    }
+    auto proc = createRpcTestSocketServerProcess({
+            .enableAncilleryParcelFileDescriptors = true,
+    });
+
+    std::vector<android::os::ParcelFileDescriptor> files;
+    files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("123")));
+    files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("a")));
+    files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("b")));
+    files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("cd")));
+
+    android::os::ParcelFileDescriptor out;
+    auto status = proc.rootIface->concatFiles(files, &out);
+    ASSERT_TRUE(status.isOk()) << status;
+
+    std::string result;
+    CHECK(android::base::ReadFdToString(out.get(), &result));
+    EXPECT_EQ(result, "123abcd");
+}
+
+TEST_P(BinderRpc, SendMaxFiles) {
+    SocketType type = std::get<0>(GetParam());
+    if (type != SocketType::PRECONNECTED && type != SocketType::UNIX) {
+        // DO NOT SUBMIT: Test this case.
+        return;
+    }
+    auto proc = createRpcTestSocketServerProcess({
+            .enableAncilleryParcelFileDescriptors = true,
+    });
+
+    std::vector<android::os::ParcelFileDescriptor> files;
+    for (int i = 0; i < 253; i++) {
+        files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("a")));
+    }
+
+    android::os::ParcelFileDescriptor out;
+    auto status = proc.rootIface->concatFiles(files, &out);
+    ASSERT_TRUE(status.isOk()) << status;
+
+    std::string result;
+    CHECK(android::base::ReadFdToString(out.get(), &result));
+    std::string expected;
+    for (int i = 0; i < 253; i++) {
+        expected += "a";
+    }
+    EXPECT_EQ(result, expected);
+}
+
+TEST_P(BinderRpc, SendTooManyFiles) {
+    SocketType type = std::get<0>(GetParam());
+    if (type != SocketType::PRECONNECTED && type != SocketType::UNIX) {
+        // DO NOT SUBMIT: Test this case.
+        return;
+    }
+    auto proc = createRpcTestSocketServerProcess({
+            .enableAncilleryParcelFileDescriptors = true,
+    });
+
+    std::vector<android::os::ParcelFileDescriptor> files;
+    for (int i = 0; i < 254; i++) {
+        files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("a")));
+    }
+
+    android::os::ParcelFileDescriptor out;
+    auto status = proc.rootIface->concatFiles(files, &out);
+    EXPECT_EQ(BAD_VALUE, status.transactionError()) << status;
 }
 
 TEST_P(BinderRpc, WorksWithLibbinderNdkPing) {
