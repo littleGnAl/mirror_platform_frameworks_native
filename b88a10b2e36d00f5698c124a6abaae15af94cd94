@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d4db5d_c4a31555",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T20:44:54Z",
+      "side": 1,
+      "message": "I just realized this isn\u0027t needed at all, because without BINDER_RPC_DEV_SERVERS all code after the `if constexpr` is disabled at compile time. I\u0027m not sure we ever needed this.",
+      "revId": "b88a10b2e36d00f5698c124a6abaae15af94cd94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4775ea4_f62f6c01",
