@@ -638,10 +638,37 @@ void InputDispatcher::processNoFocusedWindowAnrLocked() {
 
     const sp<WindowInfoHandle>& focusedWindowHandle =
             getFocusedWindowHandleLocked(mAwaitedApplicationDisplayId);
-    if (focusedWindowHandle != nullptr) {
+    // Check focusable windows for current focused application.
+    bool anrForAppNoFocusableWindow = shouldAnrForNoFocusableWindow(focusedApplication,
+                                                                    focusedWindowHandle);
+    if (focusedWindowHandle != nullptr && !anrForAppNoFocusableWindow) {
         return; // We now have a focused window. No need for ANR.
     }
     onAnrLocked(mAwaitedFocusedApplication);
+}
+
+/**
+ * Raise ANR if the following statements are true:
+ * 1. The current focused app and focused window have different application tokens.
+ * 2. The current focused window has a BASE_APPLICATION type.
+ * This happens for multi windowed mode where the current focused app has no window and the window
+ * focus switches to the next focusable window.
+ */
+bool InputDispatcher::shouldAnrForNoFocusableWindow(
+            const std::shared_ptr<InputApplicationHandle>& applicationHandle,
+            const sp<android::gui::WindowInfoHandle>& windowHandle) const {
+    if (applicationHandle == nullptr || windowHandle == nullptr) {
+        return false;
+    }
+    if (applicationHandle->getApplicationToken() == windowHandle->getApplicationToken()) {
+        return false;
+    }
+    if (windowHandle->getInfo() != nullptr &&
+        (windowHandle->getInfo()->type == WindowInfo::Type::BASE_APPLICATION ||
+         windowHandle->getInfo()->type == WindowInfo::Type::APPLICATION)) {
+        return true;
+    }
+    return false;
 }
 
 /**
@@ -1837,13 +1864,20 @@ InputEventInjectionResult InputDispatcher::findFocusedWindowTargetsLocked(
     if (focusedWindowHandle != nullptr && shouldDropInput(entry, focusedWindowHandle)) {
         return InputEventInjectionResult::FAILED;
     }
-
+    //
+    // Check if the focused app has the same app token as the focused window and the
+    // focused window is not BASE_APPLICATION type The possibility of multi window allows us to
+    // have the case where the focused app has no window and FocusResolver picks the next available
+    // target for the window focus and in result no anr is shown for unresponsive focused app.
+    bool anrForAppNoFocusableWindow = shouldAnrForNoFocusableWindow(focusedApplicationHandle,
+                                                                    focusedWindowHandle);
     // Compatibility behavior: raise ANR if there is a focused application, but no focused window.
     // Only start counting when we have a focused event to dispatch. The ANR is canceled if we
     // start interacting with another application via touch (app switch). This code can be removed
     // if the "no focused window ANR" is moved to the policy. Input doesn't know whether
     // an app is expected to have a focused window.
-    if (focusedWindowHandle == nullptr && focusedApplicationHandle != nullptr) {
+    if ((focusedWindowHandle == nullptr && focusedApplicationHandle != nullptr)
+        || anrForAppNoFocusableWindow) {
         if (!mNoFocusedWindowTimeoutTime.has_value()) {
             // We just discovered that there's no focused window. Start the ANR timer
             std::chrono::nanoseconds timeout = focusedApplicationHandle->getDispatchingTimeout(
