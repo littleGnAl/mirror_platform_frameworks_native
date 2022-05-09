@@ -131,7 +131,9 @@ struct RpcWireTransaction {
 
     uint64_t asyncNumber;
 
-    uint32_t reserved[4];
+    uint32_t objectTableOffset;
+
+    uint32_t reserved[3];
 
     uint8_t data[];
 };
@@ -139,9 +141,11 @@ static_assert(sizeof(RpcWireTransaction) == 40);
 
 struct RpcWireReply {
     int32_t status; // transact return
+    // DO NOT SUBMIT: This isn't backward compat.
+    uint32_t objectTableOffset;
     uint8_t data[];
 };
-static_assert(sizeof(RpcWireReply) == 4);
+static_assert(sizeof(RpcWireReply) == 8);
 
 #pragma clang diagnostic pop
 
