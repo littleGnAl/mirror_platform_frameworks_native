@@ -4590,6 +4590,38 @@ TEST_F(InputDispatcherMultiWindowAnr, FocusedWindowWithoutSetFocusedApplication_
     ASSERT_NO_FATAL_FAILURE(mFakePolicy->assertNotifyAnrWasNotCalled());
 }
 
+TEST_F(InputDispatcherMultiWindowAnr, FocusedApplication_FocusedWindow_DifferentApplicationToken_SameWindowType) {
+    std::shared_ptr<FakeApplicationHandle> focusedApplication =
+            std::make_shared<FakeApplicationHandle>();
+    focusedApplication->setDispatchingTimeout(60ms);
+    // Focused application with no window
+    mDispatcher->setFocusedApplication(ADISPLAY_ID_DEFAULT, focusedApplication);
+    // The application that owns 'mFocusedWindow' is not focused, but the owned 'mFocusedWindow'
+    // still has the focus because the newly created application does not have a window and the
+    // current 'mFocusedWindow' is still visible and focusable(focusedApplication is translucent or
+    // not fullscreen).
+    mFocusedWindow->setFocusable(true);
+    mDispatcher->setInputWindows({{ADISPLAY_ID_DEFAULT, {mFocusedWindow}}});
+
+    ASSERT_NE(mFocusedWindow->getApplicationToken(), focusedApplication->getApplicationToken());
+    bool isBaseApplication = mFocusedWindow->getInfo()->type == WindowInfo::Type::BASE_APPLICATION
+                             || mFocusedWindow->getInfo()->type == WindowInfo::Type::APPLICATION;
+    // The current focused window should be owned by another basic application. We do not throw an
+    // an ANR for other types of windows.
+    ASSERT_TRUE(isBaseApplication);
+    ASSERT_NO_FATAL_FAILURE(mFakePolicy->assertNotifyAnrWasNotCalled());
+
+    InputEventInjectionResult result =
+            injectKey(mDispatcher, AKEY_EVENT_ACTION_DOWN, 0 /*repeatCount*/, ADISPLAY_ID_DEFAULT,
+                      InputEventInjectionSync::NONE, 10ms /*injectionTimeout*/,
+                      false /* allowKeyRepeat */);
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED, result);
+
+    const std::chrono::duration timeout =
+                                    focusedApplication->getDispatchingTimeout(DISPATCHING_TIMEOUT);
+    mFakePolicy->assertNotifyNoFocusedWindowAnrWasCalled(timeout, focusedApplication);
+}
+
 // These tests ensure we cannot send touch events to a window that's positioned behind a window
 // that has feature NO_INPUT_CHANNEL.
 // Layout:

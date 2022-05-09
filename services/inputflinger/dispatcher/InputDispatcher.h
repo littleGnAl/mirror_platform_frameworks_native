@@ -336,6 +336,10 @@ private:
                                                              int displayId) const REQUIRES(mLock);
     sp<android::gui::WindowInfoHandle> getWindowHandleLocked(
             const sp<android::gui::WindowInfoHandle>& windowHandle) const REQUIRES(mLock);
+    bool shouldAnrForNoFocusableWindow(
+            const std::shared_ptr<InputApplicationHandle>& inputApplicationHandle,
+            const sp<android::gui::WindowInfoHandle>& windowHandle) const
+            REQUIRES(mLock);
     std::shared_ptr<InputChannel> getInputChannelLocked(const sp<IBinder>& windowToken) const
             REQUIRES(mLock);
     sp<android::gui::WindowInfoHandle> getFocusedWindowHandleLocked(int displayId) const
