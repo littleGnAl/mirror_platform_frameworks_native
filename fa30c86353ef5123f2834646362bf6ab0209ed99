@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb195bde_06b24b8e",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T23:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fee1a11d_0d050aad",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b810a1c_c0cfdaba",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-05-06T20:41:23Z",
       "side": 1,
       "message": "what\u0027s the rationale for completely removing these two functions vs removing most of their implementations (as done in most other cases in this CL)?\n\ni think it is probably fine either way, but these will become relevant for RPC binder soon and we\u0027ll bring them back at least part way",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb35308_229f30b2",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T23:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b810a1c_c0cfdaba",
       "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -88,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c9e5836_1d184ebb",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T23:26:28Z",
+      "side": 1,
+      "message": "The code uses B_PACK_CHARS which is defined in the same kernel header as flat_binder object (https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/kernel/uapi/linux/android/binder.h).\n\nNon-Android OSes could provide that header (importing external/kernel-headers is probably the easiest way), but does that make any sense? It\u0027s very Linux- and Android-specific.",
+      "parentUuid": "ba8b60c8_e3c67de1",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aef86549_71ff2ee9",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 2
@@ -99,6 +153,24 @@
       "writtenOn": "2022-05-06T20:41:23Z",
       "side": 1,
       "message": "some extra reason to prefer abort in this case: this could leak FDs",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d514de68_a1b3a492",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T23:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aef86549_71ff2ee9",
       "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -120,6 +192,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "889e0740_65e5b2d4",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T23:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7971d6fd_3407e4ae",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38f9939b_0732784e",
@@ -133,6 +223,30 @@
       "writtenOn": "2022-05-06T20:41:23Z",
       "side": 1,
       "message": "can you ifndef just this block?",
+      "range": {
+        "startLine": 2349,
+        "startChar": 0,
+        "endLine": 2357,
+        "endChar": 9
+      },
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c389b718_3f1d1658",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2357,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T23:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f9939b_0732784e",
       "range": {
         "startLine": 2349,
         "startChar": 0,
