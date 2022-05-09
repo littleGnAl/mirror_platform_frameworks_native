@@ -89,6 +89,15 @@ public:
     std::optional<uint32_t> getProtocolVersion();
 
     /**
+     * Enables sending file descriptors in `Parcel` via ancillery data. Only
+     * works when using Unix Domain Sockets.
+     *
+     * Should only be called before the setup* methods.
+     */
+    void setEnableAncilleryFileDescriptors(bool enable);
+    bool getEnableAncilleryFileDescriptors();
+
+    /**
      * This should be called once per thread, matching 'join' in the remote
      * process.
      */
@@ -306,7 +315,7 @@ private:
     // For a more complicated case, the client might itself open up a thread to
     // serve calls to the server at all times (e.g. if it hosts a callback)
 
-    wp<RpcServer> mForServer; // maybe null, for client sessions
+    wp<RpcServer> mForServer;                      // maybe null, for client sessions
     sp<WaitForShutdownListener> mShutdownListener; // used for client sessions
     wp<EventListener> mEventListener; // mForServer if server, mShutdownListener if client
 
@@ -325,6 +334,7 @@ private:
     size_t mMaxIncomingThreads = 0;
     size_t mMaxOutgoingThreads = kDefaultMaxOutgoingThreads;
     std::optional<uint32_t> mProtocolVersion;
+    bool mEnableAncilleryFileDescriptors = false;
 
     std::condition_variable mAvailableConnectionCv; // for mWaitingThreads
 

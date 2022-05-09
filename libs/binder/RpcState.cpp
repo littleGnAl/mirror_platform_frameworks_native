@@ -539,6 +539,12 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
             {&transaction, sizeof(RpcWireTransaction)},
             {const_cast<uint8_t*>(data.data()), data.dataSize()},
     };
+    std::vector<base::borrowed_fd> fds = data.readRpcFileDescriptions();
+    if (!fds.empty()) {
+        if (status_t status = connection->rpcTransport->queueAncillarydata(fds); status != OK) {
+            return status;
+        }
+    }
     if (status_t status =
                 rpcSend(connection, session, "transaction", iovs, arraysize(iovs), drainRefs);
         status != OK) {
@@ -601,9 +607,17 @@ status_t RpcState::waitForReply(const sp<RpcSession::RpcConnection>& connection,
     RpcWireReply* rpcReply = reinterpret_cast<RpcWireReply*>(data.data());
     if (rpcReply->status != OK) return rpcReply->status;
 
+    // Check if the reply came with any ancillary data.
+    std::vector<base::unique_fd> pending_fds;
+    if (status_t status = connection->rpcTransport->consumePendingAncillarydata(&pending_fds);
+        status != OK) {
+        return status;
+    }
+
     data.release();
     reply->rpcSetDataReference(session, rpcReply->data,
-                               command.bodySize - offsetof(RpcWireReply, data), cleanup_reply_data);
+                               command.bodySize - offsetof(RpcWireReply, data),
+                               std::move(pending_fds), cleanup_reply_data);
 
     return OK;
 }
@@ -822,13 +836,21 @@ processTransactInternalTailCall:
     reply.markForRpc(session);
 
     if (replyStatus == OK) {
+        // Check if the transaction came with any ancillary data.
+        std::vector<base::unique_fd> pending_fds;
+        if (status_t status = connection->rpcTransport->consumePendingAncillarydata(&pending_fds);
+            status != OK) {
+            return status;
+        }
+
         Parcel data;
         // transaction->data is owned by this function. Parcel borrows this data and
         // only holds onto it for the duration of this function call. Parcel will be
         // deleted before the 'transactionData' object.
+
         data.rpcSetDataReference(session, transaction->data,
                                  transactionData.size() - offsetof(RpcWireTransaction, data),
-                                 do_nothing_to_transact_data);
+                                 std::move(pending_fds), do_nothing_to_transact_data);
 
         if (target) {
             bool origAllowNested = connection->allowNested;
@@ -957,6 +979,12 @@ processTransactInternalTailCall:
             {&rpcReply, sizeof(RpcWireReply)},
             {const_cast<uint8_t*>(reply.data()), reply.dataSize()},
     };
+    std::vector<base::borrowed_fd> fds = reply.readRpcFileDescriptions();
+    if (!fds.empty()) {
+        if (status_t status = connection->rpcTransport->queueAncillarydata(fds); status != OK) {
+            return status;
+        }
+    }
     return rpcSend(connection, session, "reply", iovs, arraysize(iovs));
 }
 

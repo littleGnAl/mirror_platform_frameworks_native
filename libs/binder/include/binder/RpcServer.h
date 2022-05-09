@@ -114,6 +114,14 @@ public:
     void setProtocolVersion(uint32_t version);
 
     /**
+     * Enables sending file descriptors in `Parcel` via ancillery data. Only
+     * works when using Unix Domain Sockets.
+     *
+     * Should only be called before the setup* methods.
+     */
+    void setEnableAncilleryFileDescriptors(bool enable);
+
+    /**
      * The root object can be retrieved by any client, without any
      * authentication. TODO(b/183988761)
      *
@@ -184,6 +192,7 @@ private:
     const std::unique_ptr<RpcTransportCtx> mCtx;
     size_t mMaxThreads = 1;
     std::optional<uint32_t> mProtocolVersion;
+    bool mEnableAncilleryFileDescriptors = false;
     base::unique_fd mServer; // socket we are accepting sessions on
 
     std::mutex mLock; // for below
