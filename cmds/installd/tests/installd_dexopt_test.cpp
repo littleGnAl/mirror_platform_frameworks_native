@@ -879,6 +879,9 @@ TEST_F(DexoptTest, ResolveStartupConstStrings) {
 
 TEST_F(DexoptTest, DexoptDex2oat64Enabled) {
     LOG(INFO) << "DexoptDex2oat64Enabled";
+    if (android::base::GetProperty("ro.zygote", "") == "zygote64") {
+        GTEST_SKIP() << "DexoptDex2oat64Enabled skipped on 64-bit only.";
+    }
     const std::string property = "dalvik.vm.dex2oat64.enabled";
     const std::string previous_value = android::base::GetProperty(property, "");
     auto restore_property = android::base::make_scope_guard([=]() {
