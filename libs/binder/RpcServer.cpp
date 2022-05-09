@@ -63,6 +63,10 @@ status_t RpcServer::setupUnixDomainServer(const char* path) {
 }
 
 status_t RpcServer::setupVsockServer(unsigned int port) {
+    if (mEnableAncilleryFileDescriptors) {
+        return BAD_VALUE;
+    }
+
     // realizing value w/ this type at compile time to avoid ubsan abort
     constexpr unsigned int kAnyCid = VMADDR_CID_ANY;
 
@@ -71,6 +75,10 @@ status_t RpcServer::setupVsockServer(unsigned int port) {
 
 status_t RpcServer::setupInetServer(const char* address, unsigned int port,
                                     unsigned int* assignedPort) {
+    if (mEnableAncilleryFileDescriptors) {
+        return BAD_VALUE;
+    }
+
     if (assignedPort != nullptr) *assignedPort = 0;
     auto aiStart = InetSocketAddress::getAddrInfo(address, port);
     if (aiStart == nullptr) return UNKNOWN_ERROR;
@@ -119,6 +127,10 @@ size_t RpcServer::getMaxThreads() {
 
 void RpcServer::setProtocolVersion(uint32_t version) {
     mProtocolVersion = version;
+}
+
+void RpcServer::setEnableAncilleryFileDescriptors(bool enable) {
+    mEnableAncilleryFileDescriptors = enable;
 }
 
 void RpcServer::setRootObject(const sp<IBinder>& binder) {
@@ -391,6 +403,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             session = RpcSession::make();
             session->setMaxIncomingThreads(server->mMaxThreads);
             if (!session->setProtocolVersion(protocolVersion)) return;
+            session->setEnableAncilleryFileDescriptors(server->mEnableAncilleryFileDescriptors);
 
             // if null, falls back to server root
             sp<IBinder> sessionSpecificRoot;
