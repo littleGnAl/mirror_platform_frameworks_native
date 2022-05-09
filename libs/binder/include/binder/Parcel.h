@@ -102,6 +102,8 @@ public:
     // does not dup
     std::vector<int> debugReadAllFileDescriptors() const;
 
+    std::vector<base::borrowed_fd> readRpcFileDescriptions() const;
+
     // Zeros data when reallocating. Other mitigations may be added
     // in the future.
     //
@@ -606,7 +608,8 @@ private:
     void ipcSetDataReference(const uint8_t* data, size_t dataSize, const binder_size_t* objects,
                              size_t objectsCount, release_func relFunc);
     void rpcSetDataReference(const sp<RpcSession>& session, const uint8_t* data, size_t dataSize,
-                             release_func relFunc);
+                             const uint32_t* objectTable, size_t objectTableSize,
+                             std::vector<base::unique_fd> ancillaryFds, release_func relFunc);
 
     status_t            finishWrite(size_t len);
     void                releaseObjects();
@@ -1274,6 +1277,12 @@ private:
     struct RpcFields {
         // Should always be non-null.
         sp<RpcSession> mSession;
+
+        struct FdObject {
+            std::variant<base::unique_fd, base::borrowed_fd> fd;
+            size_t dataPos;
+        };
+        std::vector<FdObject> mFds;
     };
     std::variant<KernelFields, RpcFields> mVariantFields;
 
