@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9914710_a7973aea",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T23:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90d49b14_8189b8eb",
+      "range": {
+        "startLine": 118,
+        "startChar": 14,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef5b5720_93eb10c6",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "+1, i\u0027d recommend that for all the cases, or at least the methods that only make sense for kernel binder, like this and the ctor accepting BinderHandle",
       "parentUuid": "ef5b5720_93eb10c6",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 17
+      },
+      "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1649b99d_960b8669",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T23:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "093c079b_079fa7ad",
       "range": {
         "startLine": 119,
         "startChar": 0,
@@ -142,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57185483_3c53eaa8",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T23:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd5e7523_1a84765b",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 28
+      },
+      "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfc9fe26_2e88d4ed",
@@ -155,6 +227,24 @@
       "writtenOn": "2022-05-06T19:40:34Z",
       "side": 1,
       "message": "i\u0027d lean towards putting the return statement inside the conditional block and having the other branch abort (with its own separate return statement if needed to make the compiler happy). same elsewhere",
+      "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "825135dc_1c4765eb",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T23:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfc9fe26_2e88d4ed",
       "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

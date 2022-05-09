@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "767f3e92_cad71640",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 76
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T23:25:44Z",
+      "side": 1,
+      "message": "I\u0027m starting to wonder if a separate build option is the right approach, or everything should be conditional on __linux__ and/or __ANDROID__.",
+      "revId": "56b44e897843882a507f7bf1846bea7d1571e371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
