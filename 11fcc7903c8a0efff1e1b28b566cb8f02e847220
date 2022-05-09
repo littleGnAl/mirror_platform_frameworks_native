@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90d49b14_8189b8eb",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T20:08:53Z",
+      "side": 1,
+      "message": "In that case, libbinder would have to have BINDER_KERNEL_IPC defined. Is that fine?",
+      "parentUuid": "b5c5ac03_f3cc673c",
+      "range": {
+        "startLine": 118,
+        "startChar": 14,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef5b5720_93eb10c6",
         "filename": "libs/binder/BpBinder.cpp",
         "patchSetId": 75
@@ -84,6 +108,30 @@
       "writtenOn": "2022-05-06T00:30:25Z",
       "side": 1,
       "message": "is it possible to do a boolean define at the top of the file and then if statements in the code, so that we still type check everything on both sides?",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 28
+      },
+      "revId": "11fcc7903c8a0efff1e1b28b566cb8f02e847220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5e7523_1a84765b",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 75
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-09T20:08:53Z",
+      "side": 1,
+      "message": "Maybe if it\u0027s a constexpr, I\u0027ll give it a try. We don\u0027t want the compiler to generate code that calls IPCThreadState methods if BINDER_KERNEL_IPC is disabled.",
+      "parentUuid": "29eb24c6_09a109b4",
       "range": {
         "startLine": 187,
         "startChar": 8,
