@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915eeac2_201ca946",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 25
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-10T01:26:04Z",
+      "side": 1,
+      "message": "This is included in the default flags.  https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/config/global.go;drc\u003dcc84ca767d4a1cd5a0c09d046f7afc3974ee1207;l\u003d35",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 16
+      },
+      "revId": "94dbc0614348042a496c8e30a7fef3ad15826a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015fd1dc_6e72f258",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 25
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-10T01:26:04Z",
+      "side": 1,
+      "message": "nit: no need. true is the default.",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 16
+      },
+      "revId": "94dbc0614348042a496c8e30a7fef3ad15826a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
