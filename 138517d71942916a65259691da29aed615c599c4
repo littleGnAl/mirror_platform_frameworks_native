@@ -22,6 +22,30 @@
       },
       "revId": "138517d71942916a65259691da29aed615c599c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97f07e30_1bac734a",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 79
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-10T01:35:26Z",
+      "side": 1,
+      "message": "if constexpr is preferrable, but that doesn\u0027t work in the part 2 CL. Wrote a short explanation here: https://android-review.googlesource.com/c/platform/frameworks/native/+/2084054/comments/18bf7a50_49580909",
+      "parentUuid": "28b94d92_f458dba4",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 38
+      },
+      "revId": "138517d71942916a65259691da29aed615c599c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
