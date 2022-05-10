@@ -46,6 +46,30 @@
       },
       "revId": "138517d71942916a65259691da29aed615c599c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03bcf0b2_3be8287b",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 79
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-10T01:37:10Z",
+      "side": 1,
+      "message": "I see. Thanks for the pointer. I personally prefer consistency, but Steven is the owner of this.",
+      "parentUuid": "97f07e30_1bac734a",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 38
+      },
+      "revId": "138517d71942916a65259691da29aed615c599c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
