@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3502bcf7_cd353fbb",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-10T13:48:49Z",
+      "side": 1,
+      "message": "Iiuc the property tested below is only applicable for dual-zygote systems (zygote64_32 and zygote32_64), so skipping it unless it\u0027s one of those two would be more clear.",
+      "range": {
+        "startLine": 882,
+        "startChar": 8,
+        "endLine": 882,
+        "endChar": 65
+      },
+      "revId": "a2dd3293d9877affa5f20a9cbb383f77f8e0ab46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
