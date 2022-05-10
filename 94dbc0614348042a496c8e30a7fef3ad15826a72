@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "749659f5_a48615eb",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 25
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-10T01:48:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "915eeac2_201ca946",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 16
+      },
+      "revId": "94dbc0614348042a496c8e30a7fef3ad15826a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "015fd1dc_6e72f258",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-10T01:26:04Z",
       "side": 1,
       "message": "nit: no need. true is the default.",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 16
+      },
+      "revId": "94dbc0614348042a496c8e30a7fef3ad15826a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d3f2cf_4d3ec77b",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 25
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-10T01:48:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "015fd1dc_6e72f258",
       "range": {
         "startLine": 306,
         "startChar": 0,
