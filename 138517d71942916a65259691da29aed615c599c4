@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b94d92_f458dba4",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 79
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-10T01:20:54Z",
+      "side": 1,
+      "message": "Why do we use different patterns in part 1 and part 2?",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 38
+      },
+      "revId": "138517d71942916a65259691da29aed615c599c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
