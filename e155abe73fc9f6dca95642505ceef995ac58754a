@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e200c75_823b8db8",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-11T23:56:37Z",
+      "side": 1,
+      "message": "\u003e One possibility would be for us to share a threadpool between RPC binder and kernel binder.\n\nInteresting. If each binder started a polling thread then we\u0027d have 2 polling threads since it\u0027s a shared pool, I see.",
+      "parentUuid": "edb3e3a5_d855d6df",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 32
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b873228_b50652e1",
         "filename": "libs/binder/include/binder/ProcessState.h",
         "patchSetId": 8
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "It\u0027s probably best to modify the comment with more of an explanation for the existing API (and have it carry a slightly incongruent semantic). If we can avoid adding a new API, we should. That is, if we don\u0027t have a user for the new API, we should avoid it.\n\n\u003e would return the actual current \"Max\" the pool currently has, which would be the sum of LazyMax + Polling + User Joined\n\nI see. The lazy count now would be included in user joined (since the lazy threads will call into the same joinThreadPool function.",
       "parentUuid": "4f4294aa_49d1e5ac",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 54
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8c06de_96f23981",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-11T23:56:37Z",
+      "side": 1,
+      "message": "Currently only used in the test I\u0027m writing.\n\nLazy count is indeed included in user joined right now. \n`Add a function to separate user joined threads from lazy threads` is next up!",
+      "parentUuid": "eff5b195_342a7881",
       "range": {
         "startLine": 94,
         "startChar": 0,
