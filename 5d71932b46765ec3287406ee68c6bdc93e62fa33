@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e525e6f_00694a60",
+        "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
+        "patchSetId": 101
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-11T02:00:49Z",
+      "side": 1,
+      "message": "There are a few different things going on here.\n\nFirst, that this is all the code for libbinder-on-Trusty, as opposed to libbinder_trusty which is the Android code that talks to Trusty (next CL). We need both, and each comes with its own transport (RpcTransportRaw here, RpcTransportTrusty for Android).\n\nThe other problem is that both RpcServer::make() and RpcSession::make() use RpcTransportRaw as the default transport when one isn\u0027t provided, and they\u0027re called like that from a few places in libbinder (most notably in establishConnection here https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/RpcServer.cpp;l\u003d391). Maybe I could add a way to specify the default transport instead?",
+      "parentUuid": "d7c82116_abc3a3de",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 21
+      },
+      "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61257d9e_c6df4979",
         "filename": "libs/binder/trusty/include/android-base/logging.h",
         "patchSetId": 101
