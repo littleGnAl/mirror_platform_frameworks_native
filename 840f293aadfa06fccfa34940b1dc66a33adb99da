@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dee233f_3a4ca594",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-11T16:53:22Z",
+      "side": 1,
+      "message": "Just noticed, this isn\u0027t quite accurate now. (In the commit message as well, but here it could be confusing for someone trying to mesh it with the condition above.)",
+      "range": {
+        "startLine": 885,
+        "startChar": 59,
+        "endLine": 885,
+        "endChar": 70
+      },
+      "revId": "840f293aadfa06fccfa34940b1dc66a33adb99da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
