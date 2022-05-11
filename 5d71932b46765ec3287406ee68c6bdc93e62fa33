@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad555caa_e1730773",
+        "filename": "libs/binder/trusty/IShellCallback.cpp",
+        "patchSetId": 101
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-11T03:33:57Z",
+      "side": 1,
+      "message": "\u003e can we avoid duplicating this?\n\nMore #ifdef\u0027s in the other IShellCallback would work, should I do that?\n\n\u003e Also, can we have the build rules setup for the Trusty variant as well\n\nThe closest thing to that is the new binderRpcTest_SINGLE_THREADED, isn\u0027t that enough? The extra code is (mostly) very Trusty-specific.",
+      "parentUuid": "a29b98d9_64b46614",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7c82116_abc3a3de",
         "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
         "patchSetId": 101
@@ -113,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5018a0e2_0dec210d",
+        "filename": "libs/binder/trusty/include/android-base/logging.h",
+        "patchSetId": 101
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-11T03:33:57Z",
+      "side": 1,
+      "message": "It looks like this would only be needed for 3 CHECK calls in Binder.cpp. I could replace those with LOG_ALWAYS_FATAL_IF instead, does that make more sense?",
+      "parentUuid": "48caaa7a_a85efa29",
+      "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60e8c1c3_6a2056e1",
         "filename": "libs/binder/trusty/include/android-base/logging.h",
         "patchSetId": 101
@@ -182,6 +224,24 @@
       "writtenOn": "2022-05-06T00:40:15Z",
       "side": 1,
       "message": "+enh for if he has a better idea for how to handle logging here (we might want a generic trusty solution eventually)",
+      "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f413be20_abd345f4",
+        "filename": "libs/binder/trusty/include/log/log.h",
+        "patchSetId": 101
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-11T03:33:57Z",
+      "side": 1,
+      "message": "It looks like no binder headers includes log.h or utils/Log.h, but a few in libutils do (like utils/Vector.h).",
+      "parentUuid": "d0b571da_f8a475c3",
       "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
