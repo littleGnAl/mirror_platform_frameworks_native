@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edb3e3a5_d855d6df",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-11T23:43:55Z",
+      "side": 1,
+      "message": "Right, when there is a polling thread setup, the implicit contract is that the caller will call handlePolledCommands every once in a while. Violating this contract, we get a deadlock, which we have a separate debug process for. Considering this to be a currently running thread sgtm\n\n\u003e Are we expecting any service to setup multiple polling threads?\n\nno. I suspect they aren\u0027t now.\n\n\u003e Is it desired behavior? What would multiple polling threads enable?\n\nOne possibility would be for us to share a threadpool between RPC binder and kernel binder.",
+      "parentUuid": "8c4be641_4d8d897d",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 32
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b873228_b50652e1",
         "filename": "libs/binder/include/binder/ProcessState.h",
         "patchSetId": 8
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Since we are unable to modify the name of `getThreadPoolMaxThreadCount`, `getThreadPoolCurrentMaxThreadCount` would return the actual current \"Max\" the pool currently has, which would be the sum of LazyMax + Polling + User Joined. If my logic is flawed, please let me know.",
       "parentUuid": "6b873228_b50652e1",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 54
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff5b195_342a7881",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-11T23:43:55Z",
+      "side": 1,
+      "message": "It\u0027s probably best to modify the comment with more of an explanation for the existing API (and have it carry a slightly incongruent semantic). If we can avoid adding a new API, we should. That is, if we don\u0027t have a user for the new API, we should avoid it.\n\n\u003e would return the actual current \"Max\" the pool currently has, which would be the sum of LazyMax + Polling + User Joined\n\nI see. The lazy count now would be included in user joined (since the lazy threads will call into the same joinThreadPool function.",
+      "parentUuid": "4f4294aa_49d1e5ac",
       "range": {
         "startLine": 94,
         "startChar": 0,
@@ -202,6 +250,30 @@
       "side": 1,
       "message": "Thanks! For the lock/lockUnlock, I still haven\u0027t implemented it but wanted feedback (thanks again). L1705 currently empty is for that reason.\n\nIn saying \"from the client side\", isn\u0027t that being done here (onTransact)? Or am I missing information.",
       "parentUuid": "3301519f_5d90a408",
+      "range": {
+        "startLine": 1714,
+        "startChar": 0,
+        "endLine": 1714,
+        "endChar": 13
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98e36ba2_4b4408f9",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-11T23:43:55Z",
+      "side": 1,
+      "message": "onTransact here is the server side. It\u0027ll be executed in the process that the binder returned from addServer is a proxy for.",
+      "parentUuid": "ab6726a7_50b14e15",
       "range": {
         "startLine": 1714,
         "startChar": 0,
