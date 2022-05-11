@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ecd7f1d_8a53c8d3",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-11T23:20:22Z",
+      "side": 1,
+      "message": "this logic should be:\n\nif (currentCount \u003c\u003d 1 \u0026\u0026 maxCount \u003c\u003d 1) { ... }\n\nnit: consider moving this into a separate patch after, because we would want to test/revert/think of it separately",
+      "range": {
+        "startLine": 542,
+        "startChar": 4,
+        "endLine": 543,
+        "endChar": 40
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7148fbcf_830ac512",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-11T23:20:22Z",
+      "side": 1,
+      "message": "will you follow-up with a check to see if there are any other processes which are setting up multiple?",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 32
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b873228_b50652e1",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-11T23:20:22Z",
+      "side": 1,
+      "message": "if this is the same as the max thread count was, can it be removed? (avoid duplicating same API)",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 54
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36815027_f13b595d",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-11T23:20:22Z",
+      "side": 1,
+      "message": "should this also be deleted? (I thought you were going to do a rename - btw, consider doing a rename like this in a separate patch, to make it more clear what is happening)",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 23
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3301519f_5d90a408",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-11T23:20:22Z",
+      "side": 1,
+      "message": "you might want lock/lockUnlock here instead, so they cause extra threads to be started in the target process (and start the threads like on L1705 that call the threadpool from the client instead of the server). This may be the issue you are hitting",
+      "range": {
+        "startLine": 1714,
+        "startChar": 0,
+        "endLine": 1714,
+        "endChar": 13
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
