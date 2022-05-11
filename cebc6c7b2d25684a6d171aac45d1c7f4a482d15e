@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f8b612_f1ab066e",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-11T16:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37bbfd2d_471dbf61",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 27
+      },
+      "revId": "cebc6c7b2d25684a6d171aac45d1c7f4a482d15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6a1b88e_2ca99102",

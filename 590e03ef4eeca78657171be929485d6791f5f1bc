@@ -118,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f39a02ce_c2cbb2b3",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-11T16:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "028ecc29_80265125",
+      "range": {
+        "startLine": 542,
+        "startChar": 38,
+        "endLine": 542,
+        "endChar": 90
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa9e2d23_87ae9a7a",
@@ -165,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e74c36c1_863214d6",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-11T16:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd69bc36_9ac5edea",
+      "range": {
+        "startLine": 641,
+        "startChar": 0,
+        "endLine": 642,
+        "endChar": 61
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac55b24e_5b1b1f95",
@@ -188,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "073d5cf8_6e4dd29d",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-11T16:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac55b24e_5b1b1f95",
+      "range": {
+        "startLine": 673,
+        "startChar": 75,
+        "endLine": 673,
+        "endChar": 89
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfea53b8_7baa5d11",
@@ -201,6 +273,30 @@
       "writtenOn": "2022-04-25T23:17:24Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 675,
+        "endChar": 61
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c27abe_c8fabdfa",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-11T16:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfea53b8_7baa5d11",
       "range": {
         "startLine": 674,
         "startChar": 0,
@@ -298,6 +394,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "364ca34d_4b162b12",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-11T16:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cda6b09_cb83a2cc",
+      "range": {
+        "startLine": 398,
+        "startChar": 8,
+        "endLine": 398,
+        "endChar": 37
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46f182c0_6202adc5",
@@ -357,6 +477,30 @@
       "writtenOn": "2022-04-25T23:17:24Z",
       "side": 1,
       "message": "we should avoid making this method public, because it\u0027s an internal implementation detail (it\u0027s fine to not have a setter - this will actually make threading easier)",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 64
+      },
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e89e431d_7d26e446",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-11T16:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5754fafb_2005a532",
       "range": {
         "startLine": 59,
         "startChar": 0,
