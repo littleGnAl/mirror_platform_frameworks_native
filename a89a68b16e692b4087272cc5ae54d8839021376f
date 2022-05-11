@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4f4840d_93c3f77e",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 35
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-11T02:16:21Z",
+      "side": 1,
+      "message": "Moved it to RpcSession.cpp",
+      "parentUuid": "422659c7_04256125",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "a89a68b16e692b4087272cc5ae54d8839021376f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98f5125c_79241d4d",
