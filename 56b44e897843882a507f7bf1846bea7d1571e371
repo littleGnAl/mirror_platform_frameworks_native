@@ -16,6 +16,24 @@
       "message": "I\u0027m starting to wonder if a separate build option is the right approach, or everything should be conditional on __linux__ and/or __ANDROID__.",
       "revId": "56b44e897843882a507f7bf1846bea7d1571e371",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d16189d_094037de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 76
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-11T02:03:27Z",
+      "side": 1,
+      "message": "This might end up being useful for microdroid if we move that to RPC Binder only, so I think having a separate build option is preferable. Also, makes it easier to properly test this mode within AOSP.",
+      "parentUuid": "767f3e92_cad71640",
+      "revId": "56b44e897843882a507f7bf1846bea7d1571e371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
