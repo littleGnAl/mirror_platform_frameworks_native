@@ -153,6 +153,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb9b20ff_4cb104bb",
+        "filename": "libs/binder/trusty/include/linux/android/binder.h",
+        "patchSetId": 101
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-11T02:14:30Z",
+      "side": 1,
+      "message": "This specific header is particularly problematic: it defines not only the types below, but also flat_binder_object, B_PACK_CHARS and a bunch of other things, but it\u0027s also really Linux-specific. I could just pull in the original header from external/kernel-headers, but that seems like a really bad idea (not just for Trusty but for any non-Linux OS in general). Thoughts?",
+      "parentUuid": "525d161b_73100222",
+      "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0b571da_f8a475c3",
         "filename": "libs/binder/trusty/include/log/log.h",
         "patchSetId": 101
