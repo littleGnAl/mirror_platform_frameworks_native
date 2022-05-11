@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eefd3b3_aef7f6d7",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-11T02:29:26Z",
+      "side": 1,
+      "message": "resolved",
+      "parentUuid": "fe27123d_78c8f266",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fee1a11d_0d050aad",
@@ -154,6 +172,24 @@
       "side": 1,
       "message": "The code uses B_PACK_CHARS which is defined in the same kernel header as flat_binder object (https://android.googlesource.com/platform/bionic/+/refs/heads/master/libc/kernel/uapi/linux/android/binder.h).\n\nNon-Android OSes could provide that header (importing external/kernel-headers is probably the easiest way), but does that make any sense? It\u0027s very Linux- and Android-specific.",
       "parentUuid": "ba8b60c8_e3c67de1",
+      "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d94b3cb_58f42b8a",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-11T02:29:26Z",
+      "side": 1,
+      "message": "Makes sense.",
+      "parentUuid": "6c9e5836_1d184ebb",
       "revId": "fa30c86353ef5123f2834646362bf6ab0209ed99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
