@@ -155,6 +155,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "905da1d0_c8684ac0",
+        "filename": "libs/binder/trusty/include/android-base/logging.h",
+        "patchSetId": 101
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-11T03:38:38Z",
+      "side": 1,
+      "message": "Update: also one CHECK() invocation in system/libbase/hex.cpp.",
+      "parentUuid": "5018a0e2_0dec210d",
+      "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60e8c1c3_6a2056e1",
         "filename": "libs/binder/trusty/include/android-base/logging.h",
         "patchSetId": 101
