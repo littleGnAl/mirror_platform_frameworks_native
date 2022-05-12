@@ -1659,7 +1659,7 @@ public:
         ConnectToServer mConnectToServer;
         std::unique_ptr<FdTrigger> mFdTrigger = FdTrigger::make();
         base::unique_fd mFd;
-        std::unique_ptr<RpcTransportCtx> mCtx;
+        std::shared_ptr<RpcTransportCtx> mCtx;
         std::shared_ptr<RpcCertificateVerifierSimple> mCertVerifier =
                 std::make_shared<RpcCertificateVerifierSimple>();
         bool mSetup = false;
@@ -1735,7 +1735,7 @@ public:
         ConnectToServer mConnectToServer;
         base::unique_fd mFd;
         std::unique_ptr<FdTrigger> mFdTrigger = FdTrigger::make();
-        std::unique_ptr<RpcTransportCtx> mCtx;
+        std::shared_ptr<RpcTransportCtx> mCtx;
         std::shared_ptr<RpcCertificateVerifierSimple> mCertVerifier =
                 std::make_shared<RpcCertificateVerifierSimple>();
         std::unique_ptr<RpcTransport> mClientTransport;
