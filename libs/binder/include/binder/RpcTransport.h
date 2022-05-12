@@ -105,10 +105,10 @@ class RpcTransportCtxFactory {
 public:
     virtual ~RpcTransportCtxFactory() = default;
     // Creates server context.
-    [[nodiscard]] virtual std::unique_ptr<RpcTransportCtx> newServerCtx() const = 0;
+    [[nodiscard]] virtual std::shared_ptr<RpcTransportCtx> newServerCtx() const = 0;
 
     // Creates client context.
-    [[nodiscard]] virtual std::unique_ptr<RpcTransportCtx> newClientCtx() const = 0;
+    [[nodiscard]] virtual std::shared_ptr<RpcTransportCtx> newClientCtx() const = 0;
 
     // Return a short description of this transport (e.g. "raw"). For logging / debugging / testing
     // only.
