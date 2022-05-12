@@ -166,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31ea5a66_c648af25",
+        "filename": "libs/binder/trusty/include/android-base/logging.h",
+        "patchSetId": 101
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-12T03:27:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61257d9e_c6df4979",
+      "range": {
+        "startLine": 8,
+        "startChar": 2,
+        "endLine": 8,
+        "endChar": 3
+      },
+      "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48caaa7a_a85efa29",
@@ -343,6 +367,24 @@
       "writtenOn": "2022-05-06T00:40:15Z",
       "side": 1,
       "message": "same",
+      "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3326ec3f_3921fb0d",
+        "filename": "libs/binder/trusty/include/log/log.h",
+        "patchSetId": 101
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-12T03:27:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96410fe6_c3e36a6b",
       "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
