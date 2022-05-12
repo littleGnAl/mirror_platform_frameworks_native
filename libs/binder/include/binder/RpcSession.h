@@ -185,7 +185,7 @@ private:
     friend sp<RpcSession>;
     friend RpcServer;
     friend RpcState;
-    explicit RpcSession(std::unique_ptr<RpcTransportCtx> ctx);
+    explicit RpcSession(std::shared_ptr<RpcTransportCtx> ctx);
 
     // for 'target', see RpcState::sendDecStrongToTarget
     [[nodiscard]] status_t sendDecStrongToTarget(uint64_t address, size_t target);
@@ -291,7 +291,7 @@ private:
         bool mReentrant = false;
     };
 
-    const std::unique_ptr<RpcTransportCtx> mCtx;
+    const std::shared_ptr<RpcTransportCtx> mCtx;
 
     // On the other side of a session, for each of mOutgoing here, there should
     // be one of mIncoming on the other side (and vice versa).
