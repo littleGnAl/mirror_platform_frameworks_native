@@ -186,6 +186,7 @@ private:
     friend RpcServer;
     friend RpcState;
     explicit RpcSession(std::unique_ptr<RpcTransportCtx> ctx);
+    explicit RpcSession(const RpcTransportCtx* ctx);
 
     // for 'target', see RpcState::sendDecStrongToTarget
     [[nodiscard]] status_t sendDecStrongToTarget(uint64_t address, size_t target);
@@ -291,7 +292,13 @@ private:
         bool mReentrant = false;
     };
 
-    const std::unique_ptr<RpcTransportCtx> mCtx;
+    // Each RpcSession object can either own a transport context, or hold
+    // a pointer to one owned by the RpcServer that created this session.
+    // In the first case, mOwnedCtx holds the context and mCtx points to it,
+    // while in the second case mOwnedCtx is left uninitialized and mCtx
+    // points to the server's context.
+    const std::unique_ptr<RpcTransportCtx> mOwnedCtx;
+    const RpcTransportCtx* mCtx;
 
     // On the other side of a session, for each of mOutgoing here, there should
     // be one of mIncoming on the other side (and vice versa).

@@ -52,7 +52,13 @@ namespace android {
 
 using base::unique_fd;
 
-RpcSession::RpcSession(std::unique_ptr<RpcTransportCtx> ctx) : mCtx(std::move(ctx)) {
+RpcSession::RpcSession(std::unique_ptr<RpcTransportCtx> ctx)
+      : mOwnedCtx(std::move(ctx)), mCtx(mOwnedCtx.get()) {
+    LOG_RPC_DETAIL("RpcSession created %p", this);
+
+    mRpcBinderState = std::make_unique<RpcState>();
+}
+RpcSession::RpcSession(const RpcTransportCtx* ctx) : mOwnedCtx(), mCtx(ctx) {
     LOG_RPC_DETAIL("RpcSession created %p", this);
 
     mRpcBinderState = std::make_unique<RpcState>();
