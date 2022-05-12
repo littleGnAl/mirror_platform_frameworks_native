@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf4220d3_9e2a1eec",
+        "filename": "libs/binder/trusty/IShellCallback.cpp",
+        "patchSetId": 101
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-12T00:20:31Z",
+      "side": 1,
+      "message": "Turns out IShellCallback.cpp wasn\u0027t needed, so I removed it.\n\nKeeping this comment open so we can continue the other discussion.",
+      "parentUuid": "ad555caa_e1730773",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7c82116_abc3a3de",
         "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
         "patchSetId": 101
