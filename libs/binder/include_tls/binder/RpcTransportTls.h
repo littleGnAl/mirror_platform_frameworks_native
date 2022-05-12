@@ -30,8 +30,8 @@ public:
     static std::unique_ptr<RpcTransportCtxFactory> make(std::shared_ptr<RpcCertificateVerifier>,
                                                         std::unique_ptr<RpcAuth>);
 
-    std::unique_ptr<RpcTransportCtx> newServerCtx() const override;
-    std::unique_ptr<RpcTransportCtx> newClientCtx() const override;
+    std::shared_ptr<RpcTransportCtx> newServerCtx() const override;
+    std::shared_ptr<RpcTransportCtx> newClientCtx() const override;
     const char* toCString() const override;
 
 private:
