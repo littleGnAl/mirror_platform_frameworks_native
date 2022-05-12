@@ -431,7 +431,7 @@ class RpcTransportCtxTls : public RpcTransportCtx {
 public:
     template <typename Impl,
               typename = std::enable_if_t<std::is_base_of_v<RpcTransportCtxTls, Impl>>>
-    static std::unique_ptr<RpcTransportCtxTls> create(
+    static std::shared_ptr<RpcTransportCtxTls> create(
             std::shared_ptr<RpcCertificateVerifier> verifier, RpcAuth* auth);
     std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd fd,
                                                FdTrigger* fdTrigger) const override;
