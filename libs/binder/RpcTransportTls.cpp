@@ -425,7 +425,7 @@ class RpcTransportCtxTls : public RpcTransportCtx {
 public:
     template <typename Impl,
               typename = std::enable_if_t<std::is_base_of_v<RpcTransportCtxTls, Impl>>>
-    static std::unique_ptr<RpcTransportCtxTls> create(
+    static std::shared_ptr<RpcTransportCtxTls> create(
             std::shared_ptr<RpcCertificateVerifier> verifier, RpcAuth* auth);
     std::unique_ptr<RpcTransport> newTransport(android::base::unique_fd fd,
                                                FdTrigger* fdTrigger) const override;
@@ -467,7 +467,7 @@ ssl_verify_result_t RpcTransportCtxTls::sslCustomVerify(SSL* ssl, uint8_t* outAl
 // Common implementation for creating server and client contexts. The child class, |Impl|, is
 // provided as a template argument so that this function can initialize an |Impl| object.
 template <typename Impl, typename>
-std::unique_ptr<RpcTransportCtxTls> RpcTransportCtxTls::create(
+std::shared_ptr<RpcTransportCtxTls> RpcTransportCtxTls::create(
         std::shared_ptr<RpcCertificateVerifier> verifier, RpcAuth* auth) {
     bssl::UniquePtr<SSL_CTX> ctx(SSL_CTX_new(TLS_method()));
     TEST_AND_RETURN(nullptr, ctx != nullptr);
@@ -490,7 +490,7 @@ std::unique_ptr<RpcTransportCtxTls> RpcTransportCtxTls::create(
         SSL_CTX_set_info_callback(ctx.get(), sslDebugLog);
     }
 
-    auto ret = std::make_unique<Impl>();
+    auto ret = std::make_shared<Impl>();
     // RpcTransportCtxTls* -> void*
     TEST_AND_RETURN(nullptr, SSL_CTX_set_app_data(ctx.get(), reinterpret_cast<void*>(ret.get())));
     ret->mCtx = std::move(ctx);
@@ -525,12 +525,12 @@ protected:
 
 } // namespace
 
-std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryTls::newServerCtx() const {
+std::shared_ptr<RpcTransportCtx> RpcTransportCtxFactoryTls::newServerCtx() const {
     return android::RpcTransportCtxTls::create<RpcTransportCtxTlsServer>(mCertVerifier,
                                                                          mAuth.get());
 }
 
-std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryTls::newClientCtx() const {
+std::shared_ptr<RpcTransportCtx> RpcTransportCtxFactoryTls::newClientCtx() const {
     return android::RpcTransportCtxTls::create<RpcTransportCtxTlsClient>(mCertVerifier,
                                                                          mAuth.get());
 }
