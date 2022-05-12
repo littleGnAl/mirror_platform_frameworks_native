@@ -167,12 +167,12 @@ public:
 
 } // namespace
 
-std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryRaw::newServerCtx() const {
-    return std::make_unique<RpcTransportCtxRaw>();
+std::shared_ptr<RpcTransportCtx> RpcTransportCtxFactoryRaw::newServerCtx() const {
+    return std::make_shared<RpcTransportCtxRaw>();
 }
 
-std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryRaw::newClientCtx() const {
-    return std::make_unique<RpcTransportCtxRaw>();
+std::shared_ptr<RpcTransportCtx> RpcTransportCtxFactoryRaw::newClientCtx() const {
+    return std::make_shared<RpcTransportCtxRaw>();
 }
 
 const char *RpcTransportCtxFactoryRaw::toCString() const {
