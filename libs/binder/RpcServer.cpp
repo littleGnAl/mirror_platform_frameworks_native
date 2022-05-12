@@ -45,7 +45,7 @@ constexpr size_t kSessionIdBytes = 32;
 using base::ScopeGuard;
 using base::unique_fd;
 
-RpcServer::RpcServer(std::unique_ptr<RpcTransportCtx> ctx) : mCtx(std::move(ctx)) {}
+RpcServer::RpcServer(std::shared_ptr<RpcTransportCtx> ctx) : mCtx(std::move(ctx)) {}
 RpcServer::~RpcServer() {
     (void)shutdown();
 }
@@ -396,7 +396,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
                 }
             } while (server->mSessions.end() != server->mSessions.find(sessionId));
 
-            session = RpcSession::make();
+            session = sp<RpcSession>::make(server->mCtx);
             session->setMaxIncomingThreads(server->mMaxThreads);
             if (!session->setProtocolVersion(protocolVersion)) return;
 
