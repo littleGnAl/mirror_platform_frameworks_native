@@ -85,7 +85,7 @@ static inline std::vector<RpcSecurity> RpcSecurityValues() {
     return {RpcSecurity::RAW, RpcSecurity::TLS};
 }
 
-static inline std::unique_ptr<RpcTransportCtxFactory> newFactory(
+static inline std::shared_ptr<RpcTransportCtxFactory> newFactory(
         RpcSecurity rpcSecurity, std::shared_ptr<RpcCertificateVerifier> verifier = nullptr,
         std::unique_ptr<RpcAuth> auth = nullptr) {
     switch (rpcSecurity) {

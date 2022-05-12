@@ -179,8 +179,8 @@ const char *RpcTransportCtxFactoryRaw::toCString() const {
     return "raw";
 }
 
-std::unique_ptr<RpcTransportCtxFactory> RpcTransportCtxFactoryRaw::make() {
-    return std::unique_ptr<RpcTransportCtxFactoryRaw>(new RpcTransportCtxFactoryRaw());
+std::shared_ptr<RpcTransportCtxFactory> RpcTransportCtxFactoryRaw::make() {
+    return std::shared_ptr<RpcTransportCtxFactoryRaw>(new RpcTransportCtxFactoryRaw());
 }
 
 } // namespace android

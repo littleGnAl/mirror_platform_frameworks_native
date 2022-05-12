@@ -45,18 +45,20 @@ constexpr size_t kSessionIdBytes = 32;
 using base::ScopeGuard;
 using base::unique_fd;
 
-RpcServer::RpcServer(std::unique_ptr<RpcTransportCtx> ctx) : mCtx(std::move(ctx)) {}
+RpcServer::RpcServer(std::shared_ptr<RpcTransportCtxFactory> ctxFactory,
+                     std::unique_ptr<RpcTransportCtx> ctx)
+      : mCtxFactory(std::move(ctxFactory)), mCtx(std::move(ctx)) {}
 RpcServer::~RpcServer() {
     (void)shutdown();
 }
 
-sp<RpcServer> RpcServer::make(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
+sp<RpcServer> RpcServer::make(std::shared_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
     // Default is without TLS.
     if (rpcTransportCtxFactory == nullptr)
         rpcTransportCtxFactory = RpcTransportCtxFactoryRaw::make();
     auto ctx = rpcTransportCtxFactory->newServerCtx();
     if (ctx == nullptr) return nullptr;
-    return sp<RpcServer>::make(std::move(ctx));
+    return sp<RpcServer>::make(std::move(rpcTransportCtxFactory), std::move(ctx));
 }
 
 status_t RpcServer::setupUnixDomainServer(const char* path) {
@@ -396,7 +398,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
                 }
             } while (server->mSessions.end() != server->mSessions.find(sessionId));
 
-            session = RpcSession::make();
+            session = RpcSession::make(server->mCtxFactory);
             session->setMaxIncomingThreads(server->mMaxThreads);
             if (!session->setProtocolVersion(protocolVersion)) return;
 

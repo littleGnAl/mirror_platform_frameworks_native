@@ -69,7 +69,7 @@ sp<RpcSession> RpcSession::make() {
     return make(RpcTransportCtxFactoryRaw::make());
 }
 
-sp<RpcSession> RpcSession::make(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
+sp<RpcSession> RpcSession::make(std::shared_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
     auto ctx = rpcTransportCtxFactory->newClientCtx();
     if (ctx == nullptr) return nullptr;
     return sp<RpcSession>::make(std::move(ctx));

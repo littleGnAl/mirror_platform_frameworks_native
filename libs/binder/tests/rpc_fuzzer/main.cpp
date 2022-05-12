@@ -100,7 +100,7 @@ std::unique_ptr<RpcAuth> createServerRpcAuth() {
     return std::make_unique<RpcAuthPreSigned>(std::move(pkey), std::move(cert));
 }
 
-std::unique_ptr<RpcTransportCtxFactory> makeTransportCtxFactory(FuzzedDataProvider* provider) {
+std::shared_ptr<RpcTransportCtxFactory> makeTransportCtxFactory(FuzzedDataProvider* provider) {
     bool isTls = provider->ConsumeBool();
     if (!isTls) {
         return RpcTransportCtxFactoryRaw::make();

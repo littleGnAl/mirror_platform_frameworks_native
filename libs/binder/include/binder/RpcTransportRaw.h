@@ -28,7 +28,7 @@ namespace android {
 // RpcTransportCtxFactory with TLS disabled.
 class RpcTransportCtxFactoryRaw : public RpcTransportCtxFactory {
 public:
-    static std::unique_ptr<RpcTransportCtxFactory> make();
+    static std::shared_ptr<RpcTransportCtxFactory> make();
 
     std::unique_ptr<RpcTransportCtx> newServerCtx() const override;
     std::unique_ptr<RpcTransportCtx> newClientCtx() const override;

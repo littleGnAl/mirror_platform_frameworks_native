@@ -539,7 +539,7 @@ const char* RpcTransportCtxFactoryTls::toCString() const {
     return "tls";
 }
 
-std::unique_ptr<RpcTransportCtxFactory> RpcTransportCtxFactoryTls::make(
+std::shared_ptr<RpcTransportCtxFactory> RpcTransportCtxFactoryTls::make(
         std::shared_ptr<RpcCertificateVerifier> verifier, std::unique_ptr<RpcAuth> auth) {
     if (verifier == nullptr) {
         ALOGE("%s: Must provide a certificate verifier", __PRETTY_FUNCTION__);
@@ -549,7 +549,7 @@ std::unique_ptr<RpcTransportCtxFactory> RpcTransportCtxFactoryTls::make(
         ALOGE("%s: Must provide an auth provider", __PRETTY_FUNCTION__);
         return nullptr;
     }
-    return std::unique_ptr<RpcTransportCtxFactoryTls>(
+    return std::shared_ptr<RpcTransportCtxFactoryTls>(
             new RpcTransportCtxFactoryTls(std::move(verifier), std::move(auth)));
 }
 

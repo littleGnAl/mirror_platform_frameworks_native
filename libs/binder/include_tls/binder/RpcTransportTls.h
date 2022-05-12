@@ -27,7 +27,7 @@ namespace android {
 // RpcTransportCtxFactory with TLS enabled with self-signed certificate.
 class RpcTransportCtxFactoryTls : public RpcTransportCtxFactory {
 public:
-    static std::unique_ptr<RpcTransportCtxFactory> make(std::shared_ptr<RpcCertificateVerifier>,
+    static std::shared_ptr<RpcTransportCtxFactory> make(std::shared_ptr<RpcCertificateVerifier>,
                                                         std::unique_ptr<RpcAuth>);
 
     std::unique_ptr<RpcTransportCtx> newServerCtx() const override;

@@ -90,7 +90,7 @@ static const std::initializer_list<int64_t> kTransportList = {
         Transport::RPC_TLS,
 };
 
-std::unique_ptr<RpcTransportCtxFactory> makeFactoryTls() {
+std::shared_ptr<RpcTransportCtxFactory> makeFactoryTls() {
     auto pkey = android::makeKeyPairForSelfSignedCert();
     CHECK_NE(pkey.get(), nullptr);
     auto cert = android::makeSelfSignedCert(pkey.get(), android::kCertValidSeconds);
