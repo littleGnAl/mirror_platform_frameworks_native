@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b8b695_0537828a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-12T01:18:28Z",
+      "side": 1,
+      "message": "I assume we don\u0027t have any test coverage for non __linux__ builds so we\u0027ll probably re-break this occasionally down the line.",
+      "revId": "14b80da1fcc00c23749e606ae4b04ee603d0ad0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd03bae1_c409896a",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-12T01:18:28Z",
+      "side": 1,
+      "message": "this header isn\u0027t for rlimit, right?\n\ni assume it is for SCHED_NORMAL, which is being disabled with BINDER_WITH_KERNEL_IPC (in a separate CL), so i\u0027d recommend using that same flag to guard the include",
+      "revId": "14b80da1fcc00c23749e606ae4b04ee603d0ad0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad48a292_7bb58d79",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2646,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-12T01:18:28Z",
+      "side": 1,
+      "message": "maybe we should init gMaxFds so that the FlattenableHelperInterface methods don\u0027t break. i\u0027d guess they don\u0027t matter for trusty, but the condition is vague so it might apply to more than trusty at some point\n\naside: it seems like gMaxFds is only used to reject unreasonable inputs. maybe we could do something simpler and delete this",
+      "revId": "14b80da1fcc00c23749e606ae4b04ee603d0ad0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
