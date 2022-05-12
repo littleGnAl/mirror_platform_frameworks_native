@@ -190,7 +190,7 @@ private:
                                     std::array<uint8_t, kRpcAddressSize> addr, size_t addrLen);
     [[nodiscard]] status_t setupSocketServer(const RpcSocketAddress& address);
 
-    const std::unique_ptr<RpcTransportCtx> mCtx;
+    const std::shared_ptr<RpcTransportCtx> mCtx;
     size_t mMaxThreads = 1;
     std::optional<uint32_t> mProtocolVersion;
     base::unique_fd mServer; // socket we are accepting sessions on
