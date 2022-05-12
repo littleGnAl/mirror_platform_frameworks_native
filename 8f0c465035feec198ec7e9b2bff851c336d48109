@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd4d5459_90601d9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-12T22:56:19Z",
+      "side": 1,
+      "message": "This is still WIP, but if anyone wants to take a look and give early feedback I\u0027d appreciate it.\n\nI need to redo basically all of the Parcel.h/cpp changes, so you might want to ignore those files.",
+      "revId": "8f0c465035feec198ec7e9b2bff851c336d48109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
