@@ -16,6 +16,24 @@
       "message": "kEnableKernelIpc doesn\u0027t work here because `if constexpr` can\u0027t work around the missing definition for flat_binder_object.",
       "revId": "b3e4bd4a5350b0e407976fb4c9a998cd52d7c352",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "510d8538_fcbc9367",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-12T22:45:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18bf7a50_49580909",
+      "revId": "b3e4bd4a5350b0e407976fb4c9a998cd52d7c352",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
