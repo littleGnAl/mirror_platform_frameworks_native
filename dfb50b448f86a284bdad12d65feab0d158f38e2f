@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9af9cc53_b9985a9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2022-05-12T21:05:43Z",
+      "side": 1,
+      "message": "The libbacktrace code is already a wrapper for libunwindstack, so this just removes a single layer and uses libunwindstack directly.",
+      "revId": "dfb50b448f86a284bdad12d65feab0d158f38e2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
