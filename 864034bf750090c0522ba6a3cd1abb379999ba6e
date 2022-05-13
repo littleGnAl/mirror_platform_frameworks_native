@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9145d90_37207f39",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 0,
+      "message": "these format changes are unrelated. Can you avoid them or do them separately?",
+      "range": {
+        "startLine": 532,
+        "startChar": 14,
+        "endLine": 532,
+        "endChar": 16
+      },
+      "revId": "864034bf750090c0522ba6a3cd1abb379999ba6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04955084_57a5b909",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 1,
+      "message": "should do this after taking the lock, and can access mCurrentThreads directly",
+      "range": {
+        "startLine": 671,
+        "startChar": 24,
+        "endLine": 671,
+        "endChar": 63
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "910087c5_6a713239",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 1,
+      "message": "so, after startThreadPool and more threads are starting, if joinRpcThreadpool is not called, does mPooledThreads \u003d\u003d mMaxThreads, b/c of the ++ in spawnThreadPool? In other words, how does the kernel count the thread which is manually started by startThreadPool?",
+      "range": {
+        "startLine": 1384,
+        "startChar": 8,
+        "endLine": 1384,
+        "endChar": 35
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce712ca9_58917bb6",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 1,
+      "message": "it shouldn\u0027t ever be possible to start this many threads?",
+      "range": {
+        "startLine": 408,
+        "startChar": 46,
+        "endLine": 408,
+        "endChar": 65
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448300cd_2c28fc24",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 1,
+      "message": "mCurrentThreads (why subtract mPooledThreads?)",
+      "range": {
+        "startLine": 411,
+        "startChar": 11,
+        "endLine": 411,
+        "endChar": 27
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628a188e_66ae164c",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 1,
+      "message": "nit: might specify \u0027by the kernel\u0027 since we\u0027re updating this",
+      "range": {
+        "startLine": 135,
+        "startChar": 79,
+        "endLine": 135,
+        "endChar": 86
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1195a38f_f6f45302",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 1,
+      "message": "maybe mLazyThreads or mKernelStartedThreads?",
+      "range": {
+        "startLine": 140,
+        "startChar": 12,
+        "endLine": 140,
+        "endChar": 18
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7001c1e2_03df8ad8",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 1,
+      "message": "can we check calling the current thread count (this will expose the thread issue below)?",
+      "range": {
+        "startLine": 1685,
+        "startChar": 0,
+        "endLine": 1685,
+        "endChar": 87
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f47277f_655c09cd",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1689,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 1,
+      "message": "the threadpool should already be started, see below",
+      "range": {
+        "startLine": 1689,
+        "startChar": 0,
+        "endLine": 1689,
+        "endChar": 56
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b3d8e0_21bf04ad",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1697,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 1,
+      "message": "This will start a new thread here, which is separate from the threadpool (essentially it\u0027ll do nothing).\n\nYou\u0027ll want to start the thread in the caller process (in the TEST) so that that extra thread there can use a thread in the binder threadpool.",
+      "range": {
+        "startLine": 1697,
+        "startChar": 0,
+        "endLine": 1697,
+        "endChar": 95
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ef174e_79bfba9b",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1715,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 1,
+      "message": "nit: this is async in the AIDL code because it is \u0027oneway\u0027, but here as a regular function it\u0027ll always be blocking. In the code, TF_ONE_WAY here would be used to control whether there is an async call or not.",
+      "range": {
+        "startLine": 1715,
+        "startChar": 23,
+        "endLine": 1715,
+        "endChar": 28
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37850e72_d31a8cb3",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-13T00:52:12Z",
+      "side": 1,
+      "message": "the threadpool should already be started here. If you use addPollServer instead, you can see it should use the above branch which uses polled commands.",
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
