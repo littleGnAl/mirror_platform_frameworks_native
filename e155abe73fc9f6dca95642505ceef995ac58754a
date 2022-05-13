@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a5beef2_45ddcbf8",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-13T00:22:57Z",
+      "side": 1,
+      "message": "Addressed through \"getThreadPoolMaxThreadCount\".",
+      "parentUuid": "9ecd7f1d_8a53c8d3",
+      "range": {
+        "startLine": 542,
+        "startChar": 4,
+        "endLine": 543,
+        "endChar": 40
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7148fbcf_830ac512",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "\u003e One possibility would be for us to share a threadpool between RPC binder and kernel binder.\n\nInteresting. If each binder started a polling thread then we\u0027d have 2 polling threads since it\u0027s a shared pool, I see.",
       "parentUuid": "edb3e3a5_d855d6df",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 32
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "648a02a7_f151b57f",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-13T00:22:57Z",
+      "side": 1,
+      "message": "Done based on comment #689",
+      "parentUuid": "1e200c75_823b8db8",
       "range": {
         "startLine": 689,
         "startChar": 0,
@@ -214,6 +262,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e935f933_cc252e19",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-13T00:22:57Z",
+      "side": 1,
+      "message": "Removed alongside CurrentThreadCount.",
+      "parentUuid": "2c8c06de_96f23981",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 54
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36815027_f13b595d",
@@ -251,6 +323,30 @@
       "side": 1,
       "message": "See reply to #95, also, this was the idea I mentioned yesterday on chat.\nAnd noted, will move it to a different patch.",
       "parentUuid": "36815027_f13b595d",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 23
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f57e4d_43376996",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-13T00:22:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bce5a338_a04a2eb5",
       "range": {
         "startLine": 141,
         "startChar": 0,
@@ -322,6 +418,30 @@
       "side": 1,
       "message": "onTransact here is the server side. It\u0027ll be executed in the process that the binder returned from addServer is a proxy for.",
       "parentUuid": "ab6726a7_50b14e15",
+      "range": {
+        "startLine": 1714,
+        "startChar": 0,
+        "endLine": 1714,
+        "endChar": 13
+      },
+      "revId": "e155abe73fc9f6dca95642505ceef995ac58754a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32c5606c_21ddfa50",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-13T00:22:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98e36ba2_4b4408f9",
       "range": {
         "startLine": 1714,
         "startChar": 0,
