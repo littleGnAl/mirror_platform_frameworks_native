@@ -243,6 +243,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fc57f0_138495c5",
+        "filename": "libs/binder/trusty/include/android-base/logging.h",
+        "patchSetId": 101
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-13T03:05:23Z",
+      "side": 1,
+      "message": "Got rid of the replacement header and decided to use the original android-base/logging.h. I had to provide an alternative implementation for LogMessage, so I added a new logging.cpp file.",
+      "parentUuid": "905da1d0_c8684ac0",
+      "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60e8c1c3_6a2056e1",
@@ -256,6 +274,30 @@
       "writtenOn": "2022-05-06T00:40:15Z",
       "side": 1,
       "message": "this will be hard to debug, is there another thing we can call?",
+      "range": {
+        "startLine": 21,
+        "startChar": 41,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "5d71932b46765ec3287406ee68c6bdc93e62fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ceadb0_05979bb1",
+        "filename": "libs/binder/trusty/include/android-base/logging.h",
+        "patchSetId": 101
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-13T03:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60e8c1c3_6a2056e1",
       "range": {
         "startLine": 21,
         "startChar": 41,
