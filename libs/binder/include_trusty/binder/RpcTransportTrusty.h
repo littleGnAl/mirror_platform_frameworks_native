@@ -29,8 +29,8 @@ class RpcTransportCtxFactoryTrusty : public RpcTransportCtxFactory {
 public:
     static std::unique_ptr<RpcTransportCtxFactory> make();
 
-    std::unique_ptr<RpcTransportCtx> newServerCtx() const override;
-    std::unique_ptr<RpcTransportCtx> newClientCtx() const override;
+    std::shared_ptr<RpcTransportCtx> newServerCtx() const override;
+    std::shared_ptr<RpcTransportCtx> newClientCtx() const override;
     const char* toCString() const override;
 
 private:

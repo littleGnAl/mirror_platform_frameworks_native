@@ -111,11 +111,11 @@ public:
 
 } // namespace
 
-std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryTrusty::newServerCtx() const {
+std::shared_ptr<RpcTransportCtx> RpcTransportCtxFactoryTrusty::newServerCtx() const {
     return std::make_unique<RpcTransportCtxTrusty>();
 }
 
-std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryTrusty::newClientCtx() const {
+std::shared_ptr<RpcTransportCtx> RpcTransportCtxFactoryTrusty::newClientCtx() const {
     return std::make_unique<RpcTransportCtxTrusty>();
 }
 
