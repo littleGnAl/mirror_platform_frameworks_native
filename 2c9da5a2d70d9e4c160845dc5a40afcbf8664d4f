@@ -16,6 +16,24 @@
       "message": "Hi Chris and Jesse,\n\nWe found these test APKs cannot be installed after Android 12 due to lack of android:exported flag on manifests. It can be fixed by this change. \n\nCould you help to review it? thanks",
       "revId": "2c9da5a2d70d9e4c160845dc5a40afcbf8664d4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0ad10c_8c867acd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411826
+      },
+      "writtenOn": "2022-05-16T12:37:53Z",
+      "side": 1,
+      "message": "Hi Chris and Jesse,\n\nThis change seems not go to other branches yet, will we plan to merge it into master or Android T branch?",
+      "parentUuid": "6e76828e_ecc3b5b8",
+      "revId": "2c9da5a2d70d9e4c160845dc5a40afcbf8664d4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
