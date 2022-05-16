@@ -16,6 +16,24 @@
       "message": "Thanks for noticing Joseph, I think this should have automerged into android12L-tests-dev and from there to master. I\u0027m following up internally to figure out why that didn\u0027t happen and whether we just need to cherry-pick it now.",
       "revId": "8e8ae4222f9fb0499af755a4255cceb89a79bd78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2f049f_a52a5055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2022-05-16T23:46:19Z",
+      "side": 1,
+      "message": "This change is now automerged to android12L-tests-dev and master. From there it should automerge to our internal master branch and be in Android 14. I\u0027ll probably need to manually cherry-pick it into the Android 13 dev branch.",
+      "parentUuid": "d9658a74_2c7ecf5a",
+      "revId": "8e8ae4222f9fb0499af755a4255cceb89a79bd78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
