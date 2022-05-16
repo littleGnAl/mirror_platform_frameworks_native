@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7b88dc8_22df16bd",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-16T18:15:29Z",
+      "side": 1,
+      "message": "The thread manually started by startThreadPool as added inside of startThreadPool.\nSee L185 in ProcessState.cpp `mPooledThreads++` (soon to be changed to mKernelStartedThreads)",
+      "parentUuid": "910087c5_6a713239",
+      "range": {
+        "startLine": 1384,
+        "startChar": 8,
+        "endLine": 1384,
+        "endChar": 35
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce712ca9_58917bb6",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 9
@@ -60,6 +84,30 @@
       "writtenOn": "2022-05-13T00:52:12Z",
       "side": 1,
       "message": "it shouldn\u0027t ever be possible to start this many threads?",
+      "range": {
+        "startLine": 408,
+        "startChar": 46,
+        "endLine": 408,
+        "endChar": 65
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba2f2be_437111bf",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-16T18:15:29Z",
+      "side": 1,
+      "message": "nonPooledThreads in this case would be all manually Joined threads (any user thread) and polling threads. \nThere shouldn\u0027t technically be more threads than that, unless we consider every call to binder starting a new thread, in which case it would have to be (+1).\n--\u003e mMaxThreads + nonPooledThreads + 1. However I don\u0027t believe that is the case.\n\nThis number is variable depending on the number of user joined threads and polling threads.",
+      "parentUuid": "ce712ca9_58917bb6",
       "range": {
         "startLine": 408,
         "startChar": 46,
@@ -95,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52f15db1_10b2530b",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-16T18:15:29Z",
+      "side": 1,
+      "message": "If the threadpool is not started, there shouldn\u0027t be available threads started from the kernel. But if a polling thread is started and user threads are joined, those threads still exist and are ready to service, based on the already existing comments.",
+      "parentUuid": "448300cd_2c28fc24",
+      "range": {
+        "startLine": 411,
+        "startChar": 11,
+        "endLine": 411,
+        "endChar": 27
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "628a188e_66ae164c",
         "filename": "libs/binder/include/binder/ProcessState.h",
         "patchSetId": 9
@@ -106,6 +178,30 @@
       "writtenOn": "2022-05-13T00:52:12Z",
       "side": 1,
       "message": "nit: might specify \u0027by the kernel\u0027 since we\u0027re updating this",
+      "range": {
+        "startLine": 135,
+        "startChar": 79,
+        "endLine": 135,
+        "endChar": 86
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dab3fffd_34f37ea2",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-16T18:15:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "628a188e_66ae164c",
       "range": {
         "startLine": 135,
         "startChar": 79,
@@ -129,6 +225,30 @@
       "writtenOn": "2022-05-13T00:52:12Z",
       "side": 1,
       "message": "maybe mLazyThreads or mKernelStartedThreads?",
+      "range": {
+        "startLine": 140,
+        "startChar": 12,
+        "endLine": 140,
+        "endChar": 18
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14628c5_64000cba",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-16T18:15:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1195a38f_f6f45302",
       "range": {
         "startLine": 140,
         "startChar": 12,
@@ -164,6 +284,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "652eec70_fbb44b77",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-16T18:15:29Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand the comment",
+      "parentUuid": "7001c1e2_03df8ad8",
+      "range": {
+        "startLine": 1685,
+        "startChar": 0,
+        "endLine": 1685,
+        "endChar": 87
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f47277f_655c09cd",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 9
@@ -175,6 +319,30 @@
       "writtenOn": "2022-05-13T00:52:12Z",
       "side": 1,
       "message": "the threadpool should already be started, see below",
+      "range": {
+        "startLine": 1689,
+        "startChar": 0,
+        "endLine": 1689,
+        "endChar": 56
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "113f3181_1602367e",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1689,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-16T18:15:29Z",
+      "side": 1,
+      "message": "Oh right! forgot to clean that up, we had spoken about this. Thanks for the reminder!",
+      "parentUuid": "3f47277f_655c09cd",
       "range": {
         "startLine": 1689,
         "startChar": 0,
@@ -244,6 +412,24 @@
       "writtenOn": "2022-05-13T00:52:12Z",
       "side": 1,
       "message": "the threadpool should already be started here. If you use addPollServer instead, you can see it should use the above branch which uses polled commands.",
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53419f9b_bb17b76e",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-16T18:15:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "37850e72_d31a8cb3",
       "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
