@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "233c7f0b_59e3bbc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-16T18:56:54Z",
+      "side": 1,
+      "message": "I\u0027ll fix this in the original CL, just forgot.",
+      "revId": "9240f53f6f3f31689539dfc66f90de69bcb5c992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
