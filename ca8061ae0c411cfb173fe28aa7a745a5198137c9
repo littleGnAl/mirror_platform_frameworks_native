@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4cd0350_e673a23c",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-16T20:33:39Z",
+      "side": 1,
+      "message": "This returns OK when `ret \u003d\u003d 0`. The new docs for this say that an OK return means there is data available, so this seems wrong. Maybe update the code or clarify the docs.\n\nBefore the 0 case was checked in RpcState, so there is a slight behavior difference vs HEAD as well. It isn\u0027t immediately obvious to me that it matters though, seems like both cases eventually will end up propagating DEAD_OBJECT.",
+      "revId": "ca8061ae0c411cfb173fe28aa7a745a5198137c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
