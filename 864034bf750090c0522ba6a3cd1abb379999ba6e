@@ -46,6 +46,30 @@
       },
       "revId": "864034bf750090c0522ba6a3cd1abb379999ba6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f61f89_a3001101",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-16T19:50:28Z",
+      "side": 0,
+      "message": "These are still present.",
+      "parentUuid": "8bd73fa1_07c589ef",
+      "range": {
+        "startLine": 532,
+        "startChar": 14,
+        "endLine": 532,
+        "endChar": 16
+      },
+      "revId": "864034bf750090c0522ba6a3cd1abb379999ba6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

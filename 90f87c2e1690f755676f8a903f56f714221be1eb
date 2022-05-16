@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2371cd6_a536645d",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-16T19:50:28Z",
+      "side": 1,
+      "message": "(in PS10) should check \u0027mCurrentThreads\u0027 here, not the max thread count",
+      "parentUuid": "04955084_57a5b909",
+      "range": {
+        "startLine": 671,
+        "startChar": 24,
+        "endLine": 671,
+        "endChar": 63
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "910087c5_6a713239",
         "filename": "libs/binder/IPCThreadState.cpp",
         "patchSetId": 9
@@ -118,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e493c24_57eba44b",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-16T19:50:28Z",
+      "side": 1,
+      "message": "Oh, you\u0027re right! Makes sense.",
+      "parentUuid": "fba2f2be_437111bf",
+      "range": {
+        "startLine": 408,
+        "startChar": 46,
+        "endLine": 408,
+        "endChar": 65
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "448300cd_2c28fc24",
@@ -155,6 +203,30 @@
       "side": 1,
       "message": "If the threadpool is not started, there shouldn\u0027t be available threads started from the kernel. But if a polling thread is started and user threads are joined, those threads still exist and are ready to service, based on the already existing comments.",
       "parentUuid": "448300cd_2c28fc24",
+      "range": {
+        "startLine": 411,
+        "startChar": 11,
+        "endLine": 411,
+        "endChar": 27
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88faa0d0_b9c47185",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-16T19:50:28Z",
+      "side": 1,
+      "message": "Hmmm. So, I guess I was confused because it\u0027s a bit strange. If !mThreadPoolStarted, then mKernelStartedThreads should be 0 here? We should equally be able to return mCurrentThreads, or no?",
+      "parentUuid": "52f15db1_10b2530b",
       "range": {
         "startLine": 411,
         "startChar": 11,
@@ -308,6 +380,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68f78c2b_857cba18",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-16T19:50:28Z",
+      "side": 1,
+      "message": "Could we rename getThreadPoolMaxThreadCount to getThreadPoolMaxTotalThreadCount or something, because it includes non-polled threads? (different name, to distinguish it from setThreadPoolMaxThreadCount).\n\nAnyway, my comment is, this is returning the total thread count, but you could also test or check the current threadcount if you wanted. The value of this function won\u0027t change when you start new threads (the thread will be moved from one category to the other). So, it doesn\u0027t allow you to test when the threadpool count changes, what is going on.",
+      "parentUuid": "652eec70_fbb44b77",
+      "range": {
+        "startLine": 1685,
+        "startChar": 0,
+        "endLine": 1685,
+        "endChar": 87
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f47277f_655c09cd",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 9
@@ -366,6 +462,30 @@
       "writtenOn": "2022-05-13T00:52:12Z",
       "side": 1,
       "message": "This will start a new thread here, which is separate from the threadpool (essentially it\u0027ll do nothing).\n\nYou\u0027ll want to start the thread in the caller process (in the TEST) so that that extra thread there can use a thread in the binder threadpool.",
+      "range": {
+        "startLine": 1697,
+        "startChar": 0,
+        "endLine": 1697,
+        "endChar": 95
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45dd249f_e1b7b94c",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1697,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-16T19:50:28Z",
+      "side": 1,
+      "message": "(btw - this is probably why the test is flaky, because this won\u0027t actually force new threads to be created)",
+      "parentUuid": "83b3d8e0_21bf04ad",
       "range": {
         "startLine": 1697,
         "startChar": 0,
