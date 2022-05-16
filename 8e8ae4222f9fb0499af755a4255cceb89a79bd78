@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9658a74_2c7ecf5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010672
+      },
+      "writtenOn": "2022-05-16T17:27:23Z",
+      "side": 1,
+      "message": "Thanks for noticing Joseph, I think this should have automerged into android12L-tests-dev and from there to master. I\u0027m following up internally to figure out why that didn\u0027t happen and whether we just need to cherry-pick it now.",
+      "revId": "8e8ae4222f9fb0499af755a4255cceb89a79bd78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
