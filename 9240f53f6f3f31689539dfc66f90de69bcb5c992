@@ -16,6 +16,24 @@
       "message": "I\u0027ll fix this in the original CL, just forgot.",
       "revId": "9240f53f6f3f31689539dfc66f90de69bcb5c992",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb58db15_73d34f0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-16T19:06:29Z",
+      "side": 1,
+      "message": "Fixed in the original CL.",
+      "parentUuid": "233c7f0b_59e3bbc0",
+      "revId": "9240f53f6f3f31689539dfc66f90de69bcb5c992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
