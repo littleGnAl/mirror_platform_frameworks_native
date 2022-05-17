@@ -373,6 +373,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03cef900_45f0c235",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-17T22:29:58Z",
+      "side": 1,
+      "message": "Currently using \"getThreadPoolMaxTotalThreadCount()\". If the threadpool isn\u0027t started or is configured to have no additional threads, it will fail.\n\nI\u0027m wondering if we have a way to currently check the origin of a thread (user vs binder)?",
+      "parentUuid": "7b197582_ce6a9e74",
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b4f2162_f3eb7a7f",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 1
