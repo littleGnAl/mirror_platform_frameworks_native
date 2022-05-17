@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45139c73_2b57a4d3",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-17T04:55:51Z",
+      "side": 1,
+      "message": "I\u0027m not against making the API harder to misuse, just not sure how to do it without a deep copy of the ACL structure.",
+      "parentUuid": "22d4ba0a_75481d0b",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e8cfd15_cd255c2d",
         "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
         "patchSetId": 56
