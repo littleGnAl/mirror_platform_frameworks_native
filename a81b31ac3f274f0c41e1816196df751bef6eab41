@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0780c109_6133d2a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-05-17T15:29:07Z",
+      "side": 1,
+      "message": "This change is obsolete as of https://android-review.googlesource.com/c/platform/frameworks/native/+/2094831.",
+      "revId": "a81b31ac3f274f0c41e1816196df751bef6eab41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
