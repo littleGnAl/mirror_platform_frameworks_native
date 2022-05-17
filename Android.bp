@@ -61,6 +61,13 @@ cc_library_headers {
     export_include_dirs: ["include_sensor"],
 }
 
+aidl_library {
+    //TODO(210751803) use framework_native_aidl_binder filegroup
+    name: "framework-native-aidl-binder-aidl-headers",
+    strip_import_prefix: "aidl/binder",
+    hdrs: ["aidl/binder/**/*.aidl"],
+}
+
 filegroup {
     name: "framework_native_aidl_binder",
     srcs: ["aidl/binder/**/*.aidl"],
