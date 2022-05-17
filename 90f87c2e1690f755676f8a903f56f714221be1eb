@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bcdee2b_825b95a7",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-17T00:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2371cd6_a536645d",
+      "range": {
+        "startLine": 671,
+        "startChar": 24,
+        "endLine": 671,
+        "endChar": 63
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "910087c5_6a713239",
@@ -237,6 +261,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b21077ab_2e46a748",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-17T00:14:19Z",
+      "side": 1,
+      "message": "You are definitely right on this. Done.",
+      "parentUuid": "88faa0d0_b9c47185",
+      "range": {
+        "startLine": 411,
+        "startChar": 11,
+        "endLine": 411,
+        "endChar": 27
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "628a188e_66ae164c",
@@ -404,6 +452,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be2d68ad_cbe84590",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-17T00:14:19Z",
+      "side": 1,
+      "message": "Testing for the current thread count will incur a new API call. Will be adding it in the next PS, I should be able to have accurate readings due to better understanding.\n\nThe idea I went with here is \"As long as the threadpool is started, it\u0027s safe and simpler to assume full usage of pre-configured threads, since those threads can be joined as they are needed (guarantee)\". 15 + 1 (MAX threads + pool thread) which leads us to 16.\n\nAlso, how about just \"getThreadPoolTotalThreadCount()\" instead of using Max?",
+      "parentUuid": "68f78c2b_857cba18",
+      "range": {
+        "startLine": 1685,
+        "startChar": 0,
+        "endLine": 1685,
+        "endChar": 87
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f47277f_655c09cd",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 9
@@ -496,6 +568,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00164f89_881cb182",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1697,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-17T00:14:19Z",
+      "side": 1,
+      "message": "Done, IIUC",
+      "parentUuid": "45dd249f_e1b7b94c",
+      "range": {
+        "startLine": 1697,
+        "startChar": 0,
+        "endLine": 1697,
+        "endChar": 95
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50ef174e_79bfba9b",
@@ -509,6 +605,30 @@
       "writtenOn": "2022-05-13T00:52:12Z",
       "side": 1,
       "message": "nit: this is async in the AIDL code because it is \u0027oneway\u0027, but here as a regular function it\u0027ll always be blocking. In the code, TF_ONE_WAY here would be used to control whether there is an async call or not.",
+      "range": {
+        "startLine": 1715,
+        "startChar": 23,
+        "endLine": 1715,
+        "endChar": 28
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "514bbaaf_679024ac",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1715,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-17T00:14:19Z",
+      "side": 1,
+      "message": "Done in PS10",
+      "parentUuid": "50ef174e_79bfba9b",
       "range": {
         "startLine": 1715,
         "startChar": 23,
