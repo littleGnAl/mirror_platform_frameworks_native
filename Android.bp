@@ -60,6 +60,13 @@ cc_library_headers {
     export_include_dirs: ["include_sensor"],
 }
 
+aidl_interface_headers {
+    //TODO(210751803) use framework_native_aidl_binder filegroup
+    name: "framework-native-aidl-binder-aidl-headers",
+    include_dir: "aidl/binder",
+    srcs: ["aidl/binder/**/*.aidl"],
+}
+
 filegroup {
     name: "framework_native_aidl_binder",
     srcs: ["aidl/binder/**/*.aidl"],
@@ -82,7 +89,7 @@ filegroup {
     ],
 }
 
-cc_library_headers{
+cc_library_headers {
     name: "libandroid_headers_private",
     export_include_dirs: ["include/private"],
 }
