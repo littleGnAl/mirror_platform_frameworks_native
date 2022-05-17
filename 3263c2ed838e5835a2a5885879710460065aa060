@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f8497fc_d788fbbf",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-17T02:31:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54cf023c_b48dd4fc",
+      "range": {
+        "startLine": 65,
+        "startChar": 13,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a43758a_22479655",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Changing the type to std::shared_ptr?\n\nThen wrapping the static const struct in shared_ptr with a no-op deleter.\n\nstd::shared_ptr\u003cconst struct tipc_port_acl\u003e acl{\u0026kAcvpPortAcl, [](auto p){}};",
       "parentUuid": "f3dc36e6_0357bf39",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66009eca_608e3e20",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-17T02:31:45Z",
+      "side": 1,
+      "message": "The ACL structure points to a set of UUIDs via 2 levels of indirection, so we\u0027d need to copy 1) the structure, 2) an array of pointers to UUIDs, and 3) the UUIDs themselves. That\u0027s a lot of copying, and in most practical cases both the port name and structure (and the UUIDs it points to) are going to be fixed.\n\nI added a comment on the lifetime requirements of the parameters and how to use setupTrustyServer, they match the underlying low-level API at https://android.googlesource.com/trusty/lib/+/refs/heads/master/lib/tipc/include/lib/tipc/tipc_srv.h#46.",
+      "parentUuid": "95781004_07db99a9",
       "range": {
         "startLine": 69,
         "startChar": 20,
