@@ -391,6 +391,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05079b1e_db2b6c82",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T23:17:53Z",
+      "side": 1,
+      "message": "Btw, for this file, there are several things to handle and comments. I would recommend file a separate bug and work on it separately from the rest of the CL, so that it\u0027s not coupled.\n\nTo see if a thread is a binder threadpool thread, you can use mIsLooper, but I believe this won\u0027t matter for handlePolledCommands. So, to be more general, you might take advantage of mServingStackPointerGuard. If this is set, then you know at least one thread is in use.",
+      "parentUuid": "03cef900_45f0c235",
+      "revId": "590e03ef4eeca78657171be929485d6791f5f1bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b4f2162_f3eb7a7f",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 1

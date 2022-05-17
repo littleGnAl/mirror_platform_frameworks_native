@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58240b08_47bb051f",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T23:17:53Z",
+      "side": 1,
+      "message": "For getService (this function), I would expect this is the case sometimes. You can checkService without calling any threads.",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 41
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb56e9d6_c6667e68",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T23:17:53Z",
+      "side": 1,
+      "message": "this is the function which requires another thread to be available",
+      "range": {
+        "startLine": 338,
+        "startChar": 32,
+        "endLine": 338,
+        "endChar": 46
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "615d7767_b7d4e398",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T23:17:53Z",
+      "side": 1,
+      "message": "would want to check here (another thread isn\u0027t needed for L369, but we always want the check because L369 isn\u0027t guaranteed to pass) (again recommend separate CL)",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 0
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09bcc578_a6214211",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T23:17:53Z",
+      "side": 1,
+      "message": "and here we could put more information in the log",
+      "range": {
+        "startLine": 402,
+        "startChar": 61,
+        "endLine": 402,
+        "endChar": 102
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
