@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88c83ab8_f132ec95",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-17T23:57:40Z",
+      "side": 1,
+      "message": "Should it simply be a ALOGW or ALOGI instead?",
+      "parentUuid": "58240b08_47bb051f",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 41
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb56e9d6_c6667e68",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 14
@@ -83,6 +107,30 @@
       "writtenOn": "2022-05-17T23:17:53Z",
       "side": 1,
       "message": "and here we could put more information in the log",
+      "range": {
+        "startLine": 402,
+        "startChar": 61,
+        "endLine": 402,
+        "endChar": 102
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a60534d6_4d5c6397",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-17T23:57:40Z",
+      "side": 1,
+      "message": "Added more but not putting it as resolved to check if there\u0027s more that can be done.",
+      "parentUuid": "09bcc578_a6214211",
       "range": {
         "startLine": 402,
         "startChar": 61,
