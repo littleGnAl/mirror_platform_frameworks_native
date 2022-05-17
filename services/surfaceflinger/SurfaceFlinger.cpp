@@ -2099,6 +2099,9 @@ void SurfaceFlinger::onMessageRefresh() {
         refreshArgs.colorTransformMatrix = mDrawingState.colorMatrix;
         mDrawingState.colorMatrixChanged = false;
     }
+    refreshArgs.colorTransformMatrix =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
 
@@ -5167,6 +5170,7 @@ void SurfaceFlinger::dumpAllLocked(const DumpArgs& args, std::string& result) co
      */
 
     colorizer.bold(result);
+
     result.append("SurfaceFlinger global state:\n");
     colorizer.reset(result);
 
@@ -6323,7 +6327,6 @@ status_t SurfaceFlinger::captureScreenCommon(RenderAreaFuture renderAreaFuture,
             getFactory().createGraphicBuffer(bufferSize.getWidth(), bufferSize.getHeight(),
                                              static_cast<android_pixel_format>(reqPixelFormat),
                                              1 /* layerCount */, usage, "screenshot");
-
     const status_t bufferStatus = buffer->initCheck();
     LOG_ALWAYS_FATAL_IF(bufferStatus != OK, "captureScreenCommon: Buffer failed to allocate: %d",
                         bufferStatus);
@@ -6423,7 +6426,9 @@ status_t SurfaceFlinger::renderScreenImplLocked(
 
     const float colorSaturation = grayscale ? 0 : 1;
     clientCompositionDisplay.colorTransform = calculateColorMatrix(colorSaturation);
-
+    clientCompositionDisplay.colorTransform =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
     const float alpha = RenderArea::getCaptureFillValue(renderArea.getCaptureFill());
 
     compositionengine::LayerFE::LayerSettings fillLayer;
