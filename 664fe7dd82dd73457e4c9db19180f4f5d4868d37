@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a56846_f9c367aa",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T00:38:08Z",
+      "side": 1,
+      "message": "nit: comment where this comes from",
+      "range": {
+        "startLine": 1249,
+        "startChar": 22,
+        "endLine": 1249,
+        "endChar": 24
+      },
+      "revId": "664fe7dd82dd73457e4c9db19180f4f5d4868d37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d40fc74_03cf613e",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T00:38:08Z",
+      "side": 1,
+      "message": "you\u0027ll want to do this before BINDER_LIB_TEST_USE_THREAD so that those threads have no chance to run and get/drop the lock before this is processed. This can\u0027t affect getMaxThreadCount, but it will affect the number of current threads.",
+      "range": {
+        "startLine": 1256,
+        "startChar": 0,
+        "endLine": 1256,
+        "endChar": 88
+      },
+      "revId": "664fe7dd82dd73457e4c9db19180f4f5d4868d37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6b3f12_60902faa",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T00:38:08Z",
+      "side": 1,
+      "message": "nit: might comment \u0027// unlock after time, to give a chance for all threads to be used\u0027",
+      "range": {
+        "startLine": 1258,
+        "startChar": 33,
+        "endLine": 1258,
+        "endChar": 64
+      },
+      "revId": "664fe7dd82dd73457e4c9db19180f4f5d4868d37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "512e6e26_68c7a4c1",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T00:38:08Z",
+      "side": 1,
+      "message": "this is where you would want to use UNLOCK_AFTER_MS and with the TF_ONE_WAY flag\n\nThis is the strategy in use in binderRpcTest:\n\n- start \u003d measure time\n- lock\n- unlock after MS (should start an asynchronous task in the other process to unlock)\n- 14 simultaneous threads\n- make a synchrous call (should block until the unlock is done on the other thread)\n- \u0027end - start\u0027 must be longer than the \u0027AFTER_MS\u0027 delay, otherwise we didn\u0027t experience a deadlock\n\nnit: file a bug to add a test for this separately, to decouple this task, and come back to it after a while",
+      "range": {
+        "startLine": 1268,
+        "startChar": 0,
+        "endLine": 1271,
+        "endChar": 1
+      },
+      "revId": "664fe7dd82dd73457e4c9db19180f4f5d4868d37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

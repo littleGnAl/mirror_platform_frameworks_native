@@ -287,6 +287,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17a8916d_c08426e4",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T00:38:08Z",
+      "side": 1,
+      "message": "You can also add:\n\nLOG_ALWAYS_FATAL_IF(mPooledThreads !\u003d 0, \"Expecting 0 pooled threads but have %zu\", mPooledThreads);\n\nSo that we make sure we really understand, and if there is a change, we can detect it",
+      "parentUuid": "b21077ab_2e46a748",
+      "range": {
+        "startLine": 411,
+        "startChar": 11,
+        "endLine": 411,
+        "endChar": 27
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "628a188e_66ae164c",
         "filename": "libs/binder/include/binder/ProcessState.h",
         "patchSetId": 9
@@ -464,6 +488,30 @@
       "side": 1,
       "message": "Testing for the current thread count will incur a new API call. Will be adding it in the next PS, I should be able to have accurate readings due to better understanding.\n\nThe idea I went with here is \"As long as the threadpool is started, it\u0027s safe and simpler to assume full usage of pre-configured threads, since those threads can be joined as they are needed (guarantee)\". 15 + 1 (MAX threads + pool thread) which leads us to 16.\n\nAlso, how about just \"getThreadPoolTotalThreadCount()\" instead of using Max?",
       "parentUuid": "68f78c2b_857cba18",
+      "range": {
+        "startLine": 1685,
+        "startChar": 0,
+        "endLine": 1685,
+        "endChar": 87
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab1a637_671c0afa",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T00:38:08Z",
+      "side": 1,
+      "message": "I suggest \u0027Max\u0027 with total because that number of threads isn\u0027t actually guaranteed to be started, but I\u0027m okay with it either way.",
+      "parentUuid": "be2d68ad_cbe84590",
       "range": {
         "startLine": 1685,
         "startChar": 0,
