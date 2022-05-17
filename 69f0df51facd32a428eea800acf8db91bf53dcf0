@@ -91,6 +91,144 @@
       },
       "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3de42a81_ffd52a04",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T23:28:45Z",
+      "side": 1,
+      "message": "declare when used",
+      "range": {
+        "startLine": 1243,
+        "startChar": 0,
+        "endLine": 1243,
+        "endChar": 32
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e23473_eda0e35e",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T23:28:45Z",
+      "side": 1,
+      "message": "\u0027sleep for 1ms\u0027 is out of sync. Though, specifically, what is the problem we are waiting for here? The issue is that the \u0027joinThreadPool\u0027 thread is not started yet?\n\nOne option is to allow replyi to be 15 or 16.",
+      "range": {
+        "startLine": 1246,
+        "startChar": 19,
+        "endLine": 1246,
+        "endChar": 33
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16438688_4e3a5e1d",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T23:28:45Z",
+      "side": 1,
+      "message": "A few things:\n- declare variable when used (the rest of this file is old C style, but we don\u0027t need to do things that way\n- use semantic name\n\nConsider:\n\n    int32_t threadCount \u003d reply.readInt32();",
+      "range": {
+        "startLine": 1249,
+        "startChar": 0,
+        "endLine": 1249,
+        "endChar": 31
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d4922ef_9ba5dd19",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T23:28:45Z",
+      "side": 1,
+      "message": "So, this is WET (write everything twice) instead of DRY (don\u0027t repeat yourself) because the value in ProcessState.cpp (DEFAULT_MAX_BINDER_THREADS) could be out of sync with this, and we wouldn\u0027t know. Now, it doesn\u0027t really matter here because this is binder and it will never get changed, but it\u0027s still decoupled.\n\nLet me make 3 specific suggestions, for how to handle this problem.\n\n1. (we can\u0027t do it in this case) - expose DEFAULT_MAX_BINDER_THREADS in a header somewhere. Then put EXPECT_EQ(replyi, DEFAULT_MAX_BINDER_THREADS + 1 /*join*/) here. The reason I don\u0027t recommend this is that it requires exposing an API.\n\n2. (I do not recommend this in this case, but it\u0027s an improvement/okay) - add \u0027contexpr size_t kKernelThreads \u003d 15;\u0027 here. Then \u0027EXPECT_EQ(replyi, kKernelThreads + 1 /*join*/);. The reason I don\u0027t recommend this is that even though the ideas in the comment are expressed directly in the code, it\u0027s still WET.\n\n3. (here is what I do recommend) - remove the dependency on the default. Add \u0027constexpr size_t kKernelThreads \u003d 15;\u0027 at the top of the file. Then before startThreadPool, use setThreadPoolMaxThreadCount. Then use that variable here as well.",
+      "range": {
+        "startLine": 1250,
+        "startChar": 0,
+        "endLine": 1250,
+        "endChar": 61
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4998e3d7_11bca741",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T23:28:45Z",
+      "side": 1,
+      "message": "this comment explains what is being done, not why. Try to only explain why (also \u002715\u0027 is prone to getting out of sync)",
+      "range": {
+        "startLine": 1254,
+        "startChar": 46,
+        "endLine": 1254,
+        "endChar": 89
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995e25c5_7edaccad",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-17T23:28:45Z",
+      "side": 1,
+      "message": "hey, feel free to handle/count the deadlock separately or file a bug to deal with it separately, since as discussed offline it requires a few different tricks",
+      "range": {
+        "startLine": 1275,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 3
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
