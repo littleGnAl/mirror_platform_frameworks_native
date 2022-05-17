@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb910b5a_db0af6f1",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-17T22:38:33Z",
+      "side": 1,
+      "message": "I believe this can be considered done as per explanation in PS9?",
+      "parentUuid": "c7b88dc8_22df16bd",
+      "range": {
+        "startLine": 1384,
+        "startChar": 8,
+        "endLine": 1384,
+        "endChar": 35
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce712ca9_58917bb6",
@@ -536,6 +560,30 @@
       "side": 1,
       "message": "I suggest \u0027Max\u0027 with total because that number of threads isn\u0027t actually guaranteed to be started, but I\u0027m okay with it either way.",
       "parentUuid": "be2d68ad_cbe84590",
+      "range": {
+        "startLine": 1685,
+        "startChar": 0,
+        "endLine": 1685,
+        "endChar": 87
+      },
+      "revId": "90f87c2e1690f755676f8a903f56f714221be1eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b998138b_c7129108",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-17T22:38:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab1a637_671c0afa",
       "range": {
         "startLine": 1685,
         "startChar": 0,
