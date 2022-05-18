@@ -258,6 +258,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04a272f4_fbeb53df",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-18T04:27:30Z",
+      "side": 1,
+      "message": "I am not suggesting to change the type of the uuids field, or any type that is already defined in trusty.\n\nThe suggestion was to pass `struct X` not via its pointer, but via a shared pointer. In doing so, the users are forced to either copy the struct (if it is not guaranteed to outlive the callee), or wrap it with a no-op deleter (if the lifetime is known to be static).",
+      "parentUuid": "7c8e40e1_74f1619f",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e8cfd15_cd255c2d",
         "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
         "patchSetId": 56
