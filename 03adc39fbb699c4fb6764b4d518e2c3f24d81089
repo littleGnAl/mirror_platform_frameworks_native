@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a47b6df3_da958753",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1952206
+      },
+      "writtenOn": "2022-05-18T17:58:56Z",
+      "side": 1,
+      "message": "Test CL for go/android-codelab",
+      "revId": "03adc39fbb699c4fb6764b4d518e2c3f24d81089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
