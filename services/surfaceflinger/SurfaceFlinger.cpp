@@ -2126,6 +2126,7 @@ void SurfaceFlinger::onMessageRefresh() {
 
     mScheduler->onDisplayRefreshed(presentTime);
 
+    // try submitting code
     postFrame();
     postComposition();
 
