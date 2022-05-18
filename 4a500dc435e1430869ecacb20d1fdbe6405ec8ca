@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d27706_b6243952",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T22:29:52Z",
+      "side": 1,
+      "message": "format",
+      "range": {
+        "startLine": 558,
+        "startChar": 12,
+        "endLine": 558,
+        "endChar": 20
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddcb79d5_8aa40b6f",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T22:29:52Z",
+      "side": 1,
+      "message": "format",
+      "range": {
+        "startLine": 568,
+        "startChar": 12,
+        "endLine": 568,
+        "endChar": 20
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df29458_efb57600",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T22:29:52Z",
+      "side": 1,
+      "message": "use \u0027{\u0027 \u0027}\u0027 for multi-line statement",
+      "range": {
+        "startLine": 407,
+        "startChar": 26,
+        "endLine": 407,
+        "endChar": 27
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86278437_278b67c4",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T22:29:52Z",
+      "side": 1,
+      "message": "nit: I think this logic is right, but you might split it into another variable to show that the difference is an approximation for the number of manually-joined threads. In the future, we could consider splitting the joinRpcThreadpool function so that we can count the manually-joined threads separately and get an exact count.",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 72
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d23391df_abbac4f7",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T22:29:52Z",
+      "side": 1,
+      "message": "nit: could delete this line",
+      "range": {
+        "startLine": 1254,
+        "startChar": 0,
+        "endLine": 1254,
+        "endChar": 64
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ed887b_45c9f47b",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1260,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T22:29:52Z",
+      "side": 1,
+      "message": "kKernelThreads",
+      "range": {
+        "startLine": 1260,
+        "startChar": 27,
+        "endLine": 1260,
+        "endChar": 37
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d723d98_34eda876",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T22:29:52Z",
+      "side": 1,
+      "message": "nit: could remove this",
+      "range": {
+        "startLine": 1267,
+        "startChar": 7,
+        "endLine": 1267,
+        "endChar": 28
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34cf2c04_ab5a5672",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T22:29:52Z",
+      "side": 1,
+      "message": "nit:\n\n// lorem ipsum...\nEXPECT_GE(...)",
+      "range": {
+        "startLine": 1311,
+        "startChar": 30,
+        "endLine": 1311,
+        "endChar": 93
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54074150_42b15423",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T22:29:52Z",
+      "side": 1,
+      "message": "delete comment (or file bug)",
+      "range": {
+        "startLine": 1314,
+        "startChar": 0,
+        "endLine": 1318,
+        "endChar": 3
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

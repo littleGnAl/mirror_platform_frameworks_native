@@ -263,6 +263,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f4bc36d_88f02d50",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T22:29:52Z",
+      "side": 1,
+      "message": "We would want to avoid having two logs, and the threading information might always be useful. Even if it is ready at the same time, it\u0027s fine to have multiple CLs stacked on top of each other in gerrit. I would recommend splitting this out. The log is more useful, but more critical is detecting the bad configuration (where 1s delay of waiting is guaranteed).",
+      "parentUuid": "dfc17d68_75a22e54",
+      "range": {
+        "startLine": 402,
+        "startChar": 61,
+        "endLine": 402,
+        "endChar": 102
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3de42a81_ffd52a04",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 14

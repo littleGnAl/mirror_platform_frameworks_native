@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0434374_799b62fb",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T22:29:52Z",
+      "side": 0,
+      "message": "unrelated change",
+      "range": {
+        "startLine": 282,
+        "startChar": 10,
+        "endLine": 284,
+        "endChar": 17
+      },
+      "revId": "7863bb5118f2289d59c205f621bb437a66740c4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
