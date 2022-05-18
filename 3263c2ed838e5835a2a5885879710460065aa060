@@ -306,6 +306,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "198ddc3b_9ead310c",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-18T11:38:08Z",
+      "side": 1,
+      "message": "I think the handling of the uuids field should be encapsulated in the tipc_port_acl struct either via making the struct non-copyable, or implement the copy constructor (and assignment operator) so that the uuids are also copied and then the array is constructed for the copies.",
+      "parentUuid": "e9d5d097_465be5e8",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e8cfd15_cd255c2d",
         "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
         "patchSetId": 56
