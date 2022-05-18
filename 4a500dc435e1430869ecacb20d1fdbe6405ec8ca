@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ea1f98_646cfdef",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T23:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00d27706_b6243952",
+      "range": {
+        "startLine": 558,
+        "startChar": 12,
+        "endLine": 558,
+        "endChar": 20
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddcb79d5_8aa40b6f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-18T22:29:52Z",
       "side": 1,
       "message": "format",
+      "range": {
+        "startLine": 568,
+        "startChar": 12,
+        "endLine": 568,
+        "endChar": 20
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "314c0155_e0d16a74",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T23:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddcb79d5_8aa40b6f",
       "range": {
         "startLine": 568,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c1b740_0b4cd99d",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T23:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df29458_efb57600",
+      "range": {
+        "startLine": 407,
+        "startChar": 26,
+        "endLine": 407,
+        "endChar": 27
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86278437_278b67c4",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-05-18T22:29:52Z",
       "side": 1,
       "message": "nit: I think this logic is right, but you might split it into another variable to show that the difference is an approximation for the number of manually-joined threads. In the future, we could consider splitting the joinRpcThreadpool function so that we can count the manually-joined threads separately and get an exact count.",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 72
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb028b39_c0353a7d",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T23:57:14Z",
+      "side": 1,
+      "message": "There\u0027s currently no guarantee that mCurrentThreads will be equal to mKernelStartedThreads at the time of running this code.\nmKernelStartedThreads is incremented in spawnPooledThread, which is a few function calls before joinThreadPool (spawnPooledThread()-\u003ePoolThread::make()-\u003ethreadLoop()-\u003ejoinThreadPool()), and during that time getThreadPoolMaxTotalThreadCount is called.\nI can\u0027t figure out a way to guarantee mCurrentThreads incrementing before, and I\u0027m not sure we would want it to be a guarantee since it would involve slowing down the multithreaded process. I\u0027ll make sure to mention it in the bug I create.",
+      "parentUuid": "86278437_278b67c4",
       "range": {
         "startLine": 410,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef11f36e_10dcafaa",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T23:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d23391df_abbac4f7",
+      "range": {
+        "startLine": 1254,
+        "startChar": 0,
+        "endLine": 1254,
+        "endChar": 64
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01ed887b_45c9f47b",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-05-18T22:29:52Z",
       "side": 1,
       "message": "kKernelThreads",
+      "range": {
+        "startLine": 1260,
+        "startChar": 27,
+        "endLine": 1260,
+        "endChar": 37
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a67822_08fc63e5",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1260,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T23:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01ed887b_45c9f47b",
       "range": {
         "startLine": 1260,
         "startChar": 27,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7467bcee_b1d74247",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T23:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d723d98_34eda876",
+      "range": {
+        "startLine": 1267,
+        "startChar": 7,
+        "endLine": 1267,
+        "endChar": 28
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34cf2c04_ab5a5672",
@@ -185,6 +353,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64c5eb0_e1ab28b5",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T23:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34cf2c04_ab5a5672",
+      "range": {
+        "startLine": 1311,
+        "startChar": 30,
+        "endLine": 1311,
+        "endChar": 93
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54074150_42b15423",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-05-18T22:29:52Z",
       "side": 1,
       "message": "delete comment (or file bug)",
+      "range": {
+        "startLine": 1314,
+        "startChar": 0,
+        "endLine": 1318,
+        "endChar": 3
+      },
+      "revId": "4a500dc435e1430869ecacb20d1fdbe6405ec8ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23258dc3_1379cb5d",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T23:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54074150_42b15423",
       "range": {
         "startLine": 1314,
         "startChar": 0,
