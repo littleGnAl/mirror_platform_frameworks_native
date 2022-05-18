@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d8779ec_d0da60f9",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T21:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "917aa664_22fc8b9b",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 41
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb56e9d6_c6667e68",
@@ -85,6 +109,30 @@
       "writtenOn": "2022-05-17T23:17:53Z",
       "side": 1,
       "message": "this is the function which requires another thread to be available",
+      "range": {
+        "startLine": 338,
+        "startChar": 32,
+        "endLine": 338,
+        "endChar": 46
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e72546_f96ed08a",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T21:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb56e9d6_c6667e68",
       "range": {
         "startLine": 338,
         "startChar": 32,
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "please do split this file off into a separate bug, since everything else you\u0027ve done can be submitted w/o worrying about this particular problem",
       "parentUuid": "a60534d6_4d5c6397",
+      "range": {
+        "startLine": 402,
+        "startChar": 61,
+        "endLine": 402,
+        "endChar": 102
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc17d68_75a22e54",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T21:31:40Z",
+      "side": 1,
+      "message": "I\u0027ll create a bug to deal with the remaining comments as mentioned in 1 of your comments, however isn\u0027t the solution in PS17 viable?",
+      "parentUuid": "6475d8e0_03395557",
       "range": {
         "startLine": 402,
         "startChar": 61,
@@ -297,6 +369,30 @@
       "side": 1,
       "message": "Can you share the output of \u0027adb logcat *:F\u0027 after this? If the process crashed, we should be able to see the output there.",
       "parentUuid": "81021a56_f15ef1b5",
+      "range": {
+        "startLine": 1246,
+        "startChar": 19,
+        "endLine": 1246,
+        "endChar": 33
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1869f1d9_ad9be2b6",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T21:31:40Z",
+      "side": 1,
+      "message": "Done, thanks for the help!",
+      "parentUuid": "70f01265_3a672ede",
       "range": {
         "startLine": 1246,
         "startChar": 19,

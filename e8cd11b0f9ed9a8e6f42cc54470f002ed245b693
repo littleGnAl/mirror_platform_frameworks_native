@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9926d06_c8e00618",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T21:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93c9f2de_2c4e0f2b",
+      "range": {
+        "startLine": 1311,
+        "startChar": 30,
+        "endLine": 1311,
+        "endChar": 34
+      },
+      "revId": "e8cd11b0f9ed9a8e6f42cc54470f002ed245b693",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9beae85d_02d4adbc",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37901927_20f163ea",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T21:31:40Z",
+      "side": 1,
+      "message": "Test was added, cleaning this up.",
+      "parentUuid": "9beae85d_02d4adbc",
+      "range": {
+        "startLine": 1314,
+        "startChar": 0,
+        "endLine": 1318,
+        "endChar": 3
+      },
+      "revId": "e8cd11b0f9ed9a8e6f42cc54470f002ed245b693",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcf31179_c83b4903",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-18T00:04:47Z",
       "side": 1,
       "message": "nit: TEMPORARY_LOCK (it\u0027s not a deadlock technically, though we are using it to simulate one)",
+      "range": {
+        "startLine": 1742,
+        "startChar": 42,
+        "endLine": 1742,
+        "endChar": 54
+      },
+      "revId": "e8cd11b0f9ed9a8e6f42cc54470f002ed245b693",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18de98d0_2a01333a",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1742,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-18T21:31:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcf31179_c83b4903",
       "range": {
         "startLine": 1742,
         "startChar": 42,
