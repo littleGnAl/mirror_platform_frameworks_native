@@ -34,6 +34,24 @@
       "parentUuid": "3761dfcb_48c98f7f",
       "revId": "5a420a802a4a9b0a56904ff614eb2fe19d93c709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d61fe024_806eb4ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2022-05-18T22:56:38Z",
+      "side": 1,
+      "message": "Hmm, I\u0027m guessing that the gtest target does not properly indicate it depends on libbacktrace.so. As I\u0027ve been removing dependencies, I\u0027ve tripped over cases where something didn\u0027t indicate it properly used libbacktrace.so.\n\nIf you want to submit, that\u0027s fine with me. I can wait to resubmit until after I remove libbacktrace from art.",
+      "parentUuid": "0504ad11_aa129b5f",
+      "revId": "5a420a802a4a9b0a56904ff614eb2fe19d93c709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
