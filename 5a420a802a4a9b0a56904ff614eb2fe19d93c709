@@ -16,6 +16,24 @@
       "message": "The listed bug mentions need libbacktrace.so, this removes libbacktrace.so from this part, so I\u0027m not sure how it fixes the problem.\n\nOr is this just a test to see if it fixes the problem?",
       "revId": "5a420a802a4a9b0a56904ff614eb2fe19d93c709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0504ad11_aa129b5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2022-05-18T22:28:06Z",
+      "side": 1,
+      "message": "I have verified locally that this CL fixes b/23279093, but I\u0027m not sure why. I initiated this revert in the spirit of the \"revert first\" spirit and because the `ArtGtestsTargetChroot` module is used in ART presubmits (currently suspended).",
+      "parentUuid": "3761dfcb_48c98f7f",
+      "revId": "5a420a802a4a9b0a56904ff614eb2fe19d93c709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
