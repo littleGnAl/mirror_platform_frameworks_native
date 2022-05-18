@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "917aa664_22fc8b9b",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T00:02:37Z",
+      "side": 1,
+      "message": "For this function, it should be removed. No thread is needed to make calls (only to receive them).",
+      "parentUuid": "88c83ab8_f132ec95",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 41
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb56e9d6_c6667e68",
         "filename": "libs/binder/IServiceManager.cpp",
         "patchSetId": 14
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Added more but not putting it as resolved to check if there\u0027s more that can be done.",
       "parentUuid": "09bcc578_a6214211",
+      "range": {
+        "startLine": 402,
+        "startChar": 61,
+        "endLine": 402,
+        "endChar": 102
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6475d8e0_03395557",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T00:02:37Z",
+      "side": 1,
+      "message": "please do split this file off into a separate bug, since everything else you\u0027ve done can be submitted w/o worrying about this particular problem",
+      "parentUuid": "a60534d6_4d5c6397",
       "range": {
         "startLine": 402,
         "startChar": 61,
@@ -225,6 +273,30 @@
       "side": 1,
       "message": "That\u0027s the issue with flaky tests I mentioned. Debugging in Binder.cpp to be done to find the root of the cause, and remove this sleep altogether.\n\nEven when allowing replyi to be 15 or 16, the flakiness happens still with the following error:\n\nframeworks/native/libs/binder/tests/binderLibTest.cpp:1263: Failure\nValue of: server-\u003etransact(BINDER_LIB_TEST_LOCK_UNLOCK, data, \u0026reply)\nExpected: is equal to 0\n  Actual: -32",
       "parentUuid": "90e23473_eda0e35e",
+      "range": {
+        "startLine": 1246,
+        "startChar": 19,
+        "endLine": 1246,
+        "endChar": 33
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f01265_3a672ede",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T00:02:37Z",
+      "side": 1,
+      "message": "Can you share the output of \u0027adb logcat *:F\u0027 after this? If the process crashed, we should be able to see the output there.",
+      "parentUuid": "81021a56_f15ef1b5",
       "range": {
         "startLine": 1246,
         "startChar": 19,
@@ -376,6 +448,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba0ea4b_35084e14",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T00:02:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bbfc3e0f_d0e17959",
+      "range": {
+        "startLine": 1254,
+        "startChar": 46,
+        "endLine": 1254,
+        "endChar": 89
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "995e25c5_7edaccad",
@@ -413,6 +509,30 @@
       "side": 1,
       "message": "I actually added it while waiting for feedback on the previous PS.",
       "parentUuid": "995e25c5_7edaccad",
+      "range": {
+        "startLine": 1275,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 3
+      },
+      "revId": "69f0df51facd32a428eea800acf8db91bf53dcf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec11d0c8_b3aabf6f",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-18T00:02:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "551f6095_5596b70f",
       "range": {
         "startLine": 1275,
         "startChar": 0,
