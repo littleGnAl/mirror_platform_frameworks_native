@@ -282,6 +282,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9d5d097_465be5e8",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-18T05:35:31Z",
+      "side": 1,
+      "message": "\u003e The suggestion was to pass  struct X  not via its pointer, but via a shared pointer.\n\nRight, I understood that. What I\u0027m wondering is how useful that is if we\u0027re only wrapping the structure in the shared pointer and not the uuids. Those also have the same lifetime issues as the structure afaict.\n\nAfter my last message, I realized we could pass the structure into the function by value instead of by shared pointer and copy it, the structure isn\u0027t that big.",
+      "parentUuid": "04a272f4_fbeb53df",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e8cfd15_cd255c2d",
         "filename": "libs/binder/trusty/RpcTransportRaw.cpp",
         "patchSetId": 56
