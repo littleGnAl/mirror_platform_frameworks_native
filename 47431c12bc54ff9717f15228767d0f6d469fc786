@@ -1,5 +1,57 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c20cace_ef114691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-19T17:39:16Z",
+      "side": 1,
+      "message": "late review. i didn\u0027t read all the comments, so sorry if you already went over this",
+      "revId": "47431c12bc54ff9717f15228767d0f6d469fc786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8017949_98bc67da",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-19T17:39:16Z",
+      "side": 1,
+      "message": "should you take mThreadCountLock here?",
+      "revId": "47431c12bc54ff9717f15228767d0f6d469fc786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9f8036_55bd615e",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-19T17:39:16Z",
+      "side": 1,
+      "message": "same here, should this function take the lock? seems like a pre-existing issue but now it is more likely this could get an inconsistent view of the fields",
+      "revId": "47431c12bc54ff9717f15228767d0f6d469fc786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
