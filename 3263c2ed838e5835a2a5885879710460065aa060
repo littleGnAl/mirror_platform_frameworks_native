@@ -328,6 +328,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b265d580_3e64fa23",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 56
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-19T04:02:49Z",
+      "side": 1,
+      "message": "I couldn\u0027t modify the original tipc_port_acl structure in those ways (the reason being that it\u0027s a C structure), so I added a new PortAcl equivalent here. We still need to provide a tipc_port_acl to tipc_add_service, so RpcServerTrusty internally converts between the two structures. Everything should be safe now, unless the pointers in mUuidPtrs become invalid for any reason.",
+      "parentUuid": "198ddc3b_9ead310c",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "3263c2ed838e5835a2a5885879710460065aa060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e8cfd15_cd255c2d",
