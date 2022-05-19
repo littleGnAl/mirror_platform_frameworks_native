@@ -86,6 +86,24 @@
       "parentUuid": "2f9f8036_55bd615e",
       "revId": "47431c12bc54ff9717f15228767d0f6d469fc786",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91fbb5c5_8e4f83af",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-19T18:02:26Z",
+      "side": 1,
+      "message": "IIUC, that bug is about a race condition. I\u0027m thinking of data race issues. Unless you know from the program structure that these parts are essentially single threaded, then you can hit undefined behavior.",
+      "parentUuid": "f5a643d4_ad666b89",
+      "revId": "47431c12bc54ff9717f15228767d0f6d469fc786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
