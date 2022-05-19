@@ -34,6 +34,24 @@
       "parentUuid": "bd4d5459_90601d9b",
       "revId": "8f0c465035feec198ec7e9b2bff851c336d48109",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "358c6182_d8a9902c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-05-19T23:30:09Z",
+      "side": 1,
+      "message": "Yeah, pretty unfortunate...\nDo you plan on squashing the commits, or should we review that parent CL as is?",
+      "parentUuid": "84cf9a41_07c3fc2b",
+      "revId": "8f0c465035feec198ec7e9b2bff851c336d48109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
