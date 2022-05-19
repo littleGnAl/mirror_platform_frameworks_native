@@ -16,6 +16,24 @@
       "message": "We\u0027re generally trying to move the other way (i.e. away from RefBase / sp and towards `std::shared_ptr` / `std::unique_ptr`) and I don\u0027t think this object subclasses from RefBase anymore. Are we accidentally using `sp` somewhere still?",
       "revId": "42830e92c210b680b6535501487200e720c7e02c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c4587a_82452aa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-19T19:44:07Z",
+      "side": 1,
+      "message": "See internal change-id I2f469fd268472c7e78d36812353cff5c52a90163. The test is only wrong on AOSP.\n\nWould you be interested in having that fixed moved out? or the test only fixed in AOSP (I could marked it as merged-in)?",
+      "parentUuid": "cbde90c1_f51f7680",
+      "revId": "42830e92c210b680b6535501487200e720c7e02c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
