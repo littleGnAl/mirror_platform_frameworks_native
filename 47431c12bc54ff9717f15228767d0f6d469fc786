@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ce4eb35_b0010090",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-19T17:49:50Z",
+      "side": 1,
+      "message": "I don\u0027t believe it\u0027s required, not at that level. It\u0027s really only the binder kernel that is spawning these threads, and this call will not have race conditions. \nWhen a pooled thread (kernel thread) joins the pool, it remains in the pool until the process ends. If you have a scenario in mind where it would be required, please do let me know, I\u0027d be interested in knowing/learning.",
+      "parentUuid": "a8017949_98bc67da",
+      "revId": "47431c12bc54ff9717f15228767d0f6d469fc786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f9f8036_55bd615e",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 21
@@ -48,6 +66,24 @@
       "writtenOn": "2022-05-19T17:39:16Z",
       "side": 1,
       "message": "same here, should this function take the lock? seems like a pre-existing issue but now it is more likely this could get an inconsistent view of the fields",
+      "revId": "47431c12bc54ff9717f15228767d0f6d469fc786",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5a643d4_ad666b89",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-19T17:49:50Z",
+      "side": 1,
+      "message": "As it stands right now, even adding the lock here won\u0027t change the behavior. There is an inaccuracy currently here and it was filed in a different bug b/233226955\n\nThe code currently deals with the situation of join, and very well at that if the mMaxThreads is reached, but it may have slight inaccuracies when dealing with spawnPooledThread and joinThreadPool at the same time, as explained in the bug.",
+      "parentUuid": "2f9f8036_55bd615e",
       "revId": "47431c12bc54ff9717f15228767d0f6d469fc786",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
