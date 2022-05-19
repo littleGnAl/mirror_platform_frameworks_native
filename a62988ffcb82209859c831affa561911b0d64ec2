@@ -46,6 +46,30 @@
       },
       "revId": "a62988ffcb82209859c831affa561911b0d64ec2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b82346c_d6112b6b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-19T18:22:50Z",
+      "side": 1,
+      "message": "I shrunk the #ifdef regions a bit, but the big one is still needed because the SCHED_* constants are only available on Linux.",
+      "parentUuid": "20347c26_7ea9c9a8",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 16
+      },
+      "revId": "a62988ffcb82209859c831affa561911b0d64ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
