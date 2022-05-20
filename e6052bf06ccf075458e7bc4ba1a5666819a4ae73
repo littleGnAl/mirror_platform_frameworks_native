@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da545193_f2bc5383",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-20T17:55:33Z",
+      "side": 1,
+      "message": "oh - no, not at all. Please keep it. I think it\u0027s quite clear, just didn\u0027t know the syntax exists.",
+      "parentUuid": "ef1f2f6c_bc950109",
+      "range": {
+        "startLine": 458,
+        "startChar": 14,
+        "endLine": 458,
+        "endChar": 26
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f44e4e3_2db5b073",
@@ -143,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "309d5c44_b0827026",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-20T17:55:33Z",
+      "side": 1,
+      "message": "+1 - minimize API exposed.",
+      "parentUuid": "a2d42fc1_22a040dc",
+      "range": {
+        "startLine": 105,
+        "startChar": 35,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cfcdc0c9_bfe7e491",
         "filename": "libs/binder/include/binder/RpcServer.h",
         "patchSetId": 7
@@ -178,6 +226,30 @@
       "side": 1,
       "message": "What do you think of something like\n\n```\nenum FdTransportMode {\n  FD_TRANSPORT_NONE,\n  FD_TRANSPORT_UNIX,\n  FD_TRANSPORT_TRUSTY,\n  FD_TRANSPORT_TUNNEL,\n}\n\nvoid setFileDescriptorTransport(FdTransportMode mode)\n```",
       "parentUuid": "cfcdc0c9_bfe7e491",
+      "range": {
+        "startLine": 122,
+        "startChar": 18,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1c1b64_7148f0ee",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-20T17:55:33Z",
+      "side": 1,
+      "message": "Consider enum class for type checking, and of course, TRUSTY/TUNNEL only when added, but yeah, I think that is perfect",
+      "parentUuid": "d38c7fab_7640666d",
       "range": {
         "startLine": 122,
         "startChar": 18,
@@ -245,6 +317,29 @@
         "startLine": 655,
         "startChar": 0,
         "endLine": 656,
+        "endChar": 66
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c2755e_d217baa4",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-20T17:55:33Z",
+      "side": 1,
+      "message": "btw - please do feel free to break part of these changes out and submit them independently, especially here where we want to do something regardless. It\u0027ll start getting soak time. You can use \u0027git rebase -i\u0027 to reorder CLs locally, so that a change like this is at the bottom of the stack, and TH will still be able to run on this CL w/ this change, but also independently on this change for independent submission.",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 789,
         "endChar": 66
       },
       "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
