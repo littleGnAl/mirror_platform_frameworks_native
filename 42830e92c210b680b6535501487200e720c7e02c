@@ -52,6 +52,24 @@
       "parentUuid": "72c4587a_82452aa3",
       "revId": "42830e92c210b680b6535501487200e720c7e02c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca35348_096e2349",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-20T19:59:36Z",
+      "side": 1,
+      "message": "given the large delta, you may have to help with that, or I have configured this CL to fix the issue on braches w/o that fix only",
+      "parentUuid": "d6e0dfe4_6583dc4e",
+      "revId": "42830e92c210b680b6535501487200e720c7e02c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
