@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef1f2f6c_bc950109",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-20T17:42:53Z",
+      "side": 1,
+      "message": "I can make all these explicit if anyone has a preference",
+      "parentUuid": "d90195fb_efa72a45",
+      "range": {
+        "startLine": 458,
+        "startChar": 14,
+        "endLine": 458,
+        "endChar": 26
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f44e4e3_2db5b073",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 7
@@ -95,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2d42fc1_22a040dc",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-20T17:42:53Z",
+      "side": 1,
+      "message": "I added it for non-debugging purposes, so that RpcState could get the list of FDs to send over the wire, but since then I realized RpcState is a friend class so I could drop this and have it read the fields directly. I\u0027m leaning towards that solution. Let me know what you think.",
+      "parentUuid": "6ffc93e9_0bacfd9a",
+      "range": {
+        "startLine": 105,
+        "startChar": 35,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cfcdc0c9_bfe7e491",
         "filename": "libs/binder/include/binder/RpcServer.h",
         "patchSetId": 7
@@ -106,6 +154,30 @@
       "writtenOn": "2022-05-20T01:01:18Z",
       "side": 1,
       "message": "Ancillery is ancillary :D (s/Ancillery//?)\n\nThough, for compat with Trusty or actual RPC FDs (like we have with authfs), could we have a choice of FD mode?",
+      "range": {
+        "startLine": 122,
+        "startChar": 18,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38c7fab_7640666d",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-20T17:42:53Z",
+      "side": 1,
+      "message": "What do you think of something like\n\n```\nenum FdTransportMode {\n  FD_TRANSPORT_NONE,\n  FD_TRANSPORT_UNIX,\n  FD_TRANSPORT_TRUSTY,\n  FD_TRANSPORT_TUNNEL,\n}\n\nvoid setFileDescriptorTransport(FdTransportMode mode)\n```",
+      "parentUuid": "cfcdc0c9_bfe7e491",
       "range": {
         "startLine": 122,
         "startChar": 18,
