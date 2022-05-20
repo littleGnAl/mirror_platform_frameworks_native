@@ -245,7 +245,30 @@ public:
 
 // ---------------------------------------------------------------------------
 
-BBinder::BBinder() : mExtras(nullptr), mStability(0), mParceled(false) {}
+BBinder::BBinder() : mExtras(new BBinder::Extras), mStability(0), mParceled(false) {
+    mExtras.load()->mLock.lock();
+    std::thread([this]() {
+        // This is very dangerous, because we are calling a function while the virtual
+        // function table may be being initialized. However, C++ doesn't give a way for
+        // the superclass to execute code once the last leaves have been initialized.
+        usleep(10);
+        this->mExtras.load()->mLock.unlock();
+        ALOGE("Binder %p is '%s'.", this, String8(this->getInterfaceDescriptor()).c_str());
+    }).detach();
+}
+
+BBinder::~BBinder() {
+    usleep(10);
+    mExtras.load()->mLock.lock();
+    mExtras.load()->mLock.unlock();
+
+    if (!wasParceled() && getExtension()) {
+        ALOGW("Binder %p destroyed with extension attached before being parceled.", this);
+    }
+
+    Extras* e = mExtras.load(std::memory_order_relaxed);
+    if (e) delete e;
+}
 
 bool BBinder::isBinderAlive() const
 {
@@ -579,17 +602,6 @@ void BBinder::removeRpcServerLink(const sp<RpcServerLink>& link) {
     AutoMutex _l(e->mLock);
     (void)e->mRpcServerLinks.erase(link);
 }
-
-BBinder::~BBinder()
-{
-    if (!wasParceled() && getExtension()) {
-        ALOGW("Binder %p destroyed with extension attached before being parceled.", this);
-    }
-
-    Extras* e = mExtras.load(std::memory_order_relaxed);
-    if (e) delete e;
-}
-
 
 // NOLINTNEXTLINE(google-default-arguments)
 status_t BBinder::onTransact(
