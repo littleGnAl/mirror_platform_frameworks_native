@@ -325,6 +325,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bccd6d8c_5ca5f156",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-20T18:07:56Z",
+      "side": 1,
+      "message": "ATM, they both have to set it separately and there is no check to ensure they match. It only detects the mismatch once an FD is sent (I\u0027m actually missing a check, so this flag only guards sending FDs right now, but that is easy to fix).\n\nNeed to think about the other ideas more.\n\nAgreed this needs some tests.",
+      "parentUuid": "a1956b49_b402d144",
+      "range": {
+        "startLine": 655,
+        "startChar": 0,
+        "endLine": 656,
+        "endChar": 66
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1c2755e_d217baa4",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 7
