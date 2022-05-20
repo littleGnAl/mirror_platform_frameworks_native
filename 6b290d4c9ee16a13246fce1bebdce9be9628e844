@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2efd3527_92589c72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-05-20T00:34:53Z",
+      "side": 1,
+      "message": "Can\u0027t or shouldn\u0027t?\n\nIt would be nice if the reason for this is explained on the code or in the commit message. The bug doesn\u0027t explain it either.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "6b290d4c9ee16a13246fce1bebdce9be9628e844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
