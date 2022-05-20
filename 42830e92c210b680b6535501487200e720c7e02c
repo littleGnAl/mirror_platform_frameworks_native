@@ -70,6 +70,24 @@
       "parentUuid": "d6e0dfe4_6583dc4e",
       "revId": "42830e92c210b680b6535501487200e720c7e02c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32db1c6b_d89a99b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-05-20T20:06:06Z",
+      "side": 1,
+      "message": "Let\u0027s just limit the fix to aosp, for simplicity.",
+      "parentUuid": "1ca35348_096e2349",
+      "revId": "42830e92c210b680b6535501487200e720c7e02c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
