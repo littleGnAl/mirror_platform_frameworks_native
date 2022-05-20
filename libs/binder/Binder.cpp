@@ -582,6 +582,8 @@ void BBinder::removeRpcServerLink(const sp<RpcServerLink>& link) {
 
 BBinder::~BBinder()
 {
+    ALOGE("Binder %p being destroyed %s", this, String8(getInterfaceDescriptor()).c_str());
+
     if (!wasParceled() && getExtension()) {
         ALOGW("Binder %p destroyed with extension attached before being parceled.", this);
     }
