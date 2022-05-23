@@ -69,6 +69,30 @@
       },
       "revId": "8540d09747054fac8b98f57d9e35389a68d6a42d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e4ce70_43f07a08",
+        "filename": "libs/binder/tests/parcel_fuzzer/hwbinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-05-23T17:55:57Z",
+      "side": 1,
+      "message": "Looks like some magic number to me and I have to spend time trying to understand why it\u0027s here.\nkMaxBytesPastEnd \u003d 1024",
+      "parentUuid": "237a4bf4_9fde9fa5",
+      "range": {
+        "startLine": 60,
+        "startChar": 79,
+        "endLine": 60,
+        "endChar": 83
+      },
+      "revId": "8540d09747054fac8b98f57d9e35389a68d6a42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
