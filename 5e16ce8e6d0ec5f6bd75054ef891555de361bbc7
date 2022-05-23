@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553fb28f_256e0a19",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-23T21:13:52Z",
+      "side": 1,
+      "message": "// code intentionally aborts on values larger than int32 max",
+      "revId": "5e16ce8e6d0ec5f6bd75054ef891555de361bbc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e40af67_8f1b6e8e",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-23T21:13:52Z",
+      "side": 1,
+      "message": "not obvious what \"big enough\" means. maybe \"upper bound chosen to avoid slow allocations\"",
+      "revId": "5e16ce8e6d0ec5f6bd75054ef891555de361bbc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f26b8e9_66984364",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-23T21:13:52Z",
+      "side": 1,
+      "message": "maybe randomize both offset and length",
+      "range": {
+        "startLine": 112,
+        "startChar": 77,
+        "endLine": 112,
+        "endChar": 78
+      },
+      "revId": "5e16ce8e6d0ec5f6bd75054ef891555de361bbc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
