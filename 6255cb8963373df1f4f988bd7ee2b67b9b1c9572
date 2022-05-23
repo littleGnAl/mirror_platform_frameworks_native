@@ -39,6 +39,30 @@
       },
       "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db0a04df_0ac8137a",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-23T23:44:04Z",
+      "side": 1,
+      "message": "That doesn\u0027t let you move temporaries into this constructor, does it? Is that fine?",
+      "parentUuid": "7c5ff932_ce087a1d",
+      "range": {
+        "startLine": 188,
+        "startChar": 29,
+        "endLine": 188,
+        "endChar": 39
+      },
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
