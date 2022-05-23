@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "366de022_4fff4a46",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 44
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T23:42:49Z",
+      "side": 1,
+      "message": "do we support BINDER_WITH_KERNEL_IPC and BINDER_RPC_SINGLE_THREADED together? Or with neither of them set?",
+      "revId": "be96e4c7b38093a59719e7d7901de09e41e0355c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
