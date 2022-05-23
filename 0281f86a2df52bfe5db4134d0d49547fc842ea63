@@ -22,6 +22,30 @@
       },
       "revId": "0281f86a2df52bfe5db4134d0d49547fc842ea63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e5bce6_a64f2525",
+        "filename": "libs/binder/Debug.cpp",
+        "patchSetId": 94
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-23T23:53:23Z",
+      "side": 1,
+      "message": "One (big) problem we have is that RpcThreads.h under include/binder so it\u0027s publicly visible. It needs to be because RpcMaybeThread is used by both RpcServer.h and RpcSession.h.\n\nI can move kEnableKernelIpc into a header, but do we want to make it public?",
+      "parentUuid": "f4653862_0bf5bf91",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "0281f86a2df52bfe5db4134d0d49547fc842ea63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
