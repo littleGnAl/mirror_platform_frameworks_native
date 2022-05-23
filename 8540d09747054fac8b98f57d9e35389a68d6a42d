@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a71cf05_e417a7fe",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-05-23T15:43:28Z",
+      "side": 1,
+      "message": "nit: bug number?",
+      "range": {
+        "startLine": 109,
+        "startChar": 12,
+        "endLine": 109,
+        "endChar": 41
+      },
+      "revId": "8540d09747054fac8b98f57d9e35389a68d6a42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f7af28_5e3e7c2e",
+        "filename": "libs/binder/tests/parcel_fuzzer/hwbinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-05-23T15:43:28Z",
+      "side": 1,
+      "message": "Can we give this a name?",
+      "range": {
+        "startLine": 60,
+        "startChar": 79,
+        "endLine": 60,
+        "endChar": 83
+      },
+      "revId": "8540d09747054fac8b98f57d9e35389a68d6a42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
