@@ -86,6 +86,24 @@
       "parentUuid": "ad48a292_7bb58d79",
       "revId": "14b80da1fcc00c23749e606ae4b04ee603d0ad0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28e243dc_ae993a12",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2646,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T23:33:12Z",
+      "side": 1,
+      "message": "Btw b/26696080 didn\u0027t really get fixed until b/131868573. I am suspicious these rlimit checks really do anything. The clones of these FDs should fail anyway, and this code can\u0027t be fixing the whole problem (if 999 fds are open in the process, you can still have a Parcel with 1023), so we still need to handle too big of allocations (and the fuzzer should also be able to detect if we remove this and another solution is still needed).\n\nI think it should be fine to:\n- send FYI to ctate we are removing this (I can once we have the CL)\n- remove all this code (as Frederick suggests)\n- make sure we add a test that tries to add more FDs to the Parcel than rlimit to see the test",
+      "parentUuid": "2c4c9bfc_c9ef94c7",
+      "revId": "14b80da1fcc00c23749e606ae4b04ee603d0ad0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
