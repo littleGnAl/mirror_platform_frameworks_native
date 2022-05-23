@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f78c89_70d746a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 129
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T23:49:31Z",
+      "side": 1,
+      "message": "are there tests for this code?",
+      "revId": "971c8a6f6d0610cfdfc3d6d3d8aad8838f0ac2b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4de88f57_c0751eb4",
+        "filename": "libs/binder/trusty/FdTrigger.cpp",
+        "patchSetId": 129
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T23:49:31Z",
+      "side": 1,
+      "message": "this duplicates code?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "971c8a6f6d0610cfdfc3d6d3d8aad8838f0ac2b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
