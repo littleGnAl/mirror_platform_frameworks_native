@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b93565fd_96a5d48e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T23:35:36Z",
+      "side": 1,
+      "message": "Hey, I do like fewer allocations, but I am curious what Yifan thinks. If we only create a single object, we could probably drop the factory as well. I\u0027m thinking that this pattern is affording us the ability to have state specific to these transports, but I\u0027m not sure if we really do need that. Anyway, if Yifan is okay with this, we should remove the factories as well.",
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5ff932_ce087a1d",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T23:35:36Z",
+      "side": 1,
+      "message": "nit: passing shared_ptr should be const\u0026",
+      "range": {
+        "startLine": 188,
+        "startChar": 29,
+        "endLine": 188,
+        "endChar": 39
+      },
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
