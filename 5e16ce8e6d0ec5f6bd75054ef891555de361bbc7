@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03cb7c5_479c38ff",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T22:51:53Z",
+      "side": 1,
+      "message": "Right, thanks - the curse of knowledge here is that no fuzzer should have \"if (! \u003cwould be an abort\u003e) {...}\" when the abort is unintentional. I\u0027ll update it if I need to kick TH again.",
+      "parentUuid": "95674187_51e45ee6",
+      "revId": "5e16ce8e6d0ec5f6bd75054ef891555de361bbc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e40af67_8f1b6e8e",
