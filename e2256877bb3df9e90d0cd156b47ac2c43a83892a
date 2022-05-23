@@ -22,6 +22,30 @@
       },
       "revId": "e2256877bb3df9e90d0cd156b47ac2c43a83892a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4297ee3b_c4365f83",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-23T23:55:04Z",
+      "side": 1,
+      "message": "I don\u0027t think so, see https://android-review.googlesource.com/c/platform/frameworks/native/+/2084054/comment/18bf7a50_49580909/ (guess I should have left that comment open).",
+      "parentUuid": "914a1a0e_a40298aa",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 29
+      },
+      "revId": "e2256877bb3df9e90d0cd156b47ac2c43a83892a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
