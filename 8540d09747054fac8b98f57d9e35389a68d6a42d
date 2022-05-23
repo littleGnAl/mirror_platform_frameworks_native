@@ -45,6 +45,30 @@
       },
       "revId": "8540d09747054fac8b98f57d9e35389a68d6a42d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "237a4bf4_9fde9fa5",
+        "filename": "libs/binder/tests/parcel_fuzzer/hwbinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T17:20:03Z",
+      "side": 1,
+      "message": "it\u0027s quite arbitrary \"read past the end of the parcel\"",
+      "parentUuid": "46f7af28_5e3e7c2e",
+      "range": {
+        "startLine": 60,
+        "startChar": 79,
+        "endLine": 60,
+        "endChar": 83
+      },
+      "revId": "8540d09747054fac8b98f57d9e35389a68d6a42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
