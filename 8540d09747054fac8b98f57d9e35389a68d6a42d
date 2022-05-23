@@ -117,6 +117,30 @@
       },
       "revId": "8540d09747054fac8b98f57d9e35389a68d6a42d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd285d73_1817852f",
+        "filename": "libs/binder/tests/parcel_fuzzer/hwbinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T20:52:48Z",
+      "side": 1,
+      "message": "Right, these numbers don\u0027t have a specific semantic. It\u0027s just \"big enough we suspect we will get coverage here from it\". Though, this is bad thinking from me. This is a coverage guided fuzzer, so we don\u0027t need to put limits. It can figure out what is useful to fuzz.",
+      "parentUuid": "6222c7ff_f1d058be",
+      "range": {
+        "startLine": 60,
+        "startChar": 79,
+        "endLine": 60,
+        "endChar": 83
+      },
+      "revId": "8540d09747054fac8b98f57d9e35389a68d6a42d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
