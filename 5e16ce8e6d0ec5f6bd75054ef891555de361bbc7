@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "146acc88_4e0dcb64",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T21:52:31Z",
+      "side": 1,
+      "message": "(there are 3 copies of this comment btw, so making them all the same)\n\nI think it should be clear from context (for instance, also from context, we assume it\u0027s setDataPosition aborting, not ConsumeIntegralInRange. If you feel strongly about this, could you specify what \u0027larger than int32 max\u0027 disambiguates?",
+      "parentUuid": "553fb28f_256e0a19",
+      "revId": "5e16ce8e6d0ec5f6bd75054ef891555de361bbc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e40af67_8f1b6e8e",
         "filename": "libs/binder/tests/parcel_fuzzer/binder.cpp",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-23T21:13:52Z",
       "side": 1,
       "message": "not obvious what \"big enough\" means. maybe \"upper bound chosen to avoid slow allocations\"",
+      "revId": "5e16ce8e6d0ec5f6bd75054ef891555de361bbc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7422cc2e_00a3d2db",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T21:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e40af67_8f1b6e8e",
       "revId": "5e16ce8e6d0ec5f6bd75054ef891555de361bbc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2022-05-23T21:13:52Z",
       "side": 1,
       "message": "maybe randomize both offset and length",
+      "range": {
+        "startLine": 112,
+        "startChar": 77,
+        "endLine": 112,
+        "endChar": 78
+      },
+      "revId": "5e16ce8e6d0ec5f6bd75054ef891555de361bbc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43445e96_5c87250b",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-23T21:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f26b8e9_66984364",
       "range": {
         "startLine": 112,
         "startChar": 77,
