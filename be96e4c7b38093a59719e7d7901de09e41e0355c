@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0abc101d_2ccbc1bb",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 44
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-24T03:13:50Z",
+      "side": 1,
+      "message": "This is basically the same discussion as above: whether we want all 4 combinations, no?",
+      "parentUuid": "366de022_4fff4a46",
+      "revId": "be96e4c7b38093a59719e7d7901de09e41e0355c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddaee4b9_08aa3042",
         "filename": "libs/binder/tests/Android.bp",
         "patchSetId": 44
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-23T23:43:57Z",
       "side": 1,
       "message": "Why is this needed outside of libbinder? (only the test needs this, right? not any given client?)",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 6
+      },
+      "revId": "be96e4c7b38093a59719e7d7901de09e41e0355c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6088ee5_234614bc",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 44
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-24T03:13:50Z",
+      "side": 1,
+      "message": "We need to skip the tests for the functionality that\u0027s disabled in libbinder (like Java connections, and sending regular binders over sockets).",
+      "parentUuid": "ddaee4b9_08aa3042",
       "range": {
         "startLine": 224,
         "startChar": 0,
