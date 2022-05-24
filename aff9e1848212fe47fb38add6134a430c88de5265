@@ -336,6 +336,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d0509f0_0f8209da",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-24T00:34:22Z",
+      "side": 1,
+      "message": "\u003e How bad do you think buffered reads would be? Alternatively, is within the realm of possibility to support multiple iovecs for Trusty IPC reads?\n\nAfter giving it some more thought, I think that could work. The Trusty side is actually easier, because the read API is split across 3 calls: `get_msg`, `put_msg`, and `read_msg`. The way it works is you \"accept\" a message with `get_msg` which also gives you the message length, then you can do an arbitrary number of reads at any offset with `read_msg` (until you \"close\" the message with `put_msg`). Trusty libbinder could basically keep a message active across multiple `interruptibleReadFully` calls. I used to do that in an earlier PS, got rid of it because the code was more complex but I can bring it back.\n\nThe other problem is on Android when receiving a message from Trusty. There the only API is `read()`, and that requires a buffer to store the message into. If the buffer is too small for the message, the syscall returns `EMSGSIZE` (without discarding the message). I guess we could always handle that code by increasing the buffer size until the read goes through, Android has a lot more memory than Trusty.",
+      "parentUuid": "ceeed41f_0ac3effd",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adfe0502_bf75efa4",
         "filename": "libs/binder/RpcTransportTrusty.cpp",
         "patchSetId": 2
