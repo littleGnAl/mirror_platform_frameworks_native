@@ -94,6 +94,30 @@
       },
       "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb605e8a_ce87f537",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 101
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-24T02:24:41Z",
+      "side": 0,
+      "message": "Switched from inheritance to composition.",
+      "parentUuid": "8a9f15ef_0ce50f58",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 5
+      },
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
