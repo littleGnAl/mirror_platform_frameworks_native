@@ -227,6 +227,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6ed1753_e9fb7654",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 21
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-24T00:07:21Z",
+      "side": 1,
+      "message": "They should be compatible, since\n* they still both support RPC\n* a single-threaded client connecting to a multi-threaded server should work because the client will open only a single connection\n* a multi-threaded client connecting to a single-threaded server should work because the latter will return 1 for getRemoteMaxThreads.\n\nThere is one notable issue on Android: single-threaded servers can only handle one client at a time because of the event loop. That\u0027s not a problem on Trusty because of the way the tipc library keeps track of clients (adds them to a handle set and calls an on_message handler for every incoming message).",
+      "parentUuid": "b3bd1fa7_7f98ca14",
+      "range": {
+        "startLine": 243,
+        "startChar": 10,
+        "endLine": 243,
+        "endChar": 32
+      },
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86fb6ff0_7c1519ca",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 21
