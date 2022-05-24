@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69a02e81_63b1d6dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 129
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-24T00:15:47Z",
+      "side": 1,
+      "message": "WIP port of ITestService at https://android-review.googlesource.com/c/trusty/app/sample/+/2082098, simpler old test at https://android-review.googlesource.com/c/trusty/app/sample/+/1891580 (I think we\u0027re getting rid of this one, ITestService makes it redundant).\n\nFor ITestService, I was thinking we could land the current version, then port the rest of in follow-up CLs.",
+      "parentUuid": "d0f78c89_70d746a0",
+      "revId": "971c8a6f6d0610cfdfc3d6d3d8aad8838f0ac2b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4de88f57_c0751eb4",
         "filename": "libs/binder/trusty/FdTrigger.cpp",
         "patchSetId": 129
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-23T23:49:31Z",
       "side": 1,
       "message": "this duplicates code?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "971c8a6f6d0610cfdfc3d6d3d8aad8838f0ac2b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30bacc22_1d08163b",
+        "filename": "libs/binder/trusty/FdTrigger.cpp",
+        "patchSetId": 129
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-24T00:15:47Z",
+      "side": 1,
+      "message": "Trusty doesn\u0027t have pipes or anything like them yet. I\u0027ve looked into adding a similar signaling mechanism, but the API will look significantly different to make code sharing difficult. Doesn\u0027t it make sense to have a separate FdTrigger for Trusty?",
+      "parentUuid": "4de88f57_c0751eb4",
       "range": {
         "startLine": 1,
         "startChar": 0,
