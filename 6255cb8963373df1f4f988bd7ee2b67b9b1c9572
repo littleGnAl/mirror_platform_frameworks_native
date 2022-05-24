@@ -20,6 +20,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae087ec2_866f514c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-24T01:21:34Z",
+      "side": 1,
+      "message": "It\u0027s not just for the allocations, this lets RpcServer use its own transport for new sessions instead of the default one that RpcSession::make() uses (see https://android-review.googlesource.com/c/platform/frameworks/native/+/2095306/17/libs/binder/RpcServer.cpp#393).",
+      "parentUuid": "b93565fd_96a5d48e",
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d6a57e0_1dbd6ecf",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-24T01:21:34Z",
+      "side": 1,
+      "message": "This is the important part of this CL.",
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c5ff932_ce087a1d",
         "filename": "libs/binder/include/binder/RpcSession.h",
         "patchSetId": 17
