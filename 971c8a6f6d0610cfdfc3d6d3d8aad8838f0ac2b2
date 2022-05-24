@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4847ff4c_0c8ef04a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 129
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-05-24T01:32:37Z",
+      "side": 1,
+      "message": "Correction: the old tests are at https://android-review.googlesource.com/c/trusty/app/sample/+/1932245 (not 1891580).",
+      "parentUuid": "69a02e81_63b1d6dd",
+      "revId": "971c8a6f6d0610cfdfc3d6d3d8aad8838f0ac2b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4de88f57_c0751eb4",
         "filename": "libs/binder/trusty/FdTrigger.cpp",
         "patchSetId": 129
