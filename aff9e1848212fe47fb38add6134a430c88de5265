@@ -312,6 +312,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceeed41f_0ac3effd",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-24T00:14:13Z",
+      "side": 1,
+      "message": "So, as part of adding FD support, I need to add an equivalent of mObjects to the wire protocol. The likely implementation for that (WIP in https://r.android.com/2082679) is going to make the iovecs asymmetric. The write side will have the parcel data and object offsets in separate buffers, but the receive side will pull them both into one buffer. I\u0027m not sure if there is an alternative solution that is performant (at least without completely rethinking how we manage read buffers).\n\nHow bad do you think buffered reads would be? Alternatively, is within the realm of possibility to support multiple iovecs for Trusty IPC reads?",
+      "parentUuid": "78e7359a_8bbf2882",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adfe0502_bf75efa4",
         "filename": "libs/binder/RpcTransportTrusty.cpp",
         "patchSetId": 2
