@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63bae70_c5cc8d0e",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-05-25T17:05:03Z",
+      "side": 1,
+      "message": "What do we get with these const versions?\nIs there a cost to using the non-const versions to cast the return value to a const when the user wants that?",
+      "range": {
+        "startLine": 1276,
+        "startChar": 4,
+        "endLine": 1276,
+        "endChar": 95
+      },
+      "revId": "432c3fb9fd062f477017760716e837020b903733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

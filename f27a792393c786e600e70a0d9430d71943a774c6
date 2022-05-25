@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84730f5_1d7397af",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-05-25T17:05:03Z",
+      "side": 1,
+      "message": "nit: kernelFields",
+      "range": {
+        "startLine": 843,
+        "startChar": 20,
+        "endLine": 843,
+        "endChar": 27
+      },
+      "revId": "f27a792393c786e600e70a0d9430d71943a774c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e453d329_c32f9da0",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-05-25T17:05:03Z",
+      "side": 1,
+      "message": "Is there a reason to have this as a parameter? \nCan we remove it to keep the functions consistent and make sure it\u0027s not updating some other parcel\u0027s kernelFields?",
+      "range": {
+        "startLine": 628,
+        "startChar": 47,
+        "endLine": 628,
+        "endChar": 79
+      },
+      "revId": "f27a792393c786e600e70a0d9430d71943a774c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e90a3084_862d3ccc",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1275,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-05-25T17:05:03Z",
+      "side": 1,
+      "message": "Do we want a constructor to enforce this so we can catch it when it\u0027s created instead of when it\u0027s used?",
+      "range": {
+        "startLine": 1275,
+        "startChar": 0,
+        "endLine": 1275,
+        "endChar": 37
+      },
+      "revId": "f27a792393c786e600e70a0d9430d71943a774c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
