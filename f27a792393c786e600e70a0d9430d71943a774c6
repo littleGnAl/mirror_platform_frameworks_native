@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bada0b16_73ff7e04",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-25T21:23:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a84730f5_1d7397af",
+      "range": {
+        "startLine": 843,
+        "startChar": 20,
+        "endLine": 843,
+        "endChar": 27
+      },
+      "revId": "f27a792393c786e600e70a0d9430d71943a774c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e453d329_c32f9da0",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a359f45a_333866a8",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-25T21:23:22Z",
+      "side": 1,
+      "message": "It allows the function to avoid rechecking which can be nice for performance and readability, but I agree it doesn\u0027t seem like a good trade off in this case.\n\nRemove it.",
+      "parentUuid": "e453d329_c32f9da0",
+      "range": {
+        "startLine": 628,
+        "startChar": 47,
+        "endLine": 628,
+        "endChar": 79
+      },
+      "revId": "f27a792393c786e600e70a0d9430d71943a774c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e90a3084_862d3ccc",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-25T17:05:03Z",
       "side": 1,
       "message": "Do we want a constructor to enforce this so we can catch it when it\u0027s created instead of when it\u0027s used?",
+      "range": {
+        "startLine": 1275,
+        "startChar": 0,
+        "endLine": 1275,
+        "endChar": 37
+      },
+      "revId": "f27a792393c786e600e70a0d9430d71943a774c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07a45432_b5c38363",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1275,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-25T21:23:22Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "e90a3084_862d3ccc",
       "range": {
         "startLine": 1275,
         "startChar": 0,

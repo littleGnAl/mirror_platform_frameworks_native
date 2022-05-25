@@ -22,6 +22,30 @@
       },
       "revId": "432c3fb9fd062f477017760716e837020b903733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4dda063_9cd7dce2",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-25T21:23:22Z",
+      "side": 1,
+      "message": "It is out of necessity. You can\u0027t call the non-const methods when `this` is const (unless I sprinkle more `mutable` keywords around).",
+      "parentUuid": "c63bae70_c5cc8d0e",
+      "range": {
+        "startLine": 1276,
+        "startChar": 4,
+        "endLine": 1276,
+        "endChar": 95
+      },
+      "revId": "432c3fb9fd062f477017760716e837020b903733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
