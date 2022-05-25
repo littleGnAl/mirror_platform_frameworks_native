@@ -2447,6 +2447,7 @@ status_t Parcel::restartWrite(size_t desired)
 
 status_t Parcel::continueWrite(size_t desired)
 {
+    LOGE("test123");
     if (desired > INT32_MAX) {
         // don't accept size_t values which may have come from an
         // inadvertent conversion from a negative int.
