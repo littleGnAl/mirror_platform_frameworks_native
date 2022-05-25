@@ -366,6 +366,7 @@ filegroup {
 
 cc_library {
     name: "libbatterystats_aidl",
+    host_supported: true,
     srcs: [
         "IBatteryStats.cpp",
     ],
@@ -378,6 +379,7 @@ cc_library {
 
 cc_library {
     name: "libprocessinfoservice_aidl",
+    host_supported: true,
     srcs: [
         "IProcessInfoService.cpp",
         "ProcessInfoService.cpp",
