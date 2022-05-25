@@ -46,6 +46,30 @@
       },
       "revId": "432c3fb9fd062f477017760716e837020b903733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b74127_d81fa43b",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-05-25T21:46:38Z",
+      "side": 1,
+      "message": "Ahh, that makes sense! Thanks.",
+      "parentUuid": "e4dda063_9cd7dce2",
+      "range": {
+        "startLine": 1276,
+        "startChar": 4,
+        "endLine": 1276,
+        "endChar": 95
+      },
+      "revId": "432c3fb9fd062f477017760716e837020b903733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
