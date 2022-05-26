@@ -53,6 +53,7 @@
 #include "../RpcSocketAddress.h" // for testing preconnected clients
 #include "../RpcState.h"         // for debugging
 #include "../vm_sockets.h"       // for VMADDR_*
+#include "utils/Errors.h"
 
 using namespace std::chrono_literals;
 using namespace std::placeholders;
@@ -69,7 +70,8 @@ const char* kLocalInetAddress = "127.0.0.1";
 enum class RpcSecurity { RAW, TLS };
 
 static inline std::vector<RpcSecurity> RpcSecurityValues() {
-    return {RpcSecurity::RAW, RpcSecurity::TLS};
+    return {RpcSecurity::RAW};
+    // return {RpcSecurity::RAW, RpcSecurity::TLS};
 }
 
 static inline std::unique_ptr<RpcTransportCtxFactory> newFactory(
@@ -90,6 +92,16 @@ static inline std::unique_ptr<RpcTransportCtxFactory> newFactory(
         default:
             LOG_ALWAYS_FATAL("Unknown RpcSecurity %d", rpcSecurity);
     }
+}
+
+// Create an FD that returns `contents` when read.
+static base::unique_fd mockFileDescriptor(std::string contents) {
+    android::base::unique_fd readFd, writeFd;
+    CHECK(android::base::Pipe(&readFd, &writeFd)) << strerror(errno);
+    std::thread([writeFd = std::move(writeFd), contents = std::move(contents)]() {
+        CHECK(WriteStringToFd(contents, writeFd));
+    }).detach();
+    return std::move(readFd);
 }
 
 TEST(BinderRpcParcel, EntireParcelFormatted) {
@@ -324,6 +336,23 @@ public:
         (void)IPCThreadState::self()->getCallingPid();
         return Status::ok();
     }
+
+    Status getHelloFile(android::os::ParcelFileDescriptor* out) override {
+        out->reset(mockFileDescriptor("hello"));
+        return Status::ok();
+    }
+
+    Status concatFiles(const std::vector<android::os::ParcelFileDescriptor>& files,
+                       android::os::ParcelFileDescriptor* out) override {
+        std::string acc;
+        for (const auto& file : files) {
+            std::string result;
+            CHECK(android::base::ReadFdToString(file.get(), &result));
+            acc.append(result);
+        }
+        out->reset(mockFileDescriptor(acc));
+        return Status::ok();
+    }
 };
 sp<IBinder> MyBinderRpcTest::mHeldBinder;
 
@@ -352,6 +381,8 @@ public:
     }
     android::base::borrowed_fd readEnd() { return mReadEnd; }
     android::base::borrowed_fd writeEnd() { return mWriteEnd; }
+
+    void terminate() { kill(mPid, SIGTERM); }
 
 private:
     pid_t mPid = 0;
@@ -421,10 +452,10 @@ struct BinderRpcTestProcessSession {
 
     BinderRpcTestProcessSession(BinderRpcTestProcessSession&&) = default;
     ~BinderRpcTestProcessSession() {
-        EXPECT_NE(nullptr, rootIface);
-        if (rootIface == nullptr) return;
-
         if (!expectAlreadyShutdown) {
+            EXPECT_NE(nullptr, rootIface);
+            if (rootIface == nullptr) return;
+
             std::vector<int32_t> remoteCounts;
             // calling over any sessions counts across all sessions
             EXPECT_OK(rootIface->countBinders(&remoteCounts));
@@ -490,7 +521,19 @@ public:
         size_t numSessions = 1;
         size_t numIncomingConnections = 0;
         size_t numOutgoingConnections = SIZE_MAX;
+        RpcSession::FileDescriptorTransportMode clientFileDescriptorTransportMode =
+                RpcSession::FileDescriptorTransportMode::NONE;
+        RpcSession::FileDescriptorTransportMode serverFileDescriptorTransportMode =
+                RpcSession::FileDescriptorTransportMode::NONE;
+
+        // If true, connection failures will result in `ProcessSession::sessions` being empty
+        // instead of a fatal error.
+        bool allowConnectFailure = false;
     };
+
+    SocketType socketType() const { return std::get<0>(GetParam()); }
+    uint32_t clientVersion() const { return std::get<2>(GetParam()); }
+    uint32_t serverVersion() const { return std::get<3>(GetParam()); }
 
     static inline std::string PrintParamInfo(const testing::TestParamInfo<ParamType>& info) {
         auto [type, security, clientVersion, serverVersion] = info.param;
@@ -551,6 +594,8 @@ public:
 
                     server->setProtocolVersion(serverVersion);
                     server->setMaxThreads(options.numThreads);
+                    server->setFileDescriptorTransportMode(
+                            options.serverFileDescriptorTransportMode);
 
                     unsigned int outPort = 0;
 
@@ -628,6 +673,7 @@ public:
             CHECK(session->setProtocolVersion(clientVersion));
             session->setMaxIncomingThreads(options.numIncomingConnections);
             session->setMaxOutgoingThreads(options.numOutgoingConnections);
+            session->setFileDescriptorTransportMode(options.clientFileDescriptorTransportMode);
 
             switch (socketType) {
                 case SocketType::PRECONNECTED:
@@ -646,6 +692,10 @@ public:
                     break;
                 default:
                     LOG_ALWAYS_FATAL("Unknown socket type");
+            }
+            if (options.allowConnectFailure && status != OK) {
+                ret.sessions.clear();
+                break;
             }
             CHECK_EQ(status, OK) << "Could not connect: " << statusToString(status);
             ret.sessions.push_back({session, session->getRootObject()});
@@ -695,7 +745,7 @@ public:
                         }),
         };
 
-        ret.rootBinder = ret.proc.sessions.at(0).root;
+        ret.rootBinder = ret.proc.sessions.empty() ? nullptr : ret.proc.sessions.at(0).root;
         ret.rootIface = interface_cast<IBinderRpcTest>(ret.rootBinder);
 
         return ret;
@@ -939,7 +989,12 @@ TEST_P(BinderRpc, RepeatRootObject) {
 }
 
 TEST_P(BinderRpc, NestedTransactions) {
-    auto proc = createRpcTestSocketServerProcess({});
+    auto proc = createRpcTestSocketServerProcess({
+            // Enable FD support because it uses more stack space and so represents
+            // something closer to a worst case scenario.
+            .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+            .serverFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+    });
 
     auto nastyNester = sp<MyBinderRpcTest>::make();
     EXPECT_OK(proc.rootIface->nestMe(nastyNester, 10));
@@ -1341,6 +1396,140 @@ TEST_P(BinderRpc, UseKernelBinderCallingId) {
     proc.expectAlreadyShutdown = true;
 }
 
+TEST_P(BinderRpc, FileDescriptorTransportMismatchServer) {
+    // If the client requests a mode the server doesn't support, the connection
+    // will be rejected.
+    auto proc = createRpcTestSocketServerProcess({
+            .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+            .serverFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::NONE,
+            .allowConnectFailure = true,
+    });
+    EXPECT_TRUE(proc.proc.sessions.empty()) << "session connections should have failed";
+    proc.proc.host.terminate();
+    proc.expectAlreadyShutdown = true;
+}
+
+TEST_P(BinderRpc, FileDescriptorTransportMismatchClient) {
+    // If the client requests NONE, then the server should downgrade itself to
+    // match.
+    auto proc = createRpcTestSocketServerProcess({
+            .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::NONE,
+            .serverFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+    });
+
+    android::os::ParcelFileDescriptor out;
+    auto status = proc.rootIface->getHelloFile(&out);
+    if (clientVersion() < 1 || serverVersion() < 1) {
+        EXPECT_EQ(status.transactionError(), BAD_TYPE) << status;
+        return;
+    }
+    EXPECT_EQ(status.transactionError(), FDS_NOT_ALLOWED) << status;
+}
+
+TEST_P(BinderRpc, ReceiveFile) {
+    auto proc = createRpcTestSocketServerProcess({
+            .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+            .serverFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+    });
+
+    android::os::ParcelFileDescriptor out;
+    auto status = proc.rootIface->getHelloFile(&out);
+    if (clientVersion() < 1 || serverVersion() < 1) {
+        EXPECT_EQ(status.transactionError(), BAD_TYPE) << status;
+        return;
+    }
+    if (socketType() != SocketType::PRECONNECTED && socketType() != SocketType::UNIX) {
+        EXPECT_EQ(status.transactionError(), BAD_VALUE) << status;
+        return;
+    }
+    ASSERT_TRUE(status.isOk()) << status;
+
+    std::string result;
+    CHECK(android::base::ReadFdToString(out.get(), &result));
+    EXPECT_EQ(result, "hello");
+}
+
+TEST_P(BinderRpc, SendFiles) {
+    auto proc = createRpcTestSocketServerProcess({
+            .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+            .serverFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+    });
+
+    std::vector<android::os::ParcelFileDescriptor> files;
+    files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("123")));
+    files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("a")));
+    files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("b")));
+    files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("cd")));
+
+    android::os::ParcelFileDescriptor out;
+    auto status = proc.rootIface->concatFiles(files, &out);
+    if (clientVersion() < 1 || serverVersion() < 1) {
+        EXPECT_EQ(status.transactionError(), BAD_TYPE) << status;
+        return;
+    }
+    if (socketType() != SocketType::PRECONNECTED && socketType() != SocketType::UNIX) {
+        EXPECT_EQ(status.transactionError(), BAD_VALUE) << status;
+        return;
+    }
+    ASSERT_TRUE(status.isOk()) << status;
+
+    std::string result;
+    CHECK(android::base::ReadFdToString(out.get(), &result));
+    EXPECT_EQ(result, "123abcd");
+}
+
+TEST_P(BinderRpc, SendMaxFiles) {
+    auto proc = createRpcTestSocketServerProcess({
+            .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+            .serverFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+    });
+
+    std::vector<android::os::ParcelFileDescriptor> files;
+    for (int i = 0; i < 253; i++) {
+        files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("a")));
+    }
+
+    android::os::ParcelFileDescriptor out;
+    auto status = proc.rootIface->concatFiles(files, &out);
+    if (clientVersion() < 1 || serverVersion() < 1) {
+        EXPECT_EQ(status.transactionError(), BAD_TYPE) << status;
+        return;
+    }
+    if (socketType() != SocketType::PRECONNECTED && socketType() != SocketType::UNIX) {
+        EXPECT_EQ(status.transactionError(), BAD_VALUE) << status;
+        return;
+    }
+    ASSERT_TRUE(status.isOk()) << status;
+
+    std::string result;
+    CHECK(android::base::ReadFdToString(out.get(), &result));
+    EXPECT_EQ(result, std::string(253, 'a'));
+}
+
+TEST_P(BinderRpc, SendTooManyFiles) {
+    auto proc = createRpcTestSocketServerProcess({
+            .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+            .serverFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+    });
+
+    std::vector<android::os::ParcelFileDescriptor> files;
+    for (int i = 0; i < 254; i++) {
+        files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("a")));
+    }
+
+    android::os::ParcelFileDescriptor out;
+    auto status = proc.rootIface->concatFiles(files, &out);
+    if (clientVersion() < 1 || serverVersion() < 1) {
+        EXPECT_EQ(status.transactionError(), BAD_TYPE) << status;
+        return;
+    }
+    if (socketType() != SocketType::PRECONNECTED && socketType() != SocketType::UNIX) {
+        EXPECT_EQ(status.transactionError(), BAD_VALUE) << status;
+        return;
+    }
+    EXPECT_EQ(status.transactionError(), BAD_VALUE) << status;
+}
+
 TEST_P(BinderRpc, WorksWithLibbinderNdkPing) {
     auto proc = createRpcTestSocketServerProcess({});
 
@@ -1711,7 +1900,7 @@ public:
             std::string message(kMessage);
             iovec messageIov{message.data(), message.size()};
             auto status = serverTransport->interruptableWriteFully(fdTrigger, &messageIov, 1,
-                                                                   std::nullopt);
+                                                                   std::nullopt, nullptr);
             if (status != OK) return AssertionFailure() << statusToString(status);
             return AssertionSuccess();
         }
@@ -1746,7 +1935,7 @@ public:
             iovec readMessageIov{readMessage.data(), readMessage.size()};
             status_t readStatus =
                     mClientTransport->interruptableReadFully(mFdTrigger.get(), &readMessageIov, 1,
-                                                             std::nullopt);
+                                                             std::nullopt, false);
             if (readStatus != OK) {
                 return AssertionFailure() << statusToString(readStatus);
             }
@@ -1954,8 +2143,8 @@ TEST_P(RpcTransportTest, Trigger) {
     auto serverPostConnect = [&](RpcTransport* serverTransport, FdTrigger* fdTrigger) {
         std::string message(RpcTransportTestUtils::kMessage);
         iovec messageIov{message.data(), message.size()};
-        auto status =
-                serverTransport->interruptableWriteFully(fdTrigger, &messageIov, 1, std::nullopt);
+        auto status = serverTransport->interruptableWriteFully(fdTrigger, &messageIov, 1,
+                                                               std::nullopt, nullptr);
         if (status != OK) return AssertionFailure() << statusToString(status);
 
         {
@@ -1966,7 +2155,8 @@ TEST_P(RpcTransportTest, Trigger) {
         }
 
         iovec msg2Iov{msg2.data(), msg2.size()};
-        status = serverTransport->interruptableWriteFully(fdTrigger, &msg2Iov, 1, std::nullopt);
+        status = serverTransport->interruptableWriteFully(fdTrigger, &msg2Iov, 1, std::nullopt,
+                                                          nullptr);
         if (status != DEAD_OBJECT)
             return AssertionFailure() << "When FdTrigger is shut down, interruptableWriteFully "
                                          "should return DEAD_OBJECT, but it is "

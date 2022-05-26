@@ -122,6 +122,10 @@ void RpcServer::setProtocolVersion(uint32_t version) {
     mProtocolVersion = version;
 }
 
+void RpcServer::setFileDescriptorTransportMode(RpcSession::FileDescriptorTransportMode mode) {
+    mFileDescriptorTransportMode = mode;
+}
+
 void RpcServer::setRootObject(const sp<IBinder>& binder) {
     std::lock_guard<std::mutex> _l(mLock);
     mRootObjectFactory = nullptr;
@@ -292,7 +296,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
     if (status == OK) {
         iovec iov{&header, sizeof(header)};
         status = client->interruptableReadFully(server->mShutdownTrigger.get(), &iov, 1,
-                                                std::nullopt);
+                                                std::nullopt, /*enableAncillaryFds=*/false);
         if (status != OK) {
             ALOGE("Failed to read ID for client connecting to RPC server: %s",
                   statusToString(status).c_str());
@@ -307,7 +311,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
                 sessionId.resize(header.sessionIdSize);
                 iovec iov{sessionId.data(), sessionId.size()};
                 status = client->interruptableReadFully(server->mShutdownTrigger.get(), &iov, 1,
-                                                        std::nullopt);
+                                                        std::nullopt, /*enableAncillaryFds=*/false);
                 if (status != OK) {
                     ALOGE("Failed to read session ID for client connecting to RPC server: %s",
                           statusToString(status).c_str());
@@ -338,7 +342,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
 
             iovec iov{&response, sizeof(response)};
             status = client->interruptableWriteFully(server->mShutdownTrigger.get(), &iov, 1,
-                                                     std::nullopt);
+                                                     std::nullopt, nullptr);
             if (status != OK) {
                 ALOGE("Failed to send new session response: %s", statusToString(status).c_str());
                 // still need to cleanup before we can return
@@ -395,6 +399,34 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             session = sp<RpcSession>::make(nullptr);
             session->setMaxIncomingThreads(server->mMaxThreads);
             if (!session->setProtocolVersion(protocolVersion)) return;
+
+            // Convert to FileDescriptorTransportMode enum.
+            RpcSession::FileDescriptorTransportMode clientFdTransportMode;
+            switch (header.fileDescriptorTransportMode) {
+                case static_cast<uint8_t>(RpcSession::FileDescriptorTransportMode::NONE):
+                    clientFdTransportMode = RpcSession::FileDescriptorTransportMode::NONE;
+                    break;
+                case static_cast<uint8_t>(RpcSession::FileDescriptorTransportMode::UNIX):
+                    clientFdTransportMode = RpcSession::FileDescriptorTransportMode::UNIX;
+                    break;
+                default:
+                    ALOGE("Rejecting connection: Unexpected FileDescriptorTransportMode from "
+                          "client: %hhu",
+                          header.fileDescriptorTransportMode);
+                    return;
+            }
+            // Decide on a compatible FD transport mode, if possible.
+            if (clientFdTransportMode == RpcSession::FileDescriptorTransportMode::NONE) {
+                session->setFileDescriptorTransportMode(
+                        RpcSession::FileDescriptorTransportMode::NONE);
+            } else if (clientFdTransportMode == server->mFileDescriptorTransportMode) {
+                session->setFileDescriptorTransportMode(server->mFileDescriptorTransportMode);
+            } else {
+                ALOGE("Rejecting connection: FileDescriptorTransportMode is incompatible: "
+                      "server=%hhu client=%hhu",
+                      server->mFileDescriptorTransportMode, clientFdTransportMode);
+                return;
+            }
 
             // if null, falls back to server root
             sp<IBinder> sessionSpecificRoot;
