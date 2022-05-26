@@ -114,6 +114,15 @@ public:
     void setProtocolVersion(uint32_t version);
 
     /**
+     * Set the supported transports for sending and receiving file descriptors.
+     *
+     * Clients will propose a mode when connecting. If the mode is not in the
+     * provided list, the connection will be rejected.
+     */
+    void setSupportedFileDescriptorTransportModes(
+            const std::vector<RpcSession::FileDescriptorTransportMode>& modes);
+
+    /**
      * The root object can be retrieved by any client, without any
      * authentication. TODO(b/183988761)
      *
@@ -193,6 +202,8 @@ private:
     const std::unique_ptr<RpcTransportCtx> mCtx;
     size_t mMaxThreads = 1;
     std::optional<uint32_t> mProtocolVersion;
+    std::vector<RpcSession::FileDescriptorTransportMode> mSupportedFileDescriptorTransportModes = {
+            RpcSession::FileDescriptorTransportMode::NONE};
     base::unique_fd mServer; // socket we are accepting sessions on
 
     std::mutex mLock; // for below
