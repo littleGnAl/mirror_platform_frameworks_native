@@ -64,6 +64,10 @@ status_t RpcServer::setupUnixDomainServer(const char* path) {
 }
 
 status_t RpcServer::setupVsockServer(unsigned int port) {
+    if (mFileDescriptorTransportMode != RpcSession::FileDescriptorTransportMode::NONE) {
+        return BAD_VALUE;
+    }
+
     // realizing value w/ this type at compile time to avoid ubsan abort
     constexpr unsigned int kAnyCid = VMADDR_CID_ANY;
 
@@ -72,6 +76,10 @@ status_t RpcServer::setupVsockServer(unsigned int port) {
 
 status_t RpcServer::setupInetServer(const char* address, unsigned int port,
                                     unsigned int* assignedPort) {
+    if (mFileDescriptorTransportMode != RpcSession::FileDescriptorTransportMode::NONE) {
+        return BAD_VALUE;
+    }
+
     if (assignedPort != nullptr) *assignedPort = 0;
     auto aiStart = InetSocketAddress::getAddrInfo(address, port);
     if (aiStart == nullptr) return UNKNOWN_ERROR;
@@ -120,6 +128,10 @@ size_t RpcServer::getMaxThreads() {
 
 void RpcServer::setProtocolVersion(uint32_t version) {
     mProtocolVersion = version;
+}
+
+void RpcServer::setFileDescriptorTransportMode(RpcSession::FileDescriptorTransportMode mode) {
+    mFileDescriptorTransportMode = mode;
 }
 
 void RpcServer::setRootObject(const sp<IBinder>& binder) {
@@ -336,7 +348,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
 
             iovec iov{&response, sizeof(response)};
             status = client->interruptableWriteFully(server->mShutdownTrigger.get(), &iov, 1,
-                                                     std::nullopt);
+                                                     std::nullopt, nullptr);
             if (status != OK) {
                 ALOGE("Failed to send new session response: %s", statusToString(status).c_str());
                 // still need to cleanup before we can return
@@ -393,6 +405,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             session = RpcSession::make();
             session->setMaxIncomingThreads(server->mMaxThreads);
             if (!session->setProtocolVersion(protocolVersion)) return;
+            session->setFileDescriptorTransportMode(server->mFileDescriptorTransportMode);
 
             // if null, falls back to server root
             sp<IBinder> sessionSpecificRoot;
