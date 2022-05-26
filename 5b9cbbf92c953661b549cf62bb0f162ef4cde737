@@ -88,6 +88,24 @@
       "parentUuid": "9bf0e560_dc57cf36",
       "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fb0c705_614e0a52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2022-05-26T23:46:20Z",
+      "side": 1,
+      "message": "So if RPC binder works on host now, does that still mean that ProcessState will abort (i.e. published services are not mocked by the host implementation of binder).\n\nIn that case, I assume the recommendation is to mock over the services returned by service manager?",
+      "parentUuid": "364ae1f7_77d55ee4",
+      "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
