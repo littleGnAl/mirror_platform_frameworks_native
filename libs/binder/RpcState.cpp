@@ -498,9 +498,19 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
                                 data.dataSize(),
                         "Too much data %zu", data.dataSize());
 
+    std::vector<uint32_t> objectTable;
+    if (auto* rpcFields = data.maybeRpcFields()) {
+        objectTable.reserve(rpcFields->mFds.size());
+        for (size_t i = 0; i < rpcFields->mFds.size(); i++) {
+            // TODO: Check for overflow.
+            objectTable.push_back(rpcFields->mFds[i].dataPos);
+        }
+    }
+
     RpcWireHeader command{
             .command = RPC_COMMAND_TRANSACT,
-            .bodySize = static_cast<uint32_t>(sizeof(RpcWireTransaction) + data.dataSize()),
+            .bodySize = static_cast<uint32_t>(sizeof(RpcWireTransaction) + data.dataSize() +
+                                              objectTable.size() * sizeof(uint32_t)),
     };
 
     RpcWireTransaction transaction{
@@ -540,7 +550,15 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
             {&command, sizeof(RpcWireHeader)},
             {&transaction, sizeof(RpcWireTransaction)},
             {const_cast<uint8_t*>(data.data()), data.dataSize()},
+            {reinterpret_cast<uint8_t*>(objectTable.data()), objectTable.size() * sizeof(uint32_t)},
     };
+    std::vector<base::borrowed_fd> fds = data.readRpcFileDescriptions();
+    if (!fds.empty()) {
+        // DO NOT SUBMIT: Check if FD support is enabled.
+        if (status_t status = connection->rpcTransport->queueAncillarydata(fds); status != OK) {
+            return status;
+        }
+    }
     if (status_t status =
                 rpcSend(connection, session, "transaction", iovs, arraysize(iovs), drainRefs);
         status != OK) {
@@ -603,9 +621,24 @@ status_t RpcState::waitForReply(const sp<RpcSession::RpcConnection>& connection,
     RpcWireReply* rpcReply = reinterpret_cast<RpcWireReply*>(data.data());
     if (rpcReply->status != OK) return rpcReply->status;
 
+    // Check if the reply came with any ancillary data.
+    // DO NOT SUBMIT: Check if FD support is enabled.
+    std::vector<base::unique_fd> pending_fds;
+    if (status_t status = connection->rpcTransport->consumePendingAncillarydata(&pending_fds);
+        status != OK) {
+        return status;
+    }
+
+    uint8_t* parcelData = rpcReply->data;
+    size_t parcelDataSize = rpcReply->parcelDataSize;
+    uint8_t* objectTableBytes = rpcReply->data + rpcReply->parcelDataSize;
+    size_t objectTableBytesSize = command.bodySize - offsetof(RpcWireReply, data) - parcelDataSize;
+    uint32_t* objectTable = reinterpret_cast<uint32_t*>(objectTableBytes);
+    size_t objectTableSize = objectTableBytesSize / sizeof(uint32_t);
+
     data.release();
-    reply->rpcSetDataReference(session, rpcReply->data,
-                               command.bodySize - offsetof(RpcWireReply, data), cleanup_reply_data);
+    reply->rpcSetDataReference(session, parcelData, parcelDataSize, objectTable, objectTableSize,
+                               std::move(pending_fds), cleanup_reply_data);
 
     return OK;
 }
@@ -821,13 +854,29 @@ processTransactInternalTailCall:
     reply.markForRpc(session);
 
     if (replyStatus == OK) {
+        // Check if the transaction came with any ancillary data.
+        // DO NOT SUBMIT: Check if FD support is enabled.
+        std::vector<base::unique_fd> pending_fds;
+        if (status_t status = connection->rpcTransport->consumePendingAncillarydata(&pending_fds);
+            status != OK) {
+            return status;
+        }
+
+        uint8_t* parcelData = transaction->data;
+        size_t parcelDataSize = transaction->parcelDataSize;
+        uint8_t* objectTableBytes = transaction->data + transaction->parcelDataSize;
+        size_t objectTableBytesSize =
+                transactionData.size() - offsetof(RpcWireTransaction, data) - parcelDataSize;
+        uint32_t* objectTable = reinterpret_cast<uint32_t*>(objectTableBytes);
+        size_t objectTableSize = objectTableBytesSize / sizeof(uint32_t);
+
         Parcel data;
         // transaction->data is owned by this function. Parcel borrows this data and
         // only holds onto it for the duration of this function call. Parcel will be
         // deleted before the 'transactionData' object.
-        data.rpcSetDataReference(session, transaction->data,
-                                 transactionData.size() - offsetof(RpcWireTransaction, data),
-                                 do_nothing_to_transact_data);
+
+        data.rpcSetDataReference(session, parcelData, parcelDataSize, objectTable, objectTableSize,
+                                 std::move(pending_fds), do_nothing_to_transact_data);
 
         if (target) {
             bool origAllowNested = connection->allowNested;
@@ -943,9 +992,19 @@ processTransactInternalTailCall:
                                 reply.dataSize(),
                         "Too much data for reply %zu", reply.dataSize());
 
+    std::vector<uint32_t> objectTable;
+    if (auto* rpcFields = reply.maybeRpcFields()) {
+        objectTable.reserve(rpcFields->mFds.size());
+        for (size_t i = 0; i < rpcFields->mFds.size(); i++) {
+            // TODO: Check for overflow.
+            objectTable.push_back(rpcFields->mFds[i].dataPos);
+        }
+    }
+
     RpcWireHeader cmdReply{
             .command = RPC_COMMAND_REPLY,
-            .bodySize = static_cast<uint32_t>(sizeof(RpcWireReply) + reply.dataSize()),
+            .bodySize = static_cast<uint32_t>(sizeof(RpcWireReply) + reply.dataSize() +
+                                              objectTable.size() * sizeof(uint32_t)),
     };
     RpcWireReply rpcReply{
             .status = replyStatus,
@@ -957,7 +1016,14 @@ processTransactInternalTailCall:
             {&cmdReply, sizeof(RpcWireHeader)},
             {&rpcReply, sizeof(RpcWireReply)},
             {const_cast<uint8_t*>(reply.data()), reply.dataSize()},
+            {reinterpret_cast<uint8_t*>(objectTable.data()), objectTable.size() * sizeof(uint32_t)},
     };
+    std::vector<base::borrowed_fd> fds = reply.readRpcFileDescriptions();
+    if (!fds.empty()) {
+        if (status_t status = connection->rpcTransport->queueAncillarydata(fds); status != OK) {
+            return status;
+        }
+    }
     return rpcSend(connection, session, "reply", iovs, arraysize(iovs));
 }
 
