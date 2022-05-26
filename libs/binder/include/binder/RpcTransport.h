@@ -21,6 +21,8 @@
 #include <functional>
 #include <memory>
 #include <string>
+#include <variant>
+#include <vector>
 
 #include <android-base/unique_fd.h>
 #include <utils/Errors.h>
@@ -59,16 +61,26 @@ public:
      * to read/write data. If this returns an error, that error is returned from
      * this function.
      *
+     * ancillaryFds - FDs to be sent via UNIX domain dockets or Trusty IPC.
+     *
      * Return:
      *   OK - succeeded in completely processing 'size'
      *   error - interrupted (failure or trigger)
      */
     [[nodiscard]] virtual status_t interruptableWriteFully(
-            FdTrigger *fdTrigger, iovec *iovs, int niovs,
-            const std::function<status_t()> &altPoll) = 0;
+            FdTrigger *fdTrigger, iovec *iovs, int niovs, const std::function<status_t()> &altPoll,
+            const std::vector<std::variant<base::unique_fd, base::borrowed_fd>> *ancillaryFds) = 0;
     [[nodiscard]] virtual status_t interruptableReadFully(
             FdTrigger *fdTrigger, iovec *iovs, int niovs,
             const std::function<status_t()> &altPoll) = 0;
+
+    // Consume the ancillary data that was accumulated from previous
+    // `interruptableReadFully` calls.
+    //
+    // Appends to `fds`.
+    virtual status_t consumePendingAncillarydata(std::vector<base::unique_fd> *) {
+        return INVALID_OPERATION;
+    }
 
 protected:
     RpcTransport() = default;

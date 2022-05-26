@@ -278,8 +278,10 @@ public:
     RpcTransportTls(android::base::unique_fd socket, Ssl ssl)
           : mSocket(std::move(socket)), mSsl(std::move(ssl)) {}
     status_t pollRead(void) override;
-    status_t interruptableWriteFully(FdTrigger* fdTrigger, iovec* iovs, int niovs,
-                                     const std::function<status_t()>& altPoll) override;
+    status_t interruptableWriteFully(
+            FdTrigger* fdTrigger, iovec* iovs, int niovs, const std::function<status_t()>& altPoll,
+            const std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds)
+            override;
     status_t interruptableReadFully(FdTrigger* fdTrigger, iovec* iovs, int niovs,
                                     const std::function<status_t()>& altPoll) override;
 
@@ -307,9 +309,12 @@ status_t RpcTransportTls::pollRead(void) {
     return OK;
 }
 
-status_t RpcTransportTls::interruptableWriteFully(FdTrigger* fdTrigger, iovec* iovs, int niovs,
-                                                  const std::function<status_t()>& altPoll) {
+status_t RpcTransportTls::interruptableWriteFully(
+        FdTrigger* fdTrigger, iovec* iovs, int niovs, const std::function<status_t()>& altPoll,
+        const std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds) {
     MAYBE_WAIT_IN_FLAKE_MODE;
+
+    if (ancillaryFds != nullptr) return BAD_VALUE;
 
     if (niovs < 0) return BAD_VALUE;
 

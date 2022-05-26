@@ -310,9 +310,10 @@ RpcState::CommandData::CommandData(size_t size) : mSize(size) {
     mData.reset(new (std::nothrow) uint8_t[size]);
 }
 
-status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
-                           const sp<RpcSession>& session, const char* what, iovec* iovs, int niovs,
-                           const std::function<status_t()>& altPoll) {
+status_t RpcState::rpcSend(
+        const sp<RpcSession::RpcConnection>& connection, const sp<RpcSession>& session,
+        const char* what, iovec* iovs, int niovs, const std::function<status_t()>& altPoll,
+        const std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds) {
     for (int i = 0; i < niovs; i++) {
         LOG_RPC_DETAIL("Sending %s (part %d of %d) on RpcTransport %p: %s",
                        what, i + 1, niovs, connection->rpcTransport.get(),
@@ -321,7 +322,8 @@ status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
 
     if (status_t status =
                 connection->rpcTransport->interruptableWriteFully(session->mShutdownTrigger.get(),
-                                                                  iovs, niovs, altPoll);
+                                                                  iovs, niovs, altPoll,
+                                                                  ancillaryFds);
         status != OK) {
         LOG_RPC_DETAIL("Failed to write %s (%d iovs) on RpcTransport %p, error: %s", what, niovs,
                        connection->rpcTransport.get(), statusToString(status).c_str());
@@ -494,8 +496,11 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
         }
     }
 
-    std::vector<uint32_t> objectTable;
-    Span<uint32_t> objectTableSpan = {objectTable.data(), objectTable.size()};
+    Span<const uint32_t> objectTableSpan;
+    if (auto* rpcFields = data.maybeRpcFields()) {
+        objectTableSpan = Span<const uint32_t>{rpcFields->mObjectPositions.data(),
+                                               rpcFields->mObjectPositions.size()};
+    }
 
     uint32_t bodySize;
     LOG_ALWAYS_FATAL_IF(__builtin_add_overflow(sizeof(RpcWireTransaction), data.dataSize(),
@@ -547,8 +552,14 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
             {const_cast<uint8_t*>(data.data()), data.dataSize()},
             objectTableSpan.toIovec(),
     };
-    if (status_t status =
-                rpcSend(connection, session, "transaction", iovs, arraysize(iovs), drainRefs);
+
+    const std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds = nullptr;
+    if (auto* rpcFields = data.maybeRpcFields();
+        rpcFields != nullptr && rpcFields->mFds != nullptr) {
+        ancillaryFds = rpcFields->mFds.get();
+    }
+    if (status_t status = rpcSend(connection, session, "transaction", iovs, arraysize(iovs),
+                                  drainRefs, ancillaryFds);
         status != OK) {
         // TODO(b/167966510): need to undo onBinderLeaving - we know the
         // refcount isn't successfully transferred.
@@ -611,6 +622,14 @@ status_t RpcState::waitForReply(const sp<RpcSession::RpcConnection>& connection,
     if (status_t status = rpcRec(connection, session, "reply body", &iov, 1); status != OK)
         return status;
 
+    // Check if the reply came with any ancillary data.
+    // DO NOT SUBMIT: Check if FD support is enabled.
+    std::vector<base::unique_fd> pending_fds;
+    if (status_t status = connection->rpcTransport->consumePendingAncillarydata(&pending_fds);
+        status != OK) {
+        return status;
+    }
+
     const auto genericRepyToParcel = [&](auto phantomWireHeader) -> status_t {
         using RpcWireReplyType = typeof(phantomWireHeader);
         if (command.bodySize < sizeof(RpcWireReplyType)) {
@@ -622,16 +641,27 @@ status_t RpcState::waitForReply(const sp<RpcSession::RpcConnection>& connection,
         RpcWireReplyType* rpcReply = reinterpret_cast<RpcWireReplyType*>(data.data());
         if (rpcReply->status != OK) return rpcReply->status;
 
-        Span<uint8_t> parcelSpan = {rpcReply->data,
-                                    command.bodySize - offsetof(RpcWireReplyType, data)};
+        Span<const uint8_t> parcelSpan = {rpcReply->data,
+                                          command.bodySize - offsetof(RpcWireReplyType, data)};
+        Span<const uint32_t> objectTableSpan;
         if constexpr (!std::is_same_v<RpcWireReplyType, RpcWireReplyV0>) {
-            Span<uint8_t> objectTableBytes = parcelSpan.split(rpcReply->parcelDataSize);
-            LOG_ALWAYS_FATAL_IF(objectTableBytes.size > 0,
-                                "Non-empty object table not supported yet.");
+            Span<const uint8_t> objectTableBytes = parcelSpan.split(rpcReply->parcelDataSize);
+            std::optional<Span<const uint32_t>> maybeSpan =
+                    objectTableBytes.reinterpret<const uint32_t>();
+            if (!maybeSpan.has_value()) {
+                ALOGE("Bad object table size inferred from RpcWireReply. Saw bodySize=%" PRId32
+                      " sizeofHeader=%zu parcelSize=%" PRId32
+                      " objectTableBytesSize=%zu. Terminating!",
+                      command.bodySize, sizeof(RpcWireReplyType), rpcReply->parcelDataSize,
+                      objectTableBytes.size);
+                return BAD_VALUE;
+            }
+            objectTableSpan = *maybeSpan;
         }
 
         data.release();
-        reply->rpcSetDataReference(session, parcelSpan.data, parcelSpan.size, cleanupReplyData);
+        reply->rpcSetDataReference(session, parcelSpan.data, parcelSpan.size, objectTableSpan.data,
+                                   objectTableSpan.size, std::move(pending_fds), cleanupReplyData);
         return OK;
     };
     if (session->getProtocolVersion().value() >
@@ -853,13 +883,32 @@ processTransactInternalTailCall:
     reply.markForRpc(session);
 
     if (replyStatus == OK) {
-        Span<uint8_t> parcelSpan = {transaction->data,
-                                    transactionData.size() - offsetof(RpcWireTransaction, data)};
+        // Check if the transaction came with any ancillary data.
+        // DO NOT SUBMIT: Check if FD support is enabled.
+        std::vector<base::unique_fd> pending_fds;
+        if (status_t status = connection->rpcTransport->consumePendingAncillarydata(&pending_fds);
+            status != OK) {
+            return status;
+        }
+
+        Span<const uint8_t> parcelSpan = {transaction->data,
+                                          transactionData.size() -
+                                                  offsetof(RpcWireTransaction, data)};
+        Span<const uint32_t> objectTableSpan;
         if (session->getProtocolVersion().value() >
             RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_WIRE_REPLY_V1) {
-            Span<uint8_t> objectTableBytes = parcelSpan.split(transaction->parcelDataSize);
-            LOG_ALWAYS_FATAL_IF(objectTableBytes.size > 0,
-                                "Non-empty object table not supported yet.");
+            Span<const uint8_t> objectTableBytes = parcelSpan.split(transaction->parcelDataSize);
+            std::optional<Span<const uint32_t>> maybeSpan =
+                    objectTableBytes.reinterpret<const uint32_t>();
+            if (!maybeSpan.has_value()) {
+                ALOGE("Bad object table size inferred from RpcWireTransaction. Saw bodySize=%zu "
+                      "sizeofHeader=%zu parcelSize=%" PRId32
+                      " objectTableBytesSize=%zu. Terminating!",
+                      transactionData.size(), sizeof(RpcWireTransaction),
+                      transaction->parcelDataSize, objectTableBytes.size);
+                return BAD_VALUE;
+            }
+            objectTableSpan = *maybeSpan;
         }
 
         Parcel data;
@@ -867,7 +916,8 @@ processTransactInternalTailCall:
         // only holds onto it for the duration of this function call. Parcel will be
         // deleted before the 'transactionData' object.
 
-        data.rpcSetDataReference(session, parcelSpan.data, parcelSpan.size,
+        data.rpcSetDataReference(session, parcelSpan.data, parcelSpan.size, objectTableSpan.data,
+                                 objectTableSpan.size, std::move(pending_fds),
                                  do_nothing_to_transact_data);
 
         if (target) {
@@ -979,8 +1029,11 @@ processTransactInternalTailCall:
         replyStatus = flushExcessBinderRefs(session, addr, target);
     }
 
-    std::vector<uint32_t> objectTable;
-    Span<uint32_t> objectTableSpan = {objectTable.data(), objectTable.size()};
+    Span<const uint32_t> objectTableSpan;
+    if (auto* rpcFields = reply.maybeRpcFields()) {
+        objectTableSpan = Span<const uint32_t>{rpcFields->mObjectPositions.data(),
+                                               rpcFields->mObjectPositions.size()};
+    }
 
     const auto genericSendReply = [&](auto phantomWireHeader) {
         using RpcWireReplyType = typeof(phantomWireHeader);
@@ -1007,7 +1060,14 @@ processTransactInternalTailCall:
                 {const_cast<uint8_t*>(reply.data()), reply.dataSize()},
                 objectTableSpan.toIovec(),
         };
-        return rpcSend(connection, session, "reply", iovs, arraysize(iovs));
+        const std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds = nullptr;
+        if (auto* rpcFields = reply.maybeRpcFields();
+            rpcFields != nullptr && rpcFields->mFds != nullptr) {
+            // DO NOT SUBMIT: Check if FD support is enabled.
+            ancillaryFds = rpcFields->mFds.get();
+        }
+        return rpcSend(connection, session, "reply", iovs, arraysize(iovs), /*altPoll=*/nullptr,
+                       ancillaryFds);
     };
     if (session->getProtocolVersion().value() >
         RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_WIRE_REPLY_V1) {
