@@ -508,6 +508,8 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
             .code = code,
             .flags = flags,
             .asyncNumber = asyncNumber,
+            // TODO: Check for overflow.
+            .parcelDataSize = static_cast<uint32_t>(data.dataSize()),
     };
 
     constexpr size_t kWaitMaxUs = 1000000;
@@ -947,6 +949,8 @@ processTransactInternalTailCall:
     };
     RpcWireReply rpcReply{
             .status = replyStatus,
+            // TODO: Check for overflow.
+            .parcelDataSize = static_cast<uint32_t>(reply.dataSize()),
     };
 
     iovec iovs[]{
