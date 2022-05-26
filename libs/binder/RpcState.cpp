@@ -522,6 +522,7 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
             .code = code,
             .flags = flags,
             .asyncNumber = asyncNumber,
+            .parcelDataSize = static_cast<uint32_t>(data.dataSize()),
     };
 
     constexpr size_t kWaitMaxUs = 1000000;
@@ -574,11 +575,23 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
     return waitForReply(connection, session, reply);
 }
 
-static void cleanup_reply_data(Parcel* p, const uint8_t* data, size_t dataSize,
-                               const binder_size_t* objects, size_t objectsCount) {
-    (void)p;
-    delete[] const_cast<uint8_t*>(data - offsetof(RpcWireReply, data));
+void RpcState::cleanupReplyData(Parcel* p, const uint8_t* data, size_t dataSize,
+                                const binder_size_t* objects, size_t objectsCount) {
     (void)dataSize;
+
+    const auto* rpcFields = p->maybeRpcFields();
+    LOG_ALWAYS_FATAL_IF(rpcFields == nullptr);
+    // Aborts if the version is unset, but that shouldn't be possible at this
+    // point.
+    const uint32_t version = rpcFields->mSession->getProtocolVersion().value();
+
+    const uint8_t* allocAddr;
+    if (version >= RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_WIRE_REPLY_V1) {
+        allocAddr = data - offsetof(RpcWireReplyV1, data);
+    } else {
+        allocAddr = data - offsetof(RpcWireReplyV0, data);
+    }
+    delete[] const_cast<uint8_t*>(allocAddr);
     LOG_ALWAYS_FATAL_IF(objects != nullptr);
     LOG_ALWAYS_FATAL_IF(objectsCount != 0, "%zu objects remaining", objectsCount);
 }
@@ -606,20 +619,29 @@ status_t RpcState::waitForReply(const sp<RpcSession::RpcConnection>& connection,
     if (status_t status = rpcRec(connection, session, "reply body", &iov, 1); status != OK)
         return status;
 
-    if (command.bodySize < sizeof(RpcWireReply)) {
-        ALOGE("Expecting %zu but got %" PRId32 " bytes for RpcWireReply. Terminating!",
-              sizeof(RpcWireReply), command.bodySize);
-        (void)session->shutdownAndWait(false);
-        return BAD_VALUE;
+    const auto genericRepyToParcel = [&](auto phantomWireHeader) -> status_t {
+        using RpcWireReplyType = typeof(phantomWireHeader);
+        if (command.bodySize < sizeof(RpcWireReplyType)) {
+            ALOGE("Expecting %zu but got %" PRId32 " bytes for RpcWireReplyType. Terminating!",
+                  sizeof(RpcWireReplyType), command.bodySize);
+            (void)session->shutdownAndWait(false);
+            return BAD_VALUE;
+        }
+        RpcWireReplyType* rpcReply = reinterpret_cast<RpcWireReplyType*>(data.data());
+        if (rpcReply->status != OK) return rpcReply->status;
+
+        data.release();
+        reply->rpcSetDataReference(session, rpcReply->data,
+                                   command.bodySize - offsetof(RpcWireReplyType, data),
+                                   cleanupReplyData);
+        return OK;
+    };
+    if (session->getProtocolVersion().value() >
+        RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_WIRE_REPLY_V1) {
+        return genericRepyToParcel(RpcWireReplyV1{});
+    } else {
+        return genericRepyToParcel(RpcWireReplyV0{});
     }
-    RpcWireReply* rpcReply = reinterpret_cast<RpcWireReply*>(data.data());
-    if (rpcReply->status != OK) return rpcReply->status;
-
-    data.release();
-    reply->rpcSetDataReference(session, rpcReply->data,
-                               command.bodySize - offsetof(RpcWireReply, data), cleanup_reply_data);
-
-    return OK;
 }
 
 status_t RpcState::sendDecStrongToTarget(const sp<RpcSession::RpcConnection>& connection,
@@ -950,27 +972,37 @@ processTransactInternalTailCall:
         replyStatus = flushExcessBinderRefs(session, addr, target);
     }
 
-    LOG_ALWAYS_FATAL_IF(!overflowCheck<int32_t>({
-                                sizeof(RpcWireHeader),
-                                sizeof(RpcWireReply),
-                                reply.dataSize(),
-                        }),
-                        "Too much data for reply %zu", reply.dataSize());
-
-    RpcWireHeader cmdReply{
-            .command = RPC_COMMAND_REPLY,
-            .bodySize = static_cast<uint32_t>(sizeof(RpcWireReply) + reply.dataSize()),
+    const auto genericSendReply = [&](auto phantomWireHeader) {
+        using RpcWireReplyType = typeof(phantomWireHeader);
+        LOG_ALWAYS_FATAL_IF(!overflowCheck<int32_t>({
+                                    sizeof(RpcWireHeader),
+                                    sizeof(RpcWireReplyType),
+                                    reply.dataSize(),
+                            }),
+                            "Too much data for reply %zu", reply.dataSize());
+        RpcWireHeader cmdReply{
+                .command = RPC_COMMAND_REPLY,
+                .bodySize = static_cast<uint32_t>(sizeof(RpcWireReplyType) + reply.dataSize()),
+        };
+        RpcWireReplyType rpcReply{
+                .status = replyStatus,
+        };
+        if constexpr (!std::is_same_v<RpcWireReplyType, RpcWireReplyV0>) {
+            rpcReply.parcelDataSize = static_cast<uint32_t>(reply.dataSize());
+        }
+        iovec iovs[]{
+                {&cmdReply, sizeof(RpcWireHeader)},
+                {&rpcReply, sizeof(RpcWireReplyType)},
+                {const_cast<uint8_t*>(reply.data()), reply.dataSize()},
+        };
+        return rpcSend(connection, session, "reply", iovs, arraysize(iovs));
     };
-    RpcWireReply rpcReply{
-            .status = replyStatus,
-    };
-
-    iovec iovs[]{
-            {&cmdReply, sizeof(RpcWireHeader)},
-            {&rpcReply, sizeof(RpcWireReply)},
-            {const_cast<uint8_t*>(reply.data()), reply.dataSize()},
-    };
-    return rpcSend(connection, session, "reply", iovs, arraysize(iovs));
+    if (session->getProtocolVersion().value() >
+        RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_WIRE_REPLY_V1) {
+        return genericSendReply(RpcWireReplyV1{});
+    } else {
+        return genericSendReply(RpcWireReplyV0{});
+    }
 }
 
 status_t RpcState::processDecStrong(const sp<RpcSession::RpcConnection>& connection,
