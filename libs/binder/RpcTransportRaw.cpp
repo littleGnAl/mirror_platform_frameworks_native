@@ -18,6 +18,7 @@
 #include <log/log.h>
 
 #include <poll.h>
+#include <stddef.h>
 
 #include <binder/RpcTransportRaw.h>
 
@@ -27,6 +28,9 @@
 namespace android {
 
 namespace {
+
+// Linux kernel supports up tp 253 (from SCM_MAX_FD).
+constexpr size_t kMaxFdsPerMsg = 253;
 
 // RpcTransport with TLS disabled.
 class RpcTransportRaw : public RpcTransport {
@@ -85,15 +89,7 @@ public:
 
         bool havePolled = false;
         while (true) {
-            msghdr msg{
-                    .msg_iov = iovs,
-                    // posix uses int, glibc uses size_t.  niovs is a
-                    // non-negative int and can be cast to either.
-                    .msg_iovlen = static_cast<decltype(msg.msg_iovlen)>(niovs),
-            };
-            ssize_t processSize =
-                    TEMP_FAILURE_RETRY(sendOrReceiveFun(mSocket.get(), &msg, MSG_NOSIGNAL));
-
+            ssize_t processSize = sendOrReceiveFun(iovs, niovs);
             if (processSize < 0) {
                 int savedErrno = errno;
 
@@ -145,20 +141,121 @@ public:
 
     status_t interruptableWriteFully(
             FdTrigger* fdTrigger, iovec* iovs, int niovs,
-            const std::optional<android::base::function_ref<status_t()>>& altPoll) override {
-        return interruptableReadOrWrite(fdTrigger, iovs, niovs, sendmsg, "sendmsg", POLLOUT,
-                                        altPoll);
+            const std::optional<android::base::function_ref<status_t()>>& altPoll,
+            const std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds)
+            override {
+        auto send = [&](iovec* iovs, int niovs) -> ssize_t {
+            if (ancillaryFds != nullptr && !ancillaryFds->empty()) {
+                // TODO: Check socket type?
+                if (ancillaryFds->size() > kMaxFdsPerMsg) {
+                    // This shouldn't happen because we check the FD count in
+                    // Parcel.
+                    ALOGE("Saw too many file descriptors in RpcTransportCtxRaw: %zu (max is %zu). "
+                          "Aborting session.",
+                          ancillaryFds->size(), kMaxFdsPerMsg);
+                    errno = EINVAL;
+                    return -1;
+                }
+
+                // CMSG_DATA is not necessarily aligned, so we copy the FDs into
+                // a buffer and then use memcpy.
+                int fds[kMaxFdsPerMsg];
+                for (size_t i = 0; i < ancillaryFds->size(); i++) {
+                    fds[i] = std::visit([](const auto& fd) { return fd.get(); },
+                                        ancillaryFds->at(i));
+                }
+                const size_t fdsByteSize = sizeof(int) * ancillaryFds->size();
+
+                alignas(struct cmsghdr) char
+                        msg_control_buf[CMSG_SPACE(sizeof(int) * kMaxFdsPerMsg)];
+
+                msghdr msg{
+                        .msg_iov = iovs,
+                        .msg_iovlen = static_cast<decltype(msg.msg_iovlen)>(niovs),
+                        .msg_control = msg_control_buf,
+                        .msg_controllen = sizeof(msg_control_buf),
+                };
+
+                cmsghdr* cmsg = CMSG_FIRSTHDR(&msg);
+                cmsg->cmsg_level = SOL_SOCKET;
+                cmsg->cmsg_type = SCM_RIGHTS;
+                cmsg->cmsg_len = CMSG_LEN(fdsByteSize);
+                memcpy(CMSG_DATA(cmsg), fds, fdsByteSize);
+
+                msg.msg_controllen = CMSG_SPACE(fdsByteSize);
+
+                // TODO: Should we use MSG_CMSG_CLOEXEC?
+                return TEMP_FAILURE_RETRY(sendmsg(mSocket.get(), &msg, MSG_NOSIGNAL));
+            }
+
+            msghdr msg{
+                    .msg_iov = iovs,
+                    // posix uses int, glibc uses size_t.  niovs is a
+                    // non-negative int and can be cast to either.
+                    .msg_iovlen = static_cast<decltype(msg.msg_iovlen)>(niovs),
+            };
+            return TEMP_FAILURE_RETRY(sendmsg(mSocket.get(), &msg, MSG_NOSIGNAL));
+        };
+        return interruptableReadOrWrite(fdTrigger, iovs, niovs, send, "sendmsg", POLLOUT, altPoll);
     }
 
     status_t interruptableReadFully(
             FdTrigger* fdTrigger, iovec* iovs, int niovs,
             const std::optional<android::base::function_ref<status_t()>>& altPoll) override {
-        return interruptableReadOrWrite(fdTrigger, iovs, niovs, recvmsg, "recvmsg", POLLIN,
-                                        altPoll);
+        auto recv = [&](iovec* iovs, int niovs) -> ssize_t {
+            int fdBuffer[kMaxFdsPerMsg];
+            alignas(struct cmsghdr) char msg_control_buf[CMSG_SPACE(sizeof(fdBuffer))];
+
+            msghdr msg{
+                    .msg_iov = iovs,
+                    // posix uses int, glibc uses size_t.  niovs is a
+                    // non-negative int and can be cast to either.
+                    .msg_iovlen = static_cast<decltype(msg.msg_iovlen)>(niovs),
+                    .msg_control = msg_control_buf,
+                    .msg_controllen = sizeof(msg_control_buf),
+            };
+            ssize_t processSize = TEMP_FAILURE_RETRY(recvmsg(mSocket.get(), &msg, MSG_NOSIGNAL));
+
+            for (cmsghdr* cmsg = CMSG_FIRSTHDR(&msg); cmsg != nullptr;
+                 cmsg = CMSG_NXTHDR(&msg, cmsg)) {
+                // ALOGE("FMAYLE: level %d, type %d, len %zu, data %p, CMSG_LEN %zu",
+                // cmsg->cmsg_level,
+                //       cmsg->cmsg_type, cmsg->cmsg_len, CMSG_DATA(cmsg), CMSG_LEN(0));
+                if (cmsg->cmsg_level == SOL_SOCKET && cmsg->cmsg_type == SCM_RIGHTS) {
+                    // NOTE: It is tempting to reinterpret_cast, but cmsg(3) explicitly asks
+                    // application devs to memcpy the data to ensure memory alignment.
+                    size_t dataLen = cmsg->cmsg_len - CMSG_LEN(0);
+                    memcpy(fdBuffer, CMSG_DATA(cmsg), dataLen);
+                    size_t fdCount = dataLen / sizeof(int);
+                    for (size_t i = 0; i < fdCount; i++) {
+                        // ALOGE("FMAYLE: recv'd FD[%zu] = %d", i, fdBuffer[i]);
+                        mFdsPendingRead.emplace_back(fdBuffer[i]);
+                    }
+                    break;
+                }
+            }
+
+            // TODO: Make non-fatal.
+            LOG_ALWAYS_FATAL_IF(msg.msg_flags & MSG_CTRUNC, "msg was truncated");
+
+            return processSize;
+        };
+        return interruptableReadOrWrite(fdTrigger, iovs, niovs, recv, "recvmsg", POLLIN, altPoll);
+    }
+
+    status_t consumePendingAncillarydata(std::vector<base::unique_fd>* fds) override {
+        // ALOGE("FMAYLE: consuming %zu FDs", mFdsPendingRead.size());
+        // TODO: Check socket type?
+        for (auto& fd : mFdsPendingRead) {
+            fds->emplace_back(std::move(fd));
+        }
+        mFdsPendingRead.clear();
+        return OK;
     }
 
 private:
     base::unique_fd mSocket;
+    std::vector<base::unique_fd> mFdsPendingRead;
 };
 
 // RpcTransportCtx with TLS disabled.
@@ -180,7 +277,7 @@ std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryRaw::newClientCtx() const
     return std::make_unique<RpcTransportCtxRaw>();
 }
 
-const char *RpcTransportCtxFactoryRaw::toCString() const {
+const char* RpcTransportCtxFactoryRaw::toCString() const {
     return "raw";
 }
 

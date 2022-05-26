@@ -40,6 +40,7 @@
 #include <binder/Status.h>
 #include <binder/TextOutput.h>
 
+#include <android-base/scopeguard.h>
 #include <cutils/ashmem.h>
 #include <cutils/compiler.h>
 #include <utils/Flattenable.h>
@@ -463,6 +464,9 @@ status_t Parcel::appendFrom(const Parcel* parcel, size_t offset, size_t len) {
         }
     }
 
+    // TODO: Existing impl doesn't seem to handle the case when this->mDataPos
+    // is not at the end, e.g. it could leak FDs.
+
     // append data
     memcpy(mData + mDataPos, data + offset, len);
     mDataPos += len;
@@ -530,6 +534,70 @@ status_t Parcel::appendFrom(const Parcel* parcel, size_t offset, size_t len) {
                 }
             }
         }
+    } else {
+        auto* rpcFields = maybeRpcFields();
+        LOG_ALWAYS_FATAL_IF(rpcFields == nullptr);
+        auto* otherRpcFields = parcel->maybeRpcFields();
+        if (otherRpcFields == nullptr) {
+            return BAD_TYPE;
+        }
+        if (rpcFields->mSession != otherRpcFields->mSession) {
+            return BAD_TYPE;
+        }
+
+        const size_t savedDataPos = mDataPos;
+        base::ScopeGuard scopeGuard = [&]() { mDataPos = savedDataPos; };
+
+        rpcFields->mObjectPositions.reserve(otherRpcFields->mObjectPositions.size());
+        if (otherRpcFields->mFds != nullptr) {
+            if (rpcFields->mFds == nullptr) {
+                rpcFields->mFds = std::make_unique<decltype(rpcFields->mFds)::element_type>();
+            }
+            rpcFields->mFds->reserve(otherRpcFields->mFds->size());
+        }
+        for (size_t i = 0; i < otherRpcFields->mObjectPositions.size(); i++) {
+            const binder_size_t objPos = otherRpcFields->mObjectPositions[i];
+            if (offset <= objPos && objPos < offset + len) {
+                size_t newDataPos = objPos - offset + startPos;
+                rpcFields->mObjectPositions.push_back(newDataPos);
+
+                mDataPos = newDataPos;
+                int32_t objectType;
+                if (status_t status = readInt32(&objectType); status != OK) {
+                    return status;
+                }
+                if (objectType != RpcFields::TYPE_NATIVE_FILE_DESCRIPTOR) {
+                    continue;
+                }
+
+                if (!mAllowFds) {
+                    return FDS_NOT_ALLOWED;
+                }
+
+                // TODO: Check FD limit.
+
+                // Read FD, duplicate, and add to list.
+                int32_t fdIndex;
+                if (status_t status = readInt32(&fdIndex); status != OK) {
+                    return status;
+                }
+                const auto& oldFd = otherRpcFields->mFds->at(fdIndex);
+                std::variant<base::unique_fd, base::borrowed_fd> newFd;
+                if (auto* unique = std::get_if<base::unique_fd>(&oldFd)) {
+                    newFd = base::unique_fd(fcntl(unique->get(), F_DUPFD_CLOEXEC, 0));
+                } else if (auto* borrowed = std::get_if<base::borrowed_fd>(&oldFd)) {
+                    // DO NOT SUBMIT: Should we always dup to match kernel
+                    // binder behavior?
+                    newFd = *borrowed;
+                }
+                rpcFields->mFds->push_back(std::move(newFd));
+                // Fixup the index in the data.
+                mDataPos = newDataPos + 4;
+                if (status_t status = writeInt32(rpcFields->mFds->size() - 1); status != OK) {
+                    return status;
+                }
+            }
+        }
     }
 
     return err;
@@ -584,7 +652,7 @@ void Parcel::restoreAllowFds(bool lastValue)
 bool Parcel::hasFileDescriptors() const
 {
     if (const auto* rpcFields = maybeRpcFields()) {
-        return false;
+        return rpcFields->mFds != nullptr && !rpcFields->mFds->empty();
     }
     auto* kernelFields = maybeKernelFields();
     if (!kernelFields->mFdsKnown) {
@@ -621,29 +689,31 @@ std::vector<sp<IBinder>> Parcel::debugReadAllStrongBinders() const {
 std::vector<int> Parcel::debugReadAllFileDescriptors() const {
     std::vector<int> ret;
 
-    const auto* kernelFields = maybeKernelFields();
-    if (kernelFields == nullptr) {
-        return ret;
+    if (const auto* kernelFields = maybeKernelFields()) {
+        size_t initPosition = dataPosition();
+        for (size_t i = 0; i < kernelFields->mObjectsSize; i++) {
+            binder_size_t offset = kernelFields->mObjects[i];
+            const flat_binder_object* flat =
+                    reinterpret_cast<const flat_binder_object*>(mData + offset);
+            if (flat->hdr.type != BINDER_TYPE_FD) continue;
+
+            setDataPosition(offset);
+
+            int fd = readFileDescriptor();
+            LOG_ALWAYS_FATAL_IF(fd == -1);
+            ret.push_back(fd);
+        }
+        setDataPosition(initPosition);
+    } else if (const auto* rpcFields = maybeRpcFields(); rpcFields && rpcFields->mFds) {
+        for (const auto& fd : *rpcFields->mFds) {
+            ret.push_back(std::visit([&](const auto& fd) { return fd.get(); }, fd));
+        }
     }
 
-    size_t initPosition = dataPosition();
-    for (size_t i = 0; i < kernelFields->mObjectsSize; i++) {
-        binder_size_t offset = kernelFields->mObjects[i];
-        const flat_binder_object* flat =
-                reinterpret_cast<const flat_binder_object*>(mData + offset);
-        if (flat->hdr.type != BINDER_TYPE_FD) continue;
-
-        setDataPosition(offset);
-
-        int fd = readFileDescriptor();
-        LOG_ALWAYS_FATAL_IF(fd == -1);
-        ret.push_back(fd);
-    }
-
-    setDataPosition(initPosition);
     return ret;
 }
 
+// DO NOT SUBMIT: update
 status_t Parcel::hasFileDescriptorsInRange(size_t offset, size_t len, bool* result) const {
     const auto* kernelFields = maybeKernelFields();
     if (kernelFields == nullptr) {
@@ -1293,11 +1363,43 @@ status_t Parcel::writeNativeHandle(const native_handle* handle)
     return err;
 }
 
-status_t Parcel::writeFileDescriptor(int fd, bool takeOwnership)
-{
-    if (isForRpc()) {
-        ALOGE("Cannot write file descriptor to remote binder.");
-        return BAD_TYPE;
+status_t Parcel::writeFileDescriptor(int fd, bool takeOwnership) {
+    if (auto* rpcFields = maybeRpcFields()) {
+        std::variant<base::unique_fd, base::borrowed_fd> fd_v;
+        if (takeOwnership) {
+            fd_v = base::unique_fd(fd);
+        } else {
+            fd_v = base::borrowed_fd(fd);
+        }
+
+        if (!mAllowFds ||
+            rpcFields->mSession->getFileDescriptorTransportMode() ==
+                    RpcSession::FileDescriptorTransportMode::NONE) {
+            return FDS_NOT_ALLOWED;
+        }
+        if (rpcFields->mFds == nullptr) {
+            rpcFields->mFds = std::make_unique<decltype(rpcFields->mFds)::element_type>();
+        }
+        // TODO: Share constant with transport code.
+        constexpr size_t kMaxFdsPerMsg = 253;
+        if (rpcFields->mFds->size() >= kMaxFdsPerMsg) {
+            ALOGE("Too many file descriptors in Parcel: %zu (max is %zu)",
+                  rpcFields->mFds->size() + 1, kMaxFdsPerMsg);
+            return BAD_VALUE;
+        }
+        size_t dataPos = mDataPos;
+        if (dataPos > UINT32_MAX) {
+            return NO_MEMORY;
+        }
+        if (status_t err = writeInt32(RpcFields::TYPE_NATIVE_FILE_DESCRIPTOR); err != OK) {
+            return err;
+        }
+        if (status_t err = writeInt32(rpcFields->mFds->size()); err != OK) {
+            return err;
+        }
+        rpcFields->mObjectPositions.push_back(dataPos);
+        rpcFields->mFds->push_back(std::move(fd_v));
+        return OK;
     }
 
     flat_binder_object obj;
@@ -2038,8 +2140,31 @@ native_handle* Parcel::readNativeHandle() const
     return h;
 }
 
-int Parcel::readFileDescriptor() const
-{
+int Parcel::readFileDescriptor() const {
+    if (const auto* rpcFields = maybeRpcFields()) {
+        // TODO: Consider a more clever algorithm, like in `readObject`.
+        if (!std::binary_search(rpcFields->mObjectPositions.begin(),
+                                rpcFields->mObjectPositions.end(), mDataPos)) {
+            ALOGW("Attempt to read file descriptor from Parcel %p at offset %zu that is not in the "
+                  "object list",
+                  this, mDataPos);
+            return BAD_TYPE;
+        }
+
+        int32_t objectType = readInt32();
+        if (objectType != RpcFields::TYPE_NATIVE_FILE_DESCRIPTOR) {
+            return BAD_TYPE;
+        }
+
+        int32_t offset = readInt32();
+        if (rpcFields->mFds == nullptr || offset < 0 ||
+            static_cast<size_t>(offset) >= rpcFields->mFds->size()) {
+            // DO NOT SUBMIT: Log + adjust error type.
+            return BAD_INDEX;
+        }
+        return std::visit([&](const auto& fd) { return fd.get(); }, rpcFields->mFds->at(offset));
+    }
+
     const flat_binder_object* flat = readObject(true);
 
     if (flat && flat->hdr.type == BINDER_TYPE_FD) {
@@ -2049,8 +2174,7 @@ int Parcel::readFileDescriptor() const
     return BAD_TYPE;
 }
 
-int Parcel::readParcelFileDescriptor() const
-{
+int Parcel::readParcelFileDescriptor() const {
     int32_t hasComm = readInt32();
     int fd = readFileDescriptor();
     if (hasComm != 0) {
@@ -2270,22 +2394,22 @@ const flat_binder_object* Parcel::readObject(bool nullMetaData) const
 }
 
 void Parcel::closeFileDescriptors() {
-    auto* kernelFields = maybeKernelFields();
-    if (kernelFields == nullptr) {
-        return;
-    }
-    size_t i = kernelFields->mObjectsSize;
-    if (i > 0) {
-        //ALOGI("Closing file descriptors for %zu objects...", i);
-    }
-    while (i > 0) {
-        i--;
-        const flat_binder_object* flat =
-                reinterpret_cast<flat_binder_object*>(mData + kernelFields->mObjects[i]);
-        if (flat->hdr.type == BINDER_TYPE_FD) {
-            //ALOGI("Closing fd: %ld", flat->handle);
-            close(flat->handle);
+    if (auto* kernelFields = maybeKernelFields()) {
+        size_t i = kernelFields->mObjectsSize;
+        if (i > 0) {
+            // ALOGI("Closing file descriptors for %zu objects...", i);
         }
+        while (i > 0) {
+            i--;
+            const flat_binder_object* flat =
+                    reinterpret_cast<flat_binder_object*>(mData + kernelFields->mObjects[i]);
+            if (flat->hdr.type == BINDER_TYPE_FD) {
+                // ALOGI("Closing fd: %ld", flat->handle);
+                close(flat->handle);
+            }
+        }
+    } else if (auto* rpcFields = maybeRpcFields()) {
+        rpcFields->mFds.reset();
     }
 }
 
@@ -2363,8 +2487,11 @@ void Parcel::ipcSetDataReference(const uint8_t* data, size_t dataSize, const bin
     scanForFds();
 }
 
-void Parcel::rpcSetDataReference(const sp<RpcSession>& session, const uint8_t* data,
-                                 size_t dataSize, release_func relFunc) {
+status_t Parcel::rpcSetDataReference(const sp<RpcSession>& session, const uint8_t* data,
+                                     size_t dataSize, const uint32_t* objectTable,
+                                     size_t objectTableSize,
+                                     std::vector<base::unique_fd> ancillaryFds,
+                                     release_func relFunc) {
     // this code uses 'mOwner == nullptr' to understand whether it owns memory
     LOG_ALWAYS_FATAL_IF(relFunc == nullptr, "must provide cleanup function");
 
@@ -2373,9 +2500,36 @@ void Parcel::rpcSetDataReference(const sp<RpcSession>& session, const uint8_t* d
     freeData();
     markForRpc(session);
 
+    auto* rpcFields = maybeRpcFields();
+    LOG_ALWAYS_FATAL_IF(rpcFields == nullptr); // guaranteed by markForRpc.
+
     mData = const_cast<uint8_t*>(data);
     mDataSize = mDataCapacity = dataSize;
     mOwner = relFunc;
+
+    // TODO: validate that all the FDs in the parcel are accounted for in
+    // ancillaryFds. It shouldn't crash. maybe return a status from this
+    // function.
+    if (objectTableSize != ancillaryFds.size()) {
+        ALOGE("objectTableSize=%zu ancillaryFds.size=%zu", objectTableSize, ancillaryFds.size());
+        freeData(); // don't leak mData
+        return BAD_VALUE;
+    }
+
+    // TODO: Maybe don't use vector, then can avoid copying the object table.
+    rpcFields->mObjectPositions.reserve(objectTableSize);
+    for (size_t i = 0; i < objectTableSize; i++) {
+        rpcFields->mObjectPositions.push_back(objectTable[i]);
+    }
+    if (!ancillaryFds.empty()) {
+        rpcFields->mFds = std::make_unique<decltype(rpcFields->mFds)::element_type>();
+        rpcFields->mFds->reserve(ancillaryFds.size());
+        for (auto& fd : ancillaryFds) {
+            rpcFields->mFds->push_back(std::move(fd));
+        }
+    }
+
+    return OK;
 }
 
 void Parcel::print(TextOutput& to, uint32_t /*flags*/) const
@@ -2558,6 +2712,9 @@ status_t Parcel::restartWrite(size_t desired)
         kernelFields->mObjectsSorted = false;
         kernelFields->mHasFds = false;
         kernelFields->mFdsKnown = true;
+    } else if (auto* rpcFields = maybeRpcFields()) {
+        rpcFields->mObjectPositions.clear();
+        rpcFields->mFds.reset();
     }
     mAllowFds = true;
 
@@ -2572,6 +2729,7 @@ status_t Parcel::continueWrite(size_t desired)
         return BAD_VALUE;
     }
 
+    // DO NOT SUBMIT: truncate mFds and mObjectPositions
     auto* kernelFields = maybeKernelFields();
 
     // If shrinking, first adjust for any objects that appear
