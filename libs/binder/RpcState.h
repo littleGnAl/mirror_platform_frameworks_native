@@ -162,6 +162,9 @@ public:
     void clear();
 
 private:
+    static void cleanupReplyData(Parcel* p, const uint8_t* data, size_t dataSize,
+                                 const binder_size_t* objects, size_t objectsCount);
+
     void dumpLocked();
 
     // Alternative to std::vector<uint8_t> that doesn't abort on allocation failure and caps
