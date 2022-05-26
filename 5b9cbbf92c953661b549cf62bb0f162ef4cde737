@@ -34,6 +34,24 @@
       "parentUuid": "0904cba8_ce63e4b1",
       "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c664c879_e07f77af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-26T23:25:15Z",
+      "side": 1,
+      "message": "Host will crash as soon as you call any of these APIs (because binder can\u0027t be used). The API cut is made here because we want to use part of libbinder and it\u0027s hard to extract, but are permissions API usages so hard to cut out? For instance, these libraries can\u0027t be used for dependency injection because we don\u0027t support something like setDefaultServiceManager for these. I think an equivalent change to this would be putting \u0027abort()\u0027 in checkPermission w/o taking on the deps here. WDYT?",
+      "parentUuid": "c8030863_fb79fc56",
+      "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
