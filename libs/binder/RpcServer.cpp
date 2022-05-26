@@ -122,6 +122,10 @@ void RpcServer::setProtocolVersion(uint32_t version) {
     mProtocolVersion = version;
 }
 
+void RpcServer::setFileDescriptorTransportMode(RpcSession::FileDescriptorTransportMode mode) {
+    mFileDescriptorTransportMode = mode;
+}
+
 void RpcServer::setRootObject(const sp<IBinder>& binder) {
     std::lock_guard<std::mutex> _l(mLock);
     mRootObjectFactory = nullptr;
@@ -338,7 +342,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
 
             iovec iov{&response, sizeof(response)};
             status = client->interruptableWriteFully(server->mShutdownTrigger.get(), &iov, 1,
-                                                     std::nullopt);
+                                                     std::nullopt, nullptr);
             if (status != OK) {
                 ALOGE("Failed to send new session response: %s", statusToString(status).c_str());
                 // still need to cleanup before we can return
@@ -395,6 +399,7 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             session = sp<RpcSession>::make(nullptr);
             session->setMaxIncomingThreads(server->mMaxThreads);
             if (!session->setProtocolVersion(protocolVersion)) return;
+            session->setFileDescriptorTransportMode(server->mFileDescriptorTransportMode);
 
             // if null, falls back to server root
             sp<IBinder> sessionSpecificRoot;
