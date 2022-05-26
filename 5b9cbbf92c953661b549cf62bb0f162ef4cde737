@@ -106,6 +106,24 @@
       "parentUuid": "364ae1f7_77d55ee4",
       "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82011c3_d9f7f34f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-26T23:51:33Z",
+      "side": 1,
+      "message": "\u003e So if RPC binder works on host now, does that still mean that ProcessState will abort\n\nYes. Kernel binder uses ProcessState/IPCThreadState. RPC Binder uses RpcServer/RpcSession.\n\n\u003e I assume the recommendation is to mock\n\nThe best place to do dependency injection would depend on the exact architecture. For fuzzing V1, I would recommend to return \u0027new BBinder()\u0027 or the Default class from the service manager. Then, follow-up with something more fleshed out to increase coverage. That is, recommend vertical integration before spending too much time trying to mock services (this can get arbitrarily difficult). Though, essentially, yes, mock the services.",
+      "parentUuid": "3fb0c705_614e0a52",
+      "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
