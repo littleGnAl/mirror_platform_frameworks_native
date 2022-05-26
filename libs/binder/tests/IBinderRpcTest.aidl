@@ -64,4 +64,8 @@ interface IBinderRpcTest {
     void scheduleShutdown();
 
     void useKernelBinderCallingId();
+
+    ParcelFileDescriptor getHelloFile();
+
+    ParcelFileDescriptor concatFiles(in List<ParcelFileDescriptor> files);
 }

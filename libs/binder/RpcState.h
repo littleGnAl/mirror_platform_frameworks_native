@@ -181,9 +181,11 @@ private:
         size_t mSize;
     };
 
-    [[nodiscard]] status_t rpcSend(const sp<RpcSession::RpcConnection>& connection,
-                                   const sp<RpcSession>& session, const char* what, iovec* iovs,
-                                   int niovs, const std::function<status_t()>& altPoll = nullptr);
+    [[nodiscard]] status_t rpcSend(
+            const sp<RpcSession::RpcConnection>& connection, const sp<RpcSession>& session,
+            const char* what, iovec* iovs, int niovs,
+            const std::function<status_t()>& altPoll = nullptr,
+            const std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds = {});
     [[nodiscard]] status_t rpcRec(const sp<RpcSession::RpcConnection>& connection,
                                   const sp<RpcSession>& session, const char* what, iovec* iovs,
                                   int niovs);
