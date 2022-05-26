@@ -52,6 +52,24 @@
       "parentUuid": "c8030863_fb79fc56",
       "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf0e560_dc57cf36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2022-05-26T23:31:56Z",
+      "side": 1,
+      "message": "I am a bit confused what portions of libbinder are host available then. What functionality does the host version of libbinder validly expose? My understanding was that there existed a host implementation of binder that could be used by tests. Are we unable to get the AidlServiceManager on the host?",
+      "parentUuid": "c664c879_e07f77af",
+      "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
