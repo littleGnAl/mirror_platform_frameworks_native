@@ -70,6 +70,24 @@
       "parentUuid": "c664c879_e07f77af",
       "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "364ae1f7_77d55ee4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-26T23:39:22Z",
+      "side": 1,
+      "message": "Well, RPC binder works on host now, but the main reason libbinder is on host is essentially that many classes inherit from BBinder. Due to this inheritance requirement, unit testing these classes (without an additional abstraction layer) requires libbinder on host. ProcessState::self() will abort on host.",
+      "parentUuid": "9bf0e560_dc57cf36",
+      "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
