@@ -80,6 +80,30 @@
       },
       "revId": "98c7ea9aeeaef797fad36442b721158143cea334",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbfc2efc_601c029f",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-05-26T15:22:58Z",
+      "side": 1,
+      "message": "1. The code you pointed to:\n\n  touchState.addHistory(msg);//addHistory\n  \nAdds a historical record to the touch state (mTouchStates), but not to the MotionEvent. So that code doesn\u0027t do what you think it does. The field TouchState.history is used to calculate the resampled coordinates. It doesn\u0027t (directly) affect the MotionEvent.\n\n2. Can you explain this in a bit more detail? What exactly are you asking about here?",
+      "parentUuid": "fb55bcff_7652ec70",
+      "range": {
+        "startLine": 1003,
+        "startChar": 72,
+        "endLine": 1003,
+        "endChar": 95
+      },
+      "revId": "98c7ea9aeeaef797fad36442b721158143cea334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
