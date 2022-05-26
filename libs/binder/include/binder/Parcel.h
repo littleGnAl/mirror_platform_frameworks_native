@@ -609,7 +609,8 @@ private:
     void ipcSetDataReference(const uint8_t* data, size_t dataSize, const binder_size_t* objects,
                              size_t objectsCount, release_func relFunc);
     void rpcSetDataReference(const sp<RpcSession>& session, const uint8_t* data, size_t dataSize,
-                             release_func relFunc);
+                             const uint32_t* objectTable, size_t objectTableSize,
+                             std::vector<base::unique_fd> ancillaryFds, release_func relFunc);
 
     status_t            finishWrite(size_t len);
     void                releaseObjects();
@@ -1279,6 +1280,19 @@ private:
 
         // Should always be non-null.
         const sp<RpcSession> mSession;
+
+        enum ObjectType : int32_t {
+            TYPE_BINDER_NULL = 0,
+            TYPE_BINDER = 1,
+            // FD to be passed via native transport (Trust IPC or UNIX domain socket).
+            TYPE_NATIVE_FILE_DESCRIPTOR = 2,
+        };
+
+        // Sorted.
+        std::vector<uint32_t> mObjectPositions;
+
+        // Boxed to save space. Lazy allocated.
+        std::unique_ptr<std::vector<std::variant<base::unique_fd, base::borrowed_fd>>> mFds;
     };
     std::variant<KernelFields, RpcFields> mVariantFields;
 

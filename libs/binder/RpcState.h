@@ -181,7 +181,8 @@ private:
     [[nodiscard]] status_t rpcSend(
             const sp<RpcSession::RpcConnection>& connection, const sp<RpcSession>& session,
             const char* what, iovec* iovs, int niovs,
-            const std::optional<android::base::function_ref<status_t()>>& altPoll);
+            const std::optional<android::base::function_ref<status_t()>>& altPoll,
+            const std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds = {});
     [[nodiscard]] status_t rpcRec(const sp<RpcSession::RpcConnection>& connection,
                                   const sp<RpcSession>& session, const char* what, iovec* iovs,
                                   int niovs);
