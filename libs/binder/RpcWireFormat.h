@@ -131,17 +131,32 @@ struct RpcWireTransaction {
 
     uint64_t asyncNumber;
 
-    uint32_t reserved[4];
+    // The size of the Parcel data directly following RpcWireTransaction.
+    uint32_t parcelDataSize;
+
+    uint32_t reserved[3];
 
     uint8_t data[];
 };
 static_assert(sizeof(RpcWireTransaction) == 40);
 
-struct RpcWireReply {
+struct RpcWireReplyV0 {
     int32_t status; // transact return
     uint8_t data[];
 };
-static_assert(sizeof(RpcWireReply) == 4);
+static_assert(sizeof(RpcWireReplyV0) == 4);
+
+struct RpcWireReplyV1 {
+    int32_t status; // transact return
+
+    // The size of the Parcel data directly following RpcWireReplyV1.
+    uint32_t parcelDataSize;
+
+    uint32_t reserved[3];
+
+    uint8_t data[];
+};
+static_assert(sizeof(RpcWireReplyV1) == 20);
 
 #pragma clang diagnostic pop
 
