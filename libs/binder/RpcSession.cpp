@@ -129,15 +129,31 @@ std::optional<uint32_t> RpcSession::getProtocolVersion() {
     return mProtocolVersion;
 }
 
+void RpcSession::setFileDescriptorTransportMode(FileDescriptorTransportMode mode) {
+    mFileDescriptorTransportMode = mode;
+}
+
+RpcSession::FileDescriptorTransportMode RpcSession::getFileDescriptorTransportMode() {
+    return mFileDescriptorTransportMode;
+}
+
 status_t RpcSession::setupUnixDomainClient(const char* path) {
     return setupSocketClient(UnixSocketAddress(path));
 }
 
 status_t RpcSession::setupVsockClient(unsigned int cid, unsigned int port) {
+    if (mFileDescriptorTransportMode != RpcSession::FileDescriptorTransportMode::NONE) {
+        return BAD_VALUE;
+    }
+
     return setupSocketClient(VsockSocketAddress(cid, port));
 }
 
 status_t RpcSession::setupInetClient(const char* addr, unsigned int port) {
+    if (mFileDescriptorTransportMode != RpcSession::FileDescriptorTransportMode::NONE) {
+        return BAD_VALUE;
+    }
+
     auto aiStart = InetSocketAddress::getAddrInfo(addr, port);
     if (aiStart == nullptr) return UNKNOWN_ERROR;
     for (auto ai = aiStart.get(); ai != nullptr; ai = ai->ai_next) {
@@ -614,8 +630,8 @@ status_t RpcSession::initAndAddConnection(unique_fd fd, const std::vector<uint8_
     }
 
     iovec headerIov{&header, sizeof(header)};
-    auto sendHeaderStatus =
-            server->interruptableWriteFully(mShutdownTrigger.get(), &headerIov, 1, std::nullopt);
+    auto sendHeaderStatus = server->interruptableWriteFully(mShutdownTrigger.get(), &headerIov, 1,
+                                                            std::nullopt, nullptr);
     if (sendHeaderStatus != OK) {
         ALOGE("Could not write connection header to socket: %s",
               statusToString(sendHeaderStatus).c_str());
@@ -625,8 +641,9 @@ status_t RpcSession::initAndAddConnection(unique_fd fd, const std::vector<uint8_
     if (sessionId.size() > 0) {
         iovec sessionIov{const_cast<void*>(static_cast<const void*>(sessionId.data())),
                          sessionId.size()};
-        auto sendSessionIdStatus = server->interruptableWriteFully(mShutdownTrigger.get(),
-                                                                   &sessionIov, 1, std::nullopt);
+        auto sendSessionIdStatus =
+                server->interruptableWriteFully(mShutdownTrigger.get(), &sessionIov, 1,
+                                                std::nullopt, nullptr);
         if (sendSessionIdStatus != OK) {
             ALOGE("Could not write session ID ('%s') to socket: %s",
                   base::HexString(sessionId.data(), sessionId.size()).c_str(),
