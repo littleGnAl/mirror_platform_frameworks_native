@@ -27,6 +27,7 @@
 
 #include "Debug.h"
 #include "RpcWireFormat.h"
+#include "Utils.h"
 
 #include <random>
 
@@ -493,9 +494,14 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
         }
     }
 
+    std::vector<uint32_t> objectTable;
+    Span<const uint32_t> objectTableSpan = {objectTable.data(), objectTable.size()};
+
     uint32_t bodySize;
     LOG_ALWAYS_FATAL_IF(__builtin_add_overflow(sizeof(RpcWireTransaction), data.dataSize(),
-                                               &bodySize),
+                                               &bodySize) ||
+                                __builtin_add_overflow(objectTableSpan.byteSize(), bodySize,
+                                                       &bodySize),
                         "Too much data %zu", data.dataSize());
     RpcWireHeader command{
             .command = RPC_COMMAND_TRANSACT,
@@ -507,6 +513,8 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
             .code = code,
             .flags = flags,
             .asyncNumber = asyncNumber,
+            // bodySize didn't overflow => this cast is safe
+            .parcelDataSize = static_cast<uint32_t>(data.dataSize()),
     };
 
     constexpr size_t kWaitMaxUs = 1000000;
@@ -537,6 +545,7 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
             {&command, sizeof(RpcWireHeader)},
             {&transaction, sizeof(RpcWireTransaction)},
             {const_cast<uint8_t*>(data.data()), data.dataSize()},
+            objectTableSpan.toIovec(),
     };
     if (status_t status =
                 rpcSend(connection, session, "transaction", iovs, arraysize(iovs), drainRefs);
@@ -559,11 +568,22 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
     return waitForReply(connection, session, reply);
 }
 
-static void cleanup_reply_data(Parcel* p, const uint8_t* data, size_t dataSize,
-                               const binder_size_t* objects, size_t objectsCount) {
-    (void)p;
-    delete[] const_cast<uint8_t*>(data - offsetof(RpcWireReply, data));
+void RpcState::cleanupReplyData(Parcel* p, const uint8_t* data, size_t dataSize,
+                                const binder_size_t* objects, size_t objectsCount) {
     (void)dataSize;
+
+    const auto* rpcFields = p->maybeRpcFields();
+    LOG_ALWAYS_FATAL_IF(rpcFields == nullptr);
+    // Aborts if the version is unset, but that shouldn't be possible at this point.
+    const uint32_t version = rpcFields->mSession->getProtocolVersion().value();
+
+    const uint8_t* allocAddr;
+    if (version >= RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_EXPLICIT_PARCEL_SIZE) {
+        allocAddr = data - offsetof(RpcWireReplyV1, data);
+    } else {
+        allocAddr = data - offsetof(RpcWireReplyV0, data);
+    }
+    delete[] const_cast<uint8_t*>(allocAddr);
     LOG_ALWAYS_FATAL_IF(objects != nullptr);
     LOG_ALWAYS_FATAL_IF(objectsCount != 0, "%zu objects remaining", objectsCount);
 }
@@ -591,20 +611,35 @@ status_t RpcState::waitForReply(const sp<RpcSession::RpcConnection>& connection,
     if (status_t status = rpcRec(connection, session, "reply body", &iov, 1); status != OK)
         return status;
 
-    if (command.bodySize < sizeof(RpcWireReply)) {
-        ALOGE("Expecting %zu but got %" PRId32 " bytes for RpcWireReply. Terminating!",
-              sizeof(RpcWireReply), command.bodySize);
-        (void)session->shutdownAndWait(false);
-        return BAD_VALUE;
+    const auto genericRepyToParcel = [&](auto phantomWireHeader) -> status_t {
+        using RpcWireReplyType = typeof(phantomWireHeader);
+        if (command.bodySize < sizeof(RpcWireReplyType)) {
+            ALOGE("Expecting %zu but got %" PRId32 " bytes for RpcWireReply. Terminating!",
+                  sizeof(RpcWireReplyType), command.bodySize);
+            (void)session->shutdownAndWait(false);
+            return BAD_VALUE;
+        }
+        RpcWireReplyType* rpcReply = reinterpret_cast<RpcWireReplyType*>(data.data());
+        if (rpcReply->status != OK) return rpcReply->status;
+
+        Span<const uint8_t> parcelSpan = {rpcReply->data,
+                                          command.bodySize - offsetof(RpcWireReplyType, data)};
+        if constexpr (!std::is_same_v<RpcWireReplyType, RpcWireReplyV0>) {
+            Span<const uint8_t> objectTableBytes = parcelSpan.split(rpcReply->parcelDataSize);
+            LOG_ALWAYS_FATAL_IF(objectTableBytes.size > 0,
+                                "Non-empty object table not supported yet.");
+        }
+
+        data.release();
+        reply->rpcSetDataReference(session, parcelSpan.data, parcelSpan.size, cleanupReplyData);
+        return OK;
+    };
+    if (session->getProtocolVersion().value() >
+        RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_EXPLICIT_PARCEL_SIZE) {
+        return genericRepyToParcel(RpcWireReplyV1{});
+    } else {
+        return genericRepyToParcel(RpcWireReplyV0{});
     }
-    RpcWireReply* rpcReply = reinterpret_cast<RpcWireReply*>(data.data());
-    if (rpcReply->status != OK) return rpcReply->status;
-
-    data.release();
-    reply->rpcSetDataReference(session, rpcReply->data,
-                               command.bodySize - offsetof(RpcWireReply, data), cleanup_reply_data);
-
-    return OK;
 }
 
 status_t RpcState::sendDecStrongToTarget(const sp<RpcSession::RpcConnection>& connection,
@@ -818,12 +853,22 @@ processTransactInternalTailCall:
     reply.markForRpc(session);
 
     if (replyStatus == OK) {
+        Span<const uint8_t> parcelSpan = {transaction->data,
+                                          transactionData.size() -
+                                                  offsetof(RpcWireTransaction, data)};
+        if (session->getProtocolVersion().value() >
+            RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_EXPLICIT_PARCEL_SIZE) {
+            Span<const uint8_t> objectTableBytes = parcelSpan.split(transaction->parcelDataSize);
+            LOG_ALWAYS_FATAL_IF(objectTableBytes.size > 0,
+                                "Non-empty object table not supported yet.");
+        }
+
         Parcel data;
         // transaction->data is owned by this function. Parcel borrows this data and
         // only holds onto it for the duration of this function call. Parcel will be
         // deleted before the 'transactionData' object.
-        data.rpcSetDataReference(session, transaction->data,
-                                 transactionData.size() - offsetof(RpcWireTransaction, data),
+
+        data.rpcSetDataReference(session, parcelSpan.data, parcelSpan.size,
                                  do_nothing_to_transact_data);
 
         if (target) {
@@ -935,23 +980,42 @@ processTransactInternalTailCall:
         replyStatus = flushExcessBinderRefs(session, addr, target);
     }
 
-    uint32_t bodySize;
-    LOG_ALWAYS_FATAL_IF(__builtin_add_overflow(sizeof(RpcWireReply), reply.dataSize(), &bodySize),
-                        "Too much data for reply %zu", reply.dataSize());
-    RpcWireHeader cmdReply{
-            .command = RPC_COMMAND_REPLY,
-            .bodySize = bodySize,
-    };
-    RpcWireReply rpcReply{
-            .status = replyStatus,
-    };
+    std::vector<uint32_t> objectTable;
+    Span<const uint32_t> objectTableSpan = {objectTable.data(), objectTable.size()};
 
-    iovec iovs[]{
-            {&cmdReply, sizeof(RpcWireHeader)},
-            {&rpcReply, sizeof(RpcWireReply)},
-            {const_cast<uint8_t*>(reply.data()), reply.dataSize()},
+    const auto genericSendReply = [&](auto phantomWireHeader) {
+        using RpcWireReplyType = typeof(phantomWireHeader);
+        uint32_t bodySize = 0;
+        LOG_ALWAYS_FATAL_IF(__builtin_add_overflow(sizeof(RpcWireReplyType), reply.dataSize(),
+                                                   &bodySize) ||
+                                    __builtin_add_overflow(objectTableSpan.byteSize(), bodySize,
+                                                           &bodySize),
+                            "Too much data for reply %zu", reply.dataSize());
+        RpcWireHeader cmdReply{
+                .command = RPC_COMMAND_REPLY,
+                .bodySize = bodySize,
+        };
+        RpcWireReplyType rpcReply{
+                .status = replyStatus,
+        };
+        if constexpr (!std::is_same_v<RpcWireReplyType, RpcWireReplyV0>) {
+            // bodySize didn't overflow => this cast is safe
+            rpcReply.parcelDataSize = static_cast<uint32_t>(reply.dataSize());
+        }
+        iovec iovs[]{
+                {&cmdReply, sizeof(RpcWireHeader)},
+                {&rpcReply, sizeof(RpcWireReplyType)},
+                {const_cast<uint8_t*>(reply.data()), reply.dataSize()},
+                objectTableSpan.toIovec(),
+        };
+        return rpcSend(connection, session, "reply", iovs, arraysize(iovs));
     };
-    return rpcSend(connection, session, "reply", iovs, arraysize(iovs));
+    if (session->getProtocolVersion().value() >
+        RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_EXPLICIT_PARCEL_SIZE) {
+        return genericSendReply(RpcWireReplyV1{});
+    } else {
+        return genericSendReply(RpcWireReplyV0{});
+    }
 }
 
 status_t RpcState::processDecStrong(const sp<RpcSession::RpcConnection>& connection,
