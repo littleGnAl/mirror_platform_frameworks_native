@@ -56,6 +56,30 @@
       },
       "revId": "98c7ea9aeeaef797fad36442b721158143cea334",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb55bcff_7652ec70",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1887356
+      },
+      "writtenOn": "2022-05-26T07:46:29Z",
+      "side": 1,
+      "message": "Dear Siarhei,\n\nThanks, but I still have some question:\n\n1. action down has also add in addHistory.\n    case AMOTION_EVENT_ACTION_DOWN: {\n        ssize_t index \u003d findTouchState(deviceId, source);\n        if (index \u003c 0) {\n            mTouchStates.push_back({});\n            index \u003d mTouchStates.size() - 1;\n        }\n        TouchState\u0026 touchState \u003d mTouchStates[index];\n        touchState.initialize(deviceId, source);\n        touchState.addHistory(msg);//addHistory\n        break;\n    }\n\n2. mTouchStates.erase\n    case AMOTION_EVENT_ACTION_UP:\n    case AMOTION_EVENT_ACTION_CANCEL: {\n        ssize_t index \u003d findTouchState(deviceId, source);\n        if (index \u003e\u003d 0) {\n            TouchState\u0026 touchState \u003d mTouchStates[index];\n            rewriteMessage(touchState, msg);\n            mTouchStates.erase(mTouchStates.begin() + index);//remove index\n        }\n        break;\n    }",
+      "parentUuid": "e6c9bef9_49322e56",
+      "range": {
+        "startLine": 1003,
+        "startChar": 72,
+        "endLine": 1003,
+        "endChar": 95
+      },
+      "revId": "98c7ea9aeeaef797fad36442b721158143cea334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
