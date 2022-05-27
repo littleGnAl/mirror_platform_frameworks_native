@@ -32,6 +32,18 @@
 
 #include <inttypes.h>
 
+// True if the sum of `sizes` fits in an integer of type `T`.
+template <typename T>
+static bool overflowCheck(std::initializer_list<size_t> sizes) {
+    T total = 0;
+    for (size_t s : sizes) {
+        if (__builtin_add_overflow(s, total, &total)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 namespace android {
 
 using base::ScopeGuard;
@@ -493,9 +505,11 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
         }
     }
 
-    LOG_ALWAYS_FATAL_IF(std::numeric_limits<int32_t>::max() - sizeof(RpcWireHeader) -
-                                        sizeof(RpcWireTransaction) <
+    LOG_ALWAYS_FATAL_IF(!overflowCheck<int32_t>({
+                                sizeof(RpcWireHeader),
+                                sizeof(RpcWireTransaction),
                                 data.dataSize(),
+                        }),
                         "Too much data %zu", data.dataSize());
 
     RpcWireHeader command{
@@ -936,9 +950,11 @@ processTransactInternalTailCall:
         replyStatus = flushExcessBinderRefs(session, addr, target);
     }
 
-    LOG_ALWAYS_FATAL_IF(std::numeric_limits<int32_t>::max() - sizeof(RpcWireHeader) -
-                                        sizeof(RpcWireReply) <
+    LOG_ALWAYS_FATAL_IF(!overflowCheck<int32_t>({
+                                sizeof(RpcWireHeader),
+                                sizeof(RpcWireReply),
                                 reply.dataSize(),
+                        }),
                         "Too much data for reply %zu", reply.dataSize());
 
     RpcWireHeader cmdReply{
