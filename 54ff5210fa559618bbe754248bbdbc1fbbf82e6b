@@ -22,6 +22,30 @@
       },
       "revId": "54ff5210fa559618bbe754248bbdbc1fbbf82e6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ecc8d24_6d3af6b6",
+        "filename": "libs/arect/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-05-27T20:40:20Z",
+      "side": 1,
+      "message": "Ray,\nIn t-fs-release branch, \"libarect\" is marked as available to both\n\nhttps://partner-android.googlesource.com/platform/frameworks/native/+/b6e99987e592b4b00d99d6a09fc55597864e8c5f%5E%21/#F1\n\nFor consistency I have kept it same between libarect and libarect_headers.\n\nPlease let me know if you still prefer that I remove com.android.media.\nThanks.",
+      "parentUuid": "de2691b6_87952a5e",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "54ff5210fa559618bbe754248bbdbc1fbbf82e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
