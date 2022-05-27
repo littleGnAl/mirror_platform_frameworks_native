@@ -160,6 +160,24 @@
       "parentUuid": "b90b6680_f8ac5d44",
       "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a13f79_44fdb51c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2022-05-27T21:07:43Z",
+      "side": 1,
+      "message": "This isn\u0027t related directly to the fuzzing work (rather it is a dependency of a dependency of another project). \n\nAn example location is this class: https://source.corp.google.com/android/frameworks/av/media/utils/BatteryNotifier.cpp\nThere is also an existing fuzzer for this class (that is at this point non-host available).\n\nThe class already has conditional logic on receiving nullptr as the interface it is requesting, so from a logic perspective, I see no reason it should not be host available -- but it depends on libbatterystats_aidl which is the intent of this CL.\n\nSimilar issues in ISchedulingPolicyService.cpp and ProcessInfo.cpp in the same dir.\n\nIdeally, instead of abort, we would handle not receiving the service (i.e. getting a nullptr) as we do on android, with some graceful alternate handling case. In the interest of testing, we can test all the business logic apart from publishing back to a service.",
+      "parentUuid": "a5518d98_775d03a1",
+      "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
