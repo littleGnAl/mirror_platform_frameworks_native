@@ -46,6 +46,30 @@
       },
       "revId": "54ff5210fa559618bbe754248bbdbc1fbbf82e6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffa451da_8021acac",
+        "filename": "libs/arect/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-27T20:53:30Z",
+      "side": 1,
+      "message": "appears transcoding native code links against the library.\nhave to check if that should be a header_libs instead of static_lib;\nwill handle that separately.",
+      "parentUuid": "8ecc8d24_6d3af6b6",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "54ff5210fa559618bbe754248bbdbc1fbbf82e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
