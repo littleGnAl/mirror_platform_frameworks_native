@@ -1739,9 +1739,8 @@ public:
             }
             case BINDER_LIB_TEST_PROCESS_TEMPORARY_LOCK: {
                 blockMutex.lock();
-                std::thread t([&] {
-                    unlockInMs(data.readInt32());
-                }); // start local thread to unlock in 1s
+                int32_t value = data.readInt32();
+                std::thread t([=] { unlockInMs(value); }); // start local thread to unlock in 1s
                 t.detach();
                 return NO_ERROR;
             }
