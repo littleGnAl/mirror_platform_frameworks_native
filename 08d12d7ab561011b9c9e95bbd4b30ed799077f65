@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24680153_30cb749f",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-27T23:51:05Z",
+      "side": 1,
+      "message": "I was thinking it was strange that `sizeof(RpcWireHeader)` was included since it isn\u0027t in the later sums. If it isn\u0027t actually needed, then I agree it sounds better to do the check as part of computing the `bodySize`.\n\nI\u0027ll be adding a third number soon (the object table size), so it might look something like\n\n```\nuint32_t bodySize \u003d 0;\nFATAL_IF(\n    __builtin_add_overflow(sizeof(RpcWireTransaction), bodySize, \u0026bodySize)\n    || __builtin_add_overflow(data.dataSize(), bodySize, \u0026bodySize),\n    || __builtin_add_overflow(objectTableSize, bodySize, \u0026bodySize),\n    \"too much data ...\");\n```\n\nHow appealing is that?\n\nRelated discussion: I\u0027m also going to be adding more casts from `size_t` to `uint32_t`. I was considering this overflow check to be proof that the casts following it were safe and that still seems reasonable to me if we switch to this style since all of them are going to be subsets of `bodySize`.",
+      "parentUuid": "689f8e21_9b7f358c",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "08d12d7ab561011b9c9e95bbd4b30ed799077f65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2055d08d_79f4ef66",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 1
