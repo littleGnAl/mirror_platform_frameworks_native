@@ -178,6 +178,24 @@
       "parentUuid": "a5518d98_775d03a1",
       "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17758181_b2d3e427",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-27T22:14:55Z",
+      "side": 1,
+      "message": "Can you share the CL or code that is using this on host?\n\n\u003e libbatterystats_aidl\n\nI don\u0027t have a problem with this part of the change, if you want to submit it independently.\n\n\u003e Ideally\n\nDo you mean I should take your statement as an ideal? Or do you have an ideological framework within which this is a derived value? Returning false or null or a value means that we are saying we know a priori what all clients might like to do here. This is a 3rd level (beyond forcing clients to answer this question statically OR abort forcing clients to answer this question dynamically). I would like to see a case established before we expose things here (and even in that case, adding these classes to host is not strictly needed). Otherwise, by default I am going for \"least exposed APIs\" + \"most explicit decision set for clients\". I\u0027m not saying you are definitely wrong. I\u0027m saying \"Prove it!\" 😊 Plus, if you are so sure, and since I know you are very good, I am sure I will be able to learn something 😊",
+      "parentUuid": "55a13f79_44fdb51c",
+      "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
