@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47249645_5f818e7a",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-27T23:34:34Z",
+      "side": 1,
+      "message": "could we make sure we have this case in the fuzzer?",
+      "range": {
+        "startLine": 425,
+        "startChar": 17,
+        "endLine": 425,
+        "endChar": 27
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ec25ad_046e168b",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-27T23:34:34Z",
+      "side": 1,
+      "message": "do we want to include the number of rpc fds in this count? I guess it depends on how this function is typically used.",
+      "range": {
+        "startLine": 853,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 13
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43ba102b_fd4a4215",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1461,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-27T23:34:34Z",
+      "side": 1,
+      "message": "this does not occur now, right? Could it be an abort?",
+      "range": {
+        "startLine": 1461,
+        "startChar": 0,
+        "endLine": 1461,
+        "endChar": 24
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c87cd27_7603e3c6",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2375,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-27T23:34:34Z",
+      "side": 1,
+      "message": "nit: remove \u0027session\u0027 as an argument and have the client call this separately?",
+      "range": {
+        "startLine": 2375,
+        "startChar": 4,
+        "endLine": 2375,
+        "endChar": 24
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8671358e_98d68d6a",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2555,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-27T23:34:34Z",
+      "side": 1,
+      "message": "nit: consider adding a destructor for this object or having it manage the lifetime of these fields themselves. It might be a bigger refactor, but external management of this memory is part of what makes this code so complicated.",
+      "range": {
+        "startLine": 2555,
+        "startChar": 8,
+        "endLine": 2555,
+        "endChar": 36
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7497bea5_79d2a102",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-27T23:34:34Z",
+      "side": 1,
+      "message": "nit: unrelated unrelated change",
+      "range": {
+        "startLine": 626,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 55
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
