@@ -142,6 +142,24 @@
       "parentUuid": "b82011c3_d9f7f34f",
       "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5518d98_775d03a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-27T17:41:46Z",
+      "side": 1,
+      "message": "This CL turns a build error (missing the API) into a runtime error. Is this related to your fuzzing work (commit message bug?)? I would ask you to finish getting that working locally and to the point you can run the fuzzer, then evaluate if this is needed.\n\n\u003e It would make it easier to make certain libraries that depend on it host available\n\nEasier to build, not run them.\n\n\u003e I\u0027d rather defer the conditional logic up to the implementation of process state than ifdefing in the existing library.\n\nNeither is fundamentally a better solution. For instance, a counter-point is that a build error means that it is obvious where the conditional logic is needed, but a runtime error means that all points where conditional logic is needed must be discovered. I don\u0027t see the point in arguing this case w/o an example user.",
+      "parentUuid": "b90b6680_f8ac5d44",
+      "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
