@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <pthread.h>
 #define LOG_TAG "ProcessState"
 
 #include <binder/ProcessState.h>
@@ -399,7 +400,9 @@ void ProcessState::spawnPooledThread(bool isMain)
         ALOGV("Spawning new pooled thread, name=%s\n", name.string());
         sp<Thread> t = sp<PoolThread>::make(isMain);
         t->run(name.string());
+        pthread_mutex_lock(&mThreadCountLock);
         mKernelStartedThreads++;
+        pthread_mutex_unlock(&mThreadCountLock);
     }
 }
 
