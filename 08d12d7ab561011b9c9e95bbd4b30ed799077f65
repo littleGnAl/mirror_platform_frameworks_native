@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689f8e21_9b7f358c",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-27T23:24:56Z",
+      "side": 1,
+      "message": "maybe call \u0027sumOverflows\u0027 to disambiguate operation? but we only use it once. If we can remove RpcWireHeader from the sum below, we only need __builtin_add_overflow",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "08d12d7ab561011b9c9e95bbd4b30ed799077f65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2055d08d_79f4ef66",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-27T23:24:56Z",
+      "side": 1,
+      "message": "nit: it\u0027s strange this is unused, right? (this is what got me thinking about it)",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "08d12d7ab561011b9c9e95bbd4b30ed799077f65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "188759b3_4e4f8f80",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-27T23:24:56Z",
+      "side": 1,
+      "message": "this check also might be unnecessary now that we use iovecs below. I wonder if we could save the result of the overflow check into L517 in order to also avoid computing the sum again (and exclude RpcWireHeader from it).",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 62
+      },
+      "revId": "08d12d7ab561011b9c9e95bbd4b30ed799077f65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
