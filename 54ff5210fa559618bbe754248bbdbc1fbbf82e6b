@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2691b6_87952a5e",
+        "filename": "libs/arect/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-05-27T20:28:58Z",
+      "side": 1,
+      "message": "we\u0027re just adding a reference from swcodec, so we should not also add com.android.media",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "54ff5210fa559618bbe754248bbdbc1fbbf82e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
