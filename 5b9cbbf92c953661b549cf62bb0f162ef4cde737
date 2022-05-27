@@ -124,6 +124,24 @@
       "parentUuid": "3fb0c705_614e0a52",
       "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90b6680_f8ac5d44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2022-05-27T17:30:06Z",
+      "side": 1,
+      "message": "With all that in mind, what are your thoughts on this CL? It would make it easier to make certain libraries that depend on it host available (regardless of the fact that the calls would abort). I\u0027d rather defer the conditional logic up to the implementation of process state than ifdefing in the existing library.",
+      "parentUuid": "b82011c3_d9f7f34f",
+      "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
