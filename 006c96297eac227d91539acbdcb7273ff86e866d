@@ -95,6 +95,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6122990a_aca30e7f",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2375,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-28T00:07:25Z",
+      "side": 1,
+      "message": "In the CL that actually adds FD support, I\u0027m going to be passing the FDs into this function and so I need the Parcel to be in \"rpc mode\" so that they can be stored somewhere.\n\nThe client can\u0027t call markForRpc before here because freeData will reset it. An alternative idea is to require that caller issue the sequence of calls `freeData -\u003e markForRpc -\u003e rpcSetDataReference` and then in rpcSetDataReference assert that we\u0027ve got a session + the data is empty.\n\nI don\u0027t have much of a preference. I ended up with this solution since I evolved it from ipcSetDataReference. Let me know what you think.",
+      "parentUuid": "5c87cd27_7603e3c6",
+      "range": {
+        "startLine": 2375,
+        "startChar": 4,
+        "endLine": 2375,
+        "endChar": 24
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8671358e_98d68d6a",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 7
