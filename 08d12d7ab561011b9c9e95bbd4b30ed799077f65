@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb9b2008_7859df82",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-28T00:01:50Z",
+      "side": 1,
+      "message": "Hey, one more concept to share (though applying it within a file is probably overkill, definitely recommend the transcript):\nhttps://2014.jsconf.eu/speakers/sebastian-markbage-minimal-api-surface-area-learning-patterns-instead-of-frameworks.html\n\n\u003e How appealing is that?\n\nSo by my definition of appealing, appealing! Though, I am also totally okay with the function if you want to keep it (though I assume we would keep and use the result as well)\n\n\u003e I was considering this overflow check to be proof that the casts following it were safe and that still seems reasonable to me if we switch to this style since all of them are going to be subsets of  bodySize .\n\nAs long as we check for overflow conditions, don\u0027t introduce performance/security issues, I have no concern about the exact structure.",
+      "parentUuid": "24680153_30cb749f",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "08d12d7ab561011b9c9e95bbd4b30ed799077f65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2055d08d_79f4ef66",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 1
