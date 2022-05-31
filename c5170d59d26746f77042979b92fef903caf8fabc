@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fce71e59_d3e5ac72",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-31T18:46:23Z",
+      "side": 1,
+      "message": "I believe Frederick was mentioning the locks added on L403/405.\nRegardless of the asnwer to my statement above, this function has a bug created for it which I will revisit to improve accuracy. b/233226955",
+      "parentUuid": "8b8a27f8_0c03a023",
+      "revId": "c5170d59d26746f77042979b92fef903caf8fabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ccb2384a_36d8c7ae",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 2

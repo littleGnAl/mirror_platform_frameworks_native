@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51b0e1ba_cd85f8a2",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-31T18:46:23Z",
+      "side": 1,
+      "message": "Randomly hit in an iteration of 20, this may be the race condition I mentioned in the bug (b/233226955) where mKernelStartedThreads was incremented, but mCurrentThreads wasn\u0027t updated yet (update a few function calls after).",
+      "parentUuid": "9451184d_a9b79fe1",
+      "range": {
+        "startLine": 1283,
+        "startChar": 16,
+        "endLine": 1283,
+        "endChar": 41
+      },
+      "revId": "ef419660dbfd771adee951a0afb2d6b1c4dddfe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f99e0898_af2d5a31",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-05-31T18:25:15Z",
       "side": 1,
       "message": "thisService (otherwise the sp\u003c\u003e isn\u0027t copied into this scope, and the refcount will be dropped when thisService goes out of the block scope)",
+      "range": {
+        "startLine": 1745,
+        "startChar": 30,
+        "endLine": 1745,
+        "endChar": 34
+      },
+      "revId": "ef419660dbfd771adee951a0afb2d6b1c4dddfe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96313fdd_5de16dfc",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-31T18:46:23Z",
+      "side": 1,
+      "message": "Oh whoops! Thanks! fixed.",
+      "parentUuid": "f99e0898_af2d5a31",
       "range": {
         "startLine": 1745,
         "startChar": 30,
