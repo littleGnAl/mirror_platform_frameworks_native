@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5623def3_c44682ee",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-31T16:51:00Z",
+      "side": 1,
+      "message": "move below with the other C includes",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "c5170d59d26746f77042979b92fef903caf8fabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccb2384a_36d8c7ae",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1743,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-31T16:51:00Z",
+      "side": 1,
+      "message": "nit: this copying \u0027this\u0027 but you should copy a strong pointer to this. It\u0027s possible \u0027this\u0027 gets deleted (if the test finishes early for some reason) before the thread runs out, and it will UAF blockMutex on L1754.\n\nFor instance:\n\n     sp\u003cBinderLibTestService\u003e thiz \u003d this;\n     std::thread t([\u003d] { thiz-\u003eunlockInMs(value); });",
+      "range": {
+        "startLine": 1743,
+        "startChar": 31,
+        "endLine": 1743,
+        "endChar": 32
+      },
+      "revId": "c5170d59d26746f77042979b92fef903caf8fabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1a372b_6f4b4498",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-31T16:51:00Z",
+      "side": 1,
+      "message": "nit: (style) m_blockMutex",
+      "range": {
+        "startLine": 1768,
+        "startChar": 15,
+        "endLine": 1768,
+        "endChar": 25
+      },
+      "revId": "c5170d59d26746f77042979b92fef903caf8fabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
