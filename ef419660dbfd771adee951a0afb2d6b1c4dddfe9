@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9451184d_a9b79fe1",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-31T18:25:15Z",
+      "side": 1,
+      "message": "wait - an extra thread should always be started, due to L1267? Should L1265 remove the \u0027- 1\u0027 so that we always force the extra thread to get started? Or when do you hit this case?",
+      "range": {
+        "startLine": 1283,
+        "startChar": 16,
+        "endLine": 1283,
+        "endChar": 41
+      },
+      "revId": "ef419660dbfd771adee951a0afb2d6b1c4dddfe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f99e0898_af2d5a31",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-05-31T18:25:15Z",
+      "side": 1,
+      "message": "thisService (otherwise the sp\u003c\u003e isn\u0027t copied into this scope, and the refcount will be dropped when thisService goes out of the block scope)",
+      "range": {
+        "startLine": 1745,
+        "startChar": 30,
+        "endLine": 1745,
+        "endChar": 34
+      },
+      "revId": "ef419660dbfd771adee951a0afb2d6b1c4dddfe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
