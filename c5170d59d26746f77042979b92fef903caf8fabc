@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73228bcc_a5eef55e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-31T18:07:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f73907d5_59547fcd",
+      "revId": "c5170d59d26746f77042979b92fef903caf8fabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5623def3_c44682ee",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-31T16:51:00Z",
       "side": 1,
       "message": "move below with the other C includes",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "c5170d59d26746f77042979b92fef903caf8fabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0a6913_283b6cb4",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-31T18:07:12Z",
+      "side": 1,
+      "message": "Done, formatter decided to move mutex and unistd.h down the list, no clue why. This is done though.",
+      "parentUuid": "5623def3_c44682ee",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2909bee_123612a4",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1743,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-31T18:07:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccb2384a_36d8c7ae",
+      "range": {
+        "startLine": 1743,
+        "startChar": 31,
+        "endLine": 1743,
+        "endChar": 32
+      },
+      "revId": "c5170d59d26746f77042979b92fef903caf8fabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db1a372b_6f4b4498",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-05-31T16:51:00Z",
       "side": 1,
       "message": "nit: (style) m_blockMutex",
+      "range": {
+        "startLine": 1768,
+        "startChar": 15,
+        "endLine": 1768,
+        "endChar": 25
+      },
+      "revId": "c5170d59d26746f77042979b92fef903caf8fabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4aa20ff_17329e6f",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-05-31T18:07:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db1a372b_6f4b4498",
       "range": {
         "startLine": 1768,
         "startChar": 15,
