@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24089238_efd06e83",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-31T22:07:55Z",
+      "side": 1,
+      "message": "The codesearch overlay says it is covered, but, if that is right, it must be indirectly cover by some higher level fuzzer. Sent https://r.android.com/2112505 to add more fuzzer coverage to it.",
+      "parentUuid": "47249645_5f818e7a",
+      "range": {
+        "startLine": 425,
+        "startChar": 17,
+        "endLine": 425,
+        "endChar": 27
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62ec25ad_046e168b",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e49e580e_c701f5b0",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-31T22:07:55Z",
+      "side": 1,
+      "message": "good question\n\nquick survey:\n\n* RpcState.cpp\n* AParcel_marshal\n* various jni wrappers\n* various debug logs\n\nRpcState could check ipcObjectsCount instead. Or, it could just verify that the parcel has a session (since it will be internally impossible to have an ipc object once the variant CL is merged).\n\nAParcel_marshal (and, IIUC, the jni wrappers) want to ensure that the parcel is pure bytes data so that it is reasonable to serialize into a buffer.\n\nI\u0027m thinking that objectsCount should include both RPC FDs and RPC Binder objects.",
+      "parentUuid": "62ec25ad_046e168b",
+      "range": {
+        "startLine": 853,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 13
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43ba102b_fd4a4215",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 7
@@ -60,6 +108,30 @@
       "writtenOn": "2022-05-27T23:34:34Z",
       "side": 1,
       "message": "this does not occur now, right? Could it be an abort?",
+      "range": {
+        "startLine": 1461,
+        "startChar": 0,
+        "endLine": 1461,
+        "endChar": 24
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b83d452_302c19f1",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1461,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-31T22:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ba102b_fd4a4215",
       "range": {
         "startLine": 1461,
         "startChar": 0,
@@ -140,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a45c56b_ce5c8c6d",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2555,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-31T22:07:55Z",
+      "side": 1,
+      "message": "I like this idea and can explore it in a follow up. It may be difficult because of `mOwner`. I\u0027ll probably have to redesign how non-owned data works. Since that is an internal API and only has a few callers, it might be reasonable to change, but I haven\u0027t put much thought into it.",
+      "parentUuid": "8671358e_98d68d6a",
+      "range": {
+        "startLine": 2555,
+        "startChar": 8,
+        "endLine": 2555,
+        "endChar": 36
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7497bea5_79d2a102",
@@ -153,6 +249,30 @@
       "writtenOn": "2022-05-27T23:34:34Z",
       "side": 1,
       "message": "nit: unrelated unrelated change",
+      "range": {
+        "startLine": 626,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 55
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81484de5_b893b7f6",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-05-31T22:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7497bea5_79d2a102",
       "range": {
         "startLine": 626,
         "startChar": 0,
