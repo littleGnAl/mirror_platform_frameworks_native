@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f11c221_882e5360",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-01T18:10:23Z",
+      "side": 1,
+      "message": "Cool, sgtm!",
+      "parentUuid": "e49e580e_c701f5b0",
+      "range": {
+        "startLine": 853,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 13
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43ba102b_fd4a4215",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 7
@@ -189,6 +213,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09cd1268_5fabb3ef",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2375,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-01T18:10:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6122990a_aca30e7f",
+      "range": {
+        "startLine": 2375,
+        "startChar": 4,
+        "endLine": 2375,
+        "endChar": 24
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8671358e_98d68d6a",
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "I like this idea and can explore it in a follow up. It may be difficult because of `mOwner`. I\u0027ll probably have to redesign how non-owned data works. Since that is an internal API and only has a few callers, it might be reasonable to change, but I haven\u0027t put much thought into it.",
       "parentUuid": "8671358e_98d68d6a",
+      "range": {
+        "startLine": 2555,
+        "startChar": 8,
+        "endLine": 2555,
+        "endChar": 36
+      },
+      "revId": "006c96297eac227d91539acbdcb7273ff86e866d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d49137ef_1db75555",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2555,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-01T18:10:23Z",
+      "side": 1,
+      "message": "ack - though maybe after a while or if a need comes up as we want to focus more on crosvm/microdroid",
+      "parentUuid": "1a45c56b_ce5c8c6d",
       "range": {
         "startLine": 2555,
         "startChar": 8,
