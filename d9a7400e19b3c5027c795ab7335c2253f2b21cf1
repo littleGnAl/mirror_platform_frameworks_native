@@ -34,6 +34,24 @@
       "parentUuid": "b79863ba_d54fcca9",
       "revId": "d9a7400e19b3c5027c795ab7335c2253f2b21cf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d22bcb21_e3a92927",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-02T17:48:43Z",
+      "side": 1,
+      "message": "maybe could use a noinline attribute to avoid a mutable global. not a huge deal. maybe i\u0027ll try it and send a patch if it works",
+      "parentUuid": "808cb451_68aa94a6",
+      "revId": "d9a7400e19b3c5027c795ab7335c2253f2b21cf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
