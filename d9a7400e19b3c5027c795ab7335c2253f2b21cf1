@@ -16,6 +16,24 @@
       "message": "static const?",
       "revId": "d9a7400e19b3c5027c795ab7335c2253f2b21cf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808cb451_68aa94a6",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-02T17:41:42Z",
+      "side": 1,
+      "message": "see bug, it causes the compiler to optimize things out in a way that causes problems for the VNDK ABI. An alternative could be to switch libbinder to explicit visibility",
+      "parentUuid": "b79863ba_d54fcca9",
+      "revId": "d9a7400e19b3c5027c795ab7335c2253f2b21cf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
