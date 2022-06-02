@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b79863ba_d54fcca9",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-02T17:39:34Z",
+      "side": 1,
+      "message": "static const?",
+      "revId": "d9a7400e19b3c5027c795ab7335c2253f2b21cf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
