@@ -33,6 +33,23 @@
       "message": "Thanks",
       "revId": "7e36114e6a05524e5def928aaa211e62fe8118ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b2aff02_59dfdc71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-06-02T18:11:42Z",
+      "side": 1,
+      "message": "The flaky/failing test has nothing to do with this CL (only ANGLE can trigger the changed code)",
+      "revId": "7e36114e6a05524e5def928aaa211e62fe8118ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
