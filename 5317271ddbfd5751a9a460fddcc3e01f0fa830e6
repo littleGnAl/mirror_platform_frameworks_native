@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d688b7a_c46c5401",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-02T23:27:58Z",
+      "side": 1,
+      "message": "does the server make any allocations internally? I would think this would be racey, or are malloc counts per thread?",
+      "range": {
+        "startLine": 211,
+        "startChar": 37,
+        "endLine": 211,
+        "endChar": 41
+      },
+      "revId": "5317271ddbfd5751a9a460fddcc3e01f0fa830e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab17508_4142d5e9",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-02T23:27:58Z",
+      "side": 1,
+      "message": "btw - these are the most important things. Essentially everything else, the static setup cost, we probably can and will want to change (fine to leave them here, but no guarantee they\u0027ll stay).\n\nWhat are these mallocs?",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 26
+      },
+      "revId": "5317271ddbfd5751a9a460fddcc3e01f0fa830e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
