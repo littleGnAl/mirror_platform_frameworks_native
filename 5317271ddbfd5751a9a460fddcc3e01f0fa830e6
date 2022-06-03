@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad38825e_0d57f2ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-06-03T23:08:02Z",
+      "side": 1,
+      "message": "+1 to cool!",
+      "parentUuid": "36050ae5_84ae8bcd",
+      "revId": "5317271ddbfd5751a9a460fddcc3e01f0fa830e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d688b7a_c46c5401",
@@ -264,6 +282,30 @@
       "side": 1,
       "message": "+1 to optional\n\nif it turns out awkward, you can also pass a pointer to the function_ref and then check for nullptr",
       "parentUuid": "9ddf957c_218f7c67",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 26
+      },
+      "revId": "5317271ddbfd5751a9a460fddcc3e01f0fa830e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de199db2_466e8dba",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-06-03T23:08:02Z",
+      "side": 1,
+      "message": "I\u0027ll be having a deeper read on these subjects (std::function, std::optional) , I will say it\u0027s really interesting. Thanks for providing that link Frederick related to std::function.",
+      "parentUuid": "21ac05e9_3c1fc8b1",
       "range": {
         "startLine": 231,
         "startChar": 0,
