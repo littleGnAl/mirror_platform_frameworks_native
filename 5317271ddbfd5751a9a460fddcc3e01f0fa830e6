@@ -176,6 +176,30 @@
       },
       "revId": "5317271ddbfd5751a9a460fddcc3e01f0fa830e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "615ceda5_687f58cc",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-06-03T22:33:07Z",
+      "side": 1,
+      "message": "Nice suggestion Frederick!\nIt wasn\u0027t exactly 1:1 since there is no empty state for function_ref like there is for std::function so I had to add a `bool useAltPoll` to get the same functionality.\n\nI used defaults to make it a little easier, I forget where you stand on those 😊\n\naosp/2115298",
+      "parentUuid": "e1a47ea3_a763e28d",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 26
+      },
+      "revId": "5317271ddbfd5751a9a460fddcc3e01f0fa830e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
