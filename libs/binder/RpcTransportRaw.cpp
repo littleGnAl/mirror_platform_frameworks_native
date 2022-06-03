@@ -54,7 +54,9 @@ public:
     template <typename SendOrReceive>
     status_t interruptableReadOrWrite(FdTrigger* fdTrigger, iovec* iovs, int niovs,
                                       SendOrReceive sendOrReceiveFun, const char* funName,
-                                      int16_t event, const std::function<status_t()>& altPoll) {
+                                      int16_t event,
+                                      const android::base::function_ref<status_t()>& altPoll,
+                                      bool useAltPoll) {
         MAYBE_WAIT_IN_FLAKE_MODE;
 
         if (niovs < 0) {
@@ -128,7 +130,7 @@ public:
                 }
             }
 
-            if (altPoll) {
+            if (useAltPoll) {
                 if (status_t status = altPoll(); status != OK) return status;
                 if (fdTrigger->isTriggered()) {
                     return DEAD_OBJECT;
@@ -143,15 +145,17 @@ public:
     }
 
     status_t interruptableWriteFully(FdTrigger* fdTrigger, iovec* iovs, int niovs,
-                                     const std::function<status_t()>& altPoll) override {
+                                     const android::base::function_ref<status_t()>& altPoll,
+                                     bool useAltPoll) override {
         return interruptableReadOrWrite(fdTrigger, iovs, niovs, sendmsg, "sendmsg", POLLOUT,
-                                        altPoll);
+                                        altPoll, useAltPoll);
     }
 
     status_t interruptableReadFully(FdTrigger* fdTrigger, iovec* iovs, int niovs,
-                                    const std::function<status_t()>& altPoll) override {
-        return interruptableReadOrWrite(fdTrigger, iovs, niovs, recvmsg, "recvmsg", POLLIN,
-                                        altPoll);
+                                    const android::base::function_ref<status_t()>& altPoll,
+                                    bool useAltPoll) override {
+        return interruptableReadOrWrite(fdTrigger, iovs, niovs, recvmsg, "recvmsg", POLLIN, altPoll,
+                                        useAltPoll);
     }
 
 private:

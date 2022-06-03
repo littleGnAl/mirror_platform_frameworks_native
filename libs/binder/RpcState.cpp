@@ -311,7 +311,8 @@ RpcState::CommandData::CommandData(size_t size) : mSize(size) {
 
 status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
                            const sp<RpcSession>& session, const char* what, iovec* iovs, int niovs,
-                           const std::function<status_t()>& altPoll) {
+                           const android::base::function_ref<status_t()>& altPoll,
+                           bool useAltPoll) {
     for (int i = 0; i < niovs; i++) {
         LOG_RPC_DETAIL("Sending %s (part %d of %d) on RpcTransport %p: %s",
                        what, i + 1, niovs, connection->rpcTransport.get(),
@@ -320,7 +321,7 @@ status_t RpcState::rpcSend(const sp<RpcSession::RpcConnection>& connection,
 
     if (status_t status =
                 connection->rpcTransport->interruptableWriteFully(session->mShutdownTrigger.get(),
-                                                                  iovs, niovs, altPoll);
+                                                                  iovs, niovs, altPoll, useAltPoll);
         status != OK) {
         LOG_RPC_DETAIL("Failed to write %s (%d iovs) on RpcTransport %p, error: %s", what, niovs,
                        connection->rpcTransport.get(), statusToString(status).c_str());
@@ -335,7 +336,7 @@ status_t RpcState::rpcRec(const sp<RpcSession::RpcConnection>& connection,
                           const sp<RpcSession>& session, const char* what, iovec* iovs, int niovs) {
     if (status_t status =
                 connection->rpcTransport->interruptableReadFully(session->mShutdownTrigger.get(),
-                                                                 iovs, niovs, {});
+                                                                 iovs, niovs);
         status != OK) {
         LOG_RPC_DETAIL("Failed to read %s (%d iovs) on RpcTransport %p, error: %s", what, niovs,
                        connection->rpcTransport.get(), statusToString(status).c_str());
@@ -517,7 +518,7 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
     // Oneway calls have no sync point, so if many are sent before, whether this
     // is a twoway or oneway transaction, they may have filled up the socket.
     // So, make sure we drain them before polling.
-    std::function<status_t()> drainRefs = [&] {
+    android::base::function_ref<status_t()> drainRefs = [&] {
         if (waitUs > kWaitLogUs) {
             ALOGE("Cannot send command, trying to process pending refcounts. Waiting %zuus. Too "
                   "many oneway calls?",

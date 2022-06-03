@@ -178,9 +178,11 @@ private:
         size_t mSize;
     };
 
-    [[nodiscard]] status_t rpcSend(const sp<RpcSession::RpcConnection>& connection,
-                                   const sp<RpcSession>& session, const char* what, iovec* iovs,
-                                   int niovs, const std::function<status_t()>& altPoll = nullptr);
+    [[nodiscard]] status_t rpcSend(
+            const sp<RpcSession::RpcConnection>& connection, const sp<RpcSession>& session,
+            const char* what, iovec* iovs, int niovs,
+            const android::base::function_ref<status_t()>& altPoll = []() { return OK; },
+            bool useAltPoll = false);
     [[nodiscard]] status_t rpcRec(const sp<RpcSession::RpcConnection>& connection,
                                   const sp<RpcSession>& session, const char* what, iovec* iovs,
                                   int niovs);
