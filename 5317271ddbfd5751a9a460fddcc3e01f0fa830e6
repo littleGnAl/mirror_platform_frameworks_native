@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36050ae5_84ae8bcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-03T21:18:11Z",
+      "side": 1,
+      "message": "Cool!",
+      "parentUuid": "3c29ec2a_c96edcad",
+      "revId": "5317271ddbfd5751a9a460fddcc3e01f0fa830e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d688b7a_c46c5401",
@@ -102,6 +120,30 @@
       "side": 1,
       "message": "\u003e these are the most important things\nRight, they have to be removed due to the raceyness.\n\nThese mallocs are coming from operator new:\n48 bytes android::RpcState::transactAddress\n- std::function for drainRefs\n- RpcState.cpp:520\n\n40 bytes android::RpcState::processTransact\n- android::RpcState::CommandData::CommandData\n- RpcState.cpp:309\n\n16 bytes android::RpcState::processDecStrong\n- android::RpcState::CommandData::CommandData\n- RpcState.cpp:309\n\n4 bytes android::RpcState::waitForReply\n- android::RpcState::CommandData::CommandData\n- RpcState.cpp:309\n\nhttps://paste.googleplex.com/4728057937002496\n\nWhat\u0027s the command to get the callstack on device to print line numbers? Somehow I always forget to write it down.\nI used \u0027stack\u0027 to get these but it\u0027s cumbersome.",
       "parentUuid": "fab17508_4142d5e9",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 26
+      },
+      "revId": "5317271ddbfd5751a9a460fddcc3e01f0fa830e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "057436df_f6ed7f94",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-03T21:18:11Z",
+      "side": 1,
+      "message": "The std::function allocation is probably easy to get rid of. std::function is often discouraged (e.g. go/totw/191). Looks like android has a `android::base::function_ref` type that might be relevant.",
+      "parentUuid": "73de1008_857fe5a8",
       "range": {
         "startLine": 231,
         "startChar": 0,
