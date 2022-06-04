@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4036c7c_c60eb761",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-06-04T00:51:57Z",
+      "side": 1,
+      "message": "fails due to\n\nframeworks/native/services/gpuservice/gpumem/include/gpumem/GpuMem.h:52:48: note: default constructor of \u0027GpuMem\u0027 is implicitly deleted because field \u0027mGpuMemTotalMap\u0027 has no default constructor\n\nso need to add BpfMapRO default constructor.  Hmm.",
+      "revId": "e1f9b2d4fe7706208aad8e4fe6d41c60e41ef61e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
