@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1afea4b_0053040f",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-04T01:23:12Z",
+      "side": 1,
+      "message": "Yeah, in this case we are repeating what is done in the kernel. It would be nice if we could query it for support (especially for setupPreconnectedClient).\n\nI think it would be nice to fail fast to aid debugging. OTOH, I feel that it is unlikely that someone is going to misconfigure the server in this way, so I\u0027d be up for dropping the checks.\n\nI\u0027d guess the main failure mode is that someone forgets to enable FDs and then tries to use them. That seems non-trivial to check upfront (maybe inspect the AIDL interfaces and fail if they can possibly use FDs).",
+      "parentUuid": "6f44e4e3_2db5b073",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 5
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ffc93e9_0bacfd9a",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 7
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "+1 - minimize API exposed.",
       "parentUuid": "a2d42fc1_22a040dc",
+      "range": {
+        "startLine": 105,
+        "startChar": 35,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e09460af_b9a986eb",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-04T01:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309d5c44_b0827026",
       "range": {
         "startLine": 105,
         "startChar": 35,
@@ -260,6 +308,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ae2a9d_4dec72fb",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-04T01:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee1c1b64_7148f0ee",
+      "range": {
+        "startLine": 122,
+        "startChar": 18,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d1ce51f_801ad16b",
@@ -273,6 +345,30 @@
       "writtenOn": "2022-05-20T01:01:18Z",
       "side": 1,
       "message": "is there a way to avoid allocations? (noting specifically this vector is a different type than Parcel)",
+      "range": {
+        "startLine": 71,
+        "startChar": 46,
+        "endLine": 71,
+        "endChar": 57
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb6b95f_864290db",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-04T01:23:12Z",
+      "side": 1,
+      "message": "Merged this method into `interruptableWriteFully` so we don\u0027t need the intermediary buffer to accumulate things.\n\nThere is still an intermediary buffer in `RpcTransportRaw::interruptableWriteFully` unfortunately. The final destination is the `CMSG_DATA` buffer. There are warnings about that buffer possibly being unaligned, so you are suppose to `memcpy` an `int[]` into it instead of reinterpret casting. However, I\u0027m not storing an `int` array in `Parcel`, so I need to convert first.\n\nThere is a smallish max for the number of FDs, so I\u0027m using a fixed sized stack array (~1KiB) to avoid the heap allocation. Do we need to be careful about overflowing the stack in android system libraries?",
+      "parentUuid": "7d1ce51f_801ad16b",
       "range": {
         "startLine": 71,
         "startChar": 46,
