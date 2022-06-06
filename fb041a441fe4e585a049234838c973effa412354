@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535de992_1be0a629",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-06T20:23:53Z",
+      "side": 1,
+      "message": "these will always be nullptr/0 given uninitialized L497? (should there be a note here - I\u0027m guessing it is changed in the next CL?)",
+      "range": {
+        "startLine": 498,
+        "startChar": 43,
+        "endLine": 498,
+        "endChar": 83
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf1ee4f_ad5fd3d4",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-06T20:23:53Z",
+      "side": 1,
+      "message": "is it possible to always use the same memory layout, regardless of the version used? For instance, always allocating the larger structure? It seems, the risk here, if the version gets out of sync, then memory will get corrupted. I agree the version shouldn\u0027t change, but it seems like it\u0027s a pretty risky thing that could change in the future.",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 45
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bd228ba_db61c13b",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-06T20:23:53Z",
+      "side": 1,
+      "message": "nit: curious, would this code be simpler if:\n\nstruct RpcWireReplyV0 { int32_t a; int32_t b; };\nstruct RpcWireReplyV1 { RpcWireReplyV0 hdr; int32_t c; };\n\n...\n\nThis code seems to work, but all the logic/counting is changing (the common substructure between the two protocols is not encoded in the type system at the struct layer). This isn\u0027t inherently better, but I\u0027m wondering what alternatives you considered. C++23 style is also OK :)",
+      "range": {
+        "startLine": 614,
+        "startChar": 37,
+        "endLine": 615,
+        "endChar": 59
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d05382_a2ae95a4",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-06T20:23:53Z",
+      "side": 1,
+      "message": "This class seems small and useful, but I\u0027m wondering, is there a reason std::span is no good?",
+      "range": {
+        "startLine": 43,
+        "startChar": 32,
+        "endLine": 43,
+        "endChar": 53
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98679bb_e6e112c4",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-06T20:23:53Z",
+      "side": 1,
+      "message": "so cool!",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07231ed7_8d6e1060",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-06T20:23:53Z",
+      "side": 1,
+      "message": "is this intentionally not an error?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
