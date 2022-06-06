@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ad552ec_1cec7e62",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-06T23:17:22Z",
+      "side": 1,
+      "message": "Are you thinking of `gMaxFds`?\n\nThis TODO is for checking the transport specific FD limit (~230 for unix sockets).\n\nThat said, I hate having to check it in all these different parcel functions. A new idea occurs to me. Maybe we could check it in `RpcSession::transact` instead. `Parcel` could be ignorant of the FD limit. We could also move the \"are FDs allowed\" check there.",
+      "parentUuid": "b68d87a1_157d30c9",
+      "range": {
+        "startLine": 576,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 40
+      },
+      "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6542a163_b32c13a3",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 16
@@ -77,6 +101,30 @@
       "writtenOn": "2022-06-06T20:33:02Z",
       "side": 1,
       "message": "nit: if I may make a suggestion, consider:\n\n    struct Obj {\n        uint32_t position;\n        std::variant\u003cstd::monostate, base::unique_fd, base::borrowed_fd\u003e fds;\n    };\n    std::vector\u003cObj\u003e mObjs;\n\nbecause:\n- saves two steady-state allocations (for mObjectPositions + box) + allocations from mFds (mObjs in suggestion should be resized with exactly the allocations of mObjectPositions before)\n- it also encodes object position of FD at the cost of slightly more memory for a binder object\n\nnot sure what you think though or if I\u0027m missing something else.",
+      "range": {
+        "startLine": 1290,
+        "startChar": 0,
+        "endLine": 1295,
+        "endChar": 92
+      },
+      "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa02a445_271951de",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-06T23:17:22Z",
+      "side": 1,
+      "message": "when we send the parcel over a socket, we have to write the positions as an array in the data stream and the fds as an array in the ancillary data\n\nif we manage the data inside Parcel like that, then we need to sort of \"unzip\" the data when writing and \"zip\" the data when reading. \"unzip\" will require at least one allocation i think. the \"zip\" part is trickier than it looks at first glance (i think we\u0027ll have to scan the objects in the parcel data to figure out which FDs go into which slots)\n\nmaybe that is worth the effort, but i\u0027m leaning towards keeping things simple to start with and then following up with some optimizations if we have a good benchmark or optimization target\n\n\nmisc related thoughts below:\n\n---\n\nalso, i\u0027m not doing it now, but `mObjectPositions` could potentially point directly to the `CommandData` buffer in the `rpcSetDataReference` path, as is done for `mObjects` in `ipcSetDataReference`\n\n--\n\ndreams for this code: something like std::vector, but\n\n* failable allocations\n* can point to unowned memory\n* pair\u003cvector, vector\u003e packed into one allocation (maybe one grows up and other grows down or maybe both get 1/2 capacity)\n\n---\n\nwhile thinking about that, i realized we could consider an alternative data format for FDs. we could write just a tag with no index. then, the object position would be used to lookup the FD. that would lock us into using a memory representation like you suggest though. probably not worth the 4 bytes",
+      "parentUuid": "9462b314_452e6b34",
       "range": {
         "startLine": 1290,
         "startChar": 0,
