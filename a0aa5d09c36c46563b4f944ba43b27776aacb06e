@@ -16,6 +16,98 @@
       "message": "Quick update: Still working on this. Main work to be done is adding test coverage.\n\nI split a good chunk out into a parent CL.",
       "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b68d87a1_157d30c9",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-06T20:33:02Z",
+      "side": 1,
+      "message": "not sure if you\u0027re on the other thread (on the Trusty CL), but we should remove all the related code here. It\u0027s not really useful.",
+      "range": {
+        "startLine": 576,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 40
+      },
+      "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6542a163_b32c13a3",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-06T20:33:02Z",
+      "side": 1,
+      "message": "nit: friendly reminder",
+      "range": {
+        "startLine": 688,
+        "startChar": 3,
+        "endLine": 688,
+        "endChar": 16
+      },
+      "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9462b314_452e6b34",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-06T20:33:02Z",
+      "side": 1,
+      "message": "nit: if I may make a suggestion, consider:\n\n    struct Obj {\n        uint32_t position;\n        std::variant\u003cstd::monostate, base::unique_fd, base::borrowed_fd\u003e fds;\n    };\n    std::vector\u003cObj\u003e mObjs;\n\nbecause:\n- saves two steady-state allocations (for mObjectPositions + box) + allocations from mFds (mObjs in suggestion should be resized with exactly the allocations of mObjectPositions before)\n- it also encodes object position of FD at the cost of slightly more memory for a binder object\n\nnot sure what you think though or if I\u0027m missing something else.",
+      "range": {
+        "startLine": 1290,
+        "startChar": 0,
+        "endLine": 1295,
+        "endChar": 92
+      },
+      "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22bf8e10_93ac7895",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-06T20:33:02Z",
+      "side": 1,
+      "message": "will a server/client detect if one sets up the wrong one? for instance, would it be useful to include it as an option in RpcConnectionHeader?",
+      "range": {
+        "startLine": 98,
+        "startChar": 15,
+        "endLine": 98,
+        "endChar": 42
+      },
+      "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
