@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3acf92f9_a2d5925b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-06-06T20:00:53Z",
+      "side": 1,
+      "message": "Looks like it\u0027s because I was using a temporary lambda for the function_ref.\nhttps://source.corp.google.com/android/system/libbase/include/android-base/function_ref.h;rcl\u003d8b536e0451f2dcdaed16a6e56a7fab1e4942e4af;l\u003d70\n\nCreating another variable to hold the lambda first fixed the issues. Patchset 4.\nPatchset 5 removes the extra variable since it\u0027s only used inside the rpcSendfunction().\n\nLooks like we may be able to use lamba types all the way down instead of std::function or function_ref like:\nhttps://stackoverflow.com/questions/6458612/proper-way-to-receive-a-lambda-as-parameter-by-reference\n\nNot sure if it\u0027s worth making those changes. Any opinions?",
+      "parentUuid": "4c44ac0e_49b796df",
+      "revId": "67a17d4aa5143584ce030c9a790e366249f8b9cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9234e20_ef9c26ce",
