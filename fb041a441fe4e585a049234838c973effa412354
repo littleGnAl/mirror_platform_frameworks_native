@@ -93,6 +93,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cfb7bb4_6884d25d",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-06T20:49:29Z",
+      "side": 1,
+      "message": "Is Android on C++20 or still on 17? Afaik span was introduced in 20.",
+      "parentUuid": "94d05382_a2ae95a4",
+      "range": {
+        "startLine": 43,
+        "startChar": 32,
+        "endLine": 43,
+        "endChar": 53
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a98679bb_e6e112c4",
