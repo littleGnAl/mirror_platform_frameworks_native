@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4cfc7f5c_33e7f74b",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-06T22:23:13Z",
+      "side": 1,
+      "message": "i do agree this feels dangerous and also just generally more complex than i like\n\nusing one memory layout for the header seems doable if we stop using the \"struct hack\". at first glance, it seems like we could stack allocate the Reply header (using a separate iovec to decide how much of it to fill) and the CommmandData would only contain the parcel data (and object table). then, this code could just delete the `data` pointer without any pointer arithmetic\n\ni\u0027ll scout that out. did you happen to notice any perf issues with having more iovecs when you wrote this originally?",
+      "parentUuid": "2cf1ee4f_ad5fd3d4",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 45
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bd228ba_db61c13b",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 9
@@ -117,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3744de_39361874",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-06T22:23:13Z",
+      "side": 1,
+      "message": "It is still on 17, but we can bump it to 20 for libbinder I think http://cs/android-internal/build/soong/cc/config/global.go;l\u003d281;rcl\u003d4236986f0a2db76902bb08b3c25b533df3ddb835 (it is still being referred to as 2a internally, which makes me a bit nervous)\n\nSince it is so simple, I figured I\u0027d just make a tiny local analogue and then we can move to it later. I\u0027m happy to give the version upgrade a try though",
+      "parentUuid": "3cfb7bb4_6884d25d",
+      "range": {
+        "startLine": 43,
+        "startChar": 32,
+        "endLine": 43,
+        "endChar": 53
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a98679bb_e6e112c4",
@@ -153,6 +201,30 @@
       "writtenOn": "2022-06-06T20:23:53Z",
       "side": 1,
       "message": "is this intentionally not an error?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "214ec94e_ed459a0f",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-06T22:23:13Z",
+      "side": 1,
+      "message": "i was using Haskell\u0027s [take](https://hackage.haskell.org/package/base-4.16.1.0/docs/Prelude.html#v:take) as inspiration, but maybe Rust\u0027s [split_at](https://doc.rust-lang.org/std/primitive.slice.html#method.split_at) is a better fit. i\u0027ll make it an error. i\u0027ll also steal that name",
+      "parentUuid": "07231ed7_8d6e1060",
       "range": {
         "startLine": 56,
         "startChar": 0,
