@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c44ac0e_49b796df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-06-06T18:50:09Z",
+      "side": 1,
+      "message": "There\u0027s still something wrong with the function_ref. It looks like it\u0027s not capturing the variables correctly. \nSeeing unexpected waitUs values and crashes in drainCommands when derefing connection.\n",
+      "revId": "67a17d4aa5143584ce030c9a790e366249f8b9cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9234e20_ef9c26ce",
@@ -24,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6de1e41_f008e8d1",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-06-06T18:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9234e20_ef9c26ce",
+      "range": {
+        "startLine": 186,
+        "startChar": 52,
+        "endLine": 186,
+        "endChar": 62
+      },
+      "revId": "67a17d4aa5143584ce030c9a790e366249f8b9cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbd0f4ae_4d9d210b",
@@ -37,6 +78,30 @@
       "writtenOn": "2022-06-03T23:30:08Z",
       "side": 1,
       "message": "function_ref?",
+      "range": {
+        "startLine": 202,
+        "startChar": 44,
+        "endLine": 202,
+        "endChar": 57
+      },
+      "revId": "67a17d4aa5143584ce030c9a790e366249f8b9cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c569fa28_e183ca75",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-06-06T18:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbd0f4ae_4d9d210b",
       "range": {
         "startLine": 202,
         "startChar": 44,
