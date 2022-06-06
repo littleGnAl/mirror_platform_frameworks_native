@@ -76,6 +76,7 @@ std::string Status::exceptionToString(int32_t exceptionCode) {
         EXCEPTION_TO_CASE(EX_UNSUPPORTED_OPERATION)
         EXCEPTION_TO_CASE(EX_SERVICE_SPECIFIC)
         EXCEPTION_TO_CASE(EX_PARCELABLE)
+        EXCEPTION_TO_CASE(EX_HAS_APPOPS_REPLY_HEADER)
         EXCEPTION_TO_CASE(EX_HAS_REPLY_HEADER)
         EXCEPTION_TO_CASE(EX_TRANSACTION_FAILED)
         #undef EXCEPTION_TO_CASE
@@ -99,8 +100,12 @@ status_t Status::readFromParcel(const Parcel& parcel) {
         return status;
     }
 
+    if (mException == EX_HAS_APPOPS_REPLY_HEADER) {
+        ALOGE("asdfasdf appops reply header %d", mException);
+    }
+
     // Skip over fat response headers.  Not used (or propagated) in native code.
-    if (mException == EX_HAS_REPLY_HEADER) {
+    if (mException == EX_HAS_REPLY_HEADER || mException == EX_HAS_APPOPS_REPLY_HEADER) {
         // Note that the header size includes the 4 byte size field.
         const size_t header_start = parcel.dataPosition();
         // Get available size before reading more

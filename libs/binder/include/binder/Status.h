@@ -67,6 +67,8 @@ public:
         EX_PARCELABLE = -9,
 
         // This is special and Java specific; see Parcel.java.
+        EX_HAS_APPOPS_REPLY_HEADER = -127,
+        // This is special and Java specific; see Parcel.java.
         EX_HAS_REPLY_HEADER = -128,
         // This is special, and indicates to C++ binder proxies that the
         // transaction has failed at a low level.
