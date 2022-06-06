@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66bb2154_8caf45ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-06T20:50:31Z",
+      "side": 1,
+      "message": "Ah, I missed this comment. Yeah you should think of `function_ref` as a pointer, so you need to make sure the function lives long enough.\n\n\u003e Not sure if it\u0027s worth making those changes. Any opinions?\n\nThe template approach can be more performant because it avoids the extra indirection inside function_ref and it can potentially inline the lambda all the way. OTOH, it might result in larger binaries.\n\nAlso, RpcTransport uses virtual methods and those don\u0027t play nice with templates, so there might be some non-trivial refactoring required.",
+      "parentUuid": "3acf92f9_a2d5925b",
+      "revId": "67a17d4aa5143584ce030c9a790e366249f8b9cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9234e20_ef9c26ce",
