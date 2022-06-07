@@ -69,6 +69,8 @@ libbinder_device_interface_sources = [
 cc_library {
     name: "libbinder",
 
+    cpp_std: "c++2a", // C++20.
+
     version_script: "libbinder.map",
 
     // for vndbinder
