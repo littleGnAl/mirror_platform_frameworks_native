@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df125271_c0ae1d9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-07T19:55:09Z",
+      "side": 1,
+      "message": "(I\u0027ll only submit this when/if https://r.android.com/c/2108630/12 is approved)",
+      "revId": "70a5b4016e315668b14db87c691a6287fcef90df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
