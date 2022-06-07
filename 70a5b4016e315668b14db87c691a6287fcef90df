@@ -33,6 +33,24 @@
       "message": "nice!",
       "revId": "70a5b4016e315668b14db87c691a6287fcef90df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3252621_5e54b32f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-07T19:57:18Z",
+      "side": 1,
+      "message": "I think it\u0027s a good change regardless",
+      "parentUuid": "df125271_c0ae1d9c",
+      "revId": "70a5b4016e315668b14db87c691a6287fcef90df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
