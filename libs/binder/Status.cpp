@@ -138,6 +138,8 @@ status_t Status::readFromParcel(const Parcel& parcel) {
     }
     mMessage = String8(message.value_or(String16()));
 
+    // Get available size before reading more
+    const size_t remote_avail = parcel.dataAvail();
     // Skip over the remote stack trace data
     int32_t remote_stack_trace_header_size;
     status = parcel.readInt32(&remote_stack_trace_header_size);
@@ -146,7 +148,7 @@ status_t Status::readFromParcel(const Parcel& parcel) {
         return status;
     }
     if (remote_stack_trace_header_size < 0 ||
-        static_cast<size_t>(remote_stack_trace_header_size) > parcel.dataAvail()) {
+        static_cast<size_t>(remote_stack_trace_header_size) > remote_avail) {
 
         android_errorWriteLog(0x534e4554, "132650049");
         setFromStatusT(UNKNOWN_ERROR);
