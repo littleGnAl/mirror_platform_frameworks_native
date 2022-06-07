@@ -34,6 +34,24 @@
       "parentUuid": "0d7037ad_481cdf02",
       "revId": "cf2720d460d321d5ba60e1d1461d6b04a9276c3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88659965_4727ba69",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-07T17:39:02Z",
+      "side": 1,
+      "message": "\u003e I\u0027d personally rather consider trying to move the whole implementation to rust instead\n\nThat would be nice, would it be all/most of libbinder, Parcel or just these structures? It would be a lot of effort to extend libbinder_rs to include everything, but interfacing with C++ is also a pain if you\u0027re doing bits and pieces (libbinder_rs uses bindgen but it only covers libbinder_ndk\u0027s C-like APIs).\n\n\u003e also, if you are literally rebasing ontop of this particular CL, be warned that there is likely churn to come\n\nNo, just the already-merged CLs, but that\u0027s a good point. Thanks!\n\n\u003e Open to ideas though, especially if you see any easy incremental wins.\n\nMy (half-baked) idea was to have something like an IPCParcel and RpcParcel (or we could just use KernelFields and RpcFields) and e.g. for flattenBinder implement IPCParcel::flattenBinder and RpcParcel::flattenBinder separately, then have Parcel::flattenBinder just call the correct one (either via virtual functions or directly with an if).",
+      "parentUuid": "d8784a19_e133008d",
+      "revId": "cf2720d460d321d5ba60e1d1461d6b04a9276c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
