@@ -360,6 +360,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "392c2df5_b2a4370b",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-07T20:50:37Z",
+      "side": 1,
+      "message": "This is probably irrelevant now, but in case it sheds weird light on behavior you might have seen: I noticed the iovecs are actually already asymmetric\n\n* sending a reply uses 1 iovec for the RpcWireReply and 1 iovec for the parcel data ([code](http://cs/android-internal/frameworks/native/libs/binder/RpcState.cpp;l\u003d522-523;rcl\u003dc3899122de2fd854fc553a770c878259c125a2ef))\n* recving a reply uses 1 iovec for both ([code](http://cs/android-internal/frameworks/native/libs/binder/RpcState.cpp;l\u003d591;rcl\u003dc3899122de2fd854fc553a770c878259c125a2ef))\n\n(noticed in https://r.android.com/2118587 where we are about to make this more symmetric, but only temporarily, before the main FD CL lands)",
+      "parentUuid": "6d0509f0_0f8209da",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adfe0502_bf75efa4",
         "filename": "libs/binder/RpcTransportTrusty.cpp",
         "patchSetId": 2
