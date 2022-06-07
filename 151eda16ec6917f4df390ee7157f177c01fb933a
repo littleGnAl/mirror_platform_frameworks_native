@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6789e179_76590b79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-07T00:51:07Z",
+      "side": 1,
+      "message": "abandoned because libc++ is a bit a old, so the new c++20 features, like std::span, have slightly wrong APIs. better to wait",
+      "revId": "151eda16ec6917f4df390ee7157f177c01fb933a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
