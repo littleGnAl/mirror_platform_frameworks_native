@@ -384,6 +384,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4874b573_d7924d01",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-07T20:52:19Z",
+      "side": 1,
+      "message": "(whoops, first code link should have been [code](http://cs/android-internal/frameworks/native/libs/binder/RpcState.cpp;l\u003d952-953;rcl\u003dc3899122de2fd854fc553a770c878259c125a2ef))",
+      "parentUuid": "392c2df5_b2a4370b",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adfe0502_bf75efa4",
         "filename": "libs/binder/RpcTransportTrusty.cpp",
         "patchSetId": 2
