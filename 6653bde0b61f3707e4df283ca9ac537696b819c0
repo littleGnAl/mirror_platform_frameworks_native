@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e478c38e_f9a7544d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-07T22:50:26Z",
+      "side": 1,
+      "message": "The failing test is flaky, and it appears to be an incorrect result (not an error), so giving it another spin.",
+      "revId": "6653bde0b61f3707e4df283ca9ac537696b819c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
