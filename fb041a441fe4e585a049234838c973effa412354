@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6c814eb_30b64f86",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-07T23:48:06Z",
+      "side": 1,
+      "message": "yeah - that sounds great. Originally we didn\u0027t have iovecs",
+      "parentUuid": "4cfc7f5c_33e7f74b",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 45
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bd228ba_db61c13b",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 9
@@ -249,6 +273,30 @@
       "side": 1,
       "message": "i was using Haskell\u0027s [take](https://hackage.haskell.org/package/base-4.16.1.0/docs/Prelude.html#v:take) as inspiration, but maybe Rust\u0027s [split_at](https://doc.rust-lang.org/std/primitive.slice.html#method.split_at) is a better fit. i\u0027ll make it an error. i\u0027ll also steal that name",
       "parentUuid": "07231ed7_8d6e1060",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c2ed4e_b6cc0364",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-07T23:48:06Z",
+      "side": 1,
+      "message": "Thanks! (the error only means more explicit and complicated client code - though if we don\u0027t have a specific reason this simplifies code, prefer explicit!)",
+      "parentUuid": "214ec94e_ed459a0f",
       "range": {
         "startLine": 56,
         "startChar": 0,
