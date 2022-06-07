@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d7037ad_481cdf02",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-07T04:08:51Z",
+      "side": 1,
+      "message": "While rebasing my work on top of this, I started wondering: could we move some of the kernel-specific operations from Parcel.cpp (basically everything I had to comment out in aosp/2084054) into methods of this class, and maybe move them to a separate file? Getting rid of most of those #ifdef\u0027s would make the code a lot less ugly.",
+      "revId": "cf2720d460d321d5ba60e1d1461d6b04a9276c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
