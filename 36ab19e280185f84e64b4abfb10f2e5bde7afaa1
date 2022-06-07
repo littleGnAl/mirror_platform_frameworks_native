@@ -52,6 +52,24 @@
       "parentUuid": "eab1f4e6_a0391c4a",
       "revId": "36ab19e280185f84e64b4abfb10f2e5bde7afaa1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dedef2b3_518786a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-07T19:17:37Z",
+      "side": 1,
+      "message": "-\u003e https://android-review.googlesource.com/c/platform/system/tools/aidl/+/2118786\n\nand very good call - this also exposed that there was a further issue with EX_SERVICE_SPECIFIC and EX_PARCELABLE.",
+      "parentUuid": "151cbc10_8afce087",
+      "revId": "36ab19e280185f84e64b4abfb10f2e5bde7afaa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
