@@ -34,6 +34,24 @@
       "parentUuid": "8a4128fa_f761ced9",
       "revId": "36ab19e280185f84e64b4abfb10f2e5bde7afaa1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "151cbc10_8afce087",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-07T18:02:27Z",
+      "side": 1,
+      "message": "Yes - it is. Though it requires native and Java code. I will add one to aidl_integration_test.",
+      "parentUuid": "eab1f4e6_a0391c4a",
+      "revId": "36ab19e280185f84e64b4abfb10f2e5bde7afaa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
