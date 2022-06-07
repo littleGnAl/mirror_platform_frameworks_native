@@ -16,6 +16,24 @@
       "message": "While rebasing my work on top of this, I started wondering: could we move some of the kernel-specific operations from Parcel.cpp (basically everything I had to comment out in aosp/2084054) into methods of this class, and maybe move them to a separate file? Getting rid of most of those #ifdef\u0027s would make the code a lot less ugly.",
       "revId": "cf2720d460d321d5ba60e1d1461d6b04a9276c3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8784a19_e133008d",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-07T17:27:25Z",
+      "side": 1,
+      "message": "Steven and I had a similar discussion. I think it is a good idea, but a lot of work to  get right, maybe enough that, if we decided the cleanup was worth it, I\u0027d personally rather consider trying to move the whole implementation to rust instead. Open to ideas though, especially if you see any easy incremental wins.\n\nI\u0027m thinking of the current split mostly adding some guard rails to keep us from tripping up as more rpc-specific code is added (+ allowing a different memory layout for rpc fields).\n\n\n(also, if you are literally rebasing ontop of this particular CL, be warned that there is likely churn to come)",
+      "parentUuid": "0d7037ad_481cdf02",
+      "revId": "cf2720d460d321d5ba60e1d1461d6b04a9276c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
