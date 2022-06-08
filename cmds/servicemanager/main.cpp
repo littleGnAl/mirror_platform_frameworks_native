@@ -111,15 +111,15 @@ private:
 };
 
 int main(int argc, char** argv) {
-#ifdef __ANDROID_RECOVERY__
     android::base::InitLogging(argv, android::base::KernelLogger);
-#endif
 
     if (argc > 2) {
         LOG(FATAL) << "usage: " << argv[0] << " [binder driver]";
     }
 
     const char* driver = argc == 2 ? argv[1] : "/dev/binder";
+
+    LOG(INFO) << "servicemanager is starting on " << driver;
 
     sp<ProcessState> ps = ProcessState::initWithDriver(driver);
     ps->setThreadPoolMaxThreadCount(0);
