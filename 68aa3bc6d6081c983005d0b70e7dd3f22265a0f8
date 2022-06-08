@@ -16,6 +16,24 @@
       "message": "inadvertently saved an allocated here. i think it only helps with functions that have void returns though\n\nalso, i move `on_malloc` into a new scope. the test told me there were now 2 allocations for a total of ~4000 bytes and i was puzzled for a while about how i made the allocations bigger. turns out the first failed EXPECT (on `mallocs`) was performing lots of allocations unrelated to libbinder",
       "revId": "68aa3bc6d6081c983005d0b70e7dd3f22265a0f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe73316_840ba694",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-08T23:27:58Z",
+      "side": 1,
+      "message": "nice - whoever touches this file next should do the same to the other tests\n\nif it\u0027s useful - in the future, abort on a bad malloc in OnMalloc to get the stacktrace immediately or use libutilscallstack (little more complicated setup) to get it without an abort.",
+      "parentUuid": "8cff7bcb_06fccfdb",
+      "revId": "68aa3bc6d6081c983005d0b70e7dd3f22265a0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
