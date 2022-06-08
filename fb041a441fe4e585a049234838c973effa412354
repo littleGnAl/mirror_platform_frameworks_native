@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d9296e8_cc22a196",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-08T23:06:41Z",
+      "side": 1,
+      "message": "yeah. added a note. i split this CL from the other one for easier reviewing and this was the somewhat arbitrary seam i picked to break it up",
+      "parentUuid": "535de992_1be0a629",
+      "range": {
+        "startLine": 498,
+        "startChar": 43,
+        "endLine": 498,
+        "endChar": 83
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cf1ee4f_ad5fd3d4",
@@ -95,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4541121_30419101",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-08T23:06:41Z",
+      "side": 1,
+      "message": "Done\n\nI think new the code is overall better. Need to be careful about not using `sizeof(RpcWireReply)` though. Since there are just two spots using it, I think it is plenty safe.",
+      "parentUuid": "c6c814eb_30b64f86",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 45
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bd228ba_db61c13b",
@@ -108,6 +156,30 @@
       "writtenOn": "2022-06-06T20:23:53Z",
       "side": 1,
       "message": "nit: curious, would this code be simpler if:\n\nstruct RpcWireReplyV0 { int32_t a; int32_t b; };\nstruct RpcWireReplyV1 { RpcWireReplyV0 hdr; int32_t c; };\n\n...\n\nThis code seems to work, but all the logic/counting is changing (the common substructure between the two protocols is not encoded in the type system at the struct layer). This isn\u0027t inherently better, but I\u0027m wondering what alternatives you considered. C++23 style is also OK :)",
+      "range": {
+        "startLine": 614,
+        "startChar": 37,
+        "endLine": 615,
+        "endChar": 59
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e72bcf_03e8090e",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-08T23:06:41Z",
+      "side": 1,
+      "message": "Based on the other suggestion, there is just `RpcWireReply` now and a bit of logic to make sure we only read/write the correct number of bytes for the version.\n\nIf we want more type safety, then I\u0027m thinking of something like\n\n```\nstruct RpcWireReply {\n  int32_t a;\n  \n  struct V1Only {\n    int32 b;\n  };\n  V1Only v1Only;\n};\n```\n\nso that there is a visual indicator when you are accessing a field that may not be transmitted. However, I\u0027m thinking it isn\u0027t necessary since the code is well centralized.",
+      "parentUuid": "1bd228ba_db61c13b",
       "range": {
         "startLine": 614,
         "startChar": 37,
@@ -297,6 +369,30 @@
       "side": 1,
       "message": "Thanks! (the error only means more explicit and complicated client code - though if we don\u0027t have a specific reason this simplifies code, prefer explicit!)",
       "parentUuid": "214ec94e_ed459a0f",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b5df1e8_01e6d274",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-08T23:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4c2ed4e_b6cc0364",
       "range": {
         "startLine": 56,
         "startChar": 0,

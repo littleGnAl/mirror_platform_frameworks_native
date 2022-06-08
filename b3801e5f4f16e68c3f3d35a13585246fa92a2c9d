@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a6aea9_f9032167",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-08T23:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1978759f_6eedfb27",
+      "revId": "b3801e5f4f16e68c3f3d35a13585246fa92a2c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a61fc28b_97d1692d",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-07T23:50:04Z",
       "side": 1,
       "message": "Consider \u0027CHECK_EQ\u0027 or \u0027LOG_ALWAYS_FATAL_IF\u0027 to guarantee invariant (comment can be wrong)",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 70
+      },
+      "revId": "b3801e5f4f16e68c3f3d35a13585246fa92a2c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d59eb62d_7c3b5adf",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-08T23:06:41Z",
+      "side": 1,
+      "message": "I must have been tired, the code was backwards. Fixed it and now this comment is irrelevant. The new unit test changes cover this now.",
+      "parentUuid": "a61fc28b_97d1692d",
       "range": {
         "startLine": 623,
         "startChar": 0,
