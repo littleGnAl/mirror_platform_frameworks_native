@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c61e64_88e83da6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-06-08T23:42:59Z",
+      "side": 1,
+      "message": "Do we want to only show this when someone tries to use HAL supplied categories, or show it for everyone?",
+      "revId": "64c81d9be9563ae5bf77234285f1edb7c3caa8b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
