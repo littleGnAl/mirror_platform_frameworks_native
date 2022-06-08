@@ -16,6 +16,52 @@
       "message": "The failing test is flaky, and it appears to be an incorrect result (not an error), so giving it another spin.",
       "revId": "6653bde0b61f3707e4df283ca9ac537696b819c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36fe57d5_c5a57870",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-06-08T07:19:03Z",
+      "side": 1,
+      "message": "Does this include the size of the size field (4byte) itself?",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 58
+      },
+      "revId": "6653bde0b61f3707e4df283ca9ac537696b819c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00637edd_a230caba",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-06-08T07:19:03Z",
+      "side": 1,
+      "message": "I see that this and the (modified) above are identical, so this CL should be fine, but I really don\u0027t understand the exact layout of the parcel. So +1.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 59
+      },
+      "revId": "6653bde0b61f3707e4df283ca9ac537696b819c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
