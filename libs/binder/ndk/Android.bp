@@ -32,6 +32,13 @@ license {
     ],
 }
 
+libbinder_ndk_lib_deps = [
+    "libandroid_runtime_lazy",
+    "libbase",
+    "libbinder",
+    "libutils",
+]
+
 cc_library {
     name: "libbinder_ndk",
 
@@ -65,13 +72,6 @@ cc_library {
         "service_manager.cpp",
     ],
 
-    shared_libs: [
-        "libandroid_runtime_lazy",
-        "libbase",
-        "libbinder",
-        "libutils",
-    ],
-
     header_libs: [
         "jni_headers",
     ],
@@ -85,6 +85,17 @@ cc_library {
             static: {
                 enabled: false,
             },
+            shared_libs: libbinder_ndk_lib_deps,
+        },
+        host: {
+            // Make libbinder_ndk available on host to allow compiling host unit
+            // tests of code that implement binder interfaces. Link dependencies
+            // statically to get a standalone library that can be used as a prebuilt.
+            static_libs: libbinder_ndk_lib_deps + [
+                // Transitive dependencies
+                "libcutils",
+                "liblog",
+            ],
         },
         linux: {
             version_script: "libbinder_ndk.map.txt",
