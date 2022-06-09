@@ -20,6 +20,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdfbc0e0_ea26b4af",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T18:30:12Z",
+      "side": 1,
+      "message": "Note: if too many FDs are requested by a writer, it\u0027s okay for it to be an error (or even crash the client). This is different than below.",
+      "range": {
+        "startLine": 1438,
+        "startChar": 0,
+        "endLine": 1438,
+        "endChar": 75
+      },
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83fc3c44_1c455d86",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2159,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T18:30:12Z",
+      "side": 1,
+      "message": "this may allocate a very large amount of memory. We _should_ use something like 1024 or 4096 or 10,000 to limit it. For an explanation of why, see CL https://android-review.googlesource.com/c/platform/frameworks/native/+/1708922/\n\n(if we submit this as-is, it will cause the fuzzer to crash)",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "592c2071_d76b0e6d",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
@@ -31,6 +71,24 @@
       "writtenOn": "2022-06-09T18:23:26Z",
       "side": 1,
       "message": "need to disable for non-linux? or is getting the tests to run elsewhere a whole project of its own?",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e32c46_79f3903e",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T18:30:12Z",
+      "side": 1,
+      "message": "or can we use something like 10,000 or 100,000?",
+      "parentUuid": "592c2071_d76b0e6d",
       "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -71,6 +129,29 @@
       "writtenOn": "2022-06-09T18:23:26Z",
       "side": 1,
       "message": "should fail the the test IMO",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24d3fc8_cc1761fe",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T18:30:12Z",
+      "side": 1,
+      "message": "this tests the write, but not also the send of the parcelable. Do we have a test for too many FDs being sent? Or can you file an issue separately to add one?",
+      "range": {
+        "startLine": 1268,
+        "startChar": 0,
+        "endLine": 1268,
+        "endChar": 63
+      },
       "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
