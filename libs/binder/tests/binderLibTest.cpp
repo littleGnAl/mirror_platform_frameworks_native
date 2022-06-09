@@ -1254,7 +1254,7 @@ TEST_F(BinderLibTest, ThreadPoolAvailableThreads) {
     int32_t replyi = reply.readInt32();
     // Expect 16 threads: kKernelThreads = 15 + Pool thread == 16
     EXPECT_TRUE(replyi == kKernelThreads || replyi == kKernelThreads + 1);
-    EXPECT_THAT(server->transact(BINDER_LIB_TEST_PROCESS_LOCK, data, &reply), NO_ERROR);
+    EXPECT_THAT(server->transact(BINDER_LIB_TEST_PROCESS_LOCK, data, reply), NO_ERROR);
 
     /*
      * This will use all threads in the pool expect the main pool thread.
@@ -1264,19 +1264,19 @@ TEST_F(BinderLibTest, ThreadPoolAvailableThreads) {
     std::vector<std::thread> ts;
     for (size_t i = 0; i < kKernelThreads - 1; i++) {
         ts.push_back(std::thread([&] {
-            EXPECT_THAT(server->transact(BINDER_LIB_TEST_LOCK_UNLOCK, data, &reply), NO_ERROR);
+            EXPECT_THAT(server->transact(BINDER_LIB_TEST_LOCK_UNLOCK, data, reply), NO_ERROR);
         }));
     }
 
     data.writeInt32(1);
     // Give a chance for all threads to be used
-    EXPECT_THAT(server->transact(BINDER_LIB_TEST_UNLOCK_AFTER_MS, data, &reply), NO_ERROR);
+    EXPECT_THAT(server->transact(BINDER_LIB_TEST_UNLOCK_AFTER_MS, data, reply), NO_ERROR);
 
     for (auto &t : ts) {
         t.join();
     }
 
-    EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_MAX_THREAD_COUNT, data, &reply),
+    EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_MAX_THREAD_COUNT, data, reply),
                 StatusEq(NO_ERROR));
     replyi = reply.readInt32();
     // No more than 16 threads should exist.
@@ -1297,12 +1297,12 @@ TEST_F(BinderLibTest, HangingServices) {
     ASSERT_TRUE(server != nullptr);
     int32_t delay = 1000; // ms
     data.writeInt32(delay);
-    EXPECT_THAT(server->transact(BINDER_LIB_TEST_PROCESS_TEMPORARY_LOCK, data, &reply), NO_ERROR);
+    EXPECT_THAT(server->transact(BINDER_LIB_TEST_PROCESS_TEMPORARY_LOCK, data, reply), NO_ERROR);
     std::vector<std::thread> ts;
     size_t epochMsBefore = epochMillis();
     for (size_t i = 0; i < kKernelThreads + 1; i++) {
         ts.push_back(std::thread([&] {
-            EXPECT_THAT(server->transact(BINDER_LIB_TEST_LOCK_UNLOCK, data, &reply), NO_ERROR);
+            EXPECT_THAT(server->transact(BINDER_LIB_TEST_LOCK_UNLOCK, data, reply), NO_ERROR);
         }));
     }
 
