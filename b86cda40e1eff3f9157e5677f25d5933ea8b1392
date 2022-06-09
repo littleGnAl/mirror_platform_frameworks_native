@@ -57,6 +57,30 @@
       },
       "revId": "b86cda40e1eff3f9157e5677f25d5933ea8b1392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a98ece5_878c6717",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T23:39:55Z",
+      "side": 1,
+      "message": "In that case, we should add a test for a small transaction as well! :) (most transactions will have some data to allocate), but awesome!",
+      "parentUuid": "39ae53b0_b62cffc4",
+      "range": {
+        "startLine": 213,
+        "startChar": 23,
+        "endLine": 213,
+        "endChar": 24
+      },
+      "revId": "b86cda40e1eff3f9157e5677f25d5933ea8b1392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
