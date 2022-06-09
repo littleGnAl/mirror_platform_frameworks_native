@@ -16,6 +16,24 @@
       "message": "does it make more sense for this to be at the root of the repo with the other internal headers? i know it is being included in public headers so it is defacto public but i think it is easier to understand the intent that way",
       "revId": "77a75bf9880e9b949ed4daff53d8e1040a6b1f87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bb3c90f_c21f56e8",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 54
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-09T01:08:10Z",
+      "side": 1,
+      "message": "It\u0027s included by RpcSession.h and RpcServer.h for the types of some of their private fields. Maybe we could also hide those class definitions?",
+      "parentUuid": "de8c1ceb_cf4261f6",
+      "revId": "77a75bf9880e9b949ed4daff53d8e1040a6b1f87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
