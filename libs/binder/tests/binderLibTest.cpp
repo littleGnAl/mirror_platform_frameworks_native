@@ -1232,6 +1232,39 @@ TEST_F(BinderLibTest, GotSid) {
     EXPECT_THAT(server->transact(BINDER_LIB_TEST_CAN_GET_SID, data, nullptr), StatusEq(OK));
 }
 
+struct TooManyFdsFlattenable : Flattenable<TooManyFdsFlattenable> {
+    TooManyFdsFlattenable(size_t fdCount) : mFdCount(fdCount) {}
+
+    // Flattenable protocol
+    size_t getFlattenedSize() const { return 0; }
+    size_t getFdCount() const { return mFdCount; }
+    status_t flatten(void *& /*buffer*/, size_t & /*size*/, int *&fds, size_t &count) const {
+        for (size_t i = 0; i < count; i++) {
+            fds[i] = STDIN_FILENO;
+        }
+        return NO_ERROR;
+    }
+    status_t unflatten(void const *& /*buffer*/, size_t & /*size*/, int const *& /*fds*/,
+                       size_t & /*count*/) {
+        /* This doesn't get called */
+        return NO_ERROR;
+    }
+
+    size_t mFdCount;
+};
+
+TEST_F(BinderLibTest, TooManyFdsFlattenable) {
+    Parcel parcel;
+
+    // Try to write more file descriptors than supported by the OS
+    TooManyFdsFlattenable tooManyFds1(100000);
+    EXPECT_THAT(parcel.write(tooManyFds1), StatusEq(-EMFILE));
+
+    // Try to write more file descriptors than the internal limit
+    TooManyFdsFlattenable tooManyFds2(100001);
+    EXPECT_THAT(parcel.write(tooManyFds2), StatusEq(BAD_VALUE));
+}
+
 TEST(ServiceNotifications, Unregister) {
     auto sm = defaultServiceManager();
     using LocalRegistrationCallback = IServiceManager::LocalRegistrationCallback;
