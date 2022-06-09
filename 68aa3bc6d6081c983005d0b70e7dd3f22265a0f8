@@ -34,6 +34,24 @@
       "parentUuid": "8cff7bcb_06fccfdb",
       "revId": "68aa3bc6d6081c983005d0b70e7dd3f22265a0f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68d42193_e6b0b731",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-06-09T15:32:12Z",
+      "side": 1,
+      "message": "Can use the ScopeDisallowMalloc that\u0027s already in this file to get the callstacks. Very helpful!",
+      "parentUuid": "dfe73316_840ba694",
+      "revId": "68aa3bc6d6081c983005d0b70e7dd3f22265a0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
