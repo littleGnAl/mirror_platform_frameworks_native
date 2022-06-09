@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8c1ceb_cf4261f6",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 54
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-09T00:45:13Z",
+      "side": 1,
+      "message": "does it make more sense for this to be at the root of the repo with the other internal headers? i know it is being included in public headers so it is defacto public but i think it is easier to understand the intent that way",
+      "revId": "77a75bf9880e9b949ed4daff53d8e1040a6b1f87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
