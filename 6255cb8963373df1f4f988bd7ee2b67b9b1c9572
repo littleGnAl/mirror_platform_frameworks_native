@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f83abefe_2a54e28b",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-09T00:34:36Z",
+      "side": 1,
+      "message": "Is a shared pointer necessary here?\n\nI\u0027d assume RpcServer lives longer than its sessions. If that is right, then we could pass RpcSession a normal pointer instead.\n\n(RpcSession could have separate unique_ptr field internally to manage the lifetime of a ctx when it owns it)",
+      "parentUuid": "1d6a57e0_1dbd6ecf",
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c5ff932_ce087a1d",
         "filename": "libs/binder/include/binder/RpcSession.h",
         "patchSetId": 17
