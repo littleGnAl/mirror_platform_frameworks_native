@@ -140,6 +140,30 @@
       },
       "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0abd332_ffda49bb",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-09T20:18:52Z",
+      "side": 1,
+      "message": "\u003e I do prefer explicit \u0027\u0026\u0026\u0027 so the client is forced to use \u0027std::move\u0027 or make a copy explicitly (may be more readable).\n\nI\u0027ve been wondering about that, thanks for explaining it!\n\nShould `ctx` here be passed by lvalue reference (your original suggestion), or rvalue?",
+      "parentUuid": "8521ac81_186cb1fe",
+      "range": {
+        "startLine": 188,
+        "startChar": 29,
+        "endLine": 188,
+        "endChar": 39
+      },
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
