@@ -99,6 +99,30 @@
       },
       "revId": "971c8a6f6d0610cfdfc3d6d3d8aad8838f0ac2b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a60ce0ed_0e05237d",
+        "filename": "libs/binder/trusty/FdTrigger.cpp",
+        "patchSetId": 129
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T00:54:56Z",
+      "side": 1,
+      "message": "Note from meeting - Frederick\u0027s suggestion to tie this to having no threads instead, so that we can test it in normal Android - sounds good to me",
+      "parentUuid": "30bacc22_1d08163b",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "971c8a6f6d0610cfdfc3d6d3d8aad8838f0ac2b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
