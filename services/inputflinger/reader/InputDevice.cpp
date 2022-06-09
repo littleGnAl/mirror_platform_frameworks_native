@@ -311,10 +311,14 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
                     mAssociatedDisplayPort = std::make_optional(displayPort->second);
                 }
             }
+            const std::string& inputDeviceDescriptor = mIdentifier.descriptor;
             const std::string& inputDeviceName = mIdentifier.name;
             const std::unordered_map<std::string, std::string>& names =
                     config->uniqueIdAssociations;
-            const auto& displayUniqueId = names.find(inputDeviceName);
+            auto displayUniqueId = names.find(inputDeviceDescriptor);
+            if (displayUniqueId == names.end()) {
+                displayUniqueId = names.find(inputDeviceName);
+            }
             if (displayUniqueId != names.end()) {
                 mAssociatedDisplayUniqueId = displayUniqueId->second;
             }
