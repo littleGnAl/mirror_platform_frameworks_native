@@ -116,6 +116,30 @@
       },
       "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8521ac81_186cb1fe",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T00:43:54Z",
+      "side": 1,
+      "message": "You\u0027re right, that\u0027s a limitation, but I was thinking the server would be holding onto the object (would need to check). Anyway, let me explain in more detail where I\u0027m coming from (maybe I\u0027ll learn something!).\n\nGiven the lints we have, I do prefer explicit \u0027\u0026\u0026\u0027 so the client is forced to use \u0027std::move\u0027 or make a copy explicitly (may be more readable). The reason I don\u0027t like guaranteed copy elision is that it can introduce non-explicit copies. Imagine code like this:\n\n    std::shared_ptr\u003cRpcTransportCtx\u003e foo() {... }\n\n    ... {\n        const std::shared_ptr\u003cRpcTransportCtx\u003e bar \u003d foo();\n        ... \u003d RpcSession(bar);\n    }\n\nBecause the const-ness on bar is unnecessarily establish on another line, a copy will be made to pass the object into the RpcSession. Generally, I ask that we only take advantage of guaranteed copy ellision when the type being copied has no copy constructor so that the above case is not possible. If you add \u0027\u0026\u0026\u0027, the only implication is that the client must either explicitly make a copy or use std::move. Is there a benefit to the guaranteed copy elision I\u0027m missing? It really feels to me like we get easier to read code w/ a potential performance issue, so I\u0027m still not sure why the feature was added. It only makes sense if we\u0027re focused on improving the performance of random uninformed C++ code that doesn\u0027t have lints/warnings for extra copies turned on.",
+      "parentUuid": "db0a04df_0ac8137a",
+      "range": {
+        "startLine": 188,
+        "startChar": 29,
+        "endLine": 188,
+        "endChar": 39
+      },
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
