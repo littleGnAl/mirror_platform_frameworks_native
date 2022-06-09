@@ -1232,6 +1232,42 @@ TEST_F(BinderLibTest, GotSid) {
     EXPECT_THAT(server->transact(BINDER_LIB_TEST_CAN_GET_SID, data, nullptr), StatusEq(OK));
 }
 
+struct TooManyFdsFlattenable : Flattenable<TooManyFdsFlattenable> {
+    TooManyFdsFlattenable() {
+        struct rlimit result;
+        if (!getrlimit(RLIMIT_NOFILE, &result)) {
+            mFdCount = (size_t)result.rlim_cur + 1;
+        }
+    }
+
+    // Flattenable protocol
+    size_t getFlattenedSize() const { return 0; }
+    size_t getFdCount() const { return mFdCount; }
+    status_t flatten(void *& /*buffer*/, size_t & /*size*/, int *&fds, size_t &count) const {
+        for (size_t i = 0; i < count; i++) {
+            fds[i] = STDIN_FILENO;
+        }
+        return NO_ERROR;
+    }
+    status_t unflatten(void const *& /*buffer*/, size_t & /*size*/, int const *& /*fds*/,
+                       size_t & /*count*/) {
+        /* This doesn't get called */
+        return NO_ERROR;
+    }
+
+    size_t mFdCount = 0;
+};
+
+TEST_F(BinderLibTest, TooManyFdsFlattenable) {
+    Parcel parcel;
+    TooManyFdsFlattenable tooManyFds;
+    if (!tooManyFds.getFdCount()) {
+        GTEST_SKIP() << "getrlimit failed: " << strerror(errno);
+    }
+
+    EXPECT_THAT(parcel.write(tooManyFds), StatusEq(-EMFILE));
+}
+
 TEST(ServiceNotifications, Unregister) {
     auto sm = defaultServiceManager();
     using LocalRegistrationCallback = IServiceManager::LocalRegistrationCallback;
