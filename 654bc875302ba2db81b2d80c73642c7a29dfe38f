@@ -95,6 +95,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e45e44df_423db1db",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-09T18:56:52Z",
+      "side": 1,
+      "message": "The whole test seems to be very Linux-specific, it uses prctl() and the SCHED_* constants.",
+      "parentUuid": "61e32c46_79f3903e",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a595e199_e6337140",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
@@ -135,6 +153,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ff9b88e_e2dc19de",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-09T18:56:52Z",
+      "side": 1,
+      "message": "If getrlimit fails, that\u0027s an OS issue and not a problem with libbinder. Not sure what the user can do to fix the breakage then (update their kernel???).",
+      "parentUuid": "c5f2158d_a90f7b53",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a24d3fc8_cc1761fe",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
@@ -146,6 +182,30 @@
       "writtenOn": "2022-06-09T18:30:12Z",
       "side": 1,
       "message": "this tests the write, but not also the send of the parcelable. Do we have a test for too many FDs being sent? Or can you file an issue separately to add one?",
+      "range": {
+        "startLine": 1268,
+        "startChar": 0,
+        "endLine": 1268,
+        "endChar": 63
+      },
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90926082_3960ffd9",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-09T18:56:52Z",
+      "side": 1,
+      "message": "How would that work? You can\u0027t get a valid parcelable from a flattenable with too many fds (unless you mean just add the fds manually, but that wasn\u0027t covered by gMaxFds anyway).",
+      "parentUuid": "a24d3fc8_cc1761fe",
       "range": {
         "startLine": 1268,
         "startChar": 0,
