@@ -34,6 +34,24 @@
       "parentUuid": "de8c1ceb_cf4261f6",
       "revId": "77a75bf9880e9b949ed4daff53d8e1040a6b1f87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a838c436_48479f59",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 54
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-09T01:23:07Z",
+      "side": 1,
+      "message": "Nevermind, I think what I was suggesting isn\u0027t possible.\n\nI think hiding the definitions would be nice, but that isn\u0027t easy in C++, so I\u0027d say probably not worth it.",
+      "parentUuid": "8bb3c90f_c21f56e8",
+      "revId": "77a75bf9880e9b949ed4daff53d8e1040a6b1f87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
