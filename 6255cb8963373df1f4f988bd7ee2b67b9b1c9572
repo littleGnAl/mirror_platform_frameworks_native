@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6ea5b34_fe33d6bb",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-09T23:11:03Z",
+      "side": 1,
+      "message": "To avoid the awkwardness of variant, I\u0027d do something like\n\n```\nstd::unique_ptr\u003cRpcTransportCtx\u003e mOwnedCtx;\nconst RpcTransportCtx* mCtx;\n```\n\nwhere either `mOwnedCtx \u003d nullptr; mCtx \u003d externalPtr` or `mCtx \u003d mOwnedCtx.get()`. Then only use `mCtx`, except when managing the lifetime of a locally owned ctx.\n\n\n(I\u0027m not familiar enough with this part of the library to know if the general idea is appropriate or if we actually need the full power of shared_ptr)",
+      "parentUuid": "1943ef27_4e104909",
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c5ff932_ce087a1d",
         "filename": "libs/binder/include/binder/RpcSession.h",
         "patchSetId": 17
