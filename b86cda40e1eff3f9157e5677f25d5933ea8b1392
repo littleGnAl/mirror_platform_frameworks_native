@@ -34,6 +34,29 @@
       "parentUuid": "5a5ed1cf_986d052d",
       "revId": "b86cda40e1eff3f9157e5677f25d5933ea8b1392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39ae53b0_b62cffc4",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-09T23:36:35Z",
+      "side": 1,
+      "message": "I think we can get to zero if we repeat https://r.android.com/2118587 for RpcWireTransaction. Which is intuitive since ping doesn\u0027t send any data.",
+      "range": {
+        "startLine": 213,
+        "startChar": 23,
+        "endLine": 213,
+        "endChar": 24
+      },
+      "revId": "b86cda40e1eff3f9157e5677f25d5933ea8b1392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
