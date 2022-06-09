@@ -46,6 +46,30 @@
       },
       "revId": "6b9dbaac346c9dbce216f17e5059a2781be6ad27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6346385f_34bb5b60",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-09T18:59:56Z",
+      "side": 1,
+      "message": "Do we want an abstraction layer for this (and GetThreadId), maybe in Utils.cpp?",
+      "parentUuid": "94d82c9a_65e4a78e",
+      "range": {
+        "startLine": 488,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 30
+      },
+      "revId": "6b9dbaac346c9dbce216f17e5059a2781be6ad27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
