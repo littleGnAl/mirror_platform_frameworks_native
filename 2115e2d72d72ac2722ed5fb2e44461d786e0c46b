@@ -22,6 +22,30 @@
       },
       "revId": "2115e2d72d72ac2722ed5fb2e44461d786e0c46b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53895b0d_0b36ddfd",
+        "filename": "libs/binder/include_tls/binder/RpcTransportTls.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-09T20:54:05Z",
+      "side": 1,
+      "message": "Good point, TIL that shared_ptr has a constructor that takes a unique_ptr.",
+      "parentUuid": "75edef0f_f68a277e",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "2115e2d72d72ac2722ed5fb2e44461d786e0c46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

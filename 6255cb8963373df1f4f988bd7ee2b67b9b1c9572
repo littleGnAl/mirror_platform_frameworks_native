@@ -164,6 +164,30 @@
       },
       "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ec5f70b_fa4463eb",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-09T20:54:05Z",
+      "side": 1,
+      "message": "After changing the context builders to return std::unique_ptr again, I think this needs to be a `\u0026\u0026` so we can directly call `RpcSession::make` with one.",
+      "parentUuid": "b0abd332_ffda49bb",
+      "range": {
+        "startLine": 188,
+        "startChar": 29,
+        "endLine": 188,
+        "endChar": 39
+      },
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
