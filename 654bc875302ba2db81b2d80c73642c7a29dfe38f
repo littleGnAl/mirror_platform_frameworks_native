@@ -78,6 +78,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24bbea48_1ef5a24a",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2159,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T23:44:55Z",
+      "side": 1,
+      "message": "Right, but it should be okay here where we have a year to understand if the value is too small. In a security update (where rlimit was chosen, presumably because it won\u0027t break things), it\u0027s not okay to take a risk like that.",
+      "parentUuid": "0736d550_65ccc793",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "592c2071_d76b0e6d",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
