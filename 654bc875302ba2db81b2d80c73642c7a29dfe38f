@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f3ae18_320cbc9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-09T18:23:26Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "592c2071_d76b0e6d",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-09T18:23:26Z",
+      "side": 1,
+      "message": "need to disable for non-linux? or is getting the tests to run elsewhere a whole project of its own?",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a595e199_e6337140",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-09T18:23:26Z",
+      "side": 1,
+      "message": "i\u0027d make this non-zero, otherwise we might accidentally make the test pass for the wrong reason (BAD_VALUE is vague)",
+      "range": {
+        "startLine": 1244,
+        "startChar": 45,
+        "endLine": 1244,
+        "endChar": 46
+      },
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5f2158d_a90f7b53",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-09T18:23:26Z",
+      "side": 1,
+      "message": "should fail the the test IMO",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
