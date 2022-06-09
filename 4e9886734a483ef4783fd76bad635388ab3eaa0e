@@ -275,6 +275,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "791ce003_87cd071e",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 21
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T00:47:29Z",
+      "side": 1,
+      "message": "ack - we do have the tests for this now, right?",
+      "parentUuid": "d6ed1753_e9fb7654",
+      "range": {
+        "startLine": 243,
+        "startChar": 10,
+        "endLine": 243,
+        "endChar": 32
+      },
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86fb6ff0_7c1519ca",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 21
@@ -357,6 +381,30 @@
       "side": 1,
       "message": "This function is broken on single-threaded because it tries to start a server in the current process, then connect to that same server over a new RpcSession. Afaict you can\u0027t do that with a single thread, it only works if the server\u0027s loop runs in its own separate thread.",
       "parentUuid": "52904448_ac67c131",
+      "range": {
+        "startLine": 1400,
+        "startChar": 7,
+        "endLine": 1400,
+        "endChar": 28
+      },
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91cc0b34_ee22d2e7",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 1400,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T00:47:29Z",
+      "side": 1,
+      "message": "Can we switch it to fork the server in a new process instead, so that we can still cover vsock sockets in the single threaded case?",
+      "parentUuid": "79454d86_fc7b4cca",
       "range": {
         "startLine": 1400,
         "startChar": 7,
