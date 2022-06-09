@@ -46,6 +46,30 @@
       },
       "revId": "0281f86a2df52bfe5db4134d0d49547fc842ea63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea76de80_48a975fa",
+        "filename": "libs/binder/Debug.cpp",
+        "patchSetId": 94
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T00:44:19Z",
+      "side": 1,
+      "message": "As discussed - maybe some other private header here for convenience, to avoid the duplicated block",
+      "parentUuid": "b6e5bce6_a64f2525",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "0281f86a2df52bfe5db4134d0d49547fc842ea63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
