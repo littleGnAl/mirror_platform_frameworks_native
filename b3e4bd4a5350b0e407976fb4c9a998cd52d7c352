@@ -52,6 +52,24 @@
       "parentUuid": "510d8538_fcbc9367",
       "revId": "b3e4bd4a5350b0e407976fb4c9a998cd52d7c352",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7f06ec4_4e6a377b",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-09T00:45:44Z",
+      "side": 1,
+      "message": "From the meeting (and given Frederick\u0027s FD CLs), I think we\u0027ve identified a \"neater\" path forward - abstracting all the object write/reads behind the KernelFields object. However, it seems like too much work. With the tests in place, I\u0027m happy with this. Thank you!",
+      "parentUuid": "00b60f0b_2289b38d",
+      "revId": "b3e4bd4a5350b0e407976fb4c9a998cd52d7c352",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
