@@ -94,6 +94,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0748d8_e6648650",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2159,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-10T01:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24bbea48_1ef5a24a",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "592c2071_d76b0e6d",
@@ -143,6 +161,24 @@
       "side": 1,
       "message": "The whole test seems to be very Linux-specific, it uses prctl() and the SCHED_* constants.",
       "parentUuid": "61e32c46_79f3903e",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "292e53a0_a403a8f8",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-10T01:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e45e44df_423db1db",
       "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -201,6 +237,24 @@
       "side": 1,
       "message": "If getrlimit fails, that\u0027s an OS issue and not a problem with libbinder. Not sure what the user can do to fix the breakage then (update their kernel???).",
       "parentUuid": "c5f2158d_a90f7b53",
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee64468_13563a7b",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-10T01:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff9b88e_e2dc19de",
       "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
