@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b975bae3_f326ffac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1691065
+      },
+      "writtenOn": "2022-06-10T23:27:44Z",
+      "side": 1,
+      "message": "thanks ian (note - i have not tested this)",
+      "revId": "e8961aaab938f17e0a83d15b2408b7b4850eb524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5538c58_eca15dd5",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-06-10T23:23:25Z",
       "side": 1,
       "message": "!s-\u003ecnx-\u003euseAngle - not use angle?",
+      "revId": "e8961aaab938f17e0a83d15b2408b7b4850eb524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2a78490_657f8de3",
+        "filename": "opengl/libs/EGL/egl_platform_entries.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1691065
+      },
+      "writtenOn": "2022-06-10T23:27:44Z",
+      "side": 1,
+      "message": "if (!angle)\n     return immediately\n // else pass on the call to angle on line 1477",
+      "parentUuid": "e5538c58_eca15dd5",
       "revId": "e8961aaab938f17e0a83d15b2408b7b4850eb524",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
