@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee3de81_445fdbd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-10T22:51:49Z",
+      "side": 1,
+      "message": "We are developing a system server service in the ART module (art/{libartservice,artd}) and we\u0027d like to use host libbinder_ndk to unit test the native part (artd).\n\nThe ART module is developed with a thin manifest (master-art) that contains a small subset of the master manifest. In particular it doesn\u0027t contain frameworks/{base,native}. Instead we have prebuilts of the platform dependencies we need (prebuilts/runtime/mainline/platform). They include libbinder_ndk (currently as stubs for device). We need to keep that thin manifest working, which means, at the very least, these tests need to build without errors (or else we won\u0027t be able to have host unit tests for it).\n\nWith a prebuilt for libbinder_ndk, the thing we\u0027d build against would look something like this: https://r.android.com/c/platform/prebuilts/runtime/+/2120154/1/mainline/platform/sdk/Android.bp#190\n\n\u003e There is also possible globals problems introduced here if an existing client uses shared libs, and some symbols get copied and absorbed into this library.\n\nHow would such problems surface? If host unit tests are only using this to test AIDL and other binder interfaces, without actually calling into libbinder_ndk, I reckon problems with that should be rare. But it\u0027s not clear to me how functional Binder is in this case. Does it actually work to some extent? That tests may use?",
+      "parentUuid": "302c6681_f9fdeebd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "11f6458eefedc1f57e45e421f2656cbd507f4d2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a0640f92_250c3c54",
@@ -60,6 +84,24 @@
       "writtenOn": "2022-06-10T20:49:16Z",
       "side": 1,
       "message": "Why is this needed?",
+      "revId": "11f6458eefedc1f57e45e421f2656cbd507f4d2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c195d1ab_a3e3191d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-10T22:51:49Z",
+      "side": 1,
+      "message": "Discussed in the other thread.",
+      "parentUuid": "be35490f_12171986",
       "revId": "11f6458eefedc1f57e45e421f2656cbd507f4d2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
