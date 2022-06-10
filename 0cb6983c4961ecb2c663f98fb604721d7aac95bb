@@ -46,6 +46,30 @@
       },
       "revId": "0cb6983c4961ecb2c663f98fb604721d7aac95bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "babec1c1_b8677787",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-10T22:42:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure how we could use setrlimit. We can\u0027t change this on the device, and in the test, nothing we do is actually related to the fd limit (everything is STDIN_FILENO, so only 1 FD is used).",
+      "parentUuid": "7e25ff05_3060a522",
+      "range": {
+        "startLine": 91,
+        "startChar": 30,
+        "endLine": 91,
+        "endChar": 36
+      },
+      "revId": "0cb6983c4961ecb2c663f98fb604721d7aac95bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
