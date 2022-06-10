@@ -643,6 +643,8 @@ void IPCThreadState::joinThreadPool(bool isMain)
     pthread_mutex_unlock(&mProcess->mThreadCountLock);
     mOut.writeInt32(isMain ? BC_ENTER_LOOPER : BC_REGISTER_LOOPER);
 
+    ALOGI("asdfasdf Hello! I'm joining the threadpool :)");
+
     mIsLooper = true;
     status_t result;
     do {
@@ -1285,32 +1287,33 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
             // ALOGI(">>>> TRANSACT from pid %d sid %s uid %d\n", mCallingPid,
             //    (mCallingSid ? mCallingSid : "<N/A>"), mCallingUid);
 
+            String8 descriptor;
+
             Parcel reply;
             status_t error;
-            IF_LOG_TRANSACTIONS() {
+            {
                 TextOutput::Bundle _b(alog);
-                alog << "BR_TRANSACTION thr " << (void*)pthread_self()
-                    << " / obj " << tr.target.ptr << " / code "
-                    << TypeCode(tr.code) << ": " << indent << buffer
-                    << dedent << endl
-                    << "Data addr = "
-                    << reinterpret_cast<const uint8_t*>(tr.data.ptr.buffer)
-                    << ", offsets addr="
-                    << reinterpret_cast<const size_t*>(tr.data.ptr.offsets) << endl;
+                alog << "asdfasdf BR_TRANSACTION thr " << (void*)pthread_self() << " / obj "
+                     << tr.target.ptr << " / code " << TypeCode(tr.code) << endl;
             }
             if (tr.target.ptr) {
                 // We only have a weak reference on the target object, so we must first try to
                 // safely acquire a strong reference before doing anything else with it.
                 if (reinterpret_cast<RefBase::weakref_type*>(
                         tr.target.ptr)->attemptIncStrong(this)) {
-                    error = reinterpret_cast<BBinder*>(tr.cookie)->transact(tr.code, buffer,
-                            &reply, tr.flags);
-                    reinterpret_cast<BBinder*>(tr.cookie)->decStrong(this);
+                    BBinder* b = reinterpret_cast<BBinder*>(tr.cookie);
+
+                    descriptor = String8(b->getInterfaceDescriptor());
+
+                    error = b->transact(tr.code, buffer, &reply, tr.flags);
+                    b->decStrong(this);
                 } else {
+                    descriptor = "<could not inc strong>";
                     error = UNKNOWN_TRANSACTION;
                 }
 
             } else {
+                descriptor = "<the context object>";
                 error = the_context_object->transact(tr.code, buffer, &reply, tr.flags);
             }
 
@@ -1353,10 +1356,10 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
             mWorkSource = origWorkSource;
             mPropagateWorkSource = origPropagateWorkSet;
 
-            IF_LOG_TRANSACTIONS() {
+            {
                 TextOutput::Bundle _b(alog);
-                alog << "BC_REPLY thr " << (void*)pthread_self() << " / obj "
-                    << tr.target.ptr << ": " << indent << reply << dedent << endl;
+                alog << "asdfasdf BC_REPLY thr " << (void*)pthread_self() << " / obj "
+                     << tr.target.ptr << " (" << descriptor << "): " << endl;
             }
 
         }
