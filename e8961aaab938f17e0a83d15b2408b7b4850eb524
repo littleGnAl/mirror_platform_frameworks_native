@@ -104,6 +104,24 @@
       "parentUuid": "a2a78490_657f8de3",
       "revId": "e8961aaab938f17e0a83d15b2408b7b4850eb524",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf48fb14_4bb5a439",
+        "filename": "opengl/libs/EGL/egl_platform_entries.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1691100
+      },
+      "writtenOn": "2022-06-10T23:52:03Z",
+      "side": 1,
+      "message": "OK . +1",
+      "parentUuid": "14c7ae95_4c2896bd",
+      "revId": "e8961aaab938f17e0a83d15b2408b7b4850eb524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
