@@ -132,8 +132,6 @@ struct RpcWireTransaction {
     uint64_t asyncNumber;
 
     uint32_t reserved[4];
-
-    uint8_t data[];
 };
 static_assert(sizeof(RpcWireTransaction) == 40);
 
