@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e999ab_37aa369c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-10T00:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae087ec2_866f514c",
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d6a57e0_1dbd6ecf",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "To avoid the awkwardness of variant, I\u0027d do something like\n\n```\nstd::unique_ptr\u003cRpcTransportCtx\u003e mOwnedCtx;\nconst RpcTransportCtx* mCtx;\n```\n\nwhere either `mOwnedCtx \u003d nullptr; mCtx \u003d externalPtr` or `mCtx \u003d mOwnedCtx.get()`. Then only use `mCtx`, except when managing the lifetime of a locally owned ctx.\n\n\n(I\u0027m not familiar enough with this part of the library to know if the general idea is appropriate or if we actually need the full power of shared_ptr)",
       "parentUuid": "1943ef27_4e104909",
+      "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83db2f5_b605d5c5",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-10T00:34:25Z",
+      "side": 1,
+      "message": "I was trying to avoid having 2 fields because I thought they\u0027d be exclusive and it would be a pain to enforce the invariant that only one is active at a time. Having mCtx as a valid pointer in both cases mitigates that.",
+      "parentUuid": "e6ea5b34_fe33d6bb",
       "revId": "6255cb8963373df1f4f988bd7ee2b67b9b1c9572",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
