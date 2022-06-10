@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "595abcc2_4755d11d",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-10T02:00:17Z",
+      "side": 1,
+      "message": "If you meant there should be an explicit check on the fd count, there is one again on line 1417.",
+      "parentUuid": "fdfbc0e0_ea26b4af",
+      "range": {
+        "startLine": 1438,
+        "startChar": 0,
+        "endLine": 1438,
+        "endChar": 75
+      },
+      "revId": "654bc875302ba2db81b2d80c73642c7a29dfe38f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83fc3c44_1c455d86",
