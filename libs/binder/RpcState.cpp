@@ -807,16 +807,27 @@ status_t RpcState::processTransact(
         std::vector<std::variant<base::unique_fd, base::borrowed_fd>>&& ancillaryFds) {
     LOG_ALWAYS_FATAL_IF(command.command != RPC_COMMAND_TRANSACT, "command: %d", command.command);
 
-    CommandData transactionData(command.bodySize);
+    if (command.bodySize < sizeof(RpcWireTransaction)) {
+        ALOGE("Expecting %zu but got %" PRIu32 " bytes for RpcWireTransaction. Terminating!",
+              sizeof(RpcWireTransaction), command.bodySize);
+        (void)session->shutdownAndWait(false);
+        return BAD_VALUE;
+    }
+
+    RpcWireTransaction transaction;
+    CommandData transactionData(command.bodySize - sizeof(RpcWireTransaction));
     if (!transactionData.valid()) {
         return NO_MEMORY;
     }
-    iovec iov{transactionData.data(), transactionData.size()};
-    if (status_t status = rpcRec(connection, session, "transaction body", &iov, 1, nullptr);
+    iovec iovs[]{
+            {&transaction, sizeof(RpcWireTransaction)},
+            {transactionData.data(), transactionData.size()},
+    };
+    if (status_t status =
+                rpcRec(connection, session, "transaction body", iovs, arraysize(iovs), nullptr);
         status != OK)
         return status;
-
-    return processTransactInternal(connection, session, std::move(transactionData),
+    return processTransactInternal(connection, session, transaction, std::move(transactionData),
                                    std::move(ancillaryFds));
 }
 
@@ -830,7 +841,7 @@ static void do_nothing_to_transact_data(const uint8_t* data, size_t dataSize,
 
 status_t RpcState::processTransactInternal(
         const sp<RpcSession::RpcConnection>& connection, const sp<RpcSession>& session,
-        CommandData transactionData,
+        RpcWireTransaction transaction, CommandData transactionData,
         std::vector<std::variant<base::unique_fd, base::borrowed_fd>>&& ancillaryFds) {
     // for 'recursive' calls to this, we have already read and processed the
     // binder from the transaction data and taken reference counts into account,
@@ -838,16 +849,8 @@ status_t RpcState::processTransactInternal(
     sp<IBinder> target;
 processTransactInternalTailCall:
 
-    if (transactionData.size() < sizeof(RpcWireTransaction)) {
-        ALOGE("Expecting %zu but got %zu bytes for RpcWireTransaction. Terminating!",
-              sizeof(RpcWireTransaction), transactionData.size());
-        (void)session->shutdownAndWait(false);
-        return BAD_VALUE;
-    }
-    RpcWireTransaction* transaction = reinterpret_cast<RpcWireTransaction*>(transactionData.data());
-
-    uint64_t addr = RpcWireAddress::toRaw(transaction->address);
-    bool oneway = transaction->flags & IBinder::FLAG_ONEWAY;
+    uint64_t addr = RpcWireAddress::toRaw(transaction.address);
+    bool oneway = transaction.flags & IBinder::FLAG_ONEWAY;
 
     status_t replyStatus = OK;
     if (addr != 0) {
@@ -880,18 +883,18 @@ processTransactInternalTailCall:
             if (it->second.binder.promote() != target) {
                 ALOGE("Binder became invalid during transaction. Bad client? %" PRIu64, addr);
                 replyStatus = BAD_VALUE;
-            } else if (transaction->asyncNumber != it->second.asyncNumber) {
+            } else if (transaction.asyncNumber != it->second.asyncNumber) {
                 // we need to process some other asynchronous transaction
                 // first
                 it->second.asyncTodo.push(BinderNode::AsyncTodo{
                         .ref = target,
+                        .transaction = transaction,
                         .data = std::move(transactionData),
-                        .asyncNumber = transaction->asyncNumber,
                 });
 
                 size_t numPending = it->second.asyncTodo.size();
                 LOG_RPC_DETAIL("Enqueuing %" PRIu64 " on %" PRIu64 " (%zu pending)",
-                               transaction->asyncNumber, addr, numPending);
+                               transaction.asyncNumber, addr, numPending);
 
                 constexpr size_t kArbitraryOnewayCallTerminateLevel = 10000;
                 constexpr size_t kArbitraryOnewayCallWarnLevel = 1000;
@@ -919,17 +922,15 @@ processTransactInternalTailCall:
     reply.markForRpc(session);
 
     if (replyStatus == OK) {
-        Span<const uint8_t> parcelSpan = {transaction->data,
-                                          transactionData.size() -
-                                                  offsetof(RpcWireTransaction, data)};
+        Span<const uint8_t> parcelSpan = {transactionData.data(), transactionData.size()};
         Span<const uint32_t> objectTableSpan;
         if (session->getProtocolVersion().value() >
             RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_EXPLICIT_PARCEL_SIZE) {
             std::optional<Span<const uint8_t>> objectTableBytes =
-                    parcelSpan.splitOff(transaction->parcelDataSize);
+                    parcelSpan.splitOff(transaction.parcelDataSize);
             if (!objectTableBytes.has_value()) {
                 ALOGE("Parcel size (%" PRId32 ") greater than available bytes (%zu). Terminating!",
-                      transaction->parcelDataSize, parcelSpan.byteSize());
+                      transaction.parcelDataSize, parcelSpan.byteSize());
                 (void)session->shutdownAndWait(false);
                 return BAD_VALUE;
             }
@@ -937,10 +938,8 @@ processTransactInternalTailCall:
                     objectTableBytes->reinterpret<const uint32_t>();
             if (!maybeSpan.has_value()) {
                 ALOGE("Bad object table size inferred from RpcWireTransaction. Saw bodySize=%zu "
-                      "sizeofHeader=%zu parcelSize=%" PRId32
-                      " objectTableBytesSize=%zu. Terminating!",
-                      transactionData.size(), sizeof(RpcWireTransaction),
-                      transaction->parcelDataSize, objectTableBytes->size);
+                      "parcelSize=%" PRId32 " objectTableBytesSize=%zu. Terminating!",
+                      transactionData.size(), transaction.parcelDataSize, objectTableBytes->size);
                 return BAD_VALUE;
             }
             objectTableSpan = *maybeSpan;
@@ -963,13 +962,13 @@ processTransactInternalTailCall:
                 bool origAllowNested = connection->allowNested;
                 connection->allowNested = !oneway;
 
-                replyStatus = target->transact(transaction->code, data, &reply, transaction->flags);
+                replyStatus = target->transact(transaction.code, data, &reply, transaction.flags);
 
                 connection->allowNested = origAllowNested;
             } else {
-                LOG_RPC_DETAIL("Got special transaction %u", transaction->code);
+                LOG_RPC_DETAIL("Got special transaction %u", transaction.code);
 
-                switch (transaction->code) {
+                switch (transaction.code) {
                     case RPC_SPECIAL_TRANSACT_GET_MAX_THREADS: {
                         replyStatus = reply.writeInt32(session->getMaxIncomingThreads());
                         break;
@@ -984,7 +983,7 @@ processTransactInternalTailCall:
                     default: {
                         sp<RpcServer> server = session->server();
                         if (server) {
-                            switch (transaction->code) {
+                            switch (transaction.code) {
                                 case RPC_SPECIAL_TRANSACT_GET_ROOT: {
                                     sp<IBinder> root = session->mSessionSpecificRootObject
                                             ?: server->getRootObject();
@@ -1010,7 +1009,7 @@ processTransactInternalTailCall:
         }
 
         LOG_RPC_DETAIL("Processed async transaction %" PRIu64 " on %" PRIu64,
-                       transaction->asyncNumber, addr);
+                       transaction.asyncNumber, addr);
 
         // Check to see if there is another asynchronous transaction to process.
         // This behavior differs from binder behavior, since in the binder
@@ -1035,7 +1034,7 @@ processTransactInternalTailCall:
             }
 
             if (it->second.asyncTodo.size() == 0) return OK;
-            if (it->second.asyncTodo.top().asyncNumber == it->second.asyncNumber) {
+            if (it->second.asyncTodo.top().transaction.asyncNumber == it->second.asyncNumber) {
                 LOG_RPC_DETAIL("Found next async transaction %" PRIu64 " on %" PRIu64,
                                it->second.asyncNumber, addr);
 
@@ -1045,6 +1044,7 @@ processTransactInternalTailCall:
                 auto& todo = const_cast<BinderNode::AsyncTodo&>(it->second.asyncTodo.top());
 
                 // reset up arguments
+                transaction = todo.transaction;
                 transactionData = std::move(todo.data);
                 LOG_ALWAYS_FATAL_IF(target != todo.ref,
                                     "async list should be associated with a binder");

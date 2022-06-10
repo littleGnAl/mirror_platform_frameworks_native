@@ -140,8 +140,6 @@ struct RpcWireTransaction {
     uint32_t parcelDataSize;
 
     uint32_t reserved[3];
-
-    uint8_t data[];
 };
 static_assert(sizeof(RpcWireTransaction) == 40);
 

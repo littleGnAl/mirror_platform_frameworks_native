@@ -20,6 +20,7 @@
 #include <binder/Parcel.h>
 #include <binder/RpcSession.h>
 #include <binder/RpcThreads.h>
+#include "RpcWireFormat.h"
 
 #include <map>
 #include <optional>
@@ -28,8 +29,6 @@
 #include <sys/uio.h>
 
 namespace android {
-
-struct RpcWireHeader;
 
 /**
  * Log a lot more information about RPC calls, when debugging issues. Usually,
@@ -207,7 +206,7 @@ private:
             std::vector<std::variant<base::unique_fd, base::borrowed_fd>>&& ancillaryFds);
     [[nodiscard]] status_t processTransactInternal(
             const sp<RpcSession::RpcConnection>& connection, const sp<RpcSession>& session,
-            CommandData transactionData,
+            RpcWireTransaction transaction, CommandData transactionData,
             std::vector<std::variant<base::unique_fd, base::borrowed_fd>>&& ancillaryFds);
     [[nodiscard]] status_t processDecStrong(const sp<RpcSession::RpcConnection>& connection,
                                             const sp<RpcSession>& session,
@@ -249,11 +248,11 @@ private:
         // async transaction queue, _only_ for local binder
         struct AsyncTodo {
             sp<IBinder> ref;
+            RpcWireTransaction transaction;
             CommandData data;
-            uint64_t asyncNumber = 0;
 
             bool operator<(const AsyncTodo& o) const {
-                return asyncNumber > /* !!! */ o.asyncNumber;
+                return transaction.asyncNumber > /* !!! */ o.transaction.asyncNumber;
             }
         };
         std::priority_queue<AsyncTodo> asyncTodo;
