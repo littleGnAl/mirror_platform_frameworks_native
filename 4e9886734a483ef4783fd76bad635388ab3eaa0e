@@ -299,6 +299,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5af4dc66_8e64b440",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 21
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-10T23:54:27Z",
+      "side": 1,
+      "message": "If I understand this correctly, what you\u0027re asking for is to have e.g. a regular binderRpcTest to connect to binderRpcTestSingleThreadedNoKernel as well as the other 3, and run the test suite every time. The way binderRpcTest currently splits the test process is via `fork`, and that wouldn\u0027t work if we want the server and client to use different copies of libbinder. I think we\u0027d need to switch to an `execve` model where each test client executes each service binary (I noticed binderLibTest does something like this where it executes `argv[0]` with `--binderserver` as its first argument). This assumes that all the test binaries are available and have a specific naming pattern, but I guess we can guarantee that?",
+      "parentUuid": "791ce003_87cd071e",
+      "range": {
+        "startLine": 243,
+        "startChar": 10,
+        "endLine": 243,
+        "endChar": 32
+      },
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86fb6ff0_7c1519ca",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 21
