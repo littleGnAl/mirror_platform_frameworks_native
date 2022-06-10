@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70a92e24_77854033",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-10T20:44:10Z",
+      "side": 1,
+      "message": "This would represent a 400K allocation which is quite large and potentially problematic itself. Could you perhaps make this 10,000? or even 1,024 (if someone is passing 1,024 fds - it would be problematic)?",
+      "range": {
+        "startLine": 91,
+        "startChar": 30,
+        "endLine": 91,
+        "endChar": 36
+      },
+      "revId": "0cb6983c4961ecb2c663f98fb604721d7aac95bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
