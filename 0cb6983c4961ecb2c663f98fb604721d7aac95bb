@@ -22,6 +22,30 @@
       },
       "revId": "0cb6983c4961ecb2c663f98fb604721d7aac95bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e25ff05_3060a522",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-10T21:55:32Z",
+      "side": 1,
+      "message": "The test didn\u0027t work with 10000, the file limit on my Linux is 131072. Maybe we should use 1024 as our limit and use setrlimit to guarantee the OS matches it?",
+      "parentUuid": "70a92e24_77854033",
+      "range": {
+        "startLine": 91,
+        "startChar": 30,
+        "endLine": 91,
+        "endChar": 36
+      },
+      "revId": "0cb6983c4961ecb2c663f98fb604721d7aac95bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
