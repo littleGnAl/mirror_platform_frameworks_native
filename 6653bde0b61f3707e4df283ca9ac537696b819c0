@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d5fb1c_f1c76487",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-10T17:42:30Z",
+      "side": 1,
+      "message": "Yes, see Parcel.writeStackTrace (this feature wasn\u0027t really tested/used before, so it failed)",
+      "parentUuid": "36fe57d5_c5a57870",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 58
+      },
+      "revId": "6653bde0b61f3707e4df283ca9ac537696b819c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00637edd_a230caba",
