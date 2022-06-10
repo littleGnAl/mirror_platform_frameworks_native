@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa6bf17_6849205d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-06-10T23:39:07Z",
+      "side": 1,
+      "message": "I didn\u0027t have a good test either, and the app that I tried didn\u0027t even call the function.  Please let me know what you find.  Also, please point me to the ANGLE CL that you were going to create.  Thanks!",
+      "parentUuid": "b975bae3_f326ffac",
+      "revId": "e8961aaab938f17e0a83d15b2408b7b4850eb524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5538c58_eca15dd5",
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "if (!angle)\n     return immediately\n // else pass on the call to angle on line 1477",
       "parentUuid": "e5538c58_eca15dd5",
+      "revId": "e8961aaab938f17e0a83d15b2408b7b4850eb524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14c7ae95_4c2896bd",
+        "filename": "opengl/libs/EGL/egl_platform_entries.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-06-10T23:39:07Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "a2a78490_657f8de3",
       "revId": "e8961aaab938f17e0a83d15b2408b7b4850eb524",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
