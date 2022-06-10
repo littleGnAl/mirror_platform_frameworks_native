@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "680bbf06_cc3a949f",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-10T18:16:41Z",
+      "side": 1,
+      "message": "maybe you want to declare a new `reply` variable inside the `std::thread` lambdas so that each thread has a separate Parcel instance",
+      "revId": "c363f660f11b98b9c2debef81c2e380b357791c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "811b414e_7d5b7d0c",
         "filename": "libs/binder/tests/binderLibTest.cpp",
         "patchSetId": 1
