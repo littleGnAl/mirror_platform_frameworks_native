@@ -123,6 +123,30 @@
       },
       "revId": "971c8a6f6d0610cfdfc3d6d3d8aad8838f0ac2b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6880a3d_ada18e84",
+        "filename": "libs/binder/trusty/FdTrigger.cpp",
+        "patchSetId": 129
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-10T04:09:03Z",
+      "side": 1,
+      "message": "Removed the Trusty-specific FdTrigger, but I still had to add a placeholder for `poll` because the library wouldn\u0027t link without it. RpcTransportTipcTrusty doesn\u0027t currently use `triggerablePoll`, so nothing should be calling that right now.",
+      "parentUuid": "a60ce0ed_0e05237d",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "971c8a6f6d0610cfdfc3d6d3d8aad8838f0ac2b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
