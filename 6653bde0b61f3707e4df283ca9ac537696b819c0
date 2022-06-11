@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "414b42a6_d81fdc68",
+        "filename": "libs/binder/Status.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-06-11T02:59:50Z",
+      "side": 1,
+      "message": "Ack. Not sure why the fixed size is included in the total size, but that\u0027s how it has been recorded.",
+      "parentUuid": "16d5fb1c_f1c76487",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 58
+      },
+      "revId": "6653bde0b61f3707e4df283ca9ac537696b819c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00637edd_a230caba",
