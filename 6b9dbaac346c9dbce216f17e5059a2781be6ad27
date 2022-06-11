@@ -118,6 +118,30 @@
       },
       "revId": "6b9dbaac346c9dbce216f17e5059a2781be6ad27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abb11a5f_d384044a",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-11T00:21:22Z",
+      "side": 1,
+      "message": "Since he wasn\u0027t enthusiastic on the email, let\u0027s leave it like this.",
+      "parentUuid": "c2425a63_ee0bbb1c",
+      "range": {
+        "startLine": 488,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 30
+      },
+      "revId": "6b9dbaac346c9dbce216f17e5059a2781be6ad27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
