@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60bc97e_c3073311",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-11T01:31:34Z",
+      "side": 1,
+      "message": "nit: could we change this to constexpr to potentially save a tiny bit of memory?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "63756303bc5e68934ddf4b7c9a8335d88936da6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
