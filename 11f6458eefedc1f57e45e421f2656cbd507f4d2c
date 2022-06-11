@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ff44be2_caa1f6ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-11T00:26:31Z",
+      "side": 1,
+      "message": "(RPC) binder works on host now. The support is quite extensive. Such problems would surface as undefined behavior.\n\nHere is one consideration:\n\n    cc_library_host {\n        name: \"art-host-native-deps\",\n        whole_static_libs: [\n            \"libbinder_ndk\", \"libbinder\", ...\n        ],\n    }\n\n\u0027shared_libs\u0027 here will be dropped by (whole_)?static_libs, so you can make this decision for Art code without imposing requirements on other host users. Could this work?",
+      "parentUuid": "bee3de81_445fdbd7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "11f6458eefedc1f57e45e421f2656cbd507f4d2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a0640f92_250c3c54",
