@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85eee93_f818b240",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-13T22:26:48Z",
+      "side": 1,
+      "message": "\u003e To be more precise, your worry is ODR violations, and/or something else?\n\nMhmmm.\n\n\u003e For that to work we\u0027d need prebuilts of all the dependencies.\n\nwhole_static_libs collapses everything into one library.\n\n\u003e The problem is that we\u0027d have to duplicate the whole set of libbinder_ndk dependencies in the prebuilt definition and for our tests(*).\n\nCould cc_defaults help with this? We could maintain it here. See defaults with name.*_user.\n\n\u003e Otoh, if the worry is ODR issues then our tests would be just as susceptible as \nanyone else\u0027s\n\nYou are making this change specifically to enable a linking configuration that avoids ODR problems for these tests. If you still used shared_libs, then sure, it would be susceptable, but it\u0027s not a specific issue.\n\n\u003e As long as we don\u0027t, we would be fine with a .so without implementation code and DT_NEEDED entries, i.e. basically the stub library. Would that even theoretically work, or can we get calls into it even when we don\u0027t actively use it?\n\nThere will be many codepaths required in libbinder to do things like initializing libraries that aren\u0027t directly related to using binder, but are incidental to it. So, I don\u0027t think a raw stub library would work.\n\n\u003e Note we also use aidl_interface with the ndk backend.\n\nThis is a wrapper over libbinder only.\n\n\u003e it currently doesn\u0027t handle internal shared lib dependencies within the SDK.\n\nCould you share more information about this (a bug or specific link)? I\u0027m not familiar with this problem.",
+      "parentUuid": "5822e464_6f64ca70",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "11f6458eefedc1f57e45e421f2656cbd507f4d2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a0640f92_250c3c54",
