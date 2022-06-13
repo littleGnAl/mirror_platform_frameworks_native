@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5822e464_6f64ca70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-13T21:56:34Z",
+      "side": 1,
+      "message": "\u003e (RPC) binder works on host now. The support is quite extensive.\n\nOh, that\u0027s cool.\n\n\u003e Such problems would surface as undefined behavior.\n\nTo be more precise, your worry is ODR violations, and/or something else?\n\n\u003e Here is one consideration: /.../\n\nFor that to work we\u0027d need prebuilts of all the dependencies. That\u0027s possible, but then we can just as well continue to use `shared_libs`. The problem is that we\u0027d have to duplicate the whole set of libbinder_ndk dependencies in the prebuilt definition and for our tests(*). That\u0027s a libbinder_ndk implementation detail, which means the tests get brittle.\n\nOtoh, if the worry is ODR issues then our tests would be just as susceptible as \nanyone else\u0027s, if we start to use binder more in them. As long as we don\u0027t, we would be fine with a .so without implementation code and DT_NEEDED entries, i.e. basically the stub library. Would that even theoretically work, or can we get calls into it even when we don\u0027t actively use it? Note we also use aidl_interface with the ndk backend.\n\n*) This uses the Soong SDK snapshot functionality to autogenerate the Android.bp files, and it currently doesn\u0027t handle internal shared lib dependencies within the SDK.",
+      "parentUuid": "7ff44be2_caa1f6ed",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "11f6458eefedc1f57e45e421f2656cbd507f4d2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a0640f92_250c3c54",
