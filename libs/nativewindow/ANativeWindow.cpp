@@ -341,3 +341,10 @@ int ANativeWindow_setQueueBufferInterceptor(ANativeWindow* window,
                                             void* data) {
     return window->perform(window, NATIVE_WINDOW_SET_QUEUE_INTERCEPTOR, interceptor, data);
 }
+
+int32_t ANativeWindow_getBuffersDefaultDataSpace(ANativeWindow* window) {
+    if (!window || !query(window, NATIVE_WINDOW_IS_VALID)) {
+        return -EINVAL;
+    }
+    return query(window, NATIVE_WINDOW_DEFAULT_DATASPACE);
+}
