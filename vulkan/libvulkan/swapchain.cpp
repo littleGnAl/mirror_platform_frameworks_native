@@ -485,6 +485,43 @@ android_pixel_format GetNativePixelFormat(VkFormat format) {
     return native_format;
 }
 
+// Additional VkColorSpaceKHR enums that are only intended to temporarily
+// unblock ANGLE (an OpenGL ES implementation layers on Vulkan) adoption
+// until a proper extension is submitted.
+//
+// TODO(b/235995642): replace with proper extension.
+typedef enum VkColorSpaceKHRTempExt {
+    // VK_COLOR_SPACE_TEMP_EXT_BT601_525_NONLINEAR_EXT specifies support
+    // for the BT601 525-line color space to be displayed using the ITU
+    // (SMPTE 170M) transfer function.
+    //
+    //   Red primary:    0.630,  0.340
+    //   Green primary:  0.310,  0.595
+    //   Blue primary:   0.155,  0.070
+    //   White-point:   0.3127, 0.3290
+    VK_COLOR_SPACE_TEMP_EXT_BT601_525_NONLINEAR_EXT = 1000999001,
+
+    // VK_COLOR_SPACE_TEMP_EXT_BT601_525_NONLINEAR_EXT specifies support
+    // for the BT601 625-line color space to be displayed using the ITU
+    // (SMPTE 170M) transfer function.
+    //
+    //   Red primary:    0.640,  0.330
+    //   Green primary:  0.290,  0.600
+    //   Blue primary:   0.150,  0.060
+    //   White-point:   0.3127, 0.3290
+    VK_COLOR_SPACE_TEMP_EXT_BT601_625_NONLINEAR_EXT = 1000999002,
+
+    // VK_COLOR_SPACE_TEMP_EXT_BT2020_NONLINEAR_EXT specifies support
+    // for the BT2020 color space to be displayed using the ITU
+    // (SMPTE 170M) transfer function.
+    //
+    //   Red primary:    0.640,  0.330
+    //   Green primary:  0.290,  0.600
+    //   Blue primary:   0.150,  0.060
+    //   White-point:   0.3127, 0.3290
+    VK_COLOR_SPACE_TEMP_EXT_BT2020_NONLINEAR_EXT = 1000999003
+} VkColorSpaceKHRTempExt;
+
 android_dataspace GetNativeDataspace(VkColorSpaceKHR colorspace) {
     switch (colorspace) {
         case VK_COLOR_SPACE_SRGB_NONLINEAR_KHR:
@@ -529,11 +566,25 @@ android_dataspace GetNativeDataspace(VkColorSpaceKHR colorspace) {
         case VK_COLOR_SPACE_PASS_THROUGH_EXT:
             return HAL_DATASPACE_ARBITRARY;
 
-        default:
+        default: {
+            // TODO(b/235995642): move below cases to the above switch once
+            // these enums are exposed through a proper extension.
+            const VkColorSpaceKHRTempExt colorspaceExt =
+                static_cast<VkColorSpaceKHRTempExt>(colorspace);
+            switch (colorspaceExt) {
+                case VK_COLOR_SPACE_TEMP_EXT_BT601_525_NONLINEAR_EXT:
+                    return HAL_DATASPACE_V0_BT601_525;
+                case VK_COLOR_SPACE_TEMP_EXT_BT601_625_NONLINEAR_EXT:
+                    return HAL_DATASPACE_V0_BT601_625;
+                case VK_COLOR_SPACE_TEMP_EXT_BT2020_NONLINEAR_EXT:
+                    return HAL_DATASPACE_BT2020;
+            }
+
             // This indicates that we don't know about the
             // dataspace specified and we should indicate that
             // it's unsupported
             return HAL_DATASPACE_UNKNOWN;
+        }
     }
 }
 
