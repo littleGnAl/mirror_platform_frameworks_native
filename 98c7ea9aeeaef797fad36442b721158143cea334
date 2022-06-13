@@ -104,6 +104,30 @@
       },
       "revId": "98c7ea9aeeaef797fad36442b721158143cea334",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d623bc_ca5ec1a2",
+        "filename": "libs/input/InputTransport.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1887356
+      },
+      "writtenOn": "2022-06-13T01:17:53Z",
+      "side": 1,
+      "message": "Dear Siarhei,\n\nThanks, I will abandon this change, please upload your solution.",
+      "parentUuid": "fbfc2efc_601c029f",
+      "range": {
+        "startLine": 1003,
+        "startChar": 72,
+        "endLine": 1003,
+        "endChar": 95
+      },
+      "revId": "98c7ea9aeeaef797fad36442b721158143cea334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
