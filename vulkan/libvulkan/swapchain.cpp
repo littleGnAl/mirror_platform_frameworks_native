@@ -529,11 +529,22 @@ android_dataspace GetNativeDataspace(VkColorSpaceKHR colorspace) {
         case VK_COLOR_SPACE_PASS_THROUGH_EXT:
             return HAL_DATASPACE_ARBITRARY;
 
-        default:
+        default: {
+            #define VK_COLOR_SPACE_BT601_525_NONLINEAR_EXT 1000999001
+            #define VK_COLOR_SPACE_BT601_625_NONLINEAR_EXT 1000999002
+
+            if (colorspace == VK_COLOR_SPACE_BT601_525_NONLINEAR_EXT) {
+                return HAL_DATASPACE_V0_BT601_525;
+            }
+            if (colorspace == VK_COLOR_SPACE_BT601_625_NONLINEAR_EXT) {
+                return HAL_DATASPACE_V0_BT601_625;
+            }
+
             // This indicates that we don't know about the
             // dataspace specified and we should indicate that
             // it's unsupported
             return HAL_DATASPACE_UNKNOWN;
+        }
     }
 }
 
@@ -1217,6 +1228,8 @@ VkResult CreateSwapchainKHR(VkDevice device,
               native_dataspace, strerror(-err), err);
         return VK_ERROR_SURFACE_LOST_KHR;
     }
+
+    ALOGE("jasonjason setting ANativeWindow data space to %d", native_dataspace);
 
     err = native_window_set_buffers_dimensions(
         window, static_cast<int>(create_info->imageExtent.width),
