@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "eefceeff_f50766a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-13T23:49:23Z",
+      "side": 1,
+      "message": "\u003e Mhmmm.\n\nHuh. I\u0027m going to assume it is only the ODR issue then.\n\n\u003e whole_static_libs collapses everything into one library.\n\nOh, you meant that we\u0027d put this ad-hoc art-host-native-deps module here and create a prebuilt out of it? That didn\u0027t occur to me.\n\nWith that approach we wouldn\u0027t risk ODR problems as long as we don\u0027t create any other prebuilts of any of the dependencies, at least. We already have liblog, so that\u0027d need to be left out. It\u0027d mean a more hidden sort of implementation dependency.\n\n\u003e Could cc_defaults help with this? We could maintain it here.\n\nThis git project isn\u0027t in the thin manifest, so such things would need to go into another place that is, e.g. frameworks/libs/modules-utils.\n\n\u003e If you still used shared_libs, then sure, it would be susceptable, but it\u0027s not a specific issue.\n\nI don\u0027t follow. Using separate prebuilts of the individual shared libs and depending on them using shared_libs would be the safe way to avoid ODR issues. It\u0027s having a compound library built with whole_static_libs that opens up the risk of ODR problems, isn\u0027t it?\n\n\u003e So, I don\u0027t think a raw stub library would work.\n\nNo need to consider that then. Good, didn\u0027t particularly like that approach anyway.\n\n\u003e Could you share more information about this (a bug or specific link)?\n\nI don\u0027t think there\u0027s a ticket for it in its general form. After all, the original intent was to support SDKs, which aren\u0027t supposed to include implementations. Then reality came along and we ended up with both test-exports and host-exports that have that. FWIW there\u0027s b/178691801 that touches on the problem specifically for dynamically linked host binaries.",
+      "parentUuid": "a85eee93_f818b240",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "11f6458eefedc1f57e45e421f2656cbd507f4d2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a0640f92_250c3c54",
