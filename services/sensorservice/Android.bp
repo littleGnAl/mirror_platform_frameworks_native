@@ -68,9 +68,8 @@ cc_library_shared {
 
     static_libs: [
         "android.hardware.sensors@1.0-convert",
+        "framework-cppstream-protos",
     ],
-
-    generated_headers: ["framework-cppstream-protos"],
 
     export_shared_lib_headers: [
         "libactivitymanager_aidl",
