@@ -123,6 +123,30 @@
       },
       "revId": "be96e4c7b38093a59719e7d7901de09e41e0355c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45475a0_cfe96235",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 44
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-14T00:18:58Z",
+      "side": 1,
+      "message": "Looking at exactly which tests are disabled without kernel Binder:\n* `CannotSendRegularBinderOverSocketBinder` and the reverse,\n* `UseKernelBinderCallingId` and its helper method in the service `useKernelBinderCallingId`,\n* `Java` which connects to a Java service (`batteryproperties`) and then asks it to start its own Rpc server via `setRpcClientDebug`,\n\nall of them check interactions between Rpc and kernel Binder. If the current build has no kernel IPC, does it make sense to run any of the tests above?",
+      "parentUuid": "af61f26b_287e48a9",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 6
+      },
+      "revId": "be96e4c7b38093a59719e7d7901de09e41e0355c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
