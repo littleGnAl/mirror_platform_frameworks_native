@@ -94,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c26b975_d5f2394c",
+        "filename": "libs/binder/trusty/Utils.cpp",
+        "patchSetId": 138
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-14T00:35:08Z",
+      "side": 1,
+      "message": "No, Trusty IPC syscalls are all non-blocking (except for `wait`). We don\u0027t need to do anything for `setNonBlocking` on Trusty.\n\nIt\u0027s also message-oriented, where a message is either fully delivered or not at all (module some truncation in Android that\u0027s getting fixed). That needs to be handled in `interruptibleWriteFully`.",
+      "parentUuid": "d5b3d22b_60aa47ab",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "c06cd64152520cd94dfe0b9678a4f577185c92d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31b64157_a672f363",
@@ -130,6 +154,30 @@
       "writtenOn": "2022-06-09T00:54:56Z",
       "side": 1,
       "message": "nit: this is technically duplicated code, could be\n\n    const char* newline;\n    while (newline \u003d strchr(msg, \u0027\\n\u0027)) {\n        log_function(msg, newline - msg, args...);\n        msg \u003d newline + 1;\n    }\n    log_function(msg, -1, args...);",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 36
+      },
+      "revId": "c06cd64152520cd94dfe0b9678a4f577185c92d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4148bc4e_32ef9cad",
+        "filename": "libs/binder/trusty/logging.cpp",
+        "patchSetId": 138
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-14T00:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbc3902b_eb4007a5",
       "range": {
         "startLine": 47,
         "startChar": 8,
