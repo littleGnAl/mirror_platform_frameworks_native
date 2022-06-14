@@ -190,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ee52e71_e2edce4a",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-14T21:26:27Z",
+      "side": 1,
+      "message": "Resolving.",
+      "parentUuid": "43e72bcf_03e8090e",
+      "range": {
+        "startLine": 614,
+        "startChar": 37,
+        "endLine": 615,
+        "endChar": 59
+      },
+      "revId": "fb041a441fe4e585a049234838c973effa412354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94d05382_a2ae95a4",
