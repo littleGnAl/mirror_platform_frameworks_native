@@ -185,22 +185,15 @@ cc_library_static {
 }
 
 cc_defaults {
-    name: "binderRpcTest_defaults",
+    name: "binderRpcTest_common_defaults",
     host_supported: true,
     target: {
         darwin: {
             enabled: false,
         },
-        android: {
-            test_suites: ["vts"],
-        },
     },
     defaults: [
         "binder_test_defaults",
-    ],
-
-    srcs: [
-        "binderRpcTest.cpp",
     ],
 
     static_libs: [
@@ -209,9 +202,69 @@ cc_defaults {
         "binderRpcTestIface-cpp",
         "binderRpcTestIface-ndk",
     ],
+}
+
+cc_defaults {
+    name: "binderRpcTestService_defaults",
+    installable: false,
+    defaults: [
+        "binderRpcTest_common_defaults",
+    ],
+
+    srcs: [
+        "binderRpcTestService.cpp",
+    ],
+}
+
+cc_defaults {
+    name: "binderRpcTest_defaults",
+    target: {
+        android: {
+            test_suites: ["vts"],
+        },
+    },
+    defaults: [
+        "binderRpcTest_common_defaults",
+    ],
+
+    srcs: [
+        "binderRpcTest.cpp",
+    ],
 
     test_suites: ["general-tests"],
     require_root: true,
+}
+
+cc_test_library {
+    name: "libBinderRpcTestService",
+    defaults: [
+        "binderRpcTestService_defaults",
+        "libbinder_tls_shared_deps",
+    ],
+
+    cflags: [
+        "-DBINDER_WITH_KERNEL_IPC",
+    ],
+
+    shared_libs: [
+        "libbinder",
+        "libbinder_ndk",
+        "libbase",
+        "libutils",
+        "libcutils",
+        "liblog",
+    ],
+}
+
+cc_test_library {
+    name: "libBinderRpcTestServiceNoKernel",
+    defaults: [
+        "binderRpcTestService_defaults",
+        "binderRpcTest_static_defaults",
+    ],
+    static_libs: [
+        "libbinder_rpc_no_kernel",
+    ],
 }
 
 cc_test {
@@ -232,6 +285,13 @@ cc_test {
         "libutils",
         "libcutils",
         "liblog",
+    ],
+
+    data_libs: [
+        "libBinderRpcTestService",
+        "libBinderRpcTestServiceNoKernel",
+        "libBinderRpcTestServiceSingleThreaded",
+        "libBinderRpcTestServiceSingleThreadedNoKernel",
     ],
 }
 
@@ -266,6 +326,41 @@ cc_test {
     static_libs: [
         "libbinder_rpc_no_kernel",
     ],
+    data_libs: [
+        "libBinderRpcTestService",
+        "libBinderRpcTestServiceNoKernel",
+        "libBinderRpcTestServiceSingleThreaded",
+        "libBinderRpcTestServiceSingleThreadedNoKernel",
+    ],
+}
+
+cc_test_library {
+    name: "libBinderRpcTestServiceSingleThreaded",
+    defaults: [
+        "binderRpcTestService_defaults",
+        "binderRpcTest_static_defaults",
+    ],
+    cflags: [
+        "-DBINDER_RPC_SINGLE_THREADED",
+        "-DBINDER_WITH_KERNEL_IPC",
+    ],
+    static_libs: [
+        "libbinder_rpc_single_threaded",
+    ],
+}
+
+cc_test_library {
+    name: "libBinderRpcTestServiceSingleThreadedNoKernel",
+    defaults: [
+        "binderRpcTestService_defaults",
+        "binderRpcTest_static_defaults",
+    ],
+    cflags: [
+        "-DBINDER_RPC_SINGLE_THREADED",
+    ],
+    static_libs: [
+        "libbinder_rpc_single_threaded_no_kernel",
+    ],
 }
 
 cc_test {
@@ -281,6 +376,12 @@ cc_test {
     static_libs: [
         "libbinder_rpc_single_threaded",
     ],
+    data_libs: [
+        "libBinderRpcTestService",
+        "libBinderRpcTestServiceNoKernel",
+        "libBinderRpcTestServiceSingleThreaded",
+        "libBinderRpcTestServiceSingleThreadedNoKernel",
+    ],
 }
 
 cc_test {
@@ -294,6 +395,12 @@ cc_test {
     ],
     static_libs: [
         "libbinder_rpc_single_threaded_no_kernel",
+    ],
+    data_libs: [
+        "libBinderRpcTestService",
+        "libBinderRpcTestServiceNoKernel",
+        "libBinderRpcTestServiceSingleThreaded",
+        "libBinderRpcTestServiceSingleThreadedNoKernel",
     ],
 }
 
