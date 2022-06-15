@@ -1,0 +1,6 @@
+LIBBINDER_RPC_TEST_SERVICE {
+  global:
+    runService;
+  local:
+    *;
+};
