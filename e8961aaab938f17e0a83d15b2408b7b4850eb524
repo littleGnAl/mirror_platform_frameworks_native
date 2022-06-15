@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2323620e_3cb2060d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1691065
+      },
+      "writtenOn": "2022-06-15T22:30:56Z",
+      "side": 1,
+      "message": "\u003e Also, please point me to the ANGLE CL that you were going to create\n\nhttps://chromium-review.googlesource.com/c/angle/angle/+/3707570",
+      "parentUuid": "efa6bf17_6849205d",
+      "revId": "e8961aaab938f17e0a83d15b2408b7b4850eb524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5538c58_eca15dd5",
