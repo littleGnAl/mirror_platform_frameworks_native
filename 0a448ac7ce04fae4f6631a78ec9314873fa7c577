@@ -16,6 +16,23 @@
       "message": "Cherry-picked from master",
       "revId": "0a448ac7ce04fae4f6631a78ec9314873fa7c577",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53d4b038_faf540d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-06-15T18:40:05Z",
+      "side": 1,
+      "message": "RS for cherry-pick",
+      "revId": "0a448ac7ce04fae4f6631a78ec9314873fa7c577",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
