@@ -163,16 +163,16 @@ int DumpFileFromFdToFd(const std::string& title, const std::string& path_string,
     }
     bool newline = false;
     while (true) {
-        uint64_t start_time = Nanotime();
         pollfd fds[] = { { .fd = fd, .events = POLLIN } };
-        int ret = TEMP_FAILURE_RETRY(poll(fds, arraysize(fds), 30 * 1000));
+        // Only wait up to 100 milliseconds.
+        int ret = TEMP_FAILURE_RETRY(poll(fds, arraysize(fds), 100));
         if (ret == -1) {
             dprintf(out_fd, "*** %s: poll failed: %s\n", path, strerror(errno));
             newline = true;
             break;
         } else if (ret == 0) {
-            uint64_t elapsed = Nanotime() - start_time;
-            dprintf(out_fd, "*** %s: Timed out after %.3fs\n", path, (float)elapsed / NANOS_PER_SEC);
+            // For kernel backed files, a timeout is the only way to tell
+            // the file is done reading. So this is not considered an error.
             newline = true;
             break;
         } else {
