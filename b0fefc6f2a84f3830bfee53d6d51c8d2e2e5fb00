@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "538039ae_2170792b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-06-16T22:09:26Z",
+      "side": 1,
+      "message": "lol @ TH -2 for a test change supposedly causing non-booting devices, when it looks like aosp/master head is simply currently not booting at all.",
+      "revId": "b0fefc6f2a84f3830bfee53d6d51c8d2e2e5fb00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
