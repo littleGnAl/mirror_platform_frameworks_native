@@ -144,6 +144,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ecf02e_04b704ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-16T01:40:18Z",
+      "side": 1,
+      "message": "\u003e Huh. I\u0027m going to assume it is only the ODR issue then.\n\nYes!\n\n\u003e Oh, you meant that we\u0027d put this ad-hoc art-host-native-deps module here and create a prebuilt out of it? That didn\u0027t occur to me.\n\nYes. Will that work?\n\n\u003e This git project isn\u0027t in the thin manifest, so such things would need to go into another place that is, e.g. frameworks/libs/modules-utils.\n\nI meant use that in order to create \u0027art-host-native-deps\u0027 for prebuilts but you\u0027re also welcome to put it here (pref with a generic name if here).\n\n\u003e I don\u0027t follow. Using separate prebuilts of the individual shared libs and depending on them using shared_libs would be the safe way to avoid ODR issues. It\u0027s having a compound library built with whole_static_libs that opens up the risk of ODR problems, isn\u0027t it?\n\nWhere you would hit ODR issues here is if:\n- A shared links B\n- A shared links C\n- C static links (part of) B\n\nIn the context of this patchset, the potential ODR issue is with \u0027C\u0027 being libbinder and \u0027B\u0027 being one of libbinder_ndk_lib_deps.\n\nI agree that separate prebuilts of shared libs makes it much easier to avoid ODR problems. If you\u0027re able to use multiple prebuilts of different shared libs, it would also ensure that library constructor/destructor behavior is exactly the same as in Android. It would be a more accurate test. However, it is more complex to package multiple prebuilts. Since you are combining libraries in this situation, I thought you would have already discounted this solution (though now I am curious why!).\n\n\u003e I don\u0027t think there\u0027s a ticket for it in its general form.\n\nAck, I understand the generic need.",
+      "parentUuid": "eefceeff_f50766a2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "11f6458eefedc1f57e45e421f2656cbd507f4d2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a0640f92_250c3c54",
