@@ -405,6 +405,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f50ca3e_5ab9030f",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-17T23:19:56Z",
+      "side": 1,
+      "message": "See the *Nasty*Nester* test cases for instance to see how deep the stack will get. We do want to avoid a caller being able to cause a stack overflow in a server. I think if you reserve even 10 FDs, it would handle this in 99% of cases without causing stack overflow. Though, since you looked at the data recently for gMaxFds, maybe you know a better small bound",
+      "parentUuid": "bdb6b95f_864290db",
+      "range": {
+        "startLine": 71,
+        "startChar": 46,
+        "endLine": 71,
+        "endChar": 57
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a49e5857_5782c5e0",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 7

@@ -16,6 +16,121 @@
       "message": "Still working through the comments.",
       "revId": "cd8094b560e32506c64f352212ab6ff87e44a0ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e6f8bf7_f9bb50a7",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-17T23:19:56Z",
+      "side": 1,
+      "message": "fd.get() ? 😊",
+      "range": {
+        "startLine": 709,
+        "startChar": 26,
+        "endLine": 709,
+        "endChar": 82
+      },
+      "revId": "cd8094b560e32506c64f352212ab6ff87e44a0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05c3cd2_a9153c39",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 2512,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-17T23:19:56Z",
+      "side": 1,
+      "message": "is this TODO in this CL?",
+      "range": {
+        "startLine": 2509,
+        "startChar": 0,
+        "endLine": 2512,
+        "endChar": 16
+      },
+      "revId": "cd8094b560e32506c64f352212ab6ff87e44a0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2713a365_84c71bba",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 2512,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-17T23:19:56Z",
+      "side": 1,
+      "message": "seems this comment is handled now",
+      "range": {
+        "startLine": 2511,
+        "startChar": 41,
+        "endLine": 2512,
+        "endChar": 16
+      },
+      "revId": "cd8094b560e32506c64f352212ab6ff87e44a0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257786ca_06762ccd",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-17T23:19:56Z",
+      "side": 1,
+      "message": "nit: should recombine these lines and re-run formatter though. It only breaks strings, doesn\u0027t join them.",
+      "range": {
+        "startLine": 548,
+        "startChar": 61,
+        "endLine": 549,
+        "endChar": 31
+      },
+      "revId": "cd8094b560e32506c64f352212ab6ff87e44a0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f465993_f0bc8b50",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-17T23:19:56Z",
+      "side": 1,
+      "message": "nit: any reason to move this function here? I mean, I had separated it for readability iirc, but I mean, this is also fine. No problem.",
+      "range": {
+        "startLine": 545,
+        "startChar": 15,
+        "endLine": 561,
+        "endChar": 17
+      },
+      "revId": "cd8094b560e32506c64f352212ab6ff87e44a0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
