@@ -420,6 +420,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb3c3bdb_7bed96c3",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-17T22:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a49e5857_5782c5e0",
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1956b49_b402d144",
@@ -490,6 +508,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5540f1_0f2e1ca5",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-17T22:31:29Z",
+      "side": 1,
+      "message": "Moved to https://r.android.com/2128761.\n\n(I originally needed this because I changed the order of the checks in appendFrom. I\u0027ve since changed the check order back for other reasons, so this isn\u0027t technically needed, just seems like an improvement)",
+      "parentUuid": "d1c2755e_d217baa4",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 789,
+        "endChar": 66
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49fa7246_3617cf39",
@@ -513,6 +555,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e004a41e_59d0e963",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-17T22:31:29Z",
+      "side": 1,
+      "message": "I\u0027m used to there being a presubmit check that fails if it sees a \"do not submit\" string anywhere, but I guess that probably doesn\u0027t work here.\n\nFinished the TODO.",
+      "parentUuid": "49fa7246_3617cf39",
+      "range": {
+        "startLine": 1370,
+        "startChar": 8,
+        "endLine": 1371,
+        "endChar": 15
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17097283_7fa35668",
@@ -526,6 +592,30 @@
       "writtenOn": "2022-05-20T01:01:18Z",
       "side": 1,
       "message": "nit: std::string(253, \u0027a\u0027) ?",
+      "range": {
+        "startLine": 1433,
+        "startChar": 2,
+        "endLine": 1435,
+        "endChar": 5
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a11badff_f2fea956",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-17T22:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17097283_7fa35668",
       "range": {
         "startLine": 1433,
         "startChar": 2,

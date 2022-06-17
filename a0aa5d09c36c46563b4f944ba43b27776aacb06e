@@ -88,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "111ebf1c_5f62f402",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-17T22:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6542a163_b32c13a3",
+      "range": {
+        "startLine": 688,
+        "startChar": 3,
+        "endLine": 688,
+        "endChar": 16
+      },
+      "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9462b314_452e6b34",
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "when we send the parcel over a socket, we have to write the positions as an array in the data stream and the fds as an array in the ancillary data\n\nif we manage the data inside Parcel like that, then we need to sort of \"unzip\" the data when writing and \"zip\" the data when reading. \"unzip\" will require at least one allocation i think. the \"zip\" part is trickier than it looks at first glance (i think we\u0027ll have to scan the objects in the parcel data to figure out which FDs go into which slots)\n\nmaybe that is worth the effort, but i\u0027m leaning towards keeping things simple to start with and then following up with some optimizations if we have a good benchmark or optimization target\n\n\nmisc related thoughts below:\n\n---\n\nalso, i\u0027m not doing it now, but `mObjectPositions` could potentially point directly to the `CommandData` buffer in the `rpcSetDataReference` path, as is done for `mObjects` in `ipcSetDataReference`\n\n--\n\ndreams for this code: something like std::vector, but\n\n* failable allocations\n* can point to unowned memory\n* pair\u003cvector, vector\u003e packed into one allocation (maybe one grows up and other grows down or maybe both get 1/2 capacity)\n\n---\n\nwhile thinking about that, i realized we could consider an alternative data format for FDs. we could write just a tag with no index. then, the object position would be used to lookup the FD. that would lock us into using a memory representation like you suggest though. probably not worth the 4 bytes",
       "parentUuid": "9462b314_452e6b34",
+      "range": {
+        "startLine": 1290,
+        "startChar": 0,
+        "endLine": 1295,
+        "endChar": 92
+      },
+      "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4651d2_cbfaaab2",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-17T22:31:29Z",
+      "side": 1,
+      "message": "Going to keep it as is for simplicity. We\u0027ll only pay the price when using FDs, which are already more expensive than plain-old-data parcels in other ways. Once we\u0027ve got a use case to optimize for we can revisit.",
+      "parentUuid": "fa02a445_271951de",
       "range": {
         "startLine": 1290,
         "startChar": 0,
