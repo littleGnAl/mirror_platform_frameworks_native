@@ -16,6 +16,23 @@
       "message": "RS for cherry-pick",
       "revId": "ec70ee2c604b82f9261513dbd3110ecdc9bc1f13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4736c1c_c89bc742",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-06-17T15:34:41Z",
+      "side": 1,
+      "message": "Strange, the CL was merged into internal branch, but it\u0027s not propagating to other branches. I\u0027m also not seeing it anywhere in the pending merges. Will give it another day and consider adding to those missing branches directly.",
+      "revId": "ec70ee2c604b82f9261513dbd3110ecdc9bc1f13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
