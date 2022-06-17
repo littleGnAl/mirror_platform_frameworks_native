@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef55d74_bb5d0fbb",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-17T21:59:17Z",
+      "side": 1,
+      "message": "nit: given L338 this is redundant, we don\u0027t need this, or is it to satisfy compiler checks?\n\n\u003e data must be non-null and aligned even for zero-length slices\n\nah - from_raw_parts has this same restriction",
+      "range": {
+        "startLine": 342,
+        "startChar": 22,
+        "endLine": 342,
+        "endChar": 40
+      },
+      "revId": "0c5f923dd68d31482741ca4b44bbec80eef2fe9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
