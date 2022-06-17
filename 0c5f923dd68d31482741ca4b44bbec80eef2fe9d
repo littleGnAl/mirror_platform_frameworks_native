@@ -22,6 +22,30 @@
       },
       "revId": "0c5f923dd68d31482741ca4b44bbec80eef2fe9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cbb17bb_15167832",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2022-06-17T22:03:06Z",
+      "side": 1,
+      "message": "It\u0027s redundant, this was just me being paranoid in case someone removed the previous check at some point.\n\nRight, we can\u0027t pass null to `from_raw_parts` so it\u0027s easier to just avoid the whole issue. We could pass `NonNull::dangling()` but that just complicates things for no reason.",
+      "parentUuid": "fef55d74_bb5d0fbb",
+      "range": {
+        "startLine": 342,
+        "startChar": 22,
+        "endLine": 342,
+        "endChar": 40
+      },
+      "revId": "0c5f923dd68d31482741ca4b44bbec80eef2fe9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
