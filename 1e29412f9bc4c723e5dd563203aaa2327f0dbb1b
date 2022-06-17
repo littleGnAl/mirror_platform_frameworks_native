@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0791112_6dc71b29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1338311
+      },
+      "writtenOn": "2022-06-17T22:28:44Z",
+      "side": 1,
+      "message": "By mistake I have clicked on the wrong CL.",
+      "revId": "1e29412f9bc4c723e5dd563203aaa2327f0dbb1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
