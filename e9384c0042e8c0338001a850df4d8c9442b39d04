@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2da055b7_40aa6c3b",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1650177
+      },
+      "writtenOn": "2022-06-17T01:56:45Z",
+      "side": 1,
+      "message": "The line is longer than 100 characters. Please put this in a new line.",
+      "range": {
+        "startLine": 1613,
+        "startChar": 80,
+        "endLine": 1613,
+        "endChar": 101
+      },
+      "revId": "e9384c0042e8c0338001a850df4d8c9442b39d04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
