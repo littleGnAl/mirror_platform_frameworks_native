@@ -169,7 +169,7 @@ status_t ABBinder::dump(int fd, const ::android::Vector<String16>& args) {
 
     std::vector<String8> utf8Args;  // owns memory of utf8s
     utf8Args.reserve(args.size());
-    std::vector<const char*> utf8Pointers;  // what can be passed over NDK API
+    std::vector<const char*> utf8Pointers = {""};  // what can be passed over NDK API
     utf8Pointers.reserve(args.size());
 
     for (size_t i = 0; i < args.size(); i++) {
