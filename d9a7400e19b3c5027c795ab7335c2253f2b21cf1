@@ -52,6 +52,24 @@
       "parentUuid": "808cb451_68aa94a6",
       "revId": "d9a7400e19b3c5027c795ab7335c2253f2b21cf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36f4cb15_53ef1b33",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-17T21:38:11Z",
+      "side": 1,
+      "message": "frameworks/native/libs/binder/Binder.cpp:56:16: error: \u0027noinline\u0027 attribute only applies to functions [-Werror,-Wignored-attributes]\n__attribute__((noinline))\n\nSo I suppose we could move this into a function.",
+      "parentUuid": "d22bcb21_e3a92927",
+      "revId": "d9a7400e19b3c5027c795ab7335c2253f2b21cf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
