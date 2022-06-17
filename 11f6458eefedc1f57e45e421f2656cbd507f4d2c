@@ -170,6 +170,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c9b96245_2930d372",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-06-17T21:08:41Z",
+      "side": 1,
+      "message": "Exactly, so the only safe way to do this is to package all the dependencies as their own prebuilt .so files, and then depend on them all in our test Android.bp\u0027s. We could maybe devise a solution with default modules and constant lists to avoid duplicating the list of dependencies, but that too feels rickety and maintenance heavy to me.\n\nGiven that I\u0027m becoming more inclined to just live without host unit tests on our thin branch. After all, we don\u0027t use it very much for this project because we need the full tree to work on the platform side of it. So I\u0027ll just abandon this. Thanks for the discussion.\n\nAt some point we\u0027ll hopefully have go/multitree-design that\u0027ll address this in a better way than through git stored prebuilts.",
+      "parentUuid": "89ecf02e_04b704ee",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "11f6458eefedc1f57e45e421f2656cbd507f4d2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a0640f92_250c3c54",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
