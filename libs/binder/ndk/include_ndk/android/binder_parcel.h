@@ -1207,6 +1207,15 @@ binder_status_t AParcel_marshal(const AParcel* parcel, uint8_t* buffer, size_t s
 binder_status_t AParcel_unmarshal(AParcel* parcel, const uint8_t* buffer, size_t len)
         __INTRODUCED_IN(33);
 
+/**
+ * Returns the allocation limit for Parcel size.
+ *
+ * Available since API level 34.
+ *
+ * \return parcel allocation limit.
+ */
+int32_t AParcel_getAllocationLimit(const AParcel* parcel) __INTRODUCED_IN(34);
+
 __END_DECLS
 
 /** @} */

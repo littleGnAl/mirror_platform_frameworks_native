@@ -701,4 +701,8 @@ binder_status_t AParcel_unmarshal(AParcel* parcel, const uint8_t* buffer, size_t
     return STATUS_OK;
 }
 
+int32_t AParcel_getAllocationLimit(const AParcel* parcel) {
+    return parcel->get()->getAllocationLimit();
+}
+
 // @END

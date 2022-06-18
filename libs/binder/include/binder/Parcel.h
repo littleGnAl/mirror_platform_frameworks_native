@@ -597,6 +597,10 @@ public:
 
     void                print(TextOutput& to, uint32_t flags = 0) const;
 
+    // High limit of 1MB since something this big could never be returned. Could
+    // probably scope this down, but might impact very specific usecases.
+    int32_t getAllocationLimit() const { return 1 * 1000 * 1000; }
+
 private:
     typedef void        (*release_func)(Parcel* parcel,
                                         const uint8_t* data, size_t dataSize,
