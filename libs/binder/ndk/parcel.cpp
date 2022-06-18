@@ -701,4 +701,17 @@ binder_status_t AParcel_unmarshal(AParcel* parcel, const uint8_t* buffer, size_t
     return STATUS_OK;
 }
 
+binder_status_t AParcel_readOutVectorSizeWithCheck(const AParcel* parcel, size_t elementSize,
+                                                   int32_t* size) {
+    const Parcel* rawParcel = parcel->get();
+    return rawParcel->readOutVectorSizeWithCheck(elementSize, size);
+}
+
+template <typename T>
+binder_status_t AParcel_resizeOutVector(const AParcel* parcel, void* vectorData) {
+    const Parcel* rawParcel = parcel->get();
+    std::vector<T>* vec = static_cast<std::vector<T>*>(vectorData);
+    return rawParcel->resizeOutVector(vec);
+}
+
 // @END

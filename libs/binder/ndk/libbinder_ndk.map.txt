@@ -152,6 +152,12 @@ LIBBINDER_NDK33 { # introduced=33
     AParcel_unmarshal;
 };
 
+LIBBINDER_NDK34 { # introduced=34
+  global:
+    AParcel_readOutVectorSizeWithCheck;
+    AParcel_resizeOutVector;
+};
+
 LIBBINDER_NDK_PLATFORM {
   global:
     AParcel_getAllowFds;

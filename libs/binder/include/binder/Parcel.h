@@ -596,6 +596,7 @@ public:
     uid_t               readCallingWorkSourceUid() const;
 
     void                print(TextOutput& to, uint32_t flags = 0) const;
+    status_t readOutVectorSizeWithCheck(size_t elmSize, int32_t* size) const;
 
 private:
     typedef void        (*release_func)(Parcel* parcel,
@@ -634,8 +635,6 @@ private:
     status_t            finishUnflattenBinder(const sp<IBinder>& binder, sp<IBinder>* out) const;
     status_t            flattenBinder(const sp<IBinder>& binder);
     status_t            unflattenBinder(sp<IBinder>* out) const;
-
-    status_t readOutVectorSizeWithCheck(size_t elmSize, int32_t* size) const;
 
     template<class T>
     status_t            readAligned(T *pArg) const;

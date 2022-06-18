@@ -1419,6 +1419,17 @@ static inline binder_status_t AParcel_resizeVector(const AParcel* parcel, std::v
     if (size < 0) return STATUS_UNEXPECTED_NULL;
 
     // TODO(b/188215728): delegate to libbinder_ndk
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
+    if (__builtin_available(android 34, *)) {
+#else
+    if (__ANDROID_API__ >= 34) {
+#endif
+        if (err = AParcel_readOutVectorSizeWithCheck(parcel, sizeof(T), &size); err != STATUS_OK)
+            return err;
+        void* vectorData = static_cast<void*>(vec);
+        return AParcel_resizeOutVector(parcel, vectorData);
+    }
+
     if (size > 1000000) return STATUS_NO_MEMORY;
 
     vec->resize(static_cast<size_t>(size));
@@ -1443,6 +1454,17 @@ static inline binder_status_t AParcel_resizeVector(const AParcel* parcel,
     }
 
     // TODO(b/188215728): delegate to libbinder_ndk
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
+    if (__builtin_available(android 34, *)) {
+#else
+    if (__ANDROID_API__ >= 34) {
+#endif
+        if (err = AParcel_readOutVectorSizeWithCheck(parcel, sizeof(T), &size); err != STATUS_OK)
+            return err;
+        void* vectorData = static_cast<void*>(vec);
+        return AParcel_resizeOutVector(parcel, vectorData);
+    }
+
     if (size > 1000000) return STATUS_NO_MEMORY;
 
     *vec = std::optional<std::vector<T>>(std::vector<T>{});

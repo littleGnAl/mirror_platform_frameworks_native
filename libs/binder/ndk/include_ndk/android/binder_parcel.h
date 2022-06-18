@@ -1207,6 +1207,26 @@ binder_status_t AParcel_marshal(const AParcel* parcel, uint8_t* buffer, size_t s
 binder_status_t AParcel_unmarshal(AParcel* parcel, const uint8_t* buffer, size_t len)
         __INTRODUCED_IN(33);
 
+/**
+ * Resize vector function.
+ *
+ * Available since API level 34.
+ *
+ * \return
+ */
+binder_status_t AParcel_readOutVectorSizeWithCheck(const AParcel* parcel, size_t elementSize,
+                                                   int32_t* size) __INTRODUCED_IN(34);
+
+/**
+ * Resize vector.
+ *
+ * Available since API level 34.
+ *
+ * \return
+ */
+
+binder_status_t AParcel_resizeOutVector(const AParcel* parcel, void* vec) __INTRODUCED_IN(34);
+
 __END_DECLS
 
 /** @} */
