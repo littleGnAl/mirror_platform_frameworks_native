@@ -1807,8 +1807,8 @@ const void* Parcel::readInplace(size_t len) const
 
 status_t Parcel::readOutVectorSizeWithCheck(size_t elmSize, int32_t* size) const {
     if (status_t status = readInt32(size); status != OK) return status;
-    if (*size < 0) return OK; // may be null, client to handle
-
+    if (*size < -1) return BAD_VALUE;
+    if (*size == -1) return OK; // may be null, client to handle
     LOG_ALWAYS_FATAL_IF(elmSize > INT32_MAX, "Cannot have element as big as %zu", elmSize);
 
     // approximation, can't know max element size (e.g. if it makes heap
