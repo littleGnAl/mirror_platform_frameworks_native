@@ -1413,13 +1413,22 @@ static inline binder_status_t AParcel_writeVectorSize(AParcel* parcel,
 template <typename T>
 static inline binder_status_t AParcel_resizeVector(const AParcel* parcel, std::vector<T>* vec) {
     int32_t size;
-    binder_status_t err = AParcel_readInt32(parcel, &size);
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
+    if (__builtin_available(android 34, *)) {
+#else
+    if (__ANDROID_API__ >= 34) {
+#endif
+        if (binder_status_t err = AParcel_readVectorSizeWithCheck(parcel, sizeof(T), &size);
+            err != STATUS_OK)
+            return err;
+    } else {
+        binder_status_t err = AParcel_readInt32(parcel, &size);
+        if (err != STATUS_OK) return err;
 
-    if (err != STATUS_OK) return err;
+        if (size > 1000000) return STATUS_NO_MEMORY;
+    }
+
     if (size < 0) return STATUS_UNEXPECTED_NULL;
-
-    // TODO(b/188215728): delegate to libbinder_ndk
-    if (size > 1000000) return STATUS_NO_MEMORY;
 
     vec->resize(static_cast<size_t>(size));
     return STATUS_OK;
@@ -1432,18 +1441,26 @@ template <typename T>
 static inline binder_status_t AParcel_resizeVector(const AParcel* parcel,
                                                    std::optional<std::vector<T>>* vec) {
     int32_t size;
-    binder_status_t err = AParcel_readInt32(parcel, &size);
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
+    if (__builtin_available(android 34, *)) {
+#else
+    if (__ANDROID_API__ >= 34) {
+#endif
+        if (binder_status_t err = AParcel_readVectorSizeWithCheck(parcel, sizeof(T), &size);
+            err != STATUS_OK)
+            return err;
+    } else {
+        binder_status_t err = AParcel_readInt32(parcel, &size);
 
-    if (err != STATUS_OK) return err;
+        if (err != STATUS_OK) return err;
+        if (size > 1000000) return STATUS_NO_MEMORY;
+    }
     if (size < -1) return STATUS_UNEXPECTED_NULL;
 
     if (size == -1) {
         *vec = std::nullopt;
         return STATUS_OK;
     }
-
-    // TODO(b/188215728): delegate to libbinder_ndk
-    if (size > 1000000) return STATUS_NO_MEMORY;
 
     *vec = std::optional<std::vector<T>>(std::vector<T>{});
     (*vec)->resize(static_cast<size_t>(size));

@@ -1207,6 +1207,20 @@ binder_status_t AParcel_marshal(const AParcel* parcel, uint8_t* buffer, size_t s
 binder_status_t AParcel_unmarshal(AParcel* parcel, const uint8_t* buffer, size_t len)
         __INTRODUCED_IN(33);
 
+/**
+ * Reads vector size and checks if the size exceeds limit.
+ *
+ * Available since API level 34.
+ *
+ * \param parcel The parcel to perform the read.
+ * \param elementSize The size of an element in the vector.
+ * \param size The new size of the vector or -1 if would be null.
+ * \return STATUS_OK on successful read. STATUS_NO_MEMORY if the allocation is
+ * unreasonably large.
+ */
+binder_status_t AParcel_readVectorSizeWithCheck(const AParcel* parcel, size_t elementSize,
+                                                int32_t* size) __INTRODUCED_IN(34);
+
 __END_DECLS
 
 /** @} */
