@@ -597,6 +597,9 @@ public:
 
     void                print(TextOutput& to, uint32_t flags = 0) const;
 
+    // Returns the Allocation Limit of the Parcel.
+    size_t getAllocationLimit() const;
+
 private:
     typedef void        (*release_func)(Parcel* parcel,
                                         const uint8_t* data, size_t dataSize,
