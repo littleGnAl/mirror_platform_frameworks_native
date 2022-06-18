@@ -701,4 +701,10 @@ binder_status_t AParcel_unmarshal(AParcel* parcel, const uint8_t* buffer, size_t
     return STATUS_OK;
 }
 
+binder_status_t AParcel_readVectorSizeWithCheck(const AParcel* parcel, size_t elementSize,
+                                                int32_t* size) {
+    const Parcel* rawParcel = parcel->get();
+    return rawParcel->readOutVectorSizeWithCheck(elementSize, size);
+}
+
 // @END
