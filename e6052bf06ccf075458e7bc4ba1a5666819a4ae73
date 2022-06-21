@@ -429,6 +429,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a57bc9ea_b9f245bc",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-21T22:50:05Z",
+      "side": 1,
+      "message": "Some notes:\n* The allocations for this aren\u0027t part of the nested stack, we only need it long enough to perform the send/recv syscalls.\n* When FD support is on, for every recvmsg that can possibly get FDs, we will always need to create a CMSG_DATA array big enough for the hard max number of FDs (since there is no FD count sent in advance).\n\nAlways heap allocating as needed doesn\u0027t seem viable because of the second point. We could do a mix of heap and stack, but that just reduces the stack requirements a bit, so I\u0027m not a fan unless we a specific target we are tuning for.\n\nIf stack is precious, a more complex idea is to heap allocate the buffers up front as part of the connection (or transport) and then reuse them for each syscall. Could make it lazy so that the extra memory isn\u0027t used unless they send an FD first.\n\nI propose trying the large stack allocation approach and then adjust if it causes any issues.\n\nI\u0027ve changed the NestedTransaction test to enable FDs so that the extra stack space is covered.",
+      "parentUuid": "5f50ca3e_5ab9030f",
+      "range": {
+        "startLine": 71,
+        "startChar": 46,
+        "endLine": 71,
+        "endChar": 57
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a49e5857_5782c5e0",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 7
