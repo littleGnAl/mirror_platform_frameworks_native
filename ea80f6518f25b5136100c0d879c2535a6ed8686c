@@ -16,6 +16,24 @@
       "message": "keep?",
       "revId": "ea80f6518f25b5136100c0d879c2535a6ed8686c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b5fd2b9_69724b2d",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 65
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-21T18:13:36Z",
+      "side": 0,
+      "message": "See https://android-review.googlesource.com/c/platform/frameworks/native/+/2076031/comments/915eeac2_201ca946",
+      "parentUuid": "cdf9794a_05d6f92c",
+      "revId": "ea80f6518f25b5136100c0d879c2535a6ed8686c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
