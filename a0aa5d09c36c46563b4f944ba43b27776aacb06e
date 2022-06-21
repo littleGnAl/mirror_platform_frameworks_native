@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26de1a4b_63fbad6a",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-21T21:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1e161a7_024e3b99",
+      "range": {
+        "startLine": 576,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 40
+      },
+      "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6542a163_b32c13a3",
@@ -149,6 +173,30 @@
       "writtenOn": "2022-06-17T23:19:56Z",
       "side": 1,
       "message": "okay, so now we wait for the kernel to throw an error deeper in the stack? okay, makes sense.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 5
+      },
+      "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6684ff17_db141c71",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-21T21:50:54Z",
+      "side": 1,
+      "message": "Yeah. Technically, the kernel doesn\u0027t throw and error, it will silently drop the SCM_RIGHTS from the CMSG (I can\u0027t find docs to back this up, but that is how it works empirically). We\u0027ll still send the object offsets over the wire. Immediately after the data is received, we try to create a parcel and notice that the FDs are missing, then return an error back to the sender. The unit tests cover this.",
+      "parentUuid": "d8e3d879_bac7b7d5",
       "range": {
         "startLine": 67,
         "startChar": 0,

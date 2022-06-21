@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa02d9c_a231d0cb",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-21T21:50:54Z",
+      "side": 1,
+      "message": "Have to unwrap the `variant` first. I wish the C++ made sum types a language feature so this stuff was less awkward. I\u0027ve added a `toRawFd` helper function to make it easier to read.",
+      "parentUuid": "9e6f8bf7_f9bb50a7",
+      "range": {
+        "startLine": 709,
+        "startChar": 26,
+        "endLine": 709,
+        "endChar": 82
+      },
+      "revId": "cd8094b560e32506c64f352212ab6ff87e44a0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e05c3cd2_a9153c39",
@@ -105,6 +129,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb3efa3_87d370df",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 2512,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-21T21:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2713a365_84c71bba",
+      "range": {
+        "startLine": 2511,
+        "startChar": 41,
+        "endLine": 2512,
+        "endChar": 16
+      },
+      "revId": "cd8094b560e32506c64f352212ab6ff87e44a0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8102c40_be47fbc9",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 2512,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-21T21:50:54Z",
+      "side": 1,
+      "message": "I\u0027m thinking of adding some extra validation that loops over the objects and makes sure they are all valid. I\u0027ll hold off on that until we add binders to the object list. The `objectTableSize !\u003d ancillaryFds.size()` should be enough at this point.",
+      "parentUuid": "e05c3cd2_a9153c39",
+      "range": {
+        "startLine": 2509,
+        "startChar": 0,
+        "endLine": 2512,
+        "endChar": 16
+      },
+      "revId": "cd8094b560e32506c64f352212ab6ff87e44a0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "257786ca_06762ccd",
@@ -128,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "354afc68_bca71290",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-21T21:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "257786ca_06762ccd",
+      "range": {
+        "startLine": 548,
+        "startChar": 61,
+        "endLine": 549,
+        "endChar": 31
+      },
+      "revId": "cd8094b560e32506c64f352212ab6ff87e44a0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f465993_f0bc8b50",
@@ -141,6 +237,30 @@
       "writtenOn": "2022-06-17T23:19:56Z",
       "side": 1,
       "message": "nit: any reason to move this function here? I mean, I had separated it for readability iirc, but I mean, this is also fine. No problem.",
+      "range": {
+        "startLine": 545,
+        "startChar": 15,
+        "endLine": 561,
+        "endChar": 17
+      },
+      "revId": "cd8094b560e32506c64f352212ab6ff87e44a0ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2784d257_c0b6159d",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-21T21:50:54Z",
+      "side": 1,
+      "message": "Are you asking about the lambda being inlined? That was done in https://r.android.com/2115298 (not related to this CL). Should be easy to move back.",
+      "parentUuid": "7f465993_f0bc8b50",
       "range": {
         "startLine": 545,
         "startChar": 15,
