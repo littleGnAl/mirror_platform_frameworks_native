@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66cff9b7_1ff3d74d",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-06-22T00:36:57Z",
+      "side": 1,
+      "message": "Currently mismatched declaration and definition of this function.\nDeclaration is in C header, definition is in C++ using templates. Does not build.\nI can\u0027t figure out a way to do this call. \n\nCalling `parcel-\u003eget()-\u003eresizeOutVector` gives an error:\n`member access into incomplete type \u0027const AParcel\u0027`.\n\nWhat I can\u0027t figure out is a way to access libbinder parcels from binder_parcel_utils. The original thought would have been through NDK parcel.cpp, however the function would need to be defined as is currently done. Any thoughts?",
+      "range": {
+        "startLine": 1430,
+        "startChar": 15,
+        "endLine": 1430,
+        "endChar": 38
+      },
+      "revId": "35fa5f5210514b745024e4287e5b28ee22293e92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
