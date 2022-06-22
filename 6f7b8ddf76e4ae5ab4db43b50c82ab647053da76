@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75579542_dbd6abfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1084468
+      },
+      "writtenOn": "2022-06-22T18:01:55Z",
+      "side": 1,
+      "message": "Thanks Jason! ",
+      "revId": "6f7b8ddf76e4ae5ab4db43b50c82ab647053da76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2defe12a_1c2fa4bd",
+        "filename": "vulkan/vkjson/vkjson.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1084468
+      },
+      "writtenOn": "2022-06-22T18:01:55Z",
+      "side": 1,
+      "message": "Perhaps this could be made more future proof by having a `default` case which checks that apiVersion \u003e\u003d VK_API_VERSION_1_2. Fall through when it is, and assert when it\u0027s not.\n\nNote that dEQP-VK already validates that it\u0027s an existing version.",
+      "range": {
+        "startLine": 845,
+        "startChar": 4,
+        "endLine": 845,
+        "endChar": 8
+      },
+      "revId": "6f7b8ddf76e4ae5ab4db43b50c82ab647053da76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
