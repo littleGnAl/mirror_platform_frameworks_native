@@ -214,6 +214,24 @@
       "parentUuid": "17758181_b2d3e427",
       "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8498b5b_79cf5ff3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-22T22:51:23Z",
+      "side": 1,
+      "message": "hey - will avoid responding point by point. As it turns out, binder calls do fail when run on host (not abort), so there is a good default.",
+      "parentUuid": "88452d67_c86492a0",
+      "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
