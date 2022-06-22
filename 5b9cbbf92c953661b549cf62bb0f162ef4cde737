@@ -196,6 +196,24 @@
       "parentUuid": "55a13f79_44fdb51c",
       "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88452d67_c86492a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2022-06-22T21:51:20Z",
+      "side": 1,
+      "message": "\u003e Can you share the CL or code that is using this on host?\nag/19014719\nThe code compiles and doesn\u0027t crash; however, there is an infinite wait on ServiceManager to provide a valid binder service.\n\u003e I don\u0027t have a problem with this part of the change, if you want to submit it independently.\nWhich part of the change? The build changes not including changing the host availabilities of the files?\n\u003e Do you mean I should take your statement as an ideal? \nAs in -- the ideal state of these (and other libraries which depend on binder services) is that we can inject the valid instance on device, at run-time, but we can easily mock the interface to test the functionality of the library on host. We have half of this picture, since we deal in service interfaces to decouple from implementation. The half we are missing is in (many) instances, we request the interface from the service manager in ctors. Either we inject within the service manager, or we decouple, and provide a mocked interface for testing (especially) on host.\n\u003e Returning false or null or a value means that we are saying we know a priori what all clients might like to do here.\nIt looks like the code I was looking at (BatteryService) actually does this (see the CL).\n\u003e I would like to see a case established before we expose things here\nThe case is moving more testing/fuzzing to host available since these tests are automatically exercised on pre-submit and are (essentially) free from an infra cost perspective.\n\nIn any case, the CL above is the motivating code for these changes -- with the aim of making more of our owned code host available.",
+      "parentUuid": "17758181_b2d3e427",
+      "revId": "5b9cbbf92c953661b549cf62bb0f162ef4cde737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
