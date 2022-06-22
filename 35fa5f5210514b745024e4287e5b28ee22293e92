@@ -22,6 +22,53 @@
       },
       "revId": "35fa5f5210514b745024e4287e5b28ee22293e92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6562b07f_30efc09f",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-22T23:12:12Z",
+      "side": 1,
+      "message": "We can\u0027t call resizeOutVector. You call readOutVectorSizeWithCheck here manually (like resizeOutVector does), then L1436 (vec-\u003eresize...) can be used to actually resize the vector here.",
+      "parentUuid": "66cff9b7_1ff3d74d",
+      "range": {
+        "startLine": 1430,
+        "startChar": 15,
+        "endLine": 1430,
+        "endChar": 38
+      },
+      "revId": "35fa5f5210514b745024e4287e5b28ee22293e92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7fb01e_726e0bb8",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-22T23:12:12Z",
+      "side": 1,
+      "message": "delete this (we\u0027ll manipulate the vector entirely outside of libbinder)\n\nIt may be the case what is under this API and over this API use completely different definitions of std::vector.",
+      "range": {
+        "startLine": 1219,
+        "startChar": 0,
+        "endLine": 1228,
+        "endChar": 94
+      },
+      "revId": "35fa5f5210514b745024e4287e5b28ee22293e92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
