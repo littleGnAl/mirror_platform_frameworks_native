@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02dfa04c_85a65ff9",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T17:58:11Z",
+      "side": 1,
+      "message": "now that this is a public API, we might want to control the outputs more precisely (this goes with my comment on the NDK API surface)\n\n    if (*size \u003d\u003d -1) return NO_MEMORY;\n    if (*size \u003c 0) return BAD_VALUE;\n\n(might want to make this as a separate change, in case it does discover a bug somewhere)",
+      "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c2a5cc_e920f1c5",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T17:58:11Z",
+      "side": 1,
+      "message": "or \u0027-1\u0027 if would be null",
+      "range": {
+        "startLine": 1217,
+        "startChar": 35,
+        "endLine": 1217,
+        "endChar": 41
+      },
+      "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250327ff_2c898da7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T17:58:11Z",
+      "side": 1,
+      "message": "We shouldn\u0027t specify this detail about the implementation necessarily, since we may want to do something different in the future or different environments. Please go with something teleological like \"STATUS_NO_MEMORY if the allocation is unreasonably large\"",
+      "range": {
+        "startLine": 1218,
+        "startChar": 76,
+        "endLine": 1219,
+        "endChar": 33
+      },
+      "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
