@@ -72,9 +72,9 @@ class BnInterface : public INTERFACE, public BBinder
 public:
     virtual sp<IInterface>      queryLocalInterface(const String16& _descriptor);
     virtual const String16&     getInterfaceDescriptor() const;
+    typedef INTERFACE BaseInterface;
 
 protected:
-    typedef INTERFACE           BaseInterface;
     virtual IBinder*            onAsBinder();
 };
 
