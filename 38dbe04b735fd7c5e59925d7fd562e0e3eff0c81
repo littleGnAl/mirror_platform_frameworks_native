@@ -109,6 +109,30 @@
       },
       "revId": "38dbe04b735fd7c5e59925d7fd562e0e3eff0c81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e803556_3e9696f1",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 65
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-23T00:28:55Z",
+      "side": 1,
+      "message": "Sure, but do we want to? `EAFSUPPORT` is a special case here for something that\u0027s not really an error, and for the rest we can just treat `statusToString` as a black box (well most of, this code relies on it never returning `OK` or `EAFNOSUPPORT` for any error). Making `statusToString` return something specific for `EAFSUPPORT` would break its abstraction.",
+      "parentUuid": "5fbb4fc3_7d78b888",
+      "range": {
+        "startLine": 1451,
+        "startChar": 18,
+        "endLine": 1454,
+        "endChar": 81
+      },
+      "revId": "38dbe04b735fd7c5e59925d7fd562e0e3eff0c81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
