@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12d9c04_fb723093",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071172
+      },
+      "writtenOn": "2022-06-23T12:03:58Z",
+      "side": 1,
+      "message": "The issue is draw defect in gallery with thumbnail of video. Copied from internal discussion:\n\n\nSection 5.11 of the GLSL ES spec includes:\n\n5.11 Evaluation of Expressions\n\nThe C++ standard requires that expressions must be evaluated in the order specified by the precedence of operations and may only be regrouped if the result is the same or where the result is undefined. No other transforms may be applied that affect the result of an operation. GLSL ES relaxes these requirements in the following ways:\n\n• Addition and multiplication are assumed to be associative.\n• Multiplication may be replaced by repeated addition\n• Floating point division may be replaced by reciprocal and multiplication:\n• Within the constraints of invariance (where applicable), the precision used may vary.\n\n\nThe associate multiplies below accords to the spec.\n\nexample:\n float nits;\n float slope \u003d (y1 - y0) / (x1 - x0);\n nits \u003d y0 + (nits - x0) * slope;\n\n\nA \u003d (y1 - y0)\nB \u003d (x1 - x0)\nC \u003d (nits - x0)\n\nOriginal:\nnits \u003d y0 + C * (A / B)\n\ndivision \u003d\u003e recip + mul\nnits \u003d y0 + C * (A * (1 / B))\n\nre-associate multiplies:\nnits \u003d y0 + (C * A) * (1 / B)\n\nAs you can see, C * A could exceed the float maximal number. It converts to float nits would cause incorrect value.\n\n\n\n",
+      "revId": "ade09296ca73ea01e04bbbad32166aecc886556a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
