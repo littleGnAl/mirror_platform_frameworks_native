@@ -94,6 +94,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64df12c5_15875d97",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-23T18:03:27Z",
+      "side": 1,
+      "message": "there is no vector to resize here. maybe \"STATUS_OK on successful read\"",
+      "range": {
+        "startLine": 1218,
+        "startChar": 24,
+        "endLine": 1218,
+        "endChar": 57
+      },
+      "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "250327ff_2c898da7",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 2
