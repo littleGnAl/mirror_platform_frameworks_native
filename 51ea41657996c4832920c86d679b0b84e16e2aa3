@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7ec5fb_ee1fa23f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T23:06:41Z",
+      "side": 1,
+      "message": "(adding android-ndk-api-council group)",
+      "revId": "51ea41657996c4832920c86d679b0b84e16e2aa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
