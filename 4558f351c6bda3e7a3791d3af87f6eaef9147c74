@@ -16,6 +16,24 @@
       "message": "did this get hit in any test?",
       "revId": "4558f351c6bda3e7a3791d3af87f6eaef9147c74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d64fa6_cc4838fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-23T20:58:25Z",
+      "side": 1,
+      "message": "Callbacks test from binderRpcTest, but only after the changes in https://android-review.googlesource.com/c/platform/frameworks/native/+/2126147. Not sure why, my guess is because of the higher variation in timings from running the same test 4 times in a row (with slight variations).",
+      "parentUuid": "6b472bd0_bb1b6d3d",
+      "revId": "4558f351c6bda3e7a3791d3af87f6eaef9147c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
