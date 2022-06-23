@@ -46,6 +46,30 @@
       },
       "revId": "352a9620e5cd943e37bb49c41da18879e679f124",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "028c279c_d3491d0a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-06-23T20:54:32Z",
+      "side": 1,
+      "message": "Got it. That makes sense.",
+      "parentUuid": "f68036b4_2b54c42c",
+      "range": {
+        "startLine": 1217,
+        "startChar": 19,
+        "endLine": 1217,
+        "endChar": 22
+      },
+      "revId": "352a9620e5cd943e37bb49c41da18879e679f124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
