@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "846219c1_3d726f7f",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 1369,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-23T21:03:35Z",
+      "side": 1,
+      "message": "Good point. I expect the trusty fds will end up being identical code, but we should definitely switch on the transport mode here because future modes will need a different format.\n\nThis raises a problem I hadn\u0027t considered. If the mode is NONE, then it seems like we should return FDS_NOT_ALLOWED here. However, that ends up killing the connection (explanation in the footer of this message). I think it would be nice to return the FDS_NOT_ALLOWED error back to the client as I had before.\n\nHere are some options I\u0027m considering:\n\n1. Be OK with killing the connection\n2. When mode\u003dNONE, write FDs with the same format as mode\u003dUNIX. Then, we\u0027ll catch the issue in `RpcState::validateParcel` and handle things gracefully.\n3. Treat `RpcWireReply::status` as non-fatal for the connection and return it back to the caller. (Or return a vague status back, something like \"internal server error\", so that we don\u0027t confuse local parceling errors with remote ones)\n\n\n\n---\n\nExplanation of how parceling errors end up killing the connection (partly for my own reference):\n\nThe AIDL generated code looks like\n\n```\n::android::os::ParcelFileDescriptor _aidl_return;\n// ...\n::android::binder::Status _aidl_status(getHelloFile(\u0026_aidl_return));\n// ...\n_aidl_ret_status \u003d _aidl_reply-\u003ewriteParcelable(_aidl_return);\n```\n\nwhere `_aidl_status` is sent at the header of the `Parcel`, but `_aidl_ret_status` is sent via `RpcWireReply::status`, which `RpcState::waitForReply` treats as a transport level error (and kills the connection). So, parceling error \u003d\u003e DEAD_OBJECT",
+      "parentUuid": "b677da4e_9df3c35e",
+      "range": {
+        "startLine": 1369,
+        "startChar": 14,
+        "endLine": 1369,
+        "endChar": 23
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b209a6ce_eedde7fa",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 28
