@@ -159,6 +159,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51d245e_16b46dc3",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-06-23T18:40:03Z",
+      "side": 1,
+      "message": "I don\u0027t know why the naming is different with ndk. I think there are many examples of this.",
+      "parentUuid": "114a448c_ae405a5f",
+      "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2c2a5cc_e920f1c5",
