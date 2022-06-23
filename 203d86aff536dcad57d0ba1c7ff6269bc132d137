@@ -16,6 +16,351 @@
       "message": "Still need to add more test coverage for the Parcel changes + do another pass of review myself, but it is much closer to review ready I think.",
       "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e1f1eea_e79e87ee",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "ah - it was the implicitly templated lambda, I missed again :)",
+      "range": {
+        "startLine": 157,
+        "startChar": 31,
+        "endLine": 157,
+        "endChar": 35
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b677da4e_9df3c35e",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 1369,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "should this check the type of FD writes in the session? (if it\u0027s Trusty for instance, we\u0027d want to write things a different way in the future)",
+      "range": {
+        "startLine": 1369,
+        "startChar": 14,
+        "endLine": 1369,
+        "endChar": 23
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b209a6ce_eedde7fa",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 2138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "nit: what is the performance of this btw?\n\nIf our fuzzer fuzzed adding FDs, I\u0027d ask we add an invariant that this is sorted. Is there any other place we could add that invariant to make sure it doesn\u0027t get out of date?",
+      "range": {
+        "startLine": 2138,
+        "startChar": 18,
+        "endLine": 2138,
+        "endChar": 31
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e18141_840c54f8",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 2404,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "this invalidates the object positions as well? Could that be problematic? Do we ever assume the indices of one refer to the other? Does binder_parcel_fuzzer fuzz this method?",
+      "range": {
+        "startLine": 2404,
+        "startChar": 0,
+        "endLine": 2404,
+        "endChar": 32
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ce3ea3_fed48a55",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 2517,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "nit: is this extra allocation needed or can you document it in binderAllocationLimits so we know exactly how many are done?",
+      "range": {
+        "startLine": 2514,
+        "startChar": 0,
+        "endLine": 2517,
+        "endChar": 9
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f51e3d_38ad7e2b",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 2720,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "dangling",
+      "range": {
+        "startLine": 2720,
+        "startChar": 0,
+        "endLine": 2720,
+        "endChar": 56
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe567a59_5dd89a8c",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "nit: should this be a bitfield instead? We will probably never have 64 options, and this is an extra allocation per server",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 42
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f6c788_22fc7c93",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "though if it\u0027s a bitfield, the mode would have to be the index, for uint8_t",
+      "range": {
+        "startLine": 617,
+        "startChar": 64,
+        "endLine": 617,
+        "endChar": 92
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8df31b5_67b0c9ea",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "nit: this is the composition of two functions",
+      "range": {
+        "startLine": 55,
+        "startChar": 31,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2a7c42_de3ff0e7",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "pendingFds (camel case in libbinder)",
+      "range": {
+        "startLine": 631,
+        "startChar": 40,
+        "endLine": 631,
+        "endChar": 43
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d42d9f1_00a1f00f",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "is this an extra system call per transaction? We do want to keep it as only having one (in the default case). Any performance change from this change in the default case?",
+      "range": {
+        "startLine": 632,
+        "startChar": 52,
+        "endLine": 632,
+        "endChar": 79
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e540b4_f8827a61",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "o",
+      "range": {
+        "startLine": 32,
+        "startChar": 29,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf85e20f_e69cc020",
+        "filename": "libs/binder/tests/IBinderRpcTest.aidl",
+        "patchSetId": 28
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "Could we have a string as an argument, so that the contents can be specified by the client instead?\n\nFor an example of where these implicit contracts have gotten out of hand, see hidl_test. It\u0027s really horrible to debug/change values there b/c the contract is implicit and duplicted in 4-6 different places.",
+      "range": {
+        "startLine": 68,
+        "startChar": 25,
+        "endLine": 68,
+        "endChar": 37
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97cfce25_ed282f0c",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "Is this racey, if mPid is used by another process? Could we make a binder call to the other process to have it shutdown instead? or?",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 45
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f3c95f_05dde1b2",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-23T18:19:05Z",
+      "side": 1,
+      "message": "nit: Seems most of this logic is duplicated 3 times (SendFiles, SendMaxFiles, SendTooManyFiles) - would it make sense to abstract any of it out?",
+      "range": {
+        "startLine": 1498,
+        "startChar": 18,
+        "endLine": 1498,
+        "endChar": 30
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
