@@ -533,6 +533,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56508d84_413f282d",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-23T00:54:16Z",
+      "side": 1,
+      "message": "Added unit tests to cover this.\n\nSome notes about how it works in the other comment thread.",
+      "parentUuid": "bccd6d8c_5ca5f156",
+      "range": {
+        "startLine": 655,
+        "startChar": 0,
+        "endLine": 656,
+        "endChar": 66
+      },
+      "revId": "e6052bf06ccf075458e7bc4ba1a5666819a4ae73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1c2755e_d217baa4",

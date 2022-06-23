@@ -299,6 +299,30 @@
       },
       "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeeb7778_c745b59f",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-23T00:54:16Z",
+      "side": 1,
+      "message": "I\u0027ve added it to the RpcConnectionHeader. Now, the server doesn\u0027t specify its mode, instead it gives a list of modes it is OK with. When a client connects, it sends the mode it wants and then if the server doesn\u0027t support it, the connection is rejected.\n\n(If they agree to use no FD transport and then one tries to send an FD, it gets translated into a FDS_NOT_ALLOWED error for the client.)\n\nThe client just sees DEAD_OBJECT when the mode isn\u0027t allowed, which might be confusing. Let me know if you think it is worth providing a better error to the client. Right now there doesn\u0027t seem to be a mechanism for sending back a descriptive error, especially during connection setup, where you can\u0027t even choose the status enum.",
+      "parentUuid": "22bf8e10_93ac7895",
+      "range": {
+        "startLine": 98,
+        "startChar": 15,
+        "endLine": 98,
+        "endChar": 42
+      },
+      "revId": "a0aa5d09c36c46563b4f944ba43b27776aacb06e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

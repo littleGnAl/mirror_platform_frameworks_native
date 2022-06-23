@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b17e8f9_b764e6fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-23T00:54:16Z",
+      "side": 1,
+      "message": "Still need to add more test coverage for the Parcel changes + do another pass of review myself, but it is much closer to review ready I think.",
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
