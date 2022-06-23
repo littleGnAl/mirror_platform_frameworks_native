@@ -22,6 +22,30 @@
       },
       "revId": "0292d80f469a4a2b0d8057af125392b73baae375",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "627d7862_d52b7a39",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-06-23T17:27:45Z",
+      "side": 0,
+      "message": "I had thought initially the same, was thrown off by the placement of the TODO comment (since normally TODOs are just above the section that needs modification). Done",
+      "parentUuid": "8aefdc48_f1d7b715",
+      "range": {
+        "startLine": 1416,
+        "startChar": 4,
+        "endLine": 1422,
+        "endChar": 48
+      },
+      "revId": "0292d80f469a4a2b0d8057af125392b73baae375",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

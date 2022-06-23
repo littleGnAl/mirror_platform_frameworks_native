@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "261272b0_f8e71ca8",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-06-23T17:27:45Z",
+      "side": 1,
+      "message": "Done - I thought this call as a whole would have to be delegated to https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/include/binder/Parcel.h;drc\u003dd23f9500efa59d46c57db423a630b111e889a680;l\u003d1449 which meant not using vec-\u003eresize, it was vague.",
+      "parentUuid": "6562b07f_30efc09f",
+      "range": {
+        "startLine": 1430,
+        "startChar": 15,
+        "endLine": 1430,
+        "endChar": 38
+      },
+      "revId": "35fa5f5210514b745024e4287e5b28ee22293e92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b7fb01e_726e0bb8",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-06-22T23:12:12Z",
       "side": 1,
       "message": "delete this (we\u0027ll manipulate the vector entirely outside of libbinder)\n\nIt may be the case what is under this API and over this API use completely different definitions of std::vector.",
+      "range": {
+        "startLine": 1219,
+        "startChar": 0,
+        "endLine": 1228,
+        "endChar": 94
+      },
+      "revId": "35fa5f5210514b745024e4287e5b28ee22293e92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ad1cdb_c9e86234",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-06-23T17:27:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b7fb01e_726e0bb8",
       "range": {
         "startLine": 1219,
         "startChar": 0,
