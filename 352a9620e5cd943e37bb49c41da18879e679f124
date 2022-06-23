@@ -22,6 +22,30 @@
       },
       "revId": "352a9620e5cd943e37bb49c41da18879e679f124",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f68036b4_2b54c42c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-06-23T18:58:03Z",
+      "side": 1,
+      "message": "This variable will actually hold the value that will be used for the resizing. \nIn the function, size will get the value returned by readInt32 which is the new size. Although I do agree that wording could be improved here.",
+      "parentUuid": "4def2773_09426fb3",
+      "range": {
+        "startLine": 1217,
+        "startChar": 19,
+        "endLine": 1217,
+        "endChar": 22
+      },
+      "revId": "352a9620e5cd943e37bb49c41da18879e679f124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
