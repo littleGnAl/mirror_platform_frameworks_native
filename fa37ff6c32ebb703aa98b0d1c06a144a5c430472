@@ -20,6 +20,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5cc3142_80f954bd",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-23T18:00:49Z",
+      "side": 1,
+      "message": "maybe add \"don\u0027t use this\" comment (ideally wouldn\u0027t be part of the public interface)",
+      "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "848b3093_835718d4",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-23T18:00:49Z",
+      "side": 1,
+      "message": "maybe rename to `readVectorSizeWithCheck` to match the ndk",
+      "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f965af8_5abf3cc8",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-23T18:00:49Z",
+      "side": 1,
+      "message": "maybe put this next to `resizeOutVector` (or something else that seems related)",
+      "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2c2a5cc_e920f1c5",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 2
