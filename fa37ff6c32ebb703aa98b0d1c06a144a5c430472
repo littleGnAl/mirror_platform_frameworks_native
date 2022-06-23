@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47ee880b_ed062e26",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-06-23T18:34:36Z",
+      "side": 1,
+      "message": "Created bug for it: b/236981588",
+      "parentUuid": "02dfa04c_85a65ff9",
+      "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5cc3142_80f954bd",
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "5f965af8_5abf3cc8",
+      "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0589cb1_ab10f69e",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-06-23T18:34:36Z",
+      "side": 1,
+      "message": "Created bug for it b/236981588 and added comment.",
+      "parentUuid": "c5cc3142_80f954bd",
       "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
