@@ -321,6 +321,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d2fe88_0980e4a2",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 21
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-23T00:16:06Z",
+      "side": 1,
+      "message": "Done, see the next CL.",
+      "parentUuid": "5af4dc66_8e64b440",
+      "range": {
+        "startLine": 243,
+        "startChar": 10,
+        "endLine": 243,
+        "endChar": 32
+      },
+      "revId": "4e9886734a483ef4783fd76bad635388ab3eaa0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86fb6ff0_7c1519ca",
