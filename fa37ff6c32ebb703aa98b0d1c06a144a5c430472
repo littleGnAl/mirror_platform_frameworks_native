@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ab381f4_073bdb98",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-06-23T18:05:34Z",
+      "side": 1,
+      "message": "I thought of that initially, however I went with the fact that the functions in parcel.h related to vectors have \"Out\" such as resizeOutVector. Whereas in NDK it\u0027s simply resizeVector. \nI\u0027m curious as to why this was initially different, and I\u0027m guessing it\u0027s because they were meant to be separate/unlinked?\nAny insights Steven/Devin?",
+      "parentUuid": "848b3093_835718d4",
+      "revId": "fa37ff6c32ebb703aa98b0d1c06a144a5c430472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2c2a5cc_e920f1c5",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 2
