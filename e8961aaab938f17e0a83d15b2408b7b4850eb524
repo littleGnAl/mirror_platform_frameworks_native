@@ -113,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f3a20d8_d274f949",
+        "filename": "opengl/libs/EGL/egl_platform_entries.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-06-23T17:41:45Z",
+      "side": 1,
+      "message": "Yes, I will do this",
+      "parentUuid": "cdbd6cfe_a16967f0",
+      "range": {
+        "startLine": 1452,
+        "startChar": 12,
+        "endLine": 1452,
+        "endChar": 20
+      },
+      "revId": "e8961aaab938f17e0a83d15b2408b7b4850eb524",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5538c58_eca15dd5",
         "filename": "opengl/libs/EGL/egl_platform_entries.cpp",
         "patchSetId": 1
