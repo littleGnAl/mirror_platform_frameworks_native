@@ -704,6 +704,9 @@ status_t RpcSession::addOutgoingConnection(std::unique_ptr<RpcTransport> rpcTran
         connection->exclusiveTid = std::nullopt;
     }
 
+    // ExclusiveConnection::find() might be waiting for this one
+    mAvailableConnectionCv.notify_one();
+
     return status;
 }
 
