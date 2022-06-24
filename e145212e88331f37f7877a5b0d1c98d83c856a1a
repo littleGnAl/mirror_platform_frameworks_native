@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a61e350_939f8e92",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-24T06:05:40Z",
+      "side": 1,
+      "message": "Would emplace_back obviate the need for the explicit constructor?",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4abe5b3e_b8eb1702",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-24T06:05:40Z",
+      "side": 1,
+      "message": "Since this validates it explicitly for Rpc, maybe call it `validateParcelForRpc`? (would we ever want a kernel binder alternative?)",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b583df_9636f257",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-24T06:05:40Z",
+      "side": 1,
+      "message": "Same question as above, with a twist: if you really want a null-like default, wouldn\u0027t a default-constructed vector suffice?",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3249a91_7b670831",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-24T06:05:40Z",
+      "side": 1,
+      "message": "typo: Trusty.",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7982e808_55efba67",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-24T06:05:40Z",
+      "side": 1,
+      "message": "I\u0027m surprised to see this here, I initially expected to see RpcTransport to have a method that returns which file descriptor transport mode it supports:\n* RpcTransportTls always returns false,\n* RpcTransportRaw only returns true for UNIX sockets (the constructor or the method could call `getsockname` on `mSocket` and check the family against `AF_UNIX`),\n* RpcTransportTipcTrusty always returns true.\n\nWouldn\u0027t something like that work? The API would be easier to use.\n\nReading further in the CL, I saw one extra complication: that both server and client need to support the same mode. Still, isn\u0027t that something that the RpcTransport\u0027s on the client and server can negotiate (directly or indirectly via RpcState/RpcSession), and then the user just asks the library what\u0027s supported?",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703783ff_2c3ca3a0",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-24T06:05:40Z",
+      "side": 1,
+      "message": "This could be a reference, what\u0027s the benefit of using a pointer for ancillaryFds?",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
