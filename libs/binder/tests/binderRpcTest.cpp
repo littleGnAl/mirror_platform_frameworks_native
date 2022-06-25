@@ -351,13 +351,27 @@ public:
     }
     ~Process() {
         if (mPid != 0) {
-            waitpid(mPid, nullptr, 0);
+            int wstatus;
+            waitpid(mPid, &wstatus, 0);
+            if (checkExitStatus) {
+                if (WIFEXITED(wstatus)) {
+                    EXPECT_EQ(0, WEXITSTATUS(wstatus)) << "server process exited with wrong status";
+                } else if (WIFSIGNALED(wstatus)) {
+                    ADD_FAILURE() << "server process kill by unexpected signal: "
+                                  << WTERMSIG(wstatus);
+                } else {
+                    ADD_FAILURE() << "server process in unexpected state: " << wstatus;
+                }
+            }
         }
     }
     android::base::borrowed_fd readEnd() { return mReadEnd; }
     android::base::borrowed_fd writeEnd() { return mWriteEnd; }
 
+    void dontCheckExitStatus() { checkExitStatus = false; }
+
 private:
+    bool checkExitStatus = true;
     pid_t mPid = 0;
     android::base::unique_fd mReadEnd;
     android::base::unique_fd mWriteEnd;
@@ -1326,6 +1340,7 @@ TEST_P(BinderRpc, Die) {
         EXPECT_EQ(DEAD_OBJECT, proc.rootIface->die(doDeathCleanup).transactionError())
                 << "Do death cleanup: " << doDeathCleanup;
 
+        proc.proc.host.dontCheckExitStatus();
         proc.expectAlreadyShutdown = true;
     }
 }
@@ -1349,6 +1364,7 @@ TEST_P(BinderRpc, UseKernelBinderCallingId) {
     // second time! we catch the error :)
     EXPECT_EQ(DEAD_OBJECT, proc.rootIface->useKernelBinderCallingId().transactionError());
 
+    proc.proc.host.dontCheckExitStatus();
     proc.expectAlreadyShutdown = true;
 }
 
