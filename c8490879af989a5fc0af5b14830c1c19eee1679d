@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7715cf1_2bb161be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956095
+      },
+      "writtenOn": "2022-06-27T18:22:38Z",
+      "side": 1,
+      "message": "https://topjohnwu.github.io/Magisk/install.html#magisk-in-recovery",
+      "revId": "c8490879af989a5fc0af5b14830c1c19eee1679d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
