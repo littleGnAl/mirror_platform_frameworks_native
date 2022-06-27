@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dff418eb_0978ccce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "still going, just checking in progress so far\n\ni plan on doing the bitset change + fixing Parcel::continueWrite and then i\u0027m thinking of deferring the rest of the suggestions (fuzzing, allocation test, unit tests, benchmarking) to follow ups",
+      "parentUuid": "7b17e8f9_b764e6fb",
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3e1f1eea_e79e87ee",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 28
@@ -88,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dac8648_7f8a0b7f",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 1369,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "The analysis in my comment above is wrong. (3) is how things already work. I got confused by an unrelated bug this change uncovered (the unit test setup code was racy. returning an error from this function triggered the race).\n\nDone.",
+      "parentUuid": "846219c1_3d726f7f",
+      "range": {
+        "startLine": 1369,
+        "startChar": 14,
+        "endLine": 1369,
+        "endChar": 23
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b209a6ce_eedde7fa",
@@ -124,6 +166,30 @@
       "writtenOn": "2022-06-23T18:19:05Z",
       "side": 1,
       "message": "this invalidates the object positions as well? Could that be problematic? Do we ever assume the indices of one refer to the other? Does binder_parcel_fuzzer fuzz this method?",
+      "range": {
+        "startLine": 2404,
+        "startChar": 0,
+        "endLine": 2404,
+        "endChar": 32
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "597f3b1d_7160794c",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 2404,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "`readFileDescriptor` is the only spot that indexes into `mFds` and it checks for out of bounds. We can\u0027t assume a relationship between the two arrays because eventually we\u0027ll add non-FD stuff to the object positions array. `mObjectPositions` tells you where to find objects in the parcel data and the parcel data tells you which `mFd` references. Added some notes to the field declarations about this.\n\nfuzzing TDB",
+      "parentUuid": "74e18141_840c54f8",
       "range": {
         "startLine": 2404,
         "startChar": 0,
@@ -249,6 +315,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01ff64d_e8b566f1",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8df31b5_67b0c9ea",
+      "range": {
+        "startLine": 55,
+        "startChar": 31,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c2a7c42_de3ff0e7",
@@ -262,6 +352,30 @@
       "writtenOn": "2022-06-23T18:19:05Z",
       "side": 1,
       "message": "pendingFds (camel case in libbinder)",
+      "range": {
+        "startLine": 631,
+        "startChar": 40,
+        "endLine": 631,
+        "endChar": 43
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f28b01b_36d20139",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c2a7c42_de3ff0e7",
       "range": {
         "startLine": 631,
         "startChar": 40,
@@ -295,6 +409,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da0fda9_dddee1d8",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "There is no system call. We get the FDs in the `interruptableReadFully` call and technically we could return them from there, but I\u0027m worried it is error prone and messy to have to think about which bytes the FDs be paired with (e.g. in this case they\u0027ll come from line 596 instead of line 626). Instead, I\u0027m buffering them inside the transport and then `consumePendingAncillaryData` just copies out of the buffer.\n\nIn the common case, the overhead is an extra virtual call. We could branch on the FD transport mode to avoid that. I need to spend some time benchmarking to tweak these things.",
+      "parentUuid": "0d42d9f1_00a1f00f",
+      "range": {
+        "startLine": 632,
+        "startChar": 52,
+        "endLine": 632,
+        "endChar": 79
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61e540b4_f8827a61",
@@ -308,6 +446,30 @@
       "writtenOn": "2022-06-23T18:19:05Z",
       "side": 1,
       "message": "o",
+      "range": {
+        "startLine": 32,
+        "startChar": 29,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2adf829_0274d6ee",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61e540b4_f8827a61",
       "range": {
         "startLine": 32,
         "startChar": 29,
@@ -341,6 +503,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d452d7_16b47229",
+        "filename": "libs/binder/tests/IBinderRpcTest.aidl",
+        "patchSetId": 28
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf85e20f_e69cc020",
+      "range": {
+        "startLine": 68,
+        "startChar": 25,
+        "endLine": 68,
+        "endChar": 37
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97cfce25_ed282f0c",
@@ -364,6 +550,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "098c5673_0ec75eb6",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "In the case where I use this, we failed to open the session, so we can\u0027t use it to ask the process to shut itself down.\n\nAdded a note that the shutdown binder call should be preferred.",
+      "parentUuid": "97cfce25_ed282f0c",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 45
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2f3c95f_05dde1b2",
@@ -377,6 +587,30 @@
       "writtenOn": "2022-06-23T18:19:05Z",
       "side": 1,
       "message": "nit: Seems most of this logic is duplicated 3 times (SendFiles, SendMaxFiles, SendTooManyFiles) - would it make sense to abstract any of it out?",
+      "range": {
+        "startLine": 1498,
+        "startChar": 18,
+        "endLine": 1498,
+        "endChar": 30
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e898534e_6f6607b1",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "I factored out the \"unsupported\" cases + I made them all more similar (always `BAD_VALUE`) so there is less complexity.\n\nIMO the main part of the tests are short enough that any added abstraction would make it (slightly) harder to read.",
+      "parentUuid": "c2f3c95f_05dde1b2",
       "range": {
         "startLine": 1498,
         "startChar": 18,

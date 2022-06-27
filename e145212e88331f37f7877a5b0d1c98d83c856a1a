@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d371124_c2b0a997",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "Doesn\u0027t help because the destination is `variant\u003cunique_fd, borrowed_fd\u003e`. I switched to `emplace_back` anyways though",
+      "parentUuid": "4a61e350_939f8e92",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4abe5b3e_b8eb1702",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-24T06:05:40Z",
       "side": 1,
       "message": "Since this validates it explicitly for Rpc, maybe call it `validateParcelForRpc`? (would we ever want a kernel binder alternative?)",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38f0bf68_bbe38449",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "This is in `RpcState`, so I\u0027d say no need to differentiate vs kernel binder.",
+      "parentUuid": "4abe5b3e_b8eb1702",
       "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc5f0d82_f5f5814b",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "See above response.",
+      "parentUuid": "04b583df_9636f257",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3249a91_7b670831",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-06-24T06:05:40Z",
       "side": 1,
       "message": "typo: Trusty.",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "861f001d_d086f610",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3249a91_7b670831",
       "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +158,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97db0c20_c566b797",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "If we add a transport mode that tunnels over the byte stream, then the transport doesn\u0027t matter. So, I think it makes sense to configure as part of the RpcSession and RpcServer.\n\nI do think that something like you describe would be nice as an implementation detail to provide clearer and earlier errors if the user chooses something that would never work, like UNIX FDs over TCP. I think that is unlikely and doesn\u0027t seem too hard to debug ATM, so I\u0027m leaning towards simplicity for now.\n\nIt would also be useful if we wanted to support automatically negotiating the transport (which would make the API easier to use), but we decide to only support explicit configuration to start with.",
+      "parentUuid": "7982e808_55efba67",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "703783ff_2c3ca3a0",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-06-24T06:05:40Z",
       "side": 1,
       "message": "This could be a reference, what\u0027s the benefit of using a pointer for ancillaryFds?",
+      "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a563d2_935d76e5",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "I\u0027d prefer this, but the code overall ends up being worse, e.g. there is a line like\n\n```\nreturn rpcSend(connection, session, \"reply\", iovs, arraysize(iovs), std::nullopt,\n               rpcFields-\u003emFds.get());\n```\n\nwhere `mFds` might be null. You can\u0027t do something like\n\n```\nrpcFields-\u003emFds ? *rpcFields-\u003emFds : {}\n```\n\nbecause c++ doesn\u0027t allow inferring the type in a ternary and you can\u0027t even do something ugly like\n\n```\nrpcFields-\u003emFds\n  ? *rpcFields-\u003emFds\n  : std::vector\u003cstd::variant\u003cbase::unique_fd, base::borrowed_fd\u003e\u003e{}\n```\n\nbecause the right side is an rvalue and so it will try to copy the left side to make the types match.",
+      "parentUuid": "703783ff_2c3ca3a0",
       "revId": "e145212e88331f37f7877a5b0d1c98d83c856a1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba39d59_ebeb01f1",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 34
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T22:26:43Z",
+      "side": 1,
+      "message": "I should do something better here, but I\u0027m thinking this is good enough initially since it is just a unit test and we\u0027re unlikely to want SIGPIPE in other parts of the test.\n\nWas thinking of using `memfd_create` instead of a pipe, but our glibc doesn\u0027t have it.",
+      "revId": "8e6f73954fe32d79eee63071c6dce1ea1e233497",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
