@@ -692,7 +692,10 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
             // in the same orientation as the device. The input device orientation will be
             // re-applied to mSurfaceOrientation.
             const int32_t naturalSurfaceOrientation =
-                    (mViewport.orientation - static_cast<int32_t>(mParameters.orientation) + 4) % 4;
+                    (mParameters.orientationAware || isPerWindowInputRotationEnabled())
+                    ? ((mViewport.orientation - static_cast<int32_t>(mParameters.orientation) + 4) %
+                       4)
+                    : DISPLAY_ORIENTATION_0;
             switch (naturalSurfaceOrientation) {
                 case DISPLAY_ORIENTATION_90:
                     naturalLogicalWidth = mViewport.logicalBottom - mViewport.logicalTop;
