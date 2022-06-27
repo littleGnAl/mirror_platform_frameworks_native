@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "376dbc40_acc5b271",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 169
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956095
+      },
+      "writtenOn": "2022-06-27T18:25:32Z",
+      "side": 1,
+      "message": "frameworks/base/data/etc/privapp-permissions-platform.xml",
+      "revId": "dac6a64c45507400d4d1c33b8138ab9b54120fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
