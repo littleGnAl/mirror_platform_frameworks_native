@@ -22,6 +22,30 @@
       },
       "revId": "0b173920059ba11dc7a91061ce97facbd0600f64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e11931d_acb1962d",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-27T23:10:11Z",
+      "side": 1,
+      "message": "Done.\n\nMade it a function since some need to check for a signal instead.\n\nOne of the tests usually exits with 0, but rarely (if I run it 100s of times) dies to a SIGABRT. I made both pass the test for now, but maybe worth investigating later.",
+      "parentUuid": "612c1d2a_44946791",
+      "range": {
+        "startLine": 371,
+        "startChar": 9,
+        "endLine": 371,
+        "endChar": 28
+      },
+      "revId": "0b173920059ba11dc7a91061ce97facbd0600f64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
