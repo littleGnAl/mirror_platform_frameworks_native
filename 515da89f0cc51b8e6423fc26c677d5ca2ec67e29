@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb997899_e64850b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956885
+      },
+      "writtenOn": "2022-06-27T10:39:43Z",
+      "side": 1,
+      "message": "Touches from single touch device is not correctly mapped when AOSP device is in landscape mode. This is to fix it.\nPlease refer comment and video on IssueTracker https://issuetracker.google.com/issues/237192885\nThank you!",
+      "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
