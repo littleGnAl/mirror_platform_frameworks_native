@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "612c1d2a_44946791",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-27T20:58:14Z",
+      "side": 1,
+      "message": "could we tell it the expected exit status instead?",
+      "range": {
+        "startLine": 371,
+        "startChar": 9,
+        "endLine": 371,
+        "endChar": 28
+      },
+      "revId": "0b173920059ba11dc7a91061ce97facbd0600f64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
