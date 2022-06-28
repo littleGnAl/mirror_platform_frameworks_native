@@ -1409,19 +1409,50 @@ TEST_P(BinderRpc, AidlDelegatorTest) {
 static bool testSupportVsockLoopback() {
     // We don't need to enable TLS to know if vsock is supported.
     unsigned int vsockPort = allocateVsockPort();
-    sp<RpcServer> server = RpcServer::make(RpcTransportCtxFactoryRaw::make());
-    if (status_t status = server->setupVsockServer(vsockPort); status != OK) {
-        if (status == -EAFNOSUPPORT) {
-            return false;
-        }
-        LOG_ALWAYS_FATAL("Could not setup vsock server: %s", statusToString(status).c_str());
+
+    // Start the server in a separate process so the test also works
+    // in single-threaded mode
+    auto serverProcess = Process(
+            [&](android::base::borrowed_fd writeEnd, android::base::borrowed_fd /*readEnd*/) {
+                sp<RpcServer> server = RpcServer::make(RpcTransportCtxFactoryRaw::make());
+                if (status_t status = server->setupVsockServer(vsockPort); status != OK) {
+                    if (status == -EAFNOSUPPORT) {
+                        BinderRpc::writeString(writeEnd, "EAFNOSUPPORT");
+                    } else {
+                        BinderRpc::writeString(writeEnd, statusToString(status));
+                    }
+                    return;
+                }
+
+                auto serverBinder = sp<MyBinderRpcTest>::make();
+                serverBinder->server = server;
+                server->setRootObject(serverBinder);
+
+                // Use the write pipe for synchronization and error reporting
+                BinderRpc::writeString(writeEnd, "OK");
+
+                server->join();
+
+                (void)server->shutdown();
+            });
+
+    auto ret = BinderRpc::readString(serverProcess.readEnd());
+    if (ret == "EAFNOSUPPORT") {
+        return false;
+    } else if (ret != "OK") {
+        LOG_ALWAYS_FATAL("Could not setup vsock server: %s", ret.c_str());
     }
-    server->start();
 
     sp<RpcSession> session = RpcSession::make(RpcTransportCtxFactoryRaw::make());
     status_t status = session->setupVsockClient(VMADDR_CID_LOCAL, vsockPort);
-    while (!server->shutdown()) usleep(10000);
     ALOGE("Detected vsock loopback supported: %s", statusToString(status).c_str());
+
+    if (status == OK) {
+        auto serverBinder = session->getRootObject();
+        auto serverIface = interface_cast<IBinderRpcTest>(serverBinder);
+        serverIface->scheduleShutdown();
+    }
+
     return status == OK;
 }
 
