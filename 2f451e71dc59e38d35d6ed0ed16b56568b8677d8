@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d720b418_1d094dd6",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 1957101
+      },
+      "writtenOn": "2022-06-28T22:22:02Z",
+      "side": 1,
+      "message": "Very interesting change. (testing comment for account inactive state)",
+      "range": {
+        "startLine": 2098,
+        "startChar": 4,
+        "endLine": 2098,
+        "endChar": 15
+      },
+      "revId": "2f451e71dc59e38d35d6ed0ed16b56568b8677d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b06c5c6_769a0bc1",
