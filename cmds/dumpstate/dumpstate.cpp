@@ -1594,8 +1594,6 @@ static Dumpstate::RunStatus dumpstate() {
     RunCommand("CPU INFO", {"top", "-b", "-n", "1", "-H", "-s", "6", "-o",
                             "pid,tid,user,pr,ni,%cpu,s,virt,res,pcy,cmd,name"});
 
-    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(RunCommand, "PROCRANK", {"procrank"}, AS_ROOT_20);
-
     RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(DumpVisibleWindowViews);
 
     DumpFile("VIRTUAL MEMORY STATS", "/proc/vmstat");
@@ -1610,9 +1608,6 @@ static Dumpstate::RunStatus dumpstate() {
 
     RunCommand("PROCESSES AND THREADS",
                {"ps", "-A", "-T", "-Z", "-O", "pri,nice,rtprio,sched,pcy,time"});
-
-    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(RunCommand, "LIBRANK", {"librank"},
-                                         CommandOptions::AS_ROOT);
 
     if (ds.dump_pool_) {
         WAIT_TASK_WITH_CONSENT_CHECK(std::move(dump_hals));
@@ -1643,7 +1638,8 @@ static Dumpstate::RunStatus dumpstate() {
 
     RunCommand("LIST OF OPEN FILES", {"lsof"}, CommandOptions::AS_ROOT);
 
-    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(for_each_pid, do_showmap, "SMAPS OF ALL PROCESSES");
+    RUN_SLOW_FUNCTION_WITH_CONSENT_CHECK(RunCommand, "BUGREPORT PROCDUMP", {"bugreport_procdump"},
+                                         CommandOptions::AS_ROOT);
 
     for_each_tid(show_wchan, "BLOCKED PROCESS WAIT-CHANNELS");
     for_each_pid(show_showtime, "PROCESS TIMES (pid cmd user system iowait+percentage)");
@@ -3872,15 +3868,6 @@ void do_dmesg() {
     printf("%s\n\n", buf);
     free(buf);
     return;
-}
-
-void do_showmap(int pid, const char *name) {
-    char title[255];
-    char arg[255];
-
-    snprintf(title, sizeof(title), "SHOW MAP %d (%s)", pid, name);
-    snprintf(arg, sizeof(arg), "%d", pid);
-    RunCommand(title, {"showmap", "-q", arg}, CommandOptions::AS_ROOT);
 }
 
 int Dumpstate::DumpFile(const std::string& title, const std::string& path) {
