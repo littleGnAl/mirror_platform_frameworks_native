@@ -48,6 +48,7 @@
 
 #include <poll.h>
 #include <sys/prctl.h>
+#include <sys/socket.h>
 #include <unistd.h>
 
 #include "../FdTrigger.h"
@@ -1446,20 +1447,95 @@ TEST_P(BinderRpc, AidlDelegatorTest) {
 static bool testSupportVsockLoopback() {
     // We don't need to enable TLS to know if vsock is supported.
     unsigned int vsockPort = allocateVsockPort();
-    sp<RpcServer> server = RpcServer::make(RpcTransportCtxFactoryRaw::make());
-    if (status_t status = server->setupVsockServer(vsockPort); status != OK) {
-        if (status == -EAFNOSUPPORT) {
-            return false;
-        }
-        LOG_ALWAYS_FATAL("Could not setup vsock server: %s", statusToString(status).c_str());
-    }
-    server->start();
 
-    sp<RpcSession> session = RpcSession::make(RpcTransportCtxFactoryRaw::make());
-    status_t status = session->setupVsockClient(VMADDR_CID_LOCAL, vsockPort);
-    while (!server->shutdown()) usleep(10000);
-    ALOGE("Detected vsock loopback supported: %s", statusToString(status).c_str());
-    return status == OK;
+    // Start the server in a separate process so the test also works
+    // in single-threaded mode
+    auto serverProcess = Process([&](android::base::borrowed_fd writeEnd,
+                                     android::base::borrowed_fd readEnd) {
+        android::base::unique_fd serverFd(
+                TEMP_FAILURE_RETRY(socket(AF_VSOCK, SOCK_STREAM | SOCK_CLOEXEC, 0)));
+        LOG_ALWAYS_FATAL_IF(serverFd == -1, "Could not create socket: %s", strerror(errno));
+
+        sockaddr_vm serverAddr{
+                .svm_family = AF_VSOCK,
+                .svm_port = vsockPort,
+                .svm_cid = VMADDR_CID_ANY,
+        };
+        int ret = TEMP_FAILURE_RETRY(
+                bind(serverFd.get(), reinterpret_cast<sockaddr*>(&serverAddr), sizeof(serverAddr)));
+        LOG_ALWAYS_FATAL_IF(0 != ret, "Could not bind socket to port %u: %s", vsockPort,
+                            strerror(errno));
+
+        ret = TEMP_FAILURE_RETRY(listen(serverFd.get(), 50 /*backlog*/));
+        LOG_ALWAYS_FATAL_IF(0 != ret, "Could not listen socket on port %u: %s", vsockPort,
+                            strerror(errno));
+
+        // Use the write pipe for synchronization and error reporting
+        BinderRpc::writeString(writeEnd, "OK");
+
+        while (true) {
+            pollfd pfd[]{{.fd = serverFd.get(), .events = POLLIN, .revents = 0},
+                         {.fd = readEnd.get(), .events = POLLIN, .revents = 0}};
+            ret = TEMP_FAILURE_RETRY(poll(pfd, arraysize(pfd), -1));
+            LOG_ALWAYS_FATAL_IF(ret < 0, "Error polling: %s", strerror(errno));
+
+            if (pfd[0].revents & POLLIN) {
+                sockaddr_vm clientAddr;
+                socklen_t clientAddrLen = sizeof(clientAddr);
+                android::base::unique_fd clientFd(TEMP_FAILURE_RETRY(
+                        accept4(serverFd.get(), reinterpret_cast<sockaddr*>(&clientAddr),
+                                &clientAddrLen, SOCK_CLOEXEC)));
+                LOG_ALWAYS_FATAL_IF(clientFd < 0, "Could not accept4 socket: %s", strerror(errno));
+                LOG_ALWAYS_FATAL_IF(clientAddrLen != static_cast<socklen_t>(sizeof(clientAddr)),
+                                    "Truncated address");
+                // Close the connection automatically, we just wanted to
+                // see if the client could connect
+            }
+
+            if (pfd[1].revents & POLLIN) {
+                auto cmd = BinderRpc::readString(readEnd);
+                if (cmd == "SHUTDOWN") {
+                    break;
+                } else {
+                    LOG_ALWAYS_FATAL("Unexpected client command: %s", cmd.c_str());
+                }
+            }
+        }
+    });
+
+    auto ret = BinderRpc::readString(serverProcess.readEnd());
+    LOG_ALWAYS_FATAL_IF(ret != "OK", "Could not setup vsock server: %s", ret.c_str());
+
+    // Try to connect to the server using the VMADDR_CID_LOCAL cid
+    // to see if the kernel supports it. It's safe to use a blocking
+    // connect because vsock sockets have a 2s connection timeout,
+    // and they return ETIMEDOUT after that.
+    bool success = false;
+    android::base::unique_fd serverFd(
+            TEMP_FAILURE_RETRY(socket(AF_VSOCK, SOCK_STREAM | SOCK_CLOEXEC, 0)));
+    if (serverFd == -1) {
+        ALOGE("Could not create socket for port %u: %s", vsockPort, strerror(errno));
+    } else {
+        sockaddr_vm serverAddr{
+                .svm_family = AF_VSOCK,
+                .svm_port = vsockPort,
+                .svm_cid = VMADDR_CID_LOCAL,
+        };
+        if (0 !=
+            TEMP_FAILURE_RETRY(connect(serverFd.get(), reinterpret_cast<sockaddr*>(&serverAddr),
+                                       sizeof(serverAddr)))) {
+            ALOGE("Could not connect socket to port %u: %s", vsockPort, strerror(errno));
+        } else {
+            success = true;
+        }
+    }
+
+    ALOGE("Detected vsock loopback supported: %s", success ? "yes" : "no");
+
+    // Send the shutdown command
+    BinderRpc::writeString(serverProcess.writeEnd(), "SHUTDOWN");
+
+    return success;
 }
 
 static std::vector<SocketType> testSocketTypes(bool hasPreconnected = true) {
