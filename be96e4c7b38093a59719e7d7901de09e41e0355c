@@ -195,6 +195,30 @@
       },
       "revId": "be96e4c7b38093a59719e7d7901de09e41e0355c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607530a6_1669bf37",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 44
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-06-28T04:01:17Z",
+      "side": 1,
+      "message": "Got it. If they fail to buil, we\u0027d better skip those tests.",
+      "parentUuid": "45e7ca38_543230d5",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 6
+      },
+      "revId": "be96e4c7b38093a59719e7d7901de09e41e0355c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
