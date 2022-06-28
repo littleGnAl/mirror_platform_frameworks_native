@@ -246,6 +246,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1863263_8d55f889",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 2720,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-28T02:10:08Z",
+      "side": 1,
+      "message": "Done.\n\nWas pending TODO that is complete now. The implementation could be optimized, but I\u0027m not sure how common partial truncations of parcels are, so I went with simple for now.",
+      "parentUuid": "b9f51e3d_38ad7e2b",
+      "range": {
+        "startLine": 2720,
+        "startChar": 0,
+        "endLine": 2720,
+        "endChar": 56
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe567a59_5dd89a8c",
@@ -269,6 +293,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a2af19f_b3d0b9c9",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-28T02:10:08Z",
+      "side": 1,
+      "message": "Done. Used `std::bitset` and made it just one byte for now. I assume we can freely resize this struct.\n\nI\u0027ve still got a vector as the argument though. It would be nice to get rid of that, but all of the options that don\u0027t involve allocs are annoying in various ways. `initializer_list` doesn\u0027t need an alloc, but you can\u0027t create a dynamically sized one. Iterator begin-end pairs need a separate variable. Another good use case for `std::span`.",
+      "parentUuid": "fe567a59_5dd89a8c",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 42
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1f6c788_22fc7c93",
@@ -282,6 +330,30 @@
       "writtenOn": "2022-06-23T18:19:05Z",
       "side": 1,
       "message": "though if it\u0027s a bitfield, the mode would have to be the index, for uint8_t",
+      "range": {
+        "startLine": 617,
+        "startChar": 64,
+        "endLine": 617,
+        "endChar": 92
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d48d8d7_9bb7503c",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-28T02:10:08Z",
+      "side": 1,
+      "message": "Yeah. I\u0027ve kept the enum as indices and the bitfield representation is an implementation detail of RpcServer.",
+      "parentUuid": "b1f6c788_22fc7c93",
       "range": {
         "startLine": 617,
         "startChar": 64,
