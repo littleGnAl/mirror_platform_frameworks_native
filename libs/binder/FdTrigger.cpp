@@ -53,7 +53,7 @@ bool FdTrigger::isTriggered() {
 #endif
 }
 
-status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
+status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event, bool ignorePollerr) {
 #ifdef BINDER_RPC_SINGLE_THREADED
     if (mTriggered) {
         return DEAD_OBJECT;
@@ -99,7 +99,7 @@ status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
     // Error condition. It wouldn't be possible to do I/O on |fd| afterwards.
     // Note: If this is the write end of a pipe then POLLHUP may also be set simultaneously. We
     //   still want DEAD_OBJECT in this case.
-    if (pfd[0].revents & POLLERR) {
+    if ((pfd[0].revents & POLLERR) && !ignorePollerr) {
         LOG_RPC_DETAIL("poll() incoming FD %d results in revents = %d", pfd[0].fd, pfd[0].revents);
         return DEAD_OBJECT;
     }

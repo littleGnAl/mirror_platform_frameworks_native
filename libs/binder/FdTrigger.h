@@ -53,7 +53,7 @@ public:
      *   true - time to read!
      *   false - trigger happened
      */
-    [[nodiscard]] status_t triggerablePoll(base::borrowed_fd fd, int16_t event);
+    [[nodiscard]] status_t triggerablePoll(base::borrowed_fd fd, int16_t event, bool ignorePollerr);
 
 private:
 #ifdef BINDER_RPC_SINGLE_THREADED

@@ -99,7 +99,7 @@ status_t interruptableReadOrWrite(
                 return DEAD_OBJECT;
             }
         } else {
-            if (status_t status = fdTrigger->triggerablePoll(socketFd, event); status != OK)
+            if (status_t status = fdTrigger->triggerablePoll(socketFd, event, false); status != OK)
                 return status;
             if (!havePolled) havePolled = true;
         }

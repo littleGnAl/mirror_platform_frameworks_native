@@ -206,7 +206,7 @@ private:
             ret = (*altPoll)();
             if (fdTrigger->isTriggered()) ret = DEAD_OBJECT;
         } else {
-            ret = fdTrigger->triggerablePoll(fd, event);
+            ret = fdTrigger->triggerablePoll(fd, event, false);
         }
 
         if (ret != OK && ret != DEAD_OBJECT) {
