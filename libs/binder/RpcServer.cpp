@@ -177,7 +177,7 @@ void RpcServer::join() {
     }
 
     status_t status;
-    while ((status = mShutdownTrigger->triggerablePoll(mServer, POLLIN)) == OK) {
+    while ((status = mShutdownTrigger->triggerablePoll(mServer, POLLIN, false)) == OK) {
         std::array<uint8_t, kRpcAddressSize> addr;
         static_assert(addr.size() >= sizeof(sockaddr_storage), "kRpcAddressSize is too small");
 
