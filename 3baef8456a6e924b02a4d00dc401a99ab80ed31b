@@ -22,6 +22,30 @@
       },
       "revId": "3baef8456a6e924b02a4d00dc401a99ab80ed31b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e4b41cf_55cba13f",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-29T23:31:15Z",
+      "side": 1,
+      "message": "We might be able to do something like this sequence\n* `listen`\n* non-blocking `connect`\n* non-blocking `accept4`\n* `poll` on the `connect`. When this returns, we should either get `ETIMEDOUT` or success.\n\nI\u0027ll give it a try and see if it works.",
+      "parentUuid": "d536519d_63f42450",
+      "range": {
+        "startLine": 1475,
+        "startChar": 0,
+        "endLine": 1503,
+        "endChar": 9
+      },
+      "revId": "3baef8456a6e924b02a4d00dc401a99ab80ed31b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
