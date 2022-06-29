@@ -52,7 +52,8 @@ public:
      *   true - time to read!
      *   false - trigger happened
      */
-    [[nodiscard]] status_t triggerablePoll(base::borrowed_fd fd, int16_t event);
+    [[nodiscard]] status_t triggerablePoll(base::borrowed_fd fd, int16_t event,
+                                           bool ignore_pollerr);
 
 private:
     base::unique_fd mWrite;
