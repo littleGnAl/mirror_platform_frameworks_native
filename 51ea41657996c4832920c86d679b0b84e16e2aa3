@@ -16,6 +16,97 @@
       "message": "(adding android-ndk-api-council group)",
       "revId": "51ea41657996c4832920c86d679b0b84e16e2aa3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60bd3a75_d2044a42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-06-29T23:44:05Z",
+      "side": 1,
+      "message": "Tests?",
+      "revId": "51ea41657996c4832920c86d679b0b84e16e2aa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fe5e29_79c896b5",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-06-29T23:44:05Z",
+      "side": 1,
+      "message": "Not reviewing this since it isn\u0027t actually NDK API, correct?",
+      "revId": "51ea41657996c4832920c86d679b0b84e16e2aa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c2cb645_8a179e8c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-06-29T23:44:05Z",
+      "side": 1,
+      "message": "I\u0027m not a binder user so I don\u0027t really understand how this works. Are parcels a stream, and this API should be called whenever the next element is a vector and the caller needs to determine the size? How does the caller determine that the next element is a vector?\n\nIf that\u0027s not the case, how is this used?",
+      "revId": "51ea41657996c4832920c86d679b0b84e16e2aa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae023a1b_c6d1286b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-06-29T23:44:05Z",
+      "side": 1,
+      "message": "Wording is slightly unclear to me. Is this an out param, or is this instructing the caller on the correct values? What thing is being resized? Does \"value\" mean the length that the buffer will be resized to? In bytes or in number of elements? -1 if what would be null?\n\nI believe this is an out param. Suggest rewording as \"Output parameter that will store the length of the measured vector in bytes on success, or -1 on failure.\"",
+      "revId": "51ea41657996c4832920c86d679b0b84e16e2aa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "478d447c_bb9f3076",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-06-29T23:44:05Z",
+      "side": 1,
+      "message": "Any reason to believe 32-bits won\u0027t be enough some day? Should this also be `size_t`?",
+      "range": {
+        "startLine": 1222,
+        "startChar": 48,
+        "endLine": 1222,
+        "endChar": 55
+      },
+      "revId": "51ea41657996c4832920c86d679b0b84e16e2aa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
