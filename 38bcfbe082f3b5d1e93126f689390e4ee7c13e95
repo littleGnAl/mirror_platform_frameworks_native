@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a86df3_7a83571e",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-29T22:51:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b7562fe_b85468cf",
+      "revId": "38bcfbe082f3b5d1e93126f689390e4ee7c13e95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dc2b205_76b727c2",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-29T00:07:58Z",
       "side": 1,
       "message": "The error that is happening is this:\n\n    06-28 22:26:02.460  root  3105  3105 E RpcSession: Could not POLLOUT after connect() on non-blocking socket: DEAD_OBJECT\n    06-28 22:26:02.460  root  3105  3105 E binderRpcTest: Detected vsock loopback supported: DEAD_OBJECT\n\n(I don\u0027t see any more logs, but I wonder if -EPIPE is getting hit on L1439 after L1424, since the process closes? since there are not other error conditions, I would try to prove L1424 getting hit won\u0027t cause a problem - NOTE - it will not get hit with newer kernels, and that\u0027s why this is caught on the android 11 gsi branch)",
+      "range": {
+        "startLine": 1443,
+        "startChar": 8,
+        "endLine": 1443,
+        "endChar": 24
+      },
+      "revId": "38bcfbe082f3b5d1e93126f689390e4ee7c13e95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac3df3e8_267ecc06",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-29T22:51:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dc2b205_76b727c2",
       "range": {
         "startLine": 1443,
         "startChar": 8,
