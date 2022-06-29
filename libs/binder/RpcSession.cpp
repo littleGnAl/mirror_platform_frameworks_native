@@ -547,7 +547,9 @@ status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
             if (connErrno == EAGAIN || connErrno == EINPROGRESS) {
                 // For non-blocking sockets, connect() may return EAGAIN (for unix domain socket) or
                 // EINPROGRESS (for others). Call poll() and getsockopt() to get the error.
-                status_t pollStatus = mShutdownTrigger->triggerablePoll(serverFd, POLLOUT);
+                // We ignore POLLERR when calling poll() because we're only interested in
+                // POLLOUT and we check for errors explicitly with SO_ERROR anyway.
+                status_t pollStatus = mShutdownTrigger->triggerablePoll(serverFd, POLLOUT, true);
                 if (pollStatus != OK) {
                     ALOGE("Could not POLLOUT after connect() on non-blocking socket: %s",
                           statusToString(pollStatus).c_str());

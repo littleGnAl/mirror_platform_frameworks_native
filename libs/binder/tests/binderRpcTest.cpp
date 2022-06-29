@@ -1707,7 +1707,7 @@ public:
             LOG_ALWAYS_FATAL_IF(!mSetup, "Call Server::setup first!");
 
             std::vector<std::thread> threads;
-            while (OK == mFdTrigger->triggerablePoll(mFd, POLLIN)) {
+            while (OK == mFdTrigger->triggerablePoll(mFd, POLLIN, false)) {
                 base::unique_fd acceptedFd(
                         TEMP_FAILURE_RETRY(accept4(mFd.get(), nullptr, nullptr /*length*/,
                                                    SOCK_CLOEXEC | SOCK_NONBLOCK)));

@@ -135,7 +135,7 @@ public:
                     return DEAD_OBJECT;
                 }
             } else {
-                if (status_t status = fdTrigger->triggerablePoll(mSocket.get(), event);
+                if (status_t status = fdTrigger->triggerablePoll(mSocket.get(), event, false);
                     status != OK)
                     return status;
                 if (!havePolled) havePolled = true;
