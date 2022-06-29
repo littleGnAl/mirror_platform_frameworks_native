@@ -22,6 +22,52 @@
       },
       "revId": "69a0c998716f736d3a55dd1997d65b377babd8dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d94c64_56c2a954",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 41
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-29T23:40:11Z",
+      "side": 1,
+      "message": "is there any reason to have this separate, VS as part of interruptableReadFully? Right now, I wonder what the risk is, if FDs are attached as part of one read, then they aren\u0027t consumed (because consumePendingAncillaryData is called), and then at the next read, these FDs are consumed. Someone could pass FDs in one write, and they would get consumed during another?\n\nOtherwise, do we need the append behavior? (*fds \u003d std::move(mFdsPendingRead);)?",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 5
+      },
+      "revId": "69a0c998716f736d3a55dd1997d65b377babd8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde75f10_b9a9dc52",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 41
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-29T23:40:11Z",
+      "side": 1,
+      "message": "nit: bitset::set returns *this so could call this in the same way it is set in RpcServer.cpp.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 93
+      },
+      "revId": "69a0c998716f736d3a55dd1997d65b377babd8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
