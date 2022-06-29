@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49034ae6_49d734ba",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 41
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-29T05:46:31Z",
+      "side": 1,
+      "message": "One of the test failures was caused by checking the CMSG_DATA even when an error occurred.\n\nIn the error case, `CMSG_FIRSTHDR` returns null for glibc and non-null for bionic. The bionic behavior causes the code to go into an infinite loop.\n\nThere is a comment the glibc code about this\n\n```\n  if ((size_t) __cmsg-\u003ecmsg_len \u003c sizeof (struct cmsghdr))\n    /* The kernel header does this so there may be a reason.  */\n    return (struct cmsghdr *) 0;\n```\n\nI wonder if I just found the reason :) maybe will send a bug to the bionic team",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 17
+      },
+      "revId": "69a0c998716f736d3a55dd1997d65b377babd8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
