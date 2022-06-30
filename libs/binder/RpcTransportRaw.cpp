@@ -204,9 +204,9 @@ public:
     status_t interruptableReadFully(
             FdTrigger* fdTrigger, iovec* iovs, int niovs,
             const std::optional<android::base::function_ref<status_t()>>& altPoll,
-            bool enableAncillaryFds) override {
+            std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds) override {
         auto recv = [&](iovec* iovs, int niovs) -> ssize_t {
-            if (enableAncillaryFds) {
+            if (ancillaryFds != nullptr) {
                 int fdBuffer[kMaxFdsPerMsg];
                 alignas(struct cmsghdr) char msgControlBuf[CMSG_SPACE(sizeof(fdBuffer))];
 
@@ -230,8 +230,9 @@ public:
                         size_t dataLen = cmsg->cmsg_len - CMSG_LEN(0);
                         memcpy(fdBuffer, CMSG_DATA(cmsg), dataLen);
                         size_t fdCount = dataLen / sizeof(int);
+                        ancillaryFds->reserve(ancillaryFds->size() + fdCount);
                         for (size_t i = 0; i < fdCount; i++) {
-                            mFdsPendingRead.emplace_back(fdBuffer[i]);
+                            ancillaryFds->emplace_back(base::unique_fd(fdBuffer[i]));
                         }
                         break;
                     }
@@ -256,18 +257,8 @@ public:
         return interruptableReadOrWrite(fdTrigger, iovs, niovs, recv, "recvmsg", POLLIN, altPoll);
     }
 
-    status_t consumePendingAncillaryData(std::vector<base::unique_fd>* fds) override {
-        fds->reserve(fds->size() + mFdsPendingRead.size());
-        for (auto& fd : mFdsPendingRead) {
-            fds->emplace_back(std::move(fd));
-        }
-        mFdsPendingRead.clear();
-        return OK;
-    }
-
 private:
     base::unique_fd mSocket;
-    std::vector<base::unique_fd> mFdsPendingRead;
 };
 
 // RpcTransportCtx with TLS disabled.
