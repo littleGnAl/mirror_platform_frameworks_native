@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0f8e2b6_d1bd1133",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 41
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-30T00:07:49Z",
+      "side": 1,
+      "message": "Discussed over chat some. I\u0027m going to try it as a quick follow up\n\nRe append: Not necessary but I think this is better because we aren\u0027t forced to re-allocate a buffer each time (the caller is currently reallocing each time, but that isn\u0027t necessary in this design)",
+      "parentUuid": "98d94c64_56c2a954",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 5
+      },
+      "revId": "69a0c998716f736d3a55dd1997d65b377babd8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cde75f10_b9a9dc52",
         "filename": "libs/binder/include/binder/RpcServer.h",
         "patchSetId": 41
