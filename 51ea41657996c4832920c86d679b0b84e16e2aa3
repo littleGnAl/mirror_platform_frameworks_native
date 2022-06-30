@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1db8bce_9a7d1eb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-06-30T11:22:51Z",
+      "side": 1,
+      "message": "Please add at least one explicit usage test so that NDK test coverage isn\u0027t reliant on whatever AIDL happens to generate.",
+      "parentUuid": "393c4ed1_6ecbea95",
+      "revId": "51ea41657996c4832920c86d679b0b84e16e2aa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0fe5e29_79c896b5",
         "filename": "libs/binder/ndk/include_cpp/android/binder_parcel_utils.h",
         "patchSetId": 5
@@ -177,6 +195,30 @@
       "side": 1,
       "message": "We manually limit the size to much smaller in this code, since the binder buffer is only 1MB. If it ever makes sense to make multiple copies of \u003e\u003d2GB data by passing it over binder, we would need to change all binder codes. Consistency is more important than this remote possibility.",
       "parentUuid": "478d447c_bb9f3076",
+      "range": {
+        "startLine": 1222,
+        "startChar": 48,
+        "endLine": 1222,
+        "endChar": 55
+      },
+      "revId": "51ea41657996c4832920c86d679b0b84e16e2aa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc3a6643_3e999dbd",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-06-30T11:22:51Z",
+      "side": 1,
+      "message": "+2 to Steven\u0027s comments but also because this is IPC all sizes must be consistent. This could be a 64-bit process sending to a 32-bit process or vice versa, so size_t would be incorrect for at least one of them.",
+      "parentUuid": "26e5d572_858ea9b2",
       "range": {
         "startLine": 1222,
         "startChar": 48,
