@@ -87,6 +87,7 @@ cc_defaults {
         "FdTrigger.cpp",
         "IInterface.cpp",
         "IResultReceiver.cpp",
+        "OS.cpp",
         "Parcel.cpp",
         "ParcelFileDescriptor.cpp",
         "RpcSession.cpp",
