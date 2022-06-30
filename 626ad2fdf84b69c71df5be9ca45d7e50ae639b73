@@ -22,6 +22,30 @@
       },
       "revId": "626ad2fdf84b69c71df5be9ca45d7e50ae639b73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37993984_e9f65b75",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1493,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-30T01:00:26Z",
+      "side": 1,
+      "message": "From `man accept4`:\n```\n       If no pending connections are present on the queue, and the socket is not marked as nonblocking, accept() blocks the caller until a connection  is  present.   If the socket is marked nonblocking and no pending connections are present on the queue, accept() fails with the error EAGAIN or EWOULDBLOCK.\n```\n\nI don\u0027t think either one of those works for us. A blocking `accept4` would block indefinitely if the client is unable to connect, while a non-blocking one might race with `connect` and return `EWOULDBLOCK`. In the latter case, we could loop without polling but then we\u0027d just be calling `accept4` and `getsockopt` over and over. Is there some other way we could make it work?",
+      "parentUuid": "744f64ed_3f39d9bd",
+      "range": {
+        "startLine": 1493,
+        "startChar": 37,
+        "endLine": 1493,
+        "endChar": 41
+      },
+      "revId": "626ad2fdf84b69c71df5be9ca45d7e50ae639b73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
