@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "744f64ed_3f39d9bd",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1493,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-30T00:50:08Z",
+      "side": 1,
+      "message": "do we need to poll? Can we directly try calling accept4? I feel we should be able to call it directly or avoid needing this much code? Is it all really needed to detect this working?",
+      "range": {
+        "startLine": 1493,
+        "startChar": 37,
+        "endLine": 1493,
+        "endChar": 41
+      },
+      "revId": "626ad2fdf84b69c71df5be9ca45d7e50ae639b73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
