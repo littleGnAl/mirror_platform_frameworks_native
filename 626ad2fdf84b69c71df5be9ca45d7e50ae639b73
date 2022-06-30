@@ -70,6 +70,30 @@
       },
       "revId": "626ad2fdf84b69c71df5be9ca45d7e50ae639b73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a532c42_6575ebd3",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1493,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-30T20:55:44Z",
+      "side": 1,
+      "message": "\u003e btw is there an easy way to run the test in env where this returns false?\n\nThe tests that were failing do exactly that: run on an Android 11 image with a 5.4 kernel. There\u0027s an acloud command you can use to replicate the setup.",
+      "parentUuid": "4cbf7067_3cffc21c",
+      "range": {
+        "startLine": 1493,
+        "startChar": 37,
+        "endLine": 1493,
+        "endChar": 41
+      },
+      "revId": "626ad2fdf84b69c71df5be9ca45d7e50ae639b73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
