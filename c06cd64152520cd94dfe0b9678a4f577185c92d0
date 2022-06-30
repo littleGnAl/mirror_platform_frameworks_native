@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b26c04c9_3ff1f8d4",
+        "filename": "libs/binder/trusty/Utils.cpp",
+        "patchSetId": 138
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-30T02:24:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c91342b_94c59520",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "c06cd64152520cd94dfe0b9678a4f577185c92d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5b3d22b_60aa47ab",
@@ -131,6 +155,30 @@
       "writtenOn": "2022-06-09T00:54:56Z",
       "side": 1,
       "message": "could we use a different header for trusty specific code? Also, something like this, could it be compiled on Android (even if we can\u0027t use all the Trusty stuff)",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "c06cd64152520cd94dfe0b9678a4f577185c92d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83e855f3_51d524ae",
+        "filename": "libs/binder/trusty/Utils.h",
+        "patchSetId": 138
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-06-30T02:24:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b64157_a672f363",
       "range": {
         "startLine": 26,
         "startChar": 4,
