@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f46e43_63678fc7",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 82
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-30T21:40:04Z",
+      "side": 0,
+      "message": "does this need to be reordered?",
+      "revId": "a9e3562ca4e406ed47435029dac3d4262c9ab7e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1315cb5_00dc9c9a",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-30T21:40:04Z",
+      "side": 1,
+      "message": "something bad should happen if predicate is false\n\n(do we use this? maybe delete instead)",
+      "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e76d9e7_c7dd2e62",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-30T21:40:04Z",
+      "side": 1,
+      "message": "should the return type be `bool`?\n\nhttps://en.cppreference.com/w/cpp/thread/condition_variable/wait_for\n\nprobably want to return `predicate()`",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a4b327_074d2bb3",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-30T21:40:04Z",
+      "side": 1,
+      "message": "maybe `mFunc \u003d nullptr` in `join`, then no need for `mExecuted` + you can free memory earlier",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 36
+      },
+      "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0ffe513_9c90186d",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-30T21:40:04Z",
+      "side": 1,
+      "message": "the semantics of this function are unintuitive to me. what do you think of a name like `rpcJoinIfSingleThreaded`?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 1
+      },
+      "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8b8157_f140f9de",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-30T21:40:04Z",
+      "side": 1,
+      "message": "`static` is meaningless in headers, right? (or, at least, only has very subtle meaning)",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 6
+      },
+      "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
