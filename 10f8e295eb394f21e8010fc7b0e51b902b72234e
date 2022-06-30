@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f75e2f1_da53f2a1",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-06-30T17:25:44Z",
+      "side": 1,
+      "message": "should we check the size does not exceed the fdBuffer size for future proofing?",
+      "range": {
+        "startLine": 231,
+        "startChar": 58,
+        "endLine": 231,
+        "endChar": 65
+      },
+      "revId": "10f8e295eb394f21e8010fc7b0e51b902b72234e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
