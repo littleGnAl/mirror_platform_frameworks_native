@@ -46,6 +46,30 @@
       },
       "revId": "626ad2fdf84b69c71df5be9ca45d7e50ae639b73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbf7067_3cffc21c",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1493,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-30T20:36:31Z",
+      "side": 1,
+      "message": "I was going to suggest using SOCK_DGRAM instead (just need: socket -\u003e sendto self -\u003e recvfrom self), but from a quick search, dgram support in vsock might have been added after VMADDR_CID_LOCAL support, so we might lose test coverage. Unclear to me if that matters.\n\nbtw is there an easy way to run the test in env where this returns false?",
+      "parentUuid": "37993984_e9f65b75",
+      "range": {
+        "startLine": 1493,
+        "startChar": 37,
+        "endLine": 1493,
+        "endChar": 41
+      },
+      "revId": "626ad2fdf84b69c71df5be9ca45d7e50ae639b73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
