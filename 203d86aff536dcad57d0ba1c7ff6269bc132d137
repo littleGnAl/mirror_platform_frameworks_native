@@ -171,6 +171,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "080eefe5_31cd1b4c",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 2138,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-30T03:16:57Z",
+      "side": 1,
+      "message": "\u003e nit: what is the performance of this btw?\n\nlog n :) The algorithm used in the kernel binder path is better, but it requires extra bytes in Parcel (don\u0027t know if we have enough off hand) and it is more complex. I\u0027m thinking of revisiting once we have a benchmark or a heavy user to optimize around.\n\n\u003e If our fuzzer fuzzed adding FDs, I\u0027d ask we add an invariant that this is sorted. Is there any other place we could add that invariant to make sure it doesn\u0027t get out of date?\n\nTracking in http://b/237603548.",
+      "parentUuid": "b209a6ce_eedde7fa",
+      "range": {
+        "startLine": 2138,
+        "startChar": 18,
+        "endLine": 2138,
+        "endChar": 31
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e18141_840c54f8",
@@ -255,6 +279,30 @@
       "writtenOn": "2022-06-23T18:19:05Z",
       "side": 1,
       "message": "nit: is this extra allocation needed or can you document it in binderAllocationLimits so we know exactly how many are done?",
+      "range": {
+        "startLine": 2514,
+        "startChar": 0,
+        "endLine": 2517,
+        "endChar": 9
+      },
+      "revId": "203d86aff536dcad57d0ba1c7ff6269bc132d137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efdf664b_d294d57e",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 2517,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-06-30T03:16:57Z",
+      "side": 1,
+      "message": "https://r.android.com/2140048 will help with this some (I made the types match so we can just move the argument into this field. Still have the extra allocation to box it though)\n\nhttp://b/237603548 to track adding a binderAllocationLimits test case",
+      "parentUuid": "e0ce3ea3_fed48a55",
       "range": {
         "startLine": 2514,
         "startChar": 0,
