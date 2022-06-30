@@ -99,6 +99,32 @@ impl ThreadState {
         }
     }
 
+    /// This resets the identity of the incoming IPC on the current thread while
+    /// running a function. This can be useful if, while handling an incoming
+    /// call, you will be calling on interfaces of other objects that may be
+    /// local to your process and need to do permission checks on the calls
+    /// coming into them (so they will check the permission of your own local
+    /// process, and not whatever process originally called you).
+    ///
+    /// Available since API level 34.
+    pub fn with_cleared_calling_identity<F, T>(f: F) -> T
+    where
+        F: FnOnce() -> T,
+    {
+        let _guard = scopeguard::guard(
+            unsafe {
+                // Safety: Safe FFI
+                sys::AIBinder_clearCallingIdentity()
+            },
+            |token| unsafe {
+                // Safety: Safe FFI
+                sys::AIBinder_restoreCallingIdentity(token)
+            },
+        );
+
+        f()
+    }
+
     /// Determine whether the current thread is currently executing an incoming transaction.
     ///
     /// \return true if the current thread is currently executing an incoming transaction, and false

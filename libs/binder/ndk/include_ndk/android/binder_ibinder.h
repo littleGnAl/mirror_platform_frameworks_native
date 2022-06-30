@@ -393,6 +393,29 @@ uid_t AIBinder_getCallingUid() __INTRODUCED_IN(29);
 pid_t AIBinder_getCallingPid() __INTRODUCED_IN(29);
 
 /**
+ * This resets the identity of the incoming IPC on the current thread. This can be useful if, while
+ * handling an incoming call, you will be calling on interfaces of other objects that may be local
+ * to your process and need to do permission checks on the calls coming into them (so they will
+ * check the permission of your own local process, and not whatever process originally called you).
+ *
+ * Available since API level 34.
+ *
+ * \return an opaque token that can be used to restore the original calling identity by passing it
+ * to AIBinder_restoreCallingIdentity.
+ */
+int64_t AIBinder_clearCallingIdentity() __INTRODUCED_IN(34);
+
+/**
+ * This restores the identity of the incoming IPC on the current thread back to a previously
+ * identity that was returned by AIBinder_clearCallingIdentity.
+ *
+ * Available since API level 34.
+ *
+ * \param token the opaque token that was previously returned by AIBinder_clearCallingIdentity.
+ */
+void AIBinder_restoreCallingIdentity(int64_t token) __INTRODUCED_IN(34);
+
+/**
  * Determine whether the current thread is currently executing an incoming transaction.
  *
  * \return true if the current thread is currently executing an incoming transaction, and false

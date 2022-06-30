@@ -571,6 +571,14 @@ pid_t AIBinder_getCallingPid() {
     return ::android::IPCThreadState::self()->getCallingPid();
 }
 
+int64_t AIBinder_clearCallingIdentity() {
+    return ::android::IPCThreadState::self()->clearCallingIdentity();
+}
+
+void AIBinder_restoreCallingIdentity(int64_t token) {
+    ::android::IPCThreadState::self()->restoreCallingIdentity(token);
+}
+
 bool AIBinder_isHandlingTransaction() {
     return ::android::IPCThreadState::self()->getServingStackPointer() != nullptr;
 }
