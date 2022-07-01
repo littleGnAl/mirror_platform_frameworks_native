@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08470c44_b61fc244",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-01T20:40:47Z",
+      "side": 1,
+      "message": "so - this also means that we need to run binderRpcTest with atest? Does it still work to \"m binderRpcTest \u0026\u0026 adb sync data \u0026\u0026 /data/nativetest64/binderRpcTest/binderRpcTest\"? or if we run it on host, is the linker namespace setup correctly?",
+      "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2319968c_b1b4ab66",
         "filename": "libs/binder/tests/libBinderRpcTestService.map.txt",
         "patchSetId": 27
