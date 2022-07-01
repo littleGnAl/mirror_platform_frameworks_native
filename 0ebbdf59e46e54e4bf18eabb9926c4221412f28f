@@ -108,6 +108,30 @@
       },
       "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75ca13c_40d4a019",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-01T01:38:22Z",
+      "side": 1,
+      "message": "It should prevent the function from being exported from multiple translation units and causing a linker error (although `inline` might cancel that out).",
+      "parentUuid": "7c8b8157_f140f9de",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 6
+      },
+      "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
