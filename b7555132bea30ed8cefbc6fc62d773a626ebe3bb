@@ -93,6 +93,30 @@
       },
       "revId": "b7555132bea30ed8cefbc6fc62d773a626ebe3bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "509291b4_310e3a24",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1082465
+      },
+      "writtenOn": "2022-07-01T21:26:10Z",
+      "side": 1,
+      "message": "Gotcha, thought they would all resolve to ints. Secondary switch seems good.",
+      "parentUuid": "a0210622_3a5333db",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 13
+      },
+      "revId": "b7555132bea30ed8cefbc6fc62d773a626ebe3bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
