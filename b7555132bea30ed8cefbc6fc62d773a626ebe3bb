@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "052a15df_019ba166",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1082465
+      },
+      "writtenOn": "2022-07-01T18:06:58Z",
+      "side": 1,
+      "message": "Needs better title",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "b7555132bea30ed8cefbc6fc62d773a626ebe3bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f1c48c_c1bce5e2",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1082465
+      },
+      "writtenOn": "2022-07-01T18:06:58Z",
+      "side": 1,
+      "message": "Maybe theres a nicer part of the file for the new definitions to live / adding those new enums as case statements?",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 13
+      },
+      "revId": "b7555132bea30ed8cefbc6fc62d773a626ebe3bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
