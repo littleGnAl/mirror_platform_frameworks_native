@@ -156,6 +156,30 @@
       },
       "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47fa91b0_520d54ef",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-01T02:11:29Z",
+      "side": 1,
+      "message": "Not an expert, but I would think that `weak` is preferable over `local` since it might reduce codesize by coalescing the duplicates at link time (supposing this was actually used in multiple libs). You can\u0027t hide something in a public header.\n\nAnyways, more of a nit, not a blocker.",
+      "parentUuid": "1db33cbd_bf26a7e3",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 6
+      },
+      "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
