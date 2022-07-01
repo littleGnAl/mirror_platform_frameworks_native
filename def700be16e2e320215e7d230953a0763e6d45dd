@@ -16,6 +16,23 @@
       "message": "any update?",
       "revId": "def700be16e2e320215e7d230953a0763e6d45dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "025f1d32_2d1d5307",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-01T17:11:45Z",
+      "side": 1,
+      "message": "Thanks Linnan for the patch! I\u0027ve added tests in the CL above it.",
+      "revId": "def700be16e2e320215e7d230953a0763e6d45dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
