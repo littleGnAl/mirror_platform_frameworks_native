@@ -22,6 +22,30 @@
       },
       "revId": "f6d42abeece6ab426d1a0a9bcad27a8f67effcc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b8b7d7a_026b7b61",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-01T20:17:38Z",
+      "side": 1,
+      "message": "I\u0027m not actually sure if the compiler supports putting it in both places. However, do note b/136506169 (meaning, adding retroactively, this should work - danalbert to confirm). Since the implementation here hasn\u0027t changed, if the code tests and works on a new device, that will be representative of an older device. So, I want to expose it here.",
+      "parentUuid": "16254b8e_b94a739d",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 48
+      },
+      "revId": "f6d42abeece6ab426d1a0a9bcad27a8f67effcc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
