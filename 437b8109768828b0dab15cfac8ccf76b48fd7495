@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd104e87_3b2ec6c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-01T23:03:40Z",
+      "side": 1,
+      "message": "I ran the tests manually on both host and device. It works, but you need to push the full `testcases` directory or the test-specific subdirectory `binderRpcTest/x86_64`.",
+      "parentUuid": "08470c44_b61fc244",
+      "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "776bb590_0a0efe21",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 27
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-01T22:16:53Z",
       "side": 1,
       "message": "where at? it would be a lot cleaner if `MyBinderRpcTest` and `MyBinderRpcSession` were in `libs/binder/tests/binderRpcTestService.cpp` (i.e. only an implementation detail of the service)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18b06e87_6aaff3de",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-01T23:03:40Z",
+      "side": 1,
+      "message": "`NestedTransactions` for the former, `CallMeBack` and `RepeatBinder` for the latter. The tests create new objects of those types using `sp::make`.",
+      "parentUuid": "776bb590_0a0efe21",
       "range": {
         "startLine": 41,
         "startChar": 0,
@@ -72,6 +114,24 @@
       "side": 1,
       "message": "instead of an .so with a `runService` function, maybe we could use an executable. i think the main con would be the extra code to parse cmdline args and pass the pipe fds around",
       "parentUuid": "2319968c_b1b4ab66",
+      "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48977d42_4573f238",
+        "filename": "libs/binder/tests/libBinderRpcTestService.map.txt",
+        "patchSetId": 27
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-01T23:03:40Z",
+      "side": 1,
+      "message": "I\u0027ll give it a try, I considered it and thought it wouldn\u0027t work because of the `UseKernelBinderCallingId` test which relies on `fork`, but looking at that one again I think it might be fine.",
+      "parentUuid": "d3410d6e_22850464",
       "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
