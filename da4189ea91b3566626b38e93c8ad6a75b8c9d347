@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "985972d9_d17ddf56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-01T21:38:18Z",
+      "side": 1,
+      "message": "Needs a CTS test in the topic to satisfy NDK API review requirements.",
+      "revId": "da4189ea91b3566626b38e93c8ad6a75b8c9d347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c3a4e6_3cfa2224",
+        "filename": "libs/nativewindow/libnativewindow.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-01T21:38:18Z",
+      "side": 1,
+      "message": "32 is the wrong API level, that was S V2. And the window for 33 I think is probably already closed? So this would be I guess 34, but it\u0027d be better to use U instead of a number to be sure about that.",
+      "range": {
+        "startLine": 24,
+        "startChar": 59,
+        "endLine": 24,
+        "endChar": 61
+      },
+      "revId": "da4189ea91b3566626b38e93c8ad6a75b8c9d347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
