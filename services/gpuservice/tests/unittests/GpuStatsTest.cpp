@@ -76,9 +76,16 @@ public:
                 ::testing::UnitTest::GetInstance()->current_test_info();
         ALOGD("**** Tearing down after %s.%s\n", test_info->test_case_name(), test_info->name());
 
+
+        // This is requried for test due to GpuStats instance spawns binder transactions
+        // in its destructor. After the gtest destructor test exits immidiatelly.
+        // It resutls in binder thread not able to process above binder transactions and memory leak
+        // occures. Binder thread needs time to process callbacks transactions
+        // GpuStats instance needs to be called in advance
+        mGpuStats.reset(nullptr);
         // performs all pending callbacks until all data has been consumed
         // gives time to process binder transactions by thread pool
-        looper->pollAll(1000);
+        looper->pollAll(500);
     }
 
     std::string inputCommand(InputCommand cmd);
