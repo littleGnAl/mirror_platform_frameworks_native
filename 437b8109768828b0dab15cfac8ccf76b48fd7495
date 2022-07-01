@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "776bb590_0a0efe21",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-01T22:16:53Z",
+      "side": 1,
+      "message": "where at? it would be a lot cleaner if `MyBinderRpcTest` and `MyBinderRpcSession` were in `libs/binder/tests/binderRpcTestService.cpp` (i.e. only an implementation detail of the service)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2319968c_b1b4ab66",
         "filename": "libs/binder/tests/libBinderRpcTestService.map.txt",
         "patchSetId": 27
