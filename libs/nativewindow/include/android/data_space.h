@@ -121,6 +121,24 @@ enum ADataSpace {
     ADATASPACE_BT2020 = 147193856, // STANDARD_BT2020 | TRANSFER_SMPTE_170M | RANGE_FULL
 
     /**
+     * ITU-R Recommendation 601 (BT.601) - 525-line
+     *
+     * Standard-definition television, 525 Lines (NTSC)
+     *
+     * Use limited range, BT.601 transfer and BT.601_525 standard.
+     */
+    ADATASPACE_BT601_525 = 281280512,  // ((STANDARD_BT601_525 | TRANSFER_SMPTE_170M) | RANGE_LIMITED)
+
+    /**
+     * ITU-R Recommendation 601 (BT.601) - 625-line
+     *
+     * Standard-definition television, 625 Lines (PAL)
+     *
+     * Use limited range, BT.601 transfer and BT.601_625 standard.
+     */
+    ADATASPACE_BT601_625 = 281149440, // ((STANDARD_BT601_625 | TRANSFER_SMPTE_170M) | RANGE_LIMITED)
+
+    /**
      * ITU-R Recommendation 709 (BT.709)
      *
      * High-definition television
