@@ -83,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "766529cf_3e8b9ac2",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-01T23:13:22Z",
+      "side": 1,
+      "message": "ah sorry, i thought i had expanded the full file before i did a ctrl+f. makes sense now\n\ni think it would be better to make this a static lib instead of acting like it is a header only library, but we can clean it up later.",
+      "parentUuid": "18b06e87_6aaff3de",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2319968c_b1b4ab66",
