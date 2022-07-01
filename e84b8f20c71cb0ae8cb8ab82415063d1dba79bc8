@@ -22,6 +22,30 @@
       },
       "revId": "e84b8f20c71cb0ae8cb8ab82415063d1dba79bc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c67861_198230a0",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 87
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-01T22:51:43Z",
+      "side": 1,
+      "message": "`frameworks/native/Android.bp` has `frameworks_native_license` which sets the default visibility to `__subpackages__` on everything. Do I still need to set it explicitly here?",
+      "parentUuid": "8a94fd6f_b1e07cfc",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 1
+      },
+      "revId": "e84b8f20c71cb0ae8cb8ab82415063d1dba79bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
