@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9db4d0_e9ad147b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-07-01T23:09:40Z",
+      "side": 1,
+      "message": "Cherry-picked from internal master. This interface doesn\u0027t exist on aosp, but that\u0027s OK, since we aren\u0027t checking for validity of these strings. This CL would simplify the merge into an internal branch, though.",
+      "revId": "654b7cdf783b5ee846c763c5ede4948fee6839a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
