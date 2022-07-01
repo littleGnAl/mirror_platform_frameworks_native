@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f35d68ef_a7aa92de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1561731
+      },
+      "writtenOn": "2022-07-01T21:18:23Z",
+      "side": 1,
+      "message": "I will split off into separate changes for submission and review. It is just useful to have a second copy in this full topic so reviewers can see the full intended use.",
+      "parentUuid": "052a15df_019ba166",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "b7555132bea30ed8cefbc6fc62d773a626ebe3bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53f1c48c_c1bce5e2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-01T18:06:58Z",
       "side": 1,
       "message": "Maybe theres a nicer part of the file for the new definitions to live / adding those new enums as case statements?",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 13
+      },
+      "revId": "b7555132bea30ed8cefbc6fc62d773a626ebe3bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0210622_3a5333db",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1561731
+      },
+      "writtenOn": "2022-07-01T21:18:23Z",
+      "side": 1,
+      "message": "Moved to above `GetNativeDataspace()` but still kept in this \"area\u0027 of the file since they are only used in `GetNativeDataspace()`.\n\nIIUC, there is not a way to extend an `enum` so we can\u0027t like mix types in the `switch` statement argument. Is having a secondary `switch` which kind of more parallels the existing switch sufficient?",
+      "parentUuid": "53f1c48c_c1bce5e2",
       "range": {
         "startLine": 533,
         "startChar": 0,
