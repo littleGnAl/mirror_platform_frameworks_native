@@ -50,6 +50,10 @@ static_assert(static_cast<uint32_t>(ADATASPACE_ADOBE_RGB) ==
               static_cast<uint32_t>(AidlDataspace::ADOBE_RGB));
 static_assert(static_cast<uint32_t>(ADATASPACE_BT2020) ==
               static_cast<uint32_t>(AidlDataspace::BT2020));
+static_assert(static_cast<uint32_t>(ADATASPACE_BT601_525) ==
+              static_cast<uint32_t>(AidlDataspace::BT601_525));
+static_assert(static_cast<uint32_t>(ADATASPACE_BT601_625) ==
+              static_cast<uint32_t>(AidlDataspace::BT601_625));
 static_assert(static_cast<uint32_t>(ADATASPACE_BT709) ==
               static_cast<uint32_t>(AidlDataspace::BT709));
 static_assert(static_cast<uint32_t>(ADATASPACE_DCI_P3) ==
@@ -73,6 +77,10 @@ static_assert(static_cast<uint32_t>(ADATASPACE_ADOBE_RGB) ==
               static_cast<uint32_t>(HidlDataspace::ADOBE_RGB));
 static_assert(static_cast<uint32_t>(ADATASPACE_BT2020) ==
               static_cast<uint32_t>(HidlDataspace::BT2020));
+static_assert(static_cast<uint32_t>(ADATASPACE_BT601_525) ==
+              static_cast<uint32_t>(AidlDataspace::BT601_525));
+static_assert(static_cast<uint32_t>(ADATASPACE_BT601_625) ==
+              static_cast<uint32_t>(AidlDataspace::BT601_625));
 static_assert(static_cast<uint32_t>(ADATASPACE_BT709) ==
               static_cast<uint32_t>(HidlDataspace::V0_BT709));
 static_assert(static_cast<uint32_t>(ADATASPACE_DCI_P3) ==
