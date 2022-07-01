@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a4a865_a92886c2",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-01T05:51:31Z",
+      "side": 1,
+      "message": "RpcSession::addIncomingConnection uses this, I\u0027d rather not touch that code.",
+      "parentUuid": "f1315cb5_00dc9c9a",
+      "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e76d9e7_c7dd2e62",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-30T21:40:04Z",
       "side": 1,
       "message": "should the return type be `bool`?\n\nhttps://en.cppreference.com/w/cpp/thread/condition_variable/wait_for\n\nprobably want to return `predicate()`",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 18
+      },
+      "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86458d9c_c641c1cd",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-01T05:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e76d9e7_c7dd2e62",
       "range": {
         "startLine": 62,
         "startChar": 4,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f9c8dc_7821cb82",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-01T05:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61a4b327_074d2bb3",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 36
+      },
+      "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0ffe513_9c90186d",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-06-30T21:40:04Z",
       "side": 1,
       "message": "the semantics of this function are unintuitive to me. what do you think of a name like `rpcJoinIfSingleThreaded`?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 1
+      },
+      "revId": "0ebbdf59e46e54e4bf18eabb9926c4221412f28f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5dd63b_93b1e488",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 82
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-01T05:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0ffe513_9c90186d",
       "range": {
         "startLine": 124,
         "startChar": 0,
