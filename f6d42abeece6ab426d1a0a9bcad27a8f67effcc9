@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16254b8e_b94a739d",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-01T20:12:54Z",
+      "side": 1,
+      "message": "I\u0027m unfamiliar with what we do with these tags. \nCan we retroactively expose these to apex like this, or do we need to say they are introduced for apex in 34?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 48
+      },
+      "revId": "f6d42abeece6ab426d1a0a9bcad27a8f67effcc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
