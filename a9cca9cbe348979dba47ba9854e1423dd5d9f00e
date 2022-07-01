@@ -22,6 +22,30 @@
       },
       "revId": "a9cca9cbe348979dba47ba9854e1423dd5d9f00e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f541b001_de46fedb",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 87
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-01T21:45:28Z",
+      "side": 0,
+      "message": "Jiyong mentioned it\u0027s now included in the default flags (see https://android-review.googlesource.com/c/platform/frameworks/native/+/2076031/comments/915eeac2_201ca946 for the original comment, also https://android-review.googlesource.com/c/platform/frameworks/native/+/2076031/comments/cdf9794a_05d6f92c).",
+      "parentUuid": "dafaacf0_0887bece",
+      "range": {
+        "startLine": 169,
+        "startChar": 10,
+        "endLine": 169,
+        "endChar": 14
+      },
+      "revId": "a9cca9cbe348979dba47ba9854e1423dd5d9f00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
