@@ -33,6 +33,24 @@
       "message": "why do we need version script for this?",
       "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3410d6e_22850464",
+        "filename": "libs/binder/tests/libBinderRpcTestService.map.txt",
+        "patchSetId": 27
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-01T22:12:46Z",
+      "side": 1,
+      "message": "instead of an .so with a `runService` function, maybe we could use an executable. i think the main con would be the extra code to parse cmdline args and pass the pipe fds around",
+      "parentUuid": "2319968c_b1b4ab66",
+      "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
