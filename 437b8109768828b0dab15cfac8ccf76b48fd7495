@@ -158,6 +158,24 @@
       "parentUuid": "d3410d6e_22850464",
       "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66095a10_24dabb69",
+        "filename": "libs/binder/tests/libBinderRpcTestService.map.txt",
+        "patchSetId": 27
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-02T02:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48977d42_4573f238",
+      "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
