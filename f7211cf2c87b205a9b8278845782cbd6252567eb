@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b22a12_af196e7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951817
+      },
+      "writtenOn": "2022-07-05T12:41:21Z",
+      "side": 1,
+      "message": "Hey Ankita \u0026 Biddu,\n\nI have added fuzzer for BinderDebug.cpp.\nCould you please review it?\n\nRegards,\nShruti.\n",
+      "revId": "f7211cf2c87b205a9b8278845782cbd6252567eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
