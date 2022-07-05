@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "86fa960b_2bf61538",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1877562
+      },
+      "writtenOn": "2022-07-05T14:18:05Z",
+      "side": 1,
+      "message": "nit: use imperative mood go/commit-change#commit-message",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "f7211cf2c87b205a9b8278845782cbd6252567eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "10b22a12_af196e7e",
@@ -14,6 +37,47 @@
       "writtenOn": "2022-07-05T12:41:21Z",
       "side": 1,
       "message": "Hey Ankita \u0026 Biddu,\n\nI have added fuzzer for BinderDebug.cpp.\nCould you please review it?\n\nRegards,\nShruti.\n",
+      "revId": "f7211cf2c87b205a9b8278845782cbd6252567eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c5f4f81_4f0799c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1877562
+      },
+      "writtenOn": "2022-07-05T14:18:05Z",
+      "side": 1,
+      "message": "what is the coverage for this fuzzer?",
+      "parentUuid": "10b22a12_af196e7e",
+      "revId": "f7211cf2c87b205a9b8278845782cbd6252567eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "384b99a1_b4f03c09",
+        "filename": "libs/binderdebug/fuzz/binderdebug_fuzzer/binderdebug_fuzzer.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1877562
+      },
+      "writtenOn": "2022-07-05T14:18:05Z",
+      "side": 1,
+      "message": "nit: please use spaces instead of tabs",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
       "revId": "f7211cf2c87b205a9b8278845782cbd6252567eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
