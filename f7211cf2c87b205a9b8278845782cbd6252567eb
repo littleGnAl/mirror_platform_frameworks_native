@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "95564a50_d76a0f25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1951817
+      },
+      "writtenOn": "2022-07-05T21:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86fa960b_2bf61538",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "f7211cf2c87b205a9b8278845782cbd6252567eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "10b22a12_af196e7e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
@@ -59,6 +83,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7fe0138_c55c4f11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951817
+      },
+      "writtenOn": "2022-07-05T21:37:21Z",
+      "side": 1,
+      "message": "It is 88% https://screenshot.googleplex.com/879WYg6Ukqmt4Gk",
+      "parentUuid": "5c5f4f81_4f0799c0",
+      "revId": "f7211cf2c87b205a9b8278845782cbd6252567eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "384b99a1_b4f03c09",
@@ -72,6 +114,30 @@
       "writtenOn": "2022-07-05T14:18:05Z",
       "side": 1,
       "message": "nit: please use spaces instead of tabs",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "f7211cf2c87b205a9b8278845782cbd6252567eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c3376a0_d30d6227",
+        "filename": "libs/binderdebug/fuzz/binderdebug_fuzzer/binderdebug_fuzzer.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1951817
+      },
+      "writtenOn": "2022-07-05T21:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "384b99a1_b4f03c09",
       "range": {
         "startLine": 26,
         "startChar": 0,
