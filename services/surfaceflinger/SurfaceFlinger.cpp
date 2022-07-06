@@ -2100,6 +2100,11 @@ void SurfaceFlinger::onMessageRefresh() {
         mDrawingState.colorMatrixChanged = false;
     }
 
+    // nscobie codelab
+    refreshArgs.colorTransformMatrix =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
+
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
 
     if (mDebugRegion != 0) {
@@ -6423,6 +6428,10 @@ status_t SurfaceFlinger::renderScreenImplLocked(
 
     const float colorSaturation = grayscale ? 0 : 1;
     clientCompositionDisplay.colorTransform = calculateColorMatrix(colorSaturation);
+    // nscobie codelab
+    clientCompositionDisplay.colorTransform =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     const float alpha = RenderArea::getCaptureFillValue(renderArea.getCaptureFill());
 
