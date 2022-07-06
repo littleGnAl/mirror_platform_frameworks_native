@@ -35,6 +35,12 @@ TEST(InputDeviceIdentifierTest, getCanonicalName) {
     ASSERT_EQ(std::string("deviceName-123_version_C_"), identifier.getCanonicalName());
 }
 
+TEST(InputDeviceIdentifierTest, getCanonicalLocation) {
+    InputDeviceIdentifier identifier;
+    identifier.location = "usb-xhci-hcd.1.auto-1.1/input1";
+    ASSERT_EQ(std::string("usb-xhci-hcd_1_auto-1_1_input1"), identifier.getCanonicalLocation());
+}
+
 class InputDeviceKeyMapTest : public testing::Test {
 protected:
     void loadKeyLayout(const char* name) {
