@@ -34,6 +34,24 @@
       "parentUuid": "d5202179_eec5e7a5",
       "revId": "8566069cae2f7590e516ada4abfb167f3223ade4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a16254cb_594353c9",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-06T22:26:04Z",
+      "side": 1,
+      "message": "We don\u0027t need to detect overflow here necessarily b/c there is intsan here. The behavior before this CL (abort) is probably preferred over -EOVERFLOW because we are already trying to detect too large parcels. For some history, see commit on https://android-review.googlesource.com/c/platform/frameworks/native/+/1708283\n\nThough - I guess I am okay with returning -EOVERFLOW, because it saves server aborts, I think it should only be able to happen b/c of a bug.",
+      "parentUuid": "e3b43b76_7a321edc",
+      "revId": "8566069cae2f7590e516ada4abfb167f3223ade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

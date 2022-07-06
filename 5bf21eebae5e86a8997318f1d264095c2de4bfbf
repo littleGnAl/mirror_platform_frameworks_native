@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20499a92_18a4f36b",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-06T22:26:04Z",
+      "side": 1,
+      "message": "is_pointer_equivalent_array_v should imply this (is_pointer_equivalent_array_v is necessarily something which is trivially copyable, and also which the native machine layout matches the binder wire format - an example of something outside of this category would be something with a larger stride)",
+      "range": {
+        "startLine": 1193,
+        "startChar": 0,
+        "endLine": 1193,
+        "endChar": 60
+      },
+      "revId": "5bf21eebae5e86a8997318f1d264095c2de4bfbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
