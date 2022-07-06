@@ -94,6 +94,30 @@
       },
       "revId": "f6d42abeece6ab426d1a0a9bcad27a8f67effcc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66af2f1_3f173561",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-06T17:57:15Z",
+      "side": 1,
+      "message": "I honestly forgot - and I know I\u0027ve complained before, but there are two equivalent annotations which do the same thing and are not cleaned up. No distinction, no rule in place, no lint, etc... I would love if there was a single way to do it. Without a rule in place, and given \u0027systemapi\u0027 is only used once (in this file in fact, inconsistently with the rest of Android, and very strictly enforced by Dan Albert).\n\nSo - if this is a nit - please do approve I\u0027ll get this in. I think this is the best path forward. If you insist, I\u0027m happy to change it.",
+      "parentUuid": "f3892c0d_905f0bbd",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 48
+      },
+      "revId": "f6d42abeece6ab426d1a0a9bcad27a8f67effcc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
