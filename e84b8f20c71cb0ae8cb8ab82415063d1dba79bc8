@@ -46,6 +46,30 @@
       },
       "revId": "e84b8f20c71cb0ae8cb8ab82415063d1dba79bc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c18b13_34c72923",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 87
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-06T18:31:14Z",
+      "side": 1,
+      "message": "This is the visibility of the license, but it won\u0027t affect these. We want to see what the first few users of these libraries would be",
+      "parentUuid": "84c67861_198230a0",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 1
+      },
+      "revId": "e84b8f20c71cb0ae8cb8ab82415063d1dba79bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
