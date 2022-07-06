@@ -73,6 +73,23 @@
       "message": "I don\u0027t know enough about the code to comment on that, but a couple of small things with the commit message:",
       "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b3513d6_aa644401",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-06T16:39:27Z",
+      "side": 1,
+      "message": "Hey mrchangsuck@gmail.com,\n\nThanks for the patch!\n\nCan you give some more information on the type of device you\u0027re trying to support here? Is it an external touch digitizer, like an external Wacom tablet? I\u0027m trying to understand the use case for an orientation-unaware touch device. Thanks.",
+      "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
