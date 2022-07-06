@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5202179_eec5e7a5",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-06T18:26:37Z",
+      "side": 1,
+      "message": "Use `__builtin_mul_overflow` to detect the overflow instead?",
+      "revId": "8566069cae2f7590e516ada4abfb167f3223ade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
