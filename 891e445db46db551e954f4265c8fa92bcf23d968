@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad58c15f_de49fa3d",
+        "filename": "libs/binder/include/binder/IPCThreadState.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-06T23:06:00Z",
+      "side": 1,
+      "message": "maybe not worth documenting, but we technically use part of this for binder rpc: http://cs/android-internal/frameworks/native/libs/binder/RpcState.cpp;l\u003d736;rcl\u003df6fead78f7e2a0d7a9617cc2d99762b73ed67bf2",
+      "revId": "891e445db46db551e954f4265c8fa92bcf23d968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
