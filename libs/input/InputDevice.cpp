@@ -84,8 +84,16 @@ std::string getInputDeviceConfigurationFilePathByDeviceIdentifier(
     }
 
     // Try device name.
-    return getInputDeviceConfigurationFilePathByName(deviceIdentifier.getCanonicalName() + suffix,
-                                                     type);
+    std::string productPath =
+        getInputDeviceConfigurationFilePathByName(deviceIdentifier.getCanonicalName() + suffix,
+                                                  type);
+    if (!productPath.empty()) {
+        return productPath;
+    }
+
+    // Try device location.
+    return getInputDeviceConfigurationFilePathByName(
+            deviceIdentifier.getCanonicalLocation() + suffix, type);
 }
 
 std::string getInputDeviceConfigurationFilePathByName(
@@ -162,6 +170,15 @@ std::string InputDeviceIdentifier::getCanonicalName() const {
     return replacedName;
 }
 
+std::string InputDeviceIdentifier::getCanonicalLocation() const {
+    std::string replacedLocation = location;
+    for (char& ch : replacedLocation) {
+        if (!isValidNameChar(ch)) {
+            ch = '_';
+        }
+    }
+    return replacedLocation;
+}
 
 // --- InputDeviceInfo ---
 
