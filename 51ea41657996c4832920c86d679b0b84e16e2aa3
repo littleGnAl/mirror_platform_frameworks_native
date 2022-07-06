@@ -160,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8e6b775_a18b6151",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-07-06T23:43:00Z",
+      "side": 1,
+      "message": "This is in number of elements. Modified it inspired by your suggestion. Thanks!",
+      "parentUuid": "ae023a1b_c6d1286b",
+      "revId": "51ea41657996c4832920c86d679b0b84e16e2aa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "478d447c_bb9f3076",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 5
