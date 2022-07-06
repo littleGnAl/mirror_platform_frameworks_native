@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "377d2975_d2f722cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-07-06T12:24:22Z",
+      "side": 1,
+      "message": "Nit: commit messages should be wrapped at 72 characters (see [Submitting Patches](https://source.android.com/setup/contribute/submit-patches#change-description)).",
+      "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572ca3a4_a1db6bfa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-07-06T12:24:22Z",
+      "side": 1,
+      "message": "Typo: \"results in incorrect\"?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "eb997899_e64850b7",
@@ -14,6 +54,23 @@
       "writtenOn": "2022-06-27T10:39:43Z",
       "side": 1,
       "message": "Touches from single touch device is not correctly mapped when AOSP device is in landscape mode. This is to fix it.\nPlease refer comment and video on IssueTracker https://issuetracker.google.com/issues/237192885\nThank you!",
+      "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f96bb9e_07a871a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-07-06T12:24:22Z",
+      "side": 1,
+      "message": "I don\u0027t know enough about the code to comment on that, but a couple of small things with the commit message:",
       "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
