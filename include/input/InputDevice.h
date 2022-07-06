@@ -63,6 +63,15 @@ struct InputDeviceIdentifier {
      * while conforming to the filename limitations.
      */
     std::string getCanonicalName() const;
+
+    /**
+     * Return InputDeviceIdentifier.location that has been adjusted as follows:
+     *     - all characters besides alphanumerics, dash,
+     *       and underscore have been replaced with underscores.
+     * This helps in situations where a file that matches the device location is needed,
+     * while conforming to the filename limitations.
+     */
+    std::string getCanonicalLocation() const;
 };
 
 /* Types of input device sensors. Keep sync with core/java/android/hardware/Sensor.java */
