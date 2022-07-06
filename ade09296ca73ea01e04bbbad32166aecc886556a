@@ -33,6 +33,23 @@
       "message": "Add issue tracker\nhttps://partnerissuetracker.corp.google.com/u/3/issues/237997490",
       "revId": "ade09296ca73ea01e04bbbad32166aecc886556a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b4bbc4_69b9ab19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-07-06T19:10:27Z",
+      "side": 1,
+      "message": "This path is deprecated. Does your issue go away if you configure your device to use the skiagl or skiaglthreaded backend for RenderEngine?",
+      "revId": "ade09296ca73ea01e04bbbad32166aecc886556a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
