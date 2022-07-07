@@ -343,7 +343,10 @@ status_t BpBinder::transact(
 status_t BpBinder::linkToDeath(
     const sp<DeathRecipient>& recipient, void* cookie, uint32_t flags)
 {
-    if (isRpcBinder()) return UNKNOWN_TRANSACTION;
+    if (isRpcBinder()) {
+        rpcSession()->linkToDeath(recipient, cookie, flags, wp<BpBinder>::fromExisting(this));
+        return NO_ERROR;
+    }
 
     if constexpr (!kEnableKernelIpc) {
         LOG_ALWAYS_FATAL("Binder kernel driver disabled at build time");
@@ -386,7 +389,10 @@ status_t BpBinder::unlinkToDeath(
     const wp<DeathRecipient>& recipient, void* cookie, uint32_t flags,
     wp<DeathRecipient>* outRecipient)
 {
-    if (isRpcBinder()) return UNKNOWN_TRANSACTION;
+    if (isRpcBinder()) {
+        return rpcSession()->unlinkToDeath(recipient, cookie, flags,
+                                           wp<BpBinder>::fromExisting(this), outRecipient);
+    }
 
     if constexpr (!kEnableKernelIpc) {
         LOG_ALWAYS_FATAL("Binder kernel driver disabled at build time");

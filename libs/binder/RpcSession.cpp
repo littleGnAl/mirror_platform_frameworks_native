@@ -221,6 +221,12 @@ bool RpcSession::shutdownAndWait(bool wait) {
         LOG_ALWAYS_FATAL_IF(!mConnections.mThreads.empty(), "Shutdown failed");
     }
 
+    for (const auto& obit : mObituaries) {
+        const auto& recipient = obit.recipient.promote();
+        if (recipient) recipient->binderDied(obit.binder);
+    }
+    mObituaries.clear();
+
     _l.unlock();
 
     mRpcBinderState->clear();
@@ -454,6 +460,7 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
 
         mShutdownListener = nullptr;
         mEventListener.clear();
+        mObituaries.clear();
 
         mId.clear();
 
@@ -698,6 +705,33 @@ status_t RpcSession::initShutdownTrigger() {
         if (mShutdownTrigger == nullptr) return INVALID_OPERATION;
     }
     return OK;
+}
+
+void RpcSession::linkToDeath(const wp<IBinder::DeathRecipient>& dr, void* cookie, uint32_t flags,
+                             const wp<BpBinder>& binder) {
+    LOG_ALWAYS_FATAL_IF(mConnections.mIncoming.empty(),
+                        "Cannot register a DeathRecipient without any incoming connections.");
+    RpcMutexLockGuard _l(mMutex);
+    mObituaries.push_back({dr, cookie, flags, binder});
+}
+
+status_t RpcSession::unlinkToDeath(const wp<IBinder::DeathRecipient>& dr, void* cookie,
+                                   uint32_t flags, const wp<BpBinder>& binder,
+                                   wp<IBinder::DeathRecipient>* outDr) {
+    RpcMutexLockGuard _l(mMutex);
+    size_t initial_size = mObituaries.size();
+    auto erased = mObituaries.erase(std::remove_if(mObituaries.begin(), mObituaries.end(),
+                                                   [&](const RpcObituary& obit) {
+                                                       bool found = (obit.recipient == dr ||
+                                                                     (dr == nullptr &&
+                                                                      obit.cookie == cookie)) &&
+                                                               obit.binder == binder &&
+                                                               obit.flags == flags;
+                                                       if (found && outDr) *outDr = obit.recipient;
+                                                       return found;
+                                                   }),
+                                    mObituaries.end());
+    return mObituaries.size() < initial_size ? OK : NAME_NOT_FOUND;
 }
 
 status_t RpcSession::addOutgoingConnection(std::unique_ptr<RpcTransport> rpcTransport, bool init) {

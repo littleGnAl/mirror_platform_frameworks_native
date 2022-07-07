@@ -1042,6 +1042,84 @@ TEST_P(BinderRpc, Callbacks) {
     }
 }
 
+TEST_P(BinderRpc, SingleDeathRecipient) {
+    if (singleThreaded()) {
+        GTEST_SKIP() << "This test requires multiple threads";
+    }
+    class MyDeathRec : public IBinder::DeathRecipient {
+    public:
+        void binderDied(const wp<IBinder>& /* who */) override {
+            std::unique_lock<std::mutex> lock(mMtx);
+            dead = true;
+            mCv.notify_one();
+        }
+        std::mutex mMtx;
+        std::condition_variable mCv;
+        bool dead = false;
+    };
+
+    // Death recipient needs to have an incoming connection to be called
+    auto proc = createRpcTestSocketServerProcess(
+            {.numThreads = 1, .numSessions = 1, .numIncomingConnections = 1});
+
+    auto dr = sp<MyDeathRec>::make();
+    proc.rootBinder->linkToDeath(dr, (void*)1, 0);
+
+    if (auto status = proc.rootIface->scheduleShutdown(); !status.isOk()) {
+        EXPECT_EQ(DEAD_OBJECT, status.transactionError()) << status;
+    }
+
+    std::unique_lock<std::mutex> lock(dr->mMtx);
+    if (!dr->dead) {
+        EXPECT_EQ(std::cv_status::no_timeout, dr->mCv.wait_for(lock, 1000ms));
+    }
+
+    // need to wait for the session to shutdown so we don't "Leak session"
+    EXPECT_TRUE(proc.proc.sessions.at(0).session->shutdownAndWait(true));
+    proc.expectAlreadyShutdown = true;
+}
+
+TEST_P(BinderRpc, DeathRecipientFatalWithoutIncomming) {
+    class MyDeathRec : public IBinder::DeathRecipient {
+    public:
+        void binderDied(const wp<IBinder>& /* who */) override {}
+    };
+
+    auto proc = createRpcTestSocketServerProcess(
+            {.numThreads = 1, .numSessions = 1, .numIncomingConnections = 0});
+
+    auto dr = sp<MyDeathRec>::make();
+    EXPECT_DEATH(proc.rootBinder->linkToDeath(dr, (void*)1, 0), "");
+}
+
+TEST_P(BinderRpc, UnlinkDeathRecipient) {
+    if (singleThreaded()) {
+        GTEST_SKIP() << "This test requires multiple threads";
+    }
+    class MyDeathRec : public IBinder::DeathRecipient {
+    public:
+        void binderDied(const wp<IBinder>& /* who */) override {
+            GTEST_FAIL_AT(__FILE__, __LINE__) << "This should not be called after unlinkToDeath";
+        }
+    };
+
+    // Death recipient needs to have an incoming connection to be called
+    auto proc = createRpcTestSocketServerProcess(
+            {.numThreads = 1, .numSessions = 1, .numIncomingConnections = 1});
+
+    auto dr = sp<MyDeathRec>::make();
+    proc.rootBinder->linkToDeath(dr, (void*)1, 0);
+    ASSERT_EQ(OK, proc.rootBinder->unlinkToDeath(dr, (void*)1, 0, nullptr));
+
+    if (auto status = proc.rootIface->scheduleShutdown(); !status.isOk()) {
+        EXPECT_EQ(DEAD_OBJECT, status.transactionError()) << status;
+    }
+
+    // need to wait for the session to shutdown so we don't "Leak session"
+    EXPECT_TRUE(proc.proc.sessions.at(0).session->shutdownAndWait(true));
+    proc.expectAlreadyShutdown = true;
+}
+
 TEST_P(BinderRpc, OnewayCallbackWithNoThread) {
     auto proc = createRpcTestSocketServerProcess({});
     auto cb = sp<MyBinderRpcCallback>::make();
