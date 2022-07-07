@@ -50,6 +50,24 @@
       "message": "This path is deprecated. Does your issue go away if you configure your device to use the skiagl or skiaglthreaded backend for RenderEngine?",
       "revId": "ade09296ca73ea01e04bbbad32166aecc886556a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0539163_b049d12c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1234492
+      },
+      "writtenOn": "2022-07-07T04:36:48Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. It is my bad that the modification should be in libstagefright for the test case, not renderengine.\n\nframeworks/av/media/libstagefright/renderfright/gl/ProgramCache.cpp\n\nThere seems no skia backend in renderfright. I added the new review, please help t have a look.\n\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/2146965\n\nSince it is fork from renderengine to libstagefright/renderfright, the proposed solution can be a reference. But I don\u0027t know if there is a test case that can be verified in renderengine.",
+      "parentUuid": "09b4bbc4_69b9ab19",
+      "revId": "ade09296ca73ea01e04bbbad32166aecc886556a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
