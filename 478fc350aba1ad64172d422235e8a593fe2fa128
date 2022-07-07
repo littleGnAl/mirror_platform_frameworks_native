@@ -106,6 +106,24 @@
       "parentUuid": "ee1ba69b_62d2d0ed",
       "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f535784_ffb2e16f",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-07T23:56:51Z",
+      "side": 1,
+      "message": "\u003e The data can still be retrieved, however a call to AParcel_setDataPosition is required between  resizeVector  call and  readVector  call.\n\nThis seems like not a great API design then? At a minimum that needs to be documented since it makes this a very error prone API as-is.\n\n\u003e ReadAndValidateArraySize is local to parcel.cpp, not in the ndk.\n\nAll the AParcel_read*Array calls use that function before they try to allocate anything. Meaning it\u0027s already not possible to get an array back that\u0027s bigger than the size of the parcel. So the only thing this API does is add an arbitrary 1MB limit. That doesn\u0027t seem like a good API to me. As a user I can already just have whatever arbitrary limits I want, I don\u0027t need libbinder_ndk to do that (and I probably don\u0027t want libbinder_ndk to do that, either)\n\nSo I think the bug is wrong. The fix here seems like it\u0027s to just make AParcel_resizeVector to use a combination of AParcel_getDataPosition() and AParcel_getDataSize() to allocating something larger than the remaining payload, the same way that all the AParcel_read*Array\u0027s do. At that point whether or not you also want to have an additional size limit is up to you, but there\u0027s no reason to enshrine that in libbinder\u0027s NDK API surface.\n\n\u003e Would you have an example of a Parcel not coming from Binder \n\nAny in-process usage of Parcel? It\u0027s not going to be very common, but it\u0027s definitely not banned or prevented in any way. AIDL supports an in-process pass-through mode for a reason, things use it. None of those will hit any binder IPC limits.",
+      "parentUuid": "a35a32fc_37e44c16",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
