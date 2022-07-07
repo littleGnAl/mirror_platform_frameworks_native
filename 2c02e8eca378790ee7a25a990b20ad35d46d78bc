@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bb38c05_0e73639e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2022-07-07T22:10:34Z",
+      "side": 1,
+      "message": "Hi Gavin, this change allows for bug report durations to be visually inspected in traces / Perfetto. Can you take a look when you get a chance? Thanks!",
+      "revId": "2c02e8eca378790ee7a25a990b20ad35d46d78bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
