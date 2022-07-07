@@ -70,6 +70,24 @@
       "parentUuid": "241f8911_6628e003",
       "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1ba69b_62d2d0ed",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-07T21:59:05Z",
+      "side": 1,
+      "message": "The existing read array APIs already validate that the length doesn\u0027t exceed the remaining data, though, so a new API isn\u0027t needed for that? See ReadAndValidateArraySize in parcel.cpp.",
+      "parentUuid": "b167d4d8_518b4e45",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
