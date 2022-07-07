@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e9e77f_9b5960cb",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-07T19:23:29Z",
+      "side": 1,
+      "message": "I\u0027m confused on the value of this API. It looks to just do a readInt and then verify that elementSize * count is \u003c 1MB. But the 1MB is kinda arbitrary (and questionable - who said this Parcel came over Binder in the first place?)\n\nBut also it looks like something a simple helper could just as easily do, not something AParcel needs to provide?\n\nAlso since there\u0027s an extra readInt here, is there a missing write-equivalent of this?",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
