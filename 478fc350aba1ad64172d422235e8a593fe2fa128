@@ -52,6 +52,24 @@
       "parentUuid": "d686914e_f499ee68",
       "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b167d4d8_518b4e45",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-07T21:46:15Z",
+      "side": 1,
+      "message": "\u003e It\u0027s already in my process, I\u0027m already paying for it, what\u0027s the value in just not letting me access it?\n\nThe parcel might not actually be that big. I think we want to guard against malicious parcels and/or bugs where a vector is suppose to be at this position, but something else is present, resulting in an incorrect vector size that is large enough to kill the receiving process.\n\nNot related to the API design, but instead of checking against 10MB, maybe we could check against the remaining parcel size as a more flexible sanity check.",
+      "parentUuid": "241f8911_6628e003",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
