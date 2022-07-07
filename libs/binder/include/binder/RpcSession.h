@@ -152,6 +152,24 @@ public:
     sp<IBinder> getRootObject();
 
     /**
+     * Use the BpBinder::linkToDeath instead of this.
+     * Register a DeathRecipient to be called when the session connection is
+     * dropped.
+     * This requires at least one incomming connection to be setup for the
+     * Death Recipient to be called.
+     */
+    void linkToDeath(const wp<IBinder::DeathRecipient>& dr, void* cookie, uint32_t flags,
+                     const wp<BpBinder>& binder);
+
+    /**
+     * Use the BpBinder::unlinkToDeath instead of this.
+     * Unregister a previously registered DeathRecipient.
+     */
+    [[nodiscard]] status_t unlinkToDeath(const wp<IBinder::DeathRecipient>& dr, void* cookie,
+                                         uint32_t flags, const wp<BpBinder>& binder,
+                                         wp<IBinder::DeathRecipient>* outDr);
+
+    /**
      * Query the other side of the session for the maximum number of threads
      * it supports (maximum number of concurrent non-nested synchronous transactions)
      */
@@ -329,6 +347,15 @@ private:
     wp<RpcServer> mForServer;                      // maybe null, for client sessions
     sp<WaitForShutdownListener> mShutdownListener; // used for client sessions
     wp<EventListener> mEventListener; // mForServer if server, mShutdownListener if client
+
+    struct RpcObituary {
+        wp<IBinder::DeathRecipient> recipient;
+        void* cookie;
+        uint32_t flags;
+        wp<BpBinder> binder;
+    };
+    // Death recipients to be called any time the connection is lost
+    std::vector<RpcObituary> mObituaries;
 
     // session-specific root object (if a different root is used for each
     // session)
