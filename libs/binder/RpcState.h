@@ -140,6 +140,11 @@ public:
      */
     [[nodiscard]] status_t flushExcessBinderRefs(const sp<RpcSession>& session, uint64_t address,
                                                  const sp<IBinder>& binder);
+    /**
+     * Called when the RpcSession is shutdown.
+     * Send obituaries for each known remote binder.
+     */
+    [[nodiscard]] status_t sendObituaries();
 
     size_t countBinders();
     void dump();

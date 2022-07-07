@@ -226,6 +226,25 @@ status_t RpcState::flushExcessBinderRefs(const sp<RpcSession>& session, uint64_t
     return OK;
 }
 
+status_t RpcState::sendObituaries() {
+    RpcMutexUniqueLock _l(mNodeMutex);
+
+    std::vector<sp<IBinder>> sBinders;
+    for (const auto& [_, binderNode] : mNodeForAddress) {
+        if (const auto& sBinder = binderNode.binder.promote()) {
+            sBinders.push_back(sBinder);
+        }
+    }
+    _l.unlock();
+
+    for (const auto& binder : sBinders) {
+        if (const auto& remote = binder->remoteBinder()) {
+            remote->sendObituary();
+        }
+    }
+    return OK;
+}
+
 size_t RpcState::countBinders() {
     RpcMutexLockGuard _l(mNodeMutex);
     return mNodeForAddress.size();

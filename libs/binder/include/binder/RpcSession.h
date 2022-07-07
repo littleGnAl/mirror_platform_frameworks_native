@@ -77,6 +77,11 @@ public:
     size_t getMaxIncomingThreads();
 
     /**
+     * Get the number of incoming connections.
+     */
+    size_t getNumIncomingConnections();
+
+    /**
      * Set the maximum number of outgoing threads allowed to be made.
      * By default, this is |kDefaultMaxOutgoingThreads|. This must be called before setting up this
      * connection as a client.

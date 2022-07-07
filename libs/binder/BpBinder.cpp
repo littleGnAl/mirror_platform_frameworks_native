@@ -343,9 +343,10 @@ status_t BpBinder::transact(
 status_t BpBinder::linkToDeath(
     const sp<DeathRecipient>& recipient, void* cookie, uint32_t flags)
 {
-    if (isRpcBinder()) return UNKNOWN_TRANSACTION;
-
-    if constexpr (!kEnableKernelIpc) {
+    if (isRpcBinder()) {
+        LOG_ALWAYS_FATAL_IF(rpcSession()->getNumIncomingConnections() < 1,
+                            "Cannot register a DeathRecipient without any incoming connections.");
+    } else if (!kEnableKernelIpc) {
         LOG_ALWAYS_FATAL("Binder kernel driver disabled at build time");
         return INVALID_OPERATION;
     }
@@ -368,10 +369,14 @@ status_t BpBinder::linkToDeath(
                     return NO_MEMORY;
                 }
                 ALOGV("Requesting death notification: %p handle %d\n", this, binderHandle());
-                getWeakRefs()->incWeak(this);
-                IPCThreadState* self = IPCThreadState::self();
-                self->requestDeathNotification(binderHandle(), this);
-                self->flushCommands();
+                if (!isRpcBinder()) {
+                    if constexpr (kEnableKernelIpc) {
+                        getWeakRefs()->incWeak(this);
+                        IPCThreadState* self = IPCThreadState::self();
+                        self->requestDeathNotification(binderHandle(), this);
+                        self->flushCommands();
+                    }
+                }
             }
             ssize_t res = mObituaries->add(ob);
             return res >= (ssize_t)NO_ERROR ? (status_t)NO_ERROR : res;
@@ -386,9 +391,7 @@ status_t BpBinder::unlinkToDeath(
     const wp<DeathRecipient>& recipient, void* cookie, uint32_t flags,
     wp<DeathRecipient>* outRecipient)
 {
-    if (isRpcBinder()) return UNKNOWN_TRANSACTION;
-
-    if constexpr (!kEnableKernelIpc) {
+    if (!kEnableKernelIpc && !isRpcBinder()) {
         LOG_ALWAYS_FATAL("Binder kernel driver disabled at build time");
         return INVALID_OPERATION;
     }
@@ -411,9 +414,13 @@ status_t BpBinder::unlinkToDeath(
             mObituaries->removeAt(i);
             if (mObituaries->size() == 0) {
                 ALOGV("Clearing death notification: %p handle %d\n", this, binderHandle());
-                IPCThreadState* self = IPCThreadState::self();
-                self->clearDeathNotification(binderHandle(), this);
-                self->flushCommands();
+                if (!isRpcBinder()) {
+                    if constexpr (kEnableKernelIpc) {
+                        IPCThreadState* self = IPCThreadState::self();
+                        self->clearDeathNotification(binderHandle(), this);
+                        self->flushCommands();
+                    }
+                }
                 delete mObituaries;
                 mObituaries = nullptr;
             }
@@ -426,9 +433,7 @@ status_t BpBinder::unlinkToDeath(
 
 void BpBinder::sendObituary()
 {
-    LOG_ALWAYS_FATAL_IF(isRpcBinder(), "Cannot send obituary for remote binder.");
-
-    if constexpr (!kEnableKernelIpc) {
+    if (!kEnableKernelIpc && !isRpcBinder()) {
         LOG_ALWAYS_FATAL("Binder kernel driver disabled at build time");
         return;
     }
@@ -443,9 +448,13 @@ void BpBinder::sendObituary()
     Vector<Obituary>* obits = mObituaries;
     if(obits != nullptr) {
         ALOGV("Clearing sent death notification: %p handle %d\n", this, binderHandle());
-        IPCThreadState* self = IPCThreadState::self();
-        self->clearDeathNotification(binderHandle(), this);
-        self->flushCommands();
+        if (!isRpcBinder()) {
+            if constexpr (kEnableKernelIpc) {
+                IPCThreadState* self = IPCThreadState::self();
+                self->clearDeathNotification(binderHandle(), this);
+                self->flushCommands();
+            }
+        }
         mObituaries = nullptr;
     }
     mObitsSent = 1;

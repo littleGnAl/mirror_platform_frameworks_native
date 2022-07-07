@@ -90,6 +90,11 @@ size_t RpcSession::getMaxIncomingThreads() {
     return mMaxIncomingThreads;
 }
 
+size_t RpcSession::getNumIncomingConnections() {
+    RpcMutexLockGuard _l(mMutex);
+    return mConnections.mIncoming.size();
+}
+
 void RpcSession::setMaxOutgoingThreads(size_t threads) {
     RpcMutexLockGuard _l(mMutex);
     LOG_ALWAYS_FATAL_IF(!mConnections.mOutgoing.empty() || !mConnections.mIncoming.empty(),
@@ -219,6 +224,11 @@ bool RpcSession::shutdownAndWait(bool wait) {
         mShutdownListener->waitForShutdown(_l, sp<RpcSession>::fromExisting(this));
 
         LOG_ALWAYS_FATAL_IF(!mConnections.mThreads.empty(), "Shutdown failed");
+    }
+
+    if (status_t res = state()->sendObituaries(); res != OK) {
+        ALOGE("Failed to send obituaries as the RpcSession is shutting down: %s",
+              statusToString(res).c_str());
     }
 
     _l.unlock();
