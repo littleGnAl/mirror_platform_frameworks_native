@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "961fda74_e0d9d98f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-07T19:01:09Z",
+      "side": 1,
+      "message": "Whoops, my re-review of that CL was a bit lazy. The `ifdef`s in `continueWrite` could use some tweaking as well, but it is mostly just an inaccurate error message.",
+      "revId": "9d9b8a3d3173f67a8fc194498f9bfdf96adf86c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
