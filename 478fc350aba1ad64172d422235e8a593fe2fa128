@@ -16,6 +16,24 @@
       "message": "I\u0027m confused on the value of this API. It looks to just do a readInt and then verify that elementSize * count is \u003c 1MB. But the 1MB is kinda arbitrary (and questionable - who said this Parcel came over Binder in the first place?)\n\nBut also it looks like something a simple helper could just as easily do, not something AParcel needs to provide?\n\nAlso since there\u0027s an extra readInt here, is there a missing write-equivalent of this?",
       "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d686914e_f499ee68",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-07-07T21:08:06Z",
+      "side": 1,
+      "message": "The 1MB is related to the buffer size as mentioned by Steven\u0027s comment on line #1222, and it\u0027s matching the write from the writeVector call (linked below). \n\nThe Parcel could indeed not come from Binder, but we\u0027d still want to avoid allocating a very large chunk of RAM and have a chance of running OOM leading to crashes. If there\u0027s a case where this is needed in a non-binder context, we could approach that problem once it presents itself. The concern right now would be to have matching API calls and safe behavior for binder usage.\n\nAs for the \"write-equivalent\", it\u0027s in writeVector. \nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/ndk/include_cpp/android/binder_parcel_utils.h;l\u003d1016?q\u003dbinder_parcel_utils.h\u0026ss\u003dandroid%2Fplatform%2Fsuperproject",
+      "parentUuid": "f9e9e77f_9b5960cb",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
