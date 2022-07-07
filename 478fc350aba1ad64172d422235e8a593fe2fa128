@@ -34,6 +34,24 @@
       "parentUuid": "f9e9e77f_9b5960cb",
       "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "241f8911_6628e003",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-07T21:15:32Z",
+      "side": 1,
+      "message": "\u003e As for the \"write-equivalent\", it\u0027s in writeVector\n\nwriteVector does writeInt32(data_lenght) followed by writing the data.\n\nThis looks like it\u0027ll be a readInt32 of the datalenght for this validation followed by... what? If you do a readVector you\u0027ll end up with 2x readInt32\u0027s, which doesn\u0027t match the write side. What\u0027s the next step to actually getting the data?\n\n\u003e The Parcel could indeed not come from Binder, but we\u0027d still want to avoid allocating a very large chunk of RAM and have a chance of running OOM leading to crashes.\n\nBut that allocation already happened, it\u0027s already in the Parcel? If I already have a Parcel with a, say, 2MB array in it, then the blocker won\u0027t be on reading that vector. I\u0027m not quite getting what this solves? It\u0027s already in my process, I\u0027m already paying for it, what\u0027s the value in just not letting me access it?\n\nA *write* version of this to avoid creating an overly large Parcel sounds like it could have value, but the *read* side doesn\u0027t seem like it helps?\n\n\u003e If there\u0027s a case where this is needed in a non-binder context, we could approach that problem once it presents itself.\n\nThat doesn\u0027t really work for stable APIs as applications need to run on existing versions of this code. If this is instead a helper that the AIDL generator spits out or whatever *then* you can easily do the evolution you\u0027re talking about. But once this goes into a stable API surface, changing its behavior down the road becomes a lot more challenging.",
+      "parentUuid": "d686914e_f499ee68",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
