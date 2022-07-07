@@ -88,6 +88,24 @@
       "parentUuid": "b167d4d8_518b4e45",
       "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a35a32fc_37e44c16",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-07-07T23:36:24Z",
+      "side": 1,
+      "message": "\u003e This looks like it\u0027ll be a readInt32 of the datalenght for this validation followed by... what? If you do a readVector you\u0027ll end up with 2x readInt32\u0027s, which doesn\u0027t match the write side. What\u0027s the next step to actually getting the data?```\n\nI see what you\u0027re saying. The data can still be retrieved, however a call to AParcel_setDataPosition is required between `resizeVector` call and `readVector` call.\n\n\u003e The existing read array APIs already validate that the length doesn\u0027t exceed the remaining data, though, so a new API isn\u0027t needed for that? See ReadAndValidateArraySize in parcel.cpp.```\n\nThe idea here is to delegate the call to binder parcel, as mentioned in the bug. ReadAndValidateArraySize is local to parcel.cpp, not in the ndk. I might be misunderstanding something, if so, please let me know. \n\n\n-----\nWould you have an example of a Parcel not coming from Binder where size might also exceed the limitation?",
+      "parentUuid": "ee1ba69b_62d2d0ed",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
