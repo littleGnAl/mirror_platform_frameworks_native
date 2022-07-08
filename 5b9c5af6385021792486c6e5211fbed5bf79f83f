@@ -34,6 +34,24 @@
       "parentUuid": "a318b57e_eb886532",
       "revId": "5b9c5af6385021792486c6e5211fbed5bf79f83f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf6f352_8b083dc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958363
+      },
+      "writtenOn": "2022-07-08T15:26:11Z",
+      "side": 1,
+      "message": "Hi Prabir,\n\nI work with Joshua.\n\nOur immediate need with this change is to be able to configure rotation differently. Some of the panels are mounted landscape, and others are mounted portrait; all are the same VID/DID though.",
+      "parentUuid": "2cf9d5fa_a7639284",
+      "revId": "5b9c5af6385021792486c6e5211fbed5bf79f83f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
