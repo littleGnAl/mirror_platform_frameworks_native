@@ -160,6 +160,24 @@
       "parentUuid": "0efdbf9e_2a21b833",
       "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67fb31e5_739cbeb8",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-07-08T19:09:02Z",
+      "side": 1,
+      "message": "\u003e Having such a limit on the *write* side I can see, but this is on the *read* side. The cost has already been paid at this point, kinda late to try and enforce anything?\n\nI do believe the check on the *read* side would still be beneficial for stability. Enforcing on the *write* side does make sense, however there is no guarantee that the Parcel or contents of that Parcel do not get corrupt. If the Parcel or vector does get corrupted, the 1MB enforcing done by the *write* side does not hold anymore, at which point there\u0027s a chance of an attempt to allocate a vector large enough to run OOM.",
+      "parentUuid": "8f2f8953_2396553d",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
