@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "811517e5_f36d3c9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-08T00:12:28Z",
+      "side": 1,
+      "message": "Is the push command a direct \u0027adb sync\u0027 or are there specific commands that are needed? (if it is specific commands, could we add it in a script here - atest takes up to 30s to start)",
+      "parentUuid": "dd104e87_3b2ec6c9",
+      "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "776bb590_0a0efe21",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 27
