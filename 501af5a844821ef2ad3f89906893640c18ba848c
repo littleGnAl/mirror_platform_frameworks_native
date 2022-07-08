@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e530bd_45e18cf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-08T16:51:21Z",
+      "side": 1,
+      "message": "For reference, the regression was introduced in https://r.android.com/1993670, where the new function `wait_child_with_timeout` was added and several calls to `wait_child` were changed to call it instead. By falling back to `wait_child` when the kernel doesn\u0027t support `pidfd_open`, all those call sites will again behave as they did before that CL.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 55
+      },
+      "revId": "501af5a844821ef2ad3f89906893640c18ba848c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
