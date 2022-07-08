@@ -178,6 +178,24 @@
       "parentUuid": "8f2f8953_2396553d",
       "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b5c54e_5b23f42b",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-08T19:17:39Z",
+      "side": 1,
+      "message": "\u003e at which point there\u0027s a chance of an attempt to allocate a vector large enough to run OOM.\n\nNot if you have a check to ensure you never try to allocate more than the remaining data? If the size of the parcel itself is also corrupt, you\u0027re probably in \"all you can reasonably do is crash anyway\" territory.\n\nBut as I said, if you want such a policy from the AIDL generator / helpers (so what\u0027s currently in binder_parcel_utils.h ) go for it, but it doesn\u0027t make sense as an API to me.",
+      "parentUuid": "67fb31e5_739cbeb8",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
