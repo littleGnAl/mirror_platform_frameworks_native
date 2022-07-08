@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c69c0419_e18a5519",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-08T00:21:26Z",
+      "side": 1,
+      "message": "\u003e Does it still work to \"m binderRpcTest \u0026\u0026 adb sync data \u0026\u0026 /data/nativetest64/binderRpcTest/binderRpcTest\"?\n\n`adb sync data` seems to do it, it installs all the service binaries together with the tests because of `data_bins`. \n\n\u003e if we run it on host, is the linker namespace setup correctly?\n\nHost was a bit tricky, but it also works if the services are compiled with `cc_test`. That module adds some host-specific `rpath` directories to the executables it produces. Those work as long as they\u0027re in the same directory as `binderRpcTest*`, which they are.",
+      "parentUuid": "811517e5_f36d3c9f",
+      "revId": "437b8109768828b0dab15cfac8ccf76b48fd7495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "776bb590_0a0efe21",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 27

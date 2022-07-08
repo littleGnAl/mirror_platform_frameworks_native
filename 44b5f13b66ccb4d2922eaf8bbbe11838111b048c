@@ -22,6 +22,30 @@
       },
       "revId": "44b5f13b66ccb4d2922eaf8bbbe11838111b048c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18626c69_65be5e5c",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 34
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-08T00:21:26Z",
+      "side": 1,
+      "message": "Hmmm actually this comment might be a little stale. The statics do need to be duplicated between `binderRpcTestService` and `binderRpcTest` for the reason in the comment.\n\nI can move them to `binderRpcTestCommon.cpp`.",
+      "parentUuid": "72c7ea84_b3e542bb",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 41
+      },
+      "revId": "44b5f13b66ccb4d2922eaf8bbbe11838111b048c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
