@@ -124,6 +124,24 @@
       "parentUuid": "a35a32fc_37e44c16",
       "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0efdbf9e_2a21b833",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-08T00:24:59Z",
+      "side": 1,
+      "message": "Alright :) hi!\n\n- (I might have forgotten this detail and misrepresented in the CTS CL) ReadAndValidateArraySize is a separate case. This API is used when reading out arrays (the client requests an array and then passes it to code to fill out. Since the array isn\u0027t represented on the Parcel, we need a way to limit allocations). This is different than readVector/writeVector which writes the whole vector.\n- there is no setDataPosition required here or to use this API. Elie is saying this because I misremembered about readVector/writeVector.\n- this is already a limit we have here, and this CL is moving it into the framework\n\nAs far as in-process usages of Parcel, if a Parcel is corrupted or reads are misaligned, allocating something 2GB and getting OOM is not a good result. Generally if we have code using Parcel, we want it to work in- and out- of process. So adhering to the binder limits makes the code portable. This is also why RPC binder adds arbitrary limits. If even 1MB of data is being parceled in-process, the user of the code is doing something incorrect - this is an inappropriate amount of data to copy multiple times. If there is a user that really does need this, we will be eager to support them, but most likely it will be by telling them not to do this thing.",
+      "parentUuid": "0f535784_ffb2e16f",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
