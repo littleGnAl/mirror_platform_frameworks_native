@@ -34,6 +34,24 @@
       "parentUuid": "1505b68e_df89c240",
       "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd3b7af_91e8b237",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-08T21:59:49Z",
+      "side": 1,
+      "message": "I figured out where the input library tests were and added a test to InputDevice_test.cpp for the getCanonicalLocation method that I added which mirrors the existing test for getCanonicalName. I verified this passed when running atest -a libinput_tests. Patchset #4 contains the unit test addition.\n\nI did not see any existing tests to test idc file matching. Looking at how this could be tested in a unit test there would need to be a way to mock out which files the code found on the filesystem which would require changes to the code to allow that to be tested. I am guessing that is why there are not existing tests to validate this. Is the test I added sufficient or are there additional tests that should be added?",
+      "parentUuid": "a1838895_addee43c",
+      "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
