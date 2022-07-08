@@ -22,6 +22,30 @@
       },
       "revId": "d010805b2826de083173ade1fdbed7981acddcd2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc38344_fb9666e0",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1948820
+      },
+      "writtenOn": "2022-07-08T17:03:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f363be82_a567448f",
+      "range": {
+        "startLine": 1187,
+        "startChar": 23,
+        "endLine": 1187,
+        "endChar": 31
+      },
+      "revId": "d010805b2826de083173ade1fdbed7981acddcd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
