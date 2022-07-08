@@ -93,6 +93,30 @@
       },
       "revId": "5b9c5af6385021792486c6e5211fbed5bf79f83f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f893a9_570f1c97",
+        "filename": "libs/input/InputDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-08T18:14:18Z",
+      "side": 1,
+      "message": "Good idea - I will get another patch up to address that.\nThis is addressed in patchset #3.",
+      "parentUuid": "65264683_f727d6c6",
+      "range": {
+        "startLine": 96,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "5b9c5af6385021792486c6e5211fbed5bf79f83f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
