@@ -52,6 +52,47 @@
       "parentUuid": "2cf9d5fa_a7639284",
       "revId": "5b9c5af6385021792486c6e5211fbed5bf79f83f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c4a060_a8ecc018",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-08T17:15:25Z",
+      "side": 1,
+      "message": "Hey Matt, \n\nThanks for the explanation, yeah configuring orientation by port makes sense to me.",
+      "parentUuid": "1cf6f352_8b083dc0",
+      "revId": "5b9c5af6385021792486c6e5211fbed5bf79f83f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65264683_f727d6c6",
+        "filename": "libs/input/InputDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-08T17:15:25Z",
+      "side": 1,
+      "message": "Let\u0027s make sure this is non-empty so we don\u0027t look for a \".idc\" file.",
+      "range": {
+        "startLine": 96,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 51
+      },
+      "revId": "5b9c5af6385021792486c6e5211fbed5bf79f83f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
