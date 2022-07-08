@@ -16,6 +16,24 @@
       "message": "I am not sure who is the best person at google to help review this so feel free to add others if you are not the right one. \n\nWe were trying to solve the issue of having multiple screens (for an automotive scenario) with touchpanels that are all from the same manufacturer plugged into usb at the same time. The existing methods to match .idc files by vendor, product, and revision or by device name did not help here as there were identical for all of the touchpanels.\n\nWe saw that the input-port-associations.xml file did allow you to map input devices by location and also saw that it would be easy to do this for.idc files too. We thought that others might run into this and would find this change useful.",
       "revId": "5b9c5af6385021792486c6e5211fbed5bf79f83f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf9d5fa_a7639284",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-08T14:51:47Z",
+      "side": 1,
+      "message": "Hey Joshua,\n\nThanks for this change! This does indeed seem useful, but I\u0027m also curious about which parts of the IDC file would be different depending on the port that the device is plugged into, other than for display mapping. I would assume that identical devices should be configured the same way otherwise.\n\nIf we\u0027re only using this for display mapping, then having two ways to configure display mapping could conflict with each other. I would prefer to only rely on the input-port-association file for mapping, and using IDCs to control behavior of various devices. In that case, we could remove \"touch.displayId\" processing from TouchInputMapper altogether. \n\nAny thoughts?",
+      "parentUuid": "a318b57e_eb886532",
+      "revId": "5b9c5af6385021792486c6e5211fbed5bf79f83f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
