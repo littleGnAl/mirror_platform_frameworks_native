@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1505b68e_df89c240",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-07-08T19:24:44Z",
+      "side": 1,
+      "message": "One concern I have with this:\n\nLet\u0027s say you have 2 USB ports:\n\nUSB1 - touchscreen should be in landscape mode\nUSB2 - touchscreen should be in portrait mode\n\nDo we actually care about which touchscreen is connected on USB1? I think the real requirement is that \"any touchscreen that is connected to USB1 should be used in landscape mode\" rather than \"the device A by manufacturer X plugged into USB1 should always be in landscape mode\".\n\nThe original reason that we used port association is for repairability: if you want to replace a display/touchscreen from model A to model B (maybe manufacturer discontinued model A), then we didn\u0027t want to require a software update to properly associate the new device with the correct port.\n\nIf the above is correct, then it would make more sense to do something like \"touchscreen_bus\" name matching, so the logic would be \"any touchscreen connected on this specific bus should use this idc file\".\n\nLet me know your thoughts here.\n\n\n\nTotally separately from the above, we also need tests and also we need to update the docs at https://source.android.com/devices/input/input-device-configuration-files",
+      "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
