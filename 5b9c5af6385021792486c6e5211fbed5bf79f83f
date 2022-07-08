@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a318b57e_eb886532",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-08T13:37:11Z",
+      "side": 1,
+      "message": "I am not sure who is the best person at google to help review this so feel free to add others if you are not the right one. \n\nWe were trying to solve the issue of having multiple screens (for an automotive scenario) with touchpanels that are all from the same manufacturer plugged into usb at the same time. The existing methods to match .idc files by vendor, product, and revision or by device name did not help here as there were identical for all of the touchpanels.\n\nWe saw that the input-port-associations.xml file did allow you to map input devices by location and also saw that it would be easy to do this for.idc files too. We thought that others might run into this and would find this change useful.",
+      "revId": "5b9c5af6385021792486c6e5211fbed5bf79f83f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
