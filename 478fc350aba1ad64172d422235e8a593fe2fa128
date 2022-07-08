@@ -142,6 +142,24 @@
       "parentUuid": "0f535784_ffb2e16f",
       "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2f8953_2396553d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-08T15:21:48Z",
+      "side": 1,
+      "message": "\u003e this is already a limit we have here, and this CL is moving it into the framework\n\nBut that\u0027s the issue, the \"moving it into framework\" is the part that I\u0027m objecting to. This type of policy really doesn\u0027t belong in the API surface. The policy is fine for the AIDL generator if that\u0027s what it wants to do, but AParcel itself shouldn\u0027t be doing such a thing.\n\nAlso there\u0027s really no benefit to being in framework anyway. The enforcement of this limit is *easier* to do without this API than it is with the API. So we shouldn\u0027t be paying the complexity for an API here when the existing 1 line if check in binder_parcel_utils does the same thing.\n\nIf we\u0027re ever in a position to change the 1MB binder IPC limit, we can revisit how to expose that. But there\u0027s only downsides to adding this API as far as I can tell.\n\n\u003e So adhering to the binder limits makes the code portable. This is also why RPC binder adds arbitrary limits. If even 1MB of data is being parceled in-process, the user of the code is doing something incorrect \n\nHaving such a limit on the *write* side I can see, but this is on the *read* side. The cost has already been paid at this point, kinda late to try and enforce anything?",
+      "parentUuid": "0efdbf9e_2a21b833",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
