@@ -93,7 +93,7 @@ public:
      * server will be used. Usually, this API should only be used for debugging.
      */
     [[nodiscard]] bool setProtocolVersion(uint32_t version);
-    std::optional<uint32_t> getProtocolVersion();
+    uint32_t getProtocolVersion();
 
     enum class FileDescriptorTransportMode : uint8_t {
         NONE = 0,
