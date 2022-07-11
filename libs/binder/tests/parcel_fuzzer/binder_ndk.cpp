@@ -16,6 +16,9 @@
 #define FUZZ_LOG_TAG "binder_ndk"
 
 #include "binder_ndk.h"
+#include "EmptyParcelable.h"
+#include "GenericDataParcelable.h"
+#include "SingleDataParcelable.h"
 
 #include <android/binder_parcel_utils.h>
 #include <android/binder_parcelable_utils.h>
@@ -177,5 +180,24 @@ std::vector<ParcelRead<NdkParcelAdapter>> BINDER_NDK_PARCEL_READ_FUNCTIONS{
         PARCEL_READ(std::array<ndk::ScopedFileDescriptor COMMA 3>, ndk::AParcel_readData),
         PARCEL_READ(std::array<std::shared_ptr<ISomeInterface> COMMA 3>, ndk::AParcel_readData),
 #undef COMMA
+
+        [](const NdkParcelAdapter& p, FuzzedDataProvider& /*provider*/) {
+            FUZZ_LOG() << "about to read parcel using readFromParcel for EmptyParcelable";
+            EmptyParcelable emptyParcelable;
+            binder_status_t status = emptyParcelable.readFromParcel(p.parcel());
+            FUZZ_LOG() << "status: " << status;
+        },
+        [](const NdkParcelAdapter& p, FuzzedDataProvider& /*provider*/) {
+            FUZZ_LOG() << "about to read parcel using readFromParcel for SingleDataParcelable";
+            SingleDataParcelable singleDataParcelable;
+            binder_status_t status = singleDataParcelable.readFromParcel(p.parcel());
+            FUZZ_LOG() << "status: " << status;
+        },
+        [](const NdkParcelAdapter& p, FuzzedDataProvider& /*provider*/) {
+            FUZZ_LOG() << "about to read parcel using readFromParcel for GenericDataParcelable";
+            GenericDataParcelable genericDataParcelable;
+            binder_status_t status = genericDataParcelable.readFromParcel(p.parcel());
+            FUZZ_LOG() << "status: " << status;
+        },
 };
 // clang-format on

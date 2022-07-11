@@ -32,6 +32,7 @@ public:
     const AParcel* aParcel() const { return mParcel.get(); }
     AParcel* aParcel() { return mParcel.get(); }
 
+    const android::Parcel* parcel() const { return aParcel()->get(); }
     android::Parcel* parcel() { return aParcel()->get(); }
 
     const uint8_t* data() const { return aParcel()->get()->data(); }
