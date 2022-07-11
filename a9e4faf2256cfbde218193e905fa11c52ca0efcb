@@ -22,6 +22,30 @@
       },
       "revId": "a9e4faf2256cfbde218193e905fa11c52ca0efcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46233cd_e3aa9ec1",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-11T20:54:17Z",
+      "side": 1,
+      "message": "It is an uninitialized session. The fuzzer uses an RpcSession that hasn\u0027t been \"setup*\" yet to exercise (part of) the RPC paths. (some more details and thoughts in a comment in the bug)",
+      "parentUuid": "9e587ed5_f8f2b053",
+      "range": {
+        "startLine": 1131,
+        "startChar": 19,
+        "endLine": 1131,
+        "endChar": 33
+      },
+      "revId": "a9e4faf2256cfbde218193e905fa11c52ca0efcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
