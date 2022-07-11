@@ -22,6 +22,23 @@
       },
       "revId": "501af5a844821ef2ad3f89906893640c18ba848c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd64d89_133d0fc9",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-07-11T07:47:35Z",
+      "side": 1,
+      "message": "What if the failure is genuine and not do to an unsupported kernel support? Should you do something similar to:\nhttps://source.corp.google.com/android/system/memory/lmkd/lmkd.cpp;l\u003d1206?q\u003dpidfd_open\u0026sq\u003dpackage:%5Eandroid$\n\ninstead?",
+      "revId": "501af5a844821ef2ad3f89906893640c18ba848c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
