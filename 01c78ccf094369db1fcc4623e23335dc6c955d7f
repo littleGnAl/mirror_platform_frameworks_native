@@ -70,6 +70,24 @@
       "parentUuid": "cbd3b7af_91e8b237",
       "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7db8d313_0a34149c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-11T20:20:08Z",
+      "side": 1,
+      "message": "If I understand the concern correctly it is that we can specify a display id in the .idc file and we also have an input-port-associations.xml file which can map a display id to a specific input device on a usb port. I agree that there could be a conflict between these two, but this issue exists with out without this patch as the display-id in the .idc file is existing functionality. 😊\n\nThis patch is just allowing us to match an .idc file by the location of the device. I guess the question back to the android team would be what is the future direction for mapping displays to inputs? Should it be done only with .idc files or only with input-port-associations.xml? If the direction is to only do it with input-port-associations.xml then it would be nice to add an \u0027orientation\u0027 attribute to the port elements in that file to allow us to configure the orientation of each display. If the direction is to do this with .idc files moving forward then perhaps input-port-associations.xml should be deprecated in favor of using a display-id in the .idc file instead.\n\nIn our case we are only using the .idc files to do this mapping and are not using the input-port-assocations.xml file.",
+      "parentUuid": "a7157938_329962ec",
+      "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
