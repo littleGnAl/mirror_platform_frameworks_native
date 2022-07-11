@@ -52,6 +52,24 @@
       "parentUuid": "a1838895_addee43c",
       "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7157938_329962ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-11T18:59:27Z",
+      "side": 1,
+      "message": "I\u0027m also curious about how input port to display mapping competes with input-port-associations.xml. I think the mapping in the xml should override any display mappings from IDC files. Is that the case?",
+      "parentUuid": "cbd3b7af_91e8b237",
+      "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
