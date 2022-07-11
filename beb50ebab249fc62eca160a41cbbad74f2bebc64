@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d13b7e59_ba3b1622",
+        "filename": "libs/binder/tests/parcel_fuzzer/GenericDataParcelable.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-11T18:08:24Z",
+      "side": 1,
+      "message": "nit/optional: add \u0027IBinder binder\u0027 here and \u0027ParcelFileDescriptor descriptor\u0027 and \u0027int[] array\u0027 so that we try additional data types as well (specifically IBinder and ParcelFileDescriptor are quite different under the hood). I don\u0027t expect this to catch any issue, only increase coverage.",
+      "revId": "beb50ebab249fc62eca160a41cbbad74f2bebc64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfaba9ec_d2000c24",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-11T18:08:24Z",
+      "side": 1,
+      "message": "This is using the \u0027-cpp\u0027 Parcel (and it\u0027s also why the \u0027parcel\u0027 API is needed below). To see this yourself, if you want (optional), one thing you can try is if you remove the \u0027-ndk\u0027 library from the Android.bp file, this should still compile.\n\nUse this instead: \"aidl/EmptyParcelable.h\" and \"aidl::EmptyParcelable\" instead. See https://source.android.com/devices/architecture/aidl/aidl-backends#how-to",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "beb50ebab249fc62eca160a41cbbad74f2bebc64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c630bcd4_e98da98d",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-11T18:08:24Z",
+      "side": 1,
+      "message": "want to use \u0027aParcel\u0027 and that interface (it\u0027ll work with the NDK parcelable)",
+      "range": {
+        "startLine": 187,
+        "startChar": 70,
+        "endLine": 187,
+        "endChar": 76
+      },
+      "revId": "beb50ebab249fc62eca160a41cbbad74f2bebc64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e11dc06_df32b4d7",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-11T18:08:24Z",
+      "side": 1,
+      "message": "(we won\u0027t need this API after the changes suggested in the other file)",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 70
+      },
+      "revId": "beb50ebab249fc62eca160a41cbbad74f2bebc64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
