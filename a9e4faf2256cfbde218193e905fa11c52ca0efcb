@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e587ed5_f8f2b053",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-11T20:45:33Z",
+      "side": 1,
+      "message": "I think this is probably the right change, but do we know why validateParcel can be reached when the protocol version is not established? In this case, it seems like we are sending a parcel on an invalid or uninitialized connection. Is this expected?",
+      "range": {
+        "startLine": 1131,
+        "startChar": 19,
+        "endLine": 1131,
+        "endChar": 33
+      },
+      "revId": "a9e4faf2256cfbde218193e905fa11c52ca0efcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
