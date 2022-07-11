@@ -127,9 +127,9 @@ bool RpcSession::setProtocolVersion(uint32_t version) {
     return setProtocolVersionInternal(version, true);
 }
 
-std::optional<uint32_t> RpcSession::getProtocolVersion() {
+uint32_t RpcSession::getProtocolVersion() {
     RpcMutexLockGuard _l(mMutex);
-    return mProtocolVersion;
+    return mProtocolVersion.value_or(RPC_WIRE_PROTOCOL_VERSION);
 }
 
 void RpcSession::setFileDescriptorTransportMode(FileDescriptorTransportMode mode) {
@@ -641,7 +641,7 @@ status_t RpcSession::initAndAddConnection(RpcTransportFd fd, const std::vector<u
     }
 
     RpcConnectionHeader header{
-            .version = mProtocolVersion.value_or(RPC_WIRE_PROTOCOL_VERSION),
+            .version = getProtocolVersion(),
             .options = 0,
             .fileDescriptorTransportMode = static_cast<uint8_t>(mFileDescriptorTransportMode),
             .sessionIdSize = static_cast<uint16_t>(sessionId.size()),
