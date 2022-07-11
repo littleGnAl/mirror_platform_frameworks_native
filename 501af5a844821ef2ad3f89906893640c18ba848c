@@ -39,6 +39,24 @@
       "message": "What if the failure is genuine and not do to an unsupported kernel support? Should you do something similar to:\nhttps://source.corp.google.com/android/system/memory/lmkd/lmkd.cpp;l\u003d1206?q\u003dpidfd_open\u0026sq\u003dpackage:%5Eandroid$\n\ninstead?",
       "revId": "501af5a844821ef2ad3f89906893640c18ba848c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4cc3e0e_0f98031e",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-11T10:40:41Z",
+      "side": 1,
+      "message": "What would be a better behaviour then? Short of implementing a fallback timeout process killer like in https://r.android.com/2148047, waiting without timeout is the best we can do, isn\u0027t it? It seems better than killing it right away.\n\nI\u0027m not sure what happens in LMKD - in the fallback there it puts pidfd\u003d-1 in a struct that goes off somewhere.",
+      "parentUuid": "0dd64d89_133d0fc9",
+      "revId": "501af5a844821ef2ad3f89906893640c18ba848c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
