@@ -88,6 +88,24 @@
       "parentUuid": "a7157938_329962ec",
       "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3002a41_766a6a3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-07-11T20:27:34Z",
+      "side": 1,
+      "message": "I was actually typing a similar proposal as Joshua provided in the most recent message.\n\nAnother option is to add an \"idc\" file to input-port-associations.xml. So it could be something like this:\n\n```\n\u003cports\u003e\n    \u003cport display\u003d\"1\" input\u003d\"usb-xhci-hcd.0.auto-1.1/input0\" idc\u003d\"/vendor/etc/landscape.idc\"   /\u003e\n    \u003cport display\u003d\"2\" input\u003d\"usb-xhci-hcd.0.auto-1.2/input0\" idc\u003d\"/vendor/etc/portrait.idc\"  /\u003e\n\u003c/ports\u003e\n```\n\nThen add the corresponding idc files: portrait.idc and landscape.idc.\n\n\nHowever, what to do if we also have a match for \"\u003cdevice_name\u003e.idc\" file? Maybe this:\n\n\u003cdevice_name\u003e.idc always get preference. So in this auto use case, you wouldn\u0027t have any device_name idc files, but just generic \"idc\" files that get matched for any device connected to the input port.\n\nThoughts?",
+      "parentUuid": "a7157938_329962ec",
+      "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
