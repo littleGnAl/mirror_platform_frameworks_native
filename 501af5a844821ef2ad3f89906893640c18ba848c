@@ -57,6 +57,24 @@
       "parentUuid": "0dd64d89_133d0fc9",
       "revId": "501af5a844821ef2ad3f89906893640c18ba848c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2676e569_d6ced99e",
+        "filename": "cmds/installd/utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-07-11T10:47:47Z",
+      "side": 1,
+      "message": "+1. I think waiting without timeout is the best we can do, no matter how pidfd_open fails. There is still a chance that the subprocess can succeed, so waiting without timeout can increase the dexopt success rate. For ART services, we have a fallback (https://r.android.com/2148047), but I want to avoid making too many changes to installd because the code will eventually go away.",
+      "parentUuid": "f4cc3e0e_0f98031e",
+      "revId": "501af5a844821ef2ad3f89906893640c18ba848c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
