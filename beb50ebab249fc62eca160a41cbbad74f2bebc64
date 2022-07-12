@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4317ccfb_6665f635",
+        "filename": "libs/binder/tests/parcel_fuzzer/GenericDataParcelable.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-07-12T22:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d13b7e59_ba3b1622",
+      "revId": "beb50ebab249fc62eca160a41cbbad74f2bebc64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfaba9ec_d2000c24",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-11T18:08:24Z",
       "side": 1,
       "message": "This is using the \u0027-cpp\u0027 Parcel (and it\u0027s also why the \u0027parcel\u0027 API is needed below). To see this yourself, if you want (optional), one thing you can try is if you remove the \u0027-ndk\u0027 library from the Android.bp file, this should still compile.\n\nUse this instead: \"aidl/EmptyParcelable.h\" and \"aidl::EmptyParcelable\" instead. See https://source.android.com/devices/architecture/aidl/aidl-backends#how-to",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "beb50ebab249fc62eca160a41cbbad74f2bebc64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9d4444_aec0d8c9",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-07-12T22:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfaba9ec_d2000c24",
       "range": {
         "startLine": 19,
         "startChar": 10,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c191adf6_484a540e",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-07-12T22:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c630bcd4_e98da98d",
+      "range": {
+        "startLine": 187,
+        "startChar": 70,
+        "endLine": 187,
+        "endChar": 76
+      },
+      "revId": "beb50ebab249fc62eca160a41cbbad74f2bebc64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e11dc06_df32b4d7",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-07-11T18:08:24Z",
       "side": 1,
       "message": "(we won\u0027t need this API after the changes suggested in the other file)",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 70
+      },
+      "revId": "beb50ebab249fc62eca160a41cbbad74f2bebc64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdf829e0_b3a5b293",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-07-12T22:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e11dc06_df32b4d7",
       "range": {
         "startLine": 35,
         "startChar": 0,
