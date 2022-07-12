@@ -106,6 +106,24 @@
       "parentUuid": "a7157938_329962ec",
       "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b601e2b4_31fc6230",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-12T13:13:41Z",
+      "side": 1,
+      "message": "In my mind it would be simpler to only have one mechanism to specify which idc file gets used - either through the existing file path matching or through the new proposed way of an attribute in the input-port-associations.xml file. However I also understand that there are likely additional uses cases for input configuration that I have not encountered that also need to be taken into consideration.",
+      "parentUuid": "e3002a41_766a6a3f",
+      "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
