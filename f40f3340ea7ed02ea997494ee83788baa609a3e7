@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90909c44_02872f20",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-13T17:43:30Z",
+      "side": 1,
+      "message": "I think this is what it should be but it\u0027s not what it currently is. As in, shouldn\u0027t parcel being rejecting attempts to grow beyond this size? But right now it\u0027s just an otherwise ignored constant.",
+      "range": {
+        "startLine": 1211,
+        "startChar": 15,
+        "endLine": 1211,
+        "endChar": 48
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "278a4116_c472c213",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-13T17:43:30Z",
+      "side": 1,
+      "message": "should there be a setter for this so clients can set an appropriate limit?",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6dabd61_48f78b19",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-13T17:43:30Z",
+      "side": 1,
+      "message": "size_t maybe?",
+      "range": {
+        "startLine": 1217,
+        "startChar": 0,
+        "endLine": 1217,
+        "endChar": 7
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
