@@ -196,6 +196,24 @@
       "parentUuid": "67fb31e5_739cbeb8",
       "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a3cddb_eba79943",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-07-13T17:36:21Z",
+      "side": 1,
+      "message": "Setting to done as the line no longer exists.",
+      "parentUuid": "35b5c54e_5b23f42b",
+      "revId": "478fc350aba1ad64172d422235e8a593fe2fa128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
