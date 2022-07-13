@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e22558_562304f5",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 195
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-13T22:01:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "df83c2e1_e0f69014",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 32
+      },
+      "revId": "8a1aee5c5d4e3eb70dd41b6c22beaa63c985e1f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c91ed0f_fdd0aa63",
