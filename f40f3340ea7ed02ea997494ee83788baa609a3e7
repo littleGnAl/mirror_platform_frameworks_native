@@ -236,6 +236,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f39de7e8_d59aaaa3",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-13T23:39:03Z",
+      "side": 1,
+      "message": "No setter! :)\n\nThere is a specific behavior here needed (to prevent code from making allocations which are too big). We need an API to tell code how big of allocations are definitely a problem. Allocations at least of this size need to be let through because they might not result in a transaction failure. This value is determined approximately by the binder buffer size. However, there is some margin of error there because large allocations fail anyway with a high probability. Right now this value is specified inside and outside the NDK API surface. We would like to specify it one time inside the API surface so that is adjacent (and therefore updatable with, as necessary, but not now) to the value it is coupled to (the binder VM size).\n\nWe originally suggested doing this beneath the specific semantics of resizing a vector. Now, it is suggested to export the exact value. Honestly, I do not care which way it is done between these two. Though, we are comfortable exposing the value, it has a specific semantic, and it may be useful in the future. So, it\u0027s okay.\n\n\u003e I was imagining that Parcel would actually restrict itself to the specified size\n\nThis is unrelated to the behavior that is needed or the requirement here, and it reflects a miscommunication between the name I suggested (\"allocation limit\") and other possible interpretations of it. Any time spent further down this line is unrelated to this issue. If such a feature was needed for another reason, we could implement it (not unreasonable, only irrelevant).\n\nI now suggest distinguishing the name to approach the relevant semantic:\n\n    /** The absolute maximum size a Parcel could be and succeed when sent in a transaction, even if it is unreasonable to send Parcels of this size. This can be used to limit writes to the Parcel. Rather than allocating or making a write of this size, it is always safe to consider a transaction containing this amount of data to fail without trying to send it. */\n    size_t AParcel_getTransactionSizeHardLimit(...)",
+      "parentUuid": "38db759e_afc7de3a",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
