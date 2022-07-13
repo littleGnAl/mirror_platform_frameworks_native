@@ -116,6 +116,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0bbab7_9f0b917c",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-13T18:50:12Z",
+      "side": 1,
+      "message": "Parcel has marshall/unmarshall APIs, though, a client could conceivably want their own limit for their own IPC purposes. It\u0027d also make testing easier, but if the API doesn\u0027t actually _do_ anything then I guess there\u0027s not much to test. I was imagining that Parcel would actually restrict itself to the specified size, though, which seems like a more broadly useful ability to limit.",
+      "parentUuid": "0f36b276_aa2baef4",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
