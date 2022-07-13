@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "015a2a8b_810ff059",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-07-13T16:03:20Z",
+      "side": 1,
+      "message": "Good to know! I had the idea of \"I don\u0027t want to add waits\", should\u0027ve just added them and if it\u0027s bad I\u0027d simply be called out. \nThanks for the fix!",
+      "range": {
+        "startLine": 1321,
+        "startChar": 4,
+        "endLine": 1321,
+        "endChar": 25
+      },
+      "revId": "68055471ad84140400dd72091fd2aafe6afc5b30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
