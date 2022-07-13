@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d545f9a_dcb2529d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-07-13T18:57:49Z",
+      "side": 1,
+      "message": "For getAllocationLimit, I\u0027d think it would return the allocation limit for the parcel, but not evaluate the parcel size against the allocation limit.\n\nWhat you\u0027re describing from what I understand falls more in line with the function that was previously written, however best described as AParcel_readParcelAllocationSizeWithCheck?\n\nThis current API would return the parcel\u0027s defined getAllocationLimit.\n\n----\nSteven - `with this one.` I\u0027m not sure I get this part.",
+      "parentUuid": "90909c44_02872f20",
+      "range": {
+        "startLine": 1211,
+        "startChar": 15,
+        "endLine": 1211,
+        "endChar": 48
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "278a4116_c472c213",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 7
@@ -132,6 +156,54 @@
       "side": 1,
       "message": "Parcel has marshall/unmarshall APIs, though, a client could conceivably want their own limit for their own IPC purposes. It\u0027d also make testing easier, but if the API doesn\u0027t actually _do_ anything then I guess there\u0027s not much to test. I was imagining that Parcel would actually restrict itself to the specified size, though, which seems like a more broadly useful ability to limit.",
       "parentUuid": "0f36b276_aa2baef4",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2a7d6a1_eda8ea96",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-07-13T18:57:49Z",
+      "side": 1,
+      "message": "pushing in PS8. Will mark is done then.",
+      "parentUuid": "e6dabd61_48f78b19",
+      "range": {
+        "startLine": 1217,
+        "startChar": 0,
+        "endLine": 1217,
+        "endChar": 7
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38db759e_afc7de3a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-07-13T18:57:49Z",
+      "side": 1,
+      "message": "Modifying getAllocationLimit in Parcel.h to only be a function declaration. \n\nParcel.cpp will implement getAllocationLimit to return 1M.\nI think this change would solve the issue you are describing. Implementing getAllocationLimit would then allow to set different sizes. \nWe can discuss this once I push the PS?",
+      "parentUuid": "278a4116_c472c213",
       "range": {
         "startLine": 1217,
         "startChar": 8,
