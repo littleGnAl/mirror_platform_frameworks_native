@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85038d19_ee26ab1d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-13T18:44:32Z",
+      "side": 1,
+      "message": "\"An upper bound for the maximum amount of data that could be safely parceled in a response Parcel.\n\nThis is intended to be used to cap allocation sizes for structures returned in Parcels in conjunction with this one.\"",
+      "parentUuid": "90909c44_02872f20",
+      "range": {
+        "startLine": 1211,
+        "startChar": 15,
+        "endLine": 1211,
+        "endChar": 48
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "278a4116_c472c213",
         "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
         "patchSetId": 7
@@ -65,6 +89,30 @@
         "startChar": 0,
         "endLine": 1217,
         "endChar": 7
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f36b276_aa2baef4",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-13T18:44:32Z",
+      "side": 1,
+      "message": "No - the semantics are related to how the Parcel is used internally. I think it should be more clear after an updated comment.",
+      "parentUuid": "278a4116_c472c213",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
