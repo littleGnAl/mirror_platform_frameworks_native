@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76a8f0c7_2340d513",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 195
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-13T21:19:15Z",
+      "side": 1,
+      "message": "nit: This is still true. Is this object needed? (I think instead of having RpcServerTrusty, we could have a function)",
+      "parentUuid": "5cfc1fe8_38a268cf",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 32
+      },
+      "revId": "8a1aee5c5d4e3eb70dd41b6c22beaa63c985e1f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c91ed0f_fdd0aa63",
         "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
         "patchSetId": 195
