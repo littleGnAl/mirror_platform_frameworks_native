@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "356a6156_14c67318",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-07-14T06:22:25Z",
+      "side": 1,
+      "message": "Another approach would be making servicemanager a static executable, but why would we waste memory as the shared libraries are already there.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "d062f64b9f41484baa84c2d5dc5ca5806780f563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6479cbf_a46abfd4",
@@ -62,6 +85,30 @@
       "side": 1,
       "message": "Can we associate different .rc files for the same binary according to the context? For example, \"foo\" with \"foo-A.rc\" in Android, with \"foo-B\" in Microdroid?",
       "parentUuid": "83cfb4d2_69658936",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "d062f64b9f41484baa84c2d5dc5ca5806780f563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb5f449c_af30c786",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-07-14T06:22:25Z",
+      "side": 1,
+      "message": "We can\u0027t",
+      "parentUuid": "a586870e_2686d646",
       "range": {
         "startLine": 50,
         "startChar": 0,
