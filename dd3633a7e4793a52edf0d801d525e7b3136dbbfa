@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e27e97e_9c8fbc06",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T23:28:07Z",
+      "side": 1,
+      "message": "nit: reuse logic and Obituary type below. If RpcSession triggers linkToDeath like IPCThreadState does here, it could also reuse the sendObituary code here and avoid needing separate cleanup",
+      "range": {
+        "startLine": 347,
+        "startChar": 8,
+        "endLine": 347,
+        "endChar": 18
+      },
+      "revId": "dd3633a7e4793a52edf0d801d525e7b3136dbbfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4214ebb_3633c824",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T23:28:07Z",
+      "side": 1,
+      "message": "this behavior should also be at parity",
+      "range": {
+        "startLine": 433,
+        "startChar": 15,
+        "endLine": 433,
+        "endChar": 27
+      },
+      "revId": "dd3633a7e4793a52edf0d801d525e7b3136dbbfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f883405_335b40cf",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T23:28:07Z",
+      "side": 1,
+      "message": "this behavior should be at parity",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 582,
+        "endChar": 42
+      },
+      "revId": "dd3633a7e4793a52edf0d801d525e7b3136dbbfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ef7005_a84f3cc2",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T23:28:07Z",
+      "side": 1,
+      "message": "This should check the invariant that the binder is known here (in binder nodes in RpcState)",
+      "range": {
+        "startLine": 715,
+        "startChar": 46,
+        "endLine": 715,
+        "endChar": 52
+      },
+      "revId": "dd3633a7e4793a52edf0d801d525e7b3136dbbfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfdb7157_04b28225",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T23:28:07Z",
+      "side": 1,
+      "message": "yeah - would be nice to reuse same logic in BpBinder by combining obituary types (this is a lot)",
+      "range": {
+        "startLine": 725,
+        "startChar": 54,
+        "endLine": 730,
+        "endChar": 99
+      },
+      "revId": "dd3633a7e4793a52edf0d801d525e7b3136dbbfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "521d017e_76b6c6f4",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T23:28:07Z",
+      "side": 1,
+      "message": "Note - since BpBinder is \u0027extendObjectLifetime(OBJECT_LIFETIME_WEAK);\u0027, the wp\u003c\u003e in RpcObituary will keep the object alive even after it is disassociated with this connection. If nothing else holds a reference to this BpBinder, then we should implicitly unlink it to death.\n\n(consider adding a test for this? even if we reuse Obituary code, we would still need special logic for this since ultimately, RpcSession needs the list of BpBinder objects which are linked to death)",
+      "range": {
+        "startLine": 1185,
+        "startChar": 0,
+        "endLine": 1185,
+        "endChar": 38
+      },
+      "revId": "dd3633a7e4793a52edf0d801d525e7b3136dbbfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b3442f9_072bcf37",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T23:28:07Z",
+      "side": 1,
+      "message": "use a status return for this as well, for future",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 8
+      },
+      "revId": "dd3633a7e4793a52edf0d801d525e7b3136dbbfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "909efed3_42814574",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T23:28:07Z",
+      "side": 1,
+      "message": "is it possible to wait for the RpcSession to die without a BpBinder? (e.g. if this is null)?",
+      "range": {
+        "startLine": 162,
+        "startChar": 30,
+        "endLine": 162,
+        "endChar": 38
+      },
+      "revId": "dd3633a7e4793a52edf0d801d525e7b3136dbbfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93019b17_02f5874b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T23:28:07Z",
+      "side": 1,
+      "message": "confirming, it hits the log fatal?",
+      "range": {
+        "startLine": 1046,
+        "startChar": 8,
+        "endLine": 1046,
+        "endChar": 22
+      },
+      "revId": "dd3633a7e4793a52edf0d801d525e7b3136dbbfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a42b05b2_38a1c07a",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T23:28:07Z",
+      "side": 1,
+      "message": "nit: this is not needed because booleans cannot be torn and we only set it, but if you do keep it as well, typical to unlock before notify (this avoids potential thrashing)",
+      "range": {
+        "startLine": 1052,
+        "startChar": 0,
+        "endLine": 1052,
+        "endChar": 52
+      },
+      "revId": "dd3633a7e4793a52edf0d801d525e7b3136dbbfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30d1a9d1_5f72dc15",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T23:28:07Z",
+      "side": 1,
+      "message": "do we have a bug for this being empty string? Can we check for the exact message?",
+      "range": {
+        "startLine": 1092,
+        "startChar": 64,
+        "endLine": 1092,
+        "endChar": 66
+      },
+      "revId": "dd3633a7e4793a52edf0d801d525e7b3136dbbfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
