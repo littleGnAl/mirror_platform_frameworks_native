@@ -308,6 +308,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8322e29_317838ff",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T16:46:34Z",
+      "side": 1,
+      "message": "The issue between AIBinder and AParcel was discussed over chat but lost in history. The reason we focused on an AParcel API is that there is no guarantee of having an AIBinder in the context (the C++ API AParcel_resize(Out)Vector) where this is needed. Parcels may or may not have an AIBinder associated with them. In some cases, if markForRpc is called, we only have the RpcSession, no longer the specific binder.\n\nThis limit makes sense for any user of Parcel. Having a limit is definitely needed for any unparceling to avoid OOM conditions, and 1MB (or 2MB or 10MB - it really is quite arbitrary since it\u0027s only catching an extreme condition) is a perfectly fine limit. If a higher limit is needed elsewhere, we can add it. However, this C++ API (resizeOutVector) is used in unparceling C++ out vectors, and context-independent (though any other user is unexpected) this needs a limit, and 1MB is reasonable for that (if you don\u0027t think so, please provide a counterexample).",
+      "parentUuid": "d0b7fea2_d9052fd7",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
