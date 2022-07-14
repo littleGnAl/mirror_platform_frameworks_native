@@ -260,6 +260,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb760b8_6c2790a4",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T00:21:04Z",
+      "side": 1,
+      "message": "\u003e Allocations at least of this size need to be let through because they might not result in a transaction failure.\n\n**Allocations below this size need to be let through because they might not result in a transaction failure.",
+      "parentUuid": "f39de7e8_d59aaaa3",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
