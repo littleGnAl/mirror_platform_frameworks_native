@@ -284,6 +284,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b7fea2_d9052fd7",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-14T14:40:44Z",
+      "side": 1,
+      "message": "Well if this is going to be narrowly restricted to specifically the binder limit \u0026 only that limit with no actual AParcel behaviors whatsoever, then it should go on AIBinder.\n\nIf it\u0027s going on AParcel it should be usable in non-binder contexts, since AParcel is also usable in non-binder contexts (thanks to marshall/unmarshall in particular). That would mean setters for non-binder users to also benefit, and (ideally) actual growth restrictions on the parcel. Yes that\u0027s a broader scope than the narrow context of the bug, but AParcel is a broader API than the narrow scope of the bug.\n\nSo if you want narrow, put it on the narrow thing (so AIBinder_getTransactionSizeHardLimit). If you want broad in more-than-one-context, then it needs to support doing that. Which means doing more than the bare minimum of the bug.",
+      "parentUuid": "0eb760b8_6c2790a4",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
