@@ -356,6 +356,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8deeac4_a58ec93a",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T21:54:33Z",
+      "side": 1,
+      "message": "\u003e There\u0027s no need to have an actual AIBinder instance of anything.\n\nIf we wanted a separate limit for RpcSession vs kernel binder, we could make it contingent on the specific context.\n\n\u003e People have used, and will continue to use, marshall/unmarshall specifically to get around the 1MB limit\n\nThis wouldn\u0027t be with the resizeOutVector API. This is really specific to usage of a Parcel with IPC, and it is the only place we would want to use this.",
+      "parentUuid": "ea77df75_ab56ec29",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
