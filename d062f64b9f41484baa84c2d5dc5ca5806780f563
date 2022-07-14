@@ -117,6 +117,30 @@
       },
       "revId": "d062f64b9f41484baa84c2d5dc5ca5806780f563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f463cd_1f7cdaaf",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-14T17:13:57Z",
+      "side": 1,
+      "message": "The only difference here seems to be the onrestart rules. Is the behavior that bad in microdroid? Anyway - the plan is to remove servicemanager anyway",
+      "parentUuid": "bb5f449c_af30c786",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "d062f64b9f41484baa84c2d5dc5ca5806780f563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
