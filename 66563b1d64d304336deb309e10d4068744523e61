@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df4cb23e_88665ade",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-14T22:57:23Z",
+      "side": 1,
+      "message": "nit: other colons have a space after",
+      "range": {
+        "startLine": 303,
+        "startChar": 43,
+        "endLine": 303,
+        "endChar": 45
+      },
+      "revId": "66563b1d64d304336deb309e10d4068744523e61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
