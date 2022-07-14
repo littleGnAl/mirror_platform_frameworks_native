@@ -380,6 +380,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b9db48_71bca0cd",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-14T22:04:28Z",
+      "side": 1,
+      "message": "\u003e If we wanted a separate limit for RpcSession vs kernel binder, we could make it contingent on the specific context.\n\nBut you just said there shouldn\u0027t be a setter, so it can\u0027t be context-specific?",
+      "parentUuid": "d8deeac4_a58ec93a",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
