@@ -46,6 +46,30 @@
       },
       "revId": "d062f64b9f41484baa84c2d5dc5ca5806780f563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a586870e_2686d646",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-07-14T04:52:01Z",
+      "side": 1,
+      "message": "Can we associate different .rc files for the same binary according to the context? For example, \"foo\" with \"foo-A.rc\" in Android, with \"foo-B\" in Microdroid?",
+      "parentUuid": "83cfb4d2_69658936",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "d062f64b9f41484baa84c2d5dc5ca5806780f563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
