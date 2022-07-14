@@ -118,6 +118,30 @@
       },
       "revId": "f6d42abeece6ab426d1a0a9bcad27a8f67effcc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ba43af_3a3cab0c",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-07-14T21:36:42Z",
+      "side": 1,
+      "message": "It\u0027s more intention revealing. Your API reviews will go faster if you make them easier for us to read.",
+      "parentUuid": "c66af2f1_3f173561",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 48
+      },
+      "revId": "f6d42abeece6ab426d1a0a9bcad27a8f67effcc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
