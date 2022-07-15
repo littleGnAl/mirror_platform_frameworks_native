@@ -209,10 +209,9 @@ void RpcServer::join() {
 
         {
             RpcMutexLockGuard _l(mLock);
-            RpcMaybeThread thread =
-                    RpcMaybeThread(&RpcServer::establishConnection,
-                                   sp<RpcServer>::fromExisting(this), std::move(clientFd), addr,
-                                   addrLen, RpcSession::join);
+            RpcMaybeThread thread = RpcMaybeThread(&RpcServer::establishConnection,
+                                                   sp<RpcServer>::fromExisting(this),
+                                                   std::move(clientFd), addr, addrLen);
 
             auto& threadRef = mConnectingThreads[thread.get_id()];
             threadRef = std::move(thread);
@@ -295,10 +294,8 @@ size_t RpcServer::numUninitializedSessions() {
     return mConnectingThreads.size();
 }
 
-void RpcServer::establishConnection(
-        sp<RpcServer>&& server, base::unique_fd clientFd, std::array<uint8_t, kRpcAddressSize> addr,
-        size_t addrLen,
-        std::function<void(sp<RpcSession>&&, RpcSession::PreJoinSetupResult&&)>&& joinFn) {
+void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clientFd,
+                                    std::array<uint8_t, kRpcAddressSize> addr, size_t addrLen) {
     // mShutdownTrigger can only be cleared once connection threads have joined.
     // It must be set before this thread is started
     LOG_ALWAYS_FATAL_IF(server->mShutdownTrigger == nullptr);
@@ -481,7 +478,7 @@ void RpcServer::establishConnection(
     // avoid strong cycle
     server = nullptr;
 
-    joinFn(std::move(session), std::move(setupResult));
+    RpcSession::join(std::move(session), std::move(setupResult));
 }
 
 status_t RpcServer::setupSocketServer(const RpcSocketAddress& addr) {

@@ -31,7 +31,6 @@ namespace android {
 
 class Parcel;
 class RpcServer;
-class RpcServerTrusty;
 class RpcSocketAddress;
 class RpcState;
 class RpcTransport;
@@ -203,7 +202,6 @@ public:
 private:
     friend sp<RpcSession>;
     friend RpcServer;
-    friend RpcServerTrusty;
     friend RpcState;
     explicit RpcSession(std::unique_ptr<RpcTransportCtx> ctx);
 
