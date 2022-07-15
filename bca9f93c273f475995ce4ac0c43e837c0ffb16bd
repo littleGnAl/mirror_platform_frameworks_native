@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a6a9d8f_1a053fd5",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2606,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T17:53:33Z",
+      "side": 1,
+      "message": "nit: Could we change release_func to avoid needing a Parcel*? (perhaps separately)",
+      "parentUuid": "daed8a40_e4064102",
+      "range": {
+        "startLine": 2603,
+        "startChar": 3,
+        "endLine": 2606,
+        "endChar": 5
+      },
+      "revId": "bca9f93c273f475995ce4ac0c43e837c0ffb16bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92702746_68005644",
         "filename": "libs/binder/Parcel.cpp",
         "patchSetId": 1
