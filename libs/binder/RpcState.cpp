@@ -258,12 +258,23 @@ void RpcState::clear() {
     mTerminated = true;
     for (auto& [address, node] : mNodeForAddress) {
         sp<IBinder> binder = node.binder.promote();
-        LOG_ALWAYS_FATAL_IF(binder == nullptr,
-                            "Binder expected to be owned with address: %" PRIu64 " %s", address,
-                            node.toString().c_str());
 
-        if (node.sentRef != nullptr) {
-            tempHoldBinder.push_back(node.sentRef);
+        bool guaranteedHaveBinder = node.timesSent > 0;
+        if (guaranteedHaveBinder) {
+            // In the case of a BpBinder (which is object lifetime weak), onLastStrongRef
+            // may be running on another thread, and onIncStrongAttempted will return false
+            // so even though the object isn't deleted, it gets reported as nullptr here.
+            // So, we are only doing this check when we know we have a strong ref.
+            LOG_ALWAYS_FATAL_IF(binder == nullptr,
+                                "Binder expected to be owned with address: %" PRIu64 " %s", address,
+                                node.toString().c_str());
+
+            LOG_ALWAYS_FATAL_IF(binder != node.sentRef, "Inconsistent state: %p != %p",
+                                binder.get(), node.sentRef.get());
+        }
+
+        if (binder != nullptr) {
+            tempHoldBinder.push_back(binder);
         }
     }
 
