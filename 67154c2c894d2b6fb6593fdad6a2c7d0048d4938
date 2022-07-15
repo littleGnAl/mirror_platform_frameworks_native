@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceae1247_04c56e02",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-15T20:40:10Z",
+      "side": 1,
+      "message": "Is the suggestion to LOG_ALWAYS_FATAL and return in the isRpcBinder() case? I\u0027m not sure how to leave out the else in that case, we don\u0027t want to check kEnableKernelIpc if isRpcBinder.",
+      "parentUuid": "653e8b3d_4e552c33",
+      "range": {
+        "startLine": 349,
+        "startChar": 6,
+        "endLine": 349,
+        "endChar": 10
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1938a33b_ad3c6f50",
         "filename": "libs/binder/BpBinder.cpp",
         "patchSetId": 4
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8041a05_30e21092",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-15T20:40:10Z",
+      "side": 1,
+      "message": "We need the constexpr here to link, so unfortunately we can\u0027t do that. We could replace these with #ifdefs to make the requirement more obvious, but it won\u0027t really make it cleaner.",
+      "parentUuid": "1938a33b_ad3c6f50",
+      "range": {
+        "startLine": 372,
+        "startChar": 34,
+        "endLine": 373,
+        "endChar": 34
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed20cffa_e7ebd28d",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-15T17:11:25Z",
       "side": 1,
       "message": "prefer to use getMaxIncomingThreads (it\u0027ll be the same exact size as incoming connections now, though in the future, we may initialize more - the number of threads guaranteed to exist VS the number of threads that happen to exist shouldn\u0027t matter for this check now)",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 1
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d7c48e2_37f7b983",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-15T20:40:10Z",
+      "side": 1,
+      "message": "Oops I must have another problem when I first tried it! I switched it back to getMaxIncomingThreads() and it works fine.",
+      "parentUuid": "ed20cffa_e7ebd28d",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86004be5_82d41d63",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-15T20:40:10Z",
+      "side": 1,
+      "message": "So RpcSession::state() knows about all of the binders in the process, not just the ones that go through that session?\nIn that case we will only want to sendObituaries for binders associated with this specific session. Added that to the filtering.",
+      "parentUuid": "9954c661_facb25db",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 88
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d09ccc6_44793b74",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 4
@@ -106,6 +202,30 @@
       "writtenOn": "2022-07-15T17:11:25Z",
       "side": 1,
       "message": "nit: avoid \u0027s\u0027 prefix which is commonly used for static variables (e.g. s/s/strong/)",
+      "range": {
+        "startLine": 232,
+        "startChar": 29,
+        "endLine": 232,
+        "endChar": 30
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66297b97_6da0a50f",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-15T20:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d09ccc6_44793b74",
       "range": {
         "startLine": 232,
         "startChar": 29,
@@ -129,6 +249,30 @@
       "writtenOn": "2022-07-15T19:57:22Z",
       "side": 1,
       "message": "(possibly overkill optimization suggestion)\n\ni\u0027m not very familiar with the `sp` library so i might be wrong, but i\u0027d guess it is doing something like this\n\n1. `promote` does some bookkeeping, like incrementing an atomic counter, to create the `sp` from a `wp` and returns a new `sp` by value\n2. `const auto\u0026 sBinder` gets a const ref to the `sp` temp value (which is ok because of c++ \"reference lifetime extension\")\n3. `sBinders.push_back(sBinder)` makes a copy of `sBinder` (because it is const), which results in more bookkeeping\n\ncould be slightly more efficient as\n\n```\n        if (auto sBinder \u003d binderNode.binder.promote()) {\n            sBinders.push_back(std::move(sBinder));\n```",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 40
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2fb5169_9d7799ef",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-15T20:40:10Z",
+      "side": 1,
+      "message": "That sounds right to me! Done.",
+      "parentUuid": "74cb9a9e_730c46fa",
       "range": {
         "startLine": 234,
         "startChar": 0,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb12608a_e8ab08ff",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-15T20:40:10Z",
+      "side": 1,
+      "message": "We can check this before this is pushed onto the vector, since we don\u0027t need to hold onto the local binders, and then remove this check here. Right?\n\nAdded a comment for the strong pointer vs raw pointer.\n\nFor sentRef: That means that this binder has been sent out to another process. Like we get a binder from the other service and send it back over? I think we still want to get the callback for the death in that case.",
+      "parentUuid": "95bd92ce_94a341ab",
+      "range": {
+        "startLine": 241,
+        "startChar": 12,
+        "endLine": 241,
+        "endChar": 55
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "562d611c_e8316bb1",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 4
@@ -175,6 +343,24 @@
       "writtenOn": "2022-07-15T19:57:22Z",
       "side": 1,
       "message": "i think this is equiv to `GTEST_FAIL() \u003c\u003c \"...\"`",
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fda6426_29516a58",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-15T20:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "562d611c_e8316bb1",
       "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
