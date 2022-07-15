@@ -190,6 +190,30 @@
       },
       "revId": "f6d42abeece6ab426d1a0a9bcad27a8f67effcc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13690ce6_a746fa63",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-07-15T20:37:57Z",
+      "side": 1,
+      "message": "Ah, well there I can help. It\u0027s about where the library that provides the API comes from. If it\u0027s on the system image it\u0027s systemapi. If it\u0027s provided by an APEX, it\u0027s apex 😊 See https://cs.android.com/android/platform/superproject/+/master:build/soong/docs/map_files.md",
+      "parentUuid": "8018ec2e_d9f91977",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 48
+      },
+      "revId": "f6d42abeece6ab426d1a0a9bcad27a8f67effcc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
