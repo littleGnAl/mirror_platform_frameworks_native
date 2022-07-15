@@ -16,6 +16,23 @@
       "message": "Hey Ankita \u0026 Biddu,\n\nI have added a fuzzer for cputimeinstate.cpp.\nThe coverage is 59% https://screenshot.googleplex.com/8JexjATLfjoNx6a\nIt is low because the APIs which are not good candidates for fuzzing haven\u0027t been called.\n\nCould you please review it?\n\nRegards,\nShruti",
       "revId": "6fc594041f888077b9f945ec9f04cb59ecdd9209",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8d7333_ffbdc596",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2022-07-15T21:13:46Z",
+      "side": 1,
+      "message": "Not sure what determines which functions are included in fuzzing, but I would note that a couple of the ones currently included have constraints on when they should be called that might be relevant:\n- startTrackingProcessCpuTimes is meant to be called from system server and nowhere else. Calling it from another process will attach a second instance of the bpf programs causing them to run twice for each context switch, cpu frequency transition etc. which can break assumptions made elsewhere in the code\n- clearUidTimes is meant only to be called for the UIDs of uninstalled apps, when called on UIDs that are still running it can race with the bpf accounting code and potentially cause data inconsistencies",
+      "revId": "6fc594041f888077b9f945ec9f04cb59ecdd9209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
