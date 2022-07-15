@@ -428,6 +428,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85656410_b2898f94",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-15T19:07:25Z",
+      "side": 1,
+      "message": "But, again, (A)Parcel can be used with arbitrary IPC backends with arbitrary limits thanks to the existence of marshall/unmarshall. This limit is really specific to Binder semantics. So what\u0027s the issue with an `size_t AIBinder_getTransactionLimit()` ?\n\nA limit on Parcel would be like an rlimit on RAM - it should default to max, with setters to lower it, and lowering it should do something :)",
+      "parentUuid": "8937ea82_6ff2b08d",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
