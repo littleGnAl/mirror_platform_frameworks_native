@@ -118,6 +118,30 @@
       },
       "revId": "c93cc66e83e28ce64ff58f931885c24d0092c94a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a713ed_b6eb2527",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T23:51:03Z",
+      "side": 1,
+      "message": "It was supposed to be for the OBJECT_LIFETIME_WEAK case. Though because onIncStrongAttempted can return false, I probably should have \u0027std::vector\u003cwp\u003cIBinder\u003e\u003e tempWeakHolds\u0027 as well and if it doesn\u0027t promote, std::move the weak pointer.",
+      "parentUuid": "154a12d9_a072cdc3",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 37
+      },
+      "revId": "c93cc66e83e28ce64ff58f931885c24d0092c94a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
