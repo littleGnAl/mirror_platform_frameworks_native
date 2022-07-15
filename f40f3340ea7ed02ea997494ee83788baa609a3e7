@@ -452,6 +452,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe01cbf_8099ea96",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T19:26:23Z",
+      "side": 1,
+      "message": "John - please unblock, otherwise I suggest Elie abandon this issue. This is a simple issue, and it is not worth this amount of discussion. It\u0027s a duplicated value from a security fix, and the goal is to clean it up in a future-proof way so that we don\u0027t have all these compiled applications copying the value. If we need to live with that until there is a problem, it\u0027s not a great design, but I\u0027m tired of arguing with you here.\n\n\u003e A)Parcel can be used with arbitrary IPC backends with arbitrary limits thanks to the existence of marshall/unmarshall\n\nThose users don\u0027t need to use this limit or the \u0027resizeOutArray\u0027 API. This is another reason to go back to PS1, because that API is specific to the context of doing a transaction, and it wouldn\u0027t make sense to mix in with marshall.\n\n\u003e This limit is really specific to Binder semantics.\n\nSo is AParcel_writeStrongBinder. It doesn\u0027t matter. This is binder Parcel.\n\n\u003e So what\u0027s the issue with an `size_t AIBinder_getTransactionLimit()`?\n\nif static - because this isn\u0027t a static limit\n\nif not-static - because it wouldn\u0027t solve the bug without exposing/tracking more information (we would need to factor out a TransactionLimitContext - we really don\u0027t want to expose more here)\n\n\u003e A limit on Parcel would be like an rlimit on RAM - it should default to max, with setters to lower it, and lowering it should do something :)\n\nI thought you might mention rlimit. :) My example was to show that the retrieval of a value does not imply the need to set it only. rlimit is inherited when forking so that it doesn\u0027t affect total memory usage. It\u0027s close to what you are asking, but it\u0027s fundamentally different than the total machine limit. Don\u0027t worry, I get what you\u0027re asking with the setter. It could make sense to have a limit for Parcel sizes that is configurable. However, that\u0027s not what this bug is, and generally we don\u0027t want people messing with this.",
+      "parentUuid": "85656410_b2898f94",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
