@@ -94,6 +94,30 @@
       },
       "revId": "c93cc66e83e28ce64ff58f931885c24d0092c94a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "154a12d9_a072cdc3",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-15T23:23:47Z",
+      "side": 1,
+      "message": "So, you are saying that might not have a strong pointer for all the binders and that makes sense to me, but what I don\u0027t get is, when we only have a weak pointer for a particular binder, why are we bothering to attempt promoting it?",
+      "parentUuid": "06e1edcd_0dc66dea",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 37
+      },
+      "revId": "c93cc66e83e28ce64ff58f931885c24d0092c94a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
