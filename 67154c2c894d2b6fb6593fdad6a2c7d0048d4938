@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd70b63_2c77fab2",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-15T21:08:36Z",
+      "side": 1,
+      "message": "Sorry, I misunderstood the code, disregard",
+      "parentUuid": "ceae1247_04c56e02",
+      "range": {
+        "startLine": 349,
+        "startChar": 6,
+        "endLine": 349,
+        "endChar": 10
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1938a33b_ad3c6f50",
