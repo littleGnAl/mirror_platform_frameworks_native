@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0924a07b_6aad70f1",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-15T21:27:54Z",
+      "side": 1,
+      "message": "IIUC, we want to clear `mNodeForAddress`, which requires holding the lock, but it isn\u0027t ok to run the dtor for the `sp\u003cIBinder\u003e`s inside it while holding the lock.\n\n1. Is it necessary to promote the `wp\u003cIBinder\u003e`? Or, could we just check if we have an `sp\u003cIBinder\u003e` and move that over to `tempHoldBinder`? (maybe the extra validation is valuable, just curious if it is necessary)\n\n```\n    std::vector\u003csp\u003cIBinder\u003e\u003e tempHoldBinder;\n    mTerminated \u003d true;\n    for (auto\u0026 [address, node] : mNodeForAddress) {\n        if (node.sentRef) {\n            tempHoldBinder.push_back(std::move(node.sentRef));\n        }\n    }\n    mNodeForAddress.clear();\n```\n\n2. There are also `sp\u003cIBinder\u003e` in `asyncTodo`. Is that guaranteed to be empty at this point?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 37
+      },
+      "revId": "c93cc66e83e28ce64ff58f931885c24d0092c94a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
