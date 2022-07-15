@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbdf1b41_2d43518d",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2713,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T21:06:29Z",
+      "side": 1,
+      "message": "nit: is this needed? seems like it could introduce a bug where we think the data is owned if code somehow gets executed after this (though I agree it shouldn\u0027t because \u0027initState\u0027 should clear the rest of the state - but it will also clear mOwner)",
+      "revId": "4b5adfd55a39b67d4762a62d1cb32b146932e7fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
