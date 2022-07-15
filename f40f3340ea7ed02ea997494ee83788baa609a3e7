@@ -404,6 +404,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8937ea82_6ff2b08d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T17:50:34Z",
+      "side": 1,
+      "message": "Take for instance the memory available on a machine. You can get the amount of RAM available, and it is context specific, but you can\u0027t set it. You can construct a new virtual machine that has a specific amount of memory, but this is somewhat separate (and unrelated to getting the memory in a given context).\n\nIn libbinder_ndk, the context (ABinderProcess - actually ProcessState) is setup at process start and is global. The alternative context, RpcSession/RpcState, is not exposed currently, though AIBinder/AParcel may be backed with this.",
+      "parentUuid": "56b9db48_71bca0cd",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
