@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61344b95_54f94e33",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2606,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T00:49:43Z",
+      "side": 1,
+      "message": "nit: what if we check this before modifying \u0027this\u0027?",
+      "range": {
+        "startLine": 2603,
+        "startChar": 3,
+        "endLine": 2606,
+        "endChar": 5
+      },
+      "revId": "bca9f93c273f475995ce4ac0c43e837c0ffb16bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92702746_68005644",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2610,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T00:49:43Z",
+      "side": 1,
+      "message": "can this underflow?",
+      "range": {
+        "startLine": 2610,
+        "startChar": 52,
+        "endLine": 2610,
+        "endChar": 91
+      },
+      "revId": "bca9f93c273f475995ce4ac0c43e837c0ffb16bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
