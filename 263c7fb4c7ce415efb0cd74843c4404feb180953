@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5505434a_711fce07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2022-07-15T20:51:08Z",
+      "side": 1,
+      "message": "Hi Gavin and Tim, can you take a look at this change? It removes an expensive section—from what I gathered on b/ and codesearch, it seems to be unused.",
+      "revId": "263c7fb4c7ce415efb0cd74843c4404feb180953",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
