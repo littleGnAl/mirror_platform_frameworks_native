@@ -22,6 +22,30 @@
       },
       "revId": "80642cc769b430702c5c0b1c2d2fb7fee486d290",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff42e2b_31097100",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-15T16:30:59Z",
+      "side": 1,
+      "message": "ah, depends on the perspective. i was thinking of the parcel size field being too large compared to the command body, but i see what you are thinking\n\ndid s/too large/invalid/",
+      "parentUuid": "df852e8b_78ef095d",
+      "range": {
+        "startLine": 7,
+        "startChar": 51,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "80642cc769b430702c5c0b1c2d2fb7fee486d290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
