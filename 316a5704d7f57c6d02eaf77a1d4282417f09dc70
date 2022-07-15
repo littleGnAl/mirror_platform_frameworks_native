@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d385ca6a_0309afc4",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-15T23:35:56Z",
+      "side": 1,
+      "message": "I think you also need to disable this test for `!kEnableThreads` (see `bothSingleThreaded` in the Callbacks test, that one has the same problem).\n\n`singleThreaded` here only returns `true` if the service executable is single-threaded, for the test binary we have `kEnableThreads` (or just move this test from the `BinderRpc` suite to `BinderRpcThreads`).",
+      "revId": "316a5704d7f57c6d02eaf77a1d4282417f09dc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9cf7150_3ac8086b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-15T23:35:56Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "316a5704d7f57c6d02eaf77a1d4282417f09dc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
