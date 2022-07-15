@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1938a33b_ad3c6f50",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T17:11:25Z",
+      "side": 1,
+      "message": "nit: \u0026\u0026 (and also below)",
+      "range": {
+        "startLine": 372,
+        "startChar": 34,
+        "endLine": 373,
+        "endChar": 34
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed20cffa_e7ebd28d",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T17:11:25Z",
+      "side": 1,
+      "message": "prefer to use getMaxIncomingThreads (it\u0027ll be the same exact size as incoming connections now, though in the future, we may initialize more - the number of threads guaranteed to exist VS the number of threads that happen to exist shouldn\u0027t matter for this check now)",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 1
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9954c661_facb25db",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T17:11:25Z",
+      "side": 1,
+      "message": "sendObituaries is currently coupled with this. You may want to add an assert that this condition also holds there. If we ever support forwarding binders in-place and we forward a non-RPC binder, then it would put that binder in a bad state (or you could only sendObituaries for binders associated with the specific section so that the filtering won\u0027t affect that behavior)",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 88
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d09ccc6_44793b74",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T17:11:25Z",
+      "side": 1,
+      "message": "nit: avoid \u0027s\u0027 prefix which is commonly used for static variables (e.g. s/s/strong/)",
+      "range": {
+        "startLine": 232,
+        "startChar": 29,
+        "endLine": 232,
+        "endChar": 30
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95bd92ce_94a341ab",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T17:11:25Z",
+      "side": 1,
+      "message": "We should comment why the filtering here can\u0027t happen before this is pushed onto the array.\n\nsuper nit: adds complexity but on L234 if node.sentRef !\u003d nullptr, we can skip adding that to sBinders. This usually won\u0027t matter, but if another thread drops the last ref to this binder while this thread is executing L239, and there is an error in that destructor, the stacktrace will show \u0027sendObituaries\u0027 is deleting that object rather than the object on the other thread. Essentially, we should only take (and remove) reference counts to the objects we need to. We could be even more picky inside of the binder node object and store derived information about whether the binder is relevant for this case when we create the object (so that we can move this filter to L234), but that is another level of complexity and a comment here should be fine for now. At least, it shouldn\u0027t happen in the same CL",
+      "range": {
+        "startLine": 241,
+        "startChar": 12,
+        "endLine": 241,
+        "endChar": 55
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
