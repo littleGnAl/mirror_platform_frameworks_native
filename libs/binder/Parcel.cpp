@@ -2602,8 +2602,16 @@ status_t Parcel::rpcSetDataReference(
 
     if (objectTableSize != ancillaryFds.size()) {
         ALOGE("objectTableSize=%zu ancillaryFds.size=%zu", objectTableSize, ancillaryFds.size());
-        freeData(); // don't leak mData
         return BAD_VALUE;
+    }
+    for (size_t i = 0; i < objectTableSize; i++) {
+        uint32_t minObjectEnd;
+        if (__builtin_add_overflow(objectTable[i], sizeof(RpcFields::ObjectType), &minObjectEnd) ||
+            minObjectEnd >= dataSize) {
+            ALOGE("received out of range object position: %" PRIu32 " (parcel size is %zu)",
+                  objectTable[i], dataSize);
+            return BAD_VALUE;
+        }
     }
 
     rpcFields->mObjectPositions.reserve(objectTableSize);
