@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daed8a40_e4064102",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2606,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-15T17:28:44Z",
+      "side": 1,
+      "message": "i like that idea. i gave it try but it is awkward because `release_func` wants a `Parcel*`, so i\u0027m leaving it as is for now\n\ntechnically the `Parcel*` arg is always ignored for rpc parcels, but i don\u0027t want to set a trap for someone else. maybe can refactor it a bit to clarify things",
+      "parentUuid": "61344b95_54f94e33",
+      "range": {
+        "startLine": 2603,
+        "startChar": 3,
+        "endLine": 2606,
+        "endChar": 5
+      },
+      "revId": "bca9f93c273f475995ce4ac0c43e837c0ffb16bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92702746_68005644",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-15T00:49:43Z",
       "side": 1,
       "message": "can this underflow?",
+      "range": {
+        "startLine": 2610,
+        "startChar": 52,
+        "endLine": 2610,
+        "endChar": 91
+      },
+      "revId": "bca9f93c273f475995ce4ac0c43e837c0ffb16bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48a2fe9_17f61e86",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2610,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-15T17:28:44Z",
+      "side": 1,
+      "message": "yes. i need to gain the habit of thinking about this. added a check",
+      "parentUuid": "92702746_68005644",
       "range": {
         "startLine": 2610,
         "startChar": 52,
