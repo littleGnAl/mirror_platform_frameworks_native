@@ -142,6 +142,30 @@
       },
       "revId": "f6d42abeece6ab426d1a0a9bcad27a8f67effcc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0535353c_ce571a1a",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T18:20:41Z",
+      "side": 1,
+      "message": "Oh but Dan, I don\u0027t understand! This bug is explicitly for exposing these APIs to an APEX module. How can I know if it is systemapi or not? We can get this cleaned up. 😊",
+      "parentUuid": "75ba43af_3a3cab0c",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 48
+      },
+      "revId": "f6d42abeece6ab426d1a0a9bcad27a8f67effcc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
