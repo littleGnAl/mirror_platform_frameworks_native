@@ -46,6 +46,30 @@
       },
       "revId": "c93cc66e83e28ce64ff58f931885c24d0092c94a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f24200_fd49fb7f",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-15T21:29:55Z",
+      "side": 1,
+      "message": "(also, I mean this as more of a follow up discussion, the fix LGTM)",
+      "parentUuid": "8dbfa30c_e68fa4c0",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 37
+      },
+      "revId": "c93cc66e83e28ce64ff58f931885c24d0092c94a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
