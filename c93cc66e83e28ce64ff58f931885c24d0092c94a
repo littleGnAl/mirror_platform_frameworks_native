@@ -22,6 +22,30 @@
       },
       "revId": "c93cc66e83e28ce64ff58f931885c24d0092c94a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dbfa30c_e68fa4c0",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-15T21:29:12Z",
+      "side": 1,
+      "message": "Ah, I guess (2) doesn\u0027t matter because you are promoting all the weak pointers. So, I guess if (1) is possible, then some extra code for `asyncTodo` is needed.",
+      "parentUuid": "0924a07b_6aad70f1",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 37
+      },
+      "revId": "c93cc66e83e28ce64ff58f931885c24d0092c94a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
