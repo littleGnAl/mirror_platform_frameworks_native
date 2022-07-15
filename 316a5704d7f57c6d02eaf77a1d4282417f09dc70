@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "935bf46d_035cc11f",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-15T23:45:38Z",
+      "side": 1,
+      "message": "The tests pass right now without checking kEnableRpcThreads. I only see the problem with the singleThreaded() cases.\nShould I add that restriction because the behavior is going to change, or it shouldn\u0027t be working right now?",
+      "parentUuid": "260474f9_5464ece8",
+      "revId": "316a5704d7f57c6d02eaf77a1d4282417f09dc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9cf7150_3ac8086b",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 6
