@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "653e8b3d_4e552c33",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-15T19:57:22Z",
+      "side": 1,
+      "message": "nit: leave out the `else` if the first branch returns or aborts",
+      "range": {
+        "startLine": 349,
+        "startChar": 6,
+        "endLine": 349,
+        "endChar": 10
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1938a33b_ad3c6f50",
@@ -95,6 +118,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74cb9a9e_730c46fa",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-15T19:57:22Z",
+      "side": 1,
+      "message": "(possibly overkill optimization suggestion)\n\ni\u0027m not very familiar with the `sp` library so i might be wrong, but i\u0027d guess it is doing something like this\n\n1. `promote` does some bookkeeping, like incrementing an atomic counter, to create the `sp` from a `wp` and returns a new `sp` by value\n2. `const auto\u0026 sBinder` gets a const ref to the `sp` temp value (which is ok because of c++ \"reference lifetime extension\")\n3. `sBinders.push_back(sBinder)` makes a copy of `sBinder` (because it is const), which results in more bookkeeping\n\ncould be slightly more efficient as\n\n```\n        if (auto sBinder \u003d binderNode.binder.promote()) {\n            sBinders.push_back(std::move(sBinder));\n```",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 40
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95bd92ce_94a341ab",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 4
@@ -112,6 +158,23 @@
         "endLine": 241,
         "endChar": 55
       },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "562d611c_e8316bb1",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-15T19:57:22Z",
+      "side": 1,
+      "message": "i think this is equiv to `GTEST_FAIL() \u003c\u003c \"...\"`",
       "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
