@@ -70,6 +70,30 @@
       },
       "revId": "c93cc66e83e28ce64ff58f931885c24d0092c94a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e1edcd_0dc66dea",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-15T22:42:24Z",
+      "side": 1,
+      "message": "If you receive a binder (like a callback), sentRef will be nullptr, but you\u0027ll have a BpBinder for it, held by the current thread. It won\u0027t be held by the infrastructure here (so that when you drop the BpBinder on your thread, it can send the decref across the wire - this happens from onLastStrongRef in BpBinder)",
+      "parentUuid": "f1f24200_fd49fb7f",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 37
+      },
+      "revId": "c93cc66e83e28ce64ff58f931885c24d0092c94a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
