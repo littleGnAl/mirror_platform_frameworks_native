@@ -56,6 +56,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1856c9f2_8b0a870f",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-16T00:10:02Z",
+      "side": 1,
+      "message": "Interesting. I wonder if the death notification never gets delivered to a single-threaded `binderRpcTest`.\n\n\u003e Should I add that restriction because the behavior is going to change, or it shouldn\u0027t be working right now?\n\nI think it\u0027s the latter, I\u0027m not aware of any more planned changes to RpcThreads.",
+      "parentUuid": "935bf46d_035cc11f",
+      "revId": "316a5704d7f57c6d02eaf77a1d4282417f09dc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d9fad0_38e8c103",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-16T00:10:02Z",
+      "side": 1,
+      "message": "Should this have an `EXPECT_TRUE(dr-\u003edead)`? In single-threaded mode, `wait_for` is a no-op so this test will pass if the death notification is never delivered.\n\nAlternatively, you could pass a predicate to `wait_for` that checks `dr-\u003edead`.",
+      "revId": "316a5704d7f57c6d02eaf77a1d4282417f09dc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9cf7150_3ac8086b",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 6
