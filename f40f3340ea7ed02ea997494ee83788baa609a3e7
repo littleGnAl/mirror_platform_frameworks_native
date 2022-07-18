@@ -476,6 +476,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774d82aa_a8d96c39",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-07-18T14:31:16Z",
+      "side": 1,
+      "message": "To update this, I ping\u0027d some other NDK API reviewers for a second opinion, but it looks to be vacation season. So there\u0027s going to be a bit of a delay.",
+      "parentUuid": "fbe01cbf_8099ea96",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
