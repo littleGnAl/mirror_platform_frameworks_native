@@ -679,6 +679,10 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
     bool skipViewportUpdate = false;
     if (viewportChanged) {
         bool viewportOrientationChanged = mViewport.orientation != newViewport->orientation;
+        if (mPointerController != nullptr && mDeviceMode == DeviceMode::DIRECT &&
+            mConfig.showTouches && mViewport.displayId != newViewport->displayId) {
+            mPointerController->clearSpot(mViewport.displayId);
+        }
         mViewport = *newViewport;
 
         if (mDeviceMode == DeviceMode::DIRECT || mDeviceMode == DeviceMode::POINTER) {
