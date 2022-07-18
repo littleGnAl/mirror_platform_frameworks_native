@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78e076bd_fe348dc3",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-18T16:51:45Z",
+      "side": 1,
+      "message": "I was not thinking things through here...\nbinderRpcTestsSingleThreaded is not run with binderRpcTest.\nRunning binderRpcTestsSingleThreaded make a lot more sense and does hang/fail without the `!kEnableRpcThreads` check.\nSorry for the extra noise/confusion!",
+      "parentUuid": "1856c9f2_8b0a870f",
+      "revId": "316a5704d7f57c6d02eaf77a1d4282417f09dc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63d9fad0_38e8c103",
@@ -85,6 +103,24 @@
       "writtenOn": "2022-07-16T00:10:02Z",
       "side": 1,
       "message": "Should this have an `EXPECT_TRUE(dr-\u003edead)`? In single-threaded mode, `wait_for` is a no-op so this test will pass if the death notification is never delivered.\n\nAlternatively, you could pass a predicate to `wait_for` that checks `dr-\u003edead`.",
+      "revId": "316a5704d7f57c6d02eaf77a1d4282417f09dc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bacd08b_e0a36988",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-18T16:51:45Z",
+      "side": 1,
+      "message": "Added the EXPECT_TRUE to be safe.",
+      "parentUuid": "63d9fad0_38e8c103",
       "revId": "316a5704d7f57c6d02eaf77a1d4282417f09dc70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
