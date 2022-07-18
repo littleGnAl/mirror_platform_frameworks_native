@@ -33,6 +33,24 @@
       "message": "Not sure what determines which functions are included in fuzzing, but I would note that a couple of the ones currently included have constraints on when they should be called that might be relevant:\n- startTrackingProcessCpuTimes is meant to be called from system server and nowhere else. Calling it from another process will attach a second instance of the bpf programs causing them to run twice for each context switch, cpu frequency transition etc. which can break assumptions made elsewhere in the code\n- clearUidTimes is meant only to be called for the UIDs of uninstalled apps, when called on UIDs that are still running it can race with the bpf accounting code and potentially cause data inconsistencies",
       "revId": "6fc594041f888077b9f945ec9f04cb59ecdd9209",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2bb9396_0f1d5dc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1946226
+      },
+      "writtenOn": "2022-07-18T16:15:29Z",
+      "side": 1,
+      "message": "Fuzzers can be written for any function. Functions that behave differently when different parameters are passed to it are ideal candidates for fuzzing. We generally avoid getter/setter functions as they their behaviour will not change with different inputs.\n\nWhile fuzzing, libfuzzer calls the function with different inputs and checks if vulnerabilities are identified or not. It is essentially a search algorithm that looks for a set of inputs that might expose a vulnerability. \n\nstartTrackingProcessCpuTimes and clearUidTimes will be called in isolation and will not affect other processes. It will be like running these functions over and over again to see if any vulnerabilities exist(like is the function trying to access a memory location it shouldn\u0027t). Fuzzers are not run by system server so I do not think it will break anything in the OS. I will try to get more info about this and get back to you tomorrow.",
+      "parentUuid": "4d8d7333_ffbdc596",
+      "revId": "6fc594041f888077b9f945ec9f04cb59ecdd9209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
