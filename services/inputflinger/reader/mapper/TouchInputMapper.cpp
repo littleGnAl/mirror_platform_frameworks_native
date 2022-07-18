@@ -1672,6 +1672,7 @@ void TouchInputMapper::cookAndDispatch(nsecs_t when, nsecs_t readTime) {
 
         if (mCurrentCookedState.cookedPointerData.pointerCount == 0) {
             mCurrentMotionAborted = false;
+            createTouchSpotDisplayId = -1;
         }
     }
 
@@ -1701,13 +1702,17 @@ void TouchInputMapper::updateTouchSpots() {
         return;
     }
 
+    if (createTouchSpotDisplayId == -1) {
+        createTouchSpotDisplayId = mViewport.displayId;
+    }
+
     mPointerController->setPresentation(PointerControllerInterface::Presentation::SPOT);
     mPointerController->fade(PointerControllerInterface::Transition::GRADUAL);
 
     mPointerController->setButtonState(mCurrentRawState.buttonState);
     setTouchSpots(mCurrentCookedState.cookedPointerData.pointerCoords,
                   mCurrentCookedState.cookedPointerData.idToIndex,
-                  mCurrentCookedState.cookedPointerData.touchingIdBits, mViewport.displayId);
+                  mCurrentCookedState.cookedPointerData.touchingIdBits, createTouchSpotDisplayId);
 }
 
 bool TouchInputMapper::isTouchScreen() {

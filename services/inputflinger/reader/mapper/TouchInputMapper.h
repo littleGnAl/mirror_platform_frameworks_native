@@ -417,6 +417,7 @@ private:
     // The current viewport.
     // The components of the viewport are specified in the display's rotated orientation.
     DisplayViewport mViewport;
+    int32_t createTouchSpotDisplayId = -1;
 
     // The surface orientation, width and height set by configureSurface().
     // The width and height are derived from the viewport but are specified
