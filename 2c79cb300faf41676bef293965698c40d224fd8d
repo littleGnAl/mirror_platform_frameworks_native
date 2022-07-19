@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c72e2e8_b444b86f",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-19T22:34:43Z",
+      "side": 1,
+      "message": "is it safe to take mNodeMutex here? It should be released before the destructors are called there (because they are client code which could call back into any RpcSession APIs - that is, released in the middle of sendObituaries). mMutex should be more general. I think this is the okay direction. (RpcServer mLock is always taken before mNodeMutex - though I can\u0027t remember if any of these cases still exist)\n\nOne easy solution might be to unlock mMutex before calling this (calling this after _l.unlock()). Though I\u0027m not sure what issue this would cause (someone calling unlinkToDeath in another thread wouldn\u0027t get the death recipient. I think that\u0027s okay - their code could have executed right before this function was called anyway.",
+      "range": {
+        "startLine": 224,
+        "startChar": 23,
+        "endLine": 224,
+        "endChar": 28
+      },
+      "revId": "2c79cb300faf41676bef293965698c40d224fd8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73080957_5b42e69b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-19T22:34:43Z",
+      "side": 1,
+      "message": "nit: check error code",
+      "range": {
+        "startLine": 1064,
+        "startChar": 0,
+        "endLine": 1064,
+        "endChar": 50
+      },
+      "revId": "2c79cb300faf41676bef293965698c40d224fd8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb8ba5f0_55774c2c",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-19T22:34:43Z",
+      "side": 1,
+      "message": "nit: this call only would also trigger death recipients. I think this is good behavior (like, do not remove that - it\u0027s good - if clients want to disable it, we should be very curious why they want to). Only noting, not sure if you have any thoughts on it. We could test that behavior as well.",
+      "range": {
+        "startLine": 1077,
+        "startChar": 50,
+        "endLine": 1077,
+        "endChar": 65
+      },
+      "revId": "2c79cb300faf41676bef293965698c40d224fd8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7daf7e1_bb291cdd",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-19T22:34:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c8041a05_30e21092",
+      "range": {
+        "startLine": 372,
+        "startChar": 34,
+        "endLine": 373,
+        "endChar": 34
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed20cffa_e7ebd28d",
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "So RpcSession::state() knows about all of the binders in the process, not just the ones that go through that session?\nIn that case we will only want to sendObituaries for binders associated with this specific session. Added that to the filtering.",
       "parentUuid": "9954c661_facb25db",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 88
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8927cce9_a77e886e",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-19T22:34:43Z",
+      "side": 1,
+      "message": "\u003e So RpcSession::state() knows about all of the binders in the process, not just the ones that go through that session?\n\nNo, it only knows about the binders in that session.\n\n\u003e In that case we will only want to sendObituaries for binders associated with this specific session. Added that to the filtering.\n\nThe filtering is great. They could also be asserts (assert rpcSession \u003d\u003d session) and they should never get hit now. Though, either way is good.",
+      "parentUuid": "86004be5_82d41d63",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -344,6 +392,30 @@
       "side": 1,
       "message": "We can check this before this is pushed onto the vector, since we don\u0027t need to hold onto the local binders, and then remove this check here. Right?\n\nAdded a comment for the strong pointer vs raw pointer.\n\nFor sentRef: That means that this binder has been sent out to another process. Like we get a binder from the other service and send it back over? I think we still want to get the callback for the death in that case.",
       "parentUuid": "95bd92ce_94a341ab",
+      "range": {
+        "startLine": 241,
+        "startChar": 12,
+        "endLine": 241,
+        "endChar": 55
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb1869b4_6336046d",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-19T22:34:43Z",
+      "side": 1,
+      "message": "Nope - we should comment here why the filtering can\u0027t happen. It can\u0027t 😊 If another thread releases the last other reference to a binder which we promote on this thread inside the loop and then it isn\u0027t included in the filter, the destructor will run on this thread. If that destructor makes a binder call (which will require mNodeMutex), it will cause a hang.\n\n\u003e For sentRef: That means that this binder has been sent out to another process. Like we get a binder from the other service and send it back over? I think we still want to get the callback for the death in that case.\n\nRight, sentRef can be for a binder that you have locally and send OR it can be for a binder that you received remotely (from the same RPC session - by policy in onBinderLeaving) and then are sending back.",
+      "parentUuid": "eb12608a_e8ab08ff",
       "range": {
         "startLine": 241,
         "startChar": 12,
