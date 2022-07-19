@@ -679,6 +679,8 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
     bool skipViewportUpdate = false;
     if (viewportChanged) {
         bool viewportOrientationChanged = mViewport.orientation != newViewport->orientation;
+        bool viewportDisplayIdChanged =
+                mViewport.displayId != -1 && mViewport.displayId != newViewport->displayId;
         mViewport = *newViewport;
 
         if (mDeviceMode == DeviceMode::DIRECT || mDeviceMode == DeviceMode::POINTER) {
@@ -791,6 +793,13 @@ void TouchInputMapper::configureSurface(nsecs_t when, bool* outResetNeeded) {
             mSurfaceLeft = 0;
             mSurfaceTop = 0;
             mSurfaceOrientation = DISPLAY_ORIENTATION_0;
+        }
+
+        if (viewportDisplayIdChanged) {
+            // If display id changed, cancel event.
+            cancelTouch(mCurrentRawState.when, mCurrentRawState.readTime);
+            mCurrentCookedState.clear();
+            updateTouchSpots();
         }
     }
 
