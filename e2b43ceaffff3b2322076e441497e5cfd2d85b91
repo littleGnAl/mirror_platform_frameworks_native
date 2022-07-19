@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab98c7b7_60b44cc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-19T15:08:05Z",
+      "side": 1,
+      "message": "While this doesn\u0027t address the case when there are multiple mouse/touchpad devices connected, I think it\u0027s ok to do for now until PointerController becomes aware of deviceIds. ",
+      "revId": "e2b43ceaffff3b2322076e441497e5cfd2d85b91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
