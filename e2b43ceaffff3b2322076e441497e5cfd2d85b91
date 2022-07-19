@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff468c7d_55630f01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-07-19T17:05:26Z",
+      "side": 1,
+      "message": "Commit messages should be wrapped at 72 characters wide.",
+      "revId": "e2b43ceaffff3b2322076e441497e5cfd2d85b91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ab98c7b7_60b44cc8",
