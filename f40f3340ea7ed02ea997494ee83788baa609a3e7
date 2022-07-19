@@ -500,6 +500,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a538c6_661a2e04",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-07-19T22:01:18Z",
+      "side": 1,
+      "message": "I\u0027m not the binder expert that jreck was hoping for, but I\u0027m the one that\u0027s here 😊\n\nI agree with jreck. I know this API as-written solves the issue you\u0027re running into, but it isn\u0027t right for the other use cases the Parcel API supports. We **cannot** break compatibility, so if we accept an API that only works for a subset of use cases now it\u0027ll be hard or impossible to fix later. The immortality of NDK APIs sets the bar very high.\n\nBetween the two options given to you:\n\n1. Non-context aware `AIBinder_getTransactionLimit`\n2. Add a setter\n\nI prefer 1 since the limit is a property of the transport. Could you rename it `AIBinder_getKernelTransactionLimit` and `AIBinder_getRpcSessionTransactionLimit` to solve the per-transport limit problem (and it sounds like you only actually need the former, so maybe just do that one)? Option 2 also seems perfectly fine to me.",
+      "parentUuid": "774d82aa_a8d96c39",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
