@@ -406,6 +406,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cc208a_b49a4d34",
+        "filename": "libs/binder/RpcTransportTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-19T00:52:25Z",
+      "side": 1,
+      "message": "The latest version of this code fixes this by buffering each message between multiple calls to `interruptableReadFully`. The code needs an extra allocation and copy, so it\u0027s not as efficient as it could be, but anything better would require some changes to the TIPC API (could be fixed later in follow-ups).",
+      "parentUuid": "4874b573_d7924d01",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "aff9e1848212fe47fb38add6134a430c88de5265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adfe0502_bf75efa4",
