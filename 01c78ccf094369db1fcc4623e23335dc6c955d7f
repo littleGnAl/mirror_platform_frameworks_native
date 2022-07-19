@@ -124,6 +124,24 @@
       "parentUuid": "e3002a41_766a6a3f",
       "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4904ce8c_9b145662",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-19T21:33:52Z",
+      "side": 1,
+      "message": "I just wanted to follow up on this one. I was looking at the feasibility of doing this with the input-port-associations.xml file. It looks like this file is read and implemented up at the java layer (frameworks/base/service/core/java/com/android/server/input/InputManagerService.java). So to add this in the input-port-associations.xml file we would need to add plumbing from the java layer through inputflinger to implement using a specific idc file for a device plugged into the usb bus. \n\nSome downsides to this approach:\n1. The device is going to be enumerated and configured already before the java side service is up. This means we will end up configuring the input device twice with this approach instead of once.\n2. The current functionality in InputManagerService keeps this as a Map of String (usb bus location) to Integer (display id) and sends it down to the native callback as a flattened string.\n3. The input-port-associations.xml file seems to be not as well maintained as you can only specify an integer port id for the display where the idc file allows you to use a unique id (stable id) for the display which is preferable. This make me think that that display mapping in the idc file is the preferred route to do this over using input-port-associations.xml.\n\nGiven these does it still make sense to pursue the approach of doing this through input-port-associations.xml rather than the implementation in this patch which just adds a new file path to match for the existing idc file matching functionality?",
+      "parentUuid": "b601e2b4_31fc6230",
+      "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
