@@ -56,6 +56,7 @@ public:
     inline Flags<InputDeviceClass> getClasses() const { return mClasses; }
     inline uint32_t getSources() const { return mSources; }
     inline bool hasEventHubDevices() const { return !mDevices.empty(); }
+    inline const InputDeviceIdentifier getInputDeviceIdentifier() const { return mIdentifier; }
 
     inline bool isExternal() { return mIsExternal; }
     inline std::optional<uint8_t> getAssociatedDisplayPort() const {
