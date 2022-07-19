@@ -524,6 +524,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b6ea28_fb652a73",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-19T22:29:19Z",
+      "side": 1,
+      "message": "Just curious about the thinking here for future reference: If the bar is very high, I don\u0027t understand why you\u0027d be open to having a setter in the api. Users of parcel can already check the size themselves if they want that feature, right? Why commit to having to support that forever? The proposed getter is exposing an implementation specific limitation, which, in the current api, a user could at best copy paste from the source and run the risk of version skew issues (which is what binder_parcel_utils.h is effectively doing). I can understand if maybe that isn\u0027t worth it, but I don\u0027t understand how it suddenly becomes OK if you throw in *more* API surface which additionally doesn\u0027t have a clear use case.\n\n(I think the discussion is already dead, but I\u0027d be a little wary of a contextless `AIBinder_getRpcSessionTransactionLimit` because then we couldn\u0027t decide to later make it dependent on the session\u0027s protocol version)",
+      "parentUuid": "36a538c6_661a2e04",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
