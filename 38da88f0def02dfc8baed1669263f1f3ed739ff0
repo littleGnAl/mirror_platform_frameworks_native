@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b23a84f_f404e470",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1946226
+      },
+      "writtenOn": "2022-07-19T11:56:31Z",
+      "side": 1,
+      "message": "Hi Arthur, Brian and Anthony,\n\nPlease review this CL.\n\nRegards,\nBiddu",
+      "revId": "38da88f0def02dfc8baed1669263f1f3ed739ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
