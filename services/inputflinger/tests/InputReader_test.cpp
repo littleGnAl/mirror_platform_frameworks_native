@@ -6251,6 +6251,38 @@ TEST_F(SingleTouchInputMapperTest, Process_WhenAbsPressureIsPresent_HoversIfItsV
             toDisplayX(150), toDisplayY(250), 0, 0, 0, 0, 0, 0, 0, 0));
 }
 
+TEST_F(SingleTouchInputMapperTest,
+       Process_WhenViewPortDisplayIdChanged_CancelAndResetShouldReceive) {
+    addConfigurationProperty("touch.deviceType", "touchScreen");
+    prepareDisplay(DISPLAY_ORIENTATION_0);
+    prepareButtons();
+    prepareAxes(POSITION);
+    prepareVirtualKeys();
+    SingleTouchInputMapper& mapper = addMapperAndConfigure<SingleTouchInputMapper>();
+    mReader->getContext()->setGlobalMetaState(AMETA_SHIFT_LEFT_ON | AMETA_SHIFT_ON);
+    NotifyMotionArgs motionArgs;
+
+    // Down.
+    int32_t x = 100;
+    int32_t y = 200;
+    processDown(mapper, x, y);
+    processSync(mapper);
+
+    // We should receive a down event
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
+    ASSERT_EQ(AMOTION_EVENT_ACTION_DOWN, motionArgs.action);
+
+    // Change display id
+    clearViewports();
+    prepareSecondaryDisplay(ViewportType::INTERNAL);
+
+    // We should receive a cancel event
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&motionArgs));
+    ASSERT_EQ(AMOTION_EVENT_ACTION_CANCEL, motionArgs.action);
+    // Then receive reset called
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyDeviceResetWasCalled());
+}
+
 // --- MultiTouchInputMapperTest ---
 
 class MultiTouchInputMapperTest : public TouchInputMapperTest {
