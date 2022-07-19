@@ -56,6 +56,30 @@
       },
       "revId": "ac54f88fd5ef8f9954bae2c66aa8a6d68ac5158f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a843f7_d1651d6b",
+        "filename": "services/inputflinger/reader/mapper/TouchInputMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-07-19T15:25:15Z",
+      "side": 1,
+      "message": "ok! thanks for the suggestion.",
+      "parentUuid": "509e70a1_d40457d4",
+      "range": {
+        "startLine": 799,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 31
+      },
+      "revId": "ac54f88fd5ef8f9954bae2c66aa8a6d68ac5158f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
