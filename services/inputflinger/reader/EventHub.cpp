@@ -1261,7 +1261,8 @@ static std::string generateDescriptor(InputDeviceIdentifier& identifier) {
     if (!identifier.uniqueId.empty()) {
         rawDescriptor += "uniqueId:";
         rawDescriptor += identifier.uniqueId;
-    } else if (identifier.nonce != 0) {
+    }
+    if (identifier.nonce != 0) {
         rawDescriptor += StringPrintf("nonce:%04x", identifier.nonce);
     }
 
@@ -1292,13 +1293,11 @@ void EventHub::assignDescriptorLocked(InputDeviceIdentifier& identifier) {
 
     identifier.nonce = 0;
     std::string rawDescriptor = generateDescriptor(identifier);
-    if (identifier.uniqueId.empty()) {
-        // If it didn't have a unique id check for conflicts and enforce
-        // uniqueness if necessary.
-        while (getDeviceByDescriptorLocked(identifier.descriptor) != nullptr) {
-            identifier.nonce++;
-            rawDescriptor = generateDescriptor(identifier);
-        }
+    // Enforce that the generated descriptor is unique.
+    while (getDeviceByDescriptorLocked(identifier.descriptor) != nullptr ||
+           getOpeningDeviceByDescriptorLocked(identifier.descriptor) != nullptr) {
+        identifier.nonce++;
+        rawDescriptor = generateDescriptor(identifier);
     }
     ALOGV("Created descriptor: raw=%s, cooked=%s", rawDescriptor.c_str(),
           identifier.descriptor.c_str());
@@ -1371,6 +1370,15 @@ std::vector<int32_t> EventHub::getVibratorIds(int32_t deviceId) {
         vibrators.push_back(FF_WEAK_MAGNITUDE_CHANNEL_IDX);
     }
     return vibrators;
+}
+
+EventHub::Device* EventHub::getOpeningDeviceByDescriptorLocked(const std::string& descriptor) const {
+    for (const auto& device : mOpeningDevices) {
+        if (descriptor == device->identifier.descriptor) {
+            return device.get();
+        }
+    }
+    return nullptr;
 }
 
 EventHub::Device* EventHub::getDeviceByDescriptorLocked(const std::string& descriptor) const {
