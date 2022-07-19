@@ -241,6 +241,12 @@ private:
 
     // find an InputDevice from an InputDevice id
     InputDevice* findInputDeviceLocked(int32_t deviceId) REQUIRES(mLock);
+
+    // InputDeviceIdentifier comparisons
+    bool isSameDevice(const InputDeviceIdentifier& identifier1,
+                      const InputDeviceIdentifier& identifier2) const;
+    bool isSubDevice(const InputDeviceIdentifier& identifier1,
+                     const InputDeviceIdentifier& identifier2) const;
 };
 
 } // namespace android

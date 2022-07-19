@@ -274,12 +274,43 @@ void InputReader::removeDeviceLocked(nsecs_t when, int32_t eventHubId) {
     device->reset(when);
 }
 
+/**
+ * Determines if the identifiers passed are for the same InputDevice. InputDevices are the
+ * same if the descriptor in the InputDeviceIdentifier are the same.
+ */
+bool InputReader::isSameDevice(const InputDeviceIdentifier& identifier1,
+                               const InputDeviceIdentifier& identifier2) const {
+    return (identifier1.descriptor == identifier2.descriptor);
+}
+
+/**
+ * Determines if the identifiers passed are a sub-devices. Sub-devices are physical devices
+ * that expose multiple input device paths such a keyboard that also has a touchpad input.
+ * These are separate devices with unique descriptors in EventHub, but InputReader should
+ * create a single InputDevice for them.
+ * Sub-devices are detected by the following criteria:
+ * 1. The vendor, product, and unique id match
+ * 2. The location matches. The location is used to distinguish a single device with multiple
+ *    inputs versus the same device plugged into multiple ports.
+ */
+
+bool InputReader::isSubDevice(const InputDeviceIdentifier& identifier1,
+                              const InputDeviceIdentifier& identifier2) const {
+    return (identifier1.vendor == identifier2.vendor &&
+            identifier1.product == identifier2.product &&
+            identifier1.uniqueId == identifier2.uniqueId &&
+            identifier1.location == identifier2.location);
+}
+
 std::shared_ptr<InputDevice> InputReader::createDeviceLocked(
         int32_t eventHubId, const InputDeviceIdentifier& identifier) {
-    auto deviceIt = std::find_if(mDevices.begin(), mDevices.end(), [identifier](auto& devicePair) {
-        return devicePair.second->getDescriptor().size() && identifier.descriptor.size() &&
-                devicePair.second->getDescriptor() == identifier.descriptor;
-    });
+    auto deviceIt =
+            std::find_if(mDevices.begin(), mDevices.end(), [this, identifier](auto& devicePair) {
+                const InputDeviceIdentifier identifier2 =
+                        devicePair.second->getInputDeviceIdentifier();
+                return (this->isSameDevice(identifier, identifier2) ||
+                        this->isSubDevice(identifier, identifier2));
+            });
 
     std::shared_ptr<InputDevice> device;
     if (deviceIt != mDevices.end()) {
