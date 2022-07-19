@@ -652,7 +652,14 @@ private:
      */
     Device* getDeviceByFdLocked(int fd) const REQUIRES(mLock);
 
+    Device* getOpeningDeviceByDescriptorLocked(const std::string& descriptor) const
+            REQUIRES(mLock);
+
     int32_t getNextControllerNumberLocked(const std::string& name) REQUIRES(mLock);
+
+    bool hasDeviceWithDescriptorLocked(const std::string& descriptor) const
+            REQUIRES(mLock);
+
     void releaseControllerNumberLocked(int32_t num) REQUIRES(mLock);
     void reportDeviceAddedForStatisticsLocked(const InputDeviceIdentifier& identifier,
                                               Flags<InputDeviceClass> classes) REQUIRES(mLock);
