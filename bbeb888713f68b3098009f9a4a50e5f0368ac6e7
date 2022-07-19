@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "714b133c_1620292f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1946226
+      },
+      "writtenOn": "2022-07-19T11:55:23Z",
+      "side": 1,
+      "message": "Hi Arthur, Brian and Anthony,\n\nI would be great if you can review this CL.",
+      "revId": "bbeb888713f68b3098009f9a4a50e5f0368ac6e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
