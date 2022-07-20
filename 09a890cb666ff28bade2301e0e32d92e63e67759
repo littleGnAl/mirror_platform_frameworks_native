@@ -1,6 +1,109 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "276f3af4_9759f23e",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 149
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T20:19:27Z",
+      "side": 1,
+      "message": "nit: this happens naturally if you let the loop run",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034fa830_da667260",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 149
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T20:19:27Z",
+      "side": 1,
+      "message": "supposing this makes sense, it should probably be non-fatal to avoid a dos attack (e.g. if the other side has a bug)\n\ni don\u0027t think it actually makes sense though. part of the reason we have the buffer is because we don\u0027t want to commit to having the iovecs match up, so it might be that one side writes a single big iovec and the other side tries to read it into multiple small iovecs. we aren\u0027t making a protocol level guarantee about how they get split into messages",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 48
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d26722c_32013b04",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 149
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T20:19:27Z",
+      "side": 1,
+      "message": "Not a blocker, we can always optimize later, but using vector for this isn\u0027t ideal. It is going to waste time zeroing out memory + when you increase the capacity, it is going to spend time memcpy\u0027ing when we know that all the existing data is going to be overwritten or ignored.",
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ceb881f_b0b51e0c",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 149
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T20:19:27Z",
+      "side": 1,
+      "message": "Ah, so it isn\u0027t a socket, but it supports the file syscalls. An idea for the future is to try performing a `readv` on the passed in `iovec`s, but append the extra internal buffer to the end. That could save buffering overhead in many cases where the send/recv iovecs match (i.e. it reads just enough to fill the destination iovecs and leaves the extra buffer empty).",
+      "range": {
+        "startLine": 142,
+        "startChar": 39,
+        "endLine": 142,
+        "endChar": 43
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c9251d8_5a93181b",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 149
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T20:19:27Z",
+      "side": 1,
+      "message": "do you need to `clear` in this case as well? in case some code above is bad and retries after the DEAD_OBJECT return",
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "194fd035_d6897536",
