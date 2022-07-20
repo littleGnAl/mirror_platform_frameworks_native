@@ -69,6 +69,24 @@
       "parentUuid": "b2bb9396_0f1d5dc2",
       "revId": "6fc594041f888077b9f945ec9f04cb59ecdd9209",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "711b381c_0a41a7a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2022-07-20T18:45:00Z",
+      "side": 1,
+      "message": "Typically we look to fuzz code that receive input from untrusted sources (such as over the network, etc), code that parse structured input. Based on feedback from Connor, we can drop fuzzing startTrackingProcessCpuTimes and clearUidTimes.",
+      "parentUuid": "9508a0b1_31bbf89a",
+      "revId": "6fc594041f888077b9f945ec9f04cb59ecdd9209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
