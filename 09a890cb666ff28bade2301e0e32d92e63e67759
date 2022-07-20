@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "194fd035_d6897536",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 149
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T18:32:33Z",
+      "side": 1,
+      "message": "maybe `socketFd`",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47cc6fcb_7875777b",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 149
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T18:32:33Z",
+      "side": 1,
+      "message": "There are a few modifications to this function which are easy to not notice when the code is moved at the same time. Maybe move or modify in a separate CL.\n\n\u003e since some implementations only process one iovec out at a time\n\nCan you handle this inside the trusty transport instead? If you get multiple iovecs, instead of handling the first one, handle the first non-empty one.\n\nI think it is preferable for the various functions to be more \"defensive\" by handling their own idiosyncrasies. Unless there is an overall performance or simplicity win, but it seems like the opposite in this case.\n\nThe existing logic to trim empty iovecs is specific to the needs of the implementation in this function.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 9
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c4ffb0_61735d5d",
+        "filename": "libs/binder/include_trusty/binder/RpcTransportTipcAndroid.h",
+        "patchSetId": 149
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T18:32:33Z",
+      "side": 1,
+      "message": "Is there going to be a separate type for the code that runs in Trusty? If so, clarify that somehow. Maybe\n\n// RpcTransportCtxFactory for creating Trusty IPC clients and servers in Android.",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
