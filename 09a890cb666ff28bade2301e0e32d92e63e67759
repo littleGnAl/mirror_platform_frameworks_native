@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e0ea3fe6_5b83c05d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 149
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T20:21:00Z",
+      "side": 1,
+      "message": "Mostly LGTM, thanks!",
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "276f3af4_9759f23e",
         "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
         "patchSetId": 149
@@ -140,6 +157,30 @@
       "writtenOn": "2022-07-20T18:32:33Z",
       "side": 1,
       "message": "There are a few modifications to this function which are easy to not notice when the code is moved at the same time. Maybe move or modify in a separate CL.\n\n\u003e since some implementations only process one iovec out at a time\n\nCan you handle this inside the trusty transport instead? If you get multiple iovecs, instead of handling the first one, handle the first non-empty one.\n\nI think it is preferable for the various functions to be more \"defensive\" by handling their own idiosyncrasies. Unless there is an overall performance or simplicity win, but it seems like the opposite in this case.\n\nThe existing logic to trim empty iovecs is specific to the needs of the implementation in this function.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 9
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71005059_34117315",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 149
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T20:21:00Z",
+      "side": 1,
+      "message": "After reading more, I wonder if this is just stale. It seems like the code handles multiple iovecs fine.",
+      "parentUuid": "47cc6fcb_7875777b",
       "range": {
         "startLine": 45,
         "startChar": 0,
