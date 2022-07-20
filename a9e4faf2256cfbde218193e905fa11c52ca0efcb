@@ -46,6 +46,30 @@
       },
       "revId": "a9e4faf2256cfbde218193e905fa11c52ca0efcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c1519a_0192c642",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T22:51:34Z",
+      "side": 1,
+      "message": "Notes from chat: Instead it would be better to improve the fuzzer code to somehow set the protocol version. It is nice to have this crash if session negotiation never happened to help prevent future bugs.",
+      "parentUuid": "a46233cd_e3aa9ec1",
+      "range": {
+        "startLine": 1131,
+        "startChar": 19,
+        "endLine": 1131,
+        "endChar": 33
+      },
+      "revId": "a9e4faf2256cfbde218193e905fa11c52ca0efcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
