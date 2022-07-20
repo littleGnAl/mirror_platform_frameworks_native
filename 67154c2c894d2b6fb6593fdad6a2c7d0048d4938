@@ -474,6 +474,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be184a90_91bf70a7",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-20T22:07:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a21a231_62f4f22f",
+      "range": {
+        "startLine": 241,
+        "startChar": 12,
+        "endLine": 241,
+        "endChar": 55
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "562d611c_e8316bb1",
