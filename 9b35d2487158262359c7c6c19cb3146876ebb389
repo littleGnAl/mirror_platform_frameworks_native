@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f847111_9d9c443d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-20T13:16:29Z",
+      "side": 1,
+      "message": "Hello I found a few issues in EventHub when using some USB touchpanels in a multi-display automotive setup where we were using the same display/touchpanel for multiple screens. The fixes for these looked fairly straight forward so I thought I would share this back upstream in case it will help others that run into the same issue. Let me know if there are any questions or clarifications needed. I tried to put some examples of the issue in the commit message to help clarify the problem I was running into. Thanks in advance for the help reviewing this.",
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
