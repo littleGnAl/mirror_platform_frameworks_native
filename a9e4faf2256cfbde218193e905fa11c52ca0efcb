@@ -70,6 +70,30 @@
       },
       "revId": "a9e4faf2256cfbde218193e905fa11c52ca0efcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a70a81_13c69d3c",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-20T22:59:56Z",
+      "side": 1,
+      "message": "(more notes in http://b/237640108#comment19)",
+      "parentUuid": "c4c1519a_0192c642",
+      "range": {
+        "startLine": 1131,
+        "startChar": 19,
+        "endLine": 1131,
+        "endChar": 33
+      },
+      "revId": "a9e4faf2256cfbde218193e905fa11c52ca0efcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
