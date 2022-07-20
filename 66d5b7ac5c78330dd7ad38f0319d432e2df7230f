@@ -22,6 +22,30 @@
       },
       "revId": "66d5b7ac5c78330dd7ad38f0319d432e2df7230f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f53a8602_3a20cfc0",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-20T23:33:03Z",
+      "side": 1,
+      "message": "Hah! I didn\u0027t notice that when fixing this issue after rebasing.\n\nI don\u0027t think size_t will ever change to be signed. \nI don\u0027t think either of these getMax calls will ever change to use something other than size_t. \nI\u0027ve been wrong about things before... 😊",
+      "parentUuid": "e6bbfb7c_00df6dd3",
+      "range": {
+        "startLine": 355,
+        "startChar": 69,
+        "endLine": 355,
+        "endChar": 73
+      },
+      "revId": "66d5b7ac5c78330dd7ad38f0319d432e2df7230f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
