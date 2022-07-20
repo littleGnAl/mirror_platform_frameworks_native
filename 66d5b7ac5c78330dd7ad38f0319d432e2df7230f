@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6bbfb7c_00df6dd3",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-20T23:17:56Z",
+      "side": 1,
+      "message": "funny juxtaposition of \u0027\u003c 1\u0027 above and \u0027\u003d\u003d 0\u0027 here. There are rants here worth summarizing, in favor of either. :) let\u0027s keep em\u0027 in search of evidence of which is better. hahaha",
+      "range": {
+        "startLine": 355,
+        "startChar": 69,
+        "endLine": 355,
+        "endChar": 73
+      },
+      "revId": "66d5b7ac5c78330dd7ad38f0319d432e2df7230f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
