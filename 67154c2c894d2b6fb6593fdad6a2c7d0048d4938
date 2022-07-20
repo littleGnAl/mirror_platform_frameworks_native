@@ -261,6 +261,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e2effa9_9395de99",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-20T22:06:59Z",
+      "side": 1,
+      "message": "Got it. Keeping the current behavior.",
+      "parentUuid": "8927cce9_a77e886e",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 88
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d09ccc6_44793b74",
@@ -416,6 +440,30 @@
       "side": 1,
       "message": "Nope - we should comment here why the filtering can\u0027t happen. It can\u0027t 😊 If another thread releases the last other reference to a binder which we promote on this thread inside the loop and then it isn\u0027t included in the filter, the destructor will run on this thread. If that destructor makes a binder call (which will require mNodeMutex), it will cause a hang.\n\n\u003e For sentRef: That means that this binder has been sent out to another process. Like we get a binder from the other service and send it back over? I think we still want to get the callback for the death in that case.\n\nRight, sentRef can be for a binder that you have locally and send OR it can be for a binder that you received remotely (from the same RPC session - by policy in onBinderLeaving) and then are sending back.",
       "parentUuid": "eb12608a_e8ab08ff",
+      "range": {
+        "startLine": 241,
+        "startChar": 12,
+        "endLine": 241,
+        "endChar": 55
+      },
+      "revId": "67154c2c894d2b6fb6593fdad6a2c7d0048d4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a21a231_62f4f22f",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-20T22:06:59Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "eb1869b4_6336046d",
       "range": {
         "startLine": 241,
         "startChar": 12,

@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f65c3c8e_1bf800b0",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-20T22:06:59Z",
+      "side": 1,
+      "message": "I moved the unlock() up. Filed a bug for RpcState/RpcSession possibly sharing a mutex. https://b.corp.google.com/issues/239736287",
+      "parentUuid": "9c72e2e8_b444b86f",
+      "range": {
+        "startLine": 224,
+        "startChar": 23,
+        "endLine": 224,
+        "endChar": 28
+      },
+      "revId": "2c79cb300faf41676bef293965698c40d224fd8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73080957_5b42e69b",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 9
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-19T22:34:43Z",
       "side": 1,
       "message": "nit: check error code",
+      "range": {
+        "startLine": 1064,
+        "startChar": 0,
+        "endLine": 1064,
+        "endChar": 50
+      },
+      "revId": "2c79cb300faf41676bef293965698c40d224fd8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23aaa0c_2f64a617",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-20T22:06:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73080957_5b42e69b",
       "range": {
         "startLine": 1064,
         "startChar": 0,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-19T22:34:43Z",
       "side": 1,
       "message": "nit: this call only would also trigger death recipients. I think this is good behavior (like, do not remove that - it\u0027s good - if clients want to disable it, we should be very curious why they want to). Only noting, not sure if you have any thoughts on it. We could test that behavior as well.",
+      "range": {
+        "startLine": 1077,
+        "startChar": 50,
+        "endLine": 1077,
+        "endChar": 65
+      },
+      "revId": "2c79cb300faf41676bef293965698c40d224fd8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5118acdf_f6762dd6",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-20T22:06:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb8ba5f0_55774c2c",
       "range": {
         "startLine": 1077,
         "startChar": 50,
