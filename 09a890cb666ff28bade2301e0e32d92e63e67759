@@ -66,6 +66,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a7f092c2_b6820573",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 149
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-21T02:03:21Z",
+      "side": 1,
+      "message": "I looked at it more like a sanity check. None of the current implementations should split one iovec across multiple Trusty messages, so if we get something like that then we have a bug somewhere.\n\nI changed it to just log an error message if this happens, but then had to also fix the rest of the loop to handle it correctly.",
+      "parentUuid": "034fa830_da667260",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 48
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9d26722c_32013b04",
         "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
         "patchSetId": 149
@@ -77,6 +101,24 @@
       "writtenOn": "2022-07-20T20:19:27Z",
       "side": 1,
       "message": "Not a blocker, we can always optimize later, but using vector for this isn\u0027t ideal. It is going to waste time zeroing out memory + when you increase the capacity, it is going to spend time memcpy\u0027ing when we know that all the existing data is going to be overwritten or ignored.",
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b954e3bf_a3165e73",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 149
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-21T02:03:21Z",
+      "side": 1,
+      "message": "Replaced it with `std::unique_ptr\u003cuint8_t[]\u003e`. I initially thought that would be more complex, but it looks like it\u0027s about the same as the `vector` implementation.",
+      "parentUuid": "9d26722c_32013b04",
       "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -104,6 +146,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c66570_f82176a8",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 149
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-21T02:03:21Z",
+      "side": 1,
+      "message": "I considered that, but the problem was I would have had to either create a new array of iovecs with the extra element, or replace the final element in place. That was a lot of extra complexity that felt like premature optimization at this point, but I 100% agree we should do it later.",
+      "parentUuid": "5ceb881f_b0b51e0c",
+      "range": {
+        "startLine": 142,
+        "startChar": 39,
+        "endLine": 142,
+        "endChar": 43
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c9251d8_5a93181b",
@@ -121,6 +187,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50a29820_82625a34",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 149
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-21T02:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c9251d8_5a93181b",
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "194fd035_d6897536",
@@ -134,6 +218,30 @@
       "writtenOn": "2022-07-20T18:32:33Z",
       "side": 1,
       "message": "maybe `socketFd`",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d17abac3_386da137",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 149
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-21T02:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "194fd035_d6897536",
       "range": {
         "startLine": 28,
         "startChar": 12,
@@ -191,6 +299,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f983b3df_a79a388e",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 149
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-21T02:03:21Z",
+      "side": 1,
+      "message": "Right, the comment was stale.",
+      "parentUuid": "71005059_34117315",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 9
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1c4ffb0_61735d5d",
@@ -204,6 +336,30 @@
       "writtenOn": "2022-07-20T18:32:33Z",
       "side": 1,
       "message": "Is there going to be a separate type for the code that runs in Trusty? If so, clarify that somehow. Maybe\n\n// RpcTransportCtxFactory for creating Trusty IPC clients and servers in Android.",
+      "range": {
+        "startLine": 27,
+        "startChar": 26,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e473a25_cc2368cf",
+        "filename": "libs/binder/include_trusty/binder/RpcTransportTipcAndroid.h",
+        "patchSetId": 149
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-21T02:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1c4ffb0_61735d5d",
       "range": {
         "startLine": 27,
         "startChar": 26,
