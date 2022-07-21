@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4dea2a3_63c25b87",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-21T15:48:56Z",
+      "side": 1,
+      "message": "this part is new",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 13
+      },
+      "revId": "73a047fbede9e6ac32ea13f195ebaa6ea652189d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
