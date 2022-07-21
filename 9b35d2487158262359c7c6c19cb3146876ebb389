@@ -16,6 +16,69 @@
       "message": "Hello I found a few issues in EventHub when using some USB touchpanels in a multi-display automotive setup where we were using the same display/touchpanel for multiple screens. The fixes for these looked fairly straight forward so I thought I would share this back upstream in case it will help others that run into the same issue. Let me know if there are any questions or clarifications needed. I tried to put some examples of the issue in the commit message to help clarify the problem I was running into. Thanks in advance for the help reviewing this.",
       "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6146f95_9b0d6831",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-07-21T03:39:06Z",
+      "side": 1,
+      "message": "This generally lgtm. Could you add a test to EventHub_test.cpp?\n\nframeworks/native/services/inputflinger/tests/EventHub_test.cpp\n\nSomething like:\n\n    TEST_F(EventHubTest, DevicesWithMatchingUniqueIdsAreUnique) {\n      std::unique_ptr\u003cUinputHomeKey\u003e keyboard2 \u003d createUinputDevice\u003cUinputHomeKey\u003e();\n      int32_t deviceId2;\n      ASSERT_NO_FATAL_FAILURE(deviceId2 \u003d waitForDeviceCreation());\n      \n      ASSERT_EQ(mEventHub-\u003egetDeviceIdentifier(mDeviceId).descriptor, mEventHub-\u003egetDeviceIdentifier(deviceId2).descriptor);\n      \n      keyboard2.reset();\n      waitForDeviceClose(deviceId2);\n    }",
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd9d988_c14edd98",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-07-21T03:39:06Z",
+      "side": 1,
+      "message": "rather than using a \"nonce\", wdyt about simply appending the file path of the device to the \"rawDescriptor\" string? Like:\n\n    rawDescriptor +\u003d \"/dev/input/event3\";\n    \nwould that allow us to generate a unique descriptor without having to look at \u0027mOpeningDevices\u0027 or using a nonce at all?",
+      "range": {
+        "startLine": 1264,
+        "startChar": 5,
+        "endLine": 1265,
+        "endChar": 32
+      },
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68765b17_68828393",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-07-21T03:39:06Z",
+      "side": 1,
+      "message": "hasDeviceWithDescriptorLocked(identifier.descriptor) ||\n           hasOpeningDeviceWithDescriptorLocked(identifier.descriptor)",
+      "range": {
+        "startLine": 1297,
+        "startChar": 11,
+        "endLine": 1298,
+        "endChar": 79
+      },
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
