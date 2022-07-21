@@ -22,6 +22,30 @@
       },
       "revId": "73a047fbede9e6ac32ea13f195ebaa6ea652189d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6476187d_16b7c68c",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-21T20:22:24Z",
+      "side": 1,
+      "message": "Right, good catch. I tried to put the function back the way it was but missed this part.",
+      "parentUuid": "c4dea2a3_63c25b87",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 13
+      },
+      "revId": "73a047fbede9e6ac32ea13f195ebaa6ea652189d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
