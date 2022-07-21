@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63cdb001_a61d5cf6",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 151
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-21T22:10:40Z",
+      "side": 1,
+      "message": "Right, good point about the multiple loops. I wasn\u0027t sure we wanted to make the assumption that `readFn` could do partial reads and get called multiple times, but that seems like a reasonable assumption in line with what `read` does on TCP sockets.\n\nI removed the extra loop and changed `readFn` to only return the data from one fill buffer, with the expectation that the caller will call it multiple times if it wants more data.",
+      "parentUuid": "9a857e63_5375db33",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 52
+      },
+      "revId": "b5acccab46035c7ce8b11814adc04b185fbfa965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36851f5d_a73fec38",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-21T18:05:23Z",
       "side": 1,
       "message": "If `processSize \u003e 0` and `fillReadBuffer` returns `EWOULDBLOCK`, then we are dropping bytes IIUC.\n\nI think the easiest solution is to only do at most one `read` syscall per `readFn`, but then you might run into extra polling overhead (as mentioned in the other comment). Maybe could go with that approach and then we can try to optimize the polling as a follow up.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "b5acccab46035c7ce8b11814adc04b185fbfa965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49140bb4_adecf543",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 151
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-21T22:10:40Z",
+      "side": 1,
+      "message": "The latest simplified version only makes one call to `fillReadBuffer` and returns immediately, so afaict it shouldn\u0027t drop bytes anymore.",
+      "parentUuid": "36851f5d_a73fec38",
       "range": {
         "startLine": 102,
         "startChar": 0,
