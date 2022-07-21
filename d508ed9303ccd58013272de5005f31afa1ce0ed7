@@ -16,6 +16,24 @@
       "message": "Ping for NDK-API-Review",
       "revId": "d508ed9303ccd58013272de5005f31afa1ce0ed7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82041645_bb7a585f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-07-21T13:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b733d598_157da4de",
+      "revId": "d508ed9303ccd58013272de5005f31afa1ce0ed7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
