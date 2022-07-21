@@ -78,6 +78,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d40bf4f6_d7a516d7",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-21T19:46:49Z",
+      "side": 1,
+      "message": "Siarhei, do you know why we\u0027re only conditionally including these values in the descriptor? Why don\u0027t we just always use all the values (vid, pid, uniqueId, name, location, nonce), and only then fall back to changing the nonce?\n\nThis way, the touchscreens don\u0027t have to rely on nonce, since the location is different. If they also had the same location, then it would depend on the nonce, which depends on order in which the devices are opened relative to each other. The touchscreen that\u0027s processed first will always have the same descriptor. We can\u0027t guarantee that if we use the path (e.g. /dev/input/event4) in the descriptor.",
+      "range": {
+        "startLine": 1269,
+        "startChar": 0,
+        "endLine": 1281,
+        "endChar": 5
+      },
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68765b17_68828393",
         "filename": "services/inputflinger/reader/EventHub.cpp",
         "patchSetId": 1
