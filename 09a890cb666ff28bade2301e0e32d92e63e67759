@@ -88,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b1a80a_76b968fd",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 149
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-21T18:05:23Z",
+      "side": 1,
+      "message": "\u003e None of the current implementations should split one iovec across multiple Trusty messages\n\nYou are probably right, but, from my perspective, that is just incidental and may change as we optimize and add features to rpc binder. Do you see any advantage to adding this constraint on libbinder?\n\nThis code is already 99% of the way to emulating the behavior of a streaming socket. I think the last bit is pretty easy, maybe something like\n\n```\n            ssize_t processSize \u003d 0;\n            for (size_t i \u003d 0; i \u003c niovs; i++) {\n                auto\u0026 iov \u003d iovs[i];\n                for (size_t iovPos \u003d 0; iovPos \u003c iov.iov_len;) {\n                    status_t ret \u003d fillReadBuffer();\n                    if (ret !\u003d OK) {\n                        return ret;\n                    }\n                    size_t numBytes \u003d std::min(iovLeft, bufferLeft);\n                    memcpy(reinterpret_cast\u003cuint8_t*\u003e(iov.iov_base) + iovPos,\n                           mReadBuffer.get() + mReadBufferPos, numBytes);\n                    iovPos +\u003d numBytes;\n                    mReadBufferPos +\u003d numBytes;\n                    processSize +\u003d numBytes;\n                }\n            }\n            return processSize;\n```\n\n(I don\u0027t think that is quite right though, see other comment about the return statement losing bytes. Depending on how that is fixed, all of this might become much simpler)",
+      "parentUuid": "a7f092c2_b6820573",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 48
+      },
+      "revId": "09a890cb666ff28bade2301e0e32d92e63e67759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9d26722c_32013b04",

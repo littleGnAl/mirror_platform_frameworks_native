@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a857e63_5375db33",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 151
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-21T18:05:23Z",
+      "side": 1,
+      "message": "Not suggesting anything specific for this CL, just want to make sure I understand correctly:\n\nThis lambda `readFn` is looping and repeatedly calling `read` on the fd internally in an attempt to fill the whole iovec array. However, `interruptableReadOrWrite`, which wraps `readFn`, is also looping to ensure the whole iovec array is filled in a similar way. Additionally, it is doing polling to check for cancellation (via the fdtrigger) between system calls.\n\nIn `RpcTransportRaw`, we assume the socket has `SOCK_NONBLOCK`, so the `recvmsg` will return immediately if no data is available. Is something similar true for the `read` calls here? If so, then this code is sort of greedily reading as much data is available before it yields back to the outer polling loop.\n\nIt would be nice if there was only one loop (mostly to avoid duplicating the error-prone-looking iovec bookkeeping), but then we risk some unnecessary polling here IIUC. Maybe could change the outer loop to only poll if it sees `EWOULDBLOCK`. I don\u0027t want to increase the scope of the CL too much, so the current technique LGTM.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 52
+      },
+      "revId": "b5acccab46035c7ce8b11814adc04b185fbfa965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36851f5d_a73fec38",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 151
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-07-21T18:05:23Z",
+      "side": 1,
+      "message": "If `processSize \u003e 0` and `fillReadBuffer` returns `EWOULDBLOCK`, then we are dropping bytes IIUC.\n\nI think the easiest solution is to only do at most one `read` syscall per `readFn`, but then you might run into extra polling overhead (as mentioned in the other comment). Maybe could go with that approach and then we can try to optimize the polling as a follow up.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "b5acccab46035c7ce8b11814adc04b185fbfa965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
