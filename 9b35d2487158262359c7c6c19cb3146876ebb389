@@ -72,6 +72,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "278b4970_6050e866",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-21T22:55:31Z",
+      "side": 1,
+      "message": "Sure I can get a test added as well. Thanks for pointing out where to put the test and an implementation.",
+      "parentUuid": "e6146f95_9b0d6831",
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da858c5_bf63fd80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-21T22:55:31Z",
+      "side": 1,
+      "message": "Thanks for the feedback everyone. I am out of the office until Monday. I will get a new patch up to address the review comments and add a test for this then. If there is any other feedback on the replies I added about keeping the descriptor stable let me know. If that is not a requirement we need to worry about I can also change the implementation to just use the location for file path to ensure the descriptor is unique and remove the checks for conflicting descriptors and falling back to the nonce to ensure uniqueness.",
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfd9d988_c14edd98",
         "filename": "services/inputflinger/reader/EventHub.cpp",
         "patchSetId": 1
@@ -83,6 +118,30 @@
       "writtenOn": "2022-07-21T03:39:06Z",
       "side": 1,
       "message": "rather than using a \"nonce\", wdyt about simply appending the file path of the device to the \"rawDescriptor\" string? Like:\n\n    rawDescriptor +\u003d \"/dev/input/event3\";\n    \nwould that allow us to generate a unique descriptor without having to look at \u0027mOpeningDevices\u0027 or using a nonce at all?",
+      "range": {
+        "startLine": 1264,
+        "startChar": 5,
+        "endLine": 1265,
+        "endChar": 32
+      },
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8f2516_16bb73bf",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-21T22:55:31Z",
+      "side": 1,
+      "message": "Thanks for the feedback. I had considered using either location or file path, but I saw this comment at the beginning of the assignDescriptor method:\n\n    // Compute a device descriptor that uniquely identifies the device.\n    // The descriptor is assumed to be a stable identifier.  Its value should not\n    // change between reboots, reconnections, firmware updates or new releases\n    // of Android. In practice we sometimes get devices that cannot be uniquely\n    // identified. In this case we enforce uniqueness between connected devices.\n    // Ideally, we also want the descriptor to be short and relatively opaque.\n\nThis made me think that the reason it was currently implemented this way was that there was requirement to keep the descriptor the same whenever possible. It looked like using the nonce here was a fallback in the case that a unique descriptor could not be created using other information. I was not sure of the reasoning behind this requirement other than what I saw in the comment. Adding the file path to the raw descriptor would cause the descriptor to change whenever the kernel assigned a different file path to the device.\n\nIf keeping the descriptor stable in most cases is not actually needed I can change this to just always add the file path to the raw descriptor.",
+      "parentUuid": "bfd9d988_c14edd98",
       "range": {
         "startLine": 1264,
         "startChar": 5,
@@ -118,6 +177,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12b0587e_de881238",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-21T22:55:31Z",
+      "side": 1,
+      "message": "Prabir,\n\nI saw this comment in assignDescriptor method which says that they descriptor should be stable whenever possible:\n\n    // Compute a device descriptor that uniquely identifies the device.\n    // The descriptor is assumed to be a stable identifier.  Its value should not\n    // change between reboots, reconnections, firmware updates or new releases\n    // of Android. In practice we sometimes get devices that cannot be uniquely\n    // identified. In this case we enforce uniqueness between connected devices.\n    // Ideally, we also want the descriptor to be short and relatively opaque.\n\nI am not sure why that is a requirement, but my assumption was that it was implemented this way for a reason and the the fallback to using a nonce was a workaround for cases where a stable descriptor could not be generated.\n\nAny chance the descriptor is persisted somewhere? That might drive the requirement of it being stable across reboots, reconnections and firmware updates.",
+      "parentUuid": "d40bf4f6_d7a516d7",
+      "range": {
+        "startLine": 1269,
+        "startChar": 0,
+        "endLine": 1281,
+        "endChar": 5
+      },
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68765b17_68828393",
         "filename": "services/inputflinger/reader/EventHub.cpp",
         "patchSetId": 1
@@ -129,6 +212,30 @@
       "writtenOn": "2022-07-21T03:39:06Z",
       "side": 1,
       "message": "hasDeviceWithDescriptorLocked(identifier.descriptor) ||\n           hasOpeningDeviceWithDescriptorLocked(identifier.descriptor)",
+      "range": {
+        "startLine": 1297,
+        "startChar": 11,
+        "endLine": 1298,
+        "endChar": 79
+      },
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a4f24e4_f847b4c6",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-21T22:55:31Z",
+      "side": 1,
+      "message": "I agree that would be better. I can get that changed.",
+      "parentUuid": "68765b17_68828393",
       "range": {
         "startLine": 1297,
         "startChar": 11,
