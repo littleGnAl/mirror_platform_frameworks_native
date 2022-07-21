@@ -2099,12 +2099,14 @@ void SurfaceFlinger::onMessageRefresh() {
         refreshArgs.colorTransformMatrix = mDrawingState.colorMatrix;
         mDrawingState.colorMatrixChanged = false;
     }
+    // clang-format off
 
     refreshArgs.colorTransformMatrix =
         mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
              vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC || mDebugRegion;
+    // clang-format on
 
     if (mDebugRegion != 0) {
         refreshArgs.devOptFlashDirtyRegionsDelay =
@@ -6426,10 +6428,12 @@ status_t SurfaceFlinger::renderScreenImplLocked(
     clientCompositionDisplay.maxLuminance = DisplayDevice::sDefaultMaxLumiance;
 
     const float colorSaturation = grayscale ? 0 : 1;
+    // clang-format off
     clientCompositionDisplay.colorTransform = calculateColorMatrix(colorSaturation);
     clientCompositionDisplay.colorTransform =
         mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
             vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
+    //clang-format on
 
     const float alpha = RenderArea::getCaptureFillValue(renderArea.getCaptureFill());
 
