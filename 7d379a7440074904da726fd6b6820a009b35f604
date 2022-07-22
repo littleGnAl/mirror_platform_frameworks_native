@@ -16,6 +16,24 @@
       "message": "Thanks a lot of the fix, Linnan!",
       "revId": "7d379a7440074904da726fd6b6820a009b35f604",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c03d182_942df517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-07-22T15:39:58Z",
+      "side": 1,
+      "message": "Thanks for review, Prabir! 😄",
+      "parentUuid": "1ae6af56_73eeb624",
+      "revId": "7d379a7440074904da726fd6b6820a009b35f604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
