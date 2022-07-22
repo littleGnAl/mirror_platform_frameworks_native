@@ -34,6 +34,23 @@
       "parentUuid": "1ae6af56_73eeb624",
       "revId": "7d379a7440074904da726fd6b6820a009b35f604",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c0f108_053158a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-22T15:49:07Z",
+      "side": 1,
+      "message": "Looks like there is a merge conflict, so I will CP this into the internal branches first.",
+      "revId": "7d379a7440074904da726fd6b6820a009b35f604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
