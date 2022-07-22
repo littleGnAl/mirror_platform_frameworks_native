@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9279b922_93fbca03",
+        "filename": "services/inputflinger/reader/mapper/TouchInputMapper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-07-22T15:18:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e019f9f6_e3d7e833",
+      "range": {
+        "startLine": 801,
+        "startChar": 8,
+        "endLine": 801,
+        "endChar": 77
+      },
+      "revId": "c356437c6ddcd2d79c74c9e373cdcc0d81fe286b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48ff3e30_7c68537a",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-22T14:46:51Z",
       "side": 1,
       "message": "nit: test name\n    Process_WhenViewportDisplayIdChanged_TouchIsCanceledAndDeviceIsReset",
+      "range": {
+        "startLine": 6255,
+        "startChar": 7,
+        "endLine": 6255,
+        "endChar": 71
+      },
+      "revId": "c356437c6ddcd2d79c74c9e373cdcc0d81fe286b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "911927b9_37fb7873",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 6255,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-07-22T15:18:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48ff3e30_7c68537a",
       "range": {
         "startLine": 6255,
         "startChar": 7,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce6df416_4f6d8ef8",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 6260,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-07-22T15:18:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adec8a67_21989ccd",
+      "range": {
+        "startLine": 6260,
+        "startChar": 4,
+        "endLine": 6260,
+        "endChar": 25
+      },
+      "revId": "c356437c6ddcd2d79c74c9e373cdcc0d81fe286b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c286812_add39d7c",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-07-22T14:46:51Z",
       "side": 1,
       "message": "Is this also necessary?",
+      "range": {
+        "startLine": 6262,
+        "startChar": 4,
+        "endLine": 6262,
+        "endChar": 84
+      },
+      "revId": "c356437c6ddcd2d79c74c9e373cdcc0d81fe286b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f52d05ba_24e61fda",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 6262,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-07-22T15:18:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c286812_add39d7c",
       "range": {
         "startLine": 6262,
         "startChar": 4,
