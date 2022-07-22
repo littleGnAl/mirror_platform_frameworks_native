@@ -142,6 +142,24 @@
       "parentUuid": "b601e2b4_31fc6230",
       "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a19b241_0ef6f4ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-07-22T19:15:23Z",
+      "side": 1,
+      "message": "Hi Joshua,\n\nI looked into this some more. I think that we should move the processing of \u0027input-port-associations.xml\u0027 into native code, probably into InputReader.cpp or into InputReaderBase.cpp as a static method for InputReaderPolicyInterface. I originally implemented it in Java to make it similar to \u0027excluded-input-devices.xml\u0027, but we have libxml2 and libtinyxml2 in native that we should be able to use. One complication could be the dynamic association featues, but that should also be solvable, maybe via a direct callback to native from policy or by reusing the existing \"InputReaderConfiguration\" callback from NativeInputManager, we would just change the \"portAssociations\" to mean \"dynamicPortAssociations\".\n\nWe do need to keep the support for \u0027input-port-associations.xml\u0027. It is currently maintained. It was originally added for android auto use case. There, we had the requirement to be able to specify \"any input device that\u0027s connected on a given usb port should be matched with a display that\u0027s connected on a given display port\". This way, if a part ever needs to be replaced, you could just swap for a different part, and things will just work, assuming that you plugged it into the same port.\nThe thinking was that maybe in 10 years after a car is made, display goes bad, but the original part was already discontinued.\n\nSo it\u0027s a different use case from the idc file, where it\u0027s the configuration of a specific kind of device.\n\nThat said, I do agree that there\u0027s a conflict if you have display id specified via xml and also via idc. It might make sense to resolve it, if we are looking to build more stuff on top of it.\n\nI don\u0027t think we support idc overlays today.\n\nSome ideas come to mind here:\n\n1) Add overlay support for idc. Then we could use the \"device_name\" idc as the base, and then apply the idc file from \"input-port-associations.xml\" as an overlay\n\n2) Just rely on input-port-associations.xml. Either crash when there are conflicting idc files, or ignore the \"device_name\" idc file during loading.\n\nTo me, it seems that your use case lines up more with the xml associations approach than the \"device_name\" idc.\n\nHappy to hear more here.",
+      "parentUuid": "4904ce8c_9b145662",
+      "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
