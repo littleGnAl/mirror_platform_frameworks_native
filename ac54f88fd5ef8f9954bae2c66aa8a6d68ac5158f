@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee3ac66f_74c345cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-07-22T12:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5540c4d_465b6930",
+      "revId": "ac54f88fd5ef8f9954bae2c66aa8a6d68ac5158f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc159ee2_daa3354b",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0625c7_ebe2d458",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-07-22T12:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc159ee2_daa3354b",
+      "revId": "ac54f88fd5ef8f9954bae2c66aa8a6d68ac5158f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b8786e1_15d9b570",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-07-19T14:27:49Z",
       "side": 1,
       "message": "Thanks for the change!\n\nCan we also add a unit test under [SingleTouchInputMapperTest](http://cs/android/frameworks/native/services/inputflinger/tests/InputReader_test.cpp;l\u003d6698;rcl\u003dc6921ba06621a6ef3bbd4a6ea073e8bb2bc3a9f7)?\n\ne.g:\n- Touch DOWN with a finger\n- Change viewport displayId\n- Verify we get a CANCEL event followed by NotifyDeviceResetArgs.",
+      "revId": "ac54f88fd5ef8f9954bae2c66aa8a6d68ac5158f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d3e3148_b98e5cf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-07-22T12:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b8786e1_15d9b570",
       "revId": "ac54f88fd5ef8f9954bae2c66aa8a6d68ac5158f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -89,6 +143,30 @@
       "side": 1,
       "message": "ok! thanks for the suggestion.",
       "parentUuid": "509e70a1_d40457d4",
+      "range": {
+        "startLine": 799,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 31
+      },
+      "revId": "ac54f88fd5ef8f9954bae2c66aa8a6d68ac5158f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec411af_d6defe5a",
+        "filename": "services/inputflinger/reader/mapper/TouchInputMapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-07-22T12:30:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46a843f7_d1651d6b",
       "range": {
         "startLine": 799,
         "startChar": 0,
