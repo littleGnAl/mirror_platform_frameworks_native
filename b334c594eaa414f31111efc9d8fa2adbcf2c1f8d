@@ -46,6 +46,47 @@
       },
       "revId": "b334c594eaa414f31111efc9d8fa2adbcf2c1f8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf26bf35_58cc8db8",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 68
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-25T23:02:27Z",
+      "side": 1,
+      "message": "Ah, so the multi-threaded version running in Android will communicate with the single-threaded version running here? That does work? Actually - that is fantatic",
+      "parentUuid": "943cbcab_8eb0e402",
+      "range": {
+        "startLine": 313,
+        "startChar": 9,
+        "endLine": 313,
+        "endChar": 18
+      },
+      "revId": "b334c594eaa414f31111efc9d8fa2adbcf2c1f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c33e2e_fdd45e6e",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 68
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-25T23:02:27Z",
+      "side": 1,
+      "message": "nit: control visibility here as well? Are we worried about too many additional users?",
+      "revId": "b334c594eaa414f31111efc9d8fa2adbcf2c1f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
