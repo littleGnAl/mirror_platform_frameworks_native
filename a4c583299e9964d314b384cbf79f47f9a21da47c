@@ -22,6 +22,30 @@
       },
       "revId": "a4c583299e9964d314b384cbf79f47f9a21da47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8954495f_a2cfd2cc",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 153
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-25T22:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b6f94d_268dd484",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 38
+      },
+      "revId": "a4c583299e9964d314b384cbf79f47f9a21da47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
