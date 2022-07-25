@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a3a03e_1115720e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-25T17:16:31Z",
+      "side": 1,
+      "message": "It looks like my guess about what Lint was giving a -1 about was not correct. I did not see anything else and even tried using cpplint --linelength\u003d100 for each source file I modified to see if there were issues related to the lines that I had changed.\n\nIf anyone knows what I need to change to get rid of the Lint -1 let me know and I can get a new change pushed.",
+      "revId": "32d406d0929e8db012802e0bf023e66eede82c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
