@@ -160,6 +160,24 @@
       "parentUuid": "4904ce8c_9b145662",
       "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47c37318_58e50064",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-25T18:50:59Z",
+      "side": 1,
+      "message": "Thanks for the explanation. It feels like we have two separate use cases for the two input configuration files:\n\n\u003cdevice_location/name/product_vendor_version\u003e.idc\n1. Allows full configuration of the input device.\n  a. touch.deviceType\n  b. touch.displayId\n  c. touch.gestureMode\n  d. touch.orientation\n  e. touch.orientationAware\n  f. touch.size.calibration\n  g. touch.wake\n2. Uses stable identifiers for displayId association\n3. Searched for in multiple partitions (product, system_ext, odm, vendor, apex) to allow it to be overridden at different levels.\n4. Typically used by OEM/ODM to configure input devices to specific hardware being used.\n5. No use cases to override at runtime as they should not need to change unless the hardware changes.\n\ninput-port-assocations.xml\n1. Allows limited override of configuration\n  a. Overrides touch.displayId from idc file (but only allows physical display port to be used).\n2. Only searched for in vendor partition.\n3. Uses physical display port for configuration only (not a stable identifier)\n4. Originally added for android auto use case\n5. Could be made runtime overridable using an runtime resource overlay (sounds like there is a future use case where this would be desirable).\n\nIf that is a good summary of the two configuration files then I think it makes sense to keep the two configuration files separate and continue treating input-port-assocations.xml as a way for a vendor to only override which display an input device is associated with. This allows input-port-associations.xml to satisfy the android auto use case you mentioned, but not expand it to allow overriding additional configuration items. The documentation could be updated to clarify that input-port-associations.xml overrides touch.displayId in the idc file (this is the way it works today), and that it is only intended to override the input device to display mapping.",
+      "parentUuid": "6a19b241_0ef6f4ce",
+      "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
