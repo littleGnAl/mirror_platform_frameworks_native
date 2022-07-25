@@ -16,6 +16,23 @@
       "message": "Verified on Cuttlefish with https://chromium-review.googlesource.com/c/angle/angle/+/3770291 (though that change needs to be updated to have a feature bit).",
       "revId": "51572c2fd5edb70bfff0b23577f3a596c92fde19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53d33af5_7a1af0c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2022-07-25T22:06:43Z",
+      "side": 1,
+      "message": "Ping for owner\u0027s vote ; )",
+      "revId": "51572c2fd5edb70bfff0b23577f3a596c92fde19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
