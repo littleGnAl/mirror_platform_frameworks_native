@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc3ccfb4_e7feb679",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-25T15:03:44Z",
+      "side": 1,
+      "message": "I think Lint is complaining about the { being on a separate line. I will get this fixed.",
+      "range": {
+        "startLine": 1381,
+        "startChar": 100,
+        "endLine": 1381,
+        "endChar": 101
+      },
+      "revId": "f1ebdf231af4ce12005f74a39817bdfa5ca1ac48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
