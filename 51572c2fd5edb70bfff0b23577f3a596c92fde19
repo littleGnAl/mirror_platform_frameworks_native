@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c286c0f_bf3db7d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561731
+      },
+      "writtenOn": "2022-07-25T20:09:51Z",
+      "side": 1,
+      "message": "Verified on Cuttlefish with https://chromium-review.googlesource.com/c/angle/angle/+/3770291 (though that change needs to be updated to have a feature bit).",
+      "revId": "51572c2fd5edb70bfff0b23577f3a596c92fde19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
