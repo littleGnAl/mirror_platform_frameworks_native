@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b6f94d_268dd484",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 153
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-25T20:44:47Z",
+      "side": 1,
+      "message": "abort if we have some for now?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 38
+      },
+      "revId": "a4c583299e9964d314b384cbf79f47f9a21da47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
