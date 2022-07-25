@@ -105,6 +105,41 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef6f5ef1_17b0d60c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-25T14:53:28Z",
+      "side": 1,
+      "message": "I have uploaded patchset #2 to address the review comments. I believe I got everything addressed, but if there is something I missed please let me know and I will address it.",
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8db99bd9_c813aee6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-25T14:53:28Z",
+      "side": 1,
+      "message": "Done. This is added in Patchset 2 and I verified it passes when running atest inputflinger_tests:\n\n[18/340] EventHubTest#DevicesWithMatchingUniqueIdsAreUnique: PASSED (382ms)",
+      "parentUuid": "278b4970_6050e866",
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfd9d988_c14edd98",
@@ -247,6 +282,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d80cb1e4_b8bf63d9",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-25T14:53:28Z",
+      "side": 1,
+      "message": "Done.\nI added some additional comments in assignDescriptorLocked to describe why we don\u0027t use location and path in the normal case but do fallback to using them for internal devices only. I also described that we use the \u0027nonce\u0027 approach as a fallback when two identical descriptors are detected.",
+      "parentUuid": "c7e1284f_dd4bbe28",
+      "range": {
+        "startLine": 1269,
+        "startChar": 0,
+        "endLine": 1281,
+        "endChar": 5
+      },
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68765b17_68828393",
@@ -294,6 +353,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "680d574e_a526190c",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-25T14:53:28Z",
+      "side": 1,
+      "message": "Done.\nThis is addressed in patchset 2.",
+      "parentUuid": "9a4f24e4_f847b4c6",
+      "range": {
+        "startLine": 1297,
+        "startChar": 11,
+        "endLine": 1298,
+        "endChar": 79
+      },
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bffdd5c_d58a1e14",
@@ -307,6 +390,24 @@
       "writtenOn": "2022-07-22T16:05:10Z",
       "side": 1,
       "message": "plz fix line length. did you get any preupload warnings here?",
+      "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1aedd79_2f7d7cee",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-25T14:53:28Z",
+      "side": 1,
+      "message": "Done.\nI got this under 100 characters for patchset 2. I did not get any preupload warnings - maybe I don\u0027t have a precommit hook configured correctly? I will keep an eye out for this moving forward.",
+      "parentUuid": "1bffdd5c_d58a1e14",
       "revId": "9b35d2487158262359c7c6c19cb3146876ebb389",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
