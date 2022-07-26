@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62c088e8_67ef5264",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-26T13:14:23Z",
+      "side": 1,
+      "message": "Right, but if there\u0027s a partner request ticket or something like that it\u0027d be useful to reference it here with a \"Bug:\" tag.",
+      "parentUuid": "d05da9e5_a001beca",
+      "revId": "f7b96e862f7c1f657635671618c2765638e945da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63003106_d6148865",
         "filename": "cmds/installd/otapreopt.cpp",
         "patchSetId": 2
