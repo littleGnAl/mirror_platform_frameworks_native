@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93ea69b9_21609f8a",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-26T13:54:13Z",
+      "side": 1,
+      "message": "I will get this changed.",
+      "parentUuid": "b86173fc_07e7800b",
+      "range": {
+        "startLine": 1381,
+        "startChar": 0,
+        "endLine": 1381,
+        "endChar": 17
+      },
+      "revId": "32d406d0929e8db012802e0bf023e66eede82c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37df6c27_87bdde86",
         "filename": "services/inputflinger/reader/EventHub.cpp",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-26T02:41:13Z",
       "side": 1,
       "message": "it should be possible to change this to bool as well.",
+      "range": {
+        "startLine": 1391,
+        "startChar": 0,
+        "endLine": 1391,
+        "endChar": 17
+      },
+      "revId": "32d406d0929e8db012802e0bf023e66eede82c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2030b4f_c7205f09",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-26T13:54:13Z",
+      "side": 1,
+      "message": "I will get this changed.",
+      "parentUuid": "37df6c27_87bdde86",
       "range": {
         "startLine": 1391,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1fd8e40_5acbe3ee",
+        "filename": "services/inputflinger/tests/EventHub_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-26T13:54:13Z",
+      "side": 1,
+      "message": "I took a look a UinputDevice.cpp and it does not do anything with the unique field. It looks like EventHub.cpp read this directly from the kernel in EventHub::openDeviceLocked:\n\n    // Get device unique id.\n    if (ioctl(fd, EVIOCGUNIQ(sizeof(buffer) - 1), \u0026buffer) \u003c 1) {\n\nI do not see a corresponding ioctl to set the uniq id field - do you know of a way to add the uniq field so that the EVIOCGUNIQ ioctl will return a value we can set from the test?\n\nIf not the only other option I can think of is have it fallback to setting the uniq field based on the device path if there is not one set after calling the EVIOCGQNIQ ioctl.",
+      "parentUuid": "554ca162_ab07ca8f",
+      "range": {
+        "startLine": 187,
+        "startChar": 35,
+        "endLine": 187,
+        "endChar": 44
+      },
+      "revId": "32d406d0929e8db012802e0bf023e66eede82c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0cb081c_cb892dbc",
         "filename": "services/inputflinger/tests/EventHub_test.cpp",
         "patchSetId": 3
@@ -100,6 +172,30 @@
       "writtenOn": "2022-07-26T02:41:13Z",
       "side": 1,
       "message": "can you just do:\n\n  ASSERT_NE(mEventHub-\u003egetDeviceIdentifier(mDeviceId).descriptor,\n                 mEventHub-\u003egetDeviceIdentifier(deviceId2).descriptor);",
+      "range": {
+        "startLine": 191,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 79
+      },
+      "revId": "32d406d0929e8db012802e0bf023e66eede82c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a250aafe_5f3ae18f",
+        "filename": "services/inputflinger/tests/EventHub_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-26T13:54:13Z",
+      "side": 1,
+      "message": "I will get this changed.",
+      "parentUuid": "c0cb081c_cb892dbc",
       "range": {
         "startLine": 191,
         "startChar": 4,
