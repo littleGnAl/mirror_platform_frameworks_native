@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a3c844f_2c51cb06",
+        "filename": "cmds/servicemanager/ServiceManagerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-07-26T17:49:43Z",
+      "side": 1,
+      "message": "Why 50\u0027000? Arbitrary number?",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "ab56a475fb4d2eb7b9ab23bbeefb0a703e31fa41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
