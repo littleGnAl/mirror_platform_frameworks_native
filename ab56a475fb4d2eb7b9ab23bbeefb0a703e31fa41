@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54178c36_4cfed1f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-26T17:51:01Z",
+      "side": 1,
+      "message": "did you run the fuzzer locally to see if you can find anything?",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "ab56a475fb4d2eb7b9ab23bbeefb0a703e31fa41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db560d0e_3a37f2b9",
+        "filename": "cmds/servicemanager/Access.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-26T17:51:01Z",
+      "side": 1,
+      "message": "can you file a separate bug to get fuzzing turned on on host on libselinux? We should talk with that team and try to get it enabled to get rid of these flags as soon as possible.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "ab56a475fb4d2eb7b9ab23bbeefb0a703e31fa41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e247d831_bef3f57d",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-26T17:51:01Z",
+      "side": 1,
+      "message": "we should add a \u0027cc_defaults\u0027 in frameworks/native/libs/binder/Android.bp (or test(s)?/Android.bp there) which contains all of the required configuration to write a service fuzzer. We\u0027ll want to add many of these types of modules. Could you put up a CL for this after this one? We\u0027d also want to use it on the fuzzers hamzeh has been writing?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "ab56a475fb4d2eb7b9ab23bbeefb0a703e31fa41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a3c844f_2c51cb06",
         "filename": "cmds/servicemanager/ServiceManagerFuzzer.cpp",
         "patchSetId": 1
