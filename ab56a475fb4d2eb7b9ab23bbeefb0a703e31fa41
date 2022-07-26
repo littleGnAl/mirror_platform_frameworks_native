@@ -115,6 +115,30 @@
       },
       "revId": "ab56a475fb4d2eb7b9ab23bbeefb0a703e31fa41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd59da09_9e5134f7",
+        "filename": "cmds/servicemanager/ServiceManagerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-07-26T18:04:43Z",
+      "side": 1,
+      "message": "Ack - thanks, leaving thread open due to 2nd point:\n\n\u003e We should probably move this logic into \u0027fuzzService\u0027 or start a thread with the fuzzing team to fin a solution for this. We won\u0027t want this repeated in every team\u0027s fuzzer.",
+      "parentUuid": "9019a00e_5d535eaa",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "ab56a475fb4d2eb7b9ab23bbeefb0a703e31fa41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
