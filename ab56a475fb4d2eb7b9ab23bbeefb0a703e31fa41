@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef616f9_5f236033",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-07-26T21:41:27Z",
+      "side": 1,
+      "message": "I did run it locally for short time. I ran this test to see if changes made to access didn\u0027t break anything in service manager.",
+      "parentUuid": "54178c36_4cfed1f1",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "ab56a475fb4d2eb7b9ab23bbeefb0a703e31fa41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db560d0e_3a37f2b9",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72a82d7_b50a15fd",
+        "filename": "cmds/servicemanager/Access.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-07-26T21:41:27Z",
+      "side": 1,
+      "message": "created https://b.corp.google.com/issues/240317269.",
+      "parentUuid": "db560d0e_3a37f2b9",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "ab56a475fb4d2eb7b9ab23bbeefb0a703e31fa41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e247d831_bef3f57d",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-26T17:51:01Z",
       "side": 1,
       "message": "we should add a \u0027cc_defaults\u0027 in frameworks/native/libs/binder/Android.bp (or test(s)?/Android.bp there) which contains all of the required configuration to write a service fuzzer. We\u0027ll want to add many of these types of modules. Could you put up a CL for this after this one? We\u0027d also want to use it on the fuzzers hamzeh has been writing?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "ab56a475fb4d2eb7b9ab23bbeefb0a703e31fa41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "398be219_71114c58",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-07-26T21:41:27Z",
+      "side": 1,
+      "message": "Created https://b.corp.google.com/issues/240318902. I will raise cl as fix to this bug.",
+      "parentUuid": "e247d831_bef3f57d",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -131,6 +203,30 @@
       "side": 1,
       "message": "Ack - thanks, leaving thread open due to 2nd point:\n\n\u003e We should probably move this logic into \u0027fuzzService\u0027 or start a thread with the fuzzing team to fin a solution for this. We won\u0027t want this repeated in every team\u0027s fuzzer.",
       "parentUuid": "9019a00e_5d535eaa",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "ab56a475fb4d2eb7b9ab23bbeefb0a703e31fa41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d185fea1_5cc2df97",
+        "filename": "cmds/servicemanager/ServiceManagerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-07-26T21:41:27Z",
+      "side": 1,
+      "message": "Created https://b.corp.google.com/issues/240318902. I will raise cl as fix to this bug.",
+      "parentUuid": "bd59da09_9e5134f7",
       "range": {
         "startLine": 29,
         "startChar": 15,
