@@ -75,6 +75,30 @@
       },
       "revId": "f7b96e862f7c1f657635671618c2765638e945da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "491ffba1_5e27b902",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1929575
+      },
+      "writtenOn": "2022-07-26T13:14:45Z",
+      "side": 1,
+      "message": "yes,we also think its no nesserary to retry this . for speed-profile,if remove profile flag,its same as verify.  and if so ,verify will also doing in boot phase.",
+      "parentUuid": "63003106_d6148865",
+      "range": {
+        "startLine": 508,
+        "startChar": 12,
+        "endLine": 508,
+        "endChar": 46
+      },
+      "revId": "f7b96e862f7c1f657635671618c2765638e945da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
