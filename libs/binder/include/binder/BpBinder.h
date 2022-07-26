@@ -23,6 +23,8 @@
 #include <unordered_map>
 #include <variant>
 
+class AIBinder;
+
 // ---------------------------------------------------------------------------
 namespace android {
 
