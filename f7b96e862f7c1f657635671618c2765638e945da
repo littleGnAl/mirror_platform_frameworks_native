@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d05da9e5_a001beca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1929575
+      },
+      "writtenOn": "2022-07-26T13:05:58Z",
+      "side": 1,
+      "message": "as known,dex2oat will hold installdlock. if dex2oat took long time that will cause system wtd. so in some case we will kill dex2oat to protect system from wtd.",
+      "parentUuid": "0f84f2b1_424e14dd",
+      "revId": "f7b96e862f7c1f657635671618c2765638e945da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63003106_d6148865",
         "filename": "cmds/installd/otapreopt.cpp",
         "patchSetId": 2
