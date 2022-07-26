@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9c56903_2128b272",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-26T19:42:22Z",
+      "side": 1,
+      "message": "we can\u0027t change the type hierarchy due to prebuilts.\n\nBpInterface doesn\u0027t have onLastStrongRef or the reference from the BpBinder to the BpInterface, so does work (though it won\u0027t work with EXPECT_EQ as suggested below since a second copy of BpInterface would be created. The first could still be promoted and work)",
+      "parentUuid": "0832b091_3773c1fd",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "db28d4f2b67ca5c65d3ee59e518d2a104a0ba4a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "81f37bab_5d255f6b",
