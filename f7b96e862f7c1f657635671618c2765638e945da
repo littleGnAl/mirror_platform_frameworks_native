@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f84f2b1_424e14dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-26T11:47:30Z",
+      "side": 1,
+      "message": "Is there a ticket or some other context for this change?",
+      "revId": "f7b96e862f7c1f657635671618c2765638e945da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63003106_d6148865",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-07-26T11:47:30Z",
+      "side": 1,
+      "message": "waitpid(2) says WTERMSIG \"should be employed only if WIFSIGNALED returned true.\"\n\nBut I wonder if we should flip this around and only try again without profile if dex2oat exited due to profile related errors only. +jiakaiz, WDYT?\n\nIf there\u0027s no specific error code we can look at, then at least I think we should skip the retry below if dex2oat exited due to any signal, not just SIGKILL.",
+      "range": {
+        "startLine": 508,
+        "startChar": 12,
+        "endLine": 508,
+        "endChar": 46
+      },
+      "revId": "f7b96e862f7c1f657635671618c2765638e945da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
