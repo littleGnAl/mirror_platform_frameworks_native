@@ -46,6 +46,30 @@
       },
       "revId": "f1ebdf231af4ce12005f74a39817bdfa5ca1ac48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eebd3d2_d67a464c",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-07-26T02:41:13Z",
+      "side": 1,
+      "message": "I haven\u0027t hit this myself, but I\u0027ve seen a few patches come in that didnt seem to go through the clang-format tool.\n\nMaybe there\u0027s a difference in setups. In my environment, when I do \u0027repo upload\u0027 first time, it asks if I want to run preupload hooks. If I say \u0027yes\u0027 or \u0027always\u0027, then those hooks will run, and clang-format would be one of them. Maybe something\u0027s different in your setup.\n\nIf it fails clang-format, there\u0027s usually a suggestion to automatically fix formatting, which always works for me.",
+      "parentUuid": "48f335c1_25deaa48",
+      "range": {
+        "startLine": 1381,
+        "startChar": 100,
+        "endLine": 1381,
+        "endChar": 101
+      },
+      "revId": "f1ebdf231af4ce12005f74a39817bdfa5ca1ac48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
