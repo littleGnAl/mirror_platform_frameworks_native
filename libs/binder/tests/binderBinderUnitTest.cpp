@@ -15,10 +15,11 @@
  */
 
 #include <binder/Binder.h>
-#include <binder/IBinder.h>
+#include <binder/IInterface.h>
 #include <gtest/gtest.h>
 
 using android::BBinder;
+using android::IBinder;
 using android::OK;
 using android::sp;
 
@@ -47,4 +48,27 @@ TEST(Binder, AttachExtension) {
     auto ext = sp<BBinder>::make();
     binder->setExtension(ext);
     EXPECT_EQ(ext, binder->getExtension());
+}
+
+static sp<android::IBinder> make(const void* arg) {
+    EXPECT_EQ(arg, kObject1);
+    return sp<BBinder>::make();
+}
+
+TEST(Binder, LookupOrCreateWeak) {
+    auto binder = sp<BBinder>::make();
+    auto createdBinder = binder->lookupOrCreateWeak(kObjectId1, make, kObject1);
+    EXPECT_NE(binder, createdBinder);
+    auto lookedUpBinder = binder->lookupOrCreateWeak(kObjectId1, make, kObject1);
+    EXPECT_EQ(createdBinder, lookedUpBinder);
+}
+
+TEST(Binder, LookupOrCreateWeakDropSp) {
+    auto binder = sp<BBinder>::make();
+    auto createdBinder = binder->lookupOrCreateWeak(kObjectId1, make, kObject1);
+    EXPECT_NE(binder, createdBinder);
+    const IBinder* storedCreatedBinder = createdBinder.get();
+    createdBinder.clear();
+    auto lookedUpBinder = binder->lookupOrCreateWeak(kObjectId1, make, kObject1);
+    EXPECT_NE(storedCreatedBinder, lookedUpBinder.get());
 }

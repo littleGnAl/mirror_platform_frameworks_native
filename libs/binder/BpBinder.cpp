@@ -100,6 +100,29 @@ void* BpBinder::ObjectManager::detach(const void* objectID) {
     return value;
 }
 
+static void cleanWeak(const void* /* id */, void* obj, void* /* cookie */) {
+    // FIXME this causes a segfault in the ObjectManager dtor inside deckWeak ->
+    // fetch_sub. Is the object already gone at this point?
+    (void)obj;
+    // static_cast<IBinder*>(obj)->getWeakRefs()->decWeak(obj);
+}
+
+sp<IBinder> BpBinder::ObjectManager::lookupOrCreateWeak(const void* objectID, object_make_func make,
+                                                        const void* makeArgs) {
+    if (mObjects.find(objectID) != mObjects.end()) {
+        auto obj = wp<IBinder>::fromExisting(static_cast<IBinder*>(mObjects[objectID].object));
+        if (auto attached = obj.promote()) {
+            return attached;
+        }
+    }
+    auto newObj = make(makeArgs);
+    entry_t e({newObj.get(), nullptr, cleanWeak});
+    mObjects.insert({objectID, e});
+
+    newObj->getWeakRefs()->incWeak(this);
+    return newObj;
+}
+
 void BpBinder::ObjectManager::kill()
 {
     const size_t N = mObjects.size();
@@ -514,6 +537,12 @@ void* BpBinder::detachObject(const void* objectID) {
 void BpBinder::withLock(const std::function<void()>& doWithLock) {
     AutoMutex _l(mLock);
     doWithLock();
+}
+
+sp<IBinder> BpBinder::lookupOrCreateWeak(const void* objectID, object_make_func make,
+                                         const void* makeArgs) {
+    AutoMutex _l(mLock);
+    return mObjects.lookupOrCreateWeak(objectID, make, makeArgs);
 }
 
 BpBinder* BpBinder::remoteBinder()
