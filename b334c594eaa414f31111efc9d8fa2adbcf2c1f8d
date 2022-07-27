@@ -111,6 +111,24 @@
       "message": "nit: control visibility here as well? Are we worried about too many additional users?",
       "revId": "b334c594eaa414f31111efc9d8fa2adbcf2c1f8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abfdc207_3763a4f5",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 68
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-27T00:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62c33e2e_fdd45e6e",
+      "revId": "b334c594eaa414f31111efc9d8fa2adbcf2c1f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
