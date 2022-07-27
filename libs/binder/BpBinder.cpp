@@ -99,6 +99,23 @@ void* BpBinder::ObjectManager::detach(const void* objectID) {
     mObjects.erase(i);
     return value;
 }
+void cleanWeak(const void* /* id */, void* obj, void* /* cookie */) {
+    static_cast<IBinder*>(obj)->getWeakRefs()->decWeak(obj);
+}
+
+sp<IBinder> BpBinder::ObjectManager::lookupOrCreateWeak(const void* objectID, object_make_func make,
+                                                        void* makeArgs) {
+    auto obj = wp<IBinder>::fromExisting(static_cast<IBinder*>(find(objectID)));
+    if (auto attached = obj.promote()) {
+        return attached;
+    } else {
+        auto newObj = make(makeArgs);
+        void* oldObj = attach(objectID, static_cast<void*>(newObj.get()), nullptr, cleanWeak);
+        newObj->getWeakRefs()->incWeak(this);
+        LOG_ALWAYS_FATAL_IF(oldObj, "An object was attached on another thread.");
+        return newObj;
+    }
+}
 
 void BpBinder::ObjectManager::kill()
 {
@@ -514,6 +531,12 @@ void* BpBinder::detachObject(const void* objectID) {
 void BpBinder::withLock(const std::function<void()>& doWithLock) {
     AutoMutex _l(mLock);
     doWithLock();
+}
+
+sp<IBinder> BpBinder::lookupOrCreateWeak(const void* objectID, object_make_func make,
+                                         void* makeArgs) {
+    AutoMutex _l(mLock);
+    return mObjects.lookupOrCreateWeak(objectID, make, makeArgs);
 }
 
 BpBinder* BpBinder::remoteBinder()
