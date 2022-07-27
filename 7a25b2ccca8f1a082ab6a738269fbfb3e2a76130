@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba458bc_650c1e26",
+        "filename": "libs/binder/tests/unit_fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-27T23:04:28Z",
+      "side": 1,
+      "message": "(ignore if you go with below comment, wrote first)\n\nnit: \"fatal (client error)\"\n\ndisambiguate - since a fatal crash isn\u0027t okay. One step better, we could use something like \u0027EXPECT_DEATH\u0027 in this situation, and expect that specific death (see b/232079584#comment8 - no one has done this - it would be a good bug for us to take on - either Pawan or in colab with the fuzzing team)",
+      "range": {
+        "startLine": 65,
+        "startChar": 13,
+        "endLine": 65,
+        "endChar": 18
+      },
+      "revId": "7a25b2ccca8f1a082ab6a738269fbfb3e2a76130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8fd320b_9ccafe77",
+        "filename": "libs/binder/tests/unit_fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-27T23:04:28Z",
+      "side": 1,
+      "message": "this will always be 0 because this is how it is configured, right? could you actually setup one incoming thread to handle these? that will give us more coverage",
+      "range": {
+        "startLine": 68,
+        "startChar": 12,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "7a25b2ccca8f1a082ab6a738269fbfb3e2a76130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "129b8033_38f7d1b6",
+        "filename": "libs/binder/tests/unit_fuzzers/BpBinderFuzzFunctions.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-27T23:04:28Z",
+      "side": 1,
+      "message": "oof - I did not notice this - what a mess",
+      "range": {
+        "startLine": 65,
+        "startChar": 20,
+        "endLine": 65,
+        "endChar": 54
+      },
+      "revId": "7a25b2ccca8f1a082ab6a738269fbfb3e2a76130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
