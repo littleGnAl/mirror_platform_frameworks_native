@@ -52,6 +52,24 @@
       "parentUuid": "38a52b66_17ca3a33",
       "revId": "95902d7bef84e446742d10817fbb0d6f56de557a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5544b9f_bcce74f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-07-27T17:57:47Z",
+      "side": 1,
+      "message": "Yeah, that linter tool runs on gerrit and not as a preupload hook.\n\nIm guessing that since you are an external user, you can\u0027t see the linter output, which is unfortunate. It\u0027s shown to me on gerrit. Seems like a gerrit shortcoming. Thanks for fixing it!",
+      "parentUuid": "fb7e2d58_2116d447",
+      "revId": "95902d7bef84e446742d10817fbb0d6f56de557a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
