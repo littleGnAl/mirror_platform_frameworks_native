@@ -16,6 +16,24 @@
       "message": "Sorry one more thing, could you please fix the linter warning?\n\n\u003e Common typo found: \"explicity\" -- should it be \"explicitly\"?",
       "revId": "95902d7bef84e446742d10817fbb0d6f56de557a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a52b66_17ca3a33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-27T16:34:05Z",
+      "side": 1,
+      "message": "Sure - I will get that fixed. Any chance you can tell me where you found the linter warning output? The repo upload hooks were not finding anything for me but I was still seeing the Lint -1 on gerrit. I was trying to figure out what it was complaining about.\n\nHere is my repo upload output for reference:\nRun hook scripts from https://android.googlesource.com/platform/manifest (yes/always/NO)? yes\n\n[COMMIT 1f80ce912ca7] EventHub: Prevent duplicate descriptors\n[PASSED] repohooks for platform/frameworks/native passed in 1.381s\nUpload project frameworks/native/ to remote branch master:\n  branch unique_descriptor ( 1 commit, Wed Jul 27 10:08:51 2022 -0500):\n         1f80ce91 EventHub: Prevent duplicate descriptors\nto https://android-review.googlesource.com/ (y/N)? y\nEnumerating objects: 19, done.\nCounting objects: 100% (19/19), done.\nDelta compression using up to 36 threads\nCompressing objects: 100% (10/10), done.\nWriting objects: 100% (10/10), 3.10 KiB | 55.00 KiB/s, done.\nTotal 10 (delta 9), reused 0 (delta 0), pack-reused 0\nremote: Resolving deltas: 100% (9/9)\nremote: Processing changes: refs: 1, updated: 1, done    \nremote: \nremote: SUCCESS\nremote: \nremote:   https://android-review.googlesource.com/c/platform/frameworks/native/+/2160836 EventHub: Prevent duplicate descriptors\nremote: \nremote: The following approvals got outdated and were removed:\nremote: * Lint-1 by Lint ?\nremote: * Open-Source-Licensing+1 by Lint ?\nremote: \nremote: \nTo https://android-review.googlesource.com/platform/frameworks/native\n * [new reference]         unique_descriptor -\u003e refs/for/master\n\n----------------------------------------------------------------------\n[OK    ] frameworks/native/ unique_descriptor",
+      "parentUuid": "a066a80f_a8b71ba9",
+      "revId": "95902d7bef84e446742d10817fbb0d6f56de557a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
