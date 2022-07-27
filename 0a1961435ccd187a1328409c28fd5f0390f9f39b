@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3dc8d54_29dfff9a",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 156
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-27T21:32:05Z",
+      "side": 1,
+      "message": "delete comment, since it\u0027s unneeded:\n- either it will happen (the error will be clear)\n- it won\u0027t happen (it becomes stale)",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 52
+      },
+      "revId": "0a1961435ccd187a1328409c28fd5f0390f9f39b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

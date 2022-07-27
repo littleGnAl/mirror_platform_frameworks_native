@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecb0d3ca_23549958",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 68
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-27T21:32:05Z",
+      "side": 1,
+      "message": "\u003e The Trusty side should be able to accept multiple connections at the same time, it will just handle all of them sequentially on the main thread.\n\nI\u0027m most concerned about nested transactions here. Could we test these (or could we add this into binderRpcTest so that this variation is tested w/ all the different things there and future features as well)?\n\n\u003e so the client shouldn\u0027t open more than 1 outgoing connection\n\nIf it tries, Trusty will reject it right? Or because there is no \u0027join\u0027 thread, it will hang? (in which case, we should set the listener backlog to \u00270\u0027 in the single threaded case - though I\u0027m not sure if this would affect trusty b/c it isn\u0027t using sockets)",
+      "parentUuid": "d1a12bcd_fdb341ea",
+      "range": {
+        "startLine": 313,
+        "startChar": 9,
+        "endLine": 313,
+        "endChar": 18
+      },
+      "revId": "b334c594eaa414f31111efc9d8fa2adbcf2c1f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62c33e2e_fdd45e6e",
         "filename": "libs/binder/Android.bp",
         "patchSetId": 68
