@@ -85,6 +85,11 @@ public:
     static void         setLimitCallback(binder_proxy_limit_callback cb);
     static void         setBinderProxyCountWatermarks(int high, int low);
 
+    static void startRecording();
+    static void endRecording();
+
+    static status_t replayFile(const std::string& path, IInterface& interface);
+
     std::optional<int32_t> getDebugBinderHandle() const;
 
     class ObjectManager {
@@ -197,6 +202,20 @@ private:
     static uint32_t                             sBinderProxyCountLowWatermark;
     static bool                                 sBinderProxyThrottleCreate;
     static std::unordered_map<int32_t,uint32_t> sLastLimitCallbackMap;
+
+    static bool recordingOn;
+    static int recordingValue;
+
+    struct fileHeader {
+        bool isRpc = false; // TODO: is sizeof(bool) stable?
+        uint8_t reserved[7];
+        uint32_t version = 0;
+        uint32_t command = 0;
+        uint32_t code = 0;
+        uint32_t flags = 0;
+        uint64_t dataSize = 0;
+    };
+    static_assert(sizeof(fileHeader) == 32);
 };
 
 } // namespace android

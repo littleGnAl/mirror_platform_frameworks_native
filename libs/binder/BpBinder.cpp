@@ -30,6 +30,8 @@
 
 #include "BuildFlags.h"
 
+#include <android-base/file.h>
+
 //#undef ALOGV
 //#define ALOGV(...) fprintf(stderr, __VA_ARGS__)
 
@@ -49,6 +51,9 @@ bool BpBinder::sBinderProxyThrottleCreate = false;
 uint32_t BpBinder::sBinderProxyCountHighWatermark = 2500;
 // Another arbitrary value a binder count needs to drop below before another callback will be called
 uint32_t BpBinder::sBinderProxyCountLowWatermark = 2000;
+
+bool BpBinder::recordingOn = false;
+int BpBinder::recordingValue = 0;
 
 // Log any transactions for which the data exceeds this size
 #define LOG_TRANSACTIONS_OVER_SIZE (300 * 1024)
@@ -283,6 +288,36 @@ status_t BpBinder::dump(int fd, const Vector<String16>& args)
     return err;
 }
 
+status_t BpBinder::replayFile(const std::string& path, IInterface& interface) {
+    int openFlags = O_RDONLY;
+    android::base::unique_fd fd(open(path.c_str(), openFlags, 0666));
+
+    auto binder = interface.asBinder(&interface);
+    fileHeader header;
+    uint64_t replySize;
+
+    while (android::base::ReadFully(fd, &header, sizeof(header))) {
+        uint8_t data[header.dataSize];
+        android::base::ReadFully(fd, data, header.dataSize);
+        android::base::ReadFully(fd, &replySize, sizeof(replySize));
+        uint8_t reply[replySize];
+        android::base::ReadFully(fd, reply, replySize);
+
+        Parcel transactData, transactReply;
+        transactData.setData(data, header.dataSize);
+
+        status_t status = binder->transact(header.code, transactData, &transactReply, header.flags);
+
+        if (status != android::OK) {
+            return status;
+        } else if (std::memcmp(transactReply.data(), reply, replySize) != 0) {
+            return android::BAD_VALUE;
+        }
+    }
+
+    return android::OK;
+}
+
 // NOLINTNEXTLINE(google-default-arguments)
 status_t BpBinder::transact(
     uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
@@ -310,6 +345,29 @@ status_t BpBinder::transact(
             }
         }
 
+        // Recording Sent Parcel
+        if (recordingOn && // TODO: add CC_UNLIKELY clause
+            code != INTERFACE_TRANSACTION &&
+            IPCThreadState::self()->getCallRestriction() == ProcessState::CallRestriction::NONE) {
+            fileHeader header{.isRpc = isRpcBinder(),
+                              .version = 0,
+                              .command = 0,
+                              .code = code,
+                              .flags = flags,
+                              .dataSize = (uint64_t)data.dataSize()};
+
+            std::string fileName = std::string(String8(getInterfaceDescriptor()));
+            mkdir("data/local/recordings", 0666);
+            std::string path =
+                    "data/local/recordings/" + fileName + std::to_string(recordingValue) + ".out";
+            int openFlags = O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC | O_BINARY;
+            android::base::unique_fd fd(open(path.c_str(), openFlags, 0666));
+
+            android::base::WriteFully(fd, &header, sizeof(header));
+            android::base::WriteFully(fd, data.data(), header.dataSize);
+            fd.~unique_fd_impl();
+        }
+
         status_t status;
         if (CC_UNLIKELY(isRpcBinder())) {
             status = rpcSession()->transact(sp<IBinder>::fromExisting(this), code, data, reply,
@@ -332,6 +390,21 @@ status_t BpBinder::transact(
         }
 
         if (status == DEAD_OBJECT) mAlive = 0;
+
+        // Recording Reply
+        if (recordingOn && // TODO: add CC_UNLIKELY clause
+            code != INTERFACE_TRANSACTION &&
+            IPCThreadState::self()->getCallRestriction() == ProcessState::CallRestriction::NONE) {
+            std::string fileName = std::string(String8(getInterfaceDescriptor()));
+            mkdir("data/local/recordings", 0666);
+            std::string path = "data/local/recordings/" + fileName + ".out";
+            int openFlags = O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC | O_BINARY;
+            android::base::unique_fd fd(open(path.c_str(), openFlags, 0666));
+
+            uint64_t replySize = (uint64_t)reply->dataSize();
+            android::base::WriteFully(fd, &replySize, sizeof(replySize));
+            android::base::WriteFully(fd, reply->data(), replySize);
+        }
 
         return status;
     }
@@ -642,6 +715,15 @@ void BpBinder::setBinderProxyCountWatermarks(int high, int low) {
     AutoMutex _l(sTrackingLock);
     sBinderProxyCountHighWatermark = high;
     sBinderProxyCountLowWatermark = low;
+}
+
+void BpBinder::startRecording() {
+    recordingOn = true;
+    recordingValue++;
+}
+
+void BpBinder::endRecording() {
+    recordingOn = false;
 }
 
 // ---------------------------------------------------------------------------
