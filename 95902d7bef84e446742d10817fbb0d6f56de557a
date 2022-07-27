@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a066a80f_a8b71ba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-07-27T16:03:14Z",
+      "side": 1,
+      "message": "Sorry one more thing, could you please fix the linter warning?\n\n\u003e Common typo found: \"explicity\" -- should it be \"explicitly\"?",
+      "revId": "95902d7bef84e446742d10817fbb0d6f56de557a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
