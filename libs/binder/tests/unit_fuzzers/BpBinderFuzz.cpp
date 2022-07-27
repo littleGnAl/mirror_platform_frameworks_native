@@ -62,7 +62,10 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     // To prevent memory from running out from calling too many add item operations.
     const uint32_t MAX_RUNS = 2048;
     uint32_t count = 0;
-    sp<IBinder::DeathRecipient> s_recipient = new FuzzDeathRecipient();
+    // it is fatal if we call linkToDeath without incoming threads, so don't do
+    // it.
+    sp<IBinder::DeathRecipient> s_recipient =
+            session->getMaxIncomingThreads() ? new FuzzDeathRecipient() : nullptr;
 
     while (fdp.remaining_bytes() > 0 && count++ < MAX_RUNS) {
         if (fdp.ConsumeBool()) {

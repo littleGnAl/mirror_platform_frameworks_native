@@ -52,6 +52,7 @@ static const std::vector<std::function<void(FuzzedDataProvider*, const sp<BpBind
                      // Clean up possible leftover memory.
                      wp<IBinder::DeathRecipient> outRecipient(nullptr);
                      if (!bpbinder->isRpcBinder()) bpbinder->sendObituary();
+                     if (s_recipient == nullptr) return;
                      bpbinder->unlinkToDeath(nullptr, reinterpret_cast<void*>(&kBpBinderCookie), 0,
                                              &outRecipient);
 
