@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2748474_580194df",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-27T15:14:26Z",
+      "side": 1,
+      "message": "Done. Fixed in patchset #4. I removed getOpeningDeviceByDescriptorLocked and getDeviceByDescriptorLocked and just have hasDeviceWithDescriptorLocked which checks both mDevices and mOpeningDevices.",
+      "parentUuid": "93ea69b9_21609f8a",
+      "range": {
+        "startLine": 1381,
+        "startChar": 0,
+        "endLine": 1381,
+        "endChar": 17
+      },
+      "revId": "32d406d0929e8db012802e0bf023e66eede82c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37df6c27_87bdde86",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I will get this changed.",
       "parentUuid": "37df6c27_87bdde86",
+      "range": {
+        "startLine": 1391,
+        "startChar": 0,
+        "endLine": 1391,
+        "endChar": 17
+      },
+      "revId": "32d406d0929e8db012802e0bf023e66eede82c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32cb02d3_781942fd",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-27T15:14:26Z",
+      "side": 1,
+      "message": "Done. Fixed in patchset #4. I removed getOpeningDeviceByDescriptorLocked and getDeviceByDescriptorLocked and just have hasDeviceWithDescriptorLocked which checks both mDevices and mOpeningDevices.",
+      "parentUuid": "b2030b4f_c7205f09",
       "range": {
         "startLine": 1391,
         "startChar": 0,
@@ -220,6 +268,30 @@
       "side": 1,
       "message": "I will get this changed.",
       "parentUuid": "c0cb081c_cb892dbc",
+      "range": {
+        "startLine": 191,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 79
+      },
+      "revId": "32d406d0929e8db012802e0bf023e66eede82c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2edaada7_2cd3eab1",
+        "filename": "services/inputflinger/tests/EventHub_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-07-27T15:14:26Z",
+      "side": 1,
+      "message": "Done. This is fixed in patchset #4.",
+      "parentUuid": "a250aafe_5f3ae18f",
       "range": {
         "startLine": 191,
         "startChar": 4,
