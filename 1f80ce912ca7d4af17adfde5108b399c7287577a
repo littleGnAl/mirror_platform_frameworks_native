@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750dcb31_5d1123d9",
+        "filename": "services/inputflinger/tests/EventHub_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-07-27T15:22:55Z",
+      "side": 1,
+      "message": "nit: \u0027identical devices\u0027\n\nsince we aren\u0027t actually able to set a non-empty unique id for these",
+      "range": {
+        "startLine": 183,
+        "startChar": 19,
+        "endLine": 183,
+        "endChar": 67
+      },
+      "revId": "1f80ce912ca7d4af17adfde5108b399c7287577a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
