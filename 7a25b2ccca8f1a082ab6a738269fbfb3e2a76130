@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a5d58c_dfc7bdd7",
+        "filename": "libs/binder/tests/unit_fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-27T23:31:17Z",
+      "side": 1,
+      "message": "That would be a cool feature! For this I think having an incoming thread all the time is great.",
+      "parentUuid": "2ba458bc_650c1e26",
+      "range": {
+        "startLine": 65,
+        "startChar": 13,
+        "endLine": 65,
+        "endChar": 18
+      },
+      "revId": "7a25b2ccca8f1a082ab6a738269fbfb3e2a76130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8fd320b_9ccafe77",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-27T23:04:28Z",
       "side": 1,
       "message": "this will always be 0 because this is how it is configured, right? could you actually setup one incoming thread to handle these? that will give us more coverage",
+      "range": {
+        "startLine": 68,
+        "startChar": 12,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "7a25b2ccca8f1a082ab6a738269fbfb3e2a76130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f111bdc6_19046105",
+        "filename": "libs/binder/tests/unit_fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-07-27T23:31:17Z",
+      "side": 1,
+      "message": "Good point! Done.",
+      "parentUuid": "a8fd320b_9ccafe77",
       "range": {
         "startLine": 68,
         "startChar": 12,
