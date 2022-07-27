@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a14b89_36cd0f9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-27T16:46:32Z",
+      "side": 1,
+      "message": "Chris - let me know if there are any questions or follow-ups needed. Given nature of the bug, going to go ahead and land this.",
+      "revId": "9ae49349b91754bc1efb2952df6543afa827f52c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
