@@ -36,6 +36,7 @@
 #include <utils/Compat.h>
 #include <utils/String8.h>
 
+#include "BuildFlags.h"
 #include "FdTrigger.h"
 #include "OS.h"
 #include "RpcSocketAddress.h"
@@ -506,11 +507,7 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
         return status;
     }
 
-#ifdef BINDER_RPC_SINGLE_THREADED
-    constexpr size_t outgoingThreads = 1;
-#else  // BINDER_RPC_SINGLE_THREADED
     size_t outgoingThreads = std::min(numThreadsAvailable, mMaxOutgoingThreads);
-#endif // BINDER_RPC_SINGLE_THREADED
     ALOGI_IF(outgoingThreads != numThreadsAvailable,
              "Server hints client to start %zu outgoing threads, but client will only start %zu "
              "because it is preconfigured to start at most %zu outgoing threads.",
@@ -530,6 +527,10 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
         if (status_t status = connectAndInit(mId, false /*incoming*/); status != OK) return status;
     }
 
+    if constexpr (!kEnableRpcThreads) {
+        LOG_ALWAYS_FATAL_IF(mMaxIncomingThreads > 0,
+                            "Incoming threads are not supported on single-threaded libbinder");
+    }
     for (size_t i = 0; i < mMaxIncomingThreads; i++) {
         if (status_t status = connectAndInit(mId, true /*incoming*/); status != OK) return status;
     }
