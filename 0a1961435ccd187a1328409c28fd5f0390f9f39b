@@ -22,6 +22,30 @@
       },
       "revId": "0a1961435ccd187a1328409c28fd5f0390f9f39b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bac02f3_4d70b5a3",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 156
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-28T02:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3dc8d54_29dfff9a",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 52
+      },
+      "revId": "0a1961435ccd187a1328409c28fd5f0390f9f39b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

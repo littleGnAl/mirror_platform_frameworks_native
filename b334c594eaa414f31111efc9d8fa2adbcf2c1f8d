@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cd4ce02_1a50b802",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 68
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-07-28T02:38:55Z",
+      "side": 1,
+      "message": "\u003e If it tries, Trusty will reject it right? Or because there is no \u0027join\u0027 thread, it will hang?\n\nNeither actually, it should work fine. Trusty libbinder is a little ahead of the single-threaded Android library, because the Trusty code uses a tipc_srv helper library with a semi-async API. tipc_srv does a single wait() call in the main event loop for all the connections (channels in TIPC) it knows about from libbinder. Whenever a message comes in on a specific channel, this library calls the message handler, which in turn calls drainCommands() for that RpcSession. With this design, Trusty libbinder should handle a (theoretically) arbitrary number of incoming connections, but can only handle one transaction at a time.\n\nWe probably should test this though.",
+      "parentUuid": "ecb0d3ca_23549958",
+      "range": {
+        "startLine": 313,
+        "startChar": 9,
+        "endLine": 313,
+        "endChar": 18
+      },
+      "revId": "b334c594eaa414f31111efc9d8fa2adbcf2c1f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62c33e2e_fdd45e6e",
         "filename": "libs/binder/Android.bp",
         "patchSetId": 68
