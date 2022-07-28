@@ -548,6 +548,30 @@
       },
       "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "138d6239_24f4821d",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-07-28T19:54:08Z",
+      "side": 1,
+      "message": "The Parcel knows the transport version internally, and the API use/sense is specific to an IPC operation (so it wouldn\u0027t be used with marshall/unmarshall - and even if it is, I think the current value is good enough for all existing uses - and if it\u0027s not, I request a specific counterexample).\n\nTwo separate transaction limits would works theoretically, but we don\u0027t currently have an API to get what the underlying transport is from the Parcel, and we need to use this to unparcel Parcels in a generic context. So, resizeVector could look like this:\n\n     ... resizeOutVector(AParcel* p, std::vector\u003cT\u003e vector) {\n         int32_t size \u003d readInt32();\n         int32_t maxSize;\n         if (AParcel_isForRpc(p)) {\n             maxSize \u003d AIBinder_getRpcSessionTransactionLimit();\n         } else {\n             maxSize \u003d AIBinder_getKernelTransactionLimit();\n         }\n\n         if (size \u003e maxSize) return error;\n         vector-\u003eresize(size);\n     }\n\nHowever:\n- we don\u0027t currently expose \u0027isForRpc\u0027\n- we might want to expose things in a different way in the future (per-RpcSession limits)\n- we might have other contexts in the future\n\nSo, we\u0027d rather expose the composition of these APIs (Parcel context + transaction limit).",
+      "parentUuid": "a0b6ea28_fb652a73",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1217,
+        "endChar": 34
+      },
+      "revId": "f40f3340ea7ed02ea997494ee83788baa609a3e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
