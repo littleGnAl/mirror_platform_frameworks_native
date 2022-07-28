@@ -99,6 +99,53 @@
       },
       "revId": "f7b96e862f7c1f657635671618c2765638e945da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4b84076_1382422e",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-07-28T11:56:25Z",
+      "side": 1,
+      "message": "+1 for exiting on any signal (i.e., `if (WIFSIGNALED(...)) { return ... }`).\n \nThere isn\u0027t a specific error code for profile related errors, but that\u0027s okay. We can keep the retry behavior for now. Ideally, otapreopt shouldn\u0027t retry at all, and it should be caller\u0027s responsibility to validate the profile before passing it to otapreopt, but that\u0027s out of the scope of this CL. We\u0027ll rewrite the whole thing in the future and make it behave in the ideal way.",
+      "parentUuid": "491ffba1_5e27b902",
+      "range": {
+        "startLine": 508,
+        "startChar": 12,
+        "endLine": 508,
+        "endChar": 46
+      },
+      "revId": "f7b96e862f7c1f657635671618c2765638e945da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52530dc2_f948f09b",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-07-28T11:56:25Z",
+      "side": 1,
+      "message": "Nit: \"Interrupted\" (capitalize \"i\" and add \"ed\").",
+      "range": {
+        "startLine": 509,
+        "startChar": 29,
+        "endLine": 509,
+        "endChar": 38
+      },
+      "revId": "f7b96e862f7c1f657635671618c2765638e945da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
