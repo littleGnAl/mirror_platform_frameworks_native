@@ -151,6 +151,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dda1f85b_436423af",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1929575
+      },
+      "writtenOn": "2022-07-28T12:35:16Z",
+      "side": 1,
+      "message": "yes, right.. ok ,for now we only  want  to stop the unomal situation. \nand about signal kill ,we found google has used dexopt cacncel, which is implement by kill in Andoird T`s bgdexopt. we also hope it suit for otapreopt~",
+      "parentUuid": "b2e75691_01eaa098",
+      "range": {
+        "startLine": 508,
+        "startChar": 12,
+        "endLine": 508,
+        "endChar": 46
+      },
+      "revId": "f7b96e862f7c1f657635671618c2765638e945da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52530dc2_f948f09b",
         "filename": "cmds/installd/otapreopt.cpp",
         "patchSetId": 2
