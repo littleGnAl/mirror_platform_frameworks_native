@@ -36,6 +36,7 @@
 #include <utils/Compat.h>
 #include <utils/String8.h>
 
+#include "BuildFlags.h"
 #include "FdTrigger.h"
 #include "OS.h"
 #include "RpcSocketAddress.h"
@@ -443,11 +444,25 @@ sp<RpcServer> RpcSession::server() {
 
 status_t RpcSession::setupClient(const std::function<status_t(const std::vector<uint8_t>& sessionId,
                                                               bool incoming)>& connectAndInit) {
+    size_t outgoingThreads;
+    size_t incomingThreads;
     {
         RpcMutexLockGuard _l(mMutex);
         LOG_ALWAYS_FATAL_IF(mConnections.mOutgoing.size() != 0,
                             "Must only setup session once, but already has %zu clients",
                             mConnections.mOutgoing.size());
+
+        if constexpr (!kEnableRpcThreads) {
+            LOG_ALWAYS_FATAL_IF(mMaxIncomingThreads > 0,
+                                "Incoming threads are not supported on single-threaded libbinder");
+        }
+
+        // Read the thread counts while we're holding the mutex.
+        // The caller could still call setMax*Threads between now
+        // and when we add the first connection, but that update
+        // will just get ignored.
+        outgoingThreads = mMaxOutgoingThreads;
+        incomingThreads = mMaxIncomingThreads;
     }
 
     if (auto status = initShutdownTrigger(); status != OK) return status;
@@ -506,11 +521,7 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
         return status;
     }
 
-#ifdef BINDER_RPC_SINGLE_THREADED
-    constexpr size_t outgoingThreads = 1;
-#else  // BINDER_RPC_SINGLE_THREADED
-    size_t outgoingThreads = std::min(numThreadsAvailable, mMaxOutgoingThreads);
-#endif // BINDER_RPC_SINGLE_THREADED
+    outgoingThreads = std::min(numThreadsAvailable, outgoingThreads);
     ALOGI_IF(outgoingThreads != numThreadsAvailable,
              "Server hints client to start %zu outgoing threads, but client will only start %zu "
              "because it is preconfigured to start at most %zu outgoing threads.",
@@ -530,7 +541,7 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
         if (status_t status = connectAndInit(mId, false /*incoming*/); status != OK) return status;
     }
 
-    for (size_t i = 0; i < mMaxIncomingThreads; i++) {
+    for (size_t i = 0; i < incomingThreads; i++) {
         if (status_t status = connectAndInit(mId, true /*incoming*/); status != OK) return status;
     }
 
