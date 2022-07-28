@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ca040fb_dc3e5a1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-28T16:17:29Z",
+      "side": 1,
+      "message": "Siarhei, I\u0027ll address your comments separately since it already landed in master. (I didn\u0027t realize we didn\u0027t need Dr. No for the -plus-aosp branches)",
+      "revId": "4982a149830f0fe7deec8edc5301ff716579aab3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
