@@ -76,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a79a505c_00644f3c",
+        "filename": "services/inputflinger/reader/mapper/TouchInputMapper.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-29T16:32:43Z",
+      "side": 1,
+      "message": "Addressed in ag/19462467.",
+      "parentUuid": "1685aebe_23e1ca9c",
+      "range": {
+        "startLine": 800,
+        "startChar": 8,
+        "endLine": 801,
+        "endChar": 56
+      },
+      "revId": "7d379a7440074904da726fd6b6820a009b35f604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40d66405_df570a51",
@@ -89,6 +113,30 @@
       "writtenOn": "2022-07-28T15:48:35Z",
       "side": 1,
       "message": "nit: they aren\u0027t used anywhere else, so either make the const or just inline these on L6266",
+      "range": {
+        "startLine": 6264,
+        "startChar": 4,
+        "endLine": 6265,
+        "endChar": 20
+      },
+      "revId": "7d379a7440074904da726fd6b6820a009b35f604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26cb73f_6e5aec17",
+        "filename": "services/inputflinger/tests/InputReader_test.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 6265,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-07-29T16:32:43Z",
+      "side": 1,
+      "message": "Addressed in ag/19462467.",
+      "parentUuid": "40d66405_df570a51",
       "range": {
         "startLine": 6264,
         "startChar": 4,
