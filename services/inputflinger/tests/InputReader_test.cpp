@@ -21,6 +21,7 @@
 #include <InputReader.h>
 #include <InputReaderBase.h>
 #include <InputReaderFactory.h>
+#include <JoystickInputMapper.h>
 #include <KeyboardInputMapper.h>
 #include <MultiTouchInputMapper.h>
 #include <PeripheralController.h>
@@ -282,9 +283,17 @@ public:
         mConfig.portAssociations.insert({inputPort, displayPort});
     }
 
+    void removeInputPortAssociation(const std::string& inputPort) {
+        ASSERT_EQ(1u, mConfig.portAssociations.erase(inputPort));
+    }
+
     void addInputUniqueIdAssociation(const std::string& inputUniqueId,
                                      const std::string& displayUniqueId) {
         mConfig.uniqueIdAssociations.insert({inputUniqueId, displayUniqueId});
+    }
+
+    void removeInputUniqueIdAssociation(const std::string& inputUniqueId) {
+        ASSERT_EQ(1u, mConfig.uniqueIdAssociations.erase(inputUniqueId));
     }
 
     void addDisabledDevice(int32_t deviceId) { mConfig.disabledDevices.insert(deviceId); }
@@ -1894,6 +1903,49 @@ TEST_F(InputReaderTest, Device_CanDispatchToDisplay) {
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyConfigurationChangedWasCalled());
     ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyDeviceResetWasCalled());
     ASSERT_NO_FATAL_FAILURE(mapper.assertConfigureWasCalled());
+
+    // Device should only dispatch to the specified display.
+    ASSERT_EQ(deviceId, device->getId());
+    ASSERT_FALSE(mReader->canDispatchToDisplay(deviceId, DISPLAY_ID));
+    ASSERT_TRUE(mReader->canDispatchToDisplay(deviceId, SECONDARY_DISPLAY_ID));
+
+    // Can't dispatch event from a disabled device.
+    disableDevice(deviceId);
+    mReader->loopOnce();
+    ASSERT_FALSE(mReader->canDispatchToDisplay(deviceId, SECONDARY_DISPLAY_ID));
+}
+
+TEST_F(InputReaderTest, JoystickDevice_CanDispatchToDisplay) {
+    constexpr int32_t deviceId = END_RESERVED_ID + 1000;
+    constexpr Flags<InputDeviceClass> deviceClass = InputDeviceClass::JOYSTICK;
+    constexpr int32_t eventHubId = 1;
+    const char* DEVICE_LOCATION = "USB1";
+    std::shared_ptr<InputDevice> device = mReader->newDevice(deviceId, "fake", DEVICE_LOCATION);
+    device->addMapper<JoystickInputMapper>(eventHubId);
+    mReader->pushNextDevice(device);
+
+    const uint8_t hdmi1 = 1;
+
+    // Associated touch screen with second display.
+    mFakePolicy->addInputPortAssociation(DEVICE_LOCATION, hdmi1);
+
+    // Add default and second display.
+    mFakePolicy->clearViewports();
+    mFakePolicy->addDisplayViewport(DISPLAY_ID, DISPLAY_WIDTH, DISPLAY_HEIGHT,
+                                    DISPLAY_ORIENTATION_0, true /*isActive*/, "local:0", NO_PORT,
+                                    ViewportType::INTERNAL);
+    mFakePolicy->addDisplayViewport(SECONDARY_DISPLAY_ID, DISPLAY_WIDTH, DISPLAY_HEIGHT,
+                                    DISPLAY_ORIENTATION_0, true /*isActive*/, "local:1", hdmi1,
+                                    ViewportType::EXTERNAL);
+    mReader->requestRefreshConfiguration(InputReaderConfiguration::CHANGE_DISPLAY_INFO);
+    mReader->loopOnce();
+
+    // Add the device, and make sure all of the callbacks are triggered.
+    // The device is added after the input port associations are processed since
+    // we do not yet support dynamic device-to-display associations.
+    ASSERT_NO_FATAL_FAILURE(addDevice(eventHubId, "fake", deviceClass, nullptr));
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyConfigurationChangedWasCalled());
+    ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyDeviceResetWasCalled());
 
     // Device should only dispatch to the specified display.
     ASSERT_EQ(deviceId, device->getId());
@@ -9222,6 +9274,175 @@ TEST_F(LightControllerTest, PlayerIdLight) {
     ASSERT_FALSE(controller.setLightColor(lights[0].id, LIGHT_COLOR));
     ASSERT_TRUE(controller.setLightPlayerId(lights[0].id, LIGHT_PLAYER_ID));
     ASSERT_EQ(controller.getLightPlayerId(lights[0].id).value_or(-1), LIGHT_PLAYER_ID);
+}
+
+// --- JoystickInputMapperTest ---
+class JoystickInputMapperTest : public InputMapperTest {
+protected:
+    // const std::string UNIQUE_ID = "local:0";
+    const int32_t AXIS_MAX = 255;
+
+    virtual void SetUp() override {
+        InputMapperTest::SetUp(InputDeviceClass::JOYSTICK);
+
+        mFakeEventHub->addAbsoluteAxis(EVENTHUB_ID, ABS_X, 0, AXIS_MAX, 15, 0, 0);
+        mFakeEventHub->addAbsoluteAxis(EVENTHUB_ID, ABS_Y, 0, AXIS_MAX, 15, 0, 0);
+    }
+
+    void testJoystick(InputMapper& mapper, int32_t displayId, int x, int y) {
+        process(mapper, ARBITRARY_TIME, READ_TIME, EV_ABS, ABS_X, x);
+        process(mapper, ARBITRARY_TIME, READ_TIME, EV_ABS, ABS_Y, y);
+        process(mapper, ARBITRARY_TIME, READ_TIME, EV_SYN, SYN_REPORT, 0);
+
+        NotifyMotionArgs args;
+        ASSERT_NO_FATAL_FAILURE(mFakeListener->assertNotifyMotionWasCalled(&args));
+        ASSERT_EQ(AINPUT_SOURCE_JOYSTICK, args.source);
+        ASSERT_EQ(displayId, args.displayId);
+        ASSERT_EQ(1u, args.pointerCount);
+        ASSERT_NEAR(args.pointerCoords[0].getAxisValue(AMOTION_EVENT_AXIS_GENERIC_1),
+                    getAxiesPercent(y), 0.02f);
+        ASSERT_NEAR(args.pointerCoords[0].getAxisValue(AMOTION_EVENT_AXIS_GENERIC_2),
+                    getAxiesPercent(x), 0.02f);
+    }
+
+private:
+    float getAxiesPercent(int value) { return static_cast<float>(value) / AXIS_MAX; }
+};
+
+TEST_F(JoystickInputMapperTest, GetSources) {
+    JoystickInputMapper& mapper = addMapperAndConfigure<JoystickInputMapper>();
+    ASSERT_EQ(AINPUT_SOURCE_JOYSTICK, mapper.getSources());
+}
+
+TEST_F(JoystickInputMapperTest, Process_SimpleJoystickPress) {
+    JoystickInputMapper& mapper = addMapperAndConfigure<JoystickInputMapper>();
+    testJoystick(mapper, ADISPLAY_ID_NONE, 42, 77);             //'random' input
+    testJoystick(mapper, ADISPLAY_ID_NONE, 0, 0);               // min input
+    testJoystick(mapper, ADISPLAY_ID_NONE, AXIS_MAX, AXIS_MAX); // max input
+}
+
+TEST_F(JoystickInputMapperTest, Process_JoystickInputPortAssociation) {
+    const int32_t DISPLAY_ID0 = 0;
+    const int32_t DISPLAY_ID1 = 1;
+    const std::string DISPLAY_UNIQUE_ID0 = "local:0";
+    const std::string DISPLAY_UNIQUE_ID1 = "local:1";
+    const uint8_t HDMI0 = 0;
+    const uint8_t HDMI1 = 1;
+
+    JoystickInputMapper& mapper = addMapperAndConfigure<JoystickInputMapper>();
+
+    //--- test joystick/display association when display exists first ---
+    // add first display
+    setDisplayInfoAndReconfigure(DISPLAY_ID0, DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_ORIENTATION_0,
+                                 DISPLAY_UNIQUE_ID0, HDMI0, ViewportType::INTERNAL);
+
+    // device is enabled with no association
+    ASSERT_TRUE(mDevice->isEnabled());
+
+    // test joystick input with default display
+    testJoystick(mapper, ADISPLAY_ID_NONE, 42, 77);
+
+    // associated joystick with first display.
+    mFakePolicy->addInputPortAssociation(DEVICE_LOCATION, HDMI0);
+    configureDevice(InputReaderConfiguration::CHANGE_DISPLAY_INFO);
+
+    // device is enabled with when associated with first display
+    ASSERT_TRUE(mDevice->isEnabled());
+
+    // test joystick input with associated display
+    testJoystick(mapper, DISPLAY_ID0, 128, 128);
+
+    // reset association
+    mFakePolicy->removeInputPortAssociation(DEVICE_LOCATION);
+    configureDevice(InputReaderConfiguration::CHANGE_DISPLAY_INFO);
+
+    //--- test joystick/display association when display is created after association ---
+    // associated joystick with second display.
+    mFakePolicy->addInputPortAssociation(DEVICE_LOCATION, HDMI1);
+    configureDevice(InputReaderConfiguration::CHANGE_DISPLAY_INFO);
+
+    // device is disabled with when associated with (non existent) second display
+    ASSERT_FALSE(mDevice->isEnabled());
+
+    // create second display
+    setDisplayInfoAndReconfigure(DISPLAY_ID1, DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_ORIENTATION_0,
+                                 DISPLAY_UNIQUE_ID1, HDMI1, ViewportType::INTERNAL);
+
+    // device is enabled with when the second display is added
+    ASSERT_TRUE(mDevice->isEnabled());
+
+    // test joystick input with associated display
+    testJoystick(mapper, DISPLAY_ID1, 34, 34);
+
+    //--- test joystick/display association resets to default ---
+    // reset association
+    mFakePolicy->removeInputPortAssociation(DEVICE_LOCATION);
+    configureDevice(InputReaderConfiguration::CHANGE_DISPLAY_INFO);
+
+    ASSERT_TRUE(mDevice->isEnabled());
+    testJoystick(mapper, ADISPLAY_ID_NONE, 157, 157);
+}
+
+TEST_F(JoystickInputMapperTest, Process_JoystickInputUniqueIdAssociation) {
+    const int32_t DISPLAY_ID0 = 0;
+    const int32_t DISPLAY_ID1 = 1;
+    const std::string DISPLAY_UNIQUE_ID0 = "local:0";
+    const std::string DISPLAY_UNIQUE_ID1 = "local:1";
+    const uint8_t HDMI0 = 0;
+    const uint8_t HDMI1 = 1;
+
+    JoystickInputMapper& mapper = addMapperAndConfigure<JoystickInputMapper>();
+
+    //--- test joystick/display association when display exists first ---
+    // add first display
+    setDisplayInfoAndReconfigure(DISPLAY_ID0, DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_ORIENTATION_0,
+                                 DISPLAY_UNIQUE_ID0, HDMI0, ViewportType::INTERNAL);
+
+    // device is enabled with no association
+    ASSERT_TRUE(mDevice->isEnabled());
+
+    // test joystick input with default display
+    testJoystick(mapper, ADISPLAY_ID_NONE, 42, 77);
+
+    // associated joystick with first display.
+    mFakePolicy->addInputUniqueIdAssociation(mDevice->getName(), DISPLAY_UNIQUE_ID0);
+    configureDevice(InputReaderConfiguration::CHANGE_DISPLAY_INFO);
+
+    // device is enabled with when associated with first display
+    ASSERT_TRUE(mDevice->isEnabled());
+
+    // test joystick input with associated display
+    testJoystick(mapper, DISPLAY_ID0, 128, 128);
+
+    // reset association
+    mFakePolicy->removeInputUniqueIdAssociation(mDevice->getName());
+    configureDevice(InputReaderConfiguration::CHANGE_DISPLAY_INFO);
+
+    //--- test joystick/display association when display is created after association ---
+    // associated joystick with second display.
+    mFakePolicy->addInputUniqueIdAssociation(mDevice->getName(), DISPLAY_UNIQUE_ID1);
+    configureDevice(InputReaderConfiguration::CHANGE_DISPLAY_INFO);
+
+    // device is disabled with when associated with (non existent) second display
+    ASSERT_FALSE(mDevice->isEnabled());
+
+    // create second display
+    setDisplayInfoAndReconfigure(DISPLAY_ID1, DISPLAY_WIDTH, DISPLAY_HEIGHT, DISPLAY_ORIENTATION_0,
+                                 DISPLAY_UNIQUE_ID1, HDMI1, ViewportType::INTERNAL);
+
+    // device is enabled with when the second display is added
+    ASSERT_TRUE(mDevice->isEnabled());
+
+    // test joystick input with associated display
+    testJoystick(mapper, DISPLAY_ID1, 34, 34);
+
+    //--- test joystick/display association resets to default ---
+    // reset association
+    mFakePolicy->removeInputUniqueIdAssociation(mDevice->getName());
+    configureDevice(InputReaderConfiguration::CHANGE_DISPLAY_INFO);
+
+    ASSERT_TRUE(mDevice->isEnabled());
+    testJoystick(mapper, ADISPLAY_ID_NONE, 157, 157);
 }
 
 } // namespace android

@@ -33,6 +33,7 @@ public:
                            uint32_t changes) override;
     virtual void reset(nsecs_t when) override;
     virtual void process(const RawEvent* rawEvent) override;
+    virtual std::optional<int32_t> getAssociatedDisplayId() override;
 
 private:
     struct Axis {
@@ -92,11 +93,15 @@ private:
     // Axes indexed by raw ABS_* axis index.
     std::unordered_map<int32_t, Axis> mAxes;
 
+    // The current viewport.
+    std::optional<DisplayViewport> mViewport;
+
     void sync(nsecs_t when, nsecs_t readTime, bool force);
 
     bool haveAxis(int32_t axisId);
     void pruneAxes(bool ignoreExplicitlyMappedAxes);
     bool filterAxes(bool force);
+    int32_t getDisplayId();
 
     static bool hasValueChangedSignificantly(float filter, float newValue, float currentValue,
                                              float min, float max);

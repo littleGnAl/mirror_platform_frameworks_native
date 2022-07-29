@@ -165,6 +165,10 @@ void JoystickInputMapper::configure(nsecs_t when, const InputReaderConfiguration
             it++;
         }
     }
+
+    if (!changes || (changes & InputReaderConfiguration::CHANGE_DISPLAY_INFO)) {
+        mViewport = getDeviceContext().getAssociatedViewport();
+    }
 }
 
 JoystickInputMapper::Axis JoystickInputMapper::createAxis(const AxisInfo& axisInfo,
@@ -306,6 +310,13 @@ void JoystickInputMapper::process(const RawEvent* rawEvent) {
     }
 }
 
+std::optional<int32_t> JoystickInputMapper::getAssociatedDisplayId() {
+    if (mViewport) {
+        return std::make_optional(mViewport->displayId);
+    }
+    return std::nullopt;
+}
+
 void JoystickInputMapper::sync(nsecs_t when, nsecs_t readTime, bool force) {
     if (!filterAxes(force)) {
         return;
@@ -338,7 +349,7 @@ void JoystickInputMapper::sync(nsecs_t when, nsecs_t readTime, bool force) {
     uint32_t policyFlags = 0;
 
     NotifyMotionArgs args(getContext()->getNextId(), when, readTime, getDeviceId(),
-                          AINPUT_SOURCE_JOYSTICK, ADISPLAY_ID_NONE, policyFlags,
+                          AINPUT_SOURCE_JOYSTICK, getDisplayId(), policyFlags,
                           AMOTION_EVENT_ACTION_MOVE, 0, 0, metaState, buttonState,
                           MotionClassification::NONE, AMOTION_EVENT_EDGE_FLAG_NONE, 1,
                           &pointerProperties, &pointerCoords, 0, 0,
@@ -380,6 +391,13 @@ bool JoystickInputMapper::filterAxes(bool force) {
         }
     }
     return atLeastOneSignificantChange;
+}
+
+int32_t JoystickInputMapper::getDisplayId() {
+    if (mViewport) {
+        return mViewport->displayId;
+    }
+    return ADISPLAY_ID_NONE;
 }
 
 bool JoystickInputMapper::hasValueChangedSignificantly(float filter, float newValue,
