@@ -492,3 +492,18 @@ cc_binary {
         "android.debug_aidl-cpp",
     ],
 }
+
+//Created for fuzz testing
+cc_test_library {
+    name: "libbinder_fuzz_testlib",
+    defaults: [
+        "libbinder_defaults",
+        "libbinder_kernel_defaults",
+    ],
+    cflags: [
+        "-DRPC_FUZZER_UTILITY",
+    ],
+    visibility: [
+        ":__subpackages__",
+    ],
+}

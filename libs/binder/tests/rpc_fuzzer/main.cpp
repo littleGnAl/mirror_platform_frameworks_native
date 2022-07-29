@@ -157,18 +157,42 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
         }
     }
 
-    usleep(10000);
+    bool hasFinishedProcessing = false;
+    RpcConditionVariable rpcCV;
+    RpcMutex mtx;
+
+    std::thread monitoringThread([&] {
+        while (!server->isPollingForData()) {
+            usleep(10);
+        }
+
+        RpcMutexUniqueLock rpcLock(mtx);
+        hasFinishedProcessing = true;
+        rpcLock.unlock();
+        rpcCV.notify_one();
+    });
+
+    RpcMutexUniqueLock rpcLock(mtx);
+    rpcCV.wait(rpcLock, [&] { return hasFinishedProcessing; });
+    rpcLock.unlock();
 
     if (hangupBeforeShutdown) {
         connections.clear();
-        while (!server->listSessions().empty() || server->numUninitializedSessions()) {
+        while (server->getNumberOfSessions() > 0 || server->numUninitializedSessions()) {
             // wait for all threads to finish processing existing information
             usleep(1);
         }
     }
 
     while (!server->shutdown()) usleep(1);
-    serverThread.join();
+
+    if (serverThread.joinable()) {
+        serverThread.join();
+    }
+
+    if (monitoringThread.joinable()) {
+        monitoringThread.join();
+    }
 
     return 0;
 }

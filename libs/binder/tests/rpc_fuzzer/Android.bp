@@ -29,20 +29,22 @@ cc_fuzz {
         "libbinder_tls_test_utils",
         "libssl_fuzz_unsafe",
         "libcrypto_fuzz_unsafe",
+        "libbinder_fuzz_testlib",
     ],
     cflags: [
-        "-DBORINGSSL_UNSAFE_DETERMINISTIC_MODE" // for RAND_reset_for_fuzzing
+        "-DBORINGSSL_UNSAFE_DETERMINISTIC_MODE", // for RAND_reset_for_fuzzing
+        "-DRPC_FUZZER_UTILITY",
     ],
     target: {
         android: {
             shared_libs: [
-                "libbinder",
+                "libbinder_fuzz_testlib",
                 "libutils",
             ],
         },
         host: {
             static_libs: [
-                "libbinder",
+                "libbinder_fuzz_testlib",
                 "libutils",
             ],
         },

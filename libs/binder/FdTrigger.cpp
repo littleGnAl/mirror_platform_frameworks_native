@@ -67,11 +67,28 @@ status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
             {.fd = mRead.get(), .events = 0, .revents = 0},
 #endif
     };
+
+#ifdef RPC_FUZZER_UTILITY
+    int descriptor = fd.get();
+    RpcMutexUniqueLock rpcLock(mLock);
+    mFdPollingStates[descriptor] = true;
+    rpcLock.unlock();
+#endif
+
     int ret = TEMP_FAILURE_RETRY(poll(pfd, arraysize(pfd), -1));
     if (ret < 0) {
         return -errno;
     }
     LOG_ALWAYS_FATAL_IF(ret == 0, "poll(%d) returns 0 with infinite timeout", fd.get());
+
+#ifdef RPC_FUZZER_UTILITY
+    rpcLock.lock();
+    auto descriptorItr = mFdPollingStates.find(descriptor);
+    if (descriptorItr != mFdPollingStates.end()) {
+        mFdPollingStates.erase(descriptorItr);
+    }
+    rpcLock.unlock();
+#endif
 
     // At least one FD has events. Check them.
 
@@ -114,5 +131,16 @@ status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
     // This is a very common case, so don't log.
     return DEAD_OBJECT;
 }
+
+#ifdef RPC_FUZZER_UTILITY
+bool FdTrigger::isPollingOnDescriptors() {
+    RpcMutexUniqueLock rpcLock(mLock);
+    bool isPolling = true;
+    for (const auto& [_, state] : mFdPollingStates) {
+        isPolling &= state;
+    }
+    return isPolling;
+}
+#endif
 
 } // namespace android

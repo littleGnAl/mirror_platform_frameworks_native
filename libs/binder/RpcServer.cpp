@@ -560,4 +560,28 @@ status_t RpcServer::setupExternalServer(base::unique_fd serverFd) {
     return OK;
 }
 
+size_t RpcServer::getNumberOfSessions() {
+    RpcMutexLockGuard _l(mLock);
+    return mSessions.size();
+}
+
+#ifdef RPC_FUZZER_UTILITY
+bool RpcServer::isPollingForData() {
+    RpcMutexLockGuard _l(mLock);
+    // Checking if all the FdTriggers are polling for event including shutdown triggers
+    // for server and each server sessions
+    bool isPolling = true;
+    for (const auto& [_, session] : mSessions) {
+        if (session->mShutdownTrigger != nullptr) {
+            isPolling &= session->mShutdownTrigger->isPollingOnDescriptors();
+        }
+    }
+
+    if (mShutdownTrigger != nullptr) {
+        isPolling &= mShutdownTrigger->isPollingOnDescriptors();
+    }
+
+    return isPolling;
+}
+#endif
 } // namespace android

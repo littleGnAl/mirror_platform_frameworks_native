@@ -186,7 +186,10 @@ public:
      */
     std::vector<sp<RpcSession>> listSessions();
     size_t numUninitializedSessions();
-
+    size_t getNumberOfSessions();
+#ifdef RPC_FUZZER_UTILITY
+    bool isPollingForData();
+#endif
     ~RpcServer();
 
 private:

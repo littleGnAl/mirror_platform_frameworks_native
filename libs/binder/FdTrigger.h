@@ -21,6 +21,11 @@
 #include <android-base/unique_fd.h>
 #include <utils/Errors.h>
 
+#ifdef RPC_FUZZER_UTILITY
+#include <binder/RpcThreads.h>
+#include <map>
+#endif
+
 namespace android {
 
 /** This is not a pipe. */
@@ -54,6 +59,9 @@ public:
      *   false - trigger happened
      */
     [[nodiscard]] status_t triggerablePoll(base::borrowed_fd fd, int16_t event);
+#ifdef RPC_FUZZER_UTILITY
+    [[nodiscard]] bool isPollingOnDescriptors();
+#endif
 
 private:
 #ifdef BINDER_RPC_SINGLE_THREADED
@@ -61,6 +69,11 @@ private:
 #else
     base::unique_fd mWrite;
     base::unique_fd mRead;
+#endif
+
+#ifdef RPC_FUZZER_UTILITY
+    std::map<int, bool> mFdPollingStates;
+    RpcMutex mLock;
 #endif
 };
 } // namespace android
