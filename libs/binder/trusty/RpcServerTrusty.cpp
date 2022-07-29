@@ -62,7 +62,9 @@ RpcServerTrusty::RpcServerTrusty(std::unique_ptr<RpcTransportCtx> ctx, std::stri
         mPortAcl(std::move(portAcl)) {
     mTipcPort.name = mPortName.c_str();
     mTipcPort.msg_max_size = msgMaxSize;
-    mTipcPort.msg_queue_len = 6; // Three each way
+    // A client sends the connection init message immediately followed by the
+    // GET_MAX_THREADS special transaction, so we need room for both
+    mTipcPort.msg_queue_len = 2;
     mTipcPort.priv = this;
 
     if (mPortAcl) {
