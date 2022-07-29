@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc3adcd4_185928c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-07-29T15:36:31Z",
+      "side": 1,
+      "message": "I don\u0027t have permission to view the log, curious why it keeps failing",
+      "revId": "70e413d08ff6305f9c4a7489d77457eb7ce38097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
