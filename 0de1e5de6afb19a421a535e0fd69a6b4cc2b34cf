@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec04225_84e29a86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-07-29T20:21:41Z",
+      "side": 1,
+      "message": "Uploading current changes for binder_rpc_fuzzer",
+      "revId": "0de1e5de6afb19a421a535e0fd69a6b4cc2b34cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
