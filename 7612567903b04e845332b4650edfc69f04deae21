@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba4f8834_dfceaea1",
+        "filename": "libs/sensor/fuzz/bittube_fuzzer/bittube_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1074038
+      },
+      "writtenOn": "2022-08-01T13:51:49Z",
+      "side": 1,
+      "message": "Is this line necessary? recvObjects should be populating recvData anyway so we shouldn\u0027t need to pre-populate values.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 80
+      },
+      "revId": "7612567903b04e845332b4650edfc69f04deae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
