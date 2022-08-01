@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d9034f3_c2dc033d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-08-01T09:45:15Z",
+      "side": 1,
+      "message": "Martin is OOO. I think he suggest to file a bug to Google, provide more context for this change there, and add a \"Bug:\" tag with the bugid in the commit message.",
+      "parentUuid": "1c4d709b_2e2e0d4f",
+      "revId": "f7b96e862f7c1f657635671618c2765638e945da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63003106_d6148865",
         "filename": "cmds/installd/otapreopt.cpp",
         "patchSetId": 2
