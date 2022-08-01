@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0d5d415_73fb0046",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1946226
+      },
+      "writtenOn": "2022-08-01T14:25:32Z",
+      "side": 1,
+      "message": "I did not attach bug tracking on the other CL. We are just adding a fuzzer to the lib. It does not fix an issue or a bug.\n\nI can create a bug on buganizer, provide a description and attach it to both CLs. However I have not seen this being done for other fuzzers.\n\nPlease let me know if you want me attach a bug to the CLs.",
+      "parentUuid": "5993275d_0b27ba1e",
+      "revId": "7612567903b04e845332b4650edfc69f04deae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba4f8834_dfceaea1",
         "filename": "libs/sensor/fuzz/bittube_fuzzer/bittube_fuzzer.cpp",
         "patchSetId": 2
