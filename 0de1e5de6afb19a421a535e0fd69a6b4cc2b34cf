@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c326c38a_7aa7565f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-01T17:43:09Z",
+      "side": 1,
+      "message": "add a \u003c50 char description of the CL on a line by itself before this, e.g.\n\n```\n    binder_rpc_fuzzer: avoid waiting\n\n    Checking if ...\n```",
+      "revId": "0de1e5de6afb19a421a535e0fd69a6b4cc2b34cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec04225_84e29a86",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -14,6 +31,144 @@
       "writtenOn": "2022-07-29T20:21:41Z",
       "side": 1,
       "message": "Uploading current changes for binder_rpc_fuzzer",
+      "revId": "0de1e5de6afb19a421a535e0fd69a6b4cc2b34cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222c0aa7_b34bf455",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-01T17:43:09Z",
+      "side": 1,
+      "message": "you said you would create something like \u0027struct FdState\u0027 which has the borrowed_fd and additional state for this, right? (so we can avoid this map and always have this mode)\n\n(btw - the map is actually broken in cases that connection FDs shutdown and FDs become invalid or are re-used - also, we might not have a map entry if a thread hadn\u0027t polled before - so the map proves out the idea only. All looks great though!)",
+      "range": {
+        "startLine": 56,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 56
+      },
+      "revId": "0de1e5de6afb19a421a535e0fd69a6b4cc2b34cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bacb226_dd15b3be",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-01T17:43:09Z",
+      "side": 1,
+      "message": "why add this API? Is \u0027listSessions\u0027 causing a performance problem?",
+      "range": {
+        "startLine": 563,
+        "startChar": 18,
+        "endLine": 563,
+        "endChar": 37
+      },
+      "revId": "0de1e5de6afb19a421a535e0fd69a6b4cc2b34cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65491566_39386d40",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-01T17:43:09Z",
+      "side": 1,
+      "message": "we can use std::condition_variable here and std::mutex, right?",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 24
+      },
+      "revId": "0de1e5de6afb19a421a535e0fd69a6b4cc2b34cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8744aca_86989dbe",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-01T17:43:09Z",
+      "side": 1,
+      "message": "why does this need to be on another thread?\n\nnit: we can move the notify into isPollingForData to get rid of the sleep on L166 - you might consider is separately",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 7
+      },
+      "revId": "0de1e5de6afb19a421a535e0fd69a6b4cc2b34cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b165890f_39b95136",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-01T17:43:09Z",
+      "side": 1,
+      "message": "we should move this code before we wait for \u0027isPollingData\u0027 so that we test the behavior of an immediate hangup (in the future we might test more behaviors)",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "0de1e5de6afb19a421a535e0fd69a6b4cc2b34cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc3e218_169c01f8",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-01T17:43:09Z",
+      "side": 1,
+      "message": "The thread will only not be joinable if it is not running (misconfigured). So we should always call \u0027join\u0027 on these.",
+      "range": {
+        "startLine": 193,
+        "startChar": 25,
+        "endLine": 193,
+        "endChar": 33
+      },
       "revId": "0de1e5de6afb19a421a535e0fd69a6b4cc2b34cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
