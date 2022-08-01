@@ -105,6 +105,24 @@
       "parentUuid": "711b381c_0a41a7a5",
       "revId": "6fc594041f888077b9f945ec9f04cb59ecdd9209",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2adffd87_2e0b367f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2022-08-01T19:52:45Z",
+      "side": 1,
+      "message": "\u003e Typically we look to fuzz code that receive input from untrusted sources (such as over the network, etc), code that parse structured input. Based on feedback from Connor, we can drop fuzzing startTrackingProcessCpuTimes and clearUidTimes.\nHmm, I\u0027m not sure this applies even to the remaining functions since the data being passed in is just UIDs and timestamps provided by system_server. But I guess there\u0027s really no harm in fuzzing these functions either",
+      "parentUuid": "a22af46e_29c49f67",
+      "revId": "6fc594041f888077b9f945ec9f04cb59ecdd9209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
