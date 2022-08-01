@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5993275d_0b27ba1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074038
+      },
+      "writtenOn": "2022-08-01T14:14:42Z",
+      "side": 1,
+      "message": "Similar to the other CL, can you denote the bug tracking this work here?",
+      "revId": "7612567903b04e845332b4650edfc69f04deae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba4f8834_dfceaea1",
         "filename": "libs/sensor/fuzz/bittube_fuzzer/bittube_fuzzer.cpp",
         "patchSetId": 2
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "Using fuzzers, we try to send in random/unexpected inputs. I pre-populated the values to see if pre-populated values cause a crash or not. \nI did not see any crashes due to this.\n\nHowever, if you feel we shouldn\u0027t be testing with pre-populated values, I will make the change. Please let me know.",
       "parentUuid": "ba4f8834_dfceaea1",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 80
+      },
+      "revId": "7612567903b04e845332b4650edfc69f04deae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2642985_f2245677",
+        "filename": "libs/sensor/fuzz/bittube_fuzzer/bittube_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1074038
+      },
+      "writtenOn": "2022-08-01T14:14:42Z",
+      "side": 1,
+      "message": "I don\u0027t think it hurts, but just wanted to see the rationale. I\u0027m fine with keeping this here.",
+      "parentUuid": "bd89d9e0_3a9044de",
       "range": {
         "startLine": 33,
         "startChar": 0,
