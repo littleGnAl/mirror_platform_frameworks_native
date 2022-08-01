@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46832dc0_eb3203b3",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-01T22:01:53Z",
+      "side": 1,
+      "message": "This is a tricky bit of c++ and sometimes I wish it wouldn\u0027t compile. \nThis will always be on the stack, and there is no limit to the size here(stack should be relatively small).\nIt\u0027s considered a Variable-Length-Array https://stackoverflow.com/questions/62107332/difference-between-dynamically-allocated-arrays-and-static-arrays\nWe can replace this with a dynamic array or use malloc directly. This way, it\u0027s well defined in C++ and can accommodate larger amounts of data on the heap.\nhttps://source.corp.google.com/android/frameworks/native/libs/binder/Parcel.cpp;rcl\u003da929037ffbe5f6a27ba5152604c351a138b792be;l\u003d1605\nor\nhttps://source.corp.google.com/android/frameworks/native/libs/binder/Parcel.cpp;rcl\u003d4a73bc233d7f0a4d3628fca4080dcdd078ff2e12;l\u003d2760",
+      "range": {
+        "startLine": 300,
+        "startChar": 7,
+        "endLine": 300,
+        "endChar": 36
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4b2958_61d28bee",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-01T22:01:53Z",
+      "side": 1,
+      "message": "Check all the return values for errors. (everywhere you can)",
+      "range": {
+        "startLine": 301,
+        "startChar": 8,
+        "endLine": 301,
+        "endChar": 32
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b32eb04e_a5ec02ce",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-01T22:01:53Z",
+      "side": 1,
+      "message": "We won\u0027t want returns here in the `while (ReadFully..)`.\nMaybe logging the replies don\u0027t match is good enough.",
+      "range": {
+        "startLine": 312,
+        "startChar": 12,
+        "endLine": 312,
+        "endChar": 18
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64ed1719_47833d70",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-01T22:01:53Z",
+      "side": 1,
+      "message": "We want the root /data dir so add the `/`?",
+      "range": {
+        "startLine": 360,
+        "startChar": 19,
+        "endLine": 360,
+        "endChar": 23
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b64748a6_a54a24b0",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-01T22:01:53Z",
+      "side": 1,
+      "message": "check return values",
+      "range": {
+        "startLine": 366,
+        "startChar": 27,
+        "endLine": 366,
+        "endChar": 37
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f372f182_b852dfb4",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-01T22:01:53Z",
+      "side": 1,
+      "message": "could factor this out to something like isRecording() for both spots to use.",
+      "range": {
+        "startLine": 395,
+        "startChar": 13,
+        "endLine": 397,
+        "endChar": 95
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16d93bda_a0f098da",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-01T22:01:53Z",
+      "side": 1,
+      "message": "I think this and the body for writing the data parcel could be factored out to one function call like `status_t recordParcel(const Parcel\u0026 data, const std::string\u0026 descriptor, std::optional\u003cFileHeader\u003e header);`",
+      "range": {
+        "startLine": 398,
+        "startChar": 11,
+        "endLine": 406,
+        "endChar": 68
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7451af76_1e4e14da",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-01T22:01:53Z",
+      "side": 1,
+      "message": "For static member variables we have the `s` prefix. `sRecordingOn`.\nBut, this being static means it will be true for all binders in the same process.",
+      "range": {
+        "startLine": 206,
+        "startChar": 16,
+        "endLine": 206,
+        "endChar": 27
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21364ad7_02312f6d",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-01T22:01:53Z",
+      "side": 1,
+      "message": "Not through any C++ standards. Could use uint8_t and some header type enum.\nallignof(uint64_t) is different between 32/64 bit builds which will change the alignment of this struct.\nThat may or may not change the size of the struct depending on what\u0027s in it.",
+      "range": {
+        "startLine": 210,
+        "startChar": 28,
+        "endLine": 210,
+        "endChar": 60
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f76fc48_307d6aff",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-01T22:01:53Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 216,
+        "startChar": 8,
+        "endLine": 216,
+        "endChar": 16
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
