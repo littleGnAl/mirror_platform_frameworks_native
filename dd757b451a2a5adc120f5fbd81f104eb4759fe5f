@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c061de_27ea67f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-01T21:38:16Z",
+      "side": 1,
+      "message": "(just giving a surface level c++ review because i haven\u0027t read up much on this part of the codebase yet)",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "435db065_4515bb11",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-01T21:38:16Z",
+      "side": 1,
+      "message": "static (or put in an anon namespace)",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377cbb6a_28738ec6",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-01T21:38:16Z",
+      "side": 1,
+      "message": "is this case suppose to be impossible? if not, maybe we could fallback by deleting `newObj` and returning `oldObj`?",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f608526_0fa259e4",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-01T21:38:16Z",
+      "side": 1,
+      "message": "i wonder if it is possible to use the [rvalue ctor that implicitly casts](http://cs/android-internal/system/core/libutils/include/utils/StrongPointer.h;l\u003d76;rcl\u003d2527a26799d7a57737e99e21de4c9ff237740f5c) instead of `sp\u003cIBinder\u003e::cast`. that would avoid some incr and decr overhead\n\nsame idea, further down, maybe can do `return sp\u003ctypename T::DefaultDelegator\u003e(std::move(delegate));`\n\n(sorry if these `sp` comments seem pedantic. i\u0027m not used to code bases making extensive use of shared pointers. every time i see one get copied, it is poking a pet peeve of mine)",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2419dd2f_e2100232",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-01T21:38:16Z",
+      "side": 1,
+      "message": "you have control of `args` here, so instead of `T*`, you could make it `sp\u003cT\u003e*`, then this simplifies slightly to\n\n```\n    return sp\u003cIBinder\u003e::cast(\n            sp\u003ctypename T::DefaultDelegator\u003e::make(*static_cast\u003csp\u003cT\u003e*\u003e(args)));\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 51,
+        "endLine": 26,
+        "endChar": 93
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0514a12e_067cc6b5",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-01T21:38:16Z",
+      "side": 1,
+      "message": "worth at least a one liner doc comment\n\nis this suppose to be part of the public API? if not, we do have a usual way to make that obvious?",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f01719_f14a2340",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-01T21:38:16Z",
+      "side": 1,
+      "message": "`found` isn\u0027t used, so maybe do `if (T::asBinder(binder)-\u003efindObject(isDelegatorId)) {`",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a783036d_24570062",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-01T21:38:16Z",
+      "side": 1,
+      "message": "maybe use a lambda so that less API is exposed. if the lambda has no capture list, then it can implicitly cast to a function pointer of the same signature",
+      "range": {
+        "startLine": 39,
+        "startChar": 68,
+        "endLine": 39,
+        "endChar": 87
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2702b2d_809596f5",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-01T21:38:16Z",
+      "side": 1,
+      "message": "unique",
+      "range": {
+        "startLine": 41,
+        "startChar": 67,
+        "endLine": 41,
+        "endChar": 74
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
