@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c4d709b_2e2e0d4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1929575
+      },
+      "writtenOn": "2022-08-01T02:14:59Z",
+      "side": 1,
+      "message": "you means, we should submit a bug to google? so that we can get a bugid to fill in this commit message",
+      "parentUuid": "62c088e8_67ef5264",
+      "revId": "f7b96e862f7c1f657635671618c2765638e945da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63003106_d6148865",
         "filename": "cmds/installd/otapreopt.cpp",
         "patchSetId": 2
