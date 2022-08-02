@@ -22,36 +22,39 @@
 #include <BnBinderRpcCallback.h>
 #include <BnBinderRpcSession.h>
 #include <BnBinderRpcTest.h>
-#include <aidl/IBinderRpcTest.h>
+#include <binder/Binder.h>
+#include <binder/BpBinder.h>
+#include <binder/IPCThreadState.h>
+#include <binder/IServiceManager.h>
+#include <binder/RpcServer.h>
+#include <binder/RpcSession.h>
+#include <binder/RpcThreads.h>
+#include <binder/RpcTransport.h>
+#include <binder/RpcTransportRaw.h>
+#include <unistd.h>
+#include <string>
+#include <vector>
+
+#ifndef __TRUSTY__
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/properties.h>
 #include <android/binder_auto_utils.h>
 #include <android/binder_libbinder.h>
-#include <binder/Binder.h>
-#include <binder/BpBinder.h>
-#include <binder/IPCThreadState.h>
-#include <binder/IServiceManager.h>
 #include <binder/ProcessState.h>
-#include <binder/RpcServer.h>
-#include <binder/RpcSession.h>
-#include <binder/RpcThreads.h>
 #include <binder/RpcTlsTestUtils.h>
 #include <binder/RpcTlsUtils.h>
-#include <binder/RpcTransport.h>
-#include <binder/RpcTransportRaw.h>
 #include <binder/RpcTransportTls.h>
-#include <unistd.h>
-#include <string>
-#include <vector>
 
 #include <signal.h>
 
+#include "../RpcSocketAddress.h" // for testing preconnected clients
+#include "../vm_sockets.h"       // for VMADDR_*
+#endif                           // __TRUSTY__
+
 #include "../BuildFlags.h"
 #include "../FdTrigger.h"
-#include "../RpcSocketAddress.h" // for testing preconnected clients
-#include "../RpcState.h"         // for debugging
-#include "../vm_sockets.h"       // for VMADDR_*
+#include "../RpcState.h" // for debugging
 #include "utils/Errors.h"
 
 namespace android {
@@ -102,6 +105,7 @@ struct BinderRpcOptions {
     bool allowConnectFailure = false;
 };
 
+#ifndef __TRUSTY__
 static inline void writeString(android::base::borrowed_fd fd, std::string_view str) {
     uint64_t length = str.length();
     CHECK(android::base::WriteFully(fd, &length, sizeof(length)));
@@ -166,6 +170,7 @@ static inline base::unique_fd mockFileDescriptor(std::string contents) {
     }).detach();
     return readFd;
 }
+#endif // __TRUSTY__
 
 using android::binder::Status;
 
@@ -330,11 +335,15 @@ public:
     }
 
     Status die(bool cleanup) override {
+#ifdef __TRUSTY__
+        LOG_ALWAYS_FATAL("Client called %s", __func__);
+#else
         if (cleanup) {
             exit(1);
         } else {
             _exit(1);
         }
+#endif
     }
 
     Status scheduleShutdown() override {
@@ -349,6 +358,9 @@ public:
     }
 
     Status useKernelBinderCallingId() override {
+#ifdef __TRUSTY__
+        LOG_ALWAYS_FATAL("Client called %s", __func__);
+#else
         // this is WRONG! It does not make sense when using RPC binder, and
         // because it is SO wrong, and so much code calls this, it should abort!
 
@@ -356,15 +368,25 @@ public:
             (void)IPCThreadState::self()->getCallingPid();
         }
         return Status::ok();
+#endif
     }
 
     Status echoAsFile(const std::string& content, android::os::ParcelFileDescriptor* out) override {
+#ifdef __TRUSTY__
+        // TODO: implement this; meanwhile, we abort
+        LOG_ALWAYS_FATAL("Client called %s", __func__);
+#else
         out->reset(mockFileDescriptor(content));
         return Status::ok();
+#endif
     }
 
     Status concatFiles(const std::vector<android::os::ParcelFileDescriptor>& files,
                        android::os::ParcelFileDescriptor* out) override {
+#ifdef __TRUSTY__
+        // TODO: implement this
+        LOG_ALWAYS_FATAL("Client called %s", __func__);
+#else
         std::string acc;
         for (const auto& file : files) {
             std::string result;
@@ -373,6 +395,7 @@ public:
         }
         out->reset(mockFileDescriptor(acc));
         return Status::ok();
+#endif
     }
 };
 
