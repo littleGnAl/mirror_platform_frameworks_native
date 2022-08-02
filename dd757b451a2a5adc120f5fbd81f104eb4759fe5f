@@ -37,6 +37,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "361db499_f86451b9",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-02T20:31:56Z",
+      "side": 1,
+      "message": "fwiw - I the google3 standard votes for anon namespace (presumably because it works for anything, and \u0027static\u0027 only works for functions, but \u0027static\u0027 is much friendlier wrt merge conflicts, I always use it when I can)",
+      "parentUuid": "435db065_4515bb11",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c96f1df_bef3f463",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-02T20:31:56Z",
+      "side": 1,
+      "message": "avoid calling this method, because its log would be a problem in this case. By calling into the method, you can get the old object and try to promote it directly. Because find/attach are called separately, it introduces the need for the fatal log below.",
+      "range": {
+        "startLine": 113,
+        "startChar": 23,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "377cbb6a_28738ec6",
         "filename": "libs/binder/BpBinder.cpp",
         "patchSetId": 1
@@ -48,6 +89,41 @@
       "writtenOn": "2022-08-01T21:38:16Z",
       "side": 1,
       "message": "is this case suppose to be impossible? if not, maybe we could fallback by deleting `newObj` and returning `oldObj`?",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22ac2714_0f219532",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-02T20:31:56Z",
+      "side": 1,
+      "message": "It\u0027s impossible, because it\u0027s checked on L109 already.",
+      "parentUuid": "377cbb6a_28738ec6",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eea26ca_bcfd2e09",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-02T20:31:56Z",
+      "side": 1,
+      "message": "nit: add this file in another CL on top of this",
       "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -140,6 +216,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35d1f0a9_db149d9f",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-02T20:31:56Z",
+      "side": 1,
+      "message": "or also assert found \u003d\u003d 1 (value from L42)",
+      "parentUuid": "b5f01719_f14a2340",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a2bb5ad_5f40188c",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-02T20:31:56Z",
+      "side": 1,
+      "message": "nit: if isDelegatorId and hasDelegatorId are both set on an object, we could also abort in this case (this might be an easy way to detect some of the error conditions we were talking about)",
+      "range": {
+        "startLine": 32,
+        "startChar": 54,
+        "endLine": 32,
+        "endChar": 67
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a783036d_24570062",
         "filename": "libs/binder/include/binder/Delegate.h",
         "patchSetId": 1
@@ -151,6 +274,30 @@
       "writtenOn": "2022-08-01T21:38:16Z",
       "side": 1,
       "message": "maybe use a lambda so that less API is exposed. if the lambda has no capture list, then it can implicitly cast to a function pointer of the same signature",
+      "range": {
+        "startLine": 39,
+        "startChar": 68,
+        "endLine": 39,
+        "endChar": 87
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db37ef18_7e4fbd0b",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-02T20:31:56Z",
+      "side": 1,
+      "message": "can the templated function be declared inside this function?",
+      "parentUuid": "a783036d_24570062",
       "range": {
         "startLine": 39,
         "startChar": 68,
@@ -179,6 +326,52 @@
         "startChar": 67,
         "endLine": 41,
         "endChar": 74
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba03490_3f978d9f",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-02T20:31:56Z",
+      "side": 1,
+      "message": "We should actually probably do this inside of the \u0027make\u0027 function so it is only done once, wdyt? Otherwise, it will emit extra logs",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 96
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aee1963_8424e8bd",
+        "filename": "libs/binder/tests/binderBinderUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-02T20:31:56Z",
+      "side": 1,
+      "message": "tests with dropping this?",
+      "range": {
+        "startLine": 60,
+        "startChar": 22,
+        "endLine": 60,
+        "endChar": 35
       },
       "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
