@@ -22,36 +22,39 @@
 #include <BnBinderRpcCallback.h>
 #include <BnBinderRpcSession.h>
 #include <BnBinderRpcTest.h>
-#include <aidl/IBinderRpcTest.h>
+#include <binder/Binder.h>
+#include <binder/BpBinder.h>
+#include <binder/IPCThreadState.h>
+#include <binder/IServiceManager.h>
+#include <binder/RpcServer.h>
+#include <binder/RpcSession.h>
+#include <binder/RpcThreads.h>
+#include <binder/RpcTransport.h>
+#include <binder/RpcTransportRaw.h>
+#include <unistd.h>
+#include <string>
+#include <vector>
+
+#ifndef __TRUSTY__
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/properties.h>
 #include <android/binder_auto_utils.h>
 #include <android/binder_libbinder.h>
-#include <binder/Binder.h>
-#include <binder/BpBinder.h>
-#include <binder/IPCThreadState.h>
-#include <binder/IServiceManager.h>
 #include <binder/ProcessState.h>
-#include <binder/RpcServer.h>
-#include <binder/RpcSession.h>
-#include <binder/RpcThreads.h>
 #include <binder/RpcTlsTestUtils.h>
 #include <binder/RpcTlsUtils.h>
-#include <binder/RpcTransport.h>
-#include <binder/RpcTransportRaw.h>
 #include <binder/RpcTransportTls.h>
-#include <unistd.h>
-#include <string>
-#include <vector>
 
 #include <signal.h>
 
+#include "../RpcSocketAddress.h" // for testing preconnected clients
+#include "../vm_sockets.h"       // for VMADDR_*
+#endif                           // __TRUSTY__
+
 #include "../BuildFlags.h"
 #include "../FdTrigger.h"
-#include "../RpcSocketAddress.h" // for testing preconnected clients
-#include "../RpcState.h"         // for debugging
-#include "../vm_sockets.h"       // for VMADDR_*
+#include "../RpcState.h" // for debugging
 #include "utils/Errors.h"
 
 namespace android {
@@ -102,6 +105,7 @@ struct BinderRpcOptions {
     bool allowConnectFailure = false;
 };
 
+#ifndef __TRUSTY__
 static inline void writeString(android::base::borrowed_fd fd, std::string_view str) {
     uint64_t length = str.length();
     CHECK(android::base::WriteFully(fd, &length, sizeof(length)));
@@ -166,6 +170,7 @@ static inline base::unique_fd mockFileDescriptor(std::string contents) {
     }).detach();
     return readFd;
 }
+#endif // __TRUSTY__
 
 using android::binder::Status;
 
@@ -200,9 +205,12 @@ public:
     std::vector<std::string> mValues;
 };
 
-class MyBinderRpcTest : public BnBinderRpcTest {
+// Base class for all concrete implementations of MyBinderRpcTest.
+// Sub-classes that want to provide a full implementation should derive
+// from this class instead of MyBinderRpcTestDefault below so the compiler
+// checks that all methods are implemented.
+class MyBinderRpcTestBase : public BnBinderRpcTest {
 public:
-    wp<RpcServer> server;
     int port = 0;
 
     Status sendString(const std::string& str) override {
@@ -215,18 +223,6 @@ public:
     }
     Status getClientPort(int* out) override {
         *out = port;
-        return Status::ok();
-    }
-    Status countBinders(std::vector<int32_t>* out) override {
-        sp<RpcServer> spServer = server.promote();
-        if (spServer == nullptr) {
-            return Status::fromExceptionCode(Status::EX_NULL_POINTER);
-        }
-        out->clear();
-        for (auto session : spServer->listSessions()) {
-            size_t count = session->state()->countBinders();
-            out->push_back(count);
-        }
         return Status::ok();
     }
     Status getNullBinder(sp<IBinder>* out) override {
@@ -328,51 +324,31 @@ public:
                            const std::string& value) override {
         return doCallback(callback, oneway, delayed, value);
     }
+};
 
-    Status die(bool cleanup) override {
-        if (cleanup) {
-            exit(1);
-        } else {
-            _exit(1);
-        }
+// Default implementation of MyBinderRpcTest that can be used as-is
+// or derived from by classes that only want to implement a subset of
+// the unimplemented methods
+class MyBinderRpcTestDefault : public MyBinderRpcTestBase {
+public:
+    Status countBinders(std::vector<int32_t>* /*out*/) override {
+        return Status::fromStatusT(UNKNOWN_TRANSACTION);
     }
 
-    Status scheduleShutdown() override {
-        sp<RpcServer> strongServer = server.promote();
-        if (strongServer == nullptr) {
-            return Status::fromExceptionCode(Status::EX_NULL_POINTER);
-        }
-        RpcMaybeThread([=] {
-            LOG_ALWAYS_FATAL_IF(!strongServer->shutdown(), "Could not shutdown");
-        }).detach();
-        return Status::ok();
+    Status die(bool /*cleanup*/) override { return Status::fromStatusT(UNKNOWN_TRANSACTION); }
+
+    Status scheduleShutdown() override { return Status::fromStatusT(UNKNOWN_TRANSACTION); }
+
+    Status useKernelBinderCallingId() override { return Status::fromStatusT(UNKNOWN_TRANSACTION); }
+
+    Status echoAsFile(const std::string& /*content*/,
+                      android::os::ParcelFileDescriptor* /*out*/) override {
+        return Status::fromStatusT(UNKNOWN_TRANSACTION);
     }
 
-    Status useKernelBinderCallingId() override {
-        // this is WRONG! It does not make sense when using RPC binder, and
-        // because it is SO wrong, and so much code calls this, it should abort!
-
-        if constexpr (kEnableKernelIpc) {
-            (void)IPCThreadState::self()->getCallingPid();
-        }
-        return Status::ok();
-    }
-
-    Status echoAsFile(const std::string& content, android::os::ParcelFileDescriptor* out) override {
-        out->reset(mockFileDescriptor(content));
-        return Status::ok();
-    }
-
-    Status concatFiles(const std::vector<android::os::ParcelFileDescriptor>& files,
-                       android::os::ParcelFileDescriptor* out) override {
-        std::string acc;
-        for (const auto& file : files) {
-            std::string result;
-            CHECK(android::base::ReadFdToString(file.get(), &result));
-            acc.append(result);
-        }
-        out->reset(mockFileDescriptor(acc));
-        return Status::ok();
+    Status concatFiles(const std::vector<android::os::ParcelFileDescriptor>& /*files*/,
+                       android::os::ParcelFileDescriptor* /*out*/) override {
+        return Status::fromStatusT(UNKNOWN_TRANSACTION);
     }
 };
 
