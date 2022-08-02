@@ -29,6 +29,11 @@
 #include <sys/prctl.h>
 #include <sys/socket.h>
 
+#ifdef __ANDROID__
+#include <binder/RpcTransportTipcAndroid.h>
+#include <trusty/tipc.h>
+#endif // __ANDROID__
+
 #include "binderRpcTestCommon.h"
 
 using namespace std::chrono_literals;
@@ -43,6 +48,10 @@ namespace android {
 constexpr bool kEnableSharedLibs = false;
 #else
 constexpr bool kEnableSharedLibs = true;
+#endif
+
+#ifdef __ANDROID__
+constexpr char kTrustyIpcDevice[] = "/dev/trusty-ipc-dev0";
 #endif
 
 static_assert(RPC_WIRE_PROTOCOL_VERSION + 1 == RPC_WIRE_PROTOCOL_VERSION_NEXT ||
@@ -312,6 +321,11 @@ public:
         auto ret = ProcessSession{
                 .host = Process([=](android::base::borrowed_fd writeEnd,
                                     android::base::borrowed_fd readEnd) {
+                    if (socketType == SocketType::TIPC) {
+                        // Trusty has a single persistent service
+                        return;
+                    }
+
                     auto writeFd = std::to_string(writeEnd.get());
                     auto readFd = std::to_string(readEnd.get());
                     execl(servicePath.c_str(), servicePath.c_str(), writeFd.c_str(), readFd.c_str(),
@@ -320,42 +334,53 @@ public:
         };
 
         BinderRpcTestServerConfig serverConfig;
-        serverConfig.numThreads = options.numThreads;
-        serverConfig.socketType = static_cast<int32_t>(socketType);
-        serverConfig.rpcSecurity = static_cast<int32_t>(rpcSecurity);
-        serverConfig.serverVersion = serverVersion;
-        serverConfig.vsockPort = allocateVsockPort();
-        serverConfig.addr = allocateSocketAddress();
-        for (auto mode : options.serverSupportedFileDescriptorTransportModes) {
-            serverConfig.serverSupportedFileDescriptorTransportModes.push_back(
-                    static_cast<int32_t>(mode));
+        if (socketType != SocketType::TIPC) {
+            serverConfig.numThreads = options.numThreads;
+            serverConfig.socketType = static_cast<int32_t>(socketType);
+            serverConfig.rpcSecurity = static_cast<int32_t>(rpcSecurity);
+            serverConfig.serverVersion = serverVersion;
+            serverConfig.vsockPort = allocateVsockPort();
+            serverConfig.addr = allocateSocketAddress();
+            for (auto mode : options.serverSupportedFileDescriptorTransportModes) {
+                serverConfig.serverSupportedFileDescriptorTransportModes.push_back(
+                        static_cast<int32_t>(mode));
+            }
+            writeToFd(ret.host.writeEnd(), serverConfig);
         }
-        writeToFd(ret.host.writeEnd(), serverConfig);
 
         std::vector<sp<RpcSession>> sessions;
         auto certVerifier = std::make_shared<RpcCertificateVerifierSimple>();
         for (size_t i = 0; i < options.numSessions; i++) {
-            sessions.emplace_back(RpcSession::make(newFactory(rpcSecurity, certVerifier)));
+            auto factory = newFactory(rpcSecurity, certVerifier);
+#ifdef __ANDROID__
+            if (socketType == SocketType::TIPC) {
+                factory = RpcTransportCtxFactoryTipcAndroid::make();
+            }
+#endif
+            sessions.emplace_back(RpcSession::make(std::move(factory)));
         }
 
-        auto serverInfo = readFromFd<BinderRpcTestServerInfo>(ret.host.readEnd());
-        BinderRpcTestClientInfo clientInfo;
-        for (const auto& session : sessions) {
-            auto& parcelableCert = clientInfo.certs.emplace_back();
-            parcelableCert.data = session->getCertificate(RpcCertificateFormat::PEM);
-        }
-        writeToFd(ret.host.writeEnd(), clientInfo);
+        BinderRpcTestServerInfo serverInfo;
+        if (socketType != SocketType::TIPC) {
+            serverInfo = readFromFd<BinderRpcTestServerInfo>(ret.host.readEnd());
+            BinderRpcTestClientInfo clientInfo;
+            for (const auto& session : sessions) {
+                auto& parcelableCert = clientInfo.certs.emplace_back();
+                parcelableCert.data = session->getCertificate(RpcCertificateFormat::PEM);
+            }
+            writeToFd(ret.host.writeEnd(), clientInfo);
 
-        CHECK_LE(serverInfo.port, std::numeric_limits<unsigned int>::max());
-        if (socketType == SocketType::INET) {
-            CHECK_NE(0, serverInfo.port);
-        }
+            CHECK_LE(serverInfo.port, std::numeric_limits<unsigned int>::max());
+            if (socketType == SocketType::INET) {
+                CHECK_NE(0, serverInfo.port);
+            }
 
-        if (rpcSecurity == RpcSecurity::TLS) {
-            const auto& serverCert = serverInfo.cert.data;
-            CHECK_EQ(OK,
-                     certVerifier->addTrustedPeerCertificate(RpcCertificateFormat::PEM,
-                                                             serverCert));
+            if (rpcSecurity == RpcSecurity::TLS) {
+                const auto& serverCert = serverInfo.cert.data;
+                CHECK_EQ(OK,
+                         certVerifier->addTrustedPeerCertificate(RpcCertificateFormat::PEM,
+                                                                 serverCert));
+            }
         }
 
         status_t status;
@@ -381,6 +406,18 @@ public:
                 case SocketType::INET:
                     status = session->setupInetClient("127.0.0.1", serverInfo.port);
                     break;
+                case SocketType::TIPC:
+                    status = session->setupPreconnectedClient({}, []() {
+#ifdef __ANDROID__
+                        int tipcFd = tipc_connect(kTrustyIpcDevice, kTrustyIpcPort);
+                        LOG_ALWAYS_FATAL_IF(tipcFd < 0, "Failed to connect to Trusty: %d", tipcFd);
+                        return android::base::unique_fd(tipcFd);
+#else
+                        LOG_ALWAYS_FATAL("Tried to connect to Trusty on host");
+                        return android::base::unique_fd();
+#endif
+                    });
+                    break;
                 default:
                     LOG_ALWAYS_FATAL("Unknown socket type");
             }
@@ -398,6 +435,13 @@ public:
         BinderRpcTestProcessSession ret{
                 .proc = createRpcTestSocketServerProcessEtc(options),
         };
+
+        SocketType socketType = std::get<0>(GetParam());
+        if (socketType == SocketType::TIPC) {
+            // The Trusty service keeps running,
+            // so we skip the shutdown checks
+            ret.expectAlreadyShutdown = true;
+        }
 
         ret.rootBinder = ret.proc.sessions.empty() ? nullptr : ret.proc.sessions.at(0).root;
         ret.rootIface = interface_cast<IBinderRpcTest>(ret.rootBinder);
@@ -510,7 +554,7 @@ TEST_P(BinderRpc, SendAndGetResultBack) {
 
 TEST_P(BinderRpc, SendAndGetResultBackBig) {
     auto proc = createRpcTestSocketServerProcess({});
-    std::string single = std::string(1024, 'a');
+    std::string single = std::string(512, 'a');
     std::string doubled;
     EXPECT_OK(proc.rootIface->doubleString(single, &doubled));
     EXPECT_EQ(single + single, doubled);
@@ -1563,6 +1607,20 @@ static std::vector<uint32_t> testVersions() {
     return versions;
 }
 
+static std::vector<SocketType> testTipcSocketTypes() {
+#ifdef __ANDROID__
+    int tipcFd = tipc_connect(kTrustyIpcDevice, kTrustyIpcPort);
+    if (tipcFd >= 0) {
+        close(tipcFd);
+        return {SocketType::TIPC};
+    }
+#endif // __ANDROID__
+
+    // TIPC is not supported on this device, most likely
+    // because /dev/trusty-ipc-dev0 is missing
+    return {};
+}
+
 INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
                         ::testing::Combine(::testing::ValuesIn(testSocketTypes()),
                                            ::testing::ValuesIn(RpcSecurityValues()),
@@ -1570,6 +1628,14 @@ INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
                                            ::testing::ValuesIn(testVersions()),
                                            ::testing::Values(false, true),
                                            ::testing::Values(false, true)),
+                        BinderRpc::PrintParamInfo);
+
+INSTANTIATE_TEST_CASE_P(Trusty, BinderRpc,
+                        ::testing::Combine(::testing::ValuesIn(testTipcSocketTypes()),
+                                           ::testing::Values(RpcSecurity::RAW),
+                                           ::testing::ValuesIn(testVersions()),
+                                           ::testing::ValuesIn(testVersions()),
+                                           ::testing::Values(false), ::testing::Values(true)),
                         BinderRpc::PrintParamInfo);
 
 class BinderRpcServerRootObject
@@ -1774,7 +1840,10 @@ public:
                               addr, port);
                         return base::unique_fd{};
                     };
-                }
+                } break;
+                case SocketType::TIPC: {
+                    LOG_ALWAYS_FATAL("RpcTransportTest should not be enabled for TIPC");
+                } break;
             }
             mFd = rpcServer->releaseServer();
             if (!mFd.ok()) return AssertionFailure() << "releaseServer returns invalid fd";
