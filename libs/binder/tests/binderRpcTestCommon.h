@@ -62,6 +62,8 @@ namespace android {
 
 constexpr char kLocalInetAddress[] = "127.0.0.1";
 
+constexpr char kTrustyIpcPort[] = "com.android.trusty.binderRpcTestService";
+
 enum class RpcSecurity { RAW, TLS };
 
 static inline std::vector<RpcSecurity> RpcSecurityValues() {
@@ -74,6 +76,7 @@ enum class SocketType {
     UNIX_BOOTSTRAP,
     VSOCK,
     INET,
+    TIPC,
 };
 
 static inline std::string PrintToString(SocketType socketType) {
@@ -88,6 +91,8 @@ static inline std::string PrintToString(SocketType socketType) {
             return "vm_socket";
         case SocketType::INET:
             return "inet_socket";
+        case SocketType::TIPC:
+            return "trusty_ipc";
         default:
             LOG_ALWAYS_FATAL("Unknown socket type");
             return "";
