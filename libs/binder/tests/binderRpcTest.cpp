@@ -28,6 +28,11 @@
 #include <sys/prctl.h>
 #include <sys/socket.h>
 
+#ifdef __ANDROID_VENDOR__
+#include <binder/RpcTransportTipcAndroid.h>
+#include <trusty/tipc.h>
+#endif // __ANDROID_VENDOR__
+
 #include "binderRpcTestCommon.h"
 #include "binderRpcTestFixture.h"
 
@@ -43,6 +48,10 @@ namespace android {
 constexpr bool kEnableSharedLibs = false;
 #else
 constexpr bool kEnableSharedLibs = true;
+#endif
+
+#ifdef __ANDROID_VENDOR__
+constexpr char kTrustyIpcDevice[] = "/dev/trusty-ipc-dev0";
 #endif
 
 static std::string WaitStatusToString(int wstatus) {
@@ -159,7 +168,10 @@ public:
 
             EXPECT_NE(nullptr, session);
             EXPECT_NE(nullptr, session->state());
-            EXPECT_EQ(0, session->state()->countBinders()) << (session->state()->dump(), "dump:");
+            if (serverSupportsShutdown) {
+                EXPECT_EQ(0, session->state()->countBinders())
+                        << (session->state()->dump(), "dump:");
+            }
 
             wp<RpcSession> weakSession = session;
             session = nullptr;
@@ -270,11 +282,20 @@ std::unique_ptr<ProcessSession> BinderRpc::createRpcTestSocketServerProcessEtc(
 
     auto ret = std::make_unique<LinuxProcessSession>(
             Process([=](android::base::borrowed_fd writeEnd, android::base::borrowed_fd readEnd) {
+                if (socketType == SocketType::TIPC) {
+                    // Trusty has a single persistent service
+                    return;
+                }
+
                 auto writeFd = std::to_string(writeEnd.get());
                 auto readFd = std::to_string(readEnd.get());
                 execl(servicePath.c_str(), servicePath.c_str(), writeFd.c_str(), readFd.c_str(),
                       NULL);
             }));
+
+    if (socketType == SocketType::TIPC) {
+        ret->serverSupportsShutdown = false;
+    }
 
     BinderRpcTestServerConfig serverConfig;
     serverConfig.numThreads = options.numThreads;
@@ -288,31 +309,47 @@ std::unique_ptr<ProcessSession> BinderRpc::createRpcTestSocketServerProcessEtc(
         serverConfig.serverSupportedFileDescriptorTransportModes.push_back(
                 static_cast<int32_t>(mode));
     }
-    writeToFd(ret->host.writeEnd(), serverConfig);
+    if (socketType != SocketType::TIPC) {
+        writeToFd(ret->host.writeEnd(), serverConfig);
+    }
 
     std::vector<sp<RpcSession>> sessions;
     auto certVerifier = std::make_shared<RpcCertificateVerifierSimple>();
     for (size_t i = 0; i < options.numSessions; i++) {
-        sessions.emplace_back(RpcSession::make(newFactory(rpcSecurity, certVerifier)));
+        std::unique_ptr<RpcTransportCtxFactory> factory;
+        if (socketType == SocketType::TIPC) {
+#ifdef __ANDROID_VENDOR__
+            factory = RpcTransportCtxFactoryTipcAndroid::make();
+#else
+            LOG_ALWAYS_FATAL("TIPC socket type only supported on vendor");
+#endif
+        } else {
+            factory = newFactory(rpcSecurity, certVerifier);
+        }
+        sessions.emplace_back(RpcSession::make(std::move(factory)));
     }
 
-    auto serverInfo = readFromFd<BinderRpcTestServerInfo>(ret->host.readEnd());
-    BinderRpcTestClientInfo clientInfo;
-    for (const auto& session : sessions) {
-        auto& parcelableCert = clientInfo.certs.emplace_back();
-        parcelableCert.data = session->getCertificate(RpcCertificateFormat::PEM);
-    }
-    writeToFd(ret->host.writeEnd(), clientInfo);
+    BinderRpcTestServerInfo serverInfo;
+    if (socketType != SocketType::TIPC) {
+        serverInfo = readFromFd<BinderRpcTestServerInfo>(ret->host.readEnd());
+        BinderRpcTestClientInfo clientInfo;
+        for (const auto& session : sessions) {
+            auto& parcelableCert = clientInfo.certs.emplace_back();
+            parcelableCert.data = session->getCertificate(RpcCertificateFormat::PEM);
+        }
+        writeToFd(ret->host.writeEnd(), clientInfo);
 
-    CHECK_LE(serverInfo.port, std::numeric_limits<unsigned int>::max());
-    if (socketType == SocketType::INET) {
-        CHECK_NE(0, serverInfo.port);
-    }
+        CHECK_LE(serverInfo.port, std::numeric_limits<unsigned int>::max());
+        if (socketType == SocketType::INET) {
+            CHECK_NE(0, serverInfo.port);
+        }
 
-    if (rpcSecurity == RpcSecurity::TLS) {
-        const auto& serverCert = serverInfo.cert.data;
-        CHECK_EQ(OK,
-                 certVerifier->addTrustedPeerCertificate(RpcCertificateFormat::PEM, serverCert));
+        if (rpcSecurity == RpcSecurity::TLS) {
+            const auto& serverCert = serverInfo.cert.data;
+            CHECK_EQ(OK,
+                     certVerifier->addTrustedPeerCertificate(RpcCertificateFormat::PEM,
+                                                             serverCert));
+        }
     }
 
     status_t status;
@@ -342,6 +379,19 @@ std::unique_ptr<ProcessSession> BinderRpc::createRpcTestSocketServerProcessEtc(
                 break;
             case SocketType::INET:
                 status = session->setupInetClient("127.0.0.1", serverInfo.port);
+                break;
+            case SocketType::TIPC:
+                status = session->setupPreconnectedClient({}, [=]() {
+#ifdef __ANDROID_VENDOR__
+                    auto port = trustyIpcPort(serverVersion);
+                    int tipcFd = tipc_connect(kTrustyIpcDevice, port.c_str());
+                    return tipcFd >= 0 ? android::base::unique_fd(tipcFd)
+                                       : android::base::unique_fd();
+#else
+                    LOG_ALWAYS_FATAL("Tried to connect to Trusty outside of vendor");
+                    return android::base::unique_fd();
+#endif
+                });
                 break;
             default:
                 LOG_ALWAYS_FATAL("Unknown socket type");
@@ -415,6 +465,9 @@ TEST_P(BinderRpc, ThreadPoolOverSaturated) {
     if (clientOrServerSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
     }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Trusty emulator is too slow for stress testing";
+    }
 
     constexpr size_t kNumThreads = 10;
     constexpr size_t kNumCalls = kNumThreads + 3;
@@ -425,6 +478,9 @@ TEST_P(BinderRpc, ThreadPoolOverSaturated) {
 TEST_P(BinderRpc, ThreadPoolLimitOutgoing) {
     if (clientOrServerSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
+    }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Trusty emulator is too slow for stress testing";
     }
 
     constexpr size_t kNumThreads = 20;
@@ -472,6 +528,9 @@ TEST_P(BinderRpc, OnewayStressTest) {
     if (clientOrServerSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
     }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Trusty emulator is too slow for stress testing";
+    }
 
     constexpr size_t kNumClientThreads = 10;
     constexpr size_t kNumServerThreads = 10;
@@ -499,6 +558,9 @@ TEST_P(BinderRpc, OnewayCallQueueingWithFds) {
     }
     if (clientOrServerSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
+    }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Trusty emulator is too slow for stress testing";
     }
 
     // This test forces a oneway transaction to be queued by issuing two
@@ -536,6 +598,9 @@ TEST_P(BinderRpc, OnewayCallQueueing) {
     if (clientOrServerSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
     }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Trusty emulator is too slow for stress testing";
+    }
 
     constexpr size_t kNumSleeps = 10;
     constexpr size_t kNumExtraServerThreads = 4;
@@ -568,6 +633,9 @@ TEST_P(BinderRpc, OnewayCallQueueing) {
 TEST_P(BinderRpc, OnewayCallExhaustion) {
     if (clientOrServerSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
+    }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Trusty emulator is too slow for stress testing";
     }
 
     constexpr size_t kNumClients = 2;
@@ -613,6 +681,9 @@ TEST_P(BinderRpc, SingleDeathRecipient) {
     if (clientOrServerSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
     }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Trusty test service does not support shutdown";
+    }
     class MyDeathRec : public IBinder::DeathRecipient {
     public:
         void binderDied(const wp<IBinder>& /* who */) override {
@@ -646,6 +717,9 @@ TEST_P(BinderRpc, SingleDeathRecipient) {
 TEST_P(BinderRpc, SingleDeathRecipientOnShutdown) {
     if (clientOrServerSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
+    }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Trusty test service does not support shutdown";
     }
     class MyDeathRec : public IBinder::DeathRecipient {
     public:
@@ -701,6 +775,9 @@ TEST_P(BinderRpc, UnlinkDeathRecipient) {
     if (clientOrServerSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
     }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Trusty test service does not support shutdown";
+    }
     class MyDeathRec : public IBinder::DeathRecipient {
     public:
         void binderDied(const wp<IBinder>& /* who */) override {
@@ -726,6 +803,11 @@ TEST_P(BinderRpc, UnlinkDeathRecipient) {
 }
 
 TEST_P(BinderRpc, Die) {
+    if (socketType() == SocketType::TIPC) {
+        // This should work, but Trusty takes too long to restart the service
+        GTEST_SKIP() << "Service death test not supported on Trusty";
+    }
+
     for (bool doDeathCleanup : {true, false}) {
         auto proc = createRpcTestSocketServerProcess({});
 
@@ -778,6 +860,10 @@ TEST_P(BinderRpc, UseKernelBinderCallingId) {
 }
 
 TEST_P(BinderRpc, FileDescriptorTransportRejectNone) {
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "File descriptor tests not supported on Trusty (yet)";
+    }
+
     auto proc = createRpcTestSocketServerProcess({
             .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::NONE,
             .serverSupportedFileDescriptorTransportModes =
@@ -794,6 +880,10 @@ TEST_P(BinderRpc, FileDescriptorTransportRejectNone) {
 }
 
 TEST_P(BinderRpc, FileDescriptorTransportRejectUnix) {
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "File descriptor tests not supported on Trusty (yet)";
+    }
+
     auto proc = createRpcTestSocketServerProcess({
             .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
             .serverSupportedFileDescriptorTransportModes =
@@ -810,6 +900,10 @@ TEST_P(BinderRpc, FileDescriptorTransportRejectUnix) {
 }
 
 TEST_P(BinderRpc, FileDescriptorTransportOptionalUnix) {
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "File descriptor tests not supported on Trusty (yet)";
+    }
+
     auto proc = createRpcTestSocketServerProcess({
             .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::NONE,
             .serverSupportedFileDescriptorTransportModes =
@@ -823,6 +917,10 @@ TEST_P(BinderRpc, FileDescriptorTransportOptionalUnix) {
 }
 
 TEST_P(BinderRpc, ReceiveFile) {
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "File descriptor tests not supported on Trusty (yet)";
+    }
+
     auto proc = createRpcTestSocketServerProcess({
             .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
             .serverSupportedFileDescriptorTransportModes =
@@ -843,6 +941,10 @@ TEST_P(BinderRpc, ReceiveFile) {
 }
 
 TEST_P(BinderRpc, SendFiles) {
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "File descriptor tests not supported on Trusty (yet)";
+    }
+
     auto proc = createRpcTestSocketServerProcess({
             .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
             .serverSupportedFileDescriptorTransportModes =
@@ -941,6 +1043,7 @@ TEST_P(BinderRpc, AppendInvalidFd) {
     ASSERT_EQ(-1, pRaw.readFileDescriptor());
 }
 
+#ifndef __ANDROID_VENDOR__ // No AIBinder_fromPlatformBinder on vendor
 TEST_P(BinderRpc, WorksWithLibbinderNdkPing) {
     if constexpr (!kEnableSharedLibs) {
         GTEST_SKIP() << "Test disabled because Binder was built as a static library";
@@ -972,6 +1075,7 @@ TEST_P(BinderRpc, WorksWithLibbinderNdkUserTransaction) {
     ASSERT_TRUE(status.isOk()) << status.getDescription();
     ASSERT_EQ("aoeuaoeu", out);
 }
+#endif // __ANDROID_VENDOR__
 
 ssize_t countFds() {
     DIR* dir = opendir("/proc/self/fd/");
@@ -986,6 +1090,9 @@ ssize_t countFds() {
 TEST_P(BinderRpc, Fds) {
     if (serverSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
+    }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "File descriptor tests not supported on Trusty (yet)";
     }
 
     ssize_t beforeFds = countFds();
@@ -1101,6 +1208,21 @@ static std::vector<SocketType> testSocketTypes(bool hasPreconnected = true) {
     return ret;
 }
 
+static std::vector<SocketType> testTipcSocketTypes() {
+#ifdef __ANDROID_VENDOR__
+    auto port = trustyIpcPort(RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL);
+    int tipcFd = tipc_connect(kTrustyIpcDevice, port.c_str());
+    if (tipcFd >= 0) {
+        close(tipcFd);
+        return {SocketType::TIPC};
+    }
+#endif // __ANDROID_VENDOR__
+
+    // TIPC is not supported on this device, most likely
+    // because /dev/trusty-ipc-dev0 is missing
+    return {};
+}
+
 INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
                         ::testing::Combine(::testing::ValuesIn(testSocketTypes()),
                                            ::testing::ValuesIn(RpcSecurityValues()),
@@ -1108,6 +1230,15 @@ INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
                                            ::testing::ValuesIn(testVersions()),
                                            ::testing::Values(false, true),
                                            ::testing::Values(false, true)),
+                        BinderRpc::PrintParamInfo);
+
+// TODO: support multiple versions of the Trusty service
+INSTANTIATE_TEST_CASE_P(Trusty, BinderRpc,
+                        ::testing::Combine(::testing::ValuesIn(testTipcSocketTypes()),
+                                           ::testing::Values(RpcSecurity::RAW),
+                                           ::testing::ValuesIn(testVersions()),
+                                           ::testing::ValuesIn(testVersions()),
+                                           ::testing::Values(false), ::testing::Values(true)),
                         BinderRpc::PrintParamInfo);
 
 class BinderRpcServerRootObject
@@ -1361,7 +1492,10 @@ public:
                               addr, port);
                         return base::unique_fd{};
                     };
-                }
+                } break;
+                case SocketType::TIPC: {
+                    LOG_ALWAYS_FATAL("RpcTransportTest should not be enabled for TIPC");
+                } break;
             }
             mFd = rpcServer->releaseServer();
             if (!mFd.fd.ok()) return AssertionFailure() << "releaseServer returns invalid fd";
