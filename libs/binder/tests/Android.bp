@@ -138,6 +138,7 @@ cc_test {
 aidl_interface {
     name: "binderRpcTestIface",
     host_supported: true,
+    vendor_available: true,
     unstable: true,
     srcs: [
         "BinderRpcTestClientInfo.aidl",
@@ -158,6 +159,7 @@ aidl_interface {
 cc_library_static {
     name: "libbinder_tls_test_utils",
     host_supported: true,
+    vendor_available: true,
     target: {
         darwin: {
             enabled: false,
@@ -187,7 +189,6 @@ cc_library_static {
 
 cc_defaults {
     name: "binderRpcTest_common_defaults",
-    host_supported: true,
     target: {
         darwin: {
             enabled: false,
@@ -207,6 +208,7 @@ cc_defaults {
 
 cc_defaults {
     name: "binderRpcTest_service_defaults",
+    host_supported: true,
     defaults: [
         "binderRpcTest_common_defaults",
     ],
@@ -218,8 +220,14 @@ cc_defaults {
     ],
 }
 
+binderRpcTest_sources = [
+    "binderRpcTest.cpp",
+    "binderRpcTestCommon.cpp",
+]
+
 cc_defaults {
     name: "binderRpcTest_defaults",
+    host_supported: true,
     target: {
         android: {
             test_suites: ["vts"],
@@ -229,20 +237,10 @@ cc_defaults {
         "binderRpcTest_common_defaults",
     ],
 
-    srcs: [
-        "binderRpcTest.cpp",
-        "binderRpcTestCommon.cpp",
-    ],
+    srcs: binderRpcTest_sources,
 
     test_suites: ["general-tests"],
     require_root: true,
-
-    data_bins: [
-        "binder_rpc_test_service",
-        "binder_rpc_test_service_no_kernel",
-        "binder_rpc_test_service_single_threaded",
-        "binder_rpc_test_service_single_threaded_no_kernel",
-    ],
 }
 
 cc_defaults {
@@ -334,11 +332,22 @@ cc_test {
     ],
 }
 
+cc_defaults {
+    name: "binderRpcTest_data_bins",
+    data_bins: [
+        "binder_rpc_test_service",
+        "binder_rpc_test_service_no_kernel",
+        "binder_rpc_test_service_single_threaded",
+        "binder_rpc_test_service_single_threaded_no_kernel",
+    ],
+}
+
 cc_test {
     name: "binderRpcTest",
     defaults: [
         "binderRpcTest_defaults",
         "binderRpcTest_shared_defaults",
+        "binderRpcTest_data_bins",
         "libbinder_tls_shared_deps",
     ],
 }
@@ -348,6 +357,7 @@ cc_test {
     defaults: [
         "binderRpcTest_defaults",
         "binderRpcTest_static_defaults",
+        "binderRpcTest_data_bins",
     ],
     static_libs: [
         "libbinder_rpc_no_kernel",
@@ -359,6 +369,7 @@ cc_test {
     defaults: [
         "binderRpcTest_defaults",
         "binderRpcTest_static_defaults",
+        "binderRpcTest_data_bins",
     ],
     cflags: [
         "-DBINDER_RPC_SINGLE_THREADED",
@@ -374,6 +385,7 @@ cc_test {
     defaults: [
         "binderRpcTest_defaults",
         "binderRpcTest_static_defaults",
+        "binderRpcTest_data_bins",
     ],
     cflags: [
         "-DBINDER_RPC_SINGLE_THREADED",
@@ -381,6 +393,29 @@ cc_test {
     static_libs: [
         "libbinder_rpc_single_threaded_no_kernel",
     ],
+}
+
+cc_test {
+    name: "binderRpcTestTrusty",
+    vendor: true,
+    defaults: [
+        "binderRpcTest_common_defaults",
+        "binderRpcTest_shared_defaults",
+        "libbinder_tls_shared_deps",
+    ],
+    srcs: binderRpcTest_sources,
+
+    cflags: [
+        "-DBINDER_RPC_TEST_TRUSTY",
+    ],
+
+    shared_libs: [
+        "libbinder_trusty",
+        "libtrusty",
+    ],
+
+    test_suites: ["device-tests"],
+    require_root: true,
 }
 
 cc_test {
