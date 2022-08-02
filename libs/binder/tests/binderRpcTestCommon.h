@@ -61,6 +61,8 @@ namespace android {
 
 constexpr char kLocalInetAddress[] = "127.0.0.1";
 
+constexpr char kTrustyIpcPort[] = "com.android.trusty.binderRpcTestService";
+
 enum class RpcSecurity { RAW, TLS };
 
 static inline std::vector<RpcSecurity> RpcSecurityValues() {
