@@ -155,7 +155,9 @@ TEST_P(BinderRpc, SendAndGetResultBack) {
 
 TEST_P(BinderRpc, SendAndGetResultBackBig) {
     auto proc = createRpcTestSocketServerProcess({});
-    std::string single = std::string(1024, 'a');
+    // Trusty has a limit of 4096 bytes for the entire RPC Binder message
+    size_t singleLen = socketType() == SocketType::TIPC ? 512 : 4096;
+    std::string single = std::string(singleLen, 'a');
     std::string doubled;
     EXPECT_OK(proc.rootIface->doubleString(single, &doubled));
     EXPECT_EQ(single + single, doubled);
@@ -319,12 +321,16 @@ TEST_P(BinderRpc, RepeatRootObject) {
 }
 
 TEST_P(BinderRpc, NestedTransactions) {
+    auto fileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX;
+    if (socketType() == SocketType::TIPC) {
+        // TIPC does not support file descriptors yet
+        fileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::NONE;
+    }
     auto proc = createRpcTestSocketServerProcess({
             // Enable FD support because it uses more stack space and so represents
             // something closer to a worst case scenario.
-            .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
-            .serverSupportedFileDescriptorTransportModes =
-                    {RpcSession::FileDescriptorTransportMode::UNIX},
+            .clientFileDescriptorTransportMode = fileDescriptorTransportMode,
+            .serverSupportedFileDescriptorTransportModes = {fileDescriptorTransportMode},
     });
 
     auto nastyNester = sp<MyBinderRpcTestDefault>::make();
@@ -479,8 +485,10 @@ TEST_P(BinderRpc, Callbacks) {
 
                 // since we are severing the connection, we need to go ahead and
                 // tell the server to shutdown and exit so that waitpid won't hang
-                if (auto status = proc.rootIface->scheduleShutdown(); !status.isOk()) {
-                    EXPECT_EQ(DEAD_OBJECT, status.transactionError()) << status;
+                if (proc.proc->serverSupportsShutdown) {
+                    if (auto status = proc.rootIface->scheduleShutdown(); !status.isOk()) {
+                        EXPECT_EQ(DEAD_OBJECT, status.transactionError()) << status;
+                    }
                 }
 
                 // since this session has an incoming connection w/ a threadpool, we
