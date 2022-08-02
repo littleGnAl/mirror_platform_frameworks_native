@@ -29,6 +29,10 @@
 #include <sys/prctl.h>
 #include <sys/socket.h>
 
+#ifdef __ANDROID__
+#include <trusty/tipc.h>
+#endif // __ANDROID__
+
 #include "binderRpcTestCommon.h"
 
 using namespace std::chrono_literals;
@@ -43,6 +47,10 @@ namespace android {
 constexpr bool kEnableSharedLibs = false;
 #else
 constexpr bool kEnableSharedLibs = true;
+#endif
+
+#ifdef __ANDROID__
+constexpr char kTrustyIpcDevice[] = "/dev/trusty-ipc-dev0";
 #endif
 
 static_assert(RPC_WIRE_PROTOCOL_VERSION + 1 == RPC_WIRE_PROTOCOL_VERSION_NEXT ||
@@ -380,6 +388,18 @@ public:
                     break;
                 case SocketType::INET:
                     status = session->setupInetClient("127.0.0.1", serverInfo.port);
+                    break;
+                case SocketType::TIPC:
+                    status = session->setupPreconnectedClient({}, []() {
+#ifdef __ANDROID__
+                        int tipcFd = tipc_connect(kTrustyIpcDevice, kTrustyIpcPort);
+                        LOG_ALWAYS_FATAL_IF(tipcFd < 0, "Failed to connect to Trusty: %d", tipcFd);
+                        return android::base::unique_fd(tipcFd);
+#else
+                        LOG_ALWAYS_FATAL("Tried to connect to Trusty on host");
+                        return android::base::unique_fd();
+#endif
+                    });
                     break;
                 default:
                     LOG_ALWAYS_FATAL("Unknown socket type");
@@ -1563,6 +1583,20 @@ static std::vector<uint32_t> testVersions() {
     return versions;
 }
 
+static std::vector<SocketType> testTipcSocketTypes() {
+#ifdef __ANDROID__
+    int tipcFd = tipc_connect(kTrustyIpcDevice, kTrustyIpcPort);
+    if (tipcFd >= 0) {
+        close(tipcFd);
+        return {SocketType::TIPC};
+    }
+#endif // __ANDROID__
+
+    // TIPC is not supported on this device, most likely
+    // because /dev/trusty-ipc-dev0 is missing
+    return {};
+}
+
 INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
                         ::testing::Combine(::testing::ValuesIn(testSocketTypes()),
                                            ::testing::ValuesIn(RpcSecurityValues()),
@@ -1570,6 +1604,14 @@ INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
                                            ::testing::ValuesIn(testVersions()),
                                            ::testing::Values(false, true),
                                            ::testing::Values(false, true)),
+                        BinderRpc::PrintParamInfo);
+
+INSTANTIATE_TEST_CASE_P(Trusty, BinderRpc,
+                        ::testing::Combine(::testing::ValuesIn(testTipcSocketTypes()),
+                                           ::testing::Values(RpcSecurity::RAW),
+                                           ::testing::ValuesIn(testVersions()),
+                                           ::testing::ValuesIn(testVersions()),
+                                           ::testing::Values(false), ::testing::Values(true)),
                         BinderRpc::PrintParamInfo);
 
 class BinderRpcServerRootObject
@@ -1774,7 +1816,10 @@ public:
                               addr, port);
                         return base::unique_fd{};
                     };
-                }
+                } break;
+                case SocketType::TIPC: {
+                    LOG_ALWAYS_FATAL("RpcTransportTest should not be enabled for TIPC");
+                } break;
             }
             mFd = rpcServer->releaseServer();
             if (!mFd.ok()) return AssertionFailure() << "releaseServer returns invalid fd";
