@@ -16,6 +16,24 @@
       "message": "I just wanted to follow up on this one. It looks like we are getting some build failures, but I don\u0027t have access to the verification jobs to see what they are. If there are any changes needed to resolve the build failures please let me know. ",
       "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcef550c_994f30a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-02T21:32:02Z",
+      "side": 1,
+      "message": "Most likely presubmit was broken at the time, let me retry a few more times.",
+      "parentUuid": "be774566_286d16f8",
+      "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
