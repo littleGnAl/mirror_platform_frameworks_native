@@ -18,6 +18,70 @@
 
 using namespace android;
 
+class MyBinderRpcTestAndroid : public MyBinderRpcTestBase {
+public:
+    wp<RpcServer> server;
+
+    Status countBinders(std::vector<int32_t>* out) override {
+        sp<RpcServer> spServer = server.promote();
+        if (spServer == nullptr) {
+            return Status::fromExceptionCode(Status::EX_NULL_POINTER);
+        }
+        out->clear();
+        for (auto session : spServer->listSessions()) {
+            size_t count = session->state()->countBinders();
+            out->push_back(count);
+        }
+        return Status::ok();
+    }
+
+    Status die(bool cleanup) override {
+        if (cleanup) {
+            exit(1);
+        } else {
+            _exit(1);
+        }
+    }
+
+    Status scheduleShutdown() override {
+        sp<RpcServer> strongServer = server.promote();
+        if (strongServer == nullptr) {
+            return Status::fromExceptionCode(Status::EX_NULL_POINTER);
+        }
+        RpcMaybeThread([=] {
+            LOG_ALWAYS_FATAL_IF(!strongServer->shutdown(), "Could not shutdown");
+        }).detach();
+        return Status::ok();
+    }
+
+    Status useKernelBinderCallingId() override {
+        // this is WRONG! It does not make sense when using RPC binder, and
+        // because it is SO wrong, and so much code calls this, it should abort!
+
+        if constexpr (kEnableKernelIpc) {
+            (void)IPCThreadState::self()->getCallingPid();
+        }
+        return Status::ok();
+    }
+
+    Status echoAsFile(const std::string& content, android::os::ParcelFileDescriptor* out) override {
+        out->reset(mockFileDescriptor(content));
+        return Status::ok();
+    }
+
+    Status concatFiles(const std::vector<android::os::ParcelFileDescriptor>& files,
+                       android::os::ParcelFileDescriptor* out) override {
+        std::string acc;
+        for (const auto& file : files) {
+            std::string result;
+            CHECK(android::base::ReadFdToString(file.get(), &result));
+            acc.append(result);
+        }
+        out->reset(mockFileDescriptor(acc));
+        return Status::ok();
+    }
+};
+
 int main(int argc, const char* argv[]) {
     LOG_ALWAYS_FATAL_IF(argc != 3, "Invalid number of arguments: %d", argc);
     base::unique_fd writeEnd(atoi(argv[1]));
@@ -81,7 +145,7 @@ int main(int argc, const char* argv[]) {
         // sizeof(sa_family_t)==2 in addrlen
         CHECK_GE(len, sizeof(sa_family_t));
         const sockaddr* addr = reinterpret_cast<const sockaddr*>(addrPtr);
-        sp<MyBinderRpcTest> service = sp<MyBinderRpcTest>::make();
+        sp<MyBinderRpcTestAndroid> service = sp<MyBinderRpcTestAndroid>::make();
         switch (addr->sa_family) {
             case AF_UNIX:
                 // nothing to save
