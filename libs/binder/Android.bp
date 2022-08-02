@@ -433,6 +433,7 @@ cc_library_shared {
 // For testing
 cc_library_static {
     name: "libbinder_tls_static",
+    vendor_available: true,
     defaults: ["libbinder_tls_defaults"],
     visibility: [
         ":__subpackages__",
