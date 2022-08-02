@@ -41,6 +41,9 @@ public:
     // each one represents a separate session
     std::vector<SessionInfo> sessions;
 
+    // Trusty services are persistent and never shut down
+    bool serverSupportsShutdown = true;
+
     virtual ~ProcessSession() = 0;
 
     // If the process exits with a status, run the given callback on that value.
@@ -73,15 +76,17 @@ struct BinderRpcTestProcessSession {
             std::vector<int32_t> remoteCounts;
             // calling over any sessions counts across all sessions
             EXPECT_OK(rootIface->countBinders(&remoteCounts));
-            EXPECT_EQ(remoteCounts.size(), proc->sessions.size());
-            for (auto remoteCount : remoteCounts) {
-                EXPECT_EQ(remoteCount, 1);
-            }
+            if (proc->serverSupportsShutdown) {
+                EXPECT_EQ(remoteCounts.size(), proc->sessions.size());
+                for (auto remoteCount : remoteCounts) {
+                    EXPECT_EQ(remoteCount, 1);
+                }
 
-            // even though it is on another thread, shutdown races with
-            // the transaction reply being written
-            if (auto status = rootIface->scheduleShutdown(); !status.isOk()) {
-                EXPECT_EQ(DEAD_OBJECT, status.transactionError()) << status;
+                // even though it is on another thread, shutdown races with
+                // the transaction reply being written
+                if (auto status = rootIface->scheduleShutdown(); !status.isOk()) {
+                    EXPECT_EQ(DEAD_OBJECT, status.transactionError()) << status;
+                }
             }
         }
 
@@ -106,6 +111,10 @@ public:
 
     // Whether the test params support sending FDs in parcels.
     bool supportsFdTransport() const {
+        if (socketType() == SocketType::TIPC) {
+            // Trusty does not support file descriptors yet
+            return false;
+        }
         return clientVersion() >= 1 && serverVersion() >= 1 && rpcSecurity() != RpcSecurity::TLS &&
                 (socketType() == SocketType::PRECONNECTED || socketType() == SocketType::UNIX ||
                  socketType() == SocketType::UNIX_BOOTSTRAP ||
