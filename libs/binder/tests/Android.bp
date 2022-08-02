@@ -223,6 +223,11 @@ cc_defaults {
     target: {
         android: {
             test_suites: ["vts"],
+
+            shared_libs: [
+                "libbinder_trusty",
+                "libtrusty",
+            ],
         },
     },
     defaults: [
