@@ -142,7 +142,7 @@ fn interface_for_service<T: FromIBinder + ?Sized>(service: Option<SpIBinder>) ->
 }
 
 pub mod unstable_api {
-    use super::{sys, SpIBinder};
+    use super::*;
 
     /// A temporary API to allow the client to create a `SpIBinder` from a `sys::AIBinder`. This is
     /// needed to bridge RPC binder, which doesn't have Rust API yet.
