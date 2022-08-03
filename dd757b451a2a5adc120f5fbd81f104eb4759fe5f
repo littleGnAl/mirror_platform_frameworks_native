@@ -208,6 +208,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "67cd3175_8e9ba775",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:06:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eea26ca_bcfd2e09",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8f608526_0fa259e4",
         "filename": "libs/binder/include/binder/Delegate.h",
         "patchSetId": 1
