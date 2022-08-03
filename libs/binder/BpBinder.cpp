@@ -315,6 +315,7 @@ status_t BpBinder::stopRecordingBinder() {
 
 status_t BpBinder::dump(int fd, const Vector<String16>& args)
 {
+#if !defined(__TRUSTY__)
     Parcel send;
     Parcel reply;
     send.writeFileDescriptor(fd);
@@ -325,6 +326,9 @@ status_t BpBinder::dump(int fd, const Vector<String16>& args)
     }
     status_t err = transact(DUMP_TRANSACTION, send, &reply);
     return err;
+#else
+    return INVALID_OPERATION;
+#endif // !defined(__TRUSTY__)
 }
 
 // NOLINTNEXTLINE(google-default-arguments)
