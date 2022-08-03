@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ac251f05_de68c51a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1929575
+      },
+      "writtenOn": "2022-08-03T12:20:46Z",
+      "side": 1,
+      "message": "ok, thanks ,ive fixed it now ,please help review again~",
+      "parentUuid": "ee0542f9_0ae5eba9",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "f46bc63e8804d51e99a81f771ba49cd9c50ca335",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "59c48a55_965e70f0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
