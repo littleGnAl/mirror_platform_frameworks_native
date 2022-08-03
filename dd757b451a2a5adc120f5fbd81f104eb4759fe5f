@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f88cea3f_6c4dc5d0",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "435db065_4515bb11",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c96f1df_bef3f463",
@@ -66,6 +84,30 @@
       "writtenOn": "2022-08-02T20:31:56Z",
       "side": 1,
       "message": "avoid calling this method, because its log would be a problem in this case. By calling into the method, you can get the old object and try to promote it directly. Because find/attach are called separately, it introduces the need for the fatal log below.",
+      "range": {
+        "startLine": 113,
+        "startChar": 23,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97a856d_2f21cdbf",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "removed the find/attach calls.",
+      "parentUuid": "8c96f1df_bef3f463",
       "range": {
         "startLine": 113,
         "startChar": 23,
@@ -131,6 +173,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48cec21f_4fc0aa6e",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "I was assuming this should only be called when protected by the mutex so this could never happen.",
+      "parentUuid": "377cbb6a_28738ec6",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6eea26ca_bcfd2e09",
         "filename": "libs/binder/include/binder/Delegate.h",
         "patchSetId": 1
@@ -169,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dc7fa6c_8957179e",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "Looks like the first suggestion works well. Done.\n\nThe second suggestion still seems to need the cast.\n\nKeep the comments coming! I\u0027m far from an expert with these so they are really helpful.",
+      "parentUuid": "8f608526_0fa259e4",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2419dd2f_e2100232",
@@ -192,6 +276,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e82eac0d_ab28b573",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2419dd2f_e2100232",
+      "range": {
+        "startLine": 26,
+        "startChar": 51,
+        "endLine": 26,
+        "endChar": 93
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0514a12e_067cc6b5",
@@ -205,6 +313,24 @@
       "writtenOn": "2022-08-01T21:38:16Z",
       "side": 1,
       "message": "worth at least a one liner doc comment\n\nis this suppose to be part of the public API? if not, we do have a usual way to make that obvious?",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d049ec29_7071970a",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "Added a description.\nThis can be a public API. I don\u0027t know how often it will be useful for someone, but I don\u0027t think there is a need to prevent use.",
+      "parentUuid": "0514a12e_067cc6b5",
       "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -274,6 +400,54 @@
         "startChar": 54,
         "endLine": 32,
         "endChar": 67
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d57adec_416f4c71",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a2bb5ad_5f40188c",
+      "range": {
+        "startLine": 32,
+        "startChar": 54,
+        "endLine": 32,
+        "endChar": 67
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a260cc2_9d5d99ec",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5f01719_f14a2340",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 22
       },
       "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -350,6 +524,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27ec1083_79266ba2",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a783036d_24570062",
+      "range": {
+        "startLine": 39,
+        "startChar": 68,
+        "endLine": 39,
+        "endChar": 87
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2702b2d_809596f5",
@@ -363,6 +561,30 @@
       "writtenOn": "2022-08-01T21:38:16Z",
       "side": 1,
       "message": "unique",
+      "range": {
+        "startLine": 41,
+        "startChar": 67,
+        "endLine": 41,
+        "endChar": 74
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65cdbdef_2f5f1bdb",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2702b2d_809596f5",
       "range": {
         "startLine": 41,
         "startChar": 67,
@@ -398,6 +620,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40a278b3_8171f570",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "The extra logs are pretty bad.\nI think I would have to use the `T::DefaultDelegator::_aidl_is_delegator_id` from inside the make `function`, and might as well get rid of the *Id arguements and use the _aidl_ ids everywhere. Does that sound ok?",
+      "parentUuid": "5ba03490_3f978d9f",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 96
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1aee1963_8424e8bd",
         "filename": "libs/binder/tests/binderBinderUnitTest.cpp",
         "patchSetId": 1
@@ -409,6 +655,30 @@
       "writtenOn": "2022-08-02T20:31:56Z",
       "side": 1,
       "message": "tests with dropping this?",
+      "range": {
+        "startLine": 60,
+        "startChar": 22,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20bbf25e_12914f46",
+        "filename": "libs/binder/tests/binderBinderUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-03T21:05:35Z",
+      "side": 1,
+      "message": "Good call! This actually hits a very similar issue to the cleanup function. Cleanup function is segfaulting when doing decWeak and this causes a segfault in incWeakRequireWeak from fromExisting. They are failing in the __atomic_base operations.\nDoes this mean that we need these to be OBJECT_LIFETIME_WEAK so they aren\u0027t destroyed? Or is there someway I can check for this?",
+      "parentUuid": "1aee1963_8424e8bd",
       "range": {
         "startLine": 60,
         "startChar": 22,
