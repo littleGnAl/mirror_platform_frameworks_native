@@ -16,6 +16,24 @@
       "message": "should we abort here instead? (clearer abort to clients, the stack will show when the invalid value is set - though from a code perspective, what we have now is cleaner because it doesn\u0027t depend on what the default value of mMaxIncomingThreads is).\n\nYou know what? How about aborting at the top of RpcSession::setupClient? That way, we would catch if a default value is set, and it\u0027s also early in the server setup.",
       "revId": "3c4e809059f764d20f32d14a56265197c299402f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df9d20b_c18ae764",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-03T23:35:19Z",
+      "side": 1,
+      "message": "One problem with that (and I think with the current implementation as well, but less so) is that we have a TOCTTOU between that check, and the loop on line 534. Afaict we don\u0027t hold `mMutex` for that loop or anything before it, isn\u0027t that a problem?",
+      "parentUuid": "90e0be35_8b70f1ca",
+      "revId": "3c4e809059f764d20f32d14a56265197c299402f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
