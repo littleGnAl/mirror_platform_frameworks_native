@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e06b99d6_cd806f53",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-03T20:25:21Z",
+      "side": 1,
+      "message": "don\u0027t worry about it yet, but we\u0027ll need to add some synchronization around this block of code since you might have multiple threads writing to the same file",
+      "range": {
+        "startLine": 351,
+        "startChar": 96,
+        "endLine": 351,
+        "endChar": 98
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64ed1719_47833d70",
         "filename": "libs/binder/BpBinder.cpp",
         "patchSetId": 1
@@ -88,6 +111,29 @@
         "startChar": 19,
         "endLine": 360,
         "endChar": 23
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0099492_77d5b160",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-03T20:25:21Z",
+      "side": 1,
+      "message": "creating directories and files etc is messy and comparatively slow. an alternative idea: as part of the special transaction that turns on recording, we can require an FD to be sent, then to record you just write data into the FD. whoever turned on recording can figure out these messy details. that also allows the data to go straight into a socket or pipe if desired\n\nmay also help with the code size concerns",
+      "range": {
+        "startLine": 360,
+        "startChar": 12,
+        "endLine": 360,
+        "endChar": 49
       },
       "revId": "422db0128348024aee422ca3717214136eef6263",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -221,6 +267,30 @@
       "writtenOn": "2022-08-01T22:01:53Z",
       "side": 1,
       "message": "size_t",
+      "range": {
+        "startLine": 216,
+        "startChar": 8,
+        "endLine": 216,
+        "endChar": 16
+      },
+      "revId": "422db0128348024aee422ca3717214136eef6263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eea6a928_52b19e6c",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-03T20:25:21Z",
+      "side": 1,
+      "message": "uint64_t seems better if you want a stable file format",
+      "parentUuid": "0f76fc48_307d6aff",
       "range": {
         "startLine": 216,
         "startChar": 8,
