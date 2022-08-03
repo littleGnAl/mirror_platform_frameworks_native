@@ -148,6 +148,7 @@ status_t RpcSession::setupUnixDomainClient(const char* path) {
     return setupSocketClient(UnixSocketAddress(path));
 }
 
+#if !defined(__TRUSTY__)
 status_t RpcSession::setupUnixDomainSocketBootstrapClient(unique_fd bootstrapFd) {
     mBootstrapTransport =
             mCtx->newTransport(RpcTransportFd(std::move(bootstrapFd)), mShutdownTrigger.get());
@@ -175,6 +176,7 @@ status_t RpcSession::setupUnixDomainSocketBootstrapClient(unique_fd bootstrapFd)
         return initAndAddConnection(RpcTransportFd(std::move(clientFd)), sessionId, incoming);
     });
 }
+#endif // !defined(__TRUSTY__)
 
 status_t RpcSession::setupVsockClient(unsigned int cid, unsigned int port) {
     return setupSocketClient(VsockSocketAddress(cid, port));
@@ -210,6 +212,7 @@ status_t RpcSession::setupPreconnectedClient(base::unique_fd fd,
     });
 }
 
+#if !defined(__TRUSTY__)
 status_t RpcSession::addNullDebuggingClient() {
     // Note: only works on raw sockets.
     if (auto status = initShutdownTrigger(); status != OK) return status;
@@ -230,6 +233,7 @@ status_t RpcSession::addNullDebuggingClient() {
     }
     return addOutgoingConnection(std::move(server), false);
 }
+#endif // !defined(__TRUSTY__)
 
 sp<IBinder> RpcSession::getRootObject() {
     ExclusiveConnection connection;
@@ -592,6 +596,7 @@ status_t RpcSession::setupSocketClient(const RpcSocketAddress& addr) {
     });
 }
 
+#if !defined(__TRUSTY__)
 status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
                                               const std::vector<uint8_t>& sessionId,
                                               bool incoming) {
@@ -654,6 +659,7 @@ status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
     ALOGE("Ran out of retries to connect to %s", addr.toString().c_str());
     return UNKNOWN_ERROR;
 }
+#endif // !defined(__TRUSTY__)
 
 status_t RpcSession::initAndAddConnection(RpcTransportFd fd, const std::vector<uint8_t>& sessionId,
                                           bool incoming) {

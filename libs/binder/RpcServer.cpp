@@ -77,6 +77,7 @@ status_t RpcServer::setupVsockServer(unsigned int port) {
     return setupSocketServer(VsockSocketAddress(kAnyCid, port));
 }
 
+#if !defined(__TRUSTY__)
 status_t RpcServer::setupInetServer(const char* address, unsigned int port,
                                     unsigned int* assignedPort) {
     if (assignedPort != nullptr) *assignedPort = 0;
@@ -114,6 +115,7 @@ status_t RpcServer::setupInetServer(const char* address, unsigned int port,
           port);
     return UNKNOWN_ERROR;
 }
+#endif // !defined(__TRUSTY__)
 
 void RpcServer::setMaxThreads(size_t threads) {
     LOG_ALWAYS_FATAL_IF(threads <= 0, "RpcServer is useless without threads");
@@ -182,6 +184,7 @@ void RpcServer::start() {
     rpcJoinIfSingleThreaded(*mJoinThread);
 }
 
+#if !defined(__TRUSTY__)
 status_t RpcServer::acceptSocketConnection(const RpcServer& server, RpcTransportFd* out) {
     RpcTransportFd clientSocket(unique_fd(TEMP_FAILURE_RETRY(
             accept4(server.mServer.fd.get(), nullptr, nullptr, SOCK_CLOEXEC | SOCK_NONBLOCK))));
@@ -274,6 +277,7 @@ void RpcServer::join() {
     }
     mShutdownCv.notify_all();
 }
+#endif // !defined(__TRUSTY__)
 
 bool RpcServer::shutdown() {
     RpcMutexUniqueLock _l(mLock);
@@ -349,7 +353,7 @@ void RpcServer::establishConnection(
 
     status_t status = OK;
 
-    int clientFdForLog = clientFd.fd.get();
+    auto clientFdForLog = clientFd.fd.get();
     auto client = server->mCtx->newTransport(std::move(clientFd), server->mShutdownTrigger.get());
     if (client == nullptr) {
         ALOGE("Dropping accept4()-ed socket because sslAccept fails");
@@ -527,6 +531,7 @@ void RpcServer::establishConnection(
     joinFn(std::move(session), std::move(setupResult));
 }
 
+#if !defined(__TRUSTY__)
 status_t RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
     LOG_RPC_DETAIL("Setting up socket server %s", addr.toString().c_str());
     LOG_ALWAYS_FATAL_IF(hasServer(), "Each RpcServer can only have one server.");
@@ -563,6 +568,7 @@ status_t RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
     }
     return OK;
 }
+#endif // !defined(__TRUSTY__)
 
 void RpcServer::onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) {
     const std::vector<uint8_t>& id = session->mId;
