@@ -52,6 +52,24 @@
       "parentUuid": "dcef550c_994f30a7",
       "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "080c840f_4c735349",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-03T16:41:05Z",
+      "side": 1,
+      "message": "Thanks. I rebased my patch on the latest master as of this morning and am building the car_x86_64-userdebug target.\n\nI do see the following test failures:\nSummary (Test executed with 1 devices.)\n-------\nx86_64 CtsGraphicsTestCases: Passed: 2, Failed: 0, Ignored: 0, Assumption Failed: 0,    \nx86_64 CtsInputTestCases: Passed: 4, Failed: 0, Ignored: 0, Assumption Failed: 0,    \nx86_64 CtsSecurityTestCases: Passed: 1, Failed: 0, Ignored: 0, Assumption Failed: 0,    \nx86_64 CtsViewTestCases: Passed: 8, Failed: 0, Ignored: 0, Assumption Failed: 0,    \nx86_64 CtsWindowManagerDeviceTestCases: Passed: 15, Failed: 0, Ignored: 0, Assumption Failed: 0,    \nx86_64 FrameworksCoreTests: Passed: 7, Failed: 0, Ignored: 0, Assumption Failed: 0,    \nx86_64 InputTests: Passed: 12, Failed: 1, Ignored: 0, Assumption Failed: 0,    \nx86_64 SurfaceFlinger_test: Passed: 116, Failed: 2, Ignored: 0, Assumption Failed: 0,    \nx86_64 inputflinger_tests: Passed: 348, Failed: 0, Ignored: 0, Assumption Failed: 0,    \nx86_64 libinput_tests: Passed: 101, Failed: 0, Ignored: 0, Assumption Failed: 0,    \nx86_64 libinputservice_test: Passed: 4, Failed: 0, Ignored: 0, Assumption Failed: 0,    \n\n3 tests failed\n--------------\ncom.android.test.input.AnrTest#testGestureMonitorAnr\nScreenCaptureTest#CaptureCrop\nScreenCaptureTest#CaptureSize\nTest Logs have saved in /tmp/atest_result/20220803_111247_2zlkwlg4/log\n\nI built without my patch applied and see the same failures, however the ScreenCaptureTest failures don\u0027t always happen.\n\nHowever I think I just realized that the the failures you are referring to are in CtsHardwareTestCases which I don\u0027t see running here. I think by \u0027real\u0027 device you mean I need a hardware device to test with instead of an emulator? Unfortunately I don\u0027t have this as the bsp package we are using on our hardware is android 12. However I assume CtsHardwareTestCases have likely not changed that much upstream from where our hardware is at. I can run CtsHardwareTestCases on our hardware with and without my patch to see if I can introduce the same failures there. I can also take a look at the source for CtsHardwareTestCases to see if I can figure out what might be breaking there. Perhaps a test is relying on getting back the same descriptor for 2 devices if they provide the same vendor, product, revision and unique id?",
+      "parentUuid": "7c37cf76_732ac53e",
+      "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
