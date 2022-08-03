@@ -70,6 +70,24 @@
       "parentUuid": "7c37cf76_732ac53e",
       "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee834bda_28694d06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-03T16:54:36Z",
+      "side": 1,
+      "message": "It\u0027s not running on aosp because we didn\u0027t add CtsHardwareTestCases to TEST_MAPPING, since those tests were unstable at the time. Now they are more stable, and are running in presubmit internally.\n\nYou can try running on emulator as well. The failures are like this:\n\n```\njava.lang.RuntimeException: Did not receive device added notification in time\njava.lang.RuntimeException: Did not receive device added notification in time\n\tat com.android.cts.input.VirtualInputDevice.registerInputDevice(VirtualInputDevice.java:148)\n\tat com.android.cts.input.VirtualInputDevice.\u003cinit\u003e(VirtualInputDevice.java:109)\n\tat com.android.cts.input.HidDevice.\u003cinit\u003e(HidDevice.java:78)\n\tat android.hardware.input.cts.tests.InputHidTestCase.onSetUp(InputHidTestCase.java:112)\n\tat android.hardware.input.cts.tests.InputTestCase.setUp(InputTestCase.java:100)\n\t```",
+      "parentUuid": "080c840f_4c735349",
+      "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
