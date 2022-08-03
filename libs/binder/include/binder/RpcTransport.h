@@ -30,12 +30,14 @@
 #include <utils/Errors.h>
 
 #include <binder/RpcCertificateFormat.h>
+#include <binder/RpcThreads.h>
 
 #include <sys/uio.h>
 
 namespace android {
 
 class FdTrigger;
+struct RpcSocket;
 
 // Represents a socket connection.
 // No thread-safety is guaranteed for these APIs.
@@ -81,6 +83,8 @@ public:
             const std::optional<android::base::function_ref<status_t()>> &altPoll,
             std::vector<std::variant<base::unique_fd, base::borrowed_fd>> *ancillaryFds) = 0;
 
+    [[nodiscard]] virtual bool isWaiting() = 0;
+
 protected:
     RpcTransport() = default;
 };
@@ -96,7 +100,7 @@ public:
     // Implementation details: for TLS, this function may incur I/O. |fdTrigger| may be used
     // to interrupt I/O. This function blocks until handshake is finished.
     [[nodiscard]] virtual std::unique_ptr<RpcTransport> newTransport(
-            android::base::unique_fd fd, FdTrigger *fdTrigger) const = 0;
+            android::RpcSocket fd, FdTrigger *fdTrigger) const = 0;
 
     // Return the preconfigured certificate of this context.
     //
@@ -127,6 +131,31 @@ public:
 
 protected:
     RpcTransportCtxFactory() = default;
+};
+
+struct RpcSocket {
+    base::unique_fd fd;
+    RpcAtomicUint pollingCount;
+
+    RpcSocket() : fd(-1), pollingCount(0) {}
+
+    RpcSocket(int _fd) : fd(_fd), pollingCount(0) {}
+
+    RpcSocket(base::unique_fd &&_fd) : fd(std::move(_fd)), pollingCount(0) {}
+
+    RpcSocket(RpcSocket &&_fdState) noexcept
+          : fd(std::move(_fdState.fd)), pollingCount(_fdState.pollingCount.load()) {}
+
+    RpcSocket &operator=(RpcSocket &&fdState) noexcept {
+        fd = std::move(fdState.fd);
+        pollingCount = fdState.pollingCount.load();
+        return *this;
+    }
+
+    bool isInPollingState() { return pollingCount > 0; }
+
+    void incPolling() { ++pollingCount; }
+    void decPolling() { --pollingCount; }
 };
 
 } // namespace android

@@ -127,12 +127,40 @@ static inline uint64_t rpcGetThreadId() {
 static inline void rpcJoinIfSingleThreaded(RpcMaybeThread& t) {
     t.join();
 }
+
+class RpcAtomicUint {
+private:
+    size_t mCount{0};
+
+public:
+    RpcAtomicUint() = default;
+    RpcAtomicUint(size_t _count) { mCount = _count; }
+
+    std::size_t load() { return mCount; }
+
+    RpcAtomicUint& operator++() {
+        ++mCount;
+        return *this;
+    }
+
+    RpcAtomicUint& operator--() {
+        --mCount;
+        return *this;
+    }
+
+    bool operator>=(size_t rhs) const { return mCount >= rhs; }
+    bool operator<(size_t rhs) const { return mCount < rhs; }
+    bool operator>(size_t rhs) const { return mCount > rhs; }
+    bool operator==(size_t rhs) const { return mCount == rhs; }
+    bool operator!=(size_t rhs) const { return mCount != rhs; }
+};
 #else  // BINDER_RPC_SINGLE_THREADED
 using RpcMutex = std::mutex;
 using RpcMutexUniqueLock = std::unique_lock<std::mutex>;
 using RpcMutexLockGuard = std::lock_guard<std::mutex>;
 using RpcConditionVariable = std::condition_variable;
 using RpcMaybeThread = std::thread;
+using RpcAtomicUint = std::atomic<std::size_t>;
 namespace rpc_this_thread = std::this_thread;
 
 static inline uint64_t rpcGetThreadId() {
