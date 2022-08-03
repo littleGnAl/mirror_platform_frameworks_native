@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28d5646_1a4d841e",
+        "filename": "libs/binder/trusty/OS.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-03T22:04:00Z",
+      "side": 1,
+      "message": "`TRUSTY_USERSPACE`",
+      "revId": "a93c0c8961af7cd37d01646e9e948dd2def5b56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
