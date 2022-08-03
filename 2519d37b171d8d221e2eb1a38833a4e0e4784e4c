@@ -88,6 +88,24 @@
       "parentUuid": "080c840f_4c735349",
       "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa63fc7f_6acdbd0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-03T17:34:15Z",
+      "side": 1,
+      "message": "Thanks. I was able to run CtsHardwareTestCases with the emulator and see that there are failures with this patch that are not present without the patch. I will dig into those failures to see what is happening.\n\nWith patch:\nSummary (Test executed with 1 devices.)\n-------\nx86_64 CtsHardwareTestCases: Passed: 58, Failed: 25, Ignored: 0, Assumption Failed: 25,    \n\n25 tests failed\n---------------\nandroid.hardware.cts.LowRamDeviceTest#test32BitOnlyIfLessThan2GiB\nandroid.hardware.cts.SecurityModelFeatureTest#testAuto\nandroid.hardware.input.cts.tests.SonyDualSenseBluetoothTest#testAllKeys\nandroid.hardware.input.cts.tests.SonyDualSenseBluetoothTest#kernelModule\nandroid.hardware.input.cts.tests.SonyDualSenseBluetoothTest#testVibrator\nandroid.hardware.input.cts.tests.SonyDualSenseBluetoothTest#testAllMotions\nandroid.hardware.input.cts.tests.SonyDualSenseUsbTest#testAllKeys\nandroid.hardware.input.cts.tests.SonyDualSenseUsbTest#testVibrator\nandroid.hardware.input.cts.tests.SonyDualSenseUsbTest#testAllMotions\nandroid.hardware.input.cts.tests.SonyDualshock4BluetoothTest#testAllTouch\nandroid.hardware.input.cts.tests.SonyDualshock4BluetoothTest#testAllKeys\nandroid.hardware.input.cts.tests.SonyDualshock4BluetoothTest#testBattery\nandroid.hardware.input.cts.tests.SonyDualshock4BluetoothTest#testLights\nandroid.hardware.input.cts.tests.SonyDualshock4BluetoothTest#testVibrator\nandroid.hardware.input.cts.tests.SonyDualshock4BluetoothTest#testAllMotions\nandroid.hardware.input.cts.tests.SonyDualshock4ProBluetoothTest#testAllKeys\nandroid.hardware.input.cts.tests.SonyDualshock4ProBluetoothTest#testVibrator\nandroid.hardware.input.cts.tests.SonyDualshock4ProBluetoothTest#testAllMotions\nandroid.hardware.input.cts.tests.SonyDualshock4ProUsbTest#testAllKeys\nandroid.hardware.input.cts.tests.SonyDualshock4ProUsbTest#testAllMotions\nandroid.hardware.input.cts.tests.SonyDualshock4UsbTest#testAllKeys\nandroid.hardware.input.cts.tests.SonyDualshock4UsbTest#testBattery\nandroid.hardware.input.cts.tests.SonyDualshock4UsbTest#kernelModule\nandroid.hardware.input.cts.tests.SonyDualshock4UsbTest#testVibrator\nandroid.hardware.input.cts.tests.SonyDualshock4UsbTest#testAllMotions\nTest Logs have saved in /tmp/atest_result/20220803_120730_wm8scpss/log\n\n\nWithout patch:\nSummary (Test executed with 1 devices.)\n-------\nx86_64 CtsHardwareTestCases: Passed: 81, Failed: 2, Ignored: 0, Assumption Failed: 25,    \n\n2 tests failed\n--------------\nandroid.hardware.cts.LowRamDeviceTest#test32BitOnlyIfLessThan2GiB\nandroid.hardware.cts.SecurityModelFeatureTest#testAuto\nTest Logs have saved in /tmp/atest_result/20220803_122144_786g3hz2/log",
+      "parentUuid": "ee834bda_28694d06",
+      "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
