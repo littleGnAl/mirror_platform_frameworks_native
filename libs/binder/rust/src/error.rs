@@ -18,7 +18,7 @@ use crate::binder::AsNative;
 use crate::sys;
 
 use std::error;
-use std::ffi::CStr;
+use std::ffi::{CStr, CString};
 use std::fmt::{Debug, Display, Formatter, Result as FmtResult};
 use std::result;
 
@@ -104,6 +104,10 @@ unsafe impl Sync for Status {}
 // A thread-local `AStatus` would not be valid.
 unsafe impl Send for Status {}
 
+fn to_cstring<T: AsRef<str>>(message: T) -> Option<CString> {
+    CString::new(message.as_ref()).ok()
+}
+
 impl Status {
     /// Create a status object representing a successful transaction.
     pub fn ok() -> Self {
@@ -146,6 +150,11 @@ impl Status {
         Self(ptr)
     }
 
+    /// Creates a status object from a service specific error.
+    pub fn new_service_specific_error_str<T: AsRef<str>>(err: i32, message: Option<T>) -> Status {
+        Self::new_service_specific_error(err, message.and_then(to_cstring).as_deref())
+    }
+
     /// Create a status object from an exception code
     pub fn new_exception(exception: ExceptionCode, message: Option<&CStr>) -> Status {
         if let Some(message) = message {
@@ -156,6 +165,14 @@ impl Status {
         } else {
             exception.into()
         }
+    }
+
+    /// Creates a status object from an exception code and message.
+    pub fn new_exception_str<T: AsRef<str>>(
+        exception: ExceptionCode,
+        message: Option<T>,
+    ) -> Status {
+        Self::new_exception(exception, message.and_then(to_cstring).as_deref())
     }
 
     /// Create a status object from a raw `AStatus` pointer.
