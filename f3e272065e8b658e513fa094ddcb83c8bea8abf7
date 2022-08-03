@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6b5e695_7075f3b0",
+        "filename": "libs/binder/trusty/kernel/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-03T22:01:36Z",
+      "side": 1,
+      "message": "Could this be merged with user space `RpcServerTrusty.cpp`? It looks very similar.",
+      "revId": "f3e272065e8b658e513fa094ddcb83c8bea8abf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "330ca580_3822e383",
+        "filename": "libs/binder/trusty/kernel/hex.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-03T22:01:36Z",
+      "side": 1,
+      "message": "Do we need this file at all? Don\u0027t we override `logging.h`?",
+      "revId": "f3e272065e8b658e513fa094ddcb83c8bea8abf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
