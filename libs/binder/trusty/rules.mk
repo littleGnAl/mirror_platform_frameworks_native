@@ -64,6 +64,7 @@ MODULE_SRCS += \
 MODULE_EXPORT_INCLUDES += \
 	$(LOCAL_DIR)/include \
 	$(LIBBINDER_DIR)/include \
+	$(LIBBINDER_DIR)/ndk/include_cpp \
 	$(LIBBASE_DIR)/include \
 	$(LIBCUTILS_DIR)/include \
 	$(LIBUTILS_DIR)/include \
