@@ -1,0 +1,61 @@
+Script started on 2022-08-15 20:05:06+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="190" LINES="45"]
+[?2004h]0;waghpawan@droidlab: ~/aosp/frameworks/native[01;32mwaghpawan@droidlab[00m:[01;34m~/aosp/frameworks/native[00m$ madb shell /data/benchmarktest64/binderRpcBenchmark/binderRpcBenchmark
+[?2004lTests suffixes:
+	.../0 is KERNEL
+	.../1 is RPC
+	.../2 is RPC with TLS
+2022-08-15T20:05:10+00:00
+Running /data/benchmarktest64/binderRpcBenchmark/binderRpcBenchmark
+Run on (2 X 0.002 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x1)
+  L1 Instruction 32 KiB (x1)
+  L2 Unified 1024 KiB (x1)
+  L3 Unified 39424 KiB (x1)
+***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
+------------------------------------------------------------------------------------
+Benchmark                                          Time             CPU   Iterations
+------------------------------------------------------------------------------------
+BM_pingTransaction/0                           91466 ns        61344 ns        10032
+BM_pingTransaction/1                          103599 ns        72088 ns         9368
+BM_pingTransaction/2                          142091 ns       105702 ns         7021
+BM_repeatTwoPageString/0                      331516 ns       183376 ns         3718
+BM_repeatTwoPageString/1                      345535 ns       195588 ns         3452
+BM_repeatTwoPageString/2                      394855 ns       243025 ns         2866
+BM_throughputForTransportAndBytes/0/64        108858 ns        72060 ns         9911
+BM_throughputForTransportAndBytes/1/64        117128 ns        80561 ns         8749
+BM_throughputForTransportAndBytes/2/64        154944 ns       113883 ns         6296
+BM_throughputForTransportAndBytes/0/1024      110174 ns        73295 ns         9646
+BM_throughputForTransportAndBytes/1/1024      119132 ns        83570 ns         7200
+BM_throughputForTransportAndBytes/2/1024      153197 ns       112243 ns         6117
+BM_throughputForTransportAndBytes/0/2048      102506 ns        64874 ns         9450
+BM_throughputForTransportAndBytes/1/2048      113659 ns        77839 ns         9032
+BM_throughputForTransportAndBytes/2/2048      158495 ns       117705 ns         6056
+BM_throughputForTransportAndBytes/0/4096      120631 ns        79854 ns         8552
+BM_throughputForTransportAndBytes/1/4096      120120 ns        82648 ns         8399
+BM_throughputForTransportAndBytes/2/4096      161183 ns       118869 ns         5969
+BM_throughputForTransportAndBytes/0/8182      119775 ns        77541 ns         9257
+BM_throughputForTransportAndBytes/1/8182      126301 ns        85823 ns         8528
+BM_throughputForTransportAndBytes/2/8182      165868 ns       120767 ns         5688
+BM_throughputForTransportAndBytes/0/16364     136251 ns        84290 ns         8170
+BM_throughputForTransportAndBytes/1/16364     139249 ns        92283 ns         7479
+BM_throughputForTransportAndBytes/2/16364     191287 ns       139471 ns         4988
+BM_throughputForTransportAndBytes/0/32728     154632 ns        95773 ns         7468
+BM_throughputForTransportAndBytes/1/32728     155922 ns       102562 ns         6828
+BM_throughputForTransportAndBytes/2/32728     231813 ns       168008 ns         4070
+BM_throughputForTransportAndBytes/0/65535     284156 ns       166994 ns         4219
+BM_throughputForTransportAndBytes/1/65535     349576 ns       221862 ns         3174
+BM_throughputForTransportAndBytes/2/65535     481620 ns       324696 ns         2139
+BM_throughputForTransportAndBytes/0/65536     279817 ns       165480 ns         4168
+BM_throughputForTransportAndBytes/1/65536     323440 ns       206039 ns         3104
+BM_throughputForTransportAndBytes/2/65536     464085 ns       315008 ns         2194
+BM_throughputForTransportAndBytes/0/65537     372874 ns       189343 ns         3552
+BM_throughputForTransportAndBytes/1/65537     447126 ns       245324 ns         2694
+BM_throughputForTransportAndBytes/2/65537     619491 ns       379412 ns         1866
+BM_repeatBinder/0                             103113 ns        67863 ns         9436
+BM_repeatBinder/1                             102133 ns        77291 ns        10312
+BM_repeatBinder/2                             138412 ns       114309 ns         6739
+[?2004h]0;waghpawan@droidlab: ~/aosp/frameworks/native[01;32mwaghpawan@droidlab[00m:[01;34m~/aosp/frameworks/native[00m$ [?2004l
+exit
+
+Script done on 2022-08-15 20:07:10+00:00 [COMMAND_EXIT_CODE="0"]
