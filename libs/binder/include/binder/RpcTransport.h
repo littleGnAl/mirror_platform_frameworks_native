@@ -36,6 +36,7 @@
 namespace android {
 
 class FdTrigger;
+struct FdState;
 
 // Represents a socket connection.
 // No thread-safety is guaranteed for these APIs.
@@ -81,6 +82,8 @@ public:
             const std::optional<android::base::function_ref<status_t()>> &altPoll,
             std::vector<std::variant<base::unique_fd, base::borrowed_fd>> *ancillaryFds) = 0;
 
+    [[nodiscard]] virtual bool isWaiting() = 0;
+
 protected:
     RpcTransport() = default;
 };
@@ -96,7 +99,7 @@ public:
     // Implementation details: for TLS, this function may incur I/O. |fdTrigger| may be used
     // to interrupt I/O. This function blocks until handshake is finished.
     [[nodiscard]] virtual std::unique_ptr<RpcTransport> newTransport(
-            android::base::unique_fd fd, FdTrigger *fdTrigger) const = 0;
+            android::FdState fd, FdTrigger *fdTrigger) const = 0;
 
     // Return the preconfigured certificate of this context.
     //
@@ -127,6 +130,29 @@ public:
 
 protected:
     RpcTransportCtxFactory() = default;
+};
+
+struct FdState {
+    base::unique_fd fd;
+    bool isPolling;
+
+    FdState() : fd(-1) {}
+
+    FdState(int _fd) : fd(std::move(_fd)), isPolling(false) {}
+
+    FdState(base::unique_fd &&_fd) : fd(std::move(_fd)), isPolling(false) {}
+
+    FdState(FdState &&_fdState) : fd(std::move(_fdState.fd)), isPolling(_fdState.isPolling) {}
+
+    FdState &operator=(FdState &&fdState) {
+        fd = std::move(fdState.fd);
+        isPolling = fdState.isPolling;
+        return *this;
+    }
+
+    bool getPollingState() { return isPolling; }
+
+    void setPollingState(int _state) { isPolling = _state; }
 };
 
 } // namespace android
