@@ -156,18 +156,19 @@ status_t RpcSession::setupInetClient(const char* addr, unsigned int port) {
     return NAME_NOT_FOUND;
 }
 
-status_t RpcSession::setupPreconnectedClient(unique_fd fd, std::function<unique_fd()>&& request) {
+status_t RpcSession::setupPreconnectedClient(FdState fdState,
+                                             std::function<unique_fd()>&& request) {
     return setupClient([&](const std::vector<uint8_t>& sessionId, bool incoming) -> status_t {
-        if (!fd.ok()) {
-            fd = request();
-            if (!fd.ok()) return BAD_VALUE;
+        if (!fdState.fd.ok()) {
+            fdState.fd = request();
+            if (!fdState.fd.ok()) return BAD_VALUE;
         }
-        if (auto res = setNonBlocking(fd); !res.ok()) {
+        if (auto res = setNonBlocking(fdState.fd); !res.ok()) {
             ALOGE("setupPreconnectedClient: %s", res.error().message().c_str());
             return res.error().code() == 0 ? UNKNOWN_ERROR : -res.error().code();
         }
-        status_t status = initAndAddConnection(std::move(fd), sessionId, incoming);
-        fd = unique_fd(); // Explicitly reset after move to avoid analyzer warning.
+        status_t status = initAndAddConnection(std::move(fdState), sessionId, incoming);
+        fdState = FdState(); // Explicitly reset after move to avoid analyzer warning.
         return status;
     });
 }
@@ -560,12 +561,15 @@ status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
             return -savedErrno;
         }
 
-        if (0 != TEMP_FAILURE_RETRY(connect(serverFd.get(), addr.addr(), addr.addrSize()))) {
+        FdState fdState;
+        fdState.fd = std::move(serverFd);
+
+        if (0 != TEMP_FAILURE_RETRY(connect(fdState.fd.get(), addr.addr(), addr.addrSize()))) {
             int connErrno = errno;
             if (connErrno == EAGAIN || connErrno == EINPROGRESS) {
                 // For non-blocking sockets, connect() may return EAGAIN (for unix domain socket) or
                 // EINPROGRESS (for others). Call poll() and getsockopt() to get the error.
-                status_t pollStatus = mShutdownTrigger->triggerablePoll(serverFd, POLLOUT);
+                status_t pollStatus = mShutdownTrigger->triggerablePoll(fdState, POLLOUT);
                 if (pollStatus != OK) {
                     ALOGE("Could not POLLOUT after connect() on non-blocking socket: %s",
                           statusToString(pollStatus).c_str());
@@ -573,8 +577,8 @@ status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
                 }
                 // Set connErrno to the errno that connect() would have set if the fd were blocking.
                 socklen_t connErrnoLen = sizeof(connErrno);
-                int ret =
-                        getsockopt(serverFd.get(), SOL_SOCKET, SO_ERROR, &connErrno, &connErrnoLen);
+                int ret = getsockopt(fdState.fd.get(), SOL_SOCKET, SO_ERROR, &connErrno,
+                                     &connErrnoLen);
                 if (ret == -1) {
                     int savedErrno = errno;
                     ALOGE("Could not getsockopt() after connect() on non-blocking socket: %s. "
@@ -596,16 +600,16 @@ status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
                 return -connErrno;
             }
         }
-        LOG_RPC_DETAIL("Socket at %s client with fd %d", addr.toString().c_str(), serverFd.get());
+        LOG_RPC_DETAIL("Socket at %s client with fd %d", addr.toString().c_str(), fdState.fd.get());
 
-        return initAndAddConnection(std::move(serverFd), sessionId, incoming);
+        return initAndAddConnection(std::move(fdState), sessionId, incoming);
     }
 
     ALOGE("Ran out of retries to connect to %s", addr.toString().c_str());
     return UNKNOWN_ERROR;
 }
 
-status_t RpcSession::initAndAddConnection(unique_fd fd, const std::vector<uint8_t>& sessionId,
+status_t RpcSession::initAndAddConnection(FdState fd, const std::vector<uint8_t>& sessionId,
                                           bool incoming) {
     LOG_ALWAYS_FATAL_IF(mShutdownTrigger == nullptr);
     auto server = mCtx->newTransport(std::move(fd), mShutdownTrigger.get());
