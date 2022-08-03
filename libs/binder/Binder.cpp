@@ -168,6 +168,7 @@ status_t IBinder::getDebugPid(pid_t* out) {
     return OK;
 }
 
+#if !defined(__TRUSTY__)
 status_t IBinder::setRpcClientDebug(android::base::unique_fd socketFd,
                                     const sp<IBinder>& keepAliveBinder) {
     if (!kEnableRpcDevServers) {
@@ -199,6 +200,7 @@ status_t IBinder::setRpcClientDebug(android::base::unique_fd socketFd,
     if (status = data.writeStrongBinder(keepAliveBinder); status != OK) return status;
     return transact(SET_RPC_CLIENT_TRANSACTION, data, &reply);
 }
+#endif // !defined(__TRUSTY__)
 
 void IBinder::withLock(const std::function<void()>& doWithLock) {
     BBinder* local = localBinder();
@@ -651,6 +653,7 @@ status_t BBinder::setRpcClientDebug(const Parcel& data) {
     return setRpcClientDebug(std::move(clientFd), keepAliveBinder);
 }
 
+#if !defined(__TRUSTY__)
 status_t BBinder::setRpcClientDebug(android::base::unique_fd socketFd,
                                     const sp<IBinder>& keepAliveBinder) {
     if (!kEnableRpcDevServers) {
@@ -708,6 +711,7 @@ status_t BBinder::setRpcClientDebug(android::base::unique_fd socketFd,
     LOG_RPC_DETAIL("%s(fd=%d) successful", __PRETTY_FUNCTION__, socketFdForPrint);
     return OK;
 }
+#endif // !defined(__TRUSTY__)
 
 void BBinder::removeRpcServerLink(const sp<RpcServerLink>& link) {
     Extras* e = mExtras.load(std::memory_order_acquire);
@@ -753,6 +757,7 @@ status_t BBinder::onTransact(
             reply->writeString16(getInterfaceDescriptor());
             return NO_ERROR;
 
+#if !defined(__TRUSTY__)
         case DUMP_TRANSACTION: {
             int fd = data.readFileDescriptor();
             int argc = data.readInt32();
@@ -790,6 +795,7 @@ status_t BBinder::onTransact(
 
             return NO_ERROR;
         }
+#endif // !defined(__TRUSTY__)
 
         case SYSPROPS_TRANSACTION: {
             report_sysprop_change();
