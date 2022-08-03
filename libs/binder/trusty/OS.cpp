@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
+#if defined(TRUSTY_KERNEL_FD)
+#include <lib/rand/rand.h>
+#else
 #include <openssl/rand.h>
+#endif
 
 #include "../OS.h"
 
@@ -28,8 +32,13 @@ Result<void> setNonBlocking(android::base::borrowed_fd fd) {
 }
 
 status_t getRandomBytes(uint8_t* data, size_t size) {
+#if defined(TRUSTY_KERNEL_FD)
+    int res = rand_get_bytes(data, size);
+    return res == 0 ? OK : UNKNOWN_ERROR;
+#else
     int res = RAND_bytes(data, size);
     return res == 1 ? OK : UNKNOWN_ERROR;
+#endif // TRUSTY_KERNEL_FD
 }
 
 } // namespace android
