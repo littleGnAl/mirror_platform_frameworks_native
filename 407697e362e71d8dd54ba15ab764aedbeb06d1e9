@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e07e20_f8fd7692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-08-03T12:33:11Z",
+      "side": 1,
+      "message": "Hi Patrick, your +1 vote was lost. Could you please +1 again? Thanks.",
+      "revId": "407697e362e71d8dd54ba15ab764aedbeb06d1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
