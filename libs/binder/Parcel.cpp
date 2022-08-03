@@ -105,8 +105,10 @@ static std::atomic<size_t> gParcelGlobalAllocSize;
 // Maximum number of file descriptors per Parcel.
 constexpr size_t kMaxFds = 1024;
 
+#if !defined(TRUSTY_KERNEL_FD)
 // Maximum size of a blob to transfer in-place.
 static const size_t BLOB_INPLACE_LIMIT = 16 * 1024;
+#endif
 
 enum {
     BLOB_INPLACE = 0,
@@ -169,9 +171,11 @@ static void release_object(const sp<ProcessState>& proc, const flat_binder_objec
 }
 #endif // BINDER_WITH_KERNEL_IPC
 
+#if !defined(TRUSTY_KERNEL_FD)
 static int toRawFd(const std::variant<base::unique_fd, base::borrowed_fd>& v) {
     return std::visit([](const auto& fd) { return fd.get(); }, v);
 }
+#endif
 
 Parcel::RpcFields::RpcFields(const sp<RpcSession>& session) : mSession(session) {
     LOG_ALWAYS_FATAL_IF(mSession == nullptr);
@@ -469,7 +473,9 @@ status_t Parcel::appendFrom(const Parcel* parcel, size_t offset, size_t len) {
 
     status_t err;
     const uint8_t* data = parcel->mData;
+#if !defined(TRUSTY_KERNEL_FD)
     int startPos = mDataPos;
+#endif
 
     if (len == 0) {
         return NO_ERROR;
@@ -569,6 +575,7 @@ status_t Parcel::appendFrom(const Parcel* parcel, size_t offset, size_t len) {
         return INVALID_OPERATION;
 #endif // BINDER_WITH_KERNEL_IPC
     } else {
+#if !defined(TRUSTY_KERNEL_FD)
         auto* rpcFields = maybeRpcFields();
         LOG_ALWAYS_FATAL_IF(rpcFields == nullptr);
         auto* otherRpcFields = parcel->maybeRpcFields();
@@ -625,6 +632,7 @@ status_t Parcel::appendFrom(const Parcel* parcel, size_t offset, size_t len) {
                 }
             }
         }
+#endif
     }
 
     return err;
@@ -716,6 +724,7 @@ std::vector<sp<IBinder>> Parcel::debugReadAllStrongBinders() const {
     return ret;
 }
 
+#if !defined(TRUSTY_KERNEL_FD)
 std::vector<int> Parcel::debugReadAllFileDescriptors() const {
     std::vector<int> ret;
 
@@ -794,6 +803,7 @@ status_t Parcel::hasFileDescriptorsInRange(size_t offset, size_t len, bool* resu
     }
     return NO_ERROR;
 }
+#endif // !defined(TRUSTY_KERNEL_FD)
 
 void Parcel::markSensitive() const
 {
@@ -1423,6 +1433,7 @@ status_t Parcel::writeNativeHandle(const native_handle* handle)
     return err;
 }
 
+#if !defined(TRUSTY_KERNEL_FD)
 status_t Parcel::writeFileDescriptor(int fd, bool takeOwnership) {
     if (auto* rpcFields = maybeRpcFields()) {
         std::variant<base::unique_fd, base::borrowed_fd> fdVariant;
@@ -1574,6 +1585,7 @@ status_t Parcel::writeDupImmutableBlobFileDescriptor(int fd)
     if (status) return status;
     return writeDupFileDescriptor(fd);
 }
+#endif // !defined(TRUSTY_KERNEL_FD)
 
 status_t Parcel::write(const FlattenableHelperInterface& val)
 {
@@ -2216,6 +2228,7 @@ native_handle* Parcel::readNativeHandle() const
     return h;
 }
 
+#if !defined(TRUSTY_KERNEL_FD)
 int Parcel::readFileDescriptor() const {
     if (const auto* rpcFields = maybeRpcFields()) {
         if (!std::binary_search(rpcFields->mObjectPositions.begin(),
@@ -2320,6 +2333,7 @@ status_t Parcel::readUniqueParcelFileDescriptor(base::unique_fd* val) const
 
     return OK;
 }
+#endif // !defined(TRUSTY_KERNEL_FD)
 
 status_t Parcel::readBlob(size_t len, ReadableBlob* outBlob) const
 {

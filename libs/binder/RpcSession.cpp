@@ -178,6 +178,7 @@ status_t RpcSession::setupPreconnectedClient(unique_fd fd, std::function<unique_
     });
 }
 
+#if !defined(TRUSTY_KERNEL_FD)
 status_t RpcSession::addNullDebuggingClient() {
     // Note: only works on raw sockets.
     if (auto status = initShutdownTrigger(); status != OK) return status;
@@ -197,6 +198,7 @@ status_t RpcSession::addNullDebuggingClient() {
     }
     return addOutgoingConnection(std::move(server), false);
 }
+#endif // !defined(TRUSTY_KERNEL_FD)
 
 sp<IBinder> RpcSession::getRootObject() {
     ExclusiveConnection connection;
@@ -554,6 +556,7 @@ status_t RpcSession::setupSocketClient(const RpcSocketAddress& addr) {
     });
 }
 
+#if !defined(TRUSTY_KERNEL_FD)
 status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
                                               const std::vector<uint8_t>& sessionId,
                                               bool incoming) {
@@ -613,6 +616,7 @@ status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
     ALOGE("Ran out of retries to connect to %s", addr.toString().c_str());
     return UNKNOWN_ERROR;
 }
+#endif // !defined(TRUSTY_KERNEL_FD)
 
 status_t RpcSession::initAndAddConnection(unique_fd fd, const std::vector<uint8_t>& sessionId,
                                           bool incoming) {
