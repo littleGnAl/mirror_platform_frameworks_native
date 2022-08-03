@@ -134,7 +134,7 @@ public:
      *
      * For future compatibility, 'request' should not reference any stack data.
      */
-    [[nodiscard]] status_t setupPreconnectedClient(base::unique_fd fd,
+    [[nodiscard]] status_t setupPreconnectedClient(FdState fd,
                                                    std::function<base::unique_fd()>&& request);
 
     /**
@@ -265,8 +265,7 @@ private:
     [[nodiscard]] status_t setupOneSocketConnection(const RpcSocketAddress& address,
                                                     const std::vector<uint8_t>& sessionId,
                                                     bool incoming);
-    [[nodiscard]] status_t initAndAddConnection(base::unique_fd fd,
-                                                const std::vector<uint8_t>& sessionId,
+    [[nodiscard]] status_t initAndAddConnection(FdState fd, const std::vector<uint8_t>& sessionId,
                                                 bool incoming);
     [[nodiscard]] status_t addIncomingConnection(std::unique_ptr<RpcTransport> rpcTransport);
     [[nodiscard]] status_t addOutgoingConnection(std::unique_ptr<RpcTransport> rpcTransport,

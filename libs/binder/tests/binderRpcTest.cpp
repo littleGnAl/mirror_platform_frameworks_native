@@ -1748,7 +1748,7 @@ public:
                 }
             }
             mFd = rpcServer->releaseServer();
-            if (!mFd.ok()) return AssertionFailure() << "releaseServer returns invalid fd";
+            if (!mFd.fd.ok()) return AssertionFailure() << "releaseServer returns invalid fd";
             mCtx = newFactory(rpcSecurity, mCertVerifier, std::move(auth))->newServerCtx();
             if (mCtx == nullptr) return AssertionFailure() << "newServerCtx";
             mSetup = true;
@@ -1769,7 +1769,7 @@ public:
             std::vector<std::thread> threads;
             while (OK == mFdTrigger->triggerablePoll(mFd, POLLIN)) {
                 base::unique_fd acceptedFd(
-                        TEMP_FAILURE_RETRY(accept4(mFd.get(), nullptr, nullptr /*length*/,
+                        TEMP_FAILURE_RETRY(accept4(mFd.fd.get(), nullptr, nullptr /*length*/,
                                                    SOCK_CLOEXEC | SOCK_NONBLOCK)));
                 threads.emplace_back(&Server::handleOne, this, std::move(acceptedFd));
             }
@@ -1797,7 +1797,7 @@ public:
         std::unique_ptr<std::thread> mThread;
         ConnectToServer mConnectToServer;
         std::unique_ptr<FdTrigger> mFdTrigger = FdTrigger::make();
-        base::unique_fd mFd;
+        FdState mFd;
         std::unique_ptr<RpcTransportCtx> mCtx;
         std::shared_ptr<RpcCertificateVerifierSimple> mCertVerifier =
                 std::make_shared<RpcCertificateVerifierSimple>();
@@ -1844,7 +1844,7 @@ public:
         // connect() and do handshake
         bool setUpTransport() {
             mFd = mConnectToServer();
-            if (!mFd.ok()) return AssertionFailure() << "Cannot connect to server";
+            if (!mFd.fd.ok()) return AssertionFailure() << "Cannot connect to server";
             mClientTransport = mCtx->newTransport(std::move(mFd), mFdTrigger.get());
             return mClientTransport != nullptr;
         }
@@ -1875,7 +1875,7 @@ public:
 
     private:
         ConnectToServer mConnectToServer;
-        base::unique_fd mFd;
+        FdState mFd;
         std::unique_ptr<FdTrigger> mFdTrigger = FdTrigger::make();
         std::unique_ptr<RpcTransportCtx> mCtx;
         std::shared_ptr<RpcCertificateVerifierSimple> mCertVerifier =
