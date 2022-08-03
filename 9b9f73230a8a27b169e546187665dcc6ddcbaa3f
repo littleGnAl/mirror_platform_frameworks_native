@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ec332e9_fbe792f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-03T22:05:08Z",
+      "side": 1,
+      "message": "Already landed in https://android-review.googlesource.com/c/platform/frameworks/native/+/2161046, please abandon.",
+      "revId": "9b9f73230a8a27b169e546187665dcc6ddcbaa3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
