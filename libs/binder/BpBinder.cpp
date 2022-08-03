@@ -271,6 +271,7 @@ status_t BpBinder::pingBinder()
 
 status_t BpBinder::dump(int fd, const Vector<String16>& args)
 {
+#if !defined(TRUSTY_KERNEL_FD)
     Parcel send;
     Parcel reply;
     send.writeFileDescriptor(fd);
@@ -281,6 +282,9 @@ status_t BpBinder::dump(int fd, const Vector<String16>& args)
     }
     status_t err = transact(DUMP_TRANSACTION, send, &reply);
     return err;
+#else
+    return INVALID_OPERATION;
+#endif // !defined(TRUSTY_KERNEL_FD)
 }
 
 // NOLINTNEXTLINE(google-default-arguments)
