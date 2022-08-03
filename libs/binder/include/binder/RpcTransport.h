@@ -30,12 +30,14 @@
 #include <utils/Errors.h>
 
 #include <binder/RpcCertificateFormat.h>
+#include <binder/RpcThreads.h>
 
 #include <sys/uio.h>
 
 namespace android {
 
 class FdTrigger;
+struct RpcSocket;
 
 // Represents a socket connection.
 // No thread-safety is guaranteed for these APIs.
@@ -81,6 +83,15 @@ public:
             const std::optional<android::base::function_ref<status_t()>> &altPoll,
             std::vector<std::variant<base::unique_fd, base::borrowed_fd>> *ancillaryFds) = 0;
 
+    /**
+     *  Check whether any threads are blocked while polling the transport
+     *  for read operations
+     *  Return:
+     *    True - Specifies that there is active polling on transport.
+     *    False - No active polling on transport
+     */
+    [[nodiscard]] virtual bool isWaiting() = 0;
+
 protected:
     RpcTransport() = default;
 };
@@ -96,7 +107,7 @@ public:
     // Implementation details: for TLS, this function may incur I/O. |fdTrigger| may be used
     // to interrupt I/O. This function blocks until handshake is finished.
     [[nodiscard]] virtual std::unique_ptr<RpcTransport> newTransport(
-            android::base::unique_fd fd, FdTrigger *fdTrigger) const = 0;
+            android::RpcSocket fd, FdTrigger *fdTrigger) const = 0;
 
     // Return the preconfigured certificate of this context.
     //
@@ -127,6 +138,35 @@ public:
 
 protected:
     RpcTransportCtxFactory() = default;
+};
+
+struct RpcSocket {
+    base::unique_fd fd;
+    mutable std::atomic<size_t> pollingCount{0};
+
+    RpcSocket() = default;
+
+    RpcSocket(base::unique_fd &&_fd) : fd(std::move(_fd)), pollingCount(0) {}
+
+    RpcSocket(RpcSocket &&_socket) noexcept
+          : fd(std::move(_socket.fd)), pollingCount(_socket.pollingCount.load()) {}
+
+    RpcSocket &operator=(RpcSocket &&socket) noexcept {
+        fd = std::move(socket.fd);
+        pollingCount.store(socket.pollingCount.load());
+        return *this;
+    }
+
+    RpcSocket &operator=(base::unique_fd &&_fd) noexcept {
+        fd = std::move(_fd);
+        pollingCount.store(0);
+        return *this;
+    }
+
+    bool isInPollingState() { return pollingCount.load() > 0; }
+
+    void incPolling() { ++pollingCount; }
+    void decPolling() { --pollingCount; }
 };
 
 } // namespace android
