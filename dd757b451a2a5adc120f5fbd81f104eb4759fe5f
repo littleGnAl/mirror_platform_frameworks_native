@@ -113,6 +113,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e68a6d69_235cc530",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-03T00:30:10Z",
+      "side": 1,
+      "message": "Ah, this is done in a mutex section, so it can\u0027t race, right?",
+      "parentUuid": "22ac2714_0f219532",
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6eea26ca_bcfd2e09",
         "filename": "libs/binder/include/binder/Delegate.h",
         "patchSetId": 1
@@ -298,6 +316,30 @@
       "side": 1,
       "message": "can the templated function be declared inside this function?",
       "parentUuid": "a783036d_24570062",
+      "range": {
+        "startLine": 39,
+        "startChar": 68,
+        "endLine": 39,
+        "endChar": 87
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "546231cd_88c164ca",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-03T00:30:10Z",
+      "side": 1,
+      "message": "`delegate` is templated already. if you define lambda inside `delegate`, then it can use `T` like any other type, so no need templated lambdas",
+      "parentUuid": "db37ef18_7e4fbd0b",
       "range": {
         "startLine": 39,
         "startChar": 68,
