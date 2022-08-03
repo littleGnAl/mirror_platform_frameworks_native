@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8420d1fe_d6e87ad4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1946226
+      },
+      "writtenOn": "2022-08-03T09:56:49Z",
+      "side": 1,
+      "message": "will check with our team internally and associate a bug.",
+      "parentUuid": "6d0c249b_a5c9d9a6",
+      "revId": "7612567903b04e845332b4650edfc69f04deae21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba4f8834_dfceaea1",
