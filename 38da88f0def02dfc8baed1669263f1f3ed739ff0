@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "403c6262_c1b0bd1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1946226
+      },
+      "writtenOn": "2022-08-03T09:55:23Z",
+      "side": 1,
+      "message": "I do not have an associated bug. Fuzzers themselves are expected to find crashes/vulnerabilities. This is the generally accepted practice of writing \"Test\" in CLs for fuzzers.\nAnother example- https://android-review.googlesource.com/c/platform/frameworks/minikin/+/2133452",
+      "parentUuid": "ef2602d0_fc806b66",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "38da88f0def02dfc8baed1669263f1f3ed739ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6b23a84f_f404e470",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-19T15:08:52Z",
       "side": 1,
       "message": "Please format to beginning of line.",
+      "range": {
+        "startLine": 49,
+        "startChar": 13,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "38da88f0def02dfc8baed1669263f1f3ed739ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d70116_ffda1aa5",
+        "filename": "libs/sensor/fuzz/sensor_fuzzer/sensor_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1946226
+      },
+      "writtenOn": "2022-08-03T09:55:23Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "745d0024_285b8bad",
       "range": {
         "startLine": 49,
         "startChar": 13,
