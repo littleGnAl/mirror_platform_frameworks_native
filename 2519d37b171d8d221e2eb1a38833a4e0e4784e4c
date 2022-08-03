@@ -34,6 +34,24 @@
       "parentUuid": "be774566_286d16f8",
       "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c37cf76_732ac53e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-03T01:26:46Z",
+      "side": 1,
+      "message": "The failures appear to be consistent.\n\nDo you mind trying to run:\n\n  `cd frameworks/native/services/inputflinger \u0026\u0026 atest`\n  \nto run everything.\n\nThe one I\u0027m seeing failing on master is:\n\n `atest CtsHardwareTestCases`\n \nBoth invocations would require an adb connection with a real device. These tests run on a device, ensure the screen is ON and home screen is shown when the test runs.",
+      "parentUuid": "dcef550c_994f30a7",
+      "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
