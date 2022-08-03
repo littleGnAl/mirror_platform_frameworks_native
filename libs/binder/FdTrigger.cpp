@@ -53,6 +53,7 @@ bool FdTrigger::isTriggered() {
 #endif
 }
 
+#if !defined(__TRUSTY__)
 status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
 #ifdef BINDER_RPC_SINGLE_THREADED
     if (mTriggered) {
@@ -114,5 +115,6 @@ status_t FdTrigger::triggerablePoll(base::borrowed_fd fd, int16_t event) {
     // This is a very common case, so don't log.
     return DEAD_OBJECT;
 }
+#endif // !defined(__TRUSTY__)
 
 } // namespace android
