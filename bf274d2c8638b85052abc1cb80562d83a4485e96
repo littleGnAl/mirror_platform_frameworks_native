@@ -34,6 +34,24 @@
       "parentUuid": "f46e69ad_cd38f64f",
       "revId": "bf274d2c8638b85052abc1cb80562d83a4485e96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0a57b6_5464e5a3",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-04T18:35:41Z",
+      "side": 1,
+      "message": "Yeah, that sounds right. Thanks Joshua!",
+      "parentUuid": "62f903e0_f2755489",
+      "revId": "bf274d2c8638b85052abc1cb80562d83a4485e96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
