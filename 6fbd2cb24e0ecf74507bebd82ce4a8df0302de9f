@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e60d582_36362854",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-08-04T18:16:00Z",
+      "side": 1,
+      "message": "Still TODO? If so, can you provide more information?",
+      "range": {
+        "startLine": 291,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
