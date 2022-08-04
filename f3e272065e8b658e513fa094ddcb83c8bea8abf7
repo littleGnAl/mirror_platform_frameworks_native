@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85257a1b_e0984295",
+        "filename": "libs/binder/trusty/kernel/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-08-04T00:24:51Z",
+      "side": 1,
+      "message": "I thought about it, but didn\u0027t since the `handle*` methods have different function signatures. Now that I think about it, it might be better to combine them or at least rename the kernel source/header since they\u0027re both in the exported include directories.",
+      "parentUuid": "f6b5e695_7075f3b0",
+      "revId": "f3e272065e8b658e513fa094ddcb83c8bea8abf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "330ca580_3822e383",
         "filename": "libs/binder/trusty/kernel/hex.cpp",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-03T22:01:36Z",
       "side": 1,
       "message": "Do we need this file at all? Don\u0027t we override `logging.h`?",
+      "revId": "f3e272065e8b658e513fa094ddcb83c8bea8abf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ad2775_fceb6922",
+        "filename": "libs/binder/trusty/kernel/hex.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-08-04T00:24:51Z",
+      "side": 1,
+      "message": "The original has `CHECK(...) \u003c\u003c \"some msg\";` which doesn\u0027t work with the logging.h in this CL.",
+      "parentUuid": "330ca580_3822e383",
       "revId": "f3e272065e8b658e513fa094ddcb83c8bea8abf7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
