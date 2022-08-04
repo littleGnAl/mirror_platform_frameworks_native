@@ -34,6 +34,24 @@
       "parentUuid": "2cb321e8_f9761ba1",
       "revId": "95e72b1eda30a2bc42e97bf760dd1b17937f38b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db54e66c_b4d0af0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-08-04T13:53:04Z",
+      "side": 1,
+      "message": "Nit: Maybe a test with a string with an embedded nul?\n(Which should mean the message will be omitted, but nothing will crash)",
+      "parentUuid": "2c840b4e_0559bc30",
+      "revId": "95e72b1eda30a2bc42e97bf760dd1b17937f38b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
