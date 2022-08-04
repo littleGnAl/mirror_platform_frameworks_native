@@ -43,6 +43,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e2dea7c_ec521846",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-04T23:23:45Z",
+      "side": 1,
+      "message": "this API should not expose FdState (other code shouldn\u0027t know about it)",
+      "range": {
+        "startLine": 98,
+        "startChar": 47,
+        "endLine": 98,
+        "endChar": 54
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef5cacf_41c7d104",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-04T23:23:45Z",
+      "side": 1,
+      "message": "same - should avoid in API",
+      "range": {
+        "startLine": 137,
+        "startChar": 51,
+        "endLine": 137,
+        "endChar": 58
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93967af0_840728e4",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 4
@@ -54,6 +100,30 @@
       "writtenOn": "2022-08-04T22:00:56Z",
       "side": 1,
       "message": "bike shedding: maybe call this `Socket`",
+      "range": {
+        "startLine": 135,
+        "startChar": 7,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e4dc44_761ef337",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-04T23:23:45Z",
+      "side": 1,
+      "message": "or \u0027RpcSocket\u0027 (because it\u0027s in android::)",
+      "parentUuid": "93967af0_840728e4",
       "range": {
         "startLine": 135,
         "startChar": 7,
