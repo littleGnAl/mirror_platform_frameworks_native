@@ -16,6 +16,24 @@
       "message": "Now that I\u0027ve seen patchset 7, I feel like it will be simpler to just update this condition: \n\n```\nconst InputDeviceIdentifier\u0026 id \u003d devicePair.second-\u003egetDescriptor();\nreturn id2.vendor \u003d\u003d identifier.vendor \u0026\u0026 id2.product \u003d\u003d identifier.product \u003c... and so on\u003e\n```\n\nThis way, EventHub doesn\u0027t have to know what \"subDevice\" means, since it\u0027s really an InputReader concept rather than EventHub concept. And this would also make our check more explicit. I think it originally relied on descriptor mainly for convenience..",
       "revId": "bf274d2c8638b85052abc1cb80562d83a4485e96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62f903e0_f2755489",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-04T18:22:01Z",
+      "side": 1,
+      "message": "ok - I will update it for this approach instead. To make sure I understand correctly we will go back to always ensuring we have a unique descriptor in EventHub and do the check here to determine if a new InputDevice gets created or if we update an existing InputDevice by modifying the conditions on which an InputDevice matches an InputDeviceIdentifier.",
+      "parentUuid": "f46e69ad_cd38f64f",
+      "revId": "bf274d2c8638b85052abc1cb80562d83a4485e96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
