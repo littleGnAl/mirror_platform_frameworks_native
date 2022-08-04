@@ -160,6 +160,24 @@
       "parentUuid": "b4e8bde5_8739815b",
       "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6b43f35_6b5461ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-04T15:27:30Z",
+      "side": 1,
+      "message": "Hi Joshua,\n\nThat sounds reasonable.\nAnother option is to use \"vendor / product / version / bus / uniq\" fields in order to detect sub-devices (not in eventhub, but higher up), and keep allowing the \u0027descriptor\u0027 field to be unique for every eventhub device.\n\nYour solution seems simpler, though.",
+      "parentUuid": "2b6f4651_72e4926d",
+      "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
