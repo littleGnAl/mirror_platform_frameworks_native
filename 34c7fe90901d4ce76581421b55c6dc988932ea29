@@ -34,6 +34,24 @@
       "parentUuid": "6bcc9bf6_28ffc2df",
       "revId": "34c7fe90901d4ce76581421b55c6dc988932ea29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa26800a_fd0efc7c",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-04T00:19:08Z",
+      "side": 1,
+      "message": "For now, since we don\u0027t support ParcelFileDescriptor yet anyway.",
+      "parentUuid": "b7cbb00d_d8ce67bd",
+      "revId": "34c7fe90901d4ce76581421b55c6dc988932ea29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
