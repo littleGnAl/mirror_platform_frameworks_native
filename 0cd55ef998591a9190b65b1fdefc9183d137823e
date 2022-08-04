@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d32270_56dc6568",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-04T21:50:23Z",
+      "side": 1,
+      "message": "Fixed in patchset #9.",
+      "parentUuid": "e1031325_8c52d80a",
+      "range": {
+        "startLine": 293,
+        "startChar": 85,
+        "endLine": 293,
+        "endChar": 93
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b898451a_1e45d737",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-04T21:50:23Z",
+      "side": 1,
+      "message": "Fixed in patchset #9.",
+      "parentUuid": "49f7783e_9445417a",
+      "range": {
+        "startLine": 293,
+        "startChar": 85,
+        "endLine": 293,
+        "endChar": 93
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba2f016e_2939a41b",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-04T20:55:50Z",
       "side": 1,
       "message": "does not need to be inside InputReader.h, make it static \u0026 move to L40",
+      "range": {
+        "startLine": 297,
+        "startChar": 18,
+        "endLine": 297,
+        "endChar": 29
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91f4470b_6d40885f",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-04T21:50:23Z",
+      "side": 1,
+      "message": "Fixed for patchset #10.",
+      "parentUuid": "ba2f016e_2939a41b",
       "range": {
         "startLine": 297,
         "startChar": 18,
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2304086_e1cb05e9",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-04T21:50:23Z",
+      "side": 1,
+      "message": "Fixed for patchset #10.",
+      "parentUuid": "3fd5de50_b8805615",
+      "range": {
+        "startLine": 300,
+        "startChar": 12,
+        "endLine": 300,
+        "endChar": 54
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14e4f46f_e006ee76",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-08-04T20:55:50Z",
       "side": 1,
       "message": "would the following work instead (to prevent creating a new function):\n\n```\ndevicePair.second-\u003egetInputDeviceInfo()-\u003egetIdentifier()\n```",
+      "range": {
+        "startLine": 310,
+        "startChar": 24,
+        "endLine": 310,
+        "endChar": 69
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc66b75_ecbcc860",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-04T21:50:23Z",
+      "side": 1,
+      "message": "Fixed for patchet #10.",
+      "parentUuid": "14e4f46f_e006ee76",
       "range": {
         "startLine": 310,
         "startChar": 24,
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d34e90_dc9e6625",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-04T21:50:23Z",
+      "side": 1,
+      "message": "I was thinking of the case where a device got reported twice, but I think you are right this should not happen. If it is unplugged/re-plugged it will get the same descriptor but we should have a remove/add so it will not be in InputReader twice. I removed this for patchset #10.\n\nI did verify that CtsHardwareTestCases and running atest in frameworks/native/services/inputflinger pass with it removed.",
+      "parentUuid": "779b444c_cf56fc13",
+      "range": {
+        "startLine": 311,
+        "startChar": 24,
+        "endLine": 311,
+        "endChar": 67
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05472360_8df7f61c",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-08-04T20:55:50Z",
       "side": 1,
       "message": "nit:\n```\n  InputDeviceIdentifier\u0026\n```\nto prevent needless copying",
+      "range": {
+        "startLine": 59,
+        "startChar": 17,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0360ec_12bf3833",
+        "filename": "services/inputflinger/reader/include/InputDevice.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-04T21:50:23Z",
+      "side": 1,
+      "message": "Fixed for patchset #10. This is removed in favor of the getInputDeviceInfo()-\u003egetIdentifier() suggestion below.",
+      "parentUuid": "05472360_8df7f61c",
       "range": {
         "startLine": 59,
         "startChar": 17,
