@@ -1496,6 +1496,11 @@ status_t Parcel::writeParcelFileDescriptor(int fd, bool takeOwnership)
 
 status_t Parcel::writeDupParcelFileDescriptor(int fd)
 {
+#ifndef __linux__
+    // TODO: support other OSes
+    return INVALID_OPERATION;
+#endif
+
     int dupFd = fcntl(fd, F_DUPFD_CLOEXEC, 0);
     if (dupFd < 0) {
         return -errno;
@@ -2306,6 +2311,11 @@ status_t Parcel::readUniqueFileDescriptor(base::unique_fd* val) const
 
 status_t Parcel::readUniqueParcelFileDescriptor(base::unique_fd* val) const
 {
+#ifndef __linux__
+    // TODO: support other OSes
+    return INVALID_OPERATION;
+#endif
+
     int got = readParcelFileDescriptor();
 
     if (got == BAD_TYPE) {
