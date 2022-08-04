@@ -52,6 +52,24 @@
       "parentUuid": "62f903e0_f2755489",
       "revId": "bf274d2c8638b85052abc1cb80562d83a4485e96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "193902a7_a19ef317",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-04T20:18:38Z",
+      "side": 1,
+      "message": "I got this update in patchset #8. I also updated the commit message to match what the new implementation is. I verified tests still pass and that this still fixes the issue we were seeing with multiple touchpanels of the same type plugged into different usb ports. Let me know if there are any concerns with patchset #8.",
+      "parentUuid": "7b0a57b6_5464e5a3",
+      "revId": "bf274d2c8638b85052abc1cb80562d83a4485e96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
