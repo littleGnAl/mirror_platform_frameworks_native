@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a9078e_c821f432",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-08-04T00:15:41Z",
+      "side": 1,
+      "message": "I somehow uploaded two reviews for this CL, so I abandoned the other one.",
+      "revId": "3f863b085cdbd93820cb23b2cb7e7d8209c1a2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
