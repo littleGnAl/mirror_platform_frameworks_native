@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49f7783e_9445417a",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-04T20:54:03Z",
+      "side": 1,
+      "message": "I think this is the typo that Lint is complaining about. I will get a patchset up to fix this.",
+      "range": {
+        "startLine": 293,
+        "startChar": 85,
+        "endLine": 293,
+        "endChar": 93
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
