@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "419d75b3_9c4207e9",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-04T01:57:58Z",
+      "side": 1,
+      "message": "so the issue is that the object is destroyed but the weakrefs are still alive. For simplicity, I would recommend something like this:\n\n    struct Tag {\n        wp\u003cIBinder\u003e binder;\n    };\n\nThen create a \u0027Tag\u0027 on the heap to put the pointer in, and don\u0027t call incWeak/decWeak manually (rely on the RAII object to do this for you).\n\nIn order to implement this with the WeakRef stored directly (which would save an allocation), we would also need to implement RefBase::weakref_type::promote (we store mBase in weakref_impl now, but it\u0027s only used for a few things). Given this looks a bit complex, I would recommend not going down that path (yet?).",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 59
+      },
+      "revId": "675c3ff3fdf5f2e8158a180931f6c4ef1054fe66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec9e524_57e2e56f",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-04T01:57:58Z",
+      "side": 1,
+      "message": "nit: this looks up the object again (it\u0027s a map, so takes a bit of computation)",
+      "range": {
+        "startLine": 113,
+        "startChar": 67,
+        "endLine": 113,
+        "endChar": 85
+      },
+      "revId": "675c3ff3fdf5f2e8158a180931f6c4ef1054fe66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c066d80d_e36b7113",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-04T01:57:58Z",
+      "side": 1,
+      "message": "newObj.get().getWeakRefs()",
+      "range": {
+        "startLine": 119,
+        "startChar": 15,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "675c3ff3fdf5f2e8158a180931f6c4ef1054fe66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
