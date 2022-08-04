@@ -22,6 +22,144 @@
       },
       "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1031325_8c52d80a",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-04T20:55:50Z",
+      "side": 1,
+      "message": "multiple",
+      "range": {
+        "startLine": 293,
+        "startChar": 85,
+        "endLine": 293,
+        "endChar": 93
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2f016e_2939a41b",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-04T20:55:50Z",
+      "side": 1,
+      "message": "does not need to be inside InputReader.h, make it static \u0026 move to L40",
+      "range": {
+        "startLine": 297,
+        "startChar": 18,
+        "endLine": 297,
+        "endChar": 29
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd5de50_b8805615",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-04T20:55:50Z",
+      "side": 1,
+      "message": "also add `version` and `bus`",
+      "range": {
+        "startLine": 300,
+        "startChar": 12,
+        "endLine": 300,
+        "endChar": 54
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14e4f46f_e006ee76",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-04T20:55:50Z",
+      "side": 1,
+      "message": "would the following work instead (to prevent creating a new function):\n\n```\ndevicePair.second-\u003egetInputDeviceInfo()-\u003egetIdentifier()\n```",
+      "range": {
+        "startLine": 310,
+        "startChar": 24,
+        "endLine": 310,
+        "endChar": 69
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "779b444c_cf56fc13",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-04T20:55:50Z",
+      "side": 1,
+      "message": "this mirrors the previous check, but i dont think we need this. In fact, is this ever even possible (since we are enforcing unique descriptor inside EventHub for all devices)?",
+      "range": {
+        "startLine": 311,
+        "startChar": 24,
+        "endLine": 311,
+        "endChar": 67
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05472360_8df7f61c",
+        "filename": "services/inputflinger/reader/include/InputDevice.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-04T20:55:50Z",
+      "side": 1,
+      "message": "nit:\n```\n  InputDeviceIdentifier\u0026\n```\nto prevent needless copying",
+      "range": {
+        "startLine": 59,
+        "startChar": 17,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "0cd55ef998591a9190b65b1fdefc9183d137823e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
