@@ -178,6 +178,24 @@
       "parentUuid": "2b6f4651_72e4926d",
       "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1633f688_eeecc4b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-04T17:03:44Z",
+      "side": 1,
+      "message": "Thanks. Patchset #7 has the additional check for location I proposed above. I put the check for unique_id and location in a separate function named isSubDevice and added some documentation there to explain what a sub-device is and why the check is needed. This was the best way I could think of to make it easy to read and still keep good documentation with the code. Let me know if there are any additional concerns with this approach.",
+      "parentUuid": "d6b43f35_6b5461ba",
+      "revId": "2519d37b171d8d221e2eb1a38833a4e0e4784e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
