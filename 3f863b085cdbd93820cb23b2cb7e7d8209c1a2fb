@@ -16,6 +16,23 @@
       "message": "I somehow uploaded two reviews for this CL, so I abandoned the other one.",
       "revId": "3f863b085cdbd93820cb23b2cb7e7d8209c1a2fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f0094af_ccad2570",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-04T00:19:56Z",
+      "side": 1,
+      "message": "`TRUSTY_USERSPACE` everywhere.",
+      "revId": "3f863b085cdbd93820cb23b2cb7e7d8209c1a2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
