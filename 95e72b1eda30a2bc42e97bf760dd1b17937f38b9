@@ -16,6 +16,24 @@
       "message": "add unit test?",
       "revId": "95e72b1eda30a2bc42e97bf760dd1b17937f38b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c840b4e_0559bc30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-08-04T13:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cb321e8_f9761ba1",
+      "revId": "95e72b1eda30a2bc42e97bf760dd1b17937f38b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
