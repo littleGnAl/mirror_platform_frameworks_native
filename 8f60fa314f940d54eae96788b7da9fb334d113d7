@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5b3da55_f3727d0c",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-05T00:03:46Z",
+      "side": 0,
+      "message": "do we want to leave this here? Or leave it in both places? At least, we want to encourage other people who own other fuzzers to",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 5
+      },
+      "revId": "8f60fa314f940d54eae96788b7da9fb334d113d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
