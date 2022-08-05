@@ -123,6 +123,24 @@
       "parentUuid": "e04a4491_9c540d22",
       "revId": "95e72b1eda30a2bc42e97bf760dd1b17937f38b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba9593b_d2f0fa36",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-05T15:36:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba196d9c_2a88c1af",
+      "revId": "95e72b1eda30a2bc42e97bf760dd1b17937f38b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
