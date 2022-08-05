@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a31fab_66fcaa40",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-05T13:32:55Z",
+      "side": 1,
+      "message": "There is one consequence of making separate descriptors per Event Hub device that I wanted to point out here to make sure we thought this through. Without this change we have one InputDevice with a single descriptor that was the same for all sub-devices. With this change we are going to have a single InputDevice and it\u0027s descriptor will only correspond to the parent EventHub device.\n\nI am not sure if this is a problem or not as it is not clear how callers are using the descriptor exposed through android.view.InputDevice. The https://android-review.googlesource.com/c/platform/frameworks/base/+/2120295 change that you added me to was going to use the descriptor as a way to associate an input device with a display.\n\nI think this instance still works as long as the caller is using the descriptor returned from android.view.InputDevice. However if callers are looking at the descriptors from EventHub using \u0027dumpsys input\u0027 they could choose a descriptor for a sub-device and then the call to associate the input device by descriptor to a display would not work because InputDevice would not know about the descriptor for the sub-device(s). I think this is still ok - it means that a device and all of it\u0027s sub-devices have to be associated with the display. For example if you had a keyboard with a touchpad you could not have keyboard input going to display 1 and touchpad input going to display 2. \n\nI was not sure if there were any similar use cases here where the use of the descriptor by clients might be affected by this change.",
+      "range": {
+        "startLine": 310,
+        "startChar": 7,
+        "endLine": 311,
+        "endChar": 59
+      },
+      "revId": "938632f497427d2fe0e4fa90c04321bbc79e934f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
