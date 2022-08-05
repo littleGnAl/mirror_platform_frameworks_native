@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dfcb497_ab726952",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-05T00:12:07Z",
+      "side": 1,
+      "message": "I guess we have a race for whether the object is starting to be initialized or not. Maybe instead of connections size etc..  we should add an explicit variable so that this race is impossible",
+      "revId": "925268dab77bbb3249bdc738c9beed0898fe4c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
