@@ -87,6 +87,24 @@
       "message": "This silently drops the message in case of conversion error. Maybe log the `Err` before returning `None`, and/or return a placeholder string instead?",
       "revId": "95e72b1eda30a2bc42e97bf760dd1b17937f38b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e04a4491_9c540d22",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-08-05T12:32:43Z",
+      "side": 1,
+      "message": "I was reluctant to add a dependency on the `log` crate here. What does everyone else think?\n\nI don\u0027t think a placeholder message gives any advantage over no message; either way you just have the error code to go on. But I think the chance of someone trying to return an error containing a null byte is pretty low anyway.",
+      "parentUuid": "63b73823_74b7e4cf",
+      "revId": "95e72b1eda30a2bc42e97bf760dd1b17937f38b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
