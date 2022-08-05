@@ -105,6 +105,24 @@
       "parentUuid": "63b73823_74b7e4cf",
       "revId": "95e72b1eda30a2bc42e97bf760dd1b17937f38b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba196d9c_2a88c1af",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-08-05T12:45:38Z",
+      "side": 1,
+      "message": "\u003e I was reluctant to add a dependency on the  log  crate here. What does everyone else think?\n\nYeah, that\u0027s why I didn\u0027t do it in the compos version. If we do want logging, I\u0027d like to see packages/modules/Virtualization/compos/common/binder.rs or something like it. But I think it\u0027s better not to add the dependency \u0026 cause bloat to all users.\n\n\u003e But I think the chance of someone trying to return an error containing a null byte is pretty low anyway.\n\nAgreed; it\u0027s not been an issue so far. I guess we could also just truncate at the first nul, which is probably what the C API would do, but that isn\u0027t obviously better.",
+      "parentUuid": "e04a4491_9c540d22",
+      "revId": "95e72b1eda30a2bc42e97bf760dd1b17937f38b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
