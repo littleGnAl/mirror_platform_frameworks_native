@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ece49c1b_f559cc9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-05T21:25:15Z",
+      "side": 1,
+      "message": "We need to know if server has finished processing data. If there is ongoing polling on all of the descriptors, then we can safely say that server has finished processing all the data. This will be used to optimize binderRpcFuzzer which currently relies on large sleep time as there is no way to know when to shutdown server.",
+      "parentUuid": "bc3256c4_1dc40f1c",
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e60d582_36362854",
         "filename": "libs/binder/RpcTransportTls.cpp",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-04T18:16:00Z",
       "side": 1,
       "message": "Still TODO? If so, can you provide more information?",
+      "range": {
+        "startLine": 291,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "457d0eef_2265616a",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-05T21:25:15Z",
+      "side": 1,
+      "message": "I had added it because I wanted to use it for upcoming changelist on top of this. I will remove this from this CL.",
+      "parentUuid": "5e60d582_36362854",
       "range": {
         "startLine": 291,
         "startChar": 4,
@@ -136,6 +178,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7498e3f_aa7ba4e3",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-05T21:25:15Z",
+      "side": 1,
+      "message": "I will update with RpcSocket",
+      "parentUuid": "a9e4dc44_761ef337",
+      "range": {
+        "startLine": 135,
+        "startChar": 7,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdcc1bfc_e2df3a72",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 4
@@ -147,6 +213,30 @@
       "writtenOn": "2022-08-04T22:00:56Z",
       "side": 1,
       "message": "this needs some synchronization, maybe use `std::atomic\u003cbool\u003e`\n\nrelated: i\u0027m not sure if we currently poll from multiple threads at once, but just in case, i think it would be better to use a counter instead of a bool, especially since the code complexity is about the same\n\n```\nfd.incrPolling();\n// ... do polling ...\nfd.decrPolling();\n```",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 60
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6014be26_04dc0aad",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-05T21:25:15Z",
+      "side": 1,
+      "message": "I will update with counter as I am not sure if trusty has support for atomic\u003cbool\u003e yet. http://cs/android/frameworks/native/libs/binder/include/binder/RpcThreads.h",
+      "parentUuid": "fdcc1bfc_e2df3a72",
       "range": {
         "startLine": 155,
         "startChar": 0,
