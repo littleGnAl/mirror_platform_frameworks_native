@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23d414b3_7a49edcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-05T21:48:15Z",
+      "side": 1,
+      "message": "Makes sense, thanks",
+      "parentUuid": "ece49c1b_f559cc9a",
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e60d582_36362854",
@@ -237,6 +255,30 @@
       "side": 1,
       "message": "I will update with counter as I am not sure if trusty has support for atomic\u003cbool\u003e yet. http://cs/android/frameworks/native/libs/binder/include/binder/RpcThreads.h",
       "parentUuid": "fdcc1bfc_e2df3a72",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 60
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef79a79c_632f84d2",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-05T21:48:15Z",
+      "side": 1,
+      "message": "Even for a counter, you still will want to use an atomic type. If trusty doesn\u0027t have `std::atomic` or similar, we can always add another type alias to RpcThreads.h as a workaround for them.",
+      "parentUuid": "6014be26_04dc0aad",
       "range": {
         "startLine": 155,
         "startChar": 0,
