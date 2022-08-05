@@ -16,6 +16,24 @@
       "message": "Can you also update the vibrator and other fuzzers here? Perhaps construct a codesearch query to try to find them all.",
       "revId": "11fdbbd39d9aedf96a362f41e37d8c988e1459cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef96ec0_12ae6e7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-05T00:04:30Z",
+      "side": 1,
+      "message": "unresolve",
+      "parentUuid": "e6266128_f4a229b1",
+      "revId": "11fdbbd39d9aedf96a362f41e37d8c988e1459cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
