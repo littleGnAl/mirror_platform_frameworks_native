@@ -101,6 +101,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d079cea5_bc6bde04",
+        "filename": "libs/binder/RpcTransportTls.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-06T01:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "457d0eef_2265616a",
+      "range": {
+        "startLine": 291,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e2dea7c_ec521846",
@@ -124,6 +148,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3df86a0_05adedd8",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-06T01:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e2dea7c_ec521846",
+      "range": {
+        "startLine": 98,
+        "startChar": 47,
+        "endLine": 98,
+        "endChar": 54
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ef5cacf_41c7d104",
@@ -137,6 +185,30 @@
       "writtenOn": "2022-08-04T23:23:45Z",
       "side": 1,
       "message": "same - should avoid in API",
+      "range": {
+        "startLine": 137,
+        "startChar": 51,
+        "endLine": 137,
+        "endChar": 58
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "416fd628_13b5bd91",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-06T01:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ef5cacf_41c7d104",
       "range": {
         "startLine": 137,
         "startChar": 51,
@@ -218,6 +290,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85859bff_e1912ca9",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-06T01:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7498e3f_aa7ba4e3",
+      "range": {
+        "startLine": 135,
+        "startChar": 7,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdcc1bfc_e2df3a72",
@@ -279,6 +375,30 @@
       "side": 1,
       "message": "Even for a counter, you still will want to use an atomic type. If trusty doesn\u0027t have `std::atomic` or similar, we can always add another type alias to RpcThreads.h as a workaround for them.",
       "parentUuid": "6014be26_04dc0aad",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 60
+      },
+      "revId": "6fbd2cb24e0ecf74507bebd82ce4a8df0302de9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21ba712_54b9badc",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-06T01:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef79a79c_632f84d2",
       "range": {
         "startLine": 155,
         "startChar": 0,
