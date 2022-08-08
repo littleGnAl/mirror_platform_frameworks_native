@@ -22,6 +22,7 @@
 #include <binder/BpBinder.h>
 #include <binder/TextOutput.h>
 
+#include <android-base/logging.h>
 #include <android-base/macros.h>
 #include <cutils/sched_policy.h>
 #include <utils/CallStack.h>
