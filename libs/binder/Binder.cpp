@@ -19,8 +19,10 @@
 #include <atomic>
 #include <set>
 
+#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/unique_fd.h>
+#include <binder/BinderRecordReplay.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
 #include <binder/IPCThreadState.h>
@@ -28,7 +30,9 @@
 #include <binder/IShellCallback.h>
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
+#include <cutils/compiler.h>
 #include <private/android_filesystem_config.h>
+#include <pthread.h>
 #include <utils/misc.h>
 
 #include <inttypes.h>
@@ -54,10 +58,10 @@ static_assert(sizeof(BBinder) == 20);
 #endif
 
 // global b/c b/230079120 - consistent symbol table
-#ifdef BINDER_RPC_DEV_SERVERS
-bool kEnableRpcDevServers = true;
+#ifdef BINDER_DEBUGGABLE
+bool kEnableBinderDebugging = true;
 #else
-bool kEnableRpcDevServers = false;
+bool kEnableBinderDebugging = false;
 #endif
 
 // Log any reply transactions for which the data exceeds this size
@@ -161,7 +165,7 @@ status_t IBinder::getDebugPid(pid_t* out) {
 
 status_t IBinder::setRpcClientDebug(android::base::unique_fd socketFd,
                                     const sp<IBinder>& keepAliveBinder) {
-    if (!kEnableRpcDevServers) {
+    if (!kEnableBinderDebugging) {
         ALOGW("setRpcClientDebug disallowed because RPC is not enabled");
         return INVALID_OPERATION;
     }
@@ -254,6 +258,10 @@ public:
     Mutex mLock;
     std::set<sp<RpcServerLink>> mRpcServerLinks;
     BpBinder::ObjectManager mObjects;
+
+    Mutex mRecordingLock;
+    std::atomic<bool> mRecordingOn = false;
+    android::base::unique_fd mRecordingFd;
 };
 
 // ---------------------------------------------------------------------------
@@ -268,6 +276,53 @@ bool BBinder::isBinderAlive() const
 status_t BBinder::pingBinder()
 {
     return NO_ERROR;
+}
+
+status_t BBinder::startRecordingTransactions(const Parcel& data) {
+    if (!kEnableBinderDebugging) {
+        ALOGW("Binder recording disallowed because RPC is not enabled");
+        return INVALID_OPERATION;
+    }
+    uid_t uid = IPCThreadState::self()->getCallingUid();
+    if (uid != AID_ROOT) {
+        ALOGE("Binder recording not allowed because client %" PRIu32 " is not root", uid);
+        return PERMISSION_DENIED;
+    }
+    Extras* e = getOrCreateExtras();
+    if (!e->mRecordingOn) {
+        AutoMutex lock(e->mRecordingLock);
+        status_t readStatus = data.readUniqueFileDescriptor(&(e->mRecordingFd));
+        if (readStatus != OK) {
+            return readStatus;
+        }
+        e->mRecordingOn = true;
+        return NO_ERROR;
+    } else {
+        LOG(INFO) << "Could not start Binder recording. Another is already in progress.";
+        return INVALID_OPERATION;
+    }
+}
+
+status_t BBinder::stopRecordingTransactions() {
+    if (!kEnableBinderDebugging) {
+        ALOGW("Binder recording disallowed because RPC is not enabled");
+        return INVALID_OPERATION;
+    }
+    uid_t uid = IPCThreadState::self()->getCallingUid();
+    if (uid != AID_ROOT) {
+        ALOGE("Binder recording not allowed because client %" PRIu32 " is not root", uid);
+        return PERMISSION_DENIED;
+    }
+    Extras* e = getOrCreateExtras();
+    if (e->mRecordingOn) {
+        AutoMutex lock(e->mRecordingLock);
+        e->mRecordingFd.reset();
+        e->mRecordingOn = false;
+        return NO_ERROR;
+    } else {
+        LOG(INFO) << "Could not stop Binder recording. One is not in progress.";
+        return INVALID_OPERATION;
+    }
 }
 
 const String16& BBinder::getInterfaceDescriptor() const
@@ -294,6 +349,12 @@ status_t BBinder::transact(
         case PING_TRANSACTION:
             err = pingBinder();
             break;
+        case START_RECORDING_TRANSACTION:
+            err = startRecordingTransactions(data);
+            break;
+        case STOP_RECORDING_TRANSACTION:
+            err = stopRecordingTransactions();
+            break;
         case EXTENSION_TRANSACTION:
             CHECK(reply != nullptr);
             err = reply->writeStrongBinder(getExtension());
@@ -317,6 +378,17 @@ status_t BBinder::transact(
         if (reply->dataSize() > LOG_REPLIES_OVER_SIZE) {
             ALOGW("Large reply transaction of %zu bytes, interface descriptor %s, code %d",
                   reply->dataSize(), String8(getInterfaceDescriptor()).c_str(), code);
+        }
+    }
+
+    Extras* e = mExtras.load(std::memory_order_acquire);
+    if (CC_UNLIKELY(e != nullptr && e->mRecordingOn.load(std::memory_order_acquire) &&
+                    code != START_RECORDING_TRANSACTION)) {
+        AutoMutex lock(e->mRecordingLock);
+        if (e->mRecordingOn.load(std::memory_order_acquire)) {
+            android::BinderRecordReplay::RecordedTransaction transaction(code, flags, data, *reply,
+                                                                         err);
+            transaction.dumpToFile(e->mRecordingFd);
         }
     }
 
@@ -516,7 +588,7 @@ void BBinder::setParceled() {
 }
 
 status_t BBinder::setRpcClientDebug(const Parcel& data) {
-    if (!kEnableRpcDevServers) {
+    if (!kEnableBinderDebugging) {
         ALOGW("%s: disallowed because RPC is not enabled", __PRETTY_FUNCTION__);
         return INVALID_OPERATION;
     }
@@ -545,7 +617,7 @@ status_t BBinder::setRpcClientDebug(const Parcel& data) {
 
 status_t BBinder::setRpcClientDebug(android::base::unique_fd socketFd,
                                     const sp<IBinder>& keepAliveBinder) {
-    if (!kEnableRpcDevServers) {
+    if (!kEnableBinderDebugging) {
         ALOGW("%s: disallowed because RPC is not enabled", __PRETTY_FUNCTION__);
         return INVALID_OPERATION;
     }
