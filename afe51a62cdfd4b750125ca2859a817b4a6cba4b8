@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5d680bb_42593993",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-08T18:29:28Z",
+      "side": 1,
+      "message": "what do you mean by \"save the atomic set\"? are you thinking the overhead of the atomic incr/decr ops is too much?\n\ni think you want the atomic ops whether it is a bool or an int because the read is going to happen outside of the mutex. it will *probably* be fine without it, but, when it comes to sync, i think you should always do it right unless you have a really good reason and think hard about it. especially since the main motivation is deflaking a fuzzer\n\nfor bool vs int, i don\u0027t think there is a performance difference (assuming we pick an int with the same size)",
+      "parentUuid": "606fa217_fc8ffb14",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "046fd8c4_a718c5fc",
         "filename": "libs/binder/FdTrigger.cpp",
         "patchSetId": 5
