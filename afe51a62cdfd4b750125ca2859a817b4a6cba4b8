@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606fa217_fc8ffb14",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-08T18:14:26Z",
+      "side": 1,
+      "message": "did we run binderRpcBenchmark before and after this? FWIW - if you inc polling now, it should only ever be 1/2. I know Frederick suggested for forwards compat, but we could also consider aborting if the FD is also polling here and save the atomic set.\n\nDid you try aborting if it\u0027s set to 2 and see if the test ever crashes? I don\u0027t think it should now, because these are protected by the connection mutex in RpcSession.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0592fa89_5fd02dc2",
+        "filename": "libs/binder/FdTrigger.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-08T18:14:26Z",
+      "side": 1,
+      "message": "nit: const + mutable field? or no? doesn\u0027t matter if it\u0027s all internal :)))",
+      "range": {
+        "startLine": 58,
+        "startChar": 61,
+        "endLine": 58,
+        "endChar": 62
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b07172_23c25b30",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-08T18:14:26Z",
+      "side": 1,
+      "message": "nit: (follow-up) add a reserved field or two here just in case?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 31
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a19b85_eae0a053",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1945,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-08T18:14:26Z",
+      "side": 1,
+      "message": "also add an \u0027isWaiting\u0027 here? (even if we only check the output is false)",
+      "range": {
+        "startLine": 1945,
+        "startChar": 7,
+        "endLine": 1945,
+        "endChar": 23
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
