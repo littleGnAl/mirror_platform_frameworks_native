@@ -82,6 +82,7 @@ cc_defaults {
 
     srcs: [
         "Binder.cpp",
+        "BinderRecordReplay.cpp",
         "BpBinder.cpp",
         "Debug.cpp",
         "FdTrigger.cpp",
