@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0db2466_a89bbd5b",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-08T18:35:38Z",
+      "side": 1,
+      "message": "this method is called \u0027interface_cast\u0027 in C++. Could we share the name?",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "a3c85836981951278a1809fddf6f3d92ab94d80a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
