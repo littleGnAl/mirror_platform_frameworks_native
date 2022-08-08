@@ -37,6 +37,10 @@ public:
     virtual status_t    pingBinder();
     virtual status_t    dump(int fd, const Vector<String16>& args);
 
+    // FIXME: Is there a specific location for these to go?
+    virtual status_t startRecordingTransactions(const Parcel& data);
+    virtual status_t endRecordingTransactions();
+
     // NOLINTNEXTLINE(google-default-arguments)
     virtual status_t    transact(   uint32_t code,
                                     const Parcel& data,
@@ -130,6 +134,9 @@ private:
     int16_t mStability;
     bool mParceled;
     uint8_t mReserved0;
+
+    bool mRecordingOn;
+    android::base::unique_fd mRecordingFd;
 
 #ifdef __LP64__
     int32_t mReserved1;
