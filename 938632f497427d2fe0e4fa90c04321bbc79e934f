@@ -22,6 +22,30 @@
       },
       "revId": "938632f497427d2fe0e4fa90c04321bbc79e934f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "907746c9_299d4b3a",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-08T14:23:24Z",
+      "side": 1,
+      "message": "Thanks Joshua,\nI agree that if a device is  merged, then all of its subdevices should be associated with the same display. So instead of sub-device having an association, we should think of the concept of InputDevice having an association. Previously, we have discussed moving the association info to the parent InputDevice, and this CL might prompt us to proceed with that if it comes up as an issue.",
+      "parentUuid": "f4a31fab_66fcaa40",
+      "range": {
+        "startLine": 310,
+        "startChar": 7,
+        "endLine": 311,
+        "endChar": 59
+      },
+      "revId": "938632f497427d2fe0e4fa90c04321bbc79e934f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
