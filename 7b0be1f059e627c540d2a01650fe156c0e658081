@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "800cf94d_66e3b2f7",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-08-08T15:36:19Z",
+      "side": 1,
+      "message": "Note previous discussion on b/201628773.\nThis would be much neater if the count was maintained in libbinder_ndk.\nBut that pushes some extra state onto every client, and complicates the API (since we need to keep the old API).\nWe currently have only 2 clients for this (composd \u0026 vs - assuming we count them as two separate clients).",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 9
+      },
+      "revId": "7b0be1f059e627c540d2a01650fe156c0e658081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
