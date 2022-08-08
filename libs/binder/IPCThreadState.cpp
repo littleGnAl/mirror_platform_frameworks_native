@@ -22,6 +22,7 @@
 #include <binder/BpBinder.h>
 #include <binder/TextOutput.h>
 
+#include <android-base/logging.h>
 #include <android-base/macros.h>
 #include <cutils/sched_policy.h>
 #include <utils/CallStack.h>
@@ -721,6 +722,13 @@ status_t IPCThreadState::transact(int32_t handle,
 {
     LOG_ALWAYS_FATAL_IF(data.isForRpc(), "Parcel constructed for RPC, but being used with binder.");
 
+    if (code == IBinder::PING_TRANSACTION) {
+        LOG(INFO) << "Ipcthreadstate transact on ping transaction (sahil)";
+    }
+    if (code == IBinder::DUMP_TRANSACTION) {
+        LOG(INFO) << "Ipcthreadstate transact dump transaction (sahil)";
+    }
+
     status_t err;
 
     flags |= TF_ACCEPT_FDS;
@@ -739,6 +747,12 @@ status_t IPCThreadState::transact(int32_t handle,
     if (err != NO_ERROR) {
         if (reply) reply->setError(err);
         return (mLastError = err);
+    }
+    if (code == IBinder::PING_TRANSACTION) {
+        LOG(INFO) << "Ipcthreadstate transact no sending error on ping transaction (sahil)";
+    }
+    if (code == IBinder::DUMP_TRANSACTION) {
+        LOG(INFO) << "Ipcthreadstate transact no sending error on dump transaction (sahil)";
     }
 
     if ((flags & TF_ONE_WAY) == 0) {
@@ -760,8 +774,14 @@ status_t IPCThreadState::transact(int32_t handle,
         }
         #endif
         if (reply) {
+            if (code == IBinder::DUMP_TRANSACTION) {
+                LOG(INFO) << "Ipcthreadstate transact if clause reply dump transaction (sahil)";
+            }
             err = waitForResponse(reply);
         } else {
+            if (code == IBinder::DUMP_TRANSACTION) {
+                LOG(INFO) << "Ipcthreadstate transact ifelse clause reply dump transaction (sahil)";
+            }
             Parcel fakeReply;
             err = waitForResponse(&fakeReply);
         }
@@ -781,6 +801,9 @@ status_t IPCThreadState::transact(int32_t handle,
             else alog << "(none requested)" << endl;
         }
     } else {
+        if (code == IBinder::DUMP_TRANSACTION) {
+            LOG(INFO) << "Ipcthreadstate transact else clause reply dump (sahil)";
+        }
         err = waitForResponse(nullptr, nullptr);
     }
 
@@ -939,6 +962,7 @@ status_t IPCThreadState::waitForResponse(Parcel *reply, status_t *acquireResult)
             goto finish;
 
         case BR_FAILED_REPLY:
+            LOG(INFO) << "FAILED REPLY FAILED TRRANSACTION (sahil)";
             err = FAILED_TRANSACTION;
             goto finish;
 

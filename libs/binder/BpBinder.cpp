@@ -30,6 +30,9 @@
 
 #include "BuildFlags.h"
 
+#include <android-base/file.h>
+#include <android-base/logging.h>
+
 //#undef ALOGV
 //#define ALOGV(...) fprintf(stderr, __VA_ARGS__)
 
@@ -269,6 +272,23 @@ status_t BpBinder::pingBinder()
     return transact(PING_TRANSACTION, data, &reply);
 }
 
+status_t BpBinder::startRecordingBinder(int fd) {
+    Parcel send;
+    send.writeFileDescriptor(fd);
+    Parcel reply;
+    std::string text = "helloBpbnd";
+    bool readResult = android::base::WriteFully(fd, &text, 10);
+    LOG(INFO) << "Result of WriteFully in bpbinder (sahil):" << readResult;
+    return transact(START_RECORDING_TRANSACTION, send, &reply);
+}
+
+status_t BpBinder::endRecordingBinder() {
+    Parcel data;
+    data.markForBinder(sp<BpBinder>::fromExisting(this));
+    Parcel reply;
+    return transact(END_RECORDING_TRANSACTION, data, &reply);
+}
+
 status_t BpBinder::dump(int fd, const Vector<String16>& args)
 {
     Parcel send;
@@ -279,6 +299,7 @@ status_t BpBinder::dump(int fd, const Vector<String16>& args)
     for (size_t i = 0; i < numArgs; i++) {
         send.writeString16(args[i]);
     }
+    LOG(INFO) << "About to call BpBinder transact (sahil)";
     status_t err = transact(DUMP_TRANSACTION, send, &reply);
     return err;
 }
@@ -306,6 +327,7 @@ status_t BpBinder::transact(
                       Stability::levelString(stability).c_str(),
                       String8(getInterfaceDescriptor()).c_str(),
                       Stability::levelString(required).c_str());
+                mkdir("/data/local/BAD_TYPE", 0666);
                 return BAD_TYPE;
             }
         }
@@ -318,6 +340,12 @@ status_t BpBinder::transact(
             if constexpr (!kEnableKernelIpc) {
                 LOG_ALWAYS_FATAL("Binder kernel driver disabled at build time");
                 return INVALID_OPERATION;
+            }
+
+            if (code == START_RECORDING_TRANSACTION) {
+                ALOGI("Start recording transaction is being sent by BpBinder");
+            } else if (code == DUMP_TRANSACTION) {
+                LOG(INFO) << "Sending dump transaction through ipcthreadstate (sahil)";
             }
 
             status = IPCThreadState::self()->transact(binderHandle(), code, data, reply, flags);

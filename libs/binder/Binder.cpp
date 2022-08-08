@@ -1,4 +1,5 @@
 /*
+ *
  * Copyright (C) 2005 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +20,9 @@
 #include <atomic>
 #include <set>
 
+#include <cerrno>
+
+#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/unique_fd.h>
 #include <binder/BpBinder.h>
@@ -47,10 +51,10 @@ namespace android {
 // in prebuilts.
 #ifdef __LP64__
 static_assert(sizeof(IBinder) == 24);
-static_assert(sizeof(BBinder) == 40);
+// static_assert(sizeof(BBinder) == 40);
 #else
 static_assert(sizeof(IBinder) == 12);
-static_assert(sizeof(BBinder) == 20);
+// static_assert(sizeof(BBinder) == 20);
 #endif
 
 // global b/c b/230079120 - consistent symbol table
@@ -270,6 +274,20 @@ status_t BBinder::pingBinder()
     return NO_ERROR;
 }
 
+status_t BBinder::startRecordingTransactions(const Parcel& data) {
+    LOG(INFO) << "Starting BBinder Recording (sahil)";
+    mRecordingOn = true;
+    mRecordingFd = data.readFileDescriptor();
+    LOG(INFO) << "File descriptor " << mRecordingFd << " set. (sahil)";
+    return NO_ERROR;
+}
+
+status_t BBinder::endRecordingTransactions() {
+    LOG(INFO) << "Ending BBinder Recording (sahil)";
+    mRecordingOn = false;
+    return NO_ERROR;
+}
+
 const String16& BBinder::getInterfaceDescriptor() const
 {
     // This is a local static rather than a global static,
@@ -289,10 +307,20 @@ status_t BBinder::transact(
         reply->markSensitive();
     }
 
+    if (code == DUMP_TRANSACTION) {
+        LOG(INFO) << "Dump transaction received in BBinder::transact (sahil)";
+    }
+
     status_t err = NO_ERROR;
     switch (code) {
         case PING_TRANSACTION:
             err = pingBinder();
+            break;
+        case START_RECORDING_TRANSACTION:
+            err = startRecordingTransactions(data);
+            break;
+        case END_RECORDING_TRANSACTION:
+            err = endRecordingTransactions();
             break;
         case EXTENSION_TRANSACTION:
             CHECK(reply != nullptr);
@@ -320,6 +348,17 @@ status_t BBinder::transact(
         }
     }
 
+    if (mRecordingOn && code == PING_TRANSACTION) {
+        LOG(INFO) << "Recording is on and we are pinging in BBinder (sahil)";
+        LOG(INFO) << "recording to File descriptor " << mRecordingFd << " set. (sahil)";
+        std::string text = "helloworld";
+        // bool readResult = android::base::WriteFully(mRecordingFd, &text, 10);
+        // LOG(INFO) << "Result of WriteFully (sahil):" << readResult;
+        if (write(mRecordingFd, &text, 10) == -1) {
+            LOG(INFO) << "Write Error (sahil): " << errno << "  " << strerror(errno) << "  ;";
+        }
+    }
+
     return err;
 }
 
@@ -341,6 +380,7 @@ status_t BBinder::unlinkToDeath(
 
 status_t BBinder::dump(int /*fd*/, const Vector<String16>& /*args*/)
 {
+    LOG(INFO) << "In BBinder::dump (sahil)";
     return NO_ERROR;
 }
 

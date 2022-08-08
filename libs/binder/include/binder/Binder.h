@@ -37,6 +37,19 @@ public:
     virtual status_t    pingBinder();
     virtual status_t    dump(int fd, const Vector<String16>& args);
 
+    struct fileHeader {
+        bool isRpc = false;
+        uint8_t reserved[7];
+        uint32_t version = 0;
+        uint32_t command = 0;
+        uint32_t code = 0;
+        uint32_t flags = 0;
+        size_t dataSize = 0;
+    };
+
+    virtual status_t startRecordingTransactions(const Parcel& data);
+    virtual status_t endRecordingTransactions();
+
     // NOLINTNEXTLINE(google-default-arguments)
     virtual status_t    transact(   uint32_t code,
                                     const Parcel& data,
@@ -130,6 +143,9 @@ private:
     int16_t mStability;
     bool mParceled;
     uint8_t mReserved0;
+
+    bool mRecordingOn;
+    int mRecordingFd;
 
 #ifdef __LP64__
     int32_t mReserved1;
