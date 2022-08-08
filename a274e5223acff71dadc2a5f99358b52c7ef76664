@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac5dbc7e_e0519e92",
+        "filename": "libs/binder/RpcTransportTipcAndroid.cpp",
+        "patchSetId": 169
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-08T21:25:25Z",
+      "side": 1,
+      "message": "the raw transport appends to the end and the tls transport does nothing to the argument. i don\u0027t have a strong opinion between the two styles in this case, but we should make them consistent (i.e. all 3 should clear the vector, or trusty should not clear it)",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 13
+      },
+      "revId": "a274e5223acff71dadc2a5f99358b52c7ef76664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
