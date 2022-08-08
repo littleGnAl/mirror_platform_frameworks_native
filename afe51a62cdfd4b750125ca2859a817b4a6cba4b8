@@ -265,6 +265,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e82d781_2f560eba",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-08T20:59:28Z",
+      "side": 1,
+      "message": "it is really just done as needed so that the code compiles on trusty, so if you don\u0027t run into a build error, you could probably omit this",
+      "parentUuid": "cdabac14_b84971ff",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e8d3856_7801f07a",
@@ -349,6 +367,30 @@
       "side": 1,
       "message": "If we use this type without explicitly calling load and then comparing, we will need this.",
       "parentUuid": "51c2a06a_3e6a9bd5",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 63
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2201cda1_5b21be6e",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-08T20:59:28Z",
+      "side": 1,
+      "message": "nevermind, I thought `std::atomic` required calling load before comparing. i\u0027d personally leave them out and call load explicitly since that is less code, but up to you",
+      "parentUuid": "79670791_2825709c",
       "range": {
         "startLine": 151,
         "startChar": 0,
@@ -548,6 +590,30 @@
       "side": 1,
       "message": "This was added because for some of the configurations, its treated as error not having a move constructor with noexcept.",
       "parentUuid": "8b97ea4f_8686e4bc",
+      "range": {
+        "startLine": 146,
+        "startChar": 36,
+        "endLine": 146,
+        "endChar": 44
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a85edad_9340faf1",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-08T20:59:28Z",
+      "side": 1,
+      "message": "Ah, never ran into that before. Nevermind then.",
+      "parentUuid": "89f3fed9_0aec200a",
       "range": {
         "startLine": 146,
         "startChar": 36,
