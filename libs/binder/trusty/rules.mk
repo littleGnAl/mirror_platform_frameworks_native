@@ -31,6 +31,7 @@ MODULE_SRCS := \
 	$(LOCAL_DIR)/TrustyStatus.cpp \
 	$(LOCAL_DIR)/socket.cpp \
 	$(LIBBINDER_DIR)/Binder.cpp \
+	$(LIBBINDER_DIR)/BinderRecordReplay.cpp \
 	$(LIBBINDER_DIR)/BpBinder.cpp \
 	$(LIBBINDER_DIR)/FdTrigger.cpp \
 	$(LIBBINDER_DIR)/IInterface.cpp \
