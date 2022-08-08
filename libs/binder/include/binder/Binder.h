@@ -103,6 +103,9 @@ public:
     [[nodiscard]] status_t setRpcClientDebug(android::base::unique_fd clientFd,
                                              const sp<IBinder>& keepAliveBinder);
 
+    status_t startRecordingTransactions(const Parcel& data);
+    status_t stopRecordingTransactions();
+
 protected:
     virtual             ~BBinder();
 
