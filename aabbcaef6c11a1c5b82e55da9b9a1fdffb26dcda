@@ -16,6 +16,24 @@
       "message": "How did you catch this and why wasn\u0027t this an issue with Soong?",
       "revId": "aabbcaef6c11a1c5b82e55da9b9a1fdffb26dcda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5d67e4_9e93bc33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-08-08T11:56:52Z",
+      "side": 1,
+      "message": "(same for the liblog CL)",
+      "parentUuid": "ac27e818_531bcd7d",
+      "revId": "aabbcaef6c11a1c5b82e55da9b9a1fdffb26dcda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
