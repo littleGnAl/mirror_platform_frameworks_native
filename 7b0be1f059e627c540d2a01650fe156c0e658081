@@ -46,6 +46,30 @@
       },
       "revId": "7b0be1f059e627c540d2a01650fe156c0e658081",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f03a3835_c4492aaa",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-08-08T16:19:50Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "0b658e37_529c39db",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 9
+      },
+      "revId": "7b0be1f059e627c540d2a01650fe156c0e658081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
