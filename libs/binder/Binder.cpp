@@ -19,8 +19,10 @@
 #include <atomic>
 #include <set>
 
+#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/unique_fd.h>
+#include <binder/BinderRecordReplay.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
 #include <binder/IPCThreadState.h>
@@ -47,10 +49,10 @@ namespace android {
 // in prebuilts.
 #ifdef __LP64__
 static_assert(sizeof(IBinder) == 24);
-static_assert(sizeof(BBinder) == 40);
+// static_assert(sizeof(BBinder) == 40); //TODO: Update size once finalized
 #else
 static_assert(sizeof(IBinder) == 12);
-static_assert(sizeof(BBinder) == 20);
+// static_assert(sizeof(BBinder) == 20);
 #endif
 
 // global b/c b/230079120 - consistent symbol table
@@ -258,7 +260,7 @@ public:
 
 // ---------------------------------------------------------------------------
 
-BBinder::BBinder() : mExtras(nullptr), mStability(0), mParceled(false) {}
+BBinder::BBinder() : mExtras(nullptr), mStability(0), mParceled(false), mRecordingOn(false) {}
 
 bool BBinder::isBinderAlive() const
 {
@@ -267,6 +269,21 @@ bool BBinder::isBinderAlive() const
 
 status_t BBinder::pingBinder()
 {
+    return NO_ERROR;
+}
+
+status_t BBinder::startRecordingTransactions(const Parcel& data) {
+    status_t readStatus = data.readUniqueFileDescriptor(&mRecordingFd);
+    if (readStatus != OK) {
+        return readStatus;
+    }
+    mRecordingOn = true;
+    return NO_ERROR;
+}
+
+status_t BBinder::stopRecordingTransactions() {
+    mRecordingFd.reset();
+    mRecordingOn = false;
     return NO_ERROR;
 }
 
@@ -294,6 +311,12 @@ status_t BBinder::transact(
         case PING_TRANSACTION:
             err = pingBinder();
             break;
+        case START_RECORDING_TRANSACTION:
+            err = startRecordingTransactions(data);
+            break;
+        case STOP_RECORDING_TRANSACTION:
+            err = stopRecordingTransactions();
+            break;
         case EXTENSION_TRANSACTION:
             CHECK(reply != nullptr);
             err = reply->writeStrongBinder(getExtension());
@@ -318,6 +341,10 @@ status_t BBinder::transact(
             ALOGW("Large reply transaction of %zu bytes, interface descriptor %s, code %d",
                   reply->dataSize(), String8(getInterfaceDescriptor()).c_str(), code);
         }
+    }
+
+    if (mRecordingOn && code != START_RECORDING_TRANSACTION) {
+        android::BinderRecordReplay::recordTransaction(mRecordingFd.get(), code, data, flags, err);
     }
 
     return err;

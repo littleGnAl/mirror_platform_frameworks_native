@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include <android-base/file.h>
 #include <binder/IBinder.h>
 #include <utils/Mutex.h>
 
@@ -49,6 +50,9 @@ public:
     virtual bool        isBinderAlive() const;
     virtual status_t    pingBinder();
     virtual status_t    dump(int fd, const Vector<String16>& args);
+
+    virtual status_t startRecordingBinder(const android::base::unique_fd& fd);
+    virtual status_t stopRecordingBinder();
 
     // NOLINTNEXTLINE(google-default-arguments)
     virtual status_t    transact(   uint32_t code,
