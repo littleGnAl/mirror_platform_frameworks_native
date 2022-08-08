@@ -135,6 +135,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24971fd2_e1581d8b",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-08T18:19:09Z",
+      "side": 1,
+      "message": "(this is mostly just musing/curiosity, i think the solution is fine)",
+      "parentUuid": "0d8f6fb8_42aecf68",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8d3856_7801f07a",
         "filename": "libs/binder/include/binder/RpcThreads.h",
         "patchSetId": 5
