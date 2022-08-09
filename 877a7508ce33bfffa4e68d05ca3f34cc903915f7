@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95ceb50_b6832163",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-08-09T21:55:23Z",
+      "side": 1,
+      "message": "Missing \u0027\u0026\u0027",
+      "range": {
+        "startLine": 205,
+        "startChar": 46,
+        "endLine": 205,
+        "endChar": 63
+      },
+      "revId": "877a7508ce33bfffa4e68d05ca3f34cc903915f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
