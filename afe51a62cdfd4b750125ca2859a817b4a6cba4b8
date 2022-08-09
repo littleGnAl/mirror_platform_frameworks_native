@@ -303,6 +303,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13ce47b0_d5760f6d",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-09T01:55:39Z",
+      "side": 1,
+      "message": "Copy constructor of atomic variables is deleted. So while moving RpcSocket objects, I have to use load() and then pass that value to atomic member. There is another way to do this -\u003e static cast the atomic member to basic type and then use  it. To avoid casting the atomic member to basic type, load has been used. \n\n using RpcAtomicUnit \u003d size_t; \n \n This will break on trusty with current implementation.",
+      "parentUuid": "0bfc1ad2_dd892d92",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8d3856_7801f07a",
         "filename": "libs/binder/include/binder/RpcThreads.h",
         "patchSetId": 5
