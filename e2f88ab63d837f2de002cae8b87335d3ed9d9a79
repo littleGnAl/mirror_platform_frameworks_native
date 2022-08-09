@@ -111,6 +111,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7faf643_18a49f09",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-08-09T21:00:08Z",
+      "side": 1,
+      "message": "Nevermind, I figured out that the other two call their argument multiple times, so `FnOnce` is not what you want. It\u0027s a shame the API doesn\u0027t have more documentation on what\u0027s being provided, but I suppose it\u0027s unstable.",
+      "parentUuid": "e30d1613_fb88edb5",
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c541d5c7_6c793a45",
