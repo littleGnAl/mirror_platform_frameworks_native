@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c9f4f1_4fbf8a23",
+        "filename": "libs/binder/rust/rpcbinder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-09T17:49:19Z",
+      "side": 1,
+      "message": "libbinder_rpc_rs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
