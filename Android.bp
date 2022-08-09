@@ -34,6 +34,9 @@ license {
     license_text: [
         "NOTICE",
     ],
+    bazel_module: {
+        bp2build_available: true,
+    },
 }
 
 ndk_headers {
@@ -82,7 +85,7 @@ filegroup {
     ],
 }
 
-cc_library_headers{
+cc_library_headers {
     name: "libandroid_headers_private",
     export_include_dirs: ["include/private"],
 }
