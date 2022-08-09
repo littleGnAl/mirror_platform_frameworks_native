@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9ffd5e8_7b823e69",
+        "filename": "libs/sensor/fuzz/sensor_fuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1946226
+      },
+      "writtenOn": "2022-08-09T06:45:58Z",
+      "side": 1,
+      "message": "removed this.",
+      "parentUuid": "68ab406c_e557363c",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "f9de1fd762094e8a1fa618a30dd6fe920b5673ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82010315_1d332f6c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-08T14:21:35Z",
       "side": 1,
       "message": "Why do we have an empty entry here?",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "f9de1fd762094e8a1fa618a30dd6fe920b5673ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69289d93_e8e39fa7",
+        "filename": "libs/sensor/fuzz/sensor_fuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1946226
+      },
+      "writtenOn": "2022-08-09T06:45:58Z",
+      "side": 1,
+      "message": "removed this",
+      "parentUuid": "82010315_1d332f6c",
       "range": {
         "startLine": 39,
         "startChar": 6,
