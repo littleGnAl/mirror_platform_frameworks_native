@@ -22,6 +22,30 @@
       },
       "revId": "a3c85836981951278a1809fddf6f3d92ab94d80a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75863c68_9fd2ffa6",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-08-09T10:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0db2466_a89bbd5b",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "a3c85836981951278a1809fddf6f3d92ab94d80a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
