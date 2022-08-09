@@ -285,6 +285,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bfc1ad2_dd892d92",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-09T01:03:40Z",
+      "side": 1,
+      "message": "This would also be okay on trusty:\n\n    using RpcAtomicUnit \u003d size_t;",
+      "parentUuid": "3e82d781_2f560eba",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8d3856_7801f07a",
         "filename": "libs/binder/include/binder/RpcThreads.h",
         "patchSetId": 5
