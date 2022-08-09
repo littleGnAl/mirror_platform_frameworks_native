@@ -50,6 +50,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08767d3a_402b7b3e",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-08-09T20:38:09Z",
+      "side": 1,
+      "message": "Nit: Not this CL, but it might be worth it at some point in the future to blocklist generation of the `AIBinder` type and use `--raw-line` to import the `AIBinder` definition from the other bindgen type. That would avoid this and other similar casts.",
+      "range": {
+        "startLine": 30,
+        "startChar": 77,
+        "endLine": 30,
+        "endChar": 93
+      },
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89879677_2873e548",
         "filename": "libs/binder/rust/rpcbinder/src/client.rs",
         "patchSetId": 2
@@ -67,6 +90,40 @@
         "endLine": 93,
         "endChar": 0
       },
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30d1613_fb88edb5",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-08-09T20:38:09Z",
+      "side": 1,
+      "message": "Why is this API designed with a receiver and the other two aren\u0027t? It seems a bit odd - is it specifically to accommodate the `FnOnce` bound? If so, why is it worth doing here if it\u0027s not for the other two?",
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c541d5c7_6c793a45",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-08-09T20:38:09Z",
+      "side": 1,
+      "message": "This is safe afaict, but:\n1. It doesn\u0027t just need to be within self lifetime, it needs to be gone before RunRpcSererCallback returns, otherwise `\u0026mut self` comes back into scope and you trigger aliasing UB.\n2. It\u0027s also important to note that it doesn\u0027t retain a reference to `param`.\n\nIt may be worth being more explicit.",
       "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
