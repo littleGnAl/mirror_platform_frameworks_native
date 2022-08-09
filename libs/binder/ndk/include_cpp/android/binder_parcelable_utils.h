@@ -201,6 +201,21 @@ class AParcelableHolder {
     inline bool operator==(const AParcelableHolder& rhs) const { return this == &rhs; }
     inline bool operator>(const AParcelableHolder& rhs) const { return this > &rhs; }
     inline bool operator>=(const AParcelableHolder& rhs) const { return this >= &rhs; }
+#if __ANDROID_API__ >= 31
+    inline AParcelableHolder& operator=(const AParcelableHolder& rhs) {
+        // AParcelableHolder has been introduced in 31.
+#ifdef __ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__
+        if (__builtin_available(android 31, *)) {
+#else
+        if (__ANDROID_API__ >= 31) {
+#endif
+            AParcel_reset(this->mParcel.get());
+            AParcel_appendFrom(rhs.mParcel.get(), this->mParcel.get(), 0,
+                               AParcel_getDataSize(rhs.mParcel.get()));
+        }
+        return *this;
+    }
+#endif
 
    private:
     mutable ndk::ScopedAParcel mParcel;
