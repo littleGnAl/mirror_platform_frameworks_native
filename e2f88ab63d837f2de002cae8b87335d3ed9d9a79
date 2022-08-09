@@ -46,6 +46,29 @@
       },
       "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89879677_2873e548",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-09T17:50:08Z",
+      "side": 1,
+      "message": "can we import the version from here:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/2177903",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
