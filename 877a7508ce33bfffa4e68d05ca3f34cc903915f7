@@ -22,6 +22,30 @@
       },
       "revId": "877a7508ce33bfffa4e68d05ca3f34cc903915f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ade7626_23edcbbe",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-08-10T14:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f95ceb50_b6832163",
+      "range": {
+        "startLine": 205,
+        "startChar": 46,
+        "endLine": 205,
+        "endChar": 63
+      },
+      "revId": "877a7508ce33bfffa4e68d05ca3f34cc903915f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
