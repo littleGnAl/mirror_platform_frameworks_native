@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5821bc6e_45587601",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-08-10T10:18:09Z",
+      "side": 1,
+      "message": "(Make sure to uncheck the \"Resolved\" box when replying to a comment before you\u0027ve fixed it.)",
+      "parentUuid": "b14d6079_4c2b6ce7",
+      "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "572ca3a4_a1db6bfa",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Hello Harry,\n\nI\u0027ve revised the commit message.\nCould you check it please?\n\nThank you!",
       "parentUuid": "572ca3a4_a1db6bfa",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ede18ee_1c3dfafc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-08-10T10:18:09Z",
+      "side": 1,
+      "message": "Looks good, just need to fix the line wrapping.",
+      "parentUuid": "f46dbd09_e2edc0cd",
       "range": {
         "startLine": 13,
         "startChar": 3,
