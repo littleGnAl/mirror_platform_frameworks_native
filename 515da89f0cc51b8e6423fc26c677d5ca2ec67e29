@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b14d6079_4c2b6ce7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956885
+      },
+      "writtenOn": "2022-08-10T05:11:47Z",
+      "side": 1,
+      "message": "Thank you for the comment. I am currently on vacation until July 10th.\nI will revise the commit message after returning from vacation.",
+      "parentUuid": "377d2975_d2f722cb",
+      "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "572ca3a4_a1db6bfa",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-06T12:24:22Z",
       "side": 1,
       "message": "Typo: \"results in incorrect\"?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f46dbd09_e2edc0cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1956885
+      },
+      "writtenOn": "2022-08-10T05:11:47Z",
+      "side": 1,
+      "message": "Hello Harry,\n\nI\u0027ve revised the commit message.\nCould you check it please?\n\nThank you!",
+      "parentUuid": "572ca3a4_a1db6bfa",
       "range": {
         "startLine": 13,
         "startChar": 3,
@@ -88,6 +130,24 @@
       "writtenOn": "2022-07-06T16:39:27Z",
       "side": 1,
       "message": "Hey mrchangsuck@gmail.com,\n\nThanks for the patch!\n\nCan you give some more information on the type of device you\u0027re trying to support here? Is it an external touch digitizer, like an external Wacom tablet? I\u0027m trying to understand the use case for an orientation-unaware touch device. Thanks.",
+      "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00af763_5f74e528",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956885
+      },
+      "writtenOn": "2022-08-10T05:11:47Z",
+      "side": 1,
+      "message": "Hello Prabir,\n\nYes, it is an external touch digitizer. It is Bluetooth HID device type, so the inputs are entered remotely.\n\nThe Wacom device is also an example device on the market that allows you to simply see the use case for an orientation-unaware touch device. Thank you!",
+      "parentUuid": "8b3513d6_aa644401",
       "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
