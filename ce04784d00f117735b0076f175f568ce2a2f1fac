@@ -16,6 +16,75 @@
       "message": "This was split out from the parent commit a bit ago.",
       "revId": "ce04784d00f117735b0076f175f568ce2a2f1fac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9426496_bbd97e09",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-10T18:52:59Z",
+      "side": 1,
+      "message": "not params",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "ce04784d00f117735b0076f175f568ce2a2f1fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89fe6ec9_ca24de77",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-10T18:52:59Z",
+      "side": 1,
+      "message": "this creates an `sp` and then immediately drops it. i think it would be safe to cast the raw pointer instead\n\n`static_cast\u003ctypename T::DefaultDelegator*\u003e(binder.get())-\u003egetImpl()`",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "ce04784d00f117735b0076f175f568ce2a2f1fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1564d55_da88fd4f",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-10T18:52:59Z",
+      "side": 1,
+      "message": "probably doesn\u0027t matter, but this casts to `sp\u003cT::DefaultDelegator\u003e` and then implicitly casts to `sp\u003cT\u003e` in the return. maybe cast directly to `sp\u003cT\u003e` for simplicity",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 64
+      },
+      "revId": "ce04784d00f117735b0076f175f568ce2a2f1fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
