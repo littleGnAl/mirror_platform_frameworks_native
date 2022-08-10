@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "139a3565_106afa33",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-10T21:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9426496_bbd97e09",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "ce04784d00f117735b0076f175f568ce2a2f1fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89fe6ec9_ca24de77",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8146ac9_979daec1",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-10T21:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89fe6ec9_ca24de77",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "ce04784d00f117735b0076f175f568ce2a2f1fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1564d55_da88fd4f",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-08-10T18:52:59Z",
       "side": 1,
       "message": "probably doesn\u0027t matter, but this casts to `sp\u003cT::DefaultDelegator\u003e` and then implicitly casts to `sp\u003cT\u003e` in the return. maybe cast directly to `sp\u003cT\u003e` for simplicity",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 64
+      },
+      "revId": "ce04784d00f117735b0076f175f568ce2a2f1fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c0d9d1a_d47ee356",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-10T21:47:15Z",
+      "side": 1,
+      "message": "It doesn\u0027t like the underlying static cast to T when I try that: https://paste.googleplex.com/4994020269883392",
+      "parentUuid": "a1564d55_da88fd4f",
       "range": {
         "startLine": 64,
         "startChar": 11,
