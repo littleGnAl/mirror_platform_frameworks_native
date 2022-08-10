@@ -453,6 +453,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a71f135b_7dca21b7",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-10T22:46:36Z",
+      "side": 1,
+      "message": "I\u0027m going to push a little harder on this: We are already using `std::atomic` elsewhere in libbinder ([example](http://cs/android-internal/frameworks/native/libs/binder/include/binder/Binder.h;l\u003d159;rcl\u003d84daba06c975edc439603aac580558d8bf8398df)). The existing uses work fine in the single threaded config (and I assume in Trusty), so this must not be necessary. I highly recommend just using `std::atomic` directly instead of adding this new abstraction.",
+      "parentUuid": "6b2f8b69_dbaaa5b6",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8d3856_7801f07a",
         "filename": "libs/binder/include/binder/RpcThreads.h",
         "patchSetId": 5
