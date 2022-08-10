@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb8bb4b_51f8450b",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "419d75b3_9c4207e9",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 59
+      },
+      "revId": "675c3ff3fdf5f2e8158a180931f6c4ef1054fe66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dec9e524_57e2e56f",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a50313c4_982d2fbd",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dec9e524_57e2e56f",
+      "range": {
+        "startLine": 113,
+        "startChar": 67,
+        "endLine": 113,
+        "endChar": 85
+      },
+      "revId": "675c3ff3fdf5f2e8158a180931f6c4ef1054fe66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c066d80d_e36b7113",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-04T01:57:58Z",
       "side": 1,
       "message": "newObj.get().getWeakRefs()",
+      "range": {
+        "startLine": 119,
+        "startChar": 15,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "675c3ff3fdf5f2e8158a180931f6c4ef1054fe66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac2d99b9_485c63bb",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "I don\u0027t think this is required anymore.",
+      "parentUuid": "c066d80d_e36b7113",
       "range": {
         "startLine": 119,
         "startChar": 15,

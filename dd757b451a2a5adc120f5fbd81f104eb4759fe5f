@@ -678,6 +678,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b945998a_d879e69f",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "I think it\u0027s less error prone this way instead of allowing the is/has IDs to be passed in.",
+      "parentUuid": "40a278b3_8171f570",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 96
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aee1963_8424e8bd",
@@ -715,6 +739,30 @@
       "side": 1,
       "message": "Good call! This actually hits a very similar issue to the cleanup function. Cleanup function is segfaulting when doing decWeak and this causes a segfault in incWeakRequireWeak from fromExisting. They are failing in the __atomic_base operations.\nDoes this mean that we need these to be OBJECT_LIFETIME_WEAK so they aren\u0027t destroyed? Or is there someway I can check for this?",
       "parentUuid": "1aee1963_8424e8bd",
+      "range": {
+        "startLine": 60,
+        "startChar": 22,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "dd757b451a2a5adc120f5fbd81f104eb4759fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36f1fa01_b3d46786",
+        "filename": "libs/binder/tests/binderBinderUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-10T00:51:43Z",
+      "side": 1,
+      "message": "The test bellow? It currently fails and I couldn\u0027t figure out how to getStrongCount after clearing the sp.",
+      "parentUuid": "20bbf25e_12914f46",
       "range": {
         "startLine": 60,
         "startChar": 22,
