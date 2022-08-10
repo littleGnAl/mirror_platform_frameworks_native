@@ -157,6 +157,30 @@
       },
       "revId": "ce04784d00f117735b0076f175f568ce2a2f1fac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce6a8f9_68e22f78",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-10T22:02:14Z",
+      "side": 1,
+      "message": "Ah, the inheritance hierarchy is more complex than I thought, makes sense now!\n\n```\n┌───────┐┌──────────┐                               \n│IBinder││IInterface│                               \n└┬──────┘└┬─────────┘                               \n │┌───────▽────────────────────────┐                \n ││ISpatializerHeadTrackingCallback│                \n │└┬───────────────────────────────┘                \n┌▽─▽───────────────────────────────────────────────┐\n│ISpatializerHeadTrackingCallback::DefaultDelegator│\n└──────────────────────────────────────────────────┘\n```",
+      "parentUuid": "9c0d9d1a_d47ee356",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 64
+      },
+      "revId": "ce04784d00f117735b0076f175f568ce2a2f1fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
