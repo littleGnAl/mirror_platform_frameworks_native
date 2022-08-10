@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0895a55c_f700730a",
+        "filename": "libs/binder/rust/rpcbinder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-08-10T08:47:52Z",
+      "side": 1,
+      "message": "The general convention that Android follows for Rust library crates is that the directory has the same name as the crate, and the build target is the crate name prefixed with `lib`. There are some exceptions to this where that target name is already taken (in which case the `_rs` suffix is added), but I\u0027d prefer to keen the convention where possible.\n\nWe could call it binderrpc or binder_rpc if you prefer that to rpcbinder; I\u0027d just seen this called RPC Binder elsewhere so I thought that was the best name.",
+      "parentUuid": "c8288928_a4bf512b",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08767d3a_402b7b3e",
         "filename": "libs/binder/rust/rpcbinder/src/client.rs",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "writtenOn": "2022-08-09T17:50:08Z",
       "side": 1,
       "message": "can we import the version from here:\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/2177903",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15273e72_54ec3e26",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-08-10T08:47:52Z",
+      "side": 1,
+      "message": "That\u0027s not exposed publicly, and I don\u0027t think it should be.",
+      "parentUuid": "89879677_2873e548",
       "range": {
         "startLine": 84,
         "startChar": 0,
