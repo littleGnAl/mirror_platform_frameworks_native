@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be2fe170_91a05ce3",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-10T03:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "049d1b7f_66fdea37",
+      "range": {
+        "startLine": 56,
+        "startChar": 56,
+        "endLine": 56,
+        "endChar": 63
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "606fa217_fc8ffb14",
@@ -142,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4394293a_a7d57912",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-10T03:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5901b1e6_1a9cc40e",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0592fa89_5fd02dc2",
@@ -155,6 +203,30 @@
       "writtenOn": "2022-08-08T18:14:26Z",
       "side": 1,
       "message": "nit: const + mutable field? or no? doesn\u0027t matter if it\u0027s all internal :)))",
+      "range": {
+        "startLine": 58,
+        "startChar": 61,
+        "endLine": 58,
+        "endChar": 62
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0de45a2_30b820ba",
+        "filename": "libs/binder/FdTrigger.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-10T03:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0592fa89_5fd02dc2",
       "range": {
         "startLine": 58,
         "startChar": 61,
@@ -202,6 +274,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "fb52fd13_c4827d78",
+      "range": {
+        "startLine": 564,
+        "startChar": 18,
+        "endLine": 564,
+        "endChar": 25
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74de500e_9f03390b",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-10T03:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcf8b987_229d0273",
       "range": {
         "startLine": 564,
         "startChar": 18,
@@ -337,6 +433,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b2f8b69_dbaaa5b6",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-10T03:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ce47b0_d5760f6d",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e8d3856_7801f07a",
@@ -374,6 +488,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "4e8d3856_7801f07a",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 5
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a961834_45bc3c31",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-10T03:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0685eb12_fcc26f72",
       "range": {
         "startLine": 141,
         "startChar": 0,
@@ -490,6 +628,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e3b7d0_efd95d34",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-10T03:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76519bd4_70d0cbe0",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82b07172_23c25b30",
@@ -572,6 +728,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51634b07_8a3c66d8",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-10T03:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "125d0aba_14f8f8e8",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5993a45b_6073c371",
@@ -603,6 +777,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "5993a45b_6073c371",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ce0efa_fa0e84c5",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-10T03:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e2c4d2b_bf272318",
       "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
