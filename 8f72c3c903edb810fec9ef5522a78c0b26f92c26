@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "020e3c4a_b2808a89",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-11T23:54:42Z",
+      "side": 1,
+      "message": "Went with Frederick\u0027s approach. It\u0027s much nicer!",
+      "parentUuid": "1509f9e3_c173e3a8",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 35
+      },
+      "revId": "8f72c3c903edb810fec9ef5522a78c0b26f92c26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc81d9e7_0123009a",
