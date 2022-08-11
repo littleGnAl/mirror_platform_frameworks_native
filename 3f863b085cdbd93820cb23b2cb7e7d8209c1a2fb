@@ -33,6 +33,24 @@
       "message": "`TRUSTY_USERSPACE` everywhere.",
       "revId": "3f863b085cdbd93820cb23b2cb7e7d8209c1a2fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e085b65e_f6716050",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-08-11T02:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f0094af_ccad2570",
+      "revId": "3f863b085cdbd93820cb23b2cb7e7d8209c1a2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
