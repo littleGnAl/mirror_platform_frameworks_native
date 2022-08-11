@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a512ab3_36f93fb7",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-11T04:29:16Z",
+      "side": 1,
+      "message": "Alternatively, we could leave this alone and just change the type of `fd`.",
+      "revId": "9e58f1220af1e990860c08da7e5f5b1a63a451df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
