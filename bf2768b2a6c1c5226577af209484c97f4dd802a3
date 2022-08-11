@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8964753b_43d4a34c",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-11T04:29:34Z",
+      "side": 1,
+      "message": "Maybe check for `__TRUSTY__ \u0026\u0026 !TRUSTY_USERSPACE` instead.\n\nI would just like to disable these altogether on Trusty though, and maybe elsewhere too. Go with `__TRUSTY__` for now, maybe expand it later?",
+      "revId": "bf2768b2a6c1c5226577af209484c97f4dd802a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
