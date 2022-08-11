@@ -23,7 +23,7 @@ use crate::sys;
 use std::convert::{TryFrom, TryInto};
 use std::ffi::c_void;
 use std::mem::{self, ManuallyDrop, MaybeUninit};
-use std::os::raw::{c_char, c_ulong};
+use std::os::raw::c_char;
 use std::ptr;
 use std::slice;
 
@@ -103,7 +103,7 @@ pub trait SerializeArray: Serialize + Sized {
 unsafe extern "C" fn serialize_element<T: Serialize>(
     parcel: *mut sys::AParcel,
     array: *const c_void,
-    index: c_ulong,
+    index: usize,
 ) -> status_t {
     // c_ulong and usize are the same, but we need the explicitly sized version
     // so the function signature matches what bindgen generates.
@@ -158,7 +158,7 @@ pub trait DeserializeArray: Deserialize {
 unsafe extern "C" fn deserialize_element<T: Deserialize>(
     parcel: *const sys::AParcel,
     array: *mut c_void,
-    index: c_ulong,
+    index: usize,
 ) -> status_t {
     // c_ulong and usize are the same, but we need the explicitly sized version
     // so the function signature matches what bindgen generates.
