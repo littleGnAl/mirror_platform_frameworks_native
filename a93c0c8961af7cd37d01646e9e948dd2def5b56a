@@ -16,6 +16,24 @@
       "message": "`TRUSTY_USERSPACE`",
       "revId": "a93c0c8961af7cd37d01646e9e948dd2def5b56a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34fcf690_688e70f0",
+        "filename": "libs/binder/trusty/OS.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-08-11T02:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d28d5646_1a4d841e",
+      "revId": "a93c0c8961af7cd37d01646e9e948dd2def5b56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
