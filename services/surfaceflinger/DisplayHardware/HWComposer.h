@@ -96,6 +96,18 @@ public:
                       << " vsyncPeriod=" << mode.vsyncPeriod << " dpi=" << mode.dpiX << "x"
                       << mode.dpiY << " group=" << mode.configGroup;
         }
+
+        operator std::string() const {
+            std::string s;
+            s.append("id=").append(std::to_string(hwcId))
+            .append(" res=").append(std::to_string(width))
+            .append("x").append(std::to_string(height))
+            .append(" vsyncPeriod=").append(std::to_string(vsyncPeriod))
+            .append(" dpi=").append(std::to_string(dpiX))
+            .append("x").append(std::to_string(dpiY))
+            .append(" group=").append(std::to_string(configGroup));
+            return s;
+        }
     };
 
     virtual ~HWComposer();
