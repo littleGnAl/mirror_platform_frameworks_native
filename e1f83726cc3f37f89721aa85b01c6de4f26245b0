@@ -16,6 +16,24 @@
       "message": "I think `using` also works for functions, doesn\u0027t it? You could use it for `wait`, `send_msg`, as well as more types like `iovec`.",
       "revId": "e1f83726cc3f37f89721aa85b01c6de4f26245b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965230b9_8cb8a9b9",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-08-11T04:29:24Z",
+      "side": 1,
+      "message": "I think `using` only works for types and namespace, but I should use it for `iovec`.",
+      "parentUuid": "4e545ee4_c3b42602",
+      "revId": "e1f83726cc3f37f89721aa85b01c6de4f26245b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
