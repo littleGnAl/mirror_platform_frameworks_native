@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1861828a_8b56050c",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-11T21:30:05Z",
+      "side": 1,
+      "message": "nit: combine case with L116-L119",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 12
+      },
+      "revId": "143b91cda382ff8824e1003e44953282e7f42040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d852191_a53d7075",
+        "filename": "libs/binder/tests/binderBinderUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-11T21:30:05Z",
+      "side": 1,
+      "message": "nit: is two layers needed?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "143b91cda382ff8824e1003e44953282e7f42040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
