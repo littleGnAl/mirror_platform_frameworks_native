@@ -52,6 +52,24 @@
       "parentUuid": "965230b9_8cb8a9b9",
       "revId": "e1f83726cc3f37f89721aa85b01c6de4f26245b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25a1f794_d5f18372",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-08-11T05:41:09Z",
+      "side": 1,
+      "message": "I used `constexpr auto` for the functions and added the iovec and error types.",
+      "parentUuid": "72708c77_995c95ca",
+      "revId": "e1f83726cc3f37f89721aa85b01c6de4f26245b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
