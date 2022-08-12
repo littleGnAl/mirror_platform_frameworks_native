@@ -22,6 +22,30 @@
       },
       "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73c71004_90ba2679",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-12T00:37:18Z",
+      "side": 1,
+      "message": "Hopefully someone else has a better, but here is one:\n\nDelete `mRecordingOn`. If `mRecordingFd \u003d\u003d -1`, then recording off. Otherwise it is on.\n\nThen, you just need 4 bytes. On 64 bit builds there is 4 bytes of reserved space (`int32_t mReserved1`). If only supporting recording 64 bit is OK, then we could use that.",
+      "parentUuid": "711d2860_b8aca56a",
+      "range": {
+        "startLine": 52,
+        "startChar": 40,
+        "endLine": 52,
+        "endChar": 75
+      },
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
