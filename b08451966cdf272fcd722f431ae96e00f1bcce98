@@ -65,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "531c21b9_b807805d",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-12T18:20:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acaa8db9_e856e2bd",
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d849ea4_f4ec782a",
@@ -78,6 +96,30 @@
       "writtenOn": "2022-08-12T01:06:43Z",
       "side": 1,
       "message": "this is probably suppose to be `(8 - header.dataSize % 8) % 8` (or `-header.dataSize % 8`)\n\ni\u0027m curious if we really need 8 bytes alignment, but not a blocker for the initial commit",
+      "range": {
+        "startLine": 32,
+        "startChar": 46,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f2bcf2_b16b936d",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-12T18:20:42Z",
+      "side": 1,
+      "message": "Fixed the mod error.\nRegarding alignment, I\u0027ll wait until replaying is implemented for all interfaces to test 8 vs 4 byte alignment.",
+      "parentUuid": "0d849ea4_f4ec782a",
       "range": {
         "startLine": 32,
         "startChar": 46,
@@ -111,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3350c8a8_5445e200",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-12T18:20:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a6bfd6_7403fd07",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdf9b37d_35331eac",
@@ -124,6 +190,30 @@
       "writtenOn": "2022-08-12T01:06:43Z",
       "side": 1,
       "message": "this is the request parcel. should we record the reply parcel as well?",
+      "range": {
+        "startLine": 24,
+        "startChar": 50,
+        "endLine": 24,
+        "endChar": 68
+      },
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2949b46d_d78b92d2",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-12T18:20:42Z",
+      "side": 1,
+      "message": "For non-deterministic transactions, the reply parcel will often be different even if the transaction is behaving properly. That could cause replays to fail even though everything is good, so I figured status_t err is the correct metric to compare on replays.",
+      "parentUuid": "cdf9b37d_35331eac",
       "range": {
         "startLine": 24,
         "startChar": 50,
