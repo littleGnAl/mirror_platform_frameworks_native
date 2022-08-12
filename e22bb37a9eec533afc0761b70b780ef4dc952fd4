@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4111e36_cbefcec3",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-08-12T00:38:27Z",
+      "side": 1,
+      "message": "Could you explain why we need this condition?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 25
+      },
+      "revId": "e22bb37a9eec533afc0761b70b780ef4dc952fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
