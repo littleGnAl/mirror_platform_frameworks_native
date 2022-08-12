@@ -22,6 +22,30 @@
       },
       "revId": "e22bb37a9eec533afc0761b70b780ef4dc952fd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02113b6a_db120158",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-08-12T04:14:08Z",
+      "side": 1,
+      "message": "IMHO, for those unsupported versions, maybe it make more sense to give out a compiler error on this operator, than *silently* return without doing anything?\nHappy to discuss more, thanks.",
+      "parentUuid": "a4111e36_cbefcec3",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 25
+      },
+      "revId": "e22bb37a9eec533afc0761b70b780ef4dc952fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
