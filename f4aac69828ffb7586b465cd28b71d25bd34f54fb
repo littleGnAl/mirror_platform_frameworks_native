@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "391fd571_d7de3b2b",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-12T17:34:39Z",
+      "side": 1,
+      "message": "if you made this mutable for Steven\u0027s suggestion, then you should mark the polling methods as `const` and pass `const RpcSocket\u0026` to various functions instead of `RpcSocket\u0026`\n\nalso should probably make this field private in that case\n\n(i don\u0027t have a strong opinion on any of this though)",
+      "range": {
+        "startLine": 145,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 11
+      },
+      "revId": "f4aac69828ffb7586b465cd28b71d25bd34f54fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

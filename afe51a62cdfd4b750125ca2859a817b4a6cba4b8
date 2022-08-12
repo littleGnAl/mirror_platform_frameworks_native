@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6befecd_f3d8dfeb",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-12T17:34:39Z",
+      "side": 1,
+      "message": "You can run the benchmark on a phone with something like\n\n```\nm libbinder binderRpcBenchmark \u0026\u0026 adb sync \u0026\u0026 adb shell /data/benchmarktest64/binderRpcBenchmark/binderRpcBenchmark\n```",
+      "parentUuid": "e5d680bb_42593993",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "046fd8c4_a718c5fc",
         "filename": "libs/binder/FdTrigger.cpp",
         "patchSetId": 5
@@ -831,6 +855,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "4e2c4d2b_bf272318",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a879a5ec_b707b88c",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-12T17:34:39Z",
+      "side": 1,
+      "message": "Can you add `explicit` still?\n\n```\n    explicit RpcSocket(int _fd) : fd(_fd), pollingCount(0) {}\n\n    explicit RpcSocket(base::unique_fd \u0026\u0026_fd) : fd(std::move(_fd)), pollingCount(0) {}\n```",
+      "parentUuid": "95ce0efa_fa0e84c5",
       "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
