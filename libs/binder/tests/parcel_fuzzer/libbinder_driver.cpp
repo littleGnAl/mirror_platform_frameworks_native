@@ -20,6 +20,12 @@
 namespace android {
 
 void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider) {
+    // Checking size of the data because of timeout issues
+    // Refer to : b/142617274, b/142473153
+    if (provider.remaining_bytes() > 50000) {
+        return;
+    }
+
     sp<IBinder> target;
 
     RandomParcelOptions options{
