@@ -46,6 +46,92 @@
       },
       "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acaa8db9_e856e2bd",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-12T01:06:43Z",
+      "side": 1,
+      "message": "maybe just log a message and return void",
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d849ea4_f4ec782a",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-12T01:06:43Z",
+      "side": 1,
+      "message": "this is probably suppose to be `(8 - header.dataSize % 8) % 8` (or `-header.dataSize % 8`)\n\ni\u0027m curious if we really need 8 bytes alignment, but not a blocker for the initial commit",
+      "range": {
+        "startLine": 32,
+        "startChar": 46,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a6bfd6_7403fd07",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-12T01:06:43Z",
+      "side": 1,
+      "message": "document the padding property in the header. maybe something like\n\n```\n// The recording format is a sequence of entries, where each entries looks like\n//\n//   transactionHeader  (32 bytes)\n//   parcel data        (transactionHeader.dataSize bytes)\n//   padding            (enough bytes to align the next header to 8 bytes)\n//   [repeats]\n```",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf9b37d_35331eac",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-12T01:06:43Z",
+      "side": 1,
+      "message": "this is the request parcel. should we record the reply parcel as well?",
+      "range": {
+        "startLine": 24,
+        "startChar": 50,
+        "endLine": 24,
+        "endChar": 68
+      },
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
