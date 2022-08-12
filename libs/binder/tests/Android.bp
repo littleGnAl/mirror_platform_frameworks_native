@@ -684,3 +684,10 @@ cc_test {
     ],
     test_suites: ["general-tests"],
 }
+
+cc_test {
+    name: "binderTestsTestInfra",
+    host_supported: true,
+    srcs: ["binderTestsTestInfra.cpp"],
+    test_suites: ["general-tests"],
+}
