@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "315256fb_21598b11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-12T17:06:45Z",
+      "side": 1,
+      "message": "Moving size checks changes from CL originally done in https://android-review.googlesource.com/c/platform/frameworks/native/+/2175884 in separate CL.",
+      "revId": "38a2e24496c1c3bb9c81328b19797e5aaaf876e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
