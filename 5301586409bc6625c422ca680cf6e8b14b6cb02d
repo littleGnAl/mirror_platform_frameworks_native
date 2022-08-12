@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "682c1acd_b20bdf18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-08-12T16:20:29Z",
+      "side": 1,
+      "message": "Hi Steve,\n\nThanks a lot for the patch! It turns out that we\u0027ve already landed a similar patch internally earlier this year for associating joysticks with a display.\n\nI will try to get it landed in AOSP as well: https://android-review.googlesource.com/c/platform/frameworks/native/+/2184671/\n\nSorry for the churn!\n\nPrabir",
+      "revId": "5301586409bc6625c422ca680cf6e8b14b6cb02d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
