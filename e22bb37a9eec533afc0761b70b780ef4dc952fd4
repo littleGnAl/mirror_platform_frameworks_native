@@ -46,6 +46,30 @@
       },
       "revId": "e22bb37a9eec533afc0761b70b780ef4dc952fd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0552bb0_03968348",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-08-12T14:00:55Z",
+      "side": 1,
+      "message": "Ah, that reminds me that this operator does nothing when the builtin_vailable is evaluated to false at runtime. Such a fallback behavior would be very surprising to the client and very hard to debug. Such a case could happen when the client is built with sdk_version \u003e\u003d 31 but runs on a platform whose sdk_version \u003c 31 (but is greater than min_sdk_version of the client).\n\nI think that the \u0027else\u0027 part should also be implemented. We could abort or at least emit a log so that this is notified to the client.",
+      "parentUuid": "02113b6a_db120158",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 25
+      },
+      "revId": "e22bb37a9eec533afc0761b70b780ef4dc952fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
