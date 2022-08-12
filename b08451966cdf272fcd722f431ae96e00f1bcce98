@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "711d2860_b8aca56a",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-12T00:27:04Z",
+      "side": 1,
+      "message": "bool mRecordingOn and unique_fd mRecordingFd change the size of BBinder, but they are not always a set size. What\u0027s the best way to save that data in a size safe way?",
+      "range": {
+        "startLine": 52,
+        "startChar": 40,
+        "endLine": 52,
+        "endChar": 75
+      },
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
