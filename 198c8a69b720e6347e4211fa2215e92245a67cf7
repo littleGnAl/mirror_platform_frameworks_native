@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "665548f4_8e0880fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-08-12T16:22:05Z",
+      "side": 1,
+      "message": "This is a clean cherry-pick, so it should merge by itself.",
+      "revId": "198c8a69b720e6347e4211fa2215e92245a67cf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
