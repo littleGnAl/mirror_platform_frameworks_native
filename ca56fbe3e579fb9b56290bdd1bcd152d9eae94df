@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d54580e_c77aa513",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-13T02:42:07Z",
+      "side": 1,
+      "message": "Is this cast needed? If it is, could we use one of the C++ casts?",
+      "revId": "ca56fbe3e579fb9b56290bdd1bcd152d9eae94df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba72827_537b093a",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-13T02:42:07Z",
+      "side": 1,
+      "message": "How about we just use `static_cast\u003csize_t\u003e(rc)` for the value and then we can always use `%zd` for the specifier?",
+      "revId": "ca56fbe3e579fb9b56290bdd1bcd152d9eae94df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
