@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd922b58_f4bdb182",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-13T02:43:08Z",
+      "side": 1,
+      "message": "Update commit message to TRUSTY_USERSPACE",
+      "revId": "04137372dcfe0d7eba8545efd65b7f43b682bb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
