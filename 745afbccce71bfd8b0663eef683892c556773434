@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38bd036a_7e1dcb36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-15T20:29:21Z",
+      "side": 1,
+      "message": "seeing test failures in binderAllocationLimits.BinderAllocation#SmallTransaction but can\u0027t reproduce locally (not synced to ToT).",
+      "revId": "745afbccce71bfd8b0663eef683892c556773434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
