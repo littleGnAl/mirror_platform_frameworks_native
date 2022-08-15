@@ -209,6 +209,24 @@
       "message": "This is safe afaict, but:\n1. It doesn\u0027t just need to be within self lifetime, it needs to be gone before RunRpcSererCallback returns, otherwise `\u0026mut self` comes back into scope and you trigger aliasing UB.\n2. It\u0027s also important to note that it doesn\u0027t retain a reference to `param`.\n\nIt may be worth being more explicit.",
       "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f9984a_01f23031",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-08-15T15:52:42Z",
+      "side": 1,
+      "message": "That\u0027s what I meant by \"does not retain a reference\". Is this clearer?",
+      "parentUuid": "c541d5c7_6c793a45",
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
