@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa139b1_5c924515",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-08-15T16:15:30Z",
+      "side": 1,
+      "message": "Fine by me, but ideally we should resolve smoreland\u0027s layout/naming requests since this is his area.",
+      "revId": "b1b654b6d8f81934625552d9519fd996418065e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
