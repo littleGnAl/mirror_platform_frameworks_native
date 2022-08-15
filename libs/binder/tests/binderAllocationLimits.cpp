@@ -177,7 +177,7 @@ TEST(BinderAllocation, SmallTransaction) {
     const auto on_malloc = OnMalloc([&](size_t bytes) {
         mallocs++;
         // Parcel should allocate a small amount by default
-        EXPECT_EQ(bytes, 128);
+        if (bytes != 128) abort();
     });
     manager->checkService(empty_descriptor);
 
