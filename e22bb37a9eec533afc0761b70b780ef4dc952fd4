@@ -70,6 +70,30 @@
       },
       "revId": "e22bb37a9eec533afc0761b70b780ef4dc952fd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "437e8ff1_c4ccdb28",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-08-15T19:32:31Z",
+      "side": 1,
+      "message": "Agree we shouldn\u0027t fallback with no-op without error/warning.\nAdded error log for this case, because I\u0027m not quite sure if it makes more sense to just abort if the sdk_version doesn\u0027t compatible. Let me know if you have stronger opinion on how to handle this.\nAlso added same log in several other methods to make it consistence.",
+      "parentUuid": "a0552bb0_03968348",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 25
+      },
+      "revId": "e22bb37a9eec533afc0761b70b780ef4dc952fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
