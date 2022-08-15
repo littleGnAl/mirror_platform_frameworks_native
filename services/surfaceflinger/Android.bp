@@ -18,6 +18,7 @@ cc_defaults {
         "-Wunused",
         "-Wunreachable-code",
         "-Wconversion",
+        "-Wno-implicit-int-float-conversion",
     ],
 }
 
