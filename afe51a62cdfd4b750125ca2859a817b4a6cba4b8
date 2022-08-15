@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a302eec_689c0bfc",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-15T21:00:10Z",
+      "side": 1,
+      "message": "Here are benchmarking test results after and before rpcsocket changes. go/rpcsocket-benchmark",
+      "parentUuid": "f6befecd_f3d8dfeb",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "046fd8c4_a718c5fc",
         "filename": "libs/binder/FdTrigger.cpp",
         "patchSetId": 5
@@ -873,6 +897,24 @@
       "side": 1,
       "message": "Can you add `explicit` still?\n\n```\n    explicit RpcSocket(int _fd) : fd(_fd), pollingCount(0) {}\n\n    explicit RpcSocket(base::unique_fd \u0026\u0026_fd) : fd(std::move(_fd)), pollingCount(0) {}\n```",
       "parentUuid": "95ce0efa_fa0e84c5",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf1207bd_185d0ac2",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-15T21:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a879a5ec_b707b88c",
       "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
