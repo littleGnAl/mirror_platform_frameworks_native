@@ -289,6 +289,8 @@ int android_tag_socket(int sockfd, uint32_t tag) __INTRODUCED_IN(33);
  */
 int android_untag_socket(int sockfd) __INTRODUCED_IN(33);
 
+int android_get_socket_tag(int sockfd) __INTRODUCED_IN(34);
+
 __END_DECLS
 
 #endif  // ANDROID_MULTINETWORK_H
