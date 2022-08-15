@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "194c1b5a_7bbac5f1",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-15T21:49:32Z",
+      "side": 1,
+      "message": "we also need some kind of locking around `android::BinderRecordReplay::recordTransaction` since there can be multiple transactions in parallel. unless there is some way to arrange that the kernel does the full write atomically (and we use `writev` or similar to put all the data into one write syscall)",
+      "parentUuid": "c3f1ff20_a6ea3204",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 280,
+        "endChar": 16
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2022d61_5dec7b62",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 9
@@ -250,6 +274,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af2058cc_b576da7e",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-15T21:49:32Z",
+      "side": 1,
+      "message": "Is there something missing from this format you are interested in? Unless we want to stabilize this format right away, I think something simple like this is best and than we can adjust it as more requirements become clear.\n\nOne thing from the diagram that is missing is whether we recorded from BBinder or BpBinder. In this CL, it is only possible to record from BBinder. Maybe we could add a field for that now, or wait until we want to add support from recording from BpBinder.\n\nNot sure if it is the structure you are thinking of, but it would be nice to somehow record where the request came from so that we can record multiple binders and visualize the relationship between the various requests.\n\nGeneral thoughts on whether to save immediately vs build up something in memory first: \n\n* For the debugging use case (and maybe even for the record-replay use case), I think you really want to save the data ASAP. Maybe opening a whole new can of worms, but ideally we\u0027d save the request as soon as we got it and then save the reply as a separate entry. You could imagine that the bug happens while a request is being processed and the bug (e.g. a crash) might cause pending recording data to be lost. To start with, I\u0027m not sure if that is worth the complexity though.\n* If you don\u0027t write immediately, then you need to keep the parcel alive or create a copy of it. Holding the whole history of transactions in memory would probably OOM most services quickly, right?\n* The simpler the recording code is the better. Bugs and design issues in offline tools are usually easier to fix than issues in data generation. If I start questioning whether a debug tool is giving me accurate data, then I generally stop using that tool",
+      "parentUuid": "891af777_6bf51561",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dd38b8c_c62081c1",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 9
@@ -261,6 +309,30 @@
       "writtenOn": "2022-08-15T18:01:43Z",
       "side": 1,
       "message": "if the error could occur one level higher, it might be able to print the file that\u0027s having the error",
+      "range": {
+        "startLine": 30,
+        "startChar": 58,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db0ba9e_163f7b9b",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-15T21:49:32Z",
+      "side": 1,
+      "message": "the fd is sent over binder, so we don\u0027t know what it is, might even be a socket/pipe",
+      "parentUuid": "7dd38b8c_c62081c1",
       "range": {
         "startLine": 30,
         "startChar": 58,

@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dee2c3b9_5558546d",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-15T21:49:32Z",
+      "side": 1,
+      "message": "i wouldn\u0027t return `DEAD_OBJECT`. if the caller checked the status and propagated that up, then it would kill the current binder (because it thinks it is dead). since the current code doesn\u0027t check the return status of this function, i\u0027d suggest changing the return type of `recordTransaction` to `void`\n\nalternatively, could return a `bool` and then the caller can stop attempting to record on the first failure it sees",
+      "parentUuid": "531c21b9_b807805d",
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d849ea4_f4ec782a",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 7
