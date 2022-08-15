@@ -1,0 +1,331 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f1ff20_a6ea3204",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "needs lock",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 280,
+        "endChar": 16
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2022d61_5dec7b62",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "should we return an error if stop recording is sent twice?",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 20
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025fd7cb_201cb46e",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "wrap \u0027if\u0027 in cc_unlikely",
+      "range": {
+        "startLine": 346,
+        "startChar": 8,
+        "endLine": 346,
+        "endChar": 20
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64682f5_a0f26bf0",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "this will need a license header",
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fb59995_9817473f",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "use unique_fd or borrowed_fd",
+      "range": {
+        "startLine": 12,
+        "startChar": 27,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60bb932e_46466b6c",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "type should be PascalCase",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95c90fa7_309e070c",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "use C++-style classes",
+      "range": {
+        "startLine": 17,
+        "startChar": 31,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26bb489d_98145d7f",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "but we don\u0027t record the reply?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 50
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2587afce_61e9ff75",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "We should abstract out a \u0027format\u0027 class which includes more information for kernel classes as well. This could be something merged independently of your project. Please start a CL up for this and pursue it independently of this.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c85bff7_2ea54470",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "nit: consider this idea - L19 and L22 and duplicate the same information, it\u0027s nice to think about this, but it also means we are thrashing here a bit. If you don\u0027t have a step forward, consider \u0027what do I need to design or to do in order to make it to the next setp?\u0027 or \u0027what do I not understand?\u0027 - send an email or a chat? Ultimately, this project will require a large number of CLs. If you are sure some work needs to be done, do that separately and get it reviewed separately. Obviously, we are discussing the final project outline today, so this comment doesn\u0027t help - the full direction is needed in order to avoid rabbit-holing.",
+      "range": {
+        "startLine": 22,
+        "startChar": 20,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "891af777_6bf51561",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "we should have a specific format, so that it can be re-used for various things we discussed, consider:\n\n\n                                                analysis-tools \u003c-\\\n                                                                 |\n     -\u003e IBinder -implemented-by-\u003e BpBinder --record-\u003e transaction format \u003c-\u003e disk\n    /       ^----implemented-by-\u003e BBinder --record----^     |        ||\n    |                             ^^                        v        ||\n    |                             |\\--implemented-by-\u003e ReplayBinder  ||\n    |                             \\-------------------- Recorder \u003c---/|\n    \\----------ReplayClient-------------------------------------------/\n\n- BBinder recording (what we discussed to implement)\n- ReplayClient - functionality to simulate a client again from a recording (what we discussed)\n- BpBinder recording (what we discussed as secondary/not necessary)\n- ReplayBinder - a binder which can act like a recorded binder (I think we should do this)\n- analysis tools - things which take the recording input, we discussed:\n- analysis tool example - \u0027toString\u0027 and \u0027view transaction\u0027 tools generated by AIDL (what we discussed to implement)\n- analysis tool example - \u0027determinism tool\u0027 we talked about analyzing if transactions are deterministic - since you were doing this, I think it would be nice to save the work you were doing here as a tool\n\n(note - file may want to have a header, not just be a stream, or use a human-readable format at the top layer? - we\u0027ll want more structure - recording directly to disk might make sense since it avoids a copy, but consider that as premature optimization - it\u0027s easier to manipulate a structure in memory - e.g. keep track of subsequent transactions as a path - than it is to restructure the on-disk \u0027stream\u0027 - also if we do go with big disk files, we\u0027d want a lookup table so that we can jump to specific offsets rather than needing to load the whole file or seek. Ultimately, we might go with an existing file structure, )",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd38b8c_c62081c1",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "if the error could occur one level higher, it might be able to print the file that\u0027s having the error",
+      "range": {
+        "startLine": 30,
+        "startChar": 58,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac59a256_fde7be1c",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "we can\u0027t add virtual functions, see \u0027setExtension\u0027\n\nnote, which won\u0027t matter because we don\u0027t need to add virtual functions: virtual function here and on BpBinder without a function in IBinder means they are unrelated",
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d43c9fd_f0ab7909",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "move to BBinder::Extras",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 42
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fdc73e7_e345c871",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-15T18:01:43Z",
+      "side": 1,
+      "message": "license header",
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
