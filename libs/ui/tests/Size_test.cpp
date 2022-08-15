@@ -185,12 +185,14 @@ TEST(SizeTest, Int8RangeIsNotClamped) {
 
 TEST(SizeTest, FloatRangeIsClamped) {
     ClampTest(std::numeric_limits<float>::max(), std::numeric_limits<int32_t>::max());
-    ClampTest(nexttowardf(std::numeric_limits<int32_t>::max(), std::numeric_limits<float>::max()),
+    ClampTest(nexttowardf(static_cast<float>(std::numeric_limits<int32_t>::max()),
+                          std::numeric_limits<float>::max()),
               std::numeric_limits<int32_t>::max());
     ClampTest(static_cast<float>(std::numeric_limits<int32_t>::max()),
               std::numeric_limits<int32_t>::max());
-    ClampTest(nexttowardf(std::numeric_limits<int32_t>::max(), 0),
-              static_cast<int32_t>(nexttowardf(std::numeric_limits<int32_t>::max(), 0)));
+    ClampTest(nexttowardf(static_cast<float>(std::numeric_limits<int32_t>::max()), 0),
+              static_cast<int32_t>(
+                      nexttowardf(static_cast<float>(std::numeric_limits<int32_t>::max()), 0)));
     ClampTest(float(0), int32_t(0));
     ClampTest(nexttowardf(std::numeric_limits<int32_t>::lowest(), 0),
               static_cast<int32_t>(nexttowardf(std::numeric_limits<int32_t>::lowest(), 0)));
