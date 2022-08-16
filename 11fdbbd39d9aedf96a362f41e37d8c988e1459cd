@@ -34,6 +34,24 @@
       "parentUuid": "e6266128_f4a229b1",
       "revId": "11fdbbd39d9aedf96a362f41e37d8c988e1459cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1385468e_d5efd2ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-16T18:35:32Z",
+      "side": 1,
+      "message": "I have updated them and I will push them separately. Vibrator fuzzers falls under hardware/interfaces repo.",
+      "parentUuid": "eef96ec0_12ae6e7f",
+      "revId": "11fdbbd39d9aedf96a362f41e37d8c988e1459cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

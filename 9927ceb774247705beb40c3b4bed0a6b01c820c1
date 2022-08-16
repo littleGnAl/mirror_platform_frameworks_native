@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73d7eec1_6c65fcf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-16T18:35:32Z",
+      "side": 1,
+      "message": "I will be updating other fuzzers in separate cls as some of them are in android internal only and modules are different.",
+      "revId": "9927ceb774247705beb40c3b4bed0a6b01c820c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
