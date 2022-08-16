@@ -31,11 +31,11 @@
 namespace android {
 namespace battery {
 
-typedef uint16_t state_t;
+typedef uint32_t state_t;
 
 template <class T>
 class MultiStateCounter {
-    uint16_t stateCount;
+    state_t stateCount;
     state_t currentState;
     time_t lastStateChangeTimestamp;
     T emptyValue;
@@ -52,7 +52,7 @@ class MultiStateCounter {
     State* states;
 
 public:
-    MultiStateCounter(uint16_t stateCount, const T& emptyValue);
+    MultiStateCounter(state_t stateCount, const T& emptyValue);
 
     virtual ~MultiStateCounter();
 
@@ -84,7 +84,7 @@ public:
 
     void reset();
 
-    uint16_t getStateCount();
+    state_t getStateCount();
 
     const T& getCount(state_t state);
 
@@ -112,7 +112,7 @@ private:
 // Since MultiStateCounter is a template, the implementation must be inlined.
 
 template <class T>
-MultiStateCounter<T>::MultiStateCounter(uint16_t stateCount, const T& emptyValue)
+MultiStateCounter<T>::MultiStateCounter(state_t stateCount, const T& emptyValue)
       : stateCount(stateCount),
         currentState(0),
         lastStateChangeTimestamp(-1),
@@ -272,7 +272,7 @@ void MultiStateCounter<T>::reset() {
 }
 
 template <class T>
-uint16_t MultiStateCounter<T>::getStateCount() {
+state_t MultiStateCounter<T>::getStateCount() {
     return stateCount;
 }
 
