@@ -71,7 +71,11 @@ cc_defaults {
         "libstatslog",
         "libui",
         "libutils",
+<<<<<<< HEAD   (896cdc Merge "Create an empty String8 to cause the first allocation)
         "libInputFlingerProperties",
+=======
+        "libPlatformProperties",
+>>>>>>> BRANCH (a74597 Merge changes Ia3eae81c,Iff44fb23 am: 372c4810c7)
     ],
     static_libs: [
         "libc++fs",

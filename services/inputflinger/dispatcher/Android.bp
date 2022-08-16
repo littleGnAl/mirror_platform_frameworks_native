@@ -66,9 +66,11 @@ cc_defaults {
         "libui",
         "libgui",
         "libutils",
-        "lib-platform-compat-native-api",
         "server_configurable_flags",
+<<<<<<< HEAD   (896cdc Merge "Create an empty String8 to cause the first allocation)
         "libInputFlingerProperties",
+=======
+>>>>>>> BRANCH (a74597 Merge changes Ia3eae81c,Iff44fb23 am: 372c4810c7)
     ],
     static_libs: [
         "libattestation",
