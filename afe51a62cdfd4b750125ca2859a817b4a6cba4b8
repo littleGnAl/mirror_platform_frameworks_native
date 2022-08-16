@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1966ed22_2a4eadfb",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-16T22:01:54Z",
+      "side": 1,
+      "message": "Please put it in a graph or spreadsheet or something to compare. It doesn\u0027t look like this is adding anything noticeable, but it\u0027s hard to tell in this format.",
+      "parentUuid": "1a302eec_689c0bfc",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "046fd8c4_a718c5fc",
         "filename": "libs/binder/FdTrigger.cpp",
         "patchSetId": 5
@@ -537,6 +561,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "202ab623_130afb01",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-16T22:01:54Z",
+      "side": 1,
+      "message": "That std::atomic is necessary because it is used on paths that are entered into by multiple threads at the same time, but this one is not. RpcSession ExclusiveConnection should always guard this, and if it doesn\u0027t, there is a bug.\n\nI hadn\u0027t thought about it when I initially looked at this, but please, follow this up:\n- remove std::atomic\n- use a boolean\n- abort if we need to set the boolean and it\u0027s already true\n\nThis would be racey of course, but some of the race cases will abort so we can detect the bug. It should never happen.",
+      "parentUuid": "4854f933_d2f35b1b",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e8d3856_7801f07a",
         "filename": "libs/binder/include/binder/RpcThreads.h",
         "patchSetId": 5
@@ -767,6 +809,30 @@
       "side": 1,
       "message": "I didn\u0027t get why I need to add this?",
       "parentUuid": "82b07172_23c25b30",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 31
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca57271_7ba0e1bd",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-16T22:01:54Z",
+      "side": 1,
+      "message": "This is in the header, and if someone fixes the structure of this, it could cause a problem for us. If we can hide this to avoid letting other libraries use it, that would be ideal. Though, I\u0027m not sure how.",
+      "parentUuid": "5f6b889a_f0cf7818",
       "range": {
         "startLine": 137,
         "startChar": 0,
