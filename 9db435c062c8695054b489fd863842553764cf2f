@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74095bac_ea2c9d38",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-16T22:38:07Z",
+      "side": 1,
+      "message": "were we able to get rid of the log in the header?",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "9db435c062c8695054b489fd863842553764cf2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
