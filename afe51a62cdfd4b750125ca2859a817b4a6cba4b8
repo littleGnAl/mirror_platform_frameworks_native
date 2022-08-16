@@ -193,6 +193,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53ae9a94_c669be9a",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-16T23:32:05Z",
+      "side": 1,
+      "message": "I was hoping you were going to recommend a nice way to compare them. It seems like the android benchmark output has drifted from google3 and golang, so the usual tools like benchy and go/benchstat don\u0027t work. I ended up using a spreadsheet last time.\n\nIt looks like the diffs are all noise since it is hard to believe this made things faster. Can either conclude that there is no measurable diff or that we need a better benchmark setup to get reliable numbers.",
+      "parentUuid": "1966ed22_2a4eadfb",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "046fd8c4_a718c5fc",
         "filename": "libs/binder/FdTrigger.cpp",
         "patchSetId": 5
@@ -573,6 +597,24 @@
       "side": 1,
       "message": "That std::atomic is necessary because it is used on paths that are entered into by multiple threads at the same time, but this one is not. RpcSession ExclusiveConnection should always guard this, and if it doesn\u0027t, there is a bug.\n\nI hadn\u0027t thought about it when I initially looked at this, but please, follow this up:\n- remove std::atomic\n- use a boolean\n- abort if we need to set the boolean and it\u0027s already true\n\nThis would be racey of course, but some of the race cases will abort so we can detect the bug. It should never happen.",
       "parentUuid": "4854f933_d2f35b1b",
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0172a3a1_87547cc5",
+        "filename": "libs/binder/include/binder/RpcThreads.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-16T23:32:05Z",
+      "side": 1,
+      "message": "This comment thread was about whether we need an abstraction on top of std::atomic so it can be swapped out in the single threaded mode, I was only commenting on that, not whether to use atomic at all.\n\n\u003e RpcSession ExclusiveConnection should always guard this, and if it doesn\u0027t, there is a bug.\n\nThis isn\u0027t correct. The variable is going to be read from outside the mutex (in the fuzzer harness I assume). If nothing could read the variable from outside the mutex, then there would be no purpose to adding it.\n\nAfter thinking about it more, I agree an int is unnecessary because we ensure only one thread uses a socket at a time, so you couldn\u0027t end up with two threads polling. I\u0027d personally still use an int because it is basically equivalent and involves less coupling between the various parts of the code. Not a strong opinion.\n\nI\u0027m sure in practice a normal `bool` or `int` will be fine, so I\u0027ll retract my suggestion to use atomic since it is controversial.",
+      "parentUuid": "202ab623_130afb01",
       "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
