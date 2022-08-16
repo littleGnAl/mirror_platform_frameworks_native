@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d12ecc94_70d3c7bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956242
+      },
+      "writtenOn": "2022-08-16T01:32:37Z",
+      "side": 1,
+      "message": "The test failure in presubmit seems not relevant to this CL:\nhttps://android-build.googleplex.com/builds/tests/view?invocationId\u003dI23200010081071006\u0026testResultId\u003dTR03128204185191209",
+      "revId": "07ef930418bc89f7ae12e77f92c8a649e56b2964",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
