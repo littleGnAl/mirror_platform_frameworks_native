@@ -34,6 +34,24 @@
       "parentUuid": "fd922b58_f4bdb182",
       "revId": "04137372dcfe0d7eba8545efd65b7f43b682bb71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6da13253_da18cde8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-16T22:43:34Z",
+      "side": 1,
+      "message": "The kernel RNG? On real devices it\u0027s supposed to be, we use it for KASLR and as the entropy source for user space.",
+      "parentUuid": "f86bfd92_87447606",
+      "revId": "04137372dcfe0d7eba8545efd65b7f43b682bb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
