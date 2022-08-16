@@ -16,6 +16,24 @@
       "message": "Update commit message to TRUSTY_USERSPACE",
       "revId": "04137372dcfe0d7eba8545efd65b7f43b682bb71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86bfd92_87447606",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-16T22:37:23Z",
+      "side": 1,
+      "message": "is this secure?",
+      "parentUuid": "fd922b58_f4bdb182",
+      "revId": "04137372dcfe0d7eba8545efd65b7f43b682bb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
