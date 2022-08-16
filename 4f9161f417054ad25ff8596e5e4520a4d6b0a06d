@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0016345a_e2bb4c42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2022-08-16T14:50:12Z",
+      "side": 1,
+      "message": "lgtm, sorry missed this amongst my gerrit reviews. Feel free to ping me for stuff like this.",
+      "revId": "4f9161f417054ad25ff8596e5e4520a4d6b0a06d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
