@@ -46,6 +46,30 @@
       },
       "revId": "24389f9e225294aea75c4123ae3377bdbf640e41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21744e13_08ee3260",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-16T22:16:37Z",
+      "side": 1,
+      "message": "We should check that they are the same actually. Otherwise, we would allow a ParcelableHolder object in a VINTF-stability interface to be set with an unstable value. I think the only option might be aborting? Though, it should be safe to do that, because notice that when reading a ParcelableHolder from another process, it\u0027s always checked that the stability is as-set.",
+      "parentUuid": "82836fa0_798988cb",
+      "range": {
+        "startLine": 213,
+        "startChar": 12,
+        "endLine": 213,
+        "endChar": 30
+      },
+      "revId": "24389f9e225294aea75c4123ae3377bdbf640e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
