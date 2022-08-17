@@ -22,6 +22,30 @@
       },
       "revId": "9db435c062c8695054b489fd863842553764cf2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e6830e_db13f164",
+        "filename": "libs/binder/include/binder/Delegate.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-17T16:55:29Z",
+      "side": 1,
+      "message": "not nicely. I had to use some tricks from the ndk backend - see this patchset.\nIs there a nice way for this to share a header with the ndk backend?: https://source.corp.google.com/android/frameworks/native/libs/binder/ndk/include_cpp/android/binder_internal_logging.h",
+      "parentUuid": "74095bac_ea2c9d38",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "9db435c062c8695054b489fd863842553764cf2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
