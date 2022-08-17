@@ -14,9 +14,8 @@
 ** limitations under the License.
 */
 
-#include "InstalldNativeService.h"
-
 #define ATRACE_TAG ATRACE_TAG_PACKAGE_MANAGER
+#include "InstalldNativeService.h"
 
 #include <errno.h>
 #include <fts.h>
