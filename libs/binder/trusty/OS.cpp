@@ -16,11 +16,13 @@
 
 #if defined(TRUSTY_USERSPACE)
 #include <openssl/rand.h>
+#include <trusty_ipc.h>
 #else
 #include <lib/rand/rand.h>
 #endif
 
 #include "../OS.h"
+#include "TrustyStatus.h"
 
 using android::base::Result;
 
@@ -42,8 +44,13 @@ status_t getRandomBytes(uint8_t* data, size_t size) {
 }
 
 status_t dupFileDescriptor(int oldFd, int* newFd) {
-    // TODO: implement separately
-    return INVALID_OPERATION;
+    int res = dup(oldFd);
+    if (res < 0) {
+        return statusFromTrusty(res);
+    }
+
+    *newFd = res;
+    return OK;
 }
 
 } // namespace android
