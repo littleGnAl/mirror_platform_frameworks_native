@@ -22,6 +22,30 @@
       },
       "revId": "161eb13cdebbc8e05c8729b432e69b3e5629da54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e89d1c6e_6be30b2b",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1880185
+      },
+      "writtenOn": "2022-08-17T17:52:45Z",
+      "side": 1,
+      "message": "araik, right.\nBut default fuzz length is 4096 bytes only.",
+      "parentUuid": "e6bf3665_fbc51eda",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "161eb13cdebbc8e05c8729b432e69b3e5629da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
