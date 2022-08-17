@@ -16,6 +16,7 @@
 
 #include "InstalldNativeService.h"
 
+#undef ATRACE_TAG
 #define ATRACE_TAG ATRACE_TAG_PACKAGE_MANAGER
 
 #include <errno.h>
