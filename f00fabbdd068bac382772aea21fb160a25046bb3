@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e46cbc_d68f86a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-17T18:39:56Z",
+      "side": 1,
+      "message": "There are two test issues, one should be fixed by https://android-review.googlesource.com/c/platform/frameworks/native/+/2186419\n\nIf it\u0027s still broken, and the other issue fixes itself (if it was a flake), we might be able to bypass. Though, we should file a bug for the flake.",
+      "revId": "f00fabbdd068bac382772aea21fb160a25046bb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
