@@ -89,6 +89,10 @@ RpcServerTrusty::RpcServerTrusty(std::unique_ptr<RpcTransportCtx> ctx, std::stri
     } else {
         mTipcPort.acl = nullptr;
     }
+
+    mRpcServer->setSupportedFileDescriptorTransportModes(
+            {RpcSession::FileDescriptorTransportMode::NONE,
+             RpcSession::FileDescriptorTransportMode::TRUSTY});
 }
 
 int RpcServerTrusty::handleConnect(const tipc_port* port, handle_t chan, const uuid* peer,
