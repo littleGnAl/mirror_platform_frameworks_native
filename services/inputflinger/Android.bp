@@ -125,7 +125,7 @@ filegroup {
         "InputListener.cpp",
         "InputReaderBase.cpp",
         "InputThread.cpp",
-        "VibrationElement.cpp"
+        "VibrationElement.cpp",
     ],
 }
 
@@ -133,6 +133,7 @@ cc_defaults {
     name: "libinputflinger_base_defaults",
     srcs: [":libinputflinger_base_sources"],
     shared_libs: [
+        "libbinder",
         "libbase",
         "libcutils",
         "libinput",
