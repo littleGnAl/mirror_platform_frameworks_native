@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b17918_9b320352",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-18T23:34:55Z",
+      "side": 1,
+      "message": "As discussed, we\u0027ll want another solution (maybe return more information - data hangup vs error vs data available from the poll).",
+      "revId": "6acc71ecd47ab85508d483856113daab9494a51c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
