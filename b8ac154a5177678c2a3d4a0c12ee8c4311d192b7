@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "715d3d08_0b155a4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-08-18T22:51:23Z",
+      "side": 1,
+      "message": "Change in AOSP: https://cs.android.com/android/_/android/platform/frameworks/native/+/6d5b4b2d103b0355bd705fe963bdd9e4a612b180",
+      "revId": "b8ac154a5177678c2a3d4a0c12ee8c4311d192b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
