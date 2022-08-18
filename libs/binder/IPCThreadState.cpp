@@ -42,6 +42,8 @@
 #include "Static.h"
 #include "binder_module.h"
 
+#include <set>
+
 #if LOG_NDEBUG
 
 #define IF_LOG_TRANSACTIONS() if (false)
@@ -896,12 +898,24 @@ IPCThreadState::~IPCThreadState()
 {
 }
 
-status_t IPCThreadState::sendReply(const Parcel& reply, uint32_t flags)
+[[clang::no_destroy]] static std::mutex gSuperMutex;
+[[clang::no_destroy]] static std::set<void*> gIKnowWhatImDoing;
+
+status_t IPCThreadState::sendReply(const Parcel& reply, const Parcel& forData, uint32_t flags)
 {
     status_t err;
     status_t statusBuffer;
     err = writeTransactionData(BC_REPLY, flags, -1, 0, reply, &statusBuffer);
     if (err < NO_ERROR) return err;
+
+    void* data = (void*)forData.data();
+
+{
+    std::lock_guard<std::mutex> lock(gSuperMutex);
+    mOut.writeInt32(BC_FREE_BUFFER);
+    mOut.writePointer((uintptr_t)data);
+    /*ignore return, sorry*/gIKnowWhatImDoing.insert(data);
+}
 
     return waitForResponse(nullptr, nullptr);
 }
@@ -1319,7 +1333,7 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
                 if (error < NO_ERROR) reply.setError(error);
 
                 constexpr uint32_t kForwardReplyFlags = TF_CLEAR_BUF;
-                sendReply(reply, (tr.flags & kForwardReplyFlags));
+                sendReply(reply, buffer, (tr.flags & kForwardReplyFlags));
             } else {
                 if (error != OK) {
                     alog << "oneway function results for code " << tr.code
@@ -1478,8 +1492,15 @@ void IPCThreadState::freeBuffer(const uint8_t* data, size_t /*dataSize*/,
     }
     ALOG_ASSERT(data != NULL, "Called with NULL data");
     IPCThreadState* state = self();
-    state->mOut.writeInt32(BC_FREE_BUFFER);
-    state->mOut.writePointer((uintptr_t)data);
+{
+    std::lock_guard<std::mutex> lock(gSuperMutex);
+    if (gIKnowWhatImDoing.find((void*)data) == gIKnowWhatImDoing.end()) {
+        state->mOut.writeInt32(BC_FREE_BUFFER);
+        state->mOut.writePointer((uintptr_t)data);
+    } else {
+        gIKnowWhatImDoing.erase((void*)data);
+    }
+}
     state->flushIfNeeded();
 }
 
