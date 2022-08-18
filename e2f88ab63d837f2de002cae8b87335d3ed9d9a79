@@ -139,6 +139,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b41217f_7f180363",
+        "filename": "libs/binder/rust/rpcbinder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-18T23:54:45Z",
+      "side": 1,
+      "message": "I do like that more - if you\u0027re okay with it",
+      "parentUuid": "1fa0d708_47ac6d14",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08767d3a_402b7b3e",
         "filename": "libs/binder/rust/rpcbinder/src/client.rs",
         "patchSetId": 2
