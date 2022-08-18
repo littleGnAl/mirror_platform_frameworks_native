@@ -199,7 +199,7 @@ private:
                                 IPCThreadState();
                                 ~IPCThreadState();
 
-            status_t            sendReply(const Parcel& reply, uint32_t flags);
+            status_t            sendReply(const Parcel& reply, const Parcel& forData, uint32_t flags);
             status_t            waitForResponse(Parcel *reply,
                                                 status_t *acquireResult=nullptr);
             status_t            talkWithDriver(bool doReceive=true);
