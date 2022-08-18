@@ -34,6 +34,24 @@
       "parentUuid": "682c1acd_b20bdf18",
       "revId": "5301586409bc6625c422ca680cf6e8b14b6cb02d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bdfb22b_32d60fd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-08-18T22:52:54Z",
+      "side": 1,
+      "message": "The change is included in the Android 13 AOSP push: https://cs.android.com/android/_/android/platform/frameworks/native/+/6d5b4b2d103b0355bd705fe963bdd9e4a612b180",
+      "parentUuid": "b339c445_bedf6f81",
+      "revId": "5301586409bc6625c422ca680cf6e8b14b6cb02d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
