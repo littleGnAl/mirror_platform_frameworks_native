@@ -46,6 +46,30 @@
       },
       "revId": "161eb13cdebbc8e05c8729b432e69b3e5629da54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e36b32a_0cf121fd",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-18T20:14:49Z",
+      "side": 1,
+      "message": "Ack (should we put this in the defaults???)",
+      "parentUuid": "e89d1c6e_6be30b2b",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "161eb13cdebbc8e05c8729b432e69b3e5629da54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
