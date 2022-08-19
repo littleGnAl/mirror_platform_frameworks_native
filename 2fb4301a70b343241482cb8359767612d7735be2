@@ -34,6 +34,24 @@
       "parentUuid": "2276ec69_57bc32b2",
       "revId": "2fb4301a70b343241482cb8359767612d7735be2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cc989bc_7151fc21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-19T22:30:33Z",
+      "side": 1,
+      "message": "I see. I think we have tests that break the connection by asking the server to shut itself down, then the next read fails, so it might be covered already. I think I made basically this exact same error in the Raw transport and a test detected it, but my memory is fuzzy.\n\nI don\u0027t have any concern about the CL order. Thanks!",
+      "parentUuid": "0b8bc2d5_6c58833c",
+      "revId": "2fb4301a70b343241482cb8359767612d7735be2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
