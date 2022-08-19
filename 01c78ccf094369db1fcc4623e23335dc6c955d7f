@@ -178,6 +178,24 @@
       "parentUuid": "6a19b241_0ef6f4ce",
       "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57dd5575_15aaa7b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002669
+      },
+      "writtenOn": "2022-08-19T15:42:18Z",
+      "side": 1,
+      "message": "Hello. I wanted to follow up on this one as we have not found any other way around supporting multiple touchpanels of the same type with different orientations.",
+      "parentUuid": "47c37318_58e50064",
+      "revId": "01c78ccf094369db1fcc4623e23335dc6c955d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
