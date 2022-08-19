@@ -1062,10 +1062,9 @@ TEST_P(BinderRpc, SingleDeathRecipient) {
     }
 
     std::unique_lock<std::mutex> lock(dr->mMtx);
-    if (!dr->dead) {
-        EXPECT_EQ(std::cv_status::no_timeout, dr->mCv.wait_for(lock, 1000ms));
+    while (!dr->dead) {
+        dr->mCv.wait_for(lock, 1000ms);
     }
-    EXPECT_TRUE(dr->dead) << "Failed to receive the death notification.";
 
     // need to wait for the session to shutdown so we don't "Leak session"
     EXPECT_TRUE(proc.proc.sessions.at(0).session->shutdownAndWait(true));
