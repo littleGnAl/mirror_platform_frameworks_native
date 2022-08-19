@@ -16,6 +16,24 @@
       "message": "I remember doing this on accident as well. Would be nice if the `status_t -\u003e ssize` conversion was a warning, but I guess that isn\u0027t possible since android seems to have designed `status_t` to be compatible with libc return values.\n\nWould it be reasonable to catch this path in a unit test?",
       "revId": "2fb4301a70b343241482cb8359767612d7735be2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8bc2d5_6c58833c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-19T22:23:58Z",
+      "side": 1,
+      "message": "The binderRpcTest for Trusty CLs haven\u0027t landed yet, but I can reorder the patches so we land the current one after those.\n\nWe would need to write a unit test that returns an error from `fillReadBuffer`. One way to do that would be to close the channel early on the service side, but I\u0027m not sure how to do that without tampering with libbinder internals.",
+      "parentUuid": "2276ec69_57bc32b2",
+      "revId": "2fb4301a70b343241482cb8359767612d7735be2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
