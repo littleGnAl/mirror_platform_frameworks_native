@@ -161,6 +161,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea5faa6_c82e136f",
+        "filename": "libs/binder/rust/rpcbinder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-08-19T12:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b41217f_7f180363",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08767d3a_402b7b3e",
