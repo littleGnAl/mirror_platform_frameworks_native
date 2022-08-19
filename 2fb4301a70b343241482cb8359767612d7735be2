@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2276ec69_57bc32b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-19T18:52:38Z",
+      "side": 1,
+      "message": "I remember doing this on accident as well. Would be nice if the `status_t -\u003e ssize` conversion was a warning, but I guess that isn\u0027t possible since android seems to have designed `status_t` to be compatible with libc return values.\n\nWould it be reasonable to catch this path in a unit test?",
+      "revId": "2fb4301a70b343241482cb8359767612d7735be2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
