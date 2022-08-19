@@ -1664,6 +1664,7 @@ bool Layer::isLegacyDataSpace() const {
 }
 
 void Layer::setParent(const sp<Layer>& layer) {
+    Mutex::Autolock _l(mCurrentParent);
     mCurrentParent = layer;
 }
 
@@ -1884,6 +1885,7 @@ ui::Transform::RotationFlags Layer::getFixedTransformHint() const {
     if (fixedTransformHint != ui::Transform::ROT_INVALID) {
         return fixedTransformHint;
     }
+    Mutex::Autolock _l(mCurrentParent);
     const auto& p = mCurrentParent.promote();
     if (!p) return fixedTransformHint;
     return p->getFixedTransformHint();
@@ -2143,11 +2145,14 @@ void Layer::writeToProtoCommonState(LayerProto* layerInfo, LayerVector::StateSet
     LayerProtoHelper::writeToProtoDeprecated(requestedTransform,
                                              layerInfo->mutable_requested_transform());
 
-    auto parent = useDrawing ? mDrawingParent.promote() : mCurrentParent.promote();
-    if (parent != nullptr) {
-        layerInfo->set_parent(parent->sequence);
-    } else {
-        layerInfo->set_parent(-1);
+    {    //Scope for the lock
+       Mutex::Autolock _l(mCurrentParent);
+    	auto parent = useDrawing ? mDrawingParent.promote() : mCurrentParent.promote();
+    	if (parent != nullptr) {
+        	layerInfo->set_parent(parent->sequence);
+    	} else {
+        	layerInfo->set_parent(-1);
+    	}
     }
 
     auto zOrderRelativeOf = state.zOrderRelativeOf.promote();

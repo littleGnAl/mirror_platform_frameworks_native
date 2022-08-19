@@ -794,7 +794,7 @@ public:
     // Returns index if removed, or negative value otherwise
     // for symmetry with Vector::remove
     ssize_t removeChild(const sp<Layer>& layer);
-    sp<Layer> getParent() const { return mCurrentParent.promote(); }
+    sp<Layer> getParent() const { Mutex::Autolock _l(mCurrentParent); return mCurrentParent.promote(); }
 
     // Should be called with the surfaceflinger statelock held
     bool isAtRoot() const { return mIsAtRoot; }
@@ -1006,6 +1006,9 @@ protected:
 
     // protected by mLock
     mutable Mutex mLock;
+
+    // protected by mCurrentParent
+    mutable Mutex mCurrentParent;
 
     const wp<Client> mClientRef;
 
