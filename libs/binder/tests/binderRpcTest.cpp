@@ -1545,6 +1545,23 @@ TEST_P(BinderRpc, AidlDelegatorTest) {
     EXPECT_EQ("cool cool ", doubled);
 }
 
+TEST_P(BinderRpc, DontDropAsyncTransactions) {
+    // While the first request is being processed, at most 6 more transactions
+    // can be in the queue so the 7th one gets dropped. For our test to fail,
+    // that 7th transaction can also be the expectSessions below.
+    constexpr size_t kNumAsyncTransactions = 4;
+    constexpr int32_t kSleepMs = 500;
+
+    auto proc = createRpcTestSocketServerProcess({});
+
+    for (size_t i = 0; i < kNumAsyncTransactions; i++) {
+        EXPECT_OK(proc.rootIface->sleepMsAsync(kSleepMs));
+    }
+
+    // Make a sync request to make sure nothing got dropped
+    expectSessions(0, proc.rootIface);
+}
+
 static std::vector<uint32_t> testVersions() {
     std::vector<uint32_t> versions;
     for (size_t i = 0; i < RPC_WIRE_PROTOCOL_VERSION_NEXT; i++) {
