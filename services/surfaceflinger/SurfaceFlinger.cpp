@@ -9,7 +9,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.f
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
@@ -2208,6 +2208,10 @@ void SurfaceFlinger::composite(nsecs_t frameTime, int64_t vsyncId)
         refreshArgs.colorTransformMatrix = mDrawingState.colorMatrix;
         mDrawingState.colorMatrixChanged = false;
     }
+
+    refreshArgs.colorTransformMatrix =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC;
 
@@ -6764,7 +6768,11 @@ ftl::SharedFuture<FenceResult> SurfaceFlinger::renderScreenImpl(
             static_cast<aidl::android::hardware::graphics::composer3::RenderIntent>(renderIntent);
 
     const float colorSaturation = grayscale ? 0 : 1;
+
     clientCompositionDisplay.colorTransform = calculateColorMatrix(colorSaturation);
+    clientCompositionDisplay.colorTransform =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     const float alpha = RenderArea::getCaptureFillValue(renderArea.getCaptureFill());
 
