@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5fd387d_bf5bcf75",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-22T23:38:58Z",
+      "side": 1,
+      "message": "Found the other discussion in the closed comments.\n\nFrederick, thoughts on `RpcFd` vs `RpcSocket`?",
+      "parentUuid": "01f1632a_ad7a96da",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c15449c_c77f05f5",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 9
@@ -133,6 +151,24 @@
       "writtenOn": "2022-08-22T23:12:57Z",
       "side": 1,
       "message": "Will this be used for anything other than tests? This seems like a big change for just one test.",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23fb8e0f_d00a6322",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1877,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-22T23:38:58Z",
+      "side": 1,
+      "message": "I should have read the closed comments first. Found the one that explains it.",
+      "parentUuid": "1f44acce_6c4b0235",
       "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
