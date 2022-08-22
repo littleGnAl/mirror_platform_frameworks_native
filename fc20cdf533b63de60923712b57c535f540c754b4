@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c154ab8_64115d2e",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-22T19:19:36Z",
+      "side": 0,
+      "message": "nit: The non-predicate version of this may return std::cv_status::no_timeout on spurious wakeups, so this timeout is currently ambiguous - it could be caused by notify or it could be caused by spurious wakeups before the 1000ms is hit. Use the predicate version of the logic instead, to avoid the spurious wakeups:\n\n    ASSERT_TRUE(dr-\u003emCv.wait_for(lock, 1000ms, [\u0026]() { return dr-\u003edead; });\n\nThat will avoid spurious wakeups causing a test failure, and we will avoid deadlocking forever. Could you try this before we go to such an extreme solution?",
+      "range": {
+        "startLine": 1066,
+        "startChar": 54,
+        "endLine": 1066,
+        "endChar": 62
+      },
+      "revId": "fc20cdf533b63de60923712b57c535f540c754b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
