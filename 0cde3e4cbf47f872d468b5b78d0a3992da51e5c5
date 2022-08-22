@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23223eb4_71439601",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-22T23:48:48Z",
+      "side": 1,
+      "message": "I think RpcFd would get confused with fds in rpc parcels.\n\nMaybe `TransportFd`?\n\nI also wonder if we can put this state into the RpcTransport instead of adding a new class, but I feel like I\u0027ve already side tracked this CL too much :)",
+      "parentUuid": "d5fd387d_bf5bcf75",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c15449c_c77f05f5",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 9
