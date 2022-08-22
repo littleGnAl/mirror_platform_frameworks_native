@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c718c4_9afdc330",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956885
+      },
+      "writtenOn": "2022-08-22T11:12:07Z",
+      "side": 1,
+      "message": "Recently, this commit got a conflict. So I\u0027ve checked the latest TouchInputMapper.cpp.\n\nSome of the changes of TouchInputMapper were related to size and orientation.\nHowever, I could see that orientation unaware inputs worked as orientation aware inputs. \nFor example, when the orientation is 90 or 270, X and Y aixs shall be swapped in case of orientation aware input. And there shall be no aixs swap for orientation unaware input, but they are also swapped in the latest code.\n\nIs it intended behavior? I personally think it is a new issue by the recent changes.",
+      "revId": "3067003e570e13105591637738d1d5b67aba88d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
