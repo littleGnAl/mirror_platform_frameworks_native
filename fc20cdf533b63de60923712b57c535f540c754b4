@@ -22,6 +22,30 @@
       },
       "revId": "fc20cdf533b63de60923712b57c535f540c754b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf5781c5_4e47e038",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-22T20:35:36Z",
+      "side": 0,
+      "message": "The errors I saw, and the ones I could reproduce, were returning std::cv_status::timeout and failing the EXPECT_EQ that was here.\n\nBut, I can\u0027t seem to find any links to the failures... so I\u0027ll wait to have evidence in hand before trying again.\n\nI\u0027ll make the suggested change since it looks like a nicer way of doing what it\u0027s currently doing.",
+      "parentUuid": "5c154ab8_64115d2e",
+      "range": {
+        "startLine": 1066,
+        "startChar": 54,
+        "endLine": 1066,
+        "endChar": 62
+      },
+      "revId": "fc20cdf533b63de60923712b57c535f540c754b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
