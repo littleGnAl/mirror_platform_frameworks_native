@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c90347d_77dc9560",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-22T23:12:57Z",
+      "side": 1,
+      "message": "Minor nit: extra \"e\" here.",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d795c65_d541b187",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-22T23:12:57Z",
+      "side": 1,
+      "message": "Could use a `ScopeGuard` after this that calls `decPolling`, guaranteeing that the decrement happens on all possible control flow paths.",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "807d542d_26426c2d",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-22T23:12:57Z",
+      "side": 1,
+      "message": "Minor nit: use `!serverSocket.fd.ok()` instead?",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f1632a_ad7a96da",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-22T23:12:57Z",
+      "side": 1,
+      "message": "Not sure about the name, it isn\u0027t always a socket. Maybe `RpcFd` or `RpcFileDescriptor`?",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c15449c_c77f05f5",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-22T23:12:57Z",
+      "side": 1,
+      "message": "Wrap this in a getter (even better: a `const` one)? Or is it intentional that `RpcSocket`\u0027s owners can move the `fd` out? For the latter, it might be more robust to add a `release` method instead.",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c83c872_1f707bf5",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-22T23:12:57Z",
+      "side": 1,
+      "message": "Minor nit: does clang-format not run on this file? The `\u0026\u0026` looks like it\u0027s in the wrong place.",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160f14be_4618e439",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-22T23:12:57Z",
+      "side": 1,
+      "message": "Should these be public? An alternative could be to make them private and add `FdTrigger` as a friend class.",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f44acce_6c4b0235",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1877,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-22T23:12:57Z",
+      "side": 1,
+      "message": "Will this be used for anything other than tests? This seems like a big change for just one test.",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
