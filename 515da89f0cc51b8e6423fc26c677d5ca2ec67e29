@@ -125,6 +125,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf58c94_4445da78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1956885
+      },
+      "writtenOn": "2022-08-22T01:14:36Z",
+      "side": 1,
+      "message": "The code has been changed from \u0027ternary operator\u0027 to \u0027if else\u0027.\nCould you review the new patchset?",
+      "parentUuid": "1ede18ee_1c3dfafc",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "515da89f0cc51b8e6423fc26c677d5ca2ec67e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "eb997899_e64850b7",
