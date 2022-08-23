@@ -208,6 +208,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "124899e3_156f4427",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-08-23T15:31:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08767d3a_402b7b3e",
+      "range": {
+        "startLine": 30,
+        "startChar": 77,
+        "endLine": 30,
+        "endChar": 93
+      },
+      "revId": "e2f88ab63d837f2de002cae8b87335d3ed9d9a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89879677_2873e548",
