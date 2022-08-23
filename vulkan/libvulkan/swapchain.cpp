@@ -1337,7 +1337,7 @@ VkResult CreateSwapchainKHR(VkDevice device,
         num_images = 1;
     }
 
-    int32_t legacy_usage = 0;
+    uint64_t native_usage = 0;
     if (dispatch.GetSwapchainGrallocUsage2ANDROID) {
         uint64_t consumer_usage, producer_usage;
         ATRACE_BEGIN("GetSwapchainGrallocUsage2ANDROID");
@@ -1349,10 +1349,12 @@ VkResult CreateSwapchainKHR(VkDevice device,
             ALOGE("vkGetSwapchainGrallocUsage2ANDROID failed: %d", result);
             return VK_ERROR_SURFACE_LOST_KHR;
         }
-        legacy_usage =
-            android_convertGralloc1To0Usage(producer_usage, consumer_usage);
+        // TODO: We should only look at producer_usage here, but OR them
+        // anyway to maintain compatibility with previous behavior.
+        native_usage = consumer_usage | producer_usage;
     } else if (dispatch.GetSwapchainGrallocUsageANDROID) {
         ATRACE_BEGIN("GetSwapchainGrallocUsageANDROID");
+        int32_t legacy_usage = 0;
         result = dispatch.GetSwapchainGrallocUsageANDROID(
             device, create_info->imageFormat, create_info->imageUsage,
             &legacy_usage);
@@ -1361,8 +1363,9 @@ VkResult CreateSwapchainKHR(VkDevice device,
             ALOGE("vkGetSwapchainGrallocUsageANDROID failed: %d", result);
             return VK_ERROR_SURFACE_LOST_KHR;
         }
+        native_usage = static_cast<uint64_t>(legacy_usage);
     }
-    uint64_t native_usage = static_cast<uint64_t>(legacy_usage);
+    native_usage |= surface.consumer_usage;
 
     bool createProtectedSwapchain = false;
     if (create_info->flags & VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR) {
