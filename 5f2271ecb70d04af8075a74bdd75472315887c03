@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd6a6ea3_f1a85179",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012974
+      },
+      "writtenOn": "2022-08-23T21:29:38Z",
+      "side": 1,
+      "message": "Oh, haha, sorry, I didn\u0027t see this when I uploaded my version. LGTM.",
+      "revId": "5f2271ecb70d04af8075a74bdd75472315887c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
