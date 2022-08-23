@@ -61,6 +61,12 @@ cc_library_headers {
     export_include_dirs: ["include_sensor"],
 }
 
+cc_library_headers {
+    name: "native-headers",
+    vendor: true,
+    export_include_dirs: ["include"],
+}
+
 filegroup {
     name: "framework_native_aidl_binder",
     srcs: ["aidl/binder/**/*.aidl"],
