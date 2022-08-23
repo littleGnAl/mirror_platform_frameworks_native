@@ -241,6 +241,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef7b5a56_3a360bbb",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-23T23:21:43Z",
+      "side": 1,
+      "message": "We should switch the std::atomic to a boolean and abort if this method is ever called when the FD is already polling (indicates an error). Please make a note of this on the bug or file another bug on this. We can decouple it from landing this CL.",
+      "parentUuid": "8043376d_0ae4ac53",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "046fd8c4_a718c5fc",
         "filename": "libs/binder/FdTrigger.cpp",
         "patchSetId": 5
