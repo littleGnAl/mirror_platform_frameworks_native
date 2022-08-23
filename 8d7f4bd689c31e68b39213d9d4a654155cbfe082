@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce9ec6e_42036406",
+        "filename": "libs/binder/tests/binderRpcTestCommon.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-23T22:23:04Z",
+      "side": 0,
+      "message": "why is this one needed to be implemented twice? it seems that it\u0027s the same code?",
+      "range": {
+        "startLine": 220,
+        "startChar": 11,
+        "endLine": 220,
+        "endChar": 23
+      },
+      "revId": "8d7f4bd689c31e68b39213d9d4a654155cbfe082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5684defa_03600b6d",
+        "filename": "libs/binder/trusty/binderRpcTestService/aidl/rules.mk",
+        "patchSetId": 28
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-23T22:23:04Z",
+      "side": 1,
+      "message": "it seems like this is about compiling binderRpcTest in the Trusty environment, but we also want to test it in the Android environment. Are we able to run (most of) these tests in Android, w/o Trusty sources?",
+      "revId": "80b44dba88872a8be9ab07c1ec4fbbfb91d3c2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8bdd1b7_d83193b1",
+        "filename": "libs/binder/trusty/binderRpcTestService/binderRpcTestService.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-23T22:23:04Z",
+      "side": 1,
+      "message": "it compiles?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 49
+      },
+      "revId": "80b44dba88872a8be9ab07c1ec4fbbfb91d3c2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a81a6628_29906460",
+        "filename": "libs/binder/trusty/binderRpcTestService/manifest.json",
+        "patchSetId": 28
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-23T22:23:04Z",
+      "side": 1,
+      "message": "what is this?",
+      "revId": "80b44dba88872a8be9ab07c1ec4fbbfb91d3c2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
