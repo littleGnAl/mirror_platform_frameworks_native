@@ -52,6 +52,24 @@
       "parentUuid": "b339c445_bedf6f81",
       "revId": "5301586409bc6625c422ca680cf6e8b14b6cb02d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b243b6_1ab8362c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1961940
+      },
+      "writtenOn": "2022-08-24T19:53:03Z",
+      "side": 1,
+      "message": "Thanks for your help getting the fix in. We have verified it works with our setup.",
+      "parentUuid": "1bdfb22b_32d60fd1",
+      "revId": "5301586409bc6625c422ca680cf6e8b14b6cb02d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
