@@ -177,6 +177,66 @@ cc_defaults {
     ],
 }
 
+cc_library_shared {
+    name: "libbinder_on_trusty_mock",
+    host_supported: false,
+    srcs: [
+        // Common files between Android and Trusty
+        "Binder.cpp",
+        "BpBinder.cpp",
+        "FdTrigger.cpp",
+        "IInterface.cpp",
+        "IResultReceiver.cpp",
+        "Parcel.cpp",
+        "ParcelFileDescriptor.cpp",
+        "RpcSession.cpp",
+        "RpcServer.cpp",
+        "RpcState.cpp",
+        "Stability.cpp",
+        "Status.cpp",
+        "Utils.cpp",
+        // Trusty-specific files
+        "trusty/logging.cpp",
+        "trusty/OS.cpp",
+        "trusty/RpcServerTrusty.cpp",
+        "trusty/RpcTransportTipcTrusty.cpp",
+        "trusty/TrustyStatus.cpp",
+        "trusty/socket.cpp",
+    ],
+
+    cflags: [
+        "-DBINDER_RPC_SINGLE_THREADED",
+        // Trusty libbinder uses vendor stability for its binders
+        "-D__ANDROID_VNDK__",
+        "-U__ANDROID__",
+        "-D__TRUSTY__",
+        "-DTRUSTY_USERSPACE",
+        // TODO(ahomescu): copy the Trusty flags here
+    ],
+
+    shared_libs: [
+        "libcutils",
+        "libutils",
+    ],
+
+    static_libs: [
+        "libbase",
+    ],
+
+    header_libs: [
+        "libbinder_headers",
+    ],
+
+    local_include_dirs: [
+        "trusty/include",
+        "trusty/include_mock",
+    ],
+
+    visibility: [
+        ":__subpackages__",
+    ],
+}
+
 cc_defaults {
     name: "libbinder_kernel_defaults",
     srcs: [
