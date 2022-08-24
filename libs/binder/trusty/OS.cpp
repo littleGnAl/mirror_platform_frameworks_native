@@ -28,7 +28,7 @@ using android::base::Result;
 
 namespace android {
 
-Result<void> setNonBlocking(android::base::borrowed_fd fd) {
+Result<void> setNonBlocking(android::base::borrowed_fd /*fd*/) {
     // Trusty IPC syscalls are all non-blocking by default.
     return {};
 }
