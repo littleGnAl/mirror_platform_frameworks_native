@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b46b1529_ce8b7b81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-25T16:25:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c90347d_77dc9560",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d795c65_d541b187",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef2094c5_fad56965",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-25T16:25:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d795c65_d541b187",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "807d542d_26426c2d",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-08-22T23:12:57Z",
       "side": 1,
       "message": "Minor nit: use `!serverSocket.fd.ok()` instead?",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e917c0c3_4f9835ed",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-25T16:25:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "807d542d_26426c2d",
       "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -125,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c321a03_c94aa3fb",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-25T16:25:16Z",
+      "side": 1,
+      "message": "FdTrigger::TriggerablePoll is not always called from RpcTransport. There are uses in code which will require to have state stored with fd. https://source.corp.google.com/android/frameworks/native/libs/binder/RpcServer.cpp;l\u003d192;rcl\u003dHEAD\n\nAre we agreeing on renaming to TransportFd?",
+      "parentUuid": "5f3831a4_da4747a5",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c15449c_c77f05f5",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 9
@@ -157,6 +229,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63fe4bb5_56237476",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-25T16:25:16Z",
+      "side": 1,
+      "message": "Current style was suggested by clang-format. I will try again with regular style.",
+      "parentUuid": "5c83c872_1f707bf5",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "160f14be_4618e439",
@@ -170,6 +260,24 @@
       "writtenOn": "2022-08-22T23:12:57Z",
       "side": 1,
       "message": "Should these be public? An alternative could be to make them private and add `FdTrigger` as a friend class.",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "360c1f1a_1cad87b3",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-25T16:25:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "160f14be_4618e439",
       "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
