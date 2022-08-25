@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f289ec62_67801fa8",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-25T17:33:40Z",
+      "side": 1,
+      "message": "Good point. You could just handle that separately though and the sum total code might be around the same. Again, I don\u0027t mean to insist on this, just sharing thoughts. I think this solution is good.",
+      "parentUuid": "6c321a03_c94aa3fb",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c15449c_c77f05f5",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 9
@@ -243,6 +261,24 @@
       "side": 1,
       "message": "Current style was suggested by clang-format. I will try again with regular style.",
       "parentUuid": "5c83c872_1f707bf5",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7426f2_b75c5e08",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-25T17:33:40Z",
+      "side": 1,
+      "message": "I think clang here is configured for google style with some tweaks, which is ok with either way, so it probably copying the style used elsewhere in this particular file (i.e. space before).",
+      "parentUuid": "63fe4bb5_56237476",
       "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
