@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da607765_b2d54bcc",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-25T03:24:18Z",
+      "side": 0,
+      "message": "Trusty doesn\u0027t build `Debug.cpp` and `TextOutput.cpp` because they\u0027re not needed yet (probably because their contents are not transitively used in any Trusty code), but the Android build needs them. Not sure whether to do anything more here.",
+      "revId": "024727b29bd10909c2ddbb7a3cca9aa1dcec879d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

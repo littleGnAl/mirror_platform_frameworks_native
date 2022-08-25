@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6df9ca4_47ed1eae",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-25T03:24:18Z",
+      "side": 1,
+      "message": "Is there anywhere else we could anchor this?",
+      "revId": "875996f630febebae0f222dd02162bc19a1fe864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
