@@ -16,6 +16,23 @@
       "message": "Please help providing the CR+2 to establish the merge path for android13-tests-dev. Thanks.",
       "revId": "9cbe662eac2aa5936fb575537b5eea02820fe9fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f5f3c2_f97d5694",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1222074
+      },
+      "writtenOn": "2022-08-25T22:27:48Z",
+      "side": 1,
+      "message": "Friendly ping. CL needs owner review vote. @Lingfen Could you please help",
+      "revId": "9cbe662eac2aa5936fb575537b5eea02820fe9fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
