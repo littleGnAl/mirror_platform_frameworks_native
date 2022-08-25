@@ -284,6 +284,14 @@ void CursorInputMapper::reset(nsecs_t when) {
 }
 
 void CursorInputMapper::process(const RawEvent* rawEvent) {
+    mPointerController = getContext()->getPointerController(getDeviceId());
+    std::optional<DisplayViewport> viewport = getDeviceContext().getAssociatedViewport();
+    if (viewport) {
+        mPointerController->setDisplayViewport(*viewport);
+    } else {
+        ALOGW("failed to find the designated viewport, used current one");
+    }
+
     mCursorButtonAccumulator.process(rawEvent);
     mCursorMotionAccumulator.process(rawEvent);
     mCursorScrollAccumulator.process(rawEvent);
