@@ -22,6 +22,30 @@
       },
       "revId": "8d7f4bd689c31e68b39213d9d4a654155cbfe082",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef82648_458252d5",
+        "filename": "libs/binder/tests/binderRpcTestCommon.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-26T00:52:45Z",
+      "side": 0,
+      "message": "The type of the server is different: `sp\u003cRpcServer\u003e` vs `sp\u003cRpcServerTrusty\u003e`. They can\u0027t even be cast to each other, since `RpcServerTrusty` contains a `RpcServer` instead of inheriting from it.",
+      "parentUuid": "7ce9ec6e_42036406",
+      "range": {
+        "startLine": 220,
+        "startChar": 11,
+        "endLine": 220,
+        "endChar": 23
+      },
+      "revId": "8d7f4bd689c31e68b39213d9d4a654155cbfe082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

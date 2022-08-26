@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d81e0398_a3bd40e5",
+        "filename": "libs/binder/trusty/binderRpcTestService/aidl/rules.mk",
+        "patchSetId": 28
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-26T00:52:45Z",
+      "side": 1,
+      "message": "We might be able to emulate Trusty IPC over some other transport, e.g., pipes or UNIX sockets, but is that worth it? The whole point of this test service is to test the Android-Trusty connection with binderRpcTest.",
+      "parentUuid": "5684defa_03600b6d",
+      "revId": "80b44dba88872a8be9ab07c1ec4fbbfb91d3c2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8bdd1b7_d83193b1",
         "filename": "libs/binder/trusty/binderRpcTestService/binderRpcTestService.cpp",
         "patchSetId": 28
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-23T22:23:04Z",
       "side": 1,
       "message": "it compiles?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 49
+      },
+      "revId": "80b44dba88872a8be9ab07c1ec4fbbfb91d3c2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecfc63eb_ef5626ab",
+        "filename": "libs/binder/trusty/binderRpcTestService/binderRpcTestService.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-26T00:52:45Z",
+      "side": 1,
+      "message": "The parent class `MyBinderRpcTestDefault` has default implementations for these that return `UNKNOWN_TRANSACTION`. Until Trusty supports file descriptors, returning an error is the best we can do here.",
+      "parentUuid": "e8bdd1b7_d83193b1",
       "range": {
         "startLine": 56,
         "startChar": 0,
@@ -54,6 +96,24 @@
       "writtenOn": "2022-08-23T22:23:04Z",
       "side": 1,
       "message": "what is this?",
+      "revId": "80b44dba88872a8be9ab07c1ec4fbbfb91d3c2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f53540_82264d47",
+        "filename": "libs/binder/trusty/binderRpcTestService/manifest.json",
+        "patchSetId": 28
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-26T00:52:45Z",
+      "side": 1,
+      "message": "Every Trusty app has a manifest file with some information for the kernel app manager: name and UUID, maximum heap and stack sizes (`min_heap` is a misnomer), MMIO regions, etc. It\u0027s required for every app and service.",
+      "parentUuid": "a81a6628_29906460",
       "revId": "80b44dba88872a8be9ab07c1ec4fbbfb91d3c2e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
