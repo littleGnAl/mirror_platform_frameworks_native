@@ -189,6 +189,11 @@ public:
      */
     [[nodiscard]] status_t sendDecStrong(const BpBinder* binder);
 
+    /**
+     * Whether any requests are currently being processed.
+     */
+    bool hasActiveRequests();
+
     ~RpcSession();
 
     /**
@@ -285,6 +290,11 @@ private:
     void clearConnectionTid(const sp<RpcConnection>& connection);
 
     [[nodiscard]] status_t initShutdownTrigger();
+
+    /**
+     * This function returns true if there is ongoing poll on given connections
+     */
+    bool checkPollingOnConnections(const std::vector<sp<RpcConnection>>& connections);
 
     enum class ConnectionUse {
         CLIENT,
