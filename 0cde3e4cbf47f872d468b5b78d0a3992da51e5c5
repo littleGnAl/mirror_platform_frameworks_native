@@ -213,6 +213,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8089e50_e263c4dd",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-26T15:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f289ec62_67801fa8",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c15449c_c77f05f5",
@@ -226,6 +244,24 @@
       "writtenOn": "2022-08-22T23:12:57Z",
       "side": 1,
       "message": "Wrap this in a getter (even better: a `const` one)? Or is it intentional that `RpcSocket`\u0027s owners can move the `fd` out? For the latter, it might be more robust to add a `release` method instead.",
+      "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d7b4205_3274850c",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-26T15:44:43Z",
+      "side": 1,
+      "message": "I will put up a follow up cl for this. Adding a bug for this.",
+      "parentUuid": "4c15449c_c77f05f5",
       "revId": "0cde3e4cbf47f872d468b5b78d0a3992da51e5c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

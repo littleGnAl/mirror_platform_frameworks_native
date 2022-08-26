@@ -263,6 +263,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f08dfe41_1e576c43",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-26T15:44:43Z",
+      "side": 1,
+      "message": "Switched to boolean in current CL.",
+      "parentUuid": "ef7b5a56_3a360bbb",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "afe51a62cdfd4b750125ca2859a817b4a6cba4b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "046fd8c4_a718c5fc",
