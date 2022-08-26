@@ -952,4 +952,24 @@ RpcSession::ExclusiveConnection::~ExclusiveConnection() {
     }
 }
 
+bool RpcSession::checkPollingOnConnections(const std::vector<sp<RpcConnection>>& connections) {
+    bool isPolling = true;
+    for (const auto& connection : connections) {
+        if (connection == nullptr || connection->rpcTransport == nullptr) {
+            continue;
+        }
+        isPolling &= connection->rpcTransport->isWaiting();
+    }
+
+    return isPolling;
+}
+
+bool RpcSession::isPollingOnAllConnections() {
+    RpcMutexUniqueLock _l(mMutex);
+    bool isPollingOnAll = true;
+    isPollingOnAll &= checkPollingOnConnections(mConnections.mIncoming);
+    isPollingOnAll &= checkPollingOnConnections(mConnections.mOutgoing);
+    return isPollingOnAll;
+}
+
 } // namespace android
