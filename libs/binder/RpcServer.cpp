@@ -560,4 +560,18 @@ status_t RpcServer::setupExternalServer(base::unique_fd serverFd) {
     return OK;
 }
 
+bool RpcServer::isPollingForData() {
+    RpcMutexLockGuard _l(mLock);
+    bool isPolling = true;
+    for (const auto& [_, session] : mSessions) {
+        if (session == nullptr) {
+            continue;
+        }
+        isPolling &= session->isPollingOnAllConnections();
+    }
+
+    isPolling &= mServer.isInPollingState();
+    return isPolling;
+}
+
 } // namespace android

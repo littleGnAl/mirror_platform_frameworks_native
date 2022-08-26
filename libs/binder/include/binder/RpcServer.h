@@ -187,6 +187,12 @@ public:
     std::vector<sp<RpcSession>> listSessions();
     size_t numUninitializedSessions();
 
+    /**
+     * This method returns true if all the transports of Sessions and
+     * server file descriptor is being polled for data.
+     */
+    bool isPollingForData();
+
     ~RpcServer();
 
 private:

@@ -189,6 +189,12 @@ public:
      */
     [[nodiscard]] status_t sendDecStrong(const BpBinder* binder);
 
+    /**
+     * This method returns true if there is ongoing poll on all of the transports
+     * which are held by RpcConnection for this session.
+     */
+    bool isPollingOnAllConnections();
+
     ~RpcSession();
 
     /**
@@ -285,6 +291,11 @@ private:
     void clearConnectionTid(const sp<RpcConnection>& connection);
 
     [[nodiscard]] status_t initShutdownTrigger();
+
+    /**
+     * This function returns true if there is ongoing poll on given connections
+     */
+    bool checkPollingOnConnections(const std::vector<sp<RpcConnection>>& connections);
 
     enum class ConnectionUse {
         CLIENT,
