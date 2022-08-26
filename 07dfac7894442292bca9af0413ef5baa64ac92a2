@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b17a00a_4d1dd821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-26T22:14:14Z",
+      "side": 1,
+      "message": "\u003e to indicate internal use\n\ni think the new name is fine, but the rationale doesn\u0027t make sense. an \"rpc\" prefix doesn\u0027t indicate internal",
+      "revId": "07dfac7894442292bca9af0413ef5baa64ac92a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
