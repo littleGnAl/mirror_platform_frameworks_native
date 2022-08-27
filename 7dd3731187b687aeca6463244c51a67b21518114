@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09e557a9_0ea71dcf",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-27T00:42:08Z",
+      "side": 1,
+      "message": "for outgoing connections, you might need to check that it is being used (otherwise it won\u0027t ever be polling IIUC)",
+      "range": {
+        "startLine": 971,
+        "startChar": 48,
+        "endLine": 971,
+        "endChar": 70
+      },
+      "revId": "7dd3731187b687aeca6463244c51a67b21518114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0cd9d16e_0f0b2e78",
         "filename": "libs/binder/RpcSession.cpp",
         "patchSetId": 2
@@ -48,6 +71,24 @@
       "writtenOn": "2022-08-27T00:14:34Z",
       "side": 1,
       "message": "is it possible for this to go into an infinite loop?\n\ni\u0027m imagining that\n\n1. client sends request\n2. server\u0027s `incoming[0]` handles it and then uses `outgoing[0]` to send a nested request back to the client\n3. client doesn\u0027t respond and doesn\u0027t hang up\n4. we hit this loop\n5. that thread on the server is blocked polling on `outgoing[0]`, but is not polling on `incoming[0]`",
+      "revId": "7dd3731187b687aeca6463244c51a67b21518114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312d7077_ae93a148",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-27T00:42:08Z",
+      "side": 1,
+      "message": "actually in that case, it should reuse `incoming[0]` so there wouldn\u0027t be an issue. maybe it could happen if the server spawns a thread that makes a request back to the client and then joins that thread",
+      "parentUuid": "23440f0d_3bafe08e",
       "revId": "7dd3731187b687aeca6463244c51a67b21518114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
