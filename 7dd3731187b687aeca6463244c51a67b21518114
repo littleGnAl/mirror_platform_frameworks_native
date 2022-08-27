@@ -91,6 +91,24 @@
       "parentUuid": "23440f0d_3bafe08e",
       "revId": "7dd3731187b687aeca6463244c51a67b21518114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fbf7928_ff61561e",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-27T01:00:49Z",
+      "side": 1,
+      "message": "Some more thoughts: The server can to arbitrary things. I\u0027m not expecting we\u0027ll necessarily handle all of them. Maybe we should put in a max wait time and possibly consider hitting the max to be a test failure then tackle cases as they arise.",
+      "parentUuid": "312d7077_ae93a148",
+      "revId": "7dd3731187b687aeca6463244c51a67b21518114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
