@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85bcdb25_bc5da4b9",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-29T16:50:54Z",
+      "side": 1,
+      "message": "you don\u0027t want to hold the mutex for the entire time recording is on. you want to hold it just long enough to read/write to the protected fields, i.e, take it at the start of this function and unlock it at the end. same for `stopRecordingTransactions`. added notes for `BBinder::transact` in another comment\n\nissues with the current approach\n\n* multiple threads can call `BBinder::transact`. currently the mutex doesn\u0027t help serialize write calls to the FD\n* startRecording and stopRecording could be called from different threads. it is undefined behavior to lock a mutex in one thread and then unlock it in another\n* it is undefined behavior to call `try_lock` from a thread that already locked a mutex\n\n(see https://en.cppreference.com/w/cpp/thread/mutex)",
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe4d5d72_0e318e51",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 10
@@ -19,6 +36,53 @@
         "startChar": 4,
         "endLine": 365,
         "endChar": 35
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fee2007_a9ca548f",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-29T16:50:54Z",
+      "side": 1,
+      "message": "The load should be cheap enough, but we don\u0027t want to fallback to creating extras. maybe something like\n\n```\nExtras* e \u003d mExtras.load(std::memory_order_acquire);\nif (e !\u003d nullptr \u0026\u0026 e-\u003emRecordingOn) {\n```",
+      "parentUuid": "fe4d5d72_0e318e51",
+      "range": {
+        "startLine": 365,
+        "startChar": 4,
+        "endLine": 365,
+        "endChar": 35
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "581ebb62_fa40dce5",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-29T16:50:54Z",
+      "side": 1,
+      "message": "you want to take the mutex here, maybe something like\n\n```\n    if (CC_UNLIKELY(e-\u003emRecordingOn.load(std::memory_order_acquire))) {\n        std::lock_guard\u003cstd::mutex\u003e guard(e-\u003emRecordingLock);\n        if (e-\u003emRecordingOn.load(std::memory_order_acquire)) {\n            android::BinderRecordReplay::RecordedTransaction transaction(code, flags, data, *reply,\n                                                                     err);\n            transaction.dumpToFile(e-\u003emRecordingFd);\n        }\n    }\n```\n\nsince it reads `e-\u003emRecordingOn` outside the lock, we should make that field `std::atomic\u003cbool\u003e`. then, you need to check it again inside the mutex to avoid possibly writing to a bad FD",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 5
       },
       "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
