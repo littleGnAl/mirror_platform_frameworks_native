@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1eebcfa_73b8dae0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-08-29T20:00:39Z",
+      "side": 1,
+      "message": "This looks right, I wonder if the build failures are a bug in the `rust_bindgen` Soong implementation...",
+      "revId": "6a2c62215d9b5632611484367cf8384acadb7a2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
