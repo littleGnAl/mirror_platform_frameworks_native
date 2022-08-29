@@ -137,6 +137,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24abab9a_573f3b40",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-08-29T17:37:51Z",
+      "side": 1,
+      "message": "making copies is unfortunate. this is part of why i was pushing back on the idea of adding a class. in languages with manual memory management, it isn\u0027t easy to design a clean object based API that supports both owning the data (as you want when you read) and referencing data (as you want when you write)\n\nalso, unlike a purely function based API, users can now stack allocate this class and then we can potentially run into issues with prebuilts",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5358c84_174b0700",
         "filename": "libs/binder/include/binder/Binder.h",
         "patchSetId": 10
