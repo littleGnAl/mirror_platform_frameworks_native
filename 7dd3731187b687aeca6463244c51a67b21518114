@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc291731_c5147cb4",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-29T21:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e557a9_0ea71dcf",
+      "range": {
+        "startLine": 971,
+        "startChar": 48,
+        "endLine": 971,
+        "endChar": 70
+      },
+      "revId": "7dd3731187b687aeca6463244c51a67b21518114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cd9d16e_0f0b2e78",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "0cd9d16e_0f0b2e78",
+      "revId": "7dd3731187b687aeca6463244c51a67b21518114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05fd50a1_25c4a106",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-29T21:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7948cd64_66a48dbd",
       "revId": "7dd3731187b687aeca6463244c51a67b21518114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -108,6 +150,24 @@
       "side": 1,
       "message": "\"Ack\" is usually used to mean something like \"I acknowledge what you said but will take no further action on it this CL\" while marking the comment as resolved. No need to ack if you are leaving it unresolved",
       "parentUuid": "f979db2c_f41d2399",
+      "revId": "7dd3731187b687aeca6463244c51a67b21518114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80b6fe0e_f4b9257b",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-29T21:57:31Z",
+      "side": 1,
+      "message": "I was using it total opposite sense :D. I changed it in current CL.",
+      "parentUuid": "f46ea20b_5ad98201",
       "revId": "7dd3731187b687aeca6463244c51a67b21518114",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
