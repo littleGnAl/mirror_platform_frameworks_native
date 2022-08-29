@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a30ba0f9_00aadbe8",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-29T22:37:23Z",
+      "side": 1,
+      "message": "does this happen?",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 567,
+        "endChar": 33
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb049f9b_cc3c78c7",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-29T22:37:23Z",
+      "side": 1,
+      "message": "nit: remove \u0027isPolling\u0027 variable, `if (session-\u003ehasActiveRequests()) return true;` (or if (!...) return false, see below)\n\nPro: to avoid overhead and save one line of code (since looping requires taking mutexes in the sessions).\n\nCon: if there is a deadlock, we may catch it in fewer cases",
+      "range": {
+        "startLine": 570,
+        "startChar": 18,
+        "endLine": 570,
+        "endChar": 20
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c9ae1e8_823fcc7a",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-29T22:37:23Z",
+      "side": 1,
+      "message": "if we are polling everywhere, then we should have no active requests. If we have an active request anywhere, then we should be executing code (and not polling)\n\nThe current logic is:\n\n    hasActiveRequests \u003d all(fd is polling for fd in all fds)\n    /* should be \u0027hasNoActiveRequests\u0027 */\n\nThe logic for this should be (keeping \u0027all\u0027):\n\n    hasActiveRequests \u003d not all(fd is polling for fd in all fds)\n\nOr more simply:\n\n    hasActiveRequests \u003d any(fd is not polling)",
+      "range": {
+        "startLine": 574,
+        "startChar": 11,
+        "endLine": 574,
+        "endChar": 20
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431453e7_f9a8fa58",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-29T22:37:23Z",
+      "side": 1,
+      "message": "do these two conditions ever happen? and when?",
+      "range": {
+        "startLine": 958,
+        "startChar": 12,
+        "endLine": 958,
+        "endChar": 72
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "688d6a57_07a92b9e",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-29T22:37:23Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 973,
+        "startChar": 4,
+        "endLine": 973,
+        "endChar": 10
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a1e2a81_be2d0108",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-29T22:37:23Z",
+      "side": 1,
+      "message": "or I guess I should be asking, what do you mean by \u0027active requests\u0027? Should it be \u0027hasCompletedActiveRequests()\u0027? Is that the intention?",
+      "range": {
+        "startLine": 168,
+        "startChar": 11,
+        "endLine": 168,
+        "endChar": 12
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
