@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe4d5d72_0e318e51",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Having getOrCreateExtras() called every time seems costly. Is there a more efficient way to do the recording check?",
+      "range": {
+        "startLine": 365,
+        "startChar": 4,
+        "endLine": 365,
+        "endChar": 35
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ead89f2_2028b6bc",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbca1ae2_1b045522",
+      "range": {
+        "startLine": 52,
+        "startChar": 40,
+        "endLine": 52,
+        "endChar": 75
+      },
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acaa8db9_e856e2bd",
@@ -121,6 +145,24 @@
       "side": 1,
       "message": "i wouldn\u0027t return `DEAD_OBJECT`. if the caller checked the status and propagated that up, then it would kill the current binder (because it thinks it is dead). since the current code doesn\u0027t check the return status of this function, i\u0027d suggest changing the return type of `recordTransaction` to `void`\n\nalternatively, could return a `bool` and then the caller can stop attempting to record on the first failure it sees",
       "parentUuid": "531c21b9_b807805d",
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1adb5ae0_23130f1c",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Changed to bool and logged message.",
+      "parentUuid": "dee2c3b9_5558546d",
       "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -280,6 +322,30 @@
       "side": 1,
       "message": "There is no such thing as \u0027correct\u0027, or \u0027incorrect\u0027 outside of a specific value system.\n\nHere are some things where we might need \u0027reply\u0027:\n- determining if a transaction is deterministic\n- simulating a binder with its recorded transactions\n\nWe should build a generic tool here.",
       "parentUuid": "2949b46d_d78b92d2",
+      "range": {
+        "startLine": 24,
+        "startChar": 50,
+        "endLine": 24,
+        "endChar": 68
+      },
+      "revId": "b08451966cdf272fcd722f431ae96e00f1bcce98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d9dc200_5cdbd77d",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c7a466_f1a0027f",
       "range": {
         "startLine": 24,
         "startChar": 50,

@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c71b6715_f77a3d73",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Added mutexes to both recording and file dumping. I tried to follow conventions from other places, let me know if there\u0027s a different type of mutex I should use.",
+      "parentUuid": "194c1b5a_7bbac5f1",
+      "range": {
+        "startLine": 280,
+        "startChar": 4,
+        "endLine": 280,
+        "endChar": 16
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2022d61_5dec7b62",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-08-15T18:01:43Z",
       "side": 1,
       "message": "should we return an error if stop recording is sent twice?",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 20
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1519bbd0_b10f0eee",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2022d61_5dec7b62",
       "range": {
         "startLine": 284,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37007a8a_a3f6d3e9",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "025fd7cb_201cb46e",
+      "range": {
+        "startLine": 346,
+        "startChar": 8,
+        "endLine": 346,
+        "endChar": 20
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d64682f5_a0f26bf0",
@@ -111,6 +183,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58c2194a_1949f0ed",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d64682f5_a0f26bf0",
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fb59995_9817473f",
@@ -124,6 +214,30 @@
       "writtenOn": "2022-08-15T18:01:43Z",
       "side": 1,
       "message": "use unique_fd or borrowed_fd",
+      "range": {
+        "startLine": 12,
+        "startChar": 27,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2354e34b_223b9b17",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fb59995_9817473f",
       "range": {
         "startLine": 12,
         "startChar": 27,
@@ -157,6 +271,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f728301_e7bc4814",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60bb932e_46466b6c",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95c90fa7_309e070c",
@@ -180,6 +318,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a6f205_4959d6f8",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95c90fa7_309e070c",
+      "range": {
+        "startLine": 17,
+        "startChar": 31,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26bb489d_98145d7f",
@@ -193,6 +355,30 @@
       "writtenOn": "2022-08-15T18:01:43Z",
       "side": 1,
       "message": "but we don\u0027t record the reply?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 50
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "296e7de0_ef9bbe86",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26bb489d_98145d7f",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -360,6 +546,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e26152c8_20f43d18",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac59a256_fde7be1c",
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d43c9fd_f0ab7909",
@@ -383,6 +587,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0850051_8eb17b70",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d43c9fd_f0ab7909",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 42
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fdc73e7_e345c871",
@@ -396,6 +624,24 @@
       "writtenOn": "2022-08-15T18:01:43Z",
       "side": 1,
       "message": "license header",
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "718c07f9_1fa246a4",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T09:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fdc73e7_e345c871",
       "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
