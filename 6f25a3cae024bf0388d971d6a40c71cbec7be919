@@ -22,6 +22,167 @@
       },
       "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e14f33b0_9f9211af",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-29T15:49:49Z",
+      "side": 1,
+      "message": "take a lock here and in readFromFile so we don\u0027t change values in the middle of other function calls?\nMaybe change the name of the mutex from `dumpMutex`",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5358c84_174b0700",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-29T15:49:49Z",
+      "side": 1,
+      "message": "comment descriptions here",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 41
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a281631_70b34aed",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-29T15:49:49Z",
+      "side": 1,
+      "message": "Is this needed anywhere? We could remove this default constructor if it\u0027s invalid.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a283b44_4c06d0cc",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-29T15:49:49Z",
+      "side": 1,
+      "message": "do we want these to overwrite the existing contents of the object? If so, I think we should have comments noting that.",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 43
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "013aca96_6a331e8f",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-29T15:49:49Z",
+      "side": 1,
+      "message": "Add a comment describing what makes this valid?",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c2bd48_217e8c63",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-29T15:49:49Z",
+      "side": 1,
+      "message": "add the `m` prefix to these fields. It makes it easier to understand that these are member variables in the function definitions.\n`mValid`, `mSent`, ...",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 33
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7a01a6_4c24703c",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-29T15:49:49Z",
+      "side": 1,
+      "message": "comment descriptions here",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
