@@ -67,11 +67,7 @@ void CursorMotionAccumulator::finishSync() {
 CursorInputMapper::CursorInputMapper(InputDeviceContext& deviceContext)
       : InputMapper(deviceContext) {}
 
-CursorInputMapper::~CursorInputMapper() {
-    if (mPointerController != nullptr) {
-        mPointerController->fade(PointerControllerInterface::Transition::IMMEDIATE);
-    }
-}
+CursorInputMapper::~CursorInputMapper() {}
 
 uint32_t CursorInputMapper::getSources() const {
     return mSource;
@@ -354,7 +350,8 @@ void CursorInputMapper::sync(nsecs_t when, nsecs_t readTime) {
                 mPointerController->setButtonState(currentButtonState);
             }
 
-            mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE);
+            mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE,
+                                       getDeviceId());
         }
 
         mPointerController->getPosition(&xCursorPosition, &yCursorPosition);

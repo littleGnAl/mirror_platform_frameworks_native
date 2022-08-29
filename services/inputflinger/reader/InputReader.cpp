@@ -252,6 +252,11 @@ void InputReader::removeDeviceLocked(nsecs_t when, int32_t eventHubId) {
     }
 
     std::shared_ptr<InputDevice> device = std::move(deviceIt->second);
+    std::shared_ptr<PointerControllerInterface> controller = mPointerController.lock();
+    if (controller != nullptr) {
+        // Only notify pointer controller which device removed when PointerController was created.
+        controller->deviceRemoved(device->getId());
+    }
     mDevices.erase(deviceIt);
     // Erase device from device to EventHub ids map.
     auto mapIt = mDeviceToEventHubIdsMap.find(device);

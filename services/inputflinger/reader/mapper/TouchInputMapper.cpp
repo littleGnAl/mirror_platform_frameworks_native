@@ -2475,7 +2475,8 @@ void TouchInputMapper::dispatchPointerGestures(nsecs_t when, nsecs_t readTime, u
             if (mParameters.gestureMode == Parameters::GestureMode::MULTI_TOUCH &&
                 mPointerGesture.lastGestureMode == PointerGesture::Mode::FREEFORM) {
                 // Remind the user of where the pointer is after finishing a gesture with spots.
-                mPointerController->unfade(PointerControllerInterface::Transition::GRADUAL);
+                mPointerController->unfade(PointerControllerInterface::Transition::GRADUAL,
+                                           getDeviceId());
             }
             break;
         case PointerGesture::Mode::TAP:
@@ -2486,7 +2487,8 @@ void TouchInputMapper::dispatchPointerGestures(nsecs_t when, nsecs_t readTime, u
         case PointerGesture::Mode::SWIPE:
             // Unfade the pointer when the current gesture manipulates the
             // area directly under the pointer.
-            mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE);
+            mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE,
+                                       getDeviceId());
             break;
         case PointerGesture::Mode::FREEFORM:
             // Fade the pointer when the current gesture manipulates a different
@@ -2494,7 +2496,8 @@ void TouchInputMapper::dispatchPointerGestures(nsecs_t when, nsecs_t readTime, u
             if (mParameters.gestureMode == Parameters::GestureMode::MULTI_TOUCH) {
                 mPointerController->fade(PointerControllerInterface::Transition::GRADUAL);
             } else {
-                mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE);
+                mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE,
+                                           getDeviceId());
             }
             break;
     }
@@ -3536,7 +3539,8 @@ void TouchInputMapper::dispatchPointerSimple(nsecs_t when, nsecs_t readTime, uin
         mPointerController->setPresentation(PointerControllerInterface::Presentation::POINTER);
         mPointerController->clearSpots();
         mPointerController->setButtonState(mCurrentRawState.buttonState);
-        mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE);
+        mPointerController->unfade(PointerControllerInterface::Transition::IMMEDIATE,
+                                   getDeviceId());
     } else if (!down && !hovering && (mPointerSimple.down || mPointerSimple.hovering)) {
         mPointerController->fade(PointerControllerInterface::Transition::GRADUAL);
     }

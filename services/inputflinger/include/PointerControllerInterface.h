@@ -72,8 +72,17 @@ public:
     /* Makes the pointer visible if it has faded out.
      * The pointer never unfades itself automatically.  This method must be called
      * by the client whenever the pointer is moved or a button is pressed and it
-     * wants to ensure that the pointer becomes visible again. */
-    virtual void unfade(Transition transition) = 0;
+     * wants to ensure that the pointer becomes visible again.
+     * we should record which device unfade the cursor,
+     * if it removed, the cursor should remove
+     * */
+    virtual void unfade(Transition transition, int32_t deviceId) = 0;
+
+    /**
+     * Invoke this method before the device removed, ensure cursor request by which
+     * device can removed
+     */
+    virtual void deviceRemoved(int32_t deviceId);
 
     enum class Presentation {
         // Show the mouse pointer.
