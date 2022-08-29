@@ -33,6 +33,23 @@
       "message": "hey - looking for NDK-API-Review. This doesn\u0027t actually add an NDK API, but it touches the mapping file",
       "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7449c3_433253a7",
+        "filename": "libs/binder/ndk/libbinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2022-08-29T22:58:11Z",
+      "side": 1,
+      "message": "would be good to mark the argument as non-null if you\u0027re going to crash on nullptr.",
+      "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
