@@ -22,6 +22,30 @@
       },
       "revId": "60042b01a59976787fe0b970152c4ee4673f3e4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e443888b_9ff39c38",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-29T22:04:50Z",
+      "side": 1,
+      "message": "Also the check that the caller is root like http://cs/android/frameworks/native/libs/binder/Binder.cpp;l\u003d545;rcl\u003dd39cd40b5c347b46e59cf17d024c136b5adc120c",
+      "parentUuid": "150e8b64_ce790bc9",
+      "range": {
+        "startLine": 334,
+        "startChar": 6,
+        "endLine": 334,
+        "endChar": 41
+      },
+      "revId": "60042b01a59976787fe0b970152c4ee4673f3e4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
