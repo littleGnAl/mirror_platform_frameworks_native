@@ -412,6 +412,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc684dc7_e07b3c2b",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T22:36:45Z",
+      "side": 1,
+      "message": "Copied this to my project drafting notes so I can keep it in mind.",
+      "parentUuid": "2587afce_61e9ff75",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c85bff7_2ea54470",
@@ -425,6 +449,30 @@
       "writtenOn": "2022-08-15T18:01:43Z",
       "side": 1,
       "message": "nit: consider this idea - L19 and L22 and duplicate the same information, it\u0027s nice to think about this, but it also means we are thrashing here a bit. If you don\u0027t have a step forward, consider \u0027what do I need to design or to do in order to make it to the next setp?\u0027 or \u0027what do I not understand?\u0027 - send an email or a chat? Ultimately, this project will require a large number of CLs. If you are sure some work needs to be done, do that separately and get it reviewed separately. Obviously, we are discussing the final project outline today, so this comment doesn\u0027t help - the full direction is needed in order to avoid rabbit-holing.",
+      "range": {
+        "startLine": 22,
+        "startChar": 20,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51eefde_353753c2",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T22:36:45Z",
+      "side": 1,
+      "message": "Consolidated both pieces of data into one. Will keep the notes on thrashing here in mind.",
+      "parentUuid": "2c85bff7_2ea54470",
       "range": {
         "startLine": 22,
         "startChar": 20,
@@ -472,6 +520,30 @@
       "side": 1,
       "message": "Is there something missing from this format you are interested in? Unless we want to stabilize this format right away, I think something simple like this is best and than we can adjust it as more requirements become clear.\n\nOne thing from the diagram that is missing is whether we recorded from BBinder or BpBinder. In this CL, it is only possible to record from BBinder. Maybe we could add a field for that now, or wait until we want to add support from recording from BpBinder.\n\nNot sure if it is the structure you are thinking of, but it would be nice to somehow record where the request came from so that we can record multiple binders and visualize the relationship between the various requests.\n\nGeneral thoughts on whether to save immediately vs build up something in memory first: \n\n* For the debugging use case (and maybe even for the record-replay use case), I think you really want to save the data ASAP. Maybe opening a whole new can of worms, but ideally we\u0027d save the request as soon as we got it and then save the reply as a separate entry. You could imagine that the bug happens while a request is being processed and the bug (e.g. a crash) might cause pending recording data to be lost. To start with, I\u0027m not sure if that is worth the complexity though.\n* If you don\u0027t write immediately, then you need to keep the parcel alive or create a copy of it. Holding the whole history of transactions in memory would probably OOM most services quickly, right?\n* The simpler the recording code is the better. Bugs and design issues in offline tools are usually easier to fix than issues in data generation. If I start questioning whether a debug tool is giving me accurate data, then I generally stop using that tool",
       "parentUuid": "891af777_6bf51561",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c044cb_b8daed58",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T22:36:45Z",
+      "side": 1,
+      "message": "Copied these considerations/thoughts to my project drafting notes so I can keep them in mind.",
+      "parentUuid": "af2058cc_b576da7e",
       "range": {
         "startLine": 24,
         "startChar": 0,
