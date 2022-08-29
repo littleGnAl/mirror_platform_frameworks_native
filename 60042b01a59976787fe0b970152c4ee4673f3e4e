@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "150e8b64_ce790bc9",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-08-29T22:03:01Z",
+      "side": 1,
+      "message": "we want these blocked when not on userdebug builds. See https://source.corp.google.com/android/frameworks/native/libs/binder/Binder.cpp;rcl\u003d675d757caa6a3691bb3f4ec35aaee5b39975d730;l\u003d536 for how it\u0027s done here.\nMaybe change the name of https://source.corp.google.com/search?q\u003dBINDER_RPC_DEV_SERVERS\u0026sq\u003dpackage:%5Eandroid$ to BINDER_DEBUGGABLE and use that?",
+      "range": {
+        "startLine": 334,
+        "startChar": 6,
+        "endLine": 334,
+        "endChar": 41
+      },
+      "revId": "60042b01a59976787fe0b970152c4ee4673f3e4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
