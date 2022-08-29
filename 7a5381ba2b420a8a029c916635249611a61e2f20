@@ -529,6 +529,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3088f0c5_2ff69fca",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T18:04:24Z",
+      "side": 1,
+      "message": "Yeah I think there could be use cases where we want to write to something other than a normal file.",
+      "parentUuid": "6db0ba9e_163f7b9b",
+      "range": {
+        "startLine": 30,
+        "startChar": 58,
+        "endLine": 30,
+        "endChar": 68
+      },
+      "revId": "7a5381ba2b420a8a029c916635249611a61e2f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac59a256_fde7be1c",

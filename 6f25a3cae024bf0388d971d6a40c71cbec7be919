@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82119056_428940a0",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T18:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85bcdb25_bc5da4b9",
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe4d5d72_0e318e51",
@@ -65,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "259d3e46_c992653c",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T18:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fee2007_a9ca548f",
+      "range": {
+        "startLine": 365,
+        "startChar": 4,
+        "endLine": 365,
+        "endChar": 35
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "581ebb62_fa40dce5",
@@ -78,6 +120,30 @@
       "writtenOn": "2022-08-29T16:50:54Z",
       "side": 1,
       "message": "you want to take the mutex here, maybe something like\n\n```\n    if (CC_UNLIKELY(e-\u003emRecordingOn.load(std::memory_order_acquire))) {\n        std::lock_guard\u003cstd::mutex\u003e guard(e-\u003emRecordingLock);\n        if (e-\u003emRecordingOn.load(std::memory_order_acquire)) {\n            android::BinderRecordReplay::RecordedTransaction transaction(code, flags, data, *reply,\n                                                                     err);\n            transaction.dumpToFile(e-\u003emRecordingFd);\n        }\n    }\n```\n\nsince it reads `e-\u003emRecordingOn` outside the lock, we should make that field `std::atomic\u003cbool\u003e`. then, you need to check it again inside the mutex to avoid possibly writing to a bad FD",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 5
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cfa3fcf_8ab0444d",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T18:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "581ebb62_fa40dce5",
       "range": {
         "startLine": 366,
         "startChar": 0,
@@ -124,6 +190,30 @@
       "writtenOn": "2022-08-29T16:53:15Z",
       "side": 1,
       "message": "don\u0027t bother with a mutex inside `RecordedTransaction`. it is a transient object that is only visible to one thread at the moment (and IMO if we add more use cases later, it would make the most sense to have the callers manage synchronization)",
+      "parentUuid": "e14f33b0_9f9211af",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 41
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a468c76e_eb6611a6",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T18:04:24Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "e14f33b0_9f9211af",
       "range": {
         "startLine": 37,
@@ -205,6 +295,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91000ea5_6cac3a8a",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T18:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5358c84_174b0700",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 41
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a281631_70b34aed",
@@ -218,6 +332,30 @@
       "writtenOn": "2022-08-29T15:49:49Z",
       "side": 1,
       "message": "Is this needed anywhere? We could remove this default constructor if it\u0027s invalid.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "784f3058_f0c45d67",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T18:04:24Z",
+      "side": 1,
+      "message": "It\u0027s used in the analyzer for inspecting and replaying:\n```\nRecordedTransaction transaction;\nwhile (transaction.readFromFile(fd)) {\n    // inspect or replay\n}\n```",
+      "parentUuid": "7a281631_70b34aed",
       "range": {
         "startLine": 40,
         "startChar": 4,
@@ -251,6 +389,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "379c0214_b6dd1617",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T18:04:24Z",
+      "side": 1,
+      "message": "Yes the intent is to overwrite. Added a comment for that.",
+      "parentUuid": "2a283b44_4c06d0cc",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 43
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "013aca96_6a331e8f",
@@ -264,6 +426,30 @@
       "writtenOn": "2022-08-29T15:49:49Z",
       "side": 1,
       "message": "Add a comment describing what makes this valid?",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a881065_e622e1d4",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T18:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "013aca96_6a331e8f",
       "range": {
         "startLine": 52,
         "startChar": 4,
@@ -297,6 +483,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab8a579_c6e2b8ea",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T18:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9c2bd48_217e8c63",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 33
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a7a01a6_4c24703c",
@@ -310,6 +520,30 @@
       "writtenOn": "2022-08-29T15:49:49Z",
       "side": 1,
       "message": "comment descriptions here",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "6f25a3cae024bf0388d971d6a40c71cbec7be919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4c9e557_dc999863",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-08-29T18:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a7a01a6_4c24703c",
       "range": {
         "startLine": 54,
         "startChar": 0,
