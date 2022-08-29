@@ -46,6 +46,30 @@
       },
       "revId": "8d7f4bd689c31e68b39213d9d4a654155cbfe082",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d8a67a_944080b9",
+        "filename": "libs/binder/tests/binderRpcTestCommon.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-29T22:23:10Z",
+      "side": 0,
+      "message": "Can we use the internal RpcServer in both cases still, or switch the interface to be a std::function\u003cint32_T()\u003e? I feel like we could make a slight abstraction to maintain the same functionality with duplicating this function and requiring things in a few files.",
+      "parentUuid": "eef82648_458252d5",
+      "range": {
+        "startLine": 220,
+        "startChar": 11,
+        "endLine": 220,
+        "endChar": 23
+      },
+      "revId": "8d7f4bd689c31e68b39213d9d4a654155cbfe082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
