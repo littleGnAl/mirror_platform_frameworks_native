@@ -322,7 +322,8 @@ SkiaGLRenderEngine::SkiaGLRenderEngine(const RenderEngineCreationArgs& args, EGL
     mGrContext = GrDirectContext::MakeGL(glInterface, options);
     if (supportsProtectedContent()) {
         useProtectedContext(true);
-        mProtectedGrContext = GrDirectContext::MakeGL(glInterface, options);
+        mProtectedGrContext =
+                GrDirectContext::MakeGLAndroidFramework(glInterface, options, GrProtected::kYes);
         useProtectedContext(false);
     }
 
