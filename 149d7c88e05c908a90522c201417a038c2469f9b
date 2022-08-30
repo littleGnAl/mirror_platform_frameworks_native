@@ -135,6 +135,30 @@
       },
       "revId": "149d7c88e05c908a90522c201417a038c2469f9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08b89df_b09a198e",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1490,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-30T21:52:45Z",
+      "side": 1,
+      "message": "Interesting, thanks for pointing that out. We should probably change that at some point..",
+      "parentUuid": "b471c045_359a6df1",
+      "range": {
+        "startLine": 1490,
+        "startChar": 23,
+        "endLine": 1490,
+        "endChar": 43
+      },
+      "revId": "149d7c88e05c908a90522c201417a038c2469f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
