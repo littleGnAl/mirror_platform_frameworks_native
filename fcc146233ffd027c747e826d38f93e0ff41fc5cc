@@ -68,6 +68,24 @@
       "parentUuid": "ef7449c3_433253a7",
       "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a5d1c46_33a803ce",
+        "filename": "libs/binder/ndk/libbinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2022-08-30T23:29:23Z",
+      "side": 1,
+      "message": "See for example: https://source.corp.google.com/android/frameworks/native/libs/nativewindow/include/android/hardware_buffer.h;rcl\u003d415544059b92853cf4cfd3af1488e07c348b3ed0;l\u003d376\n\n    int AHardwareBuffer_allocate(const AHardwareBuffer_Desc* _Nonnull desc,",
+      "parentUuid": "1495c665_9faa2d4b",
+      "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
