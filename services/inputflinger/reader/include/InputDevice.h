@@ -100,9 +100,6 @@ public:
     void disableSensor(InputDeviceSensorType sensorType);
     void flushSensor(InputDeviceSensorType sensorType);
 
-    std::optional<int32_t> getBatteryCapacity();
-    std::optional<int32_t> getBatteryStatus();
-
     bool setLightColor(int32_t lightId, int32_t color);
     bool setLightPlayerId(int32_t lightId, int32_t playerId);
     std::optional<int32_t> getLightColor(int32_t lightId);
@@ -359,11 +356,11 @@ public:
     }
 
     inline std::optional<int32_t> getBatteryCapacity(int32_t batteryId) {
-        return mEventHub->getBatteryCapacity(mId, batteryId);
+        return mEventHub->getBatteryCapacity(mId);
     }
 
     inline std::optional<int32_t> getBatteryStatus(int32_t batteryId) {
-        return mEventHub->getBatteryStatus(mId, batteryId);
+        return mEventHub->getBatteryStatus(mId);
     }
 
     inline bool hasAbsoluteAxis(int32_t code) const {

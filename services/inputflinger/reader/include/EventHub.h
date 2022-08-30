@@ -334,11 +334,10 @@ public:
     virtual std::vector<int32_t> getVibratorIds(int32_t deviceId) = 0;
 
     /* Query battery level. */
-    virtual std::optional<int32_t> getBatteryCapacity(int32_t deviceId,
-                                                      int32_t batteryId) const = 0;
+    virtual std::optional<int32_t> getBatteryCapacity(int32_t deviceId) const = 0;
 
     /* Query battery status. */
-    virtual std::optional<int32_t> getBatteryStatus(int32_t deviceId, int32_t batteryId) const = 0;
+    virtual std::optional<int32_t> getBatteryStatus(int32_t deviceId) const = 0;
 
     /* Requests the EventHub to reopen all input devices on the next call to getEvents(). */
     virtual void requestReopenDevices() = 0;
@@ -520,11 +519,9 @@ public:
 
     void monitor() override final;
 
-    std::optional<int32_t> getBatteryCapacity(int32_t deviceId,
-                                              int32_t batteryId) const override final;
+    std::optional<int32_t> getBatteryCapacity(int32_t deviceId) const override final;
 
-    std::optional<int32_t> getBatteryStatus(int32_t deviceId,
-                                            int32_t batteryId) const override final;
+    std::optional<int32_t> getBatteryStatus(int32_t deviceId) const override final;
 
     bool isDeviceEnabled(int32_t deviceId) override final;
 
