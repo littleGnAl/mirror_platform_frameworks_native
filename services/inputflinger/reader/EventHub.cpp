@@ -1485,25 +1485,30 @@ EventHub::Device* EventHub::getDeviceByFdLocked(int fd) const {
 }
 
 std::optional<int32_t> EventHub::getBatteryCapacity(int32_t deviceId, int32_t batteryId) const {
-    std::scoped_lock _l(mLock);
+    std::string path;
 
-    const auto infos = getBatteryInfoLocked(deviceId);
-    auto it = infos.find(batteryId);
-    if (it == infos.end()) {
-        return std::nullopt;
+    {
+        std::scoped_lock _l(mLock);
+
+        const auto infos = getBatteryInfoLocked(deviceId);
+        auto it = infos.find(batteryId);
+        if (it == infos.end()) {
+            return std::nullopt;
+        }
+        path = it->second.path.c_str();
     }
+
     std::string buffer;
 
     // Some devices report battery capacity as an integer through the "capacity" file
-    if (base::ReadFileToString(it->second.path / BATTERY_NODES.at(InputBatteryClass::CAPACITY),
+    if (base::ReadFileToString(path + "/" + BATTERY_NODES.at(InputBatteryClass::CAPACITY),
                                &buffer)) {
         return std::stoi(base::Trim(buffer));
     }
 
     // Other devices report capacity as an enum value POWER_SUPPLY_CAPACITY_LEVEL_XXX
     // These values are taken from kernel source code include/linux/power_supply.h
-    if (base::ReadFileToString(it->second.path /
-                                       BATTERY_NODES.at(InputBatteryClass::CAPACITY_LEVEL),
+    if (base::ReadFileToString(path + "/" + BATTERY_NODES.at(InputBatteryClass::CAPACITY_LEVEL),
                                &buffer)) {
         // Remove any white space such as trailing new line
         const auto levelIt = BATTERY_LEVEL.find(base::Trim(buffer));
@@ -1516,15 +1521,21 @@ std::optional<int32_t> EventHub::getBatteryCapacity(int32_t deviceId, int32_t ba
 }
 
 std::optional<int32_t> EventHub::getBatteryStatus(int32_t deviceId, int32_t batteryId) const {
-    std::scoped_lock _l(mLock);
-    const auto infos = getBatteryInfoLocked(deviceId);
-    auto it = infos.find(batteryId);
-    if (it == infos.end()) {
-        return std::nullopt;
+    std::string path;
+
+    {
+        std::scoped_lock _l(mLock);
+        const auto infos = getBatteryInfoLocked(deviceId);
+        auto it = infos.find(batteryId);
+        if (it == infos.end()) {
+            return std::nullopt;
+        }
+        path = it->second.path.c_str();
     }
+
     std::string buffer;
 
-    if (!base::ReadFileToString(it->second.path / BATTERY_NODES.at(InputBatteryClass::STATUS),
+    if (!base::ReadFileToString(path + "/" + BATTERY_NODES.at(InputBatteryClass::STATUS),
                                 &buffer)) {
         ALOGE("Failed to read sysfs battery info: %s", strerror(errno));
         return std::nullopt;
