@@ -547,14 +547,6 @@ void InputDevice::cancelTouch(nsecs_t when, nsecs_t readTime) {
     for_each_mapper([when, readTime](InputMapper& mapper) { mapper.cancelTouch(when, readTime); });
 }
 
-std::optional<int32_t> InputDevice::getBatteryCapacity() {
-    return mController ? mController->getBatteryCapacity(DEFAULT_BATTERY_ID) : std::nullopt;
-}
-
-std::optional<int32_t> InputDevice::getBatteryStatus() {
-    return mController ? mController->getBatteryStatus(DEFAULT_BATTERY_ID) : std::nullopt;
-}
-
 bool InputDevice::setLightColor(int32_t lightId, int32_t color) {
     return mController ? mController->setLightColor(lightId, color) : false;
 }

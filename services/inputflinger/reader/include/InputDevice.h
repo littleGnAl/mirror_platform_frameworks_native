@@ -100,9 +100,6 @@ public:
     void disableSensor(InputDeviceSensorType sensorType);
     void flushSensor(InputDeviceSensorType sensorType);
 
-    std::optional<int32_t> getBatteryCapacity();
-    std::optional<int32_t> getBatteryStatus();
-
     bool setLightColor(int32_t lightId, int32_t color);
     bool setLightPlayerId(int32_t lightId, int32_t playerId);
     std::optional<int32_t> getLightColor(int32_t lightId);

@@ -979,13 +979,9 @@ private:
 
     std::vector<int32_t> getVibratorIds(int32_t deviceId) override { return mVibrators; };
 
-    std::optional<int32_t> getBatteryCapacity(int32_t, int32_t) const override {
-        return BATTERY_CAPACITY;
-    }
+    std::optional<int32_t> getBatteryCapacity(int32_t) const override { return BATTERY_CAPACITY; }
 
-    std::optional<int32_t> getBatteryStatus(int32_t, int32_t) const override {
-        return BATTERY_STATUS;
-    }
+    std::optional<int32_t> getBatteryStatus(int32_t) const override { return BATTERY_STATUS; }
 
     const std::vector<int32_t> getRawBatteryIds(int32_t deviceId) { return {}; }
 
