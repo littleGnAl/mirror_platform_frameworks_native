@@ -50,6 +50,24 @@
       "message": "would be good to mark the argument as non-null if you\u0027re going to crash on nullptr.",
       "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1495c665_9faa2d4b",
+        "filename": "libs/binder/ndk/libbinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-30T23:11:35Z",
+      "side": 1,
+      "message": "This is somewhat of a common (anti-)pattern in libbinder_ndk. Do you mean in a comment on the header? There isn\u0027t some new C++ annotation I should be aware of? I added the comment.",
+      "parentUuid": "ef7449c3_433253a7",
+      "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
