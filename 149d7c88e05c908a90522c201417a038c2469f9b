@@ -16,6 +16,29 @@
       "message": "Seems reasonable to me, but I\u0027ll let Siarhei confirm since I\u0027m not very familiar with this code yet.",
       "revId": "149d7c88e05c908a90522c201417a038c2469f9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95303bfa_c4bb19aa",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1490,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-30T17:28:24Z",
+      "side": 1,
+      "message": "This is the only place where we need a lock.\n\nI think the right way to do this would be to create a new method:\n\n```\nconst std::unordered_map\u003cint32_t, RawBatteryInfo\u003e\u0026 EventHub::getBatteryInfo(\n        int32_t deviceId) const {\n        std::scoped_lock lock(mLock);\n        return getBatteryInfoLocked(deviceId);\n```\n\nand then in this function, delete the lock from L1488 and call getBatteryInfo instead.\n\nSame applies to getBatteryStatus.",
+      "range": {
+        "startLine": 1490,
+        "startChar": 23,
+        "endLine": 1490,
+        "endChar": 43
+      },
+      "revId": "149d7c88e05c908a90522c201417a038c2469f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
