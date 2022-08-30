@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fde0b879_7a7dc195",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-08-30T10:19:20Z",
+      "side": 1,
+      "message": "Seems reasonable to me, but I\u0027ll let Siarhei confirm since I\u0027m not very familiar with this code yet.",
+      "revId": "149d7c88e05c908a90522c201417a038c2469f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
