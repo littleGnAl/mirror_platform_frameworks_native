@@ -70,6 +70,30 @@
       },
       "revId": "8d7f4bd689c31e68b39213d9d4a654155cbfe082",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad3869a1_f9158a76",
+        "filename": "libs/binder/tests/binderRpcTestCommon.h",
+        "patchSetId": 28
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-08-30T05:50:46Z",
+      "side": 0,
+      "message": "Moving the code to an internal generic function seems to have done the trick.",
+      "parentUuid": "b0d8a67a_944080b9",
+      "range": {
+        "startLine": 220,
+        "startChar": 11,
+        "endLine": 220,
+        "endChar": 23
+      },
+      "revId": "8d7f4bd689c31e68b39213d9d4a654155cbfe082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
