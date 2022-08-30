@@ -1492,6 +1492,9 @@ std::optional<int32_t> EventHub::getBatteryCapacity(int32_t deviceId, int32_t ba
     if (it == infos.end()) {
         return std::nullopt;
     }
+
+    mLock.unlock();
+
     std::string buffer;
 
     // Some devices report battery capacity as an integer through the "capacity" file
@@ -1522,6 +1525,9 @@ std::optional<int32_t> EventHub::getBatteryStatus(int32_t deviceId, int32_t batt
     if (it == infos.end()) {
         return std::nullopt;
     }
+
+    mLock.unlock();
+
     std::string buffer;
 
     if (!base::ReadFileToString(it->second.path / BATTERY_NODES.at(InputBatteryClass::STATUS),
