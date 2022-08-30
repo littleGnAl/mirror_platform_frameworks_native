@@ -63,6 +63,30 @@
       },
       "revId": "149d7c88e05c908a90522c201417a038c2469f9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c8a50bf_8f24c94a",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1490,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-08-30T18:06:00Z",
+      "side": 1,
+      "message": "If we make a getBatteryInfo function, I don\u0027t think we should return a const-ref, since if we don\u0027t copy the result we\u0027d be reading battery info directly without holding the lock.\n\nIf we want to avoid the copy, we can keep this change as-is (or use a new {} scope for the locked work, and copy just the path to outside that scope).",
+      "parentUuid": "95303bfa_c4bb19aa",
+      "range": {
+        "startLine": 1490,
+        "startChar": 23,
+        "endLine": 1490,
+        "endChar": 43
+      },
+      "revId": "149d7c88e05c908a90522c201417a038c2469f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
