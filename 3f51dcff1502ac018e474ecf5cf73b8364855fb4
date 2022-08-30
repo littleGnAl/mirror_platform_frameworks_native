@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c82b836_baaca0db",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-30T00:22:24Z",
+      "side": 1,
+      "message": "This shouldn\u0027t happen as long as mSessions is used with mLock on. If a friend class of RpcServer somehow directly modifies this member, then this may happen. I didn\u0027t find any occurrence for direct modification though. Removed check.",
+      "parentUuid": "a30ba0f9_00aadbe8",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 567,
+        "endChar": 33
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb049f9b_cc3c78c7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-29T22:37:23Z",
       "side": 1,
       "message": "nit: remove \u0027isPolling\u0027 variable, `if (session-\u003ehasActiveRequests()) return true;` (or if (!...) return false, see below)\n\nPro: to avoid overhead and save one line of code (since looping requires taking mutexes in the sessions).\n\nCon: if there is a deadlock, we may catch it in fewer cases",
+      "range": {
+        "startLine": 570,
+        "startChar": 18,
+        "endLine": 570,
+        "endChar": 20
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2debf1b5_a5fc9036",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-30T00:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb049f9b_cc3c78c7",
       "range": {
         "startLine": 570,
         "startChar": 18,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52613a02_d23fdb1a",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-30T00:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c9ae1e8_823fcc7a",
+      "range": {
+        "startLine": 574,
+        "startChar": 11,
+        "endLine": 574,
+        "endChar": 20
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "431453e7_f9a8fa58",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-29T22:37:23Z",
       "side": 1,
       "message": "do these two conditions ever happen? and when?",
+      "range": {
+        "startLine": 958,
+        "startChar": 12,
+        "endLine": 958,
+        "endChar": 72
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a02fb56_2f51f11e",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-30T00:22:24Z",
+      "side": 1,
+      "message": "Removed it. RpcState, RpcServer and RpcServerTrusty can still directly modify these members without holding mutex. I am not aware of any mechanism by which we can enforce use of proper locking on these members though if they were accessed directly.",
+      "parentUuid": "431453e7_f9a8fa58",
       "range": {
         "startLine": 958,
         "startChar": 12,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a084b5_16cc2480",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-30T00:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "688d6a57_07a92b9e",
+      "range": {
+        "startLine": 973,
+        "startChar": 4,
+        "endLine": 973,
+        "endChar": 10
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a1e2a81_be2d0108",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-08-29T22:37:23Z",
       "side": 1,
       "message": "or I guess I should be asking, what do you mean by \u0027active requests\u0027? Should it be \u0027hasCompletedActiveRequests()\u0027? Is that the intention?",
+      "range": {
+        "startLine": 168,
+        "startChar": 11,
+        "endLine": 168,
+        "endChar": 12
+      },
+      "revId": "3f51dcff1502ac018e474ecf5cf73b8364855fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b11884_41ad42ff",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-08-30T00:22:24Z",
+      "side": 1,
+      "message": "Updated logic",
+      "parentUuid": "5a1e2a81_be2d0108",
       "range": {
         "startLine": 168,
         "startChar": 11,
