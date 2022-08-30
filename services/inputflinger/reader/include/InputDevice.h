@@ -102,6 +102,7 @@ public:
 
     std::optional<int32_t> getBatteryCapacity();
     std::optional<int32_t> getBatteryStatus();
+    std::optional<int32_t> getBatteryId();
 
     bool setLightColor(int32_t lightId, int32_t color);
     bool setLightPlayerId(int32_t lightId, int32_t playerId);

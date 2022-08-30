@@ -705,21 +705,35 @@ void InputReader::flushSensor(int32_t deviceId, InputDeviceSensorType sensorType
 }
 
 std::optional<int32_t> InputReader::getBatteryCapacity(int32_t deviceId) {
-    std::scoped_lock _l(mLock);
+    InputDevice* device = 0;
+    std::optional<int32_t> batteryId;
 
-    InputDevice* device = findInputDeviceLocked(deviceId);
-    if (device) {
-        return device->getBatteryCapacity();
+    {
+        std::scoped_lock _l(mLock);
+
+        InputDevice* device = findInputDeviceLocked(deviceId);
+        if (device) batteryId = device->getBatteryId();
+    }
+
+    if (device && batteryId.has_value()) {
+        return mEventHub->getBatteryCapacity(deviceId, batteryId.value());
     }
     return std::nullopt;
 }
 
 std::optional<int32_t> InputReader::getBatteryStatus(int32_t deviceId) {
-    std::scoped_lock _l(mLock);
+    InputDevice* device = 0;
+    std::optional<int32_t> batteryId;
 
-    InputDevice* device = findInputDeviceLocked(deviceId);
-    if (device) {
-        return device->getBatteryStatus();
+    {
+        std::scoped_lock _l(mLock);
+
+        InputDevice* device = findInputDeviceLocked(deviceId);
+        if (device) batteryId = device->getBatteryId();
+    }
+
+    if (device && batteryId.has_value()) {
+        return mEventHub->getBatteryStatus(deviceId, batteryId.value());
     }
     return std::nullopt;
 }
