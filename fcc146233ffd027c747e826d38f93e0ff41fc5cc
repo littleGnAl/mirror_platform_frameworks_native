@@ -140,6 +140,24 @@
       "parentUuid": "27a5938b_da68b5da",
       "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019cd315_64acc419",
+        "filename": "libs/binder/ndk/libbinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-08-31T20:16:47Z",
+      "side": 1,
+      "message": "\u003e bionic also only uses _Nullable because we\u0027ve had bad experiences with compilers seeing _Nonnull as an excuse to eliminate null checks _inside_ the implementation\n\nafaik this applies to `__attribute__((nonnull))`, but not `_Nonnull`. Maybe that\u0027s changed?",
+      "parentUuid": "15dd3a05_f4b5169d",
+      "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
