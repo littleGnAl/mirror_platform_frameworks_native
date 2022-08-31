@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3f161d_becc0523",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-31T14:20:53Z",
+      "side": 0,
+      "message": "let\u0027s keep this vs \"/\"",
+      "range": {
+        "startLine": 1498,
+        "startChar": 47,
+        "endLine": 1498,
+        "endChar": 48
+      },
+      "revId": "3bb8113739642373996b46d640fba2d7753f2c02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
