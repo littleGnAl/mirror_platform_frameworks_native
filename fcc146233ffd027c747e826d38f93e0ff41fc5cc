@@ -158,6 +158,24 @@
       "parentUuid": "15dd3a05_f4b5169d",
       "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a915f3_0605510b",
+        "filename": "libs/binder/ndk/libbinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-08-31T20:32:03Z",
+      "side": 1,
+      "message": "(i couldn\u0027t remember whether or not that was true, and since i don\u0027t have concrete examples of having used it in bionic, i wasn\u0027t prepared to make the claim. but a solid \"maybe\", and definitely a good point that you _really_ don\u0027t want to use the attributes --- definitely use these instead.)",
+      "parentUuid": "019cd315_64acc419",
+      "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
