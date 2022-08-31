@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "663753a1_2977bfaa",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1488,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-08-31T18:37:34Z",
+      "side": 1,
+      "message": "Also, let\u0027s rename the variable to `batteryPath` to avoid confusion with the sysfs path.\n\n    std::filesystem::path batteryPath;",
+      "parentUuid": "d3145825_1a4f4d88",
+      "range": {
+        "startLine": 1488,
+        "startChar": 4,
+        "endLine": 1488,
+        "endChar": 15
+      },
+      "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9690a9be_50cecdf1",
         "filename": "services/inputflinger/reader/InputReader.cpp",
         "patchSetId": 3
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "The only idea that I currently have is to do the following:\n\n1. Add API \u0027getBatteryId\u0027 to InputDevice\n2. Call `device-\u003egetBatteryId` while holding the reader lock\n3. Outside of the reader lock, call EventHub-\u003egetBatteryCapacity(batteryId).\n\nThoughts on that?",
       "parentUuid": "febe6ec9_ce5c12d6",
+      "range": {
+        "startLine": 732,
+        "startChar": 15,
+        "endLine": 732,
+        "endChar": 42
+      },
+      "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2f852a_a90dbccc",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-08-31T18:37:34Z",
+      "side": 1,
+      "message": "+1 We shouldn\u0027t be interacting with InputDevice outside of the lock in our current architecture.\n\nHowever, we can make use of the fact that InputDevice is already stored using a shared_ptr to work around the lifetime issues, and const-correctness to deal with thread safety.\n\nThe InputDevice battery/lights methods that read/write from sysfs can be const since they don\u0027t modify state, but instead are used for the side effects of the EventHub call. This means we can make all of these methods as const throughout InputReader.\n\nNext, we can add an InputReader method like so:\n\n    std::shared_ptr\u003cconst InputDevice\u003e InputReader::getInputDevice(deviceId) const;\n    \nThen here in getBatteryStatus, without holding the lock, we can do:\n\n    const std::shared_ptr\u003cconst InputDevice\u003e device \u003d getInputDevice(deviceId);\n    return device ? device-\u003egetBatteryStatus() : std::nullopt;\n    \nWe should do this with all the EventHub methods for battery/lights. WDYT?",
+      "parentUuid": "9690a9be_50cecdf1",
       "range": {
         "startLine": 732,
         "startChar": 15,
