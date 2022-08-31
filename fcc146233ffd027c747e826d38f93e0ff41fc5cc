@@ -86,6 +86,24 @@
       "parentUuid": "1495c665_9faa2d4b",
       "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5f9e14_2f4cc040",
+        "filename": "libs/binder/ndk/libbinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-08-31T15:23:12Z",
+      "side": 1,
+      "message": "platform API so less concerned about annotations but _Nonnull and _Nullable are the relevant Clang annotations we try to also use on NDK methods, see https://clang.llvm.org/docs/AttributeReference.html#nullability-attributes for the docs on them",
+      "parentUuid": "8a5d1c46_33a803ce",
+      "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
