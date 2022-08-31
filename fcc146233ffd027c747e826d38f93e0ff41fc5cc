@@ -104,6 +104,24 @@
       "parentUuid": "8a5d1c46_33a803ce",
       "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a5938b_da68b5da",
+        "filename": "libs/binder/ndk/libbinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-08-31T18:42:32Z",
+      "side": 1,
+      "message": "Are you kidding me!? I\u0027ve searched for this for years, including again when Eddie made the comment. How did I not find this? Ummmm. Let me follow-up, across this API surface and elsewhere. This is great. One of the major gaps in C++. Thank you!",
+      "parentUuid": "cd5f9e14_2f4cc040",
+      "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
