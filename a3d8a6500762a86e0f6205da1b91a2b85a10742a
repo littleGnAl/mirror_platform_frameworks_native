@@ -86,6 +86,30 @@
       },
       "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f0c9ce_786193d6",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-31T18:16:20Z",
+      "side": 1,
+      "message": "The only idea that I currently have is to do the following:\n\n1. Add API \u0027getBatteryId\u0027 to InputDevice\n2. Call `device-\u003egetBatteryId` while holding the reader lock\n3. Outside of the reader lock, call EventHub-\u003egetBatteryCapacity(batteryId).\n\nThoughts on that?",
+      "parentUuid": "febe6ec9_ce5c12d6",
+      "range": {
+        "startLine": 732,
+        "startChar": 15,
+        "endLine": 732,
+        "endChar": 42
+      },
+      "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
