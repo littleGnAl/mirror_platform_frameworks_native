@@ -122,6 +122,24 @@
       "parentUuid": "cd5f9e14_2f4cc040",
       "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15dd3a05_f4b5169d",
+        "filename": "libs/binder/ndk/libbinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-08-31T19:12:54Z",
+      "side": 1,
+      "message": "clang\u0027s a bit annoying with having some functions in a header annotated and others not, so you probably will want to do all or nothing.\n\nbionic also only uses _Nullable because we\u0027ve had bad experiences with compilers seeing _Nonnull as an excuse to eliminate null checks _inside_ the implementation (where our aim was just to have compile-time _as well as_ runtime checking).",
+      "parentUuid": "27a5938b_da68b5da",
+      "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
