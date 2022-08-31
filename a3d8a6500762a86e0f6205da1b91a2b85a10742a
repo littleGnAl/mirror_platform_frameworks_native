@@ -62,6 +62,30 @@
       },
       "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "febe6ec9_ce5c12d6",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1965025
+      },
+      "writtenOn": "2022-08-31T17:01:27Z",
+      "side": 1,
+      "message": "Any suggestions for this? Create a separate lock for device, not share with `InputReader::processEventsLocked`?",
+      "parentUuid": "9690a9be_50cecdf1",
+      "range": {
+        "startLine": 732,
+        "startChar": 15,
+        "endLine": 732,
+        "endChar": 42
+      },
+      "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
