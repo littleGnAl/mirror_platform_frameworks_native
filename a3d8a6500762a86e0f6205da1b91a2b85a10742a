@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dffbb30_64fa6236",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1965025
+      },
+      "writtenOn": "2022-08-31T13:47:00Z",
+      "side": 1,
+      "message": "Now calling `InputDevice.batteryState.capacity` and `InputDevice.batteryState.status` does not block other events. I updated the commit message.\n\n`dumpsys input` still blocks other UI events, it must holds another lock. I\u0027ll investigate later.",
+      "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
