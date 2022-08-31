@@ -16,6 +16,52 @@
       "message": "Now calling `InputDevice.batteryState.capacity` and `InputDevice.batteryState.status` does not block other events. I updated the commit message.\n\n`dumpsys input` still blocks other UI events, it must holds another lock. I\u0027ll investigate later.",
       "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3145825_1a4f4d88",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1488,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-31T16:04:48Z",
+      "side": 1,
+      "message": "you could probably make this `std::filesystem::path` instead of string to get around the compiler error",
+      "range": {
+        "startLine": 1488,
+        "startChar": 4,
+        "endLine": 1488,
+        "endChar": 15
+      },
+      "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9690a9be_50cecdf1",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-08-31T16:04:48Z",
+      "side": 1,
+      "message": "i dont think you can do this. InputDevice can change underneath if you aren\u0027t holding the lock",
+      "range": {
+        "startLine": 732,
+        "startChar": 15,
+        "endLine": 732,
+        "endChar": 42
+      },
+      "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
