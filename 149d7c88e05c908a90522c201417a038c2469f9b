@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f841128_d0866285",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1965025
+      },
+      "writtenOn": "2022-08-31T13:02:33Z",
+      "side": 1,
+      "message": "Hello guys,\nIt\u0027s the my first time to upload patch for review.\nI modified the patch locally and use `git commit --amend`, it always generated a new `Change-Id` at the bottom of commit message, then `repo upload` creates a new review.\n\nHow can I let it reuse the previous `Change-Id` and upload here as a new patch set?",
+      "revId": "149d7c88e05c908a90522c201417a038c2469f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95303bfa_c4bb19aa",
