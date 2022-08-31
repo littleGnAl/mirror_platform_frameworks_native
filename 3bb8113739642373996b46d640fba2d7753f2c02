@@ -22,6 +22,30 @@
       },
       "revId": "3bb8113739642373996b46d640fba2d7753f2c02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce7a8826_2e1e930c",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1965025
+      },
+      "writtenOn": "2022-08-31T14:29:22Z",
+      "side": 0,
+      "message": "I got compiler error without making it a string.\n```\nframeworks/native/services/inputflinger/reader/EventHub.cpp:1459:38: error: invalid operands to binary expression (\u0027std::string\u0027 (aka \u0027basic_string\u003cchar\u003e\u0027) and \u0027const std::unordered_map\u003candroid::InputBat\nteryClass, std::basic_string\u003cchar\u003e\u003e::mapped_type\u0027 (aka \u0027const std::basic_string\u003cchar\u003e\u0027))\n    if (!base::ReadFileToString(path / BATTERY_NODES.at(InputBatteryClass::STATUS),\n                                ~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n```",
+      "parentUuid": "df3f161d_becc0523",
+      "range": {
+        "startLine": 1498,
+        "startChar": 47,
+        "endLine": 1498,
+        "endChar": 48
+      },
+      "revId": "3bb8113739642373996b46d640fba2d7753f2c02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
