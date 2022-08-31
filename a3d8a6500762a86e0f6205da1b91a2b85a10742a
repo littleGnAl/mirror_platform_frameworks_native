@@ -182,6 +182,30 @@
       },
       "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e15528f_625c5b66",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-08-31T19:40:14Z",
+      "side": 1,
+      "message": "Actually, I think I spoke too soon, and that the approach of using a const InputDevice just moves the locking problem from InputReader to InputDevice. Sorry about that!\n\nFor now, I think Siarhei\u0027s suggestion makes sense, although we\u0027d also have to get the EventHub id alongside the battery id to call EventHub-\u003egetBatteryCapacity().\n\nThe reading/writing lights info could possibly lead to the same issue of holding the lock for too long, although i\u0027m not sure if there are any peripherals where we can reproduce the problem by reading lights.",
+      "parentUuid": "009b27b2_1624acc9",
+      "range": {
+        "startLine": 732,
+        "startChar": 15,
+        "endLine": 732,
+        "endChar": 42
+      },
+      "revId": "a3d8a6500762a86e0f6205da1b91a2b85a10742a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
