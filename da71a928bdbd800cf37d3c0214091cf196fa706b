@@ -22,6 +22,30 @@
       },
       "revId": "da71a928bdbd800cf37d3c0214091cf196fa706b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a75f70_662bbf89",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1947750
+      },
+      "writtenOn": "2022-09-01T20:30:02Z",
+      "side": 1,
+      "message": "Do we want to remove `int32_t batteryId` from the function signature?",
+      "parentUuid": "f3d3d994_a54dff8d",
+      "range": {
+        "startLine": 1493,
+        "startChar": 8,
+        "endLine": 1498,
+        "endChar": 46
+      },
+      "revId": "da71a928bdbd800cf37d3c0214091cf196fa706b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
