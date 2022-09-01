@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a69b9668_2b2394c6",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T02:25:55Z",
+      "side": 1,
+      "message": "We could, and I thought about it a bit.\n\nWith the existing API, the issue is that we don\u0027t want to use up the space to cache the pid/uid. 64 bytes * 1,000 binders (a lot get allocated) is 64K memory in the system for this. Since it\u0027s a debugging API, it\u0027s better to pay the extra transaction cost.\n\nThen the question is, what if we change the API to return both. We could do this, but it might break prebuilts (or break prebuilts if we want to include more information).\n\nI don\u0027t think any prebuilts use PID now, so we could make that change now if you feel strongly",
+      "parentUuid": "be90c22b_2a5560f0",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 18
+      },
+      "revId": "cfa6dfa08a6f58a4a8a0cd0f6d0a80e91860c5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77cd58d1_5ee8bb0d",
         "filename": "libs/binder/include/binder/Binder.h",
         "patchSetId": 1
