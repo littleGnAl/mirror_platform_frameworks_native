@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d3d994_a54dff8d",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-01T20:16:14Z",
+      "side": 1,
+      "message": "since we don\u0027t support multi-battery today, this should probably be like this instead:\n\n```\n        const auto infos \u003d getBatteryInfoLocked(deviceId);\n        if (infos.empty()) {\n            return std::nullopt;\n        }\n        batteryPath \u003d infos.begin()-\u003epath.c_str();\n```\n\nand delete \"DEFAULT_BATTERY_ID\"",
+      "range": {
+        "startLine": 1493,
+        "startChar": 8,
+        "endLine": 1498,
+        "endChar": 46
+      },
+      "revId": "da71a928bdbd800cf37d3c0214091cf196fa706b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
