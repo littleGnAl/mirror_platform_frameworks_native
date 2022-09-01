@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9541422e_6e92fb0e",
+        "filename": "services/inputflinger/reader/InputDevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1947750
+      },
+      "writtenOn": "2022-09-01T18:59:03Z",
+      "side": 1,
+      "message": "Do I need to delete `InputDevice::getBatteryCapacity` and `InputDevice::getBatteryStatus`?",
+      "parentUuid": "e34204dd_22db378d",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 1
+      },
+      "revId": "99fe24c15aa65950f84917bc90f2b4750ae91f1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a8dc810_45581370",
         "filename": "services/inputflinger/reader/InputReader.cpp",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2022-09-01T18:24:36Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 708,
+        "startChar": 4,
+        "endLine": 708,
+        "endChar": 28
+      },
+      "revId": "99fe24c15aa65950f84917bc90f2b4750ae91f1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27953336_ddb54be2",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1947750
+      },
+      "writtenOn": "2022-09-01T18:59:03Z",
+      "side": 1,
+      "message": "In this case, the whole function is like this\n```\nreturn mEventHub-\u003egetBatteryCapacity(deviceId, DEFAULT_BATTERY_ID);\n```\nGood?",
+      "parentUuid": "3a8dc810_45581370",
       "range": {
         "startLine": 708,
         "startChar": 4,
