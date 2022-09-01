@@ -34,6 +34,24 @@
       "parentUuid": "febbf6c5_06361ba3",
       "revId": "430dde3eb36a61f5c861ab1a1ce5250672717ce0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a647f7_9bca0daf",
+        "filename": "services/surfaceflinger/Scheduler/VSyncReactor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2022-09-01T22:21:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "83eda6f9_0031a1b3",
+      "revId": "430dde3eb36a61f5c861ab1a1ce5250672717ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
