@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "923d1a6d_72d28b4e",
+        "filename": "services/inputflinger/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-01T15:19:28Z",
+      "side": 1,
+      "message": "nit: not in alphabetical order",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 149,
+        "endChar": 20
+      },
+      "revId": "e9a2b92e7faa8538042a90c79a4468c6329442dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
