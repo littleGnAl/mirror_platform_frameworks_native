@@ -16,6 +16,24 @@
       "message": "Curios why we need to add this? Is there a change that cause this to stop compiling? or something else that is silently broken without this include?",
       "revId": "430dde3eb36a61f5c861ab1a1ce5250672717ce0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83eda6f9_0031a1b3",
+        "filename": "services/surfaceflinger/Scheduler/VSyncReactor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2022-09-01T22:12:52Z",
+      "side": 1,
+      "message": "The Android platform\u0027s libc++ is out-of-date by a few years, and I\u0027m working to update it (http://b/175635923). I suspect this commit from 2019 removed libc++\u0027s implicit assert.h include:\n\nhttps://github.com/llvm/llvm-project/commit/a0686015106c2a04e85af82a4687895e12a4531c\n\nI noticed that libc++ has been getting better lately about transitive includes:\n - https://reviews.llvm.org/D128236\n - https://reviews.llvm.org/D128661",
+      "parentUuid": "febbf6c5_06361ba3",
+      "revId": "430dde3eb36a61f5c861ab1a1ce5250672717ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
