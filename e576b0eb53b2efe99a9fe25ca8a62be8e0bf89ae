@@ -16,6 +16,23 @@
       "message": "Which test is failing? The change only removes unused variables, so I\u0027m not sure how that is possible.",
       "revId": "e576b0eb53b2efe99a9fe25ca8a62be8e0bf89ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcccab29_0c5303bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1927275
+      },
+      "writtenOn": "2022-09-01T16:49:25Z",
+      "side": 1,
+      "message": "apologies, the breakage was fixed. I\u0027ll abandon this revert .",
+      "revId": "e576b0eb53b2efe99a9fe25ca8a62be8e0bf89ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
