@@ -311,9 +311,14 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
                 if (displayPort != ports.end()) {
                     mAssociatedDisplayPort = std::make_optional(displayPort->second);
                 } else {
+                    const std::string& inputDeviceDescriptor = mIdentifier.descriptor;
                     const std::unordered_map<std::string, std::string>& displayUniqueIds =
                             config->uniqueIdAssociations;
-                    const auto& displayUniqueId = displayUniqueIds.find(inputPort);
+
+                    auto displayUniqueId = displayUniqueIds.find(inputDeviceDescriptor);
+                    if (displayUniqueId == displayUniqueIds.end()) {
+                        displayUniqueId = displayUniqueIds.find(inputPort);
+                    }
                     if (displayUniqueId != displayUniqueIds.end()) {
                         mAssociatedDisplayUniqueId = displayUniqueId->second;
                     }
