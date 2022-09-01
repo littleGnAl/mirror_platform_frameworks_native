@@ -46,6 +46,30 @@
       },
       "revId": "da71a928bdbd800cf37d3c0214091cf196fa706b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4af2a02_54f2660f",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-01T20:41:59Z",
+      "side": 1,
+      "message": "yes, let\u0027s remove it\n\nalso correction on the above code:\n\n`batteryPath \u003d infos.begin()-\u003epath`",
+      "parentUuid": "a6a75f70_662bbf89",
+      "range": {
+        "startLine": 1493,
+        "startChar": 8,
+        "endLine": 1498,
+        "endChar": 46
+      },
+      "revId": "da71a928bdbd800cf37d3c0214091cf196fa706b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
