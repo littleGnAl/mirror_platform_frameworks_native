@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03fb2ae5_acfd1b20",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-09-01T19:35:59Z",
+      "side": 1,
+      "message": "It is going to be held for the duration of the write to mRecordingFd. That said, I think sharing the mutex would be fine and then we can optimize later if it is a problem.",
+      "parentUuid": "0271ca0d_cabbeabf",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 25
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56fb5e6a_c23e795b",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 13
@@ -278,6 +302,30 @@
       "writtenOn": "2022-09-01T18:13:31Z",
       "side": 1,
       "message": "nit: prefer delegate initializer so that forgotten fields are 0\u0027d rather than old - this will make certain bugs easier to debug",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "416719b8_fd907bb9",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-09-01T19:35:59Z",
+      "side": 1,
+      "message": "*designated initializer",
+      "parentUuid": "9dccfbc1_5627deda",
       "range": {
         "startLine": 48,
         "startChar": 4,
@@ -583,6 +631,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2845f46_11895494",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-09-01T19:35:59Z",
+      "side": 1,
+      "message": "i agree stealing the reserved field seems like a good idea, then we can do `if (mRecording)` instead of `if (mExtras \u0026\u0026 mExtras-\u003emRecording)`\n\n\n\nrant about atomic misinformation: atomics are mostly about ordering guarantees both in the compiler and hardware (e.g. cache coherency). at least on architectures we care about, i don\u0027t think you can even get a torn 8 byte pointer\n\n`x.load(memory_order_acquire)` and `x.store(y, memory_order_release)` are just `MOV` instructions on x86. the only overhead you are going to get is the compiler isn\u0027t allowed to do certain things (things which you don\u0027t want it to do, like perform the load multiple times, even though your code only appears to read the variable once).\n\ni\u0027m less familiar with the arm64 story, but i know there is no full memory barrier. my vague understand is that the normal load and store instructions are more relaxed than x86 (e.g. it might be assumed a write on one core doesn\u0027t need to be witnessed by another core). if you think that is OK for your use case, you shouldn\u0027t forgo `std::atomic`, instead you can explicitly document it by using `memory_order_relaxed`",
+      "parentUuid": "eda56926_b6a1362e",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 23
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ede53dd4_f6741a94",
         "filename": "libs/binder/include/binder/BinderRecordReplay.h",
         "patchSetId": 13
@@ -600,6 +672,23 @@
         "endLine": 19,
         "endChar": 30
       },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d750304_cdf8ad65",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-09-01T19:35:59Z",
+      "side": 1,
+      "message": "no using statements in headers",
       "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
