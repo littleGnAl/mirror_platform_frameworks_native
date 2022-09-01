@@ -16,6 +16,75 @@
       "message": "Hello Siarhel and Prabir, would you please review patchset 4?",
       "revId": "99fe24c15aa65950f84917bc90f2b4750ae91f1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e34204dd_22db378d",
+        "filename": "services/inputflinger/reader/InputDevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-01T18:24:36Z",
+      "side": 1,
+      "message": "as is, i think this whole api is broken. the correct way would probably be for inputreader to tell us which battery it wants.\n\nCurrently, this api does nothing.\n\nI suggest that in this CL, we remove \"getBatteryId()\" and just use \"DEFAULT_BATTERY_ID\". In a future CL, we should pipe the actual battery ID of interest from the upper layers where the call is coming from.\n\nThoughts?",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 1
+      },
+      "revId": "99fe24c15aa65950f84917bc90f2b4750ae91f1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8dc810_45581370",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-01T18:24:36Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 708,
+        "startChar": 4,
+        "endLine": 708,
+        "endChar": 28
+      },
+      "revId": "99fe24c15aa65950f84917bc90f2b4750ae91f1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4725318_4167f42d",
+        "filename": "services/inputflinger/reader/include/InputDevice.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-01T18:24:36Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 105,
+        "startChar": 41,
+        "endLine": 105,
+        "endChar": 42
+      },
+      "revId": "99fe24c15aa65950f84917bc90f2b4750ae91f1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
