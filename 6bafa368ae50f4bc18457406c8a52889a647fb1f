@@ -1,0 +1,785 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aabda93_32712fc4",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 13
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "add a separate flag for the feature\n\nWe may want to enable/disable these features separately. Also, this discourages additional uses of \u0027debuggable\u0027 unrelated to these features.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 44
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3faff0_af70a54d",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "old?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0271ca0d_cabbeabf",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "do we need a separate mutex? We should only have one mutex here, because they are quite large (40 bytes on 64-bit).",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 25
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56fb5e6a_c23e795b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "update reasoning",
+      "range": {
+        "startLine": 283,
+        "startChar": 43,
+        "endLine": 283,
+        "endChar": 70
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e63325_4fd1d246",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "add a log for this case (and for stop). Since we don\u0027t handle the lifetime now. If there is an issue related to the recording impacting performance, we\u0027ll be able to have this hint in the log.\n\nb/244597104 for similar investigation for existing case",
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a1db3ab_90c617b2",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "add to project list/todo/notes/doc - how can we support multiple simultaneous recordings? should we?",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 89
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93d90220_93f4eb6b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 308,
+        "startChar": 43,
+        "endLine": 308,
+        "endChar": 70
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aaaca68_b0d8c1f4",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "one client can stop another client\u0027s recording. This is another reason to switch to a keepAliveBinder - note follow-up, but this can lead to some really annoying situations if a client doesn\u0027t _properly_ check startRecordingTransaction",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 80
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c008e8ce_d940c545",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "what\u0027s the performance impact of this? (see header comment)\n\n(note - this will happen 1,000s of times a second or more on a running Android device so we\u0027ve got to check it)",
+      "range": {
+        "startLine": 384,
+        "startChar": 16,
+        "endLine": 384,
+        "endChar": 56
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b064e1_a795c38b",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "clean 😊\n\nP.S. what does the analyzer currently print for things like \u0027pingBinder\u0027 etc... IIRC it\u0027ll print the code, but see B_PACK_CHAR in the header. We\u0027ll want it to print that pretty ascii version of the code as well. Add to notes/todo/list of follow-ups as something to fix.",
+      "range": {
+        "startLine": 386,
+        "startChar": 20,
+        "endLine": 386,
+        "endChar": 55
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3e1f33_9c11b7c9",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "Avoid having an object with an invalid state. Every client who has the object needs to check it. That way, we can have contexts which know they have a valid RecordedTransaction and delegate error handling to a smaller part of the codebase.\n\nFor instance:\n\n    class RecordedTransaction {\n        static std::optional\u003cRecordedTransaction\u003e fromFile(...);\n    ...",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 19
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb652de0_1b53f64a",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "maybe add to todo/notes to separate, but also:\n\n- timestamp\n- Parcel::objectsCount",
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dccfbc1_5627deda",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "nit: prefer delegate initializer so that forgotten fields are 0\u0027d rather than old - this will make certain bugs easier to debug",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f22ba35_f5dc2496",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "\u003d\u003d\n\nbut remove \u0027mValid\u0027, ya (btw - add this next to binderBinderUnitTest.cpp as perhaps binderBinderRecordingUnitTest). You can test a lot of this functionality independent of the rest of the infrastructure",
+      "range": {
+        "startLine": 58,
+        "startChar": 19,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20ada6ce_35b65d67",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "mHeader validated?",
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abea0882_e6cec689",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "check error code",
+      "range": {
+        "startLine": 76,
+        "startChar": 10,
+        "endLine": 76,
+        "endChar": 17
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c597c0bd_189c893e",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "maybe put into a follow-up/todo/note - setData only adds the bit about kernel fields. We could resize data and then writeInPlace and pass that pointer into android::base::ReadFully in order to avoid the extra copy. Definitely don\u0027t do now, but add it in the list of notes (we should have a consilidated outline of problems to attack - definitely try to minimize the number of things that are done in this CL - anything which can be done separately on top of this, we should avoid in this CL)",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 16
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc344277_88cb8dd1",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "7 here, but 8 on L113 (?) probably 7 in both places, because x of int32_t \u00270 \u003c\u003d x%8 \u003c\u003d 7\u0027\n\nconsider: validate padding is 0 (free corruption detection)?",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d84d29_3f8c61ec",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "prefer C++ memory allocation than having to free this manually. std::vector\u003cuint8_t\u003e. If you are resizing this, it\u0027ll also save on allocations underneath by reusing the buffer if possible.",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 9
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a411020_02a9bc7c",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "same, check error code",
+      "range": {
+        "startLine": 90,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4139360d_30277c07",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 98,
+        "startChar": 19,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dff3419_c9269797",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9ce49d_b298d63c",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "nit: I\u0027d consider move to a macro or something and add a few static_assert tests, same elsewhere - this is copied a lot",
+      "range": {
+        "startLine": 114,
+        "startChar": 46,
+        "endLine": 114,
+        "endChar": 75
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7760d16_2a7707e3",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "do we have a task/list/item/note for tracking the lifetime/all ongoing recordings to make sure we can stop them or avoid them if they accidentally get turned on in test populations or if a program turning on the recording crashes?",
+      "range": {
+        "startLine": 274,
+        "startChar": 74,
+        "endLine": 274,
+        "endChar": 77
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15a2105_3b9717bc",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "[[nodiscard]] (on every new API which return an error)",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 12
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda56926_b6a1362e",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "we could use this for recording to avoid the extra cost of the memory barrier if it\u0027s significant - \u0027std::atomic\u0027 or even \u0027volatile\u0027 is not actually needed for bool for this usecase and because it can\u0027t be torn.\n\nNotice - whether the FD to record to is valid should then be consider the source of truth for whether a recording is happening for purposes of avoiding simultaneous recordings, and this would only be used to guard inside of BBinder::transact",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 23
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ede53dd4_f6741a94",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "why is this needed in the header?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 30
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd974e59_f717e560",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "use \u0027binder\u0027 or \u0027binder::debug\u0027 (\u0027debug\u0027 to discourage misuse or it being included in production prebuilts)",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ddb953_56aa178d",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "add warning: non-stable format. Don\u0027t describe it here. We want to be able to change this. Move the exact format to \u0027.cpp\u0027 to describe it (explanation is great!)",
+      "range": {
+        "startLine": 29,
+        "startChar": 65,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f8990f_45bdcd5e",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "delete or make private - why is this needed?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a84b4e_136263e6",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "false is an error? prefer status_t (given it\u0027s calling APIs that return this and for consistency)",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f537db1f_38d7663a",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "nit: add this around this type, since it\u0027s a binary format - I see it has no padding now, and we have the size check, but it\u0027s not explicit\n\n    #pragma clang diagnostic push\n    #pragma clang diagnostic error \"-Wpadded\"\n    ...\n    #pragma clang diagnostic pop\n\nOne alternative is `__attribute__((packed))`",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 28
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f9b1154_64925722",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "nit: consider also testing \u0027%8\u0027 - since we appear to rely on the data format being aligned by 8",
+      "range": {
+        "startLine": 79,
+        "startChar": 25,
+        "endLine": 79,
+        "endChar": 42
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47d240df_87a00c48",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "uint8_t[40] mReserved\n\n(trust me - the stack space won\u0027t hurt us, and it very much may come in handy in Android)",
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2129099_a73ce3d3",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T18:13:31Z",
+      "side": 1,
+      "message": "unique_fd",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
