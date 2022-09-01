@@ -176,6 +176,24 @@
       "parentUuid": "019cd315_64acc419",
       "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0beb1610_25d34d23",
+        "filename": "libs/binder/ndk/libbinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T02:36:36Z",
+      "side": 1,
+      "message": "Thanks for the heads up - will check. What I care about is the compile time error if the compiler knows something is null but is being passed to a function that just can\u0027t take it anymore. The more permissive type nullable, the only error the compiler could give based on this is if you have an extra explicit null check, which as you say, you do want anyway 😊",
+      "parentUuid": "b8a915f3_0605510b",
+      "revId": "fcc146233ffd027c747e826d38f93e0ff41fc5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
