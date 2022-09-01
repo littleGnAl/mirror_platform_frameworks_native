@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17bb0c91_5e13e17a",
+        "filename": "services/inputflinger/reader/InputDevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-01T19:02:23Z",
+      "side": 1,
+      "message": "yes, plz delete those",
+      "parentUuid": "9541422e_6e92fb0e",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 1
+      },
+      "revId": "99fe24c15aa65950f84917bc90f2b4750ae91f1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a8dc810_45581370",
         "filename": "services/inputflinger/reader/InputReader.cpp",
         "patchSetId": 4
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "In this case, the whole function is like this\n```\nreturn mEventHub-\u003egetBatteryCapacity(deviceId, DEFAULT_BATTERY_ID);\n```\nGood?",
       "parentUuid": "3a8dc810_45581370",
+      "range": {
+        "startLine": 708,
+        "startChar": 4,
+        "endLine": 708,
+        "endChar": 28
+      },
+      "revId": "99fe24c15aa65950f84917bc90f2b4750ae91f1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff5bb14_78038dda",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-01T19:02:23Z",
+      "side": 1,
+      "message": "yup, let\u0027s go with that, until we have proper support for multiple batteries. Unless Prabir has any concerns, that is ))",
+      "parentUuid": "27953336_ddb54be2",
       "range": {
         "startLine": 708,
         "startChar": 4,
