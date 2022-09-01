@@ -62,6 +62,7 @@ public:
         SYSPROPS_TRANSACTION = B_PACK_CHARS('_', 'S', 'P', 'R'),
         EXTENSION_TRANSACTION = B_PACK_CHARS('_', 'E', 'X', 'T'),
         DEBUG_PID_TRANSACTION = B_PACK_CHARS('_', 'P', 'I', 'D'),
+        DEBUG_UID_TRANSACTION = B_PACK_CHARS('_', 'U', 'I', 'D'),
         SET_RPC_CLIENT_TRANSACTION = B_PACK_CHARS('_', 'R', 'P', 'C'),
 
         // See android.os.IBinder.TWEET_TRANSACTION
@@ -152,8 +153,17 @@ public:
 
     /**
      * Dump PID for a binder, for debugging.
+     *
+     * NOTE: Do not rely on this. Services can lie about it.
      */
     status_t                getDebugPid(pid_t* outPid);
+
+    /**
+     * Dump UID for a binder, for debugging.
+     *
+     * NOTE: Do not rely on this. Services can lie about it.
+     */
+    status_t getDebugUid(uid_t* outPid);
 
     /**
      * Set the RPC client fd to this binder service, for debugging. This is only available on

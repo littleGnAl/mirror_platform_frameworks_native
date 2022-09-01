@@ -159,6 +159,32 @@ status_t IBinder::getDebugPid(pid_t* out) {
     return OK;
 }
 
+status_t IBinder::getDebugUid(uid_t* out) {
+    BBinder* local = this->localBinder();
+    if (local != nullptr) {
+        *out = local->getDebugUid();
+        return OK;
+    }
+
+    BpBinder* proxy = this->remoteBinder();
+    LOG_ALWAYS_FATAL_IF(proxy == nullptr);
+
+    Parcel data;
+    Parcel reply;
+    status_t status = transact(DEBUG_UID_TRANSACTION, data, &reply);
+    if (status != OK) return status;
+
+    int32_t uid;
+    status = reply.readInt32(&uid);
+    if (status != OK) return status;
+
+    if (uid < 0 || uid > std::numeric_limits<uid_t>::max()) {
+        return BAD_VALUE;
+    }
+    *out = uid;
+    return OK;
+}
+
 status_t IBinder::setRpcClientDebug(android::base::unique_fd socketFd,
                                     const sp<IBinder>& keepAliveBinder) {
     if (!kEnableRpcDevServers) {
@@ -310,6 +336,10 @@ status_t BBinder::transact(
         case DEBUG_PID_TRANSACTION:
             CHECK(reply != nullptr);
             err = reply->writeInt32(getDebugPid());
+            break;
+        case DEBUG_UID_TRANSACTION:
+            CHECK(reply != nullptr);
+            err = reply->writeInt32(getDebugUid());
             break;
         case SET_RPC_CLIENT_TRANSACTION: {
             err = setRpcClientDebug(data);
@@ -509,6 +539,15 @@ void BBinder::setInheritRt(bool inheritRt) {
 pid_t BBinder::getDebugPid() {
 #ifdef __linux__
     return getpid();
+#else
+    // TODO: handle other OSes
+    return 0;
+#endif // __linux__
+}
+
+uid_t BBinder::getDebugUid() {
+#ifdef __linux__
+    return getuid();
 #else
     // TODO: handle other OSes
     return 0;

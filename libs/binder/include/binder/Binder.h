@@ -94,6 +94,7 @@ public:
     void                setInheritRt(bool inheritRt);
 
     pid_t               getDebugPid();
+    uid_t getDebugUid();
 
     // Whether this binder has been sent to another process.
     bool wasParceled();

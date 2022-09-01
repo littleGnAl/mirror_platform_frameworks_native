@@ -113,7 +113,6 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_GET_WORK_SOURCE_TRANSACTION,
     BINDER_LIB_TEST_GET_SCHEDULING_POLICY,
     BINDER_LIB_TEST_NOP_TRANSACTION_WAIT,
-    BINDER_LIB_TEST_GETPID,
     BINDER_LIB_TEST_ECHO_VECTOR,
     BINDER_LIB_TEST_REJECT_OBJECTS,
     BINDER_LIB_TEST_CAN_GET_SID,
@@ -491,8 +490,8 @@ TEST_F(BinderLibTest, Freeze) {
         return;
     }
 
-    EXPECT_THAT(m_server->transact(BINDER_LIB_TEST_GETPID, data, &replypid), StatusEq(NO_ERROR));
-    int32_t pid = replypid.readInt32();
+    pid_t pid;
+    ASSERT_THAT(m_server->getDebugPid(&pid), StatusEq(NO_ERROR));
     for (int i = 0; i < 10; i++) {
         EXPECT_EQ(NO_ERROR, m_server->transact(BINDER_LIB_TEST_NOP_TRANSACTION_WAIT, data, &reply, TF_ONE_WAY));
     }
@@ -533,6 +532,22 @@ TEST_F(BinderLibTest, SetError) {
 
 TEST_F(BinderLibTest, GetId) {
     EXPECT_THAT(GetId(m_server), HasValue(0));
+}
+
+TEST_F(BinderLibTest, GetDebugPid) {
+    pid_t pid;
+    ASSERT_THAT(m_server->getDebugPid(&pid), StatusEq(NO_ERROR));
+
+    // child process should have a different PID
+    EXPECT_NE(pid, getpid());
+}
+
+TEST_F(BinderLibTest, GetDebugUid) {
+    uid_t uid;
+    ASSERT_THAT(m_server->getDebugUid(&uid), StatusEq(NO_ERROR));
+
+    // child process should run in same UID
+    EXPECT_EQ(uid, getuid());
 }
 
 TEST_F(BinderLibTest, PtrSize) {
@@ -1603,9 +1618,6 @@ public:
                 return NO_ERROR;
             }
 
-            case BINDER_LIB_TEST_GETPID:
-                reply->writeInt32(getpid());
-                return NO_ERROR;
             case BINDER_LIB_TEST_NOP_TRANSACTION_WAIT:
                 usleep(5000);
                 [[fallthrough]];
