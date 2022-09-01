@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be90c22b_2a5560f0",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-09-01T02:22:19Z",
+      "side": 1,
+      "message": "a dumb question: why can\u0027t we extend DEBUG_PID_TRANSACTION into DEBUG_TRANSACTION which returns both pid and uid?",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 18
+      },
+      "revId": "cfa6dfa08a6f58a4a8a0cd0f6d0a80e91860c5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77cd58d1_5ee8bb0d",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-09-01T02:22:19Z",
+      "side": 1,
+      "message": "nit: spacing",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 10
+      },
+      "revId": "cfa6dfa08a6f58a4a8a0cd0f6d0a80e91860c5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "809b101d_9c4cf4a3",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-09-01T02:22:19Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 166,
+        "startChar": 12,
+        "endLine": 166,
+        "endChar": 13
+      },
+      "revId": "cfa6dfa08a6f58a4a8a0cd0f6d0a80e91860c5c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
