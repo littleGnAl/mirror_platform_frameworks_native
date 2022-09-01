@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24913b21_7c015962",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1947750
+      },
+      "writtenOn": "2022-09-01T18:06:07Z",
+      "side": 1,
+      "message": "Hello Siarhel and Prabir, would you please review patchset 4?",
+      "revId": "99fe24c15aa65950f84917bc90f2b4750ae91f1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
