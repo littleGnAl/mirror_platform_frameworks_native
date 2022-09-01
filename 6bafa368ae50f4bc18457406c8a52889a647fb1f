@@ -655,6 +655,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03e72ae8_db7b5c55",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-01T20:16:04Z",
+      "side": 1,
+      "message": "I think there are still some holes in the architecture for 4-byte aligned 8-byte pointers. See b/137131904#comment1. Parcel is 4-byte aligned, but yeah mostly a thing of the past. Haven\u0027t found a reliable source.\n\nThe original libbinder maintainers were never careful with booleans like this. I agree we could modernize the codebase, though I tend to be hesitant to do unnecessary work - we should have learned something from this practice over a decade+ if it was really problematic. Though as you say, we may be getting lucky with compiler optimizations. If we add something to BBinder::transact - memory_order_relaxed would be best for this. Though, I\u0027m not sure how much of a performance impact it rally makes.",
+      "parentUuid": "f2845f46_11895494",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 23
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ede53dd4_f6741a94",
         "filename": "libs/binder/include/binder/BinderRecordReplay.h",
         "patchSetId": 13
