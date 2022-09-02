@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58ed3390_ae80de78",
+        "filename": "services/inputflinger/reader/InputDevice.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1965025
+      },
+      "writtenOn": "2022-09-02T01:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17bb0c91_5e13e17a",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 1
+      },
+      "revId": "99fe24c15aa65950f84917bc90f2b4750ae91f1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a8dc810_45581370",
@@ -173,6 +197,30 @@
       "writtenOn": "2022-09-01T18:24:36Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 105,
+        "startChar": 41,
+        "endLine": 105,
+        "endChar": 42
+      },
+      "revId": "99fe24c15aa65950f84917bc90f2b4750ae91f1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ebfb943_72a6c0dd",
+        "filename": "services/inputflinger/reader/include/InputDevice.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1965025
+      },
+      "writtenOn": "2022-09-02T01:41:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4725318_4167f42d",
       "range": {
         "startLine": 105,
         "startChar": 41,

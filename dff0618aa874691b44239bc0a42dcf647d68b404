@@ -39,6 +39,30 @@
       },
       "revId": "dff0618aa874691b44239bc0a42dcf647d68b404",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b517005_db272a19",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1965025
+      },
+      "writtenOn": "2022-09-02T01:41:36Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "b2d54c27_77d09f49",
+      "range": {
+        "startLine": 708,
+        "startChar": 51,
+        "endLine": 708,
+        "endChar": 69
+      },
+      "revId": "dff0618aa874691b44239bc0a42dcf647d68b404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
