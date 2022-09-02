@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db12b0d4_274978e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1965025
+      },
+      "writtenOn": "2022-09-02T02:20:03Z",
+      "side": 1,
+      "message": "I built and tested on my company fork, then apply the patch here.\nSiarhei, all comments are resolved. Can you please run the pre-commit build? thanks.",
+      "revId": "cbc8c88bfd5df6d043e4906d1c1ed68e531dbc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
