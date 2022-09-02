@@ -929,7 +929,8 @@ std::ostream& operator<<(std::ostream& out, const MotionEvent& event) {
         out << ", actionButton=" << std::to_string(event.getActionButton());
     }
     const size_t pointerCount = event.getPointerCount();
-    for (size_t i = 0; i < pointerCount; i++) {
+    const bool hasSamplesPointerCoords = event.getSamplePointerCoordsSize() > 0;
+    for (size_t i = 0; hasSamplesPointerCoords && i < std::min(pointerCount, MAX_POINTERS); i++) {
         out << ", id[" << i << "]=" << event.getPointerId(i);
         float x = event.getX(i);
         float y = event.getY(i);

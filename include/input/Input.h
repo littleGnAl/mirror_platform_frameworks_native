@@ -802,6 +802,10 @@ public:
         return mSamplePointerCoords.data();
     }
 
+    inline size_t getSamplePointerCoordsSize() const {
+        return mSamplePointerCoords.size();
+    }
+
     static const char* getLabel(int32_t axis);
     static int32_t getAxisFromLabel(const char* label);
 
