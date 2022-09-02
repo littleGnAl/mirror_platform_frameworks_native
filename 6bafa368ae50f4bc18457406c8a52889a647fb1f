@@ -679,6 +679,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86c7c060_79c21556",
+        "filename": "libs/binder/include/binder/Binder.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-09-02T02:26:21Z",
+      "side": 1,
+      "message": "Yeah, the original binder code must be older than the C++ memory model, it was only defined started in C++11 IIUC. I agree it doesn\u0027t seem worth changing unless there is a known issue, just if we are adding something new, might as well try to do it the modern way if not too onerous.",
+      "parentUuid": "03e72ae8_db7b5c55",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 23
+      },
+      "revId": "6bafa368ae50f4bc18457406c8a52889a647fb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ede53dd4_f6741a94",
         "filename": "libs/binder/include/binder/BinderRecordReplay.h",
         "patchSetId": 13
