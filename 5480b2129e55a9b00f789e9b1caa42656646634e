@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "243767bd_8812e255",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414712
+      },
+      "writtenOn": "2022-09-02T06:44:15Z",
+      "side": 1,
+      "message": "Hi John and Marissa,\nWe meet several CTS case fail with the below error message:\n\"E Gralloc4: buffer descriptor contains invalid usage bits 0xffff00000000\"\nWe use 32 bit usage bits, and when usage contains GRALLOC_USAGE_PRIVATE_3 (0x80000000U), we meet such error.\nI put the detail info in the below link: https://issuetracker.google.com/issues/244620240\nCould you please help review this CL? Thanks for your time!\n",
+      "revId": "5480b2129e55a9b00f789e9b1caa42656646634e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
