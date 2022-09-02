@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5c70d4_2111a3ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-02T01:33:50Z",
+      "side": 1,
+      "message": "Could you please resolve all comments that have been addressed?",
+      "revId": "dff0618aa874691b44239bc0a42dcf647d68b404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2d54c27_77d09f49",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-02T01:33:50Z",
+      "side": 1,
+      "message": "this parameter should be deleted, right?",
+      "range": {
+        "startLine": 708,
+        "startChar": 51,
+        "endLine": 708,
+        "endChar": 69
+      },
+      "revId": "dff0618aa874691b44239bc0a42dcf647d68b404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
