@@ -70,6 +70,24 @@
       "parentUuid": "72708c77_995c95ca",
       "revId": "e1f83726cc3f37f89721aa85b01c6de4f26245b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d02026_9527ecc7",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-09-06T02:45:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25a1f794_d5f18372",
+      "revId": "e1f83726cc3f37f89721aa85b01c6de4f26245b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

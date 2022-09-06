@@ -33,6 +33,24 @@
       "message": "How about we just use `static_cast\u003csize_t\u003e(rc)` for the value and then we can always use `%zd` for the specifier?",
       "revId": "ca56fbe3e579fb9b56290bdd1bcd152d9eae94df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e43bb30_5f3e77b3",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-09-06T02:45:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eba72827_537b093a",
+      "revId": "ca56fbe3e579fb9b56290bdd1bcd152d9eae94df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
