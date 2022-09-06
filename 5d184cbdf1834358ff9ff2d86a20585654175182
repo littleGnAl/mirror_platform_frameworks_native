@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf96903f_4e9db1d0",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-06T19:58:11Z",
+      "side": 1,
+      "message": "here - do this check after taking the lock. Otherwise, two threads can reach the beginning of the branch at the same time, one continues with the lock, and the other waits until it\u0027s done, then it\u0027ll continue on this first branch as well. The pattern to get attention is a read and a write of a given variable on both sides of the lock.\n\nSecondarily, consider pattern: `if (!A) { C } else { B }` -\u003e `if (A) { B } else { C }`. In this case, I would recommend:\n\n    Extras* e \u003d getOrCreateExtras();\n    AutoMutex lock(e-\u003emLock);\n    if (mRecordingOn) { ... error and return ... }\n\n    // setup recording in this scope",
+      "range": {
+        "startLine": 306,
+        "startChar": 9,
+        "endLine": 306,
+        "endChar": 21
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440db4f6_187115ef",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-06T19:58:11Z",
+      "side": 1,
+      "message": "same - lock first",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 23
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a71bdc_d2ab53c4",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-06T19:58:11Z",
+      "side": 1,
+      "message": "further explanation - specifically here - this is correct. The reason is that if another thread \"races\" with this, the consequence will be a dropped transaction, and we think - well, the scheduler could have also made that transaction happen later. So, it does not introduce a race that is not already present.",
+      "range": {
+        "startLine": 398,
+        "startChar": 20,
+        "endLine": 398,
+        "endChar": 32
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1735e21_0b938c9e",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-06T19:58:11Z",
+      "side": 1,
+      "message": "what is the case we don\u0027t have a transaction here? will we throw an error - how can we make the error more visible? \"making errors more visible\" - will send some internal docs",
+      "range": {
+        "startLine": 405,
+        "startChar": 16,
+        "endLine": 405,
+        "endChar": 27
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ffaffd2_e0dcec75",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-06T19:58:11Z",
+      "side": 1,
+      "message": "status not checked?",
+      "range": {
+        "startLine": 406,
+        "startChar": 16,
+        "endLine": 406,
+        "endChar": 27
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73c07f1f_fa8f4552",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-06T19:58:11Z",
+      "side": 1,
+      "message": "nit: PADDING8 (or similar)",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbefd564_878c385b",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-06T19:58:11Z",
+      "side": 1,
+      "message": "can you add a note to make this more efficient in the future? We can save a copy. Also, this will drop RPC objects. All these notes, we\u0027ll want to follow-up later.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 64
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f2b6849_76ab02f8",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-06T19:58:11Z",
+      "side": 1,
+      "message": "do we have a note to add a unit test to read/write these? I imagine that would help development, but we don\u0027t need it now or in this CL",
+      "range": {
+        "startLine": 76,
+        "startChar": 56,
+        "endLine": 76,
+        "endChar": 64
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
