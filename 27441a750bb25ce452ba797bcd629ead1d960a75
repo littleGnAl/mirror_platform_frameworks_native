@@ -16,6 +16,23 @@
       "message": "TERRIBLE CODE, TRY AGAIN",
       "revId": "27441a750bb25ce452ba797bcd629ead1d960a75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be879b88_aa144b78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520081
+      },
+      "writtenOn": "2022-09-06T14:26:19Z",
+      "side": 1,
+      "message": "CHANGED MY MIND",
+      "revId": "27441a750bb25ce452ba797bcd629ead1d960a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
