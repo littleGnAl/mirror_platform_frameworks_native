@@ -33,6 +33,23 @@
       "message": "The treehugger details are for googlers. Can you please paste the failed one with details?",
       "revId": "cbc8c88bfd5df6d043e4906d1c1ed68e531dbc89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d364cedb_d466a494",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1965025
+      },
+      "writtenOn": "2022-09-06T13:12:27Z",
+      "side": 1,
+      "message": "Hello Siarhei,\nCan you please paste the failure message so that I\u0027ll see if it is caused by my patch.",
+      "revId": "cbc8c88bfd5df6d043e4906d1c1ed68e531dbc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
