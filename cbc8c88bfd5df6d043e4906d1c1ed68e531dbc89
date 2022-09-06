@@ -50,6 +50,24 @@
       "message": "Hello Siarhei,\nCan you please paste the failure message so that I\u0027ll see if it is caused by my patch.",
       "revId": "cbc8c88bfd5df6d043e4906d1c1ed68e531dbc89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fca394c0_45a888c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-09-06T15:08:13Z",
+      "side": 1,
+      "message": "Hey Andy,\n\nThe patch is not completely correct, because we\u0027re using the InputDevice ID as the EventHub ID, and it\u0027s not true that these are always the same. That\u0027s being caught by the presubmit tests.\n\nI took a look at this on Friday, and instead of going back-and-forth with reviews, I\u0027ve made a patch similar to yours with some corrections: https://android-review.googlesource.com/c/platform/frameworks/native/+/2207775\n\nIf you\u0027d like, I can upload those changes as a new patchset to this CL so that you will still get credited as the Author for the CL. Let me know if you\u0027d like me to do that!",
+      "parentUuid": "d364cedb_d466a494",
+      "revId": "cbc8c88bfd5df6d043e4906d1c1ed68e531dbc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
