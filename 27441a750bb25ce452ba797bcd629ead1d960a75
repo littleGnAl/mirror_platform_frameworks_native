@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bceb0de_cc7a14a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520081
+      },
+      "writtenOn": "2022-09-06T14:25:54Z",
+      "side": 1,
+      "message": "TERRIBLE CODE, TRY AGAIN",
+      "revId": "27441a750bb25ce452ba797bcd629ead1d960a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
