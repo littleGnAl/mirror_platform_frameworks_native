@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de8ac58_fce38c65",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-09-06T20:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf96903f_4e9db1d0",
+      "range": {
+        "startLine": 306,
+        "startChar": 9,
+        "endLine": 306,
+        "endChar": 21
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "440db4f6_187115ef",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-06T19:58:11Z",
       "side": 1,
       "message": "same - lock first",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 23
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5519dcca_a584c75e",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-09-06T20:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "440db4f6_187115ef",
       "range": {
         "startLine": 332,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adc5b272_e6950a3a",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-09-06T20:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a71bdc_d2ab53c4",
+      "range": {
+        "startLine": 398,
+        "startChar": 20,
+        "endLine": 398,
+        "endChar": 32
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1735e21_0b938c9e",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-09-06T19:58:11Z",
       "side": 1,
       "message": "what is the case we don\u0027t have a transaction here? will we throw an error - how can we make the error more visible? \"making errors more visible\" - will send some internal docs",
+      "range": {
+        "startLine": 405,
+        "startChar": 16,
+        "endLine": 405,
+        "endChar": 27
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3163f5b1_f2d7bcd4",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-09-06T20:34:02Z",
+      "side": 1,
+      "message": "I think it\u0027s best to not return an error but just log the problem. It may cause confusion as to whether the transaction itself failed vs the recording. Let me know if I should return an error instead.",
+      "parentUuid": "d1735e21_0b938c9e",
       "range": {
         "startLine": 405,
         "startChar": 16,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7231e09f_8fe8b50e",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-09-06T20:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ffaffd2_e0dcec75",
+      "range": {
+        "startLine": 406,
+        "startChar": 16,
+        "endLine": 406,
+        "endChar": 27
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73c07f1f_fa8f4552",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-09-06T19:58:11Z",
       "side": 1,
       "message": "nit: PADDING8 (or similar)",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0380e2ff_a2407bec",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-09-06T20:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73c07f1f_fa8f4552",
       "range": {
         "startLine": 26,
         "startChar": 8,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae177ed5_39ee1513",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-09-06T20:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbefd564_878c385b",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 64
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f2b6849_76ab02f8",
@@ -185,6 +353,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7c3bfc_47fcab99",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-09-06T20:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f2b6849_76ab02f8",
+      "range": {
+        "startLine": 76,
+        "startChar": 56,
+        "endLine": 76,
+        "endChar": 64
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12861149_5c578921",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-09-06T19:58:54Z",
       "side": 1,
       "message": "add \u0027[[nodiscard]]\u0027 to the beginning of this line",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "5d184cbdf1834358ff9ff2d86a20585654175182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe347bc_536e5a6a",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-09-06T20:34:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12861149_5c578921",
       "range": {
         "startLine": 41,
         "startChar": 4,
