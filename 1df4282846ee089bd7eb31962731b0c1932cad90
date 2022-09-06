@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f057dcbc_df8bc716",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-06T23:52:51Z",
+      "side": 1,
+      "message": "please file follow-up/bug/note for this and share error",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 29
+      },
+      "revId": "1df4282846ee089bd7eb31962731b0c1932cad90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
