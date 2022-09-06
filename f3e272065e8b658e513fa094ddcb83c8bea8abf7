@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae9f068d_8058e999",
+        "filename": "libs/binder/trusty/kernel/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-09-06T03:22:52Z",
+      "side": 1,
+      "message": "I opened aosp/2207315 for the RpcServerTrusty modifications. At this point this CL is just the binder kernel rules.mk and a few sources to get around limitations of trusty\u0027s limited C++ library but those should be removed before this is merged.",
+      "parentUuid": "85257a1b_e0984295",
+      "revId": "f3e272065e8b658e513fa094ddcb83c8bea8abf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "330ca580_3822e383",
