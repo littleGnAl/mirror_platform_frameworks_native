@@ -22,6 +22,30 @@
       },
       "revId": "18065d027ba08141bdb4b4b136eab199790e3f7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "825b9162_82303c67",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-09-06T17:29:08Z",
+      "side": 1,
+      "message": "Since we\u0027re already exposing batteryIds outside of EventHub through `EventHub::getRawBatteryIds(int32_t deviceId)`, I think we should keep the batteryId parameter. We already fully support multi-battery at the EventHub level, so no need to regress on that front. We just don\u0027t support multi-battery in InputReader and above.",
+      "parentUuid": "6043e1c8_b0faf967",
+      "range": {
+        "startLine": 742,
+        "startChar": 4,
+        "endLine": 743,
+        "endChar": 38
+      },
+      "revId": "18065d027ba08141bdb4b4b136eab199790e3f7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
