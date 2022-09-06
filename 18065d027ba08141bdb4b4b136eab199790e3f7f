@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6043e1c8_b0faf967",
+        "filename": "services/inputflinger/reader/InputReader.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-06T16:44:07Z",
+      "side": 1,
+      "message": "optional nit: we could move this into `EventHub::getBatteryStatus(int32_t eventHubId)`",
+      "range": {
+        "startLine": 742,
+        "startChar": 4,
+        "endLine": 743,
+        "endChar": 38
+      },
+      "revId": "18065d027ba08141bdb4b4b136eab199790e3f7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
