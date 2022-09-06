@@ -32,8 +32,11 @@ using android::base::unexpected;
 namespace android {
 
 android::base::expected<sp<RpcServerTrusty>, int> RpcServerTrusty::make(
-        tipc_hset* handleSet, std::string&& portName, std::shared_ptr<const PortAcl>&& portAcl,
-        size_t msgMaxSize, std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
+#if defined(TRUSTY_USERSPACE)
+        tipc_hset* handleSet,
+#endif
+        std::string&& portName, std::shared_ptr<const PortAcl>&& portAcl, size_t msgMaxSize,
+        std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
     // Default is without TLS.
     if (rpcTransportCtxFactory == nullptr)
         rpcTransportCtxFactory = RpcTransportCtxFactoryTipcTrusty::make();
@@ -48,10 +51,24 @@ android::base::expected<sp<RpcServerTrusty>, int> RpcServerTrusty::make(
         return unexpected(ERR_NO_MEMORY);
     }
 
+#if defined(TRUSTY_USERSPACE)
     int rc = tipc_add_service(handleSet, &srv->mTipcPort, 1, 0, &kTipcOps);
     if (rc != NO_ERROR) {
         return unexpected(rc);
     }
+#else
+    ktipc_server_init(&srv->mKtipcServer, srv->mPortName.c_str());
+
+    int rc = ktipc_server_start(&srv->mKtipcServer);
+    if (rc < 0) {
+        return unexpected(rc);
+    }
+
+    rc = ktipc_server_add_port(&srv->mKtipcServer, &srv->mTipcPort, &srv->kTipcOps);
+    if (rc < 0) {
+        return unexpected(rc);
+    }
+#endif
     return srv;
 }
 
@@ -64,6 +81,9 @@ RpcServerTrusty::RpcServerTrusty(std::unique_ptr<RpcTransportCtx> ctx, std::stri
     mTipcPort.msg_max_size = msgMaxSize;
     mTipcPort.msg_queue_len = 6; // Three each way
     mTipcPort.priv = this;
+#if !defined(TRUSTY_USERSPACE)
+    mTipcPort.uuid = &kernel_uuid;
+#endif
 
     if (mPortAcl) {
         // Initialize the array of pointers to uuids.
@@ -91,7 +111,7 @@ RpcServerTrusty::RpcServerTrusty(std::unique_ptr<RpcTransportCtx> ctx, std::stri
     }
 }
 
-int RpcServerTrusty::handleConnect(const tipc_port* port, handle_t chan, const uuid* peer,
+int RpcServerTrusty::handleConnect(const tipc_port_t* port, handle_t chan, const uuid* peer,
                                    void** ctx_p) {
     auto* server = reinterpret_cast<RpcServerTrusty*>(const_cast<void*>(port->priv));
     server->mRpcServer->mShutdownTrigger = FdTrigger::make();
@@ -129,7 +149,7 @@ int RpcServerTrusty::handleConnect(const tipc_port* port, handle_t chan, const u
     return rc;
 }
 
-int RpcServerTrusty::handleMessage(const tipc_port* /*port*/, handle_t /*chan*/, void* ctx) {
+int RpcServerTrusty::handleMessage(const tipc_port_t* /*port*/, handle_t /*chan*/, void* ctx) {
     auto* channelContext = reinterpret_cast<ChannelContext*>(ctx);
     LOG_ALWAYS_FATAL_IF(channelContext == nullptr,
                         "bad state: message received on uninitialized channel");
@@ -146,7 +166,7 @@ int RpcServerTrusty::handleMessage(const tipc_port* /*port*/, handle_t /*chan*/,
     return NO_ERROR;
 }
 
-void RpcServerTrusty::handleDisconnect(const tipc_port* /*port*/, handle_t /*chan*/,
+void RpcServerTrusty::handleDisconnect(const tipc_port_t* /*port*/, handle_t /*chan*/,
                                        void* /*ctx*/) {}
 
 void RpcServerTrusty::handleChannelCleanup(void* ctx) {
