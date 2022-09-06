@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e62e34b5_cbbe6127",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-09-06T08:38:11Z",
+      "side": 1,
+      "message": "Should I make this into an enum?",
+      "range": {
+        "startLine": 312,
+        "startChar": 8,
+        "endLine": 312,
+        "endChar": 25
+      },
+      "revId": "7febe76fd839455ff4ef9eb9117531b65de50c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
