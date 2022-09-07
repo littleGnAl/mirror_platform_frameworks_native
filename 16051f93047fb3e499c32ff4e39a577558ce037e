@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e7fe3a_464e4976",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414712
+      },
+      "writtenOn": "2022-09-07T02:10:23Z",
+      "side": 1,
+      "message": "Hi John and Marissa,\nI just cherry-pick the below patch to android13-gsi, Could you please help review this CL? Thanks for your time!\nhttps://android-review.googlesource.com/c/platform/frameworks/native/+/2200464",
+      "revId": "16051f93047fb3e499c32ff4e39a577558ce037e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
