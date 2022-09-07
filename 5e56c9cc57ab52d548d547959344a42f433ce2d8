@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08dd715_e10887a1",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-09-07T00:13:41Z",
+      "side": 1,
+      "message": "This should work the same way in user space and the kernel: it creates a new service and adds it to whatever container we have that allows the current process to support multiple services. We use handle sets for that in user space (we add one or more services to a handle set, then call `tipc_run_event_loop`). In the kernel, `ktipc_server` is the equivalent of that.\n\nI think the kernel should have a `ktipc_server* ktipcServer` argument here as an alternative to `handleSet`.",
+      "revId": "5e56c9cc57ab52d548d547959344a42f433ce2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc210f5b_081453d7",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-09-07T00:13:41Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be here. The caller should be responsible for creating the `ktipc_server` and passing it here, so each server can support multiple services.",
+      "revId": "5e56c9cc57ab52d548d547959344a42f433ce2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa2940f_d52ff903",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-09-07T00:13:41Z",
+      "side": 1,
+      "message": "Should this be configurable?",
+      "revId": "5e56c9cc57ab52d548d547959344a42f433ce2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
