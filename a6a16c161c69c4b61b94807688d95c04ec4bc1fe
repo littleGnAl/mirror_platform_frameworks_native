@@ -16,6 +16,23 @@
       "message": "As requested, this is the cherry-pick of ag/19515069. Request you to kindly review the same.",
       "revId": "a6a16c161c69c4b61b94807688d95c04ec4bc1fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b19a9b_697310b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-07T22:35:01Z",
+      "side": 1,
+      "message": "test failure is b/243597796",
+      "revId": "a6a16c161c69c4b61b94807688d95c04ec4bc1fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
