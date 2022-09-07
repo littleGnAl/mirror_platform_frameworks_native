@@ -405,6 +405,8 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             std::unique_lock<std::mutex> lock(waiter->mMutex);
             using std::literals::chrono_literals::operator""s;
             waiter->mCv.wait_for(lock, 1s, [&] {
+                ALOGI("%s: Number of threads started in the threadpool: %zu", name.c_str(),
+                      ProcessState::self()->getThreadPoolMaxTotalThreadCount());
                 return waiter->mBinder != nullptr;
             });
             if (waiter->mBinder != nullptr) return waiter->mBinder;
