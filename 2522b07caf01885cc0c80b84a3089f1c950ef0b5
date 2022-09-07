@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3deb1a18_b10789a4",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1956970
+      },
+      "writtenOn": "2022-09-07T21:54:18Z",
+      "side": 1,
+      "message": "@smoreland I can\u0027t create call Parcel() here b/c the copy constructor is deleted.",
+      "range": {
+        "startLine": 414,
+        "startChar": 85,
+        "endLine": 414,
+        "endChar": 95
+      },
+      "revId": "2522b07caf01885cc0c80b84a3089f1c950ef0b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
