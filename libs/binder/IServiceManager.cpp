@@ -410,6 +410,9 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
             if (waiter->mBinder != nullptr) return waiter->mBinder;
         }
 
+        ALOGI("%s: Number of threads started in the threadpool: %zu", name.c_str(),
+              ProcessState::self()->getThreadPoolMaxTotalThreadCount());
+
         ALOGW("Waited one second for %s (is service started? are binder threads started and available?)", name.c_str());
 
         // Handle race condition for lazy services. Here is what can happen:
