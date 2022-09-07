@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f687ff1f_210afbcd",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-07T22:18:58Z",
+      "side": 1,
+      "message": "Can you move and combine it with this log here? I believe L408/L409 will also be run in the case of spurious wakeups, and also when the binder is correctly returned.",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 120
+      },
+      "revId": "53bd73a65428a0807f3f8039b748cf94b5fabf55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
