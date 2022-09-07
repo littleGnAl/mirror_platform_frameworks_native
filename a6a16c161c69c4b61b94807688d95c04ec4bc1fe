@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a20a9151_5366f99c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1886735
+      },
+      "writtenOn": "2022-09-07T16:55:18Z",
+      "side": 1,
+      "message": "As requested, this is the cherry-pick of ag/19515069. Request you to kindly review the same.",
+      "revId": "a6a16c161c69c4b61b94807688d95c04ec4bc1fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
