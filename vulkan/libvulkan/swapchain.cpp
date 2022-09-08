@@ -638,10 +638,10 @@ VkResult GetPhysicalDeviceSurfaceCapabilitiesKHR(
         // VkSurfaceProtectedCapabilitiesKHR::supportsProtected.  The following
         // four values cannot be known without a surface.  Default values will
         // be supplied anyway, but cannot be relied upon.
-        width = 1000;
-        height = 1000;
-        transform_hint = VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR;
-        max_buffer_count = 10;
+        width = 0xFFFFFFFF;
+        height = 0xFFFFFFFF;
+        transform_hint = VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR;
+        max_buffer_count = 0xFFFFFFFF;
     } else {
         ANativeWindow* window = SurfaceFromHandle(surface)->window.get();
 
