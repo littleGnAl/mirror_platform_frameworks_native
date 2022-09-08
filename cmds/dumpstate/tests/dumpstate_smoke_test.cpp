@@ -50,6 +50,14 @@ struct SectionInfo {
     int32_t size_bytes;
 };
 
+extern "C" bool GetInitialArgs(const char*** args, size_t* num_args) {
+  static const char* initial_args[] = {
+       "--deadline_threshold_ms=300000"};
+  *args = initial_args;
+  *num_args = 1;
+  return true;
+}
+
 sp<IDumpstate> GetDumpstateService() {
     return android::interface_cast<IDumpstate>(
         android::defaultServiceManager()->getService(String16("dumpstate")));
