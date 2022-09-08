@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "383980d4_716266bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1063563
+      },
+      "writtenOn": "2022-09-08T19:26:15Z",
+      "side": 1,
+      "message": "+1 conceptually seems reasonable",
+      "revId": "81f7597160a2996b330911dffad4fc5d2cac387b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0db12df0_c93ec7e7",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1063563
+      },
+      "writtenOn": "2022-09-08T19:26:15Z",
+      "side": 1,
+      "message": "stale?",
+      "range": {
+        "startLine": 1164,
+        "startChar": 0,
+        "endLine": 1164,
+        "endChar": 68
+      },
+      "revId": "81f7597160a2996b330911dffad4fc5d2cac387b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
