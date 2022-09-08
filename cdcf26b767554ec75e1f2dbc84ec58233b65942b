@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "611bc85d_1ba316f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-08T20:56:07Z",
+      "side": 1,
+      "message": "is this really true? can \"no pointer coords\" lead to an infinite loop?",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "cdcf26b767554ec75e1f2dbc84ec58233b65942b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
