@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaae3763_1aac3d24",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-09-08T16:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e943a1e2_1d75d658",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 4
+      },
+      "revId": "2cb4520c14665562a13f0840a2fc766f37606d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1edb176e_f51fb248",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-09-08T00:11:03Z",
       "side": 1,
       "message": "and combine these - maybe s/are binder threads started and available?/have %zu thread(s)/ - we should only have one log, and all the information there (limits spam, ensure we get information if people only copy one line log)",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 32
+      },
+      "revId": "2cb4520c14665562a13f0840a2fc766f37606d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e306bb1_7353e1ca",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-09-08T16:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1edb176e_f51fb248",
       "range": {
         "startLine": 412,
         "startChar": 0,

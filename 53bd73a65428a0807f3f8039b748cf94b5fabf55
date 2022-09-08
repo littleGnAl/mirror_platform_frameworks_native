@@ -70,6 +70,30 @@
       },
       "revId": "53bd73a65428a0807f3f8039b748cf94b5fabf55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88a648c3_ead5ce5d",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-09-08T16:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97cc7c45_7919e01b",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 120
+      },
+      "revId": "53bd73a65428a0807f3f8039b748cf94b5fabf55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
