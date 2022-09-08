@@ -87,6 +87,78 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b499687_a8b4c84b",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-09-08T18:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3542b1d8_51a63cd9",
+      "range": {
+        "startLine": 384,
+        "startChar": 75,
+        "endLine": 384,
+        "endChar": 82
+      },
+      "revId": "6c85258967e55f6196b91cbaef7a7d898d473c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e005422_0ae69eeb",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-09-08T18:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "092fe29f_e667b002",
+      "range": {
+        "startLine": 384,
+        "startChar": 64,
+        "endLine": 384,
+        "endChar": 72
+      },
+      "revId": "6c85258967e55f6196b91cbaef7a7d898d473c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d74b40eb_9c924fc3",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-09-08T18:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "545aa6ea_bc7cd053",
+      "range": {
+        "startLine": 384,
+        "startChar": 49,
+        "endLine": 384,
+        "endChar": 52
+      },
+      "revId": "6c85258967e55f6196b91cbaef7a7d898d473c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8333b42_b8cdf0b1",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-09-08T17:20:52Z",
       "side": 1,
       "message": "nit: \". A\" (double space, separate sentence)",
+      "range": {
+        "startLine": 420,
+        "startChar": 30,
+        "endLine": 420,
+        "endChar": 34
+      },
+      "revId": "6c85258967e55f6196b91cbaef7a7d898d473c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b569ae7b_785491db",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2022-09-08T18:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8333b42_b8cdf0b1",
       "range": {
         "startLine": 420,
         "startChar": 30,
