@@ -172,6 +172,7 @@ cc_test {
         "dumpstate.cpp",
         "tests/dumpstate_smoke_test.cpp",
     ],
+    isolated: true,
     static_libs: ["libgmock"],
     test_config: "dumpstate_smoke_test.xml",
     test_suites: ["device-tests"],
