@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02794e7f_9993842b",
+        "filename": "libs/binder/trusty/binderRpcTestService/aidl/rules.mk",
+        "patchSetId": 28
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-09-08T04:17:31Z",
+      "side": 1,
+      "message": "To clarify what this builds: a copy of binderRpcTestService for Trusty that we can connect to from a test client on Android to test the connection. The client is just another build of binderRpcTest.\n\nI have an alternative approach at https://android-review.googlesource.com/c/platform/system/core/+/2045930/ that connects to the existing binder test service in Trusty instead of adding a new one, but I\u0027d prefer not to write new tests if it can be avoided.",
+      "parentUuid": "d81e0398_a3bd40e5",
+      "revId": "80b44dba88872a8be9ab07c1ec4fbbfb91d3c2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8bdd1b7_d83193b1",
         "filename": "libs/binder/trusty/binderRpcTestService/binderRpcTestService.cpp",
         "patchSetId": 28
