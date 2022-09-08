@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e943a1e2_1d75d658",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-08T00:11:03Z",
+      "side": 1,
+      "message": "I think the reason you only saw one log is that most services return early here.\n\nIn the next part of your bug, we could add another check here which says:\n\n     if (0 \u003d\u003d getThreadPoolMaxTotalThreadCount) {\n         ALOGW(\"Got service, but may be racey ...\") // etc.. more information about the threads\n     }\n\nThis CL is about, \"where are we definitely experiencing problems\". The next step (and this second log might also help test what you were suggesting - any missing threads in the count), the next step is about \"where we could experience problems\". Though - there may be other higher priority stuff, we would want to keep the bug open for it.",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 4
+      },
+      "revId": "2cb4520c14665562a13f0840a2fc766f37606d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1edb176e_f51fb248",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-08T00:11:03Z",
+      "side": 1,
+      "message": "and combine these - maybe s/are binder threads started and available?/have %zu thread(s)/ - we should only have one log, and all the information there (limits spam, ensure we get information if people only copy one line log)",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 32
+      },
+      "revId": "2cb4520c14665562a13f0840a2fc766f37606d29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
