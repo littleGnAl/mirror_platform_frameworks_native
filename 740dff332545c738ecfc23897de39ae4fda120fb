@@ -16,6 +16,24 @@
       "message": "Won\u0027t they block post-submit now?",
       "revId": "740dff332545c738ecfc23897de39ae4fda120fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afddf2b7_1ceba718",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1448822
+      },
+      "writtenOn": "2022-09-09T15:27:27Z",
+      "side": 1,
+      "message": "The postsubmit tests pass (possibly due to different infra meaning all the tests run together). In any case, tests that only run in postsubmit do not block anything or get flagged to test monitors",
+      "parentUuid": "eb53721c_83ce4b42",
+      "revId": "740dff332545c738ecfc23897de39ae4fda120fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
