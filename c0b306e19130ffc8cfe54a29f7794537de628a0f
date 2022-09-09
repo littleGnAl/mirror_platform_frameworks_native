@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f3597c_0d03f6c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-09-09T21:33:49Z",
+      "side": 1,
+      "message": "This one will be available to external partners and automerge to the internal master branch.",
+      "revId": "c0b306e19130ffc8cfe54a29f7794537de628a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
