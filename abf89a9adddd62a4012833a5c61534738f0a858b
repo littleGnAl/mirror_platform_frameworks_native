@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e69b42d2_82f0b714",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-09-09T12:49:54Z",
+      "side": 1,
+      "message": "\"gmail\" is typoed here.",
+      "revId": "abf89a9adddd62a4012833a5c61534738f0a858b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
