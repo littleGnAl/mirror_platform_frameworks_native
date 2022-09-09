@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "303949f9_04fb6130",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2022-09-09T11:39:08Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I misunderstood, but is this really a race? A new transaction coming in is independent of the buffer of a previous transaction being freed. But by reordering, you just decrease the time window where a buffer stays allocated, thus increasing the chance that another (unrelated) transaction can make it. Generally I\u0027d say that devices which run out of the binder buffer due to this problem will have problems regardless of this change. I guess the one scenario it does reliably fix is if a single-threaded client waits to issue a second transaction until after it has received the reply to the first one - maybe that is also what the commit message meant?\n\nEither way I don\u0027t see anything wrong with this, changes like this are always a bit scary because you never know what crazy hidden dependencies may exist on the ordering, but it\u0027s early in the release so...",
+      "revId": "ce15b9fc8930edb034938afd972d1f2e3fd1974c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
