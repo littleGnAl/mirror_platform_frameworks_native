@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "408f70b4_5385e82a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-09-09T00:11:44Z",
+      "side": 1,
+      "message": "I looked through the patch and it seems fine to me. Is there a bug you are trying to fix here? Or is this mostly an optimization? More context here would be awesome!",
+      "revId": "2fc69641b5e002693c98dc8d71198707dcc54a17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
