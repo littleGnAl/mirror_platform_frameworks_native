@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05cf77c9_6b146ae3",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-09T17:07:02Z",
+      "side": 1,
+      "message": "nit: also as an extra check, maybe \u0027kEnableRecording\u0027",
+      "range": {
+        "startLine": 406,
+        "startChar": 20,
+        "endLine": 406,
+        "endChar": 36
+      },
+      "revId": "2522b07caf01885cc0c80b84a3089f1c950ef0b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3deb1a18_b10789a4",
         "filename": "libs/binder/Binder.cpp",
         "patchSetId": 2
