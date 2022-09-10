@@ -284,9 +284,6 @@ public:
 
     virtual BBinder*        localBinder();
     virtual BpBinder*       remoteBinder();
-    typedef sp<IBinder> (*object_make_func)(const void* makeArgs);
-    sp<IBinder> lookupOrCreateWeak(const void* objectID, object_make_func make,
-                                   const void* makeArgs);
 
 protected:
     virtual          ~IBinder();
