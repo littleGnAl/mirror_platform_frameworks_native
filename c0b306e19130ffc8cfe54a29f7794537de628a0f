@@ -16,6 +16,23 @@
       "message": "This one will be available to external partners and automerge to the internal master branch.",
       "revId": "c0b306e19130ffc8cfe54a29f7794537de628a0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4a13542_ce702da0",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1836785
+      },
+      "writtenOn": "2022-09-10T02:35:08Z",
+      "side": 1,
+      "message": "minImageCount also needs to be 0xFFFFFFFF when surfaceless. Because the answer we give back here is not independent of surface (even if bounded by 3).",
+      "revId": "c0b306e19130ffc8cfe54a29f7794537de628a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
