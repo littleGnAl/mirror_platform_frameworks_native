@@ -16,6 +16,24 @@
       "message": "\"gmail\" is typoed here.",
       "revId": "abf89a9adddd62a4012833a5c61534738f0a858b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c905958_dd36de96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1700909
+      },
+      "writtenOn": "2022-09-13T01:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e69b42d2_82f0b714",
+      "revId": "abf89a9adddd62a4012833a5c61534738f0a858b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
