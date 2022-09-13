@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc9483c_b392b03d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-09-13T19:26:34Z",
+      "side": 1,
+      "message": "It would probably be nice to have tests for this logic in the future. It would be a big effort, but making InputDispatcher_tests single-threaded would help to test this, and that way we can also eliminate all flakiness from the tests.",
+      "revId": "0b93fd0729953ce8090c57971fbba13fed0783b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b5c855b_b80e2f3f",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3643,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-09-13T19:26:34Z",
+      "side": 1,
+      "message": "nit: `const` here and below",
+      "range": {
+        "startLine": 3643,
+        "startChar": 4,
+        "endLine": 3643,
+        "endChar": 8
+      },
+      "revId": "0b93fd0729953ce8090c57971fbba13fed0783b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
