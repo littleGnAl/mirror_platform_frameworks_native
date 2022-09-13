@@ -22,6 +22,30 @@
       },
       "revId": "2368524d3ac03dc26684f7c6eb13e5cff8b9fea0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bf1d933_75cfafed",
+        "filename": "cmds/servicemanager/ServiceManagerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-09-13T17:27:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b470813_39f54d83",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "2368524d3ac03dc26684f7c6eb13e5cff8b9fea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
