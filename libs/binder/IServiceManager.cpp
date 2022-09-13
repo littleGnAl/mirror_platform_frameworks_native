@@ -199,6 +199,12 @@ bool checkCallingPermission(const String16& permission, int32_t* outPid, int32_t
 }
 
 bool checkPermission(const String16& permission, pid_t pid, uid_t uid, bool logPermissionFailure) {
+    return checkPermissionWithTimeout(permission, pid, uid, logPermissionFailure,
+                                      /*timeoutMillis=*/-1);
+}
+
+bool checkPermissionWithTimeout(const String16& permission, pid_t pid, uid_t uid,
+                                bool logPermissionFailure, int64_t timeoutMillis) {
     static Mutex gPermissionControllerLock;
     static sp<IPermissionController> gPermissionController;
 
@@ -208,8 +214,9 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid, bool logP
     gPermissionControllerLock.unlock();
 
     int64_t startTime = 0;
+    int64_t realStartTime = uptimeMillis();
 
-    while (true) {
+    while (timeoutMillis < 0 || uptimeMillis() - realStartTime < timeoutMillis) {
         if (pc != nullptr) {
             bool res = pc->checkPermission(permission, pid, uid);
             if (res) {
@@ -256,6 +263,9 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid, bool logP
             gPermissionControllerLock.unlock();
         }
     }
+    ALOGI("Timeout after %d seconds for %s from uid=%d pid=%d",
+          (int)((uptimeMillis() - realStartTime) / 1000), String8(permission).string(), uid, pid);
+    return false;
 }
 
 #endif //__ANDROID_VNDK__

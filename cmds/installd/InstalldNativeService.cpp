@@ -101,6 +101,7 @@ static constexpr const char* kDataMirrorCePath = "/data_mirror/data_ce";
 static constexpr const char* kDataMirrorDePath = "/data_mirror/data_de";
 
 static constexpr const int MIN_RESTRICTED_HOME_SDK_VERSION = 24; // > M
+static constexpr const int CHECK_PERMISSION_TIMEOUT_MS = 1000;
 
 static constexpr const char* PKG_LIB_POSTFIX = "/lib";
 static constexpr const char* CACHE_DIR_POSTFIX = "/cache";
@@ -151,11 +152,11 @@ static binder::Status error(uint32_t code, const std::string& msg) {
 }
 
 binder::Status checkPermission(const char* permission) {
-    pid_t pid;
-    uid_t uid;
-
-    if (checkCallingPermission(String16(permission), reinterpret_cast<int32_t*>(&pid),
-            reinterpret_cast<int32_t*>(&uid))) {
+    IPCThreadState* ipcState = IPCThreadState::self();
+    pid_t pid = ipcState->getCallingPid();
+    uid_t uid = ipcState->getCallingUid();
+    if (checkPermissionWithTimeout(String16(permission), pid, uid, /*logPermissionFailure=*/false,
+                                   CHECK_PERMISSION_TIMEOUT_MS)) {
         return ok();
     } else {
         return exception(binder::Status::EX_SECURITY,
