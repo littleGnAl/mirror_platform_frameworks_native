@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33e1fd58_21189335",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-13T18:53:20Z",
+      "side": 1,
+      "message": "please root cause this deadlock before we add a timeout - I will send a doc offline",
+      "revId": "42fad6feb2fc992773c9f6fb7ab8ebdf4cb1caa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
