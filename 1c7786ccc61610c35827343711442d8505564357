@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48090792_dbed6a0f",
+        "filename": "services/surfaceflinger/SurfaceFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2214,
+      "author": {
+        "id": 1099348
+      },
+      "writtenOn": "2022-09-14T18:32:50Z",
+      "side": 1,
+      "message": "Comment removed by: Sam Saccone; Reason: not needed",
+      "range": {
+        "startLine": 2214,
+        "startChar": 22,
+        "endLine": 2214,
+        "endChar": 26
+      },
+      "revId": "1c7786ccc61610c35827343711442d8505564357",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
