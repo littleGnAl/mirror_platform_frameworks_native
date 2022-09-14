@@ -2209,6 +2209,13 @@ void SurfaceFlinger::composite(nsecs_t frameTime, int64_t vsyncId)
         mDrawingState.colorMatrixChanged = false;
     }
 
+    // Codelab test change
+    // Was:
+    // refreshArgs.devOptForceClientComposition = mDebugDisableHWC;
+    // Now:
+    refreshArgs.colorTransformMatrix =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC;
 
     if (mDebugFlashDelay != 0) {
@@ -6764,7 +6771,14 @@ ftl::SharedFuture<FenceResult> SurfaceFlinger::renderScreenImpl(
             static_cast<aidl::android::hardware::graphics::composer3::RenderIntent>(renderIntent);
 
     const float colorSaturation = grayscale ? 0 : 1;
+    // Codelab test change
+    // Was:
     clientCompositionDisplay.colorTransform = calculateColorMatrix(colorSaturation);
+    // now:
+    clientCompositionDisplay.colorTransform = calculateColorMatrix(colorSaturation);
+    clientCompositionDisplay.colorTransform =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     const float alpha = RenderArea::getCaptureFillValue(renderArea.getCaptureFill());
 
