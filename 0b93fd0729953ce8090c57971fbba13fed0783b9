@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0591df2f_99a14119",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1875615
+      },
+      "writtenOn": "2022-09-14T02:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cab8816_b9f858a3",
+      "revId": "0b93fd0729953ce8090c57971fbba13fed0783b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6bc9483c_b392b03d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -48,6 +66,30 @@
       "writtenOn": "2022-09-13T19:26:34Z",
       "side": 1,
       "message": "nit: `const` here and below",
+      "range": {
+        "startLine": 3643,
+        "startChar": 4,
+        "endLine": 3643,
+        "endChar": 8
+      },
+      "revId": "0b93fd0729953ce8090c57971fbba13fed0783b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f508c2_1deb43d8",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3643,
+      "author": {
+        "id": 1875615
+      },
+      "writtenOn": "2022-09-14T02:35:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b5c855b_b80e2f3f",
       "range": {
         "startLine": 3643,
         "startChar": 4,
