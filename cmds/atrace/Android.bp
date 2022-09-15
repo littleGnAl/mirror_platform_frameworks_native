@@ -19,7 +19,10 @@ license {
 
 cc_binary {
     name: "atrace",
-    srcs: ["atrace.cpp"],
+    srcs: [
+        "atrace.cpp",
+        ":perfetto-atrace-categories-proto",
+    ],
     cflags: [
         "-Wall",
         "-Werror",
@@ -34,10 +37,15 @@ cc_binary {
         "libz",
         "libbase",
         "libpdx_default_transport",
+        "libprotobuf-cpp-lite",
         "android.hardware.atrace@1.0",
     ],
 
     init_rc: ["atrace.rc"],
+
+    proto: {
+        type: "lite",
+    },
 
     product_variables: {
         debuggable: {
