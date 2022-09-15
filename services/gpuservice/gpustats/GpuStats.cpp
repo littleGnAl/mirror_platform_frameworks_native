@@ -32,8 +32,10 @@ namespace android {
 
 GpuStats::~GpuStats() {
     if (mStatsdRegistered) {
+        ALOGE("GpuStats::~GpuStats()");
         AStatsManager_clearPullAtomCallback(android::util::GPU_STATS_GLOBAL_INFO);
         AStatsManager_clearPullAtomCallback(android::util::GPU_STATS_APP_INFO);
+        ALOGE("GpuStats::~GpuStats() clearPullAtomCallback");
     }
 }
 
@@ -212,12 +214,13 @@ void GpuStats::interceptSystemDriverStatsLocked() {
 }
 
 void GpuStats::registerStatsdCallbacksIfNeeded() {
+    ALOGE("registerStatsdCallbacksIfNeeded()");
     if (!mStatsdRegistered) {
+        mStatsdRegistered = true;
         AStatsManager_setPullAtomCallback(android::util::GPU_STATS_GLOBAL_INFO, nullptr,
                                          GpuStats::pullAtomCallback, this);
         AStatsManager_setPullAtomCallback(android::util::GPU_STATS_APP_INFO, nullptr,
                                          GpuStats::pullAtomCallback, this);
-        mStatsdRegistered = true;
     }
 }
 
