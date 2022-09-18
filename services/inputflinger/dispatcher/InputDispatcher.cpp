@@ -4647,8 +4647,17 @@ void InputDispatcher::setInputWindows(
     // TODO(b/198444055): Remove setInputWindows from InputDispatcher.
     { // acquire lock
         std::scoped_lock _l(mLock);
+        // Always do setInputWindowsLocked in the end for current focused window handles
+        const std::vector<sp<InputWindowHandle>>* focusedWindowHandles = nullptr;
         for (const auto& [displayId, handles] : handlesPerDisplay) {
+            if (mFocusedDisplayId == displayId) {
+                focusedWindowHandles = handles;
+                continue;
+            }
             setInputWindowsLocked(handles, displayId);
+        }
+        if (focusedWindowHandles != nullptr) {
+            setInputWindowsLocked(*focusedWindowHandles, mFocusedDisplayId);
         }
     }
     // Wake up poll loop since it may need to make new input dispatching choices.
