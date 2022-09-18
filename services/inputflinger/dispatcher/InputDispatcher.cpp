@@ -6336,8 +6336,17 @@ void InputDispatcher::onWindowInfosChanged(const std::vector<WindowInfo>& window
             mDisplayInfos.emplace(displayInfo.displayId, displayInfo);
         }
 
+        // Always do setInputWindowsLocked in the end for current focused window handles
+        const std::vector<sp<InputWindowHandle>>* focusedWindowHandles = nullptr;
         for (const auto& [displayId, handles] : handlesPerDisplay) {
+            if (mFocusedDisplayId == displayId) {
+                focusedWindowHandles = handles;
+                continue;
+            }
             setInputWindowsLocked(handles, displayId);
+        }
+        if (focusedWindowHandles != nullptr) {
+            setInputWindowsLocked(*focusedWindowHandles, mFocusedDisplayId);
         }
     }
     // Wake up poll loop since it may need to make new input dispatching choices.
