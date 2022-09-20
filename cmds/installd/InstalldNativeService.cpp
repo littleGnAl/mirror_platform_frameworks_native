@@ -1074,6 +1074,9 @@ binder::Status InstalldNativeService::clearAppData(const std::optional<std::stri
                 std::regex re("^\\/mnt\\/pass_through\\/[0-9]+\\/emulated");
                 if (std::regex_match(extPath, re)) {
                     extPath += "/" + std::to_string(userId);
+                } else if (userId != 0) {
+                    // delete only for USER_SYSTEM
+                    continue;
                 }
             } else {
                 if (n.first.compare(0, 14, "/mnt/media_rw/") != 0) {
@@ -1239,6 +1242,9 @@ binder::Status InstalldNativeService::destroyAppData(const std::optional<std::st
                 std::regex re("^\\/mnt\\/pass_through\\/[0-9]+\\/emulated");
                 if (std::regex_match(extPath, re)) {
                     extPath += "/" + std::to_string(userId);
+                } else if (userId != 0) {
+                    // delete only for USER_SYSTEM
+                    continue;
                 }
             } else {
                 if (n.first.compare(0, 14, "/mnt/media_rw/") != 0) {
