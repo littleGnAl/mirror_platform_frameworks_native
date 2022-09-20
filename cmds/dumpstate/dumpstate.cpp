@@ -1859,6 +1859,8 @@ Dumpstate::RunStatus Dumpstate::DumpstateDefaultAfterCritical() {
     DumpFile("PSI memory", "/proc/pressure/memory");
     DumpFile("PSI io", "/proc/pressure/io");
 
+    DumpFile("SDK extensions", "/data/misc/sdk/debug.txt");
+
     if (dump_pool_) {
         RETURN_IF_USER_DENIED_CONSENT();
         WaitForTask(std::move(dump_traces));
