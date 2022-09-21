@@ -1,6 +1,63 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fc832c1_b149ae74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-09-21T09:45:48Z",
+      "side": 1,
+      "message": "Nit: please wrap the lines in commit messages to 72 characters.",
+      "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4097311_6a8e35fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-09-21T09:45:48Z",
+      "side": 1,
+      "message": "The headline of a commit message should be around 60 characters long at most. I\u0027d suggest dropping \"[BugFix]\", too, since we don\u0027t use that convention in Android.",
+      "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c5a994_cfd4d3f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-09-21T09:45:48Z",
+      "side": 1,
+      "message": "Nit: typo for \"transfer\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 51,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "35462b02_aea78a85",
@@ -14,6 +71,23 @@
       "writtenOn": "2022-09-21T06:20:00Z",
       "side": 1,
       "message": "https://issuetracker.google.com/issues/247146911",
+      "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1e91b7_49189d03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-09-21T09:45:48Z",
+      "side": 1,
+      "message": "I\u0027ll let others comment on the code, but a few small things about the commit message:",
       "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
