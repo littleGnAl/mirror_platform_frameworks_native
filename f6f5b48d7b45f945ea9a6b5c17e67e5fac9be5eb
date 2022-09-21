@@ -90,6 +90,40 @@
       "message": "I\u0027ll let others comment on the code, but a few small things about the commit message:",
       "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b48bc58a_9f0bcd7e",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4645,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-09-21T14:45:23Z",
+      "side": 1,
+      "message": "Hi yhqeager@,\n\nThanks for your patch.\n\nThis method is only used for testing right now, so it will have no impact on the software running on the device. It only exists here because the tests have not yet been migrated to use the new method for updating windows using the `WindowInfosListener` through the `onWindowInfosChanged` method.\n\nThis will likely not have any affect in terms of fixing the issue.",
+      "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b3831a_9deb9bcd",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6322,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-09-21T14:45:23Z",
+      "side": 1,
+      "message": "This is where we actually handle the incoming window infos.",
+      "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
