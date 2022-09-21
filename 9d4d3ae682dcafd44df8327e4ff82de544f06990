@@ -16,6 +16,23 @@
       "message": "Suggested change requires review",
       "revId": "9d4d3ae682dcafd44df8327e4ff82de544f06990",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d8e9d1c_d47ac60c",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 6
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-09-21T19:46:19Z",
+      "side": 1,
+      "message": "Slight preference in the future for an explicit `drop(Box::from_raw` so that it\u0027s clear that you\u0027re constructing it for the side effect of dropping it, rather than just not needing the return value.",
+      "revId": "9d4d3ae682dcafd44df8327e4ff82de544f06990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
