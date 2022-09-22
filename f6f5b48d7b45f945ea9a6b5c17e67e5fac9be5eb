@@ -111,6 +111,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "302e6b95_2b85f7c0",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4645,
+      "author": {
+        "id": 1967581
+      },
+      "writtenOn": "2022-09-22T10:35:35Z",
+      "side": 1,
+      "message": "The code have been validated. More detailed info and video provided by issue 247146911.\n\nchange \"setInputWindowsLocked\" order will prevent this situation \n\u0027\nFocus left window: App A first Activity in display 0\nFocus entered window: App B Activity in display 0\nFocus left window: App B Activity in display 1\nFocus entered window: App A second Activity in display 0\n\u0027\nYeah... every line is right... but for App B, it get two message:\n1. \u0027Focus entered window: App B Activity in display 0\u0027\n2. \u0027Focus left window: App B Activity in display 1\u0027\nwhich eventually trigger ViewRootImpl.java#onFocusEvent(hasFocus)--\u003ewindowFocusChanged(hasFocus)\nFor App B, it get \n\u0027we get window focus\u0027\n\u0027we lost window focus\u0027 message\n\nAnd in the end, App B get \u0027we lost window focus\u0027, which causes wrong",
+      "parentUuid": "b48bc58a_9f0bcd7e",
+      "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69b3831a_9deb9bcd",
         "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
         "patchSetId": 1
@@ -122,6 +140,24 @@
       "writtenOn": "2022-09-21T14:45:23Z",
       "side": 1,
       "message": "This is where we actually handle the incoming window infos.",
+      "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "895601a1_75215364",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6322,
+      "author": {
+        "id": 1967581
+      },
+      "writtenOn": "2022-09-22T10:35:35Z",
+      "side": 1,
+      "message": "This is the callback function, however I want to solve that we try to deal with window handles for every display.",
+      "parentUuid": "69b3831a_9deb9bcd",
       "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
