@@ -51,6 +51,23 @@
       "message": "Yes, that\u0027s the script",
       "revId": "1b5902e6b7bd843b0ef97fe5ba6ec78d5c90d4d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a33a17_0547dc04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2022-09-23T02:19:26Z",
+      "side": 1,
+      "message": "Sorry, I thought you were modifying the external/angle `Android.bp` file.",
+      "revId": "1b5902e6b7bd843b0ef97fe5ba6ec78d5c90d4d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
