@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e98f9b4_06855f3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-09-23T21:57:47Z",
+      "side": 1,
+      "message": "Commit message probably needs an update.",
+      "revId": "1a05f895734587758ac6057181c6b54749e3a208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
