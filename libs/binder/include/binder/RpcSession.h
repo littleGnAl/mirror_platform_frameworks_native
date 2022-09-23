@@ -115,6 +115,11 @@ public:
     [[nodiscard]] status_t setupUnixDomainClient(const char* path);
 
     /**
+     * Connects to an RPC server over a nameless Unix domain socket pair.
+     */
+    [[nodiscard]] status_t setupUnixDomainPairClient(base::borrowed_fd connectFd);
+
+    /**
      * Connects to an RPC server at the CVD & port.
      */
     [[nodiscard]] status_t setupVsockClient(unsigned int cvd, unsigned int port);
