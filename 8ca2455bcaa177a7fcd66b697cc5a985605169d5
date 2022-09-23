@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "786aa951_4f7b939a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-09-23T10:27:01Z",
+      "side": 1,
+      "message": "I assume this is seconds?",
+      "range": {
+        "startLine": 796,
+        "startChar": 35,
+        "endLine": 796,
+        "endChar": 46
+      },
+      "revId": "8ca2455bcaa177a7fcd66b697cc5a985605169d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ffff57_5d6e50c0",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-09-23T10:27:01Z",
+      "side": 1,
+      "message": "What does Always() mean? Do we not want that for the other dump below?",
+      "range": {
+        "startLine": 796,
+        "startChar": 50,
+        "endLine": 796,
+        "endChar": 56
+      },
+      "revId": "8ca2455bcaa177a7fcd66b697cc5a985605169d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
