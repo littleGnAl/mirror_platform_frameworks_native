@@ -16,6 +16,24 @@
       "message": "I\u0027d rename this to `RpcTrustyConnectWithIncomingThreads`, but I\u0027m thinking the API could be a bit more generic.\n\nThere are other methods you can call on `session`, so maybe replacing the `numIncomingThreads` with a `std::function\u003cvoid(sp\u003cRpcSession\u003e\u0026)\u003e` that takes a callback would be better.",
       "revId": "3ad5125f71dd3e01d0c86d1a2e696f8ad5f7473d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d04c0723_eec40b82",
+        "filename": "libs/binder/RpcTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2022-09-23T21:19:11Z",
+      "side": 1,
+      "message": "Done, changed the function to RpcTrustyConnectWithSessionInitializer, that takes a std::function\u003cvoid(sp\u003cRpcSession\u003e\u0026)\u003e.",
+      "parentUuid": "cc92cef7_68f65f6d",
+      "revId": "3ad5125f71dd3e01d0c86d1a2e696f8ad5f7473d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
