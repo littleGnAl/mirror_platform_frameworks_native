@@ -50,6 +50,14 @@ public:
             std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
 
     /**
+     * Creates an RPC server over a nameless Unix domain socket pair.
+     *
+     * The transport socket is used to exchange socket pairs for individual
+     * connections, replacing the client connect()-ing to a listen()-ing server.
+     */
+    [[nodiscard]] status_t setupUnixDomainPairServer(base::unique_fd transportFd);
+
+    /**
      * This represents a session for responses, e.g.:
      *
      *     process A serves binder a
@@ -202,11 +210,18 @@ private:
     void onSessionAllIncomingThreadsEnded(const sp<RpcSession>& session) override;
     void onSessionIncomingThreadEnded() override;
 
+    status_t setupExternalServer(
+            base::unique_fd serverFd,
+            std::function<status_t(sp<RpcServer>&&, RpcTransportFd*)>&& acceptFn);
+
     static constexpr size_t kRpcAddressSize = 128;
     static void establishConnection(
             sp<RpcServer>&& server, RpcTransportFd clientFd,
             std::array<uint8_t, kRpcAddressSize> addr, size_t addrLen,
             std::function<void(sp<RpcSession>&&, RpcSession::PreJoinSetupResult&&)>&& joinFn);
+    static status_t acceptSocketConnection(sp<RpcServer>&& server, RpcTransportFd* out);
+    static status_t acceptSocketpairConnection(sp<RpcServer>&& server, RpcTransportFd* out);
+
     [[nodiscard]] status_t setupSocketServer(const RpcSocketAddress& address);
 
     const std::unique_ptr<RpcTransportCtx> mCtx;
@@ -228,6 +243,7 @@ private:
     std::map<std::vector<uint8_t>, sp<RpcSession>> mSessions;
     std::unique_ptr<FdTrigger> mShutdownTrigger;
     RpcConditionVariable mShutdownCv;
+    std::function<status_t(sp<RpcServer>&& server, RpcTransportFd* out)> mAcceptFn;
 };
 
 } // namespace android

@@ -145,6 +145,13 @@ static unsigned int allocateVsockPort() {
     return vsockPort++;
 }
 
+static void allocateSocketPair(base::unique_fd* fd1, base::unique_fd* fd2) {
+    if (!base::Socketpair(SOCK_STREAM, fd1, fd2)) {
+        int savedErrno = errno;
+        LOG(FATAL) << "Failed socketpair(): " << strerror(savedErrno);
+    }
+}
+
 struct ProcessSession {
     // reference to process hosting a socket server
     Process host;
@@ -233,6 +240,18 @@ static base::unique_fd connectTo(const RpcSocketAddress& addr) {
     return serverFd;
 }
 
+static base::unique_fd connectToUnixPair(const RpcTransportFd& transportFd) {
+    base::unique_fd clientFd, serverFd;
+    if (!base::Socketpair(SOCK_STREAM, &clientFd, &serverFd)) {
+        int savedErrno = errno;
+        LOG(FATAL) << "Failed socketpair: " << strerror(savedErrno);
+    }
+    if (status_t status = SendFdOverUnixSocket(transportFd.fd, std::move(serverFd)); status != OK) {
+        LOG(FATAL) << "Failed SendFdOverUnixSocket: " << strerror(-status);
+    }
+    return clientFd;
+}
+
 using RunServiceFn = void (*)(android::base::borrowed_fd writeEnd,
                               android::base::borrowed_fd readEnd);
 
@@ -253,7 +272,8 @@ public:
     // Whether the test params support sending FDs in parcels.
     bool supportsFdTransport() const {
         return clientVersion() >= 1 && serverVersion() >= 1 && rpcSecurity() != RpcSecurity::TLS &&
-                (socketType() == SocketType::PRECONNECTED || socketType() == SocketType::UNIX);
+                (socketType() == SocketType::PRECONNECTED || socketType() == SocketType::UNIX ||
+                 socketType() == SocketType::UNIX_PAIR);
     }
 
     static inline std::string PrintParamInfo(const testing::TestParamInfo<ParamType>& info) {
@@ -287,6 +307,9 @@ public:
                                             singleThreaded ? "_single_threaded" : "",
                                             noKernel ? "_no_kernel" : "");
 
+        base::unique_fd udsClientFd, udsServerFd;
+        allocateSocketPair(&udsClientFd, &udsServerFd);
+
         auto ret = ProcessSession{
                 .host = Process([=](android::base::borrowed_fd writeEnd,
                                     android::base::borrowed_fd readEnd) {
@@ -304,6 +327,7 @@ public:
         serverConfig.serverVersion = serverVersion;
         serverConfig.vsockPort = allocateVsockPort();
         serverConfig.addr = allocateSocketAddress();
+        serverConfig.anonUdsFd = udsServerFd.get();
         for (auto mode : options.serverSupportedFileDescriptorTransportModes) {
             serverConfig.serverSupportedFileDescriptorTransportModes.push_back(
                     static_cast<int32_t>(mode));
@@ -352,6 +376,9 @@ public:
                     break;
                 case SocketType::UNIX:
                     status = session->setupUnixDomainClient(serverConfig.addr.c_str());
+                    break;
+                case SocketType::UNIX_PAIR:
+                    status = session->setupUnixDomainPairClient(udsClientFd);
                     break;
                 case SocketType::VSOCK:
                     status = session->setupVsockClient(VMADDR_CID_LOCAL, serverConfig.vsockPort);
@@ -419,7 +446,8 @@ TEST_P(BinderRpc, SeparateRootObject) {
     }
 
     SocketType type = std::get<0>(GetParam());
-    if (type == SocketType::PRECONNECTED || type == SocketType::UNIX) {
+    if (type == SocketType::PRECONNECTED || type == SocketType::UNIX ||
+        type == SocketType::UNIX_PAIR) {
         // we can't get port numbers for unix sockets
         return;
     }
@@ -1516,7 +1544,7 @@ static bool testSupportVsockLoopback() {
 }
 
 static std::vector<SocketType> testSocketTypes(bool hasPreconnected = true) {
-    std::vector<SocketType> ret = {SocketType::UNIX, SocketType::INET};
+    std::vector<SocketType> ret = {SocketType::UNIX, SocketType::UNIX_PAIR, SocketType::INET};
 
     if (hasPreconnected) ret.push_back(SocketType::PRECONNECTED);
 
@@ -1717,6 +1745,8 @@ public:
     // A server that handles client socket connections.
     class Server {
     public:
+        using AcceptConnection = std::function<base::unique_fd(Server*)>;
+
         explicit Server() {}
         Server(Server&&) = default;
         ~Server() { shutdownAndWait(); }
@@ -1737,9 +1767,24 @@ public:
                         return AssertionFailure()
                                 << "setupUnixDomainServer: " << statusToString(status);
                     }
+                    mAcceptConnection = &Server::acceptServerConnection;
                     mConnectToServer = [addr] {
                         return connectTo(UnixSocketAddress(addr.c_str()));
                     };
+                } break;
+                case SocketType::UNIX_PAIR: {
+                    base::unique_fd baseFdClient, baseFdServer;
+                    if (!base::Socketpair(SOCK_STREAM, &baseFdClient, &baseFdServer)) {
+                        return AssertionFailure() << "Socketpair() failed";
+                    }
+                    auto status = rpcServer->setupUnixDomainPairServer(std::move(baseFdServer));
+                    if (status != OK) {
+                        return AssertionFailure()
+                                << "setupUnixDomainPairServer: " << statusToString(status);
+                    }
+                    mClientSocket = RpcTransportFd(std::move(baseFdClient));
+                    mAcceptConnection = &Server::acceptUnixPairConnection;
+                    mConnectToServer = [this] { return connectToUnixPair(mClientSocket); };
                 } break;
                 case SocketType::VSOCK: {
                     auto port = allocateVsockPort();
@@ -1747,6 +1792,7 @@ public:
                     if (status != OK) {
                         return AssertionFailure() << "setupVsockServer: " << statusToString(status);
                     }
+                    mAcceptConnection = &Server::acceptServerConnection;
                     mConnectToServer = [port] {
                         return connectTo(VsockSocketAddress(VMADDR_CID_LOCAL, port));
                     };
@@ -1757,6 +1803,7 @@ public:
                     if (status != OK) {
                         return AssertionFailure() << "setupInetServer: " << statusToString(status);
                     }
+                    mAcceptConnection = &Server::acceptServerConnection;
                     mConnectToServer = [port] {
                         const char* addr = kLocalInetAddress;
                         auto aiStart = InetSocketAddress::getAddrInfo(addr, port);
@@ -1788,14 +1835,26 @@ public:
             LOG_ALWAYS_FATAL_IF(!mSetup, "Call Server::setup first!");
             mThread = std::make_unique<std::thread>(&Server::run, this);
         }
+
+        base::unique_fd acceptServerConnection() {
+            return base::unique_fd(TEMP_FAILURE_RETRY(
+                    accept4(mFd.fd.get(), nullptr, nullptr, SOCK_CLOEXEC | SOCK_NONBLOCK)));
+        }
+
+        base::unique_fd acceptUnixPairConnection() {
+            base::unique_fd fd;
+            if (status_t status = RecvFdOverUnixSocket(mFd.fd, &fd); status != OK) {
+                LOG(FATAL) << "Failed RecvFdOverUnixSocket: " << strerror(-status);
+            }
+            return fd;
+        }
+
         void run() {
             LOG_ALWAYS_FATAL_IF(!mSetup, "Call Server::setup first!");
 
             std::vector<std::thread> threads;
             while (OK == mFdTrigger->triggerablePoll(mFd, POLLIN)) {
-                base::unique_fd acceptedFd(
-                        TEMP_FAILURE_RETRY(accept4(mFd.fd.get(), nullptr, nullptr /*length*/,
-                                                   SOCK_CLOEXEC | SOCK_NONBLOCK)));
+                base::unique_fd acceptedFd = mAcceptConnection(this);
                 threads.emplace_back(&Server::handleOne, this, std::move(acceptedFd));
             }
 
@@ -1822,8 +1881,9 @@ public:
     private:
         std::unique_ptr<std::thread> mThread;
         ConnectToServer mConnectToServer;
+        AcceptConnection mAcceptConnection;
         std::unique_ptr<FdTrigger> mFdTrigger = FdTrigger::make();
-        RpcTransportFd mFd;
+        RpcTransportFd mFd, mClientSocket;
         std::unique_ptr<RpcTransportCtx> mCtx;
         std::shared_ptr<RpcCertificateVerifierSimple> mCertVerifier =
                 std::make_shared<RpcCertificateVerifierSimple>();

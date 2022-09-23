@@ -50,6 +50,10 @@ int main(int argc, const char* argv[]) {
             CHECK_EQ(OK, server->setupUnixDomainServer(serverConfig.addr.c_str()))
                     << serverConfig.addr;
             break;
+        case SocketType::UNIX_PAIR:
+            CHECK_EQ(OK,
+                     server->setupUnixDomainPairServer(base::unique_fd{serverConfig.anonUdsFd}));
+            break;
         case SocketType::VSOCK:
             CHECK_EQ(OK, server->setupVsockServer(serverConfig.vsockPort));
             break;
