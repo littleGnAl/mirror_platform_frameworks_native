@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80ffbfc1_91117224",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-23T16:03:40Z",
+      "side": 1,
+      "message": "might also include sizeof and offsetof asserts to make sure they are they same?",
+      "parentUuid": "0d54580e_c77aa513",
+      "revId": "ca56fbe3e579fb9b56290bdd1bcd152d9eae94df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eba72827_537b093a",
         "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
         "patchSetId": 3
