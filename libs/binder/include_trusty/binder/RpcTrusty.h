@@ -22,4 +22,11 @@ namespace android {
 
 sp<IBinder> RpcTrustyConnect(const char* device, const char* port);
 
+/**
+ * if numIncomingThreads > 0; 'shutdown' on this session must also be called.
+ * Otherwise, a threadpool will leak.
+ */
+sp<RpcSession> RpcTrustyConnectWithCallbackSession(const char* device, const char* port,
+                                                   size_t numIncomingThreads);
+
 } // namespace android
