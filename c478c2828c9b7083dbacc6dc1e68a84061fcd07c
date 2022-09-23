@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "feae41cc_caecc062",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-09-23T21:55:50Z",
+      "side": 1,
+      "message": "\u003e I believe the custom \u0027accept4\u0027 function would also simplify +ahomescu\u0027s life.\n\nI thought so too, but Trusty services have their own separate event loop. RpcServer::join is not used at all in Trusty.\n\nWe might want to use it later when Trusty gets threads, but that will take a while.",
+      "parentUuid": "3182329d_bfd8bd0b",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 0
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f896c12_1df7fb62",
         "filename": "libs/binder/RpcTransportUtils.h",
         "patchSetId": 7
