@@ -46,6 +46,30 @@
       },
       "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da88d52_f42909f3",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-23T15:00:49Z",
+      "side": 1,
+      "message": "socketFactorySocket ? Maybe that\u0027s too Java.\n\n\"... creating socket pairs on demand for connections between client and server, using a pre-connected Unix domain socket to pass their FDs.\"\n\nOr something?",
+      "parentUuid": "2195590b_b69dc559",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
