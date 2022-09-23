@@ -17,6 +17,7 @@
 
 #include <android-base/unique_fd.h>
 #include <poll.h>
+#include <sys/socket.h>
 
 #include "FdTrigger.h"
 #include "RpcState.h"
