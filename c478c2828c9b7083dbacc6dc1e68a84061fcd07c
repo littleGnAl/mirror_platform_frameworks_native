@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3182329d_bfd8bd0b",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-23T16:27:37Z",
+      "side": 1,
+      "message": "This API is only used a couple of times in this git project. Do we need to have an internal and external version of it?\n\nI believe the custom \u0027accept4\u0027 function would also simplify +ahomescu\u0027s life. Maybe we export the accept function API, only have one?",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 0
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f896c12_1df7fb62",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-23T16:27:37Z",
+      "side": 1,
+      "message": "fmayle@ recently added this code in frameworks/native/libs/binder/RpcTransportRaw.cpp - would it make sense to reuse that? Anyway - he is more familiar with this",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39da04ef_f726bccc",
         "filename": "libs/binder/include/binder/RpcServer.h",
         "patchSetId": 7
@@ -67,6 +113,29 @@
         "startChar": 36,
         "endLine": 53,
         "endChar": 68
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85543ea_e353e844",
+        "filename": "libs/binder/tests/BinderRpcTestServerConfig.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-23T16:27:37Z",
+      "side": 1,
+      "message": "int fd in parcelable? It can\u0027t be passed over processes like this. Does this rely on fork, or should it be owned as ParcelFileDescriptor here?",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 7
       },
       "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
