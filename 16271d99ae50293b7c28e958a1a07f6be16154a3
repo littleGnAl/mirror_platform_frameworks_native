@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df408266_7d9eedc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-09-23T01:05:45Z",
+      "side": 1,
+      "message": "Can\u0027t repro the dumpstate failure locally and I\u0027m not seeing the issue in the logs.\ndumpstate_test.ZippedBugReportStreamTest#StreamLimitedOnlyReport is failing. This looks like the relevent text:\n```\nziparchiveZip: lfh name did not match central directoryframeworks/native/cmds/dumpstate/tests/dumpstate_test.cpp:1012: Failure\nExpected equality of these values:\n  0\n  e\n    Which is: -9\nInconsistent information entry name: main_entry.txt\nframeworks/native/cmds/dumpstate/tests/dumpstate_test.cpp:1044: Failure\nValue of: bugreport_txt_name\nExpected: contains regular expression \"(bugreport-.+(-[[:digit:]]+){6}\\\\.txt)\"\n  Actual: \"\"\nl@,\u0012,\u0012��,c�0S\u0017\u0005ziparchiveZip: Invalid filename of length 0frameworks/native/cmds/dumpstate/tests/dumpstate_test.cpp:1012: Failure\nExpected equality of these values:\n  0\n  e\n    Which is: -10\nInvalid entry name entry name:\n```\n\nhttps://android-build.googleplex.com/builds/tests/view?invocationId\u003dI26400010092612405\u0026testResultId\u003dTR87428280605617315\u0026tab\u003dtrace",
+      "revId": "16271d99ae50293b7c28e958a1a07f6be16154a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
