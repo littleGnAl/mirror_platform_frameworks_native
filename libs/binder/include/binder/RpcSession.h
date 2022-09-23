@@ -114,6 +114,8 @@ public:
      */
     [[nodiscard]] status_t setupUnixDomainClient(const char* path);
 
+    [[nodiscard]] status_t setupAnonUnixDomainClient(const base::unique_fd& baseFd);
+
     /**
      * Connects to an RPC server at the CVD & port.
      */

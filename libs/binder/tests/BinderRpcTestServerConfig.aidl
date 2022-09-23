@@ -21,5 +21,6 @@ parcelable BinderRpcTestServerConfig {
     int rpcSecurity;
     int serverVersion;
     int vsockPort;
+    int anonUdsFd;
     @utf8InCpp String addr;
 }

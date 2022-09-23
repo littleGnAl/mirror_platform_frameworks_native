@@ -28,6 +28,7 @@
 #include <android-base/hex.h>
 #include <android-base/macros.h>
 #include <android-base/scopeguard.h>
+#include <android-base/unique_fd.h>
 #include <binder/BpBinder.h>
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
@@ -41,6 +42,7 @@
 #include "OS.h"
 #include "RpcSocketAddress.h"
 #include "RpcState.h"
+#include "RpcUnixFdTransfer.h"
 #include "RpcWireFormat.h"
 #include "Utils.h"
 
@@ -145,6 +147,26 @@ RpcSession::FileDescriptorTransportMode RpcSession::getFileDescriptorTransportMo
 
 status_t RpcSession::setupUnixDomainClient(const char* path) {
     return setupSocketClient(UnixSocketAddress(path));
+}
+
+status_t RpcSession::setupAnonUnixDomainClient(const unique_fd& baseFd) {
+    return setupClient([&](const std::vector<uint8_t>& sessionId, bool incoming) {
+        int sock[2];
+        int ret = socketpair(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC | SOCK_NONBLOCK, 0, sock);
+        if (ret) {
+            int savedErrno = errno;
+            ALOGE("Failed socketpair: %s", strerror(savedErrno));
+            return -savedErrno;
+        }
+
+        if (status_t status = SendFdOverUnixSocket(baseFd, unique_fd(sock[0])); status != OK) {
+            ALOGE("Failed SendFdOverUnixSocket: %s", strerror(-status));
+            return status;
+        }
+
+        RpcTransportFd transportFd((unique_fd(sock[1])));
+        return initAndAddConnection(std::move(transportFd), sessionId, incoming);
+    });
 }
 
 status_t RpcSession::setupVsockClient(unsigned int cid, unsigned int port) {
