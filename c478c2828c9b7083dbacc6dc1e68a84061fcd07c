@@ -163,6 +163,47 @@
       },
       "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fb0248b_e4984dd8",
+        "filename": "libs/binder/tests/BinderRpcTestServerConfig.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-09-24T00:12:22Z",
+      "side": 1,
+      "message": "Afaict, this relies on the FD making it past fork+exec and into the test service. It should be fine as long as `unixPairConnectFd` was not created with `SOCK_CLOEXEC` (or equivalent).\n\nI don\u0027t think `ParcelFileDescriptor` works here because `writeToFd` writes this parcelable to a temporary `Parcel` then sends that over the wire using `parcel.data()` and `parcel.dataSize()`. That doesn\u0027t touch the objects array, so any file descriptors embedded in the `Parcel` wouldn\u0027t get transmitted.",
+      "parentUuid": "b85543ea_e353e844",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "477d30a3_f46854b4",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-09-24T00:12:22Z",
+      "side": 1,
+      "message": "We need these FDs to make it past both a fork and an exec, so we need them to not be CLOEXEC. `base::Socketpair` seems fine in that regard, but a comment could make this explicit?",
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
