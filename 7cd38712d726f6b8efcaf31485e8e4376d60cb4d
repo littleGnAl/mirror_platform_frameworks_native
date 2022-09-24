@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8809c9f2_67cf6e3b",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-24T03:55:07Z",
+      "side": 1,
+      "message": "okay maybe should have reduced the scope of this as well, but you know :) it\u0027s okay",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 11
+      },
+      "revId": "7cd38712d726f6b8efcaf31485e8e4376d60cb4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
