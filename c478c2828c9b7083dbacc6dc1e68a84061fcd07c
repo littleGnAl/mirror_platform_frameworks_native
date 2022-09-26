@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6cfbd78_f1ab55cb",
+        "filename": "libs/binder/tests/BinderRpcTestServerConfig.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-26T08:39:36Z",
+      "side": 1,
+      "message": "Or we could clear the CLOEXEC? http://cs/android-internal/external/minijail/libminijail.c?rcl\u003d9c0d84ba5bfe78ec1ea0e2c38658fe63e78a2616\u0026l\u003d2972\n\n(Although a bunch of nasty race conditions lurk if other fork() calls might be happening.)",
+      "parentUuid": "5fb0248b_e4984dd8",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "477d30a3_f46854b4",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 7
