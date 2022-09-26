@@ -17,17 +17,17 @@
 #ifndef ANDROID_EXTERNAL_VIBRATION_UTILS_H
 #define ANDROID_EXTERNAL_VIBRATION_UTILS_H
 
-#include <android/os/IExternalVibratorService.h>
+#include <android/os/VibratorScale.h>
 
 namespace android::os {
 
-enum class HapticScale {
-    MUTE = IExternalVibratorService::SCALE_MUTE,
-    VERY_LOW = IExternalVibratorService::SCALE_VERY_LOW,
-    LOW = IExternalVibratorService::SCALE_LOW,
-    NONE = IExternalVibratorService::SCALE_NONE,
-    HIGH = IExternalVibratorService::SCALE_HIGH,
-    VERY_HIGH = IExternalVibratorService::SCALE_VERY_HIGH,
+enum class HapticScale : int32_t {
+    MUTE = static_cast<int32_t>(VibratorScale::SCALE_MUTE),
+    VERY_LOW = static_cast<int32_t>(VibratorScale::SCALE_VERY_LOW),
+    LOW = static_cast<int32_t>(VibratorScale::SCALE_LOW),
+    NONE = static_cast<int32_t>(VibratorScale::SCALE_NONE),
+    HIGH = static_cast<int32_t>(VibratorScale::SCALE_HIGH),
+    VERY_HIGH = static_cast<int32_t>(VibratorScale::SCALE_VERY_HIGH),
 };
 
 bool isValidHapticScale(HapticScale scale);
