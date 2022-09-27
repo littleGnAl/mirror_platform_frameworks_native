@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b466a6f_18a42b8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2022-09-27T20:18:35Z",
+      "side": 1,
+      "message": "Hi Gavin, this change is intended to reduce the time spent running libmeminfo tools during bug reports. Can you take a look when you get a chance? Thanks!",
+      "revId": "51609487abd6f2619c05e24ed04a8ca4e03f9a22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
