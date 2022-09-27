@@ -16,6 +16,23 @@
       "message": "Hi Gavin, this change is intended to reduce the time spent running libmeminfo tools during bug reports. Can you take a look when you get a chance? Thanks!",
       "revId": "51609487abd6f2619c05e24ed04a8ca4e03f9a22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9209d78e_659dc64a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2022-09-27T20:23:10Z",
+      "side": 1,
+      "message": "As a side note, presubmit for this change is consistently failing on the ZippedBugReportStreamTest.StreamLimitedOnlyReport test case. I\u0027ve reached out to the test owner (+cc rhedjao@) and it was confirmed that this change was unrelated to the test case. In addition, this test failure doesn\u0027t seem to be locally reproducible on aosp_cf_x86_64_phone-userdebug/aosp-master-with-phones.\n\n(The AOSP branch that\u0027s failing in presubmit is actually aosp-master, but I believe this is the same as aosp-master-with-phones).",
+      "revId": "51609487abd6f2619c05e24ed04a8ca4e03f9a22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
