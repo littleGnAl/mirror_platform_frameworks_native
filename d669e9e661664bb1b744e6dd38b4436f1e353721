@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "972b2aa6_d3ca6827",
+        "filename": "libs/vibrator/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2022-09-27T05:26:43Z",
+      "side": 1,
+      "message": "Moved only used constants to hardware/interface\nhttps://android-review.googlesource.com/c/platform/hardware/interfaces/+/2233529",
+      "parentUuid": "6188da1f_b2f62cae",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "d669e9e661664bb1b744e6dd38b4436f1e353721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "247693c4_6c460519",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed08ec1_47cbabee",
+        "filename": "libs/vibrator/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2022-09-27T05:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "247693c4_6c460519",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 10
+      },
+      "revId": "d669e9e661664bb1b744e6dd38b4436f1e353721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "811ad2e3_1cabdda5",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-09-27T02:20:26Z",
       "side": 1,
       "message": "How can we make sure that these are in sync?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 81
+      },
+      "revId": "d669e9e661664bb1b744e6dd38b4436f1e353721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "304251b6_1c015123",
+        "filename": "libs/vibrator/include/vibrator/ExternalVibrationUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2022-09-27T05:26:43Z",
+      "side": 1,
+      "message": "Instead of hard-copy, use vintf-stable interface including constants between them. https://android-review.googlesource.com/c/platform/hardware/interfaces/+/2233529",
+      "parentUuid": "811ad2e3_1cabdda5",
       "range": {
         "startLine": 22,
         "startChar": 0,
