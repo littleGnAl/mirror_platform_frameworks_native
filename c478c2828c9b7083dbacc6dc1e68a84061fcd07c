@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8f706c7_913d9e1c",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-09-27T01:23:15Z",
+      "side": 1,
+      "message": "yeah, i wonder if we can wrap `transportFd` in `RpcTransportRaw` to dedup the code\n\nit probably looks like overkill, but actually i think we\u0027d want some features from it, e.g. this currently doesn\u0027t handle `RpcServer::shutdown` correctly IIUC. it should be easier to respect the shutdown trigger if you read via `RpcTransportRaw`",
+      "parentUuid": "7f896c12_1df7fb62",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39da04ef_f726bccc",
         "filename": "libs/binder/include/binder/RpcServer.h",
         "patchSetId": 7
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "socketFactorySocket ? Maybe that\u0027s too Java.\n\n\"... creating socket pairs on demand for connections between client and server, using a pre-connected Unix domain socket to pass their FDs.\"\n\nOr something?",
       "parentUuid": "2195590b_b69dc559",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4639044_b54a6bb8",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-09-27T01:23:15Z",
+      "side": 1,
+      "message": "maybe\n\n```\n    /**\n     * Creates an RPC server that bootstraps sessions using an existing\n     * Unix domain socket pair.\n     *\n     * Callers should create a pair of SOCK_STREAM Unix domain sockets, pass\n     * one to RpcServer::setupUnixDomainSocketBootstrapServer and the other\n     * to RpcSession::setupUnixDomainSocketBootstrapClient. Multiple client\n     * session can be created from the client end of the pair.\n     */\n    [[nodiscard]] status_t setupUnixDomainSocketBootstrapServer(base::unique_fd serverFd);\n```\n\nand put the implementation notes in the cpp file \n\n\ndo we want to support multiple clients? i think the current implementation technically supports it (haven\u0027t review super closely yet though). if one day we support multiplexing over a single connection, then we could use the original socket pair directly as the session\u0027s connection to simplify, but only if we disallow multiple clients",
+      "parentUuid": "3da88d52_f42909f3",
       "range": {
         "startLine": 53,
         "startChar": 36,
