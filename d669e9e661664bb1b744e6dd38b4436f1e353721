@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6188da1f_b2f62cae",
+        "filename": "libs/vibrator/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-09-27T02:20:26Z",
+      "side": 1,
+      "message": "Why can\u0027t we move this to hardware/interface/*?",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "d669e9e661664bb1b744e6dd38b4436f1e353721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247693c4_6c460519",
+        "filename": "libs/vibrator/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-09-27T02:20:26Z",
+      "side": 1,
+      "message": "Consider adding the visibility property if this library is intended to be used only by libhapticgenerator",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 10
+      },
+      "revId": "d669e9e661664bb1b744e6dd38b4436f1e353721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811ad2e3_1cabdda5",
+        "filename": "libs/vibrator/include/vibrator/ExternalVibrationUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-09-27T02:20:26Z",
+      "side": 1,
+      "message": "How can we make sure that these are in sync?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 81
+      },
+      "revId": "d669e9e661664bb1b744e6dd38b4436f1e353721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
