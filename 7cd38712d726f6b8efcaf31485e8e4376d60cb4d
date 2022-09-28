@@ -22,6 +22,52 @@
       },
       "revId": "7cd38712d726f6b8efcaf31485e8e4376d60cb4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b684bf51_1a8785fc",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-09-28T17:37:27Z",
+      "side": 1,
+      "message": "would we want a log even when the same process tries to register the same interface again? Seems like that could mean there is some unexpected behavior in the service.",
+      "range": {
+        "startLine": 349,
+        "startChar": 8,
+        "endLine": 349,
+        "endChar": 52
+      },
+      "revId": "7cd38712d726f6b8efcaf31485e8e4376d60cb4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b72d9df4_99410b12",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-09-28T17:37:27Z",
+      "side": 1,
+      "message": "nit: is this auto formatted?",
+      "range": {
+        "startLine": 359,
+        "startChar": 33,
+        "endLine": 359,
+        "endChar": 35
+      },
+      "revId": "7cd38712d726f6b8efcaf31485e8e4376d60cb4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
