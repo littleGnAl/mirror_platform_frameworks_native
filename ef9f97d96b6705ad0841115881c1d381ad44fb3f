@@ -34,6 +34,24 @@
       "parentUuid": "3338f141_ee3f0ff4",
       "revId": "ef9f97d96b6705ad0841115881c1d381ad44fb3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56e4761_4e39e23b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310511
+      },
+      "writtenOn": "2022-09-28T02:09:37Z",
+      "side": 1,
+      "message": "Ah, https://android-review.googlesource.com/c/platform/external/perfetto/+/2197358 could be merged now. Thank you, Lalit and Perfetto team\u0027s great help on these things.",
+      "parentUuid": "c2a78b0c_cdb75e20",
+      "revId": "ef9f97d96b6705ad0841115881c1d381ad44fb3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
