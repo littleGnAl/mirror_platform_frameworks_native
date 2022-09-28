@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "246b1850_38148aec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2022-09-28T18:30:53Z",
+      "side": 1,
+      "message": "Hi Gavin, this change is intended to reduce some high outliers in bug report durations. Can you take a look? Thanks!",
+      "revId": "774abdea86354c375e49061a78a997817c8d5b1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be0b0fb_c562d829",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2022-09-28T18:30:53Z",
+      "side": 1,
+      "message": "Hi Gavin, this change is intended to reduce some high outliers in bug report durations. Can you take a look? Thanks!",
+      "revId": "774abdea86354c375e49061a78a997817c8d5b1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
