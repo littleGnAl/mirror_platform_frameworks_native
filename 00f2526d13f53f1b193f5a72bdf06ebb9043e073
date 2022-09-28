@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3caa2a5_602eb288",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-28T19:41:20Z",
+      "side": 1,
+      "message": "nit: could these still be ostream to be more generic?",
+      "range": {
+        "startLine": 126,
+        "startChar": 51,
+        "endLine": 126,
+        "endChar": 64
+      },
+      "revId": "00f2526d13f53f1b193f5a72bdf06ebb9043e073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2169ba6_beda1ed4",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-28T19:41:20Z",
+      "side": 1,
+      "message": "okay - we can use \u0027LOG(VERBOSE) \u003c\u003c\u0027 here if you want. It seems some people already use it in libbinder, up to you",
+      "range": {
+        "startLine": 1039,
+        "startChar": 0,
+        "endLine": 1039,
+        "endChar": 37
+      },
+      "revId": "00f2526d13f53f1b193f5a72bdf06ebb9043e073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eecdc6b3_2e2a27cf",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-28T19:41:20Z",
+      "side": 1,
+      "message": "probably want these to be ALOGE or ALOGI - if \u0027IF_LOG_COMMANDS\u0027 is on, then we would want to be able to see them",
+      "range": {
+        "startLine": 1051,
+        "startChar": 8,
+        "endLine": 1051,
+        "endChar": 13
+      },
+      "revId": "00f2526d13f53f1b193f5a72bdf06ebb9043e073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
