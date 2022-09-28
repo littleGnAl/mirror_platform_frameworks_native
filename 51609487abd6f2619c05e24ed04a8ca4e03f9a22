@@ -33,6 +33,24 @@
       "message": "As a side note, presubmit for this change is consistently failing on the ZippedBugReportStreamTest.StreamLimitedOnlyReport test case. I\u0027ve reached out to the test owner (+cc rhedjao@) and it was confirmed that this change was unrelated to the test case. In addition, this test failure doesn\u0027t seem to be locally reproducible on aosp_cf_x86_64_phone-userdebug/aosp-master-with-phones.\n\n(The AOSP branch that\u0027s failing in presubmit is actually aosp-master, but I believe this is the same as aosp-master-with-phones).",
       "revId": "51609487abd6f2619c05e24ed04a8ca4e03f9a22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2bdc3e6_a7eb7dc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2022-09-28T00:08:32Z",
+      "side": 1,
+      "message": "Here\u0027s an example of a build/branch combo that fails this test in presubmit (aosp_cf_x86_64_phone-userdebug on aosp-master), but passes when run through go/forrest with the same changes applied: go/forrest/run/L77000000956586835.\n\nI think it\u0027s safe to say that this change doesn\u0027t actually cause the test to fail, but that there\u0027s some other flakiness/issue in the ZippedBugReportStreamTest.StreamLimitedOnlyReport test case that might be surfaced in presubmit runs. After this change is reviewed, I\u0027ll give this change a Bypass-Presubmit vote if there aren\u0027t any other checks that I should do first.",
+      "parentUuid": "9209d78e_659dc64a",
+      "revId": "51609487abd6f2619c05e24ed04a8ca4e03f9a22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
