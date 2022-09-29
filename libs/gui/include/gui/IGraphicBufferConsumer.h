@@ -284,6 +284,11 @@ public:
         dumpState(String8(prefix), &returned);
         result.append(returned);
     }
+
+    // Checks whether auto-refresh mode is enabled.  If true, it indicates to
+    // the consumer that it should attempt to acquire buffers even if it is not
+    // aware of any being available.
+    virtual status_t getAutoRefresh(bool* /*outAutoRefresh*/) const { return INVALID_OPERATION; }
 };
 
 #ifndef NO_BINDER

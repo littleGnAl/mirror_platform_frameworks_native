@@ -69,6 +69,7 @@ public:
         void addAndGetFrameTimestamps(
                 const NewFrameEventsEntry* newTimestamps,
                 FrameEventHistoryDelta* outDelta) override;
+        void onConfigurationChanged() override;
     private:
         // mConsumerListener is a weak reference to the IConsumerListener.  This is
         // the raison d'etre of ProxyConsumerListener.
