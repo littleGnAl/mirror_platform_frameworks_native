@@ -16,6 +16,24 @@
       "message": "Does the temporary string live long enough for the result of `c_str` to be valid for the duration of `system`? I\u0027m wondering if you need to store it in a local variable instead, so the storage outlives the function call.",
       "revId": "276d8dfe41da95f04fd573f9cbb3bcf82c2cbd78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ebe18c_d335f242",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-29T00:17:02Z",
+      "side": 1,
+      "message": "Yes, temporary objects in C++ are guaranteed not to be destroyed until after the evaluation of the entire expression here.",
+      "parentUuid": "11d5ce0a_52c3f535",
+      "revId": "276d8dfe41da95f04fd573f9cbb3bcf82c2cbd78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
