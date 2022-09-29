@@ -147,6 +147,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e018c70d_0fac5356",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4645,
+      "author": {
+        "id": 1967581
+      },
+      "writtenOn": "2022-09-29T02:05:17Z",
+      "side": 1,
+      "message": "We worked on Android R automotive.\nWhen open debug in InputDispatcher.cpp, the log will be showed\n#define LOG_NDEBUG 0\nstatic constexpr bool DEBUG_FOCUS \u003d true;\n\nIn fact it was log in setInputWindowsLocked method\nhttps://android.googlesource.com/platform/frameworks/native/+/refs/heads/master/services/inputflinger/dispatcher/InputDispatcher.cpp\nALOGD(\"setInputWindows displayId\u003d%\" PRId32 \" %s\", displayId, windowList.c_str());\n\nSo maybe I should change my code to onWindowInfosChanged? Okay I will upload my newest patch.",
+      "parentUuid": "596e80bf_eacc12b2",
+      "revId": "f6f5b48d7b45f945ea9a6b5c17e67e5fac9be5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69b3831a_9deb9bcd",
         "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
         "patchSetId": 1
