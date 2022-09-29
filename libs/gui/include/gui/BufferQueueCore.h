@@ -357,6 +357,10 @@ private:
     // This allows the consumer to acquire an additional buffer if that buffer is not droppable and
     // will eventually be released or acquired by the consumer.
     bool mAllowExtraAcquire = false;
+
+    // If false, acquireBuffer() will return NO_BUFFER_AVAILABLE if the front of the queue
+    // isn't ready yet (fence hasn't been signaled). Defaults to true.
+    bool mConsumerCanWait;
 }; // class BufferQueueCore
 
 } // namespace android

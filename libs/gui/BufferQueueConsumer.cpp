@@ -261,6 +261,16 @@ status_t BufferQueueConsumer::acquireBuffer(BufferItem* outBuffer,
             BQ_LOGV("acquireBuffer: front buffer is not droppable");
             return NO_BUFFER_AVAILABLE;
         } else {
+            if (!mCore->mConsumerCanWait && front->mFence->isValid()) {
+                // Consumer can decide to acquire the buffer only if its fence
+                // has already signaled, in which case the submission of other
+                // GPU commands will not be delayed by waiting on the buffer
+                // to become ready (see GLConsumer::doGLFenceWait).
+                if (Fence::Status::Signaled != front->mFence->getStatus()) {
+                    BQ_LOGV("acquireBuffer: front slot's fence not signaled");
+                    return NO_BUFFER_AVAILABLE;
+                }
+            }
             slot = front->mSlot;
             *outBuffer = *front;
         }
@@ -786,6 +796,14 @@ status_t BufferQueueConsumer::getOccupancyHistory(bool forceFlush,
 status_t BufferQueueConsumer::discardFreeBuffers() {
     std::lock_guard<std::mutex> lock(mCore->mMutex);
     mCore->discardFreeBuffersLocked();
+    return NO_ERROR;
+}
+
+status_t BufferQueueConsumer::setConsumerCanWait(bool canWait) {
+    ATRACE_CALL();
+    BQ_LOGV("setConsumerCanWait: %d", canWait);
+    std::lock_guard lock(mCore->mMutex);
+    mCore->mConsumerCanWait = canWait;
     return NO_ERROR;
 }
 

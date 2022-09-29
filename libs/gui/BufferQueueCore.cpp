@@ -130,7 +130,8 @@ BufferQueueCore::BufferQueueCore()
         mLastQueuedSlot(INVALID_BUFFER_SLOT),
         mUniqueId(getUniqueId()),
         mAutoPrerotation(false),
-        mTransformHintInUse(0) {
+        mTransformHintInUse(0),
+        mConsumerCanWait(true) {
     int numStartingBuffers = getMaxBufferCountLocked();
     for (int s = 0; s < numStartingBuffers; s++) {
         mFreeSlots.insert(s);
