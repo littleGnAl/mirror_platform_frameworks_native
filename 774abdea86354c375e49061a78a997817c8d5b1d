@@ -33,6 +33,23 @@
       "message": "Hi Gavin, this change is intended to reduce some high outliers in bug report durations. Can you take a look? Thanks!",
       "revId": "774abdea86354c375e49061a78a997817c8d5b1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "353ba6e7_6275366f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2022-09-29T16:00:29Z",
+      "side": 1,
+      "message": "Presubmit is failing for the same reason that I described in aosp/2221693 (ZippedBugReportStreamTest.StreamLimitedOnlyReport failing on code that doesn\u0027t affect it). This change shouldn\u0027t affect bug report zipping because all it does is reduce an existing timeout.",
+      "revId": "774abdea86354c375e49061a78a997817c8d5b1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
