@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d5ce0a_52c3f535",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-09-29T00:01:49Z",
+      "side": 1,
+      "message": "Does the temporary string live long enough for the result of `c_str` to be valid for the duration of `system`? I\u0027m wondering if you need to store it in a local variable instead, so the storage outlives the function call.",
+      "revId": "276d8dfe41da95f04fd573f9cbb3bcf82c2cbd78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
