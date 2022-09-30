@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16da0e58_bb868615",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-09-30T18:55:18Z",
+      "side": 1,
+      "message": "This makes sense, except that ktipc doesn\u0027t have an equivalent to `tipc_run_event_loop` since you have to start the server\u0027s thread (`ktipc_server_start`) before calling `ktipc_server_add_port`. I\u0027ll move server init and start out of this function and pass in a `ktipc_server*` arg.",
+      "parentUuid": "b08dd715_e10887a1",
+      "revId": "5e56c9cc57ab52d548d547959344a42f433ce2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc210f5b_081453d7",
         "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
         "patchSetId": 1
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d8d370c_ea5f5625",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-09-30T18:55:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc210f5b_081453d7",
+      "revId": "5e56c9cc57ab52d548d547959344a42f433ce2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fa2940f_d52ff903",
         "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2022-09-07T00:13:41Z",
       "side": 1,
       "message": "Should this be configurable?",
+      "revId": "5e56c9cc57ab52d548d547959344a42f433ce2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "248a4dd0_9f60a3fe",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-09-30T18:55:18Z",
+      "side": 1,
+      "message": "We could add an `optional\u003cuuid\u003e` arg. Would we ever want to have the kernel run a server with an alternate UUID?",
+      "parentUuid": "8fa2940f_d52ff903",
       "revId": "5e56c9cc57ab52d548d547959344a42f433ce2d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
