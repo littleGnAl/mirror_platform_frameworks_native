@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e92e76b8_cd08d6d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-09-30T14:46:13Z",
+      "side": 1,
+      "message": "Hi Alan, could you review this cl? This is needed for the new api cl https://r.android.com/2239541 and can be helpful in general if anyone wants to use SpIBinder in ffi libraries.",
+      "revId": "23ab7882ce7fcb8d2822c48a6a699b5f7168dc9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3030ab7_b74f4730",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-09-30T14:46:13Z",
+      "side": 1,
+      "message": "Hi Alan,\n\nCould you review this cl? This is needed for the new API https://r.android.com/2239541 and can be helpful in general",
+      "revId": "23ab7882ce7fcb8d2822c48a6a699b5f7168dc9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
