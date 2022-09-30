@@ -41,6 +41,7 @@ use std::sync::Arc;
 ///
 /// This struct encapsulates the generic C++ `sp<IBinder>` class. This wrapper
 /// is untyped; typed interface access is implemented by the AIDL compiler.
+#[repr(C)]
 pub struct SpIBinder(ptr::NonNull<sys::AIBinder>);
 
 impl fmt::Debug for SpIBinder {
