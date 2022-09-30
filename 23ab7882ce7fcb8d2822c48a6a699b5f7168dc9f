@@ -33,6 +33,29 @@
       "message": "Hi Alan,\n\nCould you review this cl? This is needed for the new API https://r.android.com/2239541 and can be helpful in general",
       "revId": "23ab7882ce7fcb8d2822c48a6a699b5f7168dc9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4979c31_d7fc88e0",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-09-30T15:10:48Z",
+      "side": 1,
+      "message": "Why is this needed? It looks like existing code uses SpIBinder from_raw / as_raw.\nAIBinder is the NDK type, isn\u0027t it?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "23ab7882ce7fcb8d2822c48a6a699b5f7168dc9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
