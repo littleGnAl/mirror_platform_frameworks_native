@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19443fcc_a28a0dcb",
+        "filename": "libs/binder/IServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-09-30T19:52:14Z",
+      "side": 0,
+      "message": "you know what, switching below to \u0027100ms\u0027 instead of \u00271s\u0027 might be enough to save this.",
+      "range": {
+        "startLine": 218,
+        "startChar": 57,
+        "endLine": 218,
+        "endChar": 60
+      },
+      "revId": "56a1e4fca9f456ac7864fe8ad63a5eddae1f410e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
