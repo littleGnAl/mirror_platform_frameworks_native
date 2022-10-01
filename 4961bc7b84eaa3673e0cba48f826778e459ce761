@@ -22,6 +22,30 @@
       },
       "revId": "4961bc7b84eaa3673e0cba48f826778e459ce761",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c0d122_da35e0d1",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-01T00:51:06Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "f1d2b3be_62bdf721",
+      "range": {
+        "startLine": 1111,
+        "startChar": 0,
+        "endLine": 1113,
+        "endChar": 0
+      },
+      "revId": "4961bc7b84eaa3673e0cba48f826778e459ce761",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
