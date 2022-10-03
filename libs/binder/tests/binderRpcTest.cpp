@@ -448,6 +448,31 @@ TEST_P(BinderRpc, SeparateRootObject) {
     EXPECT_NE(port1, port2);
 }
 
+/**
+ * Create a file descriptor in the server. Make this file descriptor non-blocking
+ * and pass it to the client. Ensure that the fd that's received by the client
+ * is still nonblocking.
+ */
+TEST_P(BinderRpc, FileDescriptorRemainsNonBlocking) {
+    auto proc = createRpcTestSocketServerProcess({
+            .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+            .serverSupportedFileDescriptorTransportModes =
+                    {RpcSession::FileDescriptorTransportMode::UNIX},
+    });
+
+    android::os::ParcelFileDescriptor out;
+    auto status = proc.rootIface->getNonBlockingFileDescriptor(&out);
+    if (!supportsFdTransport()) {
+        EXPECT_EQ(status.transactionError(), BAD_VALUE) << status;
+        return;
+    }
+    ASSERT_TRUE(status.isOk()) << status;
+
+    const int result = fcntl(out.get(), F_GETFL);
+    EXPECT_NE(result, -1);
+    EXPECT_EQ(result & O_NONBLOCK, O_NONBLOCK);
+}
+
 TEST_P(BinderRpc, TransactionsMustBeMarkedRpc) {
     auto proc = createRpcTestSocketServerProcess({});
     Parcel data;

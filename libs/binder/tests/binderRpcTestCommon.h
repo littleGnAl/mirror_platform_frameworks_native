@@ -46,6 +46,7 @@
 #include <vector>
 
 #include <signal.h>
+#include <sys/socket.h>
 
 #include "../BuildFlags.h"
 #include "../FdTrigger.h"
@@ -372,6 +373,17 @@ public:
             acc.append(result);
         }
         out->reset(mockFileDescriptor(acc));
+        return Status::ok();
+    }
+
+    Status getNonBlockingFileDescriptor(android::os::ParcelFileDescriptor* out) override {
+        std::array<int, 2> sockets;
+        const bool created = socketpair(AF_UNIX, SOCK_SEQPACKET, 0, sockets.data()) == 0;
+        LOG_ALWAYS_FATAL_IF(!created, "Could not create socket pair");
+        const int result = fcntl(sockets[0], F_SETFL, O_NONBLOCK);
+        LOG_ALWAYS_FATAL_IF(result != 0, "Could not make socket non-blocking: %s", strerror(errno));
+        out->reset(base::unique_fd(sockets[0]));
+        close(sockets[1]); // we don't need the other side of the fd
         return Status::ok();
     }
 };

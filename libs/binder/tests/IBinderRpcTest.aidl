@@ -71,4 +71,5 @@ interface IBinderRpcTest {
     ParcelFileDescriptor echoAsFile(@utf8InCpp String content);
 
     ParcelFileDescriptor concatFiles(in List<ParcelFileDescriptor> files);
+    ParcelFileDescriptor getNonBlockingFileDescriptor();
 }
