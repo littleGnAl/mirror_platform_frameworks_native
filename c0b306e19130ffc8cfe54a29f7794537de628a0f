@@ -51,6 +51,24 @@
       "parentUuid": "a4a13542_ce702da0",
       "revId": "c0b306e19130ffc8cfe54a29f7794537de628a0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90af5506_c31bc661",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1836785
+      },
+      "writtenOn": "2022-10-03T20:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a13542_ce702da0",
+      "revId": "c0b306e19130ffc8cfe54a29f7794537de628a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
