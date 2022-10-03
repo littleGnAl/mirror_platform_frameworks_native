@@ -33,6 +33,23 @@
       "message": "Trevor, can you +2 this please?",
       "revId": "b457637fcc33e3c04b8658cc564b0c0ca66bff19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc2ed31_7c4593e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-10-03T22:27:23Z",
+      "side": 1,
+      "message": "I\u0027m not sure if the values of 0xFFFFFFFF are meant to be a \"Don\u0027t Care\" if they actually have a specific importance. But it\u0027s all logically clear and understandable enough for me",
+      "revId": "b457637fcc33e3c04b8658cc564b0c0ca66bff19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
