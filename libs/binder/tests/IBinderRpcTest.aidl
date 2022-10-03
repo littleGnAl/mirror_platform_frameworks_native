@@ -71,4 +71,9 @@ interface IBinderRpcTest {
     ParcelFileDescriptor echoAsFile(@utf8InCpp String content);
 
     ParcelFileDescriptor concatFiles(in List<ParcelFileDescriptor> files);
+
+    // FDs sent via `sendFdOneway` can be received via `recvFd`. The handler for
+    // `sendFdOneway` will block until the next `recvFd` call.
+    oneway void sendFdOneway(in ParcelFileDescriptor fd);
+    ParcelFileDescriptor recvFd();
 }
