@@ -74,6 +74,25 @@ bool RunRpcServer(AIBinder* service, unsigned int port) {
     return RunRpcServerCallback(service, port, nullptr, nullptr);
 }
 
+bool RunUnixBootstrapRpcServerCallback(AIBinder* service, int fd,
+                                       void (*readyCallback)(void* param), void* param) {
+    auto server = RpcServer::make();
+    status_t status = server->setupUnixDomainSocketBootstrapServer(unique_fd(fd));
+    if (status != OK) {
+        LOG(ERROR) << "Failed to set up unix bootstrap server with fd " << fd
+                   << " error: " << statusToString(status).c_str();
+        return false;
+    }
+    server->setRootObject(AIBinder_toPlatformBinder(service));
+
+    if (readyCallback) readyCallback(param);
+    server->join();
+
+    // Shutdown any open sessions since server failed.
+    (void)server->shutdown();
+    return true;
+}
+
 AIBinder* RpcClient(unsigned int cid, unsigned int port) {
     auto session = RpcSession::make();
     if (status_t status = session->setupVsockClient(cid, port); status != OK) {
@@ -89,6 +108,17 @@ AIBinder* RpcPreconnectedClient(int (*requestFd)(void* param), void* param) {
     auto request = [=] { return unique_fd{requestFd(param)}; };
     if (status_t status = session->setupPreconnectedClient(unique_fd{}, request); status != OK) {
         LOG(ERROR) << "Failed to set up vsock client. error: " << statusToString(status).c_str();
+        return nullptr;
+    }
+    return AIBinder_fromPlatformBinder(session->getRootObject());
+}
+
+AIBinder* RpcUnixBootstrapClient(int bootstrapFd) {
+    auto session = RpcSession::make();
+    status_t status = session->setupUnixDomainSocketBootstrapClient(unique_fd(bootstrapFd));
+    if (status != OK) {
+        LOG(ERROR) << "Failed to set up unix bootstrap client with fd " << fd
+                   << ". error: " << statusToString(status).c_str();
         return nullptr;
     }
     return AIBinder_fromPlatformBinder(session->getRootObject());
