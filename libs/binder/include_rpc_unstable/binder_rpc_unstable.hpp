@@ -40,6 +40,15 @@ bool RunVsockRpcServerCallback(AIBinder* service, unsigned int port,
 bool RunVsockRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* context),
                                   void* factoryContext, unsigned int port);
 
+// Starts an RPC server on a given Unix bootstrap socket and a given root
+// IBinder object. This function sets up the server, calls readyCallback
+// with a given param, and then joins before returning.
+//
+// bootstrapFd should be one endpoint of socketpair(AF_UNIX, SOCK_STREAM, 0).
+// The function will take ownership of the file descriptor.
+bool RunUnixBootstrapRpcServerCallback(AIBinder* service, int bootstrapFd,
+                          void (*readyCallback)(void* param), void* param);
+
 AIBinder* RpcClient(unsigned int cid, unsigned int port);
 
 // Connect to an RPC server with preconnected file descriptors.
@@ -50,4 +59,10 @@ AIBinder* RpcClient(unsigned int cid, unsigned int port);
 // param will be passed to requestFd. Callers can use param to pass contexts to
 // the requestFd function.
 AIBinder* RpcPreconnectedClient(int (*requestFd)(void* param), void* param);
+
+// Connect to an RPC server at the given Unix bootstrap socket.
+//
+// bootstrapFd should be one endpoint of socketpair(AF_UNIX, SOCK_STREAM, 0).
+// The function will take ownership of the file descriptor.
+AIBinder* RpcUnixBootstrapClient(int bootstrapFd);
 }

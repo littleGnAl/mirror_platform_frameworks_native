@@ -18,7 +18,11 @@ use binder::{
     unstable_api::{AIBinder, AsNative},
     SpIBinder,
 };
-use std::{os::raw, ptr::null_mut};
+use std::{
+    os::raw,
+    os::unix::io::{IntoRawFd, OwnedFd},
+    ptr::null_mut,
+};
 
 /// Runs a binder RPC server, serving the supplied binder service implementation on the given vsock
 /// port.
@@ -36,6 +40,24 @@ where
 {
     let mut ready_notifier = ReadyNotifier(Some(on_ready));
     ready_notifier.run_server(service, port)
+}
+
+/// Runs a binder RPC server, serving the supplied binder service implementation on the given
+/// Unix bootstrap socket.
+///
+/// If and when the server is ready for connections (it is waiting for messages on the socket),
+/// `on_ready` is called to allow appropriate action to be taken - e.g. to notify clients that
+/// they may now attempt to connect.
+///
+/// The current thread is joined to the binder thread pool to handle incoming messages.
+///
+/// Returns true if the server has shutdown normally, false if it failed in some way.
+pub fn run_unix_bootstrap_rpc_server<F>(service: SpIBinder, fd: OwnedFd, on_ready: F) -> bool
+where
+    F: FnOnce(),
+{
+    let mut ready_notifier = ReadyNotifier(Some(on_ready));
+    ready_notifier.run_unix_bootstrap_server(service, fd)
 }
 
 struct ReadyNotifier<F>(Option<F>)
@@ -58,6 +80,25 @@ where
             binder_rpc_unstable_bindgen::RunVsockRpcServerCallback(
                 service,
                 port,
+                Some(Self::ready_callback),
+                param,
+            )
+        }
+    }
+
+    fn run_unix_bootstrap_server(&mut self, mut service: SpIBinder, fd: OwnedFd) -> bool {
+        let service = service.as_native_mut();
+        let param = self.as_void_ptr();
+
+        // SAFETY: Service ownership is transferring to the server and won't be valid afterward.
+        // Plus the binder objects are threadsafe.
+        // RunUnixBootstrapRpcServerCallback does not retain a reference to `ready_callback`
+        // or `param`; it only uses them before it returns, which is during the lifetime of `self`.
+        // RunUnixBootstrapRpcServerCallback takes ownership of the bootstrap fd.
+        unsafe {
+            binder_rpc_unstable_bindgen::RunUnixBootstrapRpcServerCallback(
+                service,
+                fd.into_raw_fd(),
                 Some(Self::ready_callback),
                 param,
             )
