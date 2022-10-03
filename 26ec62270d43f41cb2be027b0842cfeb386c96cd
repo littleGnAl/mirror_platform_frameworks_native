@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "269f058b_4f041d30",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-10-03T23:39:21Z",
+      "side": 1,
+      "message": "Minor nit: might be useful to add a comment explaining how this test works, since it\u0027s a bit subtle. Afaict this is what happens:\n* Test client sends the first transaction (let\u0027s call it transaction A)\n* Service receives async A on thread 1 and calls `sendFdOneway` which blocks until the `recvFd` on 935 is called; since `sendFdOneway` hasn\u0027t returned yet, `RpcState` can\u0027t increment the async number\n* Test client sends transaction B\n* Service receives transaction B on thread 2 but since the async number hasn\u0027t been updated yet, it queues the transaction in `asyncTodo` and returns (this is what we\u0027re testing)\n* Client reaches 935 and calls `recvFd` which unblocks transaction A, which returns and updates the async number\n* Immediately after, `RpcState` pops transaction B and calls `sendFdOneway`\n* The rest isn\u0027t particularly important, but the test calls `recvFd` again to clear the `HandoffChannel`.\n\nDid I get the sequence right?",
+      "revId": "26ec62270d43f41cb2be027b0842cfeb386c96cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
