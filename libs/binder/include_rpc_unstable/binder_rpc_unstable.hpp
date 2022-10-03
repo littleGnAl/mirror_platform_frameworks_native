@@ -40,6 +40,10 @@ bool RunRpcServerCallback(AIBinder* service, unsigned int port, void (*readyCall
 bool RunRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* context),
                           void* factoryContext, unsigned int port);
 
+// Foobar
+bool RunUnixBootstrapRpcServerCallback(AIBinder* service, int fd,
+                          void (*readyCallback)(void* param), void* param);
+
 AIBinder* RpcClient(unsigned int cid, unsigned int port);
 
 // Connect to an RPC server with preconnected file descriptors.
@@ -50,5 +54,7 @@ AIBinder* RpcClient(unsigned int cid, unsigned int port);
 // param will be passed to requestFd. Callers can use param to pass contexts to
 // the requestFd function.
 AIBinder* RpcPreconnectedClient(int (*requestFd)(void* param), void* param);
+
+AIBinder* RpcUnixBootstrapClient(int bootstrapFd);
 
 }

@@ -17,7 +17,7 @@
 use binder::{unstable_api::new_spibinder, FromIBinder, SpIBinder, StatusCode, Strong};
 use std::os::{
     raw::{c_int, c_void},
-    unix::io::RawFd,
+    unix::io::{IntoRawFd, OwnedFd, RawFd},
 };
 
 /// Connects to an RPC Binder server over vsock.
@@ -53,6 +53,25 @@ pub fn get_preconnected_rpc_service(
             param,
         ))
     }
+}
+
+/// Foobar
+pub fn get_unix_bootstrap_rpc_service(bootstrap_fd: OwnedFd) -> Option<SpIBinder> {
+    // SAFETY: AIBinder returned by RpcPreconnectedClient has correct reference count, and the
+    // ownership can be safely taken by new_spibinder. RpcPreconnectedClient does not take ownership
+    // of param, only passing it to request_fd_wrapper.
+    unsafe {
+        new_spibinder(binder_rpc_unstable_bindgen::RpcUnixBootstrapClient(
+            bootstrap_fd.into_raw_fd(),
+        ))
+    }
+}
+
+/// Foobar
+pub fn get_unix_bootstrap_rpc_interface<T: FromIBinder + ?Sized>(
+    bootstrap_fd: OwnedFd,
+) -> Result<Strong<T>, StatusCode> {
+    interface_cast(get_unix_bootstrap_rpc_service(bootstrap_fd))
 }
 
 type RequestFd<'a> = &'a mut dyn FnMut() -> Option<RawFd>;
