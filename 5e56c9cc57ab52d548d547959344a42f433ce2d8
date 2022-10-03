@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9393fc49_6af5341b",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-10-03T16:52:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16da0e58_bb868615",
+      "revId": "5e56c9cc57ab52d548d547959344a42f433ce2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc210f5b_081453d7",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "bc210f5b_081453d7",
+      "revId": "5e56c9cc57ab52d548d547959344a42f433ce2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca59b6a_8001ed7e",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-10-03T16:52:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d8d370c_ea5f5625",
       "revId": "5e56c9cc57ab52d548d547959344a42f433ce2d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
