@@ -63,6 +63,30 @@
       },
       "revId": "4961bc7b84eaa3673e0cba48f826778e459ce761",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3e62912_aeff6f72",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-10-03T22:49:34Z",
+      "side": 1,
+      "message": "I was initially going to bring up potential security problems with getting an unexpected value, then realized the backing value is a public field so anyone can set it to an arbitrary value at any time.\n\nI don\u0027t remember (I wrote the initial code but it was a while ago), did we intentionally make that field public? Is this intended?",
+      "parentUuid": "e2c0d122_da35e0d1",
+      "range": {
+        "startLine": 1111,
+        "startChar": 0,
+        "endLine": 1113,
+        "endChar": 0
+      },
+      "revId": "4961bc7b84eaa3673e0cba48f826778e459ce761",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
