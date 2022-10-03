@@ -56,6 +56,30 @@
       },
       "revId": "23ab7882ce7fcb8d2822c48a6a699b5f7168dc9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a34ad1c6_a84a40b4",
+        "filename": "libs/binder/rust/src/proxy.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-03T15:29:06Z",
+      "side": 1,
+      "message": "This was needed when I wanted to use the type SpIBinder in the API. Without this annotation we cannot has this type in the API. from_raw / as_raw is not supposed to be used outside this package according to its comments.\n\nOtherwise I don\u0027t think this is needed for now with the new version of API. I\u0027ll set this as WIP. Thanks for the review!",
+      "parentUuid": "b4979c31_d7fc88e0",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "23ab7882ce7fcb8d2822c48a6a699b5f7168dc9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
