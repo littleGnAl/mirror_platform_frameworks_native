@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f278e0a_631e0f47",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-10-03T11:14:23Z",
+      "side": 1,
+      "message": "Ok, leaving this as is for now.",
+      "parentUuid": "feae41cc_caecc062",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 603,
+        "endChar": 0
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f896c12_1df7fb62",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "yeah, i wonder if we can wrap `transportFd` in `RpcTransportRaw` to dedup the code\n\nit probably looks like overkill, but actually i think we\u0027d want some features from it, e.g. this currently doesn\u0027t handle `RpcServer::shutdown` correctly IIUC. it should be easier to respect the shutdown trigger if you read via `RpcTransportRaw`",
       "parentUuid": "7f896c12_1df7fb62",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a966828d_a0db54c0",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-10-03T11:14:23Z",
+      "side": 1,
+      "message": "I\u0027ve had a crack at this but I\u0027m not sure I fully understand the properties that this needs to have, so please excuse my naivete and let me know if I\u0027ve done it wrong.\n\nI\u0027ve extracted the code from `RpcTransportRaw` into this header, and I wrapped the sending (RpcSession) in `RpcTransport`, which in this UDS/noTLS case is `RpcTransportRaw`.\n\nI did not do it for the receiver (RpcServer) because that code does not seem to have the same `RpcServer::shutdown` handling. Please correct me if that\u0027s wrong.\n\nThe `RpcTransport` is created from the local `mCtx`. That does not work for UDS/TLS because the transport does not support passing FDs. Creating `RpcTransportRaw` directly from `RpcSession` makes the Trusty libraries unhappy. If you have ideas on how to do this cleanly, I\u0027m happy to hear it. But I\u0027m okay with the current solution, even though it\u0027s a bit of an arbitrary limitation.",
+      "parentUuid": "d8f706c7_913d9e1c",
       "range": {
         "startLine": 110,
         "startChar": 23,
@@ -190,6 +238,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05def815_49c6c116",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-10-03T11:14:23Z",
+      "side": 1,
+      "message": "Done. \nRe multiple clients: that\u0027s supported, yes. ClientA can pass their bootstrap FD to ClientB, and ClientB can use that to start new sessions. I think that\u0027s a nice property and worth preserving. We might even have a use case for it in U.",
+      "parentUuid": "c4639044_b54a6bb8",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b85543ea_e353e844",
@@ -261,6 +333,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc515e6f_20eb0822",
+        "filename": "libs/binder/tests/BinderRpcTestServerConfig.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-10-03T11:14:23Z",
+      "side": 1,
+      "message": "Right, yeah, doesn\u0027t work because the Parcel is sent to the child over a pipe. Suggestions welcome on how to make this better. Didn\u0027t want to go into too much trouble in test code.",
+      "parentUuid": "d6cfbd78_f1ab55cb",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "477d30a3_f46854b4",
@@ -274,6 +370,24 @@
       "writtenOn": "2022-09-24T00:12:22Z",
       "side": 1,
       "message": "We need these FDs to make it past both a fork and an exec, so we need them to not be CLOEXEC. `base::Socketpair` seems fine in that regard, but a comment could make this explicit?",
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9489616_b07f995b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-10-03T11:14:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "477d30a3_f46854b4",
       "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
