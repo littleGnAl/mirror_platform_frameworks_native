@@ -911,6 +911,38 @@ TEST_P(BinderRpc, OnewayCallDoesNotWait) {
     EXPECT_LT(epochMsAfter, epochMsBefore + kReallyLongTimeMs);
 }
 
+TEST_P(BinderRpc, OnewayCallQueueingWithFds) {
+    if (!supportsFdTransport()) {
+        GTEST_SKIP() << "Would fail trivially (which is tested elsewhere)";
+    }
+    if (clientOrServerSingleThreaded()) {
+        GTEST_SKIP() << "This test requires multiple threads";
+    }
+
+    auto proc = createRpcTestSocketServerProcess({
+            .numThreads = 4,
+            .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+            .serverSupportedFileDescriptorTransportModes =
+                    {RpcSession::FileDescriptorTransportMode::UNIX},
+    });
+
+    EXPECT_OK(proc.rootIface->sendFdOneway(
+            android::os::ParcelFileDescriptor(mockFileDescriptor("a"))));
+    EXPECT_OK(proc.rootIface->sendFdOneway(
+            android::os::ParcelFileDescriptor(mockFileDescriptor("b"))));
+
+    android::os::ParcelFileDescriptor fdA;
+    EXPECT_OK(proc.rootIface->recvFd(&fdA));
+    std::string result;
+    CHECK(android::base::ReadFdToString(fdA.get(), &result));
+    EXPECT_EQ(result, "a");
+
+    android::os::ParcelFileDescriptor fdB;
+    EXPECT_OK(proc.rootIface->recvFd(&fdB));
+    CHECK(android::base::ReadFdToString(fdB.get(), &result));
+    EXPECT_EQ(result, "b");
+}
+
 TEST_P(BinderRpc, OnewayCallQueueing) {
     if (clientOrServerSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
