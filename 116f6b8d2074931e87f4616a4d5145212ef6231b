@@ -22,6 +22,30 @@
       },
       "revId": "116f6b8d2074931e87f4616a4d5145212ef6231b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91533023_3a5fef78",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-10-04T22:16:04Z",
+      "side": 1,
+      "message": "Can you clarify what does \"REPEAT_FD\" mean in this context?\n\nThe file is created on the server and is sent to the client. It does not get created on the client first, so I don\u0027t think \u0027repeat\u0027 would be correct here?",
+      "parentUuid": "0b9506dc_83b7efb6",
+      "range": {
+        "startLine": 1167,
+        "startChar": 33,
+        "endLine": 1167,
+        "endChar": 68
+      },
+      "revId": "116f6b8d2074931e87f4616a4d5145212ef6231b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
