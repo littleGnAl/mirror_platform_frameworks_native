@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78da459e_670cf5b9",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-04T00:44:22Z",
+      "side": 0,
+      "message": "can\u0027t exactly repro locally but still oops",
+      "range": {
+        "startLine": 186,
+        "startChar": 23,
+        "endLine": 186,
+        "endChar": 30
+      },
+      "revId": "db95d57967ac265432f5765b522c29108f36cadd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
