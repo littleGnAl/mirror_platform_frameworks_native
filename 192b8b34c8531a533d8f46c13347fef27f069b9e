@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e353386c_1a1d5fb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-10-04T16:51:01Z",
+      "side": 1,
+      "message": "Yes! Now that you\u0027ve explained the difference to me, i moved it to `binderLibTest`. Maybe one day we can convert it to use aidl ))",
+      "parentUuid": "0997df72_f96cb989",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "192b8b34c8531a533d8f46c13347fef27f069b9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d2ea4fd_470d3b6d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-04T01:04:05Z",
       "side": 1,
       "message": "From a security perspective, a separate process should validate this if we rely on it. Though, if this is being done to disambiguate a failure, I do love having the test. However, if possible I\u0027d like to emphasize here limited reliability",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "192b8b34c8531a533d8f46c13347fef27f069b9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d909ec_c9c4bbbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-10-04T16:51:01Z",
+      "side": 1,
+      "message": "We have a test for this in https://source.corp.google.com/android/frameworks/native/services/inputflinger/tests/InputFlingerService_test.cpp?q\u003dInputFlingerService_test\u0026ct\u003dos\u0026sq\u003dpackage:android$\n\nHowever, that test is clunky (it\u0027s causing some ubsan crashes) and it\u0027s just testing binder implementation rather than input code. So I wanted to move it to the actual binder test where the setup is already done for us.\n\nOn the input side, I will simply add a LOG_ALWAYS_FATAL if O_NONBLOCK is not set and remove the `InputFlingerService_test` test. That, together with the test being added here, should be a good enough guard to guarantee the behaviour that we need.",
+      "parentUuid": "5d2ea4fd_470d3b6d",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abefbefd_b85ab853",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-10-04T16:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a6ebced_cb6b1c88",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 3
+      },
+      "revId": "192b8b34c8531a533d8f46c13347fef27f069b9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b55c83e7_cf03880f",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-10-04T01:04:05Z",
       "side": 1,
       "message": "nit: return Status::fromExceptionCode w/ message - it will be more debuggable - since rather than DEAD_OBJECT, we\u0027d see the error directly in the test result",
+      "range": {
+        "startLine": 382,
+        "startChar": 8,
+        "endLine": 382,
+        "endChar": 27
+      },
+      "revId": "192b8b34c8531a533d8f46c13347fef27f069b9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ba264d3_c6c6bec0",
+        "filename": "libs/binder/tests/binderRpcTestCommon.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-10-04T16:51:01Z",
+      "side": 1,
+      "message": "I didnt find a way to do this in `binderLibTest`, so I converted to ALOGE, but let me know if there\u0027s a better way to do this!",
+      "parentUuid": "b55c83e7_cf03880f",
       "range": {
         "startLine": 382,
         "startChar": 8,
