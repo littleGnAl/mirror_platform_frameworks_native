@@ -22,6 +22,30 @@
       },
       "revId": "88c4eacbce22f2a0c8c7747af3fa38c61af0cc9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6357e3b1_6ecf07b0",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-10-04T23:15:42Z",
+      "side": 1,
+      "message": "`kMaxFdsPerMsg` is different between the two, but we can fix that some other way.\n\nI think this was just me misunderstanding the point of `FileDescriptorTransportMode`. What other modes would be added here?",
+      "parentUuid": "aa428eec_eefa37c1",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "88c4eacbce22f2a0c8c7747af3fa38c61af0cc9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
