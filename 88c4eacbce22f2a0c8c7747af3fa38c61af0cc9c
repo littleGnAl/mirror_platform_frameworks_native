@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa428eec_eefa37c1",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-04T21:43:39Z",
+      "side": 1,
+      "message": "Based on the other code, I wonder if we should combine these and call it \"SEND\". The idea is in the future, we might want to setup an actual RPC server. In both of these cases, we actually want to send the FDs, right?\n\nOr am I missing a difference in Parcel.cpp/RpcState.cpp?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "88c4eacbce22f2a0c8c7747af3fa38c61af0cc9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
