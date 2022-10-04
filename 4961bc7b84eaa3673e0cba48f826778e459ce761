@@ -87,6 +87,30 @@
       },
       "revId": "4961bc7b84eaa3673e0cba48f826778e459ce761",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d151b8_a49750d5",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1113,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-04T22:05:38Z",
+      "side": 1,
+      "message": "A value outside of the range is possible from another process, and we want to be able to see what it is.",
+      "parentUuid": "c3e62912_aeff6f72",
+      "range": {
+        "startLine": 1111,
+        "startChar": 0,
+        "endLine": 1113,
+        "endChar": 0
+      },
+      "revId": "4961bc7b84eaa3673e0cba48f826778e459ce761",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
