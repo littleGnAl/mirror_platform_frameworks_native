@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e2579c_734368ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-04T23:59:13Z",
+      "side": 1,
+      "message": "Thanks for the heads up",
+      "parentUuid": "fb5e7e4e_410e88a1",
+      "revId": "26ec62270d43f41cb2be027b0842cfeb386c96cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "269f058b_4f041d30",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "This is an aspect of binder threading - oneway transactions from the same thread to the same thread will be run in sequence.\n\nIn the case of this test \u0027numThreads\u0027 is really important - because RPC binder round-robins things rather than intelligently queueing things. So, that certain other configurations of this test would fail.\n\nI might recommend s/recvFd/unblockFd/ here or something - to emphasize that it is supposed to cause the oneway call to progress. Maybe mention the oneway calls are blocked, but an in-depth analysis as Andrei has put here - honestly I think we should document it publicly (b/238929598).",
       "parentUuid": "92af3a83_6c2dba89",
+      "revId": "26ec62270d43f41cb2be027b0842cfeb386c96cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baece0a6_9a744515",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-04T23:59:13Z",
+      "side": 1,
+      "message": "I added a high level explanation + linked to https://developer.android.com/reference/android/os/IBinder#FLAG_ONEWAY. Hopefully that makes it less work to puzzle out without diving into implementation details.\n\nRenamed to `blockingSendFdOneway` and `blockingRecvFd`",
+      "parentUuid": "cf13da6c_87a17893",
       "revId": "26ec62270d43f41cb2be027b0842cfeb386c96cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
