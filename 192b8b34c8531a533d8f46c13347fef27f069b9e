@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0997df72_f96cb989",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-04T01:04:05Z",
+      "side": 1,
+      "message": "did you mean to add the test to binderLibTest or are you using RPC binder? :D",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "192b8b34c8531a533d8f46c13347fef27f069b9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d2ea4fd_470d3b6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-04T01:04:05Z",
+      "side": 1,
+      "message": "From a security perspective, a separate process should validate this if we rely on it. Though, if this is being done to disambiguate a failure, I do love having the test. However, if possible I\u0027d like to emphasize here limited reliability",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "192b8b34c8531a533d8f46c13347fef27f069b9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a6ebced_cb6b1c88",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-04T01:04:05Z",
+      "side": 1,
+      "message": "nit: no comment - the name \u0027FileDescriptorRemainsNonBlocking\u0027 says it all",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 3
+      },
+      "revId": "192b8b34c8531a533d8f46c13347fef27f069b9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55c83e7_cf03880f",
+        "filename": "libs/binder/tests/binderRpcTestCommon.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-04T01:04:05Z",
+      "side": 1,
+      "message": "nit: return Status::fromExceptionCode w/ message - it will be more debuggable - since rather than DEAD_OBJECT, we\u0027d see the error directly in the test result",
+      "range": {
+        "startLine": 382,
+        "startChar": 8,
+        "endLine": 382,
+        "endChar": 27
+      },
+      "revId": "192b8b34c8531a533d8f46c13347fef27f069b9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
