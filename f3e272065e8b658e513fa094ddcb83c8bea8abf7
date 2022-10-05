@@ -87,6 +87,24 @@
       "parentUuid": "330ca580_3822e383",
       "revId": "f3e272065e8b658e513fa094ddcb83c8bea8abf7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dacf6a15_968663ff",
+        "filename": "libs/binder/trusty/kernel/hex.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-10-05T17:09:14Z",
+      "side": 1,
+      "message": "We don\u0027t need it anymore.",
+      "parentUuid": "a9ad2775_fceb6922",
+      "revId": "f3e272065e8b658e513fa094ddcb83c8bea8abf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
