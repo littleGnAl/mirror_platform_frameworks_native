@@ -16,6 +16,24 @@
       "message": "this specific caae of transitive includes is fine, but -- given that i assume you\u0027re building with gcc/gnu libc++ rather than clang/llvm libc++ -- note that in general we won\u0027t take gcc/gnu libc++ patches. that\u0027s not a supported configuration, and you\u0027ll probably have an easier life if you just build with clang/llvm libc++ too.",
       "revId": "eaae22abb62e96530463c47b5c4d0448751b914c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db7aadc_82b7517c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-10-05T18:04:35Z",
+      "side": 1,
+      "message": "(if you _are_ just testing with a newer clang/llvm libc++ than we have, that\u0027s always a good thing to mention in a commit message, to avoid being ignored as \"gcc-only problem, WAI\"!)",
+      "parentUuid": "d7cb119d_74efee4c",
+      "revId": "eaae22abb62e96530463c47b5c4d0448751b914c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
