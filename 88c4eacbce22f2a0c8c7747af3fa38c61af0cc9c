@@ -46,6 +46,99 @@
       },
       "revId": "88c4eacbce22f2a0c8c7747af3fa38c61af0cc9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ad2145a_f61116b0",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-05T01:58:06Z",
+      "side": 1,
+      "message": "I think it would be safest to keep them separate in case we need to differentiate more later, e.g. TIPC only supports sending FDs of particular file types and only supports sending FDs in one direction IIUC. We might end up wanting to take that into account at some point. No strong opinion though.",
+      "parentUuid": "6357e3b1_6ecf07b0",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "88c4eacbce22f2a0c8c7747af3fa38c61af0cc9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f1a3f7_63fdab09",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-05T01:58:06Z",
+      "side": 1,
+      "message": "Would it be better to make this part of the RpcServerTrusty, similar to match RpcServer, so that a service in trusty could choose to reject FDs? I don\u0027t have a strong opinion. Maybe worth a comment in the header if we choose to enable by default.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 63
+      },
+      "revId": "88c4eacbce22f2a0c8c7747af3fa38c61af0cc9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e08695d_032c8e94",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-05T01:58:06Z",
+      "side": 1,
+      "message": "I forget, is this the code that is running within Trusty? If so, is it valid for Trusty to send an FD to Android? I vaguely remember hearing it was only possible to send FDs *to* Trusty but not *from*.",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "88c4eacbce22f2a0c8c7747af3fa38c61af0cc9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23094d78_ad41e3b4",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-05T01:58:06Z",
+      "side": 1,
+      "message": "can we close the FDs? or if `ancillaryFds \u003d\u003d nullptr`, never try to read them from the message to begin with?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 79
+      },
+      "revId": "88c4eacbce22f2a0c8c7747af3fa38c61af0cc9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
