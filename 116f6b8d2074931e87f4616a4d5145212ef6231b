@@ -70,6 +70,30 @@
       },
       "revId": "116f6b8d2074931e87f4616a4d5145212ef6231b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a90d4b56_418d9012",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-10-05T20:39:42Z",
+      "side": 1,
+      "message": "Chatted with Steven. My main concern here is that the fd originating from the client process might have different behaviour from the fd that originated in the server process and then gets passed to client. But one thing that we could do is to pass the flags that we want to be specified on the fd to the server first. Will leave that as an exercise for future )).",
+      "parentUuid": "e329ac4c_06691b29",
+      "range": {
+        "startLine": 1167,
+        "startChar": 33,
+        "endLine": 1167,
+        "endChar": 68
+      },
+      "revId": "116f6b8d2074931e87f4616a4d5145212ef6231b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
