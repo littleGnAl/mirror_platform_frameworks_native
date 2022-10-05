@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42bf2e32_523a1686",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-10-05T02:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75f1a3f7_63fdab09",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 63
+      },
+      "revId": "88c4eacbce22f2a0c8c7747af3fa38c61af0cc9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e08695d_032c8e94",
@@ -155,6 +179,30 @@
       "writtenOn": "2022-10-05T01:58:06Z",
       "side": 1,
       "message": "can we close the FDs? or if `ancillaryFds \u003d\u003d nullptr`, never try to read them from the message to begin with?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 79
+      },
+      "revId": "88c4eacbce22f2a0c8c7747af3fa38c61af0cc9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30068e48_121b29e8",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-10-05T02:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23094d78_ad41e3b4",
       "range": {
         "startLine": 184,
         "startChar": 0,
