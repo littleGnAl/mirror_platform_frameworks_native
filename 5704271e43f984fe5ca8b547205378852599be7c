@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "23b13e2e_a8c9dff2",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-10-05T16:15:21Z",
+      "side": 1,
+      "message": "How convenient! We hit the issue in presubmit 😎\nI only see one of these errors for `checked time 0` so looks like a race.",
+      "parentUuid": "aa232f9e_b8a95923",
+      "range": {
+        "startLine": 185,
+        "startChar": 26,
+        "endLine": 185,
+        "endChar": 59
+      },
+      "revId": "5704271e43f984fe5ca8b547205378852599be7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "684322d5_2cdec78e",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 1
