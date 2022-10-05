@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d64c60c6_96cd1034",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-10-05T00:07:11Z",
+      "side": 1,
+      "message": "nit: \"should now be able to release its last strong ref.\" or \"might not actually be promotable\"\n\nIt\u0027s possible for it to be promotable and get promoted on L184 and then have the other strong ref removed by the time the printing is done on the next line, right?",
+      "range": {
+        "startLine": 185,
+        "startChar": 26,
+        "endLine": 185,
+        "endChar": 59
+      },
+      "revId": "5704271e43f984fe5ca8b547205378852599be7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "684322d5_2cdec78e",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-10-05T00:07:11Z",
+      "side": 1,
+      "message": "nit: \"to be incorrectly promotable.\"?",
+      "range": {
+        "startLine": 186,
+        "startChar": 45,
+        "endLine": 186,
+        "endChar": 65
+      },
+      "revId": "5704271e43f984fe5ca8b547205378852599be7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
