@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78619a08_77ec216d",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-05T02:41:15Z",
+      "side": 0,
+      "message": "do you need to remove this check? i\u0027m not sure how widespread the `cmsg-\u003ecmsg_len - CMSG_LEN(0)` trick is and i found some other cases where bionic\u0027s CMSG macros had observably different behavior from glibc and musl, so i\u0027m slightly worried about not checking for an OOB access here. could return an error instead if `LOG_ALWAYS_FATAL_IF` is a problem, but then we might leak FDs",
+      "revId": "cd8e35be036417c14c270a2ebc94e968d930c478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aabe414_80b23ea7",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-05T02:41:15Z",
+      "side": 0,
+      "message": "i don\u0027t feel strongly about these removed log statements, but i\u0027m curious to hear any philosophy w.r.t. what is good/bad to log",
+      "revId": "cd8e35be036417c14c270a2ebc94e968d930c478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

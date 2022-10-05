@@ -167,6 +167,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "920e030e_eacb28e9",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-05T02:41:15Z",
+      "side": 1,
+      "message": "Both the reads and writes are respecting the shutdown triggers (or should be). I\u0027m not sure how much of a concern it is for the initial version of this. You might not be able to do a clean shutdown of the server in some case, but we can always fix that later.\n\n\u003e Creating RpcTransportRaw directly from RpcSession makes the Trusty libraries unhappy.\n\nI\u0027d have to try it myself to figure this part out.",
+      "parentUuid": "58b688b9_be01ee3a",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39da04ef_f726bccc",
