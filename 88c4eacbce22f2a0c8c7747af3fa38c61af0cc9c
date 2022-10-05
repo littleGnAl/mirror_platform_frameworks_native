@@ -118,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5ba0831_a1d72717",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-10-05T02:03:51Z",
+      "side": 1,
+      "message": "This is the Trusty code, where apps can also talk to each other. This includes sending FDs between them in both directions.\n\nYou are correct about Trusty-Android, so RpcTransportTipcAndroid will not be able to receive file descriptors.",
+      "parentUuid": "5e08695d_032c8e94",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "88c4eacbce22f2a0c8c7747af3fa38c61af0cc9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23094d78_ad41e3b4",
