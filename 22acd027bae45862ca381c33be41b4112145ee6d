@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c930178b_5f287103",
+        "filename": "libs/binder/tests/parcel_fuzzer/include_random_parcel/fuzzbinder/random_binder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-05T01:13:52Z",
+      "side": 1,
+      "message": "did you mean to keep this comment?\n\nmaybe mention it can return null",
+      "revId": "22acd027bae45862ca381c33be41b4112145ee6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
