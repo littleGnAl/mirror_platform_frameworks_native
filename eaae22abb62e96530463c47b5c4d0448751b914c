@@ -34,6 +34,24 @@
       "parentUuid": "d7cb119d_74efee4c",
       "revId": "eaae22abb62e96530463c47b5c4d0448751b914c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a92c32d_de5e1ed6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1969736
+      },
+      "writtenOn": "2022-10-06T14:56:05Z",
+      "side": 1,
+      "message": "Got it, thanks for merging anyway!\n\nFYI this issue happened with clang++ v14.0.6 on Debian, but I\u0027ll make sure to mention it in case a similar issue occurs later.",
+      "parentUuid": "9db7aadc_82b7517c",
+      "revId": "eaae22abb62e96530463c47b5c4d0448751b914c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
