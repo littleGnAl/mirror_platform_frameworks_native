@@ -431,6 +431,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0b7801e_52b92a5a",
+        "filename": "libs/binder/tests/BinderRpcTestServerConfig.aidl",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-10-06T01:01:50Z",
+      "side": 1,
+      "message": "We could do for the pair FD what we\u0027re already doing for the read/write pipe FDs: pass the descriptor as a command line argument to `execl`, and read it from `argv` in the service. Still, I think that\u0027s hackier than adding an `int` field to the server config parcelable.",
+      "parentUuid": "b613944d_36b2b2d4",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "c478c2828c9b7083dbacc6dc1e68a84061fcd07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "477d30a3_f46854b4",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 7
