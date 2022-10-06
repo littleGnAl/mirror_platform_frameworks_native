@@ -2208,6 +2208,7 @@ void SurfaceFlinger::composite(nsecs_t frameTime, int64_t vsyncId)
         refreshArgs.colorTransformMatrix = mDrawingState.colorMatrix;
         mDrawingState.colorMatrixChanged = false;
     }
+    printf("henry test");
 
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC;
 
