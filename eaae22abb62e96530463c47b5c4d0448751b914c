@@ -52,6 +52,24 @@
       "parentUuid": "9db7aadc_82b7517c",
       "revId": "eaae22abb62e96530463c47b5c4d0448751b914c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1fb5c69_b6c19818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-10-06T15:11:03Z",
+      "side": 1,
+      "message": "yeah, i\u0027d heard from our libc++ folks that upstream is doing some transitive include cleanup work :-)",
+      "parentUuid": "5a92c32d_de5e1ed6",
+      "revId": "eaae22abb62e96530463c47b5c4d0448751b914c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
