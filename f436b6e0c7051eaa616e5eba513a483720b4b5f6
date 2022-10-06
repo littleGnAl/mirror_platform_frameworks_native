@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c613a743_11d01745",
+        "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-10-06T04:16:22Z",
+      "side": 1,
+      "message": "2 nits:\n* Maybe prefix these or put them in a namespace?\n* Use PascalCase for the type aliases, for consistency with Android?",
+      "revId": "f436b6e0c7051eaa616e5eba513a483720b4b5f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
