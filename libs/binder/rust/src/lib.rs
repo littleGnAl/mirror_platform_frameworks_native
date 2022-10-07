@@ -101,7 +101,7 @@ mod binder;
 mod binder_async;
 mod error;
 mod native;
-mod parcel;
+pub mod parcel;
 mod state;
 
 use binder_ndk_sys as sys;
