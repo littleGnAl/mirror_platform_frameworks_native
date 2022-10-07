@@ -46,6 +46,30 @@
       },
       "revId": "491cba5526de8a10445088cf615a3b9c65a3e0fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1085234_1e924046",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-07T01:09:47Z",
+      "side": 1,
+      "message": "what about \u0027binder_impl::Parcel\u0027?",
+      "parentUuid": "eeadac65_aca5c185",
+      "range": {
+        "startLine": 138,
+        "startChar": 74,
+        "endLine": 138,
+        "endChar": 80
+      },
+      "revId": "491cba5526de8a10445088cf615a3b9c65a3e0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
