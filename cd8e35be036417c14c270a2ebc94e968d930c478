@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "de05d573_895c0726",
+        "filename": "libs/binder/RpcTransportRaw.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-10-07T10:20:58Z",
+      "side": 0,
+      "message": "It\u0027s still there, just returns EINVAL. But I should just keep it as is, was avoiding adding new headers in that file, but that\u0027s not necessary.",
+      "parentUuid": "78619a08_77ec216d",
+      "revId": "cd8e35be036417c14c270a2ebc94e968d930c478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7aabe414_80b23ea7",
         "filename": "libs/binder/RpcTransportRaw.cpp",
         "patchSetId": 11
