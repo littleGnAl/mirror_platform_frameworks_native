@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9114730_89c97a7a",
+        "filename": "libs/binder/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-07T01:03:27Z",
+      "side": 1,
+      "message": "so I think this may be how it is exposed now? Would it be possible to work it via this?",
+      "range": {
+        "startLine": 138,
+        "startChar": 74,
+        "endLine": 138,
+        "endChar": 80
+      },
+      "revId": "491cba5526de8a10445088cf615a3b9c65a3e0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
