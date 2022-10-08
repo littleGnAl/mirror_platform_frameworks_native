@@ -380,7 +380,7 @@ TEST_P(BinderRpc, SameBinderEqualityWeak) {
     do {                                                  \
         int session;                                      \
         EXPECT_OK((iface)->getNumOpenSessions(&session)); \
-        EXPECT_EQ(expected, session);                     \
+        EXPECT_EQ(static_cast<int>(expected), session);   \
     } while (false)
 
 TEST_P(BinderRpc, SingleSession) {
@@ -473,7 +473,7 @@ TEST_P(BinderRpc, Callbacks) {
                     cb->mCv.wait_for(_l, 1s, [&] { return !cb->mValues.empty(); });
                 }
 
-                EXPECT_EQ(cb->mValues.size(), 1)
+                EXPECT_EQ(cb->mValues.size(), 1UL)
                         << "callIsOneway: " << callIsOneway
                         << " callbackIsOneway: " << callbackIsOneway << " delayed: " << delayed;
                 if (cb->mValues.empty()) continue;
