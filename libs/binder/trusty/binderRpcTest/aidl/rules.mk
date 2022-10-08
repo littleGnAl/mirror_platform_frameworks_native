@@ -13,6 +13,19 @@
 # limitations under the License.
 #
 
-TRUSTY_USER_TESTS += \
-	frameworks/native/libs/binder/trusty/binderRpcTestService \
-	frameworks/native/libs/binder/trusty/binderRpcTest \
+LOCAL_DIR := $(GET_LOCAL_DIR)
+
+MODULE := $(LOCAL_DIR)
+
+LIBBINDER_TEST_DIR := frameworks/native/libs/binder/tests
+
+MODULE_AIDLS := \
+	$(LIBBINDER_TEST_DIR)/BinderRpcTestClientInfo.aidl \
+	$(LIBBINDER_TEST_DIR)/BinderRpcTestServerConfig.aidl \
+	$(LIBBINDER_TEST_DIR)/BinderRpcTestServerInfo.aidl \
+	$(LIBBINDER_TEST_DIR)/IBinderRpcCallback.aidl \
+	$(LIBBINDER_TEST_DIR)/IBinderRpcSession.aidl \
+	$(LIBBINDER_TEST_DIR)/IBinderRpcTest.aidl \
+	$(LIBBINDER_TEST_DIR)/ParcelableCertificateData.aidl \
+
+include make/aidl.mk
