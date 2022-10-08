@@ -231,8 +231,7 @@ TEST(NdkBinder, DetectDoubleOwn) {
 }
 
 TEST(NdkBinder, DetectNoSharedRefBaseCreated) {
-    EXPECT_DEATH(std::make_shared<MyBinderNdkUnitTest>(),
-                 "SharedRefBase: no ref created during lifetime");
+    EXPECT_DEATH(MyBinderNdkUnitTest(), "SharedRefBase: no ref created during lifetime");
 }
 
 TEST(NdkBinder, GetServiceThatDoesntExist) {
@@ -659,6 +658,35 @@ TEST(NdkBinder, ConvertToPlatformBinder) {
         // convert back
         ndk::SpAIBinder backBinder = ndk::SpAIBinder(AIBinder_fromPlatformBinder(platformBinder));
         EXPECT_EQ(backBinder.get(), binder.get());
+    }
+}
+
+TEST(NdkBinder, ConvertToPlatformParcel) {
+    ndk::ScopedAParcel parcel = ndk::ScopedAParcel(AParcel_create());
+    EXPECT_EQ(OK, AParcel_writeInt32(parcel.get(), 42));
+
+    android::Parcel* pparcel = AParcel_viewPlatformParcel(parcel.get());
+    pparcel->setDataPosition(0);
+    EXPECT_EQ(42, pparcel->readInt32());
+}
+
+TEST(NdkBinder, GetAndVerifyScopedAIBinder_Weak) {
+    for (const ndk::SpAIBinder& binder :
+         {// remote
+          ndk::SpAIBinder(AServiceManager_getService(kBinderNdkUnitTestService)),
+          // local
+          ndk::SharedRefBase::make<MyBinderNdkUnitTest>()->asBinder()}) {
+        // get a const ScopedAIBinder_Weak and verify promote
+        EXPECT_NE(binder.get(), nullptr);
+        const ndk::ScopedAIBinder_Weak wkAIBinder =
+                ndk::ScopedAIBinder_Weak(AIBinder_Weak_new(binder.get()));
+        EXPECT_EQ(wkAIBinder.promote().get(), binder.get());
+        // get another ScopedAIBinder_Weak and verify
+        ndk::ScopedAIBinder_Weak wkAIBinder2 =
+                ndk::ScopedAIBinder_Weak(AIBinder_Weak_new(binder.get()));
+        EXPECT_FALSE(AIBinder_Weak_lt(wkAIBinder.get(), wkAIBinder2.get()));
+        EXPECT_FALSE(AIBinder_Weak_lt(wkAIBinder2.get(), wkAIBinder.get()));
+        EXPECT_EQ(wkAIBinder2.promote(), wkAIBinder.promote());
     }
 }
 

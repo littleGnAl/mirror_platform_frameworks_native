@@ -14,22 +14,49 @@
  * limitations under the License.
  */
 
+#if defined(TRUSTY_USERSPACE)
 #include <openssl/rand.h>
+#include <trusty_ipc.h>
+#else
+#include <lib/rand/rand.h>
+#endif
+
+#include <binder/RpcTransportTipcTrusty.h>
 
 #include "../OS.h"
+#include "TrustyStatus.h"
 
 using android::base::Result;
 
 namespace android {
 
-Result<void> setNonBlocking(android::base::borrowed_fd fd) {
+Result<void> setNonBlocking(android::base::borrowed_fd /*fd*/) {
     // Trusty IPC syscalls are all non-blocking by default.
     return {};
 }
 
 status_t getRandomBytes(uint8_t* data, size_t size) {
+#if defined(TRUSTY_USERSPACE)
     int res = RAND_bytes(data, size);
     return res == 1 ? OK : UNKNOWN_ERROR;
+#else
+    int res = rand_get_bytes(data, size);
+    return res == 0 ? OK : UNKNOWN_ERROR;
+#endif // TRUSTY_USERSPACE
+}
+
+status_t dupFileDescriptor(int oldFd, int* newFd) {
+    int res = dup(oldFd);
+    if (res < 0) {
+        return statusFromTrusty(res);
+    }
+
+    *newFd = res;
+    return OK;
+}
+
+std::unique_ptr<RpcTransportCtxFactory> makeDefaultRpcTransportCtxFactory() {
+    return RpcTransportCtxFactoryTipcTrusty::make();
 }
 
 } // namespace android

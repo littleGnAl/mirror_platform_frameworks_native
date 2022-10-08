@@ -20,12 +20,15 @@
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
 #include <binder/RpcSession.h>
+#include <cutils/trace.h>
 #include <gtest/gtest.h>
 #include <utils/CallStack.h>
 
 #include <malloc.h>
 #include <functional>
 #include <vector>
+
+static android::String8 gEmpty(""); // make sure first allocation from optimization runs
 
 struct DestructionAction {
     DestructionAction(std::function<void()> f) : mF(std::move(f)) {}
@@ -221,5 +224,10 @@ int main(int argc, char** argv) {
         return 1;
     }
     ::testing::InitGoogleTest(&argc, argv);
+
+    // if tracing is enabled, take in one-time cost
+    (void)ATRACE_INIT();
+    (void)ATRACE_GET_ENABLED_TAGS();
+
     return RUN_ALL_TESTS();
 }

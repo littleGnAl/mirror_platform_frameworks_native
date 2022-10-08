@@ -30,6 +30,8 @@
 
 #include "BuildFlags.h"
 
+#include <android-base/file.h>
+
 //#undef ALOGV
 //#define ALOGV(...) fprintf(stderr, __VA_ARGS__)
 
@@ -98,6 +100,36 @@ void* BpBinder::ObjectManager::detach(const void* objectID) {
     void* value = i->second.object;
     mObjects.erase(i);
     return value;
+}
+
+namespace {
+struct Tag {
+    wp<IBinder> binder;
+};
+} // namespace
+
+static void cleanWeak(const void* /* id */, void* obj, void* /* cookie */) {
+    delete static_cast<Tag*>(obj);
+}
+
+sp<IBinder> BpBinder::ObjectManager::lookupOrCreateWeak(const void* objectID, object_make_func make,
+                                                        const void* makeArgs) {
+    entry_t& e = mObjects[objectID];
+    if (e.object != nullptr) {
+        if (auto attached = static_cast<Tag*>(e.object)->binder.promote()) {
+            return attached;
+        }
+    } else {
+        e.object = new Tag;
+        LOG_ALWAYS_FATAL_IF(!e.object, "no more memory");
+    }
+    sp<IBinder> newObj = make(makeArgs);
+
+    static_cast<Tag*>(e.object)->binder = newObj;
+    e.cleanupCookie = nullptr;
+    e.func = cleanWeak;
+
+    return newObj;
 }
 
 void BpBinder::ObjectManager::kill()
@@ -267,6 +299,18 @@ status_t BpBinder::pingBinder()
     data.markForBinder(sp<BpBinder>::fromExisting(this));
     Parcel reply;
     return transact(PING_TRANSACTION, data, &reply);
+}
+
+status_t BpBinder::startRecordingBinder(const android::base::unique_fd& fd) {
+    Parcel send, reply;
+    send.writeUniqueFileDescriptor(fd);
+    return transact(START_RECORDING_TRANSACTION, send, &reply);
+}
+
+status_t BpBinder::stopRecordingBinder() {
+    Parcel data, reply;
+    data.markForBinder(sp<BpBinder>::fromExisting(this));
+    return transact(STOP_RECORDING_TRANSACTION, data, &reply);
 }
 
 status_t BpBinder::dump(int fd, const Vector<String16>& args)
@@ -514,6 +558,12 @@ void* BpBinder::detachObject(const void* objectID) {
 void BpBinder::withLock(const std::function<void()>& doWithLock) {
     AutoMutex _l(mLock);
     doWithLock();
+}
+
+sp<IBinder> BpBinder::lookupOrCreateWeak(const void* objectID, object_make_func make,
+                                         const void* makeArgs) {
+    AutoMutex _l(mLock);
+    return mObjects.lookupOrCreateWeak(objectID, make, makeArgs);
 }
 
 BpBinder* BpBinder::remoteBinder()
