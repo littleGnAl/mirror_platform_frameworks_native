@@ -240,6 +240,7 @@ private:
 
     private:
         RpcConditionVariable mCv;
+        std::atomic<size_t> mShutdownCount = 0;
     };
     friend WaitForShutdownListener;
 
