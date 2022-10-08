@@ -13,6 +13,22 @@
 # limitations under the License.
 #
 
-TRUSTY_USER_TESTS += \
-	frameworks/native/libs/binder/trusty/binderRpcTestService \
-	frameworks/native/libs/binder/trusty/binderRpcTest \
+LOCAL_DIR := $(GET_LOCAL_DIR)
+LIBBINDER_TESTS_DIR := frameworks/native/libs/binder/tests
+
+MODULE := $(LOCAL_DIR)
+
+MANIFEST := $(LOCAL_DIR)/manifest.json
+
+MODULE_SRCS += \
+	$(LIBBINDER_TESTS_DIR)/binderRpcTest.cpp \
+	$(LIBBINDER_TESTS_DIR)/binderRpcTestCommon.cpp \
+
+MODULE_LIBRARY_DEPS += \
+	$(LOCAL_DIR)/aidl \
+	trusty/user/base/lib/googletest \
+	trusty/user/base/lib/libstdc++-trusty \
+	frameworks/native/libs/binder/trusty \
+	frameworks/native/libs/binder/trusty/ndk \
+
+include make/trusted_app.mk
