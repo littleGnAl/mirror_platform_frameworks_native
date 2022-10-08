@@ -617,8 +617,11 @@ status_t Parcel::appendFrom(const Parcel* parcel, size_t offset, size_t len) {
                 const auto& oldFd = otherRpcFields->mFds->at(fdIndex);
                 // To match kernel binder behavior, we always dup, even if the
                 // FD was unowned in the source parcel.
-                rpcFields->mFds->emplace_back(
-                        base::unique_fd(fcntl(toRawFd(oldFd), F_DUPFD_CLOEXEC, 0)));
+                int newFd;
+                if (status_t status = dupFileDescriptor(toRawFd(oldFd), &newFd); status != OK) {
+                    return status;
+                }
+                rpcFields->mFds->emplace_back(base::unique_fd(newFd));
                 // Fixup the index in the data.
                 mDataPos = newDataPos + 4;
                 if (status_t status = writeInt32(rpcFields->mFds->size() - 1); status != OK) {
