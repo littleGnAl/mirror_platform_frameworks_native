@@ -100,6 +100,8 @@ public:
         NONE = 0,
         // Send file descriptors via unix domain socket ancillary data.
         UNIX = 1,
+        // Send file descriptors as Trusty IPC handles.
+        TRUSTY = 2,
     };
 
     /**
@@ -189,6 +191,11 @@ public:
      */
     [[nodiscard]] status_t sendDecStrong(const BpBinder* binder);
 
+    /**
+     * Whether any requests are currently being processed.
+     */
+    bool hasActiveRequests();
+
     ~RpcSession();
 
     /**
@@ -269,7 +276,7 @@ private:
     [[nodiscard]] status_t setupOneSocketConnection(const RpcSocketAddress& address,
                                                     const std::vector<uint8_t>& sessionId,
                                                     bool incoming);
-    [[nodiscard]] status_t initAndAddConnection(base::unique_fd fd,
+    [[nodiscard]] status_t initAndAddConnection(RpcTransportFd fd,
                                                 const std::vector<uint8_t>& sessionId,
                                                 bool incoming);
     [[nodiscard]] status_t addIncomingConnection(std::unique_ptr<RpcTransport> rpcTransport);
@@ -285,6 +292,11 @@ private:
     void clearConnectionTid(const sp<RpcConnection>& connection);
 
     [[nodiscard]] status_t initShutdownTrigger();
+
+    /**
+     * Checks whether any connection is active (Not polling on fd)
+     */
+    bool hasActiveConnection(const std::vector<sp<RpcConnection>>& connections);
 
     enum class ConnectionUse {
         CLIENT,

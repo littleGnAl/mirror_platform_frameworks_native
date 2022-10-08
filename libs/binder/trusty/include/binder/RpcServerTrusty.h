@@ -60,6 +60,10 @@ public:
             std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
 
     void setProtocolVersion(uint32_t version) { mRpcServer->setProtocolVersion(version); }
+    void setSupportedFileDescriptorTransportModes(
+            const std::vector<RpcSession::FileDescriptorTransportMode>& modes) {
+        mRpcServer->setSupportedFileDescriptorTransportModes(modes);
+    }
     void setRootObject(const sp<IBinder>& binder) { mRpcServer->setRootObject(binder); }
     void setRootObjectWeak(const wp<IBinder>& binder) { mRpcServer->setRootObjectWeak(binder); }
     void setPerSessionRootObject(std::function<sp<IBinder>(const void*, size_t)>&& object) {
@@ -76,6 +80,12 @@ private:
     friend sp<RpcServerTrusty>;
     explicit RpcServerTrusty(std::unique_ptr<RpcTransportCtx> ctx, std::string&& portName,
                              std::shared_ptr<const PortAcl>&& portAcl, size_t msgMaxSize);
+
+    // The Rpc-specific context maintained for every open TIPC channel.
+    struct ChannelContext {
+        sp<RpcSession> session;
+        sp<RpcSession::RpcConnection> connection;
+    };
 
     static int handleConnect(const tipc_port* port, handle_t chan, const uuid* peer, void** ctx_p);
     static int handleMessage(const tipc_port* port, handle_t chan, void* ctx);
