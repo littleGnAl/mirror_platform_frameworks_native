@@ -233,6 +233,7 @@ private:
 
     private:
         RpcConditionVariable mCv;
+        bool mShutdown = false;
     };
     friend WaitForShutdownListener;
 

@@ -295,12 +295,13 @@ void RpcSession::WaitForShutdownListener::onSessionAllIncomingThreadsEnded(
 }
 
 void RpcSession::WaitForShutdownListener::onSessionIncomingThreadEnded() {
+    mShutdown = true;
     mCv.notify_all();
 }
 
 void RpcSession::WaitForShutdownListener::waitForShutdown(RpcMutexUniqueLock& lock,
                                                           const sp<RpcSession>& session) {
-    while (session->mConnections.mIncoming.size() > 0) {
+    while (!mShutdown) {
         if (std::cv_status::timeout == mCv.wait_for(lock, std::chrono::seconds(1))) {
             ALOGE("Waiting for RpcSession to shut down (1s w/o progress): %zu incoming connections "
                   "still.",
