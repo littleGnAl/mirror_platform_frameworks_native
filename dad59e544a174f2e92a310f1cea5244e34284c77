@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb84c4ba_f3dbcff1",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-10T21:14:20Z",
+      "side": 1,
+      "message": "I\u0027ve printed something else instead. Other things may hold onto the session here (random client code), so we can\u0027t rely on it. It\u0027s checked in the test since we are disallowing client code to hold onto this - we clean up everything.",
+      "parentUuid": "9587105d_502034e9",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 58
+      },
+      "revId": "dad59e544a174f2e92a310f1cea5244e34284c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d96728d5_96b66444",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-10-10T20:40:09Z",
       "side": 1,
       "message": "i\u0027m sure there is something subtle i\u0027m missing since i only did a light rereading, but i wonder if we could leave the threads in `session-\u003emConnections.mThreads` (or move them into another field) and then `RpcSession` could join on them in `waitForShutdown`. then we don\u0027t need a separate sync mechanism to wait for the children to finish, just use `std::thread`",
+      "revId": "dad59e544a174f2e92a310f1cea5244e34284c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2179436_a0925eb1",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-10T21:14:20Z",
+      "side": 1,
+      "message": "The reason we can\u0027t do this is because it\u0027s not a requirement to call \u0027waitForShutdown\u0027. If it\u0027s not called, these threads objects destructing in ~RpcSession (in the error condition where they do shutdown) will cause an abort. I didn\u0027t want to change how clients need to use this.",
+      "parentUuid": "d96728d5_96b66444",
       "revId": "dad59e544a174f2e92a310f1cea5244e34284c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -89,6 +131,24 @@
       "side": 1,
       "message": "related: i think `Callbacks/unix_domain_socket_raw_clientV0_serverV0_single_threaded` is failing because there are 0 incoming connections, so `mShutdown` never gets set. if instead we have a count or a bool per connection, that would probably fix the test",
       "parentUuid": "cdff7bb5_8bacea43",
+      "revId": "dad59e544a174f2e92a310f1cea5244e34284c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f7b699_7b64e70c",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-10T21:14:20Z",
+      "side": 1,
+      "message": "Hey - that was it. Thanks.",
+      "parentUuid": "fc9e6434_af619bd9",
       "revId": "dad59e544a174f2e92a310f1cea5244e34284c77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
