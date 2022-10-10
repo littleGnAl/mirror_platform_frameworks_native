@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e4a78a6_8f0869fb",
+        "filename": "cmds/atrace/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1896186
+      },
+      "writtenOn": "2022-10-10T09:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c5d9f87_c4f8b2b0",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1ecddef_028a6933",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-07T20:38:06Z",
       "side": 1,
       "message": "Is this a binary format? Do we have guidance for vendors to implement it? How do we make sure we continue to support it in the future?",
+      "range": {
+        "startLine": 78,
+        "startChar": 74,
+        "endLine": 78,
+        "endChar": 76
+      },
+      "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac18a652_52d75454",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1896186
+      },
+      "writtenOn": "2022-10-10T09:15:50Z",
+      "side": 1,
+      "message": "\u003e Is this a binary format?\n\nYes, and it\u0027s just protobuf message, defined at https://cs.android.com/android/platform/superproject/+/master:external/perfetto/protos/perfetto/android_vendor/atrace_categories.proto;drc\u003d2e6c1069b5e0c8328a14a105dbfa203033afec1f\n\nIt has been introduced in r.android.com/2216569\n\n\u003e Do we have guidance for vendors to implement it?\n\nag/19966971 is an example (internal only for now) on how to implement this.\n\nThe default atrace HAL in https://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/atrace/1.0/default/ will be migrated to this format as well.\n\nDo we need to add documentation anywhere else?\n\n\u003e How do we make sure we continue to support it in the future?\n\nProtobuf messages can be updated in a backwards compatible fashion. Is this not enough? Did you have something else in mind?\n\nThanks!",
+      "parentUuid": "d1ecddef_028a6933",
       "range": {
         "startLine": 78,
         "startChar": 74,
