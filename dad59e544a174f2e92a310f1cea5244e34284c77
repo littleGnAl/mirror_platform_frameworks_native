@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d96728d5_96b66444",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-10T20:40:09Z",
+      "side": 1,
+      "message": "i\u0027m sure there is something subtle i\u0027m missing since i only did a light rereading, but i wonder if we could leave the threads in `session-\u003emConnections.mThreads` (or move them into another field) and then `RpcSession` could join on them in `waitForShutdown`. then we don\u0027t need a separate sync mechanism to wait for the children to finish, just use `std::thread`",
+      "revId": "dad59e544a174f2e92a310f1cea5244e34284c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cdff7bb5_8bacea43",
         "filename": "libs/binder/include/binder/RpcSession.h",
         "patchSetId": 1
