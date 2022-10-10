@@ -22,6 +22,30 @@
       },
       "revId": "8daf38e5ecf6c4947120ab5d323f6cee2e5ecac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b09d84f_161b5079",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-10T21:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7c8c189_3b2c8d8f",
+      "range": {
+        "startLine": 333,
+        "startChar": 28,
+        "endLine": 333,
+        "endChar": 62
+      },
+      "revId": "8daf38e5ecf6c4947120ab5d323f6cee2e5ecac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
