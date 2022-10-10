@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9587105d_502034e9",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-10T20:23:20Z",
+      "side": 1,
+      "message": "maybe print `session-\u003egetStrongCount()` since the incoming connections counts is inaccurate now",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 58
+      },
+      "revId": "dad59e544a174f2e92a310f1cea5244e34284c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdff7bb5_8bacea43",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-10T20:23:20Z",
+      "side": 1,
+      "message": "there is only one `mShutdown` bool per session. don\u0027t we need to know whether each connection individually has completed its shutdown?",
+      "revId": "dad59e544a174f2e92a310f1cea5244e34284c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
