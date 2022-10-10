@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4211149e_e6747cc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2022-10-10T17:51:28Z",
+      "side": 1,
+      "message": "As a quick note, removing the librank target from the required field of dumpstate in Android.bp results in the librank binary not being available on the device at all. I\u0027ve re-instated librank there, as well as procrank/showmap (for consistency).\n\nbugreport_procdump has been submitted at aosp/2221434, I\u0027ll re-run presubmit one last time. I\u0027m expecting the StreamLimitedOnlyReport test case to fail; if that\u0027s the only failing test, I\u0027ll give this a BypassPresubmit+1 and submit.",
+      "revId": "947922b0eca3aa9dbd4cc5687ad5fe6c504b2213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
