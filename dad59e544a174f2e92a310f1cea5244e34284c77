@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a059219_ad89f9a2",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-10T21:23:22Z",
+      "side": 1,
+      "message": "We can\u0027t update things in onSessionAllIncomingThreadsEnded without a refactor because not everything is cleaned up yet, but PS2 fixes this (see Frederick\u0027s comment as well).",
+      "parentUuid": "f0ad5fc6_a44e0bf8",
+      "revId": "dad59e544a174f2e92a310f1cea5244e34284c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9587105d_502034e9",
