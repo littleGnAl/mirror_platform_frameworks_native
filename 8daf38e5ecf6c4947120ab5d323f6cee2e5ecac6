@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c8c189_3b2c8d8f",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-10T21:30:57Z",
+      "side": 1,
+      "message": "maybe worth adding a comment to mMaxIncoming to explain the invariant. i\u0027m not sure what it represents, would have to read everything that touches it and deduce",
+      "range": {
+        "startLine": 333,
+        "startChar": 28,
+        "endLine": 333,
+        "endChar": 62
+      },
+      "revId": "8daf38e5ecf6c4947120ab5d323f6cee2e5ecac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

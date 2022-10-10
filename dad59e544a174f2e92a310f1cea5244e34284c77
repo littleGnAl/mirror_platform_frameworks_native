@@ -118,6 +118,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aceaf54_4bbca645",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-10T21:30:57Z",
+      "side": 1,
+      "message": "makes sense. might be able to have a `vector\u003cthread\u003e mPurgatory` that you `std::move` them into instead of detaching, then it would still crash in the dtor if you don\u0027t shutdown first but you could `join` on them threads that got handled by the detach",
+      "parentUuid": "a2179436_a0925eb1",
+      "revId": "dad59e544a174f2e92a310f1cea5244e34284c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdff7bb5_8bacea43",
