@@ -17,11 +17,25 @@
 #include <fuzzbinder/random_parcel.h>
 
 #include <android-base/logging.h>
+#include <android/binder_libbinder.h>
 #include <binder/RpcSession.h>
 #include <binder/RpcTransportRaw.h>
 #include <fuzzbinder/random_binder.h>
 #include <fuzzbinder/random_fd.h>
 #include <utils/String16.h>
+
+extern "C" {
+
+void createRandomParcel(AParcel* aParcel, const uint8_t* data, size_t len) {
+    CHECK_NE(aParcel, nullptr);
+    FuzzedDataProvider provider(data, len);
+    android::RandomParcelOptions options;
+
+    android::Parcel* platformParcel = AParcel_viewPlatformParcel(aParcel);
+    fillRandomParcel(platformParcel, std::move(provider), &options);
+}
+
+} // extern "C"
 
 namespace android {
 
