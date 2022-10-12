@@ -65,6 +65,8 @@ static const std::string kRuntimeIsa = "mips64";
 static const std::string kRuntimeIsa = "x86";
 #elif defined(__x86_64__)
 static const std::string kRuntimeIsa = "x86_64";
+#elif defined(__riscv)
+static const std::string kRuntimeIsa = "riscv64";
 #else
 static const std::string kRuntimeIsa = "none";
 #endif
