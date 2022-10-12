@@ -93,6 +93,30 @@
       },
       "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9a5a4d_216d0081",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-12T00:56:45Z",
+      "side": 1,
+      "message": "We generally require infrastructure in place to automatically warn if backwards compatible changes are made.\n\nCan we use a human-readable format on disk?",
+      "parentUuid": "ac18a652_52d75454",
+      "range": {
+        "startLine": 78,
+        "startChar": 74,
+        "endLine": 78,
+        "endChar": 76
+      },
+      "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
