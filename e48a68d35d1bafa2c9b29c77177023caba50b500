@@ -16,6 +16,24 @@
       "message": "i ignored the error on purpose to match kernel binder (line 559). i\u0027d guess it is just an oversight though, so no objections to this",
       "revId": "e48a68d35d1bafa2c9b29c77177023caba50b500",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ee904e0_ccee6f2c",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-12T22:14:36Z",
+      "side": 1,
+      "message": "Error in kernel binder will get turned into an error at the binder driver layer (it\u0027s actually a really common error and I\u0027ve thought about promoting it to userspace/earlier to be more clear).\n\nCan we check to make sure a test covers this error case? \u0027-1\u0027 fd passed in? Is this reachable?",
+      "parentUuid": "d7989b5c_b2569e6c",
+      "revId": "e48a68d35d1bafa2c9b29c77177023caba50b500",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
