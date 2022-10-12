@@ -315,6 +315,32 @@ GL_API void GL_APIENTRY glWeightPointerOESBounds(GLint size, GLenum type,
     #define CALL_GL_API_INTERNAL_SET_RETURN_VALUE
     #define CALL_GL_API_INTERNAL_DO_RETURN
 
+#elif defined(__riscv) && (__riscv_xlen == 64)
+
+    #define API_ENTRY(_api) __attribute__((naked,noinline)) _api
+
+    #define CALL_GL_API_INTERNAL_CALL(_api, ...)                 \
+        asm volatile(                                            \
+            "mv t0, tp\n"                                      \
+            "li t1, %[tls]\n" \
+            "add t0, t0, t1\n" \
+            "ld t0, 0(t0)\n"                              \
+            "beqz t0, 1f\n"                                    \
+            "li t1, %[api]\n" \
+            "add t0, t0, t1\n" \
+            "ld t0, 0(t0)\n"                                   \
+            "jalr x0, t0\n"                                        \
+            "1:\n"                                                 \
+            :                                                    \
+            : [tls] "i"(TLS_SLOT_OPENGL_API*sizeof(void *)),     \
+              [api] "i"(__builtin_offsetof(gl_hooks_t, gl._api)) \
+            : "t0", "t1", "t2", "a0", "a1", "a2", "a3", "a4",    \
+              "a5", "t6", "t3", "t4", "t5", "t6"                 \
+        );
+
+    #define CALL_GL_API_INTERNAL_SET_RETURN_VALUE
+    #define CALL_GL_API_INTERNAL_DO_RETURN
+
 #endif
 
 #define CALL_GL_API(_api, ...) \

@@ -182,6 +182,27 @@ namespace android {
                                           ext.extensions[_api]))    \
                 :                                                   \
             );
+#elif defined(__riscv) && (__riscv_xlen == 64)
+    #define API_ENTRY(_api) __attribute__((noinline)) _api
+
+    #define CALL_GL_EXTENSION_API(_api)                             \
+        asm volatile(                                               \
+            "mv t0, tp\n"                                      \
+            "li t1, %[tls]\n" \
+            "add t0, t0, t1\n" \
+            "ld t0, 0(t0)\n"                              \
+            "beqz t0, 1f\n"                                    \
+            "li t1, %[api]\n" \
+            "add t0, t0, t1\n" \
+            "ld t0, 0(t0)\n"                                   \
+            "jalr x0, t0\n"                                        \
+            "1:\n" \
+            :                                                       \
+            : [tls] "i" (TLS_SLOT_OPENGL_API * sizeof(void*)),      \
+              [api] "i" (__builtin_offsetof(gl_hooks_t,             \
+                                        ext.extensions[_api]))      \
+            : "t0", "t1"                                                \
+        );
 
 #endif
 
