@@ -23,6 +23,28 @@
 #include <fuzzbinder/random_fd.h>
 #include <utils/String16.h>
 
+// AParcel is not exposed by NDK, but we still need to fill random parcel
+// to be used by fuzzer
+#include "../../ndk/parcel_internal.h"
+
+extern "C" {
+
+void createRandomParcel(void* parcel, const uint8_t* data, size_t len) {
+    CHECK_NE(parcel, nullptr);
+
+    AParcel* aParcel = static_cast<AParcel*>(parcel);
+    FuzzedDataProvider provider(data, len);
+    android::RandomParcelOptions options;
+
+    fillRandomParcel(aParcel->get(), std::move(provider), &options);
+}
+
+} // extern "C"
+
+// AParcel is not exposed by NDK, but we still need to fill random parcel
+// to be used by fuzzer
+#include "../../ndk/parcel_internal.h"
+
 namespace android {
 
 static void fillRandomParcelData(Parcel* p, FuzzedDataProvider&& provider) {
