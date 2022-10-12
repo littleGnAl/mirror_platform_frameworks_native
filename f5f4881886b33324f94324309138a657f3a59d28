@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf70a283_b875fa9b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-12T00:51:22Z",
+      "side": 1,
+      "message": "did you consider splitting this into files?",
+      "range": {
+        "startLine": 1174,
+        "startChar": 0,
+        "endLine": 1174,
+        "endChar": 18
+      },
+      "revId": "f5f4881886b33324f94324309138a657f3a59d28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415b5035_59b879fc",
+        "filename": "libs/binder/trusty/binderRpcTest/aidl/rules.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-12T00:51:22Z",
+      "side": 1,
+      "message": "do we also test building this in Android and running the test in Android or between Android and Trusty?",
+      "revId": "f5f4881886b33324f94324309138a657f3a59d28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
