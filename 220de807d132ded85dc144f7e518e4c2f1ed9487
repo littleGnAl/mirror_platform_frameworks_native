@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16c5c33_ce4e7280",
+        "filename": "libs/binder/rust/rpcbinder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-13T21:19:05Z",
+      "side": 1,
+      "message": "Surprised we need this - elsewhere the apex_available has been all we need.\nBut the build system is a constant source of surprise to me.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 66
+      },
+      "revId": "220de807d132ded85dc144f7e518e4c2f1ed9487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
