@@ -2131,6 +2131,122 @@ TEST_F(InputDispatcherTest, HoverEnterMouseClickAndHoverExit) {
                          ADISPLAY_ID_DEFAULT, 0 /* expectedFlag */);
 }
 
+// Similar test as HoverMoveEnterMouseClickAndHoverMoveExit but mouse is moved
+// between two windows in different displays instead of two windows in same display
+TEST_F(InputDispatcherTest, HoverMoveEnterMouseClickTwoDisplays) {
+    std::shared_ptr<FakeApplicationHandle> application = std::make_shared<FakeApplicationHandle>();
+    sp<FakeWindowHandle> windowDefaultDisplay =
+            new FakeWindowHandle(application, mDispatcher, "DefaultDisplay", ADISPLAY_ID_DEFAULT);
+    windowDefaultDisplay->setFrame(Rect(0, 0, 600, 800));
+    sp<FakeWindowHandle> windowSecondDisplay =
+            new FakeWindowHandle(application, mDispatcher, "SecondDisplay", SECOND_DISPLAY_ID);
+    windowSecondDisplay->setFrame(Rect(0, 0, 600, 800));
+
+    mDispatcher->setFocusedApplication(ADISPLAY_ID_DEFAULT, application);
+
+    mDispatcher->setInputWindows({{ADISPLAY_ID_DEFAULT, {windowDefaultDisplay}},
+                                  {SECOND_DISPLAY_ID, {windowSecondDisplay}}});
+
+    // Start cursor position in window in default display so that we can move the cursor to
+    // window in second display.
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionEvent(mDispatcher,
+                                MotionEventBuilder(AMOTION_EVENT_ACTION_HOVER_MOVE,
+                                                   AINPUT_SOURCE_MOUSE)
+                                        .displayId(ADISPLAY_ID_DEFAULT)
+                                        .pointer(PointerBuilder(0, AMOTION_EVENT_TOOL_TYPE_MOUSE)
+                                                         .x(300)
+                                                         .y(600))
+                                        .build()));
+    windowDefaultDisplay->consumeEvent(AINPUT_EVENT_TYPE_MOTION, AMOTION_EVENT_ACTION_HOVER_ENTER,
+                                       ADISPLAY_ID_DEFAULT, 0 /* expectedFlag */);
+    windowDefaultDisplay->consumeEvent(AINPUT_EVENT_TYPE_MOTION, AMOTION_EVENT_ACTION_HOVER_MOVE,
+                                       ADISPLAY_ID_DEFAULT, 0 /* expectedFlag */);
+
+    // Move cursor into window in second display.
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionEvent(mDispatcher,
+                                MotionEventBuilder(AMOTION_EVENT_ACTION_HOVER_MOVE,
+                                                   AINPUT_SOURCE_MOUSE)
+                                        .displayId(SECOND_DISPLAY_ID)
+                                        .pointer(PointerBuilder(0, AMOTION_EVENT_TOOL_TYPE_MOUSE)
+                                                         .x(300)
+                                                         .y(600))
+                                        .build()));
+    windowDefaultDisplay->assertNoEvents();
+    windowSecondDisplay->consumeEvent(AINPUT_EVENT_TYPE_MOTION, AMOTION_EVENT_ACTION_HOVER_ENTER,
+                                      SECOND_DISPLAY_ID, 0 /* expectedFlag */);
+    windowSecondDisplay->consumeEvent(AINPUT_EVENT_TYPE_MOTION, AMOTION_EVENT_ACTION_HOVER_MOVE,
+                                      SECOND_DISPLAY_ID, 0 /* expectedFlag */);
+
+    // Inject a series of mouse events for a mouse click
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionEvent(mDispatcher,
+                                MotionEventBuilder(AMOTION_EVENT_ACTION_DOWN, AINPUT_SOURCE_MOUSE)
+                                        .displayId(SECOND_DISPLAY_ID)
+                                        .buttonState(AMOTION_EVENT_BUTTON_PRIMARY)
+                                        .pointer(PointerBuilder(0, AMOTION_EVENT_TOOL_TYPE_MOUSE)
+                                                         .x(300)
+                                                         .y(400))
+                                        .build()));
+    windowSecondDisplay->consumeMotionDown(SECOND_DISPLAY_ID);
+
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionEvent(mDispatcher,
+                                MotionEventBuilder(AMOTION_EVENT_ACTION_BUTTON_PRESS,
+                                                   AINPUT_SOURCE_MOUSE)
+                                        .displayId(SECOND_DISPLAY_ID)
+                                        .buttonState(AMOTION_EVENT_BUTTON_PRIMARY)
+                                        .actionButton(AMOTION_EVENT_BUTTON_PRIMARY)
+                                        .pointer(PointerBuilder(0, AMOTION_EVENT_TOOL_TYPE_MOUSE)
+                                                         .x(300)
+                                                         .y(400))
+                                        .build()));
+    windowSecondDisplay->consumeEvent(AINPUT_EVENT_TYPE_MOTION, AMOTION_EVENT_ACTION_BUTTON_PRESS,
+                                      SECOND_DISPLAY_ID, 0 /* expectedFlag */);
+
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionEvent(mDispatcher,
+                                MotionEventBuilder(AMOTION_EVENT_ACTION_BUTTON_RELEASE,
+                                                   AINPUT_SOURCE_MOUSE)
+                                        .displayId(SECOND_DISPLAY_ID)
+                                        .buttonState(0)
+                                        .actionButton(AMOTION_EVENT_BUTTON_PRIMARY)
+                                        .pointer(PointerBuilder(0, AMOTION_EVENT_TOOL_TYPE_MOUSE)
+                                                         .x(300)
+                                                         .y(400))
+                                        .build()));
+    windowSecondDisplay->consumeEvent(AINPUT_EVENT_TYPE_MOTION, AMOTION_EVENT_ACTION_BUTTON_RELEASE,
+                                      SECOND_DISPLAY_ID, 0 /* expectedFlag */);
+
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionEvent(mDispatcher,
+                                MotionEventBuilder(AMOTION_EVENT_ACTION_UP, AINPUT_SOURCE_MOUSE)
+                                        .displayId(SECOND_DISPLAY_ID)
+                                        .buttonState(0)
+                                        .pointer(PointerBuilder(0, AMOTION_EVENT_TOOL_TYPE_MOUSE)
+                                                         .x(300)
+                                                         .y(400))
+                                        .build()));
+    windowSecondDisplay->consumeMotionUp(SECOND_DISPLAY_ID);
+
+    // Move mouse cursor back to window in default display
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionEvent(mDispatcher,
+                                MotionEventBuilder(AMOTION_EVENT_ACTION_HOVER_MOVE,
+                                                   AINPUT_SOURCE_MOUSE)
+                                        .displayId(ADISPLAY_ID_DEFAULT)
+                                        .pointer(PointerBuilder(0, AMOTION_EVENT_TOOL_TYPE_MOUSE)
+                                                         .x(300)
+                                                         .y(400))
+                                        .build()));
+    windowSecondDisplay->assertNoEvents();
+    windowDefaultDisplay->consumeEvent(AINPUT_EVENT_TYPE_MOTION, AMOTION_EVENT_ACTION_HOVER_ENTER,
+                                       ADISPLAY_ID_DEFAULT, 0 /* expectedFlag */);
+    windowDefaultDisplay->consumeEvent(AINPUT_EVENT_TYPE_MOTION, AMOTION_EVENT_ACTION_HOVER_MOVE,
+                                       ADISPLAY_ID_DEFAULT, 0 /* expectedFlag */);
+}
+
 TEST_F(InputDispatcherTest, DispatchMouseEventsUnderCursor) {
     std::shared_ptr<FakeApplicationHandle> application = std::make_shared<FakeApplicationHandle>();
 
