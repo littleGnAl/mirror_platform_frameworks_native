@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc189b17_8cce98cb",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-13T02:14:22Z",
+      "side": 1,
+      "message": "i think this is going to require `unsafe` and pointers to invoke. we should wrap it so it looks like a normal rust function unless we only need to use it in one spot\n\nmaybe the signature should be\n\n```\npub fn create_random_parcel(fuzzer_data: \u0026[u8]) -\u003e Parcel {\n\n}\n```",
+      "revId": "18c677772fc822481ee3694830c1d92b5bc978f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca1a6d9_2cad490c",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-13T02:14:22Z",
+      "side": 1,
+      "message": "move outside the `namespace android` since `extern \"C\"` is going to ignore it",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 72
+      },
+      "revId": "18c677772fc822481ee3694830c1d92b5bc978f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd0bea55_a1e872cd",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-13T02:14:22Z",
+      "side": 1,
+      "message": "can this be `AParcel*` instead of `void*`?",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "18c677772fc822481ee3694830c1d92b5bc978f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
