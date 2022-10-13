@@ -63,7 +63,10 @@ rust_bindgen {
     name: "libbinder_rpc_unstable_bindgen",
     wrapper_src: ":libbinder_rpc_unstable_header",
     crate_name: "binder_rpc_unstable_bindgen",
-    visibility: [":__subpackages__"],
+    visibility: [
+        ":__subpackages__",
+        "//packages/modules/Virtualization/microdroid/vm_payload",
+    ],
     source_stem: "bindings",
     bindgen_flags: [
         "--blocklist-type",
