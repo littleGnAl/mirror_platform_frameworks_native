@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d860e8_ea109eb1",
+        "filename": "vulkan/libvulkan/api_gen.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1967381
+      },
+      "writtenOn": "2022-10-13T15:01:28Z",
+      "side": 1,
+      "message": "As this is an extension function, if the extension is not enabled on device then loader will fail to create device.\nI noticed that other extension functions are using INIT_PROC_EXT, why is this one not?\n\nAlso I cannot get to generate same file with vk.xml from https://android-review.googlesource.com/c/platform/external/vulkan-headers/+/2011736",
+      "range": {
+        "startLine": 238,
+        "startChar": 25,
+        "endLine": 238,
+        "endChar": 54
+      },
+      "revId": "0ad700fa153c729d96d4908ee2026c8437bfd544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df153e7_12da050e",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1967381
+      },
+      "writtenOn": "2022-10-13T15:01:28Z",
+      "side": 1,
+      "message": "You need to call EnumerateDeviceExtensionProperties twice, first to get the count (pProperies \u003d nullptr), allocate enough space and then call the function again to fill that memory (pProperties !\u003d nullptr) with data.",
+      "range": {
+        "startLine": 1042,
+        "startChar": 4,
+        "endLine": 1043,
+        "endChar": 62
+      },
+      "revId": "0ad700fa153c729d96d4908ee2026c8437bfd544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c657b2_3b85266a",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1424,
+      "author": {
+        "id": 1967381
+      },
+      "writtenOn": "2022-10-13T15:01:28Z",
+      "side": 1,
+      "message": "this should be VkBaseInStructure",
+      "range": {
+        "startLine": 1424,
+        "startChar": 14,
+        "endLine": 1424,
+        "endChar": 38
+      },
+      "revId": "0ad700fa153c729d96d4908ee2026c8437bfd544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
