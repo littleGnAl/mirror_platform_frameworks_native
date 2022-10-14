@@ -23,6 +23,7 @@
 #include <android/binder_libbinder.h>
 #include <android/binder_manager.h>
 #include <android/binder_process.h>
+#include <gmock/gmock.h>
 #include <gtest/gtest.h>
 #include <iface/iface.h>
 #include <utils/Looper.h>
@@ -33,16 +34,19 @@
 #include <binder/IResultReceiver.h>
 #include <binder/IServiceManager.h>
 #include <binder/IShellCallback.h>
-
 #include <sys/prctl.h>
+
 #include <chrono>
 #include <condition_variable>
 #include <iostream>
 #include <mutex>
+#include <optional>
 #include <thread>
+
 #include "android/binder_ibinder.h"
 
 using namespace android;
+using testing::Eq;
 
 constexpr char kExistingNonNdkService[] = "SurfaceFlinger";
 constexpr char kBinderNdkUnitTestService[] = "BinderNdkUnitTest";
@@ -335,6 +339,16 @@ TEST(NdkBinder, GetLazyService) {
 TEST(NdkBinder, IsUpdatable) {
     bool isUpdatable = AServiceManager_isUpdatableViaApex("android.hardware.light.ILights/default");
     EXPECT_EQ(isUpdatable, false);
+}
+
+TEST(NdkBinder, GetUpdatableViaApex) {
+    std::optional<std::string> updatableViaApex;
+    AServiceManager_getUpdatableViaApex("android.hardware.light.ILights/default", &updatableViaApex,
+                                        [](const char* apexName, void* context) {
+                                            *static_cast<std::optional<std::string>*>(context) =
+                                                    apexName;
+                                        });
+    EXPECT_THAT(updatableViaApex, Eq(std::nullopt));
 }
 
 // This is too slow

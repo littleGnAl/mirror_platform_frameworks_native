@@ -72,6 +72,7 @@ cc_test {
     static_libs: [
         "IBinderNdkUnitTest-cpp",
         "IBinderNdkUnitTest-ndk",
+        "libgmock",
     ],
     test_suites: [
         "general-tests",
