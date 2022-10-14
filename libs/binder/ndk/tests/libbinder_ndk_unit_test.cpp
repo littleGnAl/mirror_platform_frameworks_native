@@ -33,13 +33,15 @@
 #include <binder/IResultReceiver.h>
 #include <binder/IServiceManager.h>
 #include <binder/IShellCallback.h>
-
 #include <sys/prctl.h>
+
 #include <chrono>
 #include <condition_variable>
 #include <iostream>
 #include <mutex>
+#include <optional>
 #include <thread>
+
 #include "android/binder_ibinder.h"
 
 using namespace android;
@@ -335,6 +337,16 @@ TEST(NdkBinder, GetLazyService) {
 TEST(NdkBinder, IsUpdatable) {
     bool isUpdatable = AServiceManager_isUpdatableViaApex("android.hardware.light.ILights/default");
     EXPECT_EQ(isUpdatable, false);
+}
+
+TEST(NdkBinder, GetUpdatableViaApex) {
+    std::optional<std::string> updatableViaApex;
+    AServiceManager_getUpdatableViaApex(
+            "android.hardware.light.ILights/default", &updatableViaApex,
+            [](const char* apexName, void* context) {
+                static_cast<std::optional<std::string>*>(context)->reset(apexName);
+            });
+    EXPECT_EQ(updatableViaApex, std::nullopt);
 }
 
 // This is too slow

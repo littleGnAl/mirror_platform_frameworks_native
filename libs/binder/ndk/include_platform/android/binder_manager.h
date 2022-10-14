@@ -143,6 +143,16 @@ void AServiceManager_forEachDeclaredInstance(const char* interface, void* contex
 bool AServiceManager_isUpdatableViaApex(const char* instance) __INTRODUCED_IN(31);
 
 /**
+ * Returns the APEX name if a service is declared as updatable via an APEX module.
+ *
+ * \param instance identifier of the service
+ * \param context to pass to callback
+ * \param callback taking the APEX name (e.g. 'com.android.foo') and context
+ */
+void AServiceManager_getUpdatableViaApex(const char* instance, void* context,
+                                         void (*callback)(const char*, void*)) __INTRODUCED_IN(34);
+
+/**
  * Prevent lazy services without client from shutting down their process
  *
  * This should only be used if it is every eventually set to false. If a
