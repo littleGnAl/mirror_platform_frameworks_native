@@ -117,6 +117,30 @@
       },
       "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d97b6ca_0ceb7f83",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1896186
+      },
+      "writtenOn": "2022-10-14T08:53:38Z",
+      "side": 1,
+      "message": "\u003e We generally require infrastructure in place to automatically warn if backwards compatible changes are made.\n\nCurrently, if I made a backward incompatible change to the .proto schema, the .textproto in hardware/google/pixel (I\u0027ll add one to hardware/interfaces as well) would fail to compile.\n\nIsn\u0027t that the same that would happen with types.hal? Is there something more in that case?\n\n\u003e  Can we use a human-readable format on disk?\n\nThat was my first instinct, but I decided against it ultimately, because:\n\n* The format is not as trivial. We have:\n\n```\ncategories {\n  name\n  description\n  events [\n    event\n    event\n  ]\n}\n```\n\nI don\u0027t have a very natural way to flatten that (e.g. to csv)\n\n* Backwards compatiblity would be much harder to maintain. With the protobuf binary format, there are a lot of checks at compilation time (when the textproto is converted to binary proto). I have some potential future extension in mind that require good backwards compatibility (right now we only support \"group/event\", in the future we might want to support \"group/*\")\n\nThat said, I\u0027m not particularly attached to protobuf, if you have ideas for a better format, I\u0027m open.\n\nThanks!",
+      "parentUuid": "6c9a5a4d_216d0081",
+      "range": {
+        "startLine": 78,
+        "startChar": 74,
+        "endLine": 78,
+        "endChar": 76
+      },
+      "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
