@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a70f206_d72d4be0",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-14T23:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc189b17_8cce98cb",
+      "revId": "18c677772fc822481ee3694830c1d92b5bc978f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ca1a6d9_2cad490c",
@@ -54,6 +72,54 @@
       "writtenOn": "2022-10-13T02:14:22Z",
       "side": 1,
       "message": "can this be `AParcel*` instead of `void*`?",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "18c677772fc822481ee3694830c1d92b5bc978f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b38344_b8c26dc8",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-14T23:58:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca1a6d9_2cad490c",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 72
+      },
+      "revId": "18c677772fc822481ee3694830c1d92b5bc978f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "317491ec_12b58b98",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-14T23:58:52Z",
+      "side": 1,
+      "message": "AParcel is internal data type used by NDK. libbinder_ndk_sys is wrapper over c++ types which has AParcel but libbinder_rs doesn\u0027t expose this type from libbinder_ndk_sys. I tried to add AParcel type initially, but bindgen creates a entire different type for this AParcel and we can\u0027t use the type defined in libbinder_rs as it is private inside lib. To use AParcel here, AParcel should be made public from libbinder_rs",
+      "parentUuid": "dd0bea55_a1e872cd",
       "range": {
         "startLine": 38,
         "startChar": 24,
