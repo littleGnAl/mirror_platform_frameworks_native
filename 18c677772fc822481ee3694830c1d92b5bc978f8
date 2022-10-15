@@ -128,6 +128,30 @@
       },
       "revId": "18c677772fc822481ee3694830c1d92b5bc978f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab1ce973_e213d1cb",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-15T00:28:04Z",
+      "side": 1,
+      "message": "Strange, I thought if a function was public in rust, then all the argument and return types also had to be public.\n\nIt might be reasonable to add `AParcel` to http://cs/android-internal/frameworks/native/libs/binder/rust/src/lib.rs;l\u003d147-151;rcl\u003d9fd77d52e8c9cbb8fb12e79676fbd9ef2ea5d62f since it already has `AIBinder`, which is very similar.\n\nI think this is fine though.",
+      "parentUuid": "317491ec_12b58b98",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "18c677772fc822481ee3694830c1d92b5bc978f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
