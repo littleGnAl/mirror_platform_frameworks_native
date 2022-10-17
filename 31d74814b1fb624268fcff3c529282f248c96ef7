@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5961b346_3f6624f0",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-17T23:14:08Z",
+      "side": 1,
+      "message": "Exposed AParcel from unstable API. used bindgen flag to use the same data type as libbinder_ndk_sys :  \n\"--raw-line\",        \"use binder::unstable_api::AParcel;\",",
+      "parentUuid": "2106da6b_779d9d51",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "31d74814b1fb624268fcff3c529282f248c96ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e978929f_2bc3ea4c",
@@ -61,6 +85,24 @@
       "writtenOn": "2022-10-17T20:27:10Z",
       "side": 1,
       "message": "This is the only line that should actually be inside the `unsafe` block.",
+      "revId": "31d74814b1fb624268fcff3c529282f248c96ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65c38d9_d24c262a",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-17T23:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e978929f_2bc3ea4c",
       "revId": "31d74814b1fb624268fcff3c529282f248c96ef7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -88,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ed0fe4_04285037",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/wrappers/RandomParcelWrapper.hpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-17T23:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31563d99_fab74c88",
+      "range": {
+        "startLine": 21,
+        "startChar": 28,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "31d74814b1fb624268fcff3c529282f248c96ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ce60919_e72fb7ab",
@@ -101,6 +167,30 @@
       "writtenOn": "2022-10-17T19:44:57Z",
       "side": 1,
       "message": "The necessary API is now exposed here:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/ndk/include_platform/android/binder_libbinder.h;l\u003d61;drc\u003d026317b999b4246dd8fa492fd4121b5531894833",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "31d74814b1fb624268fcff3c529282f248c96ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33133d9_2b5b45c6",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-17T23:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ce60919_e72fb7ab",
       "range": {
         "startLine": 28,
         "startChar": 0,
