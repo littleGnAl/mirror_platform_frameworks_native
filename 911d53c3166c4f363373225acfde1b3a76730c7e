@@ -16,6 +16,109 @@
       "message": "Hi Steven, please take a look.",
       "revId": "911d53c3166c4f363373225acfde1b3a76730c7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ccf8d65_fad3af28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-17T22:53:02Z",
+      "side": 1,
+      "message": "+android-ndk-api-council",
+      "revId": "911d53c3166c4f363373225acfde1b3a76730c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2ef4ef_69fea091",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-17T22:53:02Z",
+      "side": 1,
+      "message": "+android-ndk-api-council",
+      "revId": "911d53c3166c4f363373225acfde1b3a76730c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c614e8_f47029fa",
+        "filename": "libs/binder/ndk/service_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-17T22:53:02Z",
+      "side": 1,
+      "message": "CHECK_NE(instance, nullptr)",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 31
+      },
+      "revId": "911d53c3166c4f363373225acfde1b3a76730c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ed5d01_2070ed4c",
+        "filename": "libs/binder/ndk/service_manager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-17T22:53:02Z",
+      "side": 1,
+      "message": ".c_str()? (even if there\u0027s an implicit operator, would be nice)",
+      "range": {
+        "startLine": 125,
+        "startChar": 49,
+        "endLine": 125,
+        "endChar": 50
+      },
+      "revId": "911d53c3166c4f363373225acfde1b3a76730c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c3ea924_42a7692d",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-17T22:53:02Z",
+      "side": 1,
+      "message": "avoid importing gmock, instead use \u0027EXPECT_EQ(updatableViaApex, std::nullopt) \u003c\u003c *updatableViaApex\u0027? - btw we should chat on this sometime - I\u0027m actually pretty anti-mock, pro-dep-injection. Would be interested to hear your take",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 52
+      },
+      "revId": "911d53c3166c4f363373225acfde1b3a76730c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
