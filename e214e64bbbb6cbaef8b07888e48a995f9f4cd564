@@ -16,6 +16,46 @@
       "message": "@sbowden@google.com, can you review this CL?",
       "revId": "e214e64bbbb6cbaef8b07888e48a995f9f4cd564",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b91c383b_75f87a8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1659539
+      },
+      "writtenOn": "2022-10-17T12:32:06Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "e214e64bbbb6cbaef8b07888e48a995f9f4cd564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009fd2f8_bab0e9d8",
+        "filename": "libs/vibrator/ExternalVibration.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1659539
+      },
+      "writtenOn": "2022-10-17T12:32:06Z",
+      "side": 1,
+      "message": "Is it possible to use something like ndk:enum_range to check all values from the IExternalVibratorService are covered by HapticScale values? If not, maybe add the explicit conversion that Simon mentioned to the audio manager code?",
+      "range": {
+        "startLine": 27,
+        "startChar": 57,
+        "endLine": 27,
+        "endChar": 61
+      },
+      "revId": "e214e64bbbb6cbaef8b07888e48a995f9f4cd564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
