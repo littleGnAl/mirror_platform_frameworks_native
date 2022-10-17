@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "353c25ef_c999f33c",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-17T16:45:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41407cbd_2b9d7f8b",
+      "revId": "101eb5bf825d52901364b495c5dc813e657f1ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c23b2b6_d97feb13",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-10-15T00:28:04Z",
       "side": 1,
       "message": "this exports `create_random_parcel` twice under two names. maybe you want\n\n```\npub mod random_parcel_impl {\n    /// This API creates a random parcel to be used by fuzzers\n    pub fn create_random_parcel(fuzzer_data: \u0026[u8]) -\u003e Parcel {\n        let mut parcel \u003d Parcel::new();\n        unsafe {\n            let ptr \u003d parcel.as_native_mut() as *mut c_void;\n            createRandomParcel(ptr, fuzzer_data.as_ptr(), fuzzer_data.len());\n        }\n        parcel\n    }\n}\n```\n\n(also seems fine to just export `create_random_parcel` without the extra module wrapping it)",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 1
+      },
+      "revId": "101eb5bf825d52901364b495c5dc813e657f1ba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40bae45c_8c5cfa06",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-17T16:45:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c23b2b6_d97feb13",
       "range": {
         "startLine": 36,
         "startChar": 0,
