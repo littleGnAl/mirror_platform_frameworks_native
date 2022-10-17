@@ -30,7 +30,8 @@ mod bindings {
 
 use binder::binder_impl::Parcel;
 use binder::unstable_api::AsNative;
-use bindings::createRandomParcel;
+use binder::SpIBinder;
+use bindings::{createRandomParcel, fuzzRustService};
 use std::os::raw::c_void;
 
 /// This API creates a random parcel to be used by fuzzers
@@ -43,4 +44,14 @@ pub fn create_random_parcel(fuzzer_data: &[u8]) -> Parcel {
         createRandomParcel(ptr, fuzzer_data.as_ptr(), fuzzer_data.len());
     }
     parcel
+}
+
+/// This API automatically fuzzes provided service
+pub fn fuzz_service(mut binder: SpIBinder, fuzzer_data: &[u8]) {
+    unsafe {
+        // Safety: `SpIBinder::as_native_mut` and `slice::as_ptr` always
+        // return valid pointers.
+        let ptr = binder.as_native_mut() as *mut c_void;
+        fuzzRustService(ptr, fuzzer_data.as_ptr(), fuzzer_data.len());
+    }
 }

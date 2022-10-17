@@ -13,6 +13,8 @@ rust_bindgen {
         "--size_t-is-usize",
         "--allowlist-function",
         "createRandomParcel",
+        "--allowlist-function",
+        "fuzzRustService",
     ],
     shared_libs: [
         "libc++",
