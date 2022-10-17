@@ -22,6 +22,30 @@
       },
       "revId": "7e93560b69fdfdadaf313a75040d1d54c4956422",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1feab17_e8f4f99a",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-17T15:30:41Z",
+      "side": 1,
+      "message": "I\u0027ll move this one later. I replaced the RpcServer part with sed mostly at it doesn\u0027t appear in many places in the code. I think RpcClient will require some careful check and need to be done manually as this keyword repeats a lot in the code[1]. I\u0027d like to land first the easy part and then focus on this. wdyt?\n\n[1] https://cs.android.com/search?q\u003dRpcClient%20-f:external%20-f:prebuilt",
+      "parentUuid": "5f8656e9_6497713a",
+      "range": {
+        "startLine": 77,
+        "startChar": 10,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "7e93560b69fdfdadaf313a75040d1d54c4956422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
