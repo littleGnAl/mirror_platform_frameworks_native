@@ -56,6 +56,30 @@
       },
       "revId": "e214e64bbbb6cbaef8b07888e48a995f9f4cd564",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feedf03c_85235c92",
+        "filename": "libs/vibrator/ExternalVibration.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1882920
+      },
+      "writtenOn": "2022-10-17T12:39:51Z",
+      "side": 1,
+      "message": "I\u0027d rather we just detach the two, as mentioned before. I\u0027m not aware of a place where these values need to match outside of the initialization as mentioned before.\n\nI\u0027ll see if I can do a quick CL.",
+      "parentUuid": "009fd2f8_bab0e9d8",
+      "range": {
+        "startLine": 27,
+        "startChar": 57,
+        "endLine": 27,
+        "endChar": 61
+      },
+      "revId": "e214e64bbbb6cbaef8b07888e48a995f9f4cd564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
