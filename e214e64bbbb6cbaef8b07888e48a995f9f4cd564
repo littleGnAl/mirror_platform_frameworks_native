@@ -80,6 +80,30 @@
       },
       "revId": "e214e64bbbb6cbaef8b07888e48a995f9f4cd564",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f94681e_b7a79855",
+        "filename": "libs/vibrator/ExternalVibration.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1882920
+      },
+      "writtenOn": "2022-10-17T14:24:55Z",
+      "side": 1,
+      "message": "Actually, I\u0027ll do my CL on top of this one (to replace the static_assert with a conversion), since it needs the library split anyway. That\u0027ll allow us to proceed independently.",
+      "parentUuid": "feedf03c_85235c92",
+      "range": {
+        "startLine": 27,
+        "startChar": 57,
+        "endLine": 27,
+        "endChar": 61
+      },
+      "revId": "e214e64bbbb6cbaef8b07888e48a995f9f4cd564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
