@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8656e9_6497713a",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-10-17T15:14:14Z",
+      "side": 1,
+      "message": "What about this one?",
+      "range": {
+        "startLine": 77,
+        "startChar": 10,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "7e93560b69fdfdadaf313a75040d1d54c4956422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
