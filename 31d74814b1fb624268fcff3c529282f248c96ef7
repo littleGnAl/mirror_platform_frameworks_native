@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5be6f3f7_38809c74",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-17T19:44:57Z",
+      "side": 1,
+      "message": "I think the main concern with this is createRandomParcel expects an AParcel* here. How do we guarantee that condition holds?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "31d74814b1fb624268fcff3c529282f248c96ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ce60919_e72fb7ab",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-17T19:44:57Z",
+      "side": 1,
+      "message": "The necessary API is now exposed here:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/ndk/include_platform/android/binder_libbinder.h;l\u003d61;drc\u003d026317b999b4246dd8fa492fd4121b5531894833",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "31d74814b1fb624268fcff3c529282f248c96ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
