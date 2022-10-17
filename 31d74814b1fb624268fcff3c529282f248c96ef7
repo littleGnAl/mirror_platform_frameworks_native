@@ -26,6 +26,70 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2106da6b_779d9d51",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-10-17T20:27:10Z",
+      "side": 1,
+      "message": "I think the way to resolve this is to expose `AParcel` in the [`unstable_api`](https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/rust/src/lib.rs;l\u003d150), then say `let aparcel_ptr: *mut AParcel \u003d parcel.as_native_mut();`\n\nWe\u0027ll still need the cast to `*mut c_void` until we fix another piece of the build system that lets bindings refer to each other\u0027s types, but this would at least gaurantee that `as_native_mut` is still expected to return a `*mut AParcel`",
+      "parentUuid": "5be6f3f7_38809c74",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 33
+      },
+      "revId": "31d74814b1fb624268fcff3c529282f248c96ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e978929f_2bc3ea4c",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-10-17T20:27:10Z",
+      "side": 1,
+      "message": "This is the only line that should actually be inside the `unsafe` block.",
+      "revId": "31d74814b1fb624268fcff3c529282f248c96ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31563d99_fab74c88",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/wrappers/RandomParcelWrapper.hpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-10-17T20:27:10Z",
+      "side": 1,
+      "message": "Why is this not an `AParcel*`? The types wouldn\u0027t be unified yet in Rust, but it would at least help make sure folks were passing in the right thing (e.g. we\u0027d like to avoid a confused user passing a `Parcel*` in here, yes?",
+      "range": {
+        "startLine": 21,
+        "startChar": 28,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "31d74814b1fb624268fcff3c529282f248c96ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ce60919_e72fb7ab",
         "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
         "patchSetId": 4
