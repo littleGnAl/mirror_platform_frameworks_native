@@ -46,6 +46,30 @@
       },
       "revId": "7e93560b69fdfdadaf313a75040d1d54c4956422",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7986b544_2efbac74",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-10-17T15:32:39Z",
+      "side": 1,
+      "message": "Ok, fine by me, as long as we don\u0027t forget.",
+      "parentUuid": "d1feab17_e8f4f99a",
+      "range": {
+        "startLine": 77,
+        "startChar": 10,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "7e93560b69fdfdadaf313a75040d1d54c4956422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
