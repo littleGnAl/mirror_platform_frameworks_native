@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f059e0cb_652fa53e",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-18T23:35:03Z",
+      "side": 1,
+      "message": "I tried this and I am getting \"error[E0523]: found two different crates with name `lazy_static` that are not distinguished by differing `-C metadata`. This will result in symbol conflicts between the two\". I tried to link lazy_static separately so that compiler doesn\u0027t import its own. have you faced this issue before?",
+      "parentUuid": "401a8340_3ee9890f",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "ddab486509cf103bd8f8dbe62c75944271c447c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1678d8ea_60f8dcc5",
         "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
         "patchSetId": 5
