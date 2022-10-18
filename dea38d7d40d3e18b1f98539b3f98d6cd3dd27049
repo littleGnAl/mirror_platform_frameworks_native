@@ -33,6 +33,29 @@
       "message": "Hi Steven,\n\nFriendly ping. Could you please review this cl?",
       "revId": "dea38d7d40d3e18b1f98539b3f98d6cd3dd27049",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908374df_868ac63b",
+        "filename": "libs/binder/rust/rpcbinder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-18T17:10:05Z",
+      "side": 1,
+      "message": "we should expose the API via libbinder_rpc_unstable_bindgen - this is supposed to be the C++ adapter only. If there is unsafe blocks, to use this code, we want it justified and fixed in libbinder_rpc_unstable_bindgen in one place",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 66
+      },
+      "revId": "dea38d7d40d3e18b1f98539b3f98d6cd3dd27049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
