@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c57084c_cdecff28",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2022-10-18T13:46:24Z",
+      "side": 1,
+      "message": "nit: `getUpdatableViaApexName`? This sounds like you\u0027re getting whether it\u0027s updatable or not, but you\u0027re actually getting the name.\n\nAlternatively, why not just `getApexName`? The fact that it needs to be updatable to query it seems like an implementation detail that can go in the docs (and maybe a restriction we want to remove in the future). Up to you though, it\u0027s not entirely clear to me what this API is needed for. Steven, would be interested in hearing your thoughts here.",
+      "range": {
+        "startLine": 152,
+        "startChar": 21,
+        "endLine": 152,
+        "endChar": 40
+      },
+      "revId": "14193e4c02d822e283952d2a1bf4807f9565a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b6baea_0d639e07",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2022-10-18T13:46:24Z",
+      "side": 1,
+      "message": "`__ANDROID_API_U__`",
+      "range": {
+        "startLine": 153,
+        "startChar": 95,
+        "endLine": 153,
+        "endChar": 97
+      },
+      "revId": "14193e4c02d822e283952d2a1bf4807f9565a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1d24b5_5c600d68",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2022-10-18T13:46:24Z",
+      "side": 1,
+      "message": "`introduced\u003dUpsideDownCake`",
+      "range": {
+        "startLine": 155,
+        "startChar": 20,
+        "endLine": 155,
+        "endChar": 33
+      },
+      "revId": "14193e4c02d822e283952d2a1bf4807f9565a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
