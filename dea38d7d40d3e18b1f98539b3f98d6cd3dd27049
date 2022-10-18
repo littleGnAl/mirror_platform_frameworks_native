@@ -16,6 +16,23 @@
       "message": "Hi Steven, could you please review this cl?",
       "revId": "dea38d7d40d3e18b1f98539b3f98d6cd3dd27049",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6809951_dae4e801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-18T12:49:03Z",
+      "side": 1,
+      "message": "Hi Steven,\n\nFriendly ping. Could you please review this cl?",
+      "revId": "dea38d7d40d3e18b1f98539b3f98d6cd3dd27049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
