@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f344f52_35e3a9b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-18T17:17:34Z",
+      "side": 1,
+      "message": "Hi Steven, thanks for the review!\n\n+android-ndk-api-council for NDK-API-Review",
+      "revId": "7e93560b69fdfdadaf313a75040d1d54c4956422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f8656e9_6497713a",
