@@ -141,6 +141,30 @@
       },
       "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feacf6d9_cdf1aec5",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-18T23:24:55Z",
+      "side": 1,
+      "message": "I mean - Android supported xml + xsd schema for this, but it\u0027s a bit heavy weight. That used to be the requirement, but I would be okay with any text format. JSON - like APEX manifests are now? Being able to read this stuff on disk and use any editor to edit it makes everything a lot simpler.",
+      "parentUuid": "2d97b6ca_0ceb7f83",
+      "range": {
+        "startLine": 78,
+        "startChar": 74,
+        "endLine": 78,
+        "endChar": 76
+      },
+      "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
