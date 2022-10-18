@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "963a67fd_d055be27",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1006497
+      },
+      "writtenOn": "2022-10-18T14:30:46Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "ea50fbdd_fbe7ec8a",
+      "range": {
+        "startLine": 152,
+        "startChar": 21,
+        "endLine": 152,
+        "endChar": 40
+      },
+      "revId": "14193e4c02d822e283952d2a1bf4807f9565a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06b6baea_0d639e07",
         "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
         "patchSetId": 3
