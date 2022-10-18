@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea50fbdd_fbe7ec8a",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-10-18T14:27:57Z",
+      "side": 1,
+      "message": "This is to retrieve the value of `updatable-via-apex` attribute in device manifest\u0027s \u003chal\u003e element. I thought that the name `getUpdatableViaApex` reveals it well. \n\nHmm, how about `getUpdatableApexName`? (middle between `getUpdatableViaApexName` and `getApexName`). ;-)",
+      "parentUuid": "0c57084c_cdecff28",
+      "range": {
+        "startLine": 152,
+        "startChar": 21,
+        "endLine": 152,
+        "endChar": 40
+      },
+      "revId": "14193e4c02d822e283952d2a1bf4807f9565a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06b6baea_0d639e07",
         "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-10-18T13:46:24Z",
       "side": 1,
       "message": "`__ANDROID_API_U__`",
+      "range": {
+        "startLine": 153,
+        "startChar": 95,
+        "endLine": 153,
+        "endChar": 97
+      },
+      "revId": "14193e4c02d822e283952d2a1bf4807f9565a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a96eaae_8ea3a02a",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-10-18T14:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06b6baea_0d639e07",
       "range": {
         "startLine": 153,
         "startChar": 95,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-18T13:46:24Z",
       "side": 1,
       "message": "`introduced\u003dUpsideDownCake`",
+      "range": {
+        "startLine": 155,
+        "startChar": 20,
+        "endLine": 155,
+        "endChar": 33
+      },
+      "revId": "14193e4c02d822e283952d2a1bf4807f9565a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5fd42e0_f32711af",
+        "filename": "libs/binder/ndk/libbinder_ndk.map.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-10-18T14:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f1d24b5_5c600d68",
       "range": {
         "startLine": 155,
         "startChar": 20,
