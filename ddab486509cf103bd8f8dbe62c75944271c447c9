@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14129d51_bde5436d",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-10-18T00:00:02Z",
+      "side": 1,
+      "message": "Sorry for missing this the first time - I\u0027m guessing you\u0027re copying this from elsewhere in the binder directory, and this was the old way of doing things.\n\nCan you instead put \"libbinder_random_parcel_bindgen\" (without the colon) in the `rustlibs` entry? This allows you to access it as a library rather than generated source.\n\nYou\u0027ll then remove this `mod` declaration, and down where you have `use bindings::createRandomParcel;` instead write `use binder_random_parcel_bindgen::createRandomParcel;`.\n\n(The below is an aside, you don\u0027t need to read this if you don\u0027t want.)\nThe reasoning for doing it this way is to avoid unhygenic scope mixing possible via `include!` in 1p code - we don\u0027t want generated files that only work correctly because of context, as this can be brittle and hard to maintain. We still *support* the method you used here primarily to support the 3p ecosystem which uses that approach almost exclusively due to their dependence on cargo.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "ddab486509cf103bd8f8dbe62c75944271c447c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
