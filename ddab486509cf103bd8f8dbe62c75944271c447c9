@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51a2e511_2c64ebf2",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-19T00:52:29Z",
+      "side": 1,
+      "message": "nit: visibility subpackages - prevent accidental usage",
+      "revId": "ddab486509cf103bd8f8dbe62c75944271c447c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14129d51_bde5436d",
         "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
         "patchSetId": 5
