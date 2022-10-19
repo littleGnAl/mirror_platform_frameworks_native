@@ -33,6 +33,23 @@
       "message": "Andrew - to check what I\u0027m saying since he recently reworked the library API surface",
       "revId": "4c71b5566284ab12c5f3e00923e08bbdf6d93a80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7967824_5784363f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-10-19T16:57:23Z",
+      "side": 1,
+      "message": "As Steven says, we should be using librpcbinder_rs (and adding new wrappers if necessary) rather than exposing the raw bindgen library.",
+      "revId": "4c71b5566284ab12c5f3e00923e08bbdf6d93a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
