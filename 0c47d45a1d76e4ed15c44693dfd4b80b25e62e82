@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4406bfe6_ba929aa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2022-10-19T23:48:17Z",
+      "side": 1,
+      "message": "should we adjust visibility of libandroid_runtime_vm_header as well? https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/jni/Android.bp;l\u003d429?q\u003dlibandroid_runtime_vm\u0026ss\u003dandroid%2Fplatform%2Fsuperproject",
+      "revId": "0c47d45a1d76e4ed15c44693dfd4b80b25e62e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
