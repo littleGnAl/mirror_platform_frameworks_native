@@ -80,6 +80,30 @@
       },
       "revId": "dea38d7d40d3e18b1f98539b3f98d6cd3dd27049",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a27d3f3_6c984a44",
+        "filename": "libs/binder/rust/rpcbinder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-19T01:30:22Z",
+      "side": 1,
+      "message": "Hi - I\u0027m sorry - I mean - librpcbinder_rs. This C++ bindgen code is auto-generated. Code outside of here links against librpcbinder_rs.",
+      "parentUuid": "74fb9744_47b03d38",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 66
+      },
+      "revId": "dea38d7d40d3e18b1f98539b3f98d6cd3dd27049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
