@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b297e3_6330cd7e",
+        "filename": "opengl/libs/GLES_CM/gl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-10-19T23:44:01Z",
+      "side": 1,
+      "message": "i don\u0027t understand why we don\u0027t need to define these two macros? i think the mips implementation (that i\u0027m removing here because it isn\u0027t used) didn\u0027t need anything because their assembler actually did the equivalent of `li a0, 0` right at the end, but the new riscv64 implementation doesn\u0027t.\n\ndon\u0027t we need a `li a0, 0` here and a `ret` for the next #define, like arm64?",
+      "revId": "b591295916a747fdf135a159edf9e3b942a45f70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
