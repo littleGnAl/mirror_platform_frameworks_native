@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f46a3acb_bbe144de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-10-19T00:28:55Z",
+      "side": 1,
+      "message": "Platform-only map change, no NDK API changes; rubber stamping.",
+      "revId": "7e93560b69fdfdadaf313a75040d1d54c4956422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f8656e9_6497713a",
