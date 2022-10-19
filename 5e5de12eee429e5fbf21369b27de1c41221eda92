@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f939ce04_8aba36b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2022-10-19T01:03:58Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure who the official owners of this file were (there was no OWNER file and gerrit\u0027s suggest-owners didn\u0027t return anyone), but I had cc\u0027d Gavin. Thanks for adding Martijn and Nandana!",
+      "parentUuid": "8d1f5473_11032464",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "5e5de12eee429e5fbf21369b27de1c41221eda92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d64b229a_45a8bf88",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
