@@ -80,6 +80,23 @@
       "message": "+Torne FYI",
       "revId": "5e5de12eee429e5fbf21369b27de1c41221eda92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b8dcc26_73ac2b11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021004
+      },
+      "writtenOn": "2022-10-19T17:18:25Z",
+      "side": 1,
+      "message": "Ah, well spotted - thanks for fixing!",
+      "revId": "5e5de12eee429e5fbf21369b27de1c41221eda92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
