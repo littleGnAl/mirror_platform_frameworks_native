@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea85d42a_f5c86bb9",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-10-19T05:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4ef33c8_242c007b",
+      "range": {
+        "startLine": 152,
+        "startChar": 21,
+        "endLine": 152,
+        "endChar": 40
+      },
+      "revId": "14193e4c02d822e283952d2a1bf4807f9565a3df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06b6baea_0d639e07",
