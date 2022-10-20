@@ -29,10 +29,29 @@
 #include <map>
 #include <vector>
 
+#if defined(TRUSTY_USERSPACE)
 #include <lib/tipc/tipc_srv.h>
+#else
+#include <lib/ktipc/ktipc.h>
+#include <lib/trusty/uuid.h>
+#include <uapi/uapi/trusty_uuid.h>
+#endif
 
 namespace android {
 
+#if defined(TRUSTY_USERSPACE)
+using TipcPort = ::tipc_port;
+using Handle = ::handle_t;
+using TipcSrvOps = ::tipc_srv_ops;
+using TipcPortAcl = ::tipc_port_acl;
+using TipcHset = ::tipc_hset;
+#else
+using TipcPort = ::ktipc_port;
+using Handle = ::handle*;
+using TipcSrvOps = ::ktipc_srv_ops;
+using TipcPortAcl = ::ktipc_port_acl;
+using TipcHset = ::ktipc_server;
+#endif
 /**
  * This is the Trusty-specific RPC server code.
  */
@@ -49,14 +68,14 @@ public:
 
     /**
      * Creates an RPC server listening on the given port and adds it to the
-     * Trusty handle set at |handleSet|.
+     * Trusty handle set at |serverHandleSet|.
      *
      * The caller is responsible for calling tipc_run_event_loop() to start
      * the TIPC event loop after creating one or more services here.
      */
     static android::base::expected<sp<RpcServerTrusty>, int> make(
-            tipc_hset* handleSet, std::string&& portName, std::shared_ptr<const PortAcl>&& portAcl,
-            size_t msgMaxSize,
+            TipcHset* serverHandleSet, std::string&& portName,
+            std::shared_ptr<const PortAcl>&& portAcl, size_t msgMaxSize,
             std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
 
     void setProtocolVersion(uint32_t version) { mRpcServer->setProtocolVersion(version); }
@@ -87,12 +106,12 @@ private:
         sp<RpcSession::RpcConnection> connection;
     };
 
-    static int handleConnect(const tipc_port* port, handle_t chan, const uuid* peer, void** ctx_p);
-    static int handleMessage(const tipc_port* port, handle_t chan, void* ctx);
-    static void handleDisconnect(const tipc_port* port, handle_t chan, void* ctx);
+    static int handleConnect(const TipcPort* port, Handle chan, const uuid* peer, void** ctx_p);
+    static int handleMessage(const TipcPort* port, Handle chan, void* ctx);
+    static void handleDisconnect(const TipcPort* port, Handle chan, void* ctx);
     static void handleChannelCleanup(void* ctx);
 
-    static constexpr tipc_srv_ops kTipcOps = {
+    static constexpr TipcSrvOps kTipcOps = {
             .on_connect = &handleConnect,
             .on_message = &handleMessage,
             .on_disconnect = &handleDisconnect,
@@ -103,8 +122,8 @@ private:
     std::string mPortName;
     std::shared_ptr<const PortAcl> mPortAcl;
     std::vector<const uuid*> mUuidPtrs;
-    tipc_port_acl mTipcPortAcl;
-    tipc_port mTipcPort;
+    TipcPortAcl mTipcPortAcl;
+    TipcPort mTipcPort;
 };
 
 } // namespace android
