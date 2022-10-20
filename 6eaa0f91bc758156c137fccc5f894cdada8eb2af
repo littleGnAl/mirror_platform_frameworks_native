@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb68d2e_35a9bd5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2022-10-20T19:11:23Z",
+      "side": 1,
+      "message": "Only presubmit failure is StreamLimitedOnlyReport , which is known to be broken.",
+      "revId": "6eaa0f91bc758156c137fccc5f894cdada8eb2af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
