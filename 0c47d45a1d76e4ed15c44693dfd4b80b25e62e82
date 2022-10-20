@@ -33,6 +33,24 @@
       "message": "I think this is acceptable.\n\"extern\" it self implies that the implementation is outside of the code.",
       "revId": "0c47d45a1d76e4ed15c44693dfd4b80b25e62e82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85bc62ef_a8582f36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2022-10-20T21:12:40Z",
+      "side": 1,
+      "message": "Just delete that header library completely",
+      "parentUuid": "4406bfe6_ba929aa9",
+      "revId": "0c47d45a1d76e4ed15c44693dfd4b80b25e62e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
