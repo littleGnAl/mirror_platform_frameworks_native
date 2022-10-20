@@ -17,7 +17,13 @@
 #define LOG_TAG "RpcTransportTipcTrusty"
 
 #include <inttypes.h>
+#if defined(TRUSTY_USERSPACE)
 #include <trusty_ipc.h>
+#else
+#include <lib/ktipc/ktipc.h>
+#include <lib/trusty/handle.h>
+#include <lib/trusty/ipc_msg.h>
+#endif // TRUSTY_USERSPACE
 
 #include <binder/RpcSession.h>
 #include <binder/RpcTransportTipcTrusty.h>
@@ -30,6 +36,39 @@
 namespace android {
 
 namespace {
+
+#if defined(TRUSTY_USERSPACE)
+handle_t identity(handle_t id) {
+    return id;
+}
+using handle_t = ::handle_t;
+using ipc_msg_t = ::ipc_msg_t;
+using ipc_err_t = ssize_t;
+using event_t = uevent_t;
+using iovec_t = iovec;
+constexpr auto fd_to_handle = identity;
+constexpr auto handle_to_fd = identity;
+constexpr auto send_msg = ::send_msg;
+constexpr auto read_msg = ::read_msg;
+constexpr auto get_msg = ::get_msg;
+constexpr auto put_msg = ::put_msg;
+constexpr auto wait_handle = ::wait;
+#define TRUSTY_EVENT_MASK(e) (e.event)
+#else
+using handle_t = ::handle*;
+using ipc_msg_t = ipc_msg_kern;
+using ipc_err_t = int;
+using event_t = uint32_t;
+using iovec_t = iovec_kern;
+constexpr auto fd_to_handle = ::id_to_handle;
+constexpr auto handle_to_fd = ::handle_to_id;
+constexpr auto send_msg = ::ipc_send_msg;
+constexpr auto read_msg = ::ipc_read_msg;
+constexpr auto get_msg = ::ipc_get_msg;
+constexpr auto put_msg = ::ipc_put_msg;
+constexpr auto wait_handle = ::handle_wait;
+#define TRUSTY_EVENT_MASK(e) (e)
+#endif // TRUSTY_USERSPACE
 
 // RpcTransport for Trusty.
 class RpcTransportTipcTrusty : public RpcTransport {
@@ -60,9 +99,12 @@ public:
         }
 
         handle_t msgHandles[IPC_MAX_MSG_HANDLES];
+        static_assert(sizeof(iovec_t) == sizeof(iovec));
+        static_assert(offsetof(iovec_t, iov_base) == offsetof(iovec, iov_base));
+        static_assert(offsetof(iovec_t, iov_len) == offsetof(iovec, iov_len));
         ipc_msg_t msg{
                 .num_iov = static_cast<uint32_t>(niovs),
-                .iov = iovs,
+                .iov = reinterpret_cast<iovec_t*>(iovs),
                 .num_handles = 0,
                 .handles = nullptr,
         };
@@ -77,40 +119,41 @@ public:
             }
 
             for (size_t i = 0; i < ancillaryFds->size(); i++) {
-                msgHandles[i] =
-                        std::visit([](const auto& fd) { return fd.get(); }, ancillaryFds->at(i));
+                msgHandles[i] = std::visit([](const auto& fd) { return fd_to_handle(fd.get()); },
+                                           ancillaryFds->at(i));
             }
 
             msg.num_handles = ancillaryFds->size();
             msg.handles = msgHandles;
         }
 
-        ssize_t rc = send_msg(mSocket.fd.get(), &msg);
+        ipc_err_t rc = send_msg(fd_to_handle(mSocket.fd.get()), &msg);
         if (rc == ERR_NOT_ENOUGH_BUFFER) {
             // Peer is blocked, wait until it unblocks.
             // TODO: when tipc supports a send-unblocked handler,
             // save the message here in a queue and retry it asynchronously
             // when the handler gets called by the library
-            uevent uevt;
+            event_t uevt;
             do {
-                rc = ::wait(mSocket.fd.get(), &uevt, INFINITE_TIME);
+                int rc = wait_handle(fd_to_handle(mSocket.fd.get()), &uevt, INFINITE_TIME);
                 if (rc < 0) {
                     return statusFromTrusty(rc);
                 }
-                if (uevt.event & IPC_HANDLE_POLL_HUP) {
+                if (TRUSTY_EVENT_MASK(uevt) & IPC_HANDLE_POLL_HUP) {
                     return DEAD_OBJECT;
                 }
-            } while (!(uevt.event & IPC_HANDLE_POLL_SEND_UNBLOCKED));
+            } while (!(TRUSTY_EVENT_MASK(uevt) & IPC_HANDLE_POLL_SEND_UNBLOCKED));
 
             // Retry the send, it should go through this time because
             // sending is now unblocked
-            rc = send_msg(mSocket.fd.get(), &msg);
+            rc = send_msg(fd_to_handle(mSocket.fd.get()), &msg);
         }
         if (rc < 0) {
             return statusFromTrusty(rc);
         }
         LOG_ALWAYS_FATAL_IF(static_cast<size_t>(rc) != size,
-                            "Sent the wrong number of bytes %zd!=%zu", rc, size);
+                            "Sent the wrong number of bytes %zd!=%zu", static_cast<size_t>(rc),
+                            size);
 
         return OK;
     }
@@ -151,11 +194,12 @@ public:
 
             ipc_msg_t msg{
                     .num_iov = static_cast<uint32_t>(niovs),
-                    .iov = iovs,
+                    .iov = reinterpret_cast<iovec_t*>(iovs),
                     .num_handles = mMessageInfo.num_handles,
                     .handles = haveHandles ? msgHandles : 0,
             };
-            ssize_t rc = read_msg(mSocket.fd.get(), mMessageInfo.id, mMessageOffset, &msg);
+            ipc_err_t rc =
+                    read_msg(fd_to_handle(mSocket.fd.get()), mMessageInfo.id, mMessageOffset, &msg);
             if (rc < 0) {
                 return statusFromTrusty(rc);
             }
@@ -170,7 +214,7 @@ public:
                 if (ancillaryFds != nullptr) {
                     ancillaryFds->reserve(ancillaryFds->size() + mMessageInfo.num_handles);
                     for (size_t i = 0; i < mMessageInfo.num_handles; i++) {
-                        ancillaryFds->emplace_back(base::unique_fd(msgHandles[i]));
+                        ancillaryFds->emplace_back(base::unique_fd(handle_to_fd(msgHandles[i])));
                     }
 
                     // Clear the saved number of handles so we don't accidentally
@@ -183,7 +227,11 @@ public:
                     // peers could DoS us by sending messages with handles in them.
                     // Close the handles since we are ignoring them.
                     for (size_t i = 0; i < mMessageInfo.num_handles; i++) {
+#if defined(TRUSTY_USERSPACE)
                         ::close(msgHandles[i]);
+#else
+                        handle_decref(msgHandles[i]);
+#endif
                     }
                 }
             }
@@ -228,8 +276,8 @@ private:
         }
 
         /* TODO: interruptible wait, maybe with a timeout??? */
-        uevent uevt;
-        rc = ::wait(mSocket.fd.get(), &uevt, wait ? INFINITE_TIME : 0);
+        event_t uevt;
+        rc = wait_handle(fd_to_handle(mSocket.fd.get()), &uevt, wait ? INFINITE_TIME : 0);
         if (rc < 0) {
             if (rc == ERR_TIMED_OUT && !wait) {
                 // If we timed out with wait==false, then there's no message
@@ -237,12 +285,12 @@ private:
             }
             return statusFromTrusty(rc);
         }
-        if (!(uevt.event & IPC_HANDLE_POLL_MSG)) {
+        if (!(TRUSTY_EVENT_MASK(uevt) & IPC_HANDLE_POLL_MSG)) {
             /* No message, terminate here and leave mHaveMessage false */
             return OK;
         }
 
-        rc = get_msg(mSocket.fd.get(), &mMessageInfo);
+        rc = get_msg(fd_to_handle(mSocket.fd.get()), &mMessageInfo);
         if (rc < 0) {
             return statusFromTrusty(rc);
         }
@@ -254,7 +302,7 @@ private:
 
     void releaseMessage() {
         if (mHaveMessage) {
-            put_msg(mSocket.fd.get(), mMessageInfo.id);
+            put_msg(fd_to_handle(mSocket.fd.get()), mMessageInfo.id);
             mHaveMessage = false;
         }
     }
