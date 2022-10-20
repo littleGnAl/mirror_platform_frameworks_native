@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20510d64_d05611d1",
+        "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-10-20T04:52:49Z",
+      "side": 1,
+      "message": "This is probably a bad idea (aliasing `android::handle_t` to `::handle_t`). Now I really think we need a prefix/`tipc_types` namespace/`TipcTypes` class.",
+      "revId": "84bf7c786cbcf533adc9def5ee14135b404b4235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
