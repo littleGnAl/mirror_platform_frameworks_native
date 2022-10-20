@@ -581,7 +581,9 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
                     }
 
                     if (waitUs > 0) {
+#if !defined(__TRUSTY__)
                         usleep(waitUs);
+#endif
                         waitUs = std::min(kWaitMaxUs, waitUs * 2);
                     } else {
                         waitUs = 1;
