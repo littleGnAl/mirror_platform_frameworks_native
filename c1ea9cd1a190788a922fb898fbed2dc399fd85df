@@ -51,6 +51,24 @@
       "message": "Doesn\u0027t this fail on the kernel build?",
       "revId": "c1ea9cd1a190788a922fb898fbed2dc399fd85df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f488b7d_7dd67351",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-10-20T04:14:19Z",
+      "side": 1,
+      "message": "`iovec_kern` happens to have the same layout as the `struct iovec` defined by musl.",
+      "parentUuid": "164824c2_d4a25a5f",
+      "revId": "c1ea9cd1a190788a922fb898fbed2dc399fd85df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
