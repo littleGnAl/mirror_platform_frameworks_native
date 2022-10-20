@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df6ded84_377bfbda",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-20T20:35:43Z",
+      "side": 1,
+      "message": "I removed mod bindings but due to lazy_static crate duplicates, I had to revert back to void* type.",
+      "parentUuid": "f059e0cb_652fa53e",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "ddab486509cf103bd8f8dbe62c75944271c447c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1678d8ea_60f8dcc5",
@@ -102,6 +126,24 @@
       "writtenOn": "2022-10-18T00:16:37Z",
       "side": 1,
       "message": "unused",
+      "revId": "ddab486509cf103bd8f8dbe62c75944271c447c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fceea6b_366d876f",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-10-20T20:35:43Z",
+      "side": 1,
+      "message": "Reverted back to void* due to duplicate crates caused by using binder api inside rust_bindgen.",
+      "parentUuid": "1678d8ea_60f8dcc5",
       "revId": "ddab486509cf103bd8f8dbe62c75944271c447c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
