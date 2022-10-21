@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5566635_d526542d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1385042
+      },
+      "writtenOn": "2022-10-21T07:09:28Z",
+      "side": 1,
+      "message": "The TH was failed on ZippedBugReportStreamTest#StreamLimitedOnlyReport and this CL modified in dumpstate() should not touch DumpstateLimitedOnly().\n\nChecked with dumpstate owner gavincorkery@ and he mentioned that there\u0027s a bug (b/249983726) was filed for the failure. That means that the failure existed before these patches were provided.",
+      "revId": "a99452af4bfd03743f0696d85e8f99c650a8fa05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
