@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19e077e5_7dac43ee",
+        "filename": "opengl/libs/EGL/getProcAddress.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-10-21T15:37:15Z",
+      "side": 1,
+      "message": "(the arm64 implementation gets away with this because the compiler throws in a free `ret` at the end anyway. for whatever reason, you don\u0027t get that for riscv64.)",
+      "revId": "79214fc146987d53f03524cbc7da87939230cce5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd1b6110_626410aa",
         "filename": "opengl/libs/EGL/getProcAddress.cpp",
         "patchSetId": 3
