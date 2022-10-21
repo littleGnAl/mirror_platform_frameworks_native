@@ -165,6 +165,30 @@
       },
       "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa12813f_f847b18a",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1896186
+      },
+      "writtenOn": "2022-10-21T09:35:40Z",
+      "side": 1,
+      "message": "Funny you mention APEX manifests: APEX manifests used to be JSON directly on disk, but on R+ they became binary proto (I think for good reasons). The fact that the format on disk was JSON actually caused problems (https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/builder.go;l\u003d251;drc\u003df648d531547cf51585e183bede1f074ea4fb3190). I think this pretty much excludes using JSON as an on disk format.\n\n1. I could use JSON as source, but then I would need an explicit python build script to generate the binary, instead of reusing protoc, like I do today. Using JSON as source and pb as on disk, matches APEX manifests.\n\n2. I could parse an ad-hoc csv-like text format, but it would not be very simple (I showed that the format can benefit from some nesting) and maintaining backwards compatibility would be hard.\n\n3. I could go for xml + xsd, given that there\u0027s precedent. Downsides are implementation complexity (I have no experience with libraries in android to parse that) and the fact that our sideloaded perfetto build would not support reading the files, but that\u0027s no big deal, I suppose.\n\nI still think the current approach is the best, but I\u0027m open to the solutions 1, 2, 3 above, or any other reasonable proposal.",
+      "parentUuid": "feacf6d9_cdf1aec5",
+      "range": {
+        "startLine": 78,
+        "startChar": 74,
+        "endLine": 78,
+        "endChar": 76
+      },
+      "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
