@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da1162e7_66f70f99",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-10-21T02:36:50Z",
+      "side": 1,
+      "message": "`static inline`?",
+      "revId": "d716f86e31d70bb025f51ca7025f4c425cfc7276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c81ba43_a3475198",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-10-21T02:36:50Z",
+      "side": 1,
+      "message": "Could also use an alias for these.",
+      "revId": "d716f86e31d70bb025f51ca7025f4c425cfc7276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
