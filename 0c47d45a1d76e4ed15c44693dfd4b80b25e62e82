@@ -51,6 +51,23 @@
       "parentUuid": "4406bfe6_ba929aa9",
       "revId": "0c47d45a1d76e4ed15c44693dfd4b80b25e62e82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69492004_f99e23ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2022-10-21T00:47:17Z",
+      "side": 1,
+      "message": "@smoreland@google.com, can you review this CL? It requires an owner review",
+      "revId": "0c47d45a1d76e4ed15c44693dfd4b80b25e62e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
