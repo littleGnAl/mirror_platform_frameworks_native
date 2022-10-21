@@ -75,4 +75,9 @@ TEST(DisplayIdTest, createHalVirtualId) {
     EXPECT_EQ(id, DisplayId::fromValue<HalVirtualDisplayId>(id.value));
 }
 
+TEST(DisplayIdTest, isDisplayIDValid) {
+    std::optional<DisplayId> displayId = DisplayId::fromValue(0);
+    EXPECT_FALSE(displayId.has_value());
+}
+
 } // namespace android::ui

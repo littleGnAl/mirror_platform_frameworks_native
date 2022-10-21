@@ -23,13 +23,16 @@
 namespace android {
 
 // ID of a physical or a virtual display. This class acts as a type safe wrapper around uint64_t.
-// The encoding of the ID is type-specific for bits 0 to 61.
+// The encoding of the ID is type-specific for bits 0 to 59.
 struct DisplayId {
     // Flag indicating that the display is virtual.
     static constexpr uint64_t FLAG_VIRTUAL = 1ULL << 63;
 
     // Flag indicating that the ID is stable across reboots.
     static constexpr uint64_t FLAG_STABLE = 1ULL << 62;
+
+    // Flag indicating that the ID is physical.
+    static constexpr uint64_t FLAG_PHYSICAL = 1ULL << 60;
 
     // TODO(b/162612135) Remove default constructor
     DisplayId() = default;
@@ -69,23 +72,23 @@ inline std::string to_string(DisplayId displayId) {
 // DisplayId of a physical display, such as the internal display or externally connected display.
 struct PhysicalDisplayId : DisplayId {
     static constexpr std::optional<PhysicalDisplayId> tryCast(DisplayId id) {
-        if (id.value & FLAG_VIRTUAL) {
-            return std::nullopt;
+        if (id.value & FLAG_PHYSICAL) {
+            return {PhysicalDisplayId(id)};
         }
-        return {PhysicalDisplayId(id)};
+        return std::nullopt;
     }
 
     // Returns a stable ID based on EDID information.
     static constexpr PhysicalDisplayId fromEdid(uint8_t port, uint16_t manufacturerId,
                                                 uint32_t modelHash) {
-        return PhysicalDisplayId(FLAG_STABLE, port, manufacturerId, modelHash);
+        return PhysicalDisplayId(FLAG_STABLE | FLAG_PHYSICAL, port, manufacturerId, modelHash);
     }
 
     // Returns an unstable ID. If EDID is available using "fromEdid" is preferred.
     static constexpr PhysicalDisplayId fromPort(uint8_t port) {
         constexpr uint16_t kManufacturerId = 0;
         constexpr uint32_t kModelHash = 0;
-        return PhysicalDisplayId(0, port, kManufacturerId, kModelHash);
+        return PhysicalDisplayId(FLAG_PHYSICAL, port, kManufacturerId, kModelHash);
     }
 
     // TODO(b/162612135) Remove default constructor
