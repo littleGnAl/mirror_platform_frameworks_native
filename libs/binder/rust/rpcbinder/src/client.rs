@@ -15,10 +15,14 @@
  */
 
 use binder::{unstable_api::new_spibinder, FromIBinder, SpIBinder, StatusCode, Strong};
+use std::ffi::CString;
 use std::os::{
     raw::{c_int, c_void},
     unix::io::RawFd,
 };
+use std::path::Path;
+use std::thread;
+use std::time::Duration;
 
 /// Connects to an RPC Binder server over vsock.
 pub fn get_vsock_rpc_service(cid: u32, port: u32) -> Option<SpIBinder> {
@@ -33,6 +37,36 @@ pub fn get_vsock_rpc_interface<T: FromIBinder + ?Sized>(
     port: u32,
 ) -> Result<Strong<T>, StatusCode> {
     interface_cast(get_vsock_rpc_service(cid, port))
+}
+
+/// Connects to an RPC Binder server over Unix domain socket.
+pub fn get_unix_domain_rpc_service(pathname: &str) -> Option<SpIBinder> {
+    let max_wait_time_milli_seconds = 3000;
+    let interval = 300;
+    let mut count = 0;
+    while count < max_wait_time_milli_seconds && !Path::new(&pathname).exists() {
+        thread::sleep(Duration::from_millis(interval));
+        count += interval;
+    }
+    if !Path::new(&pathname).exists() {
+        log::error!(
+            "The Unix domain socket of path '{}' is not created after {} milli-seconds.",
+            pathname,
+            max_wait_time_milli_seconds
+        );
+        return None;
+    }
+    let pathname = CString::new(pathname).expect("CString::new failed");
+    // SAFETY: AIBinder returned by UnixDomainRpcClient has correct reference count,
+    // and the ownership can safely be taken by new_spibinder.
+    unsafe { new_spibinder(binder_rpc_unstable_bindgen::UnixDomainRpcClient(pathname.as_ptr())) }
+}
+
+/// Connects to an RPC Binder server for a particular interface over Unix domain socket.
+pub fn get_unix_domain_rpc_interface<T: FromIBinder + ?Sized>(
+    pathname: &str,
+) -> Result<Strong<T>, StatusCode> {
+    interface_cast(get_unix_domain_rpc_service(pathname))
 }
 
 /// Connects to an RPC Binder server, using the given callback to get (and take ownership of)

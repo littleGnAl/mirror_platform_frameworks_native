@@ -18,7 +18,9 @@ use binder::{
     unstable_api::{AIBinder, AsNative},
     SpIBinder,
 };
-use std::{os::raw, ptr::null_mut};
+use nix::unistd::unlink;
+use std::ffi::CString;
+use std::{os::raw, path::Path, ptr::null_mut};
 
 /// Runs a binder RPC server, serving the supplied binder service implementation on the given vsock
 /// port.
@@ -35,7 +37,31 @@ where
     F: FnOnce(),
 {
     let mut ready_notifier = ReadyNotifier(Some(on_ready));
-    ready_notifier.run_server(service, port)
+    ready_notifier.run_vsock_server(service, port)
+}
+
+/// Runs a binder RPC server, serving the supplied binder service implementation on the given
+/// socket file pathname.
+///
+/// The current thread is joined to the binder thread pool to handle incoming messages.
+///
+/// Returns true if the server has shutdown normally, false if it failed in some way.
+pub fn run_unix_domain_rpc_server(mut service: SpIBinder, pathname: &str) -> bool {
+    if Path::new(&pathname).exists() && !unlink_unix_domain_socket(pathname) {
+        log::error!("Failed to unlink Unix Domain socket: {}", pathname);
+        return false;
+    }
+    let service = service.as_native_mut();
+    let pathname = CString::new(pathname).expect("CString::new failed");
+
+    // SAFETY: Service ownership is transferring to the server and won't be valid afterward.
+    // Plus the binder objects are threadsafe.\
+    unsafe { binder_rpc_unstable_bindgen::RunUnixDomainRpcServer(service, pathname.as_ptr()) }
+}
+
+/// Unlinks the Unix Domain socket of the given socket file pathname.
+pub fn unlink_unix_domain_socket(pathname: &str) -> bool {
+    unlink(pathname).is_ok()
 }
 
 struct ReadyNotifier<F>(Option<F>)
@@ -46,7 +72,7 @@ impl<F> ReadyNotifier<F>
 where
     F: FnOnce(),
 {
-    fn run_server(&mut self, mut service: SpIBinder, port: u32) -> bool {
+    fn run_vsock_server(&mut self, mut service: SpIBinder, port: u32) -> bool {
         let service = service.as_native_mut();
         let param = self.as_void_ptr();
 

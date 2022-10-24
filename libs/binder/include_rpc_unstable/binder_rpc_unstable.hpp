@@ -42,6 +42,17 @@ bool RunVsockRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* c
 
 AIBinder* VsockRpcClient(unsigned int cid, unsigned int port);
 
+// For server:
+// Starts a Unix domain RPC server with the given socket file pathname and
+// a given root IBinder object.
+// This function sets up the server and joins before returning.
+bool RunUnixDomainRpcServer(AIBinder* service, const char* pathname);
+
+// For clients:
+// Gets the service via the RPC binder with UNIX domain socket with the given
+// socket file pathname.
+AIBinder* UnixDomainRpcClient(const char* pathname);
+
 // Connect to an RPC server with preconnected file descriptors.
 //
 // requestFd should connect to the server and return a valid file descriptor, or

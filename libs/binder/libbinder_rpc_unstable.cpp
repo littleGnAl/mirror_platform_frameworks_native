@@ -74,10 +74,33 @@ bool RunVsockRpcServer(AIBinder* service, unsigned int port) {
     return RunVsockRpcServerCallback(service, port, nullptr, nullptr);
 }
 
+bool RunUnixDomainRpcServer(AIBinder* service, const char* pathname) {
+    auto server = RpcServer::make();
+    if (status_t status = server->setupUnixDomainServer(pathname); status != OK) {
+        LOG(ERROR) << "Failed to set up Unix Domain RPC server with path " << pathname
+                   << " error: " << statusToString(status).c_str();
+        return false;
+    }
+    server->setRootObject(AIBinder_toPlatformBinder(service));
+    LOG(INFO) << "The Unix Domain RPC server with path '" << pathname << "' is ready.";
+    server->join();
+    return true;
+}
+
 AIBinder* VsockRpcClient(unsigned int cid, unsigned int port) {
     auto session = RpcSession::make();
     if (status_t status = session->setupVsockClient(cid, port); status != OK) {
         LOG(ERROR) << "Failed to set up vsock client with CID " << cid << " and port " << port
+                   << " error: " << statusToString(status).c_str();
+        return nullptr;
+    }
+    return AIBinder_fromPlatformBinder(session->getRootObject());
+}
+
+AIBinder* UnixDomainRpcClient(const char* pathname) {
+    auto session = RpcSession::make();
+    if (status_t status = session->setupUnixDomainClient(pathname); status != OK) {
+        LOG(ERROR) << "Failed to set up Unix Domain RPC client with path: " << pathname
                    << " error: " << statusToString(status).c_str();
         return nullptr;
     }
