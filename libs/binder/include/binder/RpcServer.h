@@ -71,6 +71,12 @@ public:
     [[nodiscard]] status_t setupUnixDomainServer(const char* path);
 
     /**
+     * Sets up the RPC server with an initialized (already listening) socket file
+     * descriptor.
+     */
+    [[nodiscard]] status_t setupInitializedUnixDomainServer(base::unique_fd fd);
+
+    /**
      * Creates an RPC server at the current port.
      */
     [[nodiscard]] status_t setupVsockServer(unsigned int port);
