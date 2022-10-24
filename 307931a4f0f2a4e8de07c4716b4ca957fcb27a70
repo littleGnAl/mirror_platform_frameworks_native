@@ -189,6 +189,30 @@
       },
       "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ae893bf_bafc7f48",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-24T21:35:26Z",
+      "side": 1,
+      "message": "Reading the bug (b/143654022) - the problem with this was a bad JSON file schema, an overly strict parser rejecting certain properties. I think they should have fixed this and tested it instead of switching to a new format: it\u0027s not a problem intrinsic to JSON. If not for any other reason, this is an interface for people to use/implement, not an internal Android fwk interface. This has to be easy for anyone to add their trace formats to.\n\nThe issue with binary formats historically, why this is the UNIX design philosophy, etc... is because anyone can edit a human-readable file, but not anyone can build protobuf anyway. Sure, it works. Sure, it\u0027s debuggable (if you know the right incantations), but you can\u0027t debug it with nano over uart at 3am in the dark etc... We want the format to be human readable so anyone can use it automatically, not have to learn how to use protobuf. Sure you say \"they can learn protobuf\" - in practice - it means some people will choose not to use custom categories. I want to be able to edit the file on disk of a running device, see what happens - not rebuild protobuf.\n\nBtw - do we have Protobuf JSON parsers in Android? You might be able to keep everything the same except the binary format on disk. Otherwise, I like 1 then 3 honestly (not 2 b/c backwards compatibility difficulties).\n\nWDYT?",
+      "parentUuid": "aa12813f_f847b18a",
+      "range": {
+        "startLine": 78,
+        "startChar": 74,
+        "endLine": 78,
+        "endChar": 76
+      },
+      "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
