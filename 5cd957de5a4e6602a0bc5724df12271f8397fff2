@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "190fe836_73d8a0d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-24T14:27:47Z",
+      "side": 1,
+      "message": "This could usefully mention socket files, and perhaps link back to commit 21c887c5a09040bf41d272a9e729119956e48a3f.",
+      "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d83dadad_34c80e20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-24T14:27:47Z",
+      "side": 1,
+      "message": "But they don\u0027t (yet) exercise this code?\nCan we add/modify some rpc binder tests?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e693b7f5_7b01e9e8",
@@ -14,6 +54,144 @@
       "writtenOn": "2022-10-24T13:09:55Z",
       "side": 1,
       "message": "Hi Alan, PTAL",
+      "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f192d0_4876eca3",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-24T14:27:47Z",
+      "side": 1,
+      "message": "s/pathname/socket file pathname/, here and below, for greater clarity?",
+      "range": {
+        "startLine": 46,
+        "startChar": 50,
+        "endLine": 46,
+        "endChar": 58
+      },
+      "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f1f4a3_ce045bc7",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-24T14:27:47Z",
+      "side": 1,
+      "message": "This can never return anything else, make it a void function?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cba3b4a_ca594f2b",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-24T14:27:47Z",
+      "side": 1,
+      "message": "Should this (and friends) be renamed to mention Vsock?",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 19
+      },
+      "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "069f2e50_c855ed8d",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-24T14:27:47Z",
+      "side": 1,
+      "message": "Prefer std::Path here?\n(Or even \"impl Into\u003cPath\u003e\"?)",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 71
+      },
+      "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db01fe20_ef4b3452",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-24T14:27:47Z",
+      "side": 1,
+      "message": "I guess we don\u0027t have tests for these Rust bindings either?\n\nIt would be good to submit along with some client code, so we have some faith that the API is ok \u0026 the code works.",
+      "range": {
+        "startLine": 52,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 33
+      },
+      "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44bf35c_903ceb19",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-24T14:27:47Z",
+      "side": 1,
+      "message": "Nit: line too long",
+      "range": {
+        "startLine": 93,
+        "startChar": 93,
+        "endLine": 93,
+        "endChar": 101
+      },
       "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
