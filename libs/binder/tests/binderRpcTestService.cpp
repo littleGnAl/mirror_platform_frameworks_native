@@ -42,7 +42,7 @@ int main(int argc, const char* argv[]) {
     server->setSupportedFileDescriptorTransportModes(serverSupportedFileDescriptorTransportModes);
 
     unsigned int outPort = 0;
-    base::unique_fd unixBootstrapFd(serverConfig.unixBootstrapFd);
+    base::unique_fd unixBootstrapFd(serverConfig.unixBootstrapFd), socketFd(serverConfig.socketFd);
 
     switch (socketType) {
         case SocketType::PRECONNECTED:
@@ -53,6 +53,9 @@ int main(int argc, const char* argv[]) {
             break;
         case SocketType::UNIX_BOOTSTRAP:
             CHECK_EQ(OK, server->setupUnixDomainSocketBootstrapServer(std::move(unixBootstrapFd)));
+            break;
+        case SocketType::UNIX_INIT:
+            CHECK_EQ(OK, server->setupInitSocketServer(std::move(socketFd)));
             break;
         case SocketType::VSOCK:
             CHECK_EQ(OK, server->setupVsockServer(serverConfig.vsockPort));
