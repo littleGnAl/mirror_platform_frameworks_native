@@ -47,6 +47,7 @@ int main(int argc, const char* argv[]) {
     switch (socketType) {
         case SocketType::PRECONNECTED:
             [[fallthrough]];
+        case SocketType::UNIX_INIT:
         case SocketType::UNIX:
             CHECK_EQ(OK, server->setupUnixDomainServer(serverConfig.addr.c_str()))
                     << serverConfig.addr;
