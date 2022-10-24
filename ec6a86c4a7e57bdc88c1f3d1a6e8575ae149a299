@@ -45,6 +45,30 @@
       },
       "revId": "ec6a86c4a7e57bdc88c1f3d1a6e8575ae149a299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebe27709_f735a6f9",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-10-24T18:16:12Z",
+      "side": 1,
+      "message": "+1 - _sys crates usually represent crates that contain raw, unsafe bindings to existing C ABIs, but you\u0027ve made this one safe.",
+      "parentUuid": "55b5d707_38fdb94a",
+      "range": {
+        "startLine": 28,
+        "startChar": 34,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "ec6a86c4a7e57bdc88c1f3d1a6e8575ae149a299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
