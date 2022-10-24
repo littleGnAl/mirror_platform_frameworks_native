@@ -18,7 +18,7 @@ use binder::{
     unstable_api::{AIBinder, AsNative},
     SpIBinder,
 };
-use std::{os::raw, ptr::null_mut};
+use std::{ffi::CString, fs::remove_file, os::raw, path::Path, ptr::null_mut};
 
 /// Runs a binder RPC server, serving the supplied binder service implementation on the given vsock
 /// port.
@@ -35,7 +35,30 @@ where
     F: FnOnce(),
 {
     let mut ready_notifier = ReadyNotifier(Some(on_ready));
-    ready_notifier.run_server(service, port)
+    ready_notifier.run_vsock_server(service, port)
+}
+
+/// Runs a binder RPC server, serving the supplied binder service implementation on the given
+/// socket file pathname.
+///
+/// If and when the server is ready for connections, `on_ready` is called to allow appropriate
+/// action to be taken - e.g. to notify clients that they may now attempt to connect.
+///
+/// The current thread is joined to the binder thread pool to handle incoming messages.
+///
+/// Returns true if the server has shutdown normally, false if it failed in some way.
+pub fn run_unix_domain_rpc_server<P: AsRef<Path>, F: FnOnce()>(
+    service: SpIBinder,
+    socket_path: P,
+    on_ready: F,
+) -> bool {
+    let socket_path = socket_path.as_ref();
+    if socket_path.exists() && remove_file(socket_path).is_err() {
+        log::error!("Failed to remove Unix Domain socket: {:?}", socket_path);
+        return false;
+    }
+    let mut ready_notifier = ReadyNotifier(Some(on_ready));
+    ready_notifier.run_unix_domain_server(service, socket_path)
 }
 
 struct ReadyNotifier<F>(Option<F>)
@@ -46,7 +69,7 @@ impl<F> ReadyNotifier<F>
 where
     F: FnOnce(),
 {
-    fn run_server(&mut self, mut service: SpIBinder, port: u32) -> bool {
+    fn run_vsock_server(&mut self, mut service: SpIBinder, port: u32) -> bool {
         let service = service.as_native_mut();
         let param = self.as_void_ptr();
 
@@ -58,6 +81,36 @@ where
             binder_rpc_unstable_bindgen::RunVsockRpcServerCallback(
                 service,
                 port,
+                Some(Self::ready_callback),
+                param,
+            )
+        }
+    }
+
+    fn run_unix_domain_server<P: AsRef<Path>>(
+        &mut self,
+        mut service: SpIBinder,
+        socket_path: P,
+    ) -> bool {
+        let socket_path = socket_path.as_ref();
+        let socket_path = match socket_path.to_str().and_then(|p| CString::new(p).ok()) {
+            Some(path) => path,
+            None => {
+                log::error!("Cannot convert {:?} to CString", socket_path);
+                return false;
+            }
+        };
+        let service = service.as_native_mut();
+        let param = self.as_void_ptr();
+
+        // SAFETY: Service ownership is transferring to the server and won't be valid afterward.
+        // Plus the binder objects are threadsafe.
+        // RunUnixDomainRpcServer does not retain a reference to `ready_callback` or `param`;
+        // it only uses them before it returns, which is during the lifetime of `self`.
+        unsafe {
+            binder_rpc_unstable_bindgen::RunUnixDomainRpcServer(
+                service,
+                socket_path.as_ptr(),
                 Some(Self::ready_callback),
                 param,
             )

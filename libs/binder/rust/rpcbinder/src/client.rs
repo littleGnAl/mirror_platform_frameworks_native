@@ -15,10 +15,13 @@
  */
 
 use binder::{unstable_api::new_spibinder, FromIBinder, SpIBinder, StatusCode, Strong};
+use nix::sys::inotify::{AddWatchFlags, InitFlags, Inotify};
+use std::ffi::CString;
 use std::os::{
     raw::{c_int, c_void},
     unix::io::RawFd,
 };
+use std::path::Path;
 
 /// Connects to an RPC Binder server over vsock.
 pub fn get_vsock_rpc_service(cid: u32, port: u32) -> Option<SpIBinder> {
@@ -33,6 +36,45 @@ pub fn get_vsock_rpc_interface<T: FromIBinder + ?Sized>(
     port: u32,
 ) -> Result<Strong<T>, StatusCode> {
     interface_cast(get_vsock_rpc_service(cid, port))
+}
+
+fn try_get_unix_domain_rpc_service<P: AsRef<Path>>(socket_path: P) -> Option<SpIBinder> {
+    let socket_path = socket_path.as_ref();
+    let socket_path = match socket_path.to_str().and_then(|p| CString::new(p).ok()) {
+        Some(path) => path,
+        None => {
+            log::error!("Cannot convert {:?} to CString", socket_path);
+            return None;
+        }
+    };
+    // SAFETY: AIBinder returned by UnixDomainRpcClient has correct reference count,
+    // and the ownership can safely be taken by new_spibinder.
+    unsafe { new_spibinder(binder_rpc_unstable_bindgen::UnixDomainRpcClient(socket_path.as_ptr())) }
+}
+
+/// Connects to an RPC Binder server over Unix domain socket.
+pub fn get_unix_domain_rpc_service<P: AsRef<Path>>(socket_path: P) -> Option<SpIBinder> {
+    if socket_path.as_ref().exists() {
+        return try_get_unix_domain_rpc_service(socket_path);
+    }
+    let instance = Inotify::init(InitFlags::empty()).unwrap();
+    instance.add_watch(socket_path.as_ref(), AddWatchFlags::IN_ALL_EVENTS).unwrap();
+    loop {
+        let events = instance.read_events().unwrap();
+        for event in events {
+            if Some(socket_path.as_ref().as_os_str().to_os_string()) == event.name {
+                log::debug!("socket_path Event: {:?}", event);
+                return try_get_unix_domain_rpc_service(socket_path);
+            }
+        }
+    }
+}
+
+/// Connects to an RPC Binder server for a particular interface over Unix domain socket.
+pub fn get_unix_domain_rpc_interface<T: FromIBinder + ?Sized, P: AsRef<Path>>(
+    socket_path: P,
+) -> Result<Strong<T>, StatusCode> {
+    interface_cast(get_unix_domain_rpc_service(socket_path))
 }
 
 /// Connects to an RPC Binder server, using the given callback to get (and take ownership of)
