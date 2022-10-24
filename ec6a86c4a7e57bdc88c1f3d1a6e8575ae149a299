@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2850ddd7_d3728e65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-24T18:14:22Z",
+      "side": 1,
+      "message": "hey, this change great! is there an example of this being used? I don\u0027t think there\u0027s anything wrong with it, but we should test it first. If a small fix is needed somewhere, less noise! :)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "ec6a86c4a7e57bdc88c1f3d1a6e8575ae149a299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55b5d707_38fdb94a",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-24T18:14:22Z",
+      "side": 1,
+      "message": "should this be s/_sys/_rs/ if this API ready for people in Rust to start depending on? Or do we expect a different API for people to use?",
+      "range": {
+        "startLine": 28,
+        "startChar": 34,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "ec6a86c4a7e57bdc88c1f3d1a6e8575ae149a299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
