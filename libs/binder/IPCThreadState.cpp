@@ -45,11 +45,11 @@
 
 #define IF_LOG_TRANSACTIONS() if (false)
 #define IF_LOG_COMMANDS() if (false)
-#define LOG_REMOTEREFS(...) 
+#define LOG_REMOTEREFS(...)
 #define IF_LOG_REMOTEREFS() if (false)
 
-#define LOG_THREADPOOL(...) 
-#define LOG_ONEWAY(...) 
+#define LOG_THREADPOOL(...)
+#define LOG_ONEWAY(...)
 
 #else
 
@@ -381,13 +381,15 @@ void IPCThreadState::restoreGetCallingSpGuard(const SpGuard* guard) {
 }
 
 void IPCThreadState::checkContextIsBinderForUse(const char* use) const {
-    if (LIKELY(mServingStackPointerGuard == nullptr)) return;
+    (void)use;
 
-    if (!mServingStackPointer || mServingStackPointerGuard->address < mServingStackPointer) {
-        LOG_ALWAYS_FATAL("In context %s, %s does not make sense (binder sp: %p, guard: %p).",
-                         mServingStackPointerGuard->context, use, mServingStackPointer,
-                         mServingStackPointerGuard->address);
-    }
+    // if (LIKELY(mServingStackPointerGuard == nullptr)) return;
+
+    // if (!mServingStackPointer || mServingStackPointerGuard->address < mServingStackPointer) {
+    //     LOG_ALWAYS_FATAL("In context %s, %s does not make sense (binder sp: %p, guard: %p).",
+    //                      mServingStackPointerGuard->context, use, mServingStackPointer,
+    //                      mServingStackPointerGuard->address);
+    // }
 
     // in the case mServingStackPointer is deeper in the stack than the guard,
     // we must be serving a binder transaction (maybe nested). This is a binder
