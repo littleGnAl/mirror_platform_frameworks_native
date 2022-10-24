@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf16083_f15b3050",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2022-10-24T22:28:50Z",
+      "side": 1,
+      "message": "Do we know how to enable this for devices that are launched prior to U? As in, how will OEMs opt in some of their previous devices into this?\n\n(Also, let\u0027s make sure at the same time it doesn\u0027t auto-opt people in before U)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "f610a494b905a181abc936fc3dfa6ad87529f07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
