@@ -30,6 +30,18 @@ using android::base::unique_fd;
 
 extern "C" {
 
+bool RunRpcServer(android::sp<RpcServer> server, AIBinder* service,
+                  void (*readyCallback)(void* param), void* param) {
+    server->setRootObject(AIBinder_toPlatformBinder(service));
+
+    if (readyCallback) readyCallback(param);
+    server->join();
+
+    // Shutdown any open sessions since server failed.
+    (void)server->shutdown();
+    return true;
+}
+
 bool RunVsockRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* context),
                                   void* factoryContext, unsigned int port) {
     auto server = RpcServer::make();
@@ -60,24 +72,38 @@ bool RunVsockRpcServerCallback(AIBinder* service, unsigned int port,
                    << " error: " << statusToString(status).c_str();
         return false;
     }
-    server->setRootObject(AIBinder_toPlatformBinder(service));
-
-    if (readyCallback) readyCallback(param);
-    server->join();
-
-    // Shutdown any open sessions since server failed.
-    (void)server->shutdown();
-    return true;
+    return RunRpcServer(server, service, readyCallback, param);
 }
 
 bool RunVsockRpcServer(AIBinder* service, unsigned int port) {
     return RunVsockRpcServerCallback(service, port, nullptr, nullptr);
 }
 
+bool RunUnixDomainRpcServer(AIBinder* service, const char* pathname,
+                            void (*readyCallback)(void* param), void* param) {
+    auto server = RpcServer::make();
+    if (status_t status = server->setupUnixDomainServer(pathname); status != OK) {
+        LOG(ERROR) << "Failed to set up Unix Domain RPC server with pathname " << pathname
+                   << " error: " << statusToString(status).c_str();
+        return false;
+    }
+    return RunRpcServer(server, service, readyCallback, param);
+}
+
 AIBinder* RpcClient(unsigned int cid, unsigned int port) {
     auto session = RpcSession::make();
     if (status_t status = session->setupVsockClient(cid, port); status != OK) {
         LOG(ERROR) << "Failed to set up vsock client with CID " << cid << " and port " << port
+                   << " error: " << statusToString(status).c_str();
+        return nullptr;
+    }
+    return AIBinder_fromPlatformBinder(session->getRootObject());
+}
+
+AIBinder* UnixDomainRpcClient(const char* pathname) {
+    auto session = RpcSession::make();
+    if (status_t status = session->setupUnixDomainClient(pathname); status != OK) {
+        LOG(ERROR) << "Failed to set up Unix Domain RPC client with pathname " << pathname
                    << " error: " << statusToString(status).c_str();
         return nullptr;
     }
