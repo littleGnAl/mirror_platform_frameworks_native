@@ -294,7 +294,8 @@ public:
     bool supportsFdTransport() const {
         return clientVersion() >= 1 && serverVersion() >= 1 && rpcSecurity() != RpcSecurity::TLS &&
                 (socketType() == SocketType::PRECONNECTED || socketType() == SocketType::UNIX ||
-                 socketType() == SocketType::UNIX_BOOTSTRAP);
+                 socketType() == SocketType::UNIX_BOOTSTRAP ||
+                 socketType() == SocketType::UNIX_INIT);
     }
 
     void SetUp() override {
@@ -365,6 +366,19 @@ public:
                     static_cast<int32_t>(mode));
         }
         writeToFd(ret.host.writeEnd(), serverConfig);
+        if (socketType == SocketType::UNIX_INIT) {
+            auto socket_addr = UnixSocketAddress(allocateSocketAddress().c_str());
+            base::unique_fd fd(
+                    TEMP_FAILURE_RETRY(socket(socket_addr.addr()->sa_family,
+                                              SOCK_STREAM | SOCK_CLOEXEC | SOCK_NONBLOCK, 0)));
+            CHECK_GE(fd.get(), 0);
+            CHECK_EQ(0,
+                     TEMP_FAILURE_RETRY(
+                             bind(fd.get(), socket_addr.addr(), socket_addr.addrSize())));
+            serverConfig.socketFd = fd.get();
+        } else {
+            serverConfig.socketFd = -1;
+        }
 
         std::vector<sp<RpcSession>> sessions;
         auto certVerifier = std::make_shared<RpcCertificateVerifierSimple>();
@@ -406,6 +420,7 @@ public:
                         return connectTo(UnixSocketAddress(serverConfig.addr.c_str()));
                     });
                     break;
+                case SocketType::UNIX_INIT:
                 case SocketType::UNIX:
                     status = session->setupUnixDomainClient(serverConfig.addr.c_str());
                     break;
@@ -480,7 +495,7 @@ TEST_P(BinderRpc, SeparateRootObject) {
 
     SocketType type = std::get<0>(GetParam());
     if (type == SocketType::PRECONNECTED || type == SocketType::UNIX ||
-        type == SocketType::UNIX_BOOTSTRAP) {
+        type == SocketType::UNIX_BOOTSTRAP || type == SocketType::UNIX_INIT) {
         // we can't get port numbers for unix sockets
         return;
     }
@@ -1616,7 +1631,8 @@ static bool testSupportVsockLoopback() {
 }
 
 static std::vector<SocketType> testSocketTypes(bool hasPreconnected = true) {
-    std::vector<SocketType> ret = {SocketType::UNIX, SocketType::UNIX_BOOTSTRAP, SocketType::INET};
+    std::vector<SocketType> ret = {SocketType::UNIX, SocketType::UNIX_BOOTSTRAP, SocketType::INET,
+                                   SocketType::UNIX_INIT};
 
     if (hasPreconnected) ret.push_back(SocketType::PRECONNECTED);
 
@@ -1857,6 +1873,25 @@ public:
                     mBootstrapSocket = RpcTransportFd(std::move(bootstrapFdClient));
                     mAcceptConnection = &Server::recvmsgServerConnection;
                     mConnectToServer = [this] { return connectToUnixBootstrap(mBootstrapSocket); };
+                } break;
+                case SocketType::UNIX_INIT: {
+                    auto addr = allocateSocketAddress();
+                    auto socket_addr = UnixSocketAddress(addr.c_str());
+                    base::unique_fd fd(TEMP_FAILURE_RETRY(
+                            socket(socket_addr.addr()->sa_family,
+                                   SOCK_STREAM | SOCK_CLOEXEC | SOCK_NONBLOCK, 0)));
+                    CHECK_GE(fd.get(), 0);
+                    CHECK_EQ(0,
+                             TEMP_FAILURE_RETRY(
+                                     bind(fd.get(), socket_addr.addr(), socket_addr.addrSize())));
+                    auto status = rpcServer->setupInitSocketServer(std::move(fd));
+                    if (status != OK) {
+                        return AssertionFailure()
+                                << "setupInitSocketServer: " << statusToString(status);
+                    }
+                    mConnectToServer = [addr] {
+                        return connectTo(UnixSocketAddress(addr.c_str()));
+                    };
                 } break;
                 case SocketType::VSOCK: {
                     auto port = allocateVsockPort();
