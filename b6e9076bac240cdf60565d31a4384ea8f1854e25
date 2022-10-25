@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31359190_469eecf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-25T13:38:58Z",
+      "side": 1,
+      "message": "Hi Alan,\n\nPlease take a look if this is a good direction to replace the kernel binder with rpc binder. I have used it for vm_payload_service and adjusted the selinux policy in a rough way (I\u0027ll refine the permissions to the socket itself instead of socket_device later).\n\nMicrodroidTests work locally.",
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
