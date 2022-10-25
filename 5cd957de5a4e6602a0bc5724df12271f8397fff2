@@ -385,6 +385,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c15e6617_c5f6469c",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1139038
+      },
+      "writtenOn": "2022-10-25T16:00:50Z",
+      "side": 1,
+      "message": "I\u0027m not sure why you don\u0027t just need `P: AsRef\u003cPath\u003e`? From there you can convert it to \u0026OsStr anyway with `pathname.as_ref().as_os_str()`",
+      "parentUuid": "a67f1d9c_f6a993e4",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 71
+      },
+      "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c44bf35c_903ceb19",
         "filename": "libs/binder/rust/rpcbinder/src/server.rs",
         "patchSetId": 1
