@@ -34,6 +34,24 @@
       "parentUuid": "d09caf6b_06036748",
       "revId": "c3964f68e251e3a80f952e2014b2b5dc738aff4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "600c3cd3_71373d33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-10-25T21:32:24Z",
+      "side": 1,
+      "message": "It is suppose to be treated as an error: http://cs/android-internal/frameworks/native/libs/binder/Android.bp?l\u003d187 (enables https://clang.llvm.org/extra/clang-tidy/checks/cppcoreguidelines/narrowing-conversions.html)\n\nI did some testing and confirmed that \n\n```\nint foo() {\n    ssize_t x \u003d 0;\n    return x;\n}\n```\n\ngenerates the narrowing error, but \n\n```\nint foo() {\n    ssize_t x \u003d 0;\n    return TEMP_FAILURE_RETRY(x);\n}\n```\n\ndoes not. Manually inlining the macro does generate the warning, so it seems like clang-tidy doesn\u0027t want to analyze past macros?",
+      "parentUuid": "394d88ed_2f23deaa",
+      "revId": "c3964f68e251e3a80f952e2014b2b5dc738aff4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
