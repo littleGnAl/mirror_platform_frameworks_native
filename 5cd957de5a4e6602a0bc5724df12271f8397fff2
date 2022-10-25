@@ -241,6 +241,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8719430e_bcd3f32c",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-25T15:35:33Z",
+      "side": 1,
+      "message": "Nice!",
+      "parentUuid": "4bd8d466_599f0c3d",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 19
+      },
+      "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "069f2e50_c855ed8d",
@@ -325,6 +349,30 @@
       "side": 1,
       "message": "I tried something more generic here, but it doesn\u0027t look like it can make the code more expressive. Here I mostly need pathname to be OsStr so that I can convert it later into a CString. I can make it pathname:P and P as following\n\nP: AsRef\u003cPath\u003e + std::fmt::Display + std::convert::AsRef\u003cstd::ffi::OsStr\u003e + Into\u003cstd::vec::Vec\u003cu8\u003e\u003e\n\nIt looks a bit long no?",
       "parentUuid": "069f2e50_c855ed8d",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 71
+      },
+      "revId": "5cd957de5a4e6602a0bc5724df12271f8397fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a67f1d9c_f6a993e4",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-25T15:35:33Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s excessive.\n\nBut maybe switch from \u0026str to \u0026OsStr? There\u0027s an easy conversion from \u0026str, and you don\u0027t need valid UTF-8.",
+      "parentUuid": "8de03612_69acfa20",
       "range": {
         "startLine": 52,
         "startChar": 56,

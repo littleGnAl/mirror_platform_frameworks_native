@@ -16,6 +16,121 @@
       "message": "Hi Alan,\n\nPlease take a look if this is a good direction to replace the kernel binder with rpc binder. I have used it for vm_payload_service and adjusted the selinux policy in a rough way (I\u0027ll refine the permissions to the socket itself instead of socket_device later).\n\nMicrodroidTests work locally.",
       "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c338596_96c7b373",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-25T15:35:33Z",
+      "side": 1,
+      "message": "Why don\u0027t we call shutdown() in this case?\n(Worth a comment?)",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "408ad573_55560ba4",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-25T15:35:33Z",
+      "side": 1,
+      "message": "There\u0027s a race condition here - but it probably doesn\u0027t matter.",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 77
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b883f2b_97cb8802",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-25T15:35:33Z",
+      "side": 1,
+      "message": "You should probably do this check first - not sure what happens if you call unlink with a string with an embedded zero.",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 72
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec45e73e_828b4022",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-25T15:35:33Z",
+      "side": 1,
+      "message": "Trailing \\",
+      "range": {
+        "startLine": 58,
+        "startChar": 46,
+        "endLine": 58,
+        "endChar": 47
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a09e45_4c1f1c5e",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-25T15:35:33Z",
+      "side": 1,
+      "message": "Inline?",
+      "range": {
+        "startLine": 63,
+        "startChar": 7,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
