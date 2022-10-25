@@ -33,6 +33,23 @@
       "message": "Hi Steven, could you take a look at this cl?",
       "revId": "07466685c0bf8afb79c8a136387a84386087f3f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f89f3bc_af2bc7fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-25T07:05:30Z",
+      "side": 1,
+      "message": "Hi Steven,\n\nThanks for the review!",
+      "revId": "07466685c0bf8afb79c8a136387a84386087f3f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
