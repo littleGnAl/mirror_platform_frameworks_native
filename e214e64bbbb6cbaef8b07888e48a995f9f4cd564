@@ -104,6 +104,30 @@
       },
       "revId": "e214e64bbbb6cbaef8b07888e48a995f9f4cd564",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0563e6ab_acf1f024",
+        "filename": "libs/vibrator/ExternalVibration.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1882920
+      },
+      "writtenOn": "2022-10-25T13:02:38Z",
+      "side": 1,
+      "message": "Just for completeness, noting my CL to replace the static_assert with a conversion:\nag/20260698 (and plug in the conversion: ag/20272239)",
+      "parentUuid": "6f94681e_b7a79855",
+      "range": {
+        "startLine": 27,
+        "startChar": 57,
+        "endLine": 27,
+        "endChar": 61
+      },
+      "revId": "e214e64bbbb6cbaef8b07888e48a995f9f4cd564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
