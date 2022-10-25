@@ -16,6 +16,24 @@
       "message": "A dumb question: why does this have to be via servicemanager? Can apexd get this information by parsing the manifest using libvintf?",
       "revId": "d5ccde7930eb6a1dfdd154a0131d3b2fdc82a37c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fecb48a_a04b7786",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-10-25T10:18:56Z",
+      "side": 1,
+      "message": "Not a dumb question. I had the same question and left a question b/254201177#comment4. Using libvintf directly from apexd might be an alternative. Probably, it\u0027s because with HIDL2AIDL we need more and more HAL related features from servicemanager.",
+      "parentUuid": "d8e14137_9e6dcd6c",
+      "revId": "d5ccde7930eb6a1dfdd154a0131d3b2fdc82a37c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
