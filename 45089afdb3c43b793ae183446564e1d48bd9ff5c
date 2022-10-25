@@ -33,6 +33,24 @@
       "message": "when does this happen? Is it a race when the process is dying?",
       "revId": "45089afdb3c43b793ae183446564e1d48bd9ff5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "081385ed_c0b41086",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2022-10-25T06:39:08Z",
+      "side": 1,
+      "message": "To be honest Steven, I am not sure what caused this.\nThe stacktrace in the bug (in the commit message) doesn\u0027t reveal much other than a null dereference.",
+      "parentUuid": "4e7d50ed_82429b6d",
+      "revId": "45089afdb3c43b793ae183446564e1d48bd9ff5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
