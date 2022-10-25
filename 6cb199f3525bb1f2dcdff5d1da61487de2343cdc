@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dd8cbc8_ec3cb37f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-10-25T08:42:12Z",
+      "side": 1,
+      "message": "Not sure how to test this new method. I\u0027m thinking about adding an example vendor apex with an updatable HAL to the cuttlefish target and running the test only for the cuttlefish target.\n\nAny thoughts?",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "6cb199f3525bb1f2dcdff5d1da61487de2343cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
