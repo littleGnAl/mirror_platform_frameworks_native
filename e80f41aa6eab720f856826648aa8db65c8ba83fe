@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5a7569_31490e42",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-26T00:28:49Z",
+      "side": 1,
+      "message": "nit: apexUpdatableInstances (it\u0027s not all all of them)",
+      "range": {
+        "startLine": 539,
+        "startChar": 29,
+        "endLine": 539,
+        "endChar": 32
+      },
+      "revId": "e80f41aa6eab720f856826648aa8db65c8ba83fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd5f0ea_a37e1665",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-26T00:28:49Z",
+      "side": 1,
+      "message": "nit: add message here `, \"SELinux denial\"`",
+      "range": {
+        "startLine": 553,
+        "startChar": 60,
+        "endLine": 553,
+        "endChar": 61
+      },
+      "revId": "e80f41aa6eab720f856826648aa8db65c8ba83fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81ed11b2_8b67d3b3",
+        "filename": "libs/binder/aidl/android/os/IServiceManager.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-26T00:28:49Z",
+      "side": 1,
+      "message": "nit: recommend \u0027pack.age.IFoo\u0027 since \u0027package\u0027 is a reserved term",
+      "range": {
+        "startLine": 118,
+        "startChar": 13,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "e80f41aa6eab720f856826648aa8db65c8ba83fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b0c6daf_7d424b77",
+        "filename": "libs/binder/aidl/android/os/IServiceManager.aidl",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-26T00:28:49Z",
+      "side": 1,
+      "message": "getUpdatableNames WDYT?\n\nThere are roughly 3 components to services that are referenced here:\n\n- name (the full name - like APIs \u0027addService\u0027)\n- package (\u0027package.IFoo\u0027)\n- instance (the part after \u0027/\u0027 like \u0027default\u0027 in your example)\n\nI understand in this API you want to return the whole name. Since \u0027instance\u0027 is ambiguous and we already use it to refer to the instance alone (without the package) in getDecalredInstances, I think we should differentiate these functions in their name",
+      "range": {
+        "startLine": 120,
+        "startChar": 36,
+        "endLine": 120,
+        "endChar": 46
+      },
+      "revId": "e80f41aa6eab720f856826648aa8db65c8ba83fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
