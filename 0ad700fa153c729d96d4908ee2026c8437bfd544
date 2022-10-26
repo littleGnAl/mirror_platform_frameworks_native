@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ba52b3_5cadb975",
+        "filename": "vulkan/libvulkan/api_gen.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-10-26T14:34:24Z",
+      "side": 1,
+      "message": "Probably shouldn\u0027t be a INIT_PROC. TBD.",
+      "parentUuid": "d9d860e8_ea109eb1",
+      "range": {
+        "startLine": 238,
+        "startChar": 25,
+        "endLine": 238,
+        "endChar": 54
+      },
+      "revId": "0ad700fa153c729d96d4908ee2026c8437bfd544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2df153e7_12da050e",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c58d249_a3f6903d",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-10-26T14:34:24Z",
+      "side": 1,
+      "message": "Correct. Updated.",
+      "parentUuid": "2df153e7_12da050e",
+      "range": {
+        "startLine": 1042,
+        "startChar": 4,
+        "endLine": 1043,
+        "endChar": 62
+      },
+      "revId": "0ad700fa153c729d96d4908ee2026c8437bfd544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30c657b2_3b85266a",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-10-13T15:01:28Z",
       "side": 1,
       "message": "this should be VkBaseInStructure",
+      "range": {
+        "startLine": 1424,
+        "startChar": 14,
+        "endLine": 1424,
+        "endChar": 38
+      },
+      "revId": "0ad700fa153c729d96d4908ee2026c8437bfd544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b95a58d_158b29d6",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1424,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-10-26T14:34:24Z",
+      "side": 1,
+      "message": "The loader code is older than VkBaseInStructure. It looks weird with the reinterpret_casts, but this is the programming pattern found throughout the loader.\n\nIt looks weird, but should be valid",
+      "parentUuid": "30c657b2_3b85266a",
       "range": {
         "startLine": 1424,
         "startChar": 14,
