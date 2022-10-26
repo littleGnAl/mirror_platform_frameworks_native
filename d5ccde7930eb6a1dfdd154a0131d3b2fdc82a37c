@@ -88,6 +88,24 @@
       "parentUuid": "8fb2f23a_2480f891",
       "revId": "d5ccde7930eb6a1dfdd154a0131d3b2fdc82a37c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95583e03_67959213",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-26T02:09:11Z",
+      "side": 1,
+      "message": "I looked at it back in ~2017 or so when the cost was getting duplicated in every libhidlbase library. Haven\u0027t looked since.\n\nThe service context situation should be fine (I mean, we could add another access_vector), but for tests, we should be root anyway. 😄 For clients - they need the permission anyway, and we will see avc denials from this.",
+      "parentUuid": "4cab24f6_441e4dc7",
+      "revId": "d5ccde7930eb6a1dfdd154a0131d3b2fdc82a37c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -22,6 +22,30 @@
       },
       "revId": "6cb199f3525bb1f2dcdff5d1da61487de2343cdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa8db680_9d6dd1f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-26T02:09:11Z",
+      "side": 1,
+      "message": "see servicemanager_test as well. Though - I think an example setup like you describe sounds great!",
+      "parentUuid": "2dd8cbc8_ec3cb37f",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "6cb199f3525bb1f2dcdff5d1da61487de2343cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
