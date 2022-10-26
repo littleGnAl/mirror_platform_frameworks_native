@@ -70,6 +70,24 @@
       "parentUuid": "95ab3afd_9aae51f2",
       "revId": "d5ccde7930eb6a1dfdd154a0131d3b2fdc82a37c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cab24f6_441e4dc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-10-26T01:52:51Z",
+      "side": 1,
+      "message": "Thank you, Steven, for explanation. \n\n\u003e It might be parsing 100 files these days and combining them - it\u0027s expensive.\n\nThis really sounds.. \"expensive\". (btw, I\u0027m curious if there\u0027s any numbers about \"cost\")\n\nJiyong, what do you think? Per Steven\u0027s explanation, adding this new method to servicemanager can be justified. The only problem (or difference) of this way is that clients using the new method will be controlled by \"service context\". For example, apexd should be allowed to \"find\" all HAL services.",
+      "parentUuid": "8fb2f23a_2480f891",
+      "revId": "d5ccde7930eb6a1dfdd154a0131d3b2fdc82a37c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
