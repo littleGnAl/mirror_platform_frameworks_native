@@ -213,6 +213,30 @@
       },
       "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45e9a95f_c8b7ada9",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-26T21:47:49Z",
+      "side": 1,
+      "message": "or .textproto - I saw this was a thing yesterday",
+      "parentUuid": "0ae893bf_bafc7f48",
+      "range": {
+        "startLine": 78,
+        "startChar": 74,
+        "endLine": 78,
+        "endChar": 76
+      },
+      "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
