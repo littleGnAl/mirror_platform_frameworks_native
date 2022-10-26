@@ -89,6 +89,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "753187aa_819da5eb",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-10-26T10:26:49Z",
+      "side": 1,
+      "message": "Is there any reason why this (and `interval`, and `count`) can\u0027t be a `Duration`? Then you wouldn\u0027t need the `_milli_seconds` suffix. `Duration` implements `Add` and `PartialOrd` so you can do all the same operations with it.",
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a513e6_09df8729",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-10-26T10:26:49Z",
+      "side": 1,
+      "message": "This isn\u0027t really a count, as you increment it by the interval rather than 1 each time. Maybe `elapsed` would be a better name?",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ca511c8_28e6ea0c",
         "filename": "libs/binder/rust/rpcbinder/src/client.rs",
         "patchSetId": 2
@@ -100,6 +140,58 @@
       "writtenOn": "2022-10-25T16:00:50Z",
       "side": 1,
       "message": "We talked about trying inotify in place of polling, although AServiceManager_getService does polling, while AServiceManager_waitForService does the more efficient waiting so maybe it\u0027s good enough.",
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85e7dca_70d14e72",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-10-26T10:26:49Z",
+      "side": 1,
+      "message": "I\u0027m not very keen on polling, but if you really want to do it that way then perhaps at least let the caller pass the timeout into the method?",
+      "parentUuid": "7ca511c8_28e6ea0c",
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c28194a1_e938364f",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-10-26T10:26:49Z",
+      "side": 1,
+      "message": "I think it would be better to just return an error (or `None`, as you do) and let the caller decide whether to log it or not. Maybe it\u0027s actually perfectly normal for the socket to not exist in some circumstances and there\u0027s no need to spam the logs.",
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c80dde_e17eee04",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-10-26T10:26:49Z",
+      "side": 1,
+      "message": "Why not just std::fs::remove_file?",
       "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
