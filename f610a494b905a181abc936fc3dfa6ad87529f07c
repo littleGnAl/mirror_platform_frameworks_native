@@ -22,6 +22,30 @@
       },
       "revId": "f610a494b905a181abc936fc3dfa6ad87529f07c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee9c7c8_a3ee377c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2022-10-26T18:18:55Z",
+      "side": 1,
+      "message": "Updated the commit message. OEM can put it in the device makefile, like https://osscs.corp.google.com/android/platform/superproject/+/master:device/google/sunfish/device.mk;l\u003d269?q\u003dsunfish%2Fdevice.mk.\n\nApparently AOSP is using vendor.img prebuilt (https://groups.google.com/a/google.com/g/android-chatty-eng/c/KvABAthYufs/m/PGZtuGssBQAJ). Thus I did the validation on internal-master.\n\n\u003e Also, let\u0027s make sure at the same time it doesn\u0027t auto-opt people in before U\n\nVerified it by running CTS(aosp/2258806) on sunfish. The feature flag does not exist and all kernel migration tests are skipped.",
+      "parentUuid": "7cf16083_f15b3050",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "f610a494b905a181abc936fc3dfa6ad87529f07c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
