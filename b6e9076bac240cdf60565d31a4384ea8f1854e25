@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f22a374_70753d2d",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cf7a04a_6a2f7ee9",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c338596_96c7b373",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-10-25T15:35:33Z",
       "side": 1,
       "message": "Why don\u0027t we call shutdown() in this case?\n(Worth a comment?)",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b9b3eb_a2bc7494",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c338596_96c7b373",
       "range": {
         "startLine": 86,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea85f95_2a863d70",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b516467_9ae916ca",
+      "range": {
+        "startLine": 90,
+        "startChar": 10,
+        "endLine": 90,
+        "endChar": 24
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "753187aa_819da5eb",
@@ -106,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7d95311_1b55a00e",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "I\u0027ll change the count/interval to duration unit if we decide to continue with the polling version.",
+      "parentUuid": "753187aa_819da5eb",
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85a513e6_09df8729",
         "filename": "libs/binder/rust/rpcbinder/src/client.rs",
         "patchSetId": 2
@@ -117,6 +207,30 @@
       "writtenOn": "2022-10-26T10:26:49Z",
       "side": 1,
       "message": "This isn\u0027t really a count, as you increment it by the interval rather than 1 each time. Maybe `elapsed` would be a better name?",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e9ca90b_dc4be3d3",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll rename if we decide to continue with the polling version.",
+      "parentUuid": "85a513e6_09df8729",
       "range": {
         "startLine": 46,
         "startChar": 12,
@@ -164,6 +278,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13477610_46826438",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "Thanks. I implemented a version with inotify. Do you think that is better?\n\nAbout the timeout: I\u0027d like to have a similar API as  AServiceManager_waitForService(), that method doesn\u0027t allow clients to customise the timeout. Will clients need to give different timeout here?",
+      "parentUuid": "7ca511c8_28e6ea0c",
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c28194a1_e938364f",
         "filename": "libs/binder/rust/rpcbinder/src/client.rs",
         "patchSetId": 2
@@ -175,6 +307,24 @@
       "writtenOn": "2022-10-26T10:26:49Z",
       "side": 1,
       "message": "I think it would be better to just return an error (or `None`, as you do) and let the caller decide whether to log it or not. Maybe it\u0027s actually perfectly normal for the socket to not exist in some circumstances and there\u0027s no need to spam the logs.",
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18da9854_1ef4bda9",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c28194a1_e938364f",
       "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -198,6 +348,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8af0239f_92e7ea8a",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "Thanks. I didn\u0027t know that this method \u003d unlink for Linux.",
+      "parentUuid": "e4c80dde_e17eee04",
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "408ad573_55560ba4",
         "filename": "libs/binder/rust/rpcbinder/src/server.rs",
         "patchSetId": 2
@@ -209,6 +377,30 @@
       "writtenOn": "2022-10-25T15:35:33Z",
       "side": 1,
       "message": "There\u0027s a race condition here - but it probably doesn\u0027t matter.",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 77
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c6ef70d_3cedf5bc",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "Agree. Currently it\u0027s clear that both use cases only have one thread to start the server. If it\u0027s needed in the future, I think we can add a lock here to avoid race condition.",
+      "parentUuid": "408ad573_55560ba4",
       "range": {
         "startLine": 50,
         "startChar": 7,
@@ -244,6 +436,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd79ff98_e7a09fb9",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "You mean before the service conversion? Or in the beginning of this method?",
+      "parentUuid": "7b883f2b_97cb8802",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 72
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec45e73e_828b4022",
         "filename": "libs/binder/rust/rpcbinder/src/server.rs",
         "patchSetId": 2
@@ -255,6 +471,30 @@
       "writtenOn": "2022-10-25T15:35:33Z",
       "side": 1,
       "message": "Trailing \\",
+      "range": {
+        "startLine": 58,
+        "startChar": 46,
+        "endLine": 58,
+        "endChar": 47
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c33995f5_a693020f",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec45e73e_828b4022",
       "range": {
         "startLine": 58,
         "startChar": 46,
@@ -278,6 +518,30 @@
       "writtenOn": "2022-10-25T15:35:33Z",
       "side": 1,
       "message": "Inline?",
+      "range": {
+        "startLine": 63,
+        "startChar": 7,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a495b19_0a617d97",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T11:47:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09a09e45_4c1f1c5e",
       "range": {
         "startLine": 63,
         "startChar": 7,
