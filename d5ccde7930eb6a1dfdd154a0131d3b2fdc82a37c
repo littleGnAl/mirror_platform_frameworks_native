@@ -52,6 +52,24 @@
       "parentUuid": "0fecb48a_a04b7786",
       "revId": "d5ccde7930eb6a1dfdd154a0131d3b2fdc82a37c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb2f23a_2480f891",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-26T00:53:18Z",
+      "side": 1,
+      "message": "It\u0027s because VINTF is heavyweight. We don\u0027t want to load all the VINTF XML files all over the place. It might be parsing 100 files these days and combining them - it\u0027s expensive. Actually, it might even be a problem we parse it in hwservicemanager and here, but HIDL is going away so that will fix itself.",
+      "parentUuid": "95ab3afd_9aae51f2",
+      "revId": "d5ccde7930eb6a1dfdd154a0131d3b2fdc82a37c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
