@@ -482,6 +482,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa30c1db_8a0e70d2",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-10-26T17:22:00Z",
+      "side": 1,
+      "message": "I see. I moved the conversion to the beginning of the method in the latest patch. Otherwise, I think this is not a problem anymore, now I call remove_file, it takes AsRef\u003cPath\u003e as argument, this type is also the input type.",
+      "parentUuid": "f1300503_3d3e0c92",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 72
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec45e73e_828b4022",
