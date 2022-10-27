@@ -16,6 +16,23 @@
       "message": "-2. This revert is just for testing.",
       "revId": "3fb12b6934e407e074275484dcd1e5a8c7a13705",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1194eef3_3f735e97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-10-27T02:09:12Z",
+      "side": 1,
+      "message": "(if you want to merge it)",
+      "revId": "3fb12b6934e407e074275484dcd1e5a8c7a13705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
