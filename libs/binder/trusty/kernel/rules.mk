@@ -88,5 +88,6 @@ MODULE_DEPS += \
 	trusty/kernel/lib/libcxxabi-trusty \
 	trusty/kernel/lib/rand \
 	trusty/kernel/lib/ktipc \
+	lib/binary_search_tree \
 
 include make/module.mk

@@ -21,6 +21,7 @@
 #include <binder/RpcServerTrusty.h>
 #include <binder/RpcThreads.h>
 #include <binder/RpcTransportTipcTrusty.h>
+#include <lib/binary_search_tree.h>
 #include <log/log.h>
 
 #include "../FdTrigger.h"
@@ -30,6 +31,44 @@
 using android::base::unexpected;
 
 namespace android {
+
+class RpcServerTrusty::BstRoot {
+public:
+    struct bst_root mRoot;
+};
+
+class RpcServerTrusty::BstNode {
+public:
+    BstNode(std::string&& portName) : mNode(BST_NODE_INITIAL_VALUE), mPortName(portName){};
+    BstNode(android::sp<RpcServerTrusty>&& server)
+          : mNode(BST_NODE_INITIAL_VALUE), mServer(server) {
+        bst_insert(&RpcServerTrusty::mServerSearchTree->mRoot, &mNode, compareServersByPort);
+    };
+    ~BstNode() {
+        if (mServer.get()) {
+            bst_delete(&RpcServerTrusty::mServerSearchTree->mRoot, &mNode);
+        }
+    }
+
+private:
+    struct bst_node mNode;
+    std::string mPortName;
+    android::sp<RpcServerTrusty> mServer;
+    friend RpcServerTrusty;
+    std::string& getPortName() {
+        if (mServer.get()) {
+            return mServer->mPortName;
+        }
+        return mPortName;
+    }
+    static int compareServersByPort(struct bst_node* a, struct bst_node* b) {
+        auto containerA = containerof(a, RpcServerTrusty::BstNode, mNode);
+        auto containerB = containerof(b, RpcServerTrusty::BstNode, mNode);
+        return containerA->getPortName().compare(containerB->getPortName());
+    }
+};
+
+auto RpcServerTrusty::mServerSearchTree = std::make_unique<RpcServerTrusty::BstRoot>();
 
 #if defined(TRUSTY_USERSPACE)
 android::base::expected<sp<RpcServerTrusty>, int> RpcServerTrusty::make(
@@ -65,10 +104,22 @@ android::base::expected<sp<RpcServerTrusty>, int> RpcServerTrusty::make(std::str
 }
 #endif
 
+android::base::expected<sp<RpcServerTrusty>, int> RpcServerTrusty::get(std::string&& portName) {
+    std::unique_ptr<RpcServerTrusty::BstNode> dummyNode =
+            std::make_unique<RpcServerTrusty::BstNode>(std::move(portName));
+    auto node = bst_search(&RpcServerTrusty::mServerSearchTree->mRoot, &dummyNode->mNode,
+                           RpcServerTrusty::BstNode::compareServersByPort);
+    if (node == nullptr) {
+        return unexpected(ERR_NOT_FOUND);
+    }
+    return containerof(node, RpcServerTrusty::BstNode, mNode)->mServer;
+}
+
 #if defined(TRUSTY_USERSPACE)
 RpcServerTrusty::RpcServerTrusty(std::unique_ptr<RpcTransportCtx> ctx, std::string&& portName,
                                  std::shared_ptr<const PortAcl>&& portAcl, size_t msgMaxSize)
-      : mRpcServer(sp<RpcServer>::make(std::move(ctx))),
+      : mServerSearchTreeNode(std::make_unique<RpcServerTrusty::BstNode>(this)),
+        mRpcServer(sp<RpcServer>::make(std::move(ctx))),
         mPortName(std::move(portName)),
         mPortAcl(std::move(portAcl)) {
     mTipcPort.name = mPortName.c_str();
@@ -103,7 +154,9 @@ RpcServerTrusty::RpcServerTrusty(std::unique_ptr<RpcTransportCtx> ctx, std::stri
 }
 #else
 RpcServerTrusty::RpcServerTrusty(std::string&& portName)
-      : mRpcServer(sp<RpcServer>::make(nullptr)), mPortName(std::move(portName)) {}
+      : mServerSearchTreeNode(std::make_unique<RpcServerTrusty::BstNode>(this)),
+        mRpcServer(sp<RpcServer>::make(nullptr)),
+        mPortName(std::move(portName)) {}
 #endif
 
 #if defined(TRUSTY_USERSPACE)
