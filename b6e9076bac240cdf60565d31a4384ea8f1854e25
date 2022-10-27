@@ -506,6 +506,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "affe56f5_dbd4ee59",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-27T11:10:59Z",
+      "side": 1,
+      "message": "Yep, LGTM.",
+      "parentUuid": "fa30c1db_8a0e70d2",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 72
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec45e73e_828b4022",

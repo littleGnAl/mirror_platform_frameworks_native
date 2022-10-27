@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc59a8f_b257e1be",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-27T11:10:59Z",
+      "side": 1,
+      "message": "Nit: Line too long. (Below as well)",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 107
+      },
+      "revId": "42dc81787248edf5cfaac4135539074ef2da2604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3046125e_45fc8c5d",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-27T11:10:59Z",
+      "side": 1,
+      "message": "let socket_path \u003d socket_path.as_ref();\nto reduce the duplication?",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "42dc81787248edf5cfaac4135539074ef2da2604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a88a7e2d_14c45023",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-10-27T11:10:59Z",
+      "side": 1,
+      "message": "I don\u0027t think we should panic on failure",
+      "range": {
+        "startLine": 94,
+        "startChar": 69,
+        "endLine": 94,
+        "endChar": 75
+      },
+      "revId": "42dc81787248edf5cfaac4135539074ef2da2604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
