@@ -86,6 +86,24 @@
       "message": "maybe add a log?",
       "revId": "45089afdb3c43b793ae183446564e1d48bd9ff5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929688ee_9c7b25e7",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1951601
+      },
+      "writtenOn": "2022-10-27T02:21:10Z",
+      "side": 1,
+      "message": "On a second thought: adding ALOGI requires me to include \u003cutils/Log.h\u003e and all the modules that include this header to link against liblog.\nWith that, I am not sure if it is a good idea.\nWhat do you suggest Steven?",
+      "parentUuid": "0eb0dcab_06747717",
+      "revId": "45089afdb3c43b793ae183446564e1d48bd9ff5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
