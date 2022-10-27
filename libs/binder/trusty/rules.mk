@@ -80,8 +80,10 @@ MODULE_EXPORT_COMPILEFLAGS += \
 	-D__ANDROID_VNDK__ \
 
 MODULE_LIBRARY_DEPS += \
+	trusty/user/base/lib/libc-trusty \
 	trusty/user/base/lib/libstdc++-trusty \
 	trusty/user/base/lib/tipc \
 	external/boringssl \
+	external/lk/lib/binary_search_tree \
 
 include make/library.mk
