@@ -23,13 +23,56 @@
 #include <binder/RpcTransportTipcTrusty.h>
 #include <log/log.h>
 
+#include <lib/binary_search_tree.h>
+
 #include "../FdTrigger.h"
 #include "../RpcState.h"
 #include "TrustyStatus.h"
 
 using android::base::unexpected;
 
+struct local_binder_servers_t {
+    struct bst_root root;
+};
+
+static struct local_binder_servers_t local_binder_servers {};
+
+struct rpc_server_container {
+    struct bst_node node;
+    android::sp<android::RpcServerTrusty> rpc_server;
+    const std::string portName;
+};
+
 namespace android {
+
+int get_test() {
+    if (local_binder_servers.root.root == NULL) {
+        return 0;
+    }
+    return 1;
+}
+
+int compare_servers_by_port(struct bst_node* a, struct bst_node* b) {
+    auto container_a = containerof(a, rpc_server_container, node);
+    auto container_b = containerof(b, rpc_server_container, node);
+    return container_a->portName.compare(container_b->portName);
+}
+
+android::base::expected<sp<RpcServerTrusty>, int> get_service(const std::string& portName) {
+    auto dummy_node = rpc_server_container{BST_NODE_INITIAL_VALUE, NULL, portName};
+    auto node = bst_search(&local_binder_servers.root, &dummy_node.node, compare_servers_by_port);
+    if (node == nullptr) {
+        return unexpected(ERR_NOT_FOUND);
+    }
+    return containerof(node, rpc_server_container, node)->rpc_server;
+}
+
+int register_service(sp<android::RpcServerTrusty> server) {
+    auto container =
+            new rpc_server_container{BST_NODE_INITIAL_VALUE, server, server->getPortName()};
+    bst_insert(&local_binder_servers.root, &container->node, compare_servers_by_port);
+    return 0;
+}
 
 android::base::expected<sp<RpcServerTrusty>, int> RpcServerTrusty::make(
         tipc_hset_t* serverHandleSet, std::string&& portName,
@@ -60,6 +103,11 @@ android::base::expected<sp<RpcServerTrusty>, int> RpcServerTrusty::make(
         return unexpected(rc);
     }
 #endif
+
+    rc = register_service(srv);
+    if (rc < 0) {
+        return unexpected(rc);
+    }
     return srv;
 }
 

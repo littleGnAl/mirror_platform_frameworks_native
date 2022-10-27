@@ -53,6 +53,10 @@ using tipc_srv_ops_t = ktipc_srv_ops;
 using tipc_port_acl_t = ktipc_port_acl;
 using tipc_hset_t = ktipc_server;
 #endif
+
+int get_test();
+android::base::expected<sp<RpcServerTrusty>, int> get_service(const std::string& portName);
+
 /**
  * This is the Trusty-specific RPC server code.
  */
@@ -89,6 +93,7 @@ public:
     void setPerSessionRootObject(std::function<sp<IBinder>(const void*, size_t)>&& object) {
         mRpcServer->setPerSessionRootObject(std::move(object));
     }
+    const std::string& getPortName() { return mPortName; };
     sp<IBinder> getRootObject() { return mRpcServer->getRootObject(); }
 
 private:
