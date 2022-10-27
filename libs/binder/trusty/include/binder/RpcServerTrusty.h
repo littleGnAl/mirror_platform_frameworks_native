@@ -59,6 +59,11 @@ public:
             size_t msgMaxSize,
             std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
 
+    /**
+     * Get an in-process RPC server, uniquely identified by its port name
+     */
+    static android::base::expected<sp<RpcServerTrusty>, int> get(std::string&& portName);
+
     void setProtocolVersion(uint32_t version) { mRpcServer->setProtocolVersion(version); }
     void setSupportedFileDescriptorTransportModes(
             const std::vector<RpcSession::FileDescriptorTransportMode>& modes) {
@@ -98,7 +103,11 @@ private:
             .on_disconnect = &handleDisconnect,
             .on_channel_cleanup = &handleChannelCleanup,
     };
-
+    class BstRoot;
+    class BstNode;
+    friend class BstNode;
+    static std::unique_ptr<BstRoot> mServerSearchTree;
+    std::unique_ptr<BstNode> mServerSearchTreeNode;
     sp<RpcServer> mRpcServer;
     std::string mPortName;
     std::shared_ptr<const PortAcl> mPortAcl;
