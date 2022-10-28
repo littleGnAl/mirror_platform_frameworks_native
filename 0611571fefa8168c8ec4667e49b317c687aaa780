@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5adec30_07a23240",
+        "filename": "libs/gui/include/gui/Surface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-10-28T21:30:38Z",
+      "side": 1,
+      "message": "please add a comment describing this field, similar to the rest of the file.\n\ne.g., mHdrMetadataIsSet is a bitfield indicating which HDR metadata has been set on the Surface. If mHdrMetadataIsSet is empty, then any HDR metadata set on the buffer metadata is respected. Otherwise, the parameters on the Surface will replace the metadata that was set on the buffer",
+      "range": {
+        "startLine": 465,
+        "startChar": 4,
+        "endLine": 465,
+        "endChar": 30
+      },
+      "revId": "0611571fefa8168c8ec4667e49b317c687aaa780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1624ec0b_cbd222ec",
+        "filename": "libs/gui/include/gui/Surface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-10-28T21:30:38Z",
+      "side": 1,
+      "message": "rename this field to mHdrMetadataIsSet (don\u0027t abbreviate \"Metadata\")",
+      "range": {
+        "startLine": 465,
+        "startChar": 13,
+        "endLine": 465,
+        "endChar": 26
+      },
+      "revId": "0611571fefa8168c8ec4667e49b317c687aaa780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
