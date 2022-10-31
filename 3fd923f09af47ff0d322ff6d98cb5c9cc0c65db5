@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcb51043_03b2e335",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-10-31T12:57:18Z",
+      "side": 1,
+      "message": "Please see [the docs on change descriptions in AOSP](https://source.android.com/docs/setup/contribute/submit-patches#change-description) and reformat your commit message accordingly.",
+      "revId": "3fd923f09af47ff0d322ff6d98cb5c9cc0c65db5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc9a01f_d0789de2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-10-31T12:57:18Z",
+      "side": 1,
+      "message": "This should be a `Bug:` tag:\n\n    Bug: 255902047",
+      "revId": "3fd923f09af47ff0d322ff6d98cb5c9cc0c65db5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
