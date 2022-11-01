@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f60081_4bdad7fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-11-01T11:06:12Z",
+      "side": 1,
+      "message": "Lines in commit messages must be under 72 characters long, and the first line should be under 50 characters. Please make this briefer and move extra details into the body of the message if necessary. For example:\n\n    Fix resetting app switch due time\n    \n    Events were being dropped improperly because of a pending overdue app\n    switch, which had not been reset even though the app switch key event\n    had arrived.",
+      "revId": "0ddc3a48f5292c18df4caeac05ba8f836e2c3dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eebead1b_831c417e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-11-01T11:06:12Z",
+      "side": 1,
+      "message": "Please add a `Test:` line indicating how you tested the fix.",
+      "revId": "0ddc3a48f5292c18df4caeac05ba8f836e2c3dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e917fe8_540d4aff",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-11-01T11:06:12Z",
+      "side": 1,
+      "message": "This should be `AKEY_EVENT_ACTION_UP`.",
+      "range": {
+        "startLine": 852,
+        "startChar": 40,
+        "endLine": 852,
+        "endChar": 63
+      },
+      "revId": "0ddc3a48f5292c18df4caeac05ba8f836e2c3dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
