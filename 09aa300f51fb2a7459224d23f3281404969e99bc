@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4844c5ea_fbc4939e",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-11-01T19:58:46Z",
+      "side": 1,
+      "message": "This is using the same bytes to generate the parcel and to read from it and also using the same bytes each iteration.\n\nMaybe we can put more of the logic into the `Operations` data type\n\n```\n#[derive(Arbitrary, Debug)]\nenum Operations\u003c\u0027a\u003e {\n    ...\n    \n    Read { parcel_data: \u0026\u0027a [u8], read_ops: Vec\u003cReadOp\u003e },\n}\n\n#[derive(Arbitrary, Debug)]\nenum ReadOp\u003c\u0027a\u003e {\n    SetPosition(i32),\n    GetDataSize,\n    ReadParcelableHolder { stability: bool },\n    ReadBasicDataType { data_type_index: usize },\n}\n```\n\nmaybe could also implement `Arbitrary` for `Parcel` (it would just delegate to `create_random_parcel`), then have `Read { parcel_data: Parcel, read_ops: Vec\u003cReadOp\u003e },`",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 46
+      },
+      "revId": "09aa300f51fb2a7459224d23f3281404969e99bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ca7840_c097561a",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/read_utils.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-11-01T19:58:46Z",
+      "side": 1,
+      "message": "would it make more sense to fail if there isn\u0027t enough data?",
+      "revId": "09aa300f51fb2a7459224d23f3281404969e99bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
