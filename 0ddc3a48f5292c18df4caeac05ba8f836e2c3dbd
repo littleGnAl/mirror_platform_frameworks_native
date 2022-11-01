@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d78877c_a32057a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1875615
+      },
+      "writtenOn": "2022-11-01T12:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f60081_4bdad7fc",
+      "revId": "0ddc3a48f5292c18df4caeac05ba8f836e2c3dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eebead1b_831c417e",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b85b6580_61f2b87c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1875615
+      },
+      "writtenOn": "2022-11-01T12:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eebead1b_831c417e",
+      "revId": "0ddc3a48f5292c18df4caeac05ba8f836e2c3dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e917fe8_540d4aff",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-11-01T11:06:12Z",
       "side": 1,
       "message": "This should be `AKEY_EVENT_ACTION_UP`.",
+      "range": {
+        "startLine": 852,
+        "startChar": 40,
+        "endLine": 852,
+        "endChar": 63
+      },
+      "revId": "0ddc3a48f5292c18df4caeac05ba8f836e2c3dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4265836a_f88306d4",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1875615
+      },
+      "writtenOn": "2022-11-01T12:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e917fe8_540d4aff",
       "range": {
         "startLine": 852,
         "startChar": 40,
