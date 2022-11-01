@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f36abe37_65e5553d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-01T17:33:12Z",
+      "side": 1,
+      "message": "This API is now used in rust parcel fuzzer : https://android-review.googlesource.com/c/platform/frameworks/native/+/2281010",
+      "parentUuid": "2850ddd7_d3728e65",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "ec6a86c4a7e57bdc88c1f3d1a6e8575ae149a299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55b5d707_38fdb94a",
         "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/Android.bp",
         "patchSetId": 7
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "awesome! :D",
       "parentUuid": "ebe27709_f735a6f9",
+      "range": {
+        "startLine": 28,
+        "startChar": 34,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "ec6a86c4a7e57bdc88c1f3d1a6e8575ae149a299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7308e02_ab1a0295",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-01T17:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52d7dfa0_6a678825",
       "range": {
         "startLine": 28,
         "startChar": 34,
