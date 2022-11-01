@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591f928c_fd0a7fe3",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-01T23:03:29Z",
+      "side": 1,
+      "message": "can we call this \u0027Multithreaded\u0027 or similar?",
+      "range": {
+        "startLine": 233,
+        "startChar": 9,
+        "endLine": 233,
+        "endChar": 22
+      },
+      "revId": "38282b472287081ec25134c30c978472c3652c3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae599738_60ef2e2f",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-01T23:03:29Z",
+      "side": 1,
+      "message": "and call this \u0027CoreTests\u0027 or \u0027UniversalTests\u0027 or similar? The main issue is that we want to make sure people adding these tests add them directly here. As many tests as possible should be in this file for maximum coverage. \"Basic\" sounds like it should only be simple tests",
+      "range": {
+        "startLine": 235,
+        "startChar": 9,
+        "endLine": 235,
+        "endChar": 28
+      },
+      "revId": "38282b472287081ec25134c30c978472c3652c3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e41d321_b97b7aa3",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-01T23:03:29Z",
+      "side": 1,
+      "message": "what about this and some other tests?",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 1
+      },
+      "revId": "38282b472287081ec25134c30c978472c3652c3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
