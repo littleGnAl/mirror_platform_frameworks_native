@@ -145,4 +145,9 @@ interface IPackageManagerNative {
      * Returns null if no such APEX is found.
      */
     @nullable StagedApexInfo getStagedApexInfo(in @utf8InCpp String moduleName);
+
+    /**
+     * Trigger a rollback given the name of a package
+     */
+    void commitRollback(in @utf8InCpp String packageName);
 }
