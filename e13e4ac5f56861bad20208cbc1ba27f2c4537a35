@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2984be03_75a8387d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2022-11-01T12:17:28Z",
+      "side": 1,
+      "message": "LGTM, I\u0027ll let someone more familiar with the area +2.",
+      "revId": "e13e4ac5f56861bad20208cbc1ba27f2c4537a35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
