@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55d3c433_1681cf86",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-01T22:36:50Z",
+      "side": 1,
+      "message": "Right, we should split off part data before passing it into create_random_parcel.",
+      "parentUuid": "4844c5ea_fbc4939e",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 46
+      },
+      "revId": "09aa300f51fb2a7459224d23f3281404969e99bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92ca7840_c097561a",
         "filename": "libs/binder/rust/tests/parcel_fuzzer/read_utils.rs",
         "patchSetId": 2
