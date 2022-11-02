@@ -70,6 +70,30 @@
       },
       "revId": "107a3974b56698e83d367eb4b82c4411b0e15721",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09dddd1b_8985a87f",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-11-02T20:58:51Z",
+      "side": 1,
+      "message": "I tried an approach with templates and it didn\u0027t work because putting parameters on the test fixture isn\u0027t supported by googletest.\n\nI think I\u0027ll just move all the process operations (like `terminate`) to the base `ProcessSession` class and leave them unimplemented on Trusty.",
+      "parentUuid": "e0a2f51e_18e2fb99",
+      "range": {
+        "startLine": 1128,
+        "startChar": 4,
+        "endLine": 1128,
+        "endChar": 43
+      },
+      "revId": "107a3974b56698e83d367eb4b82c4411b0e15721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
