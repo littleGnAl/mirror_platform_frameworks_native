@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1cfb07a_2bbe01fd",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1967381
+      },
+      "writtenOn": "2022-11-02T17:48:21Z",
+      "side": 1,
+      "message": "i\u0027m not sure if this is correct, app can check features of swapchain without checking features of base extension. \n\ntest dEQP-VK.api.info.get_physical_device_properties2.features.image_compression_control_swapchain_features_ext is failing because of this (i checked vulkan cts 1.3.4.0)",
+      "range": {
+        "startLine": 1534,
+        "startChar": 8,
+        "endLine": 1534,
+        "endChar": 31
+      },
+      "revId": "4383533e6aa52a5dd59c7dfd127300cd3b702a59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
