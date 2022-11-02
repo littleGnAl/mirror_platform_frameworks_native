@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3410cca9_c1596cf4",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-02T20:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d3c433_1681cf86",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 46
+      },
+      "revId": "09aa300f51fb2a7459224d23f3281404969e99bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca40592a_f880ffc2",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-11-01T22:40:29Z",
       "side": 1,
       "message": "just \u0027;\u0027 (still return an error if it fails)",
+      "range": {
+        "startLine": 43,
+        "startChar": 39,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "09aa300f51fb2a7459224d23f3281404969e99bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e99e0d0_07b08366",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/read_utils.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-02T20:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca40592a_f880ffc2",
       "range": {
         "startLine": 43,
         "startChar": 39,
@@ -106,6 +154,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "300f03d0_1bcdb15b",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/read_utils.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-02T20:41:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb4cc93b_75245544",
+      "revId": "09aa300f51fb2a7459224d23f3281404969e99bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa185d1a_576fc2cd",
@@ -119,6 +185,30 @@
       "writtenOn": "2022-11-01T22:40:29Z",
       "side": 1,
       "message": "should there be more here? Or if this is the real range, then `unwrap_or(Stability::Local)` should be an abort?",
+      "range": {
+        "startLine": 83,
+        "startChar": 47,
+        "endLine": 83,
+        "endChar": 52
+      },
+      "revId": "09aa300f51fb2a7459224d23f3281404969e99bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0149cd7f_f8c4816d",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/read_utils.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-02T20:41:27Z",
+      "side": 1,
+      "message": "There are only two values for stability. Changed this to set stability based on boolean.",
+      "parentUuid": "fa185d1a_576fc2cd",
       "range": {
         "startLine": 83,
         "startChar": 47,
