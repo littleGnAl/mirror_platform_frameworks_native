@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d66af6e_e9a2271a",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-11-02T16:34:33Z",
+      "side": 1,
+      "message": "See my comments on the other CL -I\u0027m no longer convinced this is the right API, since most clients can\u0027t creating a socket file.",
+      "range": {
+        "startLine": 49,
+        "startChar": 47,
+        "endLine": 49,
+        "endChar": 68
+      },
+      "revId": "92d6aa60ab8cd85d439fc5ef8d0bba5ed5f7060c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
