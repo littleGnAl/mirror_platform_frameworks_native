@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156b4d9c_ef207e17",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-03T00:51:02Z",
+      "side": 0,
+      "message": "Jiyong/Jeongik, do you know why this was repeated so much vs what I did here? Nothing seems to depend on it (and it wouldn\u0027t work anyway)",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "39627bab855fd1a8b55b3a0964bed1cbd1182ef3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
