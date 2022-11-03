@@ -22,6 +22,30 @@
       },
       "revId": "87a28e1f72597bec2c879cb5b0da98477de98062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3703d0b0_e7b0160d",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-03T20:28:12Z",
+      "side": 1,
+      "message": "It can\u0027t because __builtin_available can\u0027t be used in app environments (e.g. Android Studio gradle) - see also b/257135519.",
+      "parentUuid": "62397484_ba1621ae",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 6
+      },
+      "revId": "87a28e1f72597bec2c879cb5b0da98477de98062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

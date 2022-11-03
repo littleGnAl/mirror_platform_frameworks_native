@@ -46,6 +46,30 @@
       },
       "revId": "39627bab855fd1a8b55b3a0964bed1cbd1182ef3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b25698e7_fe8b55a8",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-03T20:28:12Z",
+      "side": 0,
+      "message": "I see, but it\u0027s not used currently, and it could be misleading if it were. I think this is a lot cleaner - ask we get this CL in as-is. If we need it in the future, we can add something a little cleaner like this:\n\n    #else\n    class AParcelableHolder { /* versions of methods that fail */ };\n\nIf mainline modules need to use this, I suspect a lot of cases they\u0027d also want to avoid inadvertently using this? Regardless - parcelable holder is for vendor extensions, which can\u0027t really be used in mainline modules.",
+      "parentUuid": "6c7651e2_e9f03a05",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "39627bab855fd1a8b55b3a0964bed1cbd1182ef3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
