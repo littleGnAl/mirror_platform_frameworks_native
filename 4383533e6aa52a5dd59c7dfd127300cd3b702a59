@@ -39,6 +39,30 @@
       },
       "revId": "4383533e6aa52a5dd59c7dfd127300cd3b702a59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7fe9732_e800bfb2",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1946505
+      },
+      "writtenOn": "2022-11-03T11:08:24Z",
+      "side": 1,
+      "message": "I agree. The extensions are independent so you should be able to query their features independently.\n\n(That said, he \u0027swapchain\u0027 extension is practically useless without the \u0027base\u0027 extension since the device would likely always ignore any lossy compression flags in that case.)",
+      "parentUuid": "d1cfb07a_2bbe01fd",
+      "range": {
+        "startLine": 1534,
+        "startChar": 8,
+        "endLine": 1534,
+        "endChar": 31
+      },
+      "revId": "4383533e6aa52a5dd59c7dfd127300cd3b702a59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
