@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62397484_ba1621ae",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-03T06:27:34Z",
+      "side": 1,
+      "message": "can this be ...\n\n```\n#if __XXX_ARE_WEAK___ || __ANDROID_API__ \u003e\u003d 30\n   if (__builtin_available(android 30, *)) {\n      ...\n   }\n#endif\n```\n\n?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 6
+      },
+      "revId": "87a28e1f72597bec2c879cb5b0da98477de98062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
