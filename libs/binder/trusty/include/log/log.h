@@ -120,3 +120,9 @@ static inline void __ignore_va_args__(...) {}
     do {                                                                 \
         TLOGE("android_errorWriteLog: tag:%x subTag:%s\n", tag, subTag); \
     } while (0)
+
+// If any of the other definitions is in scope, replace it
+#ifdef __assert
+#undef __assert
+#endif // __assert
+#define __assert(file, line, str) LOG_ALWAYS_FATAL("%s:%d: %s", file, line, str)
