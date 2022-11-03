@@ -16,6 +16,23 @@
       "message": "Hi all,\n\nI have adjusted this API to take an init-managed Unix domain name as param instead of the raw pathname. This allows us to create the unix socket in init and associate it to RPC binder in the API. Could you take another look?",
       "revId": "7d8a5fbb31f45859719435d331e2d66c0b4c33a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6510bf51_84115ae1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-03T15:54:42Z",
+      "side": 1,
+      "message": "Hi Steven, \n\nPTAL. The added API is used in https://r.android.com/2267603",
+      "revId": "7d8a5fbb31f45859719435d331e2d66c0b4c33a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
