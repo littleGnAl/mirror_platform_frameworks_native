@@ -22,6 +22,30 @@
       },
       "revId": "39627bab855fd1a8b55b3a0964bed1cbd1182ef3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7651e2_e9f03a05",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-03T04:58:17Z",
+      "side": 0,
+      "message": "It\u0027s because we want to use those symbols on devices where they are available.\n\nIf we have the big #if __ANDROID_API__ \u003e\u003d 31 there (#45), a Mainline module whose min_sdk_version is \u003c 31 can\u0027t use those symbols even when they run on a device \u003e\u003d 31.",
+      "parentUuid": "156b4d9c_ef207e17",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "39627bab855fd1a8b55b3a0964bed1cbd1182ef3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
