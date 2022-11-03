@@ -194,6 +194,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13893dc0_7829b93a",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-03T12:52:45Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "c7d95311_1b55a00e",
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85a513e6_09df8729",
@@ -231,6 +249,30 @@
       "side": 1,
       "message": "Ack. I\u0027ll rename if we decide to continue with the polling version.",
       "parentUuid": "85a513e6_09df8729",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c23d53_18baafe5",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-03T12:52:45Z",
+      "side": 1,
+      "message": "The polling is no longer needed.",
+      "parentUuid": "0e9ca90b_dc4be3d3",
       "range": {
         "startLine": 46,
         "startChar": 12,
@@ -290,6 +332,24 @@
       "side": 1,
       "message": "Thanks. I implemented a version with inotify. Do you think that is better?\n\nAbout the timeout: I\u0027d like to have a similar API as  AServiceManager_waitForService(), that method doesn\u0027t allow clients to customise the timeout. Will clients need to give different timeout here?",
       "parentUuid": "7ca511c8_28e6ea0c",
+      "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5bd907_b01677cd",
+        "filename": "libs/binder/rust/rpcbinder/src/client.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-03T12:52:45Z",
+      "side": 1,
+      "message": "As now the server thread is blocked till the accept, we don\u0027t need polling or listening here anymore.",
+      "parentUuid": "13477610_46826438",
       "revId": "b6e9076bac240cdf60565d31a4384ea8f1854e25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

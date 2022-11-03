@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdab8b45_72f722cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-03T12:52:45Z",
+      "side": 1,
+      "message": "Hi all,\n\nI have adjusted this API to take an init-managed Unix domain name as param instead of the raw pathname. This allows us to create the unix socket in init and associate it to RPC binder in the API. Could you take another look?",
+      "revId": "7d8a5fbb31f45859719435d331e2d66c0b4c33a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

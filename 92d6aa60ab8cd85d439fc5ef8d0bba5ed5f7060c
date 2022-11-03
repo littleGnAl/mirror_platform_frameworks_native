@@ -22,6 +22,30 @@
       },
       "revId": "92d6aa60ab8cd85d439fc5ef8d0bba5ed5f7060c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da98880e_8c750381",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-03T12:52:45Z",
+      "side": 1,
+      "message": "Now we take an init-managed Unix domain `name` argument for this API.",
+      "parentUuid": "5d66af6e_e9a2271a",
+      "range": {
+        "startLine": 49,
+        "startChar": 47,
+        "endLine": 49,
+        "endChar": 68
+      },
+      "revId": "92d6aa60ab8cd85d439fc5ef8d0bba5ed5f7060c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
