@@ -104,6 +104,30 @@
       },
       "revId": "7d8a5fbb31f45859719435d331e2d66c0b4c33a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10940694_33db8ccf",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-04T10:27:27Z",
+      "side": 1,
+      "message": "Then all the clients of the API will need to take cutils and convert the name to fd, that\u0027s not a bit repetitive?\n\nMy initial thought was to have a similar API as what we have today for service_manager. From one end, we can register the service with a name, and from the other end, we just get the service with the same name. How the name is converted to other thing shouldn\u0027t be a concern for the clients.",
+      "parentUuid": "c1492f94_df011b50",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 57
+      },
+      "revId": "7d8a5fbb31f45859719435d331e2d66c0b4c33a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
