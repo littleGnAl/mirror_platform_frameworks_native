@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda888f0_e34b6192",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-04T22:03:32Z",
+      "side": 1,
+      "message": "I plan to run this fuzzer on infra over the weekend to get some coverage and check issues with fuzzer startups. I will post a follow up CL and merge this change.",
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "389d72b1_eac794fe",
@@ -26,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8aa5602_467c4633",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-04T22:03:32Z",
+      "side": 1,
+      "message": "I will follow up with CL.",
+      "parentUuid": "389d72b1_eac794fe",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f2fac6a_e9b83f0d",
         "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
         "patchSetId": 3
@@ -37,6 +78,30 @@
       "writtenOn": "2022-11-04T21:38:51Z",
       "side": 1,
       "message": "`[ReadBasicTypes { indexes [0, 1] }]` is equivalent to `[ReadBasicTypes { indexes [0] }, ReadBasicTypes { indexes [1] }]`\n\ni\u0027d make this a scalar to avoid the redundancy",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91bbff2_87c8afe0",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-04T22:03:32Z",
+      "side": 1,
+      "message": "We want to do more read operations as compared to transact and append. I think having a vector here can help to cover more cases where different read operations are queued up.",
+      "parentUuid": "1f2fac6a_e9b83f0d",
       "range": {
         "startLine": 41,
         "startChar": 21,
@@ -72,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09254859_e49673fa",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-04T22:03:32Z",
+      "side": 1,
+      "message": "I will follow up with CL.",
+      "parentUuid": "c6c7dbca_3a129231",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be2bf366_13bb5fd3",
         "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
         "patchSetId": 3
@@ -83,6 +172,30 @@
       "writtenOn": "2022-11-04T21:21:32Z",
       "side": 1,
       "message": "I guess we can remove this from both fuzzers now that we have fuzzService, but it\u0027s good",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 1
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62544231_ad5c492b",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-04T22:03:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be2bf366_13bb5fd3",
       "range": {
         "startLine": 76,
         "startChar": 0,
@@ -140,6 +253,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c6c7fda_c55a5709",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-04T22:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b8fb794_46ad77d0",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd2c74b0_b474c50a",
@@ -163,6 +300,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b103617_7321e52b",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-04T22:03:32Z",
+      "side": 1,
+      "message": "Kept it same as C++/NDK fuzzer. Still can simply both fuzzers with follow-up.",
+      "parentUuid": "cd2c74b0_b474c50a",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 33
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac913241_536bdb3e",
@@ -176,6 +337,30 @@
       "writtenOn": "2022-11-04T21:47:57Z",
       "side": 1,
       "message": "not a blocker, but for efficiency, would be better to construct this once. you can probably make it a constant\n\n```\npub const read_funcs: Vec\u003cBox\u003cdyn Fn(\u0026BorrowedParcel\u003c\u0027_\u003e)\u003e\u003e \u003d vec![\n    ...\n];\n```\n\n---\n\ni\u0027d also think you could simplify the type to `Vec\u003cfn(\u0026BorrowedParcel\u003c\u0027_\u003e)\u003e` but i didn\u0027t test\n\n(`fn()` only allows simple function pointers, `Box\u003cdyn Fn()\u003e` is for any function like object. if a lambda doesn\u0027t capture anything, it can be implicit coerced into a `fn`)",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 65
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1a7f36_885f74de",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/read_utils.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-04T22:03:32Z",
+      "side": 1,
+      "message": "I will follow up with CL.",
+      "parentUuid": "ac913241_536bdb3e",
       "range": {
         "startLine": 60,
         "startChar": 0,
