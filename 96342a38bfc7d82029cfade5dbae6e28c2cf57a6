@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4244dae_a2fe0a8d",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-04T21:41:05Z",
+      "side": 1,
+      "message": "how is this initialized? also - how does this differ from setupExternalServer (which takes a socket in the state equivalent from \u0027releaseServer\u0027)?\n\nIf we add it, can we also add a test in binderRpcTest?",
+      "range": {
+        "startLine": 74,
+        "startChar": 38,
+        "endLine": 74,
+        "endChar": 73
+      },
+      "revId": "96342a38bfc7d82029cfade5dbae6e28c2cf57a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
