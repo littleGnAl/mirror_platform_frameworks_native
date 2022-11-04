@@ -176,6 +176,30 @@
       },
       "revId": "7d8a5fbb31f45859719435d331e2d66c0b4c33a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c42644_7fcf3ea9",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-04T22:13:49Z",
+      "side": 1,
+      "message": "Indeed, the named socket is set up in init.rc[1] with this cl. libcutils_socket is used here to retrieve the open fd with the given socket name. The name-\u003efd conversion is inside librpcbinder_rs because I\u0027d like to provide an API similar to service_manager: register_service(service, name)/get_service(name).\n\nThe second approach is to let clients do this name-\u003efd conversion with libcutils_socket. So that our API will be register_service(service, fd)/get_service(name). In this case, librpcbinder_rs doesn\u0027t need libcutils_socket anymore.\n\nWhich API would you like us to continue?\n\nAnd you mean we can just implement our own `android_get_control_socket()` instead of taking it from libcutils?\n\n[1] https://r.android.com/c/platform/packages/modules/Virtualization/+/2267603/9/microdroid_manager/microdroid_manager.rc",
+      "parentUuid": "58831786_acdd5c62",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 57
+      },
+      "revId": "7d8a5fbb31f45859719435d331e2d66c0b4c33a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
