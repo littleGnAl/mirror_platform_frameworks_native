@@ -22,6 +22,30 @@
       },
       "revId": "3856b4d6b3f05ae2db878c1e26c7336bf8b79b64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e46544b7_1463fd5e",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-04T10:58:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf49bd76_8129af81",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "3856b4d6b3f05ae2db878c1e26c7336bf8b79b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
