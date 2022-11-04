@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2bf366_13bb5fd3",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-04T21:21:32Z",
+      "side": 1,
+      "message": "I guess we can remove this from both fuzzers now that we have fuzzService, but it\u0027s good",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 1
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ba47aa_a02eaf51",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-04T21:21:32Z",
+      "side": 1,
+      "message": "This is doing every operation, right? But we want to do the operations in a random order. For instance, maybe a bug happens if we have \u0027readInt; readInt;\u0027. This is covered right?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd2c74b0_b474c50a",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-04T21:21:32Z",
+      "side": 1,
+      "message": "nit: I think maybe we should only do one (because they are unrelated?)",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 33
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
