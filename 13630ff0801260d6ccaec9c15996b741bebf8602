@@ -161,6 +161,29 @@
       },
       "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac913241_536bdb3e",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/read_utils.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-11-04T21:47:57Z",
+      "side": 1,
+      "message": "not a blocker, but for efficiency, would be better to construct this once. you can probably make it a constant\n\n```\npub const read_funcs: Vec\u003cBox\u003cdyn Fn(\u0026BorrowedParcel\u003c\u0027_\u003e)\u003e\u003e \u003d vec![\n    ...\n];\n```\n\n---\n\ni\u0027d also think you could simplify the type to `Vec\u003cfn(\u0026BorrowedParcel\u003c\u0027_\u003e)\u003e` but i didn\u0027t test\n\n(`fn()` only allows simple function pointers, `Box\u003cdyn Fn()\u003e` is for any function like object. if a lambda doesn\u0027t capture anything, it can be implicit coerced into a `fn`)",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 65
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
