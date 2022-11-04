@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "389d72b1_eac794fe",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-11-04T21:38:51Z",
+      "side": 1,
+      "message": "instances of `ReadOperations` and `Operations` both seem to represent a single operation, so the type name should be singular",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f2fac6a_e9b83f0d",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-11-04T21:38:51Z",
+      "side": 1,
+      "message": "`[ReadBasicTypes { indexes [0, 1] }]` is equivalent to `[ReadBasicTypes { indexes [0] }, ReadBasicTypes { indexes [1] }]`\n\ni\u0027d make this a scalar to avoid the redundancy",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c7dbca_3a129231",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-11-04T21:38:51Z",
+      "side": 1,
+      "message": "indexes doesn\u0027t seem like an accurate name",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be2bf366_13bb5fd3",
         "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
         "patchSetId": 3
@@ -37,6 +106,30 @@
       "writtenOn": "2022-11-04T21:21:32Z",
       "side": 1,
       "message": "This is doing every operation, right? But we want to do the operations in a random order. For instance, maybe a bug happens if we have \u0027readInt; readInt;\u0027. This is covered right?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b8fb794_46ad77d0",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-11-04T21:38:51Z",
+      "side": 1,
+      "message": "IIUC, the `read_operations` list is randomly generated. it isn\u0027t an enumeration of the type\n\n(the `Arbitrary` trait allows you to generate random instances of data structures. the initial `fuzz_target!(|operations: Vec\u003cOperations\u003e| {` line is consuming all the fuzzer data to generate the `Vec\u003cOperations\u003e` in the beginning)",
+      "parentUuid": "02ba47aa_a02eaf51",
       "range": {
         "startLine": 109,
         "startChar": 0,
