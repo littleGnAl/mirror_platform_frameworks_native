@@ -39,6 +39,30 @@
       },
       "revId": "cdd15498503edbe979ab03abedcad7ae7b9bc98f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5579fa36_df162aec",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/read_utils.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-05T01:00:36Z",
+      "side": 1,
+      "message": "IIUC, rustc complains about size being unknown at compile time and apparently const can\u0027t be used with vec making allocations.",
+      "parentUuid": "9e657195_83752e71",
+      "range": {
+        "startLine": 60,
+        "startChar": 48,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "cdd15498503edbe979ab03abedcad7ae7b9bc98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
