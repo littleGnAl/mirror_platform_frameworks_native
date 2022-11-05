@@ -210,7 +210,7 @@ std::string ToString(const _T& t) {
         out << "]";
         return out.str();
     } else {
-        return "{no toString() implemented}";
+        static_assert(false, "no toString implemented, huh?");
     }
 }
 
