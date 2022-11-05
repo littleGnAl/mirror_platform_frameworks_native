@@ -155,6 +155,11 @@ class ToEmptyString {
     enum { value = decltype(_test<_T>(0))::value };
 };
 
+template <typename _T>
+struct TypeDependentFalse {
+    enum { value = false };
+};
+
 }  // namespace details
 
 template <typename _T>
@@ -214,7 +219,7 @@ std::string ToString(const _T& t) {
         out << "]";
         return out.str();
     } else {
-        return "{no toString() implemented}";
+        static_assert(details::TypeDependentFalse<_T>::value, "no toString implemented, huh?");
     }
 }
 
