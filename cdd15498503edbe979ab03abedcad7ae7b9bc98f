@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e24dd865_62eb5ba2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-05T00:51:13Z",
+      "side": 1,
+      "message": "Follow up CL for changes in aosp/2281010",
+      "revId": "cdd15498503edbe979ab03abedcad7ae7b9bc98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
