@@ -70,6 +70,30 @@
       },
       "revId": "39627bab855fd1a8b55b3a0964bed1cbd1182ef3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6c47f6_574a8aa2",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_parcelable_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-05T08:28:58Z",
+      "side": 0,
+      "message": "Ok. This entire class can\u0027t work correctly on devices \u003c 31, because the fallback path returns STATUS_INVALID_OPERATION. So, it might be better to not make the class unavailable (at build-time), instead of allowing people to use it but returning error at runtime.",
+      "parentUuid": "b25698e7_fe8b55a8",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "39627bab855fd1a8b55b3a0964bed1cbd1182ef3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

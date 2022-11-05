@@ -46,6 +46,30 @@
       },
       "revId": "87a28e1f72597bec2c879cb5b0da98477de98062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2891ea8_226c183b",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-05T08:28:58Z",
+      "side": 1,
+      "message": "Is it can\u0027t, or shouldn\u0027t? I thought it\u0027s the latter because apps are built without -Wunguarded-availability and therefore shouldn\u0027t rely on __builtin_available to have a build-time error.\n\nHowever, we have #if __ANDROID_API__ \u003e\u003d 30 as well in this file.",
+      "parentUuid": "3703d0b0_e7b0160d",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 6
+      },
+      "revId": "87a28e1f72597bec2c879cb5b0da98477de98062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
