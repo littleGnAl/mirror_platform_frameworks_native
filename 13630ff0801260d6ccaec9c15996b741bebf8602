@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a404c5b_07596ccd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-05T00:52:13Z",
+      "side": 1,
+      "message": "Followed up comments in CL : https://android-review.googlesource.com/c/platform/frameworks/native/+/2288438",
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "389d72b1_eac794fe",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "I will follow up with CL.",
       "parentUuid": "389d72b1_eac794fe",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "648f8242_c024a2dc",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-05T00:52:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8aa5602_467c4633",
       "range": {
         "startLine": 37,
         "startChar": 5,
@@ -149,6 +190,30 @@
       "side": 1,
       "message": "I will follow up with CL.",
       "parentUuid": "c6c7dbca_3a129231",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e46d3d_8bd169a7",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-05T00:52:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09254859_e49673fa",
       "range": {
         "startLine": 48,
         "startChar": 11,
@@ -324,6 +389,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c552acab_feefef8f",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-05T00:52:13Z",
+      "side": 1,
+      "message": "I think we should keep these functions as append functions are not being fuzzed elsewhere. This will be random operations but fuzzer should perform more read operations compared to append and transact as we are providing series of instructions to read.",
+      "parentUuid": "6b103617_7321e52b",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 33
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac913241_536bdb3e",
@@ -361,6 +450,30 @@
       "side": 1,
       "message": "I will follow up with CL.",
       "parentUuid": "ac913241_536bdb3e",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 65
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f8953ca_30439599",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/read_utils.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-05T00:52:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1a7f36_885f74de",
       "range": {
         "startLine": 60,
         "startChar": 0,
