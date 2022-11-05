@@ -818,6 +818,21 @@ Status ServiceManager::tryUnregisterService(const std::string& name, const sp<IB
     return Status::ok();
 }
 
+Status ServiceManager::getRegisteringDebugPid(const std::string& name, int* pid) {
+    auto ctx = mAccess->getCallingContext();
+
+    if (!mAccess->canFind(ctx, name)) {
+        return Status::fromExceptionCode(Status::EX_SECURITY);
+    }
+
+    Service* service = nullptr;
+    if (auto it = mNameToService.find(name); it != mNameToService.end()) {
+        service = &(it->second);
+    } else {
+        return Status::fromExceptionCode(Status:: // FIXME
+    }
+}
+
 Status ServiceManager::getServiceDebugInfo(std::vector<ServiceDebugInfo>* outReturn) {
     if (!mAccess->canList(mAccess->getCallingContext())) {
         return Status::fromExceptionCode(Status::EX_SECURITY);

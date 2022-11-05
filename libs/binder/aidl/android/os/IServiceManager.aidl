@@ -136,6 +136,19 @@ interface IServiceManager {
     void tryUnregisterService(@utf8InCpp String name, IBinder service);
 
     /**
+     * Get the PID of the service which registered this HAL.
+     *
+     * This is slightly better than asking them via IBinder::getDebugPid because
+     * a service can't lie about this. It's given to the servicemanager.
+     *
+     * WARNING: PIDs are racey. If you have a PID, that service might have
+     * died, and another service might already be using it.
+     *
+     * @param name service name
+     */
+    int getRegisteringDebugPid(@utf8InCpp String name);
+
+    /**
      * Get debug information for all currently registered services.
      */
     ServiceDebugInfo[] getServiceDebugInfo();

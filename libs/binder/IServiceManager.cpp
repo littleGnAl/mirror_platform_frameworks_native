@@ -102,7 +102,10 @@ public:
     status_t unregisterForNotifications(const String16& service,
                                         const sp<AidlRegistrationCallback>& cb) override;
 
+    status_t getRegisteringDebugPid(const String16& name, pid_t* pid) override;
+
     std::vector<IServiceManager::ServiceDebugInfo> getServiceDebugInfo() override;
+
     // for legacy ABI
     const String16& getInterfaceDescriptor() const override {
         return mTheRealServiceManager->getInterfaceDescriptor();
@@ -580,6 +583,21 @@ status_t ServiceManagerShim::unregisterForNotifications(const String16& name,
               String8(name).c_str(), status.toString8().c_str());
         return UNKNOWN_ERROR;
     }
+    return OK;
+}
+
+status_t ServiceManagerShim::getRegisteringDebugPid(const String16& name, pid_t* pid) {
+    std::string nameStr = String8(name).c_str();
+    int pidInt;
+    if (Status status = theRealServiceManager->getRegisteringDebugPid(nameStr, &pid);
+        !status.isOk()) {
+        ALOGW("Failed to getRegisteringDebugPid for %s: %s", nameStr.c_str(),
+              status.toString8().c_str());
+        return UNKNOWN_ERROR;
+    }
+
+    *pid = pidInt;
+
     return OK;
 }
 
