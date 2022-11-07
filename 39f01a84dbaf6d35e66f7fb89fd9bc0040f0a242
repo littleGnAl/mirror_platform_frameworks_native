@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca56d405_5522dde9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1968882
+      },
+      "writtenOn": "2022-11-07T19:41:29Z",
+      "side": 1,
+      "message": "Please hold off on reviewing this for now. There are some discussions around the wallet manager implementation.",
+      "revId": "39f01a84dbaf6d35e66f7fb89fd9bc0040f0a242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
