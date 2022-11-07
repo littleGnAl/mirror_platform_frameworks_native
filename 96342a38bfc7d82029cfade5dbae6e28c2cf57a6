@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "009e6b74_0065f41c",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-07T14:54:46Z",
+      "side": 1,
+      "message": "I adjusted the comment and added tests.",
+      "parentUuid": "e4244dae_a2fe0a8d",
+      "range": {
+        "startLine": 74,
+        "startChar": 38,
+        "endLine": 74,
+        "endChar": 73
+      },
+      "revId": "96342a38bfc7d82029cfade5dbae6e28c2cf57a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3001740_9ec047a0",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bc091b0_d5f2cee9",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-07T14:54:46Z",
+      "side": 1,
+      "message": "setupWithSocket looks similar to the existing method setupSocketServer in this class. What about setupInitSocketServer()? It also emphasised the init managed side for the socket.",
+      "parentUuid": "f3001740_9ec047a0",
+      "range": {
+        "startLine": 76,
+        "startChar": 32,
+        "endLine": 76,
+        "endChar": 59
+      },
+      "revId": "96342a38bfc7d82029cfade5dbae6e28c2cf57a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd27314d_bb81f3e6",
         "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
         "patchSetId": 11
@@ -60,6 +108,30 @@
       "writtenOn": "2022-11-05T01:06:33Z",
       "side": 1,
       "message": "use \u0027Init\u0027 or \u0027InitRc\u0027 to specifically call out that it\u0027s related to the init process sockets?",
+      "range": {
+        "startLine": 51,
+        "startChar": 12,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "96342a38bfc7d82029cfade5dbae6e28c2cf57a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5d45205_51c67489",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-07T14:54:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd27314d_bb81f3e6",
       "range": {
         "startLine": 51,
         "startChar": 12,

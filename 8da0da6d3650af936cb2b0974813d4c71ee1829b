@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be55ba66_8024e2f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-07T14:54:46Z",
+      "side": 1,
+      "message": "Hi Steven,\n\nI added the binder tests. Could you take another look?",
+      "revId": "8da0da6d3650af936cb2b0974813d4c71ee1829b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
