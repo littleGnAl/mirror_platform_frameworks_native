@@ -413,6 +413,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "285fcc07_d2abed69",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/parcel_fuzzer.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-11-07T19:13:18Z",
+      "side": 1,
+      "message": "I think he is suggesting you do something like\n\n```\nfuzz_target!(|operation: Operation| {\n    match operation {\n        // ...\n    }\n});\n```\n\nwhich is probably equivalent to this because the fuzzer is already generating operations in a loop and calling this function. It would make the code slightly nicer and maybe the test cases would be smaller. IIUC, this is how the C++ version works too",
+      "parentUuid": "c552acab_feefef8f",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 33
+      },
+      "revId": "13630ff0801260d6ccaec9c15996b741bebf8602",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac913241_536bdb3e",
