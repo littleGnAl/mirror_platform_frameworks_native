@@ -94,6 +94,30 @@
       },
       "revId": "87a28e1f72597bec2c879cb5b0da98477de98062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a23b52c_71cc0784",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_auto_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-07T20:42:57Z",
+      "side": 1,
+      "message": "Thanks Jiyong - I can fix this case if it comes up, and we can do it in a way that\u0027s cleaner than what was here. I\u0027ll merge this CL for now, to resolve the issue for now and to verify this fix. If there\u0027s anything else you want me to handle in the short term, let me know.\n\nThanks also Dan - hope you will complete my feature request b/257135519 to test all this code in general in both configurations automatically, because we won\u0027t be able to tell everyone what \"needs\" to happen. We \"need\" a generic test. It doesn\u0027t matter what has happened here, but the result is clear: this type of issue is unequivocally preventable, and we can\u0027t be facing this type of issue in the future and we won\u0027t be - we\u0027re going to fix this, because after that, we have greater problems to solve. We test this for AIDL now, but I need your help here - to make sure this situation is fixed in general - this option - is either removed or tested, and new significant options, they can\u0027t be introduced unless they are also tested across the board. Thank you!",
+      "parentUuid": "d6cd782f_2869896b",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 6
+      },
+      "revId": "87a28e1f72597bec2c879cb5b0da98477de98062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
