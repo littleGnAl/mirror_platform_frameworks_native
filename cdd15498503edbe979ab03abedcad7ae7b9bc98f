@@ -63,6 +63,30 @@
       },
       "revId": "cdd15498503edbe979ab03abedcad7ae7b9bc98f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f78a5a1_bd6db0c0",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/read_utils.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-11-07T19:23:37Z",
+      "side": 1,
+      "message": "try\n\n```\npub const READ_FUNCS: \u0026[fn(\u0026BorrowedParcel\u003c\u0027_\u003e)] \u003d \u0026[\n```\n\nthat makes it a slice instead of an array. IIUC, the slice is pointing to a const array, but since you don\u0027t need to write down its type anymore, you don\u0027t need to specify the size manually\n\n\n---\n\naside: there is an unstable rust feature that allows you to use `_` in `const` context to have the compiler infer the type for you, then you could do\n\n```\npub const READ_FUNCS: [fn(\u0026BorrowedParcel\u003c\u0027_\u003e); _] \u003d [\n```",
+      "parentUuid": "5579fa36_df162aec",
+      "range": {
+        "startLine": 60,
+        "startChar": 48,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "cdd15498503edbe979ab03abedcad7ae7b9bc98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
