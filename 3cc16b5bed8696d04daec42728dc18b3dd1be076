@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d911566c_c3c37c3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-08T10:32:55Z",
+      "side": 1,
+      "message": "Hi Martijn,\n\nCould you please review this cl?",
+      "revId": "3cc16b5bed8696d04daec42728dc18b3dd1be076",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
