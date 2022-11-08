@@ -16,6 +16,29 @@
       "message": "Hi Martijn,\n\nCould you please review this cl?",
       "revId": "3cc16b5bed8696d04daec42728dc18b3dd1be076",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c6b391_e9bffc50",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-08T21:34:14Z",
+      "side": 1,
+      "message": "in this case though, it\u0027s not an init.rc-specific socket? It could be any socket. The APIs that make it specific to init are on top of this. So maybe it should be called, \u0027setupRawSocketServer\u0027 or similar? It\u0027s not using the above APIs, but a socket from somewhere else, right?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 36
+      },
+      "revId": "3cc16b5bed8696d04daec42728dc18b3dd1be076",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
