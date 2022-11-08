@@ -39,6 +39,30 @@
       },
       "revId": "3cc16b5bed8696d04daec42728dc18b3dd1be076",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ec1579_525f5c72",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-08T22:05:34Z",
+      "side": 1,
+      "message": "Yes, init.rc is just one of its usages. This API can be used to set up any socket that is already bound to an address. Actually, it\u0027s also possible to make setupSocketServer call this method after binding the address in a subsequent cl.",
+      "parentUuid": "b2c6b391_e9bffc50",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 36
+      },
+      "revId": "3cc16b5bed8696d04daec42728dc18b3dd1be076",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
