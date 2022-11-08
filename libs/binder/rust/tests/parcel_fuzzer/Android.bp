@@ -8,6 +8,7 @@ rust_fuzz {
     srcs: [
         "parcel_fuzzer.rs",
     ],
+    host_supported: true,
     rustlibs: [
         "libarbitrary",
         "libnum_traits",
