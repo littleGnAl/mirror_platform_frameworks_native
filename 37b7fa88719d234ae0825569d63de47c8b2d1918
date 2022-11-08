@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37c063cd_ab28ab54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-08T02:13:42Z",
+      "side": 1,
+      "message": "Bypassing presubmit there are open bugs for failing tests: \nb/257977067, related to omg/58303",
+      "revId": "37b7fa88719d234ae0825569d63de47c8b2d1918",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
