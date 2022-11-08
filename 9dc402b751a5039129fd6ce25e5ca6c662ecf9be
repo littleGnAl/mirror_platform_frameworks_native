@@ -33,6 +33,23 @@
       "message": "If we made the tree intrusive, we wouldn\u0027t need this either. The comparison function could just read `mPortName` directly.",
       "revId": "9dc402b751a5039129fd6ce25e5ca6c662ecf9be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef447578_ef4148be",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-11-08T21:36:50Z",
+      "side": 1,
+      "message": "Use `new (std::nothrow)` and check the return value for `nullptr`? We would like to catch allocation failures.",
+      "revId": "9dc402b751a5039129fd6ce25e5ca6c662ecf9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
