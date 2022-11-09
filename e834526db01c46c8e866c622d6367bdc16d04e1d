@@ -16,6 +16,40 @@
       "message": "Hi Steven, could you give +2 again to this cl? The previous +2 disappeared after resolving a merge conflict.",
       "revId": "e834526db01c46c8e866c622d6367bdc16d04e1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898ffb03_cb6319cb",
+        "filename": "libs/binder/tests/BinderRpcTestServerConfig.aidl",
+        "patchSetId": 23
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-11-09T23:48:08Z",
+      "side": 1,
+      "message": "Are this and `unixBootstrapFd` ever going to be valid at the same time? I wonder if we could merge them.",
+      "revId": "e834526db01c46c8e866c622d6367bdc16d04e1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe0f71f9_ea72215f",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-11-09T23:48:08Z",
+      "side": 1,
+      "message": "Minor nit: the default constructor `unique_fd()` should set the internal fd to -1, so you don\u0027t need to specify it explicitly.",
+      "revId": "e834526db01c46c8e866c622d6367bdc16d04e1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
