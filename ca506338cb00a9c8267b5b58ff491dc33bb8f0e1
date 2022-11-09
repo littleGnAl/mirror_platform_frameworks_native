@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f2d8b6_104b89a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561731
+      },
+      "writtenOn": "2022-11-09T21:06:32Z",
+      "side": 1,
+      "message": "(the 1 presubmit failure looks like an existing flake)",
+      "revId": "ca506338cb00a9c8267b5b58ff491dc33bb8f0e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
