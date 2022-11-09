@@ -36,7 +36,6 @@ localIncludeFiles = [
 sharedLibraries = [
     "libbase",
     "libbinder",
-    "libbufferhubqueue",
     "libcutils",
     "liblog",
     "libutils",
@@ -60,14 +59,15 @@ headerLibraries = [
 
 cc_library {
     srcs: sourceFiles,
-    cflags: ["-DLOG_TAG=\"libdisplay\"",
+    cflags: [
+        "-DLOG_TAG=\"libdisplay\"",
         "-DTRACE=0",
         "-DATRACE_TAG=ATRACE_TAG_GRAPHICS",
         "-DGL_GLEXT_PROTOTYPES",
         "-DEGL_EGLEXT_PROTOTYPES",
         "-Wall",
         "-Werror",
-    ],  // + [ "-UNDEBUG", "-DDEBUG", "-O0", "-g" ],
+    ], // + [ "-UNDEBUG", "-DDEBUG", "-O0", "-g" ],
     export_include_dirs: localIncludeFiles,
     shared_libs: sharedLibraries,
     static_libs: staticLibraries,

@@ -39,7 +39,6 @@ staticLibraries = [
 sharedLibraries = [
     "libbase",
     "libbinder",
-    "libbufferhubqueue",
     "libcutils",
     "libhardware",
     "liblog",
