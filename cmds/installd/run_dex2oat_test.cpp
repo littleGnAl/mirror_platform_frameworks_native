@@ -241,26 +241,13 @@ class RunDex2OatTest : public testing::Test {
 
     void CallRunDex2Oat(std::unique_ptr<RunDex2OatArgs> args) {
         FakeRunDex2Oat runner(execv_helper_.get(), &system_properties_);
-        runner.Initialize(args->output_oat,
-                          args->output_vdex,
-                          args->output_image,
-                          args->input_dex,
-                          args->input_vdex,
-                          args->dex_metadata,
-                          args->profile,
-                          args->class_loader_context,
-                          args->class_loader_context_fds,
-                          args->swap_fd,
-                          args->instruction_set,
-                          args->compiler_filter,
-                          args->debuggable,
-                          args->post_bootcomplete,
-                          args->for_restore,
-                          args->target_sdk_version,
-                          args->enable_hidden_api_checks,
-                          args->generate_compact_dex,
-                          args->use_jitzygote,
-                          args->background_job_compile,
+        runner.Initialize(args->output_oat, args->output_vdex, args->output_image, args->input_dex,
+                          args->input_vdex, args->dex_metadata, args->profile,
+                          args->class_loader_context, args->class_loader_context_fds, args->swap_fd,
+                          args->instruction_set, args->compiler_filter, args->debuggable,
+                          args->post_bootcomplete, args->for_restore, args->target_sdk_version,
+                          args->enable_hidden_api_checks, args->generate_compact_dex,
+                          args->use_jitzygote, args->background_job_compile,
                           args->compilation_reason);
         runner.Exec(/*exit_code=*/ 0);
     }

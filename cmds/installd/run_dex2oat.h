@@ -32,27 +32,15 @@ class RunDex2Oat {
     explicit RunDex2Oat(const char* dex2oat_bin, ExecVHelper* execv_helper);
     virtual ~RunDex2Oat();
 
-    void Initialize(const UniqueFile& output_oat,
-                    const UniqueFile& output_vdex,
-                    const UniqueFile& output_image,
-                    const UniqueFile& input_dex,
-                    const UniqueFile& input_vdex,
-                    const UniqueFile& dex_metadata,
-                    const UniqueFile& profile,
-                    const char* class_loader_context,
-                    const std::string& class_loader_context_fds,
-                    int swap_fd,
-                    const char* instruction_set,
-                    const char* compiler_filter,
-                    bool debuggable,
-                    bool post_bootcomplete,
-                    bool for_restore,
-                    int target_sdk_version,
-                    bool enable_hidden_api_checks,
-                    bool generate_compact_dex,
-                    bool use_jitzygote,
-                    bool background_job_compile,
-                    const char* compilation_reason);
+    void Initialize(const UniqueFile& output_oat, const UniqueFile& output_vdex,
+                    const UniqueFile& output_image, const UniqueFile& input_dex,
+                    const UniqueFile& input_vdex, const UniqueFile& dex_metadata,
+                    const UniqueFile& profile, const char* class_loader_context,
+                    const std::string& class_loader_context_fds, int swap_fd,
+                    const char* instruction_set, const char* compiler_filter, bool debuggable,
+                    bool post_bootcomplete, bool for_restore, int target_sdk_version,
+                    bool enable_hidden_api_checks, bool generate_compact_dex, bool use_jitzygote,
+                    bool background_job_compile, const char* compilation_reason);
 
     void Exec(int exit_code);
 
@@ -77,8 +65,7 @@ class RunDex2Oat {
                                     bool enable_hidden_api_checks,
                                     bool generate_compact_dex,
                                     const char* compilation_reason);
-    void PrepareCompilerRuntimeAndPerfConfigFlags(bool post_bootcomplete,
-                                                  bool for_restore,
+    void PrepareCompilerRuntimeAndPerfConfigFlags(bool post_bootcomplete, bool for_restore,
                                                   bool background_job_compile);
 
     virtual std::string GetProperty(const std::string& key, const std::string& default_value);

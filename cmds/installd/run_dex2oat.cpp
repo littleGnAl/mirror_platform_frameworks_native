@@ -62,27 +62,16 @@ std::vector<std::string> SplitBySpaces(const std::string& str) {
 RunDex2Oat::RunDex2Oat(const char* dex2oat_bin, ExecVHelper* execv_helper)
   : dex2oat_bin_(dex2oat_bin), execv_helper_(execv_helper) {}
 
-void RunDex2Oat::Initialize(const UniqueFile& output_oat,
-                            const UniqueFile& output_vdex,
-                            const UniqueFile& output_image,
-                            const UniqueFile& input_dex,
-                            const UniqueFile& input_vdex,
-                            const UniqueFile& dex_metadata,
-                            const UniqueFile& profile,
-                            const char* class_loader_context,
-                            const std::string& class_loader_context_fds,
-                            int swap_fd,
-                            const char* instruction_set,
-                            const char* compiler_filter,
-                            bool debuggable,
-                            bool post_bootcomplete,
-                            bool for_restore,
-                            int target_sdk_version,
-                            bool enable_hidden_api_checks,
-                            bool generate_compact_dex,
-                            bool use_jitzygote,
-                            bool background_job_compile,
-                            const char* compilation_reason) {
+void RunDex2Oat::Initialize(const UniqueFile& output_oat, const UniqueFile& output_vdex,
+                            const UniqueFile& output_image, const UniqueFile& input_dex,
+                            const UniqueFile& input_vdex, const UniqueFile& dex_metadata,
+                            const UniqueFile& profile, const char* class_loader_context,
+                            const std::string& class_loader_context_fds, int swap_fd,
+                            const char* instruction_set, const char* compiler_filter,
+                            bool debuggable, bool post_bootcomplete, bool for_restore,
+                            int target_sdk_version, bool enable_hidden_api_checks,
+                            bool generate_compact_dex, bool use_jitzygote,
+                            bool background_job_compile, const char* compilation_reason) {
     PrepareBootImageFlags(use_jitzygote);
 
     PrepareInputFileFlags(output_oat, output_vdex, output_image, input_dex, input_vdex,
@@ -297,24 +286,22 @@ void RunDex2Oat::PrepareCompilerConfigFlags(const UniqueFile& input_vdex,
     }
 }
 
-void RunDex2Oat::PrepareCompilerRuntimeAndPerfConfigFlags(bool post_bootcomplete,
-                                                          bool for_restore,
+void RunDex2Oat::PrepareCompilerRuntimeAndPerfConfigFlags(bool post_bootcomplete, bool for_restore,
                                                           bool background_job_compile) {
     // CPU set
     {
         std::string cpu_set_format = "--cpu-set=%s";
         std::string dex2oat_cpu_set_arg = post_bootcomplete
                 ? (for_restore
-                   ? MapPropertyToArgWithBackup(
-                           "dalvik.vm.restore-dex2oat-cpu-set",
-                           "dalvik.vm.dex2oat-cpu-set",
-                           cpu_set_format)
-                   : (background_job_compile
-                      ? MapPropertyToArgWithBackup(
-                              "dalvik.vm.background-dex2oat-cpu-set",
-                              "dalvik.vm.dex2oat-cpu-set",
-                              cpu_set_format)
-                      : MapPropertyToArg("dalvik.vm.dex2oat-cpu-set", cpu_set_format)))
+                           ? MapPropertyToArgWithBackup("dalvik.vm.restore-dex2oat-cpu-set",
+                                                        "dalvik.vm.dex2oat-cpu-set", cpu_set_format)
+                           : (background_job_compile
+                                      ? MapPropertyToArgWithBackup("dalvik.vm.background-dex2oat-"
+                                                                   "cpu-set",
+                                                                   "dalvik.vm.dex2oat-cpu-set",
+                                                                   cpu_set_format)
+                                      : MapPropertyToArg("dalvik.vm.dex2oat-cpu-set",
+                                                         cpu_set_format)))
                 : MapPropertyToArg("dalvik.vm.boot-dex2oat-cpu-set", cpu_set_format);
         AddArg(dex2oat_cpu_set_arg);
     }
@@ -324,16 +311,15 @@ void RunDex2Oat::PrepareCompilerRuntimeAndPerfConfigFlags(bool post_bootcomplete
         std::string threads_format = "-j%s";
         std::string dex2oat_threads_arg = post_bootcomplete
                 ? (for_restore
-                   ? MapPropertyToArgWithBackup(
-                           "dalvik.vm.restore-dex2oat-threads",
-                           "dalvik.vm.dex2oat-threads",
-                           threads_format)
-                   : (background_job_compile
-                      ? MapPropertyToArgWithBackup(
-                              "dalvik.vm.background-dex2oat-threads",
-                              "dalvik.vm.dex2oat-threads",
-                              threads_format)
-                      : MapPropertyToArg("dalvik.vm.dex2oat-threads", threads_format)))
+                           ? MapPropertyToArgWithBackup("dalvik.vm.restore-dex2oat-threads",
+                                                        "dalvik.vm.dex2oat-threads", threads_format)
+                           : (background_job_compile
+                                      ? MapPropertyToArgWithBackup("dalvik.vm.background-dex2oat-"
+                                                                   "threads",
+                                                                   "dalvik.vm.dex2oat-threads",
+                                                                   threads_format)
+                                      : MapPropertyToArg("dalvik.vm.dex2oat-threads",
+                                                         threads_format)))
                 : MapPropertyToArg("dalvik.vm.boot-dex2oat-threads", threads_format);
         AddArg(dex2oat_threads_arg);
     }
