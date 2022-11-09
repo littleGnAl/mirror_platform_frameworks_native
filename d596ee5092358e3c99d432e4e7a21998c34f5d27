@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed500b29_5fc710b1",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-09T02:48:16Z",
+      "side": 1,
+      "message": "We have the __DEPRECATED_IN macro which I think is preferred. Over to Dan.",
+      "revId": "d596ee5092358e3c99d432e4e7a21998c34f5d27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
