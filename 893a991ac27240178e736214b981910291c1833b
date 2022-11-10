@@ -16,6 +16,23 @@
       "message": "Rubber-stamping #platform-only map.txt change",
       "revId": "893a991ac27240178e736214b981910291c1833b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1752af_0005fb7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-10T19:34:17Z",
+      "side": 1,
+      "message": "Hi Steven,\n\nCould you add +2 again? The previous one disappeared after resolving the merge conflict.",
+      "revId": "893a991ac27240178e736214b981910291c1833b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
