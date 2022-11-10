@@ -3761,11 +3761,19 @@ void TouchInputMapper::cancelTouch(nsecs_t when, nsecs_t readTime) {
 
 // Transform input device coordinates to display panel coordinates.
 void TouchInputMapper::rotateAndScale(float& x, float& y) const {
-    const float xScaled = float(x - mRawPointerAxes.x.minValue) * mXScale;
-    const float yScaled = float(y - mRawPointerAxes.y.minValue) * mYScale;
+    const bool needSwapWidthAndHeight = mInputDeviceOrientation == DISPLAY_ORIENTATION_90 ||
+            mInputDeviceOrientation == DISPLAY_ORIENTATION_270;
+    const float xScale = needSwapWidthAndHeight
+            ? (float(mDisplayHeight) / mRawPointerAxes.getRawWidth())
+            : mXScale;
+    const float yScale = needSwapWidthAndHeight
+            ? (float(mDisplayWidth) / mRawPointerAxes.getRawHeight())
+            : mYScale;
+    const float xScaled = float(x - mRawPointerAxes.x.minValue) * xScale;
+    const float yScaled = float(y - mRawPointerAxes.y.minValue) * yScale;
 
-    const float xScaledMax = float(mRawPointerAxes.x.maxValue - x) * mXScale;
-    const float yScaledMax = float(mRawPointerAxes.y.maxValue - y) * mYScale;
+    const float xScaledMax = float(mRawPointerAxes.x.maxValue - x) * xScale;
+    const float yScaledMax = float(mRawPointerAxes.y.maxValue - y) * yScale;
 
     // Rotate to display coordinate.
     // 0 - no swap and reverse.
@@ -3795,13 +3803,25 @@ void TouchInputMapper::rotateAndScale(float& x, float& y) const {
 }
 
 bool TouchInputMapper::isPointInsidePhysicalFrame(int32_t x, int32_t y) const {
-    const float xScaled = (x - mRawPointerAxes.x.minValue) * mXScale;
-    const float yScaled = (y - mRawPointerAxes.y.minValue) * mYScale;
+    const bool needSwapWidthAndHeight = mInputDeviceOrientation == DISPLAY_ORIENTATION_90 ||
+                                        mInputDeviceOrientation == DISPLAY_ORIENTATION_270;
+    const float xScale = needSwapWidthAndHeight
+            ? (float(mDisplayHeight) / mRawPointerAxes.getRawWidth())
+            : mXScale;
+    const float yScale = needSwapWidthAndHeight
+            ? (float(mDisplayWidth) / mRawPointerAxes.getRawHeight())
+            : mYScale;
+    const float xScaled = (x - mRawPointerAxes.x.minValue) * xScale;
+    const float yScaled = (y - mRawPointerAxes.y.minValue) * yScale;
+    const int32_t width = needSwapWidthAndHeight ? mPhysicalTop + mPhysicalHeight
+                                                 : mPhysicalLeft + mPhysicalWidth;
+    const int32_t height = needSwapWidthAndHeight ? mPhysicalLeft + mPhysicalWidth
+                                                  : mPhysicalTop + mPhysicalHeight;
 
     return x >= mRawPointerAxes.x.minValue && x <= mRawPointerAxes.x.maxValue &&
-            xScaled >= mPhysicalLeft && xScaled <= (mPhysicalLeft + mPhysicalWidth) &&
+            xScaled >= mPhysicalLeft && xScaled <= width &&
             y >= mRawPointerAxes.y.minValue && y <= mRawPointerAxes.y.maxValue &&
-            yScaled >= mPhysicalTop && yScaled <= (mPhysicalTop + mPhysicalHeight);
+            yScaled >= mPhysicalTop && yScaled <= height;
 }
 
 const TouchInputMapper::VirtualKey* TouchInputMapper::findVirtualKeyHit(int32_t x, int32_t y) {
