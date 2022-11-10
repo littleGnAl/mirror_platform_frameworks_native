@@ -33,6 +33,24 @@
       "message": "android-ndk-api-council for .map.txt review which is NOT in the NDK",
       "revId": "8f6e1c1571f147b7cd85333d995d17aeb3486f94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6346635e_9880a505",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2022-11-10T10:50:50Z",
+      "side": 1,
+      "message": "go/android-ndk-api-guidelines#compatibilty-export-map says \"Map files that are exclusively for the platform (contain no NDK, APEX, or LLNDK APIs; only used for symbol versioning or for visibility control) should not end with .map.txt. The linker will accept a file with any name, and the .map.txt suffix requires NDK API council review for all changes.\"\n\nDoes that apply here?",
+      "parentUuid": "48cf0723_b982bdfc",
+      "revId": "8f6e1c1571f147b7cd85333d995d17aeb3486f94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
