@@ -63,6 +63,30 @@
       },
       "revId": "4383533e6aa52a5dd59c7dfd127300cd3b702a59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be21416_d5392a55",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-11-10T19:50:56Z",
+      "side": 1,
+      "message": "Updated.\n\nSwapchain compression features support is still tied to image compression support.\n\nHowever, this adds an explicit query for imageCompressionSupport if none currently exist.\n\nHopefully this passes the failing CTS",
+      "parentUuid": "b7fe9732_e800bfb2",
+      "range": {
+        "startLine": 1534,
+        "startChar": 8,
+        "endLine": 1534,
+        "endChar": 31
+      },
+      "revId": "4383533e6aa52a5dd59c7dfd127300cd3b702a59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
