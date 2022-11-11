@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee9465e_ed0944a9",
+        "filename": "services/sensorservice/aidl/EventQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-11T19:19:20Z",
+      "side": 1,
+      "message": "Question for @bduddie@google.com. Is this ok to have here in the dtor instead of onLastStrongRef?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 57
+      },
+      "revId": "ccef8c8612a425a67a74eed7d93a9492d7ef1b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
