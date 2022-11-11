@@ -16,6 +16,24 @@
       "message": "I am not sure I agree with this modification. what is the error produced from the original code?",
       "revId": "5d95616dd08f5eb243feeea052b9d26077ef45e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e7c36fa_c2247a90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2022-11-11T23:50:49Z",
+      "side": 1,
+      "message": "E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property",
+      "parentUuid": "adda7db8_6bc50b1d",
+      "revId": "5d95616dd08f5eb243feeea052b9d26077ef45e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
