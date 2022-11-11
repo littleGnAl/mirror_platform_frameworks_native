@@ -52,6 +52,24 @@
       "parentUuid": "0e7c36fa_c2247a90",
       "revId": "5d95616dd08f5eb243feeea052b9d26077ef45e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c56304bc_b3439f06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2022-11-11T23:55:09Z",
+      "side": 1,
+      "message": "We want it to be adjustable, for different screens.",
+      "parentUuid": "e54765f8_66f47a09",
+      "revId": "5d95616dd08f5eb243feeea052b9d26077ef45e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
