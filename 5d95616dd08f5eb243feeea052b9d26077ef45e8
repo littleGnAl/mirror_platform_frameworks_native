@@ -34,6 +34,24 @@
       "parentUuid": "adda7db8_6bc50b1d",
       "revId": "5d95616dd08f5eb243feeea052b9d26077ef45e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e54765f8_66f47a09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2022-11-11T23:52:48Z",
+      "side": 1,
+      "message": "Is there a reason why we don\u0027t define it as the emulator density?",
+      "parentUuid": "0e7c36fa_c2247a90",
+      "revId": "5d95616dd08f5eb243feeea052b9d26077ef45e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
