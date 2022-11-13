@@ -34,6 +34,24 @@
       "parentUuid": "ed500b29_5fc710b1",
       "revId": "d596ee5092358e3c99d432e4e7a21998c34f5d27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c4dceb_4a8339ee",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-11-13T10:50:57Z",
+      "side": 1,
+      "message": "Yes, but this header is used by apps targetting different sdk versions; we don\u0027t snapshot the header per sdk version. The target sdk version is given as __ANDROID_API__ and that macro respects that (i.e. don\u0027t deprecate the api if the app is targeting an older version where the api wasn\u0027t deprecated).",
+      "parentUuid": "972ccbae_168cd0a8",
+      "revId": "d596ee5092358e3c99d432e4e7a21998c34f5d27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
