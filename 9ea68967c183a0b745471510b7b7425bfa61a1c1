@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3bdd8ed_ca9b36c8",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-11-14T10:06:31Z",
+      "side": 1,
+      "message": "Shame on me. A simple test revealed my mistake.",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 72
+      },
+      "revId": "9ea68967c183a0b745471510b7b7425bfa61a1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5f5815d_b97a3246",
+        "filename": "cmds/servicemanager/test_sm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-11-14T10:06:31Z",
+      "side": 1,
+      "message": "Borrowed this from packages/modules/Virtualization/tests/helper/src/java/com/android/virt/VirtualizationTestHelper.java",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "9ea68967c183a0b745471510b7b7425bfa61a1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
