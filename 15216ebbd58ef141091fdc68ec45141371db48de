@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b482989_9e5a0dd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-11-14T22:14:02Z",
+      "side": 1,
+      "message": "hang on-- i probably gave you a bad steer on this. since it\u0027s platform change rather than a test fix, probably actually needs to be on android12-gsi or similar?",
+      "revId": "15216ebbd58ef141091fdc68ec45141371db48de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
