@@ -33,6 +33,23 @@
       "message": "Hi Steven, PTAL.",
       "revId": "47da4cdf26be91418ecb34a8250d1cc00b5c8de8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a300dd_bded398b",
+        "filename": "libs/binder/tests/BinderRpcTestServerConfig.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-11-14T20:57:00Z",
+      "side": 1,
+      "message": "Maybe keep the comment? It applies to both socket types, right?",
+      "revId": "47da4cdf26be91418ecb34a8250d1cc00b5c8de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
