@@ -71,8 +71,8 @@ typedef uintptr_t binder_uintptr_t;
 
 #define LOG_REFS(...)
 // #define LOG_REFS(...) ALOG(LOG_DEBUG, LOG_TAG, __VA_ARGS__)
-#define LOG_ALLOC(...)
-// #define LOG_ALLOC(...) ALOG(LOG_DEBUG, LOG_TAG, __VA_ARGS__)
+// #define LOG_ALLOC(...)
+#define LOG_ALLOC(...) ALOG(LOG_ERROR, LOG_TAG, __VA_ARGS__)
 
 // ---------------------------------------------------------------------------
 
@@ -2734,7 +2734,8 @@ void Parcel::freeDataNoInit()
         LOG_ALLOC("Parcel %p: freeing allocated data", this);
         releaseObjects();
         if (mData) {
-            LOG_ALLOC("Parcel %p: freeing with %zu capacity", this, mDataCapacity);
+            LOG_ALLOC("Parcel %p: freeing with %zu capacity and AllocSize.load(): %zu", this,
+                      mDataCapacity, gParcelGlobalAllocSize.load());
             gParcelGlobalAllocSize -= mDataCapacity;
             gParcelGlobalAllocCount--;
             if (mDeallocZero) {
@@ -2987,6 +2988,8 @@ status_t Parcel::continueWrite(size_t desired)
                         desired);
                 gParcelGlobalAllocSize += desired;
                 gParcelGlobalAllocSize -= mDataCapacity;
+                LOG_ALLOC("Parcel %p: AllocSize is now %zu capacity", this,
+                          gParcelGlobalAllocSize.load());
                 mData = data;
                 mDataCapacity = desired;
             } else {
@@ -3020,9 +3023,11 @@ status_t Parcel::continueWrite(size_t desired)
                   kernelFields ? kernelFields->mObjectsCapacity : 0, desired);
         }
 
-        LOG_ALLOC("Parcel %p: allocating with %zu capacity", this, desired);
+        LOG_ALLOC("Parcel %p: allocating with %zu capacity.  AllocSize.load: %zu", this, desired,
+                  gParcelGlobalAllocSize.load());
         gParcelGlobalAllocSize += desired;
         gParcelGlobalAllocCount++;
+        LOG_ALLOC("Parcel %p: after allocating: %zu size", this, gParcelGlobalAllocSize.load());
 
         mData = data;
         mDataSize = mDataPos = 0;

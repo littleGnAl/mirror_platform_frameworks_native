@@ -24,6 +24,7 @@ package {
 cc_library_shared {
     name: "libsensor",
 
+    host_supported: true,
     cflags: [
         "-Wall",
         "-Werror",

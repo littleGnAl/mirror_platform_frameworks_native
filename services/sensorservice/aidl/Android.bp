@@ -15,6 +15,7 @@ cc_library_shared {
         "SensorManager.cpp",
         "utils.cpp",
     ],
+    host_supported: true,
     cflags: [
         "-Wall",
         "-Werror",
