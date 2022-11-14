@@ -16,6 +16,23 @@
       "message": "Hi Andrei, PTAL.",
       "revId": "47da4cdf26be91418ecb34a8250d1cc00b5c8de8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f17e6d_3ee5d9e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-14T11:41:41Z",
+      "side": 1,
+      "message": "Hi Steven, PTAL.",
+      "revId": "47da4cdf26be91418ecb34a8250d1cc00b5c8de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
