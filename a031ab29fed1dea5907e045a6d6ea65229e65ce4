@@ -16,6 +16,23 @@
       "message": "Hi, I\u0027ve added a case on issuetracker (ID is 258268659), you can get more detail logs from there. Thanks.",
       "revId": "a031ab29fed1dea5907e045a6d6ea65229e65ce4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c2c6c8_e2688879",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2022-11-15T17:22:35Z",
+      "side": 1,
+      "message": "Can you share more details about when this happens \"so there is a situation where \u0027mCurrentMaxAcquiredBufferCount\u0027 is bigger than  \u0027mMaxAcquiredBuffers\u0027,  \"",
+      "revId": "a031ab29fed1dea5907e045a6d6ea65229e65ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
