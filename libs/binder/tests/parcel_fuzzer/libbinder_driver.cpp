@@ -34,6 +34,7 @@ void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider) {
         uint32_t code = provider.ConsumeIntegral<uint32_t>();
         uint32_t flags = provider.ConsumeIntegral<uint32_t>();
         Parcel data;
+        data.setEnforceNoDataAvail(false);
 
         sp<IBinder> target = options.extraBinders.at(
                 provider.ConsumeIntegralInRange<size_t>(0, options.extraBinders.size() - 1));
@@ -50,6 +51,7 @@ void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider) {
         fillRandomParcel(&data, FuzzedDataProvider(subData.data(), subData.size()), &options);
 
         Parcel reply;
+        reply.setEnforceNoDataAvail(false);
         (void)target->transact(code, data, &reply, flags);
 
         // feed back in binders and fds that are returned from the service, so that
