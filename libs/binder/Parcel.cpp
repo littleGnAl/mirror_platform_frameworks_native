@@ -967,6 +967,9 @@ bool Parcel::enforceInterface(const char16_t* interface,
 }
 
 binder::Status Parcel::enforceNoDataAvail() const {
+#if defined(FUZZ_BINDER)
+    return binder::Status::ok();
+#else
     const auto n = dataAvail();
     if (n == 0) {
         return binder::Status::ok();
@@ -975,6 +978,7 @@ binder::Status Parcel::enforceNoDataAvail() const {
             fromExceptionCode(binder::Status::Exception::EX_BAD_PARCELABLE,
                               String8::format("Parcel data not fully consumed, unread size: %zu",
                                               n));
+#endif
 }
 
 size_t Parcel::objectsCount() const

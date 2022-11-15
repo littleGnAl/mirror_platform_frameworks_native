@@ -703,14 +703,14 @@ cc_defaults {
         android: {
             shared_libs: [
                 "libbinder_ndk",
-                "libbinder",
+                "libbinder_fuzz",
                 "libutils",
             ],
         },
         host: {
             static_libs: [
                 "libbinder_ndk",
-                "libbinder",
+                "libbinder_fuzz",
                 "libutils",
             ],
         },
