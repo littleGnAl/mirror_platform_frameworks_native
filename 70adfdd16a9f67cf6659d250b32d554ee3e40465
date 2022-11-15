@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb331ceb_9e732db1",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-15T23:06:13Z",
+      "side": 1,
+      "message": "We want to avoid an extra library, because it requires updating the dependencies everywhere (this is an extra step for fuzzer developers). In some cases/configurations, this will also cause ODR issues and silent errors (e.g. the old enforceNoDataAvail function gets overridden silently w/ a version from \u0027libbinder\u0027)",
+      "range": {
+        "startLine": 332,
+        "startChar": 11,
+        "endLine": 332,
+        "endChar": 25
+      },
+      "revId": "70adfdd16a9f67cf6659d250b32d554ee3e40465",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933344e6_55680de1",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-15T23:06:13Z",
+      "side": 1,
+      "message": "add \u0027bool mEnforceDataAvail\u0027 here instead and add a function to set it - we can call it from the fuzzer",
+      "revId": "70adfdd16a9f67cf6659d250b32d554ee3e40465",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
