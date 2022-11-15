@@ -343,7 +343,7 @@ SurfaceFlinger::SurfaceFlinger(Factory& factory) : SurfaceFlinger(factory, SkipI
 
     dispSyncPresentTimeOffset = present_time_offset_from_vsync_ns(0);
 
-    useHwcForRgbToYuv = force_hwc_copy_for_virtual_displays(false);
+    useHwcForRgbToYuv = force_hwc_copy_for_virtual_displays(true);
 
     maxFrameBufferAcquiredBuffers = max_frame_buffer_acquired_buffers(2);
 
