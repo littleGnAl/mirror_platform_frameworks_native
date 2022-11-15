@@ -16,6 +16,23 @@
       "message": "There was one more issue with CTS, but it is a CTS issue, I submitted a fix to khronos for a review: https://gitlab.khronos.org/Tracker/vk-gl-cts/-/issues/4105 \n\nOtherwise change looks good from our side.",
       "revId": "b9d097aaba9ac86596dfe168938601db6d0a822f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dca7f08_304bebc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-11-15T17:13:13Z",
+      "side": 1,
+      "message": "If this passes presubmit I will go ahead and land this today.\nIf another issue comes up I\u0027d rather that be within another CL.",
+      "revId": "b9d097aaba9ac86596dfe168938601db6d0a822f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
