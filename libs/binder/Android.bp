@@ -327,6 +327,46 @@ cc_library {
     },
 }
 
+// libbinder used by service fuzzers
+cc_library {
+    name: "libbinder_fuzz",
+    defaults: [
+        "libbinder_common_defaults",
+        "libbinder_android_defaults",
+        "libbinder_kernel_defaults",
+    ],
+    cflags: ["-DFUZZ_BINDER"],
+    vendor_available: true,
+    double_loadable: true,
+    native_bridge_supported: true,
+    srcs: [
+        "IMemory.cpp",
+        "IShellCallback.cpp",
+        "LazyServiceRegistrar.cpp",
+        "MemoryBase.cpp",
+        "MemoryDealer.cpp",
+        "MemoryHeapBase.cpp",
+        "ParcelableHolder.cpp",
+        "PersistableBundle.cpp",
+    ],
+
+    target: {
+        android: {
+            static: {
+                enabled: false,
+            },
+        },
+        darwin: {
+            enabled: false,
+        },
+        recovery: {
+            exclude_header_libs: [
+                "jni_headers",
+            ],
+        },
+    },
+}
+
 cc_library_static {
     name: "libbinder_rpc_no_kernel",
     defaults: [
