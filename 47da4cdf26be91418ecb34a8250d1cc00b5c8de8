@@ -50,6 +50,24 @@
       "message": "Maybe keep the comment? It applies to both socket types, right?",
       "revId": "47da4cdf26be91418ecb34a8250d1cc00b5c8de8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12f370b_274b468f",
+        "filename": "libs/binder/tests/BinderRpcTestServerConfig.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-15T02:40:17Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "23a300dd_bded398b",
+      "revId": "47da4cdf26be91418ecb34a8250d1cc00b5c8de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
