@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f06b45_13096f68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1967381
+      },
+      "writtenOn": "2022-11-15T12:32:19Z",
+      "side": 1,
+      "message": "There was one more issue with CTS, but it is a CTS issue, I submitted a fix to khronos for a review: https://gitlab.khronos.org/Tracker/vk-gl-cts/-/issues/4105 \n\nOtherwise change looks good from our side.",
+      "revId": "b9d097aaba9ac86596dfe168938601db6d0a822f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
