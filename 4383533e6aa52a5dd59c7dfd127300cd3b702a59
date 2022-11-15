@@ -87,6 +87,30 @@
       },
       "revId": "4383533e6aa52a5dd59c7dfd127300cd3b702a59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece4ffae_f6a36fbd",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1967381
+      },
+      "writtenOn": "2022-11-15T12:24:28Z",
+      "side": 1,
+      "message": "Thanks! I confirm it solved the CTS problem.",
+      "parentUuid": "1be21416_d5392a55",
+      "range": {
+        "startLine": 1534,
+        "startChar": 8,
+        "endLine": 1534,
+        "endChar": 31
+      },
+      "revId": "4383533e6aa52a5dd59c7dfd127300cd3b702a59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
