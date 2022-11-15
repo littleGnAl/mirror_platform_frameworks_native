@@ -68,6 +68,24 @@
       "parentUuid": "23a300dd_bded398b",
       "revId": "47da4cdf26be91418ecb34a8250d1cc00b5c8de8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "358db92b_f8f93e1d",
+        "filename": "libs/binder/tests/BinderRpcTestServerConfig.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-15T09:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b12f370b_274b468f",
+      "revId": "47da4cdf26be91418ecb34a8250d1cc00b5c8de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
