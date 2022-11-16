@@ -56,6 +56,23 @@
       },
       "revId": "b9d097aaba9ac86596dfe168938601db6d0a822f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87d9dd01_553ae976",
+        "filename": "vulkan/libvulkan/libvulkan.map.txt",
+        "patchSetId": 22
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-11-16T00:38:50Z",
+      "side": 1,
+      "message": "missing `# introduced\u003dUpsideDownCake`",
+      "revId": "b9d097aaba9ac86596dfe168938601db6d0a822f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
