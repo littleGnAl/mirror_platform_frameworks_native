@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a013430_a2962e03",
+        "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-16T23:53:06Z",
+      "side": 1,
+      "message": "we should\n\n-    export_include_dirs: [\"include/fakeservicemanager\"],\n+    export_include_dirs: [\"include/fakeservicemanager\"],",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "cf5c3436ca745c73d6b32187e4834de281bc6bf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e50a57_b5ef89c2",
+        "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-16T23:53:06Z",
+      "side": 1,
+      "message": "assert result",
+      "range": {
+        "startLine": 35,
+        "startChar": 24,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "cf5c3436ca745c73d6b32187e4834de281bc6bf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9a8a82_00f4b2f3",
+        "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-16T23:53:06Z",
+      "side": 1,
+      "message": "we\u0027ll also need to clear the fakeServiceManager state here or reset it - feel free to split a bug for this",
+      "revId": "cf5c3436ca745c73d6b32187e4834de281bc6bf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
