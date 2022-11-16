@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include <binder_rpc_unstable.hpp>
+
 #include <android-base/logging.h>
 #include <android-base/unique_fd.h>
 #include <android/binder_libbinder.h>
@@ -22,6 +24,8 @@
 #include <cutils/sockets.h>
 #include <linux/vm_sockets.h>
 
+#include <unordered_map>
+
 using android::OK;
 using android::RpcServer;
 using android::RpcSession;
@@ -29,18 +33,25 @@ using android::status_t;
 using android::statusToString;
 using android::base::unique_fd;
 
-extern "C" {
+static std::unordered_map<RpcServerHandle, android::sp<RpcServer>> sInstances;
+static android::RpcMutex sInstancesLock;
 
-void RunRpcServer(android::sp<RpcServer>& server, AIBinder* service,
-                  void (*readyCallback)(void* param), void* param) {
-    server->setRootObject(AIBinder_toPlatformBinder(service));
-
-    if (readyCallback) readyCallback(param);
-    server->join();
-
-    // Shutdown any open sessions since server failed.
-    (void)server->shutdown();
+static android::sp<RpcServer> getRpcServer(RpcServerHandle handle) {
+    return android::sp<RpcServer>::fromExisting(reinterpret_cast<RpcServer*>(handle));
 }
+
+static RpcServerHandle startRpcServer(android::sp<RpcServer> server, AIBinder* service) {
+    server->setRootObject(AIBinder_toPlatformBinder(service));
+    auto handle = reinterpret_cast<RpcServerHandle>(server.get());
+    {
+        android::RpcMutexLockGuard _l(sInstancesLock);
+        auto success = sInstances.insert({handle, std::move(server)});
+        LOG_ALWAYS_FATAL_IF(!success.second, "RpcServer instance already exists");
+    }
+    return handle;
+}
+
+extern "C" {
 
 bool RunVsockRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* context),
                                   void* factoryContext, unsigned int port) {
@@ -64,20 +75,14 @@ bool RunVsockRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* c
     return true;
 }
 
-bool RunVsockRpcServerCallback(AIBinder* service, unsigned int port,
-                               void (*readyCallback)(void* param), void* param) {
+RpcServerHandle RunVsockRpcServer(AIBinder* service, unsigned int port) {
     auto server = RpcServer::make();
     if (status_t status = server->setupVsockServer(port); status != OK) {
         LOG(ERROR) << "Failed to set up vsock server with port " << port
                    << " error: " << statusToString(status).c_str();
-        return false;
+        return RPC_SERVER_HANDLE_INVALID;
     }
-    RunRpcServer(server, service, readyCallback, param);
-    return true;
-}
-
-bool RunVsockRpcServer(AIBinder* service, unsigned int port) {
-    return RunVsockRpcServerCallback(service, port, nullptr, nullptr);
+    return startRpcServer(std::move(server), service);
 }
 
 AIBinder* VsockRpcClient(unsigned int cid, unsigned int port) {
@@ -90,17 +95,15 @@ AIBinder* VsockRpcClient(unsigned int cid, unsigned int port) {
     return AIBinder_fromPlatformBinder(session->getRootObject());
 }
 
-bool RunInitUnixDomainRpcServer(AIBinder* service, const char* name,
-                                void (*readyCallback)(void* param), void* param) {
+RpcServerHandle RunInitUnixDomainRpcServer(AIBinder* service, const char* name) {
     auto server = RpcServer::make();
     auto fd = unique_fd(android_get_control_socket(name));
     if (status_t status = server->setupRawSocketServer(std::move(fd)); status != OK) {
         LOG(ERROR) << "Failed to set up Unix Domain RPC server with name " << name
                    << " error: " << statusToString(status).c_str();
-        return false;
+        return RPC_SERVER_HANDLE_INVALID;
     }
-    RunRpcServer(server, service, readyCallback, param);
-    return true;
+    return startRpcServer(std::move(server), service);
 }
 
 AIBinder* UnixDomainRpcClient(const char* name) {
@@ -123,5 +126,19 @@ AIBinder* RpcPreconnectedClient(int (*requestFd)(void* param), void* param) {
         return nullptr;
     }
     return AIBinder_fromPlatformBinder(session->getRootObject());
+}
+
+void JoinRpcServer(RpcServerHandle handle) {
+    getRpcServer(handle)->join();
+}
+
+void ShutdownRpcServer(RpcServerHandle handle) {
+    getRpcServer(handle)->shutdown();
+    {
+        android::RpcMutexLockGuard _l(sInstancesLock);
+        auto removed = sInstances.erase(handle);
+        LOG_ALWAYS_FATAL_IF(removed < 1, "RpcServer instance not found");
+        LOG_ALWAYS_FATAL_IF(removed > 1, "Multiple RpcServer instance with the same handle");
+    }
 }
 }
