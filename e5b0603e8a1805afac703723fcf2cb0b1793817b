@@ -68,6 +68,30 @@
       },
       "revId": "e5b0603e8a1805afac703723fcf2cb0b1793817b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4ec8412_434401e0",
+        "filename": "services/sensorservice/aidl/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-16T19:06:50Z",
+      "side": 1,
+      "message": "That\u0027s pretty inconvenient since many libs don\u0027t have static versions.\n\nWhy should all fuzzer deps be static?",
+      "parentUuid": "f038e5f5_ff44ecd5",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "e5b0603e8a1805afac703723fcf2cb0b1793817b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
