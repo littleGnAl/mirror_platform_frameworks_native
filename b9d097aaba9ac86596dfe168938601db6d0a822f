@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fce5f4a_57cb5801",
+        "filename": "vulkan/include/vulkan/vk_android_native_buffer.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-11-16T20:39:27Z",
+      "side": 1,
+      "message": "This comment and others made to the badness of vkGetSwapchainGrallocUsageANDROID is being tracked in b/259437988",
+      "parentUuid": "e126a0af_d21081ef",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 13
+      },
+      "revId": "b9d097aaba9ac86596dfe168938601db6d0a822f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87d9dd01_553ae976",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-11-16T00:38:50Z",
       "side": 1,
       "message": "missing `# introduced\u003dUpsideDownCake`",
+      "revId": "b9d097aaba9ac86596dfe168938601db6d0a822f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d761a60a_144302f3",
+        "filename": "vulkan/libvulkan/libvulkan.map.txt",
+        "patchSetId": 22
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-11-16T20:39:27Z",
+      "side": 1,
+      "message": "Should this be `UpsideDownCake` or `34`?",
+      "parentUuid": "87d9dd01_553ae976",
       "revId": "b9d097aaba9ac86596dfe168938601db6d0a822f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
