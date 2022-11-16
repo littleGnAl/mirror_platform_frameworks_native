@@ -67,6 +67,8 @@ rust_bindgen {
     visibility: [":__subpackages__"],
     source_stem: "bindings",
     bindgen_flags: [
+        "--allowlist-var=.*",
+        "--allowlist-function=.*",
         "--blocklist-type",
         "AIBinder",
         "--raw-line",

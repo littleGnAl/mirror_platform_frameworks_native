@@ -17,20 +17,19 @@
 #pragma once
 
 #include <sys/socket.h>
+#include <stdint.h>
 
 extern "C" {
 
 struct AIBinder;
 
-// Starts an RPC server on a given port and a given root IBinder object.
-// This function sets up the server and joins before returning.
-bool RunVsockRpcServer(AIBinder* service, unsigned int port);
+typedef uintptr_t RpcServerHandle;
+
+#define RPC_SERVER_HANDLE_INVALID UINTPTR_MAX;
 
 // Starts an RPC server on a given port and a given root IBinder object.
-// This function sets up the server, calls readyCallback with a given param, and
-// then joins before returning.
-bool RunVsockRpcServerCallback(AIBinder* service, unsigned int port,
-                               void (*readyCallback)(void* param), void* param);
+// This function sets up the server and joins before returning.
+RpcServerHandle RunVsockRpcServer(AIBinder* service, unsigned int port);
 
 // Starts an RPC server on a given port and a given root IBinder factory.
 // RunVsockRpcServerWithFactory acts like RunVsockRpcServerCallback, but instead of
@@ -48,8 +47,7 @@ AIBinder* VsockRpcClient(unsigned int cid, unsigned int port);
 //
 // This function sets up the server, calls readyCallback with a given param, and
 // then joins before returning.
-bool RunInitUnixDomainRpcServer(AIBinder* service, const char* name,
-                                void (*readyCallback)(void* param), void* param);
+RpcServerHandle RunInitUnixDomainRpcServer(AIBinder* service, const char* name);
 
 // Gets the service via the RPC binder with Unix domain socket with the given
 // Unix socket `name`.
@@ -64,4 +62,10 @@ AIBinder* UnixDomainRpcClient(const char* name);
 // param will be passed to requestFd. Callers can use param to pass contexts to
 // the requestFd function.
 AIBinder* RpcPreconnectedClient(int (*requestFd)(void* param), void* param);
+
+// Foobar
+void JoinRpcServer(RpcServerHandle handle);
+
+// Foobar
+void ShutdownRpcServer(RpcServerHandle handle);
 }
