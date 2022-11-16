@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd8fc4a8_4cc4d5a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-16T08:46:13Z",
+      "side": 1,
+      "message": "Added hotlist https://b.corp.google.com/hotlists/4637097.",
+      "revId": "498267ca108800e4e6963871d1d2f035c3005fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
