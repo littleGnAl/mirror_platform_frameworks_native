@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cb7584_29a0a93f",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2804,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-16T01:36:57Z",
+      "side": 1,
+      "message": "maybe add the size change in all of these (might be worth doing it everywhere - I might have missed some of the other logs were missing, but you understood they came from this)",
+      "range": {
+        "startLine": 2804,
+        "startChar": 0,
+        "endLine": 2804,
+        "endChar": 95
+      },
+      "revId": "e5b0603e8a1805afac703723fcf2cb0b1793817b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c33671_9461582a",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2927,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-16T01:36:57Z",
+      "side": 1,
+      "message": "and here etc",
+      "range": {
+        "startLine": 2927,
+        "startChar": 0,
+        "endLine": 2927,
+        "endChar": 80
+      },
+      "revId": "e5b0603e8a1805afac703723fcf2cb0b1793817b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f038e5f5_ff44ecd5",
+        "filename": "services/sensorservice/aidl/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-16T01:36:57Z",
+      "side": 1,
+      "message": "on host, libbinder is static (see defaults). All fuzzer deps should be static. Indirect dependencies to libbinder here are likely causing ODR of the global variable, and that\u0027s why the fuzzer fails (the other copy of Parcel is writing to another variable).",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "e5b0603e8a1805afac703723fcf2cb0b1793817b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
