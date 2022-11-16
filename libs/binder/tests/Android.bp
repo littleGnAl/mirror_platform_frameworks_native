@@ -699,6 +699,7 @@ cc_defaults {
         "libbinder_random_parcel",
         "libcutils",
     ],
+
     target: {
         android: {
             shared_libs: [
@@ -723,5 +724,7 @@ cc_defaults {
             "smoreland@google.com",
             "waghpawan@google.com",
         ],
+        // Adds bugs to hotlist "AIDL fuzzers bugs" on buganizer
+        hotlists: ["4637097"],
     },
 }
