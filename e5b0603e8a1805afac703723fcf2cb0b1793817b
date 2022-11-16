@@ -116,6 +116,30 @@
       },
       "revId": "e5b0603e8a1805afac703723fcf2cb0b1793817b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf10ba5d_71802f45",
+        "filename": "services/sensorservice/aidl/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-16T23:11:19Z",
+      "side": 1,
+      "message": "Looks like this solved the issue.\nNow it sometimes gets stuck in getService(\"sensorservice\"), which I thought would be fixed by the `fakeServiceManager-\u003eaddService(android::String16(\"sensorservice\"),\n                                   android::getRandomBinder(\u0026fdp));`\nStuck here: https://source.corp.google.com/android/frameworks/native/libs/sensor/SensorManager.cpp;rcl\u003d04d2172633176cc11e4f5ca2f98563d9d1ed01cb;l\u003d111",
+      "parentUuid": "9fa52af4_bb04fab3",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "e5b0603e8a1805afac703723fcf2cb0b1793817b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
