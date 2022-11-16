@@ -33,6 +33,29 @@
       "message": "If this passes presubmit I will go ahead and land this today.\nIf another issue comes up I\u0027d rather that be within another CL.",
       "revId": "b9d097aaba9ac86596dfe168938601db6d0a822f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e126a0af_d21081ef",
+        "filename": "vulkan/include/vulkan/vk_android_native_buffer.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-11-16T00:37:51Z",
+      "side": 1,
+      "message": "is there a process to remove? Can this one be officially axed at this point since it\u0027s the most problematic one?",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 13
+      },
+      "revId": "b9d097aaba9ac86596dfe168938601db6d0a822f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
