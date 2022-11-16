@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a567e3d_261a5686",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-16T01:50:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb331ceb_9e732db1",
+      "range": {
+        "startLine": 332,
+        "startChar": 11,
+        "endLine": 332,
+        "endChar": 25
+      },
+      "revId": "70adfdd16a9f67cf6659d250b32d554ee3e40465",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "933344e6_55680de1",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-11-15T23:06:13Z",
       "side": 1,
       "message": "add \u0027bool mEnforceDataAvail\u0027 here instead and add a function to set it - we can call it from the fuzzer",
+      "revId": "70adfdd16a9f67cf6659d250b32d554ee3e40465",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f88c53_4a9565f3",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-16T01:50:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "933344e6_55680de1",
       "revId": "70adfdd16a9f67cf6659d250b32d554ee3e40465",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
