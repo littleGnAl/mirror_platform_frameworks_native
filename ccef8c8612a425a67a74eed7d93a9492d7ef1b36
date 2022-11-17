@@ -46,6 +46,30 @@
       },
       "revId": "ccef8c8612a425a67a74eed7d93a9492d7ef1b36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed49a97_01445962",
+        "filename": "services/sensorservice/aidl/EventQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-17T21:52:34Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be a circular dep w/ fds, but the recommendation would be to use std::weak_ptr one of the directions.",
+      "parentUuid": "10a9e633_5dca60de",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 57
+      },
+      "revId": "ccef8c8612a425a67a74eed7d93a9492d7ef1b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
