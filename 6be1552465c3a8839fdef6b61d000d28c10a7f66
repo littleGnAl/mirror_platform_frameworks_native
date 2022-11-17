@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d351614d_a545ac25",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-17T02:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28e561b4_88713e43",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 37,
+        "endChar": 40
+      },
+      "revId": "6be1552465c3a8839fdef6b61d000d28c10a7f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0346fe3_fd683268",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-17T02:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c293f56_0750dd50",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "6be1552465c3a8839fdef6b61d000d28c10a7f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bff787c_ca2137e2",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-11-17T00:41:38Z",
       "side": 1,
       "message": "same as above",
+      "revId": "6be1552465c3a8839fdef6b61d000d28c10a7f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "740d30db_58c4ec79",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-17T02:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bff787c_ca2137e2",
       "revId": "6be1552465c3a8839fdef6b61d000d28c10a7f66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
