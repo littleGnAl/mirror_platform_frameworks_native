@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbea290_149530e4",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-11-17T20:27:49Z",
+      "side": 1,
+      "message": "Please check the sType. This is a landmine for the future otherwise.",
+      "revId": "3374af54fa55d047cb8ce98fac2120bf17ffacef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
