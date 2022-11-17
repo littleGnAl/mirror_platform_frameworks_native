@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd3e225a_31b8942e",
+        "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-17T00:34:26Z",
+      "side": 1,
+      "message": "I don\u0027t understand the suggestion. That is done in libfakeservicemanager:https://source.corp.google.com/android/frameworks/native/libs/fakeservicemanager/Android.bp;rcl\u003df2437723ba3e223405f3dc2c0e3f6c5a3bfcc2c1;l\u003d31",
+      "parentUuid": "0a013430_a2962e03",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "cf5c3436ca745c73d6b32187e4834de281bc6bf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56e50a57_b5ef89c2",
         "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
         "patchSetId": 2
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1befaac6_63794f80",
+        "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-17T00:34:26Z",
+      "side": 1,
+      "message": "Ok, but there is no possible error: https://source.corp.google.com/android/frameworks/native/libs/fakeservicemanager/ServiceManager.cpp;rcl\u003df2437723ba3e223405f3dc2c0e3f6c5a3bfcc2c1;l\u003d36",
+      "parentUuid": "56e50a57_b5ef89c2",
+      "range": {
+        "startLine": 35,
+        "startChar": 24,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "cf5c3436ca745c73d6b32187e4834de281bc6bf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf9a8a82_00f4b2f3",
         "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
         "patchSetId": 2
@@ -60,6 +108,24 @@
       "writtenOn": "2022-11-16T23:53:06Z",
       "side": 1,
       "message": "we\u0027ll also need to clear the fakeServiceManager state here or reset it - feel free to split a bug for this",
+      "revId": "cf5c3436ca745c73d6b32187e4834de281bc6bf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0704444a_e6616e53",
+        "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-17T00:34:26Z",
+      "side": 1,
+      "message": "fakeServiceManager overwrites services in addService(): https://source.corp.google.com/android/frameworks/native/libs/fakeservicemanager/ServiceManager.cpp;rcl\u003df2437723ba3e223405f3dc2c0e3f6c5a3bfcc2c1;l\u003d36. \nDo we need to clear something else?",
+      "parentUuid": "cf9a8a82_00f4b2f3",
       "revId": "cf5c3436ca745c73d6b32187e4834de281bc6bf3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
