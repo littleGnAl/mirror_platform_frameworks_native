@@ -64,6 +64,9 @@ static const nsecs_t RESAMPLE_MAX_DELTA = 20 * NANOS_PER_MS;
 // far into the future.  This time is further bounded by 50% of the last time delta.
 static const nsecs_t RESAMPLE_MAX_PREDICTION = 8 * NANOS_PER_MS;
 
+//The number of samples used to calculate the resample latency
+static const size_t LATENCY_SAMPLE_NUMBER_MAX = 2;
+
 /**
  * System property for enabling / disabling touch resampling.
  * Resampling extrapolates / interpolates the reported touch event coordinates to better
@@ -786,6 +789,11 @@ status_t InputConsumer::consume(InputEventFactoryInterface* factory, bool consum
 
             case InputMessage::Type::MOTION: {
                 ssize_t batchIndex = findBatch(mMsg.body.motion.deviceId, mMsg.body.motion.source);
+                if (mLatencySampleNumber < LATENCY_SAMPLE_NUMBER_MAX) {
+                    nsecs_t latency =
+                            systemTime(SYSTEM_TIME_MONOTONIC) - mMsg.body.motion.eventTime;
+                    addLatency(latency);
+                }
                 if (batchIndex >= 0) {
                     Batch& batch = mBatches[batchIndex];
                     if (canAddSample(batch, &mMsg)) {
@@ -918,7 +926,7 @@ status_t InputConsumer::consumeBatch(InputEventFactoryInterface* factory,
 
         nsecs_t sampleTime = frameTime;
         if (mResampleTouch) {
-            sampleTime -= RESAMPLE_LATENCY;
+            sampleTime -= getResampleLatency();
         }
         ssize_t split = findSampleNoLaterThan(batch, sampleTime);
         if (split < 0) {
@@ -1439,6 +1447,20 @@ ssize_t InputConsumer::findSampleNoLaterThan(const Batch& batch, nsecs_t time) {
         index += 1;
     }
     return ssize_t(index) - 1;
+}
+
+nsecs_t InputConsumer::getResampleLatency() {
+    if (mLatencySampleNumber < LATENCY_SAMPLE_NUMBER_MAX || mResampleLatency < 0 ||
+        mResampleLatency > RESAMPLE_LATENCY) {
+        return RESAMPLE_LATENCY;
+    }
+    return (nsecs_t)mResampleLatency;
+}
+
+void InputConsumer::addLatency(nsecs_t latency) {
+    mLatencySampleNumber++;
+    // To avoid overflow
+    mResampleLatency += (latency - mResampleLatency) / (double)mLatencySampleNumber;
 }
 
 std::string InputConsumer::dump() const {

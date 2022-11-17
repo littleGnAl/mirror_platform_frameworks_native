@@ -639,6 +639,10 @@ private:
     // will be raised for that connection, and no further events will be posted to that channel.
     std::unordered_map<uint32_t /*seq*/, nsecs_t /*consumeTime*/> mConsumeTimes;
 
+    //mResampleLatency is calculated by averaging the latency of each sample
+    double mResampleLatency = 0;
+    size_t mLatencySampleNumber = 0;
+    
     status_t consumeBatch(InputEventFactoryInterface* factory,
             nsecs_t frameTime, uint32_t* outSeq, InputEvent** outEvent);
     status_t consumeSamples(InputEventFactoryInterface* factory,
