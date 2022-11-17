@@ -188,6 +188,30 @@
       },
       "revId": "e5b0603e8a1805afac703723fcf2cb0b1793817b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f57fb23b_6c9ce0fc",
+        "filename": "services/sensorservice/aidl/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-17T01:10:10Z",
+      "side": 1,
+      "message": "nice 😊",
+      "parentUuid": "5aa3c194_71d6c27f",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "e5b0603e8a1805afac703723fcf2cb0b1793817b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
