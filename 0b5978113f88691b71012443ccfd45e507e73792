@@ -39,6 +39,30 @@
       },
       "revId": "0b5978113f88691b71012443ccfd45e507e73792",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f57174c_530504f4",
+        "filename": "services/sensorservice/aidl/utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-17T23:54:06Z",
+      "side": 1,
+      "message": "I was assuming we keep them equivalent intentionally because we are already doing the same reinterpret_cast from ASensorEvent to sensor_event_t here for HIDL: https://source.corp.google.com/android/frameworks/native/services/sensorservice/hidl/utils.cpp;rcl\u003d952eb69223a0a6c6b4a8668d01f0b1ac8aa87178;l\u003d77\n\nBut I agree it would be better to have a shared conversion from one to the other!\nIs there an existing place that makes sense to add a conversion like that? As far as I can tell, these HIDL/AIDL sensorservices and libsensorndkbridge are the only places that use both of the types.\n\nAlso, WDYT about leaving this here and address it in a follow up CL? Since the HIDL version already does it.",
+      "parentUuid": "f2749e18_578d41ce",
+      "range": {
+        "startLine": 61,
+        "startChar": 35,
+        "endLine": 61,
+        "endChar": 75
+      },
+      "revId": "0b5978113f88691b71012443ccfd45e507e73792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
