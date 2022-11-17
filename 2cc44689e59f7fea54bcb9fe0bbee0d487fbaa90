@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47180817_1d7dc9ad",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 23
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2022-11-17T16:42:07Z",
+      "side": 1,
+      "message": "I feel like this is a good warning here.  If we never intend to check `result`, we should just call this method without assigning its return value.  It makes the code much clearer to a reader, and seem less likely to be a bug that\u0027s missing an error check.",
+      "revId": "2cc44689e59f7fea54bcb9fe0bbee0d487fbaa90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
