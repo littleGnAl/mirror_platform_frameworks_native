@@ -22,6 +22,30 @@
       },
       "revId": "ccef8c8612a425a67a74eed7d93a9492d7ef1b36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a9e633_5dca60de",
+        "filename": "services/sensorservice/aidl/EventQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1074038
+      },
+      "writtenOn": "2022-11-17T21:02:34Z",
+      "side": 1,
+      "message": "Looking at the CL history, ag/2134094 says it\u0027s because a circular dep existed. It doesn\u0027t seem like that has been fixed with this CL. Can you confirm this reference loop doesn\u0027t exist?",
+      "parentUuid": "aee9465e_ed0944a9",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 57
+      },
+      "revId": "ccef8c8612a425a67a74eed7d93a9492d7ef1b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

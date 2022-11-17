@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2749e18_578d41ce",
+        "filename": "services/sensorservice/aidl/utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1074038
+      },
+      "writtenOn": "2022-11-17T21:02:34Z",
+      "side": 1,
+      "message": "We don\u0027t have guarantees in the code that ASensorEvent and sensors_event_t will be equivalent from what I see:\n\nhttp://cs/android/hardware/libhardware/include/hardware/sensors.h;l\u003d375;rcl\u003da64de52ede26b29c133a408909be4fae4748d2df\n\nhttp://cs/android/frameworks/native/include/android/sensor.h;l\u003d610;rcl\u003da64de52ede26b29c133a408909be4fae4748d2df\n\nI see that the goal is to reuse as much of the old HIDL code though so I get that we probably don\u0027t want to modify it to switch ASensorEvent to sensors_event_t. Could we instead have an explicit conversion method between either ASensorEvent-\u003esensors_event_t or ASensorEvent-\u003eEvent to help mitigate this since I don\u0027t think a static_assert would be feasible/enough.",
+      "range": {
+        "startLine": 61,
+        "startChar": 35,
+        "endLine": 61,
+        "endChar": 75
+      },
+      "revId": "0b5978113f88691b71012443ccfd45e507e73792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
