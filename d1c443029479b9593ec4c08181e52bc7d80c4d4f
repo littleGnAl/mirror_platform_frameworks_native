@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c04e26c4_dbc2fc25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2022-11-17T01:36:55Z",
+      "side": 1,
+      "message": "Approved as the internal CL (ag/20427086) has been reviewed.",
+      "revId": "d1c443029479b9593ec4c08181e52bc7d80c4d4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
