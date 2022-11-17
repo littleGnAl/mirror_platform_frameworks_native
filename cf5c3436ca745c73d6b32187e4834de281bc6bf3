@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d0a9bbf_ca1345b9",
+        "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-17T17:06:05Z",
+      "side": 1,
+      "message": "Ah yeah! I agree with that - I wasted some time trying to figure out if that `#include \u003cServiceManager.h\u003e` was the one from fakeservicemanager. I\u0027ll make that change afterwards b/259548383 so this fuzzer isn\u0027t blocked on media fuzzer changes as well.",
+      "parentUuid": "122a3e81_7d271aa0",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "cf5c3436ca745c73d6b32187e4834de281bc6bf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56e50a57_b5ef89c2",
@@ -143,6 +167,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ed96f3_25a85748",
+        "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-17T17:06:05Z",
+      "side": 1,
+      "message": "Sounds good! Would have saved me time. I\u0027ll do it in a followup: b/259549842",
+      "parentUuid": "10341d16_127e2813",
+      "range": {
+        "startLine": 35,
+        "startChar": 24,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "cf5c3436ca745c73d6b32187e4834de281bc6bf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf9a8a82_00f4b2f3",
@@ -192,6 +240,24 @@
       "side": 1,
       "message": "the code being fuzzed might add new services",
       "parentUuid": "0704444a_e6616e53",
+      "revId": "cf5c3436ca745c73d6b32187e4834de281bc6bf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481d87c3_98e0047c",
+        "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-17T17:06:05Z",
+      "side": 1,
+      "message": "Ah that\u0027s fair! I don\u0027t see this one registering anything, so I\u0027ll do that in a follow up. b/259549851",
+      "parentUuid": "fbf888f2_8f943cb3",
       "revId": "cf5c3436ca745c73d6b32187e4834de281bc6bf3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

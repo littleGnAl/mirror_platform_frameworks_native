@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1075af_2b8f081b",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2804,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-17T17:06:05Z",
+      "side": 1,
+      "message": "I think the logs that are already here are good enough when using one copy of the library 😊.",
+      "parentUuid": "55cb7584_29a0a93f",
+      "range": {
+        "startLine": 2804,
+        "startChar": 0,
+        "endLine": 2804,
+        "endChar": 95
+      },
+      "revId": "e5b0603e8a1805afac703723fcf2cb0b1793817b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93c33671_9461582a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-16T01:36:57Z",
       "side": 1,
       "message": "and here etc",
+      "range": {
+        "startLine": 2927,
+        "startChar": 0,
+        "endLine": 2927,
+        "endChar": 80
+      },
+      "revId": "e5b0603e8a1805afac703723fcf2cb0b1793817b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "388f301f_8a7925e7",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2927,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-17T17:06:05Z",
+      "side": 1,
+      "message": "Didn\u0027t need.",
+      "parentUuid": "93c33671_9461582a",
       "range": {
         "startLine": 2927,
         "startChar": 0,
