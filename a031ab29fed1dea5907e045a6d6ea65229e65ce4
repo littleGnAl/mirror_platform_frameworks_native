@@ -33,6 +33,24 @@
       "message": "Can you share more details about when this happens \"so there is a situation where \u0027mCurrentMaxAcquiredBufferCount\u0027 is bigger than  \u0027mMaxAcquiredBuffers\u0027,  \"",
       "revId": "a031ab29fed1dea5907e045a6d6ea65229e65ce4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b6489e_382d5783",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1957007
+      },
+      "writtenOn": "2022-11-17T05:47:18Z",
+      "side": 1,
+      "message": "We added some info in the fuction \"BLASTBufferQueue::releaseBufferCallback()\" to get the config values when we got the issue (as descripted in 258268659) , which as below :\n \nvoid BLASTBufferQueue::releaseBufferCallback(\n        const ReleaseCallbackId\u0026 id, const sp\u003cFence\u003e\u0026 releaseFence,\n        std::optional\u003cuint32_t\u003e currentMaxAcquiredBufferCount) {\n...\nconst auto numPendingBuffersToHold \u003d\n            isEGL ? std::max(0u, mMaxAcquiredBuffers - mCurrentMaxAcquiredBufferCount) : 0;\n    mPendingRelease.emplace_back(ReleasedBuffer{id, releaseFence});\n    \n ALOGD(\"bbq.releaseBufferCallback %s isEGL:%d mMaxAcq:%u currMaxAcq:%u numToHold:%u \",\n            id.to_string().c_str(), isEGL, mMaxAcquiredBuffers,\n            *currentMaxAcquiredBufferCount, numPendingBuffersToHold);\n ...\n }\n \n and then we got the log as below (You also can find these logs in the attached file:logcat.zip from the issuetracker:258268659 or download it by the link:https://drive.google.com/drive/folders/1152abHSxsBanrucPPH8mawQiVoTtw5f_?usp\u003dsharing):\n 11-09 05:56:52.109  1701  2029 D BLASTBufferQueue: bbq.releaseBufferCallback bufferId:7305739370496 framenumber:1 isEGL:1 mMaxAcq:1 currMaxAcq:3 numToHold:4294967294 \n11-09 05:56:52.136  1701  2029 D BLASTBufferQueue: bbq.releaseBufferCallback bufferId:7305739370500 framenumber:1 isEGL:1 mMaxAcq:1 currMaxAcq:3 numToHold:4294967294 \n11-09 05:56:52.177  1701  1834 D BLASTBufferQueue: bbq.releaseBufferCallback bufferId:7305739370509 framenumber:1 isEGL:1 mMaxAcq:1 currMaxAcq:3 numToHold:4294967294 \n\n...\n\nIt is unacceptable to have crash loop here, even if there may be some problems with the display-related configurations.",
+      "parentUuid": "a1c2c6c8_e2688879",
+      "revId": "a031ab29fed1dea5907e045a6d6ea65229e65ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
