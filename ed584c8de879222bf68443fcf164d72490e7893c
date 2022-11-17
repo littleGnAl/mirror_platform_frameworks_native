@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "268cd134_4c282588",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-17T00:33:49Z",
+      "side": 1,
+      "message": "we usually use:\n\n     struct ARpcServer;\n\n     ... ARpcServer_setupVsock(...);\n     ... ARpcServer_shutdown(...);\n\nThe handle is okay, but it\u0027s not type safe. WDYT going this way?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "ed584c8de879222bf68443fcf164d72490e7893c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
