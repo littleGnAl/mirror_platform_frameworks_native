@@ -81,9 +81,12 @@ public:
     [[nodiscard]] status_t setupRawSocketServer(base::unique_fd socket_fd);
 
     /**
-     * Creates an RPC server at the current port.
+     * Creates an RPC server, listening for connections from the given CID
+     * and the given port number.
+     *
+     * Set |cid| to VMADDR_CID_ANY to allow connections from any CID.
      */
-    [[nodiscard]] status_t setupVsockServer(unsigned int port);
+    [[nodiscard]] status_t setupVsockServer(unsigned int cid, unsigned int port);
 
     /**
      * Creates an RPC server at the current port using IPv4.
