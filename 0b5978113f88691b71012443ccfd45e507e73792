@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8068838_637abe75",
+        "filename": "services/sensorservice/aidl/EventQueue.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-18T19:23:17Z",
+      "side": 1,
+      "message": "Oops! Just saw this comment after passing presubmits on the whole topic! I\u0027ll change the comment real quick in a followup so I can have all theses CLs submitted. \naosp/2308642",
+      "parentUuid": "e656f799_bccac494",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 8
+      },
+      "revId": "0b5978113f88691b71012443ccfd45e507e73792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2749e18_578d41ce",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Yeah looks like that was last modified in 2017 and we haven\u0027t maintained that interface well so I don\u0027t think it\u0027s the best example to follow. Addressing this in a followup is fine though.",
       "parentUuid": "2f57174c_530504f4",
+      "range": {
+        "startLine": 61,
+        "startChar": 35,
+        "endLine": 61,
+        "endChar": 75
+      },
+      "revId": "0b5978113f88691b71012443ccfd45e507e73792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a106d6_5d1e3fd8",
+        "filename": "services/sensorservice/aidl/utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-18T19:23:17Z",
+      "side": 1,
+      "message": "b/259711109",
+      "parentUuid": "3807bc6c_14994596",
       "range": {
         "startLine": 61,
         "startChar": 35,

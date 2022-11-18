@@ -118,6 +118,30 @@
       },
       "revId": "ccef8c8612a425a67a74eed7d93a9492d7ef1b36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb69322_0533d610",
+        "filename": "services/sensorservice/aidl/EventQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-18T19:23:17Z",
+      "side": 1,
+      "message": "There is no onLastStrongRef to override here with AIDL which is why I put it in the dtor. So any future fix(if required) will have to come from managing the strong pointers differently. b/259711508",
+      "parentUuid": "61c11636_ca19cd2c",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 57
+      },
+      "revId": "ccef8c8612a425a67a74eed7d93a9492d7ef1b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
