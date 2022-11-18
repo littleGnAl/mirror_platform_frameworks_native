@@ -66,7 +66,7 @@ EventQueue::EventQueue(std::shared_ptr<IEventQueueCallback> callback, sp<::andro
                    new EventQueueLooperCallback(internalQueue, callback), nullptr);
 }
 
-// FIXME why was this on onLastStrongRef instead of dtor?
+// TODO(b/259711508) need to verify this is ok to be in the destructor
 EventQueue::~EventQueue() {
     mLooper->removeFd(mInternalQueue->getFd());
 }
