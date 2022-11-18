@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3136097_cff478b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074038
+      },
+      "writtenOn": "2022-11-18T19:45:57Z",
+      "side": 1,
+      "message": "Wow this is really easy to set up...very neat!",
+      "revId": "66175b14fcc04b5c5903e0a64673bd1bfc417f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607a62c7_1b097b22",
+        "filename": "services/sensorservice/aidl/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074038
+      },
+      "writtenOn": "2022-11-18T19:45:57Z",
+      "side": 1,
+      "message": "Can you add our team alias here -\u003e android-sensors@",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "66175b14fcc04b5c5903e0a64673bd1bfc417f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ede2b36_0335d4a9",
+        "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1074038
+      },
+      "writtenOn": "2022-11-18T19:45:57Z",
+      "side": 1,
+      "message": "*SensorManager",
+      "range": {
+        "startLine": 39,
+        "startChar": 64,
+        "endLine": 39,
+        "endChar": 77
+      },
+      "revId": "66175b14fcc04b5c5903e0a64673bd1bfc417f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
