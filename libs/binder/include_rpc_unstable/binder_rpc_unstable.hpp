@@ -27,7 +27,7 @@ struct ARpcServer;
 // Starts an RPC server on a given port and a given root IBinder object.
 // Returns an opaque handle to the running server instance, or null if the server
 // could not be started.
-ARpcServer* ARpcServer_setupVsock(AIBinder* service, unsigned int port);
+ARpcServer* ARpcServer_setupVsock(AIBinder* service, unsigned int cid, unsigned int port);
 
 // Starts a Unix domain RPC server with a given init-managed Unix domain `name`
 // and a given root IBinder object.

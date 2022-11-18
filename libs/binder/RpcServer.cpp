@@ -70,11 +70,8 @@ status_t RpcServer::setupUnixDomainServer(const char* path) {
     return setupSocketServer(UnixSocketAddress(path));
 }
 
-status_t RpcServer::setupVsockServer(unsigned int port) {
-    // realizing value w/ this type at compile time to avoid ubsan abort
-    constexpr unsigned int kAnyCid = VMADDR_CID_ANY;
-
-    return setupSocketServer(VsockSocketAddress(kAnyCid, port));
+status_t RpcServer::setupVsockServer(unsigned int cid, unsigned int port) {
+    return setupSocketServer(VsockSocketAddress(cid, port));
 }
 
 status_t RpcServer::setupInetServer(const char* address, unsigned int port,
