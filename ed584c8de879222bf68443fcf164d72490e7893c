@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eed5181_655faeb2",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-11-18T10:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fccc320c_091d488a",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "ed584c8de879222bf68443fcf164d72490e7893c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d395f0c3_acbe7d7e",
@@ -85,6 +109,30 @@
       "writtenOn": "2022-11-17T08:55:21Z",
       "side": 1,
       "message": "Maybe `ARpcServer_newWithVsock` to emphasize that this method will return a new RpcServer?",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "ed584c8de879222bf68443fcf164d72490e7893c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a078ddd9_9536e56e",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-11-18T10:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d395f0c3_acbe7d7e",
       "range": {
         "startLine": 33,
         "startChar": 16,
@@ -118,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e21864c5_a35fa9bc",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-11-18T10:29:29Z",
+      "side": 1,
+      "message": "It was there to hold the StrongPointer. I\u0027ve replaced it now with just incrementing the refcount directly.",
+      "parentUuid": "35c68544_3e072a1e",
+      "range": {
+        "startLine": 36,
+        "startChar": 67,
+        "endLine": 36,
+        "endChar": 77
+      },
+      "revId": "ed584c8de879222bf68443fcf164d72490e7893c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c449bb81_eb0b5265",
@@ -131,6 +203,30 @@
       "writtenOn": "2022-11-17T08:55:21Z",
       "side": 1,
       "message": "Sorry I made a change here recently. The git doesn\u0027t show conflict, but we need to rebase otherwise the code won\u0027t compile.",
+      "range": {
+        "startLine": 100,
+        "startChar": 57,
+        "endLine": 100,
+        "endChar": 58
+      },
+      "revId": "ed584c8de879222bf68443fcf164d72490e7893c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7560742_35f65379",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-11-18T10:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c449bb81_eb0b5265",
       "range": {
         "startLine": 100,
         "startChar": 57,
@@ -164,6 +260,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9083ac0_e8097d37",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-11-18T10:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06835916_a7374649",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 20
+      },
+      "revId": "ed584c8de879222bf68443fcf164d72490e7893c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8222845c_823c3d01",
@@ -177,6 +297,30 @@
       "writtenOn": "2022-11-17T08:55:21Z",
       "side": 1,
       "message": "This doc also needs to be updated.",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 87
+      },
+      "revId": "ed584c8de879222bf68443fcf164d72490e7893c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "657fe161_2270c51d",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-11-18T10:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8222845c_823c3d01",
       "range": {
         "startLine": 66,
         "startChar": 8,
