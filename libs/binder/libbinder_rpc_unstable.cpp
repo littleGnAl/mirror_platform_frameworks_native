@@ -56,7 +56,7 @@ extern "C" {
 bool RunVsockRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* context),
                                   void* factoryContext, unsigned int port) {
     auto server = RpcServer::make();
-    if (status_t status = server->setupVsockServer(port); status != OK) {
+    if (status_t status = server->setupVsockServer(VMADDR_CID_ANY, port); status != OK) {
         LOG(ERROR) << "Failed to set up vsock server with port " << port
                    << " error: " << statusToString(status).c_str();
         return false;
@@ -75,9 +75,9 @@ bool RunVsockRpcServerWithFactory(AIBinder* (*factory)(unsigned int cid, void* c
     return true;
 }
 
-ARpcServer* ARpcServer_newVsock(AIBinder* service, unsigned int port) {
+ARpcServer* ARpcServer_newVsock(AIBinder* service, unsigned int cid, unsigned int port) {
     auto server = RpcServer::make();
-    if (status_t status = server->setupVsockServer(port); status != OK) {
+    if (status_t status = server->setupVsockServer(cid, port); status != OK) {
         LOG(ERROR) << "Failed to set up vsock server with port " << port
                    << " error: " << statusToString(status).c_str();
         return nullptr;
