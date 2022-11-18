@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aba6860_1a2cb003",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-18T00:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e478932d_b26298dc",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 42
+      },
+      "revId": "c6e471e71e1929950946fed46c3c1dd8e954ce23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af313524_9ce4a10f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-18T00:40:52Z",
       "side": 1,
       "message": "fine to abort if it\u0027s null - a lot else would fail (Android will do this for C++ allocations)",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "c6e471e71e1929950946fed46c3c1dd8e954ce23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a5240b7_95141f65",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-11-18T00:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af313524_9ce4a10f",
       "range": {
         "startLine": 37,
         "startChar": 0,
