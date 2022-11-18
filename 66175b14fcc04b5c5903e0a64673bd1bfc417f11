@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c185e355_1686345d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-18T21:19:14Z",
+      "side": 1,
+      "message": "Yeah @waghpawan@google.com and @smoreland@google.com have been hard at work to make this easy to set up!",
+      "parentUuid": "d3136097_cff478b4",
+      "revId": "66175b14fcc04b5c5903e0a64673bd1bfc417f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "607a62c7_1b097b22",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a505f4fb_9fa19397",
+        "filename": "services/sensorservice/aidl/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-18T21:19:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "607a62c7_1b097b22",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 10
+      },
+      "revId": "66175b14fcc04b5c5903e0a64673bd1bfc417f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ede2b36_0335d4a9",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-11-18T19:45:57Z",
       "side": 1,
       "message": "*SensorManager",
+      "range": {
+        "startLine": 39,
+        "startChar": 64,
+        "endLine": 39,
+        "endChar": 77
+      },
+      "revId": "66175b14fcc04b5c5903e0a64673bd1bfc417f11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14465c11_705e06c9",
+        "filename": "services/sensorservice/aidl/fuzzer/fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-18T21:19:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ede2b36_0335d4a9",
       "range": {
         "startLine": 39,
         "startChar": 64,
