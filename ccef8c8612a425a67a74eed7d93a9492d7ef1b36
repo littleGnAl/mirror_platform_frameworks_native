@@ -94,6 +94,30 @@
       },
       "revId": "ccef8c8612a425a67a74eed7d93a9492d7ef1b36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c11636_ca19cd2c",
+        "filename": "services/sensorservice/aidl/EventQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1074038
+      },
+      "writtenOn": "2022-11-18T16:00:59Z",
+      "side": 1,
+      "message": "Ack, as long as we intend to come back to it. I would suggest we retain the old logic unless it\u0027s no longer compatible in this new world and evaluate changing to the destructor when you\u0027ve migrated clients over and can validate it works, but I won\u0027t hold you to that if you have reasons that require changing this now.",
+      "parentUuid": "04401848_4a44bad5",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 57
+      },
+      "revId": "ccef8c8612a425a67a74eed7d93a9492d7ef1b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
