@@ -18,6 +18,7 @@
 #include <fuzzbinder/random_parcel.h>
 
 #include <android-base/logging.h>
+#include <binder/IPCThreadState.h>
 #include <binder/ProcessState.h>
 
 namespace android {
@@ -29,6 +30,14 @@ void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider) {
             .extraBinders = {binder},
             .extraFds = {},
     };
+
+    if (provider.remaining_bytes() > 0 && provider.ConsumeBool()) {
+        auto threadState = IPCThreadState::self();
+        // set calling uid
+        if (threadState != nullptr) {
+            threadState->restoreCallingIdentity(provider.ConsumeIntegral<int64_t>());
+        }
+    }
 
     while (provider.remaining_bytes() > 0) {
         uint32_t code = provider.ConsumeIntegral<uint32_t>();
