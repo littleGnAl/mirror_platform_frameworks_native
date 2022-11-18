@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f08e9133_4c533113",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-18T01:00:18Z",
+      "side": 1,
+      "message": "It should already abort underneath (I think) - but also - below code will fail as well w/o it. You can do \u0027IPCThreadState::self()-\u003erestoreCalling...\u0027",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 52
+      },
+      "revId": "c3c810bf7d851e3e776d2ba9176bdfce9734403e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
