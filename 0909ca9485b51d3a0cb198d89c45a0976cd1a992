@@ -16,6 +16,23 @@
       "message": "Added testcase for multidisplay.",
       "revId": "0909ca9485b51d3a0cb198d89c45a0976cd1a992",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0d0bc6b_c46f0dc8",
+        "filename": "services/inputflinger/tests/InputDispatcher_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2181,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-11-18T16:27:39Z",
+      "side": 1,
+      "message": "This issue was that the `setInputWindows` call was resetting the hover window handle, so it would result in HOVER_ENTER being generated again.\n\nTo test that, can we call `setInputWindows` again here, and inject another HOVER_MOVE to make sure that we only get HOVER_MOVE on the second window without getting HOVER_ENTER again? \n\nThanks!",
+      "revId": "0909ca9485b51d3a0cb198d89c45a0976cd1a992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
