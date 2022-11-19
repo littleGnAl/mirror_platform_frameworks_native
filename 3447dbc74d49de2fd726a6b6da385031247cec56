@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbcda48e_4da3bce9",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-19T00:42:18Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "42a36a2a_d143d023",
+      "range": {
+        "startLine": 271,
+        "startChar": 59,
+        "endLine": 271,
+        "endChar": 66
+      },
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b78c7f52_b556d5bb",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "the servicemanager logic is tested elsewhere, but we could add one",
       "parentUuid": "b78c7f52_b556d5bb",
+      "range": {
+        "startLine": 283,
+        "startChar": 16,
+        "endLine": 283,
+        "endChar": 55
+      },
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6883ba29_920ff77f",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-19T00:42:18Z",
+      "side": 1,
+      "message": "Ack. I don\u0027t mind leaving it up to the main servicemanager tests. This test case makes sure all the details are filled in.",
+      "parentUuid": "95f36f74_49627f2a",
       "range": {
         "startLine": 283,
         "startChar": 16,
