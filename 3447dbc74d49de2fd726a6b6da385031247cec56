@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42a36a2a_d143d023",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-19T00:13:24Z",
+      "side": 1,
+      "message": "It\u0027s for concision. The risk with c-style casts is that you accidentally do a const cast in addition to reinterpret cast. void* is already the worst type :) so about anything else - the C++ cast won\u0027t help.",
+      "parentUuid": "b2a57e52_a09cf2a7",
+      "range": {
+        "startLine": 271,
+        "startChar": 59,
+        "endLine": 271,
+        "endChar": 66
+      },
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b78c7f52_b556d5bb",
         "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-18T23:36:46Z",
       "side": 1,
       "message": "do we want to have a test where we check the values, then add a service with a unique name, then sleep, then check it again?",
+      "range": {
+        "startLine": 283,
+        "startChar": 16,
+        "endLine": 283,
+        "endChar": 55
+      },
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f36f74_49627f2a",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-19T00:13:24Z",
+      "side": 1,
+      "message": "the servicemanager logic is tested elsewhere, but we could add one",
+      "parentUuid": "b78c7f52_b556d5bb",
       "range": {
         "startLine": 283,
         "startChar": 16,
