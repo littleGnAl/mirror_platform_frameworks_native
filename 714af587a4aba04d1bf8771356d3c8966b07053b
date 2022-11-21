@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af139fc_b27872c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-21T10:51:42Z",
+      "side": 1,
+      "message": "Hi David,\n\nSorry for the late reply. I was OOO last Friday.",
+      "revId": "714af587a4aba04d1bf8771356d3c8966b07053b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c4d308_19de035a",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-21T10:51:42Z",
+      "side": 1,
+      "message": "What about making this method part of ARpcServer and call it `asRpcServer()`? Then we don\u0027t need any param for it.",
+      "range": {
+        "startLine": 38,
+        "startChar": 21,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "714af587a4aba04d1bf8771356d3c8966b07053b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6121d241_ed80b3c9",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-21T10:51:42Z",
+      "side": 1,
+      "message": "Can we cast two unrelated types like this? It doesn\u0027t look very safe tbh. Otherwise, such usage is not allowed by many cpp linters[1].\n\n[1] https://rules.sonarsource.com/cpp/RSPEC-5275",
+      "range": {
+        "startLine": 39,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "714af587a4aba04d1bf8771356d3c8966b07053b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a4c73b_04bd2079",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-21T10:51:42Z",
+      "side": 1,
+      "message": "Can this also be part of ARpcServer like `free()` or part of its destructor?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "714af587a4aba04d1bf8771356d3c8966b07053b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
