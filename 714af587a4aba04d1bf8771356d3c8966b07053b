@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2a47bd0_e25412da",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-11-21T11:40:00Z",
+      "side": 1,
+      "message": "Eh, I would prefer not to do that. `ARpcServer` is not a real C++ object. It is never allocated or destructed, it\u0027s only an opaque type we expose to C. What you\u0027re suggestion I think would work but it\u0027s very subtle - eg. need to make sure that C++ doesn\u0027t expect a vtable entry for that function, because there isn\u0027t a vtable.",
+      "parentUuid": "03c4d308_19de035a",
+      "range": {
+        "startLine": 38,
+        "startChar": 21,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "714af587a4aba04d1bf8771356d3c8966b07053b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6121d241_ed80b3c9",
         "filename": "libs/binder/libbinder_rpc_unstable.cpp",
         "patchSetId": 13
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7744c29_d4fc3ce6",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-11-21T11:40:00Z",
+      "side": 1,
+      "message": "Well yeah, it\u0027s not and that\u0027s expected. We\u0027re bridging C++ and Rust via C, so we are going to lose some safety guarantees around that boundary.\n\nTry to look at is the big picture: `struct ARpcServer*` is a pointer of an opaque type, it\u0027s only purpose is to be a token that we give to C/Rust such that we can find the original `sp\u003cRpcServer\u003e` object when we get it back. The `reinterpret_cast` is just a convenient way of implementing that token - that way we can find the original object in `O(1)`.\n\nThe token is exposed to C (unsafe, explicit malloc/free) and immediately wrapped in a Rust object (safe, automatic malloc/free).",
+      "parentUuid": "6121d241_ed80b3c9",
+      "range": {
+        "startLine": 39,
+        "startChar": 15,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "714af587a4aba04d1bf8771356d3c8966b07053b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "82a4c73b_04bd2079",
         "filename": "libs/binder/libbinder_rpc_unstable.cpp",
         "patchSetId": 13
@@ -77,6 +125,30 @@
       "writtenOn": "2022-11-21T10:51:42Z",
       "side": 1,
       "message": "Can this also be part of ARpcServer like `free()` or part of its destructor?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "714af587a4aba04d1bf8771356d3c8966b07053b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3645046_3e3e1d2f",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-11-21T11:40:00Z",
+      "side": 1,
+      "message": "See the comment on `toRpcServer` but with the caveat that this wouldn\u0027t work - ARpcServer is never destructed (or allocated in the first place).",
+      "parentUuid": "82a4c73b_04bd2079",
       "range": {
         "startLine": 49,
         "startChar": 0,
