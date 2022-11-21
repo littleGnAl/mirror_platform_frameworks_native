@@ -111,6 +111,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f4fdc04_9d06afad",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-21T20:49:10Z",
+      "side": 1,
+      "message": "the lock excludes this possibility - this method will block until it finishes",
+      "parentUuid": "64976c82_4510d01f",
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1fc61bc_9cf8e0e4",
         "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
         "patchSetId": 1
@@ -122,6 +140,24 @@
       "writtenOn": "2022-11-21T20:41:52Z",
       "side": 1,
       "message": "nit, _unregister? The \"not receiving callbacks\" part of this behavior seems a bit more significant than the \"releases the token\" part.\n\nIs `NotificationRegistration` going to have other behaviors or is it just a type-safe token? `ASericeManager_unregisterForServiceNotifications(...)` would otherwise make a bit more sense as the corresponding pair to `register`.",
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efda8136_2baad71a",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-21T20:49:10Z",
+      "side": 1,
+      "message": "The delete behavior isn\u0027t specific to servicemanager, but rather it\u0027s internal to the notification registration object. I don\u0027t believe this represents a risk.\n\nThough - one implication of this is that NotificationRegistration objects aren\u0027t reusable. If you want me to switch so they are, I think that\u0027s cool. However, this seemed like the simplest approach, and the most generic (implicit unregister on delete). If we used unregister, then we\u0027d still want another delete method. WDYT?",
+      "parentUuid": "b1fc61bc_9cf8e0e4",
       "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
