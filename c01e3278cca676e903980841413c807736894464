@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72485dec_b611b9bd",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-21T20:41:08Z",
+      "side": 1,
+      "message": "recommend `[[nodiscard]] ARpcServer*`",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "c01e3278cca676e903980841413c807736894464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36a1edad_652f3070",
         "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
         "patchSetId": 14
