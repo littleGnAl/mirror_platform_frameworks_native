@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a1edad_652f3070",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-21T20:40:18Z",
+      "side": 1,
+      "message": "nit - might document we need to shutdown first - otherwise it may run indefinitely in the background (or maybe we could do this inside of the API).\n\nA leak is a real risk here - each rpc session will point back into this",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 41
+      },
+      "revId": "c01e3278cca676e903980841413c807736894464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
