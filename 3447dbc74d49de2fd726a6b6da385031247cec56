@@ -129,6 +129,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4682624b_9639a591",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-11-21T22:07:45Z",
+      "side": 1,
+      "message": "Right, just add that to the docs here. Something like:\n\n\"After this method is called, the callback is guaranteed to no longer be invoked. This will block until any in-progress _onRegister callbacks have completed. It is therefore safe to immediately destroy the `void* cookie` that was registered when this method returns\"",
+      "parentUuid": "7f4fdc04_9d06afad",
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1fc61bc_9cf8e0e4",
         "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
         "patchSetId": 1
@@ -158,6 +176,24 @@
       "side": 1,
       "message": "The delete behavior isn\u0027t specific to servicemanager, but rather it\u0027s internal to the notification registration object. I don\u0027t believe this represents a risk.\n\nThough - one implication of this is that NotificationRegistration objects aren\u0027t reusable. If you want me to switch so they are, I think that\u0027s cool. However, this seemed like the simplest approach, and the most generic (implicit unregister on delete). If we used unregister, then we\u0027d still want another delete method. WDYT?",
       "parentUuid": "b1fc61bc_9cf8e0e4",
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c2acbf_d1043067",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-11-21T22:07:45Z",
+      "side": 1,
+      "message": "I wasn\u0027t suggesting changing behavior, just tweaking the method name. Eg, `AServiceManager_NotificationRegistration_unregisterAndDelete` or `AServiceManager_unregisterForServiceNotifications` w/ a comment that it also invalidates the `ASM_NR*` parameter.\n\nOtherwise `AServiceManager_NotificationRegistration_delete` suggests to me that all it does is delete the object when that\u0027s not the case here.",
+      "parentUuid": "efda8136_2baad71a",
       "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
