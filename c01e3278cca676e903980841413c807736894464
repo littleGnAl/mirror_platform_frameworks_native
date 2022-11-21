@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "218d8379_09864974",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-11-21T21:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72485dec_b611b9bd",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "c01e3278cca676e903980841413c807736894464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36a1edad_652f3070",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-21T20:40:18Z",
       "side": 1,
       "message": "nit - might document we need to shutdown first - otherwise it may run indefinitely in the background (or maybe we could do this inside of the API).\n\nA leak is a real risk here - each rpc session will point back into this",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 41
+      },
+      "revId": "c01e3278cca676e903980841413c807736894464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a41169df_a52a6035",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-11-21T21:09:00Z",
+      "side": 1,
+      "message": "We already do: https://source.corp.google.com/android-internal/frameworks/native/libs/binder/RpcServer.cpp;l\u003d53",
+      "parentUuid": "36a1edad_652f3070",
       "range": {
         "startLine": 51,
         "startChar": 0,
