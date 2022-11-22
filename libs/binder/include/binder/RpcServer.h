@@ -81,9 +81,9 @@ public:
     [[nodiscard]] status_t setupRawSocketServer(base::unique_fd socket_fd);
 
     /**
-     * Creates an RPC server at the current port.
+     * Creates an RPC server at the current port and binding to the given CID.
      */
-    [[nodiscard]] status_t setupVsockServer(unsigned int port);
+    [[nodiscard]] status_t setupVsockServer(unsigned int cid, unsigned int port);
 
     /**
      * Creates an RPC server at the current port using IPv4.
@@ -171,6 +171,11 @@ public:
     sp<IBinder> getRootObject();
 
     /**
+     * Set optional filter of incomming connections based on the peer's address.
+     */
+    void setConnectionFilter(std::function<bool(const void*, size_t)>&& object);
+
+    /**
      * See RpcTransportCtx::getCertificate
      */
     std::vector<uint8_t> getCertificate(RpcCertificateFormat);
@@ -253,6 +258,7 @@ private:
     sp<IBinder> mRootObject;
     wp<IBinder> mRootObjectWeak;
     std::function<sp<IBinder>(const void*, size_t)> mRootObjectFactory;
+    std::function<bool(const void*, size_t)> mConnectionFilter;
     std::map<std::vector<uint8_t>, sp<RpcSession>> mSessions;
     std::unique_ptr<FdTrigger> mShutdownTrigger;
     RpcConditionVariable mShutdownCv;
