@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b63d7c_b117cab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-11-22T21:32:10Z",
+      "side": 1,
+      "message": "# platform-only; rubber stamping NDK bit",
+      "revId": "efb56835efcec0a410c6b203c18d305dd7c99bbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
