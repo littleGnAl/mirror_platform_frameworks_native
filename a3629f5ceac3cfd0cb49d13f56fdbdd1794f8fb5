@@ -16,6 +16,23 @@
       "message": "Couple of questions\n1. What should we do in the event that a call to enumeratedevices returns a vk failure when querying for anb9 in driver.cpp? Returning false for support seems wrong, but there are no vulkan error codes that apply ?\n2. Did I do the pNext unchaining correctly? reinterpreting to VkSurfaceFormat2KHR and then to VkImageCompressionPropertiesEXT feels incredibly iffy\n3. I did the code presubmit and it\u0027s incredibly hard to read. Should I make simpler and upload w/o presubmit?",
       "revId": "a3629f5ceac3cfd0cb49d13f56fdbdd1794f8fb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7bd3e8_38e61642",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-11-22T05:16:41Z",
+      "side": 1,
+      "message": "Preexisting -- but is it really correct to reflect this query to the driver, as if the image were not external?\n\nI guess if external-specific constraints end up preventing some mode, you just don\u0027t end up getting it when you try to create a swapchain?",
+      "revId": "a3629f5ceac3cfd0cb49d13f56fdbdd1794f8fb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
