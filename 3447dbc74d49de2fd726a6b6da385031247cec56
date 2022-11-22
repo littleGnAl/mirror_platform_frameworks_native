@@ -75,6 +75,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16192e52_a67d6ad5",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-22T02:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51fa542d_f4c82358",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 19
+      },
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40385b0d_af9c5b4b",
@@ -88,6 +112,24 @@
       "writtenOn": "2022-11-21T20:41:52Z",
       "side": 1,
       "message": "missing a \\return, and also document that I have to call _delete on it. And what if I never want to unregister? Do I just intentionally leak that handle? Or is never unregistering not a valid behavior?",
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe7c43cb_7af84576",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-22T02:04:51Z",
+      "side": 1,
+      "message": "Never call delete on it, yeah. You\u0027ve got to always keep the state alive. I find it better in general when there\u0027s an object for this (VS implicit global state) because I\u0027d rather have the error be loud (no callback - a visible behavior) than silent (leak).",
+      "parentUuid": "40385b0d_af9c5b4b",
       "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -145,6 +187,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d629a5fa_4fa8ba40",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-22T02:04:51Z",
+      "side": 1,
+      "message": "done verbatim, thanks",
+      "parentUuid": "4682624b_9639a591",
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1fc61bc_9cf8e0e4",
@@ -194,6 +254,24 @@
       "side": 1,
       "message": "I wasn\u0027t suggesting changing behavior, just tweaking the method name. Eg, `AServiceManager_NotificationRegistration_unregisterAndDelete` or `AServiceManager_unregisterForServiceNotifications` w/ a comment that it also invalidates the `ASM_NR*` parameter.\n\nOtherwise `AServiceManager_NotificationRegistration_delete` suggests to me that all it does is delete the object when that\u0027s not the case here.",
       "parentUuid": "efda8136_2baad71a",
+      "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ffc014d_6b7eb7eb",
+        "filename": "libs/binder/ndk/include_platform/android/binder_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-22T02:04:51Z",
+      "side": 1,
+      "message": "I\u0027ve left the name as \u0027_delete\u0027, and I think that deleting implying unregistering should be more common. \u0027unregisterAndDelete\u0027 is a bit long. I did originally name this as unregister, but I changed it to _delete for finality - clearly nothing needs to be done after this. After the comment changes, WDYT?",
+      "parentUuid": "76c2acbf_d1043067",
       "revId": "3447dbc74d49de2fd726a6b6da385031247cec56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
