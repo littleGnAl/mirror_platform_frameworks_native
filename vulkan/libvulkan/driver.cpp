@@ -1038,12 +1038,20 @@ bool GetAndroidNativeBufferSpecVersion9Support(
         physicalDevice, nullptr, &propertyCount, nullptr);
     ATRACE_END();
 
+    if (result != VK_SUCCESS && result != VK_INCOMPLETE) {
+        return false;
+    }
+
     // Call to enumerate properties
     std::vector<VkExtensionProperties> properties(propertyCount);
     ATRACE_BEGIN("driver.EnumerateDeviceExtensionProperties");
     result = data.driver.EnumerateDeviceExtensionProperties(
         physicalDevice, nullptr, &propertyCount, properties.data());
     ATRACE_END();
+
+    if (result != VK_SUCCESS && result != VK_INCOMPLETE) {
+        return false;
+    }
 
     for (uint32_t i = 0; i < propertyCount; i++) {
         auto& prop = properties[i];

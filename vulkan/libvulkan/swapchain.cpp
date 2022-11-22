@@ -967,50 +967,71 @@ VkResult GetPhysicalDeviceSurfaceFormats2KHR(
                 pSurfaceFormats[i].surfaceFormat = surface_formats[i];
 
                 // Query the compression properties for the surface format
-                if (pSurfaceFormats[i].pNext) {
-                    VkImageCompressionPropertiesEXT* surfaceCompressionProps =
-                        reinterpret_cast<VkImageCompressionPropertiesEXT*>(
-                            pSurfaceFormats[i].pNext);
+                VkSurfaceFormat2KHR* pSurfaceFormat = &pSurfaceFormats[i];
+                while (pSurfaceFormat->pNext) {
+                    pSurfaceFormat = reinterpret_cast<VkSurfaceFormat2KHR*>(
+                        pSurfaceFormat->pNext);
+                    switch (pSurfaceFormat->sType) {
+                        case VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT: {
+                            VkImageCompressionPropertiesEXT*
+                                surfaceCompressionProps = reinterpret_cast<
+                                    VkImageCompressionPropertiesEXT*>(
+                                    pSurfaceFormat);
 
-                    if (surfaceCompressionProps &&
-                        driver.GetPhysicalDeviceImageFormatProperties2KHR) {
-                        VkPhysicalDeviceImageFormatInfo2 imageFormatInfo = {};
-                        imageFormatInfo.sType =
-                            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2;
-                        imageFormatInfo.format =
-                            pSurfaceFormats[i].surfaceFormat.format;
-                        imageFormatInfo.pNext = nullptr;
+                            if (surfaceCompressionProps &&
+                                driver
+                                    .GetPhysicalDeviceImageFormatProperties2KHR) {
+                                VkPhysicalDeviceImageFormatInfo2
+                                    imageFormatInfo = {};
+                                imageFormatInfo.sType =
+                                    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2;
+                                imageFormatInfo.format =
+                                    pSurfaceFormats[i].surfaceFormat.format;
+                                imageFormatInfo.pNext = nullptr;
 
-                        VkImageCompressionControlEXT compressionControl = {};
-                        compressionControl.sType =
-                            VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT;
-                        compressionControl.pNext = imageFormatInfo.pNext;
+                                VkImageCompressionControlEXT
+                                    compressionControl = {};
+                                compressionControl.sType =
+                                    VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_CONTROL_EXT;
+                                compressionControl.pNext =
+                                    imageFormatInfo.pNext;
 
-                        imageFormatInfo.pNext = &compressionControl;
+                                imageFormatInfo.pNext = &compressionControl;
 
-                        VkImageCompressionPropertiesEXT compressionProps = {};
-                        compressionProps.sType =
-                            VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT;
-                        compressionProps.pNext = nullptr;
+                                VkImageCompressionPropertiesEXT
+                                    compressionProps = {};
+                                compressionProps.sType =
+                                    VK_STRUCTURE_TYPE_IMAGE_COMPRESSION_PROPERTIES_EXT;
+                                compressionProps.pNext = nullptr;
 
-                        VkImageFormatProperties2KHR imageFormatProps = {};
-                        imageFormatProps.sType =
-                            VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2_KHR;
-                        imageFormatProps.pNext = &compressionProps;
+                                VkImageFormatProperties2KHR imageFormatProps =
+                                    {};
+                                imageFormatProps.sType =
+                                    VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2_KHR;
+                                imageFormatProps.pNext = &compressionProps;
 
-                        VkResult compressionRes =
-                            driver.GetPhysicalDeviceImageFormatProperties2KHR(
-                                physicalDevice, &imageFormatInfo,
-                                &imageFormatProps);
-                        if (compressionRes == VK_SUCCESS) {
-                            surfaceCompressionProps->imageCompressionFlags =
-                                compressionProps.imageCompressionFlags;
-                            surfaceCompressionProps
-                                ->imageCompressionFixedRateFlags =
-                                compressionProps.imageCompressionFixedRateFlags;
-                        } else {
-                            return compressionRes;
-                        }
+                                VkResult compressionRes =
+                                    driver
+                                        .GetPhysicalDeviceImageFormatProperties2KHR(
+                                            physicalDevice, &imageFormatInfo,
+                                            &imageFormatProps);
+                                if (compressionRes == VK_SUCCESS) {
+                                    surfaceCompressionProps
+                                        ->imageCompressionFlags =
+                                        compressionProps.imageCompressionFlags;
+                                    surfaceCompressionProps
+                                        ->imageCompressionFixedRateFlags =
+                                        compressionProps
+                                            .imageCompressionFixedRateFlags;
+                                } else {
+                                    return compressionRes;
+                                }
+                            }
+                        } break;
+
+                        default:
+                            // Ignore all other extension structs
+                            break;
                     }
                 }
             }
