@@ -33,6 +33,24 @@
       "message": "Preexisting -- but is it really correct to reflect this query to the driver, as if the image were not external?\n\nI guess if external-specific constraints end up preventing some mode, you just don\u0027t end up getting it when you try to create a swapchain?",
       "revId": "a3629f5ceac3cfd0cb49d13f56fdbdd1794f8fb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22143c5e_057af47d",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-11-22T17:19:39Z",
+      "side": 1,
+      "message": "I don\u0027t know what you mean by this?",
+      "parentUuid": "7b7bd3e8_38e61642",
+      "revId": "a3629f5ceac3cfd0cb49d13f56fdbdd1794f8fb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
