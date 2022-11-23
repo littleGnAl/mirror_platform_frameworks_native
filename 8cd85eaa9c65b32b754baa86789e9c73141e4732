@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead66bee_e9f7236a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-11-23T17:21:28Z",
+      "side": 1,
+      "message": "Merge conflict in InputDispatcher_test. I will manually cherry-pick this into master.",
+      "revId": "8cd85eaa9c65b32b754baa86789e9c73141e4732",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
