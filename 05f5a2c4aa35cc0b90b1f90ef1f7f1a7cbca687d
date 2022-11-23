@@ -22,6 +22,30 @@
       },
       "revId": "05f5a2c4aa35cc0b90b1f90ef1f7f1a7cbca687d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf3a9d9_8aa84b09",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1892347
+      },
+      "writtenOn": "2022-11-23T12:02:51Z",
+      "side": 1,
+      "message": "My memory says that I copied this from somewhere, but the other place with the same comment doesn\u0027t appear to have a todo!(), so I don\u0027t know what happened here.",
+      "parentUuid": "7ecada23_d953fb32",
+      "range": {
+        "startLine": 976,
+        "startChar": 0,
+        "endLine": 979,
+        "endChar": 76
+      },
+      "revId": "05f5a2c4aa35cc0b90b1f90ef1f7f1a7cbca687d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
