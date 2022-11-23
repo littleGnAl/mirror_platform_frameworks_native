@@ -102,6 +102,26 @@ ARpcServer* ARpcServer_newInitUnixDomain(AIBinder* service, const char* name) {
     return createRpcServerHandle(server);
 }
 
+ARpcServer* ARpcServer_newUnixDomainBootstrap(AIBinder* service, int bootstrapFd) {
+    auto server = RpcServer::make();
+    auto fd = unique_fd(bootstrapFd);
+    if (!fd.ok()) {
+        LOG(ERROR) << "Invalid bootstrap fd " << bootstrapFd;
+        return nullptr;
+    }
+    if (status_t status = server->setupUnixDomainSocketBootstrapServer(std::move(fd));
+        status != OK) {
+        LOG(ERROR) << "Failed to set up Unix Domain RPC server with bootstrap fd " << bootstrapFd
+                   << " error: " << statusToString(status).c_str();
+        return nullptr;
+    }
+    server->setSupportedFileDescriptorTransportModes({
+            RpcSession::FileDescriptorTransportMode::UNIX,
+    });
+    server->setRootObject(AIBinder_toPlatformBinder(service));
+    return createRpcServerHandle(server);
+}
+
 void ARpcServer_start(ARpcServer* handle) {
     toRpcServer(handle)->start();
 }
@@ -134,6 +154,29 @@ AIBinder* UnixDomainRpcClient(const char* name) {
     auto session = RpcSession::make();
     if (status_t status = session->setupUnixDomainClient(pathname.c_str()); status != OK) {
         LOG(ERROR) << "Failed to set up Unix Domain RPC client with path: " << pathname
+                   << " error: " << statusToString(status).c_str();
+        return nullptr;
+    }
+    return AIBinder_fromPlatformBinder(session->getRootObject());
+}
+
+AIBinder* UnixDomainBootstrapRpcClient(int bootstrapFd) {
+    const size_t kMaxIncomingThreads = 15;
+    const size_t kMaxOutgoingThreads = 15;
+
+    auto session = RpcSession::make();
+    session->setFileDescriptorTransportMode(RpcSession::FileDescriptorTransportMode::UNIX);
+    session->setMaxIncomingThreads(kMaxIncomingThreads);
+    session->setMaxOutgoingThreads(kMaxOutgoingThreads);
+
+    auto fd = unique_fd(bootstrapFd);
+    if (!fd.ok()) {
+        LOG(ERROR) << "Invalid bootstrap fd " << bootstrapFd;
+        return nullptr;
+    }
+    if (status_t status = session->setupUnixDomainSocketBootstrapClient(std::move(fd));
+        status != OK) {
+        LOG(ERROR) << "Failed to set up Unix Domain RPC client with bootstrap fd: " << bootstrapFd
                    << " error: " << statusToString(status).c_str();
         return nullptr;
     }

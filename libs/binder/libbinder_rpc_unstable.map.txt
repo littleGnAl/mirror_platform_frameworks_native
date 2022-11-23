@@ -7,6 +7,7 @@ LIBBINDER_RPC_UNSTABLE_SHIM { # platform-only
     ARpcServer_shutdown;
     ARpcServer_start;
     VsockRpcClient;
+    UnixDomainBootstrapRpcClient;
     UnixDomainRpcClient;
     RpcPreconnectedClient;
   local:
