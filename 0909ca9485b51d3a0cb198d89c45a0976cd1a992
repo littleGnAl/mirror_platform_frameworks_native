@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c96aa3_689fb423",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4726,
+      "author": {
+        "id": 1004424
+      },
+      "writtenOn": "2022-11-23T09:09:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59537a68_4302f1b3",
+      "range": {
+        "startLine": 4726,
+        "startChar": 12,
+        "endLine": 4726,
+        "endChar": 31
+      },
+      "revId": "0909ca9485b51d3a0cb198d89c45a0976cd1a992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69367a3d_ab2cf939",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-11-18T18:15:05Z",
       "side": 1,
       "message": "I don\u0027t think we support mouse getting moved between different displays.\n\nThe issue is that `setInputWindows` operates on 1 display at a time. So if mouse is in display 0, and we update the windows for display 1, then we will try to find the hover window in display 1 (a bug). We would then proceed to generate HOVER_EXIT in response.\n\nTo repro, it should be sufficient to do something like this:\n\n1. setInputWindows(display0, window0)\n2. setInputWindows(display1, window1)\n3. inject hover into window 0 on display 0.\n4. consume hover on window 0\n5. setInputWindows(display1, {})\n6. ensure that no hover_exit is produced for window 0.\n\nlet me know if i\u0027m missing anything here.",
+      "range": {
+        "startLine": 2134,
+        "startChar": 60,
+        "endLine": 2135,
+        "endChar": 44
+      },
+      "revId": "0909ca9485b51d3a0cb198d89c45a0976cd1a992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "445c89eb_1a753e09",
+        "filename": "services/inputflinger/tests/InputDispatcher_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2135,
+      "author": {
+        "id": 1004424
+      },
+      "writtenOn": "2022-11-23T09:09:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69367a3d_ab2cf939",
       "range": {
         "startLine": 2134,
         "startChar": 60,
