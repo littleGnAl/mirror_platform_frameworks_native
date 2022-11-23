@@ -18,7 +18,7 @@ use binder::{unstable_api::new_spibinder, FromIBinder, SpIBinder, StatusCode, St
 use std::ffi::CString;
 use std::os::{
     raw::{c_int, c_void},
-    unix::io::RawFd,
+    unix::io::{IntoRawFd, OwnedFd, RawFd},
 };
 
 /// Connects to an RPC Binder server over vsock.
@@ -55,6 +55,25 @@ pub fn get_unix_domain_rpc_interface<T: FromIBinder + ?Sized>(
     socket_name: &str,
 ) -> Result<Strong<T>, StatusCode> {
     interface_cast(get_unix_domain_rpc_service(socket_name))
+}
+
+/// Connects to an RPC Binder server over Unix domain socket.
+pub fn get_unix_domain_bootstrap_rpc_service(bootstrap_fd: OwnedFd) -> Option<SpIBinder> {
+    // SAFETY: AIBinder returned by UnixDomainBootstrapRpcClient has correct reference count,
+    // and the ownership can safely be taken by new_spibinder.
+    // The client takes ownership of the bootstrap FD.
+    unsafe {
+        new_spibinder(binder_rpc_unstable_bindgen::UnixDomainBootstrapRpcClient(
+            bootstrap_fd.into_raw_fd(),
+        ))
+    }
+}
+
+/// Connects to an RPC Binder server for a particular interface over Unix domain socket.
+pub fn get_unix_domain_bootstrap_rpc_interface<T: FromIBinder + ?Sized>(
+    bootstrap_fd: OwnedFd,
+) -> Result<Strong<T>, StatusCode> {
+    interface_cast(get_unix_domain_bootstrap_rpc_service(bootstrap_fd))
 }
 
 /// Connects to an RPC Binder server, using the given callback to get (and take ownership of)

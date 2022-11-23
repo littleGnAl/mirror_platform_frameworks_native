@@ -36,6 +36,15 @@ struct ARpcServer;
 // could not be started.
 [[nodiscard]] ARpcServer* ARpcServer_newInitUnixDomain(AIBinder* service, const char* name);
 
+// Starts an RPC server that bootstraps sessions using an existing Unix domain
+// socket pair, with a given root IBinder object.
+// Callers should create a pair of SOCK_STREAM Unix domain sockets, pass one to
+// this function and the other to UnixDomainBootstrapClient(). Multiple client
+// session can be created from the client end of the pair.
+// Returns an opaque handle to the running server instance, or null if the server
+// could not be started.
+[[nodiscard]] ARpcServer* ARpcServer_newUnixDomainBootstrap(AIBinder* service, int bootstrapFd);
+
 // Runs ARpcServer_join() in a background thread. Immediately returns.
 void ARpcServer_start(ARpcServer* server);
 
@@ -67,6 +76,9 @@ AIBinder* VsockRpcClient(unsigned int cid, unsigned int port);
 // Unix socket `name`.
 // The final Unix domain socket path name is /dev/socket/`name`.
 AIBinder* UnixDomainRpcClient(const char* name);
+
+// Connect to an RPC server over the given bootstrap Unix domain socket.
+AIBinder* UnixDomainBootstrapRpcClient(int bootstrapFd);
 
 // Connect to an RPC server with preconnected file descriptors.
 //
