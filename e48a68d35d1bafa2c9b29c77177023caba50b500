@@ -52,6 +52,24 @@
       "parentUuid": "6ee904e0_ccee6f2c",
       "revId": "e48a68d35d1bafa2c9b29c77177023caba50b500",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a6c179_dd03dba3",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-24T01:55:30Z",
+      "side": 1,
+      "message": "Do we have a test for invalid file descriptor? I\u0027m trying to say we do want it to fail (binder also does fail here). We need to make sure if an invalid FD is sent, it\u0027s rejected or doesn\u0027t cause another problem.",
+      "parentUuid": "09e5396c_0301831c",
+      "revId": "e48a68d35d1bafa2c9b29c77177023caba50b500",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
