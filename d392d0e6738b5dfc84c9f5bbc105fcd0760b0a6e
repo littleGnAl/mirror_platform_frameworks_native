@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36c55c12_f621e763",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-24T02:17:02Z",
+      "side": 1,
+      "message": "this method should include:\n\n    LOG_ALWAYS_FATAL_IF(mShutdownTrigger !\u003d nullptr, \"Already joined\");\n\nThe method before it theoretically doesn\u0027t need it, but we probably should add an abort, because the behaviors exposed by changing the root object on a running server is pretty errorprone. If you want - file a bug - handling the state of this object (e.g. if it\u0027s re-used) could be programmed explicitly.",
+      "revId": "d392d0e6738b5dfc84c9f5bbc105fcd0760b0a6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88780a6a_7d44dc62",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-24T02:17:02Z",
+      "side": 1,
+      "message": "the comment order is different than the argument order",
+      "range": {
+        "startLine": 84,
+        "startChar": 52,
+        "endLine": 84,
+        "endChar": 77
+      },
+      "revId": "d392d0e6738b5dfc84c9f5bbc105fcd0760b0a6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7606cdb6_177c6a2a",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-24T02:17:02Z",
+      "side": 1,
+      "message": "nit: bindCid , maybe?",
+      "range": {
+        "startLine": 86,
+        "startChar": 57,
+        "endLine": 86,
+        "endChar": 60
+      },
+      "revId": "d392d0e6738b5dfc84c9f5bbc105fcd0760b0a6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2741ef7f_c7ad2fad",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-24T02:17:02Z",
+      "side": 1,
+      "message": "Can you consolidate the documentation about this function pointer type with the docs on setPerSessionRootObject?",
+      "range": {
+        "startLine": 176,
+        "startChar": 48,
+        "endLine": 176,
+        "endChar": 67
+      },
+      "revId": "d392d0e6738b5dfc84c9f5bbc105fcd0760b0a6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
