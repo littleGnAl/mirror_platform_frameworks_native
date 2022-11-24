@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f672c8_2caed32c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-11-24T03:35:25Z",
+      "side": 1,
+      "message": "aidl_integration_test has some tests relying on \"ToString\": https://cs.android.com/android/platform/system/tools/aidl/+/master:tests/aidl_test_client_loggable_interface.cpp",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "a0d5e53a1e4806fa2d2ec386e6f7e8b4a50970f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c9c3be8_3270f496",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-11-24T03:35:25Z",
+      "side": 1,
+      "message": "Inconsistency between CPP/NDK?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 47
+      },
+      "revId": "a0d5e53a1e4806fa2d2ec386e6f7e8b4a50970f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
