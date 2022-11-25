@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58a1413_18e6234f",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-25T10:03:25Z",
+      "side": 1,
+      "message": "We can assert first fd is ok before continuing. In case it fails, we can have some clear message here first.",
+      "range": {
+        "startLine": 107,
+        "startChar": 36,
+        "endLine": 107,
+        "endChar": 37
+      },
+      "revId": "be4b04b049b46d7f992b0eb11cc9f9590560ebdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb8a4bc3_baad90c5",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-11-25T10:03:25Z",
+      "side": 1,
+      "message": "We can assert fd.ok() first.",
+      "range": {
+        "startLine": 168,
+        "startChar": 36,
+        "endLine": 168,
+        "endChar": 37
+      },
+      "revId": "be4b04b049b46d7f992b0eb11cc9f9590560ebdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
