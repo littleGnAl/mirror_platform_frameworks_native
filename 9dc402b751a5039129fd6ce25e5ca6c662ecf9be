@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f1e0c9_af0d67b8",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1856745
+      },
+      "writtenOn": "2022-11-27T07:52:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "838c94e6_9f46de31",
+      "revId": "9dc402b751a5039129fd6ce25e5ca6c662ecf9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9b2bf78_7e1b8d47",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c33c881_2ab7a40c",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1856745
+      },
+      "writtenOn": "2022-11-27T07:52:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b9b2bf78_7e1b8d47",
+      "revId": "9dc402b751a5039129fd6ce25e5ca6c662ecf9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef447578_ef4148be",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-11-08T21:36:50Z",
       "side": 1,
       "message": "Use `new (std::nothrow)` and check the return value for `nullptr`? We would like to catch allocation failures.",
+      "revId": "9dc402b751a5039129fd6ce25e5ca6c662ecf9be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11394515_c045a198",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1856745
+      },
+      "writtenOn": "2022-11-27T07:52:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ef447578_ef4148be",
       "revId": "9dc402b751a5039129fd6ce25e5ca6c662ecf9be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
