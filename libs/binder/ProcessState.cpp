@@ -411,13 +411,25 @@ status_t ProcessState::setThreadPoolMaxThreadCount(size_t maxThreads) {
     LOG_ALWAYS_FATAL_IF(mThreadPoolStarted && maxThreads < mMaxThreads,
            "Binder threadpool cannot be shrunk after starting");
     status_t result = NO_ERROR;
+    pthread_mutex_lock(&mThreadCountLock);
     if (ioctl(mDriverFD, BINDER_SET_MAX_THREADS, &maxThreads) != -1) {
         mMaxThreads = maxThreads;
     } else {
         result = -errno;
         ALOGE("Binder ioctl to set max threads failed: %s", strerror(-result));
     }
+    pthread_mutex_unlock(&mThreadCountLock);
     return result;
+}
+
+void ProcessState::onThreadQuitting() {
+    // FIXME: copy/pasting for prototype
+    pthread_mutex_lock(&mThreadCountLock);
+    mMaxThreads++;
+    if (ioctl(mDriverFD, BINDER_SET_MAX_THREADS, &mMaxThreads) == -1) {
+        ALOGE("Binder ioctl to set max threads failed: %s", strerror(-errno));
+    }
+    pthread_mutex_unlock(&mThreadCountLock);
 }
 
 size_t ProcessState::getThreadPoolMaxTotalThreadCount() const {

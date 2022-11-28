@@ -120,12 +120,14 @@ cc_test {
 
     srcs: ["binderLibTest.cpp"],
     shared_libs: [
-        "libbase",
-        "libbinder",
-        "liblog",
-        "libutils",
+        "libvndksupport",
     ],
     static_libs: [
+        "libbase",
+        "libbinder",
+        "libcutils",
+        "liblog",
+        "libutils",
         "libgmock",
     ],
     test_suites: [

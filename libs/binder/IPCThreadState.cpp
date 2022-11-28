@@ -48,7 +48,6 @@
 #define LOG_REMOTEREFS(...) 
 #define IF_LOG_REMOTEREFS() if (false)
 
-#define LOG_THREADPOOL(...) 
 #define LOG_ONEWAY(...) 
 
 #else
@@ -57,10 +56,10 @@
 #define IF_LOG_COMMANDS() IF_ALOG(LOG_VERBOSE, "ipc")
 #define LOG_REMOTEREFS(...) ALOG(LOG_DEBUG, "remoterefs", __VA_ARGS__)
 #define IF_LOG_REMOTEREFS() IF_ALOG(LOG_DEBUG, "remoterefs")
-#define LOG_THREADPOOL(...) ALOG(LOG_DEBUG, "threadpool", __VA_ARGS__)
 #define LOG_ONEWAY(...) ALOG(LOG_DEBUG, "ipc", __VA_ARGS__)
 
 #endif
+#define LOG_THREADPOOL(...) ALOG(LOG_ERROR, "threadpool", __VA_ARGS__)
 
 // ---------------------------------------------------------------------------
 
@@ -641,6 +640,7 @@ void IPCThreadState::joinThreadPool(bool isMain)
 
     mIsLooper = true;
     status_t result;
+    bool doWeWannaDoTheThing = false;
     do {
         processPendingDerefs();
         // now get the next command to be processed, waiting if necessary
@@ -649,6 +649,21 @@ void IPCThreadState::joinThreadPool(bool isMain)
         if (result < NO_ERROR && result != TIMED_OUT && result != -ECONNREFUSED && result != -EBADF) {
             LOG_ALWAYS_FATAL("getAndExecuteCommand(fd=%d) returned unexpected error %d, aborting",
                   mProcess->mDriverFD, result);
+        }
+
+        // FIXME: cleanup etc..
+        pthread_mutex_lock(&mProcess->mThreadCountLock);
+        if (mProcess->mCurrentThreads > 1) {
+            doWeWannaDoTheThing = true;
+            mProcess->mCurrentThreads--;
+        }
+        pthread_mutex_unlock(&mProcess->mThreadCountLock);
+
+        if (doWeWannaDoTheThing) {
+            // I've had enough!
+            ProcessState::self()->onThreadQuitting();
+            ALOGE("asdfasdf would close thread");
+            break;
         }
 
         // Let this thread exit the thread pool if it is no longer
@@ -664,13 +679,16 @@ void IPCThreadState::joinThreadPool(bool isMain)
     mOut.writeInt32(BC_EXIT_LOOPER);
     mIsLooper = false;
     talkWithDriver(false);
-    pthread_mutex_lock(&mProcess->mThreadCountLock);
-    LOG_ALWAYS_FATAL_IF(mProcess->mCurrentThreads == 0,
-                        "Threadpool thread count = 0. Thread cannot exist and exit in empty "
-                        "threadpool\n"
-                        "Misconfiguration. Increase threadpool max threads configuration\n");
-    mProcess->mCurrentThreads--;
-    pthread_mutex_unlock(&mProcess->mThreadCountLock);
+    if (!doWeWannaDoTheThing) {
+        pthread_mutex_lock(&mProcess->mThreadCountLock);
+
+        LOG_ALWAYS_FATAL_IF(mProcess->mCurrentThreads == 0,
+                            "Threadpool thread count = 0. Thread cannot exist and exit in empty "
+                            "threadpool\n"
+                            "Misconfiguration. Increase threadpool max threads configuration\n");
+        mProcess->mCurrentThreads--;
+        pthread_mutex_unlock(&mProcess->mThreadCountLock);
+    }
 }
 
 status_t IPCThreadState::setupPolling(int* fd)

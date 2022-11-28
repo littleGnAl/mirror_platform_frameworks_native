@@ -60,6 +60,8 @@ public:
     void spawnPooledThread(bool isMain);
 
     status_t setThreadPoolMaxThreadCount(size_t maxThreads);
+    void onThreadQuitting();
+
     status_t enableOnewaySpamDetection(bool enable);
     void giveThreadPoolName();
 
