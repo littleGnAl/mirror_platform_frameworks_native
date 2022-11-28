@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27171e9_a984e70f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-28T21:34:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6f672c8_2caed32c",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "a0d5e53a1e4806fa2d2ec386e6f7e8b4a50970f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c9c3be8_3270f496",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-11-24T03:35:25Z",
       "side": 1,
       "message": "Inconsistency between CPP/NDK?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 47
+      },
+      "revId": "a0d5e53a1e4806fa2d2ec386e6f7e8b4a50970f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3510294_de7280b5",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-28T21:34:26Z",
+      "side": 1,
+      "message": "It\u0027s more important that we always show output. b/259162245 is filed to make sure everything is implemented, and we can make it more consistent there. However, in the meantime, empty array and an array with one element in them looking the same caused some confusion, so we should distinguish them. :D",
+      "parentUuid": "8c9c3be8_3270f496",
       "range": {
         "startLine": 179,
         "startChar": 0,
