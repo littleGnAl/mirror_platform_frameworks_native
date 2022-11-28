@@ -111,7 +111,7 @@ std::unique_ptr<RpcTransportCtxFactory> makeTransportCtxFactory(FuzzedDataProvid
 }
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
-    if (size > 50000) return 0;
+    if (size > 50) return 0;
     FuzzedDataProvider provider(data, size);
     RAND_reset_for_fuzzing();
 
