@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "427815ec_3d08eda4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2022-11-29T00:15:39Z",
+      "side": 1,
+      "message": "I\u0027m good with the driver.cpp change after my comment is taken care of.  I don\u0027t have the context or knowledge to be able to review the swapchain.cpp change.",
+      "revId": "fcd88e1f47eb991ad88c3367b29662f84bf701d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f462c2_0db70c18",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2022-11-29T00:15:39Z",
+      "side": 1,
+      "message": "I would prefer we initialize this:\n\n```\n  bool anb9 \u003d false;\n```\n\nI can see how with the current code there\u0027s no way for this to be uninitialized after the call to GetAndroidNativeBufferSpecVersion9Support(), but that code could get changed in the future without folks realizing the implications.  The use of uninitialized stack memory is a bad enough thing that I think it\u0027s worth some slight paranoia.",
+      "revId": "fcd88e1f47eb991ad88c3367b29662f84bf701d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
