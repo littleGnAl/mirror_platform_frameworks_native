@@ -22,6 +22,30 @@
       },
       "revId": "38e44a1713789a493dade61007318b152654d08d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "946e40df_a3996ce7",
+        "filename": "include/android/sensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-11-29T19:21:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35080031_9bdc682a",
+      "range": {
+        "startLine": 607,
+        "startChar": 0,
+        "endLine": 607,
+        "endChar": 5
+      },
+      "revId": "38e44a1713789a493dade61007318b152654d08d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
