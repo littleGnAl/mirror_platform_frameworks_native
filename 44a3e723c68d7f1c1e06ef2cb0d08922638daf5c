@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30d9971_eeaee8a2",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-11-29T23:01:29Z",
+      "side": 1,
+      "message": "Should this create the node instead and insert it into the tree?",
+      "revId": "44a3e723c68d7f1c1e06ef2cb0d08922638daf5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
