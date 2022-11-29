@@ -93,6 +93,30 @@
       },
       "revId": "a0d5e53a1e4806fa2d2ec386e6f7e8b4a50970f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc37902_d9cc9ecf",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-11-29T00:17:30Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "d3510294_de7280b5",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 47
+      },
+      "revId": "a0d5e53a1e4806fa2d2ec386e6f7e8b4a50970f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
