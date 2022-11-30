@@ -121,6 +121,13 @@ static inline void __ignore_va_args__(...) {}
         TLOGE("android_errorWriteLog: tag:%x subTag:%s\n", tag, subTag); \
     } while (0)
 
-extern "C" inline void __assert(const char* file, int line, const char* str) {
-    LOG_ALWAYS_FATAL("%s:%d: assertion \"%s\" failed", file, line, str);
-}
+// Define __assert for binder_status.h if
+// the bionic definition is not available
+#ifndef __BIONIC__
+// If any of the other definitions is in scope, replace it
+#ifdef __assert
+#undef __assert
+#endif // __assert
+
+#define __assert(file, line, str) LOG_ALWAYS_FATAL("%s:%d: %s", file, line, str)
+#endif // __BIONIC__
