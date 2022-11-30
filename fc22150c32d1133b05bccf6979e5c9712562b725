@@ -22,6 +22,30 @@
       },
       "revId": "fc22150c32d1133b05bccf6979e5c9712562b725",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90026f6e_58fe01f8",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-11-30T01:08:19Z",
+      "side": 1,
+      "message": "The function that this CL changes is in `appendFrom`, which doesn\u0027t get called when sending file descriptors (except when wrapped in a `ParcelableHolder`, I think).\n\nThe test you\u0027re suggesting makes sense, but feels completely independent from the current change. Maybe a follow-up?",
+      "parentUuid": "a8de8e24_f0abd3c6",
+      "range": {
+        "startLine": 931,
+        "startChar": 0,
+        "endLine": 931,
+        "endChar": 56
+      },
+      "revId": "fc22150c32d1133b05bccf6979e5c9712562b725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
