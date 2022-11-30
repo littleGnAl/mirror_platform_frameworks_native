@@ -33,6 +33,24 @@
       "message": "I would prefer we initialize this:\n\n```\n  bool anb9 \u003d false;\n```\n\nI can see how with the current code there\u0027s no way for this to be uninitialized after the call to GetAndroidNativeBufferSpecVersion9Support(), but that code could get changed in the future without folks realizing the implications.  The use of uninitialized stack memory is a bad enough thing that I think it\u0027s worth some slight paranoia.",
       "revId": "fcd88e1f47eb991ad88c3367b29662f84bf701d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3620ee26_b79eda46",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-11-30T04:36:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9f462c2_0db70c18",
+      "revId": "fcd88e1f47eb991ad88c3367b29662f84bf701d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
