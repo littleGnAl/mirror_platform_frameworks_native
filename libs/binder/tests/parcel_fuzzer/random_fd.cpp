@@ -53,8 +53,6 @@ std::vector<unique_fd> getRandomFds(FuzzedDataProvider* provider) {
                 if (provider->ConsumeBool()) flags |= O_DIRECT;
                 if (provider->ConsumeBool()) flags |= O_NONBLOCK;
 
-                CHECK_EQ(0, pipe2(pipefds, flags)) << flags;
-
                 if (provider->ConsumeBool()) std::swap(pipefds[0], pipefds[1]);
 
                 std::vector<unique_fd> ret;
@@ -63,8 +61,6 @@ std::vector<unique_fd> getRandomFds(FuzzedDataProvider* provider) {
                 return ret;
             },
     })();
-
-    for (const auto& fd : fds) CHECK(fd.ok()) << fd.get() << " " << fdType;
 
     return fds;
 }
