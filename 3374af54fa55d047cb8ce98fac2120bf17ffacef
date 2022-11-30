@@ -16,6 +16,24 @@
       "message": "Please check the sType. This is a landmine for the future otherwise.",
       "revId": "3374af54fa55d047cb8ce98fac2120bf17ffacef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da8c30f3_7ac216d2",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2022-11-30T14:18:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acbea290_149530e4",
+      "revId": "3374af54fa55d047cb8ce98fac2120bf17ffacef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
