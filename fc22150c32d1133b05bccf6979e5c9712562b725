@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8de8e24_f0abd3c6",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-30T00:56:39Z",
+      "side": 1,
+      "message": "I think the test we want to make sure we have is that when we send this Parcel, it fails.\n\nIt would also be safe to always return a failure when an invalid FD is written to the parcelable.",
+      "range": {
+        "startLine": 931,
+        "startChar": 0,
+        "endLine": 931,
+        "endChar": 56
+      },
+      "revId": "fc22150c32d1133b05bccf6979e5c9712562b725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
