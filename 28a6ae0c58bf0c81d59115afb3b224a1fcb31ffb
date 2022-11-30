@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07972bb0_0aed4db5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-11-30T17:53:15Z",
+      "side": 1,
+      "message": "Hey Pawan - I suspect that these aborts are due to an FD leak (resource exhaustion). Can you investigate this?\n\nSome things you can try:\n- \u0027CHECK_NE(fd, -1) \u003c\u003c (system(\"ls /proc/self/fd\")), \"fd\"\u0027 (quick hack to dump fds in this situation)\n- repro locally and use strace or lsof\n- ??? use fdsan (I haven\u0027t tried it, but I believe it should help in cases like this)",
+      "revId": "28a6ae0c58bf0c81d59115afb3b224a1fcb31ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
