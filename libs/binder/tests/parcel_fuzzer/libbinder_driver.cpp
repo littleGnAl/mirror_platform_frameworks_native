@@ -72,6 +72,11 @@ void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider) {
         for (size_t i = 0; i < retFds.size(); i++) {
             options.extraFds.push_back(base::unique_fd(dup(retFds[i])));
         }
+
+        // clear fds when reached 50 percent of RLIMIT_NOFILE limit:32768
+        if (options.extraFds.size() > 16384) {
+            options.extraFds.clear();
+        }
     }
 
     // invariants
