@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "895d5ec7_dc5328b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2022-11-30T15:08:41Z",
+      "side": 1,
+      "message": "I\u0027m +2 for the driver.cpp changes, but someone else should review the swapchain.cpp changes.",
+      "revId": "3c51ffe5db444ccd2395b18f31a44de69a40d6c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
