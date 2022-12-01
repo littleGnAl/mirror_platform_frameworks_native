@@ -22,6 +22,30 @@
       },
       "revId": "affab527c820c06d3a6b3c4451aaaa744e652eb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b52efe7_e7dfdbc3",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-01T21:33:49Z",
+      "side": 1,
+      "message": "yeah - though I think it\u0027ll still be the same number. We can iterate on this (once users use this function, we can automatically replace it as necessary). Notice in the hardware/interfaces CL, we no longer keep it on the heap.",
+      "parentUuid": "4ce74681_d62e3a30",
+      "range": {
+        "startLine": 200,
+        "startChar": 46,
+        "endLine": 200,
+        "endChar": 58
+      },
+      "revId": "affab527c820c06d3a6b3c4451aaaa744e652eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
