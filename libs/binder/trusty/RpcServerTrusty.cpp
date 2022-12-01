@@ -31,6 +31,7 @@ using android::base::unexpected;
 
 namespace android {
 
+#if defined(TRUSTY_USERSPACE)
 android::base::expected<sp<RpcServerTrusty>, int> RpcServerTrusty::make(
         tipc_hset* handleSet, std::string&& portName, std::shared_ptr<const PortAcl>&& portAcl,
         size_t msgMaxSize, std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
@@ -54,7 +55,17 @@ android::base::expected<sp<RpcServerTrusty>, int> RpcServerTrusty::make(
     }
     return srv;
 }
+#else
+android::base::expected<sp<RpcServerTrusty>, int> RpcServerTrusty::make(std::string&& portName) {
+    auto srv = sp<RpcServerTrusty>::make(std::move(portName));
+    if (srv == nullptr) {
+        return unexpected(ERR_NO_MEMORY);
+    }
+    return srv;
+}
+#endif
 
+#if defined(TRUSTY_USERSPACE)
 RpcServerTrusty::RpcServerTrusty(std::unique_ptr<RpcTransportCtx> ctx, std::string&& portName,
                                  std::shared_ptr<const PortAcl>&& portAcl, size_t msgMaxSize)
       : mRpcServer(sp<RpcServer>::make(std::move(ctx))),
@@ -90,7 +101,12 @@ RpcServerTrusty::RpcServerTrusty(std::unique_ptr<RpcTransportCtx> ctx, std::stri
         mTipcPort.acl = nullptr;
     }
 }
+#else
+RpcServerTrusty::RpcServerTrusty(std::string&& portName)
+      : mRpcServer(sp<RpcServer>::make(nullptr)), mPortName(std::move(portName)) {}
+#endif
 
+#if defined(TRUSTY_USERSPACE)
 int RpcServerTrusty::handleConnect(const tipc_port* port, handle_t chan, const uuid* peer,
                                    void** ctx_p) {
     auto* server = reinterpret_cast<RpcServerTrusty*>(const_cast<void*>(port->priv));
@@ -162,5 +178,6 @@ void RpcServerTrusty::handleChannelCleanup(void* ctx) {
 
     delete channelContext;
 }
+#endif
 
 } // namespace android

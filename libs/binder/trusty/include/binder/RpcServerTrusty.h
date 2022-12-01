@@ -29,7 +29,9 @@
 #include <map>
 #include <vector>
 
+#if defined(TRUSTY_USERSPACE)
 #include <lib/tipc/tipc_srv.h>
+#endif
 
 namespace android {
 
@@ -38,6 +40,7 @@ namespace android {
  */
 class RpcServerTrusty final : public virtual RefBase {
 public:
+#if defined(TRUSTY_USERSPACE)
     // C++ equivalent to tipc_port_acl that uses safe data structures instead of
     // raw pointers, except for |extraData| which doesn't have a good
     // equivalent.
@@ -58,6 +61,9 @@ public:
             tipc_hset* handleSet, std::string&& portName, std::shared_ptr<const PortAcl>&& portAcl,
             size_t msgMaxSize,
             std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory = nullptr);
+#else
+    static android::base::expected<sp<RpcServerTrusty>, int> make(std::string&& portName);
+#endif
 
     void setProtocolVersion(uint32_t version) { mRpcServer->setProtocolVersion(version); }
     void setSupportedFileDescriptorTransportModes(
@@ -78,8 +84,12 @@ private:
     DISALLOW_COPY_AND_ASSIGN(RpcServerTrusty);
 
     friend sp<RpcServerTrusty>;
+#if defined(TRUSTY_USERSPACE)
     explicit RpcServerTrusty(std::unique_ptr<RpcTransportCtx> ctx, std::string&& portName,
                              std::shared_ptr<const PortAcl>&& portAcl, size_t msgMaxSize);
+#else
+    explicit RpcServerTrusty(std::string&& portName);
+#endif
 
     // The Rpc-specific context maintained for every open TIPC channel.
     struct ChannelContext {
@@ -87,6 +97,7 @@ private:
         sp<RpcSession::RpcConnection> connection;
     };
 
+#if defined(TRUSTY_USERSPACE)
     static int handleConnect(const tipc_port* port, handle_t chan, const uuid* peer, void** ctx_p);
     static int handleMessage(const tipc_port* port, handle_t chan, void* ctx);
     static void handleDisconnect(const tipc_port* port, handle_t chan, void* ctx);
@@ -98,13 +109,16 @@ private:
             .on_disconnect = &handleDisconnect,
             .on_channel_cleanup = &handleChannelCleanup,
     };
+#endif
 
     sp<RpcServer> mRpcServer;
     std::string mPortName;
+#if defined(TRUSTY_USERSPACE)
     std::shared_ptr<const PortAcl> mPortAcl;
     std::vector<const uuid*> mUuidPtrs;
     tipc_port_acl mTipcPortAcl;
     tipc_port mTipcPort;
+#endif
 };
 
 } // namespace android
