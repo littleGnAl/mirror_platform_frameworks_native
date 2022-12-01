@@ -16,6 +16,24 @@
       "message": "Should this create the node instead and insert it into the tree?",
       "revId": "44a3e723c68d7f1c1e06ef2cb0d08922638daf5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a169f05c_7c86efce",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-12-01T19:30:56Z",
+      "side": 1,
+      "message": "This would require mapping the port name to the Bn object implementing the interface so we shouldn\u0027t this. Instead lets have the Bn object\u0027s module export a function to initialize it and insert the node into the bst.",
+      "parentUuid": "f30d9971_eeaee8a2",
+      "revId": "44a3e723c68d7f1c1e06ef2cb0d08922638daf5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
