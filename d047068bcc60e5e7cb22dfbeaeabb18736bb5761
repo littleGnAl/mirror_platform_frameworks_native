@@ -16,6 +16,23 @@
       "message": "Lajos for OWNERS",
       "revId": "d047068bcc60e5e7cb22dfbeaeabb18736bb5761",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90568bbc_e8cd5536",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-12-01T20:44:44Z",
+      "side": 1,
+      "message": "+John for OWNERS",
+      "revId": "d047068bcc60e5e7cb22dfbeaeabb18736bb5761",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
