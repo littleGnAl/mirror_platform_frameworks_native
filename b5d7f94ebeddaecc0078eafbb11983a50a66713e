@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbcccbc6_d44fae1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-12-01T23:21:40Z",
+      "side": 1,
+      "message": "This other instance doesn\u0027t cause problems? https://source.corp.google.com/android/frameworks/native/services/sensorservice/hidl/SensorManager.cpp;l\u003d145",
+      "revId": "b5d7f94ebeddaecc0078eafbb11983a50a66713e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
