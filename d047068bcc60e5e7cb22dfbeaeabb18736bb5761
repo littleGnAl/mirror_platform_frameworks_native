@@ -33,6 +33,23 @@
       "message": "+John for OWNERS",
       "revId": "d047068bcc60e5e7cb22dfbeaeabb18736bb5761",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e15e5af0_afea135d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-12-01T22:55:38Z",
+      "side": 1,
+      "message": "Camera CTS test failure in presubmit. Since this is a comment / linter only change, I\u0027m bypassing.",
+      "revId": "d047068bcc60e5e7cb22dfbeaeabb18736bb5761",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
