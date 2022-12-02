@@ -16,6 +16,24 @@
       "message": "Hey Pawan - I suspect that these aborts are due to an FD leak (resource exhaustion). Can you investigate this?\n\nSome things you can try:\n- \u0027CHECK_NE(fd, -1) \u003c\u003c (system(\"ls /proc/self/fd\")), \"fd\"\u0027 (quick hack to dump fds in this situation)\n- repro locally and use strace or lsof\n- ??? use fdsan (I haven\u0027t tried it, but I believe it should help in cases like this)",
       "revId": "28a6ae0c58bf0c81d59115afb3b224a1fcb31ffb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a785c1f_c4c8b024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-12-02T15:26:51Z",
+      "side": 1,
+      "message": "I checked this issue further. it looks like https://source.corp.google.com/android/frameworks/native/libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp;l\u003d73?q\u003dlibbinder_driver\u0026sq\u003dpackage:%5Eandroid$ \n\noptions.extraFds vector is never cleared. It is growing continuously in size for certain fuzzer inputs. We can have clear this fds vector after certain threshold. This can be one of the cause of hitting open fd limits. I have updated CL to clear extraFds when reached 50 percent threshold of max limit which is 32768. I have tested this solution with example_service_fuzzer with test case from infra and this seems to clear the test.",
+      "parentUuid": "07972bb0_0aed4db5",
+      "revId": "28a6ae0c58bf0c81d59115afb3b224a1fcb31ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
