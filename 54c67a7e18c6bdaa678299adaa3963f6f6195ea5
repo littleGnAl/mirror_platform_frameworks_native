@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2761f77_3e4c496e",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-02T06:55:19Z",
+      "side": 1,
+      "message": "Semicolon is not needed at the end.",
+      "revId": "54c67a7e18c6bdaa678299adaa3963f6f6195ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "207d5bba_44f67879",
         "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
         "patchSetId": 8
