@@ -5613,6 +5613,9 @@ status_t InputDispatcher::pilferPointers(const sp<IBinder>& token) {
     options.displayId = state.displayId;
     std::string canceledWindows;
     for (const TouchedWindow& window : state.windows) {
+        if (window.windowHandle->getInfo()->isSpy()) {
+            continue;
+        }
         const std::shared_ptr<InputChannel> channel =
                 getInputChannelLocked(window.windowHandle->getToken());
         if (channel != nullptr && channel->getConnectionToken() != token) {
@@ -5625,8 +5628,8 @@ status_t InputDispatcher::pilferPointers(const sp<IBinder>& token) {
     ALOGI("Channel %s is stealing touch from %s", requestingChannel->getName().c_str(),
           canceledWindows.c_str());
 
-    // Prevent the gesture from being sent to any other windows.
-    state.filterWindowsExcept(token);
+    // Prevent the gesture from being sent to any other non spy windows.
+    state.filterNonSpyWindowsExcept(token);
     state.preventNewTargets = true;
     return OK;
 }
