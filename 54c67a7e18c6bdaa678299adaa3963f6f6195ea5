@@ -37,6 +37,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "207d5bba_44f67879",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-02T06:50:30Z",
+      "side": 1,
+      "message": "Might be useful to at least log or assert on insertion error, although it\u0027s unlikely to happen.",
+      "revId": "54c67a7e18c6bdaa678299adaa3963f6f6195ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4b4315_51083420",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-02T06:50:30Z",
+      "side": 1,
+      "message": "As the code is written right now, will this ever get called?",
+      "revId": "54c67a7e18c6bdaa678299adaa3963f6f6195ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db06f285_9b9fa44b",
         "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
         "patchSetId": 8
@@ -48,6 +82,23 @@
       "writtenOn": "2022-12-02T06:42:19Z",
       "side": 1,
       "message": "Return `const std::string\u0026`? References are usually constant.",
+      "revId": "54c67a7e18c6bdaa678299adaa3963f6f6195ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc13a447_0cab92f2",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-02T06:50:30Z",
+      "side": 1,
+      "message": "This creates a reference cycle: `RpcServerTrusty -\u003e BstNode -\u003e RpcServerTrusty` so the destructor will never be called.",
       "revId": "54c67a7e18c6bdaa678299adaa3963f6f6195ea5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
