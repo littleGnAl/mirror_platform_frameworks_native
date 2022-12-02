@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6197ac0a_e0337ad7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-12-02T18:00:42Z",
+      "side": 1,
+      "message": "This is a cherry-pick of the internal CL.  PTAL.",
+      "revId": "ba4b81fbaac3c1ba55aff68bb7f69d2ee553113c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
