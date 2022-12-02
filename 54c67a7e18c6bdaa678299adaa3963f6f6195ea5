@@ -118,6 +118,24 @@
       "message": "This creates a reference cycle: `RpcServerTrusty -\u003e BstNode -\u003e RpcServerTrusty` so the destructor will never be called.",
       "revId": "54c67a7e18c6bdaa678299adaa3963f6f6195ea5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91e7408_83a56ef9",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-02T21:30:10Z",
+      "side": 1,
+      "message": "Also, do we need to pass in `this` as `fromExisting(this)`? I need to double check, but it\u0027s possible that the current code makes a copy.",
+      "parentUuid": "fc13a447_0cab92f2",
+      "revId": "54c67a7e18c6bdaa678299adaa3963f6f6195ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
