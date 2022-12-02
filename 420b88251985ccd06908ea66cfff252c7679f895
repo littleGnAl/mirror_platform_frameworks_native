@@ -69,6 +69,24 @@
       "parentUuid": "76468ff4_2a62f207",
       "revId": "420b88251985ccd06908ea66cfff252c7679f895",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03f5350e_c96cb3a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-12-02T18:58:57Z",
+      "side": 1,
+      "message": "I will try to handle this situation by adding flag.",
+      "parentUuid": "0ffae7d3_3bf239cd",
+      "revId": "420b88251985ccd06908ea66cfff252c7679f895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
