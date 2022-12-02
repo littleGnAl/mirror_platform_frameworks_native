@@ -51,7 +51,7 @@ struct TouchState {
                            int32_t targetFlags, BitSet32 pointerIds);
     void removeWindowByToken(const sp<IBinder>& token);
     void filterNonAsIsTouchWindows();
-    void filterWindowsExcept(const sp<IBinder>& token);
+    void filterNonSpyWindowsExcept(const sp<IBinder>& token);
     sp<android::gui::WindowInfoHandle> getFirstForegroundWindowHandle() const;
     bool isSlippery() const;
     sp<android::gui::WindowInfoHandle> getWallpaperWindow() const;
