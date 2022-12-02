@@ -33,6 +33,23 @@
       "message": "This CL should also be have the `device-tree-prototype` hashtag.",
       "revId": "54c67a7e18c6bdaa678299adaa3963f6f6195ea5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db06f285_9b9fa44b",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-02T06:42:19Z",
+      "side": 1,
+      "message": "Return `const std::string\u0026`? References are usually constant.",
+      "revId": "54c67a7e18c6bdaa678299adaa3963f6f6195ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
