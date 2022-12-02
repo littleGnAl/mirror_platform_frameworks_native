@@ -34,6 +34,23 @@
       "parentUuid": "b13c29c5_07d47703",
       "revId": "420b88251985ccd06908ea66cfff252c7679f895",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76468ff4_2a62f207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2022-12-02T16:21:33Z",
+      "side": 1,
+      "message": "Hi Linnan,\n\nThe behavior of pilferPointers is to steal the gesture from all other windows that are receiving it, including spy windows. This is done by design.\n\nIs there a particular reason why we want spy windows to continue receiving the gesture? If it makes sense, we can design a different solution, like adding a DO_NOT_PILFER flag, or something like that.",
+      "revId": "420b88251985ccd06908ea66cfff252c7679f895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
