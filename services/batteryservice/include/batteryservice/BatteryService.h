@@ -36,6 +36,10 @@ enum {
     BATTERY_PROP_BATTERY_STATUS = 6, // equals BATTERY_PROPERTY_BATTERY_STATUS
 };
 
+struct BatteryHealthData {
+    int64_t valueInt64;
+};
+
 struct BatteryProperties {
     bool chargerAcOnline;
     bool chargerUsbOnline;
@@ -53,6 +57,12 @@ struct BatteryProperties {
     int batteryCycleCount;
     int batteryFullCharge;
     int batteryChargeCounter;
+    int batteryHealthCapacity;
+    int batteryHealthImpedance;
+    int batteryHealthActivationImpedance;
+    int batteryHealthCycleCount;
+    int batteryHealthAge;
+    BatteryHealthData batteryHealthData;
     String8 batteryTechnology;
 };
 
