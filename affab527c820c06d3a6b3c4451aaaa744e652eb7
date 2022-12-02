@@ -46,6 +46,30 @@
       },
       "revId": "affab527c820c06d3a6b3c4451aaaa744e652eb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edabd579_0169fab3",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-02T01:37:08Z",
+      "side": 1,
+      "message": "\u003e  I think it\u0027ll still be the same number\n\nhow?\n\n```\n    static std::string makeServiceName(std::string_view instance) {\n        return INTERFACE::descriptor + (\"/\" + std::string(instance));\n    }\n```\n\nAbove has two heap allocations. One for `std::string(instance)`. The other is for the final string to be returned.\n\n```\n    static std::string makeServiceName(std::string_view instance) {\n        std::string ret \u003d INTERFACE::descriptor + \"/\";\n        ret +\u003d instance;\n        return ret;\n    }\n```\n\nAbove has one heap allocation (inside `ret`).",
+      "parentUuid": "4b52efe7_e7dfdbc3",
+      "range": {
+        "startLine": 200,
+        "startChar": 46,
+        "endLine": 200,
+        "endChar": 58
+      },
+      "revId": "affab527c820c06d3a6b3c4451aaaa744e652eb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
