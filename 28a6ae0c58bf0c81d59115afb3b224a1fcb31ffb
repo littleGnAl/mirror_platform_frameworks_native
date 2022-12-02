@@ -34,6 +34,24 @@
       "parentUuid": "07972bb0_0aed4db5",
       "revId": "28a6ae0c58bf0c81d59115afb3b224a1fcb31ffb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9af3b08f_2c7c4c4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-02T16:09:36Z",
+      "side": 1,
+      "message": "It should be cleared after every run. If it\u0027s growing within a single run of fuzzService, I wonder why are so many FDs being added to it? (it likely means a service is returning many FDs - why is it?).",
+      "parentUuid": "1a785c1f_c4c8b024",
+      "revId": "28a6ae0c58bf0c81d59115afb3b224a1fcb31ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
