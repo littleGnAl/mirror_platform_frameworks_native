@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65eee944_ca212a9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-02T05:02:11Z",
+      "side": 1,
+      "message": "This CL should also be have the `device-tree-prototype` hashtag.",
+      "revId": "54c67a7e18c6bdaa678299adaa3963f6f6195ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
