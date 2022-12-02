@@ -51,6 +51,24 @@
       "message": "Hi Linnan,\n\nThe behavior of pilferPointers is to steal the gesture from all other windows that are receiving it, including spy windows. This is done by design.\n\nIs there a particular reason why we want spy windows to continue receiving the gesture? If it makes sense, we can design a different solution, like adding a DO_NOT_PILFER flag, or something like that.",
       "revId": "420b88251985ccd06908ea66cfff252c7679f895",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ffae7d3_3bf239cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-12-02T18:45:49Z",
+      "side": 1,
+      "message": "On the XiaoMi device, slide 3 fingers down to screenshot is a impl by a gesture monitor, and slide 3 fingers up to enter recently tasks is impl by another gesture monitor, because they are maintained by two teams, and in order to keep the screen no scroll if we slide the screen, we should stole pointer stream we found three finger down, it will let another gesture monitor receive a cancel and it will no working, so we shouldn\u0027t let this gesture monitor receive a cancel event.\nI think this is indeed a problem, in this case.",
+      "parentUuid": "76468ff4_2a62f207",
+      "revId": "420b88251985ccd06908ea66cfff252c7679f895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
