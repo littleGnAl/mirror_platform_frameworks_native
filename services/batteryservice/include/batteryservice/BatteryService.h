@@ -34,6 +34,12 @@ enum {
     BATTERY_PROP_CAPACITY = 4, // equals BATTERY_PROPERTY_CAPACITY
     BATTERY_PROP_ENERGY_COUNTER = 5, // equals BATTERY_PROPERTY_ENERGY_COUNTER
     BATTERY_PROP_BATTERY_STATUS = 6, // equals BATTERY_PROPERTY_BATTERY_STATUS
+    BATTERY_PROP_CHARGING_POLICY = 7, // equals BATTERY_PROPERTY_CHARGING_POLICY
+};
+
+struct BatteryHealthData {
+    uint64_t batteryManufacturingDateSeconds;
+    uint64_t batteryFirstUsageSeconds;
 };
 
 struct BatteryProperties {
@@ -54,6 +60,8 @@ struct BatteryProperties {
     int batteryFullCharge;
     int batteryChargeCounter;
     String8 batteryTechnology;
+    int batteryStateOfHealth;
+    BatteryHealthData batteryHealthData;
 };
 
 struct BatteryProperty {
