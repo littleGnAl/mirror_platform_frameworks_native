@@ -70,6 +70,11 @@ public:
      */
     static android::base::expected<sp<RpcServerTrusty>, int> get(std::string&& portName);
 
+    /**
+     * Remove this server from the binary search tree.
+     */
+    void unpublish();
+
     void setProtocolVersion(uint32_t version) { mRpcServer->setProtocolVersion(version); }
     void setSupportedFileDescriptorTransportModes(
             const std::vector<RpcSession::FileDescriptorTransportMode>& modes) {

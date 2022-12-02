@@ -115,6 +115,14 @@ android::base::expected<sp<RpcServerTrusty>, int> RpcServerTrusty::get(std::stri
     return containerof(node, RpcServerTrusty::BstNode, mNode)->mServer;
 }
 
+void RpcServerTrusty::unpublish() {
+    // Release the BstNode so its destructor gets called.
+    // This removes the current object from the tree and
+    // decreases the reference count, allowing the current
+    // RpcServerTrusty to be freed.
+    mServerSearchTreeNode.reset();
+}
+
 #if defined(TRUSTY_USERSPACE)
 RpcServerTrusty::RpcServerTrusty(std::unique_ptr<RpcTransportCtx> ctx, std::string&& portName,
                                  std::shared_ptr<const PortAcl>&& portAcl, size_t msgMaxSize)
