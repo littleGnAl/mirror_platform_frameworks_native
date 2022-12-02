@@ -87,6 +87,24 @@
       "parentUuid": "0ffae7d3_3bf239cd",
       "revId": "420b88251985ccd06908ea66cfff252c7679f895",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99fca389_e58be719",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-12-02T19:37:36Z",
+      "side": 1,
+      "message": "Hi Linnan,\n\nWhy can\u0027t the 2 teams write code in 2 different files / folders but still share the same spy window with some kind of multiplexer?\n\nHaving 2 gesture monitors for essentially the same task has performance impact.",
+      "parentUuid": "03f5350e_c96cb3a5",
+      "revId": "420b88251985ccd06908ea66cfff252c7679f895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
