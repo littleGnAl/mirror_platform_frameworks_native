@@ -16,6 +16,24 @@
       "message": "You\u0027ll also need to implement `dupFileDescriptor` for the kernel, which should just be a `handle_incref`.\n\nI wonder if we should just have a completely separate copy of `OS.cpp` for the kernel.",
       "revId": "123a0aebe5a6c5f01658052e7f5d8d1515eef0b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e730afe_617bad91",
+        "filename": "libs/binder/trusty/kernel/rules.mk",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-03T06:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea68da7_e5c7e90c",
+      "revId": "123a0aebe5a6c5f01658052e7f5d8d1515eef0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

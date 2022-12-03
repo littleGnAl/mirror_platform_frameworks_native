@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49cf6e0e_532de86b",
+        "filename": "libs/binder/trusty/kernel/rules.mk",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-03T06:06:24Z",
+      "side": 1,
+      "message": "How many of these do we need right now?",
+      "revId": "0b6d4102c6838b075764f445213a63f7ebe326fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
