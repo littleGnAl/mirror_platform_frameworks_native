@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "663f496a_180d5081",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-12-05T13:54:57Z",
+      "side": 1,
+      "message": "I\u0027m not convinced that the solution here is to add a new flag rather than figure out how to multiplex the gesture processing on the client side.\n\nThis flag will carry a new permanent maintenance cost by adding a new behaviour. Any future refactor that we will do would now have to account for this. How would this flag work, exactly?\n\n1) What if you have 2 windows, window A is regular and window B is spy. Window A sets DO_NOT_PILFER and the user touches window A. If the spy like a home gesture monitor tries to pilfer, now there will be potentially 2 visual actions on the screen. So we should probably limit this flag to spy windows only.\n\n2) We should make sure that regular (non-privileged apps) cannot set this flag, and we would need to have appropriate tests for this, since it would be a security issue to have it.\n\n3) We would need to figure out the logging. Today, we have logs for pilfering and for cancels, `input_interaction` and `input_cancel`. We need to make sure it\u0027s clear that the touch is not getting pilfered because a window has this special flag.\n\nAs previously stated, in the proposed use case this will add a permanent runtime cost because there will now be 2 dispatch targets instead of 1.\n\nDo we have any other use cases for this flag besides the one where \"2 processes are handling similar gesture\"?",
+      "revId": "b991140e2d566e6aac22fcf990f15bd5e3f51ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
