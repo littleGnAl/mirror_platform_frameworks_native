@@ -54,6 +54,10 @@ bool WindowInfo::isSpy() const {
     return inputConfig.test(InputConfig::SPY);
 }
 
+bool WindowInfo::canPilferPointer() const {
+    return !inputConfig.test(InputConfig::DO_NOT_PILFER);
+}
+
 bool WindowInfo::interceptsStylus() const {
     return inputConfig.test(InputConfig::INTERCEPTS_STYLUS);
 }
