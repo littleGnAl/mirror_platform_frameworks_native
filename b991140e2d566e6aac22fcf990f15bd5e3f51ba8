@@ -34,6 +34,24 @@
       "parentUuid": "663f496a_180d5081",
       "revId": "b991140e2d566e6aac22fcf990f15bd5e3f51ba8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392931ea_b369ccfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2022-12-05T17:29:42Z",
+      "side": 1,
+      "message": "Thanks Prabir, that\u0027s actually a very good point on the competition between spy windows. That\u0027s an example I originally wanted to add, but forgot about:\n\nAgain let\u0027s say we have two windows, A and B. Both windows are spy. Window A is \"do not pilfer\".\n\n1. User touches B. Both A and B get the touch.\n2. Window B calls pilfer. BOth A and B continue to get the touch, because A is \"do not pilfer\". Now window B thinks that it has the touch, because it pilfered.\n3. Now window A calls pilfer. Window B gets cancel. Window A continues to receive the touch.\n\nThat would be unexpected for the window A, and would probably lead to a bunch of spy windows using \"do not pilfer\" flag by default. It would be a confusing developer experience.",
+      "parentUuid": "a6805a1b_b05f3eeb",
+      "revId": "b991140e2d566e6aac22fcf990f15bd5e3f51ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
