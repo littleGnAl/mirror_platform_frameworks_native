@@ -52,6 +52,24 @@
       "parentUuid": "1a785c1f_c4c8b024",
       "revId": "28a6ae0c58bf0c81d59115afb3b224a1fcb31ffb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a2d3aa7_2a741403",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-12-05T13:08:35Z",
+      "side": 1,
+      "message": "for each iteration, around 3K fds were added in this vector for example_service_fuzzer. I will check from this perspective. I still think we should have this check if any service actually uses those many fds. This issue is now with one other service as well, I am not sure if that is service dependent, more towards parcel data.",
+      "parentUuid": "9af3b08f_2c7c4c4f",
+      "revId": "28a6ae0c58bf0c81d59115afb3b224a1fcb31ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
