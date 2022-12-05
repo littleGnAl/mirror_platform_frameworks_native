@@ -144,4 +144,8 @@ enum InputConfig {
      * It is not valid to set this configuration if {@link #TRUSTED_OVERLAY} is not set.
      */
     INTERCEPTS_STYLUS            = 1 << 15,
+    /**
+     * When set, this flag can protect its pointer stream can't pilfer by a spy window.
+     */
+    DO_NOT_PILFER                = 1 << 16,
 }

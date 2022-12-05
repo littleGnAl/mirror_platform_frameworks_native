@@ -5613,6 +5613,9 @@ status_t InputDispatcher::pilferPointers(const sp<IBinder>& token) {
     options.displayId = state.displayId;
     std::string canceledWindows;
     for (const TouchedWindow& window : state.windows) {
+        if (!window.windowHandle->getInfo()->canPilferPointerStream()) {
+            continue;
+        }
         const std::shared_ptr<InputChannel> channel =
                 getInputChannelLocked(window.windowHandle->getToken());
         if (channel != nullptr && channel->getConnectionToken() != token) {
@@ -5626,7 +5629,7 @@ status_t InputDispatcher::pilferPointers(const sp<IBinder>& token) {
           canceledWindows.c_str());
 
     // Prevent the gesture from being sent to any other windows.
-    state.filterWindowsExcept(token);
+    state.filterCanPilferStreamWindowsExcept(token);
     state.preventNewTargets = true;
     return OK;
 }

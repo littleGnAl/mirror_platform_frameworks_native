@@ -169,6 +169,8 @@ struct WindowInfo : public Parcelable {
                 static_cast<uint32_t>(os::InputConfig::DROP_INPUT_IF_OBSCURED),
         SPY =
                 static_cast<uint32_t>(os::InputConfig::SPY),
+        DO_NOT_PILFER =
+                static_cast<uint32_t>(os::InputConfig::DO_NOT_PILFER),
         INTERCEPTS_STYLUS =
                 static_cast<uint32_t>(os::InputConfig::INTERCEPTS_STYLUS),
         // clang-format on
@@ -247,6 +249,8 @@ struct WindowInfo : public Parcelable {
     bool supportsSplitTouch() const;
 
     bool isSpy() const;
+
+    bool canPilferPointerStream() const;
 
     bool interceptsStylus() const;
 
