@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eec1a3e_7f9742fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-06T02:00:15Z",
+      "side": 1,
+      "message": "In its current version, what this patch does is modify RpcServerTrusty to work as a thin wrapper around RpcServer, with a port name attached to it. We should explain this in the commit message, and maybe what we need it for.",
+      "revId": "3c6321070e0aad433b84688a87144d5a2b6c3256",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
