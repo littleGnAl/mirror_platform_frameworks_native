@@ -88,6 +88,24 @@
       "parentUuid": "2679fff0_04f23f4d",
       "revId": "b991140e2d566e6aac22fcf990f15bd5e3f51ba8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2453921b_4fc4b9d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-12-06T02:50:46Z",
+      "side": 1,
+      "message": "By the way, why there is no owner file for `libs/input/android/os/InputConfig.aidl`",
+      "parentUuid": "e9610e75_3f70a95f",
+      "revId": "b991140e2d566e6aac22fcf990f15bd5e3f51ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
