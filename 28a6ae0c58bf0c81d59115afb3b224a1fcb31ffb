@@ -88,6 +88,24 @@
       "parentUuid": "5a2d3aa7_2a741403",
       "revId": "28a6ae0c58bf0c81d59115afb3b224a1fcb31ffb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3fd8c1_8d5a2b7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-12-06T13:00:21Z",
+      "side": 1,
+      "message": "I debugged this issue further and noticed that all these fds are added in extraFds by fillRandomParcel api. Fds are not leaking, all of them are present in extraFds which bloats upto 20K+ in size. Fuzzers have hit the test cases where maximum data is passed to fillRandomParcel and fillRandomParcel is creating all these fds. For multiple iterations, 60K+ bytes were passed to fillRandomParcel. I verified this by passing the same minimized testcase to servicemanager_fuzzer. It did exceed the FD limit and crashed in the same way. I have uploaded minimized testcase here : https://drive.google.com/file/d/17grbJldSEW_cKgCYzmUVFHkSvxscVvCH/view?usp\u003dshare_link\u0026resourcekey\u003d0-VqkR4uTKeRodyF0MOH561w",
+      "parentUuid": "1a8191df_ac721870",
+      "revId": "28a6ae0c58bf0c81d59115afb3b224a1fcb31ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
