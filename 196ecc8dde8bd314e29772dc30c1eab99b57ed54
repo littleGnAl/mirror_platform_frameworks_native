@@ -16,6 +16,23 @@
       "message": "Introducing parcelables package to be used by java fuzzer. following up as part of https://android-review.git.corp.google.com/c/platform/frameworks/base/+/2321414/comment/eb4f3789_032b9956/",
       "revId": "196ecc8dde8bd314e29772dc30c1eab99b57ed54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88e0f57_d3863ff2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2022-12-06T02:21:34Z",
+      "side": 1,
+      "message": "Bypass reason: flaky test, open bugs for failing test - b/260328951",
+      "revId": "196ecc8dde8bd314e29772dc30c1eab99b57ed54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
