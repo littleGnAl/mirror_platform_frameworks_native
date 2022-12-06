@@ -70,6 +70,24 @@
       "parentUuid": "392931ea_b369ccfc",
       "revId": "b991140e2d566e6aac22fcf990f15bd5e3f51ba8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9610e75_3f70a95f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2022-12-06T02:41:33Z",
+      "side": 1,
+      "message": "We may eventually modify this logic directly on Xiaomi’s devices, because the gesture to enter the recent task needs to be animated, and due to historical reasons, it is now located in the home process, and the cost of migrating to other processes is very high , and if the binder is used to transmit the coordinate information, the animation may not follow the hand, so we cannot adopt the above solution, and two gesture monitors will still be retained.",
+      "parentUuid": "2679fff0_04f23f4d",
+      "revId": "b991140e2d566e6aac22fcf990f15bd5e3f51ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
