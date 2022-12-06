@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57f722f2_0a1c8e43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-06T02:01:00Z",
+      "side": 1,
+      "message": "This commit enabled build system support for libbinder in the Trusty kernel.",
+      "revId": "0b6d4102c6838b075764f445213a63f7ebe326fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49cf6e0e_532de86b",
         "filename": "libs/binder/trusty/kernel/rules.mk",
         "patchSetId": 20
