@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b20a01a_9e71cb61",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-07T00:46:33Z",
+      "side": 1,
+      "message": "when? - also we don\u0027t want to duplicate the versions list",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "dd093bf9fcce76c1381caf691d67bf3cc44242cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9d5f761_4adf49c9",
+        "filename": "libs/binder/tests/binderRpcUniversalTests.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-07T00:46:33Z",
+      "side": 1,
+      "message": "should this be EXPECT_SESSIONS?",
+      "range": {
+        "startLine": 379,
+        "startChar": 8,
+        "endLine": 379,
+        "endChar": 22
+      },
+      "revId": "dd093bf9fcce76c1381caf691d67bf3cc44242cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73f0b0a_5670012e",
+        "filename": "libs/binder/tests/binderRpcUniversalTests.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-07T00:46:33Z",
+      "side": 1,
+      "message": "is this needed?",
+      "range": {
+        "startLine": 383,
+        "startChar": 18,
+        "endLine": 383,
+        "endChar": 29
+      },
+      "revId": "dd093bf9fcce76c1381caf691d67bf3cc44242cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
