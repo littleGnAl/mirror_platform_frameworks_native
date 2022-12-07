@@ -63,6 +63,24 @@
       "message": "do we also test building this in Android and running the test in Android or between Android and Trusty?",
       "revId": "f5f4881886b33324f94324309138a657f3a59d28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ccdbf25_281a76c7",
+        "filename": "libs/binder/trusty/binderRpcTest/aidl/rules.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-07T06:17:20Z",
+      "side": 1,
+      "message": "\u003e do we also test building this in Android and running the test in Android\n\nThis build file just compiles the `.aidl` files for Trusty. It\u0027s the equivalent of `aidl_interface`, Android already builds those files. Do you think we should do more?\n\nIf you\u0027re asking about the Trusty port of `binderRpcTest`: yes, with the `binderRpcTest_on_trusty_mock` module, but it\u0027s not runnable because all the Trusty APIs are mocks.\n\n\u003e or between Android and Trusty?\n\nYes, by running the Android `binderRpcTestTrusty` test binary manually (`adb push \u0026\u0026 adb shell`). Once this CL lands, we should be able to automate that.\n\nTrusty tests use a prebuilt set of Android images for the `qemu_trusty_arm64-userdebug` target. With the CL submitted, we can update those prebuilts with the `binderRpcTestTrusty` test, and update the Trusty test config to run that binary on Android as a test.",
+      "parentUuid": "415b5035_59b879fc",
+      "revId": "f5f4881886b33324f94324309138a657f3a59d28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

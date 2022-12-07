@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74c1a9c0_d9c12868",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-07T06:17:20Z",
+      "side": 1,
+      "message": "We can do that in this CL, I just wasn\u0027t sure how important it was. We would have to run one service port per version, but that shouldn\u0027t be too hard. Wdyt?",
+      "parentUuid": "8b20a01a_9e71cb61",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "dd093bf9fcce76c1381caf691d67bf3cc44242cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9d5f761_4adf49c9",
         "filename": "libs/binder/tests/binderRpcUniversalTests.cpp",
         "patchSetId": 25
@@ -37,6 +61,30 @@
       "writtenOn": "2022-12-07T00:46:33Z",
       "side": 1,
       "message": "should this be EXPECT_SESSIONS?",
+      "range": {
+        "startLine": 379,
+        "startChar": 8,
+        "endLine": 379,
+        "endChar": 22
+      },
+      "revId": "dd093bf9fcce76c1381caf691d67bf3cc44242cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf7d988_66812f17",
+        "filename": "libs/binder/tests/binderRpcUniversalTests.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-07T06:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9d5f761_4adf49c9",
       "range": {
         "startLine": 379,
         "startChar": 8,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-12-07T00:46:33Z",
       "side": 1,
       "message": "is this needed?",
+      "range": {
+        "startLine": 383,
+        "startChar": 18,
+        "endLine": 383,
+        "endChar": 29
+      },
+      "revId": "dd093bf9fcce76c1381caf691d67bf3cc44242cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b96602_6a0c5a9d",
+        "filename": "libs/binder/tests/binderRpcUniversalTests.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-07T06:17:20Z",
+      "side": 1,
+      "message": "`expected` has type `size_t` in some places and `session` is an `int`.\n\n```\nerror: comparison of integers of different signs: \u0027const unsigned int\u0027 and \u0027const int\u0027 [-Werror,-Wsign-compare]\n```",
+      "parentUuid": "a73f0b0a_5670012e",
       "range": {
         "startLine": 383,
         "startChar": 18,
