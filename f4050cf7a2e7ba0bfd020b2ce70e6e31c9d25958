@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e5daad9_19c49859",
+        "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
+        "patchSetId": 60
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-07T06:17:38Z",
+      "side": 1,
+      "message": "`RpcServer` also exposes this method as public and `rpc_fuzzer` also uses it. Probably best to leave `RpcServerTrusty::listSessions` public too for when we port the fuzzer to Trusty. I copied the comment verbatim from `RpcServer`.",
+      "parentUuid": "3602c350_1b3ead3e",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 85
+      },
+      "revId": "f4050cf7a2e7ba0bfd020b2ce70e6e31c9d25958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "867fd2a5_81623862",
