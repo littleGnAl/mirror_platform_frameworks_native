@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297346f8_e9904f34",
+        "filename": "libs/binder/tests/binderRpcTestFixture.h",
+        "patchSetId": 69
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-07T00:44:10Z",
+      "side": 1,
+      "message": "is there a way to reset them?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "a8597b6d962d5b0320bc8cf66b9b7fd530462437",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e17849_1f340696",
+        "filename": "libs/binder/tests/binderRpcUniversalTests.cpp",
+        "patchSetId": 69
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-07T00:44:10Z",
+      "side": 1,
+      "message": "hahaha - ummm - this was hitting the limit? Do we have other tests which test the large size on normal RPC binder?\n\nMaybe - \u0027TIPC ? 512 : 4096\u0027?",
+      "range": {
+        "startLine": 158,
+        "startChar": 37,
+        "endLine": 158,
+        "endChar": 40
+      },
+      "revId": "a8597b6d962d5b0320bc8cf66b9b7fd530462437",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
