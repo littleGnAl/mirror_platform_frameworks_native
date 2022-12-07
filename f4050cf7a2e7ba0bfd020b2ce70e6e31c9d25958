@@ -81,6 +81,24 @@
       "parentUuid": "867fd2a5_81623862",
       "revId": "f4050cf7a2e7ba0bfd020b2ce70e6e31c9d25958",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "312fb8c6_ac01a9a5",
+        "filename": "libs/binder/trusty/include_mock/lk/err_ptr.h",
+        "patchSetId": 60
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-07T18:18:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78407e8e_0651726b",
+      "revId": "f4050cf7a2e7ba0bfd020b2ce70e6e31c9d25958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
