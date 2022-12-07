@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f14201f_ad1b8a19",
+        "filename": "libs/nativewindow/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-12-07T17:15:58Z",
+      "side": 0,
+      "message": "you need to add\n\n        \"libbinder\",\n        \"libbinder_ndk\",\n\nto shared_libs (or also cherry-pick https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/native/+/19746230 )",
+      "revId": "7e560fe534e58e67ecd691083083be042c7559cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
