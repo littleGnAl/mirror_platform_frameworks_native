@@ -39,6 +39,24 @@
       "message": "Do we need this? I would strongly discourage these APIs, because they increase the barrier to entry to understand the code, and they also aren\u0027t type checked.\n\nOne talk I like on this subject:\nhttps://2014.jsconf.eu/speakers/sebastian-markbage-minimal-api-surface-area-learning-patterns-instead-of-frameworks.html",
       "revId": "f4050cf7a2e7ba0bfd020b2ce70e6e31c9d25958",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78407e8e_0651726b",
+        "filename": "libs/binder/trusty/include_mock/lk/err_ptr.h",
+        "patchSetId": 60
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-07T02:24:23Z",
+      "side": 1,
+      "message": "In Trusty, they are used to check and print the error returned by `tipc_hset_create` (see https://android.googlesource.com/trusty/lib/+/refs/heads/master/lib/tipc/include/lib/tipc/tipc.h#193). That function is used by services in a lot of places, so changing its signature to something saner like `int tipc_hset_create(struct tipc_hset**)` would be a pain.\n\nThe macros here aren\u0027t even correct, they\u0027re just good enough to get the code to compile on Android.",
+      "parentUuid": "867fd2a5_81623862",
+      "revId": "f4050cf7a2e7ba0bfd020b2ce70e6e31c9d25958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
