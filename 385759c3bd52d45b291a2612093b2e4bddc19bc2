@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c428ae57_bdc978b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1558734
+      },
+      "writtenOn": "2022-12-07T19:36:02Z",
+      "side": 1,
+      "message": "better remove the 12x4 and 14x2 formats from the commit message to avoid confusion.",
+      "revId": "385759c3bd52d45b291a2612093b2e4bddc19bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f821a2_b324bfa7",
+        "filename": "libs/nativewindow/AHardwareBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1558734
+      },
+      "writtenOn": "2022-12-07T19:36:02Z",
+      "side": 1,
+      "message": "where is PixelFormat::R_16 defined? \nHow about add _UINT to the PixelFormat name? our implementation will default to UNORM if datatype is missing in the format.",
+      "revId": "385759c3bd52d45b291a2612093b2e4bddc19bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6227fbf3_805ca1dc",
+        "filename": "libs/ui/include/ui/PixelFormat.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1558734
+      },
+      "writtenOn": "2022-12-07T19:36:02Z",
+      "side": 1,
+      "message": "I might be outdated with gralloc support, but as far as I know Gralloc use HAL_PIXEL_FORMAT_XXX for buffer allocation, if it is still true, don\u0027t we need matching HAL_PIXEL_FORMAT as well?",
+      "revId": "385759c3bd52d45b291a2612093b2e4bddc19bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fb39f21_b0d1c1a5",
+        "filename": "libs/ui/include/ui/PixelFormat.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1558734
+      },
+      "writtenOn": "2022-12-07T19:36:02Z",
+      "side": 1,
+      "message": "Would it be better if the datatype is encoded in the PixelFormat? e.g R_16_UINT.\n\nOn our implementation, the datatype will be default to UNORM if the requested PixelFormat doesn\u0027t explicitly have a datatype.",
+      "revId": "385759c3bd52d45b291a2612093b2e4bddc19bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c99204cc_1029acdc",
+        "filename": "libs/ui/include/ui/PixelFormat.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1558734
+      },
+      "writtenOn": "2022-12-07T19:36:02Z",
+      "side": 1,
+      "message": "the same as the above",
+      "revId": "385759c3bd52d45b291a2612093b2e4bddc19bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ea3093_c78b15d3",
+        "filename": "libs/ui/include/ui/PixelFormat.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1558734
+      },
+      "writtenOn": "2022-12-07T19:36:02Z",
+      "side": 1,
+      "message": "the same as the above, need a matching HAL_PIXEL_FORMAT_RGBA_10101010.",
+      "revId": "385759c3bd52d45b291a2612093b2e4bddc19bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
