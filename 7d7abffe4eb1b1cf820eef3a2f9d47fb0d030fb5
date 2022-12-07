@@ -16,6 +16,23 @@
       "message": "This is a cherry-pick from an already merged CL from internal master.",
       "revId": "7d7abffe4eb1b1cf820eef3a2f9d47fb0d030fb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb17a1d_a131ed71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-12-07T10:17:34Z",
+      "side": 1,
+      "message": "This CL seems to break build for pre-submit for Codec2 AIDL.",
+      "revId": "7d7abffe4eb1b1cf820eef3a2f9d47fb0d030fb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
