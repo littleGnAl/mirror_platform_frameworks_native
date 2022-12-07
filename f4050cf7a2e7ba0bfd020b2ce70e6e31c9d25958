@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3602c350_1b3ead3e",
+        "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
+        "patchSetId": 60
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-07T00:41:44Z",
+      "side": 1,
+      "message": "checkout BpBinder for the private accessor pattern\n\nOr - remove the commend. It\u0027s a nice API to have, to see the active sessions, anyway :)",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 85
+      },
+      "revId": "f4050cf7a2e7ba0bfd020b2ce70e6e31c9d25958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "867fd2a5_81623862",
+        "filename": "libs/binder/trusty/include_mock/lk/err_ptr.h",
+        "patchSetId": 60
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-07T00:41:44Z",
+      "side": 1,
+      "message": "Do we need this? I would strongly discourage these APIs, because they increase the barrier to entry to understand the code, and they also aren\u0027t type checked.\n\nOne talk I like on this subject:\nhttps://2014.jsconf.eu/speakers/sebastian-markbage-minimal-api-surface-area-learning-patterns-instead-of-frameworks.html",
+      "revId": "f4050cf7a2e7ba0bfd020b2ce70e6e31c9d25958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
