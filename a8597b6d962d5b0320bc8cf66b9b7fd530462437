@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9331c964_b43ebfe7",
+        "filename": "libs/binder/tests/binderRpcTestFixture.h",
+        "patchSetId": 69
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-07T18:19:27Z",
+      "side": 1,
+      "message": "I think even the easy suggestion here would make debugging and understanding test failures easier (because you won\u0027t have cascading failures, if the restart mechanism works appropriately), and importantly it will increase coverage. Let\u0027s do it?",
+      "parentUuid": "9b6c73d4_603fe098",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "a8597b6d962d5b0320bc8cf66b9b7fd530462437",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15e17849_1f340696",
         "filename": "libs/binder/tests/binderRpcUniversalTests.cpp",
         "patchSetId": 69
