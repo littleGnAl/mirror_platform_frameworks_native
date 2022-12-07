@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d22cb2_b8289f4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-12-07T20:57:45Z",
+      "side": 1,
+      "message": "Clean cherry-pick of internally merged CL",
+      "revId": "7437e26875f549704096b3d272e8239fa503e86d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
