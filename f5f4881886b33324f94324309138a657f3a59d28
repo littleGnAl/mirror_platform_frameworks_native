@@ -81,6 +81,24 @@
       "parentUuid": "415b5035_59b879fc",
       "revId": "f5f4881886b33324f94324309138a657f3a59d28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2c3bed_aaecbfc8",
+        "filename": "libs/binder/trusty/binderRpcTest/aidl/rules.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-07T18:17:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ccdbf25_281a76c7",
+      "revId": "f5f4881886b33324f94324309138a657f3a59d28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
