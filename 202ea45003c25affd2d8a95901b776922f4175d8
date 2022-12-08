@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c517314_5797a7f7",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-08T01:58:43Z",
+      "side": 1,
+      "message": "util when?",
+      "range": {
+        "startLine": 54,
+        "startChar": 21,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "202ea45003c25affd2d8a95901b776922f4175d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
