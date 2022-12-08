@@ -50,6 +50,14 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
  * requirements associated with that higher stability level. For instance, a
  * VINTF stability binder is required to be in the VINTF manifest. This API
  * can be called to use that same interface within the vendor partition.
+ *
+ * WARNING: you must hold on to a binder instance once this is set. If you get
+ * a binder (e.g. `...->asBinder().get()`), you must save this binder and then
+ * use it. For instance:
+ *
+ *     auto binder = ...->asBinder();
+ *     AIBinder_forceDowngradeToVendorStability(binder.get());
+ *     doSomething(binder);
  */
 void AIBinder_forceDowngradeToVendorStability(AIBinder* binder);
 
@@ -79,6 +87,14 @@ static inline void AIBinder_markCompilationUnitStability(AIBinder* binder) {
  * requirements associated with that higher stability level. For instance, a
  * VINTF stability binder is required to be in the VINTF manifest. This API
  * can be called to use that same interface within the system partition.
+ *
+ * WARNING: you must hold on to a binder instance once this is set. If you get
+ * a binder (e.g. `...->asBinder().get()`), you must save this binder and then
+ * use it. For instance:
+ *
+ *     auto binder = ...->asBinder();
+ *     AIBinder_forceDowngradeToSystemStability(binder.get());
+ *     doSomething(binder);
  */
 void AIBinder_forceDowngradeToSystemStability(AIBinder* binder);
 
