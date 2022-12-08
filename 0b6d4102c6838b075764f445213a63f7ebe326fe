@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba24333_5a45247c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-12-08T21:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57f722f2_0a1c8e43",
+      "revId": "0b6d4102c6838b075764f445213a63f7ebe326fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49cf6e0e_532de86b",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-03T06:06:24Z",
       "side": 1,
       "message": "How many of these do we need right now?",
+      "revId": "0b6d4102c6838b075764f445213a63f7ebe326fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "624b3cd4_aa25d6d1",
+        "filename": "libs/binder/trusty/kernel/rules.mk",
+        "patchSetId": 20
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-12-08T21:12:12Z",
+      "side": 1,
+      "message": "I removed a few sources, but everything that\u0027s left is required to avoid missing symbol linker errors.",
+      "parentUuid": "49cf6e0e_532de86b",
       "revId": "0b6d4102c6838b075764f445213a63f7ebe326fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
