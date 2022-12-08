@@ -16,6 +16,29 @@
       "message": "existing presubmit failure: https://b.corp.google.com/issues/261804136",
       "revId": "e75e5f8c6ed2ae65ee69f55329538adc02292e5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e249bb51_b68bbf2d",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-08T23:43:21Z",
+      "side": 1,
+      "message": "so - this works, but also, for processes like servicemanager, I don\u0027t think it will work right now. If you renamed this API (e.g. hasAvailableBinderThread), you could do \u0027mThreadPoolStarted || mCurrentThread \u003e 0\u0027 and it\u0027ll handle a few more cases, but the current API should work for most cases, and knowing about the threadpool itself is great.",
+      "range": {
+        "startLine": 443,
+        "startChar": 11,
+        "endLine": 443,
+        "endChar": 29
+      },
+      "revId": "e75e5f8c6ed2ae65ee69f55329538adc02292e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
