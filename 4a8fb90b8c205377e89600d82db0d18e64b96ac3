@@ -22,6 +22,30 @@
       },
       "revId": "4a8fb90b8c205377e89600d82db0d18e64b96ac3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa615da_bbe61e64",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-08T18:14:05Z",
+      "side": 1,
+      "message": "I thought so, but you asked \"until when\". So - I thought maybe it is obvious, but without saying it, someone might think that you need to hold onto it forever, which isn\u0027t true.",
+      "parentUuid": "801187f0_52915931",
+      "range": {
+        "startLine": 54,
+        "startChar": 67,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "4a8fb90b8c205377e89600d82db0d18e64b96ac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
