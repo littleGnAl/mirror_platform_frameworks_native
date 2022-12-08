@@ -43,6 +43,10 @@ void ABinderProcess_startThreadPool();
  */
 bool ABinderProcess_setThreadPoolMaxThreadCount(uint32_t numThreads);
 /**
+ * Check if the threadpool has already been started.
+ */
+bool ABinderProcess_isThreadPoolStarted();
+/**
  * This adds the current thread to the threadpool. This may cause the threadpool to exceed the
  * maximum size.
  *
