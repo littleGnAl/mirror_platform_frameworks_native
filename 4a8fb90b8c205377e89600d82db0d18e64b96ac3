@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "801187f0_52915931",
+        "filename": "libs/binder/ndk/include_platform/android/binder_stability.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-08T02:29:20Z",
+      "side": 1,
+      "message": "hmm, this sounds too obvious. isn\u0027t it a binder-101?",
+      "range": {
+        "startLine": 54,
+        "startChar": 67,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "4a8fb90b8c205377e89600d82db0d18e64b96ac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
