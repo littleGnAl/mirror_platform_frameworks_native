@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02479e24_ea16ea76",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-09T18:04:04Z",
+      "side": 1,
+      "message": "not before L240? Can SIGHUP here be there w/o MSG?",
+      "range": {
+        "startLine": 242,
+        "startChar": 11,
+        "endLine": 245,
+        "endChar": 13
+      },
+      "revId": "5d095738a82a31d00713a2d5288c286872f60d77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
