@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf803af_4cd12130",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 25
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-09T06:22:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5268a384_42488478",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 40
+      },
+      "revId": "dd093bf9fcce76c1381caf691d67bf3cc44242cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9d5f761_4adf49c9",
