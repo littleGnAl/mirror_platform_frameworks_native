@@ -145,6 +145,24 @@
       "message": "Maybe add: \"This tells whether someone in the process has called ABinderProcess_startThreadPool. Usually, you should use this in a library to abort if the threadpool is not started. Programs should configure binder threadpools once at the beginning.\"",
       "revId": "e75e5f8c6ed2ae65ee69f55329538adc02292e5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66a9a8b4_fa2d5857",
+        "filename": "libs/binder/ndk/include_platform/android/binder_process.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-12-09T18:50:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9110d87_98d508c7",
+      "revId": "e75e5f8c6ed2ae65ee69f55329538adc02292e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
