@@ -22,6 +22,30 @@
       },
       "revId": "5d095738a82a31d00713a2d5288c286872f60d77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ef4a61_4cee606c",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-09T19:35:45Z",
+      "side": 1,
+      "message": "Yes, both combinations are allowed. You can get `HUP` by itself meaning the connection is closed without any message, or `HUP\u0026MSG` meaning the peer sent a reply then closed its end.\n\nIn Trusty that last message is usually handled, should Binder ignore it?",
+      "parentUuid": "02479e24_ea16ea76",
+      "range": {
+        "startLine": 242,
+        "startChar": 11,
+        "endLine": 245,
+        "endChar": 13
+      },
+      "revId": "5d095738a82a31d00713a2d5288c286872f60d77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
