@@ -63,6 +63,30 @@
       },
       "revId": "e75e5f8c6ed2ae65ee69f55329538adc02292e5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0763c210_3bbb674e",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-12-09T18:07:25Z",
+      "side": 1,
+      "message": "Maybe it makes sense to add a separate `hasAvailableBinderThread` API, if that ends up being needed, since they treated differently in libbinder.",
+      "parentUuid": "a3cc6630_a6fb4595",
+      "range": {
+        "startLine": 443,
+        "startChar": 11,
+        "endLine": 443,
+        "endChar": 29
+      },
+      "revId": "e75e5f8c6ed2ae65ee69f55329538adc02292e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
