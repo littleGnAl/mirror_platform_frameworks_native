@@ -46,6 +46,30 @@
       },
       "revId": "5d095738a82a31d00713a2d5288c286872f60d77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15d6df20_c2ab3bc1",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-09T22:59:59Z",
+      "side": 1,
+      "message": "I checked `FdTrigger` and it looks like draining pending messages before returning `DEAD_OBJECT` here is consistent with the behavior of the other transports  (https://android.googlesource.com/platform/frameworks/native/+/master/libs/binder/FdTrigger.cpp#117).",
+      "parentUuid": "a5ef4a61_4cee606c",
+      "range": {
+        "startLine": 242,
+        "startChar": 11,
+        "endLine": 245,
+        "endChar": 13
+      },
+      "revId": "5d095738a82a31d00713a2d5288c286872f60d77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
