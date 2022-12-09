@@ -239,6 +239,10 @@ private:
         }
         if (!(uevt.event & IPC_HANDLE_POLL_MSG)) {
             /* No message, terminate here and leave mHaveMessage false */
+            if (uevt.event & IPC_HANDLE_POLL_HUP) {
+                // Peer closed the connection
+                return DEAD_OBJECT;
+            }
             return OK;
         }
 
