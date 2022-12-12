@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6594c6f7_76c146ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2022-12-12T22:21:54Z",
+      "side": 1,
+      "message": "actually for the HAL version of IStats there are no clients since Android S - they are moved to AIDL version\nOn the other hand for consistency good to update corresponding implementation as well\n\nThank you",
+      "revId": "c0e636140c99dc56bf9c7e801e5f8bb9690ae48c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
