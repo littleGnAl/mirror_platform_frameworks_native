@@ -237,6 +237,30 @@
       },
       "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d641c50e_41eb0709",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1896186
+      },
+      "writtenOn": "2022-12-12T19:12:42Z",
+      "side": 1,
+      "message": "As discussed offline, I switched to a text file.\n\nPTAL, thanks!",
+      "parentUuid": "45e9a95f_c8b7ada9",
+      "range": {
+        "startLine": 78,
+        "startChar": 74,
+        "endLine": 78,
+        "endChar": 76
+      },
+      "revId": "307931a4f0f2a4e8de07c4716b4ca957fcb27a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
