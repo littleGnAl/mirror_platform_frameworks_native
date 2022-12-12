@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d590e44_ea1465a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-12T21:50:28Z",
+      "side": 1,
+      "message": "How to vendors find out about how to write this file?",
+      "revId": "e25a178c354c487f58c527bf72d82cb8de6a41d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f01eb59a_70308512",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-12T21:50:28Z",
+      "side": 1,
+      "message": "fail hard fail fast? (or should we add a test that validates the format, independently?)",
+      "range": {
+        "startLine": 1166,
+        "startChar": 16,
+        "endLine": 1166,
+        "endChar": 22
+      },
+      "revId": "e25a178c354c487f58c527bf72d82cb8de6a41d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
