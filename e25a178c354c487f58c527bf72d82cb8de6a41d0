@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "311ccc94_ee4ee6d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-13T23:47:59Z",
+      "side": 1,
+      "message": "We could add a section on source.android.com, or if you add a README in the codebase, you can point to it from here and from perfetto",
+      "parentUuid": "5d2430f3_7c17aeb3",
+      "revId": "e25a178c354c487f58c527bf72d82cb8de6a41d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f01eb59a_70308512",
         "filename": "cmds/atrace/atrace.cpp",
         "patchSetId": 3
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "There is a vts test that validates the file: https://cs.android.com/android/platform/superproject/+/master:external/perfetto/test/vts/vendor_perfetto_atrace_test.cc;drc\u003d2e6c1069b5e0c8328a14a105dbfa203033afec1f\n\nAnything else you think we should do here?",
       "parentUuid": "f01eb59a_70308512",
+      "range": {
+        "startLine": 1166,
+        "startChar": 16,
+        "endLine": 1166,
+        "endChar": 22
+      },
+      "revId": "e25a178c354c487f58c527bf72d82cb8de6a41d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e667c704_27a05fd6",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-13T23:47:59Z",
+      "side": 1,
+      "message": "If it\u0027s validated in a test, then either the test is failing, or it is corrupted, or there is an error. What would you think of being slightly louder (failing)? I\u0027m mostly worried about this getting out of sync with the test, or if there is another issue.",
+      "parentUuid": "09daf58b_c9ed88a1",
       "range": {
         "startLine": 1166,
         "startChar": 16,
