@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "376506bb_7e5b25a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-12-13T00:56:06Z",
+      "side": 1,
+      "message": "Thanks for this! The one in the NDK already popped up in a review and was helpful.",
+      "revId": "800113e298c24c2ae4b69c7723338d7908b4778c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
