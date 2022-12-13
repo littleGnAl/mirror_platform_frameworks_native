@@ -118,6 +118,30 @@
       },
       "revId": "5d095738a82a31d00713a2d5288c286872f60d77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719fff89_9bcb7f37",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-13T01:00:33Z",
+      "side": 1,
+      "message": "Incidentally, yes. When I added `scheduleShutdown` to `binderRpcTestServiceTrusty`, the test client started getting `HUP`s from the service shutting down. Each of those was accompanied by one last message containing the result of that method, and not handling those messages caused the tests to fail.",
+      "parentUuid": "6a6c6eb0_224c9b1b",
+      "range": {
+        "startLine": 242,
+        "startChar": 11,
+        "endLine": 245,
+        "endChar": 13
+      },
+      "revId": "5d095738a82a31d00713a2d5288c286872f60d77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
