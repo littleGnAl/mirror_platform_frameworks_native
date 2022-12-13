@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "499214ff_b2585538",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-13T22:23:15Z",
+      "side": 1,
+      "message": "document whether this takes ownership of the service or not (recommend not taking it - b/c of RefBase semantics)",
+      "range": {
+        "startLine": 46,
+        "startChar": 60,
+        "endLine": 46,
+        "endChar": 77
+      },
+      "revId": "33129a87c129b7e106fed83b408a0b06678dc07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b4e67a_1c66e116",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-13T22:23:15Z",
+      "side": 1,
+      "message": "document always takes ownership of FD",
+      "range": {
+        "startLine": 46,
+        "startChar": 79,
+        "endLine": 46,
+        "endChar": 82
+      },
+      "revId": "33129a87c129b7e106fed83b408a0b06678dc07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5325d70_d151b4c6",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-13T22:23:15Z",
+      "side": 1,
+      "message": "do FD sends need to be enabled by default?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 7
+      },
+      "revId": "33129a87c129b7e106fed83b408a0b06678dc07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bafd1a68_76455cf6",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-13T22:23:15Z",
+      "side": 1,
+      "message": "These may all be started immediately. Can we expose the configuration?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 42
+      },
+      "revId": "33129a87c129b7e106fed83b408a0b06678dc07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
