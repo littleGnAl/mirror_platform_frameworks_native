@@ -16,6 +16,23 @@
       "message": "Friendly ping",
       "revId": "737049a7e05cf577684f1b6ffedbe52641832d24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0232e0_d7fa3b95",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-13T22:26:13Z",
+      "side": 1,
+      "message": "Maybe `ALOGE` so they always get logged, since unauthorized connection attempts are pretty serious?",
+      "revId": "737049a7e05cf577684f1b6ffedbe52641832d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
