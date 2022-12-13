@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb655943_1d2a5b71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-12-13T17:34:38Z",
+      "side": 1,
+      "message": "Could you please mention the updated exec/s in the description of the change?",
+      "revId": "4dfdfa6295f7ad8bd49579f8be3156f98d72e2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
