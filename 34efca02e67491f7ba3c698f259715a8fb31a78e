@@ -16,6 +16,24 @@
       "message": "Do you know what the deprecation timeline for HALs is? Do you know when we could remove this interface from the codebase?",
       "revId": "34efca02e67491f7ba3c698f259715a8fb31a78e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47adcd9a_4548dfdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2022-12-13T02:27:20Z",
+      "side": 1,
+      "message": "3-6 years after conversion(2025-2028) done for all HALs",
+      "parentUuid": "157698d3_6a260a2a",
+      "revId": "34efca02e67491f7ba3c698f259715a8fb31a78e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
