@@ -33,6 +33,24 @@
       "message": "Maybe `ALOGE` so they always get logged, since unauthorized connection attempts are pretty serious?",
       "revId": "737049a7e05cf577684f1b6ffedbe52641832d24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91aef4ef_87ae4bc4",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-13T22:53:16Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "5a0232e0_d7fa3b95",
+      "revId": "737049a7e05cf577684f1b6ffedbe52641832d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
