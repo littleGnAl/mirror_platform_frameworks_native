@@ -94,6 +94,30 @@
       },
       "revId": "5d095738a82a31d00713a2d5288c286872f60d77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6c6eb0_224c9b1b",
+        "filename": "libs/binder/trusty/RpcTransportTipcTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-13T00:50:10Z",
+      "side": 1,
+      "message": "ack - do we have a test for this?",
+      "parentUuid": "15d6df20_c2ab3bc1",
+      "range": {
+        "startLine": 242,
+        "startChar": 11,
+        "endLine": 245,
+        "endChar": 13
+      },
+      "revId": "5d095738a82a31d00713a2d5288c286872f60d77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
