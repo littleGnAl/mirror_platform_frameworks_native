@@ -16,6 +16,24 @@
       "message": "Something I\u0027ve been debating: should we have one server/port per protocol version? There\u0027s no way to start them up dynamically from binderRpcTest, but we can have one persistent binderRpcTestService per version from 0 to `NEXT`, and maybe `EXPERIMENTAL` too.",
       "revId": "49474064740ee0cd12addbf0415ffd52cfd7687b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08bf9e4b_64a4f742",
+        "filename": "libs/binder/trusty/binderRpcTestService/binderRpcTestService.cpp",
+        "patchSetId": 33
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-13T05:56:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b54fae9d_61e6d4bd",
+      "revId": "49474064740ee0cd12addbf0415ffd52cfd7687b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
