@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d2430f3_7c17aeb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1896186
+      },
+      "writtenOn": "2022-12-13T11:15:39Z",
+      "side": 1,
+      "message": "Good point. What documentation do you want me to add and where?",
+      "parentUuid": "7d590e44_ea1465a6",
+      "revId": "e25a178c354c487f58c527bf72d82cb8de6a41d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f01eb59a_70308512",
         "filename": "cmds/atrace/atrace.cpp",
         "patchSetId": 3
@@ -31,6 +49,30 @@
       "writtenOn": "2022-12-12T21:50:28Z",
       "side": 1,
       "message": "fail hard fail fast? (or should we add a test that validates the format, independently?)",
+      "range": {
+        "startLine": 1166,
+        "startChar": 16,
+        "endLine": 1166,
+        "endChar": 22
+      },
+      "revId": "e25a178c354c487f58c527bf72d82cb8de6a41d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09daf58b_c9ed88a1",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1896186
+      },
+      "writtenOn": "2022-12-13T11:15:39Z",
+      "side": 1,
+      "message": "There is a vts test that validates the file: https://cs.android.com/android/platform/superproject/+/master:external/perfetto/test/vts/vendor_perfetto_atrace_test.cc;drc\u003d2e6c1069b5e0c8328a14a105dbfa203033afec1f\n\nAnything else you think we should do here?",
+      "parentUuid": "f01eb59a_70308512",
       "range": {
         "startLine": 1166,
         "startChar": 16,
