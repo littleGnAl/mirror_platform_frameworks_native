@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "157698d3_6a260a2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2022-12-13T02:24:41Z",
+      "side": 1,
+      "message": "Do you know what the deprecation timeline for HALs is? Do you know when we could remove this interface from the codebase?",
+      "revId": "34efca02e67491f7ba3c698f259715a8fb31a78e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
