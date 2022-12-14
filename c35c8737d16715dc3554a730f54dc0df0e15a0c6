@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feba7c74_9ee59b0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317813
+      },
+      "writtenOn": "2022-12-14T07:18:43Z",
+      "side": 1,
+      "message": "This CL is amazing. It solved a big problem.",
+      "revId": "c35c8737d16715dc3554a730f54dc0df0e15a0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
