@@ -51,6 +51,24 @@
       "parentUuid": "5a0232e0_d7fa3b95",
       "revId": "737049a7e05cf577684f1b6ffedbe52641832d24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9b378c_9f9e565d",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-12-14T10:32:29Z",
+      "side": 1,
+      "message": "Done, and also logs the CID in the vsock filter function.",
+      "parentUuid": "91aef4ef_87ae4bc4",
+      "revId": "737049a7e05cf577684f1b6ffedbe52641832d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
