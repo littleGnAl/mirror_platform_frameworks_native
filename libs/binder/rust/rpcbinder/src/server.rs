@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
+use crate::session::FileDescriptorTransportMode;
 use binder::{unstable_api::AsNative, SpIBinder};
-use binder_rpc_unstable_bindgen::ARpcServer;
+use binder_rpc_unstable_bindgen::{ARpcServer, ARpcSession_FileDescriptorTransportMode};
 use foreign_types::{foreign_type, ForeignType, ForeignTypeRef};
 use std::ffi::CString;
 use std::io::{Error, ErrorKind};
@@ -88,6 +89,22 @@ impl RpcServer {
 }
 
 impl RpcServerRef {
+    /// Sets the list of file descriptor transport modes supported by this server.
+    pub fn set_supported_file_descriptor_transport_modes(
+        &self,
+        modes: &[FileDescriptorTransportMode],
+    ) {
+        let modes: Vec<ARpcSession_FileDescriptorTransportMode> =
+            modes.iter().map(|x| (*x).into()).collect();
+        unsafe {
+            binder_rpc_unstable_bindgen::ARpcServer_setSupportedFileDescriptorTransportModes(
+                self.as_ptr(),
+                modes.as_ptr(),
+                modes.len() as u64,
+            )
+        }
+    }
+
     /// Starts a new background thread and calls join(). Returns immediately.
     pub fn start(&self) {
         unsafe { binder_rpc_unstable_bindgen::ARpcServer_start(self.as_ptr()) };
