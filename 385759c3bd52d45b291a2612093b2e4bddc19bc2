@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e17f12_49fdb830",
+        "filename": "libs/nativewindow/AHardwareBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1558734
+      },
+      "writtenOn": "2022-12-14T08:18:19Z",
+      "side": 1,
+      "message": "The aidl change is in a separate CL",
+      "parentUuid": "53f821a2_b324bfa7",
+      "revId": "385759c3bd52d45b291a2612093b2e4bddc19bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6227fbf3_805ca1dc",
@@ -86,6 +104,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec86dc5_ef3338dc",
+        "filename": "libs/ui/include/ui/PixelFormat.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1558734
+      },
+      "writtenOn": "2022-12-14T08:18:19Z",
+      "side": 1,
+      "message": "The HAL_PIXEL_FORMAT change is in a separate CL",
+      "parentUuid": "6227fbf3_805ca1dc",
+      "revId": "385759c3bd52d45b291a2612093b2e4bddc19bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c99204cc_1029acdc",
@@ -116,6 +152,24 @@
       "writtenOn": "2022-12-07T19:36:02Z",
       "side": 1,
       "message": "the same as the above, need a matching HAL_PIXEL_FORMAT_RGBA_10101010.",
+      "revId": "385759c3bd52d45b291a2612093b2e4bddc19bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ac8487_b6d2fa8a",
+        "filename": "libs/ui/include/ui/PixelFormat.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1558734
+      },
+      "writtenOn": "2022-12-14T08:18:19Z",
+      "side": 1,
+      "message": "The HAL_PIXEL_FORMAT change is in a separate CL",
+      "parentUuid": "c6ea3093_c78b15d3",
       "revId": "385759c3bd52d45b291a2612093b2e4bddc19bc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
