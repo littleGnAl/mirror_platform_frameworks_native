@@ -86,6 +86,7 @@ std::optional<bool> AIBinder::associateClassInternal(const AIBinder_Class* clazz
             LOG(ERROR) << __func__ << ": Class descriptors '" << currentDescriptor
                        << "' match during associateClass, but they are different class objects ("
                        << clazz << " vs " << mClazz << "). Class descriptor collision?";
+            if (asABpBinder() != nullptr) return true;
         } else {
             LOG(ERROR) << __func__
                        << ": Class cannot be associated on object which already has a class. "
