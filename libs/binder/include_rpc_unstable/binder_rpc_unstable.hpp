@@ -47,6 +47,15 @@ enum ARpcSession_FileDescriptorTransportMode {
 // could not be started.
 [[nodiscard]] ARpcServer* ARpcServer_newInitUnixDomain(AIBinder* service, const char* name);
 
+// Starts an RPC server that bootstraps sessions using an existing Unix domain
+// socket pair, with a given root IBinder object.
+// Callers should create a pair of SOCK_STREAM Unix domain sockets, pass one to
+// this function and the other to UnixDomainBootstrapClient(). Multiple client
+// session can be created from the client end of the pair.
+// Returns an opaque handle to the running server instance, or null if the server
+// could not be started.
+[[nodiscard]] ARpcServer* ARpcServer_newUnixDomainBootstrap(AIBinder* service, int bootstrapFd);
+
 // Sets the list of supported file descriptor transport modes of this RPC server.
 void ARpcServer_setSupportedFileDescriptorTransportModes(
         ARpcServer* handle,
@@ -82,6 +91,11 @@ AIBinder* ARpcSession_setupVsockClient(ARpcSession* handle, unsigned int cid,
 // The final Unix Domain Socket path name is /dev/socket/`name`.
 // Returns the root Binder object of the server.
 AIBinder* ARpcSession_setupUnixDomainClient(ARpcSession* handle, const char* name);
+
+// Connects to an RPC server over the given bootstrap Unix domain socket.
+// Takes ownership of `bootstrapFd`.
+AIBinder* ARpcSession_setupUnixDomainBootstrapClient(ARpcSession* handle,
+                                                     int bootstrapFd);
 
 // Connects to an RPC server with preconnected file descriptors.
 //
