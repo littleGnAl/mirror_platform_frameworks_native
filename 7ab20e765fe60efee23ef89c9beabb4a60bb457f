@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0680d9_cbb2a0b7",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-12-15T10:44:23Z",
+      "side": 1,
+      "message": "Add a safety comment?",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 14
+      },
+      "revId": "7ab20e765fe60efee23ef89c9beabb4a60bb457f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "975b50da_9266dff2",
+        "filename": "libs/binder/rust/rpcbinder/src/session.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-12-15T10:44:23Z",
+      "side": 1,
+      "message": "safety comment?",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "7ab20e765fe60efee23ef89c9beabb4a60bb457f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b4e1fc_3001b4d3",
+        "filename": "libs/binder/rust/rpcbinder/src/session.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-12-15T10:44:23Z",
+      "side": 1,
+      "message": "ditto, same for the fields below.",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 14
+      },
+      "revId": "7ab20e765fe60efee23ef89c9beabb4a60bb457f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262e7e70_01238e33",
+        "filename": "libs/binder/rust/rpcbinder/src/session.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2022-12-15T10:44:23Z",
+      "side": 1,
+      "message": "Why not let the bindgen generate ARpcSession_FileDescriptorTransportMode directly as enum?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 1
+      },
+      "revId": "7ab20e765fe60efee23ef89c9beabb4a60bb457f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
