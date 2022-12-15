@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3087e59a_9f189e44",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1869780
+      },
+      "writtenOn": "2022-12-15T22:45:48Z",
+      "side": 1,
+      "message": "Has it been considered to change this array into a pointer? I think that would help with reducing the size of the k_categories[] data structure.",
+      "range": {
+        "startLine": 97,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "ce93af89827809f89661186bdfa4a1ef2890999b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
