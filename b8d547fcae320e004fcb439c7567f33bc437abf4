@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db83574c_e7302161",
+        "filename": "services/batteryservice/include/batteryservice/BatteryService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1319951
+      },
+      "writtenOn": "2022-12-16T22:31:47Z",
+      "side": 1,
+      "message": "isn\u0027t this 2 epochs?",
+      "revId": "b8d547fcae320e004fcb439c7567f33bc437abf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73696d15_9df03e2b",
         "filename": "services/batteryservice/include/batteryservice/BatteryService.h",
         "patchSetId": 1
