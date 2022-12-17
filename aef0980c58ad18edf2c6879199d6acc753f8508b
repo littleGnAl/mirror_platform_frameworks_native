@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00f78e70_7b7d44ba",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-17T01:51:08Z",
+      "side": 1,
+      "message": "`enum class` to restrict the scope of the enumerators? Otherwise they\u0027re defined in the top level scope.",
+      "revId": "aef0980c58ad18edf2c6879199d6acc753f8508b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a8bef77_dfcfa078",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-17T01:51:08Z",
+      "side": 1,
+      "message": "Minor nit: use `session` everywhere? (or `handle`, just use the same one everywhere)",
+      "revId": "aef0980c58ad18edf2c6879199d6acc753f8508b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0d32a2_512d8b33",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-17T01:51:08Z",
+      "side": 1,
+      "message": "`LOG_ALWAYS_FATAL_IF(handle \u003d\u003d nullptr, ...)` to catch invalid handles early? Or something similar?",
+      "revId": "aef0980c58ad18edf2c6879199d6acc753f8508b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ad8978_af0963cc",
+        "filename": "libs/binder/rust/rpcbinder/src/session.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-17T01:51:08Z",
+      "side": 1,
+      "message": "`request_fd().unwrap_or(-1)` is shorter.",
+      "revId": "aef0980c58ad18edf2c6879199d6acc753f8508b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
