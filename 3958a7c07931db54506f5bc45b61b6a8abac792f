@@ -22,6 +22,30 @@
       },
       "revId": "3958a7c07931db54506f5bc45b61b6a8abac792f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f48cc0b_61742aaa",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-12-19T22:48:33Z",
+      "side": 1,
+      "message": "We don\u0027t need to compile RpcState.cpp anymore so this isn\u0027t necessary.",
+      "parentUuid": "87919795_6f42eb94",
+      "range": {
+        "startLine": 584,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 6
+      },
+      "revId": "3958a7c07931db54506f5bc45b61b6a8abac792f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
