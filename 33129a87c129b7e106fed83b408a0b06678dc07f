@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca74928a_b1aa8374",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-12-19T22:54:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "499214ff_b2585538",
+      "range": {
+        "startLine": 46,
+        "startChar": 60,
+        "endLine": 46,
+        "endChar": 77
+      },
+      "revId": "33129a87c129b7e106fed83b408a0b06678dc07f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5325d70_d151b4c6",
