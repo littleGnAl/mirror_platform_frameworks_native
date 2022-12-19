@@ -117,6 +117,30 @@
       },
       "revId": "116da2776c69e944154bbf5cc42c8fb8a35c2061",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01bfa29_1f611d01",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-12-19T23:28:00Z",
+      "side": 1,
+      "message": "Fun fact: the loop in `interruptableReadOrWrite` handles this correctly.",
+      "parentUuid": "029f8a09_7f5a1ae5",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 16
+      },
+      "revId": "116da2776c69e944154bbf5cc42c8fb8a35c2061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
