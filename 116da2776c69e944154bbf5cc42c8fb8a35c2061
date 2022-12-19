@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b7485c7_2f9d618f",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-12-19T23:17:25Z",
+      "side": 1,
+      "message": "no need for these `else`s since the `if` bodies always return",
+      "range": {
+        "startLine": 211,
+        "startChar": 6,
+        "endLine": 211,
+        "endChar": 10
+      },
+      "revId": "116da2776c69e944154bbf5cc42c8fb8a35c2061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b0bf505_b6d2d084",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2022-12-19T23:17:25Z",
+      "side": 1,
+      "message": "no objection, but i think this is technically redundant with the `poll` call in the while loop condition (i.e. we saw `POLLIN` and no one else is trying to use this socket concurrently) + if we do somehow hit this, then retrying the poll call should just immediately get `POLLHUP` and then return `DEAD_OBJECT`, so the effect is the same",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 16
+      },
+      "revId": "116da2776c69e944154bbf5cc42c8fb8a35c2061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
