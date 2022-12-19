@@ -69,6 +69,30 @@
       },
       "revId": "116da2776c69e944154bbf5cc42c8fb8a35c2061",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "029f8a09_7f5a1ae5",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-12-19T23:24:45Z",
+      "side": 1,
+      "message": "Unfortunately the kernel behaves differently for different kinds of sockets. For socketpair() POLLHUP always also sets POLLIN, so you never get that `DEAD_OBJECT` from `triggerablePoll`.\n\nSee here (confirmed experimentally): https://www.greenend.org.uk/rjk/tech/poll.html",
+      "parentUuid": "3b0bf505_b6d2d084",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 16
+      },
+      "revId": "116da2776c69e944154bbf5cc42c8fb8a35c2061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
