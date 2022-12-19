@@ -162,6 +162,10 @@ void ARpcServer_shutdown(ARpcServer* handle) {
 }
 
 void ARpcServer_free(ARpcServer* handle) {
+    // b/263168076 - We must call shutdown() before invoking the destructor of
+    // RpcServer because it tries to promote wp<RpcServer> into sp<RpcServer>
+    // during cleanup. If promote() fails, this thread will deadlock.
+    ARpcServer_shutdown(handle);
     freeObjectHandle<RpcServer>(handle);
 }
 
