@@ -87,7 +87,10 @@ rust_library {
     min_sdk_version: "Tiramisu",
     lints: "none",
     clippy_lints: "none",
-    visibility: [":__subpackages__"],
+    visibility: [
+        ":__subpackages__",
+        "//system/security/keystore2/src/fuzzers:__subpackages__",
+    ],
 }
 
 rust_bindgen {
