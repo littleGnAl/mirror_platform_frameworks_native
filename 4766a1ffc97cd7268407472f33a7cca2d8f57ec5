@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc46624f_094a7edb",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-20T00:03:38Z",
+      "side": 1,
+      "message": "We might also want to make a more graceful version of shutdown.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 38
+      },
+      "revId": "4766a1ffc97cd7268407472f33a7cca2d8f57ec5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
