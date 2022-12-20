@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ced35e_a5663bc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2022-12-20T22:16:37Z",
+      "side": 1,
+      "message": "@smoreland@google.com Do you think we could land this? We added some Trusty code elsewhere (the `trusty-binder-discover` hashtag) that uses the Binder headers in the kernel.",
+      "revId": "9c912e927e4ec8a3d442982ea05fa95b33659fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
