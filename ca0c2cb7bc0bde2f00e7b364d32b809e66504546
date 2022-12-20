@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cba07c1_4a6b6c5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2022-12-20T18:07:44Z",
+      "side": 1,
+      "message": "This LGTM, as stated in the commit message the driver ignores these flags for BINDER_TYPE_FD. I suppose we\u0027ll just double check this is fine with Steven.",
+      "revId": "ca0c2cb7bc0bde2f00e7b364d32b809e66504546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
