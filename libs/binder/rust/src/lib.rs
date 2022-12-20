@@ -119,6 +119,7 @@ pub use proxy::{
     wait_for_service, DeathRecipient, SpIBinder, WpIBinder,
 };
 pub use state::{ProcessState, ThreadState};
+pub use sys::ABinderProcess_startThreadPool;
 
 /// Binder result containing a [`Status`] on error.
 pub type Result<T> = std::result::Result<T, Status>;
