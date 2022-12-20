@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14c5482f_10a255c1",
+        "filename": "libs/binder/trusty/kernel/rules.mk",
+        "patchSetId": 21
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-12-20T14:47:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d822cd20_cee34821",
+      "revId": "adc90db51a7f350b1bbde3896663fdecd81b807f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e60e60b2_6ad239bd",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-12-19T23:41:03Z",
       "side": 1,
       "message": "If we removed this and `RpcServer.cpp`, could we land this first?",
+      "revId": "adc90db51a7f350b1bbde3896663fdecd81b807f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e905f1_3728cf77",
+        "filename": "libs/binder/trusty/kernel/rules.mk",
+        "patchSetId": 21
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1891742
+      },
+      "writtenOn": "2022-12-20T14:47:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e60e60b2_6ad239bd",
       "revId": "adc90db51a7f350b1bbde3896663fdecd81b807f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
