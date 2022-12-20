@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8cb3490_9415d64c",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-20T20:38:01Z",
+      "side": 1,
+      "message": "libbinder_ndk_sys is an internal implementation detail. Please remove the dependency and only use libbinder_rs. If new APIs are needed, we should add them in libbinder_rs",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 66
+      },
+      "revId": "e82536ee31f3a2f1355ce95a9ba4bdba0c25633e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
