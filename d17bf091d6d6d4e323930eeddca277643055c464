@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec0e12d_2b9a71cb",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T08:11:45Z",
+      "side": 1,
+      "message": "What does functionality mean here? A new transaction method?",
+      "range": {
+        "startLine": 104,
+        "startChar": 81,
+        "endLine": 105,
+        "endChar": 71
+      },
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79ff32d_a8bbe452",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T08:11:45Z",
+      "side": 1,
+      "message": "What are these?",
+      "range": {
+        "startLine": 106,
+        "startChar": 32,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48efc700_21faf675",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T08:11:45Z",
+      "side": 1,
+      "message": "Not sure I am following correctly. If `this-\u003easABpBinder() !\u003d nullptr` and the descriptors are the same, we will always hit this line. Then everytime we hit the line, `mClazz` will be updated, which to me sounds against what you wrote above: \"If this is an ABpBinder, the first class object becomes the canonical one\".\n\nI think I am terribly wrong here. Please correct me.",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 19
+      },
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba17a7ff_9dc856a0",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T08:11:45Z",
+      "side": 1,
+      "message": "We allow this just because this doesn\u0027t cause any harm, as long as the descriptor remains unchanged, right?\n\nOther information from AIBinder_class (the on_* functions) is no op for remote object.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 73
+      },
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b0dca2_115a60ba",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T08:11:45Z",
+      "side": 1,
+      "message": "not used?",
+      "range": {
+        "startLine": 664,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 23
+      },
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
