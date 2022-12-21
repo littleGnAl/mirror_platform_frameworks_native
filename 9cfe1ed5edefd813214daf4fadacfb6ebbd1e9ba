@@ -1,5 +1,57 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb937ee_1540869d",
+        "filename": "libs/nativewindow/include/android/hardware_buffer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-12-21T00:42:32Z",
+      "side": 1,
+      "message": "these are skia enums?!",
+      "revId": "9cfe1ed5edefd813214daf4fadacfb6ebbd1e9ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97bd35c_2cfb4cad",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-12-21T00:42:32Z",
+      "side": 1,
+      "message": "not here. in the other place you need to.",
+      "revId": "9cfe1ed5edefd813214daf4fadacfb6ebbd1e9ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6b992de_753c248f",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2022-12-21T00:42:32Z",
+      "side": 1,
+      "message": "100% required. otherwise this looks OK.",
+      "revId": "9cfe1ed5edefd813214daf4fadacfb6ebbd1e9ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
