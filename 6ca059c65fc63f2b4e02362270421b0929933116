@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e66e38_888e81e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-12-21T16:22:32Z",
+      "side": 1,
+      "message": "Thank you for the description!\nBut how is this connected to obituaries? Do we call getInterfaceDescriptor somewhere while sending them?\n\nCan we remove this check here since it will not be empty any more? https://source.corp.google.com/android/frameworks/native/libs/binder/BpBinder.cpp;rcl\u003dc79f6bbdc3475d86aaa758c333628ac9c73085e2;l\u003d650",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "6ca059c65fc63f2b4e02362270421b0929933116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
