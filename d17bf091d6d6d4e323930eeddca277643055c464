@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e38020a_b2456501",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2022-12-21T15:44:37Z",
+      "side": 1,
+      "message": "can confirm it solves the bug in question",
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dec0e12d_2b9a71cb",
