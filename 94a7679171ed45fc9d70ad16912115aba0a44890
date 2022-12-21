@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd208304_f94606db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T07:09:38Z",
+      "side": 1,
+      "message": "There seems to be a behavioral change in this CL, if I am not reading code wrong. Could you document that?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "67b06825_7dd93e73",
@@ -19,6 +42,53 @@
         "startChar": 1,
         "endLine": 102,
         "endChar": 37
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b8c677c_be97553a",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T07:09:38Z",
+      "side": 1,
+      "message": "Can these two line be moved to above L98, but below 90? The two local variables `descriptor` and `newDescriptor` wouldn\u0027t be used when this if condition is true.",
+      "parentUuid": "67b06825_7dd93e73",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f341e7e8_2d5fa1b6",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T07:09:38Z",
+      "side": 1,
+      "message": "Where is this done?",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 33
       },
       "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
