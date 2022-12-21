@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1e5fc0_305a6e44",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T21:18:58Z",
+      "side": 1,
+      "message": "Updated to be more clear. The restriction is that we shouldn\u0027t add new functionality (whatever that is) by setting configuration on the class object itself. It should be implemented elsewhere.",
+      "parentUuid": "dec0e12d_2b9a71cb",
+      "range": {
+        "startLine": 104,
+        "startChar": 81,
+        "endLine": 105,
+        "endChar": 71
+      },
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c79ff32d_a8bbe452",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eee0ce52_dc4260ea",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T21:18:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c79ff32d_a8bbe452",
+      "range": {
+        "startLine": 106,
+        "startChar": 32,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48efc700_21faf675",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-12-21T08:11:45Z",
       "side": 1,
       "message": "Not sure I am following correctly. If `this-\u003easABpBinder() !\u003d nullptr` and the descriptors are the same, we will always hit this line. Then everytime we hit the line, `mClazz` will be updated, which to me sounds against what you wrote above: \"If this is an ABpBinder, the first class object becomes the canonical one\".\n\nI think I am terribly wrong here. Please correct me.",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 19
+      },
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2d5b618_4cdb0402",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T21:18:58Z",
+      "side": 1,
+      "message": "Thanks, good catch. I accidentally selected the last one, but it doesn\u0027t matter because they contain the same data. Updated to resolve this anyway. Thanks.",
+      "parentUuid": "48efc700_21faf675",
       "range": {
         "startLine": 152,
         "startChar": 4,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "245a5a3d_b382c559",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T21:18:58Z",
+      "side": 1,
+      "message": "right - this is the overall point of the CL - to allow this (the test failed before)",
+      "parentUuid": "ba17a7ff_9dc856a0",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 73
+      },
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0b0dca2_115a60ba",
         "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
         "patchSetId": 2
@@ -123,6 +219,30 @@
       "writtenOn": "2022-12-21T08:11:45Z",
       "side": 1,
       "message": "not used?",
+      "range": {
+        "startLine": 664,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 23
+      },
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79147f5d_0ce774bb",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T21:18:58Z",
+      "side": 1,
+      "message": "Done, thanks",
+      "parentUuid": "a0b0dca2_115a60ba",
       "range": {
         "startLine": 664,
         "startChar": 0,
