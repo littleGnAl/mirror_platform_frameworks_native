@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed987e6b_c6f7b751",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T21:11:36Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be any behavior change here. The order locks are taken is different, and so there is a minuscule performance trade-off, but it could only cause an issue if there was a bug internally in how IBinder manages its locks OR if IBinder::withLock was used incorrectly (a recent API I added which is used in only one place). Note - these locks are not taken at the same time before or after this change.",
+      "parentUuid": "cd208304_f94606db",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "67b06825_7dd93e73",
@@ -73,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bb5f6b2_d14ced72",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T21:11:36Z",
+      "side": 1,
+      "message": "The comment on L92..L99 explain why this isn\u0027t done. We could copy them above, but the point is - since getInterfaceDescriptor is cached internally (and I also added a test and fixed the implementation of it for this - in https://android-review.git.corp.google.com/c/platform/frameworks/native/+/2365608), mClazz !\u003d nullptr (which includes conditions on L102 and L104) implies that getInterfaceDesciptor is a no-op.\n\nThe case I\u0027m optimizing for is when a binder is sent once, when both locks need to be taken. Re-ordering it requires more locks to be required in this case. The less common case, of a binder repeatedly sent, is still fast after this patch. We could also remove the getInterfaceDescriptor check for ABpBinder altogether (to match CPP backend behavior), but the impact would be that type checking is done later (on the first transaction). So, I\u0027ve been reserving the optimization.",
+      "parentUuid": "8b8c677c_be97553a",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f341e7e8_2d5fa1b6",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 1
@@ -84,6 +132,30 @@
       "writtenOn": "2022-12-21T07:09:38Z",
       "side": 1,
       "message": "Where is this done?",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "605e2963_3415d154",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T21:11:36Z",
+      "side": 1,
+      "message": "L102",
+      "parentUuid": "f341e7e8_2d5fa1b6",
       "range": {
         "startLine": 124,
         "startChar": 7,
