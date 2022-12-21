@@ -50,6 +50,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "842234c0_cba3b506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T23:50:51Z",
+      "side": 1,
+      "message": "The open comments are for my own understanding. The change itself seems harmless, so +2.",
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "67b06825_7dd93e73",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 1
@@ -121,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ba38f18_89a5f79a",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T23:50:51Z",
+      "side": 1,
+      "message": "Sorry. Please bear with me a bit longer 😊\n\nWhen you say \"both\" locks, what are they? I see one lock at L101. Where\u0027s the other?",
+      "parentUuid": "5bb5f6b2_d14ced72",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f341e7e8_2d5fa1b6",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 1
@@ -156,6 +197,30 @@
       "side": 1,
       "message": "L102",
       "parentUuid": "f341e7e8_2d5fa1b6",
+      "range": {
+        "startLine": 124,
+        "startChar": 7,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae02c1da_72e64607",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T23:50:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "605e2963_3415d154",
       "range": {
         "startLine": 124,
         "startChar": 7,
