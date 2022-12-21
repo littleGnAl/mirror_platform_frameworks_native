@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc2da16_2427bc77",
+        "filename": "libs/binder/ndk/tests/include/iface/iface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T02:33:00Z",
+      "side": 1,
+      "message": "this documentation change is not related to this change, but my original poor design here (which is fixed in the real AIDL implementation of this) caused me a delay in solving this issue",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "fb3175d481f26804a658b2e288cb49153e5d8456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3529c3ed_dc7ac9bc",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T02:33:00Z",
+      "side": 1,
+      "message": "this is unrelated",
+      "range": {
+        "startLine": 616,
+        "startChar": 0,
+        "endLine": 618,
+        "endChar": 35
+      },
+      "revId": "fb3175d481f26804a658b2e288cb49153e5d8456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
