@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c243b912_fbc51cbf",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-21T23:57:57Z",
+      "side": 1,
+      "message": "Is this \"3\" when without the change above? Then am I correct to understand that the purpose of this CL is to reduce the repeated memory alloc? That\u0027s not clearly shown in the commit message.",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 26
+      },
+      "revId": "f2830fe7d47c140293e258e5266e8ae7788572c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
