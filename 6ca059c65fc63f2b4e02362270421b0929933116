@@ -22,6 +22,30 @@
       },
       "revId": "6ca059c65fc63f2b4e02362270421b0929933116",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d25b95_d15ee22b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T21:24:39Z",
+      "side": 1,
+      "message": "If we could remove \u0027mObitsSent\u0027, we could have added the boolean \u0027mDescriptorCache\u0027 without increasing the size of BpBinder. However - I went with the StaticString16 approach (which also makes use of the idea that a StaticString16 is not copied when set, but rather the underlying string is reacquired, an implementation detail of String16 - that we can do pointer equality here). However - it does have the nice property that we can get rid of the other prints, since printing the uninitialized descriptor will print something nice. I\u0027m happy with the implementation.",
+      "parentUuid": "71e66e38_888e81e8",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "6ca059c65fc63f2b4e02362270421b0929933116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
