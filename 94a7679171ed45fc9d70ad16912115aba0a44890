@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b06825_7dd93e73",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-21T02:28:26Z",
+      "side": 1,
+      "message": "we could copy this above to L90 to prevent the fastpath from taking two locks, but having the normal path take 3 locks (one of them twice) was also kind of weird.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
