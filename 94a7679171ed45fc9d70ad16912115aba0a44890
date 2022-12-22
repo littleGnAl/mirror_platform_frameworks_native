@@ -162,6 +162,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3323734a_f1d59d9f",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-22T01:02:09Z",
+      "side": 1,
+      "message": "I\u0027ll discuss code w/ you forever Jiyong 😊\n\nIt\u0027s the internal lock inside of the BpBinder or BBinder object. This is the lock which is taken to determine whether we have cached the descriptor inside of getInterfaceDescriptor in the past or not. Note - b/240301218 is filed to unify these two locks and the object hierarchies and allocate less total objects, though it took me a long time to realize just how it is possible - it requires restructuring BpBinder.",
+      "parentUuid": "9ba38f18_89a5f79a",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f341e7e8_2d5fa1b6",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 1
