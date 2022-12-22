@@ -210,6 +210,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b12d3daa_e06245e5",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-22T01:15:44Z",
+      "side": 1,
+      "message": "L99 actually could be hmm. It\u0027s curse of knowledge. I\u0027ll reorder them if TH fails again.\n\nBtw - it\u0027s not holding them both at the same time that\u0027s the issue, but it\u0027s making a binder call while holding a lock. We could likely hold them at the same time. However, we can\u0027t hold one while making a binder call. If we hold one while executing getInterfaceDescription, it will introduce deadlocks (in this case, not due to nested calls, but because getInterfaceTransaction might be delayed from executing by a transaction which is blocked from proceeding on a call to another thread in our process which is blocked on getting this lock before it can return to the server).",
+      "parentUuid": "24f92f86_ee2ad760",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f341e7e8_2d5fa1b6",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 1
