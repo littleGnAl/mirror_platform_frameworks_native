@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "314bb957_39a0469e",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-22T00:58:36Z",
+      "side": 1,
+      "message": "We could remove them. Though, since this restriction is not obvious and hard to test, and it will appear to work, except in some rare cases, I wanted to call it out specifically. We could improve it, but just as I did a review of the bugs and history of this code in order to support this and the parent change, I would suggest it necessary of anyone modifying this code. We have linker namespaces, which are quite complicated to deal with. For instance, if the API is evolved incorrectly, and some code reads a location in memory according to the setting of the class, and that location is not part of the class object itself, then it could be a security issue. I\u0027m open to improving the documentation here, but I\u0027m more concerned about having the documentation here than keeping it simple.",
+      "parentUuid": "cb95fbc9_649a86df",
+      "range": {
+        "startLine": 104,
+        "startChar": 81,
+        "endLine": 105,
+        "endChar": 71
+      },
+      "revId": "d17bf091d6d6d4e323930eeddca277643055c464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c79ff32d_a8bbe452",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 2
