@@ -234,6 +234,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec608789_2256997d",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-22T01:18:17Z",
+      "side": 1,
+      "message": "*getInterfaceDescription -\u003e getInterfaceDescriptor\n*getInterfaceTransaction -\u003e getInterfaceDescriptor",
+      "parentUuid": "b12d3daa_e06245e5",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f341e7e8_2d5fa1b6",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 1
