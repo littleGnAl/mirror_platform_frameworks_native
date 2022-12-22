@@ -16,6 +16,24 @@
       "message": "The `android.hardware.thermal-service.example` PSS went from 812kb to 801kb(or 800kb at some points). Not bad at all!\n\nWhat would be the downsides to this? Is libbinder_ndk just not using much out of these libraries at all?",
       "revId": "1edb74e4a37f0b0ad0a1aefbefec85bedb09e520",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08688474_439ed23f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-22T23:56:42Z",
+      "side": 1,
+      "message": "It could introduce ODR-like issues, and due to --gc-sections in Android, it also introduces requirements for how code is allowed to depend on static variables (you must read them, they can\u0027t change something you care about during static initialization). Most of the savings is due to how the symbol table is built up when ALSR is turned on. This will also increase the size of libbinder_ndk (which may be why this only saved 12KB, not 16KB). However, for libbase and libandroid_runtime_lazy, I expect this effect to be small. I didn\u0027t check libutils (more concerned about the ODR-like issues for that (for instance - if we have two copies of \u0027static const StaticString16 emptyString(u\"\");\u0027, then pointer equality of String16 empty strings would be broken, although relying on that now would be silly, we wouldn\u0027t want to introduce the possibility of such an issue) - and also since it needs to interop with libbinder and things like queryLocalInterface use addresses of symbols, if there are two of them, it could be a problem - and also we use a lot of things there). liblog is added here, but this is only to satisfy the build time linking process - it was already loaded at runtime - though perhaps in a different order.",
+      "parentUuid": "f14ae7ad_c63a6f20",
+      "revId": "1edb74e4a37f0b0ad0a1aefbefec85bedb09e520",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
