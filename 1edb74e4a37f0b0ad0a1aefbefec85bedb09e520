@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f14ae7ad_c63a6f20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-12-22T23:27:30Z",
+      "side": 1,
+      "message": "The `android.hardware.thermal-service.example` PSS went from 812kb to 801kb(or 800kb at some points). Not bad at all!\n\nWhat would be the downsides to this? Is libbinder_ndk just not using much out of these libraries at all?",
+      "revId": "1edb74e4a37f0b0ad0a1aefbefec85bedb09e520",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
