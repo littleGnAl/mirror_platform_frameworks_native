@@ -330,6 +330,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14be2fdd_11d8f1a6",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-22T04:05:47Z",
+      "side": 1,
+      "message": "Ack. That\u0027s what I understood. Thanks for the explanations. I think that revising the doc is needed if you don\u0027t have a plan to simplify the locking scenario. If you have a plan (i.e. if the doc will be obsolete anyway), I don\u0027t feel strong about documentation.",
+      "parentUuid": "0f9fa4cb_344ddb14",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f341e7e8_2d5fa1b6",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 1
