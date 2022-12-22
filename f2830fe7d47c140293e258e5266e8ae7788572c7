@@ -22,6 +22,30 @@
       },
       "revId": "f2830fe7d47c140293e258e5266e8ae7788572c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be11146e_fe18621f",
+        "filename": "libs/binder/tests/binderAllocationLimits.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-22T00:51:30Z",
+      "side": 1,
+      "message": "This test is added to make sure I\u0027m not breaking existing guarantees. The issue that occurred in this code, with the bad implementation is not tested specifically. It wouldn\u0027t be visible in malloc, since String8/16 have the empty string optimization. However, since the code is no longer confusing an empty string with the cached string (the implementation is more general wrt the strings it can handle), I also consider it evidence that this works well for the empty string case.",
+      "parentUuid": "c243b912_fbc51cbf",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 26
+      },
+      "revId": "f2830fe7d47c140293e258e5266e8ae7788572c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
