@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24f92f86_ee2ad760",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2022-12-22T01:08:43Z",
+      "side": 1,
+      "message": "FWIW I had the same confusions after reading the comment - and even after your last response 😊\nI want those `String16\u0026` to be below the `if (mClazz \u003d\u003d clazz) return true;` and don\u0027t get from the comment that we are trying to avoid holding the two locks at the same time.",
+      "parentUuid": "5bb5f6b2_d14ced72",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f341e7e8_2d5fa1b6",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 1
