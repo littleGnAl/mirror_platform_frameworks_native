@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efa73b5d_5f30e8b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297255
+      },
+      "writtenOn": "2022-12-22T03:01:30Z",
+      "side": 1,
+      "message": "apct/device_boot_health_check_extra on oriole_hwasan-userdebug on git_master failed due to existing bug b/262894088",
+      "revId": "459985c64d808eb4798dcf7133216fca1c5dcbec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
