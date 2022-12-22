@@ -258,6 +258,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d38be7c2_6b2fe416",
+        "filename": "libs/binder/ndk/ibinder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-12-22T02:24:12Z",
+      "side": 1,
+      "message": "Is the other lock [1]? Then I think I understand you. If we move L101..102 to above L98, then we will be holding two locks when executing `getBinder()-\u003egetInterfaceDescriptor()`. Then there is a \"possibility\" of a deadlock, and you want to avoid it.\n\n[1] https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/BpBinder.cpp;drc\u003d2522b07caf01885cc0c80b84a3089f1c950ef0b5;l\u003d260",
+      "parentUuid": "ec608789_2256997d",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "94a7679171ed45fc9d70ad16912115aba0a44890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f341e7e8_2d5fa1b6",
         "filename": "libs/binder/ndk/ibinder.cpp",
         "patchSetId": 1
