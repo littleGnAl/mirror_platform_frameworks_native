@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0352d164_690cc7b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-23T01:32:33Z",
+      "side": 1,
+      "message": "Note due to b/263529356, I cannot repro locally.",
+      "revId": "10f612bbf6f5fa0666c2bb5fbe2bc840bc95962f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
