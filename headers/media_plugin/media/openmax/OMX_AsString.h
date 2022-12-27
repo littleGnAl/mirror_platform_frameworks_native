@@ -562,6 +562,7 @@ inline static const char *asString(OMX_INDEXEXTTYPE i, const char *def = "??") {
         case OMX_IndexConfigOperatingRate:              return "ConfigOperatingRate";
         case OMX_IndexParamConsumerUsageBits:           return "ParamConsumerUsageBits";
         case OMX_IndexConfigLatency:                    return "ConfigLatency";
+        case OMX_IndexParamConsumerUsageBitsExtended:   return "ParamConsumerUsageBitsExtended";
         default:                                        return asString((OMX_INDEXTYPE)i, def);
     }
 }
