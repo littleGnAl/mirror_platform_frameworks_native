@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc116a1d_6fca7071",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 80
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-12-27T21:21:14Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 20
+      },
+      "revId": "a7bcbe0ada9b7eeae5e1ee75bc6c199edf82dd37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
