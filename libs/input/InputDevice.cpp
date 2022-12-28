@@ -166,7 +166,7 @@ std::string InputDeviceIdentifier::getCanonicalName() const {
 // --- InputDeviceInfo ---
 
 InputDeviceInfo::InputDeviceInfo() {
-    initialize(-1, 0, -1, InputDeviceIdentifier(), "", false, false);
+    initialize(-1, 0, -1, InputDeviceIdentifier(), "", false, false, PropertyMap());
 }
 
 InputDeviceInfo::InputDeviceInfo(const InputDeviceInfo& other)
@@ -186,14 +186,15 @@ InputDeviceInfo::InputDeviceInfo(const InputDeviceInfo& other)
         mHasSensor(other.mHasSensor),
         mMotionRanges(other.mMotionRanges),
         mSensors(other.mSensors),
-        mLights(other.mLights) {}
+        mLights(other.mLights),
+        mConfiguration(other.mConfiguration) {}
 
 InputDeviceInfo::~InputDeviceInfo() {
 }
 
 void InputDeviceInfo::initialize(int32_t id, int32_t generation, int32_t controllerNumber,
         const InputDeviceIdentifier& identifier, const std::string& alias, bool isExternal,
-        bool hasMic) {
+        bool hasMic, const PropertyMap& configuration) {
     mId = id;
     mGeneration = generation;
     mControllerNumber = controllerNumber;
@@ -210,6 +211,7 @@ void InputDeviceInfo::initialize(int32_t id, int32_t generation, int32_t control
     mMotionRanges.clear();
     mSensors.clear();
     mLights.clear();
+    mConfiguration = configuration;
 }
 
 const InputDeviceInfo::MotionRange* InputDeviceInfo::getMotionRange(
