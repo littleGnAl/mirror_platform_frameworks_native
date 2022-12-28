@@ -20,6 +20,7 @@
 #include <android/sensor.h>
 #include <input/Input.h>
 #include <input/KeyCharacterMap.h>
+#include <input/PropertyMap.h>
 #include <unordered_map>
 #include <vector>
 
@@ -210,8 +211,8 @@ public:
     };
 
     void initialize(int32_t id, int32_t generation, int32_t controllerNumber,
-            const InputDeviceIdentifier& identifier, const std::string& alias, bool isExternal,
-            bool hasMic);
+                    const InputDeviceIdentifier& identifier, const std::string& alias,
+                    bool isExternal, bool hasMic, const PropertyMap& configuration);
 
     inline int32_t getId() const { return mId; }
     inline int32_t getControllerNumber() const { return mControllerNumber; }
@@ -262,6 +263,8 @@ public:
         return mMotionRanges;
     }
 
+    inline const PropertyMap& getConfiguration() const { return mConfiguration; }
+
     std::vector<InputDeviceSensorInfo> getSensors();
 
     std::vector<InputDeviceLightInfo> getLights();
@@ -288,6 +291,7 @@ private:
     std::unordered_map<int32_t, InputDeviceLightInfo> mLights;
     /* Map from battery ID to battery info */
     std::unordered_map<int32_t, InputDeviceBatteryInfo> mBatteries;
+    PropertyMap mConfiguration;
 };
 
 /* Types of input device configuration files. */

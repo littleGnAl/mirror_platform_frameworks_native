@@ -426,7 +426,7 @@ void InputDevice::updateExternalStylusState(const StylusState& state) {
 InputDeviceInfo InputDevice::getDeviceInfo() {
     InputDeviceInfo outDeviceInfo;
     outDeviceInfo.initialize(mId, mGeneration, mControllerNumber, mIdentifier, mAlias, mIsExternal,
-                             mHasMic);
+                             mHasMic, mConfiguration);
     for_each_mapper(
             [&outDeviceInfo](InputMapper& mapper) { mapper.populateDeviceInfo(&outDeviceInfo); });
 
