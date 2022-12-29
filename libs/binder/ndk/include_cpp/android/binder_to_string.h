@@ -137,30 +137,6 @@ class IsIterable {
 };
 
 template <typename _T>
-class ToEmptyString {
-    template <typename _U>
-    static std::enable_if_t<false
-#ifdef HAS_NDK_INTERFACE
-                                    || std::is_base_of_v<::ndk::ICInterface, _U>
-#if __ANDROID_API__ >= 31
-                                    || std::is_same_v<::ndk::AParcelableHolder, _U>
-#endif
-#endif  // HAS_NDK_INTERFACE
-#ifdef HAS_CPP_INTERFACE
-                                    || std::is_base_of_v<IInterface, _U> ||
-                                    std::is_same_v<IBinder, _U>
-#endif
-                            ,
-                            std::true_type>
-    _test(int);
-    template <typename _U>
-    static std::false_type _test(...);
-
-   public:
-    enum { value = decltype(_test<_T>(0))::value };
-};
-
-template <typename _T>
 struct TypeDependentFalse {
     enum { value = false };
 };
@@ -169,9 +145,7 @@ struct TypeDependentFalse {
 
 template <typename _T>
 std::string ToString(const _T& t) {
-    if constexpr (details::ToEmptyString<_T>::value) {
-        return "<unimplemented>";
-    } else if constexpr (std::is_same_v<bool, _T>) {
+    if constexpr (std::is_same_v<bool, _T>) {
         return t ? "true" : "false";
     } else if constexpr (std::is_same_v<char16_t, _T>) {
         // TODO(b/244494451): codecvt is deprecated in C++17 -- suppress the
@@ -191,6 +165,18 @@ std::string ToString(const _T& t) {
         return ss.str();
     } else if constexpr (std::is_same_v<::ndk::ScopedFileDescriptor, _T>) {
         return "fd:" + std::to_string(t.get());
+    } else if constexpr (std::is_base_of_v<::ndk::ICInterface, _T>) {
+        return "<interface>";
+#if __ANDROID_API__ >= 31
+    } else if constexpr (std::is_same_v<::ndk::AParcelableHolder, _T>) {
+        return "<AParcelableHolder>";
+#endif
+#endif  // HAS_NDK_INTERFACE
+#ifdef HAS_CPP_INTERFACE
+    } else if constexpr (std::is_base_of_v<IInterface, _T>) {
+        return "<interface>";
+    } else if constexpr (std::is_same_v<IBinder, _T>) {
+        return "<IBinder>";
 #endif
 #ifdef HAS_STRING16
     } else if constexpr (std::is_same_v<String16, _T>) {
