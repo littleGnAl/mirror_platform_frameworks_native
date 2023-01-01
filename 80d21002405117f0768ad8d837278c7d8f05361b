@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e39a9c6_9dac5cbf",
+        "filename": "libs/binder/include/binder/ParcelFileDescriptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-01T05:15:18Z",
+      "side": 1,
+      "message": "Would it be better to follow the Java impl? \n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/os/ParcelFileDescriptor.java;drc\u003d8cd8c9901d4420ce523eb5e0496826859d5877d7;l\u003d1059",
+      "revId": "80d21002405117f0768ad8d837278c7d8f05361b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
