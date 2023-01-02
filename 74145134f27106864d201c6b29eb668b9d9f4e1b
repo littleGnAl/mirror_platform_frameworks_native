@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76f83b02_64908c26",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-01-02T02:37:50Z",
+      "side": 1,
+      "message": "nit: can we make it similar to SpAIBinder?",
+      "range": {
+        "startLine": 181,
+        "startChar": 16,
+        "endLine": 181,
+        "endChar": 25
+      },
+      "revId": "74145134f27106864d201c6b29eb668b9d9f4e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
