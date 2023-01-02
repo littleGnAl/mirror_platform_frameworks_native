@@ -16,6 +16,52 @@
       "message": "Would it be better to follow the Java impl? \n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/os/ParcelFileDescriptor.java;drc\u003d8cd8c9901d4420ce523eb5e0496826859d5877d7;l\u003d1059",
       "revId": "80d21002405117f0768ad8d837278c7d8f05361b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fafc529e_43f96897",
+        "filename": "libs/binder/include/binder/ParcelFileDescriptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-01-02T02:33:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 45,
+        "startChar": 54,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "80d21002405117f0768ad8d837278c7d8f05361b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed89554d_1d3d457d",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-01-02T02:33:54Z",
+      "side": 1,
+      "message": "nit: we don\u0027t put a space after type-tag(?) for binders and fds.",
+      "range": {
+        "startLine": 115,
+        "startChar": 33,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "80d21002405117f0768ad8d837278c7d8f05361b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
