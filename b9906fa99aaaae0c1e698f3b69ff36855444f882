@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6607cbe6_2c8877f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-02T20:25:10Z",
+      "side": 1,
+      "message": "This is just the most basic test to get in place to make sure I\u0027m setting things up correctly. We should discuss the kind of coverage you\u0027re looking for and I\u0027ll write those tests before adding to or restructuring RecordedTransaction.",
+      "revId": "b9906fa99aaaae0c1e698f3b69ff36855444f882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
