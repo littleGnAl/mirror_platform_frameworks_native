@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61838328_b8521360",
+        "filename": "services/batteryservice/include/batteryservice/BatteryServiceConstants.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2023-01-04T18:32:45Z",
+      "side": 1,
+      "message": "Either delete this comment (and change maybe change the ifndef below) -- in which case please add a comment to say that this needs to be kept in sync with the AIDL definition;\n\nOR create a separate file with the new constants from AIDL",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 64
+      },
+      "revId": "49824c9d07aaa195b73142ebe3347bb4a87b6350",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
