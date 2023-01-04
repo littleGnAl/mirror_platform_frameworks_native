@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9c65e91_76d33bb0",
+        "filename": "libs/binder/tests/binderRecordedTransactionTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-04T00:24:21Z",
+      "side": 1,
+      "message": "these details should also match those provided in L30? Do you want to check the exact value as well?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 77
+      },
+      "revId": "5c38cdfe263e75578a9cd91e8192b7ec770f739f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
