@@ -46,6 +46,30 @@
       },
       "revId": "49824c9d07aaa195b73142ebe3347bb4a87b6350",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e47ac386_8c80f311",
+        "filename": "services/batteryservice/include/batteryservice/BatteryServiceConstants.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2023-01-05T22:35:09Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "f1f047de_e3f57b6b",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 64
+      },
+      "revId": "49824c9d07aaa195b73142ebe3347bb4a87b6350",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
