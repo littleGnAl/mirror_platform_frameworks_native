@@ -16,6 +16,29 @@
       "message": "I\u0027m not totally comfortable with doing this here, but we\u0027ve encapsulated the call to android_get_control_socket here so this is the only available spot.",
       "revId": "e1f8dd8f358db8831f11319bb03052d4c8bac017",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208cf5fa_ee38e3bc",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-05T21:28:50Z",
+      "side": 1,
+      "message": "should CLOEXEC be set inside this function?",
+      "range": {
+        "startLine": 110,
+        "startChar": 24,
+        "endLine": 110,
+        "endChar": 50
+      },
+      "revId": "e1f8dd8f358db8831f11319bb03052d4c8bac017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
