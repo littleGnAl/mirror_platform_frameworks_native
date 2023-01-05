@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48dad66e_f5cf6090",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-05T23:44:34Z",
+      "side": 1,
+      "message": "This will fail with OOM or stack overflow? You may want to limit the maximum length.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 32
+      },
+      "revId": "9ca37d797a9083379615a22c39fb59865b74fc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
