@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c3726af_c1dfe2f3",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-06T21:41:22Z",
+      "side": 1,
+      "message": "I do this a lot. I can tone it down, but presubmit seems happy.",
+      "parentUuid": "fba9929e_6423187d",
+      "range": {
+        "startLine": 54,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0438ea88_3ae2826c",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-06T21:18:34Z",
       "side": 1,
       "message": "hey - this seems like a well-informed set of ideas. Want to skim RpcWireFormat.h and related code as well? We can\u0027t change it much now, and it\u0027s not a storage format, but it requires backwards compatibility.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "143cb6c6_aa898190",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-06T21:41:22Z",
+      "side": 1,
+      "message": "👀️",
+      "parentUuid": "0438ea88_3ae2826c",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c92f47ec_4b731f08",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-06T21:41:22Z",
+      "side": 1,
+      "message": "I definitely considered it along the way, and went with 64-bit to match the existing code and minimize changes.\n\n32-bit seems more correct. I\u0027ll do that.",
+      "parentUuid": "990fffc1_c2c17d16",
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "732ee2b9_cd02eda6",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 1
@@ -77,6 +143,30 @@
       "writtenOn": "2023-01-06T21:18:34Z",
       "side": 1,
       "message": "this seems to let through a corrupted chunk?",
+      "range": {
+        "startLine": 168,
+        "startChar": 36,
+        "endLine": 168,
+        "endChar": 96
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49d57d65_816481d5",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-06T21:41:22Z",
+      "side": 1,
+      "message": "I was toying with the idea of allowing the header to be \"growable\" across versions. This will fill in either as much information is available, or as much information the implementation can interpret.\n\nThat\u0027s probably not necessary though, since the format would essentially allow for a `headerPartTwo` chunk to handle gracefully adding fields.",
+      "parentUuid": "732ee2b9_cd02eda6",
       "range": {
         "startLine": 168,
         "startChar": 36,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d23f5312_13f6ca69",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-06T21:41:22Z",
+      "side": 1,
+      "message": "This returns `std::nullopt`, so is a hard failure. The `INVALID_CHUNK` is a communication between the ChunkDescriptor reader and the rest of the reading machinery, and not intended to be written.\n\nIt\u0027s currently only used in the case where dataSize and paddingSize don\u0027t create alignment, but could also be used to report checksum violations. The failure could be shuffled around differently. I\u0027m not tied to this particular path.",
+      "parentUuid": "c580ad79_9c3d996c",
+      "range": {
+        "startLine": 209,
+        "startChar": 17,
+        "endLine": 209,
+        "endChar": 30
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35b75e8b_bb9b2ff5",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 1
@@ -123,6 +237,30 @@
       "writtenOn": "2023-01-06T21:18:34Z",
       "side": 1,
       "message": "Recommended style is to always use C++-style casts, in order to make it clear when reinterpret/const/static casts are happening. In this case though, I wonder if \u0027bytesCount\u0027 the argument should already be uint32_t?",
+      "range": {
+        "startLine": 234,
+        "startChar": 39,
+        "endLine": 234,
+        "endChar": 48
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56752e17_8bed6a32",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-06T21:41:22Z",
+      "side": 1,
+      "message": "It probably should be `uint32_t`. Most of the sizing information leading up to it is. Is there a future where we think a Parcel should be able to hold more than 4GB?",
+      "parentUuid": "35b75e8b_bb9b2ff5",
       "range": {
         "startLine": 234,
         "startChar": 39,
