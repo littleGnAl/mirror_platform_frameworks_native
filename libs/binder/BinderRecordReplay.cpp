@@ -101,18 +101,20 @@ static_assert(PADDING8(8) == 0);
 // End Chunk may therefore produce a empty, meaningless RecordedTransaction.
 
 RecordedTransaction::RecordedTransaction(RecordedTransaction&& t) noexcept {
-    mHeader = {t.getCode(), t.getFlags(), t.getReturnedStatus(), t.getVersion()};
+    mHeader = t.mHeader;
     mSent.setData(t.getDataParcel().data(), t.getDataParcel().dataSize());
     mReply.setData(t.getReplyParcel().data(), t.getReplyParcel().dataSize());
 }
 
 std::optional<RecordedTransaction> RecordedTransaction::fromDetails(uint32_t code, uint32_t flags,
+                                                                    timespec timestamp,
                                                                     const Parcel& dataParcel,
                                                                     const Parcel& replyParcel,
                                                                     status_t err) {
     RecordedTransaction t;
     t.mHeader = {code, flags, static_cast<int32_t>(err),
-                 dataParcel.isForRpc() ? static_cast<uint32_t>(1) : static_cast<uint32_t>(0)};
+                 dataParcel.isForRpc() ? static_cast<uint32_t>(1) : static_cast<uint32_t>(0),
+                 timestamp};
 
     if (t.mSent.setData(dataParcel.data(), dataParcel.dataSize()) != android::NO_ERROR) {
         LOG(INFO) << "Failed to set sent parcel data.";
@@ -175,6 +177,7 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
                     LOG(INFO) << "Failed to read transactionHeader from fd " << fd.get();
                     return std::nullopt;
                 }
+                lseek(fd.get(), chunk.padding, SEEK_CUR);
                 break;
             }
             case DATA_PARCEL_CHUNK: {
@@ -290,6 +293,10 @@ uint32_t RecordedTransaction::getFlags() const {
 
 int32_t RecordedTransaction::getReturnedStatus() const {
     return mHeader.statusReturned;
+}
+
+timespec RecordedTransaction::getTimestamp() const {
+    return mHeader.timestamp;
 }
 
 uint32_t RecordedTransaction::getVersion() const {
