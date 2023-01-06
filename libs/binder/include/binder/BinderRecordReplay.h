@@ -34,8 +34,8 @@ public:
     static std::optional<RecordedTransaction> fromFile(const android::base::unique_fd& fd);
     // Filled with the arguments.
     static std::optional<RecordedTransaction> fromDetails(uint32_t code, uint32_t flags,
-                                                          const Parcel& data, const Parcel& reply,
-                                                          status_t err);
+                                                          timespec timestamp, const Parcel& data,
+                                                          const Parcel& reply, status_t err);
     RecordedTransaction(RecordedTransaction&& t) noexcept;
 
     [[nodiscard]] status_t dumpToFile(const android::base::unique_fd& fd) const;
@@ -43,6 +43,7 @@ public:
     uint32_t getCode() const;
     uint32_t getFlags() const;
     int32_t getReturnedStatus() const;
+    timespec getTimestamp() const;
     uint32_t getVersion() const;
     const Parcel& getDataParcel() const;
     const Parcel& getReplyParcel() const;
@@ -53,17 +54,13 @@ private:
     android::status_t writeChunk(const android::base::borrowed_fd, uint32_t chunkType,
                                  size_t byteCount, const uint8_t* data) const;
 
-#pragma clang diagnostic push
-#pragma clang diagnostic error "-Wpadded"
     struct TransactionHeader {
         uint32_t code = 0;
         uint32_t flags = 0;
         int32_t statusReturned = 0;
         uint32_t version = 0; // !0 iff Rpc
+        timespec timestamp = {0, 0};
     };
-#pragma clang diagnostic pop
-    static_assert(sizeof(TransactionHeader) == 16);
-    static_assert(sizeof(TransactionHeader) % 8 == 0);
 
     TransactionHeader mHeader;
     Parcel mSent;
