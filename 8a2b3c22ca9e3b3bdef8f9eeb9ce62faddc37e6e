@@ -33,6 +33,75 @@
       "message": "ping for view.",
       "revId": "8a2b3c22ca9e3b3bdef8f9eeb9ce62faddc37e6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb19e11_ac7f467e",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1012974
+      },
+      "writtenOn": "2023-01-06T19:44:36Z",
+      "side": 1,
+      "message": "I\u0027m not very familiar with per frame metadata, but I\u0027ll note that previously we would\u0027ve still done the below work, whereas now we\u0027re returning early. I\u0027m not clear on why this change was made - can you explain why in the commit message?",
+      "range": {
+        "startLine": 833,
+        "startChar": 12,
+        "endLine": 833,
+        "endChar": 24
+      },
+      "revId": "8a2b3c22ca9e3b3bdef8f9eeb9ce62faddc37e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23336ef2_39ac68b7",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1012974
+      },
+      "writtenOn": "2023-01-06T19:44:36Z",
+      "side": 1,
+      "message": "nit: Another way to limit the scope of this variable would be to put it in the if statement, e.g.\n\n```\nif (const auto error \u003d static_cast\u003cError\u003e(...); error !\u003d Error::NONE) {\n    return error;\n}\n```\n\nThat seems a little bit cleaner to me, but I don\u0027t have a strong preference.",
+      "range": {
+        "startLine": 829,
+        "startChar": 0,
+        "endLine": 835,
+        "endChar": 5
+      },
+      "revId": "8a2b3c22ca9e3b3bdef8f9eeb9ce62faddc37e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f09bcf_19f1442d",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1012974
+      },
+      "writtenOn": "2023-01-06T19:44:36Z",
+      "side": 1,
+      "message": "What is the intent of this block? Because of the `||` and the fact that these are separate `Error`s that don\u0027t overlap, won\u0027t this just *always* return `error`?",
+      "range": {
+        "startLine": 851,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 9
+      },
+      "revId": "8a2b3c22ca9e3b3bdef8f9eeb9ce62faddc37e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
