@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34832157_365bd994",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-01-06T10:46:46Z",
+      "side": 1,
+      "message": "Well, if I was creating it now, I might well do that. But I don\u0027t want to have to audit the 175 existing use cases.\n\nAlso: Anyone directly calling android_get_control_socket is free to set O_CLOEXEC if they want and if it\u0027s relevant to them. That\u0027s what I\u0027m doing here.\n\nWhat\u0027s slightly unusual I suspect is that we\u0027re doing this in library code where our caller doesn\u0027t get direct access to the socket so can\u0027t do it themselves.",
+      "parentUuid": "208cf5fa_ee38e3bc",
+      "range": {
+        "startLine": 110,
+        "startChar": 24,
+        "endLine": 110,
+        "endChar": 50
+      },
+      "revId": "e1f8dd8f358db8831f11319bb03052d4c8bac017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17f4715a_497323ac",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-01-06T08:51:14Z",
       "side": 1,
       "message": "The other socket vm_payload_service handled this flag in microdroid[1]. Should we delete that if we want to set the flag here for everyone?\n\n[1] https://cs.android.com/android/platform/superproject/+/master:packages/modules/Virtualization/microdroid_manager/src/main.rs;l\u003d194;drc\u003dbe453f2959206b6b4100c4b6a4bedffd6bce2057",
+      "range": {
+        "startLine": 118,
+        "startChar": 45,
+        "endLine": 118,
+        "endChar": 46
+      },
+      "revId": "e1f8dd8f358db8831f11319bb03052d4c8bac017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed44c19_0f099c20",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-01-06T10:46:46Z",
+      "side": 1,
+      "message": "That\u0027s an excellent point. I\u0027ll upload a CL for that.\n(And that\u0027s exactly the sort of code I was trying to avoid clients having to write.)",
+      "parentUuid": "17f4715a_497323ac",
       "range": {
         "startLine": 118,
         "startChar": 45,
