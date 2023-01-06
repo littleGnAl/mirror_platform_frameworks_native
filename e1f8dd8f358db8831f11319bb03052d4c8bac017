@@ -39,6 +39,29 @@
       },
       "revId": "e1f8dd8f358db8831f11319bb03052d4c8bac017",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f4715a_497323ac",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-01-06T08:51:14Z",
+      "side": 1,
+      "message": "The other socket vm_payload_service handled this flag in microdroid[1]. Should we delete that if we want to set the flag here for everyone?\n\n[1] https://cs.android.com/android/platform/superproject/+/master:packages/modules/Virtualization/microdroid_manager/src/main.rs;l\u003d194;drc\u003dbe453f2959206b6b4100c4b6a4bedffd6bce2057",
+      "range": {
+        "startLine": 118,
+        "startChar": 45,
+        "endLine": 118,
+        "endChar": 46
+      },
+      "revId": "e1f8dd8f358db8831f11319bb03052d4c8bac017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
