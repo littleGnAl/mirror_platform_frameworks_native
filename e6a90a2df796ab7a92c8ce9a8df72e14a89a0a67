@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba9929e_6423187d",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-06T21:18:34Z",
+      "side": 1,
+      "message": "cool unicode. atypical, but cool",
+      "range": {
+        "startLine": 54,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0438ea88_3ae2826c",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-06T21:18:34Z",
+      "side": 1,
+      "message": "hey - this seems like a well-informed set of ideas. Want to skim RpcWireFormat.h and related code as well? We can\u0027t change it much now, and it\u0027s not a storage format, but it requires backwards compatibility.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "990fffc1_c2c17d16",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-06T21:18:34Z",
+      "side": 1,
+      "message": "data size can be 32-bit (it must be 32-bit, see setDataPosition for instance). Consider using the last 32-bit pieces as a checksum (e.g. word-wise XOR of chunk contents) to help detect malformed data.",
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732ee2b9_cd02eda6",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-06T21:18:34Z",
+      "side": 1,
+      "message": "this seems to let through a corrupted chunk?",
+      "range": {
+        "startLine": 168,
+        "startChar": 36,
+        "endLine": 168,
+        "endChar": 96
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c580ad79_9c3d996c",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-06T21:18:34Z",
+      "side": 1,
+      "message": "Can we do hard failures in this case? It seems like if the chunk is corrupted, this won\u0027t be able to recover, since we don\u0027t know how long this chunk is? or how does it work?",
+      "range": {
+        "startLine": 209,
+        "startChar": 17,
+        "endLine": 209,
+        "endChar": 30
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b75e8b_bb9b2ff5",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-06T21:18:34Z",
+      "side": 1,
+      "message": "Recommended style is to always use C++-style casts, in order to make it clear when reinterpret/const/static casts are happening. In this case though, I wonder if \u0027bytesCount\u0027 the argument should already be uint32_t?",
+      "range": {
+        "startLine": 234,
+        "startChar": 39,
+        "endLine": 234,
+        "endChar": 48
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
