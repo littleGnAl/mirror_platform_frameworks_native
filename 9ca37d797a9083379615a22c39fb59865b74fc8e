@@ -22,6 +22,30 @@
       },
       "revId": "9ca37d797a9083379615a22c39fb59865b74fc8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1dbabda_dc4a721e",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-01-06T00:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48dad66e_f5cf6090",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 32
+      },
+      "revId": "9ca37d797a9083379615a22c39fb59865b74fc8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
