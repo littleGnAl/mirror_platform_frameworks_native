@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f6e771_3b05ca5d",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-01-06T12:04:55Z",
+      "side": 1,
+      "message": "Also we know that the socket here is being used by us to host a binder server, which makes it extremely unlikely we want to share it with a child process.",
+      "parentUuid": "34832157_365bd994",
+      "range": {
+        "startLine": 110,
+        "startChar": 24,
+        "endLine": 110,
+        "endChar": 50
+      },
+      "revId": "e1f8dd8f358db8831f11319bb03052d4c8bac017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17f4715a_497323ac",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "That\u0027s an excellent point. I\u0027ll upload a CL for that.\n(And that\u0027s exactly the sort of code I was trying to avoid clients having to write.)",
       "parentUuid": "17f4715a_497323ac",
+      "range": {
+        "startLine": 118,
+        "startChar": 45,
+        "endLine": 118,
+        "endChar": 46
+      },
+      "revId": "e1f8dd8f358db8831f11319bb03052d4c8bac017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fbbdff1_259fcecb",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-01-06T12:04:55Z",
+      "side": 1,
+      "message": "Actually, no, we still need that - exec() is called before we run the server in that case.",
+      "parentUuid": "2ed44c19_0f099c20",
       "range": {
         "startLine": 118,
         "startChar": 45,
