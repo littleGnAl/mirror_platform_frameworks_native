@@ -16,6 +16,24 @@
       "message": "@smoreland@google.com I wanted to tidy up most of this cl today and didn\u0027t get to adding checksum calculations. I definitely agree there\u0027s room for a checksum. Up to you whether that\u0027s in this cl or a follow-up.",
       "revId": "ed553946de91a8ff895a3b39528b10cecbaf246c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a8c9ff_8f9ced64",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-07T03:29:56Z",
+      "side": 1,
+      "message": "checksum separate makes sense, thank you!",
+      "parentUuid": "57b682d1_6cb30199",
+      "revId": "ed553946de91a8ff895a3b39528b10cecbaf246c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
