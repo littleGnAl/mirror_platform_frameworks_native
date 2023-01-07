@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5569a653_4c457023",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-07T02:49:42Z",
+      "side": 1,
+      "message": "Please, I used to maintain lib😊. Going to send an email thread though about one thing....",
+      "parentUuid": "4c3726af_c1dfe2f3",
+      "range": {
+        "startLine": 54,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0438ea88_3ae2826c",
@@ -303,6 +327,30 @@
       "writtenOn": "2023-01-07T02:49:34Z",
       "side": 1,
       "message": "Done",
+      "parentUuid": "d23f5312_13f6ca69",
+      "range": {
+        "startLine": 209,
+        "startChar": 17,
+        "endLine": 209,
+        "endChar": 30
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2510534_554af1bd",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-07T02:49:42Z",
+      "side": 1,
+      "message": "yeah I guess we removed Result (libbase result.h use of std::expected) from libbinder to make it easier to port, but cool, works, works.",
       "parentUuid": "d23f5312_13f6ca69",
       "range": {
         "startLine": 209,
