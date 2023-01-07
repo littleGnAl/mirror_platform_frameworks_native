@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5435f13_26752e88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-01-07T00:14:39Z",
+      "side": 1,
+      "message": "Bypassing presubmit due to unrelated flakes: \nb/259323512",
+      "revId": "dddac21641ae4faeb1783a30b373cb3090257265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ac6429a_4608fe43",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-01-06T23:42:33Z",
       "side": 1,
       "message": "you can also do:\n\n    auto parcel \u003d ScopedAParcel(AParcel_new());\n    ... AParcel_unmarshal(parcel.get(), ...);\n\nThe adapter isn\u0027t needed, just the fact it auto-deletes the parcel, but it\u0027s okay",
+      "range": {
+        "startLine": 214,
+        "startChar": 31,
+        "endLine": 217,
+        "endChar": 63
+      },
+      "revId": "dddac21641ae4faeb1783a30b373cb3090257265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5a04835_0538bc2a",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-01-07T00:14:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7ac6429a_4608fe43",
       "range": {
         "startLine": 214,
         "startChar": 31,
