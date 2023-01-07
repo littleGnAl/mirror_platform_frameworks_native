@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d92e0ff_9f4ca153",
+        "filename": "libs/binder/libbinder_rpc_unstable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-07T02:34:54Z",
+      "side": 1,
+      "message": "Double-setting FD_CLOEXEC doesn\u0027t matter here, but consider dropping a note to the maintainer of the function please? This is the exact type feedback I would want to hear about something I\u0027m maintaining. :D",
+      "parentUuid": "b9f6e771_3b05ca5d",
+      "range": {
+        "startLine": 110,
+        "startChar": 24,
+        "endLine": 110,
+        "endChar": 50
+      },
+      "revId": "e1f8dd8f358db8831f11319bb03052d4c8bac017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17f4715a_497323ac",
         "filename": "libs/binder/libbinder_rpc_unstable.cpp",
         "patchSetId": 1
