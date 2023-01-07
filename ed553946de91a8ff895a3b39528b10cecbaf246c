@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b682d1_6cb30199",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-07T02:49:34Z",
+      "side": 1,
+      "message": "@smoreland@google.com I wanted to tidy up most of this cl today and didn\u0027t get to adding checksum calculations. I definitely agree there\u0027s room for a checksum. Up to you whether that\u0027s in this cl or a follow-up.",
+      "revId": "ed553946de91a8ff895a3b39528b10cecbaf246c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

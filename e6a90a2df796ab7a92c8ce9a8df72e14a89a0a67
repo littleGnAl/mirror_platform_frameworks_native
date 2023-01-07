@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39b8a1a5_e2799c03",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-07T02:49:34Z",
+      "side": 1,
+      "message": "Going to follow up next week. I wasn\u0027t sure if you wanted me to read that to inform what I\u0027m doing here, or read it to advice on improvements there.",
+      "parentUuid": "143cb6c6_aa898190",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 36
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "990fffc1_c2c17d16",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 1
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "I definitely considered it along the way, and went with 64-bit to match the existing code and minimize changes.\n\n32-bit seems more correct. I\u0027ll do that.",
       "parentUuid": "990fffc1_c2c17d16",
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ac96b21_e20d4ab9",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-07T02:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c92f47ec_4b731f08",
       "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -167,6 +209,30 @@
       "side": 1,
       "message": "I was toying with the idea of allowing the header to be \"growable\" across versions. This will fill in either as much information is available, or as much information the implementation can interpret.\n\nThat\u0027s probably not necessary though, since the format would essentially allow for a `headerPartTwo` chunk to handle gracefully adding fields.",
       "parentUuid": "732ee2b9_cd02eda6",
+      "range": {
+        "startLine": 168,
+        "startChar": 36,
+        "endLine": 168,
+        "endChar": 96
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f375653_33c1f2cf",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-07T02:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d57d65_816481d5",
       "range": {
         "startLine": 168,
         "startChar": 36,
@@ -224,6 +290,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5401a9e_6fb5bb5f",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-07T02:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d23f5312_13f6ca69",
+      "range": {
+        "startLine": 209,
+        "startChar": 17,
+        "endLine": 209,
+        "endChar": 30
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35b75e8b_bb9b2ff5",
@@ -261,6 +351,30 @@
       "side": 1,
       "message": "It probably should be `uint32_t`. Most of the sizing information leading up to it is. Is there a future where we think a Parcel should be able to hold more than 4GB?",
       "parentUuid": "35b75e8b_bb9b2ff5",
+      "range": {
+        "startLine": 234,
+        "startChar": 39,
+        "endLine": 234,
+        "endChar": 48
+      },
+      "revId": "e6a90a2df796ab7a92c8ce9a8df72e14a89a0a67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d334c801_6e872238",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-07T02:49:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56752e17_8bed6a32",
       "range": {
         "startLine": 234,
         "startChar": 39,
