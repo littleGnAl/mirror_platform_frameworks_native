@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff308d5e_003d6c74",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-09T23:47:23Z",
+      "side": 1,
+      "message": "if buffer is nullptr and len !\u003d 0, then it should be considered a bug in the client. Do we know what len is in that case?",
+      "range": {
+        "startLine": 719,
+        "startChar": 4,
+        "endLine": 721,
+        "endChar": 5
+      },
+      "revId": "2b0ff6bf62dcc6aa37f5775e5947e447ad9a425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
