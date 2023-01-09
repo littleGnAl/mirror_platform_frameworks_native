@@ -150,6 +150,30 @@
       },
       "revId": "8a2b3c22ca9e3b3bdef8f9eeb9ce62faddc37e6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40481f8b_90acd001",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1012974
+      },
+      "writtenOn": "2023-01-09T14:49:07Z",
+      "side": 1,
+      "message": "i.e.\n\n```\nif (error !\u003d Error::NONE \u0026\u0026 error !\u003d Error::UNSUPPORTED) {\n    return error;\n}\n```\n?\n\nThat would mean that `UNSUPPORTED` should effectively be ignored, and we\u0027ll return `NONE` instead? Perhaps that\u0027s the right behavior, but it could probably use a comment explaining it?\n\nThe simplest thing to do here would be to just `return error`. If we want to treat `UNSUPPORTED` as `NONE` (which is what the AND predicate would do, unless I\u0027m missing something), I think it\u0027d be clearer as something like:\n\n```\nif (error \u003d\u003d Error::UNSUPPORTED) {\n    // This isn\u0027t supported, but the caller doesn\u0027t care because\n    // \u003c insert reason here \u003e\n    return Error::NONE;\n}\n\nreturn error;\n```",
+      "parentUuid": "43f1221f_4d052e63",
+      "range": {
+        "startLine": 851,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 9
+      },
+      "revId": "8a2b3c22ca9e3b3bdef8f9eeb9ce62faddc37e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
