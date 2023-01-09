@@ -42,14 +42,16 @@ static_assert(PADDING8(8) == 0);
 //
 // A RecordedTransaction is written to a file as a sequence of Chunks.
 //
-// A Chunk consists of a ChunkDescriptor, Data, and Padding.
+// A Chunk consists of a ChunkDescriptor, Data, Padding, and a Checksum.
 //
 // Data and Padding may each be zero-length as specified by the
 // ChunkDescriptor.
 //
 // The ChunkDescriptor identifies the type of data in the chunk, the size of
 // the data in bytes, and the number of zero-bytes padding to land on an
-// 8-byte boundary by the end of the Chunk.
+// 8-byte boundary by the end of the Chunk. The Checksum is the ones' complement
+// of the byte-wise sum from the beginning of ChunkDescriptor.chunkType to the
+// end of Data.
 //
 // ┌───────────────────────────┐
 // │Chunk                      │
@@ -58,18 +60,21 @@ static_assert(PADDING8(8) == 0);
 // ││┌───────────┬───────────┐││
 // │││chunkType  │paddingSize│││
 // │││uint32_t   │uint32_t   ├┼┼───┐
-// ││├───────────┴───────────┤││   │
-// │││dataSize               │││   │
-// │││uint64_t               ├┼┼─┐ │
-// ││└───────────────────────┘││ │ │
+// ││├───────────┼───────────┤││   │
+// │││dataSize   │reserved   │││   │
+// │││uint32_t   │uint32_t   ├┼┼─┐ │
+// ││└───────────┴───────────┘││ │ │
 // │└─────────────────────────┘│ │ │
 // │┌─────────────────────────┐│ │ │
 // ││Data                     ││ │ │
 // ││bytes * dataSize         │◀─┘ │
-// │└─────────────────────────┘│   │
-// │┌─────────────────────────┐│   │
+// │├─────────────────────────┤│   │
 // ││Padding                  ││   │
 // ││bytes * paddingSize      │◀───┘
+// │└─────────────────────────┘│
+// │┌─────────────────────────┐│
+// ││Checksum                 ││
+// ││uint64_t                 ││
 // │└─────────────────────────┘│
 // └───────────────────────────┘
 //
@@ -87,7 +92,7 @@ static_assert(PADDING8(8) == 0);
 //
 // On reading a RecordedTransaction, an unrecognized chunk is skipped using
 // the size information in the ChunkDescriptor. Chunks are read and either
-// assimilated or skipped until an End Chunk is encountered. This has three
+// assimilated or skipped until an End Chunk is encountered. This has four
 // notable implications:
 //
 // 1. Older and newer implementations should be able to read one another's
@@ -96,9 +101,10 @@ static_assert(PADDING8(8) == 0);
 //    order and even repeat, though this is not recommended.
 // 3. If any Chunk is repeated, old values will be overwritten by versions
 //    encountered later in the file.
+// 4. The checksum of an unrecognized chunk is not verified.
 //
 // No effort is made to ensure the expected chunks are present. A single
-// End Chunk may therefore produce a empty, meaningless RecordedTransaction.
+// End Chunk may therefore produce an empty, meaningless RecordedTransaction.
 
 RecordedTransaction::RecordedTransaction(RecordedTransaction&& t) noexcept {
     mHeader = t.mHeader;
@@ -145,11 +151,45 @@ struct ChunkDescriptor {
     uint32_t chunkType = 0;
     uint32_t padding = 0;
     uint32_t dataSize = 0;
-    uint32_t reserved = 0; // Future checksum
+    uint32_t reserved = 0;
 };
 
-static android::status_t readChunkDescriptor(borrowed_fd fd, ChunkDescriptor* chunkOut) {
-    if (!android::base::ReadFully(fd, chunkOut, sizeof(ChunkDescriptor))) {
+// Reads bytes from fd to data, computing a byte-wise sum accumulated into sum.
+bool readWithSum(borrowed_fd fd, void* data, size_t byte_count, uint64_t* sum) {
+    uint8_t* p = reinterpret_cast<uint8_t*>(data);
+    size_t remaining = byte_count;
+    while (remaining > 0) {
+        ssize_t n = TEMP_FAILURE_RETRY(read(fd.get(), p, remaining));
+        if (n <= 0) return false;
+        const uint8_t* limit = p + n;
+        for (; p < limit; p++) {
+            *sum += *p;
+        }
+        remaining -= n;
+    }
+    return true;
+}
+
+// Writes bytes from fd to data, computing a byte-wise sum accumulated into sum.
+bool writeWithSum(borrowed_fd fd, const void* data, size_t byte_count, uint64_t* sum) {
+    const uint8_t* p = reinterpret_cast<const uint8_t*>(data);
+    size_t remaining = byte_count;
+    while (remaining > 0) {
+        ssize_t n = TEMP_FAILURE_RETRY(write(fd.get(), p, remaining));
+        if (n == -1) return false;
+        const uint8_t* limit = p + n;
+        for (; p < limit; p++) {
+            *sum += *p;
+        }
+        p += n;
+        remaining -= n;
+    }
+    return true;
+}
+
+static android::status_t readChunkDescriptor(borrowed_fd fd, ChunkDescriptor* chunkOut,
+                                             uint64_t* sum) {
+    if (!readWithSum(fd, chunkOut, sizeof(ChunkDescriptor), sum)) {
         LOG(INFO) << "Failed to read Chunk Descriptor from fd " << fd.get();
         return android::UNKNOWN_ERROR;
     }
@@ -164,9 +204,10 @@ static android::status_t readChunkDescriptor(borrowed_fd fd, ChunkDescriptor* ch
 std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd& fd) {
     RecordedTransaction t;
     ChunkDescriptor chunk;
-
+    uint64_t chunkSumFromFile = 0xaaaaaaaaaaaaaaaa;
     do {
-        if (NO_ERROR != readChunkDescriptor(fd, &chunk)) {
+        uint64_t sum = 0;
+        if (NO_ERROR != readChunkDescriptor(fd, &chunk, &sum)) {
             LOG(INFO) << "Failed to read chunk descriptor.";
             return std::nullopt;
         }
@@ -177,7 +218,7 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
                               << sizeof(TransactionHeader) << ".";
                     return std::nullopt;
                 }
-                if (!android::base::ReadFully(fd, &t.mHeader, chunk.dataSize)) {
+                if (!readWithSum(fd, &t.mHeader, chunk.dataSize, &sum)) {
                     LOG(INFO) << "Failed to read transactionHeader from fd " << fd.get();
                     return std::nullopt;
                 }
@@ -187,7 +228,7 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
             case DATA_PARCEL_CHUNK: {
                 std::vector<uint8_t> bytes;
                 bytes.resize(chunk.dataSize);
-                if (!android::base::ReadFully(fd, bytes.data(), chunk.dataSize)) {
+                if (!readWithSum(fd, bytes.data(), chunk.dataSize, &sum)) {
                     LOG(INFO) << "Failed to read sent parcel data from fd " << fd.get();
                     return std::nullopt;
                 }
@@ -201,7 +242,7 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
             case REPLY_PARCEL_CHUNK: {
                 std::vector<uint8_t> bytes;
                 bytes.resize(chunk.dataSize);
-                if (!android::base::ReadFully(fd, bytes.data(), chunk.dataSize)) {
+                if (!readWithSum(fd, bytes.data(), chunk.dataSize, &sum)) {
                     LOG(INFO) << "Failed to read reply parcel data from fd " << fd.get();
                     return std::nullopt;
                 }
@@ -220,8 +261,17 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
                 FALLTHROUGH_INTENDED;
             default:
                 // Unrecognized or skippable chunk
-                lseek(fd.get(), chunk.dataSize + chunk.padding, SEEK_CUR);
-                break;
+                lseek(fd.get(), chunk.dataSize + chunk.padding + sizeof(uint64_t), SEEK_CUR);
+                // Skip Chunk checksum
+                continue;
+        }
+        if (!android::base::ReadFully(fd, &chunkSumFromFile, sizeof(uint64_t))) {
+            LOG(INFO) << "Failed to read Chunk sum from fd " << fd.get();
+            return std::nullopt;
+        }
+        if ((chunkSumFromFile ^ sum) != 0xffffffffffffffff) {
+            LOG(INFO) << "Chunk failed checksum";
+            return std::nullopt;
         }
     } while (chunk.chunkType != END_CHUNK);
 
@@ -230,21 +280,22 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
 
 android::status_t RecordedTransaction::writeChunk(borrowed_fd fd, uint32_t chunkType,
                                                   size_t byteCount, const uint8_t* data) const {
+    uint64_t sum = 0;
     // Write Chunk Descriptor
     // - Chunk Type
-    if (!android::base::WriteFully(fd, &chunkType, sizeof(uint32_t))) {
+    if (!writeWithSum(fd, &chunkType, sizeof(uint32_t), &sum)) {
         LOG(INFO) << "Failed to write chunk header to fd " << fd.get();
         return UNKNOWN_ERROR;
     }
     // - Chunk Data Padding Size
     uint32_t additionalPaddingCount = static_cast<uint32_t>(PADDING8(byteCount));
-    if (!android::base::WriteFully(fd, &additionalPaddingCount, sizeof(uint32_t))) {
+    if (!writeWithSum(fd, &additionalPaddingCount, sizeof(uint32_t), &sum)) {
         LOG(INFO) << "Failed to write chunk padding size to fd " << fd.get();
         return UNKNOWN_ERROR;
     }
     // - Chunk Data Size
     uint64_t byteCountToWrite = (uint64_t)byteCount;
-    if (!android::base::WriteFully(fd, &byteCountToWrite, sizeof(uint64_t))) {
+    if (!writeWithSum(fd, &byteCountToWrite, sizeof(uint64_t), &sum)) {
         LOG(INFO) << "Failed to write chunk size to fd " << fd.get();
         return UNKNOWN_ERROR;
     }
@@ -252,7 +303,7 @@ android::status_t RecordedTransaction::writeChunk(borrowed_fd fd, uint32_t chunk
         return NO_ERROR;
     }
 
-    if (!android::base::WriteFully(fd, data, byteCount)) {
+    if (!writeWithSum(fd, data, byteCount, &sum)) {
         LOG(INFO) << "Failed to write chunk data to fd " << fd.get();
         return UNKNOWN_ERROR;
     }
@@ -260,6 +311,11 @@ android::status_t RecordedTransaction::writeChunk(borrowed_fd fd, uint32_t chunk
     const uint8_t zeros[7] = {0};
     if (!android::base::WriteFully(fd, zeros, additionalPaddingCount)) {
         LOG(INFO) << "Failed to write chunk padding to fd " << fd.get();
+        return UNKNOWN_ERROR;
+    }
+    sum = ~sum;
+    if (!android::base::WriteFully(fd, &sum, sizeof(uint64_t))) {
+        LOG(INFO) << "Failed to write chunk checksum to fd " << fd.get();
         return UNKNOWN_ERROR;
     }
     return NO_ERROR;

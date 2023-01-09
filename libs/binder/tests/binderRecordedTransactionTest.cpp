@@ -54,3 +54,28 @@ TEST(BinderRecordedTransaction, RoundTripEncoding) {
     EXPECT_EQ(retrievedTransaction->getDataParcel().readInt64(), 2);
     EXPECT_EQ(retrievedTransaction->getReplyParcel().readInt32(), 99);
 }
+
+TEST(BinderRecordedTransaction, Checksum) {
+    Parcel d;
+    d.writeInt32(12);
+    d.writeInt64(2);
+    Parcel r;
+    r.writeInt32(99);
+    timespec ts = {1232456, 567890};
+    auto transaction = RecordedTransaction::fromDetails(1, 42, ts, d, r, 0);
+
+    auto file = std::tmpfile();
+    auto fd = unique_fd(fcntl(fileno(file), F_DUPFD, 1));
+
+    status_t status = transaction->dumpToFile(fd);
+    ASSERT_EQ(android::NO_ERROR, status);
+
+    lseek(fd.get(), 9, SEEK_SET);
+    uint32_t badData = 0xffffffff;
+    write(fd.get(), &badData, sizeof(uint32_t));
+    std::rewind(file);
+
+    auto retrievedTransaction = RecordedTransaction::fromFile(fd);
+
+    EXPECT_FALSE(retrievedTransaction.has_value());
+}
