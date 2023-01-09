@@ -715,6 +715,11 @@ binder_status_t AParcel_unmarshal(AParcel* parcel, const uint8_t* buffer, size_t
     if (raw == nullptr) {
         return STATUS_NO_MEMORY;
     }
+
+    if (buffer == nullptr) {
+        return STATUS_UNEXPECTED_NULL;
+    }
+
     memcpy(raw, buffer, len);
     return STATUS_OK;
 }
