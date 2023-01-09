@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4f3c0c_78d61dfc",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-09T23:34:53Z",
+      "side": 1,
+      "message": "is this done in order to use xor in the check or for another reason? It\u0027s only one additional instruction, but I\u0027m not sure what we get from doing this as opposed to storing the sum and then checking it.",
+      "range": {
+        "startLine": 52,
+        "startChar": 44,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70a597a_2461d882",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-09T23:34:53Z",
+      "side": 1,
+      "message": "nit: I guess paddingSize should be 0-3 - we could make the entire descriptor 64-bits if we wanted (16 bits for reserved, 14 for type, 2 for padding). Though it\u0027s probably overkill.",
+      "range": {
+        "startLine": 61,
+        "startChar": 6,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "045e9694_2d698ffa",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-09T23:34:53Z",
+      "side": 1,
+      "message": "note: libbinder has integer sanitization on by default, so if this overflows, it would crash. 2^64/2^8 is still 2^56. However - if we used the reserved piece, 2^32/2^8 \u003d 2^24 which would theoretically be reachable.\n\nI was expecting this to be `*sum ^\u003d *p` to avoid this problem (and still fit into the size). If byte_count%4\u003d\u003d0, then `const uint32_t* limit` would be appropriate for calculating an arbitrarily scalable checksum based on this.\n\nAlso - note - checksum at the end - this is being added to the end of a chunk. Since it\u0027s outside of the frame, I\u0027m worried it may be harder to maintain if we want to move away from this in the future, since reading the chunk itself would depend on this. Seeking back to the header to write a checksum is fine (though I get it may be slow - doing the checksum before calling the write functions would also be okay - it\u0027s not friendly to the caches, but it will detect certain types of memory corruption that race with the write).\n\nxor sum or crc check may be more usual. I\u0027m happy with the sum if you like it, but I found it surprising. Curious if you have any particular thoughts on it.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 23
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d8428cd_01931e3b",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-09T23:34:53Z",
+      "side": 1,
+      "message": "(and same for others) define latest possible place to limit scope",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 51
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
