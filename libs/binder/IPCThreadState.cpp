@@ -1221,6 +1221,9 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
         return NO_ERROR;
     }
 
+    ALOGE("Driver returned error (%s). This is a bug in either libbinder or the driver. This "
+          "process will no longer be able to use binder.",
+          statusToString(err).c_str());
     return err;
 }
 
