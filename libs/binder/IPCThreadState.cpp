@@ -1221,7 +1221,7 @@ status_t IPCThreadState::talkWithDriver(bool doReceive)
         return NO_ERROR;
     }
 
-    return err;
+    LOG_ALWAYS_FATAL("Driver returned error: %s", statusToString(err).c_str());
 }
 
 status_t IPCThreadState::writeTransactionData(int32_t cmd, uint32_t binderFlags,
