@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f4b3fc_aa94cdee",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-01-09T08:18:02Z",
+      "side": 1,
+      "message": "I don\u0027t think it matters too much - the only way setLayerPerFrameMetadata can error out is if composer 2.1 is installed on the device. But the below code would only really work for composer 2.3+ since that\u0027s when the per frame metadata blobs started being supported.\n\nSo returning early would save a few instructions on older chips.",
+      "parentUuid": "afb19e11_ac7f467e",
+      "range": {
+        "startLine": 833,
+        "startChar": 12,
+        "endLine": 833,
+        "endChar": 24
+      },
+      "revId": "8a2b3c22ca9e3b3bdef8f9eeb9ce62faddc37e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "23336ef2_39ac68b7",
@@ -94,6 +118,30 @@
       "writtenOn": "2023-01-06T19:44:36Z",
       "side": 1,
       "message": "What is the intent of this block? Because of the `||` and the fact that these are separate `Error`s that don\u0027t overlap, won\u0027t this just *always* return `error`?",
+      "range": {
+        "startLine": 851,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 9
+      },
+      "revId": "8a2b3c22ca9e3b3bdef8f9eeb9ce62faddc37e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f1221f_4d052e63",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-01-09T08:18:02Z",
+      "side": 1,
+      "message": "I think this needs to be an AND predicate",
+      "parentUuid": "17f09bcf_19f1442d",
       "range": {
         "startLine": 851,
         "startChar": 0,
