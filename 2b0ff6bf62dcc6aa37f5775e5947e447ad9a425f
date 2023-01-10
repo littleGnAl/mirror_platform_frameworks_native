@@ -22,6 +22,30 @@
       },
       "revId": "2b0ff6bf62dcc6aa37f5775e5947e447ad9a425f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "071c7c59_08a86757",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-01-10T00:22:23Z",
+      "side": 1,
+      "message": "right, removed this and corrected call param in fuzzer.",
+      "parentUuid": "ff308d5e_003d6c74",
+      "range": {
+        "startLine": 719,
+        "startChar": 4,
+        "endLine": 721,
+        "endChar": 5
+      },
+      "revId": "2b0ff6bf62dcc6aa37f5775e5947e447ad9a425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
