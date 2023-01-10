@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "919023b8_d34d3304",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-10T00:56:34Z",
+      "side": 1,
+      "message": "It _had_ been part of a brief effort to allow for the checksum calculation on the read path to run over the whole chunk and result in zero, because the data included the checksum.",
+      "parentUuid": "da4f3c0c_78d61dfc",
+      "range": {
+        "startLine": 52,
+        "startChar": 44,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f70a597a_2461d882",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-09T23:34:53Z",
       "side": 1,
       "message": "nit: I guess paddingSize should be 0-3 - we could make the entire descriptor 64-bits if we wanted (16 bits for reserved, 14 for type, 2 for padding). Though it\u0027s probably overkill.",
+      "range": {
+        "startLine": 61,
+        "startChar": 6,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dffee8cb_39cb64e4",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-10T00:56:34Z",
+      "side": 1,
+      "message": "Padding could be as high as 7. But could still have 8000 chunk types while keeping 16 bits in reserve.\n\nI might pack this down a bit, or consider moving the checksum here and rearrange a bit more.",
+      "parentUuid": "f70a597a_2461d882",
       "range": {
         "startLine": 61,
         "startChar": 6,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d927f93_147132d2",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-10T00:56:34Z",
+      "side": 1,
+      "message": "I arrived at this in a very path-dependent way and will happily revisit. I wasn\u0027t sure the tradeoffs we wanted to make regarding error detection and performance. Based on your feedback here, it sounds like better error detection is favorable over performance?\n\nThe only crc implementation I found available was in skia, which I don\u0027t think is available at this level? And as shown by the skia implementation, I think we\u0027re targeting hardware with sse \u003c 4.2 and can\u0027t rely on the sse intrinsics.\n\nI started down the path of a Fletcher checksum instead, and what you see here is the remains of stripping that down in favor of reducing the number of passes we take over the data. -- The sum was a concession to using more bits for better chances of detecting an error given that I was only using an 8-bit stride, which doesn\u0027t give us great chances of discovering an error with xor alone.",
+      "parentUuid": "045e9694_2d698ffa",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 23
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d8428cd_01931e3b",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-09T23:34:53Z",
       "side": 1,
       "message": "(and same for others) define latest possible place to limit scope",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 51
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d43ea5d_58d4bf5e",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-10T00:56:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d8428cd_01931e3b",
       "range": {
         "startLine": 207,
         "startChar": 0,
