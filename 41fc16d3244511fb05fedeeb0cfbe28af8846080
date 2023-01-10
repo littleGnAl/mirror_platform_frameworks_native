@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "857b01b4_31196883",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-10T21:44:57Z",
+      "side": 1,
+      "message": "Here\u0027s a fun one for you: if a xor-based checksum is done, by setting itself to 0, then setting the checksum ensures that the xor-based checksum becomes 0. Maybe that\u0027s too fun though.",
+      "parentUuid": "919023b8_d34d3304",
+      "range": {
+        "startLine": 52,
+        "startChar": 44,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f70a597a_2461d882",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I arrived at this in a very path-dependent way and will happily revisit. I wasn\u0027t sure the tradeoffs we wanted to make regarding error detection and performance. Based on your feedback here, it sounds like better error detection is favorable over performance?\n\nThe only crc implementation I found available was in skia, which I don\u0027t think is available at this level? And as shown by the skia implementation, I think we\u0027re targeting hardware with sse \u003c 4.2 and can\u0027t rely on the sse intrinsics.\n\nI started down the path of a Fletcher checksum instead, and what you see here is the remains of stripping that down in favor of reducing the number of passes we take over the data. -- The sum was a concession to using more bits for better chances of detecting an error given that I was only using an 8-bit stride, which doesn\u0027t give us great chances of discovering an error with xor alone.",
       "parentUuid": "045e9694_2d698ffa",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 23
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596bf873_6fe25038",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-10T21:44:57Z",
+      "side": 1,
+      "message": "crc should only be 5-6 lines of C code, but honestly, let\u0027s do whatever is simplest here. I mostly suggested this to use the extra space we had in the header, since we might as well use it. It\u0027s mostly to prevent ourselves from trying to debug something when the file itself is corrupt and giving us garbage data. It\u0027s unlikely we would really hit this - unless we start making the format more complicated.",
+      "parentUuid": "0d927f93_147132d2",
       "range": {
         "startLine": 166,
         "startChar": 0,
