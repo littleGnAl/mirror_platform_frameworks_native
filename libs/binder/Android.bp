@@ -486,11 +486,6 @@ aidl_interface {
     local_include_dir: "aidl",
     srcs: [":libbinder_aidl"],
     vendor_available: true,
-    backend: {
-        java: {
-            enabled: false,
-        },
-    },
 }
 
 // TODO(b/184872979): remove once the Rust API is created.
