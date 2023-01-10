@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e9c0963_dc98f819",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1984841
+      },
+      "writtenOn": "2023-01-10T15:27:59Z",
+      "side": 1,
+      "message": "Approved for Android codelab",
+      "revId": "57280627512f354ac606d7fd5c0af68e39271a32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
