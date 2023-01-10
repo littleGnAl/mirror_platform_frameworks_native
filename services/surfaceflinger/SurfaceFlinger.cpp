@@ -2230,6 +2230,10 @@ void SurfaceFlinger::composite(nsecs_t frameTime, int64_t vsyncId)
         mDrawingState.colorMatrixChanged = false;
     }
 
+    refreshArgs.colorTransformMatrix =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
+
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC;
 
     if (mDebugFlashDelay != 0) {
@@ -5502,6 +5506,7 @@ void SurfaceFlinger::dumpAllLocked(const DumpArgs& args, const std::string& comp
     colorizer.bold(result);
     result.append("h/w composer state:\n");
     colorizer.reset(result);
+
     const bool hwcDisabled = mDebugDisableHWC || mDebugFlashDelay;
     StringAppendF(&result, "  h/w composer %s\n", hwcDisabled ? "disabled" : "enabled");
     dumpHwc(result);
@@ -6803,6 +6808,9 @@ ftl::SharedFuture<FenceResult> SurfaceFlinger::renderScreenImpl(
 
     const float colorSaturation = grayscale ? 0 : 1;
     clientCompositionDisplay.colorTransform = calculateColorMatrix(colorSaturation);
+    clientCompositionDisplay.colorTransform =
+            mat4(vec4{1.0f, 0.0f, 0.0f, 0.0f}, vec4{0.0f, -1.0f, 0.0f, 0.0f},
+                 vec4{0.0f, 0.0f, -1.0f, 0.0f}, vec4{0.0f, 1.0f, 1.0f, 1.0f});
 
     const float alpha = RenderArea::getCaptureFillValue(renderArea.getCaptureFill());
 
