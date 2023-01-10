@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9529c046_4c7aada5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-10T21:37:41Z",
+      "side": 1,
+      "message": "does this get hit during normal boot at all?",
+      "revId": "c77dda6dde51e07b944eda775e3fd33afcb4af3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b6fdfb_726bb14b",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-10T21:37:41Z",
+      "side": 1,
+      "message": "this may not be true for certain callers of this function",
+      "range": {
+        "startLine": 1224,
+        "startChar": 87,
+        "endLine": 1225,
+        "endChar": 56
+      },
+      "revId": "c77dda6dde51e07b944eda775e3fd33afcb4af3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
