@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10fa5408_efda3ed0",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1884457
+      },
+      "writtenOn": "2023-01-11T20:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2613ef9d_66168cd8",
+      "range": {
+        "startLine": 843,
+        "startChar": 8,
+        "endLine": 843,
+        "endChar": 29
+      },
+      "revId": "087f893508e6fcdbb7e71f976f89b338a0f33bcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77a75b2d_38d2b97c",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf52597_64a40c03",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1884457
+      },
+      "writtenOn": "2023-01-11T20:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a75b2d_38d2b97c",
+      "range": {
+        "startLine": 847,
+        "startChar": 4,
+        "endLine": 847,
+        "endChar": 5
+      },
+      "revId": "087f893508e6fcdbb7e71f976f89b338a0f33bcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2ff6bc6_d13408c7",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-01-11T04:36:36Z",
       "side": 1,
       "message": "i would just return this result directly instead of tracking the intermediate error variable",
+      "range": {
+        "startLine": 848,
+        "startChar": 8,
+        "endLine": 849,
+        "endChar": 34
+      },
+      "revId": "087f893508e6fcdbb7e71f976f89b338a0f33bcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a7a3dc0_70d23f2e",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1884457
+      },
+      "writtenOn": "2023-01-11T20:11:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2ff6bc6_d13408c7",
       "range": {
         "startLine": 848,
         "startChar": 8,
