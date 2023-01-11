@@ -111,6 +111,8 @@ TEST_F(ColorSpaceTest, TransferFunctions) {
     EXPECT_NEAR(1.0f, sRGB.getEOTF()(1.0f), 1e-6f);
     EXPECT_NEAR(1.0f, sRGB.getOETF()(1.0f), 1e-6f);
 
+    // FixLater: avoid floating point loop counters
+    // NOLINTNEXTLINE(clang-analyzer-security.FloatLoopCounter,cert-flp30-c)
     for (float v = 0.0f; v <= 0.5f; v += 1e-3f) {
         ASSERT_TRUE(v >= sRGB.getEOTF()(v));
         ASSERT_TRUE(v <= sRGB.getOETF()(v));
@@ -118,6 +120,8 @@ TEST_F(ColorSpaceTest, TransferFunctions) {
 
     float previousEOTF = std::numeric_limits<float>::lowest();
     float previousOETF = std::numeric_limits<float>::lowest();
+    // FixLater: avoid floating point loop counters
+    // NOLINTNEXTLINE(clang-analyzer-security.FloatLoopCounter,cert-flp30-c)
     for (float v = 0.0f; v <= 1.0f; v += 1e-3f) {
         ASSERT_TRUE(previousEOTF < sRGB.getEOTF()(v));
         previousEOTF = sRGB.getEOTF()(v);
@@ -131,6 +135,8 @@ TEST_F(ColorSpaceTest, TransferFunctions) {
           {0.3127f, 0.3290f}
           // linear transfer functions
     );
+    // FixLater: avoid floating point loop counters
+    // NOLINTNEXTLINE(clang-analyzer-security.FloatLoopCounter,cert-flp30-c)
     for (float v = 0.0f; v <= 1.0f; v += 1e-3f) {
         ASSERT_EQ(v, sRGB2.getEOTF()(v));
         ASSERT_EQ(v, sRGB2.getOETF()(v));
