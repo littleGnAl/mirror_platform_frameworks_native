@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2613ef9d_66168cd8",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-01-11T04:36:36Z",
+      "side": 1,
+      "message": "consider reserving the space for perFrameMetadataBlobs",
+      "range": {
+        "startLine": 843,
+        "startChar": 8,
+        "endLine": 843,
+        "endChar": 29
+      },
+      "revId": "087f893508e6fcdbb7e71f976f89b338a0f33bcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a75b2d_38d2b97c",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-01-11T04:36:36Z",
+      "side": 1,
+      "message": "i don\u0027t think this block scope is needed",
+      "range": {
+        "startLine": 847,
+        "startChar": 4,
+        "endLine": 847,
+        "endChar": 5
+      },
+      "revId": "087f893508e6fcdbb7e71f976f89b338a0f33bcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2ff6bc6_d13408c7",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-01-11T04:36:36Z",
+      "side": 1,
+      "message": "i would just return this result directly instead of tracking the intermediate error variable",
+      "range": {
+        "startLine": 848,
+        "startChar": 8,
+        "endLine": 849,
+        "endChar": 34
+      },
+      "revId": "087f893508e6fcdbb7e71f976f89b338a0f33bcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
