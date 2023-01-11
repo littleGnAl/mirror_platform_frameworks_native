@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ef4d25c_bcbca375",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-11T21:09:57Z",
+      "side": 1,
+      "message": "Yep. I passed through that in my journey to the first patchset.",
+      "parentUuid": "857b01b4_31196883",
+      "range": {
+        "startLine": 52,
+        "startChar": 44,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f70a597a_2461d882",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 1
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Padding could be as high as 7. But could still have 8000 chunk types while keeping 16 bits in reserve.\n\nI might pack this down a bit, or consider moving the checksum here and rearrange a bit more.",
       "parentUuid": "f70a597a_2461d882",
+      "range": {
+        "startLine": 61,
+        "startChar": 6,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec116565_3d676285",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-11T21:09:57Z",
+      "side": 1,
+      "message": "Cleaned this up. Let me know what you think.",
+      "parentUuid": "dffee8cb_39cb64e4",
       "range": {
         "startLine": 61,
         "startChar": 6,
@@ -180,6 +228,30 @@
       "side": 1,
       "message": "crc should only be 5-6 lines of C code, but honestly, let\u0027s do whatever is simplest here. I mostly suggested this to use the extra space we had in the header, since we might as well use it. It\u0027s mostly to prevent ourselves from trying to debug something when the file itself is corrupt and giving us garbage data. It\u0027s unlikely we would really hit this - unless we start making the format more complicated.",
       "parentUuid": "0d927f93_147132d2",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 23
+      },
+      "revId": "41fc16d3244511fb05fedeeb0cfbe28af8846080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7521f307_d8ae17de",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-11T21:09:57Z",
+      "side": 1,
+      "message": "crc by the bit is certainly only a few lines. Doing it by byte or larger gives a huge speedup, but is helped by building a table. If we do then care about speed, using the arm neon and sse4.2 intrinsics seems like the right thing to do. It\u0027s not too much work to get there if we think crc is worthwhile here.\n\nI think what\u0027s here is sensible now, if I got the c++ right and you don\u0027t disagree with how I\u0027m using mmap and vectors. If we want to use crc, maybe I can add that in a follow-up patch before declaring a \"version 1\"?",
+      "parentUuid": "596bf873_6fe25038",
       "range": {
         "startLine": 166,
         "startChar": 0,
