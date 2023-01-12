@@ -46,6 +46,30 @@
       },
       "revId": "74145134f27106864d201c6b29eb668b9d9f4e1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a8236d_eeea0249",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-01-12T01:32:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb694cfb_7bff448c",
+      "range": {
+        "startLine": 181,
+        "startChar": 16,
+        "endLine": 181,
+        "endChar": 25
+      },
+      "revId": "74145134f27106864d201c6b29eb668b9d9f4e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
