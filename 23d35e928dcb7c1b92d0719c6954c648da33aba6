@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f737c2f5_0780e723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T17:50:42Z",
+      "side": 1,
+      "message": "hey - can  you update the formatting by uploading this CL on top of the .clang-format one? Otherwise, LGTM, we can move forward. One thing we should also do is check for coverage here in the fuzzer. We may want to check in order to see where we could improve the fuzzer.",
+      "revId": "23d35e928dcb7c1b92d0719c6954c648da33aba6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34f13fc4_abae7a88",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T17:50:42Z",
+      "side": 1,
+      "message": "nit: constexpr for more type checking",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "23d35e928dcb7c1b92d0719c6954c648da33aba6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
