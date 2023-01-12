@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd3566f_f6997603",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:57:46Z",
+      "side": 1,
+      "message": "so much for a monospace font? :)",
+      "range": {
+        "startLine": 68,
+        "startChar": 47,
+        "endLine": 70,
+        "endChar": 48
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad041a1_e605a892",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:57:46Z",
+      "side": 1,
+      "message": "this is done to make the checksum more effective?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 32
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7967a89e_b6b41de8",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:57:46Z",
+      "side": 1,
+      "message": "nit: unify implementation with PADDING8",
+      "range": {
+        "startLine": 172,
+        "startChar": 28,
+        "endLine": 172,
+        "endChar": 81
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e310d2_d0501ea2",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:57:46Z",
+      "side": 1,
+      "message": "nit: If computing the derived data is expensive, I would recommend having two structs ChunkDescriptorWire and ChunkDescriptor where ChunkDescriptorWire contains the data - to avoid this \u0027sizeof(uint32_t) * 2\u0027 business. However, since computing padding size is so efficient, and we might want to mutate dataSize, theoretically, having a function to do this is also great.\n\nOr - see include/binder/Stability.h and Stability.cpp implementation of a similar idea.",
+      "range": {
+        "startLine": 167,
+        "startChar": 56,
+        "endLine": 172,
+        "endChar": 83
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575e5712_96630a21",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:57:46Z",
+      "side": 1,
+      "message": "it seems like we can avoid storing paddingSize at all? since it\u0027s derived data? that might simplify things a bit - and the checksum is a more inclusive check for integrity.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 5
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02fe2f98_fd5f3162",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:57:46Z",
+      "side": 1,
+      "message": "these are values read from an unknown source, so we should use __builtin_add_overflow or range check them",
+      "range": {
+        "startLine": 201,
+        "startChar": 16,
+        "endLine": 201,
+        "endChar": 55
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1525374d_e21293e0",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:57:46Z",
+      "side": 1,
+      "message": "this and a few others should probably be ERROR",
+      "range": {
+        "startLine": 260,
+        "startChar": 20,
+        "endLine": 260,
+        "endChar": 24
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "593ba11b_15acc1f4",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:57:46Z",
+      "side": 1,
+      "message": "without the lseek, further reads will be misaligned?",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 25
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500cbd79_e608cf97",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:57:46Z",
+      "side": 1,
+      "message": "are you running scripts + applying clang-format when you run this? I would have expected this gets reformated to \u0027std::byte* \u0027 also nit: s/std::byte/uint8_t/ is common here",
+      "range": {
+        "startLine": 279,
+        "startChar": 16,
+        "endLine": 279,
+        "endChar": 21
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ed1e4c_ebc2db21",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:57:46Z",
+      "side": 1,
+      "message": "do we check this size is a multiple of transaction_checksum_t?",
+      "range": {
+        "startLine": 295,
+        "startChar": 32,
+        "endLine": 295,
+        "endChar": 45
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b485a295_6d501bcd",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:57:46Z",
+      "side": 1,
+      "message": "same here - maye clang-format got changed?",
+      "range": {
+        "startLine": 355,
+        "startChar": 12,
+        "endLine": 355,
+        "endChar": 14
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
