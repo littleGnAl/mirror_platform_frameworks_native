@@ -61,6 +61,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d0b05683_54ae3716",
+        "filename": "libs/binder/include/binder/ParcelFileDescriptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-01-12T01:40:54Z",
+      "side": 1,
+      "message": "I wish we have a single impl (presumably in the native world) for this (and many others).",
+      "parentUuid": "def88d4e_cda57860",
+      "revId": "80d21002405117f0768ad8d837278c7d8f05361b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ed89554d_1d3d457d",
         "filename": "libs/binder/include/binder/ParcelableHolder.h",
         "patchSetId": 3
