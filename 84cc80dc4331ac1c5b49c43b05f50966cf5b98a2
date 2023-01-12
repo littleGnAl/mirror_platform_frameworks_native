@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7abe0b5_0b102886",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-01-12T03:51:41Z",
+      "side": 1,
+      "message": "block scope here isn\u0027t necessary now",
+      "range": {
+        "startLine": 829,
+        "startChar": 4,
+        "endLine": 829,
+        "endChar": 5
+      },
+      "revId": "84cc80dc4331ac1c5b49c43b05f50966cf5b98a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
