@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20b964f0_9632c36a",
+        "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-01-12T03:51:13Z",
+      "side": 1,
+      "message": "i might have missed that this is a single element.",
+      "parentUuid": "a27c434c_db75e8f1",
+      "range": {
+        "startLine": 843,
+        "startChar": 8,
+        "endLine": 843,
+        "endChar": 29
+      },
+      "revId": "087f893508e6fcdbb7e71f976f89b338a0f33bcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77a75b2d_38d2b97c",
         "filename": "services/surfaceflinger/DisplayHardware/HWC2.cpp",
         "patchSetId": 4
