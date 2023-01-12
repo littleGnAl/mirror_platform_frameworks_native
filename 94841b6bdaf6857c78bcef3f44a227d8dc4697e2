@@ -496,6 +496,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd4cc04_4ad3b7ed",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-12T19:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62ccad2f_9d938f73",
+      "range": {
+        "startLine": 279,
+        "startChar": 16,
+        "endLine": 279,
+        "endChar": 21
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51ed1e4c_ebc2db21",
@@ -580,6 +604,30 @@
       "writtenOn": "2023-01-12T01:57:46Z",
       "side": 1,
       "message": "same here - maye clang-format got changed?",
+      "range": {
+        "startLine": 355,
+        "startChar": 12,
+        "endLine": 355,
+        "endChar": 14
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f6927b_c34a727e",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-12T19:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b485a295_6d501bcd",
       "range": {
         "startLine": 355,
         "startChar": 12,
