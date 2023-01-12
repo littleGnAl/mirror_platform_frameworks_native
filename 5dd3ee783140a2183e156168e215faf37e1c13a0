@@ -51,6 +51,24 @@
       "parentUuid": "8e62927a_4084f827",
       "revId": "5dd3ee783140a2183e156168e215faf37e1c13a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "130887fa_4dd86527",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2023-01-12T18:00:28Z",
+      "side": 1,
+      "message": "@enh@google.com Are you sure it was the repo upload hook or was something maybe running server-side? I could imagine symlinks being broken if this is something server-side escaping the single git repository. That\u0027s a failure mode that exists today for `rustfmt` when run via AyeAye.\n\nIs this reproducible (i.e. can I download your CL and attempt to reupload it and see the hooks failure)?",
+      "parentUuid": "8e62927a_4084f827",
+      "revId": "5dd3ee783140a2183e156168e215faf37e1c13a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
