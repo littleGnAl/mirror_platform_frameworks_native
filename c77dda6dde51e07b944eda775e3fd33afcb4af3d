@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a11b63e_75dd5874",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1463403
+      },
+      "writtenOn": "2023-01-12T01:13:15Z",
+      "side": 1,
+      "message": "I see bootanimation hit it a few times while it\u0027s exiting and mDriverFD got set to -1. This feels like a normal shutdown case so I made it not log if mDriverFD \u003c 0.",
+      "parentUuid": "9529c046_4c7aada5",
+      "revId": "c77dda6dde51e07b944eda775e3fd33afcb4af3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6b6fdfb_726bb14b",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-01-10T21:37:41Z",
       "side": 1,
       "message": "this may not be true for certain callers of this function",
+      "range": {
+        "startLine": 1224,
+        "startChar": 87,
+        "endLine": 1225,
+        "endChar": 56
+      },
+      "revId": "c77dda6dde51e07b944eda775e3fd33afcb4af3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c56ad41_3424e209",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1463403
+      },
+      "writtenOn": "2023-01-12T01:13:15Z",
+      "side": 1,
+      "message": "This should be thread and not process, my mistake. It\u0027s also maybe possible that the command would succeed when retried and the thread would get unstuck. But otherwise, I don\u0027t see how this thread could send or recieve any further commands.",
+      "parentUuid": "a6b6fdfb_726bb14b",
       "range": {
         "startLine": 1224,
         "startChar": 87,
