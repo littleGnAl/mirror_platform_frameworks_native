@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ebff4b8_11a225f9",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-12T16:23:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ad041a1_e605a892",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 32
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7967a89e_b6b41de8",
@@ -93,6 +117,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d3c090_469b7ce3",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-12T16:23:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71e310d2_d0501ea2",
+      "range": {
+        "startLine": 167,
+        "startChar": 56,
+        "endLine": 172,
+        "endChar": 83
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "575e5712_96630a21",
@@ -106,6 +154,30 @@
       "writtenOn": "2023-01-12T01:57:46Z",
       "side": 1,
       "message": "it seems like we can avoid storing paddingSize at all? since it\u0027s derived data? that might simplify things a bit - and the checksum is a more inclusive check for integrity.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 5
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48cc6a1f_f1893915",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-12T16:23:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "575e5712_96630a21",
       "range": {
         "startLine": 174,
         "startChar": 0,
@@ -139,6 +211,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e804384_e28f469d",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-12T16:23:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02fe2f98_fd5f3162",
+      "range": {
+        "startLine": 201,
+        "startChar": 16,
+        "endLine": 201,
+        "endChar": 55
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1525374d_e21293e0",
@@ -152,6 +248,30 @@
       "writtenOn": "2023-01-12T01:57:46Z",
       "side": 1,
       "message": "this and a few others should probably be ERROR",
+      "range": {
+        "startLine": 260,
+        "startChar": 20,
+        "endLine": 260,
+        "endChar": 24
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b32038_c9bbe3b6",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-12T16:23:13Z",
+      "side": 1,
+      "message": "All but one, I think. I had tried LOG(ERR) out of habit, and when that wasn\u0027t available I just stuck with INFO. Done.",
+      "parentUuid": "1525374d_e21293e0",
       "range": {
         "startLine": 260,
         "startChar": 20,
@@ -187,6 +307,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6f477f9_7c0af134",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-12T16:23:13Z",
+      "side": 1,
+      "message": "mmap doesn\u0027t advance a file descriptor.",
+      "parentUuid": "593ba11b_15acc1f4",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 25
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "500cbd79_e608cf97",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 5
@@ -210,6 +354,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86f8421a_654b936e",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-12T16:23:13Z",
+      "side": 1,
+      "message": "I occasionally run VSCode\u0027s reindent action, which I believe may have been the source of these changes (It should be using clang format, I think). But also `repo upload` makes formatting changes, and may have been responsible.\n\nWhat do you recommend?",
+      "parentUuid": "500cbd79_e608cf97",
+      "range": {
+        "startLine": 279,
+        "startChar": 16,
+        "endLine": 279,
+        "endChar": 21
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51ed1e4c_ebc2db21",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 5
@@ -221,6 +389,30 @@
       "writtenOn": "2023-01-12T01:57:46Z",
       "side": 1,
       "message": "do we check this size is a multiple of transaction_checksum_t?",
+      "range": {
+        "startLine": 295,
+        "startChar": 32,
+        "endLine": 295,
+        "endChar": 45
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdfa2b92_464cc1b6",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-12T16:23:13Z",
+      "side": 1,
+      "message": "I added a static assertion that sizeof(ChunkDescriptor) % 8 \u003d\u003d 0, which together with padding does the job. I could add an additional check here if you like.",
+      "parentUuid": "51ed1e4c_ebc2db21",
       "range": {
         "startLine": 295,
         "startChar": 32,
