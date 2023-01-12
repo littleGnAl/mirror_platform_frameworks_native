@@ -33,6 +33,24 @@
       "message": "it\u0027s funny you should mention this, because i saw weird behavior in system/core/ yesterday --- the default .clang-format there is a symlink to the 4-space config, but the repo upload hook wanted to change every line i touched (in a 4-space file) to 2-space, making a mess. +srhines/pirama in case they have any idea what\u0027s going on/have heard of other issues...",
       "revId": "5dd3ee783140a2183e156168e215faf37e1c13a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a9504f_4001a10e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T17:58:26Z",
+      "side": 1,
+      "message": "thanks - also I checked, Google style, we should be inheriting is pointer left. Splitting into b/265304091. Will submit this anyway, because it bugs me :)",
+      "parentUuid": "8e62927a_4084f827",
+      "revId": "5dd3ee783140a2183e156168e215faf37e1c13a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
