@@ -41,6 +41,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "def88d4e_cda57860",
+        "filename": "libs/binder/include/binder/ParcelFileDescriptor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:23:07Z",
+      "side": 1,
+      "message": "Done for the type name, but without the space, and also with the brackets, to keep the implementations similar to other C++ types. I think, the consistency doesn\u0027t really matter here, although if we want it, we could test for it, and we could test it\u0027s consistent. Otherwise, if it is more or less consistent, it\u0027s okay.",
+      "parentUuid": "3e39a9c6_9dac5cbf",
+      "revId": "80d21002405117f0768ad8d837278c7d8f05361b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ed89554d_1d3d457d",
@@ -54,6 +72,30 @@
       "writtenOn": "2023-01-02T02:33:54Z",
       "side": 1,
       "message": "nit: we don\u0027t put a space after type-tag(?) for binders and fds.",
+      "range": {
+        "startLine": 115,
+        "startChar": 33,
+        "endLine": 115,
+        "endChar": 34
+      },
+      "revId": "80d21002405117f0768ad8d837278c7d8f05361b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe619a9_a2173359",
+        "filename": "libs/binder/include/binder/ParcelableHolder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:23:07Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "ed89554d_1d3d457d",
       "range": {
         "startLine": 115,
         "startChar": 33,
