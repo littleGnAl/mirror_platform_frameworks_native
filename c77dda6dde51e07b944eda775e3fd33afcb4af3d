@@ -81,6 +81,30 @@
       },
       "revId": "c77dda6dde51e07b944eda775e3fd33afcb4af3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "198d2841_35bd6643",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:16:54Z",
+      "side": 1,
+      "message": "You may be able to recover after calling IPCThreadState::shutdown. Though - we certainly wouldn\u0027t want code trying to do this in practice.",
+      "parentUuid": "6c56ad41_3424e209",
+      "range": {
+        "startLine": 1224,
+        "startChar": 87,
+        "endLine": 1225,
+        "endChar": 56
+      },
+      "revId": "c77dda6dde51e07b944eda775e3fd33afcb4af3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
