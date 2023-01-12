@@ -22,6 +22,30 @@
       },
       "revId": "74145134f27106864d201c6b29eb668b9d9f4e1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb694cfb_7bff448c",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-12T01:26:55Z",
+      "side": 1,
+      "message": "yeah - I think we could also include more information in AParcelableHolder, or we could include the cached descriptor for IInterface. I would probably just change these locally whenever I needed the information and upload a patch, or we can do it a solid now. Let me see if this is failing the netd tests though - I\u0027m expecting it to fail those tests first - and part of the reason I did this was to make it easier to add a silly exception there, but once I know what it fails, I can update this.",
+      "parentUuid": "76f83b02_64908c26",
+      "range": {
+        "startLine": 181,
+        "startChar": 16,
+        "endLine": 181,
+        "endChar": 25
+      },
+      "revId": "74145134f27106864d201c6b29eb668b9d9f4e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
