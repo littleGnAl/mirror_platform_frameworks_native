@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef80457_b30a2e6d",
+        "filename": "libs/binder/tests/binderUtilsHostTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-01-12T01:37:36Z",
+      "side": 1,
+      "message": "seems kind of odd to expect the same thing as L59.\nWould it be worth saving off elapsedMs and `EXPECT_LT(millisSince(start), elapsedMs + 1000)`?\nSame for the test case bellow.",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "4209a52a73435f34715359d211b2c2fdd22f321e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
