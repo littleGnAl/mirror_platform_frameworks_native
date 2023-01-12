@@ -69,6 +69,24 @@
       "parentUuid": "8e62927a_4084f827",
       "revId": "5dd3ee783140a2183e156168e215faf37e1c13a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae3009e_741b54c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-01-12T18:33:43Z",
+      "side": 1,
+      "message": "\u003e Are you sure it was the repo upload hook or was something maybe running server-side?\n\nthat question is beyond my understanding of how any of this works ... \"it happened when i did `repo upload .` in system/core\" is the best i can offer :-)\n\n\u003e Is this reproducible (i.e. can I download your CL and attempt to reupload it and see the hooks failure)?\n\nit certainly was for me. https://android-review.git.corp.google.com/c/platform/system/core/+/2385294 was the CL.",
+      "parentUuid": "130887fa_4dd86527",
+      "revId": "5dd3ee783140a2183e156168e215faf37e1c13a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
