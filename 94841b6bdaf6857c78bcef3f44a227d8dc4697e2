@@ -355,6 +355,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2909f7a7_c8019480",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-12T17:26:19Z",
+      "side": 1,
+      "message": "To clarify:\nmmap doesn\u0027t advance the file descriptor, so after reading the chunk description, that\u0027s the fd\u0027s current location. The expectation is that the fd is advanced to the next chunk. So we have to do that manually.",
+      "parentUuid": "b6f477f9_7c0af134",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 25
+      },
+      "revId": "94841b6bdaf6857c78bcef3f44a227d8dc4697e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "500cbd79_e608cf97",
         "filename": "libs/binder/BinderRecordReplay.cpp",
         "patchSetId": 5
