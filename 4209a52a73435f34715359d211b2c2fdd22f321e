@@ -22,6 +22,30 @@
       },
       "revId": "4209a52a73435f34715359d211b2c2fdd22f321e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d20f71_2b53452b",
+        "filename": "libs/binder/tests/binderUtilsHostTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2023-01-12T19:45:50Z",
+      "side": 1,
+      "message": "This is intentional; both L59 and L68 is meant to be \"expecting that millisSince(start) is approximately 1 second, plus some minor overhead\". The \"minor overhead\" should be in the order of milliseconds.",
+      "parentUuid": "7ef80457_b30a2e6d",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "4209a52a73435f34715359d211b2c2fdd22f321e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
