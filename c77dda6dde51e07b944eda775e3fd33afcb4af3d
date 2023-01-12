@@ -105,6 +105,30 @@
       },
       "revId": "c77dda6dde51e07b944eda775e3fd33afcb4af3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0688e4d5_faa09321",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1463403
+      },
+      "writtenOn": "2023-01-12T18:57:39Z",
+      "side": 1,
+      "message": "Rephrased a bit",
+      "parentUuid": "198d2841_35bd6643",
+      "range": {
+        "startLine": 1224,
+        "startChar": 87,
+        "endLine": 1225,
+        "endChar": 56
+      },
+      "revId": "c77dda6dde51e07b944eda775e3fd33afcb4af3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
