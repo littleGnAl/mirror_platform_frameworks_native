@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2178dded_2d2bd42c",
+        "filename": "libs/binder/BinderRecordReplay.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-13T20:42:54Z",
+      "side": 1,
+      "message": "This class has a custom move constructor which is dropping interface transaction.\n\nI would recommend:\n\n    class RecordedTransaction {\n        ...\n        struct Data { // movable\n            ... mHeader;\n            ... mTransaction;\n        };\n        Parcel mData;... // non-movable types\n    };\n\nThis way L109 here could be responsible for moving everything over. Separately, we could change \u0027Parcel\u0027 to be movable.",
+      "range": {
+        "startLine": 108,
+        "startChar": 60,
+        "endLine": 108,
+        "endChar": 62
+      },
+      "revId": "1a3d6ac912c229c4d0305f2fabf7f1b23e2e71eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
