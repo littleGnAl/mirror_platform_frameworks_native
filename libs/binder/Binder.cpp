@@ -21,7 +21,6 @@
 
 #include <android-base/logging.h>
 #include <android-base/unique_fd.h>
-#include <binder/BinderRecordReplay.h>
 #include <binder/BpBinder.h>
 #include <binder/IInterface.h>
 #include <binder/IPCThreadState.h>
@@ -42,6 +41,7 @@
 #endif
 
 #include "BuildFlags.h"
+#include "RecordedTransaction.h"
 #include "RpcState.h"
 
 namespace android {

@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-#include <binder/BinderRecordReplay.h>
 #include <gtest/gtest.h>
 #include <utils/Errors.h>
+
+#include "../RecordedTransaction.h"
 
 using android::Parcel;
 using android::status_t;

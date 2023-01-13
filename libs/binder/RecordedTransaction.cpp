@@ -17,9 +17,10 @@
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/unique_fd.h>
-#include <binder/BinderRecordReplay.h>
 #include <sys/mman.h>
 #include <algorithm>
+
+#include "RecordedTransaction.h"
 
 using android::Parcel;
 using android::base::borrowed_fd;
