@@ -111,11 +111,9 @@ RecordedTransaction::RecordedTransaction(RecordedTransaction&& t) noexcept {
     mReply.setData(t.getReplyParcel().data(), t.getReplyParcel().dataSize());
 }
 
-std::optional<RecordedTransaction> RecordedTransaction::fromDetails(uint32_t code, uint32_t flags,
-                                                                    timespec timestamp,
-                                                                    const Parcel& dataParcel,
-                                                                    const Parcel& replyParcel,
-                                                                    status_t err) {
+std::optional<RecordedTransaction> RecordedTransaction::fromDetails(
+        const String16& interfaceName, uint32_t code, uint32_t flags, timespec timestamp,
+        const Parcel& dataParcel, const Parcel& replyParcel, status_t err) {
     RecordedTransaction t;
     t.mHeader = {code,
                  flags,
@@ -124,6 +122,14 @@ std::optional<RecordedTransaction> RecordedTransaction::fromDetails(uint32_t cod
                  static_cast<int64_t>(timestamp.tv_sec),
                  static_cast<int32_t>(timestamp.tv_nsec),
                  0};
+
+    t.mInterfaceName = String8(interfaceName);
+    if (interfaceName.size() != t.mInterfaceName.bytes()) {
+        LOG(ERROR) << "Interface Name is not valid. Contains characters that aren't single byte "
+                      "utf-8: "
+                   << interfaceName;
+        return std::nullopt;
+    }
 
     if (t.mSent.setData(dataParcel.data(), dataParcel.dataSize()) != android::NO_ERROR) {
         LOG(ERROR) << "Failed to set sent parcel data.";
@@ -142,6 +148,7 @@ enum {
     HEADER_CHUNK = 1,
     DATA_PARCEL_CHUNK = 2,
     REPLY_PARCEL_CHUNK = 3,
+    INTERFACE_NAME_CHUNK = 4,
     END_CHUNK = 0x00ffffff,
 };
 
@@ -223,6 +230,10 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
                 t.mHeader = *reinterpret_cast<TransactionHeader*>(payloadMap);
                 break;
             }
+            case INTERFACE_NAME_CHUNK: {
+                t.mInterfaceName.setTo(reinterpret_cast<char*>(payloadMap), chunk.dataSize);
+                break;
+            }
             case DATA_PARCEL_CHUNK: {
                 if (t.mSent.setData(reinterpret_cast<const unsigned char*>(payloadMap),
                                     chunk.dataSize) != android::NO_ERROR) {
@@ -295,6 +306,13 @@ android::status_t RecordedTransaction::dumpToFile(const unique_fd& fd) const {
         LOG(ERROR) << "Failed to write transactionHeader to fd " << fd.get();
         return UNKNOWN_ERROR;
     }
+    if (NO_ERROR !=
+        writeChunk(fd, INTERFACE_NAME_CHUNK, mInterfaceName.size() * sizeof(uint8_t),
+                   reinterpret_cast<const uint8_t*>(mInterfaceName.string()))) {
+        LOG(INFO) << "Failed to write Interface Name Chunk to fd " << fd.get();
+        return UNKNOWN_ERROR;
+    }
+
     if (NO_ERROR != writeChunk(fd, DATA_PARCEL_CHUNK, mSent.dataSize(), mSent.data())) {
         LOG(ERROR) << "Failed to write sent Parcel to fd " << fd.get();
         return UNKNOWN_ERROR;
@@ -308,6 +326,10 @@ android::status_t RecordedTransaction::dumpToFile(const unique_fd& fd) const {
         return UNKNOWN_ERROR;
     }
     return NO_ERROR;
+}
+
+const android::String8& RecordedTransaction::getInterfaceName() const {
+    return mInterfaceName;
 }
 
 uint32_t RecordedTransaction::getCode() const {
