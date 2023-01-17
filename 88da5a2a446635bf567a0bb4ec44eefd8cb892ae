@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a86fb84b_91e6c0c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1012974
+      },
+      "writtenOn": "2023-01-17T18:13:43Z",
+      "side": 1,
+      "message": "Unfortunately, this doesn\u0027t link to anything in Gerrit, and the commit is different across branches. If you\u0027re going to reference a commit, a `Change-Id` would be more helpful here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "88da5a2a446635bf567a0bb4ec44eefd8cb892ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd33d4a_66738306",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1012974
+      },
+      "writtenOn": "2023-01-17T18:13:43Z",
+      "side": 1,
+      "message": "Can you add a line for a `Bug:` and a `Test:`?",
+      "revId": "88da5a2a446635bf567a0bb4ec44eefd8cb892ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c745ee28_ceff3c8a",
