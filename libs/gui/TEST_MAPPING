@@ -3,5 +3,74 @@
     {
       "path": "frameworks/native/libs/nativewindow"
     }
+  ],
+  "presubmit": [
+    {
+      "name": "libgui_test",
+      "options": [
+        {
+          "exclude-filter": "BufferQueueTest#CanAttachWhileDisallowingAllocation"
+        },
+        {
+          "exclude-filter": "BufferQueueTest#CanRetrieveLastQueuedBuffer"
+        },
+        {
+          "exclude-filter": "BufferQueueTest#TestBufferReplacedInQueueBuffer"
+        },
+        {
+          "exclude-filter": "BufferQueueTest#TestDiscardFreeBuffers"
+        },
+        {
+          "exclude-filter": "BufferQueueTest#TestGenerationNumbers"
+        },
+        {
+          "exclude-filter": "BufferQueueTest#TestOccupancyHistory"
+        },
+        {
+          "exclude-filter": "BufferQueueTest#TestSharedBufferModeUsingAlreadyDequeuedBuffer"
+        },
+        {
+          "exclude-filter": "BufferQueueTest#TestSharedBufferModeWithAutoRefresh"
+        },
+        {
+          "exclude-filter": "BufferQueueTest#TestSharedBufferModeWithoutAutoRefresh"
+        },
+        {
+          "exclude-filter": "BufferQueueTest#TestStaleBufferHandleSentAfterDisconnect"
+        },
+        {
+          "exclude-filter": "BufferQueueTest#TestTimeouts"
+        },
+
+        {
+          "exclude-filter": "Malicious#Bug36991414Max"
+        },
+        {
+          "exclude-filter": "Malicious#Bug36991414Min"
+        },
+        {
+          "exclude-filter": "Malicious#Bug36991414NegativeOne"
+        },
+        {
+          "exclude-filter": "Malicious#Bug36991414NumSlots"
+        },
+
+        {
+          "exclude-filter": "MultiTextureConsumerTest#EGLImageTargetWorks"
+        },
+
+        {
+          "exclude-filter": "SurfaceTextureGLThreadToGLTest#UpdateTexImageBeforeFrameFinishedCompletes"
+        },
+
+        {
+          "exclude-filter": "InputSurfacesTest#input_respects_scaled_touchable_region_overflow"
+        },
+
+        {
+          "exclude-filter": "MultiDisplayTests#many_to_one_display_mapping"
+        }
+      ]
+    }
   ]
 }
