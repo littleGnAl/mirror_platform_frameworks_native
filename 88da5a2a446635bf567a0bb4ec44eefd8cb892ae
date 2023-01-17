@@ -16,6 +16,23 @@
       "message": "Could u pls help to review this change? thx",
       "revId": "88da5a2a446635bf567a0bb4ec44eefd8cb892ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "857a5b83_9a12cdf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2023-01-17T04:10:13Z",
+      "side": 1,
+      "message": "This is correct, remove_set_cpuset does not do anything anymore here.\n\nOn a side note, it does seem like using foreground cpuset improves performance, so it may be a better default than system-background.  I believe Pixels are using top-app.",
+      "revId": "88da5a2a446635bf567a0bb4ec44eefd8cb892ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
