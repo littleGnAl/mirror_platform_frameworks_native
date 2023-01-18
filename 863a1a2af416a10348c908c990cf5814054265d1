@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a7b212f_4c38e3cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-18T01:02:59Z",
+      "side": 1,
+      "message": "This bug doesn\u0027t necessarily indicate we need to make this change, but I think it\u0027s easier. Open to other suggestions.",
+      "revId": "863a1a2af416a10348c908c990cf5814054265d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
