@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d62a8f_abe87dcf",
+        "filename": "libs/binder/include/binder/BinderRecordReplay.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-18T19:17:03Z",
+      "side": 1,
+      "message": "nit: use std::string for C++ style (or leave it String16 since it\u0027s the binder style). AIDL doesn\u0027t use \u0027String8\u0027 for APIs, and I think it\u0027s pretty rare in libbinder as well",
+      "range": {
+        "startLine": 44,
+        "startChar": 10,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "6c0c9639f429d518d5af0d76ca77fbff165cf122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
