@@ -22,6 +22,30 @@
       },
       "revId": "444aedbf33a4ea2e39a0db725e2d2614d065b089",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61bdd471_ef4209d7",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1942356
+      },
+      "writtenOn": "2023-01-18T18:58:48Z",
+      "side": 1,
+      "message": "I pulled these from https://source.corp.google.com/android-internal/test/vts/tools/vts-core-tradefed/res/config/vts-kernel.xml?q\u003dvts-kernel.xml\u0026sq\u003dpackage:android-internal since that was where the vts testsuite was defined.  I can add the other tests as well (I\u0027m not familiar with all the tests, if you could help choose which ones to include that would be appreciated).",
+      "parentUuid": "bfaac5ba_e5ccbf37",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "444aedbf33a4ea2e39a0db725e2d2614d065b089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
