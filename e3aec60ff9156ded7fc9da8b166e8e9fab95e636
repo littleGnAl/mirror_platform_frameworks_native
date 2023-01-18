@@ -16,6 +16,29 @@
       "message": "ptal",
       "revId": "e3aec60ff9156ded7fc9da8b166e8e9fab95e636",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7451ef6_587df38f",
+        "filename": "libs/nativewindow/include/android/hardware_buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2023-01-18T21:37:19Z",
+      "side": 1,
+      "message": "we should probably use the docs from the SDK side instead of the HAL docs, so from here: https://source.corp.google.com/android-internal/frameworks/base/core/java/android/hardware/HardwareBuffer.java;rcl\u003d557ab7c475f9778cb1704b0bcd9f72b5f3ec8bea;l\u003d169",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 7
+      },
+      "revId": "e3aec60ff9156ded7fc9da8b166e8e9fab95e636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
