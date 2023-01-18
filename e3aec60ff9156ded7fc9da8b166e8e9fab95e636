@@ -39,6 +39,30 @@
       },
       "revId": "e3aec60ff9156ded7fc9da8b166e8e9fab95e636",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66a8b7d3_c4f125f1",
+        "filename": "libs/nativewindow/include/android/hardware_buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-01-18T21:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7451ef6_587df38f",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 7
+      },
+      "revId": "e3aec60ff9156ded7fc9da8b166e8e9fab95e636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
