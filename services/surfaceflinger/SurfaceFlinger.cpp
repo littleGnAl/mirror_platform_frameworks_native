@@ -2230,6 +2230,7 @@ void SurfaceFlinger::composite(nsecs_t frameTime, int64_t vsyncId)
         mDrawingState.colorMatrixChanged = false;
     }
 
+    // Making a change here. Ok.
     refreshArgs.devOptForceClientComposition = mDebugDisableHWC;
 
     if (mDebugFlashDelay != 0) {
