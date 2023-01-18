@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfaac5ba_e5ccbf37",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-18T18:51:22Z",
+      "side": 1,
+      "message": "why this one specifically out of those above? If we are picking this - I would think we would also want binderStabilityTest and others?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "444aedbf33a4ea2e39a0db725e2d2614d065b089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
