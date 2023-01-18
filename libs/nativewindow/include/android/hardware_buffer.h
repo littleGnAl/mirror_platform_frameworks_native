@@ -311,6 +311,36 @@ enum AHardwareBuffer_UsageFlags {
      */
     AHARDWAREBUFFER_USAGE_GPU_MIPMAP_COMPLETE   = 1UL << 26,
 
+    /**
+     * Buffer is used for front-buffer rendering.
+     *
+     * To satisfy an allocation with this usage, the resulting buffer
+     * must operate as equivalent to shared memory for all targets.
+     *
+     * For USAGE_CPU_* other than NEVER, this means the buffer must
+     * "lock in place". The buffers must be directly accessible via mapping.
+     *
+     * For GPU_FRAMEBUFFER the buffer must behave equivalent to a
+     * single-buffered EGL surface. For example glFlush must perform
+     * a flush, same as if the default framebuffer was single-buffered.
+     *
+     * For COMPOSER_* the HWC must not perform any caching for this buffer
+     * when submitted for composition. HWCs do not need to do any form
+     * of auto-refresh, and they are allowed to cache composition results between
+     * presents from SF (such as for panel self-refresh), but for any given
+     * present the buffer must be composited from even if it otherwise appears
+     * to be the same as a previous composition.
+     *
+     * If the GPU & HWC supports EGL_SINGLE_BUFFER, then it is recommended that
+     * FRONT_BUFFER usage is supported for the same formats as supported by
+     * EGL_SINGLE_BUFFER. In particular, it is recommended that the following
+     * combination is supported when possible:
+     *    Format = RGBA_8888
+     *    Usage = FRONT_BUFFER | GPU_FRAMEBUFFER | COMPOSER_OVERLAY
+     *
+     */
+    AHARDWAREBUFFER_USAGE_FRONT_BUFFER = 1UL << 32,
+
     AHARDWAREBUFFER_USAGE_VENDOR_0  = 1ULL << 28,
     AHARDWAREBUFFER_USAGE_VENDOR_1  = 1ULL << 29,
     AHARDWAREBUFFER_USAGE_VENDOR_2  = 1ULL << 30,
