@@ -127,6 +127,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bb489b9a_59b77868",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2023-01-18T07:05:50Z",
+      "side": 1,
+      "message": "I tested and found that removing this line or changing to SP_FOREGROUND or changing the rc did not affect the CPUSets that most SF threads go to.  Only changing task_profiles.json has that effect because of the mentioned change.",
+      "parentUuid": "ebf1735e_8c335162",
+      "revId": "88da5a2a446635bf567a0bb4ec44eefd8cb892ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c745ee28_ceff3c8a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
