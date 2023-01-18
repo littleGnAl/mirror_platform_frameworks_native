@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b19ae9d5_3dc60ed0",
+        "filename": "libs/binder/trusty/binderRpcTestService/aidl/rules.mk",
+        "patchSetId": 28
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-01-18T01:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02794e7f_9993842b",
+      "revId": "80b44dba88872a8be9ab07c1ec4fbbfb91d3c2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8bdd1b7_d83193b1",
@@ -132,6 +150,24 @@
       "side": 1,
       "message": "Every Trusty app has a manifest file with some information for the kernel app manager: name and UUID, maximum heap and stack sizes (`min_heap` is a misnomer), MMIO regions, etc. It\u0027s required for every app and service.",
       "parentUuid": "a81a6628_29906460",
+      "revId": "80b44dba88872a8be9ab07c1ec4fbbfb91d3c2e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f7973a_6b79b70b",
+        "filename": "libs/binder/trusty/binderRpcTestService/manifest.json",
+        "patchSetId": 28
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-01-18T01:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42f53540_82264d47",
       "revId": "80b44dba88872a8be9ab07c1ec4fbbfb91d3c2e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
