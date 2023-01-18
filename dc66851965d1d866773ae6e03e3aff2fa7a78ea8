@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure how system/tools/aidl/analyzer/analyzerMain.cpp is intended to see this interface if it\u0027s made private.",
       "revId": "dc66851965d1d866773ae6e03e3aff2fa7a78ea8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0423fcf9_c6e6e02a",
+        "filename": "libs/binder/RecordedTransaction.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-18T20:38:24Z",
+      "side": 1,
+      "message": "Ah - you might keep it exported. We could move the analyzer source here and expose a different interface. We could also expose this header in a cc_library_headers module with restricted visibility, but it\u0027s probably all overkill. In any case, this CL could avoid that move for now. Hiding it is more prophylactic than necessary.",
+      "parentUuid": "fa6a11be_a4d60c88",
+      "revId": "dc66851965d1d866773ae6e03e3aff2fa7a78ea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
