@@ -46,6 +46,30 @@
       },
       "revId": "444aedbf33a4ea2e39a0db725e2d2614d065b089",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "631c175f_5f1db1b6",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-18T20:04:03Z",
+      "side": 1,
+      "message": "VTS is defined by \"test_suites: [\"vts\"]\". I am all for moving away from the external XML way of defining tests, since it\u0027s clear by having it here, it\u0027s gotten out of date.",
+      "parentUuid": "61bdd471_ef4209d7",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "444aedbf33a4ea2e39a0db725e2d2614d065b089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
