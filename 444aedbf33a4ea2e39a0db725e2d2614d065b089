@@ -70,6 +70,30 @@
       },
       "revId": "444aedbf33a4ea2e39a0db725e2d2614d065b089",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96ef3830_1f21cf03",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1942356
+      },
+      "writtenOn": "2023-01-18T22:29:58Z",
+      "side": 1,
+      "message": "That makes sense to me, I should ask around to see what tests ought be added to kernel-presubmit.\n\nI found that XML config file by following the GKI test automation parameters https://source.corp.google.com/piper///depot/google3/configs/wireless/android/testing/atp/prod/android-gki/template/ack_cf_template.gcl;l\u003d294\n\nI was under the impression that not all the tests tagged as `vts` would be a appropriate for presubmit, so I was first going to migrate the existing configuration into the TEST_MAPPING files.",
+      "parentUuid": "631c175f_5f1db1b6",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "444aedbf33a4ea2e39a0db725e2d2614d065b089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
