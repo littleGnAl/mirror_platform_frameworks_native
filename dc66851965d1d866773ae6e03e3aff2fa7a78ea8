@@ -34,6 +34,24 @@
       "parentUuid": "fa6a11be_a4d60c88",
       "revId": "dc66851965d1d866773ae6e03e3aff2fa7a78ea8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85061676_ae0f8ebe",
+        "filename": "libs/binder/RecordedTransaction.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-01-19T17:24:37Z",
+      "side": 1,
+      "message": "Sounds like a rename is good enough for now?",
+      "parentUuid": "0423fcf9_c6e6e02a",
+      "revId": "dc66851965d1d866773ae6e03e3aff2fa7a78ea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
