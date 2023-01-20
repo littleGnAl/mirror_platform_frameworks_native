@@ -70,6 +70,30 @@
       },
       "revId": "3f362eea7b81b6f2dc1e4da3096c7d044cc11c15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e80fa3_ba6e4d30",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-01-20T20:56:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33bc2c3f_e02a9323",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 36
+      },
+      "revId": "3f362eea7b81b6f2dc1e4da3096c7d044cc11c15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
