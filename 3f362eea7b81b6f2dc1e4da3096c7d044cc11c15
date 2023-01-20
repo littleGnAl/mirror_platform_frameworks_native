@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4006afbb_365cec21",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-20T20:23:00Z",
+      "side": 1,
+      "message": "If the buffer is null and length is \u003e 0, then the client code is at fault. Is this the same ConsumeBytes issue you fixed in the calling code of AParcel_unmarshal?",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 36
+      },
+      "revId": "3f362eea7b81b6f2dc1e4da3096c7d044cc11c15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
