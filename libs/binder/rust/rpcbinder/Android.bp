@@ -24,6 +24,7 @@ rust_library {
         "liblog_rust",
     ],
     apex_available: [
+        "//apex_available:platform",
         "com.android.compos",
         "com.android.uwb",
         "com.android.virt",
@@ -51,6 +52,7 @@ rust_library {
         "libutils",
     ],
     apex_available: [
+        "//apex_available:platform",
         "com.android.compos",
         "com.android.uwb",
         "com.android.virt",
@@ -84,6 +86,7 @@ rust_bindgen {
         "libutils",
     ],
     apex_available: [
+        "//apex_available:platform",
         "com.android.compos",
         "com.android.uwb",
         "com.android.virt",
