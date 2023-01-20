@@ -22,6 +22,30 @@
       },
       "revId": "3f362eea7b81b6f2dc1e4da3096c7d044cc11c15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb69f3de_e2356007",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-01-20T20:43:14Z",
+      "side": 1,
+      "message": "This is internal buffer of the parcel which is supposed to be source for copy. Even if the provided parcel object is valid, it\u0027s internal buffer could be invalid. That is the check that we are missing here. We do check for valid start position on line 699 which is client dependent too. I think we should be consistent in checking valid data across all parameters.",
+      "parentUuid": "4006afbb_365cec21",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 36
+      },
+      "revId": "3f362eea7b81b6f2dc1e4da3096c7d044cc11c15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
