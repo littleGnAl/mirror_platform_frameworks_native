@@ -94,6 +94,30 @@
       },
       "revId": "444aedbf33a4ea2e39a0db725e2d2614d065b089",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a7e3e58_0b1c1e27",
+        "filename": "libs/binder/TEST_MAPPING",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1942356
+      },
+      "writtenOn": "2023-01-23T21:23:13Z",
+      "side": 1,
+      "message": "@smoreland@google.com I\u0027ll open up adding tests to kernel-presubmit for discussion to the team later, for now our current plan is to be on par with the VTS and CTS tests currently running in presubmit.",
+      "parentUuid": "96ef3830_1f21cf03",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "444aedbf33a4ea2e39a0db725e2d2614d065b089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
