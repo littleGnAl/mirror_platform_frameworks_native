@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6267932_fbc4c90c",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-01-24T21:51:07Z",
+      "side": 1,
+      "message": "What does this delay accounts for? Is this for transact itself that we are trying to measure?",
+      "range": {
+        "startLine": 1407,
+        "startChar": 12,
+        "endLine": 1407,
+        "endChar": 17
+      },
+      "revId": "436a110a8d89a1cda0755701719b44af897532d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
