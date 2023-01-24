@@ -117,7 +117,13 @@ int RpcServerTrusty::handleConnect(const tipc_port* port, handle_t chan, const u
         *ctx_p = channelContext;
     };
 
-    base::unique_fd clientFd(chan);
+    // We need to duplicate the channel handle here because the tipc library
+    // owns the original handle and closes is automatically on channel cleanup
+    rc = dup(chan);
+    if (rc < 0) {
+        return rc;
+    }
+    base::unique_fd clientFd(static_cast<handle_t>(rc));
     android::RpcTransportFd transportFd(std::move(clientFd));
 
     std::array<uint8_t, RpcServer::kRpcAddressSize> addr;
