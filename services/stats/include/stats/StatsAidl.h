@@ -30,6 +30,11 @@ public:
      */
     virtual ndk::ScopedAStatus reportVendorAtom(
         const VendorAtom& in_vendorAtom) override;
+
+    virtual ndk::ScopedAStatus reportVendorAtomSync(
+        const VendorAtom& in_vendorAtom) override {
+        return reportVendorAtom(in_vendorAtom);
+    }
 };
 
 }  // namespace stats
