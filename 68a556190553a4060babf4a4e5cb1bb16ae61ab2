@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ad0627f_74c1cb89",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 85
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-25T23:49:05Z",
+      "side": 1,
+      "message": "can we test all versions or use something that will mark what these values mean?",
+      "range": {
+        "startLine": 1213,
+        "startChar": 0,
+        "endLine": 1213,
+        "endChar": 93
+      },
+      "revId": "68a556190553a4060babf4a4e5cb1bb16ae61ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
