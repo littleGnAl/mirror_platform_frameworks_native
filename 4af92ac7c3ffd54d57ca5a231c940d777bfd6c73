@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21afad0f_ed4d9544",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-25T23:55:39Z",
+      "side": 1,
+      "message": "Should this be documented in the header or should the client be in charge of the dup? The current change requires there to be a dupe, but it may not always be necessary.\n\nnit: Should we use a type that conveys ownership?",
+      "range": {
+        "startLine": 94,
+        "startChar": 67,
+        "endLine": 94,
+        "endChar": 71
+      },
+      "revId": "4af92ac7c3ffd54d57ca5a231c940d777bfd6c73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
