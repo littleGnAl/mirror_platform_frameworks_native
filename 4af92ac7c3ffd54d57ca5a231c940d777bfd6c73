@@ -22,6 +22,30 @@
       },
       "revId": "4af92ac7c3ffd54d57ca5a231c940d777bfd6c73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90bfc12b_d5f105c8",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-01-26T00:20:42Z",
+      "side": 1,
+      "message": "The behavior is documented at https://android.googlesource.com/trusty/lib/+/refs/heads/master/lib/tipc/include/lib/tipc/tipc_srv.h#124 and later on line 135: the tipc library is always responsible for closing `chan`. We need to wrap that handle in a `RpcTransportFd`, so I think we always have to either dupe it, or pass it to a non-closing `unique_fd`.\n\n\u003e Should we use a type that conveys ownership?\n\nThe signature of `handleConnect` comes from `tipc_srv.h`, and that library has some other users. Most of those are pure C code.",
+      "parentUuid": "21afad0f_ed4d9544",
+      "range": {
+        "startLine": 94,
+        "startChar": 67,
+        "endLine": 94,
+        "endChar": 71
+      },
+      "revId": "4af92ac7c3ffd54d57ca5a231c940d777bfd6c73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
