@@ -22,6 +22,30 @@
       },
       "revId": "68a556190553a4060babf4a4e5cb1bb16ae61ab2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d7d943_597f2ad0",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 85
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-01-26T00:06:08Z",
+      "side": 1,
+      "message": "There\u0027s an interesting discussion here around the first value: it represents whether the server supports threading, but that\u0027s a bit overloaded.\nThe test code uses it to determine two things:\n* Whether the service can accept multiple connections from the same client. This is true for Trusty, but not for a single-threaded Android service. The tipc library uses a poll-like syscall to handle multiple simultaneous connections.\n* Whether the implementation of the service interface (i.e. `MyBinderRpcTest`) supports threads and sync primitives. Concretely, `IBinderRpcTest::lock` uses a mutex internally and doesn\u0027t work at all on a single-threaded service. Any test calling this method would fail, like `OnewayCallQueuing`.\n\nI was thinking of separating the two properties into distinct test parameters, but should I do that here or in a follow-up?",
+      "parentUuid": "9ad0627f_74c1cb89",
+      "range": {
+        "startLine": 1213,
+        "startChar": 0,
+        "endLine": 1213,
+        "endChar": 93
+      },
+      "revId": "68a556190553a4060babf4a4e5cb1bb16ae61ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
