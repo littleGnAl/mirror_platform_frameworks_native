@@ -16,6 +16,92 @@
       "message": "Upstream from Meta.",
       "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4093fa5_dc6875a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2023-01-26T15:48:25Z",
+      "side": 1,
+      "message": "Sorry, slipped through my inbox.",
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08db2f29_329ac162",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2023-01-26T15:48:25Z",
+      "side": 1,
+      "message": "Why not just annotate the function `REQUIRES(...)`?",
+      "range": {
+        "startLine": 257,
+        "startChar": 4,
+        "endLine": 257,
+        "endChar": 17
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49331ba3_cc49c345",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2023-01-26T15:48:25Z",
+      "side": 1,
+      "message": "This seems synonymous with:\n\n    ftl::FakeGuard guard(layer-\u003emFlinger-\u003emStateLock);",
+      "range": {
+        "startLine": 259,
+        "startChar": 8,
+        "endLine": 259,
+        "endChar": 20
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7014aaf_4171a4d9",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2023-01-26T15:48:25Z",
+      "side": 1,
+      "message": "Ditto: This is equivalent to annotating `setBackgroundColor` with `REQUIRES(mFlinger-\u003emStateLock)`, and suppressing analysis for this alias using `ftl::FakeGuard`.",
+      "range": {
+        "startLine": 941,
+        "startChar": 12,
+        "endLine": 941,
+        "endChar": 23
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
