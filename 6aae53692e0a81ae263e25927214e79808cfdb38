@@ -16,6 +16,24 @@
       "message": "This comment gave me the impression that returning early on L1039 is wrong, does that make sense?",
       "revId": "6aae53692e0a81ae263e25927214e79808cfdb38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1410d8c0_d0d723f3",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-26T00:59:19Z",
+      "side": 1,
+      "message": "Yeah, this looks like a good catch. In the existing stress tests, we might not hit it because async calls are dispatched from different threads, so it is more likely that they are delivered out of order, and we would hit this.",
+      "parentUuid": "3f6bbfca_47a1a728",
+      "revId": "6aae53692e0a81ae263e25927214e79808cfdb38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
