@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f6bbfca_47a1a728",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-01-26T00:48:41Z",
+      "side": 1,
+      "message": "This comment gave me the impression that returning early on L1039 is wrong, does that make sense?",
+      "revId": "6aae53692e0a81ae263e25927214e79808cfdb38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
