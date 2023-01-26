@@ -70,15 +70,17 @@ public:
         int fdTimer = timerfd_create(CLOCK_MONOTONIC, 0 /*flags*/);
         LOG_ALWAYS_FATAL_IF(fdTimer < 0, "Failed to timerfd_create: fd: %d err: %d", fdTimer, errno);
 
-        itimerspec timespec {
-            .it_interval = {
-                .tv_sec = 5,
-                .tv_nsec = 0,
-            },
-            .it_value = {
-                .tv_sec = 5,
-                .tv_nsec = 0,
-            },
+        itimerspec timespec{
+                .it_interval =
+                        {
+                                .tv_sec = 0,
+                                .tv_nsec = 100000,
+                        },
+                .it_value =
+                        {
+                                .tv_sec = 0,
+                                .tv_nsec = 100000,
+                        },
         };
 
         int timeRes = timerfd_settime(fdTimer, 0 /*flags*/, &timespec, nullptr);
