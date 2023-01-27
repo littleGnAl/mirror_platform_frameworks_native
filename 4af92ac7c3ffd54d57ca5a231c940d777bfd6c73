@@ -46,6 +46,30 @@
       },
       "revId": "4af92ac7c3ffd54d57ca5a231c940d777bfd6c73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b3d8c0e_0bce58c5",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-01-27T23:44:47Z",
+      "side": 1,
+      "message": "Anything I should do here?",
+      "parentUuid": "90bfc12b_d5f105c8",
+      "range": {
+        "startLine": 94,
+        "startChar": 67,
+        "endLine": 94,
+        "endChar": 71
+      },
+      "revId": "4af92ac7c3ffd54d57ca5a231c940d777bfd6c73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
