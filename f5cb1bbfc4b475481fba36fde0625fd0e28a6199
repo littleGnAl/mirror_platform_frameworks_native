@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f6904ad_27b77067",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-28T03:18:36Z",
+      "side": 1,
+      "message": "I\u0027m still thinking through this case, and I think there is a bit of code here that\u0027s handling the issue below (\u0027return 999\u0027 makes certain races more likely)",
+      "range": {
+        "startLine": 304,
+        "startChar": 42,
+        "endLine": 309,
+        "endChar": 40
+      },
+      "revId": "f5cb1bbfc4b475481fba36fde0625fd0e28a6199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001f907f_d3ac86fc",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-28T03:18:36Z",
+      "side": 1,
+      "message": "btw - this is the main issue - w/o this, we were getting into an inconsistent state sometimes. I\u0027m not sure yet which failure Jooyung was hitting, but this prevents CHECK from getting hit in service processes.",
+      "range": {
+        "startLine": 750,
+        "startChar": 0,
+        "endLine": 750,
+        "endChar": 19
+      },
+      "revId": "f5cb1bbfc4b475481fba36fde0625fd0e28a6199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
