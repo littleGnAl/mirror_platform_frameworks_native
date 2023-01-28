@@ -232,11 +232,11 @@ static base::unique_fd connectToUnixBootstrap(const RpcTransportFd& transportFd)
 }
 
 std::string BinderRpc::PrintParamInfo(const testing::TestParamInfo<ParamType>& info) {
-    auto [type, security, clientVersion, serverVersion, singleThreaded, noKernel] = info.param;
+    auto [type, security, clientVersion, serverVersion, sequential, noKernel] = info.param;
     auto ret = PrintToString(type) + "_" + newFactory(security)->toCString() + "_clientV" +
             std::to_string(clientVersion) + "_serverV" + std::to_string(serverVersion);
-    if (singleThreaded) {
-        ret += "_single_threaded";
+    if (sequential) {
+        ret += "_seq";
     }
     if (noKernel) {
         ret += "_no_kernel";
@@ -254,6 +254,7 @@ std::unique_ptr<ProcessSession> BinderRpc::createRpcTestSocketServerProcessEtc(
     RpcSecurity rpcSecurity = std::get<1>(GetParam());
     uint32_t clientVersion = std::get<2>(GetParam());
     uint32_t serverVersion = std::get<3>(GetParam());
+    // On Android, single-threaded services are sequential
     bool singleThreaded = std::get<4>(GetParam());
     bool noKernel = std::get<5>(GetParam());
 
@@ -400,8 +401,14 @@ std::unique_ptr<ProcessSession> BinderRpc::createRpcTestSocketServerProcessEtc(
 }
 
 TEST_P(BinderRpc, ThreadPoolGreaterThanEqualRequested) {
-    if (clientOrServerSingleThreaded()) {
-        GTEST_SKIP() << "This test requires multiple threads";
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
+    }
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires server concurrency";
+    }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Locking primitives are not supported on Trusty";
     }
 
     constexpr size_t kNumThreads = 10;
@@ -455,8 +462,11 @@ static void testThreadPoolOverSaturated(sp<IBinderRpcTest> iface, size_t numCall
 }
 
 TEST_P(BinderRpc, ThreadPoolOverSaturated) {
-    if (clientOrServerSingleThreaded()) {
-        GTEST_SKIP() << "This test requires multiple threads";
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
+    }
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires support for multiple connections";
     }
 
     constexpr size_t kNumThreads = 10;
@@ -466,8 +476,11 @@ TEST_P(BinderRpc, ThreadPoolOverSaturated) {
 }
 
 TEST_P(BinderRpc, ThreadPoolLimitOutgoing) {
-    if (clientOrServerSingleThreaded()) {
-        GTEST_SKIP() << "This test requires multiple threads";
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
+    }
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires support for multiple connections";
     }
 
     constexpr size_t kNumThreads = 20;
@@ -479,8 +492,11 @@ TEST_P(BinderRpc, ThreadPoolLimitOutgoing) {
 }
 
 TEST_P(BinderRpc, ThreadingStressTest) {
-    if (clientOrServerSingleThreaded()) {
-        GTEST_SKIP() << "This test requires multiple threads";
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
+    }
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires support for multiple connections";
     }
 
     constexpr size_t kNumClientThreads = 10;
@@ -512,8 +528,11 @@ static void saturateThreadPool(size_t threadCount, const sp<IBinderRpcTest>& ifa
 }
 
 TEST_P(BinderRpc, OnewayStressTest) {
-    if (clientOrServerSingleThreaded()) {
-        GTEST_SKIP() << "This test requires multiple threads";
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
+    }
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires support for multiple connections";
     }
 
     constexpr size_t kNumClientThreads = 10;
@@ -540,8 +559,14 @@ TEST_P(BinderRpc, OnewayCallQueueingWithFds) {
     if (!supportsFdTransport()) {
         GTEST_SKIP() << "Would fail trivially (which is tested elsewhere)";
     }
-    if (clientOrServerSingleThreaded()) {
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
+    }
+    if (serverSequential()) {
         GTEST_SKIP() << "This test requires multiple threads";
+    }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "File descriptor tests not supported on Trusty (yet)";
     }
 
     // This test forces a oneway transaction to be queued by issuing two
@@ -576,8 +601,14 @@ TEST_P(BinderRpc, OnewayCallQueueingWithFds) {
 }
 
 TEST_P(BinderRpc, OnewayCallQueueing) {
-    if (clientOrServerSingleThreaded()) {
-        GTEST_SKIP() << "This test requires multiple threads";
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
+    }
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires server concurrency";
+    }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Sleeping in methods is not supported on Trusty";
     }
 
     constexpr size_t kNumSleeps = 10;
@@ -609,8 +640,14 @@ TEST_P(BinderRpc, OnewayCallQueueing) {
 }
 
 TEST_P(BinderRpc, OnewayCallExhaustion) {
-    if (clientOrServerSingleThreaded()) {
-        GTEST_SKIP() << "This test requires multiple threads";
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
+    }
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires server concurrency";
+    }
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "Sleeping in methods is not supported on Trusty";
     }
 
     constexpr size_t kNumClients = 2;
@@ -653,9 +690,13 @@ TEST_P(BinderRpc, OnewayCallExhaustion) {
 }
 
 TEST_P(BinderRpc, SingleDeathRecipient) {
-    if (clientOrServerSingleThreaded()) {
-        GTEST_SKIP() << "This test requires multiple threads";
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
     }
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires support for multiple connections";
+    }
+
     class MyDeathRec : public IBinder::DeathRecipient {
     public:
         void binderDied(const wp<IBinder>& /* who */) override {
@@ -687,9 +728,13 @@ TEST_P(BinderRpc, SingleDeathRecipient) {
 }
 
 TEST_P(BinderRpc, SingleDeathRecipientOnShutdown) {
-    if (clientOrServerSingleThreaded()) {
-        GTEST_SKIP() << "This test requires multiple threads";
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
     }
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires support for multiple connections";
+    }
+
     class MyDeathRec : public IBinder::DeathRecipient {
     public:
         void binderDied(const wp<IBinder>& /* who */) override {
@@ -744,9 +789,13 @@ TEST_P(BinderRpc, DeathRecipientFailsWithoutIncoming) {
 }
 
 TEST_P(BinderRpc, UnlinkDeathRecipient) {
-    if (clientOrServerSingleThreaded()) {
-        GTEST_SKIP() << "This test requires multiple threads";
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
     }
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires support for multiple connections";
+    }
+
     class MyDeathRec : public IBinder::DeathRecipient {
     public:
         void binderDied(const wp<IBinder>& /* who */) override {
@@ -807,7 +856,7 @@ TEST_P(BinderRpc, UseKernelBinderCallingId) {
     // libbinder.so (when using static libraries, even a client and service
     // using the same kind of static library should have separate copies of the
     // variables).
-    if (!kEnableSharedLibs || serverSingleThreaded() || noKernel()) {
+    if (!kEnableSharedLibs || serverSequential() || noKernel()) {
         GTEST_SKIP() << "Test disabled because Binder kernel driver was disabled "
                         "at build time.";
     }
@@ -1061,8 +1110,11 @@ ssize_t countFds() {
 }
 
 TEST_P(BinderRpc, Fds) {
-    if (serverSingleThreaded()) {
-        GTEST_SKIP() << "This test requires multiple threads";
+    if constexpr (!kEnableRpcThreads) {
+        GTEST_SKIP() << "This test requires multiple client threads";
+    }
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires server concurrency";
     }
     if (socketType() == SocketType::TIPC) {
         GTEST_SKIP() << "File descriptor tests not supported on Trusty (yet)";
@@ -1210,7 +1262,15 @@ INSTANTIATE_TEST_CASE_P(Trusty, BinderRpc,
                                            ::testing::Values(RpcSecurity::RAW),
                                            ::testing::ValuesIn(testVersions()),
                                            ::testing::ValuesIn(testVersions()),
-                                           ::testing::Values(true), ::testing::Values(true)),
+                                           // Trusty supports multiple
+                                           // connections per service. All
+                                           // messages are processed on the
+                                           // main application thread.
+                                           ::testing::Values(false, true),
+                                           // Trusty does not support kernel IPC
+                                           // at all, so this only has one
+                                           // value.
+                                           ::testing::Values(true)),
                         BinderRpc::PrintParamInfo);
 
 class BinderRpcServerRootObject

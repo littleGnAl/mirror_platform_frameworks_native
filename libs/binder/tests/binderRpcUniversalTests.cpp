@@ -66,10 +66,10 @@ TEST_P(BinderRpc, GetInterfaceDescriptor) {
 }
 
 TEST_P(BinderRpc, MultipleSessions) {
-    if (serverSingleThreaded()) {
-        // Tests with multiple sessions require a multi-threaded service,
+    if (serverSequential()) {
+        // Tests with multiple sessions require a service with concurrency,
         // but work fine on a single-threaded client
-        GTEST_SKIP() << "This test requires a multi-threaded service";
+        GTEST_SKIP() << "This test requires server concurrency";
     }
 
     auto proc = createRpcTestSocketServerProcess({.numThreads = 1, .numSessions = 5});
@@ -80,8 +80,8 @@ TEST_P(BinderRpc, MultipleSessions) {
 }
 
 TEST_P(BinderRpc, SeparateRootObject) {
-    if (serverSingleThreaded()) {
-        GTEST_SKIP() << "This test requires a multi-threaded service";
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires server concurrency";
     }
 
     SocketType type = std::get<0>(GetParam());
@@ -278,8 +278,8 @@ TEST_P(BinderRpc, CannotMixBindersBetweenUnrelatedSocketSessions) {
 }
 
 TEST_P(BinderRpc, CannotMixBindersBetweenTwoSessionsToTheSameServer) {
-    if (serverSingleThreaded()) {
-        GTEST_SKIP() << "This test requires a multi-threaded service";
+    if (serverSequential()) {
+        GTEST_SKIP() << "This test requires server concurrency";
     }
 
     auto proc = createRpcTestSocketServerProcess({.numThreads = 1, .numSessions = 2});
@@ -453,13 +453,13 @@ TEST_P(BinderRpc, Callbacks) {
     for (bool callIsOneway : {true, false}) {
         for (bool callbackIsOneway : {true, false}) {
             for (bool delayed : {true, false}) {
-                if (clientOrServerSingleThreaded() &&
-                    (callIsOneway || callbackIsOneway || delayed)) {
+                bool canUseExtraConnections = kEnableRpcThreads && !serverSequential();
+                if (!canUseExtraConnections && (callIsOneway || callbackIsOneway || delayed)) {
                     // we have no incoming connections to receive the callback
                     continue;
                 }
 
-                size_t numIncomingConnections = clientOrServerSingleThreaded() ? 0 : 1;
+                size_t numIncomingConnections = canUseExtraConnections ? 1 : 0;
                 auto proc = createRpcTestSocketServerProcess(
                         {.numThreads = 1,
                          .numSessions = 1,

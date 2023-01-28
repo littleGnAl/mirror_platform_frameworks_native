@@ -91,18 +91,14 @@ struct BinderRpcTestProcessSession {
 };
 
 class BinderRpc : public ::testing::TestWithParam<
-                          std::tuple<SocketType, RpcSecurity, uint32_t, uint32_t, bool, bool>> {
+                          std::tuple<SocketType, RpcSecurity, uint32_t, uint32_t, uint32_t, bool>> {
 public:
     SocketType socketType() const { return std::get<0>(GetParam()); }
     RpcSecurity rpcSecurity() const { return std::get<1>(GetParam()); }
     uint32_t clientVersion() const { return std::get<2>(GetParam()); }
     uint32_t serverVersion() const { return std::get<3>(GetParam()); }
-    bool serverSingleThreaded() const { return std::get<4>(GetParam()); }
+    bool serverSequential() const { return std::get<4>(GetParam()); }
     bool noKernel() const { return std::get<5>(GetParam()); }
-
-    bool clientOrServerSingleThreaded() const {
-        return !kEnableRpcThreads || serverSingleThreaded();
-    }
 
     // Whether the test params support sending FDs in parcels.
     bool supportsFdTransport() const {
