@@ -296,6 +296,17 @@ sp<IBinder> ServiceManager::tryGetService(const std::string& name, bool startIfN
         // Setting this guarantee each time we hand out a binder ensures that the client-checking
         // loop knows about the event even if the client immediately drops the service
         service->guaranteeClient = true;
+
+        // Make sure we send an onClients true callback immediately, otherwise, there could be
+        // an already pending timerfd call as well as an existing tryUnregister call. If both
+        // of these happen in that order before any other process can execute, the guaranteed
+        // client will be dropped, and then the unregister will succeed, because the client hasn't
+        // yet gotten ahold of the binder.
+        (void)handleServiceClientCallback(name, false);
+
+        // And set it again, so that it can't be cleared if the timerfd is expired. The client
+        // may not have ahold of the service yet.
+        service->guaranteeClient = true;
     }
 
     return out;
@@ -385,7 +396,10 @@ Status ServiceManager::addService(const std::string& name, const sp<IBinder>& bi
 
     if (auto it = mNameToRegistrationCallback.find(name); it != mNameToRegistrationCallback.end()) {
         for (const sp<IServiceCallback>& cb : it->second) {
+            // If the reference goes away (e.g. another addService command overriding this), then
+            // we need this to ensure we send the signal that the service went away.
             mNameToService[name].guaranteeClient = true;
+
             // permission checked in registerForNotifications
             cb->onRegistration(name, binder);
         }
@@ -723,6 +737,17 @@ ssize_t ServiceManager::handleServiceClientCallback(const std::string& serviceNa
 
         // guarantee is temporary
         service.guaranteeClient = false;
+
+        // b/264814573
+        // The original HIDL implementation returned booleans of whether a service
+        // has a client which is determined, so this was okay, but in the AIDL
+        // implementation, we return the count, and we interpret it differently
+        // in different situations. Sometimes we compare it against '1' and sometimes
+        // we compare in '2'. This is because of IClientCallback onClients which
+        // contains an extra binder object, so when we call this, the count
+        // increases by 1. 999 is chosen here because it's a fun number, and it's larger
+        // than 2.
+        return 999;
     }
 
     // only send notifications if this was called via the interval checking workflow
@@ -810,7 +835,13 @@ Status ServiceManager::tryUnregisterService(const std::string& name, const sp<IB
     if (clients < 0 || clients > 2) {
         // client callbacks are either disabled or there are other clients
         ALOGI("Tried to unregister %s, but there are clients: %d", name.c_str(), clients);
-        // Set this flag to ensure the clients are acknowledged in the next callback
+        // Set this flag to ensure the clients are acknowledged in the next callback. Otherwise,
+        // if the client goes away in that timeframe, then we would never provide another
+        // signal to the service to shutdown.
+        //
+        // TODO: the logs about service state are ambiguous because we guarantee a client
+        // in many places. We should distinguish the reason for the logs if we want to make it more
+        // clear in the future.
         serviceIt->second.guaranteeClient = true;
         return Status::fromExceptionCode(Status::EX_ILLEGAL_STATE);
     }
