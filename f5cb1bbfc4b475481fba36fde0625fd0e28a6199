@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0819ccdd_187353e3",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-28T03:30:23Z",
+      "side": 1,
+      "message": "This would imply the binder held by tryUnregister and the binder held by the transaction combined count as only one refcount, which actually is probably not true.",
+      "range": {
+        "startLine": 302,
+        "startChar": 79,
+        "endLine": 303,
+        "endChar": 71
+      },
+      "revId": "f5cb1bbfc4b475481fba36fde0625fd0e28a6199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f6904ad_27b77067",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 1
