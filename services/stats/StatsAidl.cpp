@@ -19,8 +19,12 @@
 
 #include "StatsAidl.h"
 
+#include <aidl/android/frameworks/stats/AnnotationIds.h>
 #include <log/log.h>
+#include <stats_annotations.h>
 #include <statslog.h>
+
+#include <unordered_map>
 
 namespace aidl {
 namespace android {
@@ -28,6 +32,110 @@ namespace frameworks {
 namespace stats {
 
 StatsHal::StatsHal() {
+}
+
+bool write_atom_annotations(AStatsEvent* event,
+                            const std::vector<std::optional<VendorAtomAnnotation>>& annotations) {
+    for (const auto& atomAnnotation : annotations) {
+        // TODO: add atom level annotations such as
+        // AStatsEvent_addBoolAnnotation(event, ASTATSLOG_ANNOTATION_ID_TRUNCATE_TIMESTAMP, true);
+        if (!atomAnnotation) {
+            return false;
+        }
+        switch (atomAnnotation->annotationId) {
+            case AnnotationIds::TRUNCATE_TIMESTAMP: {
+                AStatsEvent_addBoolAnnotation(event, ASTATSLOG_ANNOTATION_ID_TRUNCATE_TIMESTAMP,
+                                              true);
+                break;
+            }
+            default: {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool write_atom_field_annotations(AStatsEvent* event,
+                                  const std::vector<VendorAtomAnnotation>& annotations) {
+    for (const auto& valueAnnotation : annotations) {
+        switch (valueAnnotation.annotationId) {
+            case AnnotationIds::IS_UID: {
+                if (valueAnnotation.value.getTag() == AnnotationValue::boolValue) {
+                    AStatsEvent_addBoolAnnotation(
+                            event, ASTATSLOG_ANNOTATION_ID_IS_UID,
+                            valueAnnotation.value.get<AnnotationValue::boolValue>());
+                } else {
+                    return false;
+                }
+                break;
+            }
+            case AnnotationIds::PRIMARY_FIELD: {
+                if (valueAnnotation.value.getTag() == AnnotationValue::boolValue) {
+                    AStatsEvent_addBoolAnnotation(
+                            event, ASTATSLOG_ANNOTATION_ID_PRIMARY_FIELD,
+                            valueAnnotation.value.get<AnnotationValue::boolValue>());
+                } else {
+                    return false;
+                }
+                break;
+            }
+            case AnnotationIds::EXCLUSIVE_STATE: {
+                if (valueAnnotation.value.getTag() == AnnotationValue::boolValue) {
+                    AStatsEvent_addBoolAnnotation(
+                            event, ASTATSLOG_ANNOTATION_ID_EXCLUSIVE_STATE,
+                            valueAnnotation.value.get<AnnotationValue::boolValue>());
+                } else {
+                    return false;
+                }
+                break;
+            }
+            case AnnotationIds::PRIMARY_FIELD_FIRST_UID: {
+                if (valueAnnotation.value.getTag() == AnnotationValue::boolValue) {
+                    AStatsEvent_addBoolAnnotation(
+                            event, ASTATSLOG_ANNOTATION_ID_PRIMARY_FIELD_FIRST_UID,
+                            valueAnnotation.value.get<AnnotationValue::boolValue>());
+                } else {
+                    return false;
+                }
+                break;
+            }
+            case AnnotationIds::DEFAULT_STATE: {
+                if (valueAnnotation.value.getTag() == AnnotationValue::intValue) {
+                    AStatsEvent_addInt32Annotation(
+                            event, ASTATSLOG_ANNOTATION_ID_DEFAULT_STATE,
+                            valueAnnotation.value.get<AnnotationValue::intValue>());
+                } else {
+                    return false;
+                }
+                break;
+            }
+            case AnnotationIds::TRIGGER_STATE_RESET: {
+                if (valueAnnotation.value.getTag() == AnnotationValue::intValue) {
+                    AStatsEvent_addInt32Annotation(
+                            event, ASTATSLOG_ANNOTATION_ID_TRIGGER_STATE_RESET,
+                            valueAnnotation.value.get<AnnotationValue::intValue>());
+                } else {
+                    return false;
+                }
+                break;
+            }
+            case AnnotationIds::STATE_NESTED: {
+                if (valueAnnotation.value.getTag() == AnnotationValue::boolValue) {
+                    AStatsEvent_addBoolAnnotation(
+                            event, ASTATSLOG_ANNOTATION_ID_STATE_NESTED,
+                            valueAnnotation.value.get<AnnotationValue::boolValue>());
+                } else {
+                    return false;
+                }
+                break;
+            }
+            default: {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 ndk::ScopedAStatus StatsHal::reportVendorAtom(const VendorAtom& vendorAtom) {
@@ -44,7 +152,28 @@ ndk::ScopedAStatus StatsHal::reportVendorAtom(const VendorAtom& vendorAtom) {
     }
     AStatsEvent* event = AStatsEvent_obtain();
     AStatsEvent_setAtomId(event, vendorAtom.atomId);
+
+    if (vendorAtom.atomAnnotations) {
+        if (!write_atom_annotations(event, *vendorAtom.atomAnnotations)) {
+            ALOGE("Atom ID %ld has incompatible atom level annotation", (long)vendorAtom.atomId);
+            AStatsEvent_release(event);
+            return ndk::ScopedAStatus::fromServiceSpecificErrorWithMessage(
+                    -1, "invalid atom annotation");
+        }
+    }
+
+    // populate map for quickier access for VendorAtomValue associated annotations by value index
+    std::unordered_map<int, int> fieldIndexToAnnotationSetMap;
+    if (vendorAtom.valuesAnnotations) {
+        for (int i = 0; i < vendorAtom.valuesAnnotations->size(); i++) {
+            if (vendorAtom.valuesAnnotations->at(i)) {
+                fieldIndexToAnnotationSetMap[vendorAtom.valuesAnnotations->at(i)->valueIndex] = i;
+            }
+        }
+    }
+
     AStatsEvent_writeString(event, vendorAtom.reverseDomainName.c_str());
+    size_t atomValueIdx = 0;
     for (const auto& atomValue : vendorAtom.values) {
         switch (atomValue.getTag()) {
             case VendorAtomValue::intValue:
@@ -143,7 +272,24 @@ ndk::ScopedAStatus StatsHal::reportVendorAtom(const VendorAtom& vendorAtom) {
                 AStatsEvent_writeByteArray(event, byteArrayValue->data(), byteArrayValue->size());
                 break;
             }
+            default: {
+                AStatsEvent_release(event);
+                return ndk::ScopedAStatus::fromServiceSpecificErrorWithMessage(
+                        -1, "invalid atomValue.getTag");
+                break;
+            }
         }
+        if (fieldIndexToAnnotationSetMap.find(atomValueIdx) != fieldIndexToAnnotationSetMap.end()) {
+            if (!write_atom_field_annotations(
+                        event, vendorAtom.valuesAnnotations->at(atomValueIdx)->annotations)) {
+                ALOGE("Atom ID %ld has incompatible field level annotation for field #%ld",
+                      (long)vendorAtom.atomId, (long)atomValueIdx + 2);
+                AStatsEvent_release(event);
+                return ndk::ScopedAStatus::fromServiceSpecificErrorWithMessage(
+                        -1, "invalid atom field annotation");
+            }
+        }
+        atomValueIdx++;
     }
     AStatsEvent_build(event);
     const int ret = AStatsEvent_write(event);
