@@ -44,6 +44,9 @@ ndk::ScopedAStatus StatsHal::reportVendorAtom(const VendorAtom& vendorAtom) {
     }
     AStatsEvent* event = AStatsEvent_obtain();
     AStatsEvent_setAtomId(event, vendorAtom.atomId);
+    // TODO: add atom level annotations such as
+    // AStatsEvent_addBoolAnnotation(event, ASTATSLOG_ANNOTATION_ID_TRUNCATE_TIMESTAMP, true);
+
     AStatsEvent_writeString(event, vendorAtom.reverseDomainName.c_str());
     for (const auto& atomValue : vendorAtom.values) {
         switch (atomValue.getTag()) {
@@ -143,6 +146,21 @@ ndk::ScopedAStatus StatsHal::reportVendorAtom(const VendorAtom& vendorAtom) {
                 AStatsEvent_writeByteArray(event, byteArrayValue->data(), byteArrayValue->size());
                 break;
             }
+            default: {
+                AStatsEvent_release(event);
+                return ndk::ScopedAStatus::fromServiceSpecificErrorWithMessage(
+                        -1, "invalid atomValue.getTag");
+                break;
+                // throw an error
+            }
+                // TODO: write field annotations such as
+                // AStatsEvent_addBoolAnnotation(event, ASTATSLOG_ANNOTATION_ID_EXCLUSIVE_STATE,
+                // true); AStatsEvent_addBoolAnnotation(event, ASTATSLOG_ANNOTATION_ID_STATE_NESTED,
+                // true); AStatsEvent_addBoolAnnotation(event,
+                // ASTATSLOG_ANNOTATION_ID_PRIMARY_FIELD, true);
+                // AStatsEvent_addInt32Annotation(event,
+                // ASTATSLOG_ANNOTATION_ID_TRIGGER_STATE_RESET, 0);
+                // AStatsEvent_addBoolAnnotation(event, ASTATSLOG_ANNOTATION_ID_IS_UID, true);
         }
     }
     AStatsEvent_build(event);
