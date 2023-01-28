@@ -40,13 +40,13 @@ public:
 };
 
 std::string BinderRpc::PrintParamInfo(const testing::TestParamInfo<ParamType>& info) {
-    auto [type, security, clientVersion, serverVersion, singleThreaded, noKernel] = info.param;
+    auto [type, security, clientVersion, serverVersion, concurrentServer, noKernel] = info.param;
     auto ret = PrintToString(type) + "_clientV" + std::to_string(clientVersion) + "_serverV" +
             std::to_string(serverVersion);
-    if (singleThreaded) {
-        ret += "_single_threaded";
+    if (concurrentServer) {
+        ret += "_concurrent";
     } else {
-        ret += "_multi_threaded";
+        ret += "_sequential";
     }
     if (noKernel) {
         ret += "_no_kernel";
@@ -101,7 +101,7 @@ INSTANTIATE_TEST_CASE_P(Trusty, BinderRpc,
                                            ::testing::Values(RpcSecurity::RAW),
                                            ::testing::ValuesIn(testVersions()),
                                            ::testing::ValuesIn(testVersions()),
-                                           ::testing::Values(false), ::testing::Values(true)),
+                                           ::testing::Values(true), ::testing::Values(true)),
                         BinderRpc::PrintParamInfo);
 
 } // namespace android
