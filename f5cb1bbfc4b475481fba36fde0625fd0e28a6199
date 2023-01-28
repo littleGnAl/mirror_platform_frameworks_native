@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2964adb6_5c88e67d",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-28T03:19:23Z",
+      "side": 1,
+      "message": "meaning - there is still a race here, and this doesn\u0027t fully fix it, which is what I still have left to debug",
+      "parentUuid": "9f6904ad_27b77067",
+      "range": {
+        "startLine": 304,
+        "startChar": 42,
+        "endLine": 309,
+        "endChar": 40
+      },
+      "revId": "f5cb1bbfc4b475481fba36fde0625fd0e28a6199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "001f907f_d3ac86fc",
         "filename": "cmds/servicemanager/ServiceManager.cpp",
         "patchSetId": 1
