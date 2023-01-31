@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be1ad7a_ad8f998a",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1431413
+      },
+      "writtenOn": "2023-01-31T20:22:50Z",
+      "side": 1,
+      "message": "This should be the value from default_state_value annotation and it\u0027s only added if the reset_value is encountered. See https://cs.android.com/android/platform/superproject/+/master:out/soong/.intermediates/packages/modules/Bluetooth/android/app/statslog-bluetooth-java-gen/gen/com/android/bluetooth/BluetoothStatsLog.java;l\u003d2446-2448;drc\u003dmaster\n\nSo here, we need to keep track of default state and reset state and then apply it when it\u0027s encountered. See https://cs.android.com/android/platform/superproject/+/master:frameworks/proto_logging/stats/stats_log_api_gen/native_writer.cpp;l\u003d56-59?q\u003df:native_writer.cpp for how we keep track of them in api-gen. You might need to pass in the field value to this method as well",
+      "range": {
+        "startLine": 92,
+        "startChar": 47,
+        "endLine": 92,
+        "endChar": 48
+      },
+      "revId": "f28b37f75df7fee1514bc2179bc68b8182073fd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
