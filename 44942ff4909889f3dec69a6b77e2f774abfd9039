@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff47eed6_89e7cd64",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-01-31T16:56:35Z",
+      "side": 1,
+      "message": "\u003e you understood, right!?\n\nI first read it like an incomplete sentence. Like \"consider we have clients, then blah blah\". But after looking around at the code a bit more it made more sense as is. \nSo I was thinking if it says \"assume we have clients\" it might have made more sense initially. I have no idea why that would be the case, but it\u0027s how I feel 😊\n\ndefinitely feel free to leave it as is.",
+      "parentUuid": "bf4391c3_780f16f7",
+      "range": {
+        "startLine": 722,
+        "startChar": 51,
+        "endLine": 722,
+        "endChar": 59
+      },
+      "revId": "44942ff4909889f3dec69a6b77e2f774abfd9039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccaa882b_976394da",
