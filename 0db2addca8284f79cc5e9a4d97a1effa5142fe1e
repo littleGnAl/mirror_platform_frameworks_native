@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901aa1fc_95a8455c",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-31T02:06:54Z",
+      "side": 1,
+      "message": "note - I originally removed this, until I realized we had code relying on this behavior, so I added the reason here. However, this also allows the service to shut down independently from the client. So, if you time the client to request the service right when it shut down, you will get the race Jooyung reported. I believe this is because of the 10ms timeout I\u0027m using, instead of the 5s timeout. In HIDL, I actually never added this - I think it\u0027s wrong because we can\u0027t know when the client is going to use the service it requested, and if it crashed or gave up, that\u0027s a bug.\n\nAnyway, since we rely on this, I\u0027m not sure we can remove it, but I suspect we should see the flakes go away anyway after this change, due to the other inconsistent state issues that were fixed. Otherwise, I\u0027ll try time-based deadlines which will be more clear.",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 52
+      },
+      "revId": "0db2addca8284f79cc5e9a4d97a1effa5142fe1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
