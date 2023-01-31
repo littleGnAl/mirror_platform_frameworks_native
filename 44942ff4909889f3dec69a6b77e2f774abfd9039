@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df63be41_e6de1b84",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-31T01:45:24Z",
+      "side": 1,
+      "message": "clarified",
+      "parentUuid": "c20c779e_fbe43c4b",
+      "range": {
+        "startLine": 304,
+        "startChar": 11,
+        "endLine": 304,
+        "endChar": 19
+      },
+      "revId": "44942ff4909889f3dec69a6b77e2f774abfd9039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae9e9242_ae054a78",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-01-31T00:26:27Z",
       "side": 1,
       "message": "Does this \"force onClients(true) to get sent\"?",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 81
+      },
+      "revId": "44942ff4909889f3dec69a6b77e2f774abfd9039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ee57db_ddc6222d",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-31T01:45:24Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "ae9e9242_ae054a78",
       "range": {
         "startLine": 305,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4391c3_780f16f7",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-31T01:45:24Z",
+      "side": 1,
+      "message": "\"considering that we have clients\"\n\"consider that we have clients\"\n\"consider we have clients\"\n\nI\u0027m not sure actually, but you understood, right!? :D",
+      "parentUuid": "21073237_daf21387",
+      "range": {
+        "startLine": 722,
+        "startChar": 51,
+        "endLine": 722,
+        "endChar": 59
+      },
+      "revId": "44942ff4909889f3dec69a6b77e2f774abfd9039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccaa882b_976394da",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-01-31T00:26:27Z",
       "side": 1,
       "message": "nit: rename to hasNewClients",
+      "range": {
+        "startLine": 725,
+        "startChar": 9,
+        "endLine": 725,
+        "endChar": 19
+      },
+      "revId": "44942ff4909889f3dec69a6b77e2f774abfd9039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44bcf1b2_6527189f",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-01-31T01:45:24Z",
+      "side": 1,
+      "message": "clarified",
+      "parentUuid": "ccaa882b_976394da",
       "range": {
         "startLine": 725,
         "startChar": 9,
