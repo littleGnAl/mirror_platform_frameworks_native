@@ -22,6 +22,30 @@
       },
       "revId": "f28b37f75df7fee1514bc2179bc68b8182073fd2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c88f52_8155212f",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2023-01-31T20:53:42Z",
+      "side": 1,
+      "message": "I have missed the `ASTATSLOG_ANNOTATION_ID_DEFAULT_STATE` - thank you for catching it\n\nWe need to track it in the stats-log-api-gen for vendor atoms as part of native_writer\n\nThe purpose of this  code is to propagate the annotations which user or the auto-generated code put into the VendorAtom - so no tracking is required",
+      "parentUuid": "0be1ad7a_ad8f998a",
+      "range": {
+        "startLine": 92,
+        "startChar": 47,
+        "endLine": 92,
+        "endChar": 48
+      },
+      "revId": "f28b37f75df7fee1514bc2179bc68b8182073fd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
