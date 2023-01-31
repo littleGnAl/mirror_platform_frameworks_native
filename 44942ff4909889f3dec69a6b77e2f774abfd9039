@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20c779e_fbe43c4b",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-01-31T00:26:27Z",
+      "side": 1,
+      "message": "clients?",
+      "range": {
+        "startLine": 304,
+        "startChar": 11,
+        "endLine": 304,
+        "endChar": 19
+      },
+      "revId": "44942ff4909889f3dec69a6b77e2f774abfd9039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae9e9242_ae054a78",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-01-31T00:26:27Z",
+      "side": 1,
+      "message": "Does this \"force onClients(true) to get sent\"?",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 81
+      },
+      "revId": "44942ff4909889f3dec69a6b77e2f774abfd9039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21073237_daf21387",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-01-31T00:26:27Z",
+      "side": 1,
+      "message": "\"assume\" we have clients? (might just be my poor English)",
+      "range": {
+        "startLine": 722,
+        "startChar": 51,
+        "endLine": 722,
+        "endChar": 59
+      },
+      "revId": "44942ff4909889f3dec69a6b77e2f774abfd9039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccaa882b_976394da",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-01-31T00:26:27Z",
+      "side": 1,
+      "message": "nit: rename to hasNewClients",
+      "range": {
+        "startLine": 725,
+        "startChar": 9,
+        "endLine": 725,
+        "endChar": 19
+      },
+      "revId": "44942ff4909889f3dec69a6b77e2f774abfd9039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
