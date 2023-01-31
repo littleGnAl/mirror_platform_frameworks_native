@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a4bfac_97659c8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060688
+      },
+      "writtenOn": "2023-01-31T23:17:31Z",
+      "side": 1,
+      "message": "context: go/wmshell-protolog-br",
+      "revId": "dfc46669930f8d8490ac849d71c465e641867191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
