@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcbc183d_6d70cf88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1894651
+      },
+      "writtenOn": "2023-01-31T00:57:10Z",
+      "side": 1,
+      "message": "(I\u0027m generally leery of using the assertions without putting up as many guard rails as possible, having been bitten by a not-actually-true assertion before. IMO, the way I had things was better because of this, but let me know if you disagree still and I\u0027ll do it your way)",
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08db2f29_329ac162",
@@ -48,6 +65,30 @@
       "writtenOn": "2023-01-26T15:48:25Z",
       "side": 1,
       "message": "Why not just annotate the function `REQUIRES(...)`?",
+      "range": {
+        "startLine": 257,
+        "startChar": 4,
+        "endLine": 257,
+        "endChar": 17
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ee2d7d_2751b9aa",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1894651
+      },
+      "writtenOn": "2023-01-31T00:57:10Z",
+      "side": 1,
+      "message": "The function is annotated with REQUIRES, this statement is there for the benefit of people reading the code to convince them that the ASSERT_MUTEX/FakeGuard are correct, and so that if someone makes the function no longer annotated as `REQUIRES(...)`, they\u0027ll hopefully notice this.",
+      "parentUuid": "08db2f29_329ac162",
       "range": {
         "startLine": 257,
         "startChar": 4,
@@ -83,6 +124,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81601e06_bb597a8f",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1894651
+      },
+      "writtenOn": "2023-01-31T00:57:10Z",
+      "side": 1,
+      "message": "It is, but this was for symmetry with the REQUIRE_MUTEX above to make it harder to change one without the other.",
+      "parentUuid": "49331ba3_cc49c345",
+      "range": {
+        "startLine": 259,
+        "startChar": 8,
+        "endLine": 259,
+        "endChar": 20
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7014aaf_4171a4d9",
         "filename": "services/surfaceflinger/Layer.cpp",
         "patchSetId": 1
@@ -94,6 +159,30 @@
       "writtenOn": "2023-01-26T15:48:25Z",
       "side": 1,
       "message": "Ditto: This is equivalent to annotating `setBackgroundColor` with `REQUIRES(mFlinger-\u003emStateLock)`, and suppressing analysis for this alias using `ftl::FakeGuard`.",
+      "range": {
+        "startLine": 941,
+        "startChar": 12,
+        "endLine": 941,
+        "endChar": 23
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988339ee_a318a7af",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1894651
+      },
+      "writtenOn": "2023-01-31T00:57:10Z",
+      "side": 1,
+      "message": "I don\u0027t think this is equivalent: if you accidentally (or intentionally) remove the REQUIRES from setBackgroundColor, your proposal would silently keep working, whereas this would fail to compile until you remove the incorrect assertion.",
+      "parentUuid": "b7014aaf_4171a4d9",
       "range": {
         "startLine": 941,
         "startChar": 12,
