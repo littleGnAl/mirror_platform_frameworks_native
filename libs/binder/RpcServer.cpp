@@ -16,7 +16,6 @@
 
 #define LOG_TAG "RpcServer"
 
-#include <inttypes.h>
 #include <poll.h>
 #include <sys/socket.h>
 #include <sys/un.h>
@@ -38,8 +37,6 @@
 #include "RpcWireFormat.h"
 
 namespace android {
-
-constexpr size_t kSessionIdBytes = 32;
 
 using base::ScopeGuard;
 using base::unique_fd;
@@ -292,19 +289,13 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
     std::vector<uint8_t> sessionId;
     if (status == OK) {
         if (header.sessionIdSize > 0) {
-            if (header.sessionIdSize == kSessionIdBytes) {
-                sessionId.resize(header.sessionIdSize);
-                status = client->interruptableReadFully(server->mShutdownTrigger.get(),
-                                                        sessionId.data(), sessionId.size(), {});
-                if (status != OK) {
-                    ALOGE("Failed to read session ID for client connecting to RPC server: %s",
-                          statusToString(status).c_str());
-                    // still need to cleanup before we can return
-                }
-            } else {
-                ALOGE("Malformed session ID. Expecting session ID of size %zu but got %" PRIu16,
-                      kSessionIdBytes, header.sessionIdSize);
-                status = BAD_VALUE;
+            sessionId.resize(header.sessionIdSize);
+            status = client->interruptableReadFully(server->mShutdownTrigger.get(),
+                                                    sessionId.data(), sessionId.size(), {});
+            if (status != OK) {
+                ALOGE("Failed to read session ID for client connecting to RPC server: %s",
+                      statusToString(status).c_str());
+                // still need to cleanup before we can return
             }
         }
     }
@@ -362,7 +353,8 @@ void RpcServer::establishConnection(sp<RpcServer>&& server, base::unique_fd clie
             // Uniquely identify session at the application layer. Even if a
             // client/server use the same certificates, if they create multiple
             // sessions, we still want to distinguish between them.
-            sessionId.resize(kSessionIdBytes);
+            constexpr size_t kSessionIdSize = 32;
+            sessionId.resize(kSessionIdSize);
             size_t tries = 0;
             do {
                 // don't block if there is some entropy issue
