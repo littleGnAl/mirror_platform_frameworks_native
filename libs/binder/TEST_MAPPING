@@ -43,6 +43,15 @@
       "name": "CtsNdkBinderTestCases"
     },
     {
+<<<<<<< PATCH SET (d2ccec libbinder += StagedRollbackTest)
+      "name": "CtsRootRollbackManagerHostTestCases"
+    },
+    {
+      "name": "StagedRollbackTest"
+    },
+    {
+=======
+>>>>>>> BASE      (1b0861 Merge "Applied clang-format over the sources")
       "name": "aidl_lazy_test"
     },
     {
