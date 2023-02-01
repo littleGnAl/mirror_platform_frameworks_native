@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d89c5f_dd6bd54e",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-01T23:19:10Z",
+      "side": 1,
+      "message": "Alright - if I have to bet what the cause was, I bet this is getting hit during linkToDeath.\n\nAnyway - something else came up, so I can\u0027t look yet.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 89
+      },
+      "revId": "730efded07184bfd28722bea3dc65348ae2a1c82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
