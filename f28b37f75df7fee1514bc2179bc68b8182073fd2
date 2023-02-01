@@ -70,6 +70,30 @@
       },
       "revId": "f28b37f75df7fee1514bc2179bc68b8182073fd2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1678885_6f0e12ff",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2023-02-01T04:49:55Z",
+      "side": 1,
+      "message": "I have added some error checks and valueAnnotation.value.get\u003cAnnotationValue::intValue\u003e() and valueAnnotation.value.get\u003cAnnotationValue::boolValue\u003e() to write actual value associated with annotation",
+      "parentUuid": "44fbde55_5b032913",
+      "range": {
+        "startLine": 92,
+        "startChar": 47,
+        "endLine": 92,
+        "endChar": 48
+      },
+      "revId": "f28b37f75df7fee1514bc2179bc68b8182073fd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
