@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f48afe21_62887c53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060688
+      },
+      "writtenOn": "2023-02-01T21:55:23Z",
+      "side": 1,
+      "message": "The presubmit failure (https://android-build.googleplex.com/builds/tests/view?invocationId\u003dI84700010128394629\u0026testResultId\u003dTR30728484361882371) seems to be a dupe of b/253415127, @gavincorkery do you think we can bypass the presubmit?",
+      "revId": "9ec5c2570caa6f5c1623fbd128a7d24dd8724025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
