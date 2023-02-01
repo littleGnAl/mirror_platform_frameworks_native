@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a198b11_43ab99d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-02-01T00:27:26Z",
+      "side": 1,
+      "message": "I changed `binderRpcTest_on_trusty_mock` from a `cc_test` to a `cc_binary`, now it\u0027s only a dependency for the real `binderRpcTest`. Try to submit it again?",
+      "revId": "4d9420e4a71ef080a31634ff7987fe5789889a7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
