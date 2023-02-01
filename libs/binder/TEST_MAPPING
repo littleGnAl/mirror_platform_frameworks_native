@@ -43,6 +43,9 @@
       "name": "CtsNdkBinderTestCases"
     },
     {
+      "name": "CtsRootRollbackManagerHostTestCases"
+    },
+    {
       "name": "aidl_lazy_test"
     },
     {
