@@ -192,6 +192,24 @@
       "message": "Could u pls help review this change? thx",
       "revId": "88da5a2a446635bf567a0bb4ec44eefd8cb892ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f09b305_94c03484",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2023-02-01T02:19:11Z",
+      "side": 1,
+      "message": "Steven, Leon asked for a bug number and test case to be added to the commit message.\n\nAlso, Wei and Tim, should surfaceflinger threads be promoted to a higher cpuset in the global task_profiles config? I see that pixels use top app.  My team found that intermittent jank seemed to be improved when using the foreground cpuset and that seems to match the described design from the comment removed here better than top app does.",
+      "parentUuid": "8d4f6856_06ed7bec",
+      "revId": "88da5a2a446635bf567a0bb4ec44eefd8cb892ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
