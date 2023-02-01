@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93aab881_3285d09d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-01T22:11:24Z",
+      "side": 1,
+      "message": "Please add specific \u0027visibility\u0027 settings. This API surface is still in development. If too many places want to use it, then we need to spend some time to finalize the API before it\u0027s used widely",
+      "revId": "f4365fbefdec04888ca99081254f6932aec16fb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
