@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0259fe_d75a0a7f",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2023-02-02T02:08:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34a77e68_562cdc7d",
+      "range": {
+        "startLine": 59,
+        "startChar": 21,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "3441720d3e623fe2d26bfe9899ad8a437f45d1d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acdf1c3b_27017423",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Code that shows which annotations are parsed: https://source.corp.google.com/android-internal/packages/modules/StatsD/statsd/src/logd/LogEvent.cpp;l\u003d371?q\u003dexclusivestate\u0026ss\u003dpiper%2FGoogle%2Fandroid-internal:packages%2Fmodules%2FStatsD%2Fstatsd%2Fsrc%2F",
       "parentUuid": "acdf1c3b_27017423",
+      "range": {
+        "startLine": 101,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 13
+      },
+      "revId": "3441720d3e623fe2d26bfe9899ad8a437f45d1d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d506e82_8385932c",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2023-02-02T02:08:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5e5cb91d_df2931ab",
       "range": {
         "startLine": 101,
         "startChar": 12,
