@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34a77e68_562cdc7d",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1510760
+      },
+      "writtenOn": "2023-02-02T01:08:12Z",
+      "side": 1,
+      "message": "nit: fieldAnnotation might be a better description",
+      "range": {
+        "startLine": 59,
+        "startChar": 21,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "3441720d3e623fe2d26bfe9899ad8a437f45d1d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acdf1c3b_27017423",
         "filename": "services/stats/StatsAidl.cpp",
         "patchSetId": 6
@@ -14,6 +37,30 @@
       "writtenOn": "2023-02-02T00:07:02Z",
       "side": 1,
       "message": "we actually don\u0027t need to send DEFAULT_STATE annotation to statsd. It\u0027s only needed in api-gen code to determine the default state.",
+      "range": {
+        "startLine": 101,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 13
+      },
+      "revId": "3441720d3e623fe2d26bfe9899ad8a437f45d1d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5cb91d_df2931ab",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1510760
+      },
+      "writtenOn": "2023-02-02T01:08:12Z",
+      "side": 1,
+      "message": "Code that shows which annotations are parsed: https://source.corp.google.com/android-internal/packages/modules/StatsD/statsd/src/logd/LogEvent.cpp;l\u003d371?q\u003dexclusivestate\u0026ss\u003dpiper%2FGoogle%2Fandroid-internal:packages%2Fmodules%2FStatsD%2Fstatsd%2Fsrc%2F",
+      "parentUuid": "acdf1c3b_27017423",
       "range": {
         "startLine": 101,
         "startChar": 12,
