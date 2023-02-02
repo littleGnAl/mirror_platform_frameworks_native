@@ -51,6 +51,24 @@
       "parentUuid": "5222abc4_500f9826",
       "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6cd6ba_8ff08e86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2023-02-02T21:35:59Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to change old task_profiles_XX.json files. If the main task_profiles.json already has that profile defined, then it\u0027s loaded first: https://cs.android.com/android/platform/superproject/+/master:system/core/libprocessgroup/task_profiles.cpp;l\u003d594 and then API-specific profiles will be loaded, which will override the default ones: https://cs.android.com/android/platform/superproject/+/master:system/core/libprocessgroup/task_profiles.cpp;l\u003d602. In this case SFMainPolicy will be loaded from the main task_profiles.json and it won\u0027t be overwritten by the API-specific one.\nHere I assume that when an old device is updated with the new Android version the main task_profiles.json is being updated too.",
+      "parentUuid": "a44d4815_f8c921cb",
+      "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
