@@ -69,6 +69,24 @@
       "parentUuid": "a44d4815_f8c921cb",
       "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c874060_51cad7f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2023-02-02T22:10:55Z",
+      "side": 1,
+      "message": "ah, remembered for the versioned task_profile back then. yeah, then we should be fine as long as vendor is using aosp code.",
+      "parentUuid": "9a6cd6ba_8ff08e86",
+      "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
