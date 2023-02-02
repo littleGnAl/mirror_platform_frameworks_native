@@ -33,6 +33,24 @@
       "message": "this works for devices shipped with latest API (as SFMainPolicy is mapped to the same thing)\n\ngiven SFMainPolicy is defined in task_profiles.json\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/libprocessgroup/profiles/task_profiles.json\n\nbut removing this will cause issues for devices shipped with older API level that is upgraded to latest version \n\nsystem/core/libprocessgroup/profiles/task_profiles_30.json\nsystem/core/libprocessgroup/profiles/task_profiles_29.json\nsystem/core/libprocessgroup/profiles/task_profiles_29.json\n\nthis is on the init path, and the extra system call is not a big deal.\n\n@surenb@google.com can we still change those old task_profiles_XX.json",
       "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ab4826_3a0adae6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1905031
+      },
+      "writtenOn": "2023-02-02T00:57:03Z",
+      "side": 1,
+      "message": "Based on my understanding the task profile and cpuset should do the same thing so this seems fine but I\u0027m going to defer to Wei on this, I don\u0027t know a ton about how core affinity worked before task profiles were standard and he\u0027s much more familiar.",
+      "parentUuid": "5222abc4_500f9826",
+      "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
