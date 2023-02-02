@@ -16,6 +16,23 @@
       "message": "Hey Matt can you take a look? Thanks!",
       "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a44d4815_f8c921cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2023-02-02T00:43:52Z",
+      "side": 1,
+      "message": "this works for devices shipped with latest API (as SFMainPolicy is mapped to the same thing)\n\ngiven SFMainPolicy is defined in task_profiles.json\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/libprocessgroup/profiles/task_profiles.json\n\nbut removing this will cause issues for devices shipped with older API level that is upgraded to latest version \n\nsystem/core/libprocessgroup/profiles/task_profiles_30.json\nsystem/core/libprocessgroup/profiles/task_profiles_29.json\nsystem/core/libprocessgroup/profiles/task_profiles_29.json\n\nthis is on the init path, and the extra system call is not a big deal.\n\n@surenb@google.com can we still change those old task_profiles_XX.json",
+      "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
