@@ -87,6 +87,24 @@
       "parentUuid": "9a6cd6ba_8ff08e86",
       "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7131915_c84a1988",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2023-02-02T22:16:43Z",
+      "side": 1,
+      "message": "Wei, is system background still a good default? Foreground seems like it may be more fitting. I see pixels use top app but that seems aggressive for all devices.",
+      "parentUuid": "9c874060_51cad7f8",
+      "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
