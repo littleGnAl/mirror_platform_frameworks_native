@@ -22,6 +22,30 @@
       },
       "revId": "730efded07184bfd28722bea3dc65348ae2a1c82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c45f4c_d148b47e",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-04T03:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3d89c5f_dd6bd54e",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 89
+      },
+      "revId": "730efded07184bfd28722bea3dc65348ae2a1c82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
