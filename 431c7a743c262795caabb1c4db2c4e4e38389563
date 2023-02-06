@@ -122,6 +122,24 @@
       "message": "why abandon?",
       "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f3696e_2338d819",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1980045
+      },
+      "writtenOn": "2023-02-06T03:13:18Z",
+      "side": 1,
+      "message": "Code-Review -2 above, so this modification may not be reasonable, Although haven\u0027t seen a detailed explanation of why.",
+      "parentUuid": "ea7bc676_fdb03a85",
+      "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
