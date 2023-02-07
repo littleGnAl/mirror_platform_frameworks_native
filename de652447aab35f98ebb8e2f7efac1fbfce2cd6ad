@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3915cc32_dd08ef81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1448822
+      },
+      "writtenOn": "2023-02-07T11:47:57Z",
+      "side": 1,
+      "message": "The dumpstate test that is failing was already failing b/253415127",
+      "revId": "de652447aab35f98ebb8e2f7efac1fbfce2cd6ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
