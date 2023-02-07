@@ -157,6 +157,24 @@
       "message": "I am blocking this patch here until further discussion is had.",
       "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c426f090_e667b668",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-02-07T03:34:44Z",
+      "side": 1,
+      "message": "Removed the block",
+      "parentUuid": "5a2b524b_65b33670",
+      "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
