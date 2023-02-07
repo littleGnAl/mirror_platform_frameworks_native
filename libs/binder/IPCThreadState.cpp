@@ -1571,8 +1571,14 @@ status_t IPCThreadState::freeze(pid_t pid, bool enable, uint32_t timeout_ms) {
 
 
 #if defined(__ANDROID__)
-    if (ioctl(self()->mProcess->mDriverFD, BINDER_FREEZE, &info) < 0)
-        ret = -errno;
+    for (size_t time = 0; time < 3; time++) {
+                if (ioctl(self()->mProcess->mDriverFD, BINDER_FREEZE, &info) < 0) ret = -errno;
+
+                if (ret == 0) break;
+                if (ret != -EAGAIN) break;
+
+                sched_yield();
+    }
 #endif
 
     //
