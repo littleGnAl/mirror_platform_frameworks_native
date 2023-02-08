@@ -234,6 +234,24 @@
       "parentUuid": "d4441603_eaa311e7",
       "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a57cdb_199a911f",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2023-02-08T15:39:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0cf47c9c_0da29606",
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
