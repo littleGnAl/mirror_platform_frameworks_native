@@ -22,6 +22,30 @@
       },
       "revId": "9df29d5f427cc61734a80683e06c40b931ef98d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c6bbf50_55c21d9c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2023-02-08T00:27:57Z",
+      "side": 1,
+      "message": "I believe GmsCore checkin issues those entries as \"tombstones\" so it can detect which logs it has already collected in the past.  (These will be ~hourly on dogfooder devices, but ~daily on other devices.)\n\nThe skip logic here was added since on a typical droidfood device including the _wtf and _strictmode logs would add ~5MiB (compressed!) to the size of the bugreport, and those flavor of issues are already triaged via other pipelines.\n\nThe other remaining entries (like event_data) are much smaller in size, which is why I ignored them here.",
+      "parentUuid": "fd0d953f_8c637e2d",
+      "range": {
+        "startLine": 528,
+        "startChar": 12,
+        "endLine": 528,
+        "endChar": 31
+      },
+      "revId": "9df29d5f427cc61734a80683e06c40b931ef98d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
