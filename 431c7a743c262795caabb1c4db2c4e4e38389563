@@ -175,6 +175,24 @@
       "parentUuid": "5a2b524b_65b33670",
       "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc554851_fb66a5be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105075
+      },
+      "writtenOn": "2023-02-08T22:18:49Z",
+      "side": 1,
+      "message": "Leaving the same will not create surprise for those older devices. Setting to what ever cpuset is definitely a vendor choice per their capacity and display. (Not sure if this is something also shared with other form factor but again same)",
+      "parentUuid": "c7131915_c84a1988",
+      "revId": "431c7a743c262795caabb1c4db2c4e4e38389563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
