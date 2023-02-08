@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "058be499_30755f06",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2023-02-08T01:21:57Z",
+      "side": 1,
+      "message": "Since this is only used on the annotation id, does it need to be templated?",
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced0e3db_19fb7ae8",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2023-02-08T01:21:57Z",
+      "side": 1,
+      "message": "for all of these return types, do they actually get propagated to the caller? My understanding is that, since the call is oneway, they would not: https://source.corp.google.com/android-internal/frameworks/hardware/interfaces/stats/aidl/android/frameworks/stats/IStats.aidl;l\u003d34?q\u003dreportvendoratom\u0026sq\u003dpackage:%5Eandroid-internal$\u0026type\u003dcs",
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "562ed658_2dca2523",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2023-02-08T01:21:57Z",
+      "side": 1,
+      "message": "very minor nit: slight preference to not use auto here. makes it a bit more clear what types we are dealing with",
+      "range": {
+        "startLine": 231,
+        "startChar": 18,
+        "endLine": 231,
+        "endChar": 23
+      },
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdaaf7f1_a03ee5ca",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2023-02-08T01:21:57Z",
+      "side": 1,
+      "message": "nit: bracket syntax is more conventional. any reason not to use it?",
+      "range": {
+        "startLine": 232,
+        "startChar": 49,
+        "endLine": 232,
+        "endChar": 52
+      },
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb76525_e5d0a871",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2023-02-08T01:21:57Z",
+      "side": 1,
+      "message": "does \u003c0 mean error? if so, it would mean that it was not written into the socket, right?",
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
