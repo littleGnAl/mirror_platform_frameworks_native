@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd0d953f_8c637e2d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1101746
+      },
+      "writtenOn": "2023-02-08T00:07:47Z",
+      "side": 1,
+      "message": "I see a lot of files like /data/system/dropbox/event_data@*.txt with just timestamps. Do you know what data this is or who is adding these?",
+      "range": {
+        "startLine": 528,
+        "startChar": 12,
+        "endLine": 528,
+        "endChar": 31
+      },
+      "revId": "9df29d5f427cc61734a80683e06c40b931ef98d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
