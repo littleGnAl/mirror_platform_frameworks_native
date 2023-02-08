@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5e52f75_42894466",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2023-02-08T05:44:30Z",
+      "side": 1,
+      "message": "The logic of this templated function is to encapsulate the static cast\n\nWe are going to have more enums in upcoming commits, once the annotation set will be extended\n\nThe function will be reused",
+      "parentUuid": "058be499_30755f06",
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ced0e3db_19fb7ae8",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f89bed45_9dbade0d",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2023-02-08T05:44:30Z",
+      "side": 1,
+      "message": "no they are not propagated - potentially they could be seen via logcat and catched in the lab environment (not sure about it) - that is why logs added explicitly\n\nI keep all these returns here for consistency with generated API signature - it seems odd to return status::ok when the api call failed\n\nThe idea which was discussed before is to log dedicated WW metric - similar to statsdstats about failure per atom id to have a way to detect the failure and communicate to the vendor API client\n\nSee for more context http://b/268271909",
+      "parentUuid": "ced0e3db_19fb7ae8",
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "562ed658_2dca2523",
         "filename": "services/stats/StatsAidl.cpp",
         "patchSetId": 10
@@ -48,6 +84,30 @@
       "writtenOn": "2023-02-08T01:21:57Z",
       "side": 1,
       "message": "very minor nit: slight preference to not use auto here. makes it a bit more clear what types we are dealing with",
+      "range": {
+        "startLine": 231,
+        "startChar": 18,
+        "endLine": 231,
+        "endChar": 23
+      },
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a912e8_c58f76d2",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2023-02-08T05:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "562ed658_2dca2523",
       "range": {
         "startLine": 231,
         "startChar": 18,
@@ -81,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a599bbf2_cc3081f5",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2023-02-08T05:44:30Z",
+      "side": 1,
+      "message": "I did it for local testing to ensure handling out of bounds errors - updated",
+      "parentUuid": "cdaaf7f1_a03ee5ca",
+      "range": {
+        "startLine": 232,
+        "startChar": 49,
+        "endLine": 232,
+        "endChar": 52
+      },
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eb76525_e5d0a871",
@@ -94,6 +178,24 @@
       "writtenOn": "2023-02-08T01:21:57Z",
       "side": 1,
       "message": "does \u003c0 mean error? if so, it would mean that it was not written into the socket, right?",
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4441603_eaa311e7",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1827146
+      },
+      "writtenOn": "2023-02-08T05:44:30Z",
+      "side": 1,
+      "message": "correct, it is an error - about report atom failed\nnice to log just the atom ID here - also will be covered by http://b/268271909 to be more useful and the logging could be eliminated at that point",
+      "parentUuid": "7eb76525_e5d0a871",
       "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
