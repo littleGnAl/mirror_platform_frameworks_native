@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8def438a_6fc220ea",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2023-02-08T05:47:18Z",
+      "side": 1,
+      "message": "Makes sense, thanks for the explanation.",
+      "parentUuid": "f89bed45_9dbade0d",
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "562ed658_2dca2523",
@@ -196,6 +214,24 @@
       "side": 1,
       "message": "correct, it is an error - about report atom failed\nnice to log just the atom ID here - also will be covered by http://b/268271909 to be more useful and the logging could be eliminated at that point",
       "parentUuid": "7eb76525_e5d0a871",
+      "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cf47c9c_0da29606",
+        "filename": "services/stats/StatsAidl.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1286922
+      },
+      "writtenOn": "2023-02-08T05:47:18Z",
+      "side": 1,
+      "message": "Maybe the print should be something like \"Error writing Atom ID %ld. Result: %d\"?\n\n\"Atom ID has been written\" sounds like the write was a success.",
+      "parentUuid": "d4441603_eaa311e7",
       "revId": "0fcbb14d74a117a3ffcc97c010cbad0a0293c653",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
