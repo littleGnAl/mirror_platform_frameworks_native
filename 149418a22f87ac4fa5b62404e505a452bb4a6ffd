@@ -101,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51968379_92b7714f",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2023-02-08T23:31:04Z",
+      "side": 1,
+      "message": "OK, a granular assertion sounds beneficial, but IMO the more intuitive name for this macro is `ASSERT_MUTEX`. Could we rename, and remove the original `ASSERT_MUTEX` in favor of `FakeGuard`?",
+      "parentUuid": "11ee2d7d_2751b9aa",
+      "range": {
+        "startLine": 257,
+        "startChar": 4,
+        "endLine": 257,
+        "endChar": 17
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49331ba3_cc49c345",
         "filename": "services/surfaceflinger/Layer.cpp",
         "patchSetId": 1
@@ -136,6 +160,30 @@
       "side": 1,
       "message": "It is, but this was for symmetry with the REQUIRE_MUTEX above to make it harder to change one without the other.",
       "parentUuid": "49331ba3_cc49c345",
+      "range": {
+        "startLine": 259,
+        "startChar": 8,
+        "endLine": 259,
+        "endChar": 20
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a0630d_3b16e88b",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2023-02-08T23:31:04Z",
+      "side": 1,
+      "message": "Assuming the lambda can be annotated with `REQUIRES(mFlinger-\u003emStateLock)`, could we use `MUTEX_ALIAS` here to avoid asymmetry?",
+      "parentUuid": "81601e06_bb597a8f",
       "range": {
         "startLine": 259,
         "startChar": 8,
@@ -188,6 +236,29 @@
         "startChar": 12,
         "endLine": 941,
         "endChar": 23
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ade8280d_d0c1e361",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2023-02-08T23:31:04Z",
+      "side": 1,
+      "message": "Can the pointer actually be `const`?",
+      "range": {
+        "startLine": 898,
+        "startChar": 7,
+        "endLine": 898,
+        "endChar": 15
       },
       "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
