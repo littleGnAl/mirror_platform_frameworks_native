@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "bd41dc1b1b8a36859607623b1b537cfce0a9af24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2f7d5d_596b92a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-02-08T23:37:12Z",
+      "side": 1,
+      "message": "b/268248340 - revert was submitted so rerunning presubmits",
+      "revId": "bd41dc1b1b8a36859607623b1b537cfce0a9af24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
