@@ -123,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb478a81_64bdc553",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1894651
+      },
+      "writtenOn": "2023-02-09T00:30:14Z",
+      "side": 1,
+      "message": "Deleted the line entirely in favor of marking the lambda as REQUIRES.\n\n(I don\u0027t think it\u0027s beneficial to rename ASSERT_MUTEX though, which still needs to stick around to implement MUTEX_ALIAS: Wthread-safety uses \"assert\" to mean you\u0027re telling the compiler that you hold the mutex, and this is the opposite, it\u0027s asking the compiler to reject your code if you don\u0027t hold the mutex.)",
+      "parentUuid": "51968379_92b7714f",
+      "range": {
+        "startLine": 257,
+        "startChar": 4,
+        "endLine": 257,
+        "endChar": 17
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49331ba3_cc49c345",
@@ -194,6 +218,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cf1df6d_b9654a1e",
+        "filename": "services/surfaceflinger/Layer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1894651
+      },
+      "writtenOn": "2023-02-09T00:30:14Z",
+      "side": 1,
+      "message": "We can actually annotate it with REQUIRES(layer-\u003emFlinger-\u003emStateLock) directly, because all of the thread safety annotations disappear when the lambda gets stuffed in a std::function. I went with this, let me know if you prefer using the MUTEX_ALIAS here.",
+      "parentUuid": "31a0630d_3b16e88b",
+      "range": {
+        "startLine": 259,
+        "startChar": 8,
+        "endLine": 259,
+        "endChar": 20
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7014aaf_4171a4d9",
@@ -254,6 +302,30 @@
       "writtenOn": "2023-02-08T23:31:04Z",
       "side": 1,
       "message": "Can the pointer actually be `const`?",
+      "range": {
+        "startLine": 898,
+        "startChar": 7,
+        "endLine": 898,
+        "endChar": 15
+      },
+      "revId": "149418a22f87ac4fa5b62404e505a452bb4a6ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f5bb79_cd4d7faa",
+        "filename": "services/surfaceflinger/Layer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1894651
+      },
+      "writtenOn": "2023-02-09T00:30:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ade8280d_d0c1e361",
       "range": {
         "startLine": 898,
         "startChar": 7,
