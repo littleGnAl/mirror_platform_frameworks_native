@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24883203_c2dd786d",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-02-09T16:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0435fba8_9afa8704",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "ac9bcc9f58ae239bc581c8a97b6b23a1077fad21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "452ec42d_76b73fa7",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-02-09T12:19:02Z",
       "side": 1,
       "message": "INET socket",
+      "range": {
+        "startLine": 107,
+        "startChar": 37,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "ac9bcc9f58ae239bc581c8a97b6b23a1077fad21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08a6c1af_669ff447",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-02-09T16:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "452ec42d_76b73fa7",
       "range": {
         "startLine": 107,
         "startChar": 37,
@@ -81,6 +129,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "736a8659_b40016e3",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-02-09T16:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fd454e1_50c9f324",
+      "revId": "ac9bcc9f58ae239bc581c8a97b6b23a1077fad21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f14ae031_619293dd",
@@ -104,6 +170,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53965aa0_84106786",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-02-09T16:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f14ae031_619293dd",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 16
+      },
+      "revId": "ac9bcc9f58ae239bc581c8a97b6b23a1077fad21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d051b0a5_ff75fbf9",
@@ -117,6 +207,30 @@
       "writtenOn": "2023-02-09T12:19:02Z",
       "side": 1,
       "message": "Add a SAFETY comment",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 30
+      },
+      "revId": "ac9bcc9f58ae239bc581c8a97b6b23a1077fad21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f80a109_155fdbea",
+        "filename": "libs/binder/rust/rpcbinder/src/session.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-02-09T16:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d051b0a5_ff75fbf9",
       "range": {
         "startLine": 160,
         "startChar": 0,
