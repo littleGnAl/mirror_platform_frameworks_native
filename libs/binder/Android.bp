@@ -521,6 +521,10 @@ aidl_interface {
         java: {
             enabled: false,
         },
+        rust: {
+            // By default, the Rust backend is not enabled
+            enabled: true,
+        },
     },
 }
 
