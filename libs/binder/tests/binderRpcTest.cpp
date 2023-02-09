@@ -951,7 +951,12 @@ TEST_P(BinderRpc, SendMaxFiles) {
     });
 
     std::vector<android::os::ParcelFileDescriptor> files;
-    for (int i = 0; i < 253; i++) {
+#ifdef ANDROID_HOST_MUSL
+    const size_t kMaxFiles = 251;
+#else
+    const size_t kMaxFiles = 253;
+#endif
+    for (int i = 0; i < kMaxFiles; i++) {
         files.emplace_back(android::os::ParcelFileDescriptor(mockFileDescriptor("a")));
     }
 
@@ -961,7 +966,7 @@ TEST_P(BinderRpc, SendMaxFiles) {
 
     std::string result;
     CHECK(android::base::ReadFdToString(out.get(), &result));
-    EXPECT_EQ(result, std::string(253, 'a'));
+    EXPECT_EQ(result, std::string(kMaxFiles, 'a'));
 }
 
 TEST_P(BinderRpc, SendTooManyFiles) {
