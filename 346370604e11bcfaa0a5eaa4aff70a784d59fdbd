@@ -33,6 +33,23 @@
       "message": "Adding android-ndk-api-council, for false map.txt hit on NDK-API-Review",
       "revId": "346370604e11bcfaa0a5eaa4aff70a784d59fdbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "865f78a9_21a06f39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2023-02-13T20:04:38Z",
+      "side": 1,
+      "message": "#platform-only, rubber stamping NDK API review",
+      "revId": "346370604e11bcfaa0a5eaa4aff70a784d59fdbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
