@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a322332_659c7414",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1741425
+      },
+      "writtenOn": "2023-02-13T04:12:07Z",
+      "side": 1,
+      "message": "If freeze ioctl returns -EAGAIN due to unfinished binder transactions, this CL should fix that by retrying the freeze ioctl.\n\nBut the issue here is different. We expect freeze ioctl to return -EAGAIN (as the input parameter timeout is 0), which means there are still some pending binder transactions. However the freeze ioctl succeeds even if the timeout is 0. That means there\u0027s no pending transactions.\n\nSo, retrying the freeze ioctl doesn\u0027t help. We need to take a look what the expected pending transaction is and why it unexpectedly finishes so soon.\n\n```\nframeworks/native/libs/binder/tests/binderLibTest.cpp:510: Failure\nExpected equality of these values:\n  -11\n  IPCThreadState::self()-\u003efreeze(pid, true, 0)\n    Which is: 0\n```",
+      "revId": "ad826fd73bba8a586a4b38a1cf01a9ba10aff982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d02a5152_1f419c60",
