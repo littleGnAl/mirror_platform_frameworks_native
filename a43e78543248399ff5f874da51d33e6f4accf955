@@ -16,6 +16,23 @@
       "message": "Waiting for OWNERS approval from Steven though.",
       "revId": "a43e78543248399ff5f874da51d33e6f4accf955",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e13584d7_61a192d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1078064
+      },
+      "writtenOn": "2023-02-13T13:42:18Z",
+      "side": 1,
+      "message": "Also note that this is enabling rust for a target that\u0027s only used in the ndk tests.",
+      "revId": "a43e78543248399ff5f874da51d33e6f4accf955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
