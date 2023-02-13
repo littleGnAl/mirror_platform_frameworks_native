@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc68fa40_c8654f32",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-13T21:08:27Z",
+      "side": 1,
+      "message": "I think this should also race, but I want to see evidence of it before I move it around. WDYT?",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 509,
+        "endChar": 69
+      },
+      "revId": "ee739ebf34eb2a6877391fb752bb7c1d38522931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
