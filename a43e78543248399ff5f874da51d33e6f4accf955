@@ -50,6 +50,23 @@
       "message": "I am not sure this is needed, pending discussion with Steven",
       "revId": "a43e78543248399ff5f874da51d33e6f4accf955",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89ecce64_bf360136",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-13T22:00:25Z",
+      "side": 1,
+      "message": "See email response with alternative API pointed out. We don\u0027t want to expose this.",
+      "revId": "a43e78543248399ff5f874da51d33e6f4accf955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
