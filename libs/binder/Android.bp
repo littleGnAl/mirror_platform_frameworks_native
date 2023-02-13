@@ -522,6 +522,9 @@ aidl_interface {
             enabled: false,
         },
     },
+    visibility: [
+        ":__subpackages__",
+    ],
 }
 
 // TODO(b/184872979): remove once the Rust API is created.
