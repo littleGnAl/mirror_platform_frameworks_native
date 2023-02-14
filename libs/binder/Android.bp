@@ -336,9 +336,10 @@ cc_library {
     target: {
         android: {
             // NOT static to keep the wire protocol unfrozen
-            static: {
-                enabled: false,
-            },
+            //static: {
+             //   enabled: false,
+            //},
+//DO NOT SUBMIT
         },
         darwin: {
             enabled: false,

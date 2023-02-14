@@ -121,13 +121,19 @@ cc_test {
 
     srcs: ["binderLibTest.cpp"],
     shared_libs: [
-        "libbase",
-        "libbinder",
-        "liblog",
-        "libutils",
+        "libcgrouprc",
+        "libvndksupport",
     ],
     static_libs: [
+        "libbase",
+        "libbinder",
+        "libcgrouprc_format",
+        "libcutils",
         "libgmock",
+        "libjsoncpp",
+        "liblog",
+        "libprocessgroup",
+        "libutils",
     ],
     test_suites: [
         "device-tests",

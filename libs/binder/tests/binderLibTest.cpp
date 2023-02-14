@@ -1135,9 +1135,14 @@ TEST_F(BinderLibTest, InheritRt) {
     };
     EXPECT_EQ(0, sched_setscheduler(getpid(), SCHED_RR, &param));
 
+    ALOGE("sched ABOUT TO INHERIT 1");
     Parcel data, reply;
     EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_SCHEDULING_POLICY, data, &reply),
                 StatusEq(NO_ERROR));
+    ALOGE("sched ABOUT TO INHERIT 2");
+    EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_SCHEDULING_POLICY, data, &reply),
+                StatusEq(NO_ERROR));
+    ALOGE("sched DONE WITH INHERIT");
 
     int policy = reply.readInt32();
     int priority = reply.readInt32();
@@ -1812,6 +1817,7 @@ public:
                 return NO_ERROR;
             }
             case BINDER_LIB_TEST_GET_SCHEDULING_POLICY: {
+                ALOGE("IN GET SCHED POLICY");
                 int policy = 0;
                 sched_param param;
                 if (0 != pthread_getschedparam(pthread_self(), &policy, &param)) {
@@ -1819,6 +1825,7 @@ public:
                 }
                 reply->writeInt32(policy);
                 reply->writeInt32(param.sched_priority);
+                ALOGE("IN GET SCHED POLICY END");
                 return NO_ERROR;
             }
             case BINDER_LIB_TEST_ECHO_VECTOR: {
@@ -2008,7 +2015,10 @@ int run_server(int index, int readypipefd, bool usePoll)
              }
         }
     } else {
-        ProcessState::self()->setThreadPoolMaxThreadCount(kKernelThreads);
+        // starts two threads - for repro on one thread
+        // have to try a few times to get the repro, something
+        // else here relies on having two threads
+        ProcessState::self()->setThreadPoolMaxThreadCount(0);
         ProcessState::self()->startThreadPool();
         IPCThreadState::self()->joinThreadPool();
     }

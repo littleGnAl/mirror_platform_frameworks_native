@@ -66,6 +66,16 @@
 
 namespace android {
 
+static void logSched(const char* context) {
+    int policy = 0;
+    sched_param param;
+    if (0 != pthread_getschedparam(pthread_self(), &policy, &param)) {
+        ALOGW("COULD NOT GET SCHED %s", context);
+    }
+
+    ALOGI("%s sched %d %d", context, policy, param.sched_priority);
+}
+
 // Static const and functions will be optimized out if not used,
 // when LOG_NDEBUG and references in IF_LOG_COMMANDS() are optimized out.
 static const char *kReturnStrings[] = {
@@ -649,7 +659,9 @@ status_t IPCThreadState::getAndExecuteCommand()
         }
         pthread_mutex_unlock(&mProcess->mThreadCountLock);
 
+        logSched("threadpool before execute in executed command");
         result = executeCommand(cmd);
+        logSched("threadpool after execute in executed command");
 
         pthread_mutex_lock(&mProcess->mThreadCountLock);
         mProcess->mExecutingThreadsCount--;
@@ -735,9 +747,12 @@ void IPCThreadState::joinThreadPool(bool isMain)
     mIsLooper = true;
     status_t result;
     do {
+        logSched("threadpool loop top");
         processPendingDerefs();
+        logSched("threadpool after pending derefs");
         // now get the next command to be processed, waiting if necessary
         result = getAndExecuteCommand();
+        logSched("threadpool after executed command");
 
         if (result < NO_ERROR && result != TIMED_OUT && result != -ECONNREFUSED && result != -EBADF) {
             LOG_ALWAYS_FATAL("getAndExecuteCommand(fd=%d) returned unexpected error %d, aborting",
