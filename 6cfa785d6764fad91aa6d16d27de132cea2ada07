@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df60027a_042ed019",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-02-14T04:18:33Z",
+      "side": 1,
+      "message": "The function name is somewhat misleading, given that at 125, it also checks the availability of /dev/vndbinder.",
+      "range": {
+        "startLine": 103,
+        "startChar": 19,
+        "endLine": 103,
+        "endChar": 37
+      },
+      "revId": "6cfa785d6764fad91aa6d16d27de132cea2ada07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
