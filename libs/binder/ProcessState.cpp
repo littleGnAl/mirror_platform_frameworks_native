@@ -123,6 +123,17 @@ sp<ProcessState> ProcessState::init(const char *driver, bool requireDefault)
             driver = "/dev/binder";
         }
 
+        if (0 == strcmp(driver, "/dev/vndbinder")) {
+            ALOGI("This process is using vndbinder. vndbinder is used by vendor processes to "
+                  "communicate between themselves, though they could also use an unstable AIDL "
+                  "interface with the NDK backend to communicate over /dev/binder. Many core "
+                  "reference implementations initialize /dev/vndbinder by default, but this means "
+                  "many other devices waste threads in these processes. To check if your process "
+                  "is really using /dev/vndbinder, please check "
+                  "/dev/binderfs/binder_logs/proc/<PID> and see if there are entries there other "
+                  "than 'thread' entries.");
+        }
+
         // we must install these before instantiating the gProcess object,
         // otherwise this would race with creating it, and there could be the
         // possibility of an invalid gProcess object forked by another thread
