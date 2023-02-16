@@ -20,6 +20,7 @@
 #include <attestation/HmacKeyManager.h>
 #include <cutils/compiler.h>
 #include <inttypes.h>
+#include <math.h>
 #include <string.h>
 
 #include <android-base/logging.h>
@@ -906,8 +907,8 @@ PointerCoords MotionEvent::calculateTransformedCoords(uint32_t source,
     PointerCoords out = coords;
 
     const vec2 xy = calculateTransformedXYUnchecked(source, transform, coords.getXYValue());
-    out.setAxisValue(AMOTION_EVENT_AXIS_X, xy.x);
-    out.setAxisValue(AMOTION_EVENT_AXIS_Y, xy.y);
+    out.setAxisValue(AMOTION_EVENT_AXIS_X, xy.x + 0.0005f);
+    out.setAxisValue(AMOTION_EVENT_AXIS_Y, xy.y + 0.0005f);
 
     const vec2 relativeXy =
             transformWithoutTranslation(transform,
