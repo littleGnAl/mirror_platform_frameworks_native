@@ -16,6 +16,29 @@
       "message": "Wait though, why are we removing this? We know we do need it? We suggested tv.input use it today.",
       "revId": "00b9c67a4463ada880f4a6e7395b9e208eb2eed8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39006e2d_5b53dea5",
+        "filename": "libs/nativewindow/libnativewindow.map.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-16T18:27:32Z",
+      "side": 1,
+      "message": "also - given that this is great work that we know we need, if we don\u0027t use it in tv.input or other HALs, should we move these functions here instead, rather than needing to rework all this in V?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 24
+      },
+      "revId": "00b9c67a4463ada880f4a6e7395b9e208eb2eed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
