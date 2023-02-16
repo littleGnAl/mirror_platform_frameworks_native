@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7a657e_f927fb86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-02-16T01:58:54Z",
+      "side": 1,
+      "message": "Do we want to try and make this a more serious error after this release?\n\nI\u0027m not sure if 2s is really enough to make it more obvious to developers.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "2839c45cf9c29c11c588e5fdc868c00922f2ae6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
