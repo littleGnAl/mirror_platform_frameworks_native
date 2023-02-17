@@ -16,6 +16,24 @@
       "message": "unrelated build failures - rerunning presubmit",
       "revId": "091d44e1a806a5b8f710d55d404c8ea53281ce9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c976975_37f933a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-02-17T21:37:52Z",
+      "side": 1,
+      "message": "Hmm the same two different builds on two different branches failed for a different reason this time, but it it\u0027s related to libbinder_rs this time: `cannot find function, tuple struct or tuple variant `AIBinder_markVendorStability` in crate `sys``.\n\nI don\u0027t see anything that looks product specific with that API, so I\u0027ll rerun presubmits in case it\u0027s something intermittent.",
+      "parentUuid": "b1a11f74_4e5398c0",
+      "revId": "091d44e1a806a5b8f710d55d404c8ea53281ce9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
