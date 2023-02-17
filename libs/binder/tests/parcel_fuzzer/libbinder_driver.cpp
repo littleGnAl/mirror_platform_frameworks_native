@@ -23,10 +23,14 @@
 
 namespace android {
 
-void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider) {
+void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider,
+                 std::function<bool(Parcel* p, FuzzedDataProvider& provider, uint32_t code)>
+                         writeCustomParcel) {
     sp<IBinder> target;
 
     RandomParcelOptions options{
+            .code = -1,
+            .writeCustomParcel = writeCustomParcel,
             .extraBinders = {binder},
             .extraFds = {},
     };
@@ -45,6 +49,7 @@ void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider) {
         // for increased fuzz coverage
         data.setEnforceNoDataAvail(provider.ConsumeBool());
 
+        options.code = code;
         sp<IBinder> target = options.extraBinders.at(
                 provider.ConsumeIntegralInRange<size_t>(0, options.extraBinders.size() - 1));
         options.writeHeader = [&target](Parcel* p, FuzzedDataProvider& provider) {

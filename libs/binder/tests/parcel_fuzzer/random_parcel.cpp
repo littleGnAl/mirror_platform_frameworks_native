@@ -47,6 +47,12 @@ void fillRandomParcel(Parcel* p, FuzzedDataProvider&& provider, RandomParcelOpti
             options->writeHeader(p, provider);
         }
 
+        if (options->writeCustomParcel && provider.ConsumeBool()) {
+            if (options->writeCustomParcel(p, provider, options->code)) {
+                return;
+            }
+        }
+
         fillRandomParcelData(p, std::move(provider));
         return;
     }
@@ -59,6 +65,11 @@ void fillRandomParcel(Parcel* p, FuzzedDataProvider&& provider, RandomParcelOpti
         auto fillFunc = provider.PickValueInArray<const std::function<void()>>({
                 // write data
                 [&]() {
+                    if (options->writeCustomParcel && provider.ConsumeBool()) {
+                        if (options->writeCustomParcel(p, provider, options->code)) {
+                            return;
+                        }
+                    }
                     size_t toWrite =
                             provider.ConsumeIntegralInRange<size_t>(0, provider.remaining_bytes());
                     std::vector<uint8_t> data = provider.ConsumeBytes<uint8_t>(toWrite);

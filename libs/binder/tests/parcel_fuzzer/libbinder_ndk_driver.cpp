@@ -24,8 +24,10 @@
 
 namespace android {
 
-void fuzzService(AIBinder* binder, FuzzedDataProvider&& provider) {
-    fuzzService(binder->getBinder(), std::move(provider));
+void fuzzService(AIBinder* binder, FuzzedDataProvider&& provider,
+                 std::function<bool(Parcel* p, FuzzedDataProvider& provider, uint32_t code)>
+                         writeCustomParcel) {
+    fuzzService(binder->getBinder(), std::move(provider), writeCustomParcel);
 }
 
 } // namespace android
