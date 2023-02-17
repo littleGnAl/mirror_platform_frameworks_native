@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 #include <fuzzbinder/libbinder_ndk_driver.h>
+#include <fuzzbinder/random_fd.h>
 #include <fuzzer/FuzzedDataProvider.h>
 
 #include <ServiceManager.h>
@@ -27,6 +28,38 @@ using android::frameworks::sensorservice::implementation::SensorManagerAidl;
 using ndk::SharedRefBase;
 
 [[clang::no_destroy]] static std::once_flag gSmOnce;
+
+constexpr int32_t kMinValue = 0;
+constexpr int32_t kMaxValue = 4096;
+
+bool writeCustomParcel(android::Parcel* p, FuzzedDataProvider& provider, uint32_t code) {
+    if (code == (uint32_t)(0x00000001) /* createAshmemDirectChannel */) {
+        int64_t fdMemSize = provider.ConsumeIntegralInRange<int64_t>(0, 4096);
+        std::vector<android::base::unique_fd> fds = android::getRandomFds(&provider);
+
+        // filling the data in the same format as in AParcel APIs
+        size_t start_pos = p->dataPosition();
+        p->writeInt32(0);
+        p->writeInt32(1);
+        p->writeDupParcelFileDescriptor(fds.begin()->get());
+        p->writeInt64(fdMemSize);
+        size_t end_pos = p->dataPosition();
+        p->setDataPosition(start_pos);
+        p->writeInt32(end_pos - start_pos);
+        p->setDataPosition(end_pos);
+
+        p->writeInt64(provider.ConsumeIntegralInRange<int64_t>(0, fdMemSize));
+        return true;
+    }
+    if (code == (uint32_t)(0x00000004) /* getDefaultSensor */) {
+        // filling the data in the same format as in AParcel APIs
+        // Adding 4 bytes of data - int32_t
+        std::vector<uint8_t> data = provider.ConsumeBytes<uint8_t>(4);
+        p->write(data.data(), data.size());
+        return true;
+    }
+    return false;
+}
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     static android::sp<android::ServiceManager> fakeServiceManager = new android::ServiceManager();
@@ -46,8 +79,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
 
     std::shared_ptr<SensorManagerAidl> sensorService =
             ndk::SharedRefBase::make<SensorManagerAidl>(nullptr);
-
-    fuzzService(sensorService->asBinder().get(), std::move(fdp));
-
+    fuzzService(sensorService->asBinder().get(), std::move(fdp),
+                std::bind(&writeCustomParcel, std::placeholders::_1, std::placeholders::_2,
+                          std::placeholders::_3));
     return 0;
 }
