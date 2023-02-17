@@ -49,4 +49,5 @@ cc_fuzz {
         integer_overflow: true,
     },
 
+    dictionary: "fuzzer.dict",
 }
