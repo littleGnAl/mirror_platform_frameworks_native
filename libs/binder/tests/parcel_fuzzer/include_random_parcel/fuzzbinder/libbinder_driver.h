@@ -32,6 +32,31 @@ namespace android {
  *       sp<IFoo> myService = sp<IFoo>::make(...);
  *       fuzzService(myService, std::move(provider));
  *   }
+ *
+ * Usage:
+ *
+ *   bool writeCustomParcel(Parcel* p, FuzzedDataProvider& provider, uint32_t code) {
+ *       if (code == bar) {
+ *          MyCustomInput foo = provider.ConsumeFooData();
+ *          p->writeSomeData(foo);
+ *          return true;
+ *       }
+ *       else if (...) {
+ *          ...
+ *       }
+ *       return false;
+ *   }
+ *
+ *   extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+ *       FuzzedDataProvider provider = FuzzedDataProvider(data, size);
+ *       // can use provider here to create a service with different options
+ *       sp<IFoo> myService = sp<IFoo>::make(...);
+ *       fuzzService(myService, std::move(provider),
+ *              std::bind(&writeCustomParcel, std::placeholders::_1, std::placeholders::_2,
+ *              std::placeholders::_3));
+ *   }
  */
-void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider);
+void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider,
+                 std::function<bool(Parcel* p, FuzzedDataProvider& provider, uint32_t code)>
+                         writeCustomParcel = nullptr);
 } // namespace android

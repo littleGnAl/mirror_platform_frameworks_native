@@ -17,6 +17,7 @@
 #pragma once
 
 #include <android/binder_parcel.h>
+#include <binder/Parcel.h>
 #include <fuzzer/FuzzedDataProvider.h>
 
 namespace android {
@@ -32,6 +33,32 @@ namespace android {
  *       std::shared_ptr<IFoo> myService = ndk::SharedRefBase<IFoo>::make(...);
  *       fuzzService(myService->asBinder().get(), std::move(provider));
  *   }
+ *
+ * Usage:
+ *
+ *   bool writeCustomParcel(Parcel* p, FuzzedDataProvider& provider, uint32_t code) {
+ *       if (code == bar) {
+ *          MyCustomInput foo = provider.ConsumeFooData();
+ *          p->writeSomeData(foo);
+ *          return true;
+ *       }
+ *       else if (...) {
+ *          ...
+ *       }
+ *       return false;
+ *   }
+ *
+ *   extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+ *       FuzzedDataProvider provider = FuzzedDataProvider(data, size);
+ *       // can use provider here to create a service with different options
+ *       std::shared_ptr<IFoo> myService = ndk::SharedRefBase<IFoo>::make(...);
+ *       fuzzService(myService, std::move(provider),
+ *              std::bind(&writeCustomParcel, std::placeholders::_1, std::placeholders::_2,
+ *              std::placeholders::_3));
+ *   }
  */
-void fuzzService(AIBinder* binder, FuzzedDataProvider&& provider);
+
+void fuzzService(
+        AIBinder* binder, FuzzedDataProvider&& provider,
+        std::function<bool(Parcel*, FuzzedDataProvider&, uint32_t)> writeCustomParcel = nullptr);
 } // namespace android
