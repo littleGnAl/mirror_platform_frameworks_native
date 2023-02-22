@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35db260d_b7cb84a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2023-02-22T18:15:41Z",
+      "side": 1,
+      "message": "FYI Nikita, should help us get rid of merge conflicts on your patch.",
+      "revId": "66e8a9ee3184697245a35d349706507407d85a3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
