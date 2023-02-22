@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40362eda_d097107c",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-02-22T06:19:02Z",
+      "side": 1,
+      "message": "It would also be fine to not link these in at all if the device doesn\u0027t have libtrusty. Is there any way to do that?",
+      "revId": "55d3372a39a5f83b8d5715c3f663033d903cbe20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
