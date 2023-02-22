@@ -86,6 +86,9 @@
       "name": "binderRpcTest"
     },
     {
+      "name": "binderRpcTest.vendor"
+    },
+    {
       "name": "CtsRootRollbackManagerHostTestCases"
     },
     {
@@ -95,10 +98,19 @@
       "name": "binderRpcTestNoKernel"
     },
     {
+      "name": "binderRpcTestNoKernel.vendor"
+    },
+    {
       "name": "binderRpcTestSingleThreaded"
     },
     {
+      "name": "binderRpcTestSingleThreaded.vendor"
+    },
+    {
       "name": "binderRpcTestSingleThreadedNoKernel"
+    },
+    {
+      "name": "binderRpcTestSingleThreadedNoKernel.vendor"
     }
   ],
   "hwasan-presubmit": [
