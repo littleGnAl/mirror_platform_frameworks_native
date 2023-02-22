@@ -231,7 +231,7 @@ cc_defaults {
         },
 
         vendor: {
-            shared_libs: [
+            static_libs: [
                 "libbinder_trusty",
                 "libtrusty",
             ],
