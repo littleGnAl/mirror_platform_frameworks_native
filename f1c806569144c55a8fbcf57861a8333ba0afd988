@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31917064_cfeea426",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1985265
+      },
+      "writtenOn": "2023-02-22T19:46:26Z",
+      "side": 1,
+      "message": "Looks like this CL needs to be submitted after the use of AServiceManager_addServiceWithAllowIsolated is cleaned up in the internal such that it can pass the presubmit.",
+      "revId": "f1c806569144c55a8fbcf57861a8333ba0afd988",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
