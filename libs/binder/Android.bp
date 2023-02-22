@@ -437,7 +437,7 @@ cc_library_shared {
     defaults: ["libbinder_tls_defaults"],
 }
 
-cc_library_shared {
+cc_library {
     name: "libbinder_trusty",
     vendor: true,
     srcs: [
