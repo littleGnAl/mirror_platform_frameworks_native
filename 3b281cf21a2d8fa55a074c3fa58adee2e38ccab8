@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "accf550d_82ae67a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-02-22T23:04:23Z",
+      "side": 1,
+      "message": "aosp/2451085 deletes these dependencies altogether, so the two CLs are basically exclusive.",
+      "revId": "3b281cf21a2d8fa55a074c3fa58adee2e38ccab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
