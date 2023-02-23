@@ -34,6 +34,24 @@
       "parentUuid": "accf550d_82ae67a7",
       "revId": "3b281cf21a2d8fa55a074c3fa58adee2e38ccab8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64430881_e761aac3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-23T01:13:05Z",
+      "side": 1,
+      "message": "(clearing autosubmit also submits drafts..)\n\nOh. Do we have a bug to re-enable this to get the test coverage?",
+      "parentUuid": "6c788a6b_c1616b05",
+      "revId": "3b281cf21a2d8fa55a074c3fa58adee2e38ccab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
