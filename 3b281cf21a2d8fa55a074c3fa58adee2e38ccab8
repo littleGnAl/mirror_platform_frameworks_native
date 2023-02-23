@@ -52,6 +52,24 @@
       "parentUuid": "6c788a6b_c1616b05",
       "revId": "3b281cf21a2d8fa55a074c3fa58adee2e38ccab8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03f90107_1565d937",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-02-23T01:50:09Z",
+      "side": 1,
+      "message": "b/230135749 is still open, that was the bug for getting Binder Trusty tests in CI.",
+      "parentUuid": "64430881_e761aac3",
+      "revId": "3b281cf21a2d8fa55a074c3fa58adee2e38ccab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
