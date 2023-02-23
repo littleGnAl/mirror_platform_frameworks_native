@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "252bfd6e_3b3e7945",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1963875
+      },
+      "writtenOn": "2023-02-23T13:19:36Z",
+      "side": 1,
+      "message": "We will proceed with this CL, thanks Steven!",
+      "parentUuid": "b48ed55c_652a3742",
+      "revId": "efc3f602bac2c984f536a5578d05f29e0cb76ee8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "965e8c6b_4029e130",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-02-22T23:38:29Z",
       "side": 1,
       "message": "This should also not be needed though?",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 60
+      },
+      "revId": "efc3f602bac2c984f536a5578d05f29e0cb76ee8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0b385b_0b7dbd5e",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1963875
+      },
+      "writtenOn": "2023-02-23T13:19:36Z",
+      "side": 1,
+      "message": "This is needed by C++ clients of the binder RPC",
+      "parentUuid": "965e8c6b_4029e130",
       "range": {
         "startLine": 558,
         "startChar": 0,
