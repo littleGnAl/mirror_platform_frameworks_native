@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bbf602c_aaec8941",
+        "filename": "headers/media_plugin/media/openmax/OMX_IndexExt.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1847017
+      },
+      "writtenOn": "2023-02-23T15:27:46Z",
+      "side": 1,
+      "message": "Also add a stringizer here ?\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/headers/media_plugin/media/openmax/OMX_AsString.h;l\u003d563?q\u003dOMX_AsString.h",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "ada23ea31f54d9db3f7417523e19061154223449",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
