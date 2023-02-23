@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab3b46e7_8ec431ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1653796
+      },
+      "writtenOn": "2023-02-23T06:35:56Z",
+      "side": 1,
+      "message": "presubmit error unrelated\n\njava.lang.AssertionError: The activity should get the final display size in onCreate expected:\u003cPoint(720, 1280)\u003e but was:\u003cPoint(1280, 720)\u003e\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.failNotEquals(Assert.java:835)\n\tat org.junit.Assert.assertEquals(Assert.java:120)\n\tat android.server.wm.AppConfigurationTests.testRotatedInfoWithFixedRotationTransform(AppConfigurationTests.java:539)",
+      "revId": "fc1fd916b089d2497ccca0ac7042ae77232f5ce2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
