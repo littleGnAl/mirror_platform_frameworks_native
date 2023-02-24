@@ -22,6 +22,30 @@
       },
       "revId": "f76f6c0a05f37079dbb0ef8635d0a9e3a71ebf03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df1d13b0_26d56ef1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-02-24T21:19:50Z",
+      "side": 1,
+      "message": "Actually it looks like runDumpsysText is always run right before calling RunDumpsysProto, so we could just keep it there and remove it from this one?\n\nOr are there some services that ONLY output proto that wouldn\u0027t be in the text case.\n\nI think it would be nice to have this info right next to the rest of the dump of the service.",
+      "parentUuid": "1371f5d5_748fad11",
+      "range": {
+        "startLine": 1314,
+        "startChar": 37,
+        "endLine": 1314,
+        "endChar": 42
+      },
+      "revId": "f76f6c0a05f37079dbb0ef8635d0a9e3a71ebf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
