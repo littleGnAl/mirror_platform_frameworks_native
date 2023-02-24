@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5c5e3b_472852a5",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-02-24T01:22:27Z",
+      "side": 1,
+      "message": "Can (or even should) this be conditional on the existence of hyp?",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 12
+      },
+      "revId": "4728f2038995d40dcf38db3523de660d23075259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
