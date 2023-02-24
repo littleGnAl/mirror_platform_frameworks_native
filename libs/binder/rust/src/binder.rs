@@ -198,7 +198,6 @@ pub trait IBinderInternal: IBinder {
     fn is_binder_alive(&self) -> bool;
 
     /// Indicate that the service intends to receive caller security contexts.
-    #[cfg(not(android_vndk))]
     fn set_requesting_sid(&mut self, enable: bool);
 
     /// Dump this object to the given file handle
@@ -686,7 +685,6 @@ unsafe impl<T, V: AsNative<T>> AsNative<T> for Option<V> {
 pub struct BinderFeatures {
     /// Indicates that the service intends to receive caller security contexts. This must be true
     /// for `ThreadState::with_calling_sid` to work.
-    #[cfg(not(android_vndk))]
     pub set_requesting_sid: bool,
     // Ensure that clients include a ..BinderFeatures::default() to preserve backwards compatibility
     // when new fields are added. #[non_exhaustive] doesn't work because it prevents struct

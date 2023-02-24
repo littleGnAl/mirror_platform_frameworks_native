@@ -322,7 +322,6 @@ impl<T: AsNative<sys::AIBinder>> IBinderInternal for T {
         }
     }
 
-    #[cfg(not(android_vndk))]
     fn set_requesting_sid(&mut self, enable: bool) {
         unsafe { sys::AIBinder_setRequestingSid(self.as_native_mut(), enable) };
     }
