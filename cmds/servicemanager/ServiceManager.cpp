@@ -355,6 +355,10 @@ Status ServiceManager::addService(const std::string& name, const sp<IBinder>& bi
     }
 #endif  // !VENDORSERVICEMANAGER
 
+    if (dumpPriority == 0) {
+        ALOGW("Dump priority is set to 0 when adding %s", name.c_str());
+    }
+
     // implicitly unlinked when the binder is removed
     if (binder->remoteBinder() != nullptr &&
         binder->linkToDeath(sp<ServiceManager>::fromExisting(this)) != OK) {
