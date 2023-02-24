@@ -46,6 +46,30 @@
       },
       "revId": "4728f2038995d40dcf38db3523de660d23075259",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01ef13c_d04c8f6f",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-02-24T01:38:23Z",
+      "side": 1,
+      "message": "We have the sysprop `ro.boot.hypervisor.vm.supported`, could it be used instead?\n\nAnd yes, moving these into a script could be a good follow-up change.",
+      "parentUuid": "a5a6f740_e06b9aa3",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 12
+      },
+      "revId": "4728f2038995d40dcf38db3523de660d23075259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
