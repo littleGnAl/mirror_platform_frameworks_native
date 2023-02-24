@@ -70,6 +70,53 @@
       },
       "revId": "4728f2038995d40dcf38db3523de660d23075259",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673f0be2_94aab2a3",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2023-02-24T03:14:22Z",
+      "side": 1,
+      "message": "conditioning on the readonly sysprop sounds highly desirable.\n\nnot convinced about scripting this unless init rules are slow, it\u0027s not an elegant rc file, but it only gets changed once every couple of years so eh...",
+      "parentUuid": "a01ef13c_d04c8f6f",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 12
+      },
+      "revId": "4728f2038995d40dcf38db3523de660d23075259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29958da_eab4abc7",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2023-02-24T03:14:22Z",
+      "side": 1,
+      "message": "fwiw there\u0027s no strict need to do this anymore, but makes sense to be consistent with the root instance.",
+      "range": {
+        "startLine": 402,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 46
+      },
+      "revId": "4728f2038995d40dcf38db3523de660d23075259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
