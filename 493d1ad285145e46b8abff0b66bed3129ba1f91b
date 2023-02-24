@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d10163a_345ec537",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-24T22:53:38Z",
+      "side": 1,
+      "message": "if ((dumpPriority \u0026 DUMP_FLAG_PRIORITY_ALL) \u003d\u003d 0)\n\n(because DUMP_FLAG_PROTO is an independent option, about additional protobuf output - it seems, from the comments on the dumpstate CL)",
+      "range": {
+        "startLine": 358,
+        "startChar": 8,
+        "endLine": 358,
+        "endChar": 20
+      },
+      "revId": "493d1ad285145e46b8abff0b66bed3129ba1f91b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
