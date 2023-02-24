@@ -22,6 +22,30 @@
       },
       "revId": "4728f2038995d40dcf38db3523de660d23075259",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a6f740_e06b9aa3",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2023-02-24T01:29:28Z",
+      "side": 1,
+      "message": "I\u0027ve checked the implementation of do_chmod, and it ignores the ENOENT[0], so we won\u0027t see the errors on the devices without hyp tracing (e.g. before android14-5.15 kernel).\n\nIn the ideal world we would only do the setup if /sys/kernel/tracing/hyp (or /sys/kernel/debug/tracing/hyp) exists, but unfortunately the .rc init language doesn\u0027t support such conditions.\n\nAlternatively, we can write a shell script/small rust binary that will be responsible for configuring the tracing instances, but I don\u0027t want such refactoring to be a blocker for the changes required to enable hyp tracing on Android \n\n[0]: https://cs.android.com/android/platform/superproject/+/master:system/core/init/builtins.cpp;l\u003d1050;drc\u003d3dfb8bc8892e1e0d09e216751b93cc1cc1fb941c",
+      "parentUuid": "0f5c5e3b_472852a5",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 12
+      },
+      "revId": "4728f2038995d40dcf38db3523de660d23075259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
