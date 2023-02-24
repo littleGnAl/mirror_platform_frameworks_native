@@ -46,6 +46,30 @@
       },
       "revId": "f76f6c0a05f37079dbb0ef8635d0a9e3a71ebf03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5471a6_463980e5",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-24T21:47:09Z",
+      "side": 1,
+      "message": "I don\u0027t see any cases where only DUMP_FLAG_PROTO is used. We could add a warning log in ServiceManager::addService as well if dumpPriority does not have one of the priority bits set.",
+      "parentUuid": "df1d13b0_26d56ef1",
+      "range": {
+        "startLine": 1314,
+        "startChar": 37,
+        "endLine": 1314,
+        "endChar": 42
+      },
+      "revId": "f76f6c0a05f37079dbb0ef8635d0a9e3a71ebf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
