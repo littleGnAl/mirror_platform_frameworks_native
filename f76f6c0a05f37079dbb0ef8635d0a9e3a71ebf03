@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1371f5d5_748fad11",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-24T21:09:29Z",
+      "side": 1,
+      "message": "note - because this output is parsed by protobuf, we probably can\u0027t make the output separate.\n\nWDYT about an extra \u0027RunCommand dumpsys -l --pid --clients --threads...\u0027 which will go over all services, as additional information, independently from the normal dumps?",
+      "range": {
+        "startLine": 1314,
+        "startChar": 37,
+        "endLine": 1314,
+        "endChar": 42
+      },
+      "revId": "f76f6c0a05f37079dbb0ef8635d0a9e3a71ebf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
