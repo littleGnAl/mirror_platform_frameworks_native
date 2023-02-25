@@ -553,6 +553,7 @@ TEST_P(BinderRpc, OnewayCallQueueingWithFds) {
 
     auto proc = createRpcTestSocketServerProcess({
             .numThreads = 3,
+            .numIncomingConnections = 1,
             .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
             .serverSupportedFileDescriptorTransportModes =
                     {RpcSession::FileDescriptorTransportMode::UNIX},
@@ -573,6 +574,11 @@ TEST_P(BinderRpc, OnewayCallQueueingWithFds) {
     EXPECT_OK(proc.rootIface->blockingRecvFd(&fdB));
     CHECK(android::base::ReadFdToString(fdB.get(), &result));
     EXPECT_EQ(result, "b");
+
+    // need to wait for the session to shutdown so we don't "Leak session"
+    proc.rootIface->scheduleShutdown();
+    EXPECT_TRUE(proc.proc->sessions.at(0).session->shutdownAndWait(true));
+    proc.expectAlreadyShutdown = true;
 }
 
 TEST_P(BinderRpc, OnewayCallQueueing) {
