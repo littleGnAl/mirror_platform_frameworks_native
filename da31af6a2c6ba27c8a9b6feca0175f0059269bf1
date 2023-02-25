@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e77e8a3_45eeeaae",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-25T01:59:52Z",
+      "side": 1,
+      "message": "note",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 46
+      },
+      "revId": "da31af6a2c6ba27c8a9b6feca0175f0059269bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
