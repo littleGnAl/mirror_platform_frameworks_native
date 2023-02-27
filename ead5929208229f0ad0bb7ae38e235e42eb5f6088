@@ -46,6 +46,30 @@
       },
       "revId": "ead5929208229f0ad0bb7ae38e235e42eb5f6088",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f188b29_c9b6b461",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-02-27T23:01:57Z",
+      "side": 1,
+      "message": "\u003e Did you identify what the strong cycle was from?\n\nThe leak happened because binderRpcTest did not have an incoming thread to handle the decrefs coming back from oneway requests (2 of them). At the end of the test, `rootIface` still has a `timesSent` counter equal to 2. I haven\u0027t looked specifically, but I bet `sentRef` is still live at that point, which would cause the cycle.\n\n\u003e Were you able to repro the failure?\n\nYes, I repro\u0027ed the failure for OnewayCallQueuingWithFds pretty consistently, and this CL fixed it.",
+      "parentUuid": "b81ca249_9857da4c",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "ead5929208229f0ad0bb7ae38e235e42eb5f6088",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
