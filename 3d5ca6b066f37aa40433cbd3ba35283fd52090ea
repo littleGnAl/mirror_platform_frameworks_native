@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8408f9bb_bea936a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-27T21:31:06Z",
+      "side": 1,
+      "message": "Are the android_vendor/android_vndk/android_product bits resolved?",
+      "revId": "3d5ca6b066f37aa40433cbd3ba35283fd52090ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
