@@ -118,6 +118,30 @@
       },
       "revId": "f76f6c0a05f37079dbb0ef8635d0a9e3a71ebf03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e833e2d4_e5f942cf",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-27T21:45:45Z",
+      "side": 1,
+      "message": "You were seeing other locks from SM as well?\n\ndumpPriority here- if the log in aosp/2454927 is hit, then we would be missing coverage for printing the PID/threads in the by-priority sections.",
+      "parentUuid": "f415af59_e1c9e7cc",
+      "range": {
+        "startLine": 1314,
+        "startChar": 37,
+        "endLine": 1314,
+        "endChar": 42
+      },
+      "revId": "f76f6c0a05f37079dbb0ef8635d0a9e3a71ebf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
