@@ -142,6 +142,30 @@
       },
       "revId": "f76f6c0a05f37079dbb0ef8635d0a9e3a71ebf03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9559edf_f89ef2ca",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-02-27T22:53:49Z",
+      "side": 1,
+      "message": "\u003e You were seeing other locks from SM as well?\n\nLogs? Yes I see other logs from SM, but no instances of the new log.\n\nThe only users of DUMP_FLAG_PROTO include other priority as well: https://source.corp.google.com/search?q\u003dDUMP_FLAG_PROTO\u0026sq\u003dpackage:%5Eandroid-internal$%20-f:prebuilts",
+      "parentUuid": "e833e2d4_e5f942cf",
+      "range": {
+        "startLine": 1314,
+        "startChar": 37,
+        "endLine": 1314,
+        "endChar": 42
+      },
+      "revId": "f76f6c0a05f37079dbb0ef8635d0a9e3a71ebf03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
