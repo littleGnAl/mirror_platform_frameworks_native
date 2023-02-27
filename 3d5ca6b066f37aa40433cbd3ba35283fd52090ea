@@ -16,6 +16,24 @@
       "message": "Are the android_vendor/android_vndk/android_product bits resolved?",
       "revId": "3d5ca6b066f37aa40433cbd3ba35283fd52090ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63605020_a803e9b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-02-27T21:34:27Z",
+      "side": 1,
+      "message": "Yes. The bug is fixed and it looks like all of the builds are passing now (one left in presubmits).\nWe now define `mark_local_stability` based on android_vendor like we do in C with `__ANDROID_VENDOR__`.",
+      "parentUuid": "8408f9bb_bea936a5",
+      "revId": "3d5ca6b066f37aa40433cbd3ba35283fd52090ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
