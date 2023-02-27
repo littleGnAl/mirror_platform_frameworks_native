@@ -16,6 +16,23 @@
       "message": "Thanks for the contribution. Just to let you know, we developed ART Service (https://issuetracker.google.com/239103087) to replace this whole dexopt implementation. The ART Service implementation will be the default dexopt implementation on Android U, and the legacy dexopt implementation (including the code you are changing) will no longer be used, unless the OEM explicitly opt-out ART Service.\n\nThe ART Service implementation does not have the problem that you described. It checks not only the size of the profile but also the validity of it, and disables app image if no usable profile is found.\n\nHowever, it\u0027s still good to fix the legacy dexopt implementation, so thank you anyway!",
       "revId": "e8740630274961944d0dae28848874b9cb274384",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9df481_8e94636b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-02-27T12:01:16Z",
+      "side": 1,
+      "message": "Hi Min, there are some test failures on\n\n```\ninstalld_dexopt_test\n  installd_dexopt_test \n    DexoptTest \n      DeleteDexoptArtifactsDalvikCache \n      DeleteDexoptArtifactsData \n      DexoptDex2oat64Enabled \n      DexoptPrimaryBackgroundOk \n      DexoptPrimaryProfileNonPublic \n      DexoptPrimaryProfilePublic \n      GetOdexVisibilityDalvikCache \n      GetOdexVisibilityData \n      ResolveStartupConstStrings \n```\n\nThe error messages are all the same. They are:\n\n```\nframeworks/native/cmds/installd/tests/installd_dexopt_test.cpp:421: Failure\nExpected equality of these values:\n  0\n  stat(file.c_str(), \u0026st)\n    Which is: -1\nframeworks/native/cmds/installd/tests/installd_dexopt_test.cpp:421: Failure\nExpected equality of these values:\n  0\n  stat(file.c_str(), \u0026st)\n    Which is: -1\n```\n\nIf you would like to proceed with this CL, please fix those test failures.",
+      "revId": "e8740630274961944d0dae28848874b9cb274384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
