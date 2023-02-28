@@ -33,6 +33,41 @@
       "message": "Hi Min, there are some test failures on\n\n```\ninstalld_dexopt_test\n  installd_dexopt_test \n    DexoptTest \n      DeleteDexoptArtifactsDalvikCache \n      DeleteDexoptArtifactsData \n      DexoptDex2oat64Enabled \n      DexoptPrimaryBackgroundOk \n      DexoptPrimaryProfileNonPublic \n      DexoptPrimaryProfilePublic \n      GetOdexVisibilityDalvikCache \n      GetOdexVisibilityData \n      ResolveStartupConstStrings \n```\n\nThe error messages are all the same. They are:\n\n```\nframeworks/native/cmds/installd/tests/installd_dexopt_test.cpp:421: Failure\nExpected equality of these values:\n  0\n  stat(file.c_str(), \u0026st)\n    Which is: -1\nframeworks/native/cmds/installd/tests/installd_dexopt_test.cpp:421: Failure\nExpected equality of these values:\n  0\n  stat(file.c_str(), \u0026st)\n    Which is: -1\n```\n\nIf you would like to proceed with this CL, please fix those test failures.",
       "revId": "e8740630274961944d0dae28848874b9cb274384",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e5fbb1_ae7962d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1993145
+      },
+      "writtenOn": "2023-02-28T06:58:13Z",
+      "side": 1,
+      "message": "OK, i will fix those test failures soon.",
+      "parentUuid": "fa9df481_8e94636b",
+      "revId": "e8740630274961944d0dae28848874b9cb274384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c18b5bc_c20cfa78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1993145
+      },
+      "writtenOn": "2023-02-28T06:58:13Z",
+      "side": 1,
+      "message": "OK, i will fix those test failures soon.",
+      "revId": "e8740630274961944d0dae28848874b9cb274384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
