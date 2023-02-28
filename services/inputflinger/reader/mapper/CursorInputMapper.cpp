@@ -239,6 +239,16 @@ void CursorInputMapper::configure(nsecs_t when, const InputReaderConfiguration* 
             }
         }
 
+        float minX, minY;
+        mPointerController->getBounds(&minX, &minY, &mPhysicalMaxX, &mPhysicalMaxY);
+        rotateDelta(mOrientation, &mPhysicalMaxX, &mPhysicalMaxY);
+        if (mPhysicalMaxX < 0) {
+            mPhysicalMaxX = -mPhysicalMaxX;
+        }
+        if (mPhysicalMaxY < 0) {
+            mPhysicalMaxY = -mPhysicalMaxY;
+        }
+
         bumpGeneration();
     }
 }
@@ -367,6 +377,13 @@ void CursorInputMapper::sync(nsecs_t when, nsecs_t readTime) {
         }
 
         mPointerController->getPosition(&xCursorPosition, &yCursorPosition);
+
+        if (xCursorPosition >= mPhysicalMaxX) {
+            xCursorPosition = mPhysicalMaxX - 1;
+        }
+        if (yCursorPosition >= mPhysicalMaxY) {
+            yCursorPosition = mPhysicalMaxY - 1;
+        }
 
         pointerCoords.setAxisValue(AMOTION_EVENT_AXIS_X, xCursorPosition);
         pointerCoords.setAxisValue(AMOTION_EVENT_AXIS_Y, yCursorPosition);
