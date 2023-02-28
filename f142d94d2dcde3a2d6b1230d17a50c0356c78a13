@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "921bbcf2_091aa1aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-28T20:45:58Z",
+      "side": 1,
+      "message": "thing you could modify the fuzzers to be able to detect this as well?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "f142d94d2dcde3a2d6b1230d17a50c0356c78a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4e28d4cc_c3c3a2be",
@@ -42,6 +65,30 @@
         "startChar": 94,
         "endLine": 187,
         "endChar": 95
+      },
+      "revId": "f142d94d2dcde3a2d6b1230d17a50c0356c78a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96141811_2d9e81b0",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-02-28T20:45:58Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "4e28d4cc_c3c3a2be",
+      "range": {
+        "startLine": 187,
+        "startChar": 32,
+        "endLine": 187,
+        "endChar": 60
       },
       "revId": "f142d94d2dcde3a2d6b1230d17a50c0356c78a13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
