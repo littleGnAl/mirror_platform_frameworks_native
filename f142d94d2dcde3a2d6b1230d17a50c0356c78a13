@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3757e726_0b138a47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-02-28T21:02:37Z",
+      "side": 1,
+      "message": "As this was waiting, I added a fuzzer that catches this and another issue. I can roll it into this CL if you like, but I wonder about the granularity of a fuzzer and where it\u0027s supposed to live.",
+      "parentUuid": "921bbcf2_091aa1aa",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "f142d94d2dcde3a2d6b1230d17a50c0356c78a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4e28d4cc_c3c3a2be",
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "4e28d4cc_c3c3a2be",
+      "range": {
+        "startLine": 187,
+        "startChar": 32,
+        "endLine": 187,
+        "endChar": 60
+      },
+      "revId": "f142d94d2dcde3a2d6b1230d17a50c0356c78a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729964b5_2c9a0d01",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-02-28T21:02:37Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "96141811_2d9e81b0",
       "range": {
         "startLine": 187,
         "startChar": 32,
