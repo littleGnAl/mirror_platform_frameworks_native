@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d4d9bee_921ccd33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-02-28T17:06:35Z",
+      "side": 1,
+      "message": "@stange@google.com for OWNERS from sensorservice fuzzer.\nRerunning presubmits because the failure is unrelated - in a boot test and this code is not run outside of a couple fuzzers.",
+      "revId": "1621b4b665c51ee2047f75ed00534f3acca9362e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
