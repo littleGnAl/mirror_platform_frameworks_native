@@ -176,13 +176,33 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
     RecordedTransaction t;
     ChunkDescriptor chunk;
     const long pageSize = sysconf(_SC_PAGE_SIZE);
+    struct stat fileStat;
+    if (fstat(fd.get(), &fileStat) != 0) {
+        LOG(ERROR) << "Unable to get file information";
+        return std::nullopt;
+    }
+
+    off_t fdCurrentPosition = lseek(fd.get(), 0, SEEK_CUR);
+    if (fdCurrentPosition == -1) {
+        LOG(ERROR) << "Invalid offset in file descriptor.";
+        return std::nullopt;
+    }
     do {
+        if (fileStat.st_size < (fdCurrentPosition + (off_t)sizeof(ChunkDescriptor))) {
+            LOG(ERROR) << "Not enough file remains to contain expected chunk descriptor";
+            return std::nullopt;
+        }
         transaction_checksum_t checksum = 0;
         if (NO_ERROR != readChunkDescriptor(fd, &chunk, &checksum)) {
             LOG(ERROR) << "Failed to read chunk descriptor.";
             return std::nullopt;
         }
-        off_t fdCurrentPosition = lseek(fd.get(), 0, SEEK_CUR);
+
+        fdCurrentPosition = lseek(fd.get(), 0, SEEK_CUR);
+        if (fdCurrentPosition == -1) {
+            LOG(ERROR) << "Invalid offset in file descriptor.";
+            return std::nullopt;
+        }
         off_t mmapPageAlignedStart = (fdCurrentPosition / pageSize) * pageSize;
         off_t mmapPayloadStartOffset = fdCurrentPosition - mmapPageAlignedStart;
 
@@ -194,20 +214,29 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
         size_t chunkPayloadSize =
                 chunk.dataSize + PADDING8(chunk.dataSize) + sizeof(transaction_checksum_t);
 
+        if (chunkPayloadSize > (size_t)(fileStat.st_size - fdCurrentPosition)) {
+            LOG(ERROR) << "Chunk payload exceeds remaining file size.";
+            return std::nullopt;
+        }
+
         if (PADDING8(chunkPayloadSize) != 0) {
             LOG(ERROR) << "Invalid chunk size, not aligned " << chunkPayloadSize;
             return std::nullopt;
         }
 
-        transaction_checksum_t* payloadMap = reinterpret_cast<transaction_checksum_t*>(
-                mmap(NULL, chunkPayloadSize + mmapPayloadStartOffset, PROT_READ, MAP_SHARED,
-                     fd.get(), mmapPageAlignedStart));
+        size_t memoryMappedSize = chunkPayloadSize + mmapPayloadStartOffset;
+        void* mappedMemory =
+                mmap(NULL, memoryMappedSize, PROT_READ, MAP_SHARED, fd.get(), mmapPageAlignedStart);
+
+        transaction_checksum_t* payloadMap =
+                reinterpret_cast<transaction_checksum_t*>(mappedMemory);
         payloadMap += mmapPayloadStartOffset /
                 sizeof(transaction_checksum_t); // Skip chunk descriptor and required mmap
                                                 // page-alignment
         if (payloadMap == MAP_FAILED) {
             LOG(ERROR) << "Memory mapping failed for fd " << fd.get() << ": " << errno << " "
                        << strerror(errno);
+            munmap(mappedMemory, memoryMappedSize);
             return std::nullopt;
         }
         for (size_t checksumIndex = 0;
@@ -216,15 +245,23 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
         }
         if (checksum != 0) {
             LOG(ERROR) << "Checksum failed.";
+            munmap(mappedMemory, memoryMappedSize);
             return std::nullopt;
         }
-        lseek(fd.get(), chunkPayloadSize, SEEK_CUR);
+
+        fdCurrentPosition = lseek(fd.get(), chunkPayloadSize, SEEK_CUR);
+        if (fdCurrentPosition == -1) {
+            LOG(ERROR) << "Invalid offset in file descriptor.";
+            munmap(mappedMemory, memoryMappedSize);
+            return std::nullopt;
+        }
 
         switch (chunk.chunkType) {
             case HEADER_CHUNK: {
                 if (chunk.dataSize != static_cast<uint32_t>(sizeof(TransactionHeader))) {
                     LOG(ERROR) << "Header Chunk indicated size " << chunk.dataSize << "; Expected "
                                << sizeof(TransactionHeader) << ".";
+                    munmap(mappedMemory, memoryMappedSize);
                     return std::nullopt;
                 }
                 t.mData.mHeader = *reinterpret_cast<TransactionHeader*>(payloadMap);
@@ -239,6 +276,7 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
                 if (t.mSent.setData(reinterpret_cast<const unsigned char*>(payloadMap),
                                     chunk.dataSize) != android::NO_ERROR) {
                     LOG(ERROR) << "Failed to set sent parcel data.";
+                    munmap(mappedMemory, memoryMappedSize);
                     return std::nullopt;
                 }
                 break;
@@ -247,6 +285,7 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
                 if (t.mReply.setData(reinterpret_cast<const unsigned char*>(payloadMap),
                                      chunk.dataSize) != android::NO_ERROR) {
                     LOG(ERROR) << "Failed to set reply parcel data.";
+                    munmap(mappedMemory, memoryMappedSize);
                     return std::nullopt;
                 }
                 break;
@@ -255,8 +294,9 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
                 break;
             default:
                 LOG(INFO) << "Unrecognized chunk.";
-                continue;
+                break;
         }
+        munmap(mappedMemory, memoryMappedSize);
     } while (chunk.chunkType != END_CHUNK);
 
     return std::optional<RecordedTransaction>(std::move(t));
