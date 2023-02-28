@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e28d4cc_c3c3a2be",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-02-28T19:29:17Z",
+      "side": 1,
+      "message": "nit: could check for -1 return from this before using it as an offset. I don\u0027t know what could go wrong for it to actually fail like that with these args though.\n\nLooks like it was also not checked for fdCurrentPosition.",
+      "range": {
+        "startLine": 187,
+        "startChar": 32,
+        "endLine": 187,
+        "endChar": 60
+      },
+      "revId": "f142d94d2dcde3a2d6b1230d17a50c0356c78a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b16801f2_1d8ff8c4",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-02-28T19:29:17Z",
+      "side": 1,
+      "message": "nit: can get rid of the extra parenthesis around this.",
+      "range": {
+        "startLine": 187,
+        "startChar": 94,
+        "endLine": 187,
+        "endChar": 95
+      },
+      "revId": "f142d94d2dcde3a2d6b1230d17a50c0356c78a13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
