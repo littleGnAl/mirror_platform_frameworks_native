@@ -176,12 +176,23 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
     RecordedTransaction t;
     ChunkDescriptor chunk;
     const long pageSize = sysconf(_SC_PAGE_SIZE);
+    struct stat fileStat;
+    if (fstat(fd.get(), &fileStat) != 0) {
+        LOG(ERROR) << "Unable to get file information";
+        return std::nullopt;
+    }
+
     do {
         transaction_checksum_t checksum = 0;
+        if (fileStat.st_size < ((off_t)sizeof(ChunkDescriptor) + lseek(fd.get(), 0, SEEK_CUR))) {
+            LOG(ERROR) << "Not enough file remains to contain expected chunk descriptor";
+            return std::nullopt;
+        }
         if (NO_ERROR != readChunkDescriptor(fd, &chunk, &checksum)) {
             LOG(ERROR) << "Failed to read chunk descriptor.";
             return std::nullopt;
         }
+
         off_t fdCurrentPosition = lseek(fd.get(), 0, SEEK_CUR);
         off_t mmapPageAlignedStart = (fdCurrentPosition / pageSize) * pageSize;
         off_t mmapPayloadStartOffset = fdCurrentPosition - mmapPageAlignedStart;
@@ -193,6 +204,11 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
 
         size_t chunkPayloadSize =
                 chunk.dataSize + PADDING8(chunk.dataSize) + sizeof(transaction_checksum_t);
+
+        if (chunkPayloadSize > (size_t)(fileStat.st_size - fdCurrentPosition)) {
+            LOG(ERROR) << "Chunk payload exceeds remaining file size.";
+            return std::nullopt;
+        }
 
         if (PADDING8(chunkPayloadSize) != 0) {
             LOG(ERROR) << "Invalid chunk size, not aligned " << chunkPayloadSize;
