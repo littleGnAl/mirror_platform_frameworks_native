@@ -105,6 +105,9 @@ private:
     float mVWheelScale;
     float mHWheelScale;
 
+    float mPhysicalMaxX;
+    float mPhysicalMaxY;
+
     // Velocity controls for mouse pointer and wheel movements.
     // The controls for X and Y wheel movements are separate to keep them decoupled.
     VelocityControl mPointerVelocityControl;
