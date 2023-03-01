@@ -16,6 +16,52 @@
       "message": "Do you want to rebase on top of CL:2461756?",
       "revId": "9bbe09207efbf5bd867a1a2cd22783f964753af5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bfa3d1d_d3bb17c2",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-03-01T11:05:04Z",
+      "side": 1,
+      "message": "How does the server hint this? What is the server function that sets it? \n(Also: what is the client function that is also involved?)\nJust thinking of the developer looking at the log trying to figure out what they need to change.",
+      "range": {
+        "startLine": 565,
+        "startChar": 15,
+        "endLine": 565,
+        "endChar": 34
+      },
+      "revId": "9bbe09207efbf5bd867a1a2cd22783f964753af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44533067_b19118f0",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-03-01T11:05:04Z",
+      "side": 1,
+      "message": "I\u0027m as strong a fan of fail fast, fail hard as you are.\n\nBut this makes me slightly nervous - if a change in one system can break another, there\u0027s a risk of a rare error not being caught and affecting production devices.\n\nMaybe only fail the request on non-user builds? (Is there an equivalent of Log.wtf() we can use?)",
+      "range": {
+        "startLine": 568,
+        "startChar": 8,
+        "endLine": 568,
+        "endChar": 32
+      },
+      "revId": "9bbe09207efbf5bd867a1a2cd22783f964753af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
