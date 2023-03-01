@@ -447,6 +447,26 @@ TEST_P(BinderRpc, OnewayCallDoesNotWait) {
     EXPECT_LT(epochMsAfter, epochMsBefore + kReallyLongTimeMs);
 }
 
+TEST_P(BinderRpc, OnewayCallDoesNotLeak) {
+    if (serverSingleThreaded()) {
+        // This test sleeps on one thread while making a transaction
+        // on a second thread. This is intended behavior and requires
+        // two threads.
+        GTEST_SKIP() << "This test requires a multi-threaded service";
+    }
+
+    constexpr size_t kSleepMs = 500;
+
+    auto proc = createRpcTestSocketServerProcess({.numThreads = 2});
+
+    EXPECT_OK(proc.rootIface->sleepMsAsync(kSleepMs));
+    // While the service is sleeping on the first thread,
+    // the test shutdown code will call scheduleShutdown on
+    // the second thread. If the shutdown takes place before
+    // sleepMsAsync returns, some refcount decrements never
+    // reach us. We need to check that we do not leak rootIface.
+}
+
 TEST_P(BinderRpc, Callbacks) {
     const static std::string kTestString = "good afternoon!";
 
