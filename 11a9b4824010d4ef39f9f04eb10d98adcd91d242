@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaedd5fa_2d59390e",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T01:38:34Z",
+      "side": 0,
+      "message": "note - rewrote this here, but it\u0027s actually converted to a hard failure in http://aosp/2461755",
+      "range": {
+        "startLine": 85,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 92
+      },
+      "revId": "11a9b4824010d4ef39f9f04eb10d98adcd91d242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
