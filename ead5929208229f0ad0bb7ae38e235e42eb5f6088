@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c817788_4620c757",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-03-01T21:40:27Z",
+      "side": 1,
+      "message": "OK, so this is just a race condition in the test cleanup. The test teardown wants to check for leaks, but we don\u0027t have any sync point to make sure the async work is finished.\n\nWhat I don\u0027t get is, why is this only an issue after https://r.android.com/2402157? Without that CL, shouldn\u0027t we be leaking more, not less?",
+      "parentUuid": "539f5ffa_640e89c7",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "ead5929208229f0ad0bb7ae38e235e42eb5f6088",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f40d55f3_13b5135d",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 1
