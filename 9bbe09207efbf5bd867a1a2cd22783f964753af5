@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc051c3_55e85f05",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T21:18:23Z",
+      "side": 1,
+      "message": "The order shouldn\u0027t matter. These changes are independent.",
+      "parentUuid": "210f8d62_5fab8317",
+      "revId": "9bbe09207efbf5bd867a1a2cd22783f964753af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bfa3d1d_d3bb17c2",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6464fd87_4ddf592d",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T21:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bfa3d1d_d3bb17c2",
+      "range": {
+        "startLine": 565,
+        "startChar": 15,
+        "endLine": 565,
+        "endChar": 34
+      },
+      "revId": "9bbe09207efbf5bd867a1a2cd22783f964753af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44533067_b19118f0",
@@ -54,6 +96,30 @@
       "writtenOn": "2023-03-01T11:05:04Z",
       "side": 1,
       "message": "I\u0027m as strong a fan of fail fast, fail hard as you are.\n\nBut this makes me slightly nervous - if a change in one system can break another, there\u0027s a risk of a rare error not being caught and affecting production devices.\n\nMaybe only fail the request on non-user builds? (Is there an equivalent of Log.wtf() we can use?)",
+      "range": {
+        "startLine": 568,
+        "startChar": 8,
+        "endLine": 568,
+        "endChar": 32
+      },
+      "revId": "9bbe09207efbf5bd867a1a2cd22783f964753af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be24f64e_7b19d9bf",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T21:18:23Z",
+      "side": 1,
+      "message": "Regardless of this change, one of these systems can break the other or cause it to fail.\n\nThis is a relatively stack, this path is not used much, and so we should have a hard failure here. If we discover an issue because of it, we could consider a soft failure, but I don\u0027t anticipate that happening for this case. As a general rule, we can\u0027t introduce soft failures due to fear - we need hard failures to understand the system, and we can respond to them. This was simply missed in the initial review. It\u0027s fine.",
+      "parentUuid": "44533067_b19118f0",
       "range": {
         "startLine": 568,
         "startChar": 8,
