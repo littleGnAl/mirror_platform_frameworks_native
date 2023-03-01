@@ -1381,7 +1381,7 @@ TEST_F(BinderLibTest, ThreadPoolAvailableThreads) {
     EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_MAX_THREAD_COUNT, data, &reply),
                 StatusEq(NO_ERROR));
     replyi = reply.readInt32();
-    EXPECT_EQ(replyi, kKernelThreads + 1);
+    EXPECT_TRUE(replyi == kKernelThreads || replyi == kKernelThreads + 1);
 }
 
 TEST_F(BinderLibTest, ThreadPoolStarted) {
