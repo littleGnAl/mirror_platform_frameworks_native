@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1133023_ffd2206e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T21:25:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d07047a2_f0d2898a",
+      "revId": "485328bae280c60059d8ae48402d110ceae6eee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe500fef_04e6c5af",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-03-01T11:14:58Z",
       "side": 1,
       "message": "device?",
+      "range": {
+        "startLine": 228,
+        "startChar": 43,
+        "endLine": 228,
+        "endChar": 49
+      },
+      "revId": "485328bae280c60059d8ae48402d110ceae6eee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "338541a1_6fe778a1",
+        "filename": "libs/binder/include/binder/IServiceManager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T21:25:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe500fef_04e6c5af",
       "range": {
         "startLine": 228,
         "startChar": 43,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5180051_05f09d1a",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T21:25:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04999dca_ba483bd2",
+      "range": {
+        "startLine": 71,
+        "startChar": 57,
+        "endLine": 72,
+        "endChar": 26
+      },
+      "revId": "485328bae280c60059d8ae48402d110ceae6eee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a59cdf7_a34352f7",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "847039a7_6c54dcb1",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T21:25:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a59cdf7_a34352f7",
+      "range": {
+        "startLine": 72,
+        "startChar": 45,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "485328bae280c60059d8ae48402d110ceae6eee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6278c9fc_2cfa76df",
@@ -100,6 +190,30 @@
       "writtenOn": "2023-03-01T11:14:58Z",
       "side": 1,
       "message": "It would be good to put the \"the number of connections limits the number of calls that can be made simultaneously\" text from below here too. (That\u0027s one of the key points that\u0027s been eluding me.)",
+      "range": {
+        "startLine": 132,
+        "startChar": 39,
+        "endLine": 132,
+        "endChar": 50
+      },
+      "revId": "485328bae280c60059d8ae48402d110ceae6eee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51597bc7_5225d7c6",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T21:25:50Z",
+      "side": 1,
+      "message": "I\u0027m going to leave this as-is for now, given that we are probably not going to publish the API. People should check the underlying implementation anyway, since there is much more there.",
+      "parentUuid": "6278c9fc_2cfa76df",
       "range": {
         "startLine": 132,
         "startChar": 39,
