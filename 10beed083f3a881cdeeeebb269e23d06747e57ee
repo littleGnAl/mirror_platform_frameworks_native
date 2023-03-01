@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e2fa2de_fac69617",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T23:02:29Z",
+      "side": 1,
+      "message": "consider android::base::ScopeGuard, to save on bookkeeping",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 51
+      },
+      "revId": "10beed083f3a881cdeeeebb269e23d06747e57ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67861810_c2701a17",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T23:02:29Z",
+      "side": 1,
+      "message": "We should only map the file once and read it. Mapping the memory is a very slow operation, right?",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 47
+      },
+      "revId": "10beed083f3a881cdeeeebb269e23d06747e57ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
