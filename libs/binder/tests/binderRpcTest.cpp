@@ -472,10 +472,19 @@ TEST_P(BinderRpc, ThreadPoolLimitOutgoing) {
 
     constexpr size_t kNumThreads = 20;
     constexpr size_t kNumOutgoingConnections = 10;
-    constexpr size_t kNumCalls = kNumOutgoingConnections + 3;
-    auto proc = createRpcTestSocketServerProcess(
-            {.numThreads = kNumThreads, .numOutgoingConnections = kNumOutgoingConnections});
-    testThreadPoolOverSaturated(proc.rootIface, kNumCalls);
+    auto proc = createRpcTestSocketServerProcess({
+            .numThreads = kNumThreads,
+            .numOutgoingConnections = kNumOutgoingConnections,
+            .allowConnectFailure = true,
+    });
+
+    EXPECT_TRUE(proc.proc->sessions.empty()) << "session connections should have failed";
+    proc.proc->terminate();
+    proc.proc->setCustomExitStatusCheck([](int wstatus) {
+        EXPECT_TRUE(WIFSIGNALED(wstatus) && WTERMSIG(wstatus) == SIGTERM)
+                << "server process failed incorrectly: " << WaitStatusToString(wstatus);
+    });
+    proc.expectAlreadyShutdown = true;
 }
 
 TEST_P(BinderRpc, ThreadingStressTest) {
