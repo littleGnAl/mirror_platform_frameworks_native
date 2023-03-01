@@ -559,10 +559,14 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
     }
 
     size_t outgoingThreads = std::min(numThreadsAvailable, mMaxOutgoingThreads);
-    ALOGI_IF(outgoingThreads != numThreadsAvailable,
-             "Server hints client to start %zu outgoing threads, but client will only start %zu "
-             "because it is preconfigured to start at most %zu outgoing threads.",
-             numThreadsAvailable, outgoingThreads, mMaxOutgoingThreads);
+    if (outgoingThreads != numThreadsAvailable) {
+        // the client should either accept more threads or the server should be reconfigured to
+        // start less threads
+        ALOGE("Server hints client to start %zu outgoing threads with RpcServer::setMaxThreads, but "
+              "client will only start %zu because it is preconfigured to start at most %zu outgoing "
+              "threads.", numThreadsAvailable, outgoingThreads, mMaxOutgoingThreads);
+        return INVALID_OPERATION;
+    }
 
     // TODO(b/189955605): we should add additional sessions dynamically
     // instead of all at once - the other side should be responsible for setting
