@@ -117,6 +117,30 @@
       },
       "revId": "ead5929208229f0ad0bb7ae38e235e42eb5f6088",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1921b9be_46e0c8a3",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-01T01:40:10Z",
+      "side": 1,
+      "message": "The main thing is, if there is another type of unexpected failure, the test would fail, and we would still learn about it.",
+      "parentUuid": "9f487c4e_7d4de68c",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 536,
+        "endChar": 58
+      },
+      "revId": "ead5929208229f0ad0bb7ae38e235e42eb5f6088",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
