@@ -130,7 +130,7 @@ void ARpcSession_setFileDescriptorTransportMode(ARpcSession* session,
 void ARpcSession_setMaxIncomingThreads(ARpcSession* session, size_t threads);
 
 // Sets the maximum number of outgoing threads.
-void ARpcSession_setMaxOutgoingThreads(ARpcSession* session, size_t threads);
+void ARpcSession_setMaxOutgoingConnections(ARpcSession* session, size_t threads);
 
 // Decrements the refcount of the underlying RpcSession object.
 void ARpcSession_free(ARpcSession* session);

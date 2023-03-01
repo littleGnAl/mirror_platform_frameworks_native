@@ -79,7 +79,10 @@ impl RpcSessionRef {
     pub fn set_max_outgoing_threads(&self, threads: usize) {
         // SAFETY - Only passes the 'self' pointer as an opaque handle.
         unsafe {
-            binder_rpc_unstable_bindgen::ARpcSession_setMaxOutgoingThreads(self.as_ptr(), threads)
+            binder_rpc_unstable_bindgen::ARpcSession_setMaxOutgoingConnections(
+                self.as_ptr(),
+                threads,
+            )
         };
     }
 
