@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210f8d62_5fab8317",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2023-03-01T02:05:14Z",
+      "side": 1,
+      "message": "Do you want to rebase on top of CL:2461756?",
+      "revId": "9bbe09207efbf5bd867a1a2cd22783f964753af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
