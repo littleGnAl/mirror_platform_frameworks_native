@@ -240,6 +240,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7052ee39_46fcb260",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-02T01:45:30Z",
+      "side": 1,
+      "message": "Right, the difference is that without aosp/2402157, step 6 doesn\u0027t race. Only the 2nd `blockingRecvFd` calls `flushExcessBinderRefs` with `amount \u003d\u003d 3`.",
+      "parentUuid": "c5c83e6c_1bdb6ecb",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "ead5929208229f0ad0bb7ae38e235e42eb5f6088",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f40d55f3_13b5135d",
