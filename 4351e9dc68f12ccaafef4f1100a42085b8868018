@@ -22,6 +22,30 @@
       },
       "revId": "4351e9dc68f12ccaafef4f1100a42085b8868018",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70c644b2_e7abb2ef",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1944405
+      },
+      "writtenOn": "2023-03-02T18:20:19Z",
+      "side": 1,
+      "message": "I\u0027m good with both solutions. I\u0027ll increase it to 500 for the time being then.\nI do worry however increasing the testing time, as this is 400ms added to the time for this test.\n\nDone.",
+      "parentUuid": "1a9b8d41_2af51df8",
+      "range": {
+        "startLine": 1373,
+        "startChar": 20,
+        "endLine": 1373,
+        "endChar": 23
+      },
+      "revId": "4351e9dc68f12ccaafef4f1100a42085b8868018",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
