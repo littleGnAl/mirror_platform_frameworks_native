@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "499f56ca_a4eb0e95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-02T00:57:16Z",
+      "side": 1,
+      "message": "Without that CL, the test passes because it does 2 async transactions followed by 2 sync ones, and every sync transaction also ends with a `flushExcessBinderRefs`.\n\nWithout the CL: there is no flush after any async transaction, so the first sync transaction at the end will send a `DecStrong` with `amount \u003d\u003d 3` (for the two binders for the async transactions, plus one for the current one), which works fine because the client drains all pending commands before processing the sync reply.\n\nWith the CL: there is a flush after every async transactions, so there are 3 `DecStrong`s with `amount \u003d\u003d 1` each one. Two of them get dropped because there is no client-side thread to handle them, so the object leaks.",
+      "parentUuid": "6c817788_4620c757",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "ead5929208229f0ad0bb7ae38e235e42eb5f6088",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f40d55f3_13b5135d",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 1
