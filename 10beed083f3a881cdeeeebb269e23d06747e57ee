@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1451e44_47e9c81a",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-03-02T17:22:22Z",
+      "side": 1,
+      "message": "Thanks! I was looking for something like Defer, and didn\u0027t find this.",
+      "parentUuid": "8e2fa2de_fac69617",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 51
+      },
+      "revId": "10beed083f3a881cdeeeebb269e23d06747e57ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67861810_c2701a17",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-01T23:02:29Z",
       "side": 1,
       "message": "We should only map the file once and read it. Mapping the memory is a very slow operation, right?",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 47
+      },
+      "revId": "10beed083f3a881cdeeeebb269e23d06747e57ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b916d3a8_7a004326",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1979435
+      },
+      "writtenOn": "2023-03-02T17:22:22Z",
+      "side": 1,
+      "message": "mmap isn\u0027t terribly slow.\n\nThere are two considerations that lead me to keep it as-is:\n\n1. The analysis relies on the ability to read a single RecordedTransaction starting from the current fd position. Specifically, the listen subcommand reads continually from the end of the file. So a single mmap would require additional paths and other refactors.\n\n2. If we have a very large recording, a full mmap could be a problem on 32-bit systems. While the whole file isn\u0027t loaded, I believe mmap allocates memory for it and uses page faults to decide when to reconcile memory with disk.\n\nPerhaps this is worth a follow-up issue, especially to consider the performance and decide if such a refactor is worthwhile.",
+      "parentUuid": "67861810_c2701a17",
       "range": {
         "startLine": 299,
         "startChar": 0,
