@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "125ddb88_5368efb6",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-02T11:02:04Z",
+      "side": 1,
+      "message": "should we rename this although this is a private symbol?",
+      "range": {
+        "startLine": 83,
+        "startChar": 28,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "feb13e8bfe5d9e23563761f042fcf19b7b008d4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd7c2ebd_b68feb83",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-02T11:02:04Z",
+      "side": 1,
+      "message": "how will that be manifested?",
+      "range": {
+        "startLine": 88,
+        "startChar": 41,
+        "endLine": 88,
+        "endChar": 77
+      },
+      "revId": "feb13e8bfe5d9e23563761f042fcf19b7b008d4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
