@@ -45,6 +45,30 @@
       },
       "revId": "feb13e8bfe5d9e23563761f042fcf19b7b008d4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a12ed7_854e2872",
+        "filename": "libs/binder/include/binder/RpcSession.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-03-02T11:03:52Z",
+      "side": 1,
+      "message": "nevermind. aosp/2461755 has the answer",
+      "parentUuid": "dd7c2ebd_b68feb83",
+      "range": {
+        "startLine": 88,
+        "startChar": 41,
+        "endLine": 88,
+        "endChar": 77
+      },
+      "revId": "feb13e8bfe5d9e23563761f042fcf19b7b008d4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
