@@ -216,6 +216,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c83e6c_1bdb6ecb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-03-02T01:31:18Z",
+      "side": 1,
+      "message": "Thanks that\u0027s helpful. I think that description of the behavior is a bit inaccurate because the async transactions in this test are forced to be concurrent with the sync ones.\n\n1. 1st `blockingSendFdOneway` transaction blocks on a channel server side\n2. 2nd `blockingSendFdOneway` transaction gets queued up\n3. 1st `blockingRecvFd` unblocks the 1st `blockingSendFdOneway` and calls `flushExcessBinderRefs` on its way out\n4. the handler for the 1st `blockingSendFdOneway` doesn\u0027t call `flushExcessBinderRefs`, it immediately tries to process the 2nd `blockingSendFdOneway` (which then blocks on a channel)\n5. 2nd `blockingRecvFd` unblocks the 2nd `blockingSendFdOneway`\n6. both try to `flushExcessBinderRefs` in a non-deterministic order\n\nAt least that was my intention when I wrote this. If that is right, then I could see how there is a race after the other CL, but I\u0027d also expect there to be a race before it. Maybe we just got lucky because there was less mutex contention?",
+      "parentUuid": "499f56ca_a4eb0e95",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "ead5929208229f0ad0bb7ae38e235e42eb5f6088",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f40d55f3_13b5135d",
