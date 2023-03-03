@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dcd3aa2_c293e97e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1993145
+      },
+      "writtenOn": "2023-03-03T08:48:09Z",
+      "side": 1,
+      "message": "I have fix those test failures, please review.",
+      "revId": "391b09bd7c49bf981b5cb69353bef71212ca7b3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
