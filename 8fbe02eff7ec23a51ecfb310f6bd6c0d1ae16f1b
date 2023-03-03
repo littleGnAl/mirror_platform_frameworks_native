@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c42f41_7f5cb3ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-03T21:38:57Z",
+      "side": 1,
+      "message": "We can consider doing this in ART Service. Thank you for pointing it out.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f7b9381_8a00c67f",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-03T21:38:57Z",
+      "side": 1,
+      "message": "`sizeof(kTryMountFsTypes) / sizeof(const char*)`?",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 48
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb8c5fe0_88afe6ba",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-03T21:38:57Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 96,
+        "startChar": 35,
+        "endLine": 96,
+        "endChar": 59
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa350b3_435335f5",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-03T21:38:57Z",
+      "side": 1,
+      "message": "It\u0027s good to log an error here saying that we have exhausted all possible fs types.",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc08cda_b604e6c1",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-03T21:38:57Z",
+      "side": 1,
+      "message": "The function doesn\u0027t seem to have WARN_UNUSED. Can we omit the assignment?",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 30
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
