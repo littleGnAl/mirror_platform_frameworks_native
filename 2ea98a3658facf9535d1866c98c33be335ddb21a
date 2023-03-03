@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dae677f_cd834385",
+        "filename": "libs/binder/ndk/include_ndk/android/binder_parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-03T22:16:31Z",
+      "side": 1,
+      "message": "I wanted to place an empty line between Android libraries and system libraries, but clang-format didn\u0027t let me to.",
+      "revId": "2ea98a3658facf9535d1866c98c33be335ddb21a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
