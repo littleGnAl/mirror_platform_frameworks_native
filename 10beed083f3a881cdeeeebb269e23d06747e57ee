@@ -93,6 +93,30 @@
       },
       "revId": "10beed083f3a881cdeeeebb269e23d06747e57ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44818e16_cfc30626",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-03T20:16:15Z",
+      "side": 1,
+      "message": "One mmap is fast, but every transaction starts to add up - if we are replaying these, we don\u0027t want to mmap 1,000s or 10,000s or more times. The 4GB limit could be worked around by mmaping a few times for such large files, but changing the memory layout for every transaction is somewhat excessive. It should be faster at that point to read from the file directly, for instance.",
+      "parentUuid": "b916d3a8_7a004326",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 47
+      },
+      "revId": "10beed083f3a881cdeeeebb269e23d06747e57ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
