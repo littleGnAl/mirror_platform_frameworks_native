@@ -28,10 +28,10 @@
 #include <sys/prctl.h>
 #include <sys/socket.h>
 
-#ifdef __ANDROID_VENDOR__
+#ifdef BINDER_RPC_TEST_TO_TRUSTY
 #include <binder/RpcTransportTipcAndroid.h>
 #include <trusty/tipc.h>
-#endif // __ANDROID_VENDOR__
+#endif // BINDER_RPC_TEST_TO_TRUSTY
 
 #include "binderRpcTestCommon.h"
 #include "binderRpcTestFixture.h"
@@ -50,7 +50,7 @@ constexpr bool kEnableSharedLibs = false;
 constexpr bool kEnableSharedLibs = true;
 #endif
 
-#ifdef __ANDROID_VENDOR__
+#ifdef BINDER_RPC_TEST_TO_TRUSTY
 constexpr char kTrustyIpcDevice[] = "/dev/trusty-ipc-dev0";
 #endif
 
@@ -212,6 +212,7 @@ static base::unique_fd connectTo(const RpcSocketAddress& addr) {
     return serverFd;
 }
 
+#ifndef BINDER_RPC_TEST_TO_TRUSTY
 static base::unique_fd connectToUnixBootstrap(const RpcTransportFd& transportFd) {
     base::unique_fd sockClient, sockServer;
     if (!base::Socketpair(SOCK_STREAM, &sockClient, &sockServer)) {
@@ -230,6 +231,7 @@ static base::unique_fd connectToUnixBootstrap(const RpcTransportFd& transportFd)
     }
     return std::move(sockClient);
 }
+#endif // BINDER_RPC_TEST_TO_TRUSTY
 
 std::string BinderRpc::PrintParamInfo(const testing::TestParamInfo<ParamType>& info) {
     auto [type, security, clientVersion, serverVersion, singleThreaded, noKernel] = info.param;
@@ -311,7 +313,7 @@ std::unique_ptr<ProcessSession> BinderRpc::createRpcTestSocketServerProcessEtc(
     for (size_t i = 0; i < options.numSessions; i++) {
         std::unique_ptr<RpcTransportCtxFactory> factory;
         if (socketType == SocketType::TIPC) {
-#ifdef __ANDROID_VENDOR__
+#ifdef BINDER_RPC_TEST_TO_TRUSTY
             factory = RpcTransportCtxFactoryTipcAndroid::make();
 #else
             LOG_ALWAYS_FATAL("TIPC socket type only supported on vendor");
@@ -375,7 +377,7 @@ std::unique_ptr<ProcessSession> BinderRpc::createRpcTestSocketServerProcessEtc(
                 break;
             case SocketType::TIPC:
                 status = session->setupPreconnectedClient({}, [=]() {
-#ifdef __ANDROID_VENDOR__
+#ifdef BINDER_RPC_TEST_TO_TRUSTY
                     auto port = trustyIpcPort(serverVersion);
                     int tipcFd = tipc_connect(kTrustyIpcDevice, port.c_str());
                     return tipcFd >= 0 ? android::base::unique_fd(tipcFd)
@@ -1081,6 +1083,28 @@ TEST_P(BinderRpc, Fds) {
     ASSERT_EQ(beforeFds, countFds()) << (system("ls -l /proc/self/fd/"), "fd leak?");
 }
 
+#ifdef BINDER_RPC_TEST_TO_TRUSTY
+static std::vector<SocketType> testTipcSocketTypes() {
+    auto port = trustyIpcPort(RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL);
+    int tipcFd = tipc_connect(kTrustyIpcDevice, port.c_str());
+    if (tipcFd >= 0) {
+        close(tipcFd);
+        return {SocketType::TIPC};
+    }
+
+    // TIPC is not supported on this device, most likely
+    // because /dev/trusty-ipc-dev0 is missing
+    return {};
+}
+
+INSTANTIATE_TEST_CASE_P(Trusty, BinderRpc,
+                        ::testing::Combine(::testing::ValuesIn(testTipcSocketTypes()),
+                                           ::testing::Values(RpcSecurity::RAW),
+                                           ::testing::ValuesIn(testVersions()),
+                                           ::testing::ValuesIn(testVersions()),
+                                           ::testing::Values(true), ::testing::Values(true)),
+                        BinderRpc::PrintParamInfo);
+#else // BINDER_RPC_TEST_TO_TRUSTY
 static bool testSupportVsockLoopback() {
     // We don't need to enable TLS to know if vsock is supported.
     unsigned int vsockPort = allocateVsockPort();
@@ -1185,21 +1209,6 @@ static std::vector<SocketType> testSocketTypes(bool hasPreconnected = true) {
     return ret;
 }
 
-static std::vector<SocketType> testTipcSocketTypes() {
-#ifdef __ANDROID_VENDOR__
-    auto port = trustyIpcPort(RPC_WIRE_PROTOCOL_VERSION_EXPERIMENTAL);
-    int tipcFd = tipc_connect(kTrustyIpcDevice, port.c_str());
-    if (tipcFd >= 0) {
-        close(tipcFd);
-        return {SocketType::TIPC};
-    }
-#endif // __ANDROID_VENDOR__
-
-    // TIPC is not supported on this device, most likely
-    // because /dev/trusty-ipc-dev0 is missing
-    return {};
-}
-
 INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
                         ::testing::Combine(::testing::ValuesIn(testSocketTypes()),
                                            ::testing::ValuesIn(RpcSecurityValues()),
@@ -1207,14 +1216,6 @@ INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
                                            ::testing::ValuesIn(testVersions()),
                                            ::testing::Values(false, true),
                                            ::testing::Values(false, true)),
-                        BinderRpc::PrintParamInfo);
-
-INSTANTIATE_TEST_CASE_P(Trusty, BinderRpc,
-                        ::testing::Combine(::testing::ValuesIn(testTipcSocketTypes()),
-                                           ::testing::Values(RpcSecurity::RAW),
-                                           ::testing::ValuesIn(testVersions()),
-                                           ::testing::ValuesIn(testVersions()),
-                                           ::testing::Values(true), ::testing::Values(true)),
                         BinderRpc::PrintParamInfo);
 
 class BinderRpcServerRootObject
@@ -1985,6 +1986,7 @@ INSTANTIATE_TEST_CASE_P(
                          testing::Values(RpcKeyFormat::PEM, RpcKeyFormat::DER),
                          testing::ValuesIn(testVersions())),
         RpcTransportTlsKeyTest::PrintParamInfo);
+#endif // BINDER_RPC_TEST_TO_TRUSTY
 
 } // namespace android
 
