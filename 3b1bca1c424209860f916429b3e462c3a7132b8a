@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e479b4c2_31145049",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1993145
+      },
+      "writtenOn": "2023-03-06T09:08:04Z",
+      "side": 1,
+      "message": "I have fixed it, please check.",
+      "parentUuid": "0c181c5b_4081816e",
+      "range": {
+        "startLine": 302,
+        "startChar": 12,
+        "endLine": 302,
+        "endChar": 18
+      },
+      "revId": "3b1bca1c424209860f916429b3e462c3a7132b8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b72985b6_f4e64bca",
