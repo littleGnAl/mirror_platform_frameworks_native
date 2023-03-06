@@ -64,6 +64,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a2ddcf_80e2c2c0",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1993145
+      },
+      "writtenOn": "2023-03-06T08:09:26Z",
+      "side": 1,
+      "message": "You cannot use \u0027ASSERT_GE\u0027 nor \u0027ASSERT_NE\u0027 here, or you will get this compilation error: no viable conversion from returned value of type \u0027void\u0027 to function return type \u0027::testing::AssertionResult\u0027",
+      "parentUuid": "b72985b6_f4e64bca",
+      "range": {
+        "startLine": 303,
+        "startChar": 12,
+        "endLine": 305,
+        "endChar": 13
+      },
+      "revId": "3b1bca1c424209860f916429b3e462c3a7132b8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8d8ca5f_f6155cbb",
