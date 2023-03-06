@@ -216,7 +216,6 @@ public:
     // internal only
     const std::unique_ptr<RpcState>& state() { return mRpcBinderState; }
 
-private:
     friend sp<RpcSession>;
     friend RpcServer;
     friend RpcServerTrusty;
