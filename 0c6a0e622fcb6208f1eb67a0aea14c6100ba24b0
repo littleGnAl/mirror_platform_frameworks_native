@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a44efe11_bad7edf8",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1993145
+      },
+      "writtenOn": "2023-03-06T12:28:45Z",
+      "side": 1,
+      "message": "I have fixed it, please check.",
+      "parentUuid": "a4c2dec9_a070504b",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 103
+      },
+      "revId": "0c6a0e622fcb6208f1eb67a0aea14c6100ba24b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f3851e5_89755fa9",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-03-06T10:10:57Z",
       "side": 1,
       "message": "`unlink` is more straightforward.",
+      "range": {
+        "startLine": 335,
+        "startChar": 12,
+        "endLine": 335,
+        "endChar": 44
+      },
+      "revId": "0c6a0e622fcb6208f1eb67a0aea14c6100ba24b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdbefe34_68a373f1",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1993145
+      },
+      "writtenOn": "2023-03-06T12:28:45Z",
+      "side": 1,
+      "message": "I have fixed it, please check.",
+      "parentUuid": "0f3851e5_89755fa9",
       "range": {
         "startLine": 335,
         "startChar": 12,
