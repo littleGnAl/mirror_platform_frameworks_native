@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019f64cc_4209d50d",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-06T19:27:28Z",
+      "side": 1,
+      "message": "btw - Andrei - not sure why this is forked - maybe we should consider bitfield w/ ToString method - seems like we\u0027d want to keep it in sync",
+      "range": {
+        "startLine": 48,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 5
+      },
+      "revId": "5602a1adf44e6b7b2848b9a4f134ebed6d9f5461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
