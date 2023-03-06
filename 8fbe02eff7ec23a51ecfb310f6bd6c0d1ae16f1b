@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10a4814_45c6c08e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-06T22:44:30Z",
+      "side": 1,
+      "message": "We can, but first we should ponder how we want the interface between the OTA package and ART to be. Mount stuff like this really belongs better in the platform (and in particular, in the OTA package). That\u0027s for later, though.",
+      "parentUuid": "f5c42f41_7f5cb3ba",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f7b9381_8a00c67f",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-03T21:38:57Z",
       "side": 1,
       "message": "`sizeof(kTryMountFsTypes) / sizeof(const char*)`?",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 48
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1e5c72f_5a4b7048",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-06T22:44:30Z",
+      "side": 1,
+      "message": "D\u0027oh! I\u0027m getting rusty. :P",
+      "parentUuid": "0f7b9381_8a00c67f",
       "range": {
         "startLine": 90,
         "startChar": 24,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a4e8e5f_f9fae493",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-06T22:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb8c5fe0_88afe6ba",
+      "range": {
+        "startLine": 96,
+        "startChar": 35,
+        "endLine": 96,
+        "endChar": 59
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aa350b3_435335f5",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "863b99cc_3afb9fbc",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-06T22:44:30Z",
+      "side": 1,
+      "message": "We shouldn\u0027t get here at all, actually.",
+      "parentUuid": "5aa350b3_435335f5",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfc08cda_b604e6c1",
@@ -106,6 +202,30 @@
       "writtenOn": "2023-03-03T21:38:57Z",
       "side": 1,
       "message": "The function doesn\u0027t seem to have WARN_UNUSED. Can we omit the assignment?",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 30
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57bab63e_b54b1141",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-06T22:44:30Z",
+      "side": 1,
+      "message": "I wanted to make it clear that we\u0027re intentionally ignoring the return value, and just `[[maybe_unused]] TryMountWithFstypes(...)` doesn\u0027t work. Switched to a somewhat more old-school idiom.",
+      "parentUuid": "dfc08cda_b604e6c1",
       "range": {
         "startLine": 128,
         "startChar": 4,
