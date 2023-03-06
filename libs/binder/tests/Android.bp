@@ -237,6 +237,9 @@ cc_defaults {
     ],
 
     test_suites: ["general-tests"],
+    test_options: {
+        timeout: 40000, // TODO(b/271860373): speed up
+    },
     require_root: true,
 
     data_bins: [
