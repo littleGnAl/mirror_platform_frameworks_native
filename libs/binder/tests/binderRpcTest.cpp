@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+// FIXME
+#include <../FdTrigger.h>
+
 #include <aidl/IBinderRpcTest.h>
 #include <android-base/stringprintf.h>
 
@@ -163,7 +166,8 @@ public:
             session.root = nullptr;
         }
 
-        for (auto& info : sessions) {
+        for (size_t sessionNum = 0; sessionNum < sessions.size(); sessionNum++) {
+            auto& info = sessions.at(sessionNum);
             sp<RpcSession>& session = info.session;
 
             EXPECT_NE(nullptr, session);
@@ -179,6 +183,7 @@ public:
             for (size_t i = 0; i < 3; i++) {
                 sp<RpcSession> strongSession = weakSession.promote();
                 EXPECT_EQ(nullptr, strongSession)
+                        << "For session " << sessionNum << ". "
                         << (debugBacktrace(host.getPid()), debugBacktrace(getpid()),
                             "Leaked sess: ")
                         << strongSession->getStrongCount() << " checked time " << i;
@@ -654,6 +659,38 @@ TEST_P(BinderRpc, OnewayCallExhaustion) {
     // here, so that the destructor for our session won't check that this
     // session is valid, but we still want it to test the other session.
     proc.proc->sessions.erase(proc.proc->sessions.begin() + 1);
+}
+
+TEST_P(BinderRpc, SessionWithIncomingThreadpoolDoesntLeak) {
+    if (clientOrServerSingleThreaded()) {
+        GTEST_SKIP() << "This test requires multiple threads";
+    }
+
+    // the first session is used to shutdown the entire server process, but
+    // the test we are interested in is that the second session is able
+    // to shut itself down
+    auto proc = createRpcTestSocketServerProcess(
+            {.numThreads = 1, .numIncomingConnections = 1, .numSessions = 2});
+
+    // do something, anything with the session we want to implicitly go away
+    EXPECT_EQ(OK, proc.proc->sessions.at(0).root->pingBinder());
+    EXPECT_EQ(OK, proc.proc->sessions.at(1).root->pingBinder());
+
+    sp<RpcSession> session = proc.proc->sessions.at(1).session;
+    proc.proc->sessions.at(1).root = nullptr;
+
+    // enough time for the session to shutdown
+    sleep(1);
+
+    EXPECT_TRUE(session->mShutdownTrigger->isTriggered());
+
+    // remove reference since we checked everything here and still want to have the
+    // default checks check the first session which should shutdown normally
+    proc.proc->sessions.erase(proc.proc->sessions.begin() + 1);
+    session = nullptr;
+
+    // enough time for the session to shutdown
+    sleep(1);
 }
 
 TEST_P(BinderRpc, SingleDeathRecipient) {

@@ -75,7 +75,7 @@ struct BinderRpcTestProcessSession {
             EXPECT_OK(rootIface->countBinders(&remoteCounts));
             EXPECT_EQ(remoteCounts.size(), proc->sessions.size());
             for (auto remoteCount : remoteCounts) {
-                EXPECT_EQ(remoteCount, 1);
+                EXPECT_EQ(remoteCount, 1); // the root binder
             }
 
             // even though it is on another thread, shutdown races with
