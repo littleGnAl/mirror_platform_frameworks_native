@@ -168,6 +168,7 @@ public:
     void clear();
 
 private:
+    void clear(RpcMutexUniqueLock nodeLock);
     void dumpLocked();
 
     // Alternative to std::vector<uint8_t> that doesn't abort on allocation failure and caps
@@ -272,7 +273,18 @@ private:
     // happens, and there is a strong reference to the binder kept by
     // binderNode, this returns that strong reference, so that it can be
     // dropped after any locks are removed.
-    sp<IBinder> tryEraseNode(std::map<uint64_t, BinderNode>::iterator& it);
+    //
+    // Node lock is passed here for convenience, so that we can release it
+    // and terminate the session, but we could leave it up to the caller
+    // by returning a continuation if we needed to erase multiple specific
+    // nodes. It may be tempting to allow the client to keep on holding the
+    // lock and instead just return whether or not we should shutdown, but
+    // this introduces the posssibility that another thread calls
+    // getRootBinder and thinks it is valid, rather than immediately getting
+    // an error.
+    sp<IBinder> tryEraseNode(const sp<RpcSession>& session, RpcMutexUniqueLock nodeLock,
+                             std::map<uint64_t, BinderNode>::iterator& it);
+
     // true - success
     // false - session shutdown, halt
     [[nodiscard]] bool nodeProgressAsyncNumber(BinderNode* node);
