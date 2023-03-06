@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3047fc23_2274a48a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-06T10:10:57Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "0c6a0e622fcb6208f1eb67a0aea14c6100ba24b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c2dec9_a070504b",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-06T10:10:57Z",
+      "side": 1,
+      "message": "Please fix this WARNING reported by Check Contents: Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\nAnalyzer Description: Validates that changes do not have prohibited expressions in them.\nOwner: ayeaye-team@google.com\n\nLines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 103
+      },
+      "revId": "0c6a0e622fcb6208f1eb67a0aea14c6100ba24b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f3851e5_89755fa9",
+        "filename": "cmds/installd/tests/installd_dexopt_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-06T10:10:57Z",
+      "side": 1,
+      "message": "`unlink` is more straightforward.",
+      "range": {
+        "startLine": 335,
+        "startChar": 12,
+        "endLine": 335,
+        "endChar": 44
+      },
+      "revId": "0c6a0e622fcb6208f1eb67a0aea14c6100ba24b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
