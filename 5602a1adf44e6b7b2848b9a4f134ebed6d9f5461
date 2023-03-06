@@ -22,6 +22,30 @@
       },
       "revId": "5602a1adf44e6b7b2848b9a4f134ebed6d9f5461",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de2bca5_bceb0baa",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-06T21:08:40Z",
+      "side": 1,
+      "message": "If you mean print a bit string or a hex integer, that would make it more compact but less human readable. Tbf, it wasn\u0027t something I considered back then, just wanted to keep the strings backwards-compatible the same for the default configuration (multi-threaded with kernel IPC). If that\u0027s not a concern, then yeah we can pick a nicer format.",
+      "parentUuid": "019f64cc_4209d50d",
+      "range": {
+        "startLine": 48,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 5
+      },
+      "revId": "5602a1adf44e6b7b2848b9a4f134ebed6d9f5461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
