@@ -33,6 +33,24 @@
       "message": "after this do a `cancelBufferInputs.reserve(numBufferRequested)`",
       "revId": "6be79f5c16283dfcdba4b940de5883c90e38e891",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f28377_f87b77ef",
+        "filename": "libs/gui/Surface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1482458
+      },
+      "writtenOn": "2023-03-06T17:29:04Z",
+      "side": 1,
+      "message": "Okay, thanks!\n`reserve` will minimize allocate/deallocate.",
+      "parentUuid": "786d2f56_9d91bb6c",
+      "revId": "6be79f5c16283dfcdba4b940de5883c90e38e891",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
