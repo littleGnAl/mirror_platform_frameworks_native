@@ -163,7 +163,8 @@ public:
             session.root = nullptr;
         }
 
-        for (auto& info : sessions) {
+        for (size_t sessionNum = 0; sessionNum < sessions.size(); sessionNum++) {
+            auto& info = sessions.at(sessionNum);
             sp<RpcSession>& session = info.session;
 
             EXPECT_NE(nullptr, session);
@@ -179,6 +180,7 @@ public:
             for (size_t i = 0; i < 3; i++) {
                 sp<RpcSession> strongSession = weakSession.promote();
                 EXPECT_EQ(nullptr, strongSession)
+                        << "For session " << sessionNum << ". "
                         << (debugBacktrace(host.getPid()), debugBacktrace(getpid()),
                             "Leaked sess: ")
                         << strongSession->getStrongCount() << " checked time " << i;
@@ -656,6 +658,39 @@ TEST_P(BinderRpc, OnewayCallExhaustion) {
     proc.proc->sessions.erase(proc.proc->sessions.begin() + 1);
 }
 
+TEST_P(BinderRpc, SessionWithIncomingThreadpoolDoesntLeak) {
+    if (clientOrServerSingleThreaded()) {
+        GTEST_SKIP() << "This test requires multiple threads";
+    }
+
+    // the first session is used to shutdown the entire server process, but
+    // the test we are interested in is that the second session is able
+    // to shut itself down
+    auto proc = createRpcTestSocketServerProcess(
+            {.numThreads = 1, .numIncomingConnections = 1, .numSessions = 2});
+
+    // do something, anything with the session we want to implicitly go away
+    EXPECT_EQ(OK, proc.proc->sessions.at(0).root->pingBinder());
+    EXPECT_EQ(OK, proc.proc->sessions.at(1).root->pingBinder());
+
+    wp<RpcSession> session = proc.proc->sessions.at(1).session;
+    proc.proc->sessions.at(1).root = nullptr;
+
+    // TODO(b/271830568): add way to wait for the shutdown, without also
+    // triggering the shutdown
+    // enough time for the session to shutdown
+    sleep(1);
+
+    // remove reference since we checked everything here and still want to have the
+    // default checks check the first session which should shutdown normally
+    proc.proc->sessions.erase(proc.proc->sessions.begin() + 1);
+
+    // make sure it didn't leak in-process
+    EXPECT_EQ(nullptr, session.promote());
+
+    proc.forceShutdown();
+}
+
 TEST_P(BinderRpc, SingleDeathRecipient) {
     if (clientOrServerSingleThreaded()) {
         GTEST_SKIP() << "This test requires multiple threads";
@@ -686,6 +721,10 @@ TEST_P(BinderRpc, SingleDeathRecipient) {
     ASSERT_TRUE(dr->mCv.wait_for(lock, 100ms, [&]() { return dr->dead; }));
 
     // need to wait for the session to shutdown so we don't "Leak session"
+    // can't do this before checking the death recipient by calling
+    // forceShutdown earlier, because shutdownAndWait will also trigger
+    // a death recipient, but if we had a way to wait for the service
+    // to gracefully shutdown, we could use that here.
     EXPECT_TRUE(proc.proc->sessions.at(0).session->shutdownAndWait(true));
     proc.expectAlreadyShutdown = true;
 }
@@ -766,13 +805,7 @@ TEST_P(BinderRpc, UnlinkDeathRecipient) {
     ASSERT_EQ(OK, proc.rootBinder->linkToDeath(dr, (void*)1, 0));
     ASSERT_EQ(OK, proc.rootBinder->unlinkToDeath(dr, (void*)1, 0, nullptr));
 
-    if (auto status = proc.rootIface->scheduleShutdown(); !status.isOk()) {
-        EXPECT_EQ(DEAD_OBJECT, status.transactionError()) << status;
-    }
-
-    // need to wait for the session to shutdown so we don't "Leak session"
-    EXPECT_TRUE(proc.proc->sessions.at(0).session->shutdownAndWait(true));
-    proc.expectAlreadyShutdown = true;
+    proc.forceShutdown();
 }
 
 TEST_P(BinderRpc, Die) {
