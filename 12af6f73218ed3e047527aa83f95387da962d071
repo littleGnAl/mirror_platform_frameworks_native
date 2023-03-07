@@ -16,6 +16,23 @@
       "message": "Overriding Open-Source-Licensing lint. There isn\u0027t a license in the commit message.",
       "revId": "12af6f73218ed3e047527aa83f95387da962d071",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b1f034d_8529aab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-03-07T22:21:15Z",
+      "side": 1,
+      "message": "Retrying presubmit now that https://r.android.com/2475204 is in.",
+      "revId": "12af6f73218ed3e047527aa83f95387da962d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
