@@ -16,6 +16,23 @@
       "message": "If this is the very last reference in the current session, this is going to shut down the session before doing the `rpcSend`? Will the send go through, or return `DEAD_OBJECT`? `session-\u003eshutdownAndWait` will trigger `mShutdownTrigger`.",
       "revId": "cd5aa5cb675eaa65627158990fa67d9e6efd90cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a005504c_1205689b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-07T02:28:20Z",
+      "side": 1,
+      "message": "The shutdown here happens client-side, right? I\u0027m thinking we should check for binder leaks in the service too (see my comment above), but I\u0027m not sure how to do that easily.",
+      "revId": "cd5aa5cb675eaa65627158990fa67d9e6efd90cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
