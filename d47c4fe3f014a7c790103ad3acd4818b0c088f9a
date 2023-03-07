@@ -22,6 +22,30 @@
       },
       "revId": "d47c4fe3f014a7c790103ad3acd4818b0c088f9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea616de_daf32c33",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-07T16:40:06Z",
+      "side": 1,
+      "message": "libbinder statically includes libbase to save memory on processes that don\u0027t use it. So we only use limited things from there.",
+      "parentUuid": "f21f9a7f_a659d195",
+      "range": {
+        "startLine": 618,
+        "startChar": 16,
+        "endLine": 618,
+        "endChar": 21
+      },
+      "revId": "d47c4fe3f014a7c790103ad3acd4818b0c088f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
