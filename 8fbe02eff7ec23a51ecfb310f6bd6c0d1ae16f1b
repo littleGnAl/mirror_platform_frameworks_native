@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d80b5768_a623ab62",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-03-07T11:56:50Z",
+      "side": 1,
+      "message": "Sigh, yeah.\n\n(On PS1 there was an analyzer warning on this that managed to detect an unsafe indexing on the next line from code flow analysis. I thought it was buggy at the time. It ought to have caught this too, but it hasn\u0027t come back. Maybe it stopped running.)",
+      "parentUuid": "a08667f5_c45a344e",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 48
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb8c5fe0_88afe6ba",
