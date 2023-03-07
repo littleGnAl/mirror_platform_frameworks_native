@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8619229_e97f4730",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-07T09:35:47Z",
+      "side": 1,
+      "message": "It will return DEAD_OBJECT.",
+      "parentUuid": "74683a2b_fbd61ad1",
+      "revId": "cd5aa5cb675eaa65627158990fa67d9e6efd90cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a005504c_1205689b",
         "filename": "libs/binder/tests/binderRpcTest.cpp",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-07T02:28:20Z",
       "side": 1,
       "message": "The shutdown here happens client-side, right? I\u0027m thinking we should check for binder leaks in the service too (see my comment above), but I\u0027m not sure how to do that easily.",
+      "revId": "cd5aa5cb675eaa65627158990fa67d9e6efd90cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e7e166_6a79fbbe",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-07T09:35:47Z",
+      "side": 1,
+      "message": "We do as well, via listSessions. We always check for leaks on the server side (if the session is dropped, it drops all the binder references)",
+      "parentUuid": "a005504c_1205689b",
       "revId": "cd5aa5cb675eaa65627158990fa67d9e6efd90cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
