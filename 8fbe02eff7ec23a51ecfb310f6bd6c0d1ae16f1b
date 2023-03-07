@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a08667f5_c45a344e",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-07T10:52:57Z",
+      "side": 1,
+      "message": "This still doesn\u0027t look right to me. Shouldn\u0027t it be `kTryMountFsTypes.size()`?",
+      "parentUuid": "f1e5c72f_5a4b7048",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 48
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb8c5fe0_88afe6ba",
         "filename": "cmds/installd/otapreopt_chroot.cpp",
         "patchSetId": 2
@@ -189,6 +213,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdb67b3f_17cb0002",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-07T10:52:57Z",
+      "side": 1,
+      "message": "Ah, right.",
+      "parentUuid": "863b99cc_3afb9fbc",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfc08cda_b604e6c1",
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "I wanted to make it clear that we\u0027re intentionally ignoring the return value, and just `[[maybe_unused]] TryMountWithFstypes(...)` doesn\u0027t work. Switched to a somewhat more old-school idiom.",
       "parentUuid": "dfc08cda_b604e6c1",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 30
+      },
+      "revId": "8fbe02eff7ec23a51ecfb310f6bd6c0d1ae16f1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f3bc9a7_e636b41c",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-07T10:52:57Z",
+      "side": 1,
+      "message": "OK, this looks less verbose.",
+      "parentUuid": "57bab63e_b54b1141",
       "range": {
         "startLine": 128,
         "startChar": 4,
