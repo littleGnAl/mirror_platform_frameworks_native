@@ -16,6 +16,23 @@
       "message": "This is the Android-to-Trusty version of binderRpcTest that avoids building the `.vendor` tests.",
       "revId": "3a58313f2bca279393eccc252d86e53ba40a00c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54be2814_41d09f42",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-07T02:19:18Z",
+      "side": 1,
+      "message": "Debating whether this should be a `cc_test` or a `cc_binary`. The main way to run this test will be to either `adb push` it manually, or build it as part of the vendor image only for the `qemu_arm64_trusty` target.",
+      "revId": "3a58313f2bca279393eccc252d86e53ba40a00c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
