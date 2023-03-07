@@ -50,6 +50,7 @@ struct ProcHook {
         KHR_surface_protected_capabilities,
         KHR_swapchain,
         ANDROID_external_memory_android_hardware_buffer,
+        EXT_rgba10x6_formats,
         KHR_bind_memory2,
         KHR_get_physical_device_properties2,
         KHR_device_group_creation,
