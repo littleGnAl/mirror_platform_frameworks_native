@@ -660,6 +660,7 @@ void CreateInfoWrapper::FilterExtension(const char* name) {
             case ProcHook::ANDROID_external_memory_android_hardware_buffer:
             case ProcHook::ANDROID_native_buffer:
             case ProcHook::GOOGLE_display_timing:
+            case ProcHook::EXT_rgba10x6_formats:
             case ProcHook::EXTENSION_CORE_1_0:
             case ProcHook::EXTENSION_CORE_1_1:
             case ProcHook::EXTENSION_CORE_1_2:
@@ -700,6 +701,7 @@ void CreateInfoWrapper::FilterExtension(const char* name) {
                 hook_extensions_.set(ext_bit);
                 break;
             case ProcHook::ANDROID_external_memory_android_hardware_buffer:
+            case ProcHook::EXT_rgba10x6_formats:
             case ProcHook::EXTENSION_UNKNOWN:
                 // Extensions we don't need to do anything about at this level
                 break;
