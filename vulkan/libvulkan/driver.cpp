@@ -640,6 +640,7 @@ void CreateInfoWrapper::FilterExtension(const char* name) {
                 // return now as these extensions do not require HAL support
                 return;
             case ProcHook::EXT_debug_report:
+            case ProcHook::EXT_rgba10x6_formats:
                 // both we and HAL can take part in
                 hook_extensions_.set(ext_bit);
                 break;
@@ -700,6 +701,7 @@ void CreateInfoWrapper::FilterExtension(const char* name) {
                 hook_extensions_.set(ext_bit);
                 break;
             case ProcHook::ANDROID_external_memory_android_hardware_buffer:
+            case ProcHook::EXT_rgba10x6_formats:
             case ProcHook::EXTENSION_UNKNOWN:
                 // Extensions we don't need to do anything about at this level
                 break;

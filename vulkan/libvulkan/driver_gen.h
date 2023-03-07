@@ -56,6 +56,7 @@ struct ProcHook {
         KHR_external_memory_capabilities,
         KHR_external_semaphore_capabilities,
         KHR_external_fence_capabilities,
+        EXT_rgba10x6_formats,
 
         EXTENSION_CORE_1_0,
         EXTENSION_CORE_1_1,

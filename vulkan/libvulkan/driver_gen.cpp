@@ -587,6 +587,7 @@ ProcHook::Extension GetProcHookExtension(const char* name) {
     if (strcmp(name, "VK_KHR_external_memory_capabilities") == 0) return ProcHook::KHR_external_memory_capabilities;
     if (strcmp(name, "VK_KHR_external_semaphore_capabilities") == 0) return ProcHook::KHR_external_semaphore_capabilities;
     if (strcmp(name, "VK_KHR_external_fence_capabilities") == 0) return ProcHook::KHR_external_fence_capabilities;
+    if (strcmp(name, "VK_EXT_rgba10x6_formats") == 0) return ProcHook::EXT_rgba10x6_formats;
     // clang-format on
     return ProcHook::EXTENSION_UNKNOWN;
 }

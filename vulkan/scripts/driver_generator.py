@@ -46,6 +46,7 @@ _KNOWN_EXTENSIONS = _INTERCEPTED_EXTENSIONS + [
     'VK_KHR_external_memory_capabilities',
     'VK_KHR_external_semaphore_capabilities',
     'VK_KHR_external_fence_capabilities',
+    'VK_EXT_rgba10x6_formats'
 ]
 
 # Functions needed at vulkan::driver level.
