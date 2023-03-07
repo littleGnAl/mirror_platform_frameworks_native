@@ -25,6 +25,7 @@ _INTERCEPTED_EXTENSIONS = [
     'VK_ANDROID_native_buffer',
     'VK_EXT_debug_report',
     'VK_EXT_hdr_metadata',
+    'VK_EXT_rgba10x6_formats',
     'VK_EXT_swapchain_colorspace',
     'VK_GOOGLE_display_timing',
     'VK_GOOGLE_surfaceless_query',

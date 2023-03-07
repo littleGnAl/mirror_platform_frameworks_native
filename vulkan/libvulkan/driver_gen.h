@@ -39,6 +39,7 @@ struct ProcHook {
         ANDROID_native_buffer,
         EXT_debug_report,
         EXT_hdr_metadata,
+        EXT_rgba10x6_formats,
         EXT_swapchain_colorspace,
         GOOGLE_display_timing,
         GOOGLE_surfaceless_query,

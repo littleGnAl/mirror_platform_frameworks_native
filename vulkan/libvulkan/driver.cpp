@@ -633,6 +633,7 @@ void CreateInfoWrapper::FilterExtension(const char* name) {
             case ProcHook::KHR_android_surface:
             case ProcHook::KHR_surface:
             case ProcHook::KHR_surface_protected_capabilities:
+            case ProcHook::EXT_rgba10x6_formats:
             case ProcHook::EXT_swapchain_colorspace:
             case ProcHook::KHR_get_surface_capabilities2:
             case ProcHook::GOOGLE_surfaceless_query:
@@ -714,6 +715,7 @@ void CreateInfoWrapper::FilterExtension(const char* name) {
             case ProcHook::KHR_surface:
             case ProcHook::KHR_surface_protected_capabilities:
             case ProcHook::EXT_debug_report:
+            case ProcHook::EXT_rgba10x6_formats:
             case ProcHook::EXT_swapchain_colorspace:
             case ProcHook::GOOGLE_surfaceless_query:
             case ProcHook::ANDROID_native_buffer:
