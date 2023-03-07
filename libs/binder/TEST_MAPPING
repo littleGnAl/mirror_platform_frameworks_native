@@ -22,6 +22,9 @@
       "name": "binderTextOutputTest"
     },
     {
+      "name": "binderRpcBenchmark"
+    },
+    {
       "name": "binderUnitTest"
     },
     {
