@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3794576e_37e3d701",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-03-07T18:29:36Z",
+      "side": 1,
+      "message": "@smoreland@google.com - removed the thread and client IDs - it almost doubles the time required for `adb shell bugreportz`!\nI can look at this seperately.",
+      "revId": "ae68df27154eecab181831d060cae39303ceb885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
