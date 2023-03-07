@@ -34,6 +34,24 @@
       "parentUuid": "86e98b30_5bbfb0ee",
       "revId": "a38285db8fa0361fcb785f1b40d61a80f33d4372",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f32d59d9_10155f39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1933736
+      },
+      "writtenOn": "2023-03-07T01:31:17Z",
+      "side": 1,
+      "message": "Hey Steven, just wanted to check-in on this. The release update is on Thursday.",
+      "parentUuid": "6f32ef49_96a384f6",
+      "revId": "a38285db8fa0361fcb785f1b40d61a80f33d4372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
