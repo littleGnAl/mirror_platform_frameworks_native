@@ -508,7 +508,6 @@ android::PixelFormat GetNativePixelFormat(VkFormat format) {
         case VK_FORMAT_R8_UNORM:
             native_format = android::PIXEL_FORMAT_R_8;
             break;
-        // TODO: Do we need to query for VK_EXT_rgba10x6_formats here?
         case VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16:
             native_format = android::PIXEL_FORMAT_RGBA_10101010;
             break;
@@ -761,6 +760,8 @@ VkResult GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice pdev,
     uint64_t consumer_usage = 0;
     bool colorspace_ext =
         instance_data.hook_extensions.test(ProcHook::EXT_swapchain_colorspace);
+    bool rgba10x6_formats_ext =
+        instance_data.hal_extensions.test(ProcHook::EXT_rgba10x6_formats);
     if (surface_handle == VK_NULL_HANDLE) {
         ProcHook::Extension surfaceless = ProcHook::GOOGLE_surfaceless_query;
         bool surfaceless_enabled =
@@ -859,9 +860,8 @@ VkResult GetPhysicalDeviceSurfaceFormatsKHR(VkPhysicalDevice pdev,
         }
     }
 
-    // TODO query VK_EXT_rgba10x6_formats support
     desc.format = AHARDWAREBUFFER_FORMAT_R10G10B10A10_UNORM;
-    if (AHardwareBuffer_isSupported(&desc)) {
+    if (AHardwareBuffer_isSupported(&desc) && rgba10x6_formats_ext) {
         all_formats.emplace_back(
             VkSurfaceFormatKHR{VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16,
                                VK_COLOR_SPACE_SRGB_NONLINEAR_KHR});

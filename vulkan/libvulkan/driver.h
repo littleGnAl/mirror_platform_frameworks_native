@@ -74,6 +74,7 @@ struct InstanceData {
     const VkAllocationCallbacks allocator;
 
     std::bitset<ProcHook::EXTENSION_COUNT> hook_extensions;
+    std::bitset<ProcHook::EXTENSION_COUNT> hal_extensions_;
 
     InstanceDriverTable driver;
     PFN_vkGetDeviceProcAddr get_device_proc_addr;

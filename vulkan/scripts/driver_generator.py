@@ -40,6 +40,7 @@ _INTERCEPTED_EXTENSIONS = [
 # Extensions known to vulkan::driver level.
 _KNOWN_EXTENSIONS = _INTERCEPTED_EXTENSIONS + [
     'VK_ANDROID_external_memory_android_hardware_buffer',
+    'VK_EXT_rgba10x6_formats',
     'VK_KHR_bind_memory2',
     'VK_KHR_get_physical_device_properties2',
     'VK_KHR_device_group_creation',
