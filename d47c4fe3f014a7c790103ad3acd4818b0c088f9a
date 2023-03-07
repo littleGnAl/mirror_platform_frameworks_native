@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f21f9a7f_a659d195",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-07T16:33:51Z",
+      "side": 1,
+      "message": "I know this is out of scope of this change, but why don\u0027t binder use logging streams and `PLOG`?",
+      "range": {
+        "startLine": 618,
+        "startChar": 16,
+        "endLine": 618,
+        "endChar": 21
+      },
+      "revId": "d47c4fe3f014a7c790103ad3acd4818b0c088f9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
