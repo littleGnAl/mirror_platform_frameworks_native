@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd2f10f1_0d79add6",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2023-03-08T12:21:28Z",
+      "side": 1,
+      "message": "This branch is for instance extensions. EXT_rgba10x6_formats is a device extension, so it should be in the error case starting on :656.",
+      "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a3b362_1c385ed5",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2023-03-08T12:21:28Z",
+      "side": 1,
+      "message": "Should be in this block?",
+      "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
