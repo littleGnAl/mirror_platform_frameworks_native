@@ -70,6 +70,30 @@
       },
       "revId": "5602a1adf44e6b7b2848b9a4f134ebed6d9f5461",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73bec6cb_1822e499",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-08T23:50:56Z",
+      "side": 1,
+      "message": "Makes sense, I\u0027ll create a CL.",
+      "parentUuid": "f1964488_ee6bd6d2",
+      "range": {
+        "startLine": 48,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 5
+      },
+      "revId": "5602a1adf44e6b7b2848b9a4f134ebed6d9f5461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
