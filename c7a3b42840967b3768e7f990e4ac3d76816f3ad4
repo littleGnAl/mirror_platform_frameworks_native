@@ -33,6 +33,23 @@
       "message": "Should be in this block?",
       "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ba9cee_ff35218f",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1097853
+      },
+      "writtenOn": "2023-03-08T12:23:15Z",
+      "side": 1,
+      "message": "I see this is where it all unravels. It\u0027s a device extension, but this is instance-level code 😞",
+      "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
