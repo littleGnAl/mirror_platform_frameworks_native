@@ -84,4 +84,12 @@ interface IBinderRpcTest {
     // Same as blockingSendFdOneway, but with integers.
     oneway void blockingSendIntOneway(int n);
     int blockingRecvInt();
+
+    // Acts as a barrier to allow us to reliable "saturate" the binder thread pool.
+    //
+    // Uses a pair of eventfd's to communicate out-of-band with the test
+    // process. One eventfd is written to when this function is entered (to
+    // confirm the server has proceeded far enough) and then another eventfd is
+    // read from (to block until the test process is satisfied).
+    void saturateBarrier();
 }

@@ -25,6 +25,7 @@
 
 #include <dlfcn.h>
 #include <poll.h>
+#include <sys/eventfd.h>
 #include <sys/prctl.h>
 #include <sys/socket.h>
 
@@ -74,23 +75,32 @@ public:
     Process(Process&& other)
           : mCustomExitStatusCheck(std::move(other.mCustomExitStatusCheck)),
             mReadEnd(std::move(other.mReadEnd)),
-            mWriteEnd(std::move(other.mWriteEnd)) {
+            mWriteEnd(std::move(other.mWriteEnd)),
+            mSaturateParkEvent(std::move(other.mSaturateParkEvent)),
+            mSaturateUnparkEvent(std::move(other.mSaturateUnparkEvent)) {
         // The default move constructor doesn't clear mPid after moving it,
         // which we need to do because the destructor checks for mPid!=0
         mPid = other.mPid;
         other.mPid = 0;
     }
     Process(const std::function<void(android::base::borrowed_fd /* writeEnd */,
-                                     android::base::borrowed_fd /* readEnd */)>& f) {
+                                     android::base::borrowed_fd /* readEnd */,
+                                     android::base::borrowed_fd /* saturateParkEvent */,
+                                     android::base::borrowed_fd /* saturateUnparkEvent */
+                                     )>& f) {
         android::base::unique_fd childWriteEnd;
         android::base::unique_fd childReadEnd;
         CHECK(android::base::Pipe(&mReadEnd, &childWriteEnd, 0)) << strerror(errno);
         CHECK(android::base::Pipe(&childReadEnd, &mWriteEnd, 0)) << strerror(errno);
+        mSaturateParkEvent.reset(eventfd(0, EFD_SEMAPHORE));
+        CHECK(mSaturateParkEvent.ok()) << strerror(errno);
+        mSaturateUnparkEvent.reset(eventfd(0, EFD_SEMAPHORE));
+        CHECK(mSaturateUnparkEvent.ok()) << strerror(errno);
         if (0 == (mPid = fork())) {
             // racey: assume parent doesn't crash before this is set
             prctl(PR_SET_PDEATHSIG, SIGHUP);
 
-            f(childWriteEnd, childReadEnd);
+            f(childWriteEnd, childReadEnd, mSaturateParkEvent, mSaturateUnparkEvent);
 
             exit(0);
         }
@@ -119,11 +129,23 @@ public:
 
     pid_t getPid() { return mPid; }
 
+    void waitForSaturateParkEvent() {
+        uint64_t n;
+        CHECK_EQ(sizeof(n), read(mSaturateParkEvent.get(), &n, sizeof(n))) << strerror(errno);
+    }
+
+    void signalSaturateUnparkEvent() {
+        uint64_t n = 1;
+        CHECK_EQ(sizeof(n), write(mSaturateUnparkEvent.get(), &n, sizeof(n))) << strerror(errno);
+    }
+
 private:
     std::function<void(int wstatus)> mCustomExitStatusCheck;
     pid_t mPid = 0;
     android::base::unique_fd mReadEnd;
     android::base::unique_fd mWriteEnd;
+    android::base::unique_fd mSaturateParkEvent;
+    android::base::unique_fd mSaturateUnparkEvent;
 };
 
 static std::string allocateSocketAddress() {
@@ -195,6 +217,10 @@ public:
     }
 
     void terminate() override { host.terminate(); }
+
+    void waitForSaturateParkEvent() override { host.waitForSaturateParkEvent(); }
+
+    void signalSaturateUnparkEvent() override { host.signalSaturateUnparkEvent(); }
 };
 
 static base::unique_fd connectTo(const RpcSocketAddress& addr) {
@@ -278,7 +304,9 @@ std::unique_ptr<ProcessSession> BinderRpc::createRpcTestSocketServerProcessEtc(
     }
 
     auto ret = std::make_unique<LinuxProcessSession>(
-            Process([=](android::base::borrowed_fd writeEnd, android::base::borrowed_fd readEnd) {
+            Process([=](android::base::borrowed_fd writeEnd, android::base::borrowed_fd readEnd,
+                        android::base::borrowed_fd saturateParkEvent,
+                        android::base::borrowed_fd saturateUnparkEvent) {
                 if (socketType == SocketType::TIPC) {
                     // Trusty has a single persistent service
                     return;
@@ -286,8 +314,10 @@ std::unique_ptr<ProcessSession> BinderRpc::createRpcTestSocketServerProcessEtc(
 
                 auto writeFd = std::to_string(writeEnd.get());
                 auto readFd = std::to_string(readEnd.get());
+                auto saturateParkEventFd = std::to_string(saturateParkEvent.get());
+                auto saturateUnparkEventFd = std::to_string(saturateUnparkEvent.get());
                 execl(servicePath.c_str(), servicePath.c_str(), writeFd.c_str(), readFd.c_str(),
-                      NULL);
+                      saturateParkEventFd.c_str(), saturateUnparkEventFd.c_str(), NULL);
             }));
 
     BinderRpcTestServerConfig serverConfig;
@@ -503,10 +533,17 @@ TEST_P(BinderRpc, ThreadingStressTest) {
     for (auto& t : threads) t.join();
 }
 
-static void saturateThreadPool(size_t threadCount, const sp<IBinderRpcTest>& iface) {
+static void saturateThreadPool(const BinderRpcTestProcessSession& proc, size_t threadCount,
+                               const sp<IBinderRpcTest>& iface) {
     std::vector<std::thread> threads;
     for (size_t i = 0; i < threadCount; i++) {
-        threads.push_back(std::thread([&] { EXPECT_OK(iface->sleepMs(500)); }));
+        threads.push_back(std::thread([&] { EXPECT_OK(iface->saturateBarrier()); }));
+    }
+    for (size_t i = 0; i < threadCount; i++) {
+        proc.proc->waitForSaturateParkEvent();
+    }
+    for (size_t i = 0; i < threadCount; i++) {
+        proc.proc->signalSaturateUnparkEvent();
     }
     for (auto& t : threads) t.join();
 }
@@ -533,7 +570,7 @@ TEST_P(BinderRpc, OnewayStressTest) {
 
     for (auto& t : threads) t.join();
 
-    saturateThreadPool(kNumServerThreads, proc.rootIface);
+    saturateThreadPool(proc, kNumServerThreads, proc.rootIface);
 }
 
 TEST_P(BinderRpc, OnewayCallQueueingWithFds) {
@@ -576,7 +613,7 @@ TEST_P(BinderRpc, OnewayCallQueueingWithFds) {
     CHECK(android::base::ReadFdToString(fdB.get(), &result));
     EXPECT_EQ(result, "b");
 
-    saturateThreadPool(kNumServerThreads, proc.rootIface);
+    saturateThreadPool(proc, kNumServerThreads, proc.rootIface);
 }
 
 TEST_P(BinderRpc, OnewayCallQueueing) {
@@ -601,7 +638,7 @@ TEST_P(BinderRpc, OnewayCallQueueing) {
         EXPECT_EQ(n, i);
     }
 
-    saturateThreadPool(1 + kNumExtraServerThreads, proc.rootIface);
+    saturateThreadPool(proc, 1 + kNumExtraServerThreads, proc.rootIface);
 }
 
 TEST_P(BinderRpc, OnewayCallExhaustion) {

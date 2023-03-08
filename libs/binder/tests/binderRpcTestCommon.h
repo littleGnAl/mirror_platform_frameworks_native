@@ -451,6 +451,8 @@ public:
     }
 
     Status blockingRecvInt(int* /*n*/) override { return Status::fromStatusT(UNKNOWN_TRANSACTION); }
+
+    Status saturateBarrier() override { return Status::fromStatusT(UNKNOWN_TRANSACTION); }
 };
 
 } // namespace android
