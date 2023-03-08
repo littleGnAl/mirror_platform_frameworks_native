@@ -84,4 +84,8 @@ interface IBinderRpcTest {
     // Same as blockingSendFdOneway, but with integers.
     oneway void blockingSendIntOneway(int n);
     int blockingRecvInt();
+
+    // Block until an out-of-band event is signalled.
+    // Used to saturate the thread pool reliably without using sleeps.
+    void waitForSaturateEvent();
 }

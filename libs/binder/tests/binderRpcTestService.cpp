@@ -20,7 +20,14 @@ using namespace android;
 
 class MyBinderRpcTestAndroid : public MyBinderRpcTestBase {
 public:
+    MyBinderRpcTestAndroid(android::base::unique_fd saturateParkEvent,
+                           android::base::unique_fd saturateUnparkEvent)
+          : mSaturateParkEvent(std::move(saturateParkEvent)),
+            mSaturateUnparkEvent(std::move(saturateUnparkEvent)) {}
+
     wp<RpcServer> server;
+    android::base::unique_fd mSaturateParkEvent;
+    android::base::unique_fd mSaturateUnparkEvent;
 
     Status countBinders(std::vector<int32_t>* out) override {
         return countBindersImpl(server, out);
@@ -95,14 +102,25 @@ public:
         *n = mIntChannel.read();
         return Status::ok();
     }
+
+    Status waitForSaturateEvent() override {
+        // Signal we made it into this function.
+        uint64_t n = 1;
+        CHECK_EQ(sizeof(n), write(mSaturateParkEvent.get(), &n, sizeof(n))) << strerror(errno);
+        // Wait for a signal back before proceeding.
+        CHECK_EQ(sizeof(n), read(mSaturateUnparkEvent.get(), &n, sizeof(n))) << strerror(errno);
+        return Status::ok();
+    }
 };
 
 int main(int argc, char* argv[]) {
     android::base::InitLogging(argv, android::base::StderrLogger, android::base::DefaultAborter);
 
-    LOG_ALWAYS_FATAL_IF(argc != 3, "Invalid number of arguments: %d", argc);
+    LOG_ALWAYS_FATAL_IF(argc != 5, "Invalid number of arguments: %d", argc);
     base::unique_fd writeEnd(atoi(argv[1]));
     base::unique_fd readEnd(atoi(argv[2]));
+    base::unique_fd saturateParkEvent(atoi(argv[3]));
+    base::unique_fd saturateUnparkEvent(atoi(argv[4]));
 
     auto serverConfig = readFromFd<BinderRpcTestServerConfig>(readEnd);
     auto socketType = static_cast<SocketType>(serverConfig.socketType);
@@ -169,7 +187,9 @@ int main(int argc, char* argv[]) {
         // sizeof(sa_family_t)==2 in addrlen
         CHECK_GE(len, sizeof(sa_family_t));
         const sockaddr* addr = reinterpret_cast<const sockaddr*>(addrPtr);
-        sp<MyBinderRpcTestAndroid> service = sp<MyBinderRpcTestAndroid>::make();
+        sp<MyBinderRpcTestAndroid> service =
+                sp<MyBinderRpcTestAndroid>::make(std::move(saturateParkEvent),
+                                                 std::move(saturateUnparkEvent));
         switch (addr->sa_family) {
             case AF_UNIX:
                 // nothing to save

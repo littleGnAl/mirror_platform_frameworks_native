@@ -48,6 +48,10 @@ public:
 
     // Kill the process. Avoid if possible. Shutdown gracefully via an RPC instead.
     virtual void terminate() = 0;
+
+    virtual void waitForSaturateParkEvent() = 0;
+
+    virtual void signalSaturateUnparkEvent() = 0;
 };
 
 // Process session where the process hosts IBinderRpcTest, the server used
