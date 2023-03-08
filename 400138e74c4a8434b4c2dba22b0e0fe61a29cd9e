@@ -69,6 +69,24 @@
       "parentUuid": "75e0ea90_1de62337",
       "revId": "400138e74c4a8434b4c2dba22b0e0fe61a29cd9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "717e9729_4aa139c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1993145
+      },
+      "writtenOn": "2023-03-08T03:17:40Z",
+      "side": 1,
+      "message": "Or can you submit this CL for me? thanks.",
+      "parentUuid": "99bb6a94_c8815d11",
+      "revId": "400138e74c4a8434b4c2dba22b0e0fe61a29cd9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
