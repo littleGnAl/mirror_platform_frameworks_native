@@ -50,6 +50,24 @@
       "message": "I see this is where it all unravels. It\u0027s a device extension, but this is instance-level code 😞",
       "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a74826_09eeafca",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2023-03-08T13:50:15Z",
+      "side": 1,
+      "message": "Drive-by comment: I was involved in the Vulkan workgroup conversation (1.1 timeframe) that redefined the boundaries between instance-level and device-level functionality, and defined physical-device-level functionality.  I wrote some of the spec language.  The result is that device extensions can include/extend physical-device-level functionality (e.g. queries).\n\nNote: This is not a comment about the content of this CL.",
+      "parentUuid": "50ba9cee_ff35218f",
+      "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
