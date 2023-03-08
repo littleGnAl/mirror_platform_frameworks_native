@@ -51,6 +51,24 @@
       "message": "Min, thanks again. You can submit this CL now.",
       "revId": "400138e74c4a8434b4c2dba22b0e0fe61a29cd9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99bb6a94_c8815d11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1993145
+      },
+      "writtenOn": "2023-03-08T02:53:49Z",
+      "side": 1,
+      "message": "What do I need to do in order to be able to submit this CL? The submit button is grayed out and cannot be clicked and when I hover on the button it says \"You don\u0027t have permission to submit change 2455516\". thanks.",
+      "parentUuid": "75e0ea90_1de62337",
+      "revId": "400138e74c4a8434b4c2dba22b0e0fe61a29cd9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
