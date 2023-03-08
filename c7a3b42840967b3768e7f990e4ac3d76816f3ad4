@@ -68,6 +68,24 @@
       "parentUuid": "50ba9cee_ff35218f",
       "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "093f41a3_53bccd0f",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2023-03-08T19:46:16Z",
+      "side": 1,
+      "message": "My reading of the code was a coin-flip.\n\nThe code I\u0027m writing is most similar to swapchain_colorspace.\nI knew that swapchain_colorspace was an instance extension, and that rgba10x6 was a device extension.\n\nI wasn\u0027t sure if I should be emulating swapchain_colorspace in regards to how it behaved within swapchain.cpp or within the spec.\n\nCoin flipped. Guess wrong.\n\nthanks for your comment and your passion. I\u0027ll fix it up now",
+      "parentUuid": "e6a74826_09eeafca",
+      "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
