@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "153d4901_a9f3d16e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-03-09T00:56:11Z",
+      "side": 1,
+      "message": "should we explain this in one of the API headers like include/binder/RpcSession.h?",
+      "revId": "894b2abd5a909b431cff04d7354ca88a0ce06b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03282c45_b90f8b6f",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-03-09T00:56:11Z",
+      "side": 1,
+      "message": "i think this tidbit is obsolete",
+      "range": {
+        "startLine": 275,
+        "startChar": 7,
+        "endLine": 275,
+        "endChar": 43
+      },
+      "revId": "894b2abd5a909b431cff04d7354ca88a0ce06b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daa7c01f_dca11c4a",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-03-09T00:56:11Z",
+      "side": 1,
+      "message": "can you add a more visible call out in this doc that says something like \"if this erases the last node, then it also shuts down the session\"",
+      "revId": "894b2abd5a909b431cff04d7354ca88a0ce06b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
