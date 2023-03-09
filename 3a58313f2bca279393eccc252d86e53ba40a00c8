@@ -33,6 +33,41 @@
       "message": "Debating whether this should be a `cc_test` or a `cc_binary`. The main way to run this test will be to either `adb push` it manually, or build it as part of the vendor image only for the `qemu_arm64_trusty` target.",
       "revId": "3a58313f2bca279393eccc252d86e53ba40a00c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a1913b_6bac5bf5",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-09T02:30:41Z",
+      "side": 1,
+      "message": "@smoreland@google.com Wdyt?",
+      "parentUuid": "54be2814_41d09f42",
+      "revId": "3a58313f2bca279393eccc252d86e53ba40a00c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b25cc443_d8258b91",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-09T02:30:41Z",
+      "side": 1,
+      "message": "Naming these has been a bit of a challenge: we need to emphasize here that this is an Android-to-Trusty test, as opposed to `binderRpcTestTrusty` which runs _on_ Trusty (maybe should rename that one to `binderRpcTestOnTrusty`).",
+      "revId": "3a58313f2bca279393eccc252d86e53ba40a00c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
