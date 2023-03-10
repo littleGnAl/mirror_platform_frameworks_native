@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd7a7679_a090915d",
+        "filename": "libs/binder/tests/binderRpcTestFixture.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-10T22:21:13Z",
+      "side": 1,
+      "message": "We shouldn\u0027t have ifdefs for two different definitions of a file as well. The error messages for this situation are going to be difficult to understand.\n\nFor instance, could we have a separate type which holds what is in common, or could we include the factory in the trusty tests, but not initialize TLS in the combinations?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 6
+      },
+      "revId": "b69a95bd43536e555d9ad0f75858e31a9311f6d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
