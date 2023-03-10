@@ -39,23 +39,6 @@ public:
     void terminate() override { LOG_ALWAYS_FATAL("terminate() not supported"); }
 };
 
-std::string BinderRpc::PrintParamInfo(const testing::TestParamInfo<ParamType>& info) {
-    auto [type, security, clientVersion, serverVersion, singleThreaded, noKernel] = info.param;
-    auto ret = PrintToString(type) + "_clientV" + std::to_string(clientVersion) + "_serverV" +
-            std::to_string(serverVersion);
-    if (singleThreaded) {
-        ret += "_single_threaded";
-    } else {
-        ret += "_multi_threaded";
-    }
-    if (noKernel) {
-        ret += "_no_kernel";
-    } else {
-        ret += "_with_kernel";
-    }
-    return ret;
-}
-
 // This creates a new process serving an interface on a certain number of
 // threads.
 std::unique_ptr<ProcessSession> BinderRpc::createRpcTestSocketServerProcessEtc(
