@@ -1,0 +1,8 @@
+{
+  "presubmit": [
+      "ftl_test"
+  ],
+  "hwasan-presubmit": [
+      "ftl_test"
+  ]
+}
