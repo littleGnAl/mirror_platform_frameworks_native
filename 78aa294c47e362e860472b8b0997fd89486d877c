@@ -50,6 +50,24 @@
       "message": "That\u0027s what this change is doing.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/cmds/dumpstate/dumpstate.cpp;l\u003d366?q\u003dZIP_ROOT_DIR",
       "revId": "78aa294c47e362e860472b8b0997fd89486d877c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99345692_70293857",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1889,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-10T22:36:16Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "9882d215_c0c97a2b",
+      "revId": "78aa294c47e362e860472b8b0997fd89486d877c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
