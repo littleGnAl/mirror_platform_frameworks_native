@@ -133,7 +133,27 @@ public:
         return ret;
     }
 
-    static std::string PrintParamInfo(const testing::TestParamInfo<ParamType>& info);
+    static std::string PrintParamInfo(const testing::TestParamInfo<ParamType>& info) {
+        using namespace std::string_literals;
+        auto [type, security, clientVersion, serverVersion, singleThreaded, noKernel] = info.param;
+        auto ret = PrintToString(type);
+#ifndef __TRUSTY__
+        ret += "_"s + newFactory(security)->toCString();
+#endif
+        ret += "_clientV"s + std::to_string(clientVersion);
+        ret += "_serverV"s + std::to_string(serverVersion);
+        if (singleThreaded) {
+            ret += "_single_threaded";
+        } else {
+            ret += "_multi_threaded";
+        }
+        if (noKernel) {
+            ret += "_no_kernel";
+        } else {
+            ret += "_with_kernel";
+        }
+        return ret;
+    }
 
 protected:
     std::unique_ptr<ProcessSession> createRpcTestSocketServerProcessEtc(
