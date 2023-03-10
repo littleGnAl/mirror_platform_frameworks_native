@@ -51,6 +51,24 @@
       "parentUuid": "62e94f00_7f1d1415",
       "revId": "51ab89b8b6c8e5d5ee375ce2f20e748dca46bfe9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a582ecc9_1ede8dea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-10T23:11:29Z",
+      "side": 1,
+      "message": "My current plan is to add a way to wait for shutdown to happen. The issue I haven\u0027t figured out with saturateThreadPool is that even if we drain it, we may be waiting for the other side to finish processing async tasks and so we don\u0027t have a good way of knowing when all the refcounts are flushed, except maybe with a side-band channel.",
+      "parentUuid": "e2281db3_e67aac38",
+      "revId": "51ab89b8b6c8e5d5ee375ce2f20e748dca46bfe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
