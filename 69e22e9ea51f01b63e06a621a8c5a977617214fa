@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "608893e5_1dc8ad04",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-10T18:37:45Z",
+      "side": 0,
+      "message": "you can also do \"String8(interfaceName)\" which won\u0027t crash",
+      "range": {
+        "startLine": 131,
+        "startChar": 22,
+        "endLine": 131,
+        "endChar": 35
+      },
+      "revId": "69e22e9ea51f01b63e06a621a8c5a977617214fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
