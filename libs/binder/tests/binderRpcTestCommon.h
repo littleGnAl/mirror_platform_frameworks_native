@@ -37,7 +37,9 @@
 #include <string>
 #include <vector>
 
-#ifndef __TRUSTY__
+#ifdef __TRUSTY__
+#include <binder/RpcTransportTipcTrusty.h>
+#else // __TRUSTY__
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/properties.h>
@@ -139,7 +141,16 @@ struct BinderRpcOptions {
     bool allowConnectFailure = false;
 };
 
-#ifndef __TRUSTY__
+#ifdef __TRUSTY__
+static inline std::unique_ptr<RpcTransportCtxFactory> newFactory(RpcSecurity rpcSecurity) {
+    switch (rpcSecurity) {
+        case RpcSecurity::RAW:
+            return RpcTransportCtxFactoryTipcTrusty::make();
+        default:
+            LOG_ALWAYS_FATAL("Unknown RpcSecurity %d", rpcSecurity);
+    }
+}
+#else  // __TRUSTY__
 static inline void writeString(android::base::borrowed_fd fd, std::string_view str) {
     uint64_t length = str.length();
     CHECK(android::base::WriteFully(fd, &length, sizeof(length)));
