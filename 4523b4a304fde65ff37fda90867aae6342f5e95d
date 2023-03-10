@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e776da2_828be58a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2023-03-10T17:54:53Z",
+      "side": 1,
+      "message": "This should be fixed by the following change:\n\nhttps://android-review.git.corp.google.com/c/platform/frameworks/native/+/2478757",
+      "revId": "4523b4a304fde65ff37fda90867aae6342f5e95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
