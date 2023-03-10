@@ -52,6 +52,23 @@
       "parentUuid": "6f32ef49_96a384f6",
       "revId": "a38285db8fa0361fcb785f1b40d61a80f33d4372",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4722c8d2_294e8397",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1933736
+      },
+      "writtenOn": "2023-03-10T18:27:01Z",
+      "side": 1,
+      "message": "Hi there,\nWe do need this change to continue with the Rust update.",
+      "revId": "a38285db8fa0361fcb785f1b40d61a80f33d4372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
