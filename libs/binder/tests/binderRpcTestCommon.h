@@ -37,7 +37,9 @@
 #include <string>
 #include <vector>
 
-#ifndef __TRUSTY__
+#ifdef __TRUSTY__
+#include <binder/RpcTransportTipcTrusty.h>
+#else // __TRUSTY__
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/properties.h>
@@ -170,7 +172,7 @@ static inline T readFromFd(android::base::borrowed_fd fd) {
     return object;
 }
 
-static inline std::unique_ptr<RpcTransportCtxFactory> newFactory(
+static inline std::unique_ptr<RpcTransportCtxFactory> newTlsFactory(
         RpcSecurity rpcSecurity, std::shared_ptr<RpcCertificateVerifier> verifier = nullptr,
         std::unique_ptr<RpcAuth> auth = nullptr) {
     switch (rpcSecurity) {
