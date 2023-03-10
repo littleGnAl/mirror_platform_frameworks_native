@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3c22036_4cbe1eb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2023-03-10T21:50:14Z",
+      "side": 1,
+      "message": "Mind adding `Bug: 185536303`?",
+      "revId": "dc68f29b7f3103cabcd210768ad6e7cae4906fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d6a464f_8712bc14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1099928
+      },
+      "writtenOn": "2023-03-10T21:50:14Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "dc68f29b7f3103cabcd210768ad6e7cae4906fc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
