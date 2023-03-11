@@ -22,6 +22,30 @@
       },
       "revId": "f7123cd7001b5c320a668c0035d917072cdba676",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39061d45_53f744ec",
+        "filename": "libs/binder/ndk/process.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1977450
+      },
+      "writtenOn": "2023-03-11T02:38:40Z",
+      "side": 1,
+      "message": "I only modified the functions defined in \u003candroid/binder_process.h\u003e.\n\nShould binder_status_t ABinderProcess_handlePolledCommands() be added to the header?",
+      "parentUuid": "fbd02cec_55be9e3d",
+      "range": {
+        "startLine": 45,
+        "startChar": 51,
+        "endLine": 45,
+        "endChar": 53
+      },
+      "revId": "f7123cd7001b5c320a668c0035d917072cdba676",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
