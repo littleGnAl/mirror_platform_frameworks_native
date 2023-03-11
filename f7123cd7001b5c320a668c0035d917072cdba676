@@ -46,6 +46,30 @@
       },
       "revId": "f7123cd7001b5c320a668c0035d917072cdba676",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb167203_4b59490a",
+        "filename": "libs/binder/ndk/process.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1977450
+      },
+      "writtenOn": "2023-03-11T03:19:54Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "39061d45_53f744ec",
+      "range": {
+        "startLine": 45,
+        "startChar": 51,
+        "endLine": 45,
+        "endChar": 53
+      },
+      "revId": "f7123cd7001b5c320a668c0035d917072cdba676",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
