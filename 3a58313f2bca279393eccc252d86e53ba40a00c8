@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "411c3885_1dc1008e",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-11T05:00:05Z",
+      "side": 1,
+      "message": "It works fine with atest right now, the problem is that the Trusty tests don\u0027t run over that (there\u0027s no tf integration). We will probably need to run this test as part of Trusty\u0027s non-tf test suite, which uses `adb push` and `adb shell` to run all its Android tests.",
+      "parentUuid": "22a4a987_3428d3e5",
+      "revId": "3a58313f2bca279393eccc252d86e53ba40a00c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b25cc443_d8258b91",
         "filename": "libs/binder/tests/Android.bp",
         "patchSetId": 2
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "b25cc443_d8258b91",
+      "revId": "3a58313f2bca279393eccc252d86e53ba40a00c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efd16fb1_fe3ba338",
+        "filename": "libs/binder/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-11T05:00:05Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "06124c0b_39e3e744",
       "revId": "3a58313f2bca279393eccc252d86e53ba40a00c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
