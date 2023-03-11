@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16ba4e6_3ad29a7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-11T01:40:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "153d4901_a9f3d16e",
+      "revId": "894b2abd5a909b431cff04d7354ca88a0ce06b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03282c45_b90f8b6f",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b4388ca_b3159daa",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-11T01:40:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03282c45_b90f8b6f",
+      "range": {
+        "startLine": 275,
+        "startChar": 7,
+        "endLine": 275,
+        "endChar": 43
+      },
+      "revId": "894b2abd5a909b431cff04d7354ca88a0ce06b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daa7c01f_dca11c4a",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-03-09T00:56:11Z",
       "side": 1,
       "message": "can you add a more visible call out in this doc that says something like \"if this erases the last node, then it also shuts down the session\"",
+      "revId": "894b2abd5a909b431cff04d7354ca88a0ce06b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1928f2e2_2bb785f8",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-11T01:40:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daa7c01f_dca11c4a",
       "revId": "894b2abd5a909b431cff04d7354ca88a0ce06b12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

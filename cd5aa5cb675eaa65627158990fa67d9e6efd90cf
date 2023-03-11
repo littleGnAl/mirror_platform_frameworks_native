@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ddcc85_b099b052",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-11T01:40:03Z",
+      "side": 1,
+      "message": "When the RpcSession shuts down or is destroyed, all refcounts are removed. So, it\u0027ll still happen when the session is destroyed.",
+      "parentUuid": "47542077_5be2a87e",
+      "revId": "cd5aa5cb675eaa65627158990fa67d9e6efd90cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a005504c_1205689b",
@@ -121,6 +139,24 @@
       "side": 1,
       "message": "Sure, but we only do that before the server shuts down, right? The client calls `listSessions` via `countBinders` which is a transaction, which means we can only do that while the session is active. The client has no way of checking that all server-side binders are gone post-shutdown.\n\nIt does check that there is only one binder per session at the end, but it doesn\u0027t confirm that the server isn\u0027t leaking that one binder.\n\nI think we need a sequence like this, but in the service:\n* Server-side session(s) shut(s) down\n* Wait for all connections in that session to shut down\n* Server calls `listSessions` to make sure there are no leaks. If there are any, then they\u0027ll probably also have `state()-\u003ecountBinders() !\u003d 0`.",
       "parentUuid": "21a6f769_ba89c4b4",
+      "revId": "cd5aa5cb675eaa65627158990fa67d9e6efd90cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b3b08af_d179ac8a",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-11T01:40:03Z",
+      "side": 1,
+      "message": "Oh - right - I forgot I removed this test when I added forceShutdown here. I\u0027ve avoided forceShutdown here (so yes, forceShutdown looks unrelated here, but I\u0027m keeping it for now).",
+      "parentUuid": "db7a7148_60657591",
       "revId": "cd5aa5cb675eaa65627158990fa67d9e6efd90cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
