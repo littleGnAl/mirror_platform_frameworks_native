@@ -524,8 +524,7 @@ status_t HWComposer::presentAndGetReleaseFences(
     }
 
     const bool waitForEarliestPresent =
-            !mComposer->isSupported(Hwc2::Composer::OptionalFeature::ExpectedPresentTime) &&
-            previousPresentFence->getSignalTime() != Fence::SIGNAL_TIME_PENDING;
+            !mComposer->isSupported(Hwc2::Composer::OptionalFeature::ExpectedPresentTime);
 
     if (waitForEarliestPresent) {
         ATRACE_NAME("wait for earliest present time");
