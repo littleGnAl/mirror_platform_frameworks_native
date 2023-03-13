@@ -1942,7 +1942,8 @@ int dexopt(const char* dex_path, uid_t uid, const char* pkgname, const char* ins
         RUNTIME_NATIVE_BOOT_NAMESPACE,
         ENABLE_JITZYGOTE_IMAGE,
         /*default_value=*/ "");
-    bool use_jitzygote_image = jitzygote_flag == "true" || IsBootClassPathProfilingEnable();
+    bool use_jitzygote_image =
+            jitzygote_flag == "true" || IsBootClassPathProfilingEnable() || force_jit_zygote();
 
     // Decide whether to use dex2oat64.
     bool use_dex2oat64 = false;
