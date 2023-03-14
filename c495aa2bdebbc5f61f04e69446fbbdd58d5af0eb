@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f10ec18_fb5bb74c",
+        "filename": "cmds/installd/dexopt.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1945,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-14T11:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51a892f9_42b6fc7a",
+      "range": {
+        "startLine": 1945,
+        "startChar": 9,
+        "endLine": 1945,
+        "endChar": 28
+      },
+      "revId": "c495aa2bdebbc5f61f04e69446fbbdd58d5af0eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "304381f6_1d98c626",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-13T10:21:18Z",
       "side": 1,
       "message": "`compilate_without_image` ?",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 21
+      },
+      "revId": "c495aa2bdebbc5f61f04e69446fbbdd58d5af0eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d46e3796_c8fad81b",
+        "filename": "cmds/installd/installd.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-03-14T11:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "304381f6_1d98c626",
       "range": {
         "startLine": 68,
         "startChar": 5,
