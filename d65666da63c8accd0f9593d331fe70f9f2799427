@@ -16,6 +16,24 @@
       "message": "Can we add this in TEST_MAPPING?",
       "revId": "d65666da63c8accd0f9593d331fe70f9f2799427",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fd7894_1aeec9ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-14T20:27:36Z",
+      "side": 1,
+      "message": "Do we want to? We can only run this on the Trusty images, and there we have to run it manually with `adb shell` (for now).",
+      "parentUuid": "d4d33344_f15550db",
+      "revId": "d65666da63c8accd0f9593d331fe70f9f2799427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
