@@ -16,6 +16,23 @@
       "message": "we can probably delete the copy ctor of the single threaded mutex or something simple like that to fix this as a follow up. i think this warning is valuable",
       "revId": "67f8590b3545f55a308a0ea7ec32a5bdedf9f619",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9226d7e_2fbd0f8c",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-15T01:30:24Z",
+      "side": 1,
+      "message": "On Trusty, this will be a single-element array containing a `0` and will crash here. Maybe we should check that the sum of the array elements is 0 instead?",
+      "revId": "67f8590b3545f55a308a0ea7ec32a5bdedf9f619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
