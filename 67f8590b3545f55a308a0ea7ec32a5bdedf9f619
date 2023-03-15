@@ -69,6 +69,24 @@
       "parentUuid": "9ec34322_ee9cb09d",
       "revId": "67f8590b3545f55a308a0ea7ec32a5bdedf9f619",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4efd73_c153ca34",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-15T01:50:14Z",
+      "side": 1,
+      "message": "We didn\u0027t have Trusty binderRpcTest in presubmit until earlier today, that just landed. Future presubmit runs should catch stuff like this.",
+      "parentUuid": "d4ee6273_cdc78795",
+      "revId": "67f8590b3545f55a308a0ea7ec32a5bdedf9f619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
