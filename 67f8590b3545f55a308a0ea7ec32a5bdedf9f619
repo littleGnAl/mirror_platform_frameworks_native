@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27376c0d_8637997a",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-03-15T01:25:29Z",
+      "side": 1,
+      "message": "we can probably delete the copy ctor of the single threaded mutex or something simple like that to fix this as a follow up. i think this warning is valuable",
+      "revId": "67f8590b3545f55a308a0ea7ec32a5bdedf9f619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
