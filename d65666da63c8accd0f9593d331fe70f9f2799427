@@ -34,6 +34,24 @@
       "parentUuid": "d4d33344_f15550db",
       "revId": "d65666da63c8accd0f9593d331fe70f9f2799427",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc7175f_2d7f88b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-15T01:39:51Z",
+      "side": 1,
+      "message": "Is there something that explains what all the tests are? Is everything that can be tested in android userspace testing?\n\nSince we do a trusty build in CI here, are we able to run the test in CI due to another rule?",
+      "parentUuid": "92fd7894_1aeec9ca",
+      "revId": "d65666da63c8accd0f9593d331fe70f9f2799427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
