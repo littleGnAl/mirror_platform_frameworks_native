@@ -51,6 +51,24 @@
       "parentUuid": "f9226d7e_2fbd0f8c",
       "revId": "67f8590b3545f55a308a0ea7ec32a5bdedf9f619",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ee6273_cdc78795",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-15T01:48:23Z",
+      "side": 1,
+      "message": "Following up sounds good.\n\nCan you open up a separate bug to make sure we are testing the Trusty case in Android userspace as well? I don\u0027t fully understand how the separate headers are mixed - if two types are defined separately, we should avoid this case so that we have a good signal from compiling the code in one mode vs another.\n\nAlso - this wasn\u0027t caught in CI, but this CL had landed for a few days, do we know why? Is this a recent change?",
+      "parentUuid": "9ec34322_ee9cb09d",
+      "revId": "67f8590b3545f55a308a0ea7ec32a5bdedf9f619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
