@@ -33,6 +33,24 @@
       "message": "On Trusty, this will be a single-element array containing a `0` and will crash here. Maybe we should check that the sum of the array elements is 0 instead?",
       "revId": "67f8590b3545f55a308a0ea7ec32a5bdedf9f619",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ec34322_ee9cb09d",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-15T01:41:40Z",
+      "side": 1,
+      "message": "`std::none_of` could also work.\n\nIn any case, if this CL passes presubmit then we can make a follow-up for the Trusty fix.",
+      "parentUuid": "f9226d7e_2fbd0f8c",
+      "revId": "67f8590b3545f55a308a0ea7ec32a5bdedf9f619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
