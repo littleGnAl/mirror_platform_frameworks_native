@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9675db2d_be97404a",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1978826
+      },
+      "writtenOn": "2023-03-16T21:24:09Z",
+      "side": 1,
+      "message": "Do wrap the line, but LGTM!",
+      "range": {
+        "startLine": 1273,
+        "startChar": 14,
+        "endLine": 1274,
+        "endChar": 18
+      },
+      "revId": "4c2d8c84e305c9c8948a2f94e554d276dd6f169b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
