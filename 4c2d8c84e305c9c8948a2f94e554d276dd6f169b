@@ -22,6 +22,30 @@
       },
       "revId": "4c2d8c84e305c9c8948a2f94e554d276dd6f169b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39cb9eb3_c067ff8c",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-16T21:26:56Z",
+      "side": 1,
+      "message": "http://aosp/2494121",
+      "parentUuid": "9675db2d_be97404a",
+      "range": {
+        "startLine": 1273,
+        "startChar": 14,
+        "endLine": 1274,
+        "endChar": 18
+      },
+      "revId": "4c2d8c84e305c9c8948a2f94e554d276dd6f169b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
