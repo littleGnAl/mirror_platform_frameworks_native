@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df184ed_0820eca8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-03-17T22:46:51Z",
+      "side": 1,
+      "message": "Ran `time adb shell bugreportz` 3 times each.\nBefore: 27s,25s,25s\nAfter Parent CL, before this CL: 56s,52s,52s\nAfter: 32s,27s,28s\n\nSo it adds a ~3s or ~10% time.\n\nAdding this to the bug too.",
+      "parentUuid": "1e5e5770_bbb9bce8",
+      "revId": "55f050998e7de25601a675a314359f74ed58ecb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "826ee382_e671a842",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-03-17T21:14:40Z",
       "side": 1,
       "message": "log?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 71
+      },
+      "revId": "55f050998e7de25601a675a314359f74ed58ecb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e162c45_d8fe78f5",
+        "filename": "libs/binderdebug/BinderDebug.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-03-17T22:46:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "826ee382_e671a842",
       "range": {
         "startLine": 84,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1947a05_8a19cf78",
+        "filename": "libs/binderdebug/BinderDebug.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-03-17T22:46:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd31d646_45cfd6ae",
+      "range": {
+        "startLine": 96,
+        "startChar": 41,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "55f050998e7de25601a675a314359f74ed58ecb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42defa91_6688d941",
@@ -77,6 +143,30 @@
       "writtenOn": "2023-03-17T21:18:15Z",
       "side": 1,
       "message": "this stops the first iteration?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 19
+      },
+      "revId": "55f050998e7de25601a675a314359f74ed58ecb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b50da71_3a869238",
+        "filename": "libs/binderdebug/BinderDebug.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-03-17T22:46:51Z",
+      "side": 1,
+      "message": "Yes, it\u0027s either the first case or the second case since this lambda is only looking at one line at a time. So I changed it to if/else to be more obvious.",
+      "parentUuid": "42defa91_6688d941",
       "range": {
         "startLine": 100,
         "startChar": 0,
