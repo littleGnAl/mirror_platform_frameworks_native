@@ -39,6 +39,52 @@
       },
       "revId": "55f050998e7de25601a675a314359f74ed58ecb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd31d646_45cfd6ae",
+        "filename": "libs/binderdebug/BinderDebug.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-17T21:18:15Z",
+      "side": 1,
+      "message": "this may be uninitialized if L81 isn\u0027t hit first (e.g. if the format changes)",
+      "range": {
+        "startLine": 96,
+        "startChar": 41,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "55f050998e7de25601a675a314359f74ed58ecb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42defa91_6688d941",
+        "filename": "libs/binderdebug/BinderDebug.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-17T21:18:15Z",
+      "side": 1,
+      "message": "this stops the first iteration?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 19
+      },
+      "revId": "55f050998e7de25601a675a314359f74ed58ecb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
