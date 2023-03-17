@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7da3fb5_f9a48844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010080
+      },
+      "writtenOn": "2023-03-17T15:54:55Z",
+      "side": 1,
+      "message": "I know this isn\u0027t a proper fix. With the \"Fix display mode transitions for multi-display\" commit, which we got in 13 QPR2, we have a blank display on Pixel 4, it can\u0027t even show the bootanimation.",
+      "revId": "047f38f620814c6f4783fda937c8921892c2539f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
