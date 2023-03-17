@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e5e5770_bbb9bce8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-17T21:14:40Z",
+      "side": 1,
+      "message": "also - (or maybe it should be on the parent dumpstate CL) do we know how much time this adds to bugreport?",
+      "revId": "55f050998e7de25601a675a314359f74ed58ecb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826ee382_e671a842",
+        "filename": "libs/binderdebug/BinderDebug.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-17T21:14:40Z",
+      "side": 1,
+      "message": "log?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 71
+      },
+      "revId": "55f050998e7de25601a675a314359f74ed58ecb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
