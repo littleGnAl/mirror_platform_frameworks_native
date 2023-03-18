@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d706d972_c1ece4ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1949170
+      },
+      "writtenOn": "2023-03-18T17:41:58Z",
+      "side": 1,
+      "message": "tested on lineage 18.1 on nx",
+      "revId": "5a9e5d35671f587d82c9639363e839c54d155d31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
