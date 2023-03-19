@@ -33,6 +33,23 @@
       "message": "Specific use cases of this at the moment - device with a set of serial connected removable controllers whose inputs must be consumed by a Daemon that reports them as a single controller instance and maps things appropriately.",
       "revId": "5a9e5d35671f587d82c9639363e839c54d155d31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9cdc1b_62ffc98c",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2091,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2023-03-19T20:55:20Z",
+      "side": 1,
+      "message": "Currently leaking the device allocation.\nI assume you still want to device ( disabled ) to be added as a device.\ndon\u0027t early return in such case.",
+      "revId": "5a9e5d35671f587d82c9639363e839c54d155d31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
