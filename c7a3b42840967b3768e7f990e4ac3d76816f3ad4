@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "342e4d6a_c7dd29fe",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2023-03-20T22:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd2f10f1_0d79add6",
+      "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6a3b362_1c385ed5",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-03-08T12:21:28Z",
       "side": 1,
       "message": "Should be in this block?",
+      "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34fbad13_b77794bc",
+        "filename": "vulkan/libvulkan/driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2023-03-20T22:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6a3b362_1c385ed5",
       "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "If we want to treat the new formats as being physical device functionality (and thinking about it a bit more, I think that\u0027s appropriate-- given need for things like GetPhysicalDeviceImageFormatProperties etc), then you can\u0027t make this conditional on the extension being _enabled_. It seems reasonable to make it conditional on the device extension being _supported_ by the physical device, but that\u0027s not what the instance_data extensions mask tells you.\n\nI think we have a few occurrences of this now -- I recall some weird gymnastics being required in the lossy image compression work for similar reasons. Perhaps we _should_ collect a \"supported extension mask\" for the physical device(s) early, and stash that in the instance data?",
       "parentUuid": "093f41a3_53bccd0f",
+      "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8150ab_0d5ea327",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2023-03-20T22:30:18Z",
+      "side": 1,
+      "message": "Bug created to document this gap: b/274504168",
+      "parentUuid": "9fb86363_c75d4135",
       "revId": "c7a3b42840967b3768e7f990e4ac3d76816f3ad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
