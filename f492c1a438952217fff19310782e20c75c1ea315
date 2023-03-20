@@ -16,6 +16,24 @@
       "message": "Gavin/Nandana, can you check b/270596767#comment13. This adds ~3s to the bugreport.",
       "revId": "f492c1a438952217fff19310782e20c75c1ea315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86aa2e2c_a0ab9c1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-20T20:49:20Z",
+      "side": 1,
+      "message": "I think this is fine because the information is needed, you can see it\u0027s already optimized, but I\u0027m not sure what has been done here to make the bugreports fast.",
+      "parentUuid": "c23681a9_93f37262",
+      "revId": "f492c1a438952217fff19310782e20c75c1ea315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
