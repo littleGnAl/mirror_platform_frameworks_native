@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97189605_3f0358d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2023-03-21T04:21:48Z",
+      "side": 1,
+      "message": "Hi Linnan! \n\nThanks for the patch. We have fixed this issue internally, but since the fix is complex, we will not cherry-pick it to AOSP for now. It should be ok to apply the patch to your build though!",
+      "revId": "48143393bd41fd700d5f6d1e71531b66b87f420e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
