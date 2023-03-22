@@ -70,6 +70,30 @@
       },
       "revId": "f7b352ff792e89a1d854fc62ad4427c75b75dc23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "441e7423_a3a37f3c",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-03-22T23:20:34Z",
+      "side": 1,
+      "message": "I put a breakpoint in the intermediates toString definition and it is being hit with aosp/2503964. I don\u0027t really feel like trying without it, so it will remain a mystery 😊 (I also think it would be hit then too)",
+      "parentUuid": "ea576141_74dff7aa",
+      "range": {
+        "startLine": 201,
+        "startChar": 51,
+        "endLine": 201,
+        "endChar": 84
+      },
+      "revId": "f7b352ff792e89a1d854fc62ad4427c75b75dc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
