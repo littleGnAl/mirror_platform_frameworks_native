@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f1d5a3_951d2d10",
+        "filename": "libs/binder/tests/parcel_fuzzer/parcelables/GenericDataParcelable.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-22T22:44:09Z",
+      "side": 1,
+      "message": "what about @nullable parcelable as well?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 36
+      },
+      "revId": "e0bcbe7cca6d605a35442474a0c9c3a5e40c8155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
