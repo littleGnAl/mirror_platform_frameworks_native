@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "327fe2cf_0a679818",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder_ndk.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-22T22:49:01Z",
+      "side": 1,
+      "message": "nit: I would put this into a string and then log that. If ENABLE_FUZZ_LOG is not set, I think the compiler might optimize these out? I\u0027m not 100% sure.",
+      "range": {
+        "startLine": 201,
+        "startChar": 51,
+        "endLine": 201,
+        "endChar": 84
+      },
+      "revId": "f7b352ff792e89a1d854fc62ad4427c75b75dc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
