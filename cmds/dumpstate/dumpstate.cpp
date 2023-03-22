@@ -167,6 +167,7 @@ void add_mountinfo();
 #define ALT_PSTORE_LAST_KMSG "/sys/fs/pstore/console-ramoops-0"
 #define BLK_DEV_SYS_DIR "/sys/block"
 
+
 #define RECOVERY_DIR "/cache/recovery"
 #define RECOVERY_DATA_DIR "/data/misc/recovery"
 #define UPDATE_ENGINE_LOG_DIR "/data/misc/update_engine_log"

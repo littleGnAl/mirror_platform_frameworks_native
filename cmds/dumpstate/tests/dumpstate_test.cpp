@@ -1024,7 +1024,7 @@ class ZippedBugReportStreamTest : public DumpstateBaseTest {
 
 // Generate a quick LimitedOnly report redirected to a file, open it and verify entry exist.
 // TODO: broken test tracked in b/249983726
-TEST_F(ZippedBugReportStreamTest, DISABLED_StreamLimitedOnlyReport) {
+TEST_F(ZippedBugReportStreamTest, StreamLimitedOnlyReport) {
     std::string out_path = kTestDataPath + "StreamLimitedOnlyReportOut.zip";
     android::base::unique_fd out_fd;
     CreateFd(out_path, &out_fd);
