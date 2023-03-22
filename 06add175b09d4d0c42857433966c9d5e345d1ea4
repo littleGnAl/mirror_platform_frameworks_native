@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e3be73_44845d6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-22T22:53:31Z",
+      "side": 1,
+      "message": "I would like to disambiguate this as well, by tracking the state. It would be needed to add a waitForShutdown API.",
+      "revId": "06add175b09d4d0c42857433966c9d5e345d1ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
