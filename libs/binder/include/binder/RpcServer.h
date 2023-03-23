@@ -149,6 +149,11 @@ public:
             const std::vector<RpcSession::FileDescriptorTransportMode>& modes);
 
     /**
+     * TODO
+     */
+    void setRestartableSockets(bool enable);
+
+    /**
      * The root object can be retrieved by any client, without any
      * authentication. TODO(b/183988761)
      *
@@ -256,6 +261,7 @@ private:
     // A mode is supported if the N'th bit is on, where N is the mode enum's value.
     std::bitset<8> mSupportedFileDescriptorTransportModes = std::bitset<8>().set(
             static_cast<size_t>(RpcSession::FileDescriptorTransportMode::NONE));
+    bool mRestartableSockets = true;
     RpcTransportFd mServer; // socket we are accepting sessions on
 
     RpcMutex mLock; // for below
