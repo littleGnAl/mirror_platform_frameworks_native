@@ -334,6 +334,8 @@ bool RpcServer::shutdown() {
         mJoinThread.reset();
     }
 
+    mServer.fd.reset();
+
     LOG_RPC_DETAIL("Finished waiting on shutdown.");
 
     mShutdownTrigger = nullptr;
@@ -555,6 +557,13 @@ status_t RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
         ALOGE("Could not create socket: %s", strerror(savedErrno));
         return -savedErrno;
     }
+
+    int opt = 1;
+    if (0 != setsockopt(socket_fd.get(), SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt))) {
+        int savedErrno = errno;
+        ALOGW("Could not set SO_REUSEADDR option: %s", strerror(savedErrno));
+    }
+
     if (0 != TEMP_FAILURE_RETRY(bind(socket_fd.get(), addr.addr(), addr.addrSize()))) {
         int savedErrno = errno;
         ALOGE("Could not bind socket at %s: %s", addr.toString().c_str(), strerror(savedErrno));
