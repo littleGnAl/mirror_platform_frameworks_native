@@ -149,6 +149,14 @@ public:
             const std::vector<RpcSession::FileDescriptorTransportMode>& modes);
 
     /**
+     * Enable socket options to allow restarting RpcServer on the same IP:port pair.
+     *
+     * This greatly reduces linger time needed to wait e.g. in case of process crash, but
+     * introduces risk of garbage data being present in the socket from the previous session.
+     */
+    void setRestartableSockets(bool enable);
+
+    /**
      * The root object can be retrieved by any client, without any
      * authentication. TODO(b/183988761)
      *
@@ -256,6 +264,7 @@ private:
     // A mode is supported if the N'th bit is on, where N is the mode enum's value.
     std::bitset<8> mSupportedFileDescriptorTransportModes = std::bitset<8>().set(
             static_cast<size_t>(RpcSession::FileDescriptorTransportMode::NONE));
+    bool mRestartableSockets = true;
     RpcTransportFd mServer; // socket we are accepting sessions on
 
     RpcMutex mLock; // for below
