@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efdb1349_1f705018",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-23T00:33:58Z",
+      "side": 1,
+      "message": "I can\u0027t autosubmit this because there\u0027s a warning, could someone else hit the submit button?",
+      "revId": "4bea2177b3cc97908da3d04b703e3d896e63da25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
