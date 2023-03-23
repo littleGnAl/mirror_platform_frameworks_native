@@ -135,6 +135,10 @@ void RpcServer::setSupportedFileDescriptorTransportModes(
     }
 }
 
+void RpcServer::setRestartableSockets(bool enable) {
+    mRestartableSockets = enable;
+}
+
 void RpcServer::setRootObject(const sp<IBinder>& binder) {
     RpcMutexLockGuard _l(mLock);
     mRootObjectFactory = nullptr;
@@ -333,6 +337,8 @@ bool RpcServer::shutdown() {
         mJoinThread->join();
         mJoinThread.reset();
     }
+
+    mServer = RpcTransportFd();
 
     LOG_RPC_DETAIL("Finished waiting on shutdown.");
 
@@ -544,6 +550,22 @@ void RpcServer::establishConnection(
     joinFn(std::move(session), std::move(setupResult));
 }
 
+static void configureRestartableSocket(const unique_fd& fd) {
+    int opt = 1;
+
+    if (0 != setsockopt(fd.get(), SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt))) {
+        int savedErrno = errno;
+        ALOGE("Could not set SO_REUSEADDR option: %s", strerror(savedErrno));
+    }
+
+    if (0 != setsockopt(fd.get(), SOL_SOCKET, SO_REUSEPORT, &opt, sizeof(opt))) {
+        int savedErrno = errno;
+        ALOGE("Could not set SO_REUSEPORT option: %s", strerror(savedErrno));
+    }
+
+    // TODO: SO_LINGER
+}
+
 status_t RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
     LOG_RPC_DETAIL("Setting up socket server %s", addr.toString().c_str());
     LOG_ALWAYS_FATAL_IF(hasServer(), "Each RpcServer can only have one server.");
@@ -555,6 +577,11 @@ status_t RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
         ALOGE("Could not create socket: %s", strerror(savedErrno));
         return -savedErrno;
     }
+
+    if (mRestartableSockets) {
+        configureRestartableSocket(socket_fd);
+    }
+
     if (0 != TEMP_FAILURE_RETRY(bind(socket_fd.get(), addr.addr(), addr.addrSize()))) {
         int savedErrno = errno;
         ALOGE("Could not bind socket at %s: %s", addr.toString().c_str(), strerror(savedErrno));

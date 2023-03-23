@@ -147,6 +147,7 @@ ARpcServer* ARpcServer_newUnixDomainBootstrap(AIBinder* service, int bootstrapFd
 
 ARpcServer* ARpcServer_newInet(AIBinder* service, const char* address, unsigned int port) {
     auto server = RpcServer::make();
+    server->setRestartableSockets(true);
     if (status_t status = server->setupInetServer(address, port, nullptr); status != OK) {
         LOG(ERROR) << "Failed to set up inet RPC server with address " << address << " and port "
                    << port << " error: " << statusToString(status).c_str();
