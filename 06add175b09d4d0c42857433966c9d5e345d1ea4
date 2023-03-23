@@ -52,6 +52,24 @@
       "parentUuid": "2b96769f_636b62c1",
       "revId": "06add175b09d4d0c42857433966c9d5e345d1ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec91fd6a_a8bdca32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-23T16:41:57Z",
+      "side": 1,
+      "message": "For the latter: the server starts before join (in my tests, I do everything in the same thread and clearly the server answers), so shutting down is necessary to close the socket.\n\nFor the former: we\u0027re building a native lifecycle framework that wraps up IPC/RPC service lifecycle under the hood. Killing the service early may happen and I don\u0027t see a need to restrict API against that.",
+      "parentUuid": "c559ced0_7d80dee0",
+      "revId": "06add175b09d4d0c42857433966c9d5e345d1ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
