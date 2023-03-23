@@ -184,6 +184,11 @@ public:
     void setConnectionFilter(std::function<bool(const void*, size_t)>&& filter);
 
     /**
+     * TODO: fill in after initial +1 from smoreland@
+     */
+    void setServerSocketModifier(std::function<void(base::borrowed_fd)>&& modifier);
+
+    /**
      * See RpcTransportCtx::getCertificate
      */
     std::vector<uint8_t> getCertificate(RpcCertificateFormat);
@@ -267,6 +272,7 @@ private:
     wp<IBinder> mRootObjectWeak;
     std::function<sp<IBinder>(const void*, size_t)> mRootObjectFactory;
     std::function<bool(const void*, size_t)> mConnectionFilter;
+    std::function<void(base::borrowed_fd)> mServerSocketModifier;
     std::map<std::vector<uint8_t>, sp<RpcSession>> mSessions;
     std::unique_ptr<FdTrigger> mShutdownTrigger;
     RpcConditionVariable mShutdownCv;

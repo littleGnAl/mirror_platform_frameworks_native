@@ -161,6 +161,11 @@ void RpcServer::setConnectionFilter(std::function<bool(const void*, size_t)>&& f
     mConnectionFilter = std::move(filter);
 }
 
+void RpcServer::setServerSocketModifier(std::function<void(base::borrowed_fd)>&& modifier) {
+    LOG_ALWAYS_FATAL_IF(mShutdownTrigger != nullptr, "Already joined");
+    mServerSocketModifier = std::move(modifier);
+}
+
 sp<IBinder> RpcServer::getRootObject() {
     RpcMutexLockGuard _l(mLock);
     bool hasWeak = mRootObjectWeak.unsafe_get();
@@ -334,6 +339,8 @@ bool RpcServer::shutdown() {
         mJoinThread->join();
         mJoinThread.reset();
     }
+
+    mServer = RpcTransportFd();
 
     LOG_RPC_DETAIL("Finished waiting on shutdown.");
 
@@ -556,6 +563,12 @@ status_t RpcServer::setupSocketServer(const RpcSocketAddress& addr) {
         ALOGE("Could not create socket at %s: %s", addr.toString().c_str(), strerror(savedErrno));
         return -savedErrno;
     }
+
+    auto serverSocketModifier = mServerSocketModifier;
+    if (serverSocketModifier != nullptr) {
+        serverSocketModifier(socket_fd);
+    }
+
     if (0 != TEMP_FAILURE_RETRY(bind(socket_fd.get(), addr.addr(), addr.addrSize()))) {
         int savedErrno = errno;
         ALOGE("Could not bind socket at %s: %s", addr.toString().c_str(), strerror(savedErrno));
