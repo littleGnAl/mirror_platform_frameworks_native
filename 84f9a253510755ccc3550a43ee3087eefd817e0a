@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "424dc774_697eb50d",
+        "filename": "libs/vibrator/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2023-03-23T10:56:24Z",
+      "side": 1,
+      "message": "Is there any other alias that could be added here?",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 53
+      },
+      "revId": "84f9a253510755ccc3550a43ee3087eefd817e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
