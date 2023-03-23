@@ -16,6 +16,24 @@
       "message": "I would like to disambiguate this as well, by tracking the state. It would be needed to add a waitForShutdown API.",
       "revId": "06add175b09d4d0c42857433966c9d5e345d1ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b96769f_636b62c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-23T16:28:15Z",
+      "side": 1,
+      "message": "I was hoping for the change to go other way (supporting shutdown-before-join). Why to limit this API this way?\n\nOtherwise, if I \"change my mind\" before publishing the service, I have to spin out a separate thread to join before running shutdown - because there\u0027s no \"detach\" method next to \"join\".",
+      "parentUuid": "85e3be73_44845d6b",
+      "revId": "06add175b09d4d0c42857433966c9d5e345d1ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
