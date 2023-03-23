@@ -34,6 +34,24 @@
       "parentUuid": "6e776da2_828be58a",
       "revId": "4523b4a304fde65ff37fda90867aae6342f5e95d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "317edca8_1f1f5858",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2023-03-23T02:21:38Z",
+      "side": 1,
+      "message": "I have attached the diff of the patch to the bug. Please check it there, thanks!",
+      "parentUuid": "427450be_56ba554d",
+      "revId": "4523b4a304fde65ff37fda90867aae6342f5e95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
