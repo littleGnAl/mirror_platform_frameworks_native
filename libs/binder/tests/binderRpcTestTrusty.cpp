@@ -97,6 +97,10 @@ INSTANTIATE_TEST_CASE_P(Trusty, BinderRpc,
                                            ::testing::Values(false), ::testing::Values(true)),
                         BinderRpc::PrintParamInfo);
 
+// clang on Trusty sometimes fails to instantiate this test suite.
+// Silence the Googletest errors until fix the underlying issue.
+GTEST_ALLOW_UNINSTANTIATED_PARAMETERIZED_TEST(BinderRpc);
+
 } // namespace android
 
 PORT_GTEST(BinderRpcTest, "com.android.trusty.binderRpcTest");
