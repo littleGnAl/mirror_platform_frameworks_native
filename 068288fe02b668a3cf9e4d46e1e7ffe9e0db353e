@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4fbea6b_27eaf339",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-27T23:46:59Z",
+      "side": 1,
+      "message": "create a new RPC server instead?",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 23
+      },
+      "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88fca354_dacea5da",
         "filename": "libs/binder/RpcServer.cpp",
         "patchSetId": 3
@@ -31,6 +54,30 @@
       "writtenOn": "2023-03-27T22:26:17Z",
       "side": 1,
       "message": "as far as I know, this is only needed for INET. Can this be moved to setupInetServer instead?",
+      "range": {
+        "startLine": 562,
+        "startChar": 53,
+        "endLine": 562,
+        "endChar": 65
+      },
+      "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa6dfbf2_88206712",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-27T23:46:59Z",
+      "side": 1,
+      "message": "This is also dangerous in general, and it can result in flakes or garbage data being passed. Can we use a different address or otherwise wait until it\u0027s shutdown?",
+      "parentUuid": "88fca354_dacea5da",
       "range": {
         "startLine": 562,
         "startChar": 53,
