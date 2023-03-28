@@ -206,6 +206,30 @@
       },
       "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d4a63e_c2a7b5b0",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-28T19:32:23Z",
+      "side": 1,
+      "message": "Do you mean similar to gAutoThreadPool?\nhttp://cs/android/system/software_defined_vehicle/platform/rpc/libsdvrpc/libsdvrpc.cpp;l\u003d137;rcl\u003dcae06b9fcc4f9de4d9c0a6328de5a8c9f61441a4\n\nOther options:\n- SO_REUSEPORT\n- How about SO_LINGER (to partially address the concern of garbage data)?\n\nIf doing this through gAutoThreadPool-style per-process config, I would bundle all 3 together as \"restart friendly\" option.",
+      "parentUuid": "95f6904e_0b6049ca",
+      "range": {
+        "startLine": 562,
+        "startChar": 53,
+        "endLine": 562,
+        "endChar": 65
+      },
+      "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
