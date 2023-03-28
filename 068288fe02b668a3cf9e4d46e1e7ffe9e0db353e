@@ -230,6 +230,30 @@
       },
       "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d1f9361_b90b555d",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-28T20:54:58Z",
+      "side": 1,
+      "message": "Also, I don\u0027t think I can move this to `setupInetServer`: SO_REUSEPORT/ADDR needs to be set between `socket` and `bind`.",
+      "parentUuid": "95d4a63e_c2a7b5b0",
+      "range": {
+        "startLine": 562,
+        "startChar": 53,
+        "endLine": 562,
+        "endChar": 65
+      },
+      "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
