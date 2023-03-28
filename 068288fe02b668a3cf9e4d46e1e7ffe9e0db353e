@@ -134,6 +134,30 @@
       },
       "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bc9f07_95aeaa4e",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-03-28T00:01:25Z",
+      "side": 1,
+      "message": "The port is also static in the initial automotive design. The client wouldn\u0027t know where to reach the service.\n\n+1 to being an option",
+      "parentUuid": "58384e6d_d58aa413",
+      "range": {
+        "startLine": 562,
+        "startChar": 53,
+        "endLine": 562,
+        "endChar": 65
+      },
+      "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
