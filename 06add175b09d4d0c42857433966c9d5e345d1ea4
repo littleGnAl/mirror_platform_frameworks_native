@@ -88,6 +88,24 @@
       "parentUuid": "ec91fd6a_a8bdca32",
       "revId": "06add175b09d4d0c42857433966c9d5e345d1ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dba3698_434a4786",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-28T19:41:53Z",
+      "side": 1,
+      "message": "Not quite: it\u0027s somewhat started and holds onto the socket. Just not joined.\n\nAnd the destructor calls shutdown, doesn\u0027t it? So if you don\u0027t join it will crash eventually.",
+      "parentUuid": "9237fab1_1617698c",
+      "revId": "06add175b09d4d0c42857433966c9d5e345d1ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
