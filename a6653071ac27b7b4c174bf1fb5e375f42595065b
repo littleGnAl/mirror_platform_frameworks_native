@@ -80,6 +80,30 @@
       },
       "revId": "a6653071ac27b7b4c174bf1fb5e375f42595065b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21aedb6e_2c0d1278",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-03-28T22:49:00Z",
+      "side": 1,
+      "message": "b/275620340, but we identified the root cause and are fixing it elsewhere. Going to abandon this change.",
+      "parentUuid": "30a0b323_a53ad431",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 57
+      },
+      "revId": "a6653071ac27b7b4c174bf1fb5e375f42595065b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
