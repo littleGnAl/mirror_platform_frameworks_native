@@ -182,6 +182,30 @@
       },
       "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e28ae7f7_a134b14e",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-28T19:14:18Z",
+      "side": 1,
+      "message": "Add an independent API, which will store additional socket options, and then that value can be read to setup the server when setupInetServer is called.\n\nAs an alternative, we can not implement this and request setupRawSocketServer be used instead, since it supports this functionality.",
+      "parentUuid": "95f6904e_0b6049ca",
+      "range": {
+        "startLine": 562,
+        "startChar": 53,
+        "endLine": 562,
+        "endChar": 65
+      },
+      "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
