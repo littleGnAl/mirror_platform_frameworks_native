@@ -70,6 +70,24 @@
       "parentUuid": "c559ced0_7d80dee0",
       "revId": "06add175b09d4d0c42857433966c9d5e345d1ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9237fab1_1617698c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-28T17:29:09Z",
+      "side": 1,
+      "message": "\u003e Otherwise, if I \"change my mind\" before publishing the service, I have to spin out a separate thread to join before running shutdown - because there\u0027s no \"detach\" method next to \"join\".\n\n\nWell, in this case, you shouldn\u0027t have to call shutdown because it\u0027s not started?",
+      "parentUuid": "ec91fd6a_a8bdca32",
+      "revId": "06add175b09d4d0c42857433966c9d5e345d1ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
