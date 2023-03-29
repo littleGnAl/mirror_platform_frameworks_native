@@ -350,6 +350,30 @@
       },
       "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2ec793_7ba89f6e",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-29T17:38:31Z",
+      "side": 1,
+      "message": "1. I like default\u003dtrue better, changed this in PS#6\n2. definitely not newRestartableInet, please! Since RpcServer NDK API is not stable, can we just skip configuration of this field there?",
+      "parentUuid": "0eba877d_8f32d264",
+      "range": {
+        "startLine": 562,
+        "startChar": 53,
+        "endLine": 562,
+        "endChar": 65
+      },
+      "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

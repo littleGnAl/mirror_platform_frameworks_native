@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb667f78_e498a7ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-29T17:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "866ac1f5_53a053cc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "71caccc26c628297f14ca6083d96e7ce3daa9a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b174846_cbe6c7fc",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-03-29T16:59:51Z",
       "side": 1,
       "message": "nit: \u0027(borrowed_fd fd)\u0027 is preferred, though it doesn\u0027t actually matter in this case, I would still recommend it for consistency, in case the client doesn\u0027t have a unique_fd",
+      "range": {
+        "startLine": 553,
+        "startChar": 39,
+        "endLine": 553,
+        "endChar": 55
+      },
+      "revId": "71caccc26c628297f14ca6083d96e7ce3daa9a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42c90e9d_3e28e6a1",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-29T17:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b174846_cbe6c7fc",
       "range": {
         "startLine": 553,
         "startChar": 39,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c048703_c092d7be",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-29T17:38:31Z",
+      "side": 1,
+      "message": "Why would we want such granularity? We just want the user to be able to either enable restarts or go safe.",
+      "parentUuid": "98ecb350_2d1f8e0d",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 5
+      },
+      "revId": "71caccc26c628297f14ca6083d96e7ce3daa9a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f22f41c_9017450b",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-03-29T16:59:51Z",
       "side": 1,
       "message": "I\u0027m not sure if you saw in my comment that this functionality is already possible with this API.\n\nIn this spirit, what would you think of, instead of \"setRestartableSockets\" which is very specific, we can add:\n\n    // warning: may be called arbitrarily late for lazily configured sockets\n    //\n    // \u003csome notes on RPC binder requiring SIGPIPE to be disabled and making\n    // non-blocking sockets, not all options may work, but \n    void setSocketConfiguration(std::function\u003cvoid(borrowed_fd fd)\u003e\u0026\u0026 configurator);\n\nThat way, it\u0027s generic and we won\u0027t expect to add a bunch of APIs like this. setupRawSocketServer could still be used, but I get the desire to use the built-in functionality, and anyway, I want to delete setupRawSocketServer.\n\nAnd also - for orthogonality, I wonder if this should be an option for RpcSession as well? Perhaps not now, but in the future...",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "revId": "71caccc26c628297f14ca6083d96e7ce3daa9a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a929ffb_3d9be278",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-29T17:38:31Z",
+      "side": 1,
+      "message": "I know it\u0027s possible, but why not to use `setupInetServer` since we need exactly this, but with restart-friendly sockopt. If I use `setupRawSocketServer`, I\u0027d have to copy-paste `setupInetServer`.\n\n`setSocketConfiguration` sounds super generic and IMO overkill - per Devin\u0027s comment with setsockopt link in the other thread, there\u0027s not many other interesting options to set there (as in: to make them optional for the user).",
+      "parentUuid": "1f22f41c_9017450b",
       "range": {
         "startLine": 81,
         "startChar": 27,
