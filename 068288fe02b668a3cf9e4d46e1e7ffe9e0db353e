@@ -326,6 +326,30 @@
       },
       "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eba877d_8f32d264",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-03-29T16:50:30Z",
+      "side": 1,
+      "message": "\u003e  I set true as a default for these APIs - is this okay?\n\nI think it should be the default for inet. Without it, services will almost always end up in a restart loop and many of them will stop restarting if they crash quick enough (IIRC init stops trying after some time).\n\nI think that\u0027s worse behavior than maybe seeing unexpected packets come through on the connection.\n\nEven outside of the static IP/port configuration, the service is still most likely going to be listening on the same IP address that it was listening on before the crash. The port can easily be different, but I don\u0027t know how the IP address could.\n\n@smoreland@google.com (1) WDYT about the default \u003d\u003d true? (2) would you rather see some process-wide config for the NDK or a new method added for ARpcServer_newInet like newRestartableInet or to take in some parameters?",
+      "parentUuid": "19f4f512_edd84533",
+      "range": {
+        "startLine": 562,
+        "startChar": 53,
+        "endLine": 562,
+        "endChar": 65
+      },
+      "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
