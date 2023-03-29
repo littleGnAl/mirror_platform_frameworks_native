@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1322888c_918361db",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-29T16:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4fbea6b_27eaf339",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 23
+      },
+      "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88fca354_dacea5da",
@@ -270,6 +294,30 @@
       "side": 1,
       "message": "I guess a per-process config would work since we would likely never mix the static config and non static config.\nBut I wast thinking @smoreland@google.com meant another API on RpcServer that could be called before setting up the connection.\nThis would still require the new info to be passed at the \"addService\" level still.\n\n`SO_REUSEPORT` looks like it is allowing multiple threads to listen in on the same port and accept different connections. Right now we have a single thread that is accepting new connections on that port and I haven\u0027t seen any desire to change that. I don\u0027t think we would want to allow DIFFERENT servers to listen on the same port.\n\n`SO_LINGER` only changes the behavior of `close()` or `shutdown()`. I think the more common issue would be the server crashing and restarting without any call to `close()` or `shutdown()`.",
       "parentUuid": "1d1f9361_b90b555d",
+      "range": {
+        "startLine": 562,
+        "startChar": 53,
+        "endLine": 562,
+        "endChar": 65
+      },
+      "revId": "068288fe02b668a3cf9e4d46e1e7ffe9e0db353e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f4f512_edd84533",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-29T16:18:27Z",
+      "side": 1,
+      "message": "Config: done (I just noticed RpcServer creation and setup is separate). But the \"NDK\" variant puts these two together, so I set true as a default for these APIs - is this okay? Otherwise, I would have to add per-process config for NDK flavor. I left a few TODOs until we clarify this.\n\n`SO_REUSEPORT` doesn\u0027t seem to be related to multi-threading, per https://stackoverflow.com/q/14388706 - from what I read here, if `SO_REUSEPORT` is available on the system it\u0027s the option you\u0027d likely want to use.\n\n`SO_LINGER` sounds like you\u0027re right - linger option is not applicable for crashes and this is the case we really want to cover.",
+      "parentUuid": "6b0159d7_be30471d",
       "range": {
         "startLine": 562,
         "startChar": 53,
