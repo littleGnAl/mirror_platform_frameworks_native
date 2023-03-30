@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b16f92d_054c1d81",
+        "filename": "services/inputflinger/reader/EventHub.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1950315
+      },
+      "writtenOn": "2023-03-30T12:30:26Z",
+      "side": 1,
+      "message": "Nit: why not inline it instead of creating a variable?\n```\nif (usageCodes.size() \u003e 0 \u0026\u0026 mscBitmask.test(MSC_SCAN)) {\n```",
+      "revId": "6d4aec807753d224dd3e004d696356671e28d206",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
