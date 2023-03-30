@@ -187,6 +187,30 @@
       },
       "revId": "71caccc26c628297f14ca6083d96e7ce3daa9a5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f667586f_53008849",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-03-30T02:21:37Z",
+      "side": 1,
+      "message": "Yeah, I know, but that boat has already flown with the existing APIs, and the API being added is coupling two different socket options together that we probably don\u0027t always want to be coupled together. Also, it would be hard to modify. For instance, before you had \"TODO.. add SO_LINGER\". If we merge this, wait a year, it would be backwards incompatible to add SO_LINGER. I don\u0027t see the current API scaling, and it is a redundant API.\n\nCould you solve these API scaling issues? It doesn\u0027t have to be with my suggestion.",
+      "parentUuid": "6a929ffb_3d9be278",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "revId": "71caccc26c628297f14ca6083d96e7ce3daa9a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
