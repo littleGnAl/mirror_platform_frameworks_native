@@ -211,6 +211,30 @@
       },
       "revId": "71caccc26c628297f14ca6083d96e7ce3daa9a5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cbb97b1_ae7780ad",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-30T16:18:14Z",
+      "side": 1,
+      "message": "Before I go into the rabbit hole of creating a super-flexible API for setting socket options, should we take such effort for non-stable, system-exclusive API? An API to switch between \"restartable\" and \"safe\" behavior sounds like appropriate level of detail for me and SO_LINGER would fit into its semantics if needed. If everything goes wrong and we need to shuffle things around, we can change this API, can\u0027t we?\n\nIf you insist, I can add `RpcServer::setsockopt(int option_name, T option_value)` that would internally store these options in a map. I can implement a reusable class for it, may be a fun exercise for me. But I still think it\u0027s an overkill to what I\u0027m trying to do here.",
+      "parentUuid": "f667586f_53008849",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "revId": "71caccc26c628297f14ca6083d96e7ce3daa9a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
