@@ -235,6 +235,30 @@
       },
       "revId": "71caccc26c628297f14ca6083d96e7ce3daa9a5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119e801d_44906d1f",
+        "filename": "libs/binder/include/binder/RpcServer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-03-31T21:25:09Z",
+      "side": 1,
+      "message": "As discussed offline, I [tried](https://paste.googleplex.com/5418041494994944?raw) using existing `releaseServer`/`setupExternalServer` APIs, as per following suggestion:\n```\nserver-\u003esetupInetSocket\nauto fd \u003d server-\u003ereleaseServer();\n... setsocketopt(fd.get(), ...);\nserver-\u003esetupExternalServer(std::move(fd));\n```\n\nIt didn\u0027t work - since both `socket()` and `bind()` calls are inside `setupInetSocket`, `setsocketopt` happens after `bind()` (and that\u0027s against SO_REUSEADDR documentation). If I was to only use existing APIs, I would have to not only not use (read: copy-paste) `setupInetServer`, but also `setupSocketServer` and go straight to `setupRawSocketServer`. That\u0027s quite a lot of copy-paste to do for such a simple thing that\u0027s probably necessary for most RPC Servers.\n\nI\u0027ve also found a line in Linux docs that would suggest this option should be set for any server (not sure if I\u0027m reading it correctly though):\n```\nTypically this difference is invisible, since, for example, a server program is\ndesigned to always set this option.\n```",
+      "parentUuid": "7cbb97b1_ae7780ad",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "revId": "71caccc26c628297f14ca6083d96e7ce3daa9a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
