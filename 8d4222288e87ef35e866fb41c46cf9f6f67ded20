@@ -16,6 +16,24 @@
       "message": "Reverting this will regress CPU power.\n\nHave you tracked down why bootanimation is laggy on some devices without this revert?",
       "revId": "8d4222288e87ef35e866fb41c46cf9f6f67ded20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e590cf_5dd82000",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884015
+      },
+      "writtenOn": "2023-03-31T18:05:48Z",
+      "side": 1,
+      "message": "How can I debug the issue further?",
+      "parentUuid": "e90090d6_a096dbb4",
+      "revId": "8d4222288e87ef35e866fb41c46cf9f6f67ded20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
