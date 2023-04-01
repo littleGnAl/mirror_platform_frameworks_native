@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49372ab1_267ac4d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-04-01T00:02:06Z",
+      "side": 1,
+      "message": "RpcState::rpcRec also implements this, and since that code is used by Trusty, I wonder, why does it need to be implemented separately? Do rec calls on Trusty RpcTransport not return failure?",
+      "revId": "a04030b5a10f0cfaaf1698114b84007a029eed55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
