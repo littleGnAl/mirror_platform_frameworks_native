@@ -16,6 +16,24 @@
       "message": "RpcState::rpcRec also implements this, and since that code is used by Trusty, I wonder, why does it need to be implemented separately? Do rec calls on Trusty RpcTransport not return failure?",
       "revId": "a04030b5a10f0cfaaf1698114b84007a029eed55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc34079_cec9c5ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-04-03T21:01:05Z",
+      "side": 1,
+      "message": "That\u0027s not the problem, the issue is something specific to the Trusty transport: we don\u0027t have threads so we don\u0027t block in `rpcRec`. There is one main event loop that blocks on all connections (with a call similar to `poll`). If any connection receives a new message, then the handler calls `drainCommands`.\n\nThe issue: on Trusty, if no message ever comes in, then `rpcRec` never gets called. The other way to detect shutdown is to call `rpcSend`, but on most services that never happens either without an incoming message.\n\nThe third way is what\u0027s happening in this patch: the main event loop can also detect when a connection has shut down. We handle that separately now. Otherwise, it would just wait forever for a message to come in.",
+      "parentUuid": "49372ab1_267ac4d0",
+      "revId": "a04030b5a10f0cfaaf1698114b84007a029eed55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
