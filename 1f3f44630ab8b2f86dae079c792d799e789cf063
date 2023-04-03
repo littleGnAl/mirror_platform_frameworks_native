@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6efd100_6128a9e7",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-04-03T14:58:03Z",
+      "side": 1,
+      "message": "I\u0027m not preparing to re-use this object, just closing the socket in the shutdown method as opposed to object destructor.",
+      "parentUuid": "9e85546f_f77faa56",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 31
+      },
+      "revId": "1f3f44630ab8b2f86dae079c792d799e789cf063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7992060c_568d4415",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-04-01T00:08:04Z",
       "side": 1,
       "message": "Does this or below log for non-inet sockets, but even if not, why do we set it on them?\n\nFor vsock and unix domain sockets, if the address is re-used, it can be a real problem. We generally don\u0027t want to restart a server on the same port.\n\nI\u0027d only expect this is needed for inet when TLS is used? Or is this needed on other cases?",
+      "range": {
+        "startLine": 554,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 77
+      },
+      "revId": "1f3f44630ab8b2f86dae079c792d799e789cf063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23c417c_d0fc0107",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-04-03T14:58:03Z",
+      "side": 1,
+      "message": "Added AF_INET check.\n\nBut why is it a problem if vsock CID/port is re-used?",
+      "parentUuid": "7992060c_568d4415",
       "range": {
         "startLine": 554,
         "startChar": 0,
