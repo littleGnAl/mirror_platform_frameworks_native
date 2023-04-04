@@ -292,9 +292,9 @@ on late-init
     chmod 0666 /sys/kernel/tracing/synthetic_events
     chmod 0666 /sys/kernel/debug/tracing/synthetic_events
 
-    # rss_stat_throttled
-    write /sys/kernel/tracing/synthetic_events "rss_stat_throttled unsigned int mm_id; unsigned int curr; int member; long size"
-    write /sys/kernel/debug/tracing/synthetic_events "rss_stat_throttled unsigned int mm_id; unsigned int curr; int member; long size"
+    # Synthetic events
+    copy /system/etc/synthetic_events.conf /sys/kernel/tracing/synthetic_events
+    copy /system/etc/synthetic_events.conf /sys/kernel/debug/tracing/synthetic_events
 
     # allow creating event triggers
     chmod 0666 /sys/kernel/tracing/events/kmem/rss_stat/trigger
@@ -303,6 +303,14 @@ on late-init
     # allow enabling rss_stat_throttled
     chmod 0666 /sys/kernel/tracing/events/synthetic/rss_stat_throttled/enable
     chmod 0666 /sys/kernel/debug/tracing/events/synthetic/rss_stat_throttled/enable
+
+    # Minimal suspend-resume
+    chmod 0666 /sys/kernel/tracing/events/power/suspend_resume/trigger
+    chmod 0666 /sys/kernel/debug/tracing/events/power/suspend_resume/trigger
+    write /sys/kernel/tracing/events/power/suspend_resume/trigger "hist:keys=start:size=128:onmatch(power.suspend_resume).trace(suspend_resume_minimal, start) if action == 'syscore_resume'"
+    write /sys/kernel/debug/tracing/events/power/suspend_resume/trigger "hist:keys=start:size=128:onmatch(power.suspend_resume).trace(suspend_resume_minimal, start) if action == 'syscore_resume'"
+    chmod 0666 /sys/kernel/tracing/events/synthetic/suspend_resume_minimal/enable
+    chmod 0666 /sys/kernel/debug/tracing/events/synthetic/suspend_resume_minimal/enable
 
 on late-init && property:ro.boot.fastboot.boottrace=enabled
     setprop debug.atrace.tags.enableflags 802922
