@@ -1437,7 +1437,7 @@ int32_t AInputQueue_preDispatchEvent(AInputQueue* queue, AInputEvent* event);
 
 /**
  * Report that dispatching has finished with the given event.
- * This must be called after receiving an event with AInputQueue_get_event().
+ * This must be called after receiving an event with AInputQueue_getEvent.
  */
 void AInputQueue_finishEvent(AInputQueue* queue, AInputEvent* event, int handled);
 
