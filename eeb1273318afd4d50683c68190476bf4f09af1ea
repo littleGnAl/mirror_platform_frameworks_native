@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c55d97_2218e07f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1949170
+      },
+      "writtenOn": "2023-04-04T12:47:24Z",
+      "side": 1,
+      "message": "It appears that `excluded-input-devices.xml` uses device names rather than vid and pid--while this may be doable, we would prefer to be able to be explicit, especially because some third-party controllers manufactured as replacements may not match exactly in metadata, and we don\u0027t want to have to manually add support for each model if they are functionally identical.",
+      "parentUuid": "32e29c99_651c3ace",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "eeb1273318afd4d50683c68190476bf4f09af1ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3563902b_c6793e87",
