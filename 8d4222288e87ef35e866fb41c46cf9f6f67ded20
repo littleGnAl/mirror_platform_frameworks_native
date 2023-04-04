@@ -34,6 +34,24 @@
       "parentUuid": "e90090d6_a096dbb4",
       "revId": "8d4222288e87ef35e866fb41c46cf9f6f67ded20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad3389de_e51ea50e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-04-04T22:46:12Z",
+      "side": 1,
+      "message": "You can try to use Perfetto: https://perfetto.dev/docs/quickstart/android-tracing, or add logging to figure out the cause of the lag on your device.",
+      "parentUuid": "c0e590cf_5dd82000",
+      "revId": "8d4222288e87ef35e866fb41c46cf9f6f67ded20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
