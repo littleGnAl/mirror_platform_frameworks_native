@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "303ca114_6abf2811",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2023-04-05T12:36:48Z",
+      "side": 1,
+      "message": "can we have \"ftrace\" in the name of the file somewhere? So it\u0027s clear what this is.\nftrace_synthetic_events.conf should be enough",
+      "range": {
+        "startLine": 294,
+        "startChar": 21,
+        "endLine": 294,
+        "endChar": 37
+      },
+      "revId": "07c1b2b86b97ea1adceed4a11f91faf415837033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d681573_f135b5e7",
+        "filename": "cmds/atrace/synthetic_events.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2023-04-05T12:36:48Z",
+      "side": 1,
+      "message": "can this have comments?\nCan you add something like:\n\n```\n# This file contains the format specifiers for synthetic ftrace events.\n# This file is pushed into tracefs/synthetic_events by init.\n# See cmds/atrace/atrace.rc\n\n```",
+      "revId": "07c1b2b86b97ea1adceed4a11f91faf415837033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
