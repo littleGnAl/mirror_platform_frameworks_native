@@ -208,5 +208,6 @@ bool IsZygote(int pid) {
     cmdline = std::string(cmdline.c_str());
 
     return cmdline == "zygote" || cmdline == "zygote64" || cmdline == "usap32" ||
-            cmdline == "usap64" || cmdline == "webview_zygote";
+            cmdline == "usap64" || cmdline == "webview_zygote" ||
+            cmdline == "com.android.chrome_zygote";
 }
