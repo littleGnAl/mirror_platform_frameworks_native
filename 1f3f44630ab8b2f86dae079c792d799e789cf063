@@ -93,6 +93,30 @@
       },
       "revId": "1f3f44630ab8b2f86dae079c792d799e789cf063",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2fdfeb2_7713a524",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-04-07T16:05:04Z",
+      "side": 1,
+      "message": "The reason is because it may indicate two servers trying to use the same address, which is a misconfiguration. Looking into this, will ping offline",
+      "parentUuid": "d23c417c_d0fc0107",
+      "range": {
+        "startLine": 554,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 77
+      },
+      "revId": "1f3f44630ab8b2f86dae079c792d799e789cf063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
