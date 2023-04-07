@@ -46,6 +46,30 @@
       },
       "revId": "7afb8e2fe8faec5ae4d2ffbb415e54e39f1a7748",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad483428_50b329a4",
+        "filename": "include/android/input.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1440,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2023-04-07T17:41:47Z",
+      "side": 1,
+      "message": "If you\u0027re willing to do that, that\u0027d be super helpful!! But it\u0027s definitely not a requirement :)\n\nTo build the NDK docs:\n\n1. Install Doxygen (`sudo apt install doxygen`).\n2. Edit API docs in the NDK header files.\n3. Run https://cs.android.com/android/platform/superproject/+/master:development/tools/ndk/build_ndk_docs.py.\n4. Open the link printed when the tool finishes running.",
+      "parentUuid": "6c1799b0_7f79531f",
+      "range": {
+        "startLine": 1440,
+        "startChar": 53,
+        "endLine": 1440,
+        "endChar": 73
+      },
+      "revId": "7afb8e2fe8faec5ae4d2ffbb415e54e39f1a7748",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
