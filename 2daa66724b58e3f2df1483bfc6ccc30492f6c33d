@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4eea1ce_045db1b3",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-04-11T05:42:13Z",
+      "side": 1,
+      "message": "I think this name is confusing. Consider name like `framework_native_headers`",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "2daa66724b58e3f2df1483bfc6ccc30492f6c33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a35ec0_184dcf55",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-04-11T05:42:13Z",
+      "side": 1,
+      "message": "vendor_available: true",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "2daa66724b58e3f2df1483bfc6ccc30492f6c33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ce7809d_6c63799f",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2023-04-11T05:42:13Z",
+      "side": 1,
+      "message": "This will expose all headers under `include`, but it seems that `include/private` should be hidden from vendor. Why do you need this?\n\nWhich headers do you need exactly?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "2daa66724b58e3f2df1483bfc6ccc30492f6c33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
