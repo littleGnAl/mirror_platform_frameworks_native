@@ -68,6 +68,30 @@
       },
       "revId": "2daa66724b58e3f2df1483bfc6ccc30492f6c33d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42dc6343_3bb7527a",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1997538
+      },
+      "writtenOn": "2023-04-11T06:07:08Z",
+      "side": 1,
+      "message": "Thanks for pointing out this\nWidevine include binder related header from framework/native, but it\u0027s exported on framework/av as header library already\n\nlet me check if we can use that header library instead",
+      "parentUuid": "9ce7809d_6c63799f",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "2daa66724b58e3f2df1483bfc6ccc30492f6c33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
