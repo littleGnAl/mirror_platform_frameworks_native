@@ -148,3 +148,5 @@ pub mod unstable_api {
     pub use crate::sys::AIBinder;
     pub use crate::sys::AParcel;
 }
+
+pub mod kitten {}
