@@ -170,6 +170,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "262fdedd_3e4a467c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1112368
+      },
+      "writtenOn": "2023-04-13T20:55:46Z",
+      "side": 1,
+      "message": "Sounds good, got something up:\n\nremote:   https://android-review.googlesource.com/c/platform/frameworks/native/+/2534510 Allow excluding devices via VID/PID\n1/2\nremote:   https://android-review.googlesource.com/c/platform/frameworks/base/+/2536790 input: Add support to exclude devices via VID/PID\n\nThese are untested but should do the trick @Makinbacon - can you test these please?",
+      "parentUuid": "de126465_047519a9",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "eeb1273318afd4d50683c68190476bf4f09af1ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3563902b_c6793e87",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
