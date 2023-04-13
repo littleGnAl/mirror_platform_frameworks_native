@@ -266,6 +266,10 @@ public:
     // This can be used to ignore input devices for sensors.
     virtual void setExcludedDevices(const std::vector<std::string>& devices) = 0;
 
+    // Sets devices that are excluded from opening.
+    // This can be used to ignore input devices for sensors.
+    virtual void setExcludedDevices(const std::vector<std::pair<uint16_t, uint16_t>>& devices) = 0;
+
     /*
      * Wait for events to become available and returns them.
      * After returning, the EventHub holds onto a wake lock until the next call to getEvent.
@@ -479,6 +483,8 @@ public:
                              std::unordered_map<LightColor, int32_t> intensities) override final;
 
     void setExcludedDevices(const std::vector<std::string>& devices) override final;
+    void setExcludedDevices(
+            const std::vector<std::pair<uint16_t, uint16_t>>& devices) override final;
 
     int32_t getScanCodeState(int32_t deviceId, int32_t scanCode) const override final;
     int32_t getKeyCodeState(int32_t deviceId, int32_t keyCode) const override final;
@@ -708,6 +714,7 @@ private:
     bool mNeedToReopenDevices;
     bool mNeedToScanDevices;
     std::vector<std::string> mExcludedDevices;
+    std::vector<std::pair<uint16_t, uint16_t>> mExcludedDevicesVidPid;
 
     int mEpollFd;
     int mINotifyFd;
