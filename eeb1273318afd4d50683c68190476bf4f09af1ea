@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e4122a8_e13f783f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1112368
+      },
+      "writtenOn": "2023-04-13T18:23:10Z",
+      "side": 1,
+      "message": "I\u0027m fine with this - it\u0027d suffice, makin, chin in and resolve the thread if you agree.",
+      "parentUuid": "04bd1367_d92358b6",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "eeb1273318afd4d50683c68190476bf4f09af1ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3563902b_c6793e87",
