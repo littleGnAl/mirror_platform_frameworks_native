@@ -122,6 +122,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e9f7d0b8_44438f6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1112368
+      },
+      "writtenOn": "2023-04-13T18:46:50Z",
+      "side": 1,
+      "message": "@Siarhei, will your team be handling this or should we?",
+      "parentUuid": "22389209_95378e3e",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "eeb1273318afd4d50683c68190476bf4f09af1ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3563902b_c6793e87",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
