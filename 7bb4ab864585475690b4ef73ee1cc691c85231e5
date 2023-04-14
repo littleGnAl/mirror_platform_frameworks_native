@@ -16,6 +16,23 @@
       "message": "I\u0027ll merge the test after the branching structure updates",
       "revId": "7bb4ab864585475690b4ef73ee1cc691c85231e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9549f317_d7139fbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-04-14T15:49:43Z",
+      "side": 1,
+      "message": "\u003e fastboot command flash failed in device",
+      "revId": "7bb4ab864585475690b4ef73ee1cc691c85231e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
