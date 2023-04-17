@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352cf4f3_3dc55f4c",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-04-17T22:18:01Z",
+      "side": 1,
+      "message": "just an idea, haven\u0027t checked w/ team yet",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "95715e4ec422302a8c28c467f760c1b6ab5ab7cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
