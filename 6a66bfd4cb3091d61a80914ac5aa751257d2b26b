@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "376e5b0d_73ad6cc1",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-04-17T23:50:48Z",
+      "side": 1,
+      "message": "One alternative could be to `#ifdef __TRUSTY__` around the definition of `RPC_WIRE_PROTOCOL_VERSION`, but I think this works too.",
+      "revId": "6a66bfd4cb3091d61a80914ac5aa751257d2b26b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
