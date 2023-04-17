@@ -22,6 +22,30 @@
       },
       "revId": "95715e4ec422302a8c28c467f760c1b6ab5ab7cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ee4257_bb4939d7",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-04-17T23:41:31Z",
+      "side": 1,
+      "message": "This should work, split it into a separate CL?",
+      "parentUuid": "352cf4f3_3dc55f4c",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "95715e4ec422302a8c28c467f760c1b6ab5ab7cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
