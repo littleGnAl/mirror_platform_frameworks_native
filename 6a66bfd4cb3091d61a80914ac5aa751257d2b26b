@@ -34,6 +34,24 @@
       "parentUuid": "376e5b0d_73ad6cc1",
       "revId": "6a66bfd4cb3091d61a80914ac5aa751257d2b26b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff8556d0_ff2c3d8d",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1856745
+      },
+      "writtenOn": "2023-04-18T01:01:25Z",
+      "side": 1,
+      "message": "I don\u0027t understand what \"it has prebuilts\" mean. can you explain?",
+      "parentUuid": "7baf7834_ad02c223",
+      "revId": "6a66bfd4cb3091d61a80914ac5aa751257d2b26b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
