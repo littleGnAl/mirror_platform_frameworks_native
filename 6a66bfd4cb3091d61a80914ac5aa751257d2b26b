@@ -52,6 +52,24 @@
       "parentUuid": "7baf7834_ad02c223",
       "revId": "6a66bfd4cb3091d61a80914ac5aa751257d2b26b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c70009b_1a098f86",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-04-18T01:50:42Z",
+      "side": 1,
+      "message": "libbinder is built on one branch for trusty, put into a prebuilt, then used in another branch.",
+      "parentUuid": "ff8556d0_ff2c3d8d",
+      "revId": "6a66bfd4cb3091d61a80914ac5aa751257d2b26b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
