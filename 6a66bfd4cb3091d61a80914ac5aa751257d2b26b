@@ -16,6 +16,24 @@
       "message": "One alternative could be to `#ifdef __TRUSTY__` around the definition of `RPC_WIRE_PROTOCOL_VERSION`, but I think this works too.",
       "revId": "6a66bfd4cb3091d61a80914ac5aa751257d2b26b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7baf7834_ad02c223",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-04-18T00:03:47Z",
+      "side": 1,
+      "message": "Yeah - I prefer this because I don\u0027t want Trusty to be set to experimental again accidentally, since it has prebuilts. I\u0027ll also make it so that things have to explicitly opt into experimental features.",
+      "parentUuid": "376e5b0d_73ad6cc1",
+      "revId": "6a66bfd4cb3091d61a80914ac5aa751257d2b26b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
