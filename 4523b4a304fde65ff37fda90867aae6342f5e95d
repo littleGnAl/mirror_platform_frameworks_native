@@ -52,6 +52,24 @@
       "parentUuid": "427450be_56ba554d",
       "revId": "4523b4a304fde65ff37fda90867aae6342f5e95d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e9096d_f8202c52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1904881
+      },
+      "writtenOn": "2023-04-18T02:07:07Z",
+      "side": 1,
+      "message": "This fix introduces new problems:\nWhen the device is rotated to 270 degrees, User touch the bottom Screen(Logic Screen), but the location is left in physical screen.\nThe Driver of touch will report physical coordinate (0, **), this coordinate will transform to (maxLogicHeight, **).The max Height should minus one.the result is exception, lead to this motion will not in this region which at logic screen bottom.",
+      "parentUuid": "317edca8_1f1f5858",
+      "revId": "4523b4a304fde65ff37fda90867aae6342f5e95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
