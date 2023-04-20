@@ -40,6 +40,7 @@ public:
     RecordedTransaction(RecordedTransaction&& t) noexcept;
 
     [[nodiscard]] status_t dumpToFile(const android::base::unique_fd& fd) const;
+    [[nodiscard]] status_t generateFuzzerCorpus(const android::base::unique_fd& fd) const;
 
     const std::string& getInterfaceName() const;
     uint32_t getCode() const;
@@ -54,7 +55,8 @@ private:
     RecordedTransaction() = default;
 
     android::status_t writeChunk(const android::base::borrowed_fd, uint32_t chunkType,
-                                 size_t byteCount, const uint8_t* data) const;
+                                 size_t byteCount, const uint8_t* data,
+                                 bool addChunkInfo = true) const;
 
 #pragma clang diagnostic push
 #pragma clang diagnostic error "-Wpadded"

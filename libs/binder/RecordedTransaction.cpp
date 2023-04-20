@@ -263,7 +263,8 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
 }
 
 android::status_t RecordedTransaction::writeChunk(borrowed_fd fd, uint32_t chunkType,
-                                                  size_t byteCount, const uint8_t* data) const {
+                                                  size_t byteCount, const uint8_t* data,
+                                                  bool addChunkInfo) const {
     if (byteCount > kMaxChunkDataSize) {
         LOG(ERROR) << "Chunk data exceeds maximum size";
         return BAD_VALUE;
@@ -276,21 +277,26 @@ android::status_t RecordedTransaction::writeChunk(borrowed_fd fd, uint32_t chunk
 
     // Add Chunk to intermediate buffer, except checksum
     std::vector<std::byte> buffer;
-    buffer.insert(buffer.end(), descriptorBytes, descriptorBytes + sizeof(ChunkDescriptor));
+    if (addChunkInfo) {
+        buffer.insert(buffer.end(), descriptorBytes, descriptorBytes + sizeof(ChunkDescriptor));
+    }
     buffer.insert(buffer.end(), dataBytes, dataBytes + byteCount);
     std::byte zero{0};
     buffer.insert(buffer.end(), PADDING8(byteCount), zero);
 
-    // Calculate checksum from buffer
-    transaction_checksum_t* checksumData = reinterpret_cast<transaction_checksum_t*>(buffer.data());
-    transaction_checksum_t checksumValue = 0;
-    for (size_t idx = 0; idx < (buffer.size() / sizeof(transaction_checksum_t)); idx++) {
-        checksumValue ^= checksumData[idx];
-    }
+    if (addChunkInfo) {
+        // Calculate checksum from buffer
+        transaction_checksum_t* checksumData =
+                reinterpret_cast<transaction_checksum_t*>(buffer.data());
+        transaction_checksum_t checksumValue = 0;
+        for (size_t idx = 0; idx < (buffer.size() / sizeof(transaction_checksum_t)); idx++) {
+            checksumValue ^= checksumData[idx];
+        }
 
-    // Write checksum to buffer
-    std::byte* checksumBytes = reinterpret_cast<std::byte*>(&checksumValue);
-    buffer.insert(buffer.end(), checksumBytes, checksumBytes + sizeof(transaction_checksum_t));
+        // Write checksum to buffer
+        std::byte* checksumBytes = reinterpret_cast<std::byte*>(&checksumValue);
+        buffer.insert(buffer.end(), checksumBytes, checksumBytes + sizeof(transaction_checksum_t));
+    }
 
     // Write buffer to file
     if (!android::base::WriteFully(fd, buffer.data(), buffer.size())) {
@@ -326,6 +332,45 @@ android::status_t RecordedTransaction::dumpToFile(const unique_fd& fd) const {
         LOG(ERROR) << "Failed to write end chunk to fd " << fd.get();
         return UNKNOWN_ERROR;
     }
+    return NO_ERROR;
+}
+
+android::status_t RecordedTransaction::generateFuzzerCorpus(const unique_fd& fd) const {
+    std::vector<std::byte> reservedBytes;
+    std::byte zero{0};
+    reservedBytes.insert(reservedBytes.end(), 8, zero);
+
+    if (NO_ERROR !=
+        writeChunk(fd, HEADER_CHUNK, reservedBytes.size(),
+                   reinterpret_cast<const uint8_t*>(reservedBytes.data()), false)) {
+        LOG(ERROR) << "Failed to write transaction code to fd " << fd.get();
+        return UNKNOWN_ERROR;
+    }
+
+    if (NO_ERROR !=
+        writeChunk(fd, HEADER_CHUNK, sizeof(uint32_t),
+                   reinterpret_cast<const uint8_t*>(&(mData.mHeader.code)), false)) {
+        LOG(ERROR) << "Failed to write transaction code to fd " << fd.get();
+        return UNKNOWN_ERROR;
+    }
+
+    if (NO_ERROR !=
+        writeChunk(fd, HEADER_CHUNK, sizeof(uint32_t),
+                   reinterpret_cast<const uint8_t*>(&(mData.mHeader.flags)), false)) {
+        LOG(ERROR) << "Failed to write transaction flag to fd " << fd.get();
+        return UNKNOWN_ERROR;
+    }
+
+    if (NO_ERROR != writeChunk(fd, DATA_PARCEL_CHUNK, mSent.dataSize(), mSent.data(), false)) {
+        LOG(ERROR) << "Failed to write sent Parcel to fd " << fd.get();
+        return UNKNOWN_ERROR;
+    }
+
+    if (NO_ERROR != writeChunk(fd, END_CHUNK, 0, NULL), false) {
+        LOG(ERROR) << "Failed to write end chunk to fd " << fd.get();
+        return UNKNOWN_ERROR;
+    }
+
     return NO_ERROR;
 }
 
