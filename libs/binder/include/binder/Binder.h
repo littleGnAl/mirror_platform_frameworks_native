@@ -105,12 +105,6 @@ public:
     [[nodiscard]] status_t setRpcClientDebug(android::base::unique_fd clientFd,
                                              const sp<IBinder>& keepAliveBinder);
 
-    // Start recording transactions to the unique_fd in data.
-    // See RecordedTransaction.h for more details.
-    [[nodiscard]] status_t startRecordingTransactions(const Parcel& data);
-    // Stop the current recording.
-    [[nodiscard]] status_t stopRecordingTransactions();
-
 protected:
     virtual             ~BBinder();
 
@@ -121,6 +115,12 @@ protected:
                                     uint32_t flags = 0);
 
 private:
+    // Start recording transactions to the unique_fd in data.
+    // See RecordedTransaction.h for more details.
+    [[nodiscard]] status_t startRecordingTransactions(const Parcel& data);
+    // Stop the current recording.
+    [[nodiscard]] status_t stopRecordingTransactions();
+
                         BBinder(const BBinder& o);
             BBinder&    operator=(const BBinder& o);
 
