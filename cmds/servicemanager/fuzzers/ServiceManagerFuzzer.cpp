@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <android-base/hex.h>
 #include <fuzzbinder/libbinder_driver.h>
 #include <utils/StrongPointer.h>
 
@@ -21,14 +22,35 @@
 #include "ServiceManager.h"
 
 using ::android::Access;
-using ::android::fuzzService;
+using ::android::Parcel;
 using ::android::ServiceManager;
 using ::android::sp;
+using ::android::base::HexString;
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+    FuzzedDataProvider provider(data, size);
     auto accessPtr = std::make_unique<Access>();
     auto serviceManager = sp<ServiceManager>::make(std::move(accessPtr));
-    fuzzService(serviceManager, FuzzedDataProvider(data, size));
+
+    std::vector<uint8_t> reservedBytes = provider.ConsumeBytes<uint8_t>(8);
+    std::cout << "Reserved bytes :" << HexString(reservedBytes.data(), reservedBytes.size())
+              << std::endl;
+
+    uint32_t code = provider.ConsumeIntegral<uint32_t>();
+    std::cout << "Code :" << code << std::endl;
+
+    uint32_t flag = provider.ConsumeIntegral<uint32_t>();
+    std::cout << "Flag :" << flag << std::endl;
+
+    std::vector<uint8_t> parcelData = provider.ConsumeRemainingBytes<uint8_t>();
+    std::cout << "Parcel Data :" << HexString(parcelData.data(), parcelData.size()) << std::endl;
+
+    Parcel inputParcel;
+    inputParcel.setData(parcelData.data(), parcelData.size());
+
+    Parcel reply;
+    serviceManager->transact(code, inputParcel, &reply, flag);
+
     serviceManager->clear();
 
     return 0;
