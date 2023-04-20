@@ -188,6 +188,7 @@ cc_defaults {
         "-bugprone-branch-clone", // b/155034972
         "cert-*",
         "clang-analyzer-*",
+        "-clang-analyzer-nullability.NullableDereferenced", // new check added
         "google-*",
         "misc-*",
         "performance*",
