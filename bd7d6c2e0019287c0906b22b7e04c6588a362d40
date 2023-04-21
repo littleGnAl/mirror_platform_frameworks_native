@@ -16,6 +16,29 @@
       "message": "how do we verify that the recorded corpus does the same thing that is recorded? We will need record/replay + replay corpus tests.",
       "revId": "bd7d6c2e0019287c0906b22b7e04c6588a362d40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f18151a7_7bcc106e",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-04-21T21:14:41Z",
+      "side": 1,
+      "message": "also btw - I think once we generate the full format ready by libbinder_random_parcel, there are so many different things to write, we should have a separate library/function which can decompose it instead of sharing the same output method here.",
+      "range": {
+        "startLine": 287,
+        "startChar": 8,
+        "endLine": 287,
+        "endChar": 20
+      },
+      "revId": "bd7d6c2e0019287c0906b22b7e04c6588a362d40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
