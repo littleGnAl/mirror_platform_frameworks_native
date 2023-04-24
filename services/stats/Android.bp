@@ -10,7 +10,6 @@ package {
 cc_library_shared {
     name: "libstatshidl",
     srcs: [
-        "StatsAidl.cpp",
         "StatsHal.cpp",
     ],
     cflags: [
@@ -19,7 +18,6 @@ cc_library_shared {
     ],
     shared_libs: [
         "android.frameworks.stats@1.0",
-        "android.frameworks.stats-V2-ndk",
         "libbinder_ndk",
         "libexpresslog",
         "libhidlbase",
@@ -33,7 +31,6 @@ cc_library_shared {
     ],
     export_shared_lib_headers: [
         "android.frameworks.stats@1.0",
-        "android.frameworks.stats-V2-ndk",
     ],
     local_include_dirs: [
         "include/stats",
