@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78695d48_bce133b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-04-25T17:04:43Z",
+      "side": 1,
+      "message": "ag/21173775 merged internally with changes regarding Praveen\u0027s comment.",
+      "revId": "e0aa9fabc1aad178cdce36bc419acb3a061bc2d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
