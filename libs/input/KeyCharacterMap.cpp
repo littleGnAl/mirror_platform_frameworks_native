@@ -101,10 +101,12 @@ KeyCharacterMap::KeyCharacterMap(const KeyCharacterMap& other)
 }
 
 KeyCharacterMap::~KeyCharacterMap() {
-    clear();
+    std::scoped_lock _l(mLock);
+    clearLocked();
 }
 
 bool KeyCharacterMap::operator==(const KeyCharacterMap& other) const {
+    std::scoped_lock _l(mLock);
     if (mType != other.mType) {
         return false;
     }
@@ -217,7 +219,7 @@ status_t KeyCharacterMap::load(Tokenizer* tokenizer, Format format) {
     return status;
 }
 
-void KeyCharacterMap::clear() {
+void KeyCharacterMap::clearLocked() {
     mKeysByScanCode.clear();
     mKeysByUsageCode.clear();
     for (size_t i = 0; i < mKeys.size(); i++) {
@@ -229,8 +231,8 @@ void KeyCharacterMap::clear() {
     mType = KeyboardType::UNKNOWN;
 }
 
-status_t KeyCharacterMap::reloadBaseFromFile() {
-    clear();
+status_t KeyCharacterMap::reloadBaseFromFileLocked() {
+    clearLocked();
     Tokenizer* tokenizer;
     status_t status = Tokenizer::open(String8(mLoadFileName.c_str()), &tokenizer);
     if (status) {
@@ -243,8 +245,9 @@ status_t KeyCharacterMap::reloadBaseFromFile() {
 }
 
 void KeyCharacterMap::combine(const KeyCharacterMap& overlay) {
+    std::scoped_lock _l(mLock);
     if (mLayoutOverlayApplied) {
-        reloadBaseFromFile();
+        reloadBaseFromFileLocked();
     }
     for (size_t i = 0; i < overlay.mKeys.size(); i++) {
         int32_t keyCode = overlay.mKeys.keyAt(i);
@@ -271,10 +274,12 @@ void KeyCharacterMap::combine(const KeyCharacterMap& overlay) {
 }
 
 KeyCharacterMap::KeyboardType KeyCharacterMap::getKeyboardType() const {
+    std::scoped_lock _l(mLock);
     return mType;
 }
 
 const std::string KeyCharacterMap::getLoadFileName() const {
+    std::scoped_lock _l(mLock);
     return mLoadFileName;
 }
 
@@ -403,6 +408,7 @@ bool KeyCharacterMap::getEvents(int32_t deviceId, const char16_t* chars, size_t 
 }
 
 status_t KeyCharacterMap::mapKey(int32_t scanCode, int32_t usageCode, int32_t* outKeyCode) const {
+    std::scoped_lock _l(mLock);
     if (usageCode) {
         ssize_t index = mKeysByUsageCode.indexOfKey(usageCode);
         if (index >= 0) {
@@ -476,6 +482,7 @@ void KeyCharacterMap::tryRemapKey(int32_t keyCode, int32_t metaState,
 }
 
 bool KeyCharacterMap::getKey(int32_t keyCode, const Key** outKey) const {
+    std::scoped_lock _l(mLock);
     ssize_t index = mKeys.indexOfKey(keyCode);
     if (index >= 0) {
         *outKey = mKeys.valueAt(index);
@@ -533,6 +540,7 @@ bool KeyCharacterMap::matchesMetaState(int32_t eventMetaState, int32_t behaviorM
 }
 
 bool KeyCharacterMap::findKey(char16_t ch, int32_t* outKeyCode, int32_t* outMetaState) const {
+    std::scoped_lock _l(mLock);
     if (!ch) {
         return false;
     }
@@ -761,6 +769,7 @@ std::shared_ptr<KeyCharacterMap> KeyCharacterMap::readFromParcel(Parcel* parcel)
 }
 
 void KeyCharacterMap::writeToParcel(Parcel* parcel) const {
+    std::scoped_lock _l(mLock);
     if (parcel == nullptr) {
         ALOGE("%s: Null parcel", __func__);
         return;

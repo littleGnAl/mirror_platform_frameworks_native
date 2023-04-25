@@ -29,6 +29,7 @@
 #include <utils/KeyedVector.h>
 #include <utils/Tokenizer.h>
 #include <utils/Unicode.h>
+#include <utils/Mutex.h>
 
 // Maximum number of keys supported by KeyCharacterMaps
 #define MAX_KEYS 8192
@@ -229,13 +230,14 @@ private:
         status_t parseCharacterLiteral(char16_t* outCharacter);
     };
 
-    KeyedVector<int32_t, Key*> mKeys;
-    KeyboardType mType;
-    std::string mLoadFileName;
-    bool mLayoutOverlayApplied;
+    mutable std::mutex mLock;
+    KeyedVector<int32_t, Key*> mKeys GUARDED_BY(mLock);
+    KeyboardType mType GUARDED_BY(mLock);
+    std::string mLoadFileName GUARDED_BY(mLock);
+    bool mLayoutOverlayApplied GUARDED_BY(mLock);
 
-    KeyedVector<int32_t, int32_t> mKeysByScanCode;
-    KeyedVector<int32_t, int32_t> mKeysByUsageCode;
+    KeyedVector<int32_t, int32_t> mKeysByScanCode GUARDED_BY(mLock);
+    KeyedVector<int32_t, int32_t> mKeysByUsageCode GUARDED_BY(mLock);
 
     KeyCharacterMap(const std::string& filename);
 
@@ -267,13 +269,13 @@ private:
             int32_t* currentMetaState);
 
     /* Clears all data stored in this key character map */
-    void clear();
+    void clearLocked() REQUIRES(mLock);
 
     /* Loads the KeyCharacterMap provided by the tokenizer into this instance. */
     status_t load(Tokenizer* tokenizer, Format format);
 
     /* Reloads the data from mLoadFileName and unapplies any overlay. */
-    status_t reloadBaseFromFile();
+    status_t reloadBaseFromFileLocked() REQUIRES(mLock);
 };
 
 } // namespace android
