@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7247c5e_81f90ab3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-04-25T16:57:46Z",
+      "side": 1,
+      "message": "Could you please file a bug and add `BUG: b/BUG_ID` here? If there\u0027s a bug report indicating the leak, please also attach to the bug.",
+      "revId": "b4f8469de08ef024730c79ca00fa299d9dc01cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
