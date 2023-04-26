@@ -133,7 +133,8 @@ void VSyncReactor::startPeriodTransition(nsecs_t period) {
     std::lock_guard lock(mMutex);
     mLastHwVsync.reset();
 
-    if (!mSupportKernelIdleTimer && period == mTracker.currentPeriod()) {
+    if (!mSupportKernelIdleTimer && period == mTracker.currentPeriod()
+            && !mPeriodConfirmationInProgress) {
         endPeriodTransition();
         setIgnorePresentFencesInternal(false);
         mMoreSamplesNeeded = false;
