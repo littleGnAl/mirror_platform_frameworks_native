@@ -16,6 +16,24 @@
       "message": "Could you please file a bug and add `BUG: b/BUG_ID` here? If there\u0027s a bug report indicating the leak, please also attach to the bug.",
       "revId": "b4f8469de08ef024730c79ca00fa299d9dc01cfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb424ba7_e8d2ed74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-04-26T00:57:13Z",
+      "side": 1,
+      "message": "no bug， the so be dlopen always for initializeAnglePlatform, but when have no symbols function called for the so and return false, the so should be dlclose to avoid resource leak. thanks",
+      "parentUuid": "e7247c5e_81f90ab3",
+      "revId": "b4f8469de08ef024730c79ca00fa299d9dc01cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
