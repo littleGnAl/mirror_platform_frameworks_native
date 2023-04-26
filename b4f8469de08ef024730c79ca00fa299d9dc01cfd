@@ -34,6 +34,24 @@
       "parentUuid": "e7247c5e_81f90ab3",
       "revId": "b4f8469de08ef024730c79ca00fa299d9dc01cfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfdb459a_38ad0493",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-04-26T01:03:05Z",
+      "side": 1,
+      "message": "I know.\n\nI am asking you to report a bug with what you described here and attach the bug id in the form of what I mentioned. For every patch we would like to see a bug id to associate with it for history tracking.",
+      "parentUuid": "eb424ba7_e8d2ed74",
+      "revId": "b4f8469de08ef024730c79ca00fa299d9dc01cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
