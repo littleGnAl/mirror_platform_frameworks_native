@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49cdc3bf_1dbedb08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-04-27T19:58:38Z",
+      "side": 1,
+      "message": "since auto submit is checked, I am blocking this patch until my comment is properly addressed.",
+      "revId": "110b56f5156afd46980345adbce9417c3e12b220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
