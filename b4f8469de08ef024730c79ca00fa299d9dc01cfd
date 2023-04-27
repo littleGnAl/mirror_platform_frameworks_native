@@ -122,6 +122,24 @@
       "parentUuid": "042b47a8_7a9c90da",
       "revId": "b4f8469de08ef024730c79ca00fa299d9dc01cfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7630beca_4835f036",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-04-27T01:46:44Z",
+      "side": 1,
+      "message": "Yes, right.",
+      "parentUuid": "f6f7b9ae_cf2721b8",
+      "revId": "b4f8469de08ef024730c79ca00fa299d9dc01cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
