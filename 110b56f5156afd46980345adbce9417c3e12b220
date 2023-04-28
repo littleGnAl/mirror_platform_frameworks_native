@@ -34,6 +34,24 @@
       "parentUuid": "49cdc3bf_1dbedb08",
       "revId": "110b56f5156afd46980345adbce9417c3e12b220",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d3863e_b6e2ec9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-04-28T04:58:30Z",
+      "side": 1,
+      "message": "You are not done.\n\nI asked you to file a bug, describe the problem and attach the bug id to the commit message in the form of `Bug: BUG_ID` above the `Change-Id` line.",
+      "parentUuid": "6238ec7b_cdde34ff",
+      "revId": "110b56f5156afd46980345adbce9417c3e12b220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
