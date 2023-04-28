@@ -16,6 +16,24 @@
       "message": "since auto submit is checked, I am blocking this patch until my comment is properly addressed.",
       "revId": "110b56f5156afd46980345adbce9417c3e12b220",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6238ec7b_cdde34ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869057
+      },
+      "writtenOn": "2023-04-28T01:43:51Z",
+      "side": 1,
+      "message": "done, thanks your comment.",
+      "parentUuid": "49cdc3bf_1dbedb08",
+      "revId": "110b56f5156afd46980345adbce9417c3e12b220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
