@@ -50,6 +50,52 @@
       "message": "Finally tested on a custom build on actual hardware, this is 100% good to go.\n\nOther PR depends on this change, but this change does not depend on the other PR. https://android-review.googlesource.com/c/platform/frameworks/base/+/2120295",
       "revId": "ae1dbe946276efa3de50bc13f5184cd5a2689333",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5894ac73_371704a7",
+        "filename": "services/inputflinger/reader/InputDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2023-05-02T21:12:50Z",
+      "side": 1,
+      "message": "Add a separate section to search for descriptor-based  association instead. It should execute even if inputPort is empty.\n\nThe descriptor-based one can take precedence over the inputPort-based one.",
+      "range": {
+        "startLine": 308,
+        "startChar": 12,
+        "endLine": 308,
+        "endChar": 37
+      },
+      "revId": "ae1dbe946276efa3de50bc13f5184cd5a2689333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dac11378_e7e42b13",
+        "filename": "services/inputflinger/reader/InputDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2023-05-02T21:12:50Z",
+      "side": 1,
+      "message": "This will become 2 different maps. They should also be renamed now to make it more clear what\u0027s stored in each:\n\n`uniqueIdAssociationsByPort`\nand \n`uniqueIdAssociationsByDescriptor`.",
+      "range": {
+        "startLine": 316,
+        "startChar": 36,
+        "endLine": 316,
+        "endChar": 56
+      },
+      "revId": "ae1dbe946276efa3de50bc13f5184cd5a2689333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
