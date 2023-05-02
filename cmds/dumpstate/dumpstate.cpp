@@ -171,6 +171,7 @@ void add_mountinfo();
 #define RECOVERY_DATA_DIR "/data/misc/recovery"
 #define UPDATE_ENGINE_LOG_DIR "/data/misc/update_engine_log"
 #define UPDATE_ENGINE_PREF_DIR "/data/misc/update_engine/prefs"
+#define SNAPUSERD_LOG_DIR "/data/misc/snapuserd_log"
 #define LOGPERSIST_DATA_DIR "/data/misc/logd"
 #define PREREBOOT_DATA_DIR "/data/misc/prereboot"
 #define PROFILE_DATA_DIR_CUR "/data/misc/profiles/cur"
@@ -1894,6 +1895,7 @@ Dumpstate::RunStatus Dumpstate::DumpstateDefaultAfterCritical() {
     ds.AddDir(RECOVERY_DATA_DIR, true);
     ds.AddDir(UPDATE_ENGINE_LOG_DIR, true);
     ds.AddDir(UPDATE_ENGINE_PREF_DIR, true);
+    ds.AddDir(SNAPUSERD_LOG_DIR, true);
     ds.AddDir(LOGPERSIST_DATA_DIR, false);
     if (!PropertiesHelper::IsUserBuild()) {
         ds.AddDir(PROFILE_DATA_DIR_CUR, true);
