@@ -1248,6 +1248,11 @@ static Dumpstate::RunStatus RunDumpsysTextByPriority(const std::string& title, i
     for (const String16& service : services) {
         RETURN_IF_USER_DENIED_CONSENT();
         std::string path(title);
+        // dbinfo is skipped because it almost never completes successfully
+        // (hits the 10s timeout).
+        if (service == String16("dbinfo")) {
+            continue;
+        }
         path.append(" - ").append(String8(service).c_str());
         size_t bytes_written = 0;
         if (PropertiesHelper::IsDryRun()) {
