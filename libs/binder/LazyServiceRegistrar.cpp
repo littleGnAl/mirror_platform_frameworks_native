@@ -244,7 +244,7 @@ Status ClientCounterCallbackImpl::onClients(const sp<IBinder>& service, bool cli
     std::lock_guard<std::mutex> lock(mMutex);
     auto & [name, registered] = *assertRegisteredService(service);
     if (registered.clients == clients) {
-        LOG_ALWAYS_FATAL("Process already thought %s had clients: %d but servicemanager has "
+        ALOGW("Process already thought %s had clients: %d but servicemanager has "
                          "notified has clients: %d", name.c_str(), registered.clients, clients);
     }
     registered.clients = clients;
