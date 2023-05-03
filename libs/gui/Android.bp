@@ -214,6 +214,7 @@ cc_library_shared {
 
     shared_libs: [
         "libbinder",
+        "libGLESv2",
     ],
 
     export_shared_lib_headers: [
@@ -305,6 +306,7 @@ cc_defaults {
 
     product_variables: {
         eng: {
+            cflags: ["-DFOO"],
             cppflags: [
                 "-UDEBUG_ONLY_CODE",
                 "-DDEBUG_ONLY_CODE=1",
@@ -326,7 +328,6 @@ cc_defaults {
         "libbase",
         "libcutils",
         "libEGL",
-        "libGLESv2",
         "libhidlbase",
         "liblog",
         "libnativewindow",
