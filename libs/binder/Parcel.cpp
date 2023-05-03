@@ -999,10 +999,11 @@ binder::Status Parcel::enforceNoDataAvail() const {
 
 size_t Parcel::objectsCount() const
 {
-    if (const auto* kernelFields = maybeKernelFields()) {
-        return kernelFields->mObjectsSize;
-    }
-    return 0;
+    struct Visitor {
+        size_t operator()(const Parcel::KernelFields& x) { return x.mObjectsSize; }
+        size_t operator()(const Parcel::RpcFields& x) { return x.mObjectPositions.size(); }
+    };
+    return std::visit(Visitor{}, mVariantFields);
 }
 
 status_t Parcel::errorCheck() const

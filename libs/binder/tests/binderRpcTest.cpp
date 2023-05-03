@@ -1050,6 +1050,33 @@ TEST_P(BinderRpc, AppendInvalidFd) {
     ASSERT_EQ(-1, pRaw.readFileDescriptor());
 }
 
+TEST_P(BinderRpc, ObjectsCount) {
+    if (socketType() == SocketType::TIPC) {
+        GTEST_SKIP() << "File descriptor tests not supported on Trusty (yet)";
+    }
+    if (!supportsFdTransport()) {
+        GTEST_SKIP() << "Requires protocol version supporting object tables";
+    }
+
+    auto proc = createRpcTestSocketServerProcess({
+            .clientFileDescriptorTransportMode = RpcSession::FileDescriptorTransportMode::UNIX,
+            .serverSupportedFileDescriptorTransportModes =
+                    {RpcSession::FileDescriptorTransportMode::UNIX},
+    });
+
+    Parcel p1;
+    p1.markForBinder(proc.rootBinder);
+    EXPECT_EQ(0, p1.objectsCount());
+    EXPECT_EQ(OK, p1.writeFileDescriptor(0, false));
+    EXPECT_EQ(1, p1.objectsCount());
+
+    Parcel p2;
+    p2.markForBinder(proc.rootBinder);
+    EXPECT_EQ(0, p2.objectsCount());
+    EXPECT_EQ(OK, p2.writeStrongBinder(nullptr));
+    EXPECT_EQ(1, p2.objectsCount());
+}
+
 #ifndef __ANDROID_VENDOR__ // No AIBinder_fromPlatformBinder on vendor
 TEST_P(BinderRpc, WorksWithLibbinderNdkPing) {
     if constexpr (!kEnableSharedLibs) {

@@ -512,7 +512,6 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
                                    uint64_t address, uint32_t code, const Parcel& data,
                                    const sp<RpcSession>& session, Parcel* reply, uint32_t flags) {
     LOG_ALWAYS_FATAL_IF(!data.isForRpc());
-    LOG_ALWAYS_FATAL_IF(data.objectsCount() != 0);
 
     uint64_t asyncNumber = 0;
 
