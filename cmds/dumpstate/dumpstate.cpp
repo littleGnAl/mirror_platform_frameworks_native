@@ -1247,6 +1247,11 @@ static Dumpstate::RunStatus RunDumpsysTextByPriority(const std::string& title, i
     Vector<String16> services = dumpsys.listServices(priority, /* supports_proto = */ false);
     for (const String16& service : services) {
         RETURN_IF_USER_DENIED_CONSENT();
+        // dbinfo is skipped because it almost never completes successfully
+        // (hits the 10s timeout); see b/279485925#comment2 for more context.
+        if (service == String16("dbinfo")) {
+            continue;
+        }
         std::string path(title);
         path.append(" - ").append(String8(service).c_str());
         size_t bytes_written = 0;
