@@ -81,6 +81,13 @@ static bool isCuttlefish() {
     return android::base::StartsWith(android::base::GetProperty("ro.product.vendor.device", ""),
                                      "vsoc_");
 }
+static bool isCuttlefishPhone() {
+    return isCuttlefish() &&
+            (android::base::GetProperty("ro.product.vendor.name", "").find("phone") !=
+                     std::string::npos ||
+             android::base::GetProperty("ro.product.vendor.name", "").find("todo@gio") !=
+                     std::string::npos);
+}
 
 TEST(AddService, HappyHappy) {
     auto sm = getPermissiveServiceManager();
@@ -314,7 +321,7 @@ TEST(ListServices, CriticalServices) {
 }
 
 TEST(Vintf, UpdatableViaApex) {
-    if (!isCuttlefish()) GTEST_SKIP() << "Skipping non-Cuttlefish devices";
+    if (!isCuttlefishPhone()) GTEST_SKIP() << "Skipping non-Cuttlefish-phone devices";
 
     auto sm = getPermissiveServiceManager();
     std::optional<std::string> updatableViaApex;
@@ -326,7 +333,7 @@ TEST(Vintf, UpdatableViaApex) {
 }
 
 TEST(Vintf, UpdatableViaApex_InvalidNameReturnsNullOpt) {
-    if (!isCuttlefish()) GTEST_SKIP() << "Skipping non-Cuttlefish devices";
+    if (!isCuttlefishPhone()) GTEST_SKIP() << "Skipping non-Cuttlefish-phone devices";
 
     auto sm = getPermissiveServiceManager();
     std::optional<std::string> updatableViaApex;
@@ -337,7 +344,7 @@ TEST(Vintf, UpdatableViaApex_InvalidNameReturnsNullOpt) {
 }
 
 TEST(Vintf, GetUpdatableNames) {
-    if (!isCuttlefish()) GTEST_SKIP() << "Skipping non-Cuttlefish devices";
+    if (!isCuttlefishPhone()) GTEST_SKIP() << "Skipping non-Cuttlefish-phone devices";
 
     auto sm = getPermissiveServiceManager();
     std::vector<std::string> names;
