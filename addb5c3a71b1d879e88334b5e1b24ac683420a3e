@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a331045c_be233be1",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2023-05-04T20:31:31Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "d8a80b87_76ae0e50",
+      "revId": "addb5c3a71b1d879e88334b5e1b24ac683420a3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4444b7ef_beb3457f",
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "The bug is also a handy and civilized way for someone to contest this decision in the future if it comes to that.",
       "parentUuid": "4444b7ef_beb3457f",
+      "revId": "addb5c3a71b1d879e88334b5e1b24ac683420a3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff24a18b_73404b0b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2023-05-04T20:31:31Z",
+      "side": 1,
+      "message": "Done—I\u0027ve added an update detailing the rationale in the bug, and have referenced it here as well. Thanks!",
+      "parentUuid": "38757c4a_357b956d",
       "revId": "addb5c3a71b1d879e88334b5e1b24ac683420a3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
