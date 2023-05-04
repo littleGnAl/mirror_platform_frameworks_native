@@ -3325,9 +3325,19 @@ void SurfaceFlinger::buildWindowInfos(std::vector<WindowInfo>& outWindowInfos,
                                       std::vector<DisplayInfo>& outDisplayInfos) {
     ftl::SmallMap<ui::LayerStack, DisplayDevice::InputInfo, 4> displayInputInfos;
 
+    bool hasPrimaryInfo = false;
+    ui::Transform primaryTransform;
+    bool primaryIsSecure;
+
     for (const auto& [_, display] : FTL_FAKE_GUARD(mStateLock, mDisplays)) {
         const auto layerStack = display->getLayerStack();
         const auto info = display->getInputInfo();
+
+        if (display->isPrimary() && display->isInternal() && layerStack.id != 0) {
+            hasPrimaryInfo = true;
+            primaryTransform = info.transform;
+            primaryIsSecure = info.isSecure;
+        }
 
         const auto [it, emplaced] = displayInputInfos.try_emplace(layerStack, info);
         if (emplaced) {
