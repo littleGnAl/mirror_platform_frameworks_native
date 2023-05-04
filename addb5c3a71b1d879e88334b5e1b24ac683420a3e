@@ -67,6 +67,24 @@
       "message": "Best to link to a bug here that has some information about the problem, for the historical record. Capture in the bug stats, info on how to reproduce, screenshots from dashboards, whatever you have.\n\nSince you already have b/279485925 you could post a comment with some data and then link here to b/279485925#comment2 or whatever the comment permalink ends up being.",
       "revId": "addb5c3a71b1d879e88334b5e1b24ac683420a3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38757c4a_357b956d",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2023-05-04T19:56:34Z",
+      "side": 1,
+      "message": "The bug is also a handy and civilized way for someone to contest this decision in the future if it comes to that.",
+      "parentUuid": "4444b7ef_beb3457f",
+      "revId": "addb5c3a71b1d879e88334b5e1b24ac683420a3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
