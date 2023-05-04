@@ -211,9 +211,10 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder) {
     if (binder) local = binder->localBinder();
     if (local) local->setParceled();
 
-    if (const auto* rpcFields = maybeRpcFields()) {
+    if (auto* rpcFields = maybeRpcFields()) {
+        const size_t dataPos = mDataPos;
         if (binder) {
-            status_t status = writeInt32(1); // non-null
+            status_t status = writeInt32(Parcel::RpcFields::TYPE_BINDER);
             if (status != OK) return status;
             uint64_t address;
             // TODO(b/167966510): need to undo this if the Parcel is not sent
@@ -223,8 +224,12 @@ status_t Parcel::flattenBinder(const sp<IBinder>& binder) {
             status = writeUint64(address);
             if (status != OK) return status;
         } else {
-            status_t status = writeInt32(0); // null
+            status_t status = writeInt32(Parcel::RpcFields::TYPE_BINDER_NULL);
             if (status != OK) return status;
+        }
+        if (rpcFields->mSession->getProtocolVersion().value() >=
+            RPC_WIRE_PROTOCOL_VERSION_RPC_HEADER_FEATURE_EXPLICIT_PARCEL_SIZE) {
+            rpcFields->mObjectPositions.push_back(dataPos);
         }
         return finishFlattenBinder(binder);
     }
@@ -2617,11 +2622,9 @@ status_t Parcel::rpcSetDataReference(
 
     LOG_ALWAYS_FATAL_IF(session == nullptr);
 
-    if (objectTableSize != ancillaryFds.size()) {
-        ALOGE("objectTableSize=%zu ancillaryFds.size=%zu", objectTableSize, ancillaryFds.size());
-        relFunc(data, dataSize, nullptr, 0);
-        return BAD_VALUE;
-    }
+    // Verify the object positions are valid and that we received the right
+    // number of FDs.
+    size_t expectedFdCount = 0;
     for (size_t i = 0; i < objectTableSize; i++) {
         uint32_t minObjectEnd;
         if (__builtin_add_overflow(objectTable[i], sizeof(RpcFields::ObjectType), &minObjectEnd) ||
@@ -2631,6 +2634,15 @@ status_t Parcel::rpcSetDataReference(
             relFunc(data, dataSize, nullptr, 0);
             return BAD_VALUE;
         }
+        const auto type = *reinterpret_cast<const RpcFields::ObjectType*>(data + objectTable[i]);
+        if (type == RpcFields::TYPE_NATIVE_FILE_DESCRIPTOR) {
+            expectedFdCount += 1;
+        }
+    }
+    if (expectedFdCount != ancillaryFds.size()) {
+        ALOGE("expectedFdCount=%zu ancillaryFds.size=%zu", expectedFdCount, ancillaryFds.size());
+        relFunc(data, dataSize, nullptr, 0);
+        return BAD_VALUE;
     }
 
     freeData();

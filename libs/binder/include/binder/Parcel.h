@@ -1301,7 +1301,13 @@ private:
             TYPE_NATIVE_FILE_DESCRIPTOR = 2,
         };
 
-        // Sorted.
+        // Sorted list of offsets to objects. The first four bytes are always
+        // the ObjectType.
+        //
+        // The contents vary depending on the protocol version. Binder objects
+        // are only added to the list when the protocol version is at least 1.
+        // File descriptors are always added to this list, but there will be an
+        // error at transaction time if the protocol version isn't at least 1.
         std::vector<uint32_t> mObjectPositions;
 
         // File descriptors referenced by the parcel data. Should be indexed
