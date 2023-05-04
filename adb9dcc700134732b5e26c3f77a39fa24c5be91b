@@ -56,6 +56,23 @@
       "message": "Could you please rework the commit message to make it more clear on what this patch fixes?",
       "revId": "adb9dcc700134732b5e26c3f77a39fa24c5be91b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53017609_0b1b23d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2023-05-04T17:40:47Z",
+      "side": 1,
+      "message": "Posted a comment on the bug",
+      "revId": "adb9dcc700134732b5e26c3f77a39fa24c5be91b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
