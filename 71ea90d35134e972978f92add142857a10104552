@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebe8cfb5_806033a0",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2620,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-05-04T23:06:56Z",
+      "side": 0,
+      "message": "Sigh. Messed up when I wrote this before. The old version of the code requires the object table to only contain FDs, so essentially protocol version 1 can only support FDs\n\nThis CL might require a protocol version bump. I\u0027m going to think about it more.\n\nAlso, from discussion with smoreland@ elsewhere, it would be nice if the tests could catch this. Would probably need to use old prebuilts somehow.",
+      "revId": "71ea90d35134e972978f92add142857a10104552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
