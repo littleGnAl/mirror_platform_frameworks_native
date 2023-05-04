@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da181429_62faa8a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-04T18:47:15Z",
+      "side": 1,
+      "message": "this check is intentionally there in order to verify the corresponding logic in servicemanager",
+      "revId": "37e95dc3786290212dc6f2d7354b6ba0cde77458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
