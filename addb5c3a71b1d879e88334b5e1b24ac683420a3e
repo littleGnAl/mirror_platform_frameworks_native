@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "027ce168_28ebf4f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2023-05-04T19:50:37Z",
+      "side": 1,
+      "message": "Hi Makoto and Zim, is this an acceptable change? I searched through b/ to check if there was anyone using dbinfo (from bug reports, not explicit dumpsys calls) to debug. There weren\u0027t many examples, but your names appeared a few times.",
+      "revId": "addb5c3a71b1d879e88334b5e1b24ac683420a3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
