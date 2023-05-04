@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d16f6a8_9fc27261",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2023-05-04T21:09:42Z",
+      "side": 1,
+      "message": "I did some more digging, and I think this is only reproducible on internal builds (so it might not be appropriate to remove in AOSP, where dumpstate is developed). There are a couple of specific processes that seem to hang—I\u0027ll add an update to the bug.",
+      "revId": "0afac290d2060fb412bdf6d8d3917028dc9132e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
