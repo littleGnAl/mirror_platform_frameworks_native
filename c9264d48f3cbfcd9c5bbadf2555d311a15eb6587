@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f31fc20d_8413e1c5",
+        "filename": "cmds/servicemanager/test_sm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-05-04T00:56:01Z",
+      "side": 1,
+      "message": "Can we check if ro.product.vendor.name is something similar to aosp_cf_x86_64_phone? (aosp_ is optional and x86_64 can be something else like x86 or arm64..)",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 46
+      },
+      "revId": "c9264d48f3cbfcd9c5bbadf2555d311a15eb6587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0254710_f0a85b8b",
+        "filename": "cmds/servicemanager/test_sm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-05-04T00:56:01Z",
+      "side": 1,
+      "message": "I dont think we need this as a separate function because the tests of interest are the only callers of isCuttlefish.",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 29
+      },
+      "revId": "c9264d48f3cbfcd9c5bbadf2555d311a15eb6587",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
