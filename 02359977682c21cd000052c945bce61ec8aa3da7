@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a437052_6a0eb34b",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-04T17:03:05Z",
+      "side": 1,
+      "message": "mBpBinder, and could remove mBinder",
+      "range": {
+        "startLine": 98,
+        "startChar": 22,
+        "endLine": 98,
+        "endChar": 45
+      },
+      "revId": "02359977682c21cd000052c945bce61ec8aa3da7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18922d6b_92e90f71",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-04T17:03:05Z",
+      "side": 1,
+      "message": "nit; now that it\u0027s factored out, you might pass more values\n\ne.g. pass a list of values, and one of the other values could be used as the \u0027other\u0027 value",
+      "range": {
+        "startLine": 116,
+        "startChar": 45,
+        "endLine": 116,
+        "endChar": 46
+      },
+      "revId": "02359977682c21cd000052c945bce61ec8aa3da7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
