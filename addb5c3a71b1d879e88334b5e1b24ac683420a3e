@@ -33,6 +33,40 @@
       "message": "As a quick side note, I also checked if this is related to freezer—it doesn\u0027t seem to be, since skipping the dbinfo dump on frozen processes still results in a timeout. (IIUC, the freezer is disabled altogether when this dump runs.)",
       "revId": "addb5c3a71b1d879e88334b5e1b24ac683420a3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8a80b87_76ae0e50",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2023-05-04T19:56:06Z",
+      "side": 1,
+      "message": "I\u0027d move this down to just above line 1256",
+      "revId": "addb5c3a71b1d879e88334b5e1b24ac683420a3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4444b7ef_beb3457f",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2023-05-04T19:56:06Z",
+      "side": 1,
+      "message": "Best to link to a bug here that has some information about the problem, for the historical record. Capture in the bug stats, info on how to reproduce, screenshots from dashboards, whatever you have.\n\nSince you already have b/279485925 you could post a comment with some data and then link here to b/279485925#comment2 or whatever the comment permalink ends up being.",
+      "revId": "addb5c3a71b1d879e88334b5e1b24ac683420a3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
