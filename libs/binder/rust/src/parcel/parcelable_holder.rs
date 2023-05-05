@@ -168,7 +168,24 @@ impl Serialize for ParcelableHolder {
     }
 }
 
+#[repr(transparent)]
+pub struct DefaultParcelableHolder(ParcelableHolder);
+
+impl Default for DefaultParcelableHolder {
+    fn default() -> Self {
+        Self(ParcelableHolder::new(Default::default()))
+    }
+}
+
 impl Deserialize for ParcelableHolder {
+    type UninitType = DefaultParcelableHolder;
+    fn uninit() -> Self::UninitType {
+        Self::UninitType::default()
+    }
+    fn from_init(value: Self) -> Self::UninitType {
+        DefaultParcelableHolder(value)
+    }
+
     fn deserialize(parcel: &BorrowedParcel<'_>) -> Result<Self, StatusCode> {
         let status: i32 = parcel.read()?;
         if status == NULL_PARCELABLE_FLAG {
