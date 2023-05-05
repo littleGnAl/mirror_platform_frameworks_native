@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5557c496_be6eeb34",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-05T23:47:34Z",
+      "side": 1,
+      "message": "do we need to expose this as API?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 50
+      },
+      "revId": "04ed4dcb45543223cdd4260497f41736448c78e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4443e2d4_aa3d2fd3",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-05T23:47:34Z",
+      "side": 1,
+      "message": "nit: do you know of any way in Rust to make sure that this test always runs? It would be nice if everything implementing this automatically had the assertions.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "04ed4dcb45543223cdd4260497f41736448c78e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
