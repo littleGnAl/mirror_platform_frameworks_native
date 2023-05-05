@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2f3438e_fe0af702",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-05-05T16:55:24Z",
+      "side": 1,
+      "message": "I think all of the static asserts should assert both size and alignment is the same.",
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87eebde0_d9404be1",
         "filename": "libs/binder/rust/src/parcel/parcelable.rs",
         "patchSetId": 4
@@ -37,6 +54,126 @@
         "endLine": 163,
         "endChar": 27
       },
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1690fa8b_909b10ae",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-05-05T16:55:24Z",
+      "side": 1,
+      "message": "Update comment",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 63
+      },
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01c8c099_9a1de414",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-05-05T16:55:24Z",
+      "side": 1,
+      "message": "Update comment",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 47
+      },
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d767a275_48d88bd1",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-05-05T16:55:24Z",
+      "side": 1,
+      "message": "I\u0027m concerned about this being slow in the case of primitives, e.g. a byte buffer. It\u0027s possible the compiler can be smart enough to optimize this for us, but if it isn\u0027t, is there any way we can specialize this with `Vec::resize()` instead for types that impl Copy?",
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c67078e_b54edddf",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-05-05T16:55:24Z",
+      "side": 1,
+      "message": "UninitType isn\u0027t MaybeUninit anymmore. Update comment.",
+      "range": {
+        "startLine": 296,
+        "startChar": 64,
+        "endLine": 296,
+        "endChar": 78
+      },
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0242b885_a34c8c4e",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-05-05T16:55:24Z",
+      "side": 1,
+      "message": "Update comment",
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e63244_f6e25d05",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-05-05T16:55:24Z",
+      "side": 1,
+      "message": "Can this be pub(crate) at least?",
       "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
