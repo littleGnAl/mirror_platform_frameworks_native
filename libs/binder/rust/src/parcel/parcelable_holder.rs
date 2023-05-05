@@ -22,6 +22,7 @@ use crate::parcel::{
 };
 
 use downcast_rs::{impl_downcast, DowncastSync};
+use static_assertions::const_assert_eq;
 use std::any::Any;
 use std::sync::{Arc, Mutex};
 
@@ -168,7 +169,18 @@ impl Serialize for ParcelableHolder {
     }
 }
 
+#[repr(transparent)]
+pub struct UninitParcelableHolder(ParcelableHolder);
+
 impl Deserialize for ParcelableHolder {
+    type UninitType = UninitParcelableHolder;
+    fn uninit() -> Self::UninitType {
+        UninitParcelableHolder(ParcelableHolder::new(Default::default()))
+    }
+    fn from_init(value: Self) -> Self::UninitType {
+        UninitParcelableHolder(value)
+    }
+
     fn deserialize(parcel: &BorrowedParcel<'_>) -> Result<Self, StatusCode> {
         let status: i32 = parcel.read()?;
         if status == NULL_PARCELABLE_FLAG {
@@ -180,6 +192,10 @@ impl Deserialize for ParcelableHolder {
         }
     }
 }
+const_assert_eq!(
+    mem::size_of::<<ParcelableHolder as Deserialize>::UninitType>(),
+    mem::size_of::<ParcelableHolder>()
+);
 
 impl Parcelable for ParcelableHolder {
     fn write_to_parcel(&self, parcel: &mut BorrowedParcel<'_>) -> Result<(), StatusCode> {
