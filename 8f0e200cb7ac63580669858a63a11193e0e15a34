@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d918446d_aaede9ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-05T22:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2f3438e_fe0af702",
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87eebde0_d9404be1",
@@ -48,6 +66,30 @@
       "writtenOn": "2023-05-05T16:23:07Z",
       "side": 1,
       "message": "nit: change these comments to T::UninitType? There are more in this file.",
+      "range": {
+        "startLine": 163,
+        "startChar": 16,
+        "endLine": 163,
+        "endChar": 27
+      },
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3d6295a_e48dc70a",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-05T22:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87eebde0_d9404be1",
       "range": {
         "startLine": 163,
         "startChar": 16,
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6695cf4d_4b233603",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-05T22:04:28Z",
+      "side": 1,
+      "message": "Right, good catch. I was going to update the comments but I forgot.",
+      "parentUuid": "1690fa8b_909b10ae",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 63
+      },
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01c8c099_9a1de414",
@@ -94,6 +160,30 @@
       "writtenOn": "2023-05-05T16:55:24Z",
       "side": 1,
       "message": "Update comment",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 47
+      },
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bfc86a3_f92dc89b",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-05T22:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01c8c099_9a1de414",
       "range": {
         "startLine": 266,
         "startChar": 0,
@@ -144,6 +234,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96445fcb_51364a84",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-05T22:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c67078e_b54edddf",
+      "range": {
+        "startLine": 296,
+        "startChar": 64,
+        "endLine": 296,
+        "endChar": 78
+      },
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0242b885_a34c8c4e",
@@ -161,6 +275,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece45398_afcc5468",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-05T22:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0242b885_a34c8c4e",
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26e63244_f6e25d05",
@@ -174,6 +306,24 @@
       "writtenOn": "2023-05-05T16:55:24Z",
       "side": 1,
       "message": "Can this be pub(crate) at least?",
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85380fd1_087f7e01",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-05T22:04:28Z",
+      "side": 1,
+      "message": "`can\u0027t leak crate-private type` error.",
+      "parentUuid": "26e63244_f6e25d05",
       "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
