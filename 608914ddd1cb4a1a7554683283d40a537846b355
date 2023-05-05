@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da17f50f_e35bafc7",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-05-05T16:26:10Z",
+      "side": 1,
+      "message": "valid and initialized?",
+      "revId": "608914ddd1cb4a1a7554683283d40a537846b355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
