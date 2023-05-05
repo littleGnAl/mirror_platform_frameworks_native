@@ -39,6 +39,30 @@
       },
       "revId": "8ba6c05026533db1c01dd66a74452cb28847808b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39599e56_8e899312",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-05-05T22:36:36Z",
+      "side": 1,
+      "message": "Yeah, I was about to ask about this, but I think I already found the culprit (I was locking this here and in setupSocketServer which caused a double-lock in the same thread).\n\nWill fix this next week.",
+      "parentUuid": "a80d8402_ab592a04",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 32
+      },
+      "revId": "8ba6c05026533db1c01dd66a74452cb28847808b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
