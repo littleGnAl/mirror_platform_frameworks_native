@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a26c3b_ee149750",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-05-05T16:23:07Z",
+      "side": 1,
+      "message": "With these two CLs the leak in parcel_fuzzer_rs (b/278648274) no longer happens, and I can see SpIBinder::drop being called now.",
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87eebde0_d9404be1",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-05-05T16:23:07Z",
+      "side": 1,
+      "message": "nit: change these comments to T::UninitType? There are more in this file.",
+      "range": {
+        "startLine": 163,
+        "startChar": 16,
+        "endLine": 163,
+        "endChar": 27
+      },
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
