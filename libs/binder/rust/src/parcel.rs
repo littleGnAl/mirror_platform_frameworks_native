@@ -38,6 +38,8 @@ pub use self::parcelable::{
 };
 pub use self::parcelable_holder::{ParcelableHolder, ParcelableMetadata};
 
+pub(crate) use self::parcelable::assert_uninit_type;
+
 /// Container for a message (data and object references) that can be sent
 /// through Binder.
 ///

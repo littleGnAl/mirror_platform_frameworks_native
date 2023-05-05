@@ -15,8 +15,8 @@
  */
 
 use super::{
-    BorrowedParcel, Deserialize, DeserializeArray, DeserializeOption, Serialize, SerializeArray,
-    SerializeOption,
+    assert_uninit_type, BorrowedParcel, Deserialize, DeserializeArray, DeserializeOption,
+    Serialize, SerializeArray, SerializeOption,
 };
 use crate::binder::AsNative;
 use crate::error::{status_result, Result, StatusCode};
@@ -132,9 +132,18 @@ impl DeserializeOption for ParcelFileDescriptor {
 }
 
 impl Deserialize for ParcelFileDescriptor {
+    type UninitType = Option<Self>;
+    fn uninit() -> Self::UninitType {
+        Self::UninitType::default()
+    }
+    fn from_init(value: Self) -> Self::UninitType {
+        Some(value)
+    }
+
     fn deserialize(parcel: &BorrowedParcel<'_>) -> Result<Self> {
         Deserialize::deserialize(parcel).transpose().unwrap_or(Err(StatusCode::UNEXPECTED_NULL))
     }
 }
+assert_uninit_type!(ParcelFileDescriptor);
 
 impl DeserializeArray for ParcelFileDescriptor {}

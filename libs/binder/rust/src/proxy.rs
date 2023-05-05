@@ -22,8 +22,8 @@ use crate::binder::{
 };
 use crate::error::{status_result, Result, StatusCode};
 use crate::parcel::{
-    BorrowedParcel, Deserialize, DeserializeArray, DeserializeOption, Parcel, Serialize,
-    SerializeArray, SerializeOption,
+    assert_uninit_type, BorrowedParcel, Deserialize, DeserializeArray, DeserializeOption, Parcel,
+    Serialize, SerializeArray, SerializeOption,
 };
 use crate::sys;
 
@@ -439,10 +439,19 @@ impl SerializeOption for SpIBinder {
 impl SerializeArray for SpIBinder {}
 
 impl Deserialize for SpIBinder {
+    type UninitType = Option<Self>;
+    fn uninit() -> Self::UninitType {
+        Self::UninitType::default()
+    }
+    fn from_init(value: Self) -> Self::UninitType {
+        Some(value)
+    }
+
     fn deserialize(parcel: &BorrowedParcel<'_>) -> Result<SpIBinder> {
         parcel.read_binder().transpose().unwrap_or(Err(StatusCode::UNEXPECTED_NULL))
     }
 }
+assert_uninit_type!(SpIBinder);
 
 impl DeserializeOption for SpIBinder {
     fn deserialize_option(parcel: &BorrowedParcel<'_>) -> Result<Option<SpIBinder>> {

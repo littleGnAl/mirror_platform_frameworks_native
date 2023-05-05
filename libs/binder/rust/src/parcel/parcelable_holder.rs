@@ -17,8 +17,8 @@
 use crate::binder::Stability;
 use crate::error::StatusCode;
 use crate::parcel::{
-    BorrowedParcel, Deserialize, Parcel, Parcelable, Serialize, NON_NULL_PARCELABLE_FLAG,
-    NULL_PARCELABLE_FLAG,
+    assert_uninit_type, BorrowedParcel, Deserialize, Parcel, Parcelable, Serialize,
+    NON_NULL_PARCELABLE_FLAG, NULL_PARCELABLE_FLAG,
 };
 
 use downcast_rs::{impl_downcast, DowncastSync};
@@ -168,7 +168,18 @@ impl Serialize for ParcelableHolder {
     }
 }
 
+#[repr(transparent)]
+pub struct UninitParcelableHolder(ParcelableHolder);
+
 impl Deserialize for ParcelableHolder {
+    type UninitType = UninitParcelableHolder;
+    fn uninit() -> Self::UninitType {
+        UninitParcelableHolder(ParcelableHolder::new(Default::default()))
+    }
+    fn from_init(value: Self) -> Self::UninitType {
+        UninitParcelableHolder(value)
+    }
+
     fn deserialize(parcel: &BorrowedParcel<'_>) -> Result<Self, StatusCode> {
         let status: i32 = parcel.read()?;
         if status == NULL_PARCELABLE_FLAG {
@@ -180,6 +191,7 @@ impl Deserialize for ParcelableHolder {
         }
     }
 }
+assert_uninit_type!(ParcelableHolder);
 
 impl Parcelable for ParcelableHolder {
     fn write_to_parcel(&self, parcel: &mut BorrowedParcel<'_>) -> Result<(), StatusCode> {
