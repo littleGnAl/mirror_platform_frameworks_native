@@ -524,6 +524,30 @@ void GraphicBuffer::addDeathCallback(GraphicBufferDeathCallback deathCallback, v
     mDeathCallbacks.emplace_back(deathCallback, context);
 }
 
+uint64_t GraphicBuffer::getAllocationSize() const {
+    uint64_t size = 0;
+    status_t err = mBufferMapper.getAllocationSize(handle, &size);
+    if (err == OK) {
+        if (size > 0) {
+            return size;
+        } else {
+            ALOGW("Mapper returned size = 0 for buffer format: 0x%x size: %d x %d", format, width,
+                  height);
+            // Fall-through to estimate
+        }
+    }
+
+    // Estimation time!
+    // Stride could be = 0 if it's ill-defined (eg, compressed buffer), in which case we use the
+    // width of the buffer instead
+    size = std::max(width, stride) * height;
+    // Require bpp to be at least 1. This is too low for many formats, but it's better than 0
+    // Also while we could make increasingly better estimates, the reality is that mapper@4
+    // should be common enough at this point that we won't ever hit this anyway
+    size *= std::max(1u, bytesPerPixel(format));
+    return size;
+}
+
 // ---------------------------------------------------------------------------
 
 }; // namespace android

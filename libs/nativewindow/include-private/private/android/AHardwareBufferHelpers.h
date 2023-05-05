@@ -66,6 +66,14 @@ const ANativeWindowBuffer* AHardwareBuffer_to_ANativeWindowBuffer(const AHardwar
 ANativeWindowBuffer* AHardwareBuffer_to_ANativeWindowBuffer(AHardwareBuffer* buffer);
 
 AHardwareBuffer* AHardwareBuffer_from_GraphicBuffer(GraphicBuffer* buffer);
+
+/**
+ * Returns the size of the allocated hardware buffer in bytes.
+ *
+ * TODO: Make public
+ */
+uint64_t AHardwareBuffer_getAllocationSize(AHardwareBuffer* buffer);
+
 } // namespace android
 
 #endif // ANDROID_PRIVATE_NATIVE_AHARDWARE_BUFFER_HELPERS_H

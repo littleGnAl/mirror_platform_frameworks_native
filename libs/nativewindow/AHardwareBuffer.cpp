@@ -776,4 +776,10 @@ AHardwareBuffer* AHardwareBuffer_from_GraphicBuffer(GraphicBuffer* buffer) {
     return buffer->toAHardwareBuffer();
 }
 
+uint64_t AHardwareBuffer_getAllocationSize(AHardwareBuffer* buffer) {
+    if (!buffer) return 0;
+    const GraphicBuffer* gbuffer = AHardwareBuffer_to_GraphicBuffer(buffer);
+    return gbuffer->getAllocationSize();
+}
+
 } // namespace android

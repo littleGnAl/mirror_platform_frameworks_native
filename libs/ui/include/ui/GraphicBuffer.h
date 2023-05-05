@@ -215,6 +215,8 @@ public:
 
     void addDeathCallback(GraphicBufferDeathCallback deathCallback, void* context);
 
+    uint64_t getAllocationSize() const;
+
 private:
     ~GraphicBuffer();
 
