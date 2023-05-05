@@ -22,7 +22,9 @@ use crate::binder::AsNative;
 use crate::error::{status_result, Result, StatusCode};
 use crate::sys;
 
+use static_assertions::const_assert_eq;
 use std::fs::File;
+use std::mem;
 use std::os::unix::io::{AsRawFd, FromRawFd, IntoRawFd, RawFd};
 
 /// Rust version of the Java class android.os.ParcelFileDescriptor
@@ -132,9 +134,21 @@ impl DeserializeOption for ParcelFileDescriptor {
 }
 
 impl Deserialize for ParcelFileDescriptor {
+    type UninitType = Option<Self>;
+    fn uninit() -> Self::UninitType {
+        Self::UninitType::default()
+    }
+    fn from_init(value: Self) -> Self::UninitType {
+        Some(value)
+    }
+
     fn deserialize(parcel: &BorrowedParcel<'_>) -> Result<Self> {
         Deserialize::deserialize(parcel).transpose().unwrap_or(Err(StatusCode::UNEXPECTED_NULL))
     }
 }
+const_assert_eq!(
+    mem::size_of::<<ParcelFileDescriptor as Deserialize>::UninitType>(),
+    mem::size_of::<ParcelFileDescriptor>()
+);
 
 impl DeserializeArray for ParcelFileDescriptor {}

@@ -18,6 +18,7 @@ rust_library {
         "libbinder_ndk_sys",
         "libdowncast_rs",
         "liblibc",
+        "libstatic_assertions",
     ],
     host_supported: true,
     vendor_available: true,

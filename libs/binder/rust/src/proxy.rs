@@ -27,6 +27,7 @@ use crate::parcel::{
 };
 use crate::sys;
 
+use static_assertions::const_assert_eq;
 use std::cmp::Ordering;
 use std::convert::TryInto;
 use std::ffi::{c_void, CStr, CString};
@@ -439,10 +440,22 @@ impl SerializeOption for SpIBinder {
 impl SerializeArray for SpIBinder {}
 
 impl Deserialize for SpIBinder {
+    type UninitType = Option<Self>;
+    fn uninit() -> Self::UninitType {
+        Self::UninitType::default()
+    }
+    fn from_init(value: Self) -> Self::UninitType {
+        Some(value)
+    }
+
     fn deserialize(parcel: &BorrowedParcel<'_>) -> Result<SpIBinder> {
         parcel.read_binder().transpose().unwrap_or(Err(StatusCode::UNEXPECTED_NULL))
     }
 }
+const_assert_eq!(
+    mem::size_of::<<SpIBinder as Deserialize>::UninitType>(),
+    mem::size_of::<SpIBinder>()
+);
 
 impl DeserializeOption for SpIBinder {
     fn deserialize_option(parcel: &BorrowedParcel<'_>) -> Result<Option<SpIBinder>> {
