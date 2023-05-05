@@ -16,6 +16,29 @@
       "message": "@smoreland - changed this to expose FD-based API we discussed. PTAL and let me know if that\u0027s what you wanted. If yes, then I\u0027ll fill in method docs.\n\nThis change requires rebuilding libbinder vndk ABI prebuilts (looks like RpcServer is a part of libbinder ABI, isn\u0027t it?)",
       "revId": "8ba6c05026533db1c01dd66a74452cb28847808b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a80d8402_ab592a04",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-05T22:32:58Z",
+      "side": 1,
+      "message": "nit: we lock everything else, do the same?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 32
+      },
+      "revId": "8ba6c05026533db1c01dd66a74452cb28847808b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
