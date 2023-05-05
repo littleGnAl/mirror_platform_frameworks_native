@@ -211,6 +211,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08c87b0_37af9216",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-05T23:01:06Z",
+      "side": 1,
+      "message": "Looking at the disassembly of `allocate_vec_with_buffer\u003ci8\u003e` from `libbinder_rs.dylib.so`, it looks like the compiler is smart enough to use a `memset`. The function calls `__rust_alloc`, followed by a `memset`, then `__rust_dealloc` on the error path.\n\n```\n   160bb:       74 66                   je     16123 \u003c_RINvNtNtCsjDEFhBkDXPQ_6binder6parcel10parcelable24allocate_vec_with_bufferaEB6_+0x93\u003e\n   160bd:       48 89 c3                mov    %rax,%rbx\n   160c0:       48 8b 05 19 55 00 00    mov    0x5519(%rip),%rax        # 1b5e0 \u003cmemset@LIBC\u003e\n   160c7:       31 f6                   xor    %esi,%esi\n   160c9:       4c 89 fa                mov    %r15,%rdx\n   160cc:       48 89 df                mov    %rbx,%rdi\n   160cf:       ff d0                   call   *%rax\n```",
+      "parentUuid": "d767a275_48d88bd1",
+      "revId": "8f0e200cb7ac63580669858a63a11193e0e15a34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c67078e_b54edddf",
