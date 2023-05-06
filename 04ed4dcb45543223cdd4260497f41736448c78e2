@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e55b9b62_71d70e5d",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-06T01:03:13Z",
+      "side": 1,
+      "message": "I think we do, auto-generated code needs to implement these for enums. We might be able to make it private beyond that boundary, if it\u0027s not already.",
+      "parentUuid": "5557c496_be6eeb34",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 50
+      },
+      "revId": "04ed4dcb45543223cdd4260497f41736448c78e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4443e2d4_aa3d2fd3",
         "filename": "libs/binder/rust/src/parcel/parcelable.rs",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2023-05-05T23:47:34Z",
       "side": 1,
       "message": "nit: do you know of any way in Rust to make sure that this test always runs? It would be nice if everything implementing this automatically had the assertions.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 33
+      },
+      "revId": "04ed4dcb45543223cdd4260497f41736448c78e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e941a5db_a7bb4a6d",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-06T01:03:13Z",
+      "side": 1,
+      "message": "Done, used a compile-time constant. Tested with a local change that makes all the primitives use `UninitType \u003d Result\u003cSelf, i32\u003e`, produces these errors:\n\n```\nerror[E0080]: evaluation of `\u003ci8 as parcel::parcelable::Deserialize\u003e::ASSERT_UNINIT_SIZE_AND_ALIGNMENT` failed\n  --\u003e frameworks/native/libs/binder/rust/src/parcel/parcelable.rs:72:9\n   |\n72 |         assert!(std::mem::size_of::\u003cSelf\u003e() \u003d\u003d std::mem::size_of::\u003cSelf::UninitType\u003e());\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the evaluated program panicked at \u0027assertion failed: std::mem::size_of::\u003cSelf\u003e() \u003d\u003d std::mem::size_of::\u003cSelf::UninitType\u003e()\u0027, frameworks/n\native/libs/binder/rust/src/parcel/parcelable.rs:72:9\n   |\n   \u003d note: this error originates in the macro `assert` (in Nightly builds, run with -Z macro-backtrace for more info)\n\nnote: the above error was encountered while instantiating `fn parcel::parcelable::allocate_vec::\u003ci8\u003e`\n```",
+      "parentUuid": "4443e2d4_aa3d2fd3",
       "range": {
         "startLine": 87,
         "startChar": 0,
