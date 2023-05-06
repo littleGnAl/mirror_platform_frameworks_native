@@ -34,6 +34,24 @@
       "parentUuid": "da17f50f_e35bafc7",
       "revId": "608914ddd1cb4a1a7554683283d40a537846b355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17450b41_6d2c44bc",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-06T01:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17da3753_63c718de",
+      "revId": "608914ddd1cb4a1a7554683283d40a537846b355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
