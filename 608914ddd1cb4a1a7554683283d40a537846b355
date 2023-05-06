@@ -16,6 +16,24 @@
       "message": "valid and initialized?",
       "revId": "608914ddd1cb4a1a7554683283d40a537846b355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17da3753_63c718de",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-06T00:59:53Z",
+      "side": 1,
+      "message": "Are you asking to change the comment, or to check that it is always initialized?",
+      "parentUuid": "da17f50f_e35bafc7",
+      "revId": "608914ddd1cb4a1a7554683283d40a537846b355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
