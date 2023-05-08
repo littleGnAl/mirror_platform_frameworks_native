@@ -1,8 +1,13 @@
 #!/bin/bash
 
+if [ -n "$CLANG_TOOLS_BINDIR" ]; then
+# On Trusty, use the bindgen from the prebuilts directory
+BINDGEN="$CLANG_TOOLS_BINDIR/bindgen"
+else
 # On Android, use the bindgen from the host output directory
 # (where this script is also located)
 BINDGEN="`dirname $0`/bindgen"
+fi
 
 LIBBINDER_NDK_BINDGEN_ARGS=(
     # Unfortunately the only way to specify the rust_non_exhaustive enum
