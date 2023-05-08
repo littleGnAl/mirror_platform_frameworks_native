@@ -39,6 +39,30 @@
       },
       "revId": "83ba14c0158ec44985aed646de29cb4c122f5b3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "682b0f79_dd8131bd",
+        "filename": "cmds/servicemanager/test_sm.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-05-08T06:18:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c87f5e18_127c5f22",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 64
+      },
+      "revId": "83ba14c0158ec44985aed646de29cb4c122f5b3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
