@@ -18,17 +18,16 @@ use crate::binder::{
     AsNative, Interface, InterfaceClassMethods, Remotable, Stability, TransactionCode,
 };
 use crate::error::{status_result, status_t, Result, StatusCode};
-use crate::parcel::{BorrowedParcel, Serialize};
+use crate::parcel::{BorrowedParcel, InnerFd, ParcelFileDescriptor, Serialize};
 use crate::proxy::SpIBinder;
 use crate::sys;
 
 use std::convert::TryFrom;
 use std::ffi::{c_void, CStr, CString};
-use std::fs::File;
 use std::mem::ManuallyDrop;
 use std::ops::Deref;
+use std::os::fd::FromRawFd;
 use std::os::raw::c_char;
-use std::os::unix::io::FromRawFd;
 use std::slice;
 use std::sync::Mutex;
 
@@ -339,9 +338,10 @@ impl<T: Remotable> InterfaceClassMethods for Binder<T> {
         if fd < 0 {
             return StatusCode::UNEXPECTED_NULL as status_t;
         }
-        // Safety: Our caller promised that fd is a file descriptor. We don't
-        // own this file descriptor, so we need to be careful not to drop it.
-        let file = unsafe { ManuallyDrop::new(File::from_raw_fd(fd)) };
+        let file =
+            // Safety: Our caller promised that fd is a file descriptor. We don't
+            // own this file descriptor, so we need to be careful not to drop it.
+            unsafe { ManuallyDrop::new(<ParcelFileDescriptor as InnerFd>::Fd::from_raw_fd(fd)) };
 
         if args.is_null() && num_args != 0 {
             return StatusCode::UNEXPECTED_NULL as status_t;
@@ -569,7 +569,11 @@ impl Remotable for () {
         Ok(())
     }
 
-    fn on_dump(&self, _file: &File, _args: &[&CStr]) -> Result<()> {
+    fn on_dump(
+        &self,
+        _file: &<ParcelFileDescriptor as InnerFd>::Fd,
+        _args: &[&CStr],
+    ) -> Result<()> {
         Ok(())
     }
 
