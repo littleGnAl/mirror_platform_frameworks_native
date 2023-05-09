@@ -30,6 +30,7 @@ use std::fs::File;
 use std::marker::PhantomData;
 use std::ops::Deref;
 use std::os::raw::c_char;
+#[cfg(not(target_os = "trusty"))]
 use std::os::unix::io::AsRawFd;
 use std::ptr;
 
@@ -197,6 +198,7 @@ pub trait IBinderInternal: IBinder {
     fn set_requesting_sid(&mut self, enable: bool);
 
     /// Dump this object to the given file handle
+    #[cfg(not(target_os = "trusty"))]
     fn dump<F: AsRawFd>(&mut self, fp: &F, args: &[&str]) -> Result<()>;
 
     /// Get a new interface that exposes additional extension functionality, if
