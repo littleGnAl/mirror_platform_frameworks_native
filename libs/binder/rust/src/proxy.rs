@@ -28,11 +28,13 @@ use crate::parcel::{
 use crate::sys;
 
 use std::cmp::Ordering;
+#[cfg(not(target_os = "trusty"))]
 use std::convert::TryInto;
 use std::ffi::{c_void, CStr, CString};
 use std::fmt;
 use std::mem;
 use std::os::raw::c_char;
+#[cfg(not(target_os = "trusty"))]
 use std::os::unix::io::AsRawFd;
 use std::ptr;
 use std::sync::Arc;
@@ -327,6 +329,7 @@ impl<T: AsNative<sys::AIBinder>> IBinderInternal for T {
         unsafe { sys::AIBinder_setRequestingSid(self.as_native_mut(), enable) };
     }
 
+    #[cfg(not(target_os = "trusty"))]
     fn dump<F: AsRawFd>(&mut self, fp: &F, args: &[&str]) -> Result<()> {
         let args: Vec<_> = args.iter().map(|a| CString::new(*a).unwrap()).collect();
         let mut arg_ptrs: Vec<_> = args.iter().map(|a| a.as_ptr()).collect();
