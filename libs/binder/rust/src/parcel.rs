@@ -27,10 +27,12 @@ use std::marker::PhantomData;
 use std::mem::ManuallyDrop;
 use std::ptr::{self, NonNull};
 
+#[cfg(not(target_os = "trusty"))]
 mod file_descriptor;
 mod parcelable;
 mod parcelable_holder;
 
+#[cfg(not(target_os = "trusty"))]
 pub use self::file_descriptor::ParcelFileDescriptor;
 pub use self::parcelable::{
     Deserialize, DeserializeArray, DeserializeOption, Parcelable, Serialize, SerializeArray,
