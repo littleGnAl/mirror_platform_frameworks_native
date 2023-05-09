@@ -27,9 +27,9 @@ use std::ffi::{c_void, CStr, CString};
 use std::fs::File;
 use std::mem::ManuallyDrop;
 use std::ops::Deref;
+#[cfg(not(target_os = "trusty"))]
+use std::os::fd::FromRawFd;
 use std::os::raw::c_char;
-use std::os::unix::io::FromRawFd;
-use std::slice;
 use std::sync::Mutex;
 
 /// Rust wrapper around Binder remotable objects.
@@ -330,6 +330,7 @@ impl<T: Remotable> InterfaceClassMethods for Binder<T> {
     /// contains a `T` pointer in its user data. fd should be a non-owned file
     /// descriptor, and args must be an array of null-terminated string
     /// pointers with length num_args.
+    #[cfg(not(target_os = "trusty"))]
     unsafe extern "C" fn on_dump(
         binder: *mut sys::AIBinder,
         fd: i32,
@@ -353,7 +354,7 @@ impl<T: Remotable> InterfaceClassMethods for Binder<T> {
             // Safety: Our caller promised that `args` is an array of
             // null-terminated string pointers with length `num_args`.
             unsafe {
-                slice::from_raw_parts(args, num_args as usize)
+                std::slice::from_raw_parts(args, num_args as usize)
                     .iter()
                     .map(|s| CStr::from_ptr(*s))
                     .collect()
@@ -372,6 +373,21 @@ impl<T: Remotable> InterfaceClassMethods for Binder<T> {
             Ok(()) => 0,
             Err(e) => e as status_t,
         }
+    }
+
+    /// Trusty no-op implementation of `on_dump`.
+    ///
+    /// # Safety
+    ///
+    /// Always returns immediately with an error code.
+    #[cfg(target_os = "trusty")]
+    unsafe extern "C" fn on_dump(
+        _binder: *mut sys::AIBinder,
+        _fd: i32,
+        _args: *mut *const c_char,
+        _num_args: u32,
+    ) -> status_t {
+        StatusCode::INVALID_OPERATION as status_t
     }
 }
 

@@ -28,12 +28,14 @@ use crate::parcel::{
 use crate::sys;
 
 use std::cmp::Ordering;
+#[cfg(not(target_os = "trusty"))]
 use std::convert::TryInto;
 use std::ffi::{c_void, CStr, CString};
 use std::fmt;
 use std::mem;
+#[cfg(not(target_os = "trusty"))]
+use std::os::fd::AsRawFd;
 use std::os::raw::c_char;
-use std::os::unix::io::AsRawFd;
 use std::ptr;
 use std::sync::Arc;
 
@@ -316,6 +318,7 @@ impl<T: AsNative<sys::AIBinder>> IBinderInternal for T {
         unsafe { sys::AIBinder_setRequestingSid(self.as_native_mut(), enable) };
     }
 
+    #[cfg(not(target_os = "trusty"))]
     fn dump<F: AsRawFd>(&mut self, fp: &F, args: &[&str]) -> Result<()> {
         let args: Vec<_> = args.iter().map(|a| CString::new(*a).unwrap()).collect();
         let mut arg_ptrs: Vec<_> = args.iter().map(|a| a.as_ptr()).collect();
@@ -339,6 +342,11 @@ impl<T: AsNative<sys::AIBinder>> IBinderInternal for T {
         };
         status_result(status)
     }
+
+    //#[cfg(target_os = "trusty")]
+    //fn dump<F: AsRawFd>(&mut self, _fp: &F, _args: &[&str]) -> Result<()> {
+    //    Err(StatusCode::INVALID_OPERATION)
+    //}
 
     fn get_extension(&mut self) -> Result<Option<SpIBinder>> {
         let mut out = ptr::null_mut();
