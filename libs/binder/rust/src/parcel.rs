@@ -31,7 +31,7 @@ mod file_descriptor;
 mod parcelable;
 mod parcelable_holder;
 
-pub use self::file_descriptor::ParcelFileDescriptor;
+pub use self::file_descriptor::{InnerFd, ParcelFileDescriptor};
 pub use self::parcelable::{
     Deserialize, DeserializeArray, DeserializeOption, Parcelable, Serialize, SerializeArray,
     SerializeOption, NON_NULL_PARCELABLE_FLAG, NULL_PARCELABLE_FLAG,

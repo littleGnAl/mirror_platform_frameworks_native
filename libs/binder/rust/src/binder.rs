@@ -17,7 +17,7 @@
 //! Trait definitions for binder objects
 
 use crate::error::{status_t, Result, StatusCode};
-use crate::parcel::{BorrowedParcel, Parcel};
+use crate::parcel::{BorrowedParcel, InnerFd, Parcel, ParcelFileDescriptor};
 use crate::proxy::{DeathRecipient, SpIBinder, WpIBinder};
 use crate::sys;
 
@@ -27,11 +27,10 @@ use std::cmp::Ordering;
 use std::convert::TryFrom;
 use std::ffi::{c_void, CStr, CString};
 use std::fmt;
-use std::fs::File;
 use std::marker::PhantomData;
 use std::ops::Deref;
+use std::os::fd::AsRawFd;
 use std::os::raw::c_char;
-use std::os::unix::io::AsRawFd;
 use std::ptr;
 
 /// Binder action to perform.
@@ -62,7 +61,7 @@ pub trait Interface: Send + Sync + DowncastSync {
     ///
     /// This handler is a no-op by default and should be implemented for each
     /// Binder service struct that wishes to respond to dump transactions.
-    fn dump(&self, _file: &File, _args: &[&CStr]) -> Result<()> {
+    fn dump(&self, _file: &<ParcelFileDescriptor as InnerFd>::Fd, _args: &[&CStr]) -> Result<()> {
         Ok(())
     }
 }
@@ -165,7 +164,7 @@ pub trait Remotable: Send + Sync + 'static {
 
     /// Handle a request to invoke the dump transaction on this
     /// object.
-    fn on_dump(&self, file: &File, args: &[&CStr]) -> Result<()>;
+    fn on_dump(&self, file: &<ParcelFileDescriptor as InnerFd>::Fd, args: &[&CStr]) -> Result<()>;
 
     /// Retrieve the class of this remote object.
     ///
@@ -934,7 +933,7 @@ macro_rules! declare_binder_interface {
                 }
             }
 
-            fn on_dump(&self, file: &std::fs::File, args: &[&std::ffi::CStr]) -> std::result::Result<(), $crate::StatusCode> {
+            fn on_dump(&self, file: &<$crate::ParcelFileDescriptor as $crate::InnerFd>::Fd, args: &[&std::ffi::CStr]) -> std::result::Result<(), $crate::StatusCode> {
                 self.0.dump(file, args)
             }
 
