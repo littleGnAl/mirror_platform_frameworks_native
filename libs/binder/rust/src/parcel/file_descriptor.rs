@@ -22,28 +22,52 @@ use crate::binder::AsNative;
 use crate::error::{status_result, Result, StatusCode};
 use crate::sys;
 
-use std::fs::File;
-use std::os::unix::io::{AsRawFd, FromRawFd, IntoRawFd, RawFd};
+use std::os::fd::{AsRawFd, FromRawFd, IntoRawFd, RawFd};
+
+/// Trait that defines the `Fd` type alias for `ParcelFileDescriptor`.
+///
+/// `ParcelFileDescriptor` is generally a newtype over `std::fs::File`
+/// on all operating systems that support this type. Some others, like
+/// Trusty, do not support this type so `ParcelFileDescriptor` wraps
+/// `std::os::fd::OwnedFd` instead. The latter is enabled by the
+/// `pfd_owned_fd` feature.
+///
+/// This needs to be a trait outside `ParcelFileDescriptor` because the definition
+/// of the structure cannot reference a type alias from its own implementation.
+pub trait InnerFd {
+    /// The type alias for the inner file descriptor type inside `ParcelFileDescriptor`.
+    type Fd: AsRawFd + FromRawFd + IntoRawFd;
+}
 
 /// Rust version of the Java class android.os.ParcelFileDescriptor
 #[derive(Debug)]
-pub struct ParcelFileDescriptor(File);
+pub struct ParcelFileDescriptor(<Self as InnerFd>::Fd);
+
+#[cfg(not(feature = "pfd_owned_fd"))]
+impl InnerFd for ParcelFileDescriptor {
+    type Fd = std::fs::File;
+}
+
+#[cfg(feature = "pfd_owned_fd")]
+impl InnerFd for ParcelFileDescriptor {
+    type Fd = std::os::fd::OwnedFd;
+}
 
 impl ParcelFileDescriptor {
     /// Create a new `ParcelFileDescriptor`
-    pub fn new(file: File) -> Self {
+    pub fn new(file: <Self as InnerFd>::Fd) -> Self {
         Self(file)
     }
 }
 
-impl AsRef<File> for ParcelFileDescriptor {
-    fn as_ref(&self) -> &File {
+impl AsRef<<ParcelFileDescriptor as InnerFd>::Fd> for ParcelFileDescriptor {
+    fn as_ref(&self) -> &<ParcelFileDescriptor as InnerFd>::Fd {
         &self.0
     }
 }
 
-impl From<ParcelFileDescriptor> for File {
-    fn from(file: ParcelFileDescriptor) -> File {
+impl From<ParcelFileDescriptor> for <ParcelFileDescriptor as InnerFd>::Fd {
+    fn from(file: ParcelFileDescriptor) -> <ParcelFileDescriptor as InnerFd>::Fd {
         file.0
     }
 }
@@ -120,8 +144,8 @@ impl DeserializeOption for ParcelFileDescriptor {
             // Safety: At this point, we know that the file descriptor was
             // not -1, so must be a valid, owned file descriptor which we
             // can safely turn into a `File`.
-            let file = unsafe { File::from_raw_fd(fd) };
-            Ok(Some(ParcelFileDescriptor::new(file)))
+            let fd = unsafe { <Self as InnerFd>::Fd::from_raw_fd(fd) };
+            Ok(Some(ParcelFileDescriptor::new(fd)))
         }
     }
 }
