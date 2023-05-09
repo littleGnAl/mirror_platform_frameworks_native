@@ -27,7 +27,14 @@ use std::marker::PhantomData;
 use std::mem::ManuallyDrop;
 use std::ptr::{self, NonNull};
 
+#[cfg(not(target_os = "trusty"))]
 mod file_descriptor;
+#[cfg(target_os = "trusty")]
+mod file_descriptor {
+    mod trusty;
+    pub use trusty::*;
+}
+
 mod parcelable;
 mod parcelable_holder;
 
