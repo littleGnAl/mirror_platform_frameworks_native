@@ -16,6 +16,24 @@
       "message": "Should we have an abstraction in packages/modules/Virtualization, how we use RPC binder?",
       "revId": "cf0e4a985a44987524ef4a8ae150f943457c48bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71c8d55_294f231a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-05-10T23:26:41Z",
+      "side": 1,
+      "message": "We use RPC binder for two cases: (1) to talk to virtualizationservice (over socketpair), (2) to talk to the payload in the vm (over vsock).\n\nHaving an abstraction in AVF could be attempted when we have enough clients. I don\u0027t think we are at that stage now.",
+      "parentUuid": "9cda525c_669c2d83",
+      "revId": "cf0e4a985a44987524ef4a8ae150f943457c48bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
