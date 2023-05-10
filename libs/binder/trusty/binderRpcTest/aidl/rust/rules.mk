@@ -18,7 +18,9 @@ LIBBINDER_TESTS_DIR := frameworks/native/libs/binder/tests
 
 MODULE := $(LOCAL_DIR)
 
-MODULE_AIDL_PACKAGE := $(LIBBINDER_TESTS_DIR)
+MODULE_AIDL_LANGUAGE := rust
+
+MODULE_CRATE_NAME := binderRpcTest
 
 MODULE_AIDLS := \
 	$(LIBBINDER_TESTS_DIR)/BinderRpcTestClientInfo.aidl \
