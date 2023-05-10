@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4c96d06_e2d6f48f",
+        "filename": "libs/binder/rust/src/parcel/parcelable.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-10T19:42:47Z",
+      "side": 1,
+      "message": "Not sure how to hide these.",
+      "parentUuid": "e55b9b62_71d70e5d",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 50
+      },
+      "revId": "04ed4dcb45543223cdd4260497f41736448c78e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4443e2d4_aa3d2fd3",
