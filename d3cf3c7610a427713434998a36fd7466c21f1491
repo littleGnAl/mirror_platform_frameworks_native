@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8787dc9_82a5a761",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2023-05-10T02:54:18Z",
+      "side": 1,
+      "message": "Why do you need to make libprocpartition available to APEXes? It doesn\u0027t have a stable interface, and its results are not accurate. It is for debugging / informational purposes only. In particular, it won\u0027t work for Java HALs",
+      "revId": "d3cf3c7610a427713434998a36fd7466c21f1491",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
