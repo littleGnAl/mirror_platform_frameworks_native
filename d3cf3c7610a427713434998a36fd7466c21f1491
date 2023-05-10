@@ -16,6 +16,24 @@
       "message": "Why do you need to make libprocpartition available to APEXes? It doesn\u0027t have a stable interface, and its results are not accurate. It is for debugging / informational purposes only. In particular, it won\u0027t work for Java HALs",
       "revId": "d3cf3c7610a427713434998a36fd7466c21f1491",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6798384_6e318408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2023-05-10T03:32:13Z",
+      "side": 1,
+      "message": "I think this lib is already available to NN apex implicitly via Soong https://cs.android.com/android/_/android/platform/build/soong/+/9241da96626b6e224fbf255f1d03ea0bf4e8958b:apex/apex.go;l\u003d3273,3285;bpv\u003d1;bpt\u003d0;drc\u003dbc698cd28aa2ee17af208bfd56f003347116ddb0\n\nThis CL just makes it explicit in Android.bp files so that we can cleanup some of the implicit Soong hacks.",
+      "parentUuid": "f8787dc9_82a5a761",
+      "revId": "d3cf3c7610a427713434998a36fd7466c21f1491",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
