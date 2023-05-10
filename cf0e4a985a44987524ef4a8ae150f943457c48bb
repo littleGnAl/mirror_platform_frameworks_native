@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cda525c_669c2d83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-10T16:45:58Z",
+      "side": 1,
+      "message": "Should we have an abstraction in packages/modules/Virtualization, how we use RPC binder?",
+      "revId": "cf0e4a985a44987524ef4a8ae150f943457c48bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
