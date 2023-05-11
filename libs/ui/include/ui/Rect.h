@@ -21,7 +21,6 @@
 
 #include <log/log.h>
 #include <utils/Flattenable.h>
-#include <utils/Log.h>
 #include <utils/TypeHelpers.h>
 
 #include <math/HashCombine.h>
