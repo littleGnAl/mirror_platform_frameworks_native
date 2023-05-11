@@ -14,20 +14,24 @@
 #
 
 LOCAL_DIR := $(GET_LOCAL_DIR)
-BINDER_RUST_DIR := frameworks/native/libs/binder/rust
 
 MODULE := $(LOCAL_DIR)
 
-MODULE_SRCS := $(BINDER_RUST_DIR)/src/lib.rs
+MODULE_SRCS := $(LOCAL_DIR)/lib.rs
 
-MODULE_CRATE_NAME := binder
+MODULE_CRATE_NAME := binder_rpc_unstable_bindgen
 
 MODULE_LIBRARY_DEPS += \
 	frameworks/native/libs/binder/trusty \
 	frameworks/native/libs/binder/trusty/ndk \
 	frameworks/native/libs/binder/trusty/rust/binder_ndk_sys \
-	frameworks/native/libs/binder/trusty/rust/binder_rpc_unstable_bindgen \
-	trusty/user/base/lib/downcast-rust \
 	trusty/user/base/lib/trusty-sys \
+
+MODULE_BINDGEN_SRC_HEADER := $(LOCAL_DIR)/BinderBindings.hpp
+
+MODULE_BINDGEN_FLAGS += \
+	--blocklist-type="AIBinder" \
+	--raw-line="use binder_ndk_sys::AIBinder;" \
+	--rustified-enum="ARpcSession_FileDescriptorTransportMode" \
 
 include make/library.mk
