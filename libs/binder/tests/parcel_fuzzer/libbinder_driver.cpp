@@ -23,6 +23,16 @@
 
 namespace android {
 
+template <typename T>
+void deleteObjects(std::vector<T>& objects, FuzzedDataProvider&& provider) {
+    // Keep at least one object
+    while (provider.remaining_bytes() > 0 && objects.size() > 1) {
+        // Skip first one as it might be the binder which we are primarily fuzzing
+        uint32_t toDelete = provider.ConsumeIntegralInRange<uint32_t>(1, objects.size() - 1);
+        objects.erase(objects.begin() + toDelete);
+    }
+}
+
 void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider) {
     sp<IBinder> target;
 
@@ -73,6 +83,24 @@ void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider) {
         auto retFds = reply.debugReadAllFileDescriptors();
         for (size_t i = 0; i < retFds.size(); i++) {
             options.extraFds.push_back(base::unique_fd(dup(retFds[i])));
+        }
+
+        // Delete FDs
+        if (provider.ConsumeBool()) {
+            std::vector<uint8_t> bytesForDeletion = provider.ConsumeBytes<uint8_t>(
+                    provider.ConsumeIntegralInRange<uint32_t>(0, provider.remaining_bytes() / 4));
+            deleteObjects<base::unique_fd>(options.extraFds,
+                                           FuzzedDataProvider(bytesForDeletion.data(),
+                                                              bytesForDeletion.size()));
+        }
+
+        // Delete Binders
+        if (provider.ConsumeBool()) {
+            std::vector<uint8_t> bytesForDeletion = provider.ConsumeBytes<uint8_t>(
+                    provider.ConsumeIntegralInRange<uint32_t>(0, provider.remaining_bytes() / 4));
+            deleteObjects<sp<IBinder>>(options.extraBinders,
+                                       FuzzedDataProvider(bytesForDeletion.data(),
+                                                          bytesForDeletion.size()));
         }
     }
 
