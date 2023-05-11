@@ -16,6 +16,24 @@
       "message": "What\u0027s the rationale for a benchmark in presubmit? Is it suppose to act as a stress test?",
       "revId": "9b254ddf6dfdf9c84f6592addf856555cfb04bbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29971c79_266f8299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-11T20:18:44Z",
+      "side": 1,
+      "message": "Mostly to make sure the benchmark doesn\u0027t break. This all started because a few months ago, I submitted a change which caused binderRpcBenchmark to segfault. So, it\u0027s both a stress test, and it makes sure we don\u0027t break the benchmark.\n\nIdeally, it would also inform us of performance regressions happening before we submit a change, but we\u0027re not there yet.",
+      "parentUuid": "e1abe447_dc0c4a28",
+      "revId": "9b254ddf6dfdf9c84f6592addf856555cfb04bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
