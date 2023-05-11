@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae9b459_bde3f603",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-11T20:09:33Z",
+      "side": 1,
+      "message": "this is copied from the other test. Could we rename this to something specific to this test?",
+      "range": {
+        "startLine": 89,
+        "startChar": 6,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "309c4a4310209c66fb3815a480ea0a73827f04ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "351bc366_764a6a91",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-11T20:09:33Z",
+      "side": 1,
+      "message": "why do these need to be different? could we use \u0027const T\u0026\u0027 instead of \u0027V\u0027 for instance, to make it work? it\u0027s better if we can clearly see the relationship between all the types. Right now, it seems like they might all be different, and you have to read the code to see that they should be the same.",
+      "range": {
+        "startLine": 101,
+        "startChar": 61,
+        "endLine": 102,
+        "endChar": 66
+      },
+      "revId": "309c4a4310209c66fb3815a480ea0a73827f04ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae68b67_f1c07a65",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-11T20:09:33Z",
+      "side": 1,
+      "message": "nit: it\u0027s hard to see that these structures are entirely initialized without checking the definition of the parcelable. recommend designated initializers:\n\nSingleDataParcelable s1 {.data \u003d 5213 };\n\nYou should also be able to do this inside of the arrays:\n\n    ... saved \u003d { { .data \u003d 1 }, { .data \u003d 2 }, ... }\n\nif you want.",
+      "range": {
+        "startLine": 269,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 16
+      },
+      "revId": "309c4a4310209c66fb3815a480ea0a73827f04ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
