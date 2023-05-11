@@ -22,7 +22,10 @@
 #include <binder/RpcServer.h>
 #include <binder/RpcSession.h>
 #include <cutils/sockets.h>
+
+#ifdef __linux__
 #include <linux/vm_sockets.h>
+#endif // __linux__
 
 using android::OK;
 using android::RpcServer;
@@ -75,6 +78,7 @@ RpcSession::FileDescriptorTransportMode toTransportMode(
 
 extern "C" {
 
+#ifndef __TRUSTY__
 ARpcServer* ARpcServer_newVsock(AIBinder* service, unsigned int cid, unsigned int port) {
     auto server = RpcServer::make();
 
@@ -148,6 +152,7 @@ ARpcServer* ARpcServer_newInet(AIBinder* service, const char* address, unsigned 
     server->setRootObject(AIBinder_toPlatformBinder(service));
     return createObjectHandle<ARpcServer>(server);
 }
+#endif // __TRUSTY__
 
 void ARpcServer_setSupportedFileDescriptorTransportModes(
         ARpcServer* handle, const ARpcSession_FileDescriptorTransportMode modes[],
@@ -188,6 +193,7 @@ void ARpcSession_free(ARpcSession* handle) {
     freeObjectHandle<RpcSession>(handle);
 }
 
+#ifndef __TRUSTY__
 AIBinder* ARpcSession_setupVsockClient(ARpcSession* handle, unsigned int cid, unsigned int port) {
     auto session = handleToStrongPointer<RpcSession>(handle);
     if (status_t status = session->setupVsockClient(cid, port); status != OK) {
@@ -235,13 +241,15 @@ AIBinder* ARpcSession_setupInet(ARpcSession* handle, const char* address, unsign
     }
     return AIBinder_fromPlatformBinder(session->getRootObject());
 }
+#endif // __TRUSTY__
 
 AIBinder* ARpcSession_setupPreconnectedClient(ARpcSession* handle, int (*requestFd)(void* param),
                                               void* param) {
     auto session = handleToStrongPointer<RpcSession>(handle);
     auto request = [=] { return unique_fd{requestFd(param)}; };
     if (status_t status = session->setupPreconnectedClient(unique_fd{}, request); status != OK) {
-        LOG(ERROR) << "Failed to set up vsock client. error: " << statusToString(status).c_str();
+        LOG(ERROR) << "Failed to set up preconnected client. error: "
+                   << statusToString(status).c_str();
         return nullptr;
     }
     return AIBinder_fromPlatformBinder(session->getRootObject());
