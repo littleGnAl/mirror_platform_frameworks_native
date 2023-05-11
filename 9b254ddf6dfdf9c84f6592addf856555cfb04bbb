@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1abe447_dc0c4a28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-05-11T03:20:06Z",
+      "side": 1,
+      "message": "What\u0027s the rationale for a benchmark in presubmit? Is it suppose to act as a stress test?",
+      "revId": "9b254ddf6dfdf9c84f6592addf856555cfb04bbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
