@@ -14,20 +14,24 @@
 #
 
 LOCAL_DIR := $(GET_LOCAL_DIR)
-BINDER_RUST_DIR := frameworks/native/libs/binder/rust
+LIBBINDER_DIR := frameworks/native/libs/binder
 
 MODULE := $(LOCAL_DIR)
 
-MODULE_SRCS := $(BINDER_RUST_DIR)/src/lib.rs
+MODULE_SRCS := \
+	$(LIBBINDER_DIR)/libbinder_rpc_unstable.cpp \
 
-MODULE_CRATE_NAME := binder
+MODULE_EXPORT_INCLUDES += \
+	$(LIBBINDER_DIR)/include_rpc_unstable \
 
 MODULE_LIBRARY_DEPS += \
+	trusty/user/base/lib/libstdc++-trusty \
 	frameworks/native/libs/binder/trusty \
 	frameworks/native/libs/binder/trusty/ndk \
-	frameworks/native/libs/binder/trusty/rust/binder_ndk_sys \
-	frameworks/native/libs/binder/trusty/rust/binder_rpc_unstable_bindgen \
-	trusty/user/base/lib/downcast-rust \
-	trusty/user/base/lib/trusty-sys \
+
+# TODO(b/181755948): We're linking this into Rust code
+# and Rust doesn't support CFI yet, so we need to also
+# disable it for this C++ code.
+MODULE_DISABLE_CFI := true
 
 include make/library.mk
