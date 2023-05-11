@@ -16,8 +16,12 @@
 
 //! API for RPC Binder services.
 
+// TODO(ahomescu): this is temporary, we can support Trusty services
+// but need to wrap `RpcServerTrusty` instead of `RpcServer`.
+#[cfg(not(target_os = "trusty"))]
 mod server;
 mod session;
 
+#[cfg(not(target_os = "trusty"))]
 pub use server::{RpcServer, RpcServerRef};
 pub use session::{FileDescriptorTransportMode, RpcSession, RpcSessionRef};
