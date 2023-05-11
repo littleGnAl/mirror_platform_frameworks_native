@@ -140,6 +140,30 @@
       },
       "revId": "309c4a4310209c66fb3815a480ea0a73827f04ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05df34ac_f24396e4",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-11T21:23:25Z",
+      "side": 1,
+      "message": "It\u0027s due to the CPP backend and inheritance from the base parelable class. It only works in the NDK backend.",
+      "parentUuid": "ec48dde3_22be702e",
+      "range": {
+        "startLine": 269,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 16
+      },
+      "revId": "309c4a4310209c66fb3815a480ea0a73827f04ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
