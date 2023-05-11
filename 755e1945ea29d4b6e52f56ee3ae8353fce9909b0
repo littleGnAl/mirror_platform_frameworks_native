@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baef3f98_bebe6988",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1955441
+      },
+      "writtenOn": "2023-05-11T12:52:56Z",
+      "side": 1,
+      "message": "util/Log.h has include \u003clog/log.h\u003e\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/libutils/include/utils/Log.h\n\nplease help review, thanks.",
+      "revId": "755e1945ea29d4b6e52f56ee3ae8353fce9909b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
