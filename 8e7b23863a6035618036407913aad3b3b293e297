@@ -22,6 +22,30 @@
       },
       "revId": "8e7b23863a6035618036407913aad3b3b293e297",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403ae64e_38924153",
+        "filename": "libs/binder/trusty/RpcServerTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-11T23:51:53Z",
+      "side": 1,
+      "message": "One way would be with `assert`, but those might get removed in release builds.\n\nAnother way would be `LOG_ALWAYS_FATAL_IF`, it works roughly the same on Trusty as on Android.",
+      "parentUuid": "8af5a787_1fcf0642",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "8e7b23863a6035618036407913aad3b3b293e297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
