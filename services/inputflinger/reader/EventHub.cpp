@@ -962,19 +962,9 @@ bool EventHub::markSupportedKeyCodes(int32_t deviceId, size_t numCodes, const in
     std::scoped_lock _l(mLock);
 
     Device* device = getDeviceLocked(deviceId);
-    if (device != nullptr && device->keyMap.haveKeyLayout()) {
-        for (size_t codeIndex = 0; codeIndex < numCodes; codeIndex++) {
-            std::vector<int32_t> scanCodes =
-                    device->keyMap.keyLayoutMap->findScanCodesForKey(keyCodes[codeIndex]);
-
-            // check the possible scan codes identified by the layout map against the
-            // map of codes actually emitted by the driver
-            for (size_t sc = 0; sc < scanCodes.size(); sc++) {
-                if (device->keyBitmask.test(scanCodes[sc])) {
-                    outFlags[codeIndex] = 1;
-                    break;
-                }
-            }
+    if (device != nullptr) {
+        for (size_t codeIndex = 0; codeIndex < keyCodes.size(); codeIndex++) {
+            outFlags[codeIndex] = device->hasKeycodeLocked(keyCodes[codeIndex]);
         }
         return true;
     }
