@@ -14,19 +14,21 @@
 #
 
 LOCAL_DIR := $(GET_LOCAL_DIR)
-BINDER_RUST_DIR := frameworks/native/libs/binder/rust
+RPCBINDER_DIR := frameworks/native/libs/binder/rust/rpcbinder
 
 MODULE := $(LOCAL_DIR)
 
-MODULE_SRCS := $(BINDER_RUST_DIR)/src/lib.rs
+MODULE_SRCS := $(RPCBINDER_DIR)/src/lib.rs
 
-MODULE_CRATE_NAME := binder
+MODULE_CRATE_NAME := rpcbinder
 
 MODULE_LIBRARY_DEPS += \
 	frameworks/native/libs/binder/trusty \
 	frameworks/native/libs/binder/trusty/ndk \
+	frameworks/native/libs/binder/trusty/rust \
 	frameworks/native/libs/binder/trusty/rust/binder_ndk_sys \
-	trusty/user/base/lib/downcast-rust \
+	frameworks/native/libs/binder/trusty/rust/binder_rpc_unstable_bindgen \
+	trusty/user/base/lib/foreign-types-rust \
 	trusty/user/base/lib/trusty-sys \
 
 include make/library.mk
