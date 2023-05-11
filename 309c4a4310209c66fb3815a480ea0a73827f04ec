@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac4f59cf_dad4ff84",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-11T21:21:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fae9b459_bde3f603",
+      "range": {
+        "startLine": 89,
+        "startChar": 6,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "309c4a4310209c66fb3815a480ea0a73827f04ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "351bc366_764a6a91",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcfc28fe_f42eaa54",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-11T21:21:10Z",
+      "side": 1,
+      "message": "These can\u0027t be same as primitives are passed by value in AIDL generated code and other types are passed as const T\u0026 (arrays, user defined objects). In order to use the same recordReplay function for all types, These different types are needed. Removed type V as it wasn\u0027t needed.",
+      "parentUuid": "351bc366_764a6a91",
+      "range": {
+        "startLine": 101,
+        "startChar": 61,
+        "endLine": 102,
+        "endChar": 66
+      },
+      "revId": "309c4a4310209c66fb3815a480ea0a73827f04ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bae68b67_f1c07a65",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-05-11T20:09:33Z",
       "side": 1,
       "message": "nit: it\u0027s hard to see that these structures are entirely initialized without checking the definition of the parcelable. recommend designated initializers:\n\nSingleDataParcelable s1 {.data \u003d 5213 };\n\nYou should also be able to do this inside of the arrays:\n\n    ... saved \u003d { { .data \u003d 1 }, { .data \u003d 2 }, ... }\n\nif you want.",
+      "range": {
+        "startLine": 269,
+        "startChar": 25,
+        "endLine": 274,
+        "endChar": 16
+      },
+      "revId": "309c4a4310209c66fb3815a480ea0a73827f04ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec48dde3_22be702e",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-11T21:21:10Z",
+      "side": 1,
+      "message": "This is AIDL generated parcelable and it doesn\u0027t have any matching constructor for initialization in this way. Is any attribute missing in SingleDataParcelable.aidl causing this?",
+      "parentUuid": "bae68b67_f1c07a65",
       "range": {
         "startLine": 269,
         "startChar": 25,
