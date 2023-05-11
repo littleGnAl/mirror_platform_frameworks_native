@@ -17,9 +17,11 @@ LOCAL_DIR := $(GET_LOCAL_DIR)
 
 MODULE := $(LOCAL_DIR)
 
+LIBBINDER_DIR := frameworks/native/libs/binder
 LIBBINDER_NDK_DIR := frameworks/native/libs/binder/ndk
 
 MODULE_SRCS := \
+	$(LIBBINDER_DIR)/libbinder_rpc_unstable.cpp \
 	$(LIBBINDER_NDK_DIR)/ibinder.cpp \
 	$(LIBBINDER_NDK_DIR)/libbinder.cpp \
 	$(LIBBINDER_NDK_DIR)/parcel.cpp \
@@ -27,6 +29,7 @@ MODULE_SRCS := \
 
 MODULE_EXPORT_INCLUDES += \
 	$(LOCAL_DIR)/include \
+	$(LIBBINDER_DIR)/include_rpc_unstable \
 	$(LIBBINDER_NDK_DIR)/include_cpp \
 	$(LIBBINDER_NDK_DIR)/include_ndk \
 	$(LIBBINDER_NDK_DIR)/include_platform \
