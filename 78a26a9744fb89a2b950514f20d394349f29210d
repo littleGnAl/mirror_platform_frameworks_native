@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "550c68c5_9b2b8121",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-11T23:44:56Z",
+      "side": 1,
+      "message": "Consider these issues in the current code:\n- it will always delete FDs first then delete binders\n- when we think about random input/discovering new coverage, it will tend to delete a large number of things\n- we want to leave one binder in extraBinders (so we don\u0027t want that to be empty), but we do want to test deleting the base binder object and fuzzing subobjects, and we want to test deleting all the FDs\n\nOne possible way to resolve these might be:\n\n    while (provider.remaining_bytes() \u003e 0) {\n        provider-\u003ePickValueInArray\u003c\n            std::function\u003cvoid()\u003e\u003e({\n            [\u0026]() { /* current code w/ transact */ },\n            [\u0026]() { /* delete one fd, if there is \u003e 0 fd */ },\n            [\u0026]() { /* delete one binder, if there is \u003e 1 binder */ },\n            });\n    }\n\nThis way, it will be able to delete binders and fds in any order. WDYT?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "78a26a9744fb89a2b950514f20d394349f29210d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
