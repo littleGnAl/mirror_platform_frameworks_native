@@ -26,6 +26,7 @@ MODULE_LIBRARY_DEPS += \
 	frameworks/native/libs/binder/trusty \
 	frameworks/native/libs/binder/trusty/ndk \
 	frameworks/native/libs/binder/trusty/rust/binder_ndk_sys \
+	frameworks/native/libs/binder/trusty/rust/binder_rpc_unstable_bindgen \
 	trusty/user/base/lib/downcast-rust \
 	trusty/user/base/lib/trusty-sys \
 
