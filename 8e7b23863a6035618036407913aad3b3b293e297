@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4f5bbae_6ff0d89e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-12T22:22:13Z",
+      "side": 1,
+      "message": "Right. It should still be caught when the RpcServer initializes the corresponding RpcSession, but then you see the error after a client connects.",
+      "parentUuid": "f2524597_f8876dad",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "8e7b23863a6035618036407913aad3b3b293e297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8af5a787_1fcf0642",
