@@ -46,6 +46,30 @@
       },
       "revId": "78a26a9744fb89a2b950514f20d394349f29210d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d469b89a_9b34fd6d",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-12T20:52:53Z",
+      "side": 1,
+      "message": "We fuzz the base binder and binder objects it returns, so there is strictly more coverage. Because we fuzz the objects that it returns as well, there may be less time fuzzing the base binder compared to fuzzing sub-objects, but that\u0027s okay because we want to fuzz everything.\n\nIf you\u0027re referring to deleting the base binder, we still get more coverage. In some cases, we will delete the core binder, but in many other cases, we\u0027ll still keep it and fuzz it.",
+      "parentUuid": "28a75f41_b3d9ad0e",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 44
+      },
+      "revId": "78a26a9744fb89a2b950514f20d394349f29210d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
