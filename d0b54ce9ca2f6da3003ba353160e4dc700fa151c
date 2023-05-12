@@ -16,6 +16,24 @@
       "message": "Is there any guarantee that the DEC_STRONG messages came back on the same connection?\n\nIt might be useful to do this for all available connections in that session, but that might be too much overhead. Wdyt?",
       "revId": "d0b54ce9ca2f6da3003ba353160e4dc700fa151c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec581862_6c1cc203",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-12T23:25:05Z",
+      "side": 1,
+      "message": "That\u0027s kind of what I was suggesting/thinking in the commit message, but it needs to happen for non-oneway calls as well, and it could cause a lot of lock contention.\n\nFor sessions with incoming threadpools though, we should never send control commands on these connections in-between calls. However, we don\u0027t have a test for this right now, and I need to add one.",
+      "parentUuid": "ee8ee7c4_6d7bfd31",
+      "revId": "d0b54ce9ca2f6da3003ba353160e4dc700fa151c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
