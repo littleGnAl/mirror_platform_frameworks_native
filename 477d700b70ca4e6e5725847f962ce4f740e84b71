@@ -46,6 +46,30 @@
       },
       "revId": "477d700b70ca4e6e5725847f962ce4f740e84b71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8871ac_664caa25",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-12T22:40:45Z",
+      "side": 1,
+      "message": "we should probably add some tests for this, e.g. an intentionally bad service, and make sure that the fuzzer crashes",
+      "parentUuid": "4033b559_502593b4",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "477d700b70ca4e6e5725847f962ce4f740e84b71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
