@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee8ee7c4_6d7bfd31",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-12T00:25:32Z",
+      "side": 1,
+      "message": "Is there any guarantee that the DEC_STRONG messages came back on the same connection?\n\nIt might be useful to do this for all available connections in that session, but that might be too much overhead. Wdyt?",
+      "revId": "d0b54ce9ca2f6da3003ba353160e4dc700fa151c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
