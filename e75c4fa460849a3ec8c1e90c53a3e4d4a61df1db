@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba2f7afb_0408c0b9",
+        "filename": "services/gpuservice/tests/fuzzers/GpuServiceFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-12T22:17:21Z",
+      "side": 1,
+      "message": "btw - I would encourage \"sp\u003cGpuService\u003e::make()\" because it makes sure we never expose a raw pointer",
+      "range": {
+        "startLine": 26,
+        "startChar": 36,
+        "endLine": 26,
+        "endChar": 46
+      },
+      "revId": "e75c4fa460849a3ec8c1e90c53a3e4d4a61df1db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
