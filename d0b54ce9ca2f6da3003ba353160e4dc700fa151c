@@ -34,6 +34,24 @@
       "parentUuid": "ee8ee7c4_6d7bfd31",
       "revId": "d0b54ce9ca2f6da3003ba353160e4dc700fa151c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "876de13a_faa4eee7",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-12T23:39:36Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ec581862_6c1cc203",
+      "revId": "d0b54ce9ca2f6da3003ba353160e4dc700fa151c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
