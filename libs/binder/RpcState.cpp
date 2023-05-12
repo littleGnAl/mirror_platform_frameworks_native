@@ -602,8 +602,9 @@ status_t RpcState::transactAddress(const sp<RpcSession::RpcConnection>& connecti
         LOG_RPC_DETAIL("Oneway command, so no longer waiting on RpcTransport %p",
                        connection->rpcTransport.get());
 
-        // Do not wait on result.
-        return OK;
+        // There will be no result, but if any pending reference counts have
+        // built up, drain them.
+        return drainCommands(connection, session, CommandType::CONTROL_ONLY);
     }
 
     LOG_ALWAYS_FATAL_IF(reply == nullptr, "Reply parcel must be used for synchronous transaction.");
