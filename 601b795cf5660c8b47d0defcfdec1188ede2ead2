@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b077f359_7dd345aa",
+        "filename": "cmds/servicemanager/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-05-12T00:21:47Z",
+      "side": 1,
+      "message": "Do we have this on go/find-logs? Or do we want to see if this is hit in presubmits or submit it and see if anyone complains?",
+      "range": {
+        "startLine": 135,
+        "startChar": 23,
+        "endLine": 135,
+        "endChar": 54
+      },
+      "revId": "601b795cf5660c8b47d0defcfdec1188ede2ead2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
