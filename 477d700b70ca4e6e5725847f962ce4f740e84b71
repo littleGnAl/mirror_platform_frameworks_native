@@ -22,6 +22,30 @@
       },
       "revId": "477d700b70ca4e6e5725847f962ce4f740e84b71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4033b559_502593b4",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-12T21:08:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f7b385_f73ff4fb",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "477d700b70ca4e6e5725847f962ce4f740e84b71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
