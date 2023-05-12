@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2524597_f8876dad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-05-12T21:26:13Z",
+      "side": 1,
+      "message": "It usually wouldn\u0027t matter because this just determines a minimum version, right?\n\n```\nprotocolVersion \u003d std::min(header.version,\n                           server-\u003emProtocolVersion.value_or(RPC_WIRE_PROTOCOL_VERSION));\n```\n\nBut now I see that if the client supports a high version than the server, then this could be used by the server to opt into a version it doesn\u0027t actually support.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "8e7b23863a6035618036407913aad3b3b293e297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8af5a787_1fcf0642",
