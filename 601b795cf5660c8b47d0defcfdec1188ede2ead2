@@ -22,6 +22,30 @@
       },
       "revId": "601b795cf5660c8b47d0defcfdec1188ede2ead2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44cb4596_17fd6daf",
+        "filename": "cmds/servicemanager/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-12T20:40:47Z",
+      "side": 1,
+      "message": "I\u0027m looking at this in order to help debug a specific failure.",
+      "parentUuid": "b077f359_7dd345aa",
+      "range": {
+        "startLine": 135,
+        "startChar": 23,
+        "endLine": 135,
+        "endChar": 54
+      },
+      "revId": "601b795cf5660c8b47d0defcfdec1188ede2ead2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
