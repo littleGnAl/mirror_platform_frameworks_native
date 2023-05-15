@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2182eaaa_c0848f4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-05-15T17:33:51Z",
+      "side": 1,
+      "message": "Brain dump of thoughts from trying to understand this CL, probably much of it wrong:\n\nSo, on the client side of a session with no incoming thread pool, there is no extra thread to process incoming commands, we can only do things opportunistically when the library user makes a transaction. Before, for oneway calls, we\u0027d only check for incoming commands if the `sendmsg` syscall blocked. Now, we\u0027ll always check after the `sendmsg` completes.\n\n--\n\nIt might be interesting to turn this into a general \"runtime\" hook that we can expand to handle more types of bookkeeping later (like draining the other connections as mentioned already). If we\u0027ve got an epoll context setup in advance for all the connections, it might be fast enough to always poll them all (and then ignore the results for connections that another thread is already holding). Could probably do clever things with uring if it was available.\n\n--\n\nFor use cases that send oneway calls at a high rate, it might be better to only process incoming commands occasionally. Maybe we could track the last time and only force it every N milliseconds. Best to start simple though.\n\n--\n\nThis is suppose to help with test flakes, but I\u0027d expect that it couldn\u0027t completely eliminate them since there is no coordination with the other side. Also, for prod, there is still a \"leaky\" scenario\n\n  1. client sends binder over oneway call\n  2. client checks drains commands\n  3. server finishes process the oneway call and sends decref command back\n  4. client doesn\u0027t send any more commands for a long time, so never sees the decrefs and we keep the binder object around wasting memory\n\nNot sure we can do anything about that besides requiring a non-empty threadpool.\n\nIn the spirit of making things more deterministic, I almost want to suggest we should do the drain *before* sending the oneway call.",
+      "revId": "d0b54ce9ca2f6da3003ba353160e4dc700fa151c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee8ee7c4_6d7bfd31",
