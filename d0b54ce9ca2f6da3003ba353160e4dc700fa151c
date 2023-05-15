@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "606af688_37de70a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-15T22:38:31Z",
+      "side": 1,
+      "message": "re epoll - I\u0027d like to get real integration w/ epoll. We\u0027ve tried a hook w/ HIDL addPostCommandTask, but I\u0027m not sure it\u0027s worth it.\n\n\u003e So, on the client side of a session with no incoming thread pool, there is no extra thread to process incoming commands\n\nYeah, this is my hesitation now. I keep on thinking this is the issue David was hitting, but we are using incoming threadpools in the AVF cases.\n\n\u003e Not sure we can do anything about that besides requiring a non-empty threadpool.\n\nI\u0027m also leaning this way, but I don\u0027t think it\u0027ll be an option in all cases.\n\n\u003e In the spirit of making things more deterministic, I almost want to suggest we should do the drain before sending the oneway call.\n\nWhy would this make it more deterministic?",
+      "parentUuid": "2182eaaa_c0848f4e",
+      "revId": "d0b54ce9ca2f6da3003ba353160e4dc700fa151c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee8ee7c4_6d7bfd31",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 1
