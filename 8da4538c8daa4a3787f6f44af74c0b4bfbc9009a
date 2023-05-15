@@ -16,6 +16,24 @@
       "message": "Note that 2^63 is out of range of an int64_t.  This is technically implementation-defined behavior, where we have a signed 1 and shift it out of range for the type.  Although it\u0027s likely that the toolchains which end up building this code all do the same thing.\n\nJust double checking that this value is doing what we want here (I\u0027m guessing so, if the test passes?).",
       "revId": "8da4538c8daa4a3787f6f44af74c0b4bfbc9009a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691168c1_18be88ed",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-15T18:18:02Z",
+      "side": 1,
+      "message": "This tests just verify that the values are saved while recording binder are replayed correctly. In this case, its signed value which is being saved, read back and again verified against the same signed value. \nIf this can be problematic for different toolchains, I can remove this in followup.",
+      "parentUuid": "6ccd6970_13926b3e",
+      "revId": "8da4538c8daa4a3787f6f44af74c0b4bfbc9009a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
