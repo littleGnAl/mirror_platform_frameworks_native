@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ccd4d78_485adc4e",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-16T18:02:56Z",
+      "side": 1,
+      "message": "see - we already supported fuzzing multiple binders internally :D",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "81fb74a40c2d7ecf7e33199d66c8edcb2bae5b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
