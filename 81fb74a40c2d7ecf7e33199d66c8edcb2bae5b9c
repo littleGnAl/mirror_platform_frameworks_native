@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a4fd063_1215455a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-16T18:06:34Z",
+      "side": 1,
+      "message": "nit: I had filed b/282961568 for the same",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 7
+      },
+      "revId": "81fb74a40c2d7ecf7e33199d66c8edcb2bae5b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7ccd4d78_485adc4e",
