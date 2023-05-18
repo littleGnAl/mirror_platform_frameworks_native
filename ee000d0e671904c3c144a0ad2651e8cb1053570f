@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29e3d13_1ad5ca7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1941672
+      },
+      "writtenOn": "2023-05-18T10:49:42Z",
+      "side": 1,
+      "message": "i feel current test are sufficient to capture the error which current gerrit is solving.\nLike :\n1. TEST_F(TimeInStateTest, TotalTimeInStateMonotonic) \ncheck for values returned by getTotalCpuFreqTimes() to be monotonic.\n\n2. Similarly, TEST_F(TimeInStateTest, AllUidTimeInStateMonotonic)  \ncheck for values returned by getUidCpuFreqTimes to be monotonic.\n\n3. Similarly, TEST_F(TimeInStateTest, AllUidConcurrentTimesMonotonic)  \ncheck for value returned by getUidConcurrentTimes to be monotonic.\n\n For issue case, values will not be monotonic, as random value(less that previous or negative value) will come up due to buffer overflow in vals variable. But due to randomness, it might also pass sometime. So multiple iteration should help.",
+      "parentUuid": "0c3131c6_30c9fd67",
+      "revId": "ee000d0e671904c3c144a0ad2651e8cb1053570f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c09f18e_2e8d3bb1",
