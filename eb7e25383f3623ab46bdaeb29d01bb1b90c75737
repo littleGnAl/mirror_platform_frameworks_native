@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e3750e5_ec3cbf75",
+        "filename": "cmds/installd/tests/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-18T22:07:17Z",
+      "side": 1,
+      "message": "I believe Package Manager team should be the recipient. ART team is moving away from installd, and we will remove our code from it soon.",
+      "range": {
+        "startLine": 227,
+        "startChar": 12,
+        "endLine": 229,
+        "endChar": 35
+      },
+      "revId": "eb7e25383f3623ab46bdaeb29d01bb1b90c75737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bddb7407_0131d083",
         "filename": "cmds/installd/tests/fuzzers/InstalldServiceFuzzer.cpp",
         "patchSetId": 3
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "I am not sure how these methods will be used by installd. I can just return some value from these calls though similar to some of the tests: https://source.corp.google.com/android-internal/frameworks/native/cmds/installd/tests/installd_cache_test.cpp;l\u003d51",
       "parentUuid": "bddb7407_0131d083",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "eb7e25383f3623ab46bdaeb29d01bb1b90c75737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f59456f_8446d318",
+        "filename": "cmds/installd/tests/fuzzers/InstalldServiceFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-05-18T22:07:17Z",
+      "side": 1,
+      "message": "This is fine to me just to make things compile. These methods are for the legacy dexopt code, whose functionality is already replaced by ART Service. We\u0027ll remove these methods in V anyway.",
+      "parentUuid": "a163a5ed_5df9deef",
       "range": {
         "startLine": 28,
         "startChar": 0,
