@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4086d7fe_11aadc8b",
+        "filename": "cmds/installd/tests/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1061144
+      },
+      "writtenOn": "2023-05-19T13:30:17Z",
+      "side": 1,
+      "message": "Could we expand this to the larger team?\n\n```suggestion\n            \"android-package-manager-team@google.com\"\n```",
+      "range": {
+        "startLine": 227,
+        "startChar": 12,
+        "endLine": 227,
+        "endChar": 30
+      },
+      "revId": "034f9dc85867ce785d60cbc0b84df2f99c8a5532",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
