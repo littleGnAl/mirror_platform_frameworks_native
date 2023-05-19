@@ -22,6 +22,30 @@
       },
       "revId": "62f69c340cdcbec0b89e3a91b0098624db549492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0b608a_52e707bd",
+        "filename": "libs/binder/tests/parcel_fuzzer/test_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-19T22:54:13Z",
+      "side": 1,
+      "message": "Changed name. I will follow up for the host test script.",
+      "parentUuid": "09c44566_99bf0a13",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "62f69c340cdcbec0b89e3a91b0098624db549492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
