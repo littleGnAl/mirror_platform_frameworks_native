@@ -22,6 +22,30 @@
       },
       "revId": "94134f25fef9f2fd7bff29148514a9eef9328c09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1911b03_95a4eabf",
+        "filename": "libs/binder/tests/parcel_fuzzer/test_fuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-19T23:06:46Z",
+      "side": 1,
+      "message": "It shouldn\u0027t. IIUC, haiku has android project on clusterfuzz and these fuzzers run through android project only which should be controlled by these options. \nThere is no separate option for clusterfuzz here in fuzzConfig\nhttps://source.corp.google.com/android-internal/build/soong/fuzz/fuzz_common.go;l\u003d291?q\u003dfuzz_on_haiku_host\u0026sq\u003dpackage:%5E(android-internal)$",
+      "parentUuid": "feed8d54_d4c5e964",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 67
+      },
+      "revId": "94134f25fef9f2fd7bff29148514a9eef9328c09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
