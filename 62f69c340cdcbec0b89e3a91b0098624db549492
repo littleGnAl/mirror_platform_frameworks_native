@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c44566_99bf0a13",
+        "filename": "libs/binder/tests/parcel_fuzzer/test_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-19T21:37:11Z",
+      "side": 1,
+      "message": "I would name this: \u0027test_service_fuzzer_should_crash\u0027 or similar, to avoid potential confusion.\n\nWe might also add a host test binary script which runs the fuzzer, and it makes sure it finds one of the below errors.",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "62f69c340cdcbec0b89e3a91b0098624db549492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
