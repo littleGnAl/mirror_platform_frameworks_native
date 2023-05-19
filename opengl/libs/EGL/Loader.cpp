@@ -21,7 +21,6 @@
 
 #include <android-base/properties.h>
 #include <android/dlext.h>
-#include <cutils/properties.h>
 #include <dirent.h>
 #include <dlfcn.h>
 #include <graphicsenv/GraphicsEnv.h>
@@ -237,22 +236,29 @@ void* Loader::open(egl_connection_t* cnx)
             LOG_ALWAYS_FATAL("couldn't find an OpenGL ES implementation from %s",
                              android::GraphicsEnv::getInstance().getDriverPath().c_str());
         }
-        // Finally, try to load system driver.
-        // Start by searching for the library name appended by the system
-        // properties of the GLES userspace driver in both locations.
-        // i.e.:
-        //      libGLES_${prop}.so, or:
-        //      libEGL_${prop}.so, libGLESv1_CM_${prop}.so, libGLESv2_${prop}.so
-        for (auto key : HAL_SUBNAME_KEY_PROPERTIES) {
-            auto prop = base::GetProperty(key, "");
-            if (prop.empty()) {
-                continue;
-            }
-            hnd = attempt_to_load_system_driver(cnx, prop.c_str(), true);
-            if (hnd) {
-                break;
-            } else if (strcmp(key, DRIVER_SUFFIX_PROPERTY) == 0) {
-                failToLoadFromDriverSuffixProperty = true;
+        // Finally, try to load system driver.  If ANGLE is the system driver
+        // (i.e. we are forcing the legacy system driver instead of ANGLE), use
+        // the driver suffix that was passed down from above.
+        if (shouldForceLegacyDriver) {
+            std::string suffix = android::GraphicsEnv::getInstance().getLegacySuffix();
+            hnd = attempt_to_load_system_driver(cnx, suffix.c_str(), true);
+        } else {
+            // Start by searching for the library name appended by the system
+            // properties of the GLES userspace driver in both locations.
+            // i.e.:
+            //      libGLES_${prop}.so, or:
+            //      libEGL_${prop}.so, libGLESv1_CM_${prop}.so, libGLESv2_${prop}.so
+            for (auto key : HAL_SUBNAME_KEY_PROPERTIES) {
+                auto prop = base::GetProperty(key, "");
+                if (prop.empty()) {
+                    continue;
+                }
+                hnd = attempt_to_load_system_driver(cnx, prop.c_str(), true);
+                if (hnd) {
+                    break;
+                } else if (strcmp(key, DRIVER_SUFFIX_PROPERTY) == 0) {
+                    failToLoadFromDriverSuffixProperty = true;
+                }
             }
         }
     }
@@ -266,10 +272,7 @@ void* Loader::open(egl_connection_t* cnx)
         hnd = attempt_to_load_system_driver(cnx, nullptr, true);
     }
 
-    if (!hnd && !failToLoadFromDriverSuffixProperty &&
-        property_get_int32("ro.vendor.api_level", 0) < __ANDROID_API_U__) {
-        // Still can't find the graphics drivers with the exact name. This time try to use wildcard
-        // matching if the device is launched before Android 14.
+    if (!hnd && !failToLoadFromDriverSuffixProperty) {
         hnd = attempt_to_load_system_driver(cnx, nullptr, false);
     }
 
