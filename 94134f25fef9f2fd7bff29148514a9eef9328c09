@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feed8d54_d4c5e964",
+        "filename": "libs/binder/tests/parcel_fuzzer/test_fuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-19T23:00:58Z",
+      "side": 1,
+      "message": "nit: also - will this still fuzz on clusterfuzz?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 67
+      },
+      "revId": "94134f25fef9f2fd7bff29148514a9eef9328c09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
