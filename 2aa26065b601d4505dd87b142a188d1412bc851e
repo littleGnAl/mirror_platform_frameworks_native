@@ -16,6 +16,24 @@
       "message": "Hi Peiyong, I left a comment in the other CL: https://android-review.git.corp.google.com/c/platform/frameworks/base/+/2595188/comments/909640bc_ffe75c69, would you please respond to that comment? I will close this comment when the other comment is resolved. Thank you.",
       "revId": "2aa26065b601d4505dd87b142a188d1412bc851e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c101a387_24d2328e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1941946
+      },
+      "writtenOn": "2023-05-19T22:04:05Z",
+      "side": 1,
+      "message": "Resolved in  https://android-review.git.corp.google.com/c/platform/frameworks/base/+/2595188/comments/909640bc_ffe75c69.",
+      "parentUuid": "c1cae932_4b090abb",
+      "revId": "2aa26065b601d4505dd87b142a188d1412bc851e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
