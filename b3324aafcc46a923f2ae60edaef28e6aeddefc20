@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1093da5_0eb29c9f",
+        "filename": "libs/gui/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2023-05-22T18:25:15Z",
+      "side": 1,
+      "message": "I wonder whether we should just include surfaceflinger/OWNERS?",
+      "revId": "b3324aafcc46a923f2ae60edaef28e6aeddefc20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
