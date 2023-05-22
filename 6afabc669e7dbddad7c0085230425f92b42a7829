@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e32ca896_18f05bc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-22T21:44:55Z",
+      "side": 1,
+      "message": "Can you make this sh_test_host and add it to TEST_MAPPING, so it runs automatically?",
+      "revId": "6afabc669e7dbddad7c0085230425f92b42a7829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
