@@ -103,9 +103,15 @@ void InputDevice::dump(std::string& dump, const std::string& eventHubDevStr) {
     } else {
         dump += "<none>\n";
     }
-    dump += StringPrintf(INDENT2 "AssociatedDisplayUniqueId: ");
-    if (mAssociatedDisplayUniqueId) {
-        dump += StringPrintf("%s\n", mAssociatedDisplayUniqueId->c_str());
+    dump += StringPrintf(INDENT2 "AssociatedDisplayUniqueIdByDescriptor: ");
+    if (mAssociatedDisplayUniqueIdByDescriptor) {
+        dump += StringPrintf("%s\n", mAssociatedDisplayUniqueIdByDescriptor->c_str());
+    } else {
+        dump += "<none>\n";
+    }
+    dump += StringPrintf(INDENT2 "AssociatedDisplayUniqueIdByPort: ");
+    if (mAssociatedDisplayUniqueIdByPort) {
+        dump += StringPrintf("%s\n", mAssociatedDisplayUniqueIdByPort->c_str());
     } else {
         dump += "<none>\n";
     }
@@ -306,8 +312,27 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
         if (!changes || (changes & InputReaderConfiguration::CHANGE_DISPLAY_INFO)) {
             // In most situations, no port or name will be specified.
             mAssociatedDisplayPort = std::nullopt;
-            mAssociatedDisplayUniqueId = std::nullopt;
+            mAssociatedDisplayUniqueIdByPort = std::nullopt;
             mAssociatedViewport = std::nullopt;
+            // Find the display port that corresponds to the current input device descriptor
+            const std::string& inputDeviceDescriptor = mIdentifier.descriptor;
+            if (!inputDeviceDescriptor.empty()) {
+                const std::unordered_map<std::string, uint8_t>& ports = config->portAssociations;
+                const auto& displayPort = ports.find(inputDeviceDescriptor);
+                if (displayPort != ports.end()) {
+                    mAssociatedDisplayPort = std::make_optional(displayPort->second);
+                } else {
+                    const std::unordered_map<std::string, std::string>&
+                            displayUniqueIdsByDescriptor = config->uniqueIdAssociationsByDescriptor;
+                    const auto& displayUniqueIdByDescriptor =
+                            displayUniqueIdsByDescriptor.find(inputDeviceDescriptor);
+                    if (displayUniqueIdByDescriptor != displayUniqueIdsByDescriptor.end()) {
+                        mAssociatedDisplayUniqueIdByDescriptor =
+                                displayUniqueIdByDescriptor->second;
+                    }
+                }
+            }
+
             // Find the display port that corresponds to the current input port.
             const std::string& inputPort = mIdentifier.location;
             if (!inputPort.empty()) {
@@ -316,11 +341,11 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
                 if (displayPort != ports.end()) {
                     mAssociatedDisplayPort = std::make_optional(displayPort->second);
                 } else {
-                    const std::unordered_map<std::string, std::string>& displayUniqueIds =
-                            config->uniqueIdAssociations;
-                    const auto& displayUniqueId = displayUniqueIds.find(inputPort);
-                    if (displayUniqueId != displayUniqueIds.end()) {
-                        mAssociatedDisplayUniqueId = displayUniqueId->second;
+                    const std::unordered_map<std::string, std::string>& displayUniqueIdsByPort =
+                            config->uniqueIdAssociationsByPort;
+                    const auto& displayUniqueIdByPort = displayUniqueIdsByPort.find(inputPort);
+                    if (displayUniqueIdByPort != displayUniqueIdsByPort.end()) {
+                        mAssociatedDisplayUniqueIdByPort = displayUniqueIdByPort->second;
                     }
                 }
             }
@@ -338,13 +363,22 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
                           getName().c_str(), *mAssociatedDisplayPort);
                     enabled = false;
                 }
-            } else if (mAssociatedDisplayUniqueId != std::nullopt) {
-                mAssociatedViewport =
-                        config->getDisplayViewportByUniqueId(*mAssociatedDisplayUniqueId);
+            } else if (mAssociatedDisplayUniqueIdByDescriptor != std::nullopt) {
+                mAssociatedViewport = config->getDisplayViewportByUniqueId(
+                        *mAssociatedDisplayUniqueIdByDescriptor);
                 if (!mAssociatedViewport) {
                     ALOGW("Input device %s should be associated with display %s but the "
                           "corresponding viewport cannot be found",
-                          getName().c_str(), mAssociatedDisplayUniqueId->c_str());
+                          getName().c_str(), mAssociatedDisplayUniqueIdByDescriptor->c_str());
+                    enabled = false;
+                }
+            } else if (mAssociatedDisplayUniqueIdByPort != std::nullopt) {
+                mAssociatedViewport =
+                        config->getDisplayViewportByUniqueId(*mAssociatedDisplayUniqueIdByPort);
+                if (!mAssociatedViewport) {
+                    ALOGW("Input device %s should be associated with display %s but the "
+                          "corresponding viewport cannot be found",
+                          getName().c_str(), mAssociatedDisplayUniqueIdByPort->c_str());
                     enabled = false;
                 }
             }

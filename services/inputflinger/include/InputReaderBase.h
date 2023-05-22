@@ -200,9 +200,13 @@ struct InputReaderConfiguration {
     // Used to determine which DisplayViewport should be tied to which InputDevice.
     std::unordered_map<std::string, uint8_t> portAssociations;
 
+    // The associations between input device descriptor and display unique ids.
+    // Used to determine which DisplayViewport should be tied to which InputDevice.
+    std::unordered_map<std::string, std::string> uniqueIdAssociationsByDescriptor;
+
     // The associations between input device names and display unique ids.
     // Used to determine which DisplayViewport should be tied to which InputDevice.
-    std::unordered_map<std::string, std::string> uniqueIdAssociations;
+    std::unordered_map<std::string, std::string> uniqueIdAssociationsByPort;
 
     // The suggested display ID to show the cursor.
     int32_t defaultPointerDisplayId;
