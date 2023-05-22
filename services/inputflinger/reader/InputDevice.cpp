@@ -104,8 +104,8 @@ void InputDevice::dump(std::string& dump, const std::string& eventHubDevStr) {
         dump += "<none>\n";
     }
     dump += StringPrintf(INDENT2 "AssociatedDisplayUniqueId: ");
-    if (mAssociatedDisplayUniqueId) {
-        dump += StringPrintf("%s\n", mAssociatedDisplayUniqueId->c_str());
+    if (mAssociatedDisplayUniqueIdByPort) {
+        dump += StringPrintf("%s\n", mAssociatedDisplayUniqueIdByPort->c_str());
     } else {
         dump += "<none>\n";
     }
@@ -306,7 +306,7 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
         if (!changes || (changes & InputReaderConfiguration::CHANGE_DISPLAY_INFO)) {
             // In most situations, no port or name will be specified.
             mAssociatedDisplayPort = std::nullopt;
-            mAssociatedDisplayUniqueId = std::nullopt;
+            mAssociatedDisplayUniqueIdByPort = std::nullopt;
             mAssociatedViewport = std::nullopt;
             // Find the display port that corresponds to the current input port.
             const std::string& inputPort = mIdentifier.location;
@@ -320,7 +320,7 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
                             config->uniqueIdAssociations;
                     const auto& displayUniqueId = displayUniqueIds.find(inputPort);
                     if (displayUniqueId != displayUniqueIds.end()) {
-                        mAssociatedDisplayUniqueId = displayUniqueId->second;
+                        mAssociatedDisplayUniqueIdByPort = displayUniqueId->second;
                     }
                 }
             }
@@ -338,13 +338,13 @@ void InputDevice::configure(nsecs_t when, const InputReaderConfiguration* config
                           getName().c_str(), *mAssociatedDisplayPort);
                     enabled = false;
                 }
-            } else if (mAssociatedDisplayUniqueId != std::nullopt) {
+            } else if (mAssociatedDisplayUniqueIdByPort != std::nullopt) {
                 mAssociatedViewport =
-                        config->getDisplayViewportByUniqueId(*mAssociatedDisplayUniqueId);
+                        config->getDisplayViewportByUniqueId(*mAssociatedDisplayUniqueIdByPort);
                 if (!mAssociatedViewport) {
                     ALOGW("Input device %s should be associated with display %s but the "
                           "corresponding viewport cannot be found",
-                          getName().c_str(), mAssociatedDisplayUniqueId->c_str());
+                          getName().c_str(), mAssociatedDisplayUniqueIdByPort->c_str());
                     enabled = false;
                 }
             }
