@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577deeb6_f7f222aa",
+        "filename": "opengl/libs/EGL/egl_display.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1941946
+      },
+      "writtenOn": "2023-05-23T18:02:58Z",
+      "side": 1,
+      "message": "There was a bug on the original change, which was fixed in http://ag/23087461.\n\nYou should upload a CL that applies the space at the end of the extension name, too.",
+      "revId": "b5177ba85a1b78a06bfa8388bfcfa0c5f7ac3bcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
