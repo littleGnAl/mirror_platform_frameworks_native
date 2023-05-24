@@ -22,6 +22,30 @@
       },
       "revId": "5604403170aa7ba2aae1d9d2e394026fcd7e215e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "560c4227_7c25d7b6",
+        "filename": "libs/binder/tests/binderSafeInterfaceTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-24T19:52:38Z",
+      "side": 1,
+      "message": "yeah, so it\u0027s close to ~50% faster. On my device ~16s -\u003e ~8s.",
+      "parentUuid": "7f1b8563_ce8f6801",
+      "range": {
+        "startLine": 695,
+        "startChar": 42,
+        "endLine": 695,
+        "endChar": 48
+      },
+      "revId": "5604403170aa7ba2aae1d9d2e394026fcd7e215e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
