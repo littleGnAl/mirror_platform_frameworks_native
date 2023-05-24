@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0efa9e3d_e137e7cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-24T22:38:03Z",
+      "side": 1,
+      "message": "https://android-review.git.corp.google.com/c/platform/frameworks/native/+/2603986 for this presubmit failure, apparently caused by tests being run in a new configuration?",
+      "revId": "5604403170aa7ba2aae1d9d2e394026fcd7e215e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f1b8563_ce8f6801",
