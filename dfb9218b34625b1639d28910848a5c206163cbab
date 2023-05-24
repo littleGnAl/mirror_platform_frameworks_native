@@ -70,6 +70,24 @@
       "parentUuid": "2b11d1d7_4f4dca94",
       "revId": "dfb9218b34625b1639d28910848a5c206163cbab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ad1b49_04330af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-24T19:00:43Z",
+      "side": 1,
+      "message": "Right, right. So we can add getPeerCertificate to RpcSession in addition to getCertificate (but RpcServer would only have getCertificate, as it does now).",
+      "parentUuid": "2b11d1d7_4f4dca94",
+      "revId": "dfb9218b34625b1639d28910848a5c206163cbab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
