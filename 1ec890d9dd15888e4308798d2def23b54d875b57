@@ -46,6 +46,30 @@
       },
       "revId": "1ec890d9dd15888e4308798d2def23b54d875b57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac2fdc6_57dba658",
+        "filename": "libs/binder/tests/unit_fuzzers/BpBinderFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-24T18:42:44Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bc5515e5_546f5c52",
+      "range": {
+        "startLine": 57,
+        "startChar": 15,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "1ec890d9dd15888e4308798d2def23b54d875b57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
