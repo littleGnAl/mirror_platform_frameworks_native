@@ -34,6 +34,24 @@
       "parentUuid": "98a174bd_40d1d29a",
       "revId": "dfb9218b34625b1639d28910848a5c206163cbab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b11d1d7_4f4dca94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-05-24T18:47:47Z",
+      "side": 1,
+      "message": "In a RpcServer, `getCertificate()` returns the server-side cert from `SSL_CTX_get0_certificate()`; rather than the per-session client cert which should be from `SSL_get_peer_certificate()`. So we still need new APIs to expose \"peer\" certificate",
+      "parentUuid": "829fc3b9_8dc51c9b",
+      "revId": "dfb9218b34625b1639d28910848a5c206163cbab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
