@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1b8563_ce8f6801",
+        "filename": "libs/binder/tests/binderSafeInterfaceTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-05-24T19:45:55Z",
+      "side": 1,
+      "message": "What\u0027s the difference in time for this? Shaving off 4k iterations?",
+      "range": {
+        "startLine": 695,
+        "startChar": 42,
+        "endLine": 695,
+        "endChar": 48
+      },
+      "revId": "5604403170aa7ba2aae1d9d2e394026fcd7e215e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
