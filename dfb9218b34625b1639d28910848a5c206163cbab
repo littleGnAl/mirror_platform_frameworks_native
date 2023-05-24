@@ -52,6 +52,24 @@
       "parentUuid": "829fc3b9_8dc51c9b",
       "revId": "dfb9218b34625b1639d28910848a5c206163cbab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f40b1e7_2754ad3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-05-24T18:59:22Z",
+      "side": 1,
+      "message": "getCertificate() in the `RpcTransportCtx` class returns the \"preconfigured certificate of this context. We could have another getPeerCertificate() in the `RpcTransport` class that returns the peer certificate.",
+      "parentUuid": "2b11d1d7_4f4dca94",
+      "revId": "dfb9218b34625b1639d28910848a5c206163cbab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
