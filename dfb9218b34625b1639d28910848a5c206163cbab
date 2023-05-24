@@ -16,6 +16,24 @@
       "message": "Hi Steven, this CL looks great! I just have two questions:\n\n(1) How can I access the `RpcTransport` from a `RpcSession`. I found `mBootstrapTransport` but it\u0027s private and is only set in `setupUnixDomainSocketBootstrapClient()`.\n(2) If I have a pointer to `RpcTransport`, how can I get the peer identity with it? The existing `RpcTransport` class only defines read and write APIs.\n\nWe might need new internal APIs in both the `RpcSession` and `RpcTransport` classes.",
       "revId": "dfb9218b34625b1639d28910848a5c206163cbab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "829fc3b9_8dc51c9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-24T18:39:48Z",
+      "side": 1,
+      "message": "Currently, the API RpcSession::getCertificate is exposed. If you need more than this, please propose the corresponding API change or let me know what you need.",
+      "parentUuid": "98a174bd_40d1d29a",
+      "revId": "dfb9218b34625b1639d28910848a5c206163cbab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
