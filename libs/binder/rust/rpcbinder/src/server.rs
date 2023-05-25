@@ -20,7 +20,7 @@ use binder_rpc_unstable_bindgen::ARpcServer;
 use foreign_types::{foreign_type, ForeignType, ForeignTypeRef};
 use std::ffi::CString;
 use std::io::{Error, ErrorKind};
-use std::os::unix::io::{IntoRawFd, OwnedFd};
+use std::os::unix::io::{IntoRawFd, OwnedFd, RawFd};
 
 foreign_type! {
     type CType = binder_rpc_unstable_bindgen::ARpcServer;
@@ -57,26 +57,16 @@ impl RpcServer {
     }
 
     /// Creates a binder RPC server, serving the supplied binder service implementation on the given
-    /// socket file name. The socket should be initialized in init.rc with the same name.
-    pub fn new_init_unix_domain(
-        mut service: SpIBinder,
-        socket_name: &str,
-    ) -> Result<RpcServer, Error> {
-        let socket_name = match CString::new(socket_name) {
-            Ok(s) => s,
-            Err(e) => {
-                log::error!("Cannot convert {} to CString. Error: {:?}", socket_name, e);
-                return Err(Error::from(ErrorKind::InvalidInput));
-            }
-        };
+    /// socket file descriptor. The socket should be bound to an address before calling this
+    /// function.
+    pub fn new_raw_socket(mut service: SpIBinder, socket_fd: RawFd) -> Result<RpcServer, Error> {
         let service = service.as_native_mut();
 
         // SAFETY: Service ownership is transferring to the server and won't be valid afterward.
         // Plus the binder objects are threadsafe.
         unsafe {
-            Self::checked_from_ptr(binder_rpc_unstable_bindgen::ARpcServer_newInitUnixDomain(
-                service,
-                socket_name.as_ptr(),
+            Self::checked_from_ptr(binder_rpc_unstable_bindgen::ARpcServer_newRawSocket(
+                service, socket_fd,
             ))
         }
     }
