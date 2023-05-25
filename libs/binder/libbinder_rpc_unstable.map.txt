@@ -4,6 +4,7 @@ LIBBINDER_RPC_UNSTABLE_SHIM { # platform-only
     ARpcServer_join;
     ARpcServer_newInet;
     ARpcServer_newInitUnixDomain;
+    ARpcServer_newRawSocket;
     ARpcServer_newVsock;
     ARpcServer_shutdown;
     ARpcServer_start;
