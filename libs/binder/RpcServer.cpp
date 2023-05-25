@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include <pthread.h>
+#include "android-base/threads.h"
 #define LOG_TAG "RpcServer"
 
 #include <inttypes.h>
@@ -27,6 +29,7 @@
 #include <android-base/hex.h>
 #include <android-base/scopeguard.h>
 #include <binder/Parcel.h>
+#include <binder/RpcAuthContext.h>
 #include <binder/RpcServer.h>
 #include <binder/RpcTransportRaw.h>
 #include <log/log.h>
@@ -241,7 +244,6 @@ status_t RpcServer::recvmsgSocketConnection(const RpcServer& server, RpcTranspor
 }
 
 void RpcServer::join() {
-
     {
         RpcMutexLockGuard _l(mLock);
         LOG_ALWAYS_FATAL_IF(!mServer.fd.ok(), "RpcServer must be setup to join.");
@@ -390,6 +392,11 @@ void RpcServer::establishConnection(
     } else {
         LOG_RPC_DETAIL("Created RpcTransport %p for client fd %d", client.get(), clientFdForLog);
     }
+
+    // Setting callingSid
+    int64_t sid = client->getPeerSid();
+    RpcAuthContext::self()->restoreCallingSid(sid);
+    ALOGI("RpcAuthContext: Setting sid %" PRId64, sid);
 
     RpcConnectionHeader header;
     if (status == OK) {

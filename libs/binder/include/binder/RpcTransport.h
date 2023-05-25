@@ -92,6 +92,9 @@ public:
      */
     [[nodiscard]] virtual bool isWaiting() = 0;
 
+    // Return the peer certificate, if supported by this transport.
+    [[nodiscard]] virtual int64_t getPeerSid() const = 0;
+
 protected:
     RpcTransport() = default;
 };

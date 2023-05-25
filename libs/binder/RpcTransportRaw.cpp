@@ -83,6 +83,9 @@ public:
 
     virtual bool isWaiting() { return mSocket.isInPollingState(); }
 
+    // TODO: return nothing in raw transport
+    int64_t getPeerSid() const override { return 0x1de; }
+
 private:
     android::RpcTransportFd mSocket;
 };
@@ -106,7 +109,7 @@ std::unique_ptr<RpcTransportCtx> RpcTransportCtxFactoryRaw::newClientCtx() const
     return std::make_unique<RpcTransportCtxRaw>();
 }
 
-const char *RpcTransportCtxFactoryRaw::toCString() const {
+const char* RpcTransportCtxFactoryRaw::toCString() const {
     return "raw";
 }
 

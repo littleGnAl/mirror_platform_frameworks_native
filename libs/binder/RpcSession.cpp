@@ -31,6 +31,7 @@
 #include <android-base/scopeguard.h>
 #include <binder/BpBinder.h>
 #include <binder/Parcel.h>
+#include <binder/RpcAuthContext.h>
 #include <binder/RpcServer.h>
 #include <binder/RpcTransportRaw.h>
 #include <binder/Stability.h>
@@ -734,6 +735,7 @@ status_t RpcSession::addIncomingConnection(std::unique_ptr<RpcTransport> rpcTran
     thread = RpcMaybeThread([&]() {
         RpcMutexUniqueLock threadLock(mutex);
         std::unique_ptr<RpcTransport> movedRpcTransport = std::move(rpcTransport);
+
         // NOLINTNEXTLINE(performance-unnecessary-copy-initialization)
         sp<RpcSession> session = thiz;
         session->preJoinThreadOwnership(std::move(thread));

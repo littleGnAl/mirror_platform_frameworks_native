@@ -219,6 +219,8 @@ public:
 
     bool isWaiting() override { return mSocket.isInPollingState(); }
 
+    int64_t getPeerSid() const override { return 0; }
+
 private:
     status_t ensureMessage(bool wait) {
         int rc;

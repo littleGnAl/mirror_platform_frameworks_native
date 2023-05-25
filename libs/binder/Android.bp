@@ -86,6 +86,7 @@ cc_defaults {
         "RecordedTransaction.cpp",
         "RpcSession.cpp",
         "RpcServer.cpp",
+        "RpcAuthContext.cpp",
         "RpcState.cpp",
         "Stability.cpp",
         "Status.cpp",

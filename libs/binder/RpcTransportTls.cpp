@@ -264,7 +264,7 @@ public:
     template <typename Fn, typename... Args>
     inline typename SslCaller<Fn, Args...>::ResultAndErrorQueue call(Fn fn, Args&&... args) {
         return SslCaller<Fn, Args...>::call(fn, mSsl.get(), std::forward<Args>(args)...);
-    }
+    };
 
     int getError(int ret) {
         LOG_ALWAYS_FATAL_IF(mSsl == nullptr);
@@ -291,6 +291,9 @@ public:
             std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds) override;
 
     bool isWaiting() { return mSocket.isInPollingState(); };
+
+    // TODO: implement with SSL_get_peer_certificate.
+    int64_t getPeerSid() const override { return 0; }
 
 private:
     android::RpcTransportFd mSocket;
