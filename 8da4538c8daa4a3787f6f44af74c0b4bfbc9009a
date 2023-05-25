@@ -88,6 +88,24 @@
       "parentUuid": "8755ca08_f8178d3c",
       "revId": "8da4538c8daa4a3787f6f44af74c0b4bfbc9009a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "877c0be6_0441df14",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-25T22:48:02Z",
+      "side": 1,
+      "message": "Thanks for reviewing it. I wanted some large values to be tested and I picked them randomly. I think when both values were saved and read back, they were shifted sign values which made this test pass initially.",
+      "parentUuid": "ed94c0ff_3d2eb65f",
+      "revId": "8da4538c8daa4a3787f6f44af74c0b4bfbc9009a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
