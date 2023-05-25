@@ -70,6 +70,24 @@
       "parentUuid": "ad4611b8_61371d50",
       "revId": "8da4538c8daa4a3787f6f44af74c0b4bfbc9009a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed94c0ff_3d2eb65f",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2023-05-25T22:44:05Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "8755ca08_f8178d3c",
+      "revId": "8da4538c8daa4a3787f6f44af74c0b4bfbc9009a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
