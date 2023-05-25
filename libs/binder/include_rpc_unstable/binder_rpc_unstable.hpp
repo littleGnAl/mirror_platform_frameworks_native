@@ -47,6 +47,13 @@ enum class ARpcSession_FileDescriptorTransportMode {
 // could not be started.
 [[nodiscard]] ARpcServer* ARpcServer_newInitUnixDomain(AIBinder* service, const char* name);
 
+// Starts a Unix domain RPC server with an open raw socket file descriptor
+// and a given root IBinder object.
+// The socket should be created and bound.
+// Returns an opaque handle to the running server instance, or null if the server
+// could not be started.
+[[nodiscard]] ARpcServer* ARpcServer_newRawSocket(AIBinder* service, int socketFd);
+
 // Starts an RPC server that bootstraps sessions using an existing Unix domain
 // socket pair, with a given root IBinder object.
 // Callers should create a pair of SOCK_STREAM Unix domain sockets, pass one to
