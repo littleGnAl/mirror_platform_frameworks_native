@@ -52,6 +52,24 @@
       "parentUuid": "691168c1_18be88ed",
       "revId": "8da4538c8daa4a3787f6f44af74c0b4bfbc9009a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8755ca08_f8178d3c",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-05-25T22:40:22Z",
+      "side": 1,
+      "message": "I have updated the test here: https://source.corp.google.com/h/googleplex-android/platform/superproject/+/master:frameworks/native/libs/binder/tests/binderRecordReplayTest.cpp;l\u003d237?q\u003dcc_fuzz%20\u0026sq\u003dpackage:%5E(android-internal)$",
+      "parentUuid": "ad4611b8_61371d50",
+      "revId": "8da4538c8daa4a3787f6f44af74c0b4bfbc9009a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
