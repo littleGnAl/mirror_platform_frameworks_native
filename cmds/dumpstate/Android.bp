@@ -156,11 +156,23 @@ cc_test {
         "tests/dumpstate_test.cpp",
     ],
     static_libs: ["libgmock"],
-    test_config: "dumpstate_test.xml",
     data: [
         ":dumpstate_test_fixture",
         "tests/testdata/**/*",
     ],
+    test_options: {
+        test_runner_options: [
+            {
+                name: "file-exclusion-filter-regex",
+                value: ".*/dumpstate_test_fixture",
+            },
+            {
+                name: "file-exclusion-filter-regex",
+                value: ".*/tests/.*",
+            },
+        ],
+    },
+    require_root: true,
     test_suites: ["device-tests"],
 }
 
@@ -174,7 +186,15 @@ cc_test {
         "tests/dumpstate_smoke_test.cpp",
     ],
     static_libs: ["libgmock"],
-    test_config: "dumpstate_smoke_test.xml",
+    test_options: {
+        test_runner_options: [
+            {
+                name: "native-test-timeout",
+                value: "600000",
+            },
+        ],
+    },
+    require_root: true,
     test_suites: ["device-tests"],
 }
 
@@ -182,7 +202,6 @@ cc_test {
 // dumpstate_test_fixture #
 // =======================#
 cc_test {
-
     name: "dumpstate_test_fixture",
     test_suites: ["device-tests"],
     cflags: [
