@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e1473af_c5f20692",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2023-05-26T21:57:49Z",
+      "side": 1,
+      "message": "Can you confirm that you\u0027ve actively run atest with the three relevant tests being modified, and they are still passing?\n\n(I\u0027ve typically seen `Test:` stanzas be the exact shell commands used to confirm.)",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "490f7eec77f1e0ea3f9ea2fc110694e961965b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
