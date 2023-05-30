@@ -39,6 +39,30 @@
       },
       "revId": "19746d664c912dda9d2fc17f1a4a25eee164c735",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fefacbd1_e532ba9a",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-05-30T12:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "530ca22c_de2f1ac4",
+      "range": {
+        "startLine": 48,
+        "startChar": 26,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "19746d664c912dda9d2fc17f1a4a25eee164c735",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
