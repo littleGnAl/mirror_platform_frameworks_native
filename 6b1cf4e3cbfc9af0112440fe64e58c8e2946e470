@@ -70,6 +70,24 @@
       "parentUuid": "c5c453a5_c0732146",
       "revId": "6b1cf4e3cbfc9af0112440fe64e58c8e2946e470",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86dd2804_c38c5528",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-31T22:58:27Z",
+      "side": 1,
+      "message": "If Android never talks to Trusty using the experimental version, then does testing it matter?\n\nFile descriptor maximums are different between UNIX sockets and TIPC (253 vs 8), but I think stable version 1 already covers that.",
+      "parentUuid": "fe651f2f_b241a5cd",
+      "revId": "6b1cf4e3cbfc9af0112440fe64e58c8e2946e470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
