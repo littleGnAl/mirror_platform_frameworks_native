@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0f747f8_792a053b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-31T21:28:27Z",
+      "side": 1,
+      "message": "hey Frederick, given this test (which IIRC you fixed nicely), I don\u0027t really think we need the below tests, but I loosened them up heavily so I think we might as well keep them. If we see any more flakes though, likely will delete.",
+      "range": {
+        "startLine": 414,
+        "startChar": 18,
+        "endLine": 414,
+        "endChar": 53
+      },
+      "revId": "9c2032247e3ba71394247432b776c4991d10cc7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
