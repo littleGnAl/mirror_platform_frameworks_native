@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9c6ddda_22f3efba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-05-31T23:16:53Z",
+      "side": 1,
+      "message": "I\u0027m assuming when you saw the failures in the first place that they were also on the `aosp-android11-gsi` branch. (no bug in original CL description).",
+      "revId": "fa522a96c95a552eeb3248486d948d4c768df92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
