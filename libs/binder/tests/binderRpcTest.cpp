@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
+#ifndef __ANDROID_VENDOR__ // No AIBinder_fromPlatformBinder on vendor
 #include <aidl/IBinderRpcTest.h>
+#endif // __ANDROID_VENDOR__
 #include <android-base/stringprintf.h>
 
 #include <chrono>
