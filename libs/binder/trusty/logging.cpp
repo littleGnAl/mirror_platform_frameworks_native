@@ -19,6 +19,7 @@
 #include "android-base/logging.h"
 
 #include <trusty_log.h>
+#include <cstring>
 #include <iostream>
 #include <string>
 
