@@ -34,6 +34,24 @@
       "parentUuid": "13ef8562_f9c181c3",
       "revId": "6b1cf4e3cbfc9af0112440fe64e58c8e2946e470",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c453a5_c0732146",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-31T21:21:19Z",
+      "side": 1,
+      "message": "\u003e Ah, right. Presubmit will catch that failure too, right?\n\nLooks like it already did, `test_binder:aosp-trusty-master` failed.",
+      "parentUuid": "063e8f57_a4fc63ae",
+      "revId": "6b1cf4e3cbfc9af0112440fe64e58c8e2946e470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
