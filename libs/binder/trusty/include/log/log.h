@@ -36,6 +36,10 @@
 #include <trusty_log.h>
 
 static inline void __ignore_va_args__(...) {}
+#define ALOG(level, ...)                 \
+    while (0) {                          \
+        __ignore_va_args__(__VA_ARGS__); \
+    }
 
 #if BINDER_LOG_LEVEL >= BINDER_LOG_LEVEL_NORMAL
 #define ALOGD(fmt, ...) TLOGD(fmt "\n", ##__VA_ARGS__)
