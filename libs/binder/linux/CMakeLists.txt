@@ -136,3 +136,52 @@ foreach(AIDL_FILE ${LIBBINDER_TEST_AIDL_SRCS})
     )
 list(APPEND LIBBINDER_TEST_AIDL_GEN_SRCS "${AIDL_CPP_FILE}")
 endforeach()
+
+add_library(android_libbinder_ndk_hdrs INTERFACE)
+target_include_directories(android_libbinder_ndk_hdrs INTERFACE
+    "${LIBBINDER_DIR}/ndk/include_cpp"
+    "${LIBBINDER_DIR}/ndk/include_ndk"
+    "${LIBBINDER_DIR}/ndk/include_platform"
+)
+
+add_library(android_libbinder_test_aidl ${LIBBINDER_TEST_AIDL_GEN_SRCS})
+target_compile_options(android_libbinder_test_aidl
+    PRIVATE
+    ${LIBBINDER_CXX_FLAGS}
+)
+target_include_directories(android_libbinder_test_aidl
+    PUBLIC
+    "${LIBBINDER_TEST_AIDL_GENDIR}/include"
+)
+target_link_libraries(android_libbinder_test_aidl
+    android_libbinder
+    android_libbinder_ndk_hdrs
+)
+
+cmake_policy(SET CMP0012 NEW)
+find_package(GTest REQUIRED)
+
+set(LIBBINDER_TEST_SRCS
+    "${LIBBINDER_DIR}/tests/binderRpcUniversalTests.cpp"
+    "${LIBBINDER_DIR}/tests/binderRpcTestCommon.cpp"
+    "${LIBBINDER_DIR}/tests/binderRpcTest.cpp"
+    "${LIBBINDER_DIR}/tests/RpcTlsTestUtils.cpp"
+)
+add_executable(binder_rpc_test ${LIBBINDER_TEST_SRCS})
+target_include_directories(binder_rpc_test
+    PRIVATE
+    "${LIBBINDER_DIR}/tests"
+    "${LIBBINDER_DIR}/tests/include_tls_test_utils"
+)
+target_link_libraries(binder_rpc_test
+    android_libbinder
+    android_libbinder_ndk_hdrs
+    android_libbinder_tls
+    android_libbinder_test_aidl
+    GTest::gtest)
+target_compile_options(binder_rpc_test
+    PRIVATE
+    ${LIBBINDER_CXX_FLAGS}
+    "-D__ANDROID_VENDOR__"
+)
+gtest_discover_tests(binder_rpc_test)
