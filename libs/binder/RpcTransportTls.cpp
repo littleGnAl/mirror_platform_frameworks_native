@@ -20,6 +20,7 @@
 #include <poll.h>
 
 #include <openssl/bn.h>
+#include <openssl/err.h>
 #include <openssl/ssl.h>
 
 #include <binder/RpcTlsUtils.h>
@@ -292,7 +293,7 @@ public:
             const std::optional<android::base::function_ref<status_t()>>& altPoll,
             std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds) override;
 
-    bool isWaiting() { return mSocket.isInPollingState(); };
+    bool isWaiting() override { return mSocket.isInPollingState(); };
 
 private:
     android::RpcTransportFd mSocket;

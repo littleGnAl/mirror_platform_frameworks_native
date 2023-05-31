@@ -17,7 +17,9 @@
 #pragma once
 
 #include <array>
+#include <limits>
 #include <map> // for legacy reasons
+#include <optional>
 #include <string>
 #include <type_traits>
 #include <variant>
@@ -1279,6 +1281,7 @@ private:
 
     // Fields only needed when parcelling for "kernel Binder".
     struct KernelFields {
+        KernelFields() {}
         binder_size_t* mObjects = nullptr;
         size_t mObjectsSize = 0;
         size_t mObjectsCapacity = 0;
