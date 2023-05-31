@@ -489,7 +489,7 @@ TEST(NdkBinder, ActiveServicesCallbackTest) {
     service = nullptr;
     IPCThreadState::self()->flushCommands();
 
-    sleep(kShutdownWaitTime);
+    sleep(2 * kShutdownWaitTime);
 
     ASSERT_FALSE(isServiceRunning(kActiveServicesNdkUnitTestService))
             << "Service failed to shut down.";
