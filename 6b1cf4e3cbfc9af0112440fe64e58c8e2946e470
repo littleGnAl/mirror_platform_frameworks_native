@@ -88,6 +88,24 @@
       "parentUuid": "fe651f2f_b241a5cd",
       "revId": "6b1cf4e3cbfc9af0112440fe64e58c8e2946e470",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af7dfb0_86c9ecdd",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-31T23:12:39Z",
+      "side": 1,
+      "message": "Yeah, because the experimental version would be used on trusty once it is frozen.\n\nOkay updated this to allow it in Trusty. I don\u0027t see another way, and the default is stable on Trusty",
+      "parentUuid": "86dd2804_c38c5528",
+      "revId": "6b1cf4e3cbfc9af0112440fe64e58c8e2946e470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
