@@ -43,7 +43,7 @@ public:
     // equivalent.
     struct PortAcl {
         uint32_t flags;
-        std::vector<const uuid> uuids;
+        std::vector<uuid> uuids;
         const void* extraData;
     };
 
