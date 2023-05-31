@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13ef8562_f9c181c3",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-05-31T21:09:34Z",
+      "side": 1,
+      "message": "You might need to update `testVersions` to not add `EXPERIMENTAL` to binderRpcTest on Trusty.\n\nAlternatively, would it be okay to support the experimental format when talking to Trusty?",
+      "revId": "6b1cf4e3cbfc9af0112440fe64e58c8e2946e470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
