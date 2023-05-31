@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include <aidl/IBinderRpcTest.h>
+#include <IBinderRpcTest.h>
 #include <android-base/stringprintf.h>
 
 #include <chrono>
