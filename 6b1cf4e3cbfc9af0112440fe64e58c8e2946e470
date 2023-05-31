@@ -16,6 +16,24 @@
       "message": "You might need to update `testVersions` to not add `EXPERIMENTAL` to binderRpcTest on Trusty.\n\nAlternatively, would it be okay to support the experimental format when talking to Trusty?",
       "revId": "6b1cf4e3cbfc9af0112440fe64e58c8e2946e470",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "063e8f57_a4fc63ae",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-05-31T21:18:18Z",
+      "side": 1,
+      "message": "Ah, right. Presubmit will catch that failure too, right?\n\nNo experimental trusty. After spending a week+ worrying about getting the prebuilts updated from last year, I want to be very explicit that anything using prebuilts cannot use the experimental wire protocol. The only non-Android/linux users use prebuilts, so it\u0027s intentionally disabled.",
+      "parentUuid": "13ef8562_f9c181c3",
+      "revId": "6b1cf4e3cbfc9af0112440fe64e58c8e2946e470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
