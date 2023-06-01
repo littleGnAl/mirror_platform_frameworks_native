@@ -76,3 +76,45 @@ target_link_libraries(android_libbinder_tls
     crypto
 )
 target_compile_options(android_libbinder_tls PRIVATE ${LIBBINDER_CXX_FLAGS})
+
+if (NOT AIDL_BIN)
+    find_program(AIDL_BIN aidl REQUIRED)
+endif()
+set(LIBBINDER_TEST_AIDL_SRCS
+    "${LIBBINDER_DIR}/tests/BinderRpcTestClientInfo.aidl"
+    "${LIBBINDER_DIR}/tests/BinderRpcTestServerConfig.aidl"
+    "${LIBBINDER_DIR}/tests/BinderRpcTestServerInfo.aidl"
+    "${LIBBINDER_DIR}/tests/IBinderRpcCallback.aidl"
+    "${LIBBINDER_DIR}/tests/IBinderRpcSession.aidl"
+    "${LIBBINDER_DIR}/tests/IBinderRpcTest.aidl"
+    "${LIBBINDER_DIR}/tests/ParcelableCertificateData.aidl"
+)
+set(LIBBINDER_TEST_AIDL_GENDIR "${PROJECT_BINARY_DIR}/gens")
+set(LIBBINDER_TEST_AIDL_GEN_SRCS)
+foreach(AIDL_FILE ${LIBBINDER_TEST_AIDL_SRCS})
+    get_filename_component(ABS_AIDL_FILEPATH ${AIDL_FILE} ABSOLUTE)
+    get_filename_component(ABS_AIDL_DIR ${ABS_AIDL_FILEPATH} DIRECTORY)
+    get_filename_component(AIDL_FILENAME ${AIDL_FILE} NAME)
+    get_filename_component(AIDL_FILENAME_WE ${AIDL_FILE} NAME_WE)
+    set(AIDL_CPP_FILE "${LIBBINDER_TEST_AIDL_GENDIR}/${AIDL_FILENAME_WE}.cpp")
+    add_custom_command(
+        OUTPUT "${AIDL_CPP_FILE}"
+        COMMAND "${AIDL_BIN}"
+        ARGS
+        --lang=cpp
+        -Weverything
+        -Wno-missing-permission-annotation
+        -Wno-mixed-oneway
+        -Werror
+        -t
+        --min_sdk_version current
+        --structured
+        --ninja
+        -d "${LIBBINDER_TEST_AIDL_GENDIR}/${AIDL_FILENAME_WE}.cpp.d"
+        -h "${LIBBINDER_TEST_AIDL_GENDIR}/include"
+        -o "${LIBBINDER_TEST_AIDL_GENDIR}"
+        -I "${ABS_AIDL_DIR}"
+        "${AIDL_FILE}"
+    )
+list(APPEND LIBBINDER_TEST_AIDL_GEN_SRCS "${AIDL_CPP_FILE}")
+endforeach()
