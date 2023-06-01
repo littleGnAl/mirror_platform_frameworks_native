@@ -22,6 +22,30 @@
       },
       "revId": "6c988d9540a4334a571e12b1048bd34272b27ea5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e60000_5dfcd940",
+        "filename": "services/surfaceflinger/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-06-01T23:57:10Z",
+      "side": 1,
+      "message": "this field is for the time being when fuzzer is stabilized (Just in case of config issues with fuzzer, we dont want the bugs to go through entire security reviiew).\nIt will be removed once fuzzer is stabilized on infra.",
+      "parentUuid": "d5c615e2_7692f399",
+      "range": {
+        "startLine": 142,
+        "startChar": 8,
+        "endLine": 142,
+        "endChar": 48
+      },
+      "revId": "6c988d9540a4334a571e12b1048bd34272b27ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
