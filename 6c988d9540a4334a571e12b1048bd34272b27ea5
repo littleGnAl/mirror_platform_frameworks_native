@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c615e2_7692f399",
+        "filename": "services/surfaceflinger/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-06-01T23:51:58Z",
+      "side": 1,
+      "message": "Can we have more than 1 assignee?",
+      "range": {
+        "startLine": 142,
+        "startChar": 8,
+        "endLine": 142,
+        "endChar": 48
+      },
+      "revId": "6c988d9540a4334a571e12b1048bd34272b27ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
