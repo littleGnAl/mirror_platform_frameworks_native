@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b8399f1_5a16357b",
+        "filename": "libs/binder/linux/libbase/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1895775
+      },
+      "writtenOn": "2023-06-05T22:43:50Z",
+      "side": 1,
+      "message": "Is ANDROID_BUILD_TOP a requirement just for locating the other dependencies or does it mean more than that?\n\nWe wanted to build this outside of the Android tree without the Android toolchain on a regular Linux distro.",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "6f942f2452828cf986ae5efebde538442541d19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
