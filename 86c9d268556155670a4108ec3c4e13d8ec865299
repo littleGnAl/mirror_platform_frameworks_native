@@ -16,6 +16,24 @@
       "message": "I am not very sure about this. We cannot use the one included in the Android codebase because there are no CMake rules in it. There may be a few options:\n\n- bring in external boringSSL (what we do here)\n- use preinstalled OpenSSL (but Binder uses several non-standard bssl extensions)\n- bring the BSSL CMake rules back to the Android BoringSSL fork.\n\nWdyt? @egranata @smoreland",
       "revId": "86c9d268556155670a4108ec3c4e13d8ec865299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78ef9d13_733c2f53",
+        "filename": "libs/binder/linux/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1133963
+      },
+      "writtenOn": "2023-06-05T21:53:19Z",
+      "side": 1,
+      "message": "What\u0027s the license on Boring SSL? And would it be easy to merge the cmake rules back?",
+      "parentUuid": "f25d43a4_e71b2717",
+      "revId": "86c9d268556155670a4108ec3c4e13d8ec865299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
