@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587361c1_ce65b628",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-05T21:42:46Z",
+      "side": 1,
+      "message": "please be more specific - the platform build isn\u0027t broken",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e942cb_14eacabd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-05T21:42:46Z",
+      "side": 1,
+      "message": "This is very nice. Is this due to libstdc++ differences, or did you have a tool print this?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61691d70_4b275969",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-05T21:42:46Z",
+      "side": 1,
+      "message": "please specify the exact command which is used.\n\nI\u0027m also concerned how easy this may be to break. If we make a change that works in Android platform, how would we know it breaks your cmake build? For the Trusty build, we have it setup in presubmit.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d927b5e_661c108b",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-05T21:42:46Z",
+      "side": 1,
+      "message": "why is this needed?",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 25
+      },
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
