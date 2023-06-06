@@ -538,6 +538,11 @@ public:
     template<typename T>
     status_t            resizeOutVector(std::unique_ptr<std::vector<T>>* val) const __attribute__((deprecated("use std::optional version instead")));
 
+    // Retrieve the size of an out vector and check against intarnal limits to
+    // the Parcel size.
+    // size may be negative so caller must handle appropriately.
+    status_t readOutVectorSizeWithCheck(size_t elmSize, int32_t* size) const;
+
     // Like Parcel.java's readExceptionCode().  Reads the first int32
     // off of a Parcel's header, returning 0 or the negative error
     // code on exceptions, but also deals with skipping over rich
@@ -638,8 +643,6 @@ private:
     status_t            finishUnflattenBinder(const sp<IBinder>& binder, sp<IBinder>* out) const;
     status_t            flattenBinder(const sp<IBinder>& binder);
     status_t            unflattenBinder(sp<IBinder>* out) const;
-
-    status_t readOutVectorSizeWithCheck(size_t elmSize, int32_t* size) const;
 
     template<class T>
     status_t            readAligned(T *pArg) const;
