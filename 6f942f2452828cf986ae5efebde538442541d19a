@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce26bf54_2e6cbe00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-06-06T20:07:05Z",
+      "side": 1,
+      "message": "Like the error message said, you will need to install fmtlib. If the build machine is the same as the target, you should install it on the build machine. If you are cross compiling, then you install it on the target and then maybe put it in the sysroot. You will need to make it visible to `find_package` anyways.",
+      "parentUuid": "2df58a0b_099f3291",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 137
+      },
+      "revId": "6f942f2452828cf986ae5efebde538442541d19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b8399f1_5a16357b",
         "filename": "libs/binder/linux/libbase/CMakeLists.txt",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-05T22:43:50Z",
       "side": 1,
       "message": "Is ANDROID_BUILD_TOP a requirement just for locating the other dependencies or does it mean more than that?\n\nWe wanted to build this outside of the Android tree without the Android toolchain on a regular Linux distro.",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "6f942f2452828cf986ae5efebde538442541d19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f15db711_3f823004",
+        "filename": "libs/binder/linux/libbase/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-06-06T20:07:05Z",
+      "side": 1,
+      "message": "The former. You don\u0027t need the whole ANDROID_BUILD_TOP once you do not have it, but then we need to specify LIBBASE_DIR and etc by yourself.",
+      "parentUuid": "1b8399f1_5a16357b",
       "range": {
         "startLine": 30,
         "startChar": 24,
