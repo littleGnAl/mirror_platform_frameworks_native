@@ -1140,20 +1140,19 @@ bool findTraceFiles()
     static const std::string trace_file = "trace_marker";
 
     bool tracefs = access((tracefs_path + trace_file).c_str(), F_OK) != -1;
-    bool debugfs = access((debugfs_path + trace_file).c_str(), F_OK) != -1;
-
-    if (!tracefs && !debugfs) {
-        fprintf(stderr, "Error: Did not find trace folder\n");
-        return false;
-    }
-
     if (tracefs) {
         g_traceFolder = tracefs_path;
-    } else {
-        g_traceFolder = debugfs_path;
+        return true;
     }
 
-    return true;
+    bool debugfs = access((debugfs_path + trace_file).c_str(), F_OK) != -1;
+    if (debugfs) {
+        g_traceFolder = debugfs_path;
+        return true;
+    }
+
+    fprintf(stderr, "Error: Did not find trace folder\n");
+    return false;
 }
 
 void initVendorCategoriesFromFile() {
