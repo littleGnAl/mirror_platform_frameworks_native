@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fcaefbe_6bc35cf3",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-06T22:34:07Z",
+      "side": 1,
+      "message": "and these can\u0027t be used for that case? if we\u0027re making it public now, do we also have a CL where we use the newly public API?",
+      "range": {
+        "startLine": 535,
+        "startChar": 24,
+        "endLine": 535,
+        "endChar": 39
+      },
+      "revId": "e7a2d47a3c0c48086b5433224fd9445c927c93f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
