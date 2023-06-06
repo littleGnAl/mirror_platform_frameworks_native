@@ -70,6 +70,46 @@
       },
       "revId": "e7a2d47a3c0c48086b5433224fd9445c927c93f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b472e477_d516ed08",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-06T22:46:26Z",
+      "side": 1,
+      "message": "this should probably mention that the elmSize should be the element size on the wire, and if unknown, use \u00271\u0027",
+      "revId": "e7a2d47a3c0c48086b5433224fd9445c927c93f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22fd83c4_d0c32a34",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-06T22:46:26Z",
+      "side": 1,
+      "message": "return size",
+      "range": {
+        "startLine": 543,
+        "startChar": 7,
+        "endLine": 543,
+        "endChar": 11
+      },
+      "revId": "e7a2d47a3c0c48086b5433224fd9445c927c93f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
