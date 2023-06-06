@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2df58a0b_099f3291",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1895775
+      },
+      "writtenOn": "2023-06-06T00:20:02Z",
+      "side": 1,
+      "message": "This didn\u0027t work as is - it failed with\n\n\n```\nCMake Error at CMakeLists.txt:28 (find_package):\n  By not providing \"Findfmt.cmake\" in CMAKE_MODULE_PATH this project has\n  asked CMake to find a package configuration file provided by \"fmt\", but\n  CMake did not find one.\n\n  Could not find a package configuration file provided by \"fmt\" with any of\n  the following names:\n\n    fmtConfig.cmake\n    fmt-config.cmake\n\n  Add the installation prefix of \"fmt\" to CMAKE_PREFIX_PATH or set \"fmt_DIR\"\n  to a directory containing one of the above files.  If \"fmt\" provides a\n  separate development package or SDK, be sure it has been installed.\n\n```\n\n\n\n\nIs this test assuming fmtlib is added as a package elsewhere?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 137
+      },
+      "revId": "6f942f2452828cf986ae5efebde538442541d19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b8399f1_5a16357b",
         "filename": "libs/binder/linux/libbase/CMakeLists.txt",
         "patchSetId": 1
