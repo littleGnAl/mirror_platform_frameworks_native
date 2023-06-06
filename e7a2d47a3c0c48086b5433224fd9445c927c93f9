@@ -46,6 +46,30 @@
       },
       "revId": "e7a2d47a3c0c48086b5433224fd9445c927c93f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8beec6d4_f72b11fa",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-06T22:45:35Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/sensor/ISensorServer.cpp;l\u003d65;drc\u003dedb3f8e57fc25d3b0abd8cfc601cea814e90fcce\n\nYou could update it on AOSP?",
+      "parentUuid": "b76de99f_5800129b",
+      "range": {
+        "startLine": 535,
+        "startChar": 24,
+        "endLine": 535,
+        "endChar": 39
+      },
+      "revId": "e7a2d47a3c0c48086b5433224fd9445c927c93f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
