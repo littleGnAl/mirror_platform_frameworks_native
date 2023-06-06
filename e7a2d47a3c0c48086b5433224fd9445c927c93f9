@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc1c0363_9692d5ae",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-06-06T22:57:10Z",
+      "side": 1,
+      "message": "No, the file is split up so it has merge conflicts (the functions that write the int32 are not in that file). \nIt will need to go internal first.",
+      "parentUuid": "8beec6d4_f72b11fa",
+      "range": {
+        "startLine": 535,
+        "startChar": 24,
+        "endLine": 535,
+        "endChar": 39
+      },
+      "revId": "e7a2d47a3c0c48086b5433224fd9445c927c93f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b472e477_d516ed08",
@@ -89,6 +113,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee28a571_f1555350",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-06-06T22:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b472e477_d516ed08",
+      "revId": "e7a2d47a3c0c48086b5433224fd9445c927c93f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22fd83c4_d0c32a34",
@@ -102,6 +144,30 @@
       "writtenOn": "2023-06-06T22:46:26Z",
       "side": 1,
       "message": "return size",
+      "range": {
+        "startLine": 543,
+        "startChar": 7,
+        "endLine": 543,
+        "endChar": 11
+      },
+      "revId": "e7a2d47a3c0c48086b5433224fd9445c927c93f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0abe767_516a6d50",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-06-06T22:57:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22fd83c4_d0c32a34",
       "range": {
         "startLine": 543,
         "startChar": 7,
