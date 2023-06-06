@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7f80f2b_2586acba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1133963
+      },
+      "writtenOn": "2023-06-06T23:46:47Z",
+      "side": 1,
+      "message": "I think two answers apply here, but Hao can add more color:\n- short-term, we should set up some type of Kokoro(?) based automation to test that we don\u0027t regress as Android moves;\n- long-term, if and as more pieces need to be moved to an out-of-tree build, we need a scalable solution. Hao should own the design of this",
+      "parentUuid": "61691d70_4b275969",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d927b5e_661c108b",
         "filename": "libs/binder/include/binder/Parcel.h",
         "patchSetId": 1
