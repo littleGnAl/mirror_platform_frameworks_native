@@ -34,6 +34,24 @@
       "parentUuid": "f25d43a4_e71b2717",
       "revId": "86c9d268556155670a4108ec3c4e13d8ec865299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb926c2e_86772ddb",
+        "filename": "libs/binder/linux/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-06-06T20:17:55Z",
+      "side": 1,
+      "message": "BoringSSL is a Google implementation of OpenSSL interfaces, so I won\u0027t be too worry about the license.\n\nAlso, I think merge the CMake rules back is easy, but maintain it is harder, because there are no CI to make sure it works.",
+      "parentUuid": "78ef9d13_733c2f53",
+      "revId": "86c9d268556155670a4108ec3c4e13d8ec865299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
