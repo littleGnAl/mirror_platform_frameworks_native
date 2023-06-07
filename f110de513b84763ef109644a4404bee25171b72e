@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47ed6ef9_f665d11b",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2023-06-07T13:50:18Z",
+      "side": 0,
+      "message": "btw this reminded me one thing: at some point we should be able to rely on the fact that kernels are recent enough and debugfs is gone.\nBut I never ever understood how to answer the question: \"what\u0027s the minimum kernel we require for this new android dessert?\"\n\nI keep receiving answers like \"oh for new ships X\" which is only partial. I don\u0027t care about new devices vs upgrade. The only thing I care about is somebody telling me \"you can safely assume that Android V will run on Linux 5.3.1234 or beyond\"\n\nAnswering this requires a union of \"what\u0027s the mandated kernel for new devices\" and \"what\u0027s our support window where we support older vendor partitions\". I just don\u0027t know the details. Do you know the answer?",
+      "range": {
+        "startLine": 1143,
+        "startChar": 0,
+        "endLine": 1143,
+        "endChar": 75
+      },
+      "revId": "f110de513b84763ef109644a4404bee25171b72e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
