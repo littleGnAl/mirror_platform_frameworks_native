@@ -22,6 +22,30 @@
       },
       "revId": "f110de513b84763ef109644a4404bee25171b72e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c90d88_b8819378",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-07T20:50:00Z",
+      "side": 0,
+      "message": "All the supported kernel versions are listed, and the oldest on the line here:\nhttps://cs.android.com/android/platform/superproject/+/master:hardware/interfaces/compatibility_matrices/Android.bp;l\u003d31;drc\u003dffcf238842dc693f170ffddbe8d28ef204f13244",
+      "parentUuid": "47ed6ef9_f665d11b",
+      "range": {
+        "startLine": 1143,
+        "startChar": 0,
+        "endLine": 1143,
+        "endChar": 75
+      },
+      "revId": "f110de513b84763ef109644a4404bee25171b72e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
