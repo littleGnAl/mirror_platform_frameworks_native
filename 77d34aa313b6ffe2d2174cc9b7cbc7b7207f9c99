@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06127da3_7e132769",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1895775
+      },
+      "writtenOn": "2023-06-07T23:13:59Z",
+      "side": 1,
+      "message": "Will AIDL_BIN come from non AOSP builds in the future?",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 57
+      },
+      "revId": "77d34aa313b6ffe2d2174cc9b7cbc7b7207f9c99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
