@@ -186,6 +186,24 @@
       "parentUuid": "8f5a097e_a9a8bbc1",
       "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "893049f3_a91bfc8d",
+        "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-08T22:25:54Z",
+      "side": 1,
+      "message": "I mean, minor error/typo, not an actual bug (I don\u0027t know what the error message was, Hao may fill it in if you need more context).",
+      "parentUuid": "a2f6a0c2_d23ee8a5",
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
