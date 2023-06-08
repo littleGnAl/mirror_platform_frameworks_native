@@ -34,6 +34,24 @@
       "parentUuid": "970a2554_bcf41940",
       "revId": "e98e6028cdf63e3ef74eb8f2b358ba5c60ede518",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae51dd1_5044c850",
+        "filename": "libs/binder/linux/libutils/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-08T18:08:17Z",
+      "side": 1,
+      "message": "I mean, I could also factor libbinder into its own project, but that is hard due to the number of things in our tree that expect it to be here. Maybe a symlink could fix it, but it seems like more effort than it\u0027s worth to make it independent.",
+      "parentUuid": "fa435fa3_e3923012",
+      "revId": "e98e6028cdf63e3ef74eb8f2b358ba5c60ede518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
