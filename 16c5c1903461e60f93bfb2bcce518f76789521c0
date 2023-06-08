@@ -150,6 +150,24 @@
       "parentUuid": "1fc164be_f02eb1ed",
       "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f5a097e_a9a8bbc1",
+        "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-08T21:26:08Z",
+      "side": 1,
+      "message": "`binderRpcTest_on_trusty_mock` is probably safe to skip in your environment, I added it so any change that impacts Trusty is also built as part of the Android build.",
+      "parentUuid": "a0334551_e147a2a7",
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
