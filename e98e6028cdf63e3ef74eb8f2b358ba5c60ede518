@@ -52,6 +52,24 @@
       "parentUuid": "fa435fa3_e3923012",
       "revId": "e98e6028cdf63e3ef74eb8f2b358ba5c60ede518",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4fca1d9_8d28961f",
+        "filename": "libs/binder/linux/libutils/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-08T18:31:02Z",
+      "side": 1,
+      "message": "I can definitely make some CLs that add Trusty rules.mk files to libbase and libutils, but it sounds like it would be preferable to have those build files in the Trusty tree instead?",
+      "parentUuid": "4ae51dd1_5044c850",
+      "revId": "e98e6028cdf63e3ef74eb8f2b358ba5c60ede518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
