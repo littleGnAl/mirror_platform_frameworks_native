@@ -52,6 +52,24 @@
       "parentUuid": "78ef9d13_733c2f53",
       "revId": "86c9d268556155670a4108ec3c4e13d8ec865299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec3132b_305bd714",
+        "filename": "libs/binder/linux/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-08T21:21:57Z",
+      "side": 1,
+      "message": "How about using system installed BoringSSL and letting the user point to any other build if necessary? I mean find_package/find_library.",
+      "parentUuid": "bb926c2e_86772ddb",
+      "revId": "86c9d268556155670a4108ec3c4e13d8ec865299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
