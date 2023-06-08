@@ -22,6 +22,29 @@
       },
       "revId": "77d34aa313b6ffe2d2174cc9b7cbc7b7207f9c99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c81e88_68c7fa15",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-08T21:24:39Z",
+      "side": 1,
+      "message": "Does system/vendor split apply to out-of-tree CMake build?",
+      "range": {
+        "startLine": 17,
+        "startChar": 61,
+        "endLine": 17,
+        "endChar": 70
+      },
+      "revId": "77d34aa313b6ffe2d2174cc9b7cbc7b7207f9c99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
