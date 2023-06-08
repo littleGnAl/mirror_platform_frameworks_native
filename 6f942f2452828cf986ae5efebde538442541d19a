@@ -189,6 +189,23 @@
       },
       "revId": "6f942f2452828cf986ae5efebde538442541d19a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "625eeb95_e0bc7847",
+        "filename": "libs/binder/linux/libbase/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-08T18:25:29Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need this unless trying to build the Trusty code explicitly. Android has it because we\u0027re doing that on Android for testing. Does it not build without this?",
+      "revId": "6f942f2452828cf986ae5efebde538442541d19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
