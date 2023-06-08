@@ -132,6 +132,24 @@
       "message": "Not against this change, but you shouldn\u0027t need to build this file outside of Trusty. We do it on Android for testing purposes.",
       "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0334551_e147a2a7",
+        "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-08T21:14:22Z",
+      "side": 1,
+      "message": "Hao is also trying to run the tests, so I guess this is why he hit it.",
+      "parentUuid": "1fc164be_f02eb1ed",
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
