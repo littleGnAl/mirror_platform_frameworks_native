@@ -115,6 +115,23 @@
       },
       "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fc164be_f02eb1ed",
+        "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-08T18:27:12Z",
+      "side": 1,
+      "message": "Not against this change, but you shouldn\u0027t need to build this file outside of Trusty. We do it on Android for testing purposes.",
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
