@@ -420,6 +420,7 @@ static int restorecon_app_data_lazy(const std::string& path, const std::string& 
     char* before = nullptr;
     char* after = nullptr;
     if (!existing) {
+        ScopedTrace tracer("new-path");
         if (selinux_android_restorecon_pkgdir(path.c_str(), seInfo.c_str(), uid,
                 SELINUX_ANDROID_RESTORECON_RECURSE) < 0) {
             PLOG(ERROR) << "Failed recursive restorecon for " << path;
@@ -446,6 +447,7 @@ static int restorecon_app_data_lazy(const std::string& path, const std::string& 
     // If the initial top-level restorecon above changed the label, then go
     // back and restorecon everything recursively
     if (strcmp(before, after)) {
+        ScopedTrace tracer("label-change");
         if (existing) {
             LOG(DEBUG) << "Detected label change from " << before << " to " << after << " at "
                     << path << "; running recursive restorecon";
@@ -633,6 +635,7 @@ static binder::Status createAppDataDirs(const std::string& path, int32_t uid, in
                                         int32_t previousUid, int32_t cacheGid,
                                         const std::string& seInfo, mode_t targetMode,
                                         long projectIdApp, long projectIdCache) {
+    ScopedTrace tracer("create-dirs");
     struct stat st{};
     bool parent_dir_exists = (stat(path.c_str(), &st) == 0);
 
@@ -709,6 +712,7 @@ binder::Status InstalldNativeService::createAppDataLocked(
     long projectIdCache = get_project_id(uid, PROJECT_ID_APP_CACHE_START);
 
     if (flags & FLAG_STORAGE_CE) {
+        ScopedTrace tracer("ce");
         auto path = create_data_user_ce_package_path(uuid_, userId, pkgname);
 
         auto status = createAppDataDirs(path, uid, uid, previousUid, cacheGid, seInfo, targetMode,
@@ -735,6 +739,7 @@ binder::Status InstalldNativeService::createAppDataLocked(
         }
     }
     if (flags & FLAG_STORAGE_DE) {
+        ScopedTrace tracer("de");
         auto path = create_data_user_de_package_path(uuid_, userId, pkgname);
 
         auto status = createAppDataDirs(path, uid, uid, previousUid, cacheGid, seInfo, targetMode,
@@ -752,13 +757,14 @@ binder::Status InstalldNativeService::createAppDataLocked(
     }
 
     if (flags & FLAG_STORAGE_SDK) {
+        ScopedTrace tracer("sdk");
         // Safe to ignore status since we can retry creating this by calling reconcileSdkData
         auto ignore = createSdkSandboxDataPackageDirectory(uuid, packageName, userId, appId, flags);
         if (!ignore.isOk()) {
             PLOG(WARNING) << "Failed to create sdk data package directory for " << packageName;
         }
-
     } else {
+        ScopedTrace tracer("destroy-sdk");
         // Package does not need sdk storage. Remove it.
         destroySdkSandboxDataPackageDirectory(uuid, packageName, userId, flags);
     }
@@ -1849,6 +1855,8 @@ binder::Status InstalldNativeService::createUserData(const std::optional<std::st
     ENFORCE_UID(AID_SYSTEM);
     CHECK_ARGUMENT_UUID(uuid);
     LOCK_USER();
+
+    ScopedTrace tracer("create-user-data");
 
     const char* uuid_ = uuid ? uuid->c_str() : nullptr;
     if (flags & FLAG_STORAGE_DE) {
