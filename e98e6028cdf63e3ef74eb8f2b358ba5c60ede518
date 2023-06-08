@@ -70,6 +70,24 @@
       "parentUuid": "4ae51dd1_5044c850",
       "revId": "e98e6028cdf63e3ef74eb8f2b358ba5c60ede518",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb59385_ae6d3ab6",
+        "filename": "libs/binder/linux/libutils/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-08T18:33:24Z",
+      "side": 1,
+      "message": "They need to be in this tree. Otherwise, if we do change them, it would need a change in the Trusty tree as well as in Android.",
+      "parentUuid": "c4fca1d9_8d28961f",
+      "revId": "e98e6028cdf63e3ef74eb8f2b358ba5c60ede518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
