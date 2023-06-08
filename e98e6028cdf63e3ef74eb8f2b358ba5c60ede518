@@ -16,6 +16,24 @@
       "message": "I\u0027m curious if enh@ has other concerns, but I think we\u0027d probably want to auto-generate this.\n\nI see now Trusty introduced something similar in http://r.android.com/1931393. We should share the config with that, but I really messed up with the review there. It did not register this would add a build file in frameworks/native about files in system/core/libutils. That shouldn\u0027t have happened, and we need to correct that.",
       "revId": "e98e6028cdf63e3ef74eb8f2b358ba5c60ede518",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa435fa3_e3923012",
+        "filename": "libs/binder/linux/libutils/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-06-08T18:07:13Z",
+      "side": 1,
+      "message": "\u003e It did not register this would add a build file in frameworks/native about files in system/core/libutils. That shouldn\u0027t have happened, and we need to correct that.\n\n+1\n\n(i\u0027m also concerned about this being in _our_ tree at all. i don\u0027t think an unsupported configuration should be something that the maintainers of libraries should be [effectively] required to support.)",
+      "parentUuid": "970a2554_bcf41940",
+      "revId": "e98e6028cdf63e3ef74eb8f2b358ba5c60ede518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
