@@ -168,6 +168,24 @@
       "parentUuid": "a0334551_e147a2a7",
       "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f6a0c2_d23ee8a5",
+        "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-08T22:24:26Z",
+      "side": 1,
+      "message": "Ack, but this one still sound like a bug (that only pops up on non-android clang or gcc?)",
+      "parentUuid": "8f5a097e_a9a8bbc1",
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
