@@ -1309,6 +1309,7 @@ status_t BufferQueueProducer::disconnect(int api, DisconnectMode mode) {
     BQ_LOGV("disconnect: api %d", api);
 
     int status = NO_ERROR;
+    bool notifySidebandStreamChanged = false;
     sp<IConsumerListener> listener;
     { // Autolock scope
         std::unique_lock<std::mutex> lock(mCore->mMutex);
@@ -1365,6 +1366,7 @@ status_t BufferQueueProducer::disconnect(int api, DisconnectMode mode) {
                     mCore->mConnectedProducerListener = nullptr;
                     mCore->mConnectedApi = BufferQueueCore::NO_CONNECTED_API;
                     mCore->mConnectedPid = -1;
+                    notifySidebandStreamChanged = (mCore->mSidebandStream != nullptr);
                     mCore->mSidebandStream.clear();
                     mCore->mDequeueCondition.notify_all();
                     mCore->mAutoPrerotation = false;
@@ -1387,6 +1389,9 @@ status_t BufferQueueProducer::disconnect(int api, DisconnectMode mode) {
 
     // Call back without lock held
     if (listener != nullptr) {
+        if (notifySidebandStreamChanged) {
+            listener->onSidebandStreamChanged();
+        }
         listener->onBuffersReleased();
         listener->onDisconnect();
     }
