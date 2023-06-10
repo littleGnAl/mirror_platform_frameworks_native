@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d1dcd0_09f235da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-06-10T02:30:38Z",
+      "side": 1,
+      "message": "Why cannot cross-compiling libfmt independent of this project? What will be the differences/difficuties here?",
+      "parentUuid": "c232b370_f9294d40",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 137
+      },
+      "revId": "6f942f2452828cf986ae5efebde538442541d19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b8399f1_5a16357b",
@@ -204,6 +228,24 @@
       "writtenOn": "2023-06-08T18:25:29Z",
       "side": 1,
       "message": "You shouldn\u0027t need this unless trying to build the Trusty code explicitly. Android has it because we\u0027re doing that on Android for testing. Does it not build without this?",
+      "revId": "6f942f2452828cf986ae5efebde538442541d19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349b06a0_50497a14",
+        "filename": "libs/binder/linux/libbase/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-06-10T02:30:38Z",
+      "side": 1,
+      "message": "We are doing similar things to Trusty, and we do not want to bring in the whole Android infrastructure in our use case (building binder on vanilla Linux). So we may share some common headers with Trusty (mostly logging IIRC). If you don\u0027t think we should share it, we can definitely copy the ones that we need to `libs/binder/linux`",
+      "parentUuid": "625eeb95_e0bc7847",
       "revId": "6f942f2452828cf986ae5efebde538442541d19a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
