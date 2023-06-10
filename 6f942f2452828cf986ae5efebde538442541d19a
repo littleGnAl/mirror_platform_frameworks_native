@@ -248,6 +248,24 @@
       "parentUuid": "625eeb95_e0bc7847",
       "revId": "6f942f2452828cf986ae5efebde538442541d19a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "734f1950_3a30a13a",
+        "filename": "libs/binder/linux/libbase/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-10T03:32:15Z",
+      "side": 1,
+      "message": "The Trusty build of libbinder does not use any of the headers under `trusty/include_mock`, it uses the originals from the Trusty tree. This subdirectory is strictly for building `binderRpcTest_on_trusty_mock` on Android.\n\nYou probably need the header under `trusty/include/log/log.h`, but that one is sufficiently Trusty-specific that you should probably maintain your own copy.",
+      "parentUuid": "349b06a0_50497a14",
+      "revId": "6f942f2452828cf986ae5efebde538442541d19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
