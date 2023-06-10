@@ -16,6 +16,24 @@
       "message": "why are more things required here than what trusty needs? I would expect we need the exact same?",
       "revId": "42c01001d998bbe4b4c34a91137c0040e44ffbb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a502d2b_272a3a0c",
+        "filename": "libs/binder/linux/liblog/include/android/log.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-06-10T02:36:47Z",
+      "side": 1,
+      "message": "I am not 100% sure about what/how Trusty builds, but it seems that they are still heavily rely on the Android build system (e.g., they use Android\u0027s prebuilt LLVM toolchain, they build on top of the Android Makefiles, etc.). So Trusty will bring in more Android libraries. In our case, we want to use non-Android toolchains and build Binder as a normal Linux library, so we need to write the build rules from scratch, so that we may choose different cut set than Trusty did.",
+      "parentUuid": "9d729242_c7963236",
+      "revId": "42c01001d998bbe4b4c34a91137c0040e44ffbb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
