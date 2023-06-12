@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13c87953_2bc4284f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-06-12T17:57:03Z",
+      "side": 1,
+      "message": "if this is for outside of AOSP --- keep it there.\n\nwe shouldn\u0027t be adding unsupported stuff like this to AOSP, and increasing the maintenance costs on the teams who own these libraries. if _you_ want to deal with maintaining this and any breakages, that\u0027s fine. but that shouldn\u0027t be checked in to AOSP. (_at all_ --- the \"build files should be with the things they build, not elsewhere\" issue is a minor distraction from this bigger point.)",
+      "parentUuid": "1a472662_e52a8ac6",
+      "revId": "6f942f2452828cf986ae5efebde538442541d19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b8399f1_5a16357b",
         "filename": "libs/binder/linux/libbase/CMakeLists.txt",
         "patchSetId": 1
