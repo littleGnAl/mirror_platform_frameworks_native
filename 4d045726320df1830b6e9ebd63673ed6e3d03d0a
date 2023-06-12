@@ -22,6 +22,30 @@
       },
       "revId": "4d045726320df1830b6e9ebd63673ed6e3d03d0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "876a5bb9_7a24eed5",
+        "filename": "services/inputflinger/reader/include/InputDevice.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1954500
+      },
+      "writtenOn": "2023-06-12T18:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1211c6ac_98e5c09b",
+      "range": {
+        "startLine": 403,
+        "startChar": 4,
+        "endLine": 403,
+        "endChar": 71
+      },
+      "revId": "4d045726320df1830b6e9ebd63673ed6e3d03d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
