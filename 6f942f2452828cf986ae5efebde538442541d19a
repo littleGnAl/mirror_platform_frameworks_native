@@ -144,6 +144,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a472662_e52a8ac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1895775
+      },
+      "writtenOn": "2023-06-12T17:52:01Z",
+      "side": 1,
+      "message": "@enh@google.com can you clarify the issues you have with this change ? - we would like to use this kind of change for using AIDL interfaces for testing outside of an AOSP build.",
+      "revId": "6f942f2452828cf986ae5efebde538442541d19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b8399f1_5a16357b",
