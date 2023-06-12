@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1211c6ac_98e5c09b",
+        "filename": "services/inputflinger/reader/include/InputDevice.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2023-06-12T15:56:53Z",
+      "side": 1,
+      "message": "You don\u0027t need to deprecate this. You can just remove / rename this since it\u0027s not a public API.",
+      "range": {
+        "startLine": 403,
+        "startChar": 4,
+        "endLine": 403,
+        "endChar": 71
+      },
+      "revId": "4d045726320df1830b6e9ebd63673ed6e3d03d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
