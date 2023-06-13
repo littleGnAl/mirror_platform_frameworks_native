@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5b07b81_fdea0bd4",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-13T19:45:55Z",
+      "side": 1,
+      "message": "Should we copy the underlying data (Parcel or Arc\u003cParcelable\u003e), like NDK/C++ backends do? Since this is behind a mutex, it seems difficult to prove code doesn\u0027t mutate ParcelableHolderData in a way that would break other ParcelableHolder objects pointing to the same data.\n\nIf we don\u0027t need a real copy of ParcelableHolder, could other code use Arc\u003cParcelableHolder\u003e?",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
