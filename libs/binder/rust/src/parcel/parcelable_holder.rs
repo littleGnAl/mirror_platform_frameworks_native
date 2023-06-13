@@ -59,7 +59,7 @@ enum ParcelableHolderData {
 /// `ParcelableHolder` is currently not thread-safe (neither
 /// `Send` nor `Sync`), mainly because it internally contains
 /// a `Parcel` which in turn is not thread-safe.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct ParcelableHolder {
     // This is a `Mutex` because of `get_parcelable`
     // which takes `&self` for consistency with C++.
@@ -67,14 +67,14 @@ pub struct ParcelableHolder {
     // and get rid of the `Mutex` here for a performance
     // improvement, but then callers would require a mutable
     // `ParcelableHolder` even for that getter method.
-    data: Mutex<ParcelableHolderData>,
+    data: Arc<Mutex<ParcelableHolderData>>,
     stability: Stability,
 }
 
 impl ParcelableHolder {
     /// Construct a new `ParcelableHolder` with the given stability.
     pub fn new(stability: Stability) -> Self {
-        Self { data: Mutex::new(ParcelableHolderData::Empty), stability }
+        Self { data: Arc::new(Mutex::new(ParcelableHolderData::Empty)), stability }
     }
 
     /// Reset the contents of this `ParcelableHolder`.
@@ -82,7 +82,8 @@ impl ParcelableHolder {
     /// Note that this method does not reset the stability,
     /// only the contents.
     pub fn reset(&mut self) {
-        *self.data.get_mut().unwrap() = ParcelableHolderData::Empty;
+        let mut data = self.data.lock().unwrap();
+        *data = ParcelableHolderData::Empty;
         // We could also clear stability here, but C++ doesn't
     }
 
@@ -95,7 +96,8 @@ impl ParcelableHolder {
             return Err(StatusCode::BAD_VALUE);
         }
 
-        *self.data.get_mut().unwrap() =
+        let mut data = self.data.lock().unwrap();
+        *data =
             ParcelableHolderData::Parcelable { parcelable: p, name: T::get_descriptor().into() };
 
         Ok(())
@@ -238,7 +240,8 @@ impl Parcelable for ParcelableHolder {
             return Err(StatusCode::BAD_VALUE);
         }
         if data_size == 0 {
-            *self.data.get_mut().unwrap() = ParcelableHolderData::Empty;
+            let mut data = self.data.lock().unwrap();
+            *data = ParcelableHolderData::Empty;
             return Ok(());
         }
 
@@ -249,7 +252,8 @@ impl Parcelable for ParcelableHolder {
 
         let mut new_parcel = Parcel::new();
         new_parcel.append_from(parcel, data_start, data_size)?;
-        *self.data.get_mut().unwrap() = ParcelableHolderData::Parcel(new_parcel);
+        let mut data = self.data.lock().unwrap();
+        *data = ParcelableHolderData::Parcel(new_parcel);
 
         unsafe {
             // Safety: `append_from` checks if `data_size` overflows
