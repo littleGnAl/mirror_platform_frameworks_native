@@ -70,6 +70,30 @@
       },
       "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e07337fd_d58ccb73",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-13T20:42:43Z",
+      "side": 1,
+      "message": "The NDK backend copies the parcelable (AParcelableHolder). Java doesn\u0027t. Thoughts Jiyong/Jeongik?",
+      "parentUuid": "55144df5_d49fba8a",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
