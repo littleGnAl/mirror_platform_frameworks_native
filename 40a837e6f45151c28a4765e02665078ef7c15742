@@ -94,6 +94,30 @@
       },
       "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a6c642a_2a5b258c",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-13T23:16:29Z",
+      "side": 1,
+      "message": "`ParcelableHolderData` implements `Clone` and `ParcelableHolder` used to derive it too. It got removed when we switched from `RefCell` to `Mutex` for thread-safety.\n\nAdding `Arc` is one approach, another would be to manually implement `Clone` and create a new `Mutex`:\n```\nimpl Clone for ParcelableHolder {\n  fn clone(\u0026self) -\u003e ParcelableHolder {\n    ParcelableHolder {\n      data: Mutex::new(self.data.lock().unwrap().clone()),\n      stability: self.stability,\n  }\n}\n```\n\nI\u0027m not sure which one is preferable, the `Arc` approach adds an extra level of indirection but shares the data between copies, which is mainly relevant for the `ParcelableHolderData::Parcel` case. `Parcel::clone` is a deep copy, so this circles back to the original question: do we want `ParcelableHolder::clone` to do that or not? I don\u0027t have a strong opinion here.",
+      "parentUuid": "e07337fd_d58ccb73",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
