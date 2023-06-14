@@ -537,7 +537,7 @@ service boottrace /system/bin/atrace --async_start -f /data/misc/boottrace/categ
     disabled
     oneshot
 
-on property:sys.boot_completed=1 && property:ro.boot.fastboot.boottrace=enabled
+on property:sys.boot_completed=1 && property:ro.boot.fastboot.boottrace=enabled && property:persist.debug.perfetto.boottrace=""
     setprop debug.atrace.tags.enableflags 0
     setprop persist.traced.enable 1
     write /sys/kernel/debug/tracing/tracing_on 0
