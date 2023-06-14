@@ -140,26 +140,63 @@ target_link_libraries(android_libbinder_test_aidl
     android_libbinder_ndk_hdrs
 )
 
+add_library(android_libbinder_tls_test_utils
+    "${LIBBINDER_DIR}/tests/RpcTlsTestUtils.cpp"
+)
+target_include_directories(android_libbinder_tls_test_utils
+    PUBLIC
+    "${LIBBINDER_DIR}/tests/include_tls_test_utils"
+)
+target_link_libraries(android_libbinder_tls_test_utils
+    android_libbinder
+    android_libbinder_tls
+)
+target_compile_options(android_libbinder_tls_test_utils
+    PRIVATE
+    ${LIBBINDER_CXX_FLAGS}
+)
+
 find_package(GTest REQUIRED)
 find_package(Threads REQUIRED)
+
+set(LIBBINDER_TEST_COMMON_DEPS
+    android_libbinder
+    android_libbinder_ndk_hdrs
+    android_libbinder_tls
+    android_libbinder_tls_test_utils
+    android_libbinder_test_aidl
+)
+
+set(LIBBINDER_TESTSERVICE_SRCS
+    "${LIBBINDER_DIR}/tests/binderRpcTestCommon.cpp"
+    "${LIBBINDER_DIR}/tests/binderRpcTestService.cpp"
+)
+add_executable(binder_rpc_test_service_no_kernel ${LIBBINDER_TESTSERVICE_SRCS})
+target_include_directories(binder_rpc_test_service_no_kernel
+    PRIVATE
+    "${LIBBINDER_DIR}/tests"
+)
+target_link_libraries(binder_rpc_test_service_no_kernel
+    ${LIBBINDER_TEST_COMMON_DEPS}
+)
+target_compile_options(binder_rpc_test_service_no_kernel
+    PRIVATE
+    ${LIBBINDER_CXX_FLAGS}
+    "-Wno-error=sign-compare"
+)
 
 set(LIBBINDER_TEST_SRCS
     "${LIBBINDER_DIR}/tests/binderRpcUniversalTests.cpp"
     "${LIBBINDER_DIR}/tests/binderRpcTestCommon.cpp"
     "${LIBBINDER_DIR}/tests/binderRpcTest.cpp"
-    "${LIBBINDER_DIR}/tests/RpcTlsTestUtils.cpp"
 )
 add_executable(binder_rpc_test ${LIBBINDER_TEST_SRCS})
 target_include_directories(binder_rpc_test
     PRIVATE
     "${LIBBINDER_DIR}/tests"
-    "${LIBBINDER_DIR}/tests/include_tls_test_utils"
 )
 target_link_libraries(binder_rpc_test
-    android_libbinder
-    android_libbinder_ndk_hdrs
-    android_libbinder_tls
-    android_libbinder_test_aidl
+    ${LIBBINDER_TEST_COMMON_DEPS}
     GTest::gtest)
 target_compile_options(binder_rpc_test
     PRIVATE
