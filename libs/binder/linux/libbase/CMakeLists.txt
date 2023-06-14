@@ -24,10 +24,17 @@ set(LIBBASE_CXX_FLAGS
     "-fPIC"
 )
 
-find_package(fmt REQUIRED)
-
 if (NOT LIBBASE_DIR AND ANDROID_BUILD_TOP)
     set(LIBBASE_DIR "${ANDROID_BUILD_TOP}/system/libbase")
+endif()
+
+if (NOT FMT_DIR AND ANDROID_BUILD_TOP)
+    set(FMT_DIR "${ANDROID_BUILD_TOP}/external/fmtlib")
+endif()
+if (FMT_DIR)
+    add_subdirectory("${FMT_DIR}" fmt EXCLUDE_FROM_ALL)
+else()
+    find_package(fmt REQUIRED)
 endif()
 
 set(LIBBASE_SRCS
