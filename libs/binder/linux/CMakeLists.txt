@@ -10,11 +10,15 @@ set(LIBBINDER_CXX_FLAGS
     "-fPIC"
 )
 
-add_subdirectory("${BORINGSSL_DIR}" boringssl EXCLUDE_FROM_ALL)
-
 if (NOT LIBBINDER_DIR AND ANDROID_BUILD_TOP)
     set(LIBBINDER_DIR "${ANDROID_BUILD_TOP}/frameworks/native/libs/binder")
 endif()
+
+if (NOT BORINGSSL_DIR AND ANDROID_BUILD_TOP)
+    set(BORINGSSL_DIR "${ANDROID_BUILD_TOP}/external/boringssl/src")
+endif()
+
+add_subdirectory("${BORINGSSL_DIR}" boringssl EXCLUDE_FROM_ALL)
 
 set(LIBBINDER_SRCS
     "${LIBBINDER_DIR}/Binder.cpp"
