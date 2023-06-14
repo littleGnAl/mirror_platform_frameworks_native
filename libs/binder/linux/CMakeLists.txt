@@ -141,26 +141,76 @@ target_link_libraries(android_libbinder_test_aidl
     android_libbinder_ndk_hdrs
 )
 
+add_library(android_libbinder_tls_test_utils
+    "${LIBBINDER_DIR}/tests/RpcTlsTestUtils.cpp"
+)
+target_include_directories(android_libbinder_tls_test_utils
+    PUBLIC
+    "${LIBBINDER_DIR}/tests/include_tls_test_utils"
+)
+target_link_libraries(android_libbinder_tls_test_utils
+    android_libbinder
+    android_libbinder_tls
+)
+target_compile_options(android_libbinder_tls_test_utils
+    PRIVATE
+    ${LIBBINDER_CXX_FLAGS}
+)
+
 find_package(GTest REQUIRED)
 find_package(Threads REQUIRED)
+
+set(LIBBINDER_TEST_COMMON_DEPS
+    android_libbinder
+    android_libbinder_ndk_hdrs
+    android_libbinder_tls
+    android_libbinder_tls_test_utils
+    android_libbinder_test_aidl
+)
+
+set(LIBBINDER_TESTSERVICE_SRCS
+    "${LIBBINDER_DIR}/tests/binderRpcTestCommon.cpp"
+    "${LIBBINDER_DIR}/tests/binderRpcTestService.cpp"
+)
+foreach(test_service_thread_opt "_single_threaded" "")
+    foreach(test_service_kernel_opt "_no_kernel")
+        set(LIBBINDER_TESTSERVICE_BIN "binder_rpc_test_service${test_service_thread_opt}${test_service_kernel_opt}")
+        add_executable("${LIBBINDER_TESTSERVICE_BIN}" ${LIBBINDER_TESTSERVICE_SRCS})
+        set(LIBBINDER_TESTSERVICE_CXX_FLAGS)
+        if ("${test_service_thread_opt}" STREQUAL "_single_threaded")
+            list(APPEND LIBBINDER_TESTSERVICE_CXX_FLAGS "-DBINDER_RPC_SINGLE_THREADED")
+        endif()
+        if (NOT "${test_service_kernel_opt}" STREQUAL "_no_kernel")
+            list(APPEND LIBBINDER_TESTSERVICE_CXX_FLAGS "-DBINDER_WITH_KERNEL_IPC")
+        endif()
+        target_include_directories("${LIBBINDER_TESTSERVICE_BIN}"
+            PRIVATE
+            "${LIBBINDER_DIR}/tests"
+        )
+        target_link_libraries("${LIBBINDER_TESTSERVICE_BIN}"
+            ${LIBBINDER_TEST_COMMON_DEPS}
+        )
+        target_compile_options("${LIBBINDER_TESTSERVICE_BIN}"
+            PRIVATE
+            ${LIBBINDER_CXX_FLAGS}
+            ${LIBBINDER_TESTSERVICE_CXX_FLAGS}
+            "-Wno-error=sign-compare"
+        )
+    endforeach()
+endforeach()
 
 set(LIBBINDER_TEST_SRCS
     "${LIBBINDER_DIR}/tests/binderRpcUniversalTests.cpp"
     "${LIBBINDER_DIR}/tests/binderRpcTestCommon.cpp"
     "${LIBBINDER_DIR}/tests/binderRpcTest.cpp"
-    "${LIBBINDER_DIR}/tests/RpcTlsTestUtils.cpp"
 )
 add_executable(binder_rpc_test ${LIBBINDER_TEST_SRCS})
 target_include_directories(binder_rpc_test
     PRIVATE
     "${LIBBINDER_DIR}/tests"
-    "${LIBBINDER_DIR}/tests/include_tls_test_utils"
 )
 target_link_libraries(binder_rpc_test
-    android_libbinder
-    android_libbinder_ndk_hdrs
-    android_libbinder_tls
-    android_libbinder_test_aidl
+    ${LIBBINDER_TEST_COMMON_DEPS}
     GTest::gtest)
 target_compile_options(binder_rpc_test
     PRIVATE
