@@ -190,6 +190,30 @@
       },
       "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a3afe3_3b8d5fcd",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-06-14T16:34:37Z",
+      "side": 1,
+      "message": "Circling back the the requirements. If we have \n\n\u0027\u0027\u0027\nlet mut a: SomeParcelable \u003d SomeParcelable::new();\nlet b \u003d a.clone();\n```\n\nIf I mutate the ParcelableHolder in `a`; should `b` see the same change?",
+      "parentUuid": "02a850a7_ad43f8aa",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
