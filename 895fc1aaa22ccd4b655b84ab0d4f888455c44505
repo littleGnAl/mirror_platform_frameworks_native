@@ -22,6 +22,30 @@
       },
       "revId": "895fc1aaa22ccd4b655b84ab0d4f888455c44505",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "891e791e_1abd34af",
+        "filename": "libs/binder/linux/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1895775
+      },
+      "writtenOn": "2023-06-14T17:48:38Z",
+      "side": 1,
+      "message": "It is fine if this happens in a future change though.",
+      "parentUuid": "1214c665_5674fae2",
+      "range": {
+        "startLine": 105,
+        "startChar": 15,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "895fc1aaa22ccd4b655b84ab0d4f888455c44505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
