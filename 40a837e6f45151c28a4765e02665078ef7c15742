@@ -142,6 +142,30 @@
       },
       "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51c54e63_a7f99674",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-06-14T00:04:23Z",
+      "side": 1,
+      "message": "Alternatively we can use `Arc\u003cParcelableHolderData\u003e` instead of `Mutex\u003cParcelableHolderData\u003e` or `Arc\u003cMutex\u003cParcelableHolderData\u003e\u003e` to bring this on par with the C++ impl.\n\nArc\u003cT\u003e is immutable by default; it\u0027s both thread-safe and fast to clone. \n\nTo mutate the ParcelableHolderData, we can use Arc::make_mut() which creates a new clone, i.e., copy-on-write.",
+      "parentUuid": "55144df5_d49fba8a",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
