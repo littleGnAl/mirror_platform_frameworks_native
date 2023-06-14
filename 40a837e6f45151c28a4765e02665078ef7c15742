@@ -166,6 +166,30 @@
       },
       "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a850a7_ad43f8aa",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-14T00:21:17Z",
+      "side": 1,
+      "message": "`Parcel` is `Send + !Sync`, which means that `Arc\u003cParcelableHolderData\u003e` would be `!Send + !Sync` (since per https://doc.rust-lang.org/std/sync/struct.Arc.html#impl-Sync-for-Arc%3CT%3E `Arc` implements both traits if the inner type also has both).\n\n`Mutex` \"adds\" thread-safety in a way that `Arc` doesn\u0027t: the inner type is only required to be `Send`, so `ParcelableHolder: Send \u003d\u003e Mutex\u003cParcelableHolderData\u003e: Send + Sync`.",
+      "parentUuid": "51c54e63_a7f99674",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
