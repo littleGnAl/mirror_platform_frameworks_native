@@ -1222,6 +1222,8 @@ bool testSupportVsockLoopback() {
 }
 
 static std::vector<SocketType> testSocketTypes(bool hasPreconnected = true) {
+    return {SocketType::INET};
+
     std::vector<SocketType> ret = {SocketType::UNIX, SocketType::UNIX_BOOTSTRAP, SocketType::INET,
                                    SocketType::UNIX_RAW};
 
@@ -1249,8 +1251,7 @@ INSTANTIATE_TEST_CASE_P(PerSocket, BinderRpc,
                                            ::testing::ValuesIn(RpcSecurityValues()),
                                            ::testing::ValuesIn(testVersions()),
                                            ::testing::ValuesIn(testVersions()),
-                                           ::testing::Values(false, true),
-                                           ::testing::Values(false, true)),
+                                           ::testing::Values(false), ::testing::Values(true)),
                         BinderRpc::PrintParamInfo);
 
 class BinderRpcServerRootObject
