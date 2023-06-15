@@ -334,6 +334,30 @@
       },
       "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "396ec9f7_25e00e72",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-06-15T21:51:30Z",
+      "side": 1,
+      "message": "Thanks for clarifying! I just uploaded the update and ptal.",
+      "parentUuid": "2ec760ba_89e7de2b",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
