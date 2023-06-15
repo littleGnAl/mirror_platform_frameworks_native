@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "680de3e5_806584bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-15T22:02:56Z",
+      "side": 1,
+      "message": "Minot nit: change the summary since you\u0027re not using `#derive[]` anymore? Otherwise LGTM.",
+      "revId": "821a46f1897e0ea2edebfa3df4db3c39e23d985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
