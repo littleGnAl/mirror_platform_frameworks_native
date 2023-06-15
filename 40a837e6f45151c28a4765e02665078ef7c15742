@@ -262,6 +262,30 @@
       },
       "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a028d11_9abfdf36",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-15T18:34:23Z",
+      "side": 1,
+      "message": "You need the `Mutex` to provide thread-safe interior mutability for the `data` field, otherwise `get_parcelable` will need to be switched to `\u0026mut self` since it internally changes `data`.\n\nI think it would be preferable we didn\u0027t change the API like that, especially since the C++ `getParcelable` counterpart is also `const`.\n\nIMHO if the goal is to implement a deep copy, the best way would be to implement `Clone` manually.",
+      "parentUuid": "22bdcf74_8fb2f920",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
