@@ -8,6 +8,7 @@ set(LIBBINDER_CXX_FLAGS
     "-Wextra"
     "-Wno-error=deprecated-declarations"
     "-fPIC"
+    "-g"
 )
 
 if (NOT LIBBINDER_DIR AND ANDROID_BUILD_TOP)
@@ -43,7 +44,6 @@ set(LIBBINDER_SRCS
     "${LIBBINDER_DIR}/trusty/RpcServerTrusty.cpp"
     "${LIBBINDER_DIR}/trusty/RpcTransportTipcTrusty.cpp"
     "${LIBBINDER_DIR}/trusty/TrustyStatus.cpp"
-    "${LIBBINDER_DIR}/trusty/socket.cpp"
 )
 
 add_subdirectory(libbase)
