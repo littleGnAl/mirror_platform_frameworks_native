@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1da1e57_4454c34d",
+        "filename": "libs/binder/tests/binderParcelUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-06-15T18:18:49Z",
+      "side": 1,
+      "message": "maybe use `OK`",
+      "range": {
+        "startLine": 121,
+        "startChar": 14,
+        "endLine": 121,
+        "endChar": 15
+      },
+      "revId": "7961d8250a427e7c00b8894e901fee701e3a9168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9513d033_657c19fa",
+        "filename": "libs/binder/tests/binderParcelUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-06-15T18:18:49Z",
+      "side": 1,
+      "message": "maybe check this in AppendWithBinder too",
+      "revId": "7961d8250a427e7c00b8894e901fee701e3a9168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
