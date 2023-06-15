@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80010710_cbf163dc",
+        "filename": "libs/binder/linux/libutils/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1895775
+      },
+      "writtenOn": "2023-06-15T23:25:31Z",
+      "side": 1,
+      "message": "Wondering why this was disabled.",
+      "range": {
+        "startLine": 47,
+        "startChar": 23,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "0d249a50101c0ca897d692809d43b7185c9aebf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
