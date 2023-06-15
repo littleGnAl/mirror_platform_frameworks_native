@@ -310,6 +310,30 @@
       },
       "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec760ba_89e7de2b",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-15T20:34:10Z",
+      "side": 1,
+      "message": "The two implementations are actually not that different. The C++ version does:\n```\n    mutable std::shared_ptr\u003cParcelable\u003e mParcelable;\n    mutable std::optional\u003cString16\u003e mParcelableName;\n    mutable std::unique_ptr\u003cParcel\u003e mParcelPtr;\n    status_t getParcelable(std::shared_ptr\u003cT\u003e* ret) const {\n        // Modify the mutable fields here\n    }\n```\n\nThe issue here is writing to the `mutable` fields from a `const` method. Rust doesn\u0027t support this directly, but you can always do it with \"interior mutability\" (`RefCell` and `Mutex`). The Rust code initially used `RefCell`, then changed to `Mutex` later (see https://r.android.com/1855900).",
+      "parentUuid": "aa244996_a77dd493",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
