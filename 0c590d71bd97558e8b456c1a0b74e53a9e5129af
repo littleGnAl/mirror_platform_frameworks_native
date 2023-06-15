@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89654f4_add67463",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-15T00:41:44Z",
+      "side": 0,
+      "message": "I didn\u0027t quite understand this because mCurrentThreads is updated in joinThreadPool. Maybe this is talking about polled threads, but they are also commented below.",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 60
+      },
+      "revId": "0c590d71bd97558e8b456c1a0b74e53a9e5129af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
