@@ -286,6 +286,30 @@
       },
       "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa244996_a77dd493",
+        "filename": "libs/binder/rust/src/parcel/parcelable_holder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-06-15T19:45:59Z",
+      "side": 1,
+      "message": "I\u0027m still trying to understand the difference between the Rust and C++ implementations. The need of thread-safe interior mutability is not super clear to me. But I trust your decision since apparently you have more contexts. \n\nAndrei would you mind creating a separate CL that manually implements the Clone trait? Not in a hurry and it\u0027d be great if we can have it before the end of this month. Then we\u0027ll cherry-pick your change to our `udc-swcar-dev` branch.",
+      "parentUuid": "3a028d11_9abfdf36",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "40a837e6f45151c28a4765e02665078ef7c15742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
