@@ -16,6 +16,24 @@
       "message": "Minot nit: change the summary since you\u0027re not using `#derive[]` anymore? Otherwise LGTM.",
       "revId": "821a46f1897e0ea2edebfa3df4db3c39e23d985f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f6e69b_ea7d849a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1611820
+      },
+      "writtenOn": "2023-06-15T22:08:45Z",
+      "side": 1,
+      "message": "Done. And Steven or Jiyong ptal.",
+      "parentUuid": "680de3e5_806584bd",
+      "revId": "821a46f1897e0ea2edebfa3df4db3c39e23d985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
