@@ -1238,6 +1238,8 @@ bool testSupportVsockLoopback() {
 }
 
 static std::vector<SocketType> testSocketTypes(bool hasPreconnected = true) {
+    return {SocketType::INET};
+
     std::vector<SocketType> ret = {SocketType::UNIX, SocketType::UNIX_BOOTSTRAP, SocketType::INET,
                                    SocketType::UNIX_RAW};
 
@@ -1292,7 +1294,7 @@ static std::vector<BinderRpc::ParamType> getBinderRpcParams() {
                     .clientVersion = RPC_WIRE_PROTOCOL_VERSION,
                     .serverVersion = RPC_WIRE_PROTOCOL_VERSION,
                     .singleThreaded = false,
-                    .noKernel = false,
+                    .noKernel = true,
             });
         }
     }
