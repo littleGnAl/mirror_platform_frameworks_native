@@ -192,6 +192,7 @@ void ProcessState::startThreadPool()
     AutoMutex _l(mLock);
     if (!mThreadPoolStarted) {
         if (mMaxThreads == 0) {
+            // see also getThreadPoolMaxTotalThreadCount
             ALOGW("Extra binder thread started, but 0 threads requested. Do not use "
                   "*startThreadPool when zero threads are requested.");
         }
@@ -426,12 +427,27 @@ size_t ProcessState::getThreadPoolMaxTotalThreadCount() const {
     pthread_mutex_lock(&mThreadCountLock);
     base::ScopeGuard detachGuard = [&]() { pthread_mutex_unlock(&mThreadCountLock); };
 
-    // may actually be one more than this, if join is called
     if (mThreadPoolStarted) {
+        if (mMaxThreads <= 0) {
+            LOG_ALWAYS_FATAL_IF(mKernelStartedThreads != 1,
+                                "(legacy behavior) should have exactly one kernel-started thread "
+                                "when max size '0' threadpool  started but have %zu",
+                                mKernelStartedThreads);
+        } else {
+            LOG_ALWAYS_FATAL_IF(mKernelStartedThreads > mMaxThreads,
+                                "too many kernel-started threads: %zu > %zu", mKernelStartedThreads,
+                                mMaxThreads);
+        }
+
+        // if the threadpool size is configured to be 0, startThreadPool
+        // will still start one thread
+        size_t maxThreads = (mMaxThreads == 0) ? 1 : mMaxThreads;
+
         return mCurrentThreads < mKernelStartedThreads
-                ? mMaxThreads
-                : mMaxThreads + mCurrentThreads - mKernelStartedThreads;
+                ? maxThreads
+                : maxThreads + mCurrentThreads - mKernelStartedThreads;
     }
+
     // must not be initialized or maybe has poll thread setup, we
     // currently don't track this in libbinder
     LOG_ALWAYS_FATAL_IF(mKernelStartedThreads != 0,
