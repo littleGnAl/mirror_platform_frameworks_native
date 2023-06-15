@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "736e248a_a40aaf4e",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-15T00:40:25Z",
+      "side": 1,
+      "message": "I didn\u0027t add a test for this, but this self-tests the assumptions made.",
+      "range": {
+        "startLine": 432,
+        "startChar": 12,
+        "endLine": 439,
+        "endChar": 45
+      },
+      "revId": "f3e9ba2e69df77e4045e3815e3fbe346c8143957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
