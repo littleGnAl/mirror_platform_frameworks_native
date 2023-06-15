@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b166017_bdebefa8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-15T20:23:11Z",
+      "side": 1,
+      "message": "I had to make a few changes to make it build for me. How about dropping this into some bash script, at least temporarily?\n\n```\nsudo apt install cmake clang libgtest-dev\n\nlunch aosp_cf_x86_64_phone-userdebug\nm -j aidl\n\n# TODO: try with CMAKE_BUILD_TYPE\u003dDebug\ncd frameworks/native/libs/binder/linux/\nCC\u003dclang CXX\u003dclang++ cmake \\\n    -G Ninja \\\n    -DCMAKE_BUILD_TYPE\u003dRelease \\\n    -DANDROID_BUILD_TOP\u003d$ANDROID_BUILD_TOP \\\n    -DAIDL_BIN\u003d$ANDROID_HOST_OUT/bin/aidl \\\n    -DBORINGSSL_SKIP_TESTS\u003d1 \\\n    -B build\ncmake --build build\n\n./build/binder_rpc_test\n```",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "3e84061652fcf0df9ce5171e303f06500000186f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
