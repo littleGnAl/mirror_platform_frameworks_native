@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ba2e0c_d8e62ebc",
+        "filename": "libs/binder/linux/liblog/logger_write.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1895775
+      },
+      "writtenOn": "2023-06-16T00:58:40Z",
+      "side": 1,
+      "message": "Add a new line? most of the ALOGx callers expect it.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "155750733e67638aef330553836ac5609d5f6b96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
