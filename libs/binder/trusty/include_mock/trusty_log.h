@@ -19,8 +19,8 @@
 
 // Mock definitions for the Trusty logging macros. These are not
 // meant to be run, just compiled successfully.
-#define TLOGD(fmt, ...) printf(fmt, ##__VA_ARGS__)
-#define TLOGI(fmt, ...) printf(fmt, ##__VA_ARGS__)
-#define TLOGW(fmt, ...) printf(fmt, ##__VA_ARGS__)
-#define TLOGE(fmt, ...) printf(fmt, ##__VA_ARGS__)
-#define TLOGC(fmt, ...) printf(fmt, ##__VA_ARGS__)
+#define TLOGD(fmt, ...) fprintf(stderr, fmt, ##__VA_ARGS__)
+#define TLOGI(fmt, ...) fprintf(stderr, fmt, ##__VA_ARGS__)
+#define TLOGW(fmt, ...) fprintf(stderr, fmt, ##__VA_ARGS__)
+#define TLOGE(fmt, ...) fprintf(stderr, fmt, ##__VA_ARGS__)
+#define TLOGC(fmt, ...) fprintf(stderr, fmt, ##__VA_ARGS__)
