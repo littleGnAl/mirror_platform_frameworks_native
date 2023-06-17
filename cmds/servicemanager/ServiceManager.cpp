@@ -404,7 +404,8 @@ Status ServiceManager::addService(const std::string& name, const sp<IBinder>& bi
             .allowIsolated = allowIsolated,
             .dumpPriority = dumpPriority,
             .hasClients = prevClients, // see b/279898063, matters if existing callbacks
-            .guaranteeClient = false,  // handled below
+            .guaranteeClient = true,  // handled below, but still set it in case a callback is registered
+                                      // shortly after this
             .ctx = ctx,
     };
 
