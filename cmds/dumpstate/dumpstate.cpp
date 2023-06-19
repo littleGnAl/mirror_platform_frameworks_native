@@ -129,6 +129,9 @@ using android::os::dumpstate::WaitForTask;
 // frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java
 static const int TRACE_DUMP_TIMEOUT_MS = 10000; // 10 seconds
 
+//use parameter to control dumpsys meminfo timeout when calling writedump directly
+static const std::chrono::milliseconds MEMINFO_TIMEOUT = 60s;
+
 /* Most simple commands have 10 as timeout, so 5 is a good estimate */
 static const int32_t WEIGHT_FILE = 5;
 
@@ -1263,7 +1266,7 @@ static Dumpstate::RunStatus RunDumpsysTextByPriority(const std::string& title, i
                 if (priority == IServiceManager::DUMP_FLAG_PRIORITY_HIGH &&
                     service == String16("meminfo")) {
                     // Use a longer timeout for meminfo, since 30s is not always enough.
-                    status = dumpsys.writeDump(STDOUT_FILENO, service, 60s,
+                    status = dumpsys.writeDump(STDOUT_FILENO, service, MEMINFO_TIMEOUT,
                                                /* as_proto = */ false, elapsed_seconds,
                                                 bytes_written);
                 } else {
