@@ -33,6 +33,24 @@
       "message": "Hi Harry Cutts, I corrected the incorrect content and format of the description of InputDispatcherPolicyInterface. Please review.",
       "revId": "8a478784162233c3ead9c4d70332506664c96367",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae9f82d_5301e971",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1951823
+      },
+      "writtenOn": "2023-06-19T11:59:59Z",
+      "side": 1,
+      "message": "Looks good, thank you!",
+      "parentUuid": "72872a0a_8da9ffc0",
+      "revId": "8a478784162233c3ead9c4d70332506664c96367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
