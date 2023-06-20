@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b367306d_803564cd",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-06-20T20:47:32Z",
+      "side": 1,
+      "message": "Could a log be useful in the future to know if we are hitting the corner case?",
+      "range": {
+        "startLine": 718,
+        "startChar": 19,
+        "endLine": 718,
+        "endChar": 46
+      },
+      "revId": "87847cc369a3cb02c2fda8e77446247825396db4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
