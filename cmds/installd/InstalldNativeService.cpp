@@ -2736,7 +2736,7 @@ binder::Status InstalldNativeService::getUserSize(const std::optional<std::strin
         atrace_pm_end();
     } else {
         atrace_pm_begin("obb");
-        auto obbPath = create_data_path(uuid_) + "/media/obb";
+        auto obbPath = create_data_media_path(uuid_, userId) + "/Android/obb";
         calculate_tree_size(obbPath, &extStats.codeSize);
         atrace_pm_end();
 
@@ -2770,6 +2770,7 @@ binder::Status InstalldNativeService::getUserSize(const std::optional<std::strin
         atrace_pm_begin("external");
         auto dataMediaPath = create_data_media_path(uuid_, userId);
         collectManualExternalStatsForUser(dataMediaPath, &extStats);
+        extStats.dataSize -= extStats.codeSize;
 #if MEASURE_DEBUG
         LOG(DEBUG) << "Measured external data " << extStats.dataSize << " cache "
                 << extStats.cacheSize;
