@@ -232,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "989bdf9c_ccc9dafa",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-20T22:10:17Z",
+      "side": 1,
+      "message": "I\u0027m getting build errors there too. My clang version is 14.0.6.\n\nIt\u0027s not a problem with this structure, but with std::variant member declared on line 1321. It\u0027s two errors there:\n- https://paste.googleplex.com/4631509251129344?raw (when constructing std::variant you need to explicitly define what it is)\n- https://paste.googleplex.com/4767669747187712?raw (this I don\u0027t understand)\n\nBoth can be fixed without adding explicit constructor to this struct: https://paste.googleplex.com/5374580939030528?raw",
+      "parentUuid": "e6cfad30_2657546b",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 25
+      },
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fc164be_f02eb1ed",
         "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
         "patchSetId": 1
