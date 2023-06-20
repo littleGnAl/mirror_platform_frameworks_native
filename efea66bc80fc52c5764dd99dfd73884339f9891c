@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dbbba71_1ce1d7de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-06-20T23:10:42Z",
+      "side": 1,
+      "message": "(i\u0027m not familiar with servicemanager yet and already buried in CL reviews this week, so moving self to CC)",
+      "revId": "efea66bc80fc52c5764dd99dfd73884339f9891c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
