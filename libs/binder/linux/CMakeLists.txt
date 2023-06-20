@@ -15,7 +15,7 @@ if (NOT LIBBINDER_DIR AND ANDROID_BUILD_TOP)
 endif()
 
 if (NOT BORINGSSL_DIR AND ANDROID_BUILD_TOP)
-    set(BORINGSSL_DIR "${ANDROID_BUILD_TOP}/external/boringssl/src")
+    set(BORINGSSL_DIR "${ANDROID_BUILD_TOP}/external/boringssl")
 endif()
 
 add_subdirectory("${BORINGSSL_DIR}" boringssl EXCLUDE_FROM_ALL)
