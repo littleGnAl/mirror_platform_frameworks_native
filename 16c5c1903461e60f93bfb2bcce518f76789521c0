@@ -383,6 +383,24 @@
       "parentUuid": "893049f3_a91bfc8d",
       "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f5fabc_f9d33b47",
+        "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-21T20:47:04Z",
+      "side": 1,
+      "message": "I did. Error message seems legit:\n\n\u003e error: static_assert failed due to requirement \u0027is_same\u003cuuid, const uuid\u003e::value\u0027 \"std::vector must have a non-const, non-volatile value_type\"\n\nHaving said that, I also tried compiling without RpcServerTrusty.cpp and it built fine (just like Andrei said), also passed a few tests. So we don\u0027t need this change, but it\u0027s likely still a bug.",
+      "parentUuid": "119b1227_e4076bee",
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
