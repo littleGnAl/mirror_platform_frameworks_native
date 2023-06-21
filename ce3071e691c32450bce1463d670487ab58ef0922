@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0693cd59_2591d4a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-06-21T16:57:06Z",
+      "side": 1,
+      "message": "This is going to need to be joined in a topic that drops code after join_thread_pool from other codebases.",
+      "revId": "ce3071e691c32450bce1463d670487ab58ef0922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
