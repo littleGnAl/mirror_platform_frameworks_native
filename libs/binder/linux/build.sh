@@ -4,7 +4,6 @@ set -eu
 
 if [ ! -f $ANDROID_BUILD_TOP/external/boringssl/CMakeLists.txt ]; then
     cd "$ANDROID_BUILD_TOP/external/boringssl"
-    git clean -fdx
     python3 src/util/generate_build_files.py cmake
 fi
 
