@@ -48,11 +48,14 @@ impl ProcessState {
     ///
     /// This adds additional threads in addition to what is created by
     /// set_thread_pool_max_thread_count and start_thread_pool.
-    pub fn join_thread_pool() {
+    ///
+    /// This function will never return.
+    pub fn join_thread_pool() -> ! {
         unsafe {
             // Safety: Safe FFI
             sys::ABinderProcess_joinThreadPool();
         }
+        panic!("Unexpected return from ABinderprocess_joinThreadPool")
     }
 }
 
