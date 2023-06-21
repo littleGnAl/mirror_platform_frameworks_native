@@ -40,9 +40,6 @@ set(LIBBINDER_SRCS
     "${LIBBINDER_DIR}/TextOutput.cpp"
     "${LIBBINDER_DIR}/Trace.cpp"
     "${LIBBINDER_DIR}/Utils.cpp"
-    "${LIBBINDER_DIR}/trusty/RpcServerTrusty.cpp"
-    "${LIBBINDER_DIR}/trusty/RpcTransportTipcTrusty.cpp"
-    "${LIBBINDER_DIR}/trusty/TrustyStatus.cpp"
 )
 
 add_subdirectory(libbase)
@@ -52,14 +49,11 @@ add_library(android_libbinder ${LIBBINDER_SRCS})
 target_include_directories(android_libbinder
     PUBLIC
         "${LIBBINDER_DIR}/include"
-        "${LIBBINDER_DIR}/trusty/include"
-        "${LIBBINDER_DIR}/trusty"
 )
 target_link_libraries(android_libbinder android_libbase android_libutils ssl)
 target_compile_options(android_libbinder
     PRIVATE
     ${LIBBINDER_CXX_FLAGS}
-    "-DTRUSTY_USERSPACE"
 )
 
 set(LIBBINDER_TLS_SRCS
