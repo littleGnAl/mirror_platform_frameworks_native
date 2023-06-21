@@ -66,8 +66,7 @@ fn main() -> Result<(), &'static str> {
             .expect("Could not register service");
     }
 
-    binder::ProcessState::join_thread_pool();
-    Err("Unexpected exit after join_thread_pool")
+    binder::ProcessState::join_thread_pool()
 }
 
 fn print_usage() {

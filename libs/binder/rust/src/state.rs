@@ -61,11 +61,12 @@ impl ProcessState {
     /// created by
     /// [`set_thread_pool_max_thread_count`](Self::set_thread_pool_max_thread_count)
     /// and [`start_thread_pool`](Self::start_thread_pool).
-    pub fn join_thread_pool() {
+    pub fn join_thread_pool() -> ! {
         // Safety: Safe FFI
         unsafe {
             sys::ABinderProcess_joinThreadPool();
         }
+        panic!("Unexpected return from ABinderProcess_joinThreadPool")
     }
 }
 
