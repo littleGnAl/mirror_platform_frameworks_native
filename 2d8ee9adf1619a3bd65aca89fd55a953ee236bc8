@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb140a4_4b4d900e",
+        "filename": "libs/binder/trusty/include_mock/trusty_log.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-21T20:44:19Z",
+      "side": 1,
+      "message": "Not against doing this per se, just wanted to point out again: the mock tests are not meant to be run, just compiled on Android. You don\u0027t need to build or run anything that uses the mock headers.",
+      "revId": "2d8ee9adf1619a3bd65aca89fd55a953ee236bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
