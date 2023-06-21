@@ -34,6 +34,24 @@
       "parentUuid": "0693cd59_2591d4a9",
       "revId": "ce3071e691c32450bce1463d670487ab58ef0922",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49cee2c9_7e6f6ca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-06-21T17:24:35Z",
+      "side": 1,
+      "message": "I\u0027m building locally to check - the thing is, while the first failure that\u0027s stopping the build is just an `Ok(())` trailing afterwards, if it\u0027s happening commonly, it\u0027s possible this will prevent someone from thinking they can put useful code after that.",
+      "parentUuid": "3c2de2e2_d8bb9e34",
+      "revId": "ce3071e691c32450bce1463d670487ab58ef0922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
