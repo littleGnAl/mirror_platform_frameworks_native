@@ -16,6 +16,24 @@
       "message": "Hmm I dont have access to the Treehugger bot logs. Siarhei can you help me out please?",
       "revId": "cc5176012d5cc210abf291f5552fd0e1fd055f20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada30244_baa58e51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2023-06-22T20:13:46Z",
+      "side": 1,
+      "message": "There are all internal merge conflicts. The CL has to be cherry picked to internal branches before it can be submitted here. Antonio will help out with that.",
+      "parentUuid": "7127dd35_d81e6b36",
+      "revId": "cc5176012d5cc210abf291f5552fd0e1fd055f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
