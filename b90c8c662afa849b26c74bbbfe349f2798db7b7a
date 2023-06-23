@@ -34,6 +34,24 @@
       "parentUuid": "180dae56_afe02bf7",
       "revId": "b90c8c662afa849b26c74bbbfe349f2798db7b7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15995cb1_d9edc9fa",
+        "filename": "libs/binder/linux/build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2023-06-23T15:25:20Z",
+      "side": 1,
+      "message": "Yeah, we have far too many CMake builds. It\u0027s a huge mess, initially caused by the Perl and Go deps. I think android-cmake is used by the emulator folks and just generates some source lists. This one was originally used by gRPC and generates a top-level file.\n\n(TBH, I suspect when I finally clean this up, there\u0027ll be options like one of the CLs you all sent. But I figure this build is probably better for you in the meantime anyway. 😊 Specifically, it avoids the Go and Perl dep. The cleaned up version will avoid that too.)",
+      "parentUuid": "1fbe56a4_9d4dcb35",
+      "revId": "b90c8c662afa849b26c74bbbfe349f2798db7b7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
