@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180dae56_afe02bf7",
+        "filename": "libs/binder/linux/build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2023-06-23T14:59:11Z",
+      "side": 1,
+      "message": "Rather than shelling out to it on demand, we can check the files in and also update Android\u0027s UPDATING script to include cmake in the list of things generated.\n\nAnd then at some point all the disparate CMake builds will be unified, but *hopefully* we can avoid breaking you.\n\nTo that end, will this build be covered by any sort of CI on Android?",
+      "revId": "b90c8c662afa849b26c74bbbfe349f2798db7b7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
