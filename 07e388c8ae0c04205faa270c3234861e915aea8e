@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73589065_734f4ae4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-23T21:45:03Z",
+      "side": 1,
+      "message": "thank you!",
+      "revId": "07e388c8ae0c04205faa270c3234861e915aea8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57c0f1e_89950543",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-23T21:45:03Z",
+      "side": 1,
+      "message": "If it\u0027s called later, a threadpool will be started, but it may be smaller than expected. Regardless, link_to_death _should_ still work, but there may be more contention.\n\nNote - specifically this case becomes racey when this is called late:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/libs/binder/ProcessState.cpp;l\u003d193;drc\u003d3e9debc9b6054336d3a54272237aa3726ff53a9d\n\nWDYT about avoiding the specific example, and just saying it should be called first, or mentioning specifically that fewer threads than requested may be startable?",
+      "range": {
+        "startLine": 31,
+        "startChar": 73,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "07e388c8ae0c04205faa270c3234861e915aea8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
