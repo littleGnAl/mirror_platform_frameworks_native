@@ -39,6 +39,30 @@
       },
       "revId": "07e388c8ae0c04205faa270c3234861e915aea8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a61863_78b5cb71",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-06-26T14:29:53Z",
+      "side": 1,
+      "message": "From my experience I found that if `start_thread_pool` is not called then `link_to_death` doesn\u0027t work at all; there\u0027s no error or even warning, the death recipient just never gets called. This was a surprising and confusing bug that took a while to find, as I didn\u0027t expect to need to start a thread pool just for an AIDL client to work. I\u0027d like to prevent other people from wasting their time on similar issues.\n\nI call out `link_to_death` specifically because everything else seemed to work fine without a thread pool in that case. Are there other things worth mentioning here that will also break without a threadpool?",
+      "parentUuid": "b57c0f1e_89950543",
+      "range": {
+        "startLine": 31,
+        "startChar": 73,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "07e388c8ae0c04205faa270c3234861e915aea8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
