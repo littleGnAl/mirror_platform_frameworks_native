@@ -34,6 +34,24 @@
       "parentUuid": "edb140a4_4b4d900e",
       "revId": "2d8ee9adf1619a3bd65aca89fd55a953ee236bc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083ab3ea_b37ecaa6",
+        "filename": "libs/binder/trusty/include_mock/trusty_log.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-06-27T19:14:59Z",
+      "side": 1,
+      "message": "@Tomasz We are using Trusty code here https://android-review.git.corp.google.com/c/platform/frameworks/native/+/2616196. So it is still needed.",
+      "parentUuid": "6c05c278_b36d241b",
+      "revId": "2d8ee9adf1619a3bd65aca89fd55a953ee236bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
