@@ -63,6 +63,30 @@
       },
       "revId": "07e388c8ae0c04205faa270c3234861e915aea8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f8ffc7a_247fd4e2",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-27T23:19:03Z",
+      "side": 1,
+      "message": "link_to_death doesn\u0027t require start_thread_pool. For instance, another thread can call joinThreadPool. Alternatively, the main thread can call joinThreadPool, and as part of a transaction call linkToDeath, and that thread can still service death recipients. Also, without calling either of those method, services using polling such as servicemanager also work with linkToDeath.\n\nAnything which is a binder command will fall into this same category, so it\u0027s not just link_to_death, but also any callbacks that your service has (unless for instance they are always nested callbacks, in which case it\u0027ll appear to work without any binder threads at all).\n\nAlso, this puts the link_to_death discussion next to the discussion about the ordering of calling this method and clients, but the thing is, if you mess up the ordering, link_to_death will almost work in all cases.\n\nConsider:\n\n    This should be done before creating any binder client or server. Otherwise, some threads may not be started.\n\n    Binder threads are required to service death notifications (see link_to_death) and callbacks. This method (or another thread, typically the main thread, calling joinThreadPool) will create binder threadpools that can service binder commands.",
+      "parentUuid": "b7a61863_78b5cb71",
+      "range": {
+        "startLine": 31,
+        "startChar": 73,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "07e388c8ae0c04205faa270c3234861e915aea8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
