@@ -111,6 +111,30 @@
       },
       "revId": "07e388c8ae0c04205faa270c3234861e915aea8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9281f6ec_15c72c82",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-28T18:20:22Z",
+      "side": 1,
+      "message": "Single-threaded services are a common and recommended configuration (for efficiency) over this, and the documentation as-is is wrong:\n\n\u003e If not, some things ... will silently not work.\n\nThis is not accurate, and if people read this who really only need one thread, it would waste system resources. We also don\u0027t have to discuss all options, but it would be reasonable to discuss joinThreadPool there as almost every binder server uses it. Please remove this claim (e.g. change it to \"If neither this nor joinThreadPool are called, there will be no thread to serve callbacks or linkToDeath callbacks, and they will be silently queued\"). Otherwise, it\u0027s fine.",
+      "parentUuid": "f4482fc1_491f7077",
+      "range": {
+        "startLine": 31,
+        "startChar": 73,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "07e388c8ae0c04205faa270c3234861e915aea8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
