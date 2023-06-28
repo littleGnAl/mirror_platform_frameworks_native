@@ -328,6 +328,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e068888f_7b0bfd7a",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-06-28T22:31:38Z",
+      "side": 1,
+      "message": "I tested it on my personal macOS device and it passed. I guess that is still a libstdc++ issue. The default STL lib that clang uses on Linux is libstdc++ and usually you need to explicitly specify the one you use.",
+      "parentUuid": "13ca3fb0_0d74ee9e",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 25
+      },
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fc164be_f02eb1ed",
         "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
         "patchSetId": 1
