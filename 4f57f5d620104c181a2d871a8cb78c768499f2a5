@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b456fb_7ba77539",
+        "filename": "libs/binder/trusty/logging.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-28T22:29:26Z",
+      "side": 1,
+      "message": "If you need to use this whole file outside of Trusty, it might make more sense to either\n* make a copy under `libs/binder/linux`, or\n* move it to a common directory and make it generic enough to use under both OSes, i.e., remove all references to Trusty.",
+      "revId": "4f57f5d620104c181a2d871a8cb78c768499f2a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
