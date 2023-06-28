@@ -46,6 +46,30 @@
       },
       "revId": "418914a7c54f4aa0418b6ddbb5096b66286cd80e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b1ddee5_724682ac",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-28T22:51:48Z",
+      "side": 1,
+      "message": "err - or may not, it\u0027s a bit tricky, but it is user error to do such a thing. Also, there are many ways to bypass the checks (in this case, they could read an IBinder object instead of reading an interface object)",
+      "parentUuid": "ae9d2561_50c85159",
+      "range": {
+        "startLine": 108,
+        "startChar": 9,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "418914a7c54f4aa0418b6ddbb5096b66286cd80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
