@@ -22,6 +22,30 @@
       },
       "revId": "418914a7c54f4aa0418b6ddbb5096b66286cd80e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae9d2561_50c85159",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-28T22:48:34Z",
+      "side": 1,
+      "message": "This file is not API. The Parcel.h one is. I\u0027ll send a follow-on to restrict it.",
+      "parentUuid": "328036c0_241f2a8c",
+      "range": {
+        "startLine": 108,
+        "startChar": 9,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "418914a7c54f4aa0418b6ddbb5096b66286cd80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
