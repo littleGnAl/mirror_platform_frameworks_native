@@ -87,6 +87,30 @@
       },
       "revId": "07e388c8ae0c04205faa270c3234861e915aea8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4482fc1_491f7077",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-06-28T16:46:38Z",
+      "side": 1,
+      "message": "Okay, sure, there are other ways to make it work. But AIDL and Binder is confusing enough, especially for people coming to it for the first time, without giving them all the weird unusual options. Let\u0027s make the normal good practice way of doing things as obvious as possible, and avoid them getting stuck on surprising bugs. I want to mention things that might go wrong here so that people encountering such issues and searching the docs are more likely to find this, without adding more complexity to the recommendation than necessary.\n\nAs far as I can tell, the way you should usually write your program which uses Binder, is to call `ProcessState::start_thread_pool()` right at the start before doing anything else. If you don\u0027t, things will go wrong in unexpected ways. Sure, there are other ways you can make it work, but in 90% of cases the correct thing to do is just call `ProcessState::start_thread_pool()` first.\n\nI\u0027ve added a mention of callbacks too, that\u0027s a good point.",
+      "parentUuid": "9f8ffc7a_247fd4e2",
+      "range": {
+        "startLine": 31,
+        "startChar": 73,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "07e388c8ae0c04205faa270c3234861e915aea8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
