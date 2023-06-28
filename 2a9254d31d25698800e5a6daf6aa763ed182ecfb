@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af37a407_c12f2413",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_interface_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-06-28T22:29:22Z",
+      "side": 1,
+      "message": "This is written from the perspective of the framework calling the method, which, at least for me, is hard to grok. How about \"This method is not given ownership of the FD, ...\"",
+      "range": {
+        "startLine": 142,
+        "startChar": 7,
+        "endLine": 142,
+        "endChar": 52
+      },
+      "revId": "2a9254d31d25698800e5a6daf6aa763ed182ecfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
