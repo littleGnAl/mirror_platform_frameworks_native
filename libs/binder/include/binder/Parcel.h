@@ -1315,7 +1315,7 @@ private:
         // Boxed to save space. Lazy allocated.
         std::unique_ptr<std::vector<std::variant<base::unique_fd, base::borrowed_fd>>> mFds;
     };
-    std::variant<KernelFields, RpcFields> mVariantFields;
+    std::variant<RpcFields, KernelFields> mVariantFields;
 
     // Pointer to KernelFields in mVariantFields if present.
     KernelFields* maybeKernelFields() { return std::get_if<KernelFields>(&mVariantFields); }
