@@ -423,7 +423,15 @@ RefreshRate RefreshRateConfigs::getBestRefreshRateLocked(
                     calculateLayerScoreLocked(layer, *scores[i].refreshRate, isSeamlessSwitch);
             ALOGV("%s gives %s score of %.2f", formatLayerInfo(layer, weight).c_str(),
                   scores[i].refreshRate->getName().c_str(), layerScore);
-            scores[i].score += weight * layerScore;
+            if(layer.seamlessness == Seamlessness::SeamedAndSeamless && !isSeamlessSwitch) {
+		if(!strcmp(to_string(layer.desiredRefreshRate).c_str(),scores[i].refreshRate->getName().c_str())) {
+		    scores[i].score += 1.0001f;
+		} else {
+		    scores[i].score += weight * layerScore;
+		}
+	    } else {
+                    scores[i].score += weight * layerScore;
+            }
         }
     }
 
