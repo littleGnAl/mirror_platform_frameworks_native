@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79f2bb6e_34080972",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012005
+      },
+      "writtenOn": "2023-06-28T07:36:57Z",
+      "side": 1,
+      "message": "Hi All, after this patch is merged, some CTS fail cases in CtsDeqpTestCases module is back (https://android-review.googlesource.com/c/platform/frameworks/native/+/2494123) , is there a better way to cover both of them?! Thanks.",
+      "revId": "5c703e7c520161b3ca645d9cea90cd50b26ca392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
