@@ -352,6 +352,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd49268d_dc95c2da",
+        "filename": "libs/binder/include/binder/Parcel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-06-28T23:15:38Z",
+      "side": 1,
+      "message": "Updated https://github.com/llvm/llvm-project/issues/63587. Seems it is a libstdc++ issue, I tried to file an bug but I cannot create an account. If any of you has the account maybe you can file it.",
+      "parentUuid": "e068888f_7b0bfd7a",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 25
+      },
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fc164be_f02eb1ed",
         "filename": "libs/binder/trusty/include/binder/RpcServerTrusty.h",
         "patchSetId": 1
