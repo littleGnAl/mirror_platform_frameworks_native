@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328036c0_241f2a8c",
+        "filename": "libs/binder/ndk/ibinder_internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-06-28T22:31:34Z",
+      "side": 1,
+      "message": "Should we add this as fuzz mode specific APIs? Can someone bypass the checks using these flags?",
+      "range": {
+        "startLine": 108,
+        "startChar": 9,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "418914a7c54f4aa0418b6ddbb5096b66286cd80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
