@@ -22,6 +22,30 @@
       },
       "revId": "1aae25b5fab1a9e874a449fabeb94437f42c0664",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d88ff4_b9fc55d9",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2773,
+      "author": {
+        "id": 1019634
+      },
+      "writtenOn": "2023-06-28T09:18:35Z",
+      "side": 1,
+      "message": "I also thank you for your comment. In collectManualExternalStatsForUser(), it just calculates cacheSize and dataSize. Do you mean that it\u0027s better to calcuate the codeSize from collectManualExternalStatsForUser(), too?",
+      "parentUuid": "095ae315_a15dd020",
+      "range": {
+        "startLine": 2773,
+        "startChar": 0,
+        "endLine": 2773,
+        "endChar": 47
+      },
+      "revId": "1aae25b5fab1a9e874a449fabeb94437f42c0664",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
