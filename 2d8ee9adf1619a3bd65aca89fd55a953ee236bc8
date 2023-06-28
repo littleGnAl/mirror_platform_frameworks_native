@@ -87,6 +87,24 @@
       "parentUuid": "083ab3ea_b37ecaa6",
       "revId": "2d8ee9adf1619a3bd65aca89fd55a953ee236bc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fe7e088_ffbcc35c",
+        "filename": "libs/binder/trusty/include_mock/trusty_log.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-28T22:37:47Z",
+      "side": 1,
+      "message": "OK I think I realized what you\u0027re using the mock header for.\n\nI left a comment on that other CL. What I would recommend is copying (or moving) `trusty/logging.cpp` out of `libs/binder/trusty` and removing all Trusty-specific code from your copy. If you want to print to `stderr`, the copy can do that.\n\nAlternatively, you could move that file out of `libs/binder/trusty` and refactor it to be generic enough for both operating systems. Concretely, the macros here would need to be aliased, e.g.\n```\n#ifdef __TRUSTY__\n#define LOGGER_LOGI(fmt, ...) TLOGI(fmt, ##__VA_ARGS__)\n...\n#else\n#define LOGGER_LOGI(fmt, ...) fprintf(stderr, fmt, ##__VA_ARGS__)\n...\n#endif\n```",
+      "parentUuid": "a89e7224_6adfc4d4",
+      "revId": "2d8ee9adf1619a3bd65aca89fd55a953ee236bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
