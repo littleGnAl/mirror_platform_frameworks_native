@@ -16,6 +16,24 @@
       "message": "why?",
       "revId": "fdf5481309c7d1752f72fbc3ce1ed2b984ab3859",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de278916_5f69c1f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-28T21:49:44Z",
+      "side": 1,
+      "message": "Umm, err... to make it explicit that proc field always have to be initialized. It\u0027s cleaner this way, no?",
+      "parentUuid": "6dd7a0ca_e4db1b52",
+      "revId": "fdf5481309c7d1752f72fbc3ce1ed2b984ab3859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
