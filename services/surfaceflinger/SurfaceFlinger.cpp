@@ -6425,20 +6425,6 @@ status_t SurfaceFlinger::setSchedAttr(bool enabled) {
         return NO_ERROR;
     }
 
-    // Currently, there is no wrapper in bionic: b/183240349.
-    struct sched_attr {
-        uint32_t size;
-        uint32_t sched_policy;
-        uint64_t sched_flags;
-        int32_t sched_nice;
-        uint32_t sched_priority;
-        uint64_t sched_runtime;
-        uint64_t sched_deadline;
-        uint64_t sched_period;
-        uint32_t sched_util_min;
-        uint32_t sched_util_max;
-    };
-
     sched_attr attr = {};
     attr.size = sizeof(attr);
 
@@ -6446,6 +6432,7 @@ status_t SurfaceFlinger::setSchedAttr(bool enabled) {
     attr.sched_util_min = enabled ? kUclampMin : 0;
     attr.sched_util_max = 1024;
 
+    // Currently, there is no wrapper in bionic: b/183240349.
     if (syscall(__NR_sched_setattr, 0, &attr, 0)) {
         return -errno;
     }
