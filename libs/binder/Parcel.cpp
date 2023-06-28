@@ -345,8 +345,7 @@ status_t Parcel::unflattenBinder(sp<IBinder>* out) const
 
 // ---------------------------------------------------------------------------
 
-Parcel::Parcel()
-{
+Parcel::Parcel() : mVariantFields(KernelFields()) {
     LOG_ALLOC("Parcel %p: constructing", this);
     initState();
 }
