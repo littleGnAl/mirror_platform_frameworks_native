@@ -69,6 +69,24 @@
       "parentUuid": "6c05c278_b36d241b",
       "revId": "2d8ee9adf1619a3bd65aca89fd55a953ee236bc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a89e7224_6adfc4d4",
+        "filename": "libs/binder/trusty/include_mock/trusty_log.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-06-28T22:26:54Z",
+      "side": 1,
+      "message": "Are you still using this header specifically? I still think there\u0027s a mistake somewhere else if you are.",
+      "parentUuid": "083ab3ea_b37ecaa6",
+      "revId": "2d8ee9adf1619a3bd65aca89fd55a953ee236bc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
