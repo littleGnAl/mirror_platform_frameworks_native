@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "523a30c6_10f93103",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-28T23:04:53Z",
+      "side": 1,
+      "message": "This is actually intentional - not providing default case will still make compiler complain when a new enum is added.",
+      "parentUuid": "cce41349_504a65f2",
+      "revId": "16c770a5f0423b6fc80f50cb7addc91242ccc182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "dd05601d_cbb00199",
         "filename": "libs/binder/RpcState.cpp",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2023-06-28T22:35:33Z",
       "side": 1,
       "message": "nit: this is unreachable, so no need for a return",
+      "revId": "16c770a5f0423b6fc80f50cb7addc91242ccc182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9843145_f215aac5",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-28T23:04:53Z",
+      "side": 1,
+      "message": "Removed, thanks.",
+      "parentUuid": "dd05601d_cbb00199",
       "revId": "16c770a5f0423b6fc80f50cb7addc91242ccc182",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
