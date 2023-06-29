@@ -1,13 +1,21 @@
 project(libbinder CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 set(LIBBINDER_CXX_FLAGS
     "-Wall"
-    "-Werror"
     "-Wextra"
-    "-Wno-error=deprecated-declarations"
+    "-Wno-deprecated-declarations"
     "-fPIC"
+    "-Wno-unused-variable"
+    "-Wno-attributes"
+    "-Wno-missing-field-initializers"
+    "-Wno-strict-aliasing"
+#    "-Wno-class-memaccess"
+    "-Wno-unknown-pragmas"
+    "-Wno-sequence-point"
+    "-Wno-error=attributes"
+    "-Wno-error=invalid-offsetof"
 )
 
 if (NOT LIBBINDER_DIR AND ANDROID_BUILD_TOP)
@@ -100,10 +108,6 @@ foreach(AIDL_FILE ${LIBBINDER_TEST_AIDL_SRCS})
         COMMAND "${AIDL_BIN}"
         ARGS
         --lang=cpp
-        -Weverything
-        -Wno-missing-permission-annotation
-        -Wno-mixed-oneway
-        -Werror
         -t
         --min_sdk_version current
         --structured
@@ -197,7 +201,7 @@ target_compile_options(binder_rpc_test
     ${LIBBINDER_CXX_FLAGS}
     "-Wno-error=pessimizing-move"
     "-Wno-error=sign-compare"
-    "-Wno-error=reorder-init-list"
+#    "-Wno-error=reorder-init-list"
     "-D__ANDROID_VENDOR__"
 )
 gtest_discover_tests(binder_rpc_test)

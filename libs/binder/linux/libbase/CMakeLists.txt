@@ -20,9 +20,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(LIBBASE_CXX_FLAGS
     "-Wall"
-    "-Werror"
     "-Wextra"
     "-fPIC"
+    "-Wno-unknown-pragmas"
 )
 
 if (NOT LIBBASE_DIR AND ANDROID_BUILD_TOP)

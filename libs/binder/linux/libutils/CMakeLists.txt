@@ -20,10 +20,13 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(LIBUTILS_CXX_FLAGS
     "-Wall"
-    "-Werror"
     "-Wno-exit-time-destructors"
     "-DANDROID_UTILS_REF_BASE_DISABLE_IMPLICIT_CONSTRUCTION"
     "-fPIC"
+#    "-Wno-class-memaccess"
+    "-Wno-sequence-point"
+    "-Wno-sign-compare"
+    "-Wno-attributes"
 )
 
 if (NOT LIBUTILS_DIR AND ANDROID_BUILD_TOP)

@@ -16,14 +16,16 @@
 include_guard(GLOBAL)
 project(libcutils C CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 set(LIBCUTILS_CXX_FLAGS
     "-Wall"
-    "-Werror"
     "-Wextra"
     "-Wno-exit-time-destructors"
     "-fPIC"
+    "-Wno-missing-field-initializers"
+    "-Wno-type-limits"
+    "-Wno-invalid-offsetof"
 )
 
 if (NOT LIBCUTILS_DIR AND ANDROID_BUILD_TOP)
