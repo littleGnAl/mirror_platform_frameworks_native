@@ -3583,6 +3583,8 @@ void SurfaceFlinger::commitOffscreenLayers() {
                 layer->doTransaction(0);
                 layer->commitChildList();
             }
+	    else
+		layer->addToCurrentState();
         });
     }
 }
