@@ -3569,6 +3569,15 @@ void SurfaceFlinger::doCommitTransactions() {
             rootLayer->commitChildList();
         }
     }
+    // TODO(b/163019109): See if this traversal is needed at all...
+    if (!mOffscreenLayers.empty()) {
+        for (Layer* offscreenLayer : mOffscreenLayers) {
+            uint32_t trFlags = offscreenLayer->getTransactionFlags(eTransactionNeeded);
+            if (mOffscreenLayers.count(offscreenLayer) && !trFlags) {
+                mOffscreenLayers.erase(offscreenLayer);
+            }
+        }
+    }
 
     commitOffscreenLayers();
     if (mNumClones > 0) {
