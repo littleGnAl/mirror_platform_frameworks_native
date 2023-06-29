@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f45f03_1492c673",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-29T21:23:09Z",
+      "side": 1,
+      "message": "Also - this is really my bad for missing it, but this doc has the same issue. Could we correct it as well? Thank you for your patience!",
+      "range": {
+        "startLine": 267,
+        "startChar": 28,
+        "endLine": 268,
+        "endChar": 84
+      },
+      "revId": "3443b3f22945b6d2ce1e092cf997d3a8411caa6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3172156e_cc3b9002",
+        "filename": "libs/binder/rust/src/state.rs",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-29T21:23:09Z",
+      "side": 1,
+      "message": "nit: \"work (text text text).\"",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "3443b3f22945b6d2ce1e092cf997d3a8411caa6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
