@@ -26,7 +26,7 @@ fi
 
 cd "$ANDROID_BUILD_TOP/frameworks/native/libs/binder/linux"
 
-CC=clang CXX=clang++ cmake \
+CC=gcc CXX=g++ cmake \
     -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DANDROID_BUILD_TOP=$ANDROID_BUILD_TOP \
