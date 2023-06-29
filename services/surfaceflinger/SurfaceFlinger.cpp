@@ -3570,6 +3570,15 @@ void SurfaceFlinger::doCommitTransactions() {
         }
     }
 
+    if (!mOffscreenLayers.empty()) {
+        for (Layer* offscreenLayer : mOffscreenLayers) {
+            uint32_t trFlags = offscreenLayer->getTransactionFlags() & eTransactionNeeded;
+            if (mOffscreenLayers.count(offscreenLayer) && !trFlags) {
+                mOffscreenLayers.erase(offscreenLayer);
+            }
+        }
+    }
+
     commitOffscreenLayers();
     if (mNumClones > 0) {
         mDrawingState.traverse([&](Layer* layer) { layer->updateMirrorInfo(); });
