@@ -17,7 +17,7 @@ mkdir -p aidl/gen
 aidl/copy-aidl-gen.sh aidl/gen
 
 # Release build doesn't pass tests on RPi due to some race condition
-CC=clang CXX=clang++ cmake \
+CC=gcc CXX=g++ cmake \
     -G Ninja \
     -DCMAKE_BUILD_TYPE=Debug \
     -DANDROID_BUILD_TOP=$ANDROID_BUILD_TOP \
