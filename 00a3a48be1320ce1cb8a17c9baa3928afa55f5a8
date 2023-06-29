@@ -34,6 +34,24 @@
       "parentUuid": "8075b33c_06cfea2f",
       "revId": "00a3a48be1320ce1cb8a17c9baa3928afa55f5a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42bcb33f_2cc86c57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-29T17:49:28Z",
+      "side": 1,
+      "message": "Is the intention of this change to avoid a designated intializer out of order error when using another toolchain?",
+      "parentUuid": "04ce7137_7658eeab",
+      "revId": "00a3a48be1320ce1cb8a17c9baa3928afa55f5a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
