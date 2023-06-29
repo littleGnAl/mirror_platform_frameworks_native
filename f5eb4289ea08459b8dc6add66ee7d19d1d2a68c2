@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b878c435_e0eafe68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081758
+      },
+      "writtenOn": "2023-06-29T07:31:33Z",
+      "side": 1,
+      "message": "run self test on riscv android12 with this patch\nCtsOpenGLTestCases\nCtsGraphicsTestCases\nCtsUiRenderingTestCases\nAll pass\n\nadb shell dumpsys SurfaceFlinger, no offscreen layer in dumpsys",
+      "revId": "f5eb4289ea08459b8dc6add66ee7d19d1d2a68c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
