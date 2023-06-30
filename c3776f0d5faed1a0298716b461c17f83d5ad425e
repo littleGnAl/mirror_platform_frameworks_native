@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd94ff0_1901866e",
+        "filename": "libs/binder/tests/rpc_fuzzer/main.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-06-30T17:26:23Z",
+      "side": 1,
+      "message": "L169 does the same thing as this, but we intentionally only do it half the time because we want the other thread to process transactions. If we clear the connections immediately, we will lose that coverage.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 0
+      },
+      "revId": "c3776f0d5faed1a0298716b461c17f83d5ad425e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
