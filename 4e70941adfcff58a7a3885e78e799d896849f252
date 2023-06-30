@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f15cde_5c1efc9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2023-06-30T22:18:33Z",
+      "side": 1,
+      "message": "We actually had this bug fixed in Android UDC. I ported the fix to AOSP so you could use it: https://android-review.googlesource.com/c/platform/frameworks/native/+/2647659\n\n(I haven\u0027t had a chance to test it, and the AOSP branch vs. UDC is a bit different so it might be buggy)",
+      "revId": "4e70941adfcff58a7a3885e78e799d896849f252",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
