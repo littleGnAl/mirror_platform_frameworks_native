@@ -46,6 +46,30 @@
       },
       "revId": "e8639c4140578a5a1153206848ba8b2fd5df2078",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "047bbb1c_50bc7475",
+        "filename": "libs/binder/linux/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-06-30T18:40:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f818725_15734c7c",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 46
+      },
+      "revId": "e8639c4140578a5a1153206848ba8b2fd5df2078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
