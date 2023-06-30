@@ -182,7 +182,15 @@ float RefreshRateConfigs::calculateNonExactMatchingLayerScoreLocked(const LayerR
 
     if (layer.vote == LayerVoteType::ExplicitExactOrMultiple ||
         layer.vote == LayerVoteType::Heuristic) {
-        if (isFractionalPairOrMultiple(refreshRate, layer.desiredRefreshRate)) {
+        const float multiplier = refreshRate.getValue() / layer.desiredRefreshRate.getValue();
+
+        // We only want to score this layer as a fractional pair if the content is not
+        // significantly faster than the display rate, at it would cause a significant frame drop.
+        // It is more appropriate to choose a higher display rate even if
+        // a pull-down will be required.
+        constexpr float kMinMultiplier = 0.75f;
+        if (multiplier >= kMinMultiplier &&
+            isFractionalPairOrMultiple(refreshRate, layer.desiredRefreshRate)) {
             return kScoreForFractionalPairs;
         }
 
