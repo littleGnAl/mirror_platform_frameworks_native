@@ -16,6 +16,24 @@
       "message": "(i\u0027m curious why this is something that risc-v hit that [presumably] the other architectures didn\u0027t hit?)",
       "revId": "3a11add31c6485855c208c040c29b37fb9f21e9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de629763_2ef45b08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081758
+      },
+      "writtenOn": "2023-06-30T00:17:00Z",
+      "side": 1,
+      "message": "Hi Elliott,\nRiscv device has no iommu device now, it can only alloc cma memory for GPU/Camera, and the cma size is 512MB.\n\nI have revert some codeaurora cma patches as below, these patches have negative effect for riscv devices without iommu.\n\nSurfaceflinger offscreen patches also have negative effect for riscv device, it hold a lot of cma memory for offscreen layer.\n\nThanks.\n\ncommit 3d7ab504ecc8fa7fb30e7b6cddbc23d72dce9606\nAuthor: Chris Goldsworthy \u003ccgoldswo@codeaurora.org\u003e\nDate:   Mon Nov 16 18:38:13 2020 -0800\n\n    ANDROID: mm: add cma pcp list\n    \n    Add a PCP list for __GFP_CMA allocations so as not to deprive\n    MIGRATE_MOVABLE allocations quick access to order-zero pages.\n    \n    Bug: 158645321\n    Signed-off-by: Liam Mark \u003clmark@codeaurora.org\u003e\n    Signed-off-by: Chris Goldsworthy \u003ccgoldswo@codeaurora.org\u003e\n    Change-Id: I601f686097de733dedeb1c47b00693bcc25829ed",
+      "parentUuid": "e85e15a6_6366e614",
+      "revId": "3a11add31c6485855c208c040c29b37fb9f21e9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
