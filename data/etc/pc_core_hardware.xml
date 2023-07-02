@@ -63,4 +63,7 @@
     <!-- Feature to specify if the device supports freeform. -->
     <feature name="android.software.freeform_window_management" />
     <feature name="android.hardware.type.pc" />
+
+    <!-- Feature to specify services required during setup -->
+    <feature name="android.software.dynamic_system_installation_setup" />
 </permissions>

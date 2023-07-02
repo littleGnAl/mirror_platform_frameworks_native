@@ -65,6 +65,9 @@
     <!-- Feature to specify if the device supports controls. -->
     <feature name="android.software.controls" />
 
+    <!-- Feature to specify services required during setup -->
+    <feature name="android.software.dynamic_system_installation_setup" />
+
     <!-- devices with GPS must include android.hardware.location.gps.xml -->
     <!-- devices with a rear-facing camera must include one of these as appropriate:
          android.hardware.camera.xml or
