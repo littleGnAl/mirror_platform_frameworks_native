@@ -16,6 +16,24 @@
       "message": "We actually had this bug fixed in Android UDC. I ported the fix to AOSP so you could use it: https://android-review.googlesource.com/c/platform/frameworks/native/+/2647659\n\n(I haven\u0027t had a chance to test it, and the AOSP branch vs. UDC is a bit different so it might be buggy)",
       "revId": "4e70941adfcff58a7a3885e78e799d896849f252",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b334bdf_0e2ff31c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1941881
+      },
+      "writtenOn": "2023-07-03T07:47:44Z",
+      "side": 1,
+      "message": "Ady,\nI tried to port your changes from master to ATV12 branch. Finally I find this still does not work as expected.\nIf the source content is 1080p@25hz,the display mode is still  1080p@50hz.\n\nIn your changes by adding this:\n  const float multiplier \u003d refreshRate.getValue() / layer.desiredRefreshRate.getValue();\n\nBy debugging:\nrefresh rate \u003d25.000000, desiredRefreshrate \u003d 25.000000, multiplier\u003d 1.000000 \nrefresh rate \u003d50.000000, desiredRefreshrate \u003d 25.000000, multiplier\u003d 2.000000 \n\nThis still prefer 50HZ instead of 25HZ.\nThis issue is not related with 3:2 pull down as you described in b/2647659.",
+      "parentUuid": "17f15cde_5c1efc9f",
+      "revId": "4e70941adfcff58a7a3885e78e799d896849f252",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
