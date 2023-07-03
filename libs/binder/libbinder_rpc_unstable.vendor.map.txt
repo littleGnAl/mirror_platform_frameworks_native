@@ -1,0 +1,22 @@
+LIBBINDER_RPC_UNSTABLE_SHIM { # introduced=UpsideDownCake
+  global:
+    ARpcServer_free;
+    ARpcServer_join;
+    ARpcServer_newBoundSocket;
+    ARpcServer_newInet;
+    ARpcServer_newVsock;
+    ARpcServer_shutdown;
+    ARpcServer_start;
+    ARpcSession_free;
+    ARpcSession_new;
+    ARpcSession_setFileDescriptorTransportMode;
+    ARpcSession_setMaxIncomingThreads;
+    ARpcSession_setMaxOutgoingConnections;
+    ARpcSession_setupPreconnectedClient;
+    ARpcSession_setupUnixDomainBootstrapClient;
+    RpcPreconnectedClient;
+    UnixDomainRpcClient;
+    VsockRpcClient;
+  local:
+    *;
+};
