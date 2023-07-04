@@ -34,6 +34,24 @@
       "parentUuid": "79f2bb6e_34080972",
       "revId": "5c703e7c520161b3ca645d9cea90cd50b26ca392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd543da_071275c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012005
+      },
+      "writtenOn": "2023-07-04T08:23:40Z",
+      "side": 1,
+      "message": "Hi @yuxinhu@google.com , we just verify this CTS module in our local side, should we raise a case in somewhere? could you please advise? thanks.",
+      "parentUuid": "be374cb7_8e099232",
+      "revId": "5c703e7c520161b3ca645d9cea90cd50b26ca392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
