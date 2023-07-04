@@ -16,6 +16,24 @@
       "message": "Hi @maco@google.com\nCan you check the last update?",
       "revId": "ae3e9ae7ce09db3e93be5b0243e318653b6d9327",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b916197_066ac5f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2023-07-04T06:49:05Z",
+      "side": 1,
+      "message": "Thank you!",
+      "parentUuid": "87c9744f_544c5461",
+      "revId": "ae3e9ae7ce09db3e93be5b0243e318653b6d9327",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
