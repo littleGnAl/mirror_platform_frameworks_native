@@ -52,6 +52,24 @@
       "parentUuid": "be374cb7_8e099232",
       "revId": "5c703e7c520161b3ca645d9cea90cd50b26ca392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba4f8a0a_bf4539c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-07-05T15:40:06Z",
+      "side": 1,
+      "message": "You can file bugs with your partner accounts or file bugs on https://issuetracker.google.com/issues",
+      "parentUuid": "2cd543da_071275c0",
+      "revId": "5c703e7c520161b3ca645d9cea90cd50b26ca392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
