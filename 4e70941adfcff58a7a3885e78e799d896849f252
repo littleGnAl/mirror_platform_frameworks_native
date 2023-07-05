@@ -34,6 +34,24 @@
       "parentUuid": "17f15cde_5c1efc9f",
       "revId": "4e70941adfcff58a7a3885e78e799d896849f252",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d3e3dd8_dfddf990",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2023-07-05T19:05:17Z",
+      "side": 1,
+      "message": "Ack. I commented on b/285227861",
+      "parentUuid": "3b334bdf_0e2ff31c",
+      "revId": "4e70941adfcff58a7a3885e78e799d896849f252",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
