@@ -236,6 +236,14 @@ binder::Status checkArgumentFileName(const std::string& path) {
     }                                                       \
 }
 
+#define ENFORCE_VALID_USER(userId)                                                               \
+    {                                                                                            \
+        if (userId < 0 ||                                                                        \
+            static_cast<uid_t>(userId) >= std::numeric_limits<uid_t>::max() / AID_USER_OFFSET) { \
+            return error("userId invalid: " + std::to_string(userId));                           \
+        }                                                                                        \
+    }
+
 #define CHECK_ARGUMENT_UUID(uuid) {                         \
     binder::Status status = checkArgumentUuid((uuid));      \
     if (!status.isOk()) {                                   \
@@ -696,6 +704,7 @@ binder::Status InstalldNativeService::createAppDataLocked(
         int32_t flags, int32_t appId, int32_t previousAppId, const std::string& seInfo,
         int32_t targetSdkVersion, int64_t* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
 
@@ -790,6 +799,8 @@ binder::Status InstalldNativeService::createAppDataLocked(
 binder::Status InstalldNativeService::createSdkSandboxDataPackageDirectory(
         const std::optional<std::string>& uuid, const std::string& packageName, int32_t userId,
         int32_t appId, int32_t flags) {
+    ENFORCE_VALID_USER(userId);
+
     int32_t sdkSandboxUid = multiuser_get_sdk_sandbox_uid(userId, appId);
     if (sdkSandboxUid == -1) {
         // There no valid sdk sandbox process for this app. Skip creation of data directory
@@ -828,6 +839,7 @@ binder::Status InstalldNativeService::createAppData(
         int32_t flags, int32_t appId, int32_t previousAppId, const std::string& seInfo,
         int32_t targetSdkVersion, int64_t* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     LOCK_PACKAGE_USER();
@@ -839,6 +851,7 @@ binder::Status InstalldNativeService::createAppData(
         const android::os::CreateAppDataArgs& args,
         android::os::CreateAppDataResult* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(args.userId);
     // Locking is performed depeer in the callstack.
 
     int64_t ceDataInode = -1;
@@ -854,6 +867,10 @@ binder::Status InstalldNativeService::createAppDataBatched(
         const std::vector<android::os::CreateAppDataArgs>& args,
         std::vector<android::os::CreateAppDataResult>* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    for (const auto& arg : args) {
+        ENFORCE_VALID_USER(arg.userId);
+    }
+
     // Locking is performed depeer in the callstack.
 
     std::vector<android::os::CreateAppDataResult> results;
@@ -868,6 +885,7 @@ binder::Status InstalldNativeService::createAppDataBatched(
 
 binder::Status InstalldNativeService::reconcileSdkData(
         const android::os::ReconcileSdkDataArgs& args) {
+    ENFORCE_VALID_USER(args.userId);
     // Locking is performed depeer in the callstack.
 
     return reconcileSdkData(args.uuid, args.packageName, args.subDirNames, args.userId, args.appId,
@@ -891,6 +909,7 @@ binder::Status InstalldNativeService::reconcileSdkData(const std::optional<std::
                                                        int userId, int appId, int previousAppId,
                                                        const std::string& seInfo, int flags) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     LOCK_PACKAGE_USER();
@@ -974,6 +993,7 @@ binder::Status InstalldNativeService::reconcileSdkData(const std::optional<std::
 binder::Status InstalldNativeService::migrateAppData(const std::optional<std::string>& uuid,
         const std::string& packageName, int32_t userId, int32_t flags) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     LOCK_PACKAGE_USER();
@@ -1041,6 +1061,7 @@ binder::Status InstalldNativeService::clearAppProfiles(const std::string& packag
 binder::Status InstalldNativeService::clearAppData(const std::optional<std::string>& uuid,
         const std::string& packageName, int32_t userId, int32_t flags, int64_t ceDataInode) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     LOCK_PACKAGE_USER();
@@ -1132,6 +1153,7 @@ binder::Status InstalldNativeService::clearAppData(const std::optional<std::stri
 binder::Status InstalldNativeService::clearSdkSandboxDataPackageDirectory(
         const std::optional<std::string>& uuid, const std::string& packageName, int32_t userId,
         int32_t flags) {
+    ENFORCE_VALID_USER(userId);
     const char* uuid_ = uuid ? uuid->c_str() : nullptr;
     const char* pkgname = packageName.c_str();
 
@@ -1218,6 +1240,7 @@ binder::Status InstalldNativeService::deleteReferenceProfile(const std::string& 
 binder::Status InstalldNativeService::destroyAppData(const std::optional<std::string>& uuid,
         const std::string& packageName, int32_t userId, int32_t flags, int64_t ceDataInode) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     LOCK_PACKAGE_USER();
@@ -1288,6 +1311,8 @@ binder::Status InstalldNativeService::destroyAppData(const std::optional<std::st
 binder::Status InstalldNativeService::destroySdkSandboxDataPackageDirectory(
         const std::optional<std::string>& uuid, const std::string& packageName, int32_t userId,
         int32_t flags) {
+    ENFORCE_VALID_USER(userId);
+
     const char* uuid_ = uuid ? uuid->c_str() : nullptr;
     const char* pkgname = packageName.c_str();
 
@@ -1435,6 +1460,7 @@ binder::Status InstalldNativeService::snapshotAppData(const std::optional<std::s
                                                       int32_t userId, int32_t snapshotId,
                                                       int32_t storageFlags, int64_t* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID_IS_TEST_OR_NULL(volumeUuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     LOCK_PACKAGE_USER();
@@ -1569,6 +1595,7 @@ binder::Status InstalldNativeService::restoreAppDataSnapshot(
         const int32_t appId, const std::string& seInfo, const int32_t userId,
         const int32_t snapshotId, int32_t storageFlags) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID_IS_TEST_OR_NULL(volumeUuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     LOCK_PACKAGE_USER();
@@ -1641,6 +1668,7 @@ binder::Status InstalldNativeService::destroyAppDataSnapshot(
         const int32_t userId, const int64_t ceSnapshotInode, const int32_t snapshotId,
         int32_t storageFlags) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID_IS_TEST_OR_NULL(volumeUuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     LOCK_PACKAGE_USER();
@@ -1674,6 +1702,7 @@ binder::Status InstalldNativeService::destroyCeSnapshotsNotSpecified(
         const std::optional<std::string>& volumeUuid, const int32_t userId,
         const std::vector<int32_t>& retainSnapshotIds) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID_IS_TEST_OR_NULL(volumeUuid);
     LOCK_USER();
 
@@ -1864,6 +1893,7 @@ fail:
 binder::Status InstalldNativeService::createUserData(const std::optional<std::string>& uuid,
         int32_t userId, int32_t userSerial ATTRIBUTE_UNUSED, int32_t flags) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     LOCK_USER();
 
@@ -1884,6 +1914,7 @@ binder::Status InstalldNativeService::createUserData(const std::optional<std::st
 binder::Status InstalldNativeService::destroyUserData(const std::optional<std::string>& uuid,
         int32_t userId, int32_t flags) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     LOCK_USER();
 
@@ -2663,6 +2694,7 @@ binder::Status InstalldNativeService::getUserSize(const std::optional<std::strin
         int32_t userId, int32_t flags, const std::vector<int32_t>& appIds,
         std::vector<int64_t>* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     // NOTE: Locking is relaxed on this method, since it's limited to
     // read-only measurements without mutation.
@@ -2802,6 +2834,7 @@ binder::Status InstalldNativeService::getExternalSize(const std::optional<std::s
         int32_t userId, int32_t flags, const std::vector<int32_t>& appIds,
         std::vector<int64_t>* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     // NOTE: Locking is relaxed on this method, since it's limited to
     // read-only measurements without mutation.
@@ -2922,6 +2955,7 @@ binder::Status InstalldNativeService::getAppCrates(
         const std::vector<std::string>& packageNames, int32_t userId,
         std::optional<std::vector<std::optional<CrateMetadata>>>* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     for (const auto& packageName : packageNames) {
         CHECK_ARGUMENT_PACKAGE_NAME(packageName);
@@ -2971,6 +3005,7 @@ binder::Status InstalldNativeService::getUserCrates(
         const std::optional<std::string>& uuid, int32_t userId,
         std::optional<std::vector<std::optional<CrateMetadata>>>* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
 #ifdef ENABLE_STORAGE_CRATES
     LOCK_USER();
@@ -3014,6 +3049,7 @@ binder::Status InstalldNativeService::getUserCrates(
 binder::Status InstalldNativeService::setAppQuota(const std::optional<std::string>& uuid,
         int32_t userId, int32_t appId, int64_t cacheQuota) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     std::lock_guard<std::recursive_mutex> lock(mQuotasLock);
 
@@ -3257,6 +3293,7 @@ binder::Status InstalldNativeService::restoreconAppData(const std::optional<std:
         const std::string& packageName, int32_t userId, int32_t flags, int32_t appId,
         const std::string& seInfo) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     LOCK_PACKAGE_USER();
@@ -3267,6 +3304,7 @@ binder::Status InstalldNativeService::restoreconAppDataLocked(
         const std::optional<std::string>& uuid, const std::string& packageName, int32_t userId,
         int32_t flags, int32_t appId, const std::string& seInfo) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
 
@@ -3298,6 +3336,7 @@ binder::Status InstalldNativeService::restoreconSdkDataLocked(
         const std::optional<std::string>& uuid, const std::string& packageName, int32_t userId,
         int32_t flags, int32_t appId, const std::string& seInfo) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_UUID(uuid);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
 
@@ -3749,6 +3788,7 @@ binder::Status InstalldNativeService::prepareAppProfile(const std::string& packa
         int32_t userId, int32_t appId, const std::string& profileName, const std::string& codePath,
         const std::optional<std::string>& dexMetadata, bool* _aidl_return) {
     ENFORCE_UID(AID_SYSTEM);
+    ENFORCE_VALID_USER(userId);
     CHECK_ARGUMENT_PACKAGE_NAME(packageName);
     CHECK_ARGUMENT_PATH(codePath);
     LOCK_PACKAGE_USER();
@@ -3771,6 +3811,7 @@ binder::Status InstalldNativeService::migrateLegacyObbData() {
 
 binder::Status InstalldNativeService::cleanupInvalidPackageDirs(
         const std::optional<std::string>& uuid, int32_t userId, int32_t flags) {
+    ENFORCE_VALID_USER(userId);
     const char* uuid_cstr = uuid ? uuid->c_str() : nullptr;
 
     if (flags & FLAG_STORAGE_CE) {
