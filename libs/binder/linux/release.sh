@@ -10,6 +10,9 @@ git clean -fdx
 mkdir -p "$OUTDIR/frameworks/native/libs/binder"
 cp -r . "$OUTDIR/frameworks/native/libs/binder"
 
+mkdir -p "$OUTDIR/frameworks/native/libs/binder/linux/aidl/gen"
+linux/aidl/copy-aidl-gen.sh "$OUTDIR/frameworks/native/libs/binder/linux/aidl/gen"
+
 cd "$ANDROID_BUILD_TOP/external/boringssl"
 git clean -fdx
 mkdir -p "$OUTDIR/external/boringssl"
@@ -35,10 +38,10 @@ git clean -fdx
 mkdir -p "$OUTDIR/system/core/libutils"
 cp -r . "$OUTDIR/system/core/libutils"
 
-mkdir -p "$OUTDIR/prebuilts/host/linux-x86/bin"
-mkdir -p "$OUTDIR/prebuilts/host/linux-x86/lib64"
-cp "$ANDROID_HOST_OUT/bin/aidl" "$OUTDIR/prebuilts/host/linux-x86/bin"
-cp "$ANDROID_HOST_OUT/lib64/libc++.so" "$OUTDIR/prebuilts/host/linux-x86/lib64"
+cd "$ANDROID_BUILD_TOP/system/tools/aidl"
+git clean -fdx
+mkdir -p "$OUTDIR/system/tools/aidl"
+cp -r . "$OUTDIR/system/tools/aidl"
 
 cd $TEMPDIR
 tar -cvf "$ANDROID_BUILD_TOP/frameworks/native/libs/binder/linux/linux-binder.tar.gz" linux-binder >/dev/null
