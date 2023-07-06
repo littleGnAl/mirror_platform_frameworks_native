@@ -34,6 +34,24 @@
       "parentUuid": "0bdb526b_1a187e88",
       "revId": "31879ba1f1b97957471894261b28b705029f36a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec29323_78dcf0f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-06T23:16:47Z",
+      "side": 1,
+      "message": "\u003e enable rustdoc in the main build\n\nOh that\u0027s where this is coming from? Trusty does indeed have rustdoc enabled.",
+      "parentUuid": "dfa84a5c_59301cc1",
+      "revId": "31879ba1f1b97957471894261b28b705029f36a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
