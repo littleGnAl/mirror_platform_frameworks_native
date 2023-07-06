@@ -107,8 +107,9 @@ target_compile_options(android_libbinder_tls
     ${LIBBINDER_CXX_FLAGS}
 )
 
+add_subdirectory(aidl)
 if (NOT AIDL_BIN)
-    find_program(AIDL_BIN aidl REQUIRED)
+    set(AIDL_BIN "${CMAKE_CURRENT_BINARY_DIR}/aidl/aidl")
 endif()
 set(LIBBINDER_TEST_AIDL_SRCS
     "${LIBBINDER_DIR}/tests/BinderRpcTestClientInfo.aidl"
@@ -129,6 +130,7 @@ foreach(AIDL_FILE ${LIBBINDER_TEST_AIDL_SRCS})
     set(AIDL_CPP_FILE "${LIBBINDER_TEST_AIDL_GENDIR}/${AIDL_FILENAME_WE}.cpp")
     add_custom_command(
         OUTPUT "${AIDL_CPP_FILE}"
+        DEPENDS aidl
         COMMAND "${AIDL_BIN}"
         ARGS
         --lang=cpp
