@@ -16,6 +16,24 @@
       "message": "Can we turn these stricter flags on in Android?",
       "revId": "31879ba1f1b97957471894261b28b705029f36a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfa84a5c_59301cc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-06T18:41:16Z",
+      "side": 1,
+      "message": "You can turn it on for your crate with:\n\n`![deny(rustdoc::broken_intra_doc_links)]`\n\nWe didn\u0027t want to turn it on for Android as a whole because the build team didn\u0027t want the `rustdoc` target to be part of the main build, and that lint only triggers when documentation is built. Currently, documentation is built as part of the throttled postsubmit. If we turn it on, mistakes will be caught later that day, not before a patch is merged.\n\nIf you feel you are willing to work with fixing that for your crate, you can turn it on, but we didn\u0027t want to enable a non-presubmit lint. If you feel this is important, we can go have a chat with the build team together about trying to enable rustdoc in the main build, possibly with a workaround to generate fewer files.",
+      "parentUuid": "0bdb526b_1a187e88",
+      "revId": "31879ba1f1b97957471894261b28b705029f36a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

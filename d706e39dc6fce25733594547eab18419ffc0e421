@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc34ef27_c0b2a8f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-06T18:41:16Z",
+      "side": 1,
+      "message": "Code adjustments LGTM. +1\u0027d to wait on resolution of smoreland\u0027s comment.",
+      "revId": "d706e39dc6fce25733594547eab18419ffc0e421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
