@@ -63,6 +63,30 @@
       },
       "revId": "11ea9ff0b37b5bc87a6c45064a32194fffeec909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12ac5ef4_aedd635d",
+        "filename": "libs/binder/trusty/rust/binder_ndk_sys/rules.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-06T23:49:22Z",
+      "side": 1,
+      "message": "Another way could be to store the arguments in a file and pass that in, but that hasn\u0027t been implemented yet (https://github.com/rust-lang/rust-bindgen/issues/1898).\n\nA hackier approach could be to put all the flags into a text file and import them into each build system. Make can definitely do that e.g. `MODULE_BINDGEN_FLAGS +\u003d $(shell cat bindgen_flags.txt)`, but I\u0027m not sure how it would work in Soong.\n\nI\u0027ll try out the `custom_bindgen` approach, wrapping bindgen in a script was my initial idea but thought it was too hacky (and didn\u0027t know Soong supported that). Afaik the Trusty build system doesn\u0027t have an equivalent, but I could always add it.",
+      "parentUuid": "9d8956b2_cc910e5e",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "11ea9ff0b37b5bc87a6c45064a32194fffeec909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
