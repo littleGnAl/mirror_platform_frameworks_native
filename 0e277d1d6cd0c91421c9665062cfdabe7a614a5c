@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e99178a0_f143f290",
+        "filename": "libs/binder/rust/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-07T16:16:13Z",
+      "side": 1,
+      "message": "This at a minimum needs to depend on `bindgen`, or it may not be built when this script is built, let alone be available on a RBE host.",
+      "revId": "0e277d1d6cd0c91421c9665062cfdabe7a614a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4baa14_4eb2c387",
+        "filename": "libs/binder/rust/libbinder_ndk_bindgen.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-07-07T16:16:13Z",
+      "side": 1,
+      "message": "This is not stable.",
+      "revId": "0e277d1d6cd0c91421c9665062cfdabe7a614a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
