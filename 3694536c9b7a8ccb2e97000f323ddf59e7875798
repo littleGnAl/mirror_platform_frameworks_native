@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "435053a5_60c85d6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-07T00:38:47Z",
+      "side": 1,
+      "message": "\u003e FailBuildOnDiskFallbackError",
+      "revId": "3694536c9b7a8ccb2e97000f323ddf59e7875798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
