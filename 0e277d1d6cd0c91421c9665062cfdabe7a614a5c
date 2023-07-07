@@ -33,6 +33,24 @@
       "message": "This is not stable.",
       "revId": "0e277d1d6cd0c91421c9665062cfdabe7a614a5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a90ebc5_9815b471",
+        "filename": "libs/binder/rust/libbinder_ndk_bindgen.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-07T21:41:19Z",
+      "side": 1,
+      "message": "Right, but I wasn\u0027t sure what to do here. `bindgen` can\u0027t be used from `PATH`, the script afaict doesn\u0027t have access to the prebuilts directory, and the only other place it\u0027s available is `$ANDROID_HOST_OUT` which is also where the script is (but that variable is not exported to the script).\n\nI\u0027ll go try to figure out what is in the environment of the script and how to locate `bindgen`, unless you already know of a way.",
+      "parentUuid": "1c4baa14_4eb2c387",
+      "revId": "0e277d1d6cd0c91421c9665062cfdabe7a614a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
