@@ -87,6 +87,30 @@
       },
       "revId": "11ea9ff0b37b5bc87a6c45064a32194fffeec909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37e7220_82cac914",
+        "filename": "libs/binder/trusty/rust/binder_ndk_sys/rules.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-07T06:15:20Z",
+      "side": 1,
+      "message": "`custom_bindgen` (with the small change to Soong) worked.",
+      "parentUuid": "12ac5ef4_aedd635d",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "11ea9ff0b37b5bc87a6c45064a32194fffeec909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
