@@ -52,6 +52,24 @@
       "parentUuid": "de629763_2ef45b08",
       "revId": "3a11add31c6485855c208c040c29b37fb9f21e9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd568be_056dee26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293738
+      },
+      "writtenOn": "2023-07-07T22:29:38Z",
+      "side": 1,
+      "message": "Zhang, could you explain a bit more? When you say there\u0027s no IOMMU IP on the CPU side, that\u0027s clear, but won\u0027t the GPU IP have its own MMU? Why can\u0027t most GPU memory use the dma-buf system heap? Is this just a problem for the camera buffers, or all buffers?",
+      "parentUuid": "038cdde3_cfa722ae",
+      "revId": "3a11add31c6485855c208c040c29b37fb9f21e9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
