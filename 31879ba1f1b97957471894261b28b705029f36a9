@@ -52,6 +52,24 @@
       "parentUuid": "dfa84a5c_59301cc1",
       "revId": "31879ba1f1b97957471894261b28b705029f36a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbde656c_aca9bc04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-07T01:10:23Z",
+      "side": 1,
+      "message": "Running `m rustdoc` did produce the same messages on Android, but as warnings. Not sure yet why Trusty rustdoc treats them as errors.",
+      "parentUuid": "3ec29323_78dcf0f9",
+      "revId": "31879ba1f1b97957471894261b28b705029f36a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
