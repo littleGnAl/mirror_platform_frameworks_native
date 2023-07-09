@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e719fa_d3289e5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 2007163
+      },
+      "writtenOn": "2023-07-09T11:08:51Z",
+      "side": 1,
+      "message": "Error printing log information here when using the test sensor service tool",
+      "revId": "21c49252bf1039465ca5654fcdd3335f40c7ac49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
