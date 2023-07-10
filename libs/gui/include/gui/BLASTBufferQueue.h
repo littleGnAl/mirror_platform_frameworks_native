@@ -186,6 +186,8 @@ private:
                 this->crop = Rect(width, height);
             }
         }
+
+        void update(bool hasBuffer) { this->hasBuffer = hasBuffer; }
     };
 
     // Last acquired buffer's info. This is used to calculate the correct scale when size change is

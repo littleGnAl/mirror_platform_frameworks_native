@@ -694,6 +694,8 @@ void BLASTBufferQueue::setSidebandStream(const sp<NativeHandle>& stream) {
     std::unique_lock _lock{mMutex};
     SurfaceComposerClient::Transaction t;
 
+    if (stream.get()) mLastBufferInfo.update(false /* hasBuffer */);
+
     t.setSidebandStream(mSurfaceControl, stream).apply();
 }
 
