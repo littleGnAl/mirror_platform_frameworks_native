@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6e6476b_a5a53bbf",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-10T22:17:53Z",
+      "side": 1,
+      "message": "if we are requiring by lint, any reason for \u0027Safety\u0027 (here) vs \u0027SAFETY\u0027 (rpcbinder) difference?",
+      "range": {
+        "startLine": 303,
+        "startChar": 11,
+        "endLine": 303,
+        "endChar": 17
+      },
+      "revId": "2f3ff9f6e4f557a247cf0866a003b4ba08322e07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
