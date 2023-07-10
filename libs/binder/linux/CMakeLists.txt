@@ -8,6 +8,7 @@ include(AppendCxxFlagIfSupported)
 set(CMAKE_CXX_STANDARD 20)
 
 set(LIBBINDER_CXX_FLAGS
+    "-DNDEBUG"
     "-Wall"
     "-Wextra"
     "-fPIC"

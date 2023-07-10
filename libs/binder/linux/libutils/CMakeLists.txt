@@ -24,6 +24,7 @@ include(AppendCxxFlagIfSupported)
 set(CMAKE_CXX_STANDARD 20)
 
 set(LIBUTILS_CXX_FLAGS
+    "-DNDEBUG"
     "-Wall"
     "-DANDROID_UTILS_REF_BASE_DISABLE_IMPLICIT_CONSTRUCTION"
     "-fPIC"
