@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The Android Open Source Project
+ * Copyright (C) 2019-2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -214,10 +214,7 @@ void CursorInputMapper::configure(nsecs_t when, const InputReaderConfiguration* 
         if (auto viewport = mDeviceContext.getAssociatedViewport(); viewport) {
             // This InputDevice is associated with a viewport.
             // Only generate events for the associated display.
-            const bool mismatchedPointerDisplay =
-                    isPointer && (viewport->displayId != mPointerController->getDisplayId());
-            mDisplayId = mismatchedPointerDisplay ? std::nullopt
-                                                  : std::make_optional(viewport->displayId);
+            mDisplayId = std::make_optional(viewport->displayId);
         } else if (isPointer) {
             // The InputDevice is not associated with a viewport, but it controls the mouse pointer.
             mDisplayId = mPointerController->getDisplayId();
@@ -292,7 +289,11 @@ void CursorInputMapper::process(const RawEvent* rawEvent) {
     mCursorButtonAccumulator.process(rawEvent);
     mCursorMotionAccumulator.process(rawEvent);
     mCursorScrollAccumulator.process(rawEvent);
-
+    if (auto viewport = mDeviceContext.getAssociatedViewport(); viewport) {
+        if (viewport->displayId != mPointerController->getDisplayId()) {
+            mPointerController->setDisplayViewport(*viewport);
+        }
+    }
     if (rawEvent->type == EV_SYN && rawEvent->code == SYN_REPORT) {
         sync(rawEvent->when, rawEvent->readTime);
     }
