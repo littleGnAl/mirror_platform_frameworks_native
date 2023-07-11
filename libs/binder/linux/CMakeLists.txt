@@ -66,6 +66,7 @@ set(LIBBINDER_SRCS
     "${LIBBINDER_DIR}/TextOutput.cpp"
     "${LIBBINDER_DIR}/Utils.cpp"
     "${LIBBINDER_DIR}/file.cpp"
+    #"${LIBBINDER_DIR}/IPCThreadState.cpp"
 )
 
 add_subdirectory(libutils)
