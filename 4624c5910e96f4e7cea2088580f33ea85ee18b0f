@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36b320dd_0dab4ac1",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2023-07-11T14:47:41Z",
+      "side": 1,
+      "message": "Did you test this situtation locally? Would the sysprop not be unset on any device without the fastboot functionality (or without it being enabled)?\n\nI *think* `on late-init \u0026\u0026 property:ro.boot.fastboot.boottrace\u003d` will evaluate to true if the sysprop is unset, but I\u0027m speaking from memory and we\u0027d need to test this.",
+      "range": {
+        "startLine": 309,
+        "startChar": 52,
+        "endLine": 309,
+        "endChar": 60
+      },
+      "revId": "4624c5910e96f4e7cea2088580f33ea85ee18b0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1279e25_42c87eb2",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1128769
+      },
+      "writtenOn": "2023-07-11T14:47:41Z",
+      "side": 1,
+      "message": "optional nit: the comment doesn\u0027t add much given that the condition + action are 2 simple lines",
+      "range": {
+        "startLine": 310,
+        "startChar": 4,
+        "endLine": 310,
+        "endChar": 46
+      },
+      "revId": "4624c5910e96f4e7cea2088580f33ea85ee18b0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
