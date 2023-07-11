@@ -65,6 +65,7 @@ set(LIBBINDER_SRCS
     "${LIBBINDER_DIR}/Status.cpp"
     "${LIBBINDER_DIR}/TextOutput.cpp"
     "${LIBBINDER_DIR}/Utils.cpp"
+    #"${LIBBINDER_DIR}/IPCThreadState.cpp"
 )
 
 add_subdirectory(libbase)
@@ -83,6 +84,36 @@ target_link_libraries(android_libbinder android_libbase android_libutils ssl)
 target_compile_options(android_libbinder
     PRIVATE
     ${LIBBINDER_CXX_FLAGS}
+)
+
+
+set(LIBBINDER_NDK_DIR "${LIBBINDER_DIR}/ndk")
+set(LIBBINDER_NDK_SRCS
+    "${LIBBINDER_NDK_DIR}/ibinder.cpp"
+    #"${LIBBINDER_NDK_DIR}/ibinder_jni.cpp"
+    "${LIBBINDER_NDK_DIR}/libbinder.cpp"
+    "${LIBBINDER_NDK_DIR}/parcel.cpp"
+    #"${LIBBINDER_NDK_DIR}/parcel_jni.cpp"
+    #"${LIBBINDER_NDK_DIR}/process.cpp"
+    "${LIBBINDER_NDK_DIR}/stability.cpp"
+    "${LIBBINDER_NDK_DIR}/status.cpp"
+    "${LIBBINDER_NDK_DIR}/service_manager.cpp"
+)
+add_library(android_libbinder_ndk ${LIBBINDER_NDK_SRCS})
+target_include_directories(android_libbinder_ndk
+    PUBLIC
+    "${LIBBINDER_NDK_DIR}/include_ndk"
+#    "${LIBBINDER_NDK_DIR}/include_cpp"
+    "${LIBBINDER_NDK_DIR}/include_platform"
+)
+target_link_libraries(android_libbinder_ndk
+    android_libbinder
+    android_libbase
+)
+target_compile_options(android_libbinder_ndk
+    PRIVATE
+    ${LIBBINDER_CXX_FLAGS}
+    -Wno-deprecated-declarations
 )
 
 set(LIBBINDER_TLS_SRCS
