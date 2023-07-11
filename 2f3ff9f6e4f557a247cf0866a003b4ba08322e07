@@ -22,6 +22,30 @@
       },
       "revId": "2f3ff9f6e4f557a247cf0866a003b4ba08322e07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c93204_e1761f20",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-07-11T09:33:31Z",
+      "side": 1,
+      "message": "The lint doesn\u0027t seem to be case sensitive. I went with minimal changes, but I can change everything to \"SAFETY\" if you prefer.",
+      "parentUuid": "a6e6476b_a5a53bbf",
+      "range": {
+        "startLine": 303,
+        "startChar": 11,
+        "endLine": 303,
+        "endChar": 17
+      },
+      "revId": "2f3ff9f6e4f557a247cf0866a003b4ba08322e07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
