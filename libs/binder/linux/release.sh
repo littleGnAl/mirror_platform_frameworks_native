@@ -13,6 +13,16 @@ cp -r . "$OUTDIR/frameworks/native/libs/binder"
 mkdir -p "$OUTDIR/frameworks/native/libs/binder/linux/aidl/gen"
 linux/aidl/copy-aidl-gen.sh "$OUTDIR/frameworks/native/libs/binder/linux/aidl/gen"
 
+cd "$ANDROID_BUILD_TOP/frameworks/base/native/android"
+git clean -fdx
+mkdir -p "$OUTDIR/frameworks/base/native/android"
+cp -r . "$OUTDIR/frameworks/base/native/android"
+
+cd "$ANDROID_BUILD_TOP/frameworks/native/include/android"
+git clean -fdx
+mkdir -p "$OUTDIR/frameworks/native/include/android"
+cp -r . "$OUTDIR/frameworks/native/include/android"
+
 cd "$ANDROID_BUILD_TOP/external/boringssl"
 git clean -fdx
 mkdir -p "$OUTDIR/external/boringssl"
