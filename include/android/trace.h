@@ -36,6 +36,10 @@
 #include <stdint.h>
 #include <sys/cdefs.h>
 
+#if !defined(__INTRODUCED_IN)
+#define __INTRODUCED_IN(__api_level) /* nothing */
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
