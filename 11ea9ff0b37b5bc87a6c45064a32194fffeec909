@@ -111,6 +111,30 @@
       },
       "revId": "11ea9ff0b37b5bc87a6c45064a32194fffeec909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61fd0815_814bf8cd",
+        "filename": "libs/binder/trusty/rust/binder_ndk_sys/rules.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-12T00:23:55Z",
+      "side": 1,
+      "message": "Based on the comments at https://android-review.git.corp.google.com/c/platform/build/soong/+/2652372/comments/9e0a6d26_3ad7d905 and some follow-up discussions, I\u0027m not sure anymore that we can do this cleanly. The current problem is that we need to pass the path of the bindgen binary from Soong/Bazel to the script. It sounds like the environment variable is not the way to go, and there are two other alternatives:\n\n* Use `$(location bindgen)` which is only supported by `genrule`, so we would essentially be auto-generating a shell script at build time containing the path to the binary. There is the open question of whether the output of `genrule` could be used as the input of `sh_binary_host`, or directly for `custom_bindgen`.\n* Write the `custom_bindgen` tool in Rust instead and use `libbindgen`. This would work on Android, but Rust host tools and libraries aren\u0027t supported in Trusty.\n\nI can investigate the `genrule` approach but I\u0027m starting to wonder if it\u0027s worth it. How critical is this deduplication?",
+      "parentUuid": "f37e7220_82cac914",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "11ea9ff0b37b5bc87a6c45064a32194fffeec909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
