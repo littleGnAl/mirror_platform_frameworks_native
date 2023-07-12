@@ -46,6 +46,30 @@
       },
       "revId": "2f3ff9f6e4f557a247cf0866a003b4ba08322e07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67e1cdd6_e7f00b04",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-12T00:04:38Z",
+      "side": 1,
+      "message": "nah, w/e is good, esp if it\u0027s an upstream thing. Just curious, thanks",
+      "parentUuid": "96c93204_e1761f20",
+      "range": {
+        "startLine": 303,
+        "startChar": 11,
+        "endLine": 303,
+        "endChar": 17
+      },
+      "revId": "2f3ff9f6e4f557a247cf0866a003b4ba08322e07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
