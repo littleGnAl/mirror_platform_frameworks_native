@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c78364a_be458f28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2023-07-13T22:47:08Z",
+      "side": 1,
+      "message": "Not fully tested, and does not handle user versus userdebug builds.",
+      "revId": "871bc8c54a2ae96efd8360550ba2b6c875b0e1ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
