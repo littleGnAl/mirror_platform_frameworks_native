@@ -30,6 +30,7 @@
 #include <binder/RecordedTransaction.h>
 #include <binder/RpcServer.h>
 #include <cutils/compiler.h>
+#include <malloc.h>
 #include <private/android_filesystem_config.h>
 #include <pthread.h>
 #include <utils/misc.h>
@@ -222,6 +223,21 @@ sp<IBinder> IBinder::lookupOrCreateWeak(const void* objectID, object_make_func m
     return proxy->lookupOrCreateWeak(objectID, make, makeArgs);
 }
 
+status_t IBinder::logAllocStats() {
+    BBinder* local = this->localBinder();
+    if (local != nullptr) {
+        local->logAllocStats();
+        return OK;
+    }
+
+    BpBinder* proxy = this->remoteBinder();
+    LOG_ALWAYS_FATAL_IF(proxy == nullptr);
+
+    Parcel data;
+    Parcel reply;
+    return transact(LOG_ALLOC_STATS_TRANSACTION, data, &reply);
+}
+
 // ---------------------------------------------------------------------------
 
 class BBinder::RpcServerLink : public IBinder::DeathRecipient {
@@ -388,6 +404,11 @@ status_t BBinder::transact(
             err = setRpcClientDebug(data);
             break;
         }
+#if 0
+        case LOG_ALLOC_STATS_TRANSACTION: {
+            err = logAllocStats();
+            break;
+#endif
         default:
             err = onTransact(code, data, reply, flags);
             break;
@@ -606,6 +627,12 @@ pid_t BBinder::getDebugPid() {
     // TODO: handle other OSes
     return 0;
 #endif // __linux__
+}
+
+void BBinder::logAllocStats() {
+#if defined(__BIONIC__)
+    mallopt(M_LOG_STATS, 0);
+#endif
 }
 
 void BBinder::setExtension(const sp<IBinder>& extension) {

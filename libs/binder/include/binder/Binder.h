@@ -95,6 +95,9 @@ public:
 
     pid_t               getDebugPid();
 
+    // Log statistics about the native allocator.
+    void logAllocStats();
+
     // Whether this binder has been sent to another process.
     bool wasParceled();
     // Consider this binder as parceled (setup/init-related calls should no

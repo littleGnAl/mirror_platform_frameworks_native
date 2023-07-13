@@ -65,6 +65,7 @@ public:
         EXTENSION_TRANSACTION = B_PACK_CHARS('_', 'E', 'X', 'T'),
         DEBUG_PID_TRANSACTION = B_PACK_CHARS('_', 'P', 'I', 'D'),
         SET_RPC_CLIENT_TRANSACTION = B_PACK_CHARS('_', 'R', 'P', 'C'),
+        LOG_ALLOC_STATS_TRANSACTION = B_PACK_CHARS('_', 'L', 'A', 'S'),
 
         // See android.os.IBinder.TWEET_TRANSACTION
         // Most importantly, messages can be anything not exceeding 130 UTF-8
@@ -156,6 +157,11 @@ public:
      * Dump PID for a binder, for debugging.
      */
     status_t                getDebugPid(pid_t* outPid);
+
+    /**
+     * Log native allocator statistics for a binder, for debugging.
+     */
+    status_t logAllocStats();
 
     /**
      * Set the RPC client fd to this binder service, for debugging. This is only available on

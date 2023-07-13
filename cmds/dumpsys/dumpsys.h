@@ -57,6 +57,7 @@ class Dumpsys {
         TYPE_STABILITY = 0x4,  // dump stability information of server
         TYPE_THREAD = 0x8,     // dump thread usage of server only
         TYPE_CLIENTS = 0x10,   // dump pid of clients
+        TYPE_LOG_ALLOC_STATS = 0x20, // log native allocator stats
     };
 
     /**

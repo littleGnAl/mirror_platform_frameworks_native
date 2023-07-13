@@ -176,6 +176,8 @@ int Dumpsys::main(int argc, char* const argv[]) {
                 dumpTypeFlags |= TYPE_DUMP;
             } else if (!strcmp(longOptions[optionIndex].name, "pid")) {
                 dumpTypeFlags |= TYPE_PID;
+            } else if (!strcmp(longOptions[optionIndex].name, "log_alloc_stats")) {
+                dumpTypeFlags |= TYPE_LOG_ALLOC_STATS;
             } else if (!strcmp(longOptions[optionIndex].name, "stability")) {
                 dumpTypeFlags |= TYPE_STABILITY;
             } else if (!strcmp(longOptions[optionIndex].name, "thread")) {
@@ -406,6 +408,15 @@ static status_t dumpClientsToFd(const sp<IBinder>& service, const unique_fd& fd)
     return OK;
 }
 
+static status_t logAllocStats(const sp<IBinder>& service, const unique_fd& fd) {
+     status_t status = service->logAllocStats();
+     if (status != OK) {
+         return status;
+     }
+     WriteStringToFd("Native allocator statistics logged.", fd.get());
+     return OK;
+}
+
 static void reportDumpError(const String16& serviceName, status_t error, const char* context) {
     if (error == OK) return;
 
@@ -437,6 +448,10 @@ status_t Dumpsys::startDumpThread(int dumpTypeFlags, const String16& serviceName
         if (dumpTypeFlags & TYPE_PID) {
             status_t err = dumpPidToFd(service, remote_end, dumpTypeFlags == TYPE_PID);
             reportDumpError(serviceName, err, "dumping PID");
+        }
+        if (dumpTypeFlags & TYPE_LOG_ALLOC_STATS) {
+            status_t err = logAllocStats(service, remote_end);
+            reportDumpError(serviceName, err, "logging alloc stats");
         }
         if (dumpTypeFlags & TYPE_STABILITY) {
             status_t err = dumpStabilityToFd(service, remote_end);
