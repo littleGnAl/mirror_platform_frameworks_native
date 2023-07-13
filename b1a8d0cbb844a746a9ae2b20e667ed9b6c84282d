@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d05a947_7053e307",
+        "filename": "libs/binder/tests/parcel_fuzzer/libbinder_driver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-13T18:33:17Z",
+      "side": 1,
+      "message": "note these functions in IPCThreadState.cpp:\n\n    constexpr bool unpackHasExplicitIdentity(int64_t token) {\n        return static_cast\u003cint32_t\u003e(token) \u0026 (1 \u003c\u003c 30);\n    }\n\n    constexpr uid_t unpackCallingUid(int64_t token) {\n        return static_cast\u003cuid_t\u003e(token \u003e\u003e 32);\n     }\n\n\nDo you want to resolve this, and also add a test case to the fuzz service test, to make sure that getCallingUid will be hit as AID_SYSTEM? (crash type on getCallingUId() \u003d\u003d AID_SYSTEM)?",
+      "range": {
+        "startLine": 46,
+        "startChar": 13,
+        "endLine": 46,
+        "endChar": 21
+      },
+      "revId": "b1a8d0cbb844a746a9ae2b20e667ed9b6c84282d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
