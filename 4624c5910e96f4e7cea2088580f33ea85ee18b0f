@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d0c425_22170dbc",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1975865
+      },
+      "writtenOn": "2023-07-13T10:35:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36b320dd_0dab4ac1",
+      "range": {
+        "startLine": 309,
+        "startChar": 52,
+        "endLine": 309,
+        "endChar": 60
+      },
+      "revId": "4624c5910e96f4e7cea2088580f33ea85ee18b0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1279e25_42c87eb2",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-11T14:47:41Z",
       "side": 1,
       "message": "optional nit: the comment doesn\u0027t add much given that the condition + action are 2 simple lines",
+      "range": {
+        "startLine": 310,
+        "startChar": 4,
+        "endLine": 310,
+        "endChar": 46
+      },
+      "revId": "4624c5910e96f4e7cea2088580f33ea85ee18b0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f1d7ac_4abc3544",
+        "filename": "cmds/atrace/atrace.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1975865
+      },
+      "writtenOn": "2023-07-13T10:35:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1279e25_42c87eb2",
       "range": {
         "startLine": 310,
         "startChar": 4,
