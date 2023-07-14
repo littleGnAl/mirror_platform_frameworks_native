@@ -3597,6 +3597,13 @@ void InputDispatcher::synthesizeCancelationEventsForAllConnectionsLocked(
     for (const auto& [token, connection] : mConnectionsByToken) {
         synthesizeCancelationEventsForConnectionLocked(connection, options);
     }
+    if (mDragState &&
+        (options.mode == CancelationOptions::CANCEL_POINTER_EVENTS ||
+         options.mode == CancelationOptions::CANCEL_ALL_EVENTS)) {
+        ALOGD("Cancel drag and drop when synthesize cancel event for all connection");
+        sendDropWindowCommandLocked(nullptr, 0, 0);
+        mDragState.reset();
+    }
 }
 
 void InputDispatcher::synthesizeCancelationEventsForMonitorsLocked(
