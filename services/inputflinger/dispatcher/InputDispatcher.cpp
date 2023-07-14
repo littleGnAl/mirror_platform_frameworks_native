@@ -3899,7 +3899,19 @@ void InputDispatcher::synthesizeCancelationEventsForInputChannelLocked(
 }
 
 void InputDispatcher::synthesizeCancelationEventsForConnectionLocked(
+<<<<<<< PATCH SET (c5536f Cancel drag and drop when synthesize cancel for all connecti)
+        const sp<Connection>& connection, const CancelationOptions& options) {
+    if ((options.mode == CancelationOptions::CANCEL_POINTER_EVENTS ||
+         options.mode == CancelationOptions::CANCEL_ALL_EVENTS) &&
+        mDragState && mDragState->dragWindow->getToken() == connection->inputChannel->getToken()) {
+        ALOGW("Cancel drag and drop when synthesize cancel pointer event for drag connection.");
+        sendDropWindowCommandLocked(nullptr, 0, 0);
+        mDragState.reset();
+    }
+
+=======
         const std::shared_ptr<Connection>& connection, const CancelationOptions& options) {
+>>>>>>> BASE      (3b7bc1 Merge "Add missing "override" annotations" into main)
     if (connection->status == Connection::Status::BROKEN) {
         return;
     }
