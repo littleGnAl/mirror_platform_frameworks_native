@@ -6849,6 +6849,69 @@ TEST_F(InputDispatcherDragTests, MouseDragAndDrop) {
     mSecondWindow->assertNoEvents();
 }
 
+/**
+ * Start D&D with finger that pointer id is not 0, cancel current touch, ensure D&D finished with
+ * nullptr, after inject a simple gesture, ensure dispatcher not crashed.
+ */
+TEST_F(InputDispatcherDragTests, DragAndDropFinishedWhenCancelCurrentTouch) {
+    // Down on second window
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionDown(mDispatcher, AINPUT_SOURCE_TOUCHSCREEN, ADISPLAY_ID_DEFAULT,
+                               {150, 50}))
+            << "Inject motion event should return InputEventInjectionResult::SUCCEEDED";
+
+    mSecondWindow->consumeMotionDown(ADISPLAY_ID_DEFAULT);
+
+    // Down on first window
+    const MotionEvent secondFingerDownEvent =
+            MotionEventBuilder(POINTER_1_DOWN, AINPUT_SOURCE_TOUCHSCREEN)
+                    .displayId(ADISPLAY_ID_DEFAULT)
+                    .eventTime(systemTime(SYSTEM_TIME_MONOTONIC))
+                    .pointer(
+                            PointerBuilder(/* id */ 0, AMOTION_EVENT_TOOL_TYPE_FINGER).x(150).y(50))
+                    .pointer(PointerBuilder(/* id */ 1, AMOTION_EVENT_TOOL_TYPE_FINGER).x(50).y(50))
+                    .build();
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionEvent(mDispatcher, secondFingerDownEvent, INJECT_EVENT_TIMEOUT,
+                                InputEventInjectionSync::WAIT_FOR_RESULT))
+            << "Inject motion event should return InputEventInjectionResult::SUCCEEDED";
+    mWindow->consumeMotionDown(ADISPLAY_ID_DEFAULT);
+    mSecondWindow->consumeMotionMove(ADISPLAY_ID_DEFAULT);
+
+    // Start drag on first window
+    ASSERT_TRUE(startDrag(false, AINPUT_SOURCE_TOUCHSCREEN));
+
+    // Trigger cancel
+    mDispatcher->cancelCurrentTouch();
+    // Wait 500ms ensure notifyDropWindow called asynchronously
+    std::this_thread::sleep_for(500ms);
+    // The D&D finished with nullptr
+    mFakePolicy->assertDropTargetEquals(nullptr);
+
+    // Inject a simple gesture, ensure dispatcher not crashed
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionDown(mDispatcher, AINPUT_SOURCE_TOUCHSCREEN, ADISPLAY_ID_DEFAULT,
+                               {150, 50}))
+            << "Inject motion event should return InputEventInjectionResult::SUCCEEDED";
+
+    const MotionEvent moveEvent =
+            MotionEventBuilder(AMOTION_EVENT_ACTION_MOVE, AINPUT_SOURCE_TOUCHSCREEN)
+                    .displayId(ADISPLAY_ID_DEFAULT)
+                    .eventTime(systemTime(SYSTEM_TIME_MONOTONIC))
+                    .pointer(
+                            PointerBuilder(/* id */ 0, AMOTION_EVENT_TOOL_TYPE_FINGER).x(150).y(50))
+                    .build();
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionEvent(mDispatcher, moveEvent, INJECT_EVENT_TIMEOUT,
+                                InputEventInjectionSync::WAIT_FOR_RESULT))
+            << "Inject motion event should return InputEventInjectionResult::SUCCEEDED";
+
+    ASSERT_EQ(InputEventInjectionResult::SUCCEEDED,
+              injectMotionUp(mDispatcher, AINPUT_SOURCE_TOUCHSCREEN, ADISPLAY_ID_DEFAULT,
+                             {150, 50}))
+            << "Inject motion event should return InputEventInjectionResult::SUCCEEDED";
+}
+
 class InputDispatcherDropInputFeatureTest : public InputDispatcherTest {};
 
 TEST_F(InputDispatcherDropInputFeatureTest, WindowDropsInput) {
