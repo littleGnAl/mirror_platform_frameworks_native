@@ -22,6 +22,30 @@
       },
       "revId": "a6338f3846c9cf0b8c2bc7d829d80f602ae9d355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2cd4c8b_778532b5",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1715120
+      },
+      "writtenOn": "2023-07-17T16:17:22Z",
+      "side": 1,
+      "message": "100% agree. That\u0027s what I would usually do.\nBut I just copied what was done in ui/DebugUtils.cpp\n\nI\u0027ll move this up",
+      "parentUuid": "0d49cbb7_f2b73da7",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 75
+      },
+      "revId": "a6338f3846c9cf0b8c2bc7d829d80f602ae9d355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
