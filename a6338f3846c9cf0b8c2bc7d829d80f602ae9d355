@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d49cbb7_f2b73da7",
+        "filename": "vulkan/libvulkan/swapchain.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2023-07-17T15:51:22Z",
+      "side": 1,
+      "message": "generally should just put this at the top of the file after the includes. So like right next to the existing `using android::hardware::graphics::common::V1_0::BufferUsage`",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 75
+      },
+      "revId": "a6338f3846c9cf0b8c2bc7d829d80f602ae9d355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
