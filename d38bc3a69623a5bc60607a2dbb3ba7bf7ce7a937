@@ -39,6 +39,30 @@
       },
       "revId": "d38bc3a69623a5bc60607a2dbb3ba7bf7ce7a937",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0c57923_e208babf",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1756,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2023-07-17T17:42:54Z",
+      "side": 1,
+      "message": "We don\u0027t put them there.   Should we?  ¯\\_(ツ)_/¯  I figured we mostly aren\u0027t asking OEMs to do these flags so better keep it out for simplicity.\n\nIt\u0027s set here (in another CL in this topic):  https://android-review.git.corp.google.com/c/platform/build/+/2645008/3/core/packaging/flags.mk#21",
+      "parentUuid": "7593b447_09c2e432",
+      "range": {
+        "startLine": 1753,
+        "startChar": 0,
+        "endLine": 1756,
+        "endChar": 80
+      },
+      "revId": "d38bc3a69623a5bc60607a2dbb3ba7bf7ce7a937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
