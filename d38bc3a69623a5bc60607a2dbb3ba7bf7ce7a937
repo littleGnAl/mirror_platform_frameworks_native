@@ -16,6 +16,29 @@
       "message": "@smoreland hey, could you give me OWNERS +1 on this.  Jeff did it but with is google.com account instead of android.com account and it didn\u0027t stick.",
       "revId": "d38bc3a69623a5bc60607a2dbb3ba7bf7ce7a937",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7593b447_09c2e432",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1756,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-17T17:31:26Z",
+      "side": 1,
+      "message": "we *really* need a standard \u0027iterate over partitions\u0027 in Android. Do we put any build flags in /odm/ or /oem/ or any of the other odd partitions?",
+      "range": {
+        "startLine": 1753,
+        "startChar": 0,
+        "endLine": 1756,
+        "endChar": 80
+      },
+      "revId": "d38bc3a69623a5bc60607a2dbb3ba7bf7ce7a937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
