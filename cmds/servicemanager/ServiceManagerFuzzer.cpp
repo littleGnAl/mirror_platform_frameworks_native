@@ -26,10 +26,11 @@ using ::android::ServiceManager;
 using ::android::sp;
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+    std::cout <<"########## Input Start" << std::endl;
     auto accessPtr = std::make_unique<Access>();
     auto serviceManager = sp<ServiceManager>::make(std::move(accessPtr));
     fuzzService(serviceManager, FuzzedDataProvider(data, size));
     serviceManager->clear();
-
+    std::cout <<"########## Input End" << std::endl;
     return 0;
 }

@@ -21,6 +21,7 @@
 #include <binder/IPCThreadState.h>
 #include <binder/ProcessState.h>
 
+#include <private/android_filesystem_config.h>
 namespace android {
 
 void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider) {
@@ -28,6 +29,12 @@ void fuzzService(const sp<IBinder>& binder, FuzzedDataProvider&& provider) {
 }
 
 void fuzzService(const std::vector<sp<IBinder>>& binders, FuzzedDataProvider&& provider) {
+
+    // Reserved bytes so that we don't have to change fuzzers and seed corpus if
+    // we introduce anything new in fuzzService.
+    std::vector<uint8_t> reservedBytes =  provider.ConsumeBytes<uint8_t>(8);
+    (void)reservedBytes;
+
     RandomParcelOptions options{
             .extraBinders = binders,
             .extraFds = {},
@@ -40,9 +47,16 @@ void fuzzService(const std::vector<sp<IBinder>>& binders, FuzzedDataProvider&& p
     // Always take so that a perturbation of just the one ConsumeBool byte will always
     // take the same path, but with a different UID. Without this, the fuzzer needs to
     // guess both the change in value and the shift at the same time.
-    int64_t maybeSetUid = provider.ConsumeIntegral<int64_t>();
+    int64_t thirdUid = provider.ConsumeIntegralInRange<int64_t>(static_cast<int64_t>(AID_ROOT) << 32,
+                                             static_cast<int64_t>(AID_USER) << 32);
+    int64_t fourthUid = provider.ConsumeIntegral<int64_t>();
+    int64_t maybeSetUid = provider.PickValueInArray<int64_t>(
+            {static_cast<int64_t>(AID_ROOT) << 32, static_cast<int64_t>(AID_SYSTEM) << 32, thirdUid,
+             fourthUid});
+    std::cout << "maybeSetUid read : " << maybeSetUid << std::endl;
     if (provider.ConsumeBool()) {
         // set calling uid
+        LOG_ALWAYS_FATAL("unintended path in corpusasdasdas");
         IPCThreadState::self()->restoreCallingIdentity(maybeSetUid);
     }
 
@@ -50,24 +64,30 @@ void fuzzService(const std::vector<sp<IBinder>>& binders, FuzzedDataProvider&& p
         // Most of the AIDL services will have small set of transaction codes.
         uint32_t code = provider.ConsumeBool() ? provider.ConsumeIntegral<uint32_t>()
                                                : provider.ConsumeIntegralInRange<uint32_t>(0, 100);
+        std::cout << "Code read : " << code << std::endl;
         uint32_t flags = provider.ConsumeIntegral<uint32_t>();
+        std::cout << "flags read : " << flags << std::endl;
         Parcel data;
         // for increased fuzz coverage
         data.setEnforceNoDataAvail(false);
         data.setServiceFuzzing();
 
-        sp<IBinder> target = options.extraBinders.at(
-                provider.ConsumeIntegralInRange<size_t>(0, options.extraBinders.size() - 1));
+        size_t extraBindersIndex  =  provider.ConsumeIntegralInRange<size_t>(0, options.extraBinders.size() - 1);
+        sp<IBinder> target = options.extraBinders.at(extraBindersIndex);
+        std::cout << "extraBindersIndex read : " << extraBindersIndex << std::endl;
+
         options.writeHeader = [&target](Parcel* p, FuzzedDataProvider& provider) {
             // most code will be behind checks that the head of the Parcel
             // is exactly this, so make it easier for fuzzers to reach this
             if (provider.ConsumeBool()) {
+                std::cout << "Write interface token "<< std::endl;
                 p->writeInterfaceToken(target->getInterfaceDescriptor());
             }
         };
 
-        std::vector<uint8_t> subData = provider.ConsumeBytes<uint8_t>(
-                provider.ConsumeIntegralInRange<size_t>(0, provider.remaining_bytes()));
+        size_t subDataSize = provider.ConsumeIntegralInRange<size_t>(0, provider.remaining_bytes());
+        std::cout << "subDataSize read : " << subDataSize << std::endl;
+        std::vector<uint8_t> subData = provider.ConsumeBytes<uint8_t>(subDataSize);
         fillRandomParcel(&data, FuzzedDataProvider(subData.data(), subData.size()), &options);
 
         Parcel reply;

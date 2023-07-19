@@ -125,7 +125,26 @@ cc_library {
         "libutils",
     ],
     local_include_dirs: [
-        "include_random_parcel_seeds"
+        "include_random_parcel_seeds",
     ],
     export_include_dirs: ["include_random_parcel_seeds"],
+}
+
+cc_test {
+    name: "fuzzedDataReversalTest",
+    srcs: ["FuzzedDataReversalTest.cpp"],
+    shared_libs: [
+        "libcutils",
+        "libutils",
+        "libbase",
+        "libbinder",
+    ],
+    static_libs: [
+        "liblog",
+        "libbinder_random_parcel",
+        "libbinder_random_parcel_seeds",
+    ],
+    test_suites: ["general-tests"],
+    require_root: true,
+    host_supported: true,
 }

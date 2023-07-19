@@ -33,7 +33,9 @@ static void fillRandomParcelData(Parcel* p, FuzzedDataProvider&& provider) {
 void fillRandomParcel(Parcel* p, FuzzedDataProvider&& provider, RandomParcelOptions* options) {
     CHECK_NE(options, nullptr);
 
-    if (provider.ConsumeBool()) {
+    bool rpcBranch = provider.ConsumeBool();
+    std::cout << "rpcBranch read : " << rpcBranch << std::endl;
+    if (rpcBranch) {
         auto session = RpcSession::make(RpcTransportCtxFactoryRaw::make());
         CHECK_EQ(OK, session->addNullDebuggingClient());
         // Set the protocol version so that we don't crash if the session
@@ -53,6 +55,8 @@ void fillRandomParcel(Parcel* p, FuzzedDataProvider&& provider, RandomParcelOpti
 
     if (options->writeHeader) {
         options->writeHeader(p, provider);
+    } else {
+        LOG_ALWAYS_FATAL("SHOULD NOT REACH HERE!");
     }
 
     while (provider.remaining_bytes() > 0) {
@@ -61,11 +65,16 @@ void fillRandomParcel(Parcel* p, FuzzedDataProvider&& provider, RandomParcelOpti
                 [&]() {
                     size_t toWrite =
                             provider.ConsumeIntegralInRange<size_t>(0, provider.remaining_bytes());
+                    std::cout << "toWrite read " << toWrite << std::endl;
                     std::vector<uint8_t> data = provider.ConsumeBytes<uint8_t>(toWrite);
+                    std::cout << "Parcel size before write data " << p->dataBufferSize() << std::endl;
                     CHECK(OK == p->write(data.data(), data.size()));
+                    std::cout << "Parcel size " << p->dataBufferSize() << std::endl;
+                   // LOG_ALWAYS_FATAL("This is expected Crash 1");
                 },
                 // write FD
                 [&]() {
+                   // LOG_ALWAYS_FATAL("This is expected Crash 2");
                     if (options->extraFds.size() > 0 && provider.ConsumeBool()) {
                         const base::unique_fd& fd = options->extraFds.at(
                                 provider.ConsumeIntegralInRange<size_t>(0,
@@ -90,6 +99,7 @@ void fillRandomParcel(Parcel* p, FuzzedDataProvider&& provider, RandomParcelOpti
                 },
                 // write binder
                 [&]() {
+                  //  LOG_ALWAYS_FATAL("This is expected Crash 3");
                     sp<IBinder> binder;
                     if (options->extraBinders.size() > 0 && provider.ConsumeBool()) {
                         binder = options->extraBinders.at(
