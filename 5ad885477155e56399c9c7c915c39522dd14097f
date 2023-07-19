@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1e419df_2381710f",
+        "filename": "libs/binder/tests/trusty_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-19T23:59:51Z",
+      "side": 1,
+      "message": "trusty/fuzzer sounds good",
+      "parentUuid": "cb6ec475_8c92c51c",
+      "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d941a269_9ca1120b",
         "filename": "libs/binder/tests/trusty_fuzzer/Android.bp",
         "patchSetId": 1
