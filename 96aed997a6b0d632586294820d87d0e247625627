@@ -34,6 +34,24 @@
       "parentUuid": "e4068906_afb7296b",
       "revId": "96aed997a6b0d632586294820d87d0e247625627",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53dbe332_169a1fcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869221
+      },
+      "writtenOn": "2023-07-19T18:23:39Z",
+      "side": 1,
+      "message": "We can leave those libraries in. \n\nIn 2020 we excluded these libraries in our coverage reports to try to reduce noise, and also get a more accurate coverage % for fuzzers. Most people don\u0027t care about these libraries coverage, and don\u0027t want these lines in the denominator when calculating coverage %. \n\nYou can see the code to exclude these paths here:\n\nhttps://source.corp.google.com/piper///depot/google3/wireless/android/security/haiku/line_coverage/business/html.go;l\u003d37\n\nTo sum up the change I\u0027m making, in the above link we have hard coded paths to be excluded in the coverage reports. I\u0027ve added this new option to Soong fuzz_config to be able to define this list. If the option is defined in the fuzz_config (which could be defined as \"[]\" to exclude no paths) then we will use this list instead. So by defining this list here, we will not be excluding \"system/core/.*\" when we make our coverage report.",
+      "parentUuid": "f710b3ff_7107c805",
+      "revId": "96aed997a6b0d632586294820d87d0e247625627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
