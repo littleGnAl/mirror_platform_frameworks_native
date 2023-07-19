@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8352287b_9e91e0e9",
+        "filename": "libs/binder/linux/Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1133963
+      },
+      "writtenOn": "2023-07-19T21:12:14Z",
+      "side": 1,
+      "message": "My concern is that they build today but do we plan to run CI to make sure they all keep building?",
+      "parentUuid": "cecd4f9d_90f3f93e",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "81a9680910731f18e6e7128174c97001a65a71da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcafb4b4_177e88a6",
         "filename": "libs/binder/linux/rpi-arm64-llvm-toolchain.cmake",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Maybe. Not sure what is the best practice here. Those toolchain files are short so it may be clear enough too have them duplicated in both files. Also, if the partners have their own toolchains they may need to write their own file and there are not much for them to reuse.",
       "parentUuid": "dcafb4b4_177e88a6",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 28
+      },
+      "revId": "81a9680910731f18e6e7128174c97001a65a71da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4745ba20_5512b4d7",
+        "filename": "libs/binder/linux/rpi-arm64-llvm-toolchain.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1133963
+      },
+      "writtenOn": "2023-07-19T21:12:14Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "8df9dd6b_23ca3d6d",
       "range": {
         "startLine": 1,
         "startChar": 0,
