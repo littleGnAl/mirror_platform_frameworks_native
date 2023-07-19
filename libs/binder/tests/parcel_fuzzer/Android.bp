@@ -33,6 +33,14 @@ cc_fuzz {
 
     fuzz_config: {
         cc: ["smoreland@google.com"],
+        exclude_paths_from_reports: [
+            "bionic/.*",
+            "external/arm-optimized-routines/math/.*",
+            "external/gwp_asan/.*",
+            "external/libchrome/.*",
+            "external/libcxx/.*",
+            "external/libcxxabi/.*",
+        ],
     },
 
     srcs: [
