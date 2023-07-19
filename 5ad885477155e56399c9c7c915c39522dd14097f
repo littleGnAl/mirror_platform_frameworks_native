@@ -16,6 +16,91 @@
       "message": "Bug number: 291817651",
       "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb6ec475_8c92c51c",
+        "filename": "libs/binder/tests/trusty_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-19T05:11:08Z",
+      "side": 1,
+      "message": "This file could be moved to `libs/binder/trusty/fuzzer`, but it\u0027s not critical.",
+      "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "593801f2_d615cd0a",
+        "filename": "libs/binder/tests/trusty_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-19T05:11:08Z",
+      "side": 1,
+      "message": "Copyright year 2023? It\u0027s a new file.",
+      "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d941a269_9ca1120b",
+        "filename": "libs/binder/tests/trusty_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-19T05:11:08Z",
+      "side": 1,
+      "message": "I haven\u0027t looked at them in a while, is there anything from the libbinder RPC fuzzer at https://cs.android.com/android/platform/superproject/+/main:frameworks/native/libs/binder/tests/rpc_fuzzer/main.cpp that we need to replicate?",
+      "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f29fb1_7827c416",
+        "filename": "libs/binder/tests/trusty_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-19T05:11:08Z",
+      "side": 1,
+      "message": "We also have `com.android.trusty.binderRpcTestService.V0`, maybe fuzz that one or both?",
+      "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b317fdd0_0d40073c",
+        "filename": "libs/binder/tests/trusty_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-19T05:11:08Z",
+      "side": 1,
+      "message": "Since the fuzzer might crash this process, we probably want to make it non-critical and restart-on-exit in its `manifest.json`.",
+      "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
