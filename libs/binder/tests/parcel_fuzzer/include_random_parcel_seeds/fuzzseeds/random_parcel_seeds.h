@@ -17,8 +17,13 @@
 #include <android-base/logging.h>
 #include <android-base/hex.h>
 
+#include <binder/Binder.h>
+#include <binder/Parcel.h>
+#include <binder/RecordedTransaction.h>
+
 #include <vector>
 
+using android::Parcel;
 using android::base::HexString;
 using std::vector;
 
@@ -36,6 +41,42 @@ status_t writeData(base::borrowed_fd fd, const T* data, size_t byteCount) {
     }
 
     return NO_ERROR;
+}
+
+template <typename T>
+void getReversedBytes(uint8_t* reversedData, size_t& len, T min, T max, T val) {
+    uint64_t range = static_cast<uint64_t>(max) - min;
+
+    uint64_t result = val - min;
+    size_t offset = 0;
+
+    int loopCount = 0;
+    size_t index = 0;
+
+    reversedData[index] = reversedData[index] | result;
+    std::cout << "reversedData[index]: " << HexString(&reversedData[index], 1) << std::endl;
+    index++;
+
+    std::cout << "Initial range: " << range
+              << " sizeof(T) * CHAR_BIT: " << sizeof(int64_t) * CHAR_BIT << std::endl;
+
+    while (offset < sizeof(T) * CHAR_BIT && (range >> offset) > 0 && index < len) {
+        std::cout << "result : " << HexString(reinterpret_cast<const uint8_t*>(&result), 8)
+                  << std::endl;
+        reversedData[index] = reversedData[index] | (result >> CHAR_BIT);
+        result = result >> CHAR_BIT;
+        std::cout << "result after set: " << HexString(reinterpret_cast<const uint8_t*>(&result), 8)
+                  << std::endl;
+        offset += CHAR_BIT;
+        std::cout << "after loop result: " << result << " offset: " << offset
+                  << " Loop: " << loopCount << std::endl;
+        std::cout << "reversedData[index]: " << HexString(&reversedData[index], 1) << std::endl;
+        loopCount++;
+        index++;
+    }
+
+    len = index - 1;
+    std::cout << "Reversed hex " << HexString(reversedData, len) << std::endl;
 }
 
 void generateSeedsFromRecording(base::unique_fd fd, binder::debug::RecordedTransaction&& transaction) {
@@ -76,7 +117,6 @@ void generateSeedsFromRecording(base::unique_fd fd, binder::debug::RecordedTrans
 
     uint32_t flags = transaction.getFlags(); //get from recorded transaction
     writeData(fd, &flags, sizeof(uint32_t));
-
 
     size_t extraBindersIndex = 0; //always produce for main binder - make field in reserved bytes?
     writeData(fd, &extraBindersIndex, sizeof(size_t));
