@@ -34,6 +34,24 @@
       "parentUuid": "cd7f4654_adfad8d1",
       "revId": "2715b56e3bd826acd110bc3884e01448ca1308c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da40f7bf_a1a26d58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-07-19T22:02:40Z",
+      "side": 1,
+      "message": "I found a duplicated CL https://android-review.git.corp.google.com/c/platform/frameworks/native/+/2645614",
+      "parentUuid": "9aed3aab_ea86a972",
+      "revId": "2715b56e3bd826acd110bc3884e01448ca1308c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
