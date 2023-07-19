@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cecd4f9d_90f3f93e",
+        "filename": "libs/binder/linux/Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-07-19T21:03:53Z",
+      "side": 1,
+      "message": "I don\u0027t know. All of them builds. I don\u0027t think we should put too many unnecessary restrictions here since the toolchains available to the partners may be different.",
+      "parentUuid": "55243425_8ea984e3",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "81a9680910731f18e6e7128174c97001a65a71da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcafb4b4_177e88a6",
         "filename": "libs/binder/linux/rpi-arm64-llvm-toolchain.cmake",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2023-07-19T20:56:03Z",
       "side": 1,
       "message": "does it make sense to merge the common subset of these two cmake files?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 28
+      },
+      "revId": "81a9680910731f18e6e7128174c97001a65a71da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df9dd6b_23ca3d6d",
+        "filename": "libs/binder/linux/rpi-arm64-llvm-toolchain.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-07-19T21:03:53Z",
+      "side": 1,
+      "message": "Maybe. Not sure what is the best practice here. Those toolchain files are short so it may be clear enough too have them duplicated in both files. Also, if the partners have their own toolchains they may need to write their own file and there are not much for them to reuse.",
+      "parentUuid": "dcafb4b4_177e88a6",
       "range": {
         "startLine": 1,
         "startChar": 0,

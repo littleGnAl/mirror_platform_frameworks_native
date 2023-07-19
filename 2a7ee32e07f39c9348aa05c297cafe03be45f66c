@@ -22,6 +22,30 @@
       },
       "revId": "2a7ee32e07f39c9348aa05c297cafe03be45f66c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b892e70_3d361c89",
+        "filename": "libs/binder/linux/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-07-19T21:03:53Z",
+      "side": 1,
+      "message": "Oops... I forgot to remove it.",
+      "parentUuid": "821b7c26_bf0d63c4",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "2a7ee32e07f39c9348aa05c297cafe03be45f66c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
