@@ -52,6 +52,24 @@
       "parentUuid": "f710b3ff_7107c805",
       "revId": "96aed997a6b0d632586294820d87d0e247625627",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffed9d4f_fff04229",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-19T19:47:25Z",
+      "side": 1,
+      "message": "Can we remove system/core from the global list? Or is there another way we can display all coverage here?\n\nIf it needs to be filtered, I think we would want this in the web UI, but maybe that\u0027s too big of an ask now, so it\u0027s okay. The listed files are already so many, have to grep to jump to them anyway.",
+      "parentUuid": "53dbe332_169a1fcf",
+      "revId": "96aed997a6b0d632586294820d87d0e247625627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
