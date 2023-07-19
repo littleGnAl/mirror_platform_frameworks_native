@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "821b7c26_bf0d63c4",
+        "filename": "libs/binder/linux/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1133963
+      },
+      "writtenOn": "2023-07-19T20:56:03Z",
+      "side": 1,
+      "message": "hm?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "2a7ee32e07f39c9348aa05c297cafe03be45f66c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

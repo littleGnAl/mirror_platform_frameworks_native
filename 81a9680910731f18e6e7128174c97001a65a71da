@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55243425_8ea984e3",
+        "filename": "libs/binder/linux/Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1133963
+      },
+      "writtenOn": "2023-07-19T20:56:03Z",
+      "side": 1,
+      "message": "why so many versions? do we really not have any preference?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "81a9680910731f18e6e7128174c97001a65a71da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcafb4b4_177e88a6",
+        "filename": "libs/binder/linux/rpi-arm64-llvm-toolchain.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1133963
+      },
+      "writtenOn": "2023-07-19T20:56:03Z",
+      "side": 1,
+      "message": "does it make sense to merge the common subset of these two cmake files?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 28
+      },
+      "revId": "81a9680910731f18e6e7128174c97001a65a71da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
