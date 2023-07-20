@@ -197,6 +197,8 @@ static const std::string ANR_DIR = "/data/anr/";
 static const std::string ANR_FILE_PREFIX = "anr_";
 static const std::string SHUTDOWN_CHECKPOINTS_DIR = "/data/system/shutdown-checkpoints/";
 static const std::string SHUTDOWN_CHECKPOINTS_FILE_PREFIX = "checkpoints-";
+static const std::string BT_ROBUST_CACHE_DIR = "/data/misc/bluetooth/";
+static const std::string BT_ROBUST_CACHE_FILE_PREFIX = "gatt_hash_";
 
 // TODO: temporary variables and functions used during C++ refactoring
 
@@ -1799,6 +1801,14 @@ static Dumpstate::RunStatus dumpstate() {
 
     /* Dump Bluetooth HCI logs after getting bluetooth_manager dumpsys */
     ds.AddDir("/data/misc/bluetooth/logs", true);
+
+    /* Dump Bluetooth robust caching files */
+    {
+        std::vector<DumpData> bt_robust_caches =
+            GetDumpFds(BT_ROBUST_CACHE_DIR, BT_ROBUST_CACHE_FILE_PREFIX);
+        AddDumps(bt_robust_caches.begin(), bt_robust_caches.end(), "BT ROBUST CACHE",
+                 true /* add_to_zip */);
+    }
 
     if (ds.dump_pool_) {
         WAIT_TASK_WITH_CONSENT_CHECK(std::move(dump_checkins));
