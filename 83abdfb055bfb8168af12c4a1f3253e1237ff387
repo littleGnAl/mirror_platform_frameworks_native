@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d326d967_845e3cbf",
+        "filename": "services/sensorservice/SensorFusion.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1070818
+      },
+      "writtenOn": "2023-07-20T21:39:00Z",
+      "side": 1,
+      "message": "It looks more like max rate?",
+      "range": {
+        "startLine": 67,
+        "startChar": 50,
+        "endLine": 67,
+        "endChar": 57
+      },
+      "revId": "83abdfb055bfb8168af12c4a1f3253e1237ff387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353fc475_f0b82435",
+        "filename": "services/sensorservice/SensorFusion.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1070818
+      },
+      "writtenOn": "2023-07-20T21:39:00Z",
+      "side": 1,
+      "message": "I\u0027d suggest to use C++ static_cast or drop explicit casting at all to let compiler handle it",
+      "range": {
+        "startLine": 68,
+        "startChar": 30,
+        "endLine": 68,
+        "endChar": 36
+      },
+      "revId": "83abdfb055bfb8168af12c4a1f3253e1237ff387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c3a94bf_a54081a4",
+        "filename": "services/sensorservice/SensorFusion.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1070818
+      },
+      "writtenOn": "2023-07-20T21:39:00Z",
+      "side": 1,
+      "message": "nit: wrap with spaces",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "83abdfb055bfb8168af12c4a1f3253e1237ff387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
