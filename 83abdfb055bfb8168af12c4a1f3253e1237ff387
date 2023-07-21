@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ccb36c3_9e7c87b6",
+        "filename": "services/sensorservice/SensorFusion.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1950741
+      },
+      "writtenOn": "2023-07-21T01:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d326d967_845e3cbf",
+      "range": {
+        "startLine": 67,
+        "startChar": 50,
+        "endLine": 67,
+        "endChar": 57
+      },
+      "revId": "83abdfb055bfb8168af12c4a1f3253e1237ff387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "353fc475_f0b82435",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e26959_342c5674",
+        "filename": "services/sensorservice/SensorFusion.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1950741
+      },
+      "writtenOn": "2023-07-21T01:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "353fc475_f0b82435",
+      "range": {
+        "startLine": 68,
+        "startChar": 30,
+        "endLine": 68,
+        "endChar": 36
+      },
+      "revId": "83abdfb055bfb8168af12c4a1f3253e1237ff387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c3a94bf_a54081a4",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-07-20T21:39:00Z",
       "side": 1,
       "message": "nit: wrap with spaces",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "83abdfb055bfb8168af12c4a1f3253e1237ff387",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5193e4_455f31c5",
+        "filename": "services/sensorservice/SensorFusion.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1950741
+      },
+      "writtenOn": "2023-07-21T01:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c3a94bf_a54081a4",
       "range": {
         "startLine": 69,
         "startChar": 37,
