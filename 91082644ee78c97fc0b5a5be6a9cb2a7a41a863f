@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6e72e96_6bb163fb",
+        "filename": "libs/binder/rust/tests/serialization.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-21T20:13:37Z",
+      "side": 1,
+      "message": "So, \u0027static lifetime really will never be destroyed? That\u0027s very nice - endless source of bugs in C++ that \u0027static\u0027 variables are destoryed when someone calls exit or exits the main thread, but other threads still go on and reference static values that are destructed",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 59
+      },
+      "revId": "91082644ee78c97fc0b5a5be6a9cb2a7a41a863f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
