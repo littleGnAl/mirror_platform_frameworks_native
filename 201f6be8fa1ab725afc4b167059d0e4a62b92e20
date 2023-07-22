@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9087cb7_865d6bd1",
+        "filename": "libs/binder/libbinder.map",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-22T02:10:04Z",
+      "side": 1,
+      "message": "still need to remove symbols that are statically included (this is change is not a regression)",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 48
+      },
+      "revId": "201f6be8fa1ab725afc4b167059d0e4a62b92e20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
