@@ -16,6 +16,24 @@
       "message": "+1 - this looks like a maintenance headache.",
       "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "230218fa_37632149",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-24T17:00:48Z",
+      "side": 1,
+      "message": "I did create this automatically, but need to post the scripts. The issue I am having is that I used an aosp/ build instead of an internal build to determine what is used. I thought there would only be a few stragglers, but there are surprisingly many. Also http://r.android.com/2672235 makes it so that the build would tell you exactly what you needed to add for incremental changes.\n\nIf you have other ideas, happy to hear it.",
+      "parentUuid": "b5a32b6e_190900f5",
+      "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
