@@ -16,6 +16,24 @@
       "message": "I saw failing tests related to this CL yesterday and it looks like because of missing of this CL on udc-dev-plus-aosp branch (example failing build: https://android-build.corp.google.com/artifact/pending/P60169852/aosp_cf_x86_64_phone-trunk_staging-userdebug_coverage/latest/view/logs%2Fbuild_error.log). But the tests are pass now after I re-running the resubmits today.\n\nIt looks like there are problems that auto-merger didn\u0027t merge the whole topic atomically to the udc-tv-plus-aosp branch, but eventually succeeded later. Probably related to recently trunk stable migration? I don\u0027t know. But looks like we don\u0027t need this revert now, or you are seeing other failures?",
       "revId": "bcae30a949646e802d1938e9deb4b8b676df7f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f1efa2_62e8451b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1693933
+      },
+      "writtenOn": "2023-07-25T07:52:31Z",
+      "side": 1,
+      "message": "I see the new failure in b/292499025, reverting the CL should be able to fix the issue",
+      "parentUuid": "c44aca42_1eb6c34f",
+      "revId": "bcae30a949646e802d1938e9deb4b8b676df7f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
