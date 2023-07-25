@@ -16,6 +16,24 @@
       "message": "We may not need this since we have aosp/2664036",
       "revId": "a65ef816c6d35af55440268ee541beedfb502709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20328c9_ec36134c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-07-25T18:22:43Z",
+      "side": 1,
+      "message": "Do you mean tests pass on cross-compiled binder on release build (with -O3)? But for some reason they don\u0027t if you build on rpi?",
+      "parentUuid": "9183a309_3a75c4d8",
+      "revId": "a65ef816c6d35af55440268ee541beedfb502709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
