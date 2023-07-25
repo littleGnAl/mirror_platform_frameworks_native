@@ -52,6 +52,24 @@
       "parentUuid": "b20328c9_ec36134c",
       "revId": "a65ef816c6d35af55440268ee541beedfb502709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e8adf04_256411c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-07-25T19:21:07Z",
+      "side": 1,
+      "message": "But you did try running cross-compiled build on rpi, did you? Did it pass tests on release build with `-O3`?",
+      "parentUuid": "e1409d63_11750d17",
+      "revId": "a65ef816c6d35af55440268ee541beedfb502709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
