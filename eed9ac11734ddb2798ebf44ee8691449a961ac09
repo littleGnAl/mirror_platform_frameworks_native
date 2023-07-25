@@ -16,6 +16,24 @@
       "message": "This will treat local services as remote when using an async handle obtained using `to_async()`. Avoiding that would require larger changes, including some way to tell whether the underlying service is async or not. I think that fixing it can wait.",
       "revId": "eed9ac11734ddb2798ebf44ee8691449a961ac09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d9a9d9_ddffc929",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-25T17:31:43Z",
+      "side": 1,
+      "message": "Should there be a bug for this? There are some performance implications",
+      "parentUuid": "e3344286_8cfcf4fc",
+      "revId": "eed9ac11734ddb2798ebf44ee8691449a961ac09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
