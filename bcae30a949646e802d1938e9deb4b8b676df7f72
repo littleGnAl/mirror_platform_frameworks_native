@@ -34,6 +34,24 @@
       "parentUuid": "c44aca42_1eb6c34f",
       "revId": "bcae30a949646e802d1938e9deb4b8b676df7f72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc41f89_5b1ed0dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1693933
+      },
+      "writtenOn": "2023-07-25T08:26:16Z",
+      "side": 1,
+      "message": "aosp/2605725 should fix this without reverting the CLs here",
+      "parentUuid": "c1f1efa2_62e8451b",
+      "revId": "bcae30a949646e802d1938e9deb4b8b676df7f72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
