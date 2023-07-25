@@ -34,6 +34,24 @@
       "parentUuid": "9183a309_3a75c4d8",
       "revId": "a65ef816c6d35af55440268ee541beedfb502709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1409d63_11750d17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-07-25T19:19:39Z",
+      "side": 1,
+      "message": "I never tried build on RPi because I didn\u0027t want to figure out building aidl binary.",
+      "parentUuid": "b20328c9_ec36134c",
+      "revId": "a65ef816c6d35af55440268ee541beedfb502709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
