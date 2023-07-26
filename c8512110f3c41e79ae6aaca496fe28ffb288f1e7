@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f89c7f_beed1b3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2023-07-26T04:50:02Z",
+      "side": 1,
+      "message": "This change is unneeded in U and later because the std::async call is gone, probably from:\n\nhttps://googleplex-android-review.git.corp.google.com/c/platform/frameworks/native/+/19223231\n\nIt looks like aosp/main merges into main-trusty, though, so I cherry-picked this CL to there:\n\nhttps://googleplex-android-review.git.corp.google.com/c/platform/frameworks/native/+/24205465",
+      "revId": "c8512110f3c41e79ae6aaca496fe28ffb288f1e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
