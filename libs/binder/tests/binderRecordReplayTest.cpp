@@ -15,6 +15,7 @@
  */
 
 #include <BnBinderRecordReplayTest.h>
+#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/unique_fd.h>
 #include <binder/Binder.h>
@@ -23,6 +24,11 @@
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 #include <binder/RecordedTransaction.h>
+
+#include <fuzzbinder/libbinder_driver.h>
+#include <fuzzer/FuzzedDataProvider.h>
+#include <fuzzseeds/random_parcel_seeds.h>
+
 #include <gtest/gtest.h>
 
 #include <sys/prctl.h>
@@ -30,6 +36,7 @@
 #include "parcelables/SingleDataParcelable.h"
 
 using namespace android;
+using android::generateSeedsFromRecording;
 using android::binder::Status;
 using android::binder::debug::RecordedTransaction;
 using parcelables::SingleDataParcelable;
@@ -136,6 +143,71 @@ public:
 
         // make sure recording does the thing we expect it to do
         EXPECT_EQ(OK, result);
+
+        status = (*mInterface.*get)(&output);
+        EXPECT_TRUE(status.isOk());
+        EXPECT_EQ(output, recordedValue);
+    }
+
+    std::vector<uint8_t> retrieveData(base::borrowed_fd fd) {
+        struct stat fdStat;
+        EXPECT_TRUE(fstat(fd.get(), &fdStat) != -1);
+        EXPECT_TRUE(fdStat.st_size != 0);
+
+        std::vector<uint8_t> buffer(fdStat.st_size);
+        auto readResult = android::base::ReadFully(fd, buffer.data(), fdStat.st_size);
+        EXPECT_TRUE(readResult != 0);
+
+        return std::move(buffer);
+    }
+
+    template <typename T, typename U>
+    void replayFuzzerCorpus(Status (IBinderRecordReplayTest::*set)(T), U recordedValue,
+                            Status (IBinderRecordReplayTest::*get)(U*), U changedValue) {
+        base::unique_fd recordingFd(
+                open("/data/local/binderReplayCorpusTest.rec", O_RDWR | O_CREAT | O_CLOEXEC, 0666));
+        ASSERT_TRUE(recordingFd.ok());
+
+        // record a transaction
+        mBpBinder->startRecordingBinder(recordingFd);
+        auto status = (*mInterface.*set)(recordedValue);
+        EXPECT_TRUE(status.isOk());
+        mBpBinder->stopRecordingBinder();
+
+        // test transaction does the thing we expect it to do
+        U output;
+        status = (*mInterface.*get)(&output);
+        EXPECT_TRUE(status.isOk());
+        EXPECT_EQ(output, recordedValue);
+
+        // write over the existing state
+        status = (*mInterface.*set)(changedValue);
+        EXPECT_TRUE(status.isOk());
+
+        status = (*mInterface.*get)(&output);
+        EXPECT_TRUE(status.isOk());
+        EXPECT_EQ(output, changedValue);
+
+        // use the recording to generate corpus
+        ASSERT_EQ(0, lseek(recordingFd.get(), 0, SEEK_SET));
+        std::optional<RecordedTransaction> transaction = RecordedTransaction::fromFile(recordingFd);
+        ASSERT_NE(transaction, std::nullopt);
+
+        base::unique_fd seedFd(open("/data/local/seed_corpus", O_RDWR | O_CREAT | O_CLOEXEC, 0666));
+        ASSERT_TRUE(seedFd.ok());
+
+        // generate corpus from this transaction.
+        generateSeedsFromRecording(seedFd, std::move(*transaction));
+        close(seedFd.release());
+
+        base::unique_fd fuzzerSeed(
+                open("/data/local/seed_corpus", O_RDWR | O_CREAT | O_CLOEXEC, 0666));
+        // use fuzzService to replay the corpus
+        std::vector<uint8_t> seedData = retrieveData(fuzzerSeed);
+        FuzzedDataProvider provider(seedData.data(), seedData.size());
+        fuzzService(mBpBinder, std::move(provider));
+        // Check the set values are same or not
+        close(fuzzerSeed.release());
 
         status = (*mInterface.*get)(&output);
         EXPECT_TRUE(status.isOk());
@@ -269,6 +341,40 @@ TEST_F(BinderRecordReplayTest, ReplaySingleDataParcelableArray) {
 
     recordReplay(&IBinderRecordReplayTest::setSingleDataParcelableArray, saved,
                  &IBinderRecordReplayTest::getSingleDataParcelableArray, changed);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayByteFuzzerCorpus) {
+    replayFuzzerCorpus(&IBinderRecordReplayTest::setByte, int8_t{122},
+                       &IBinderRecordReplayTest::getByte, int8_t{90});
+}
+
+TEST_F(BinderRecordReplayTest, ReplayBooleanFuzzerCorpus) {
+    replayFuzzerCorpus(&IBinderRecordReplayTest::setBoolean, true,
+                       &IBinderRecordReplayTest::getBoolean, false);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCharFuzzerCorpus) {
+    replayFuzzerCorpus(&IBinderRecordReplayTest::setChar, char16_t{'G'},
+                       &IBinderRecordReplayTest::getChar, char16_t{'K'});
+}
+
+TEST_F(BinderRecordReplayTest, ReplayIntFuzzerCorpus) {
+    replayFuzzerCorpus(&IBinderRecordReplayTest::setInt, 3, &IBinderRecordReplayTest::getInt, 5);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayFloatFuzzerCorpus) {
+    replayFuzzerCorpus(&IBinderRecordReplayTest::setFloat, 1.1f, &IBinderRecordReplayTest::getFloat,
+                       22.0f);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayLongFuzzerCorpus) {
+    replayFuzzerCorpus(&IBinderRecordReplayTest::setLong, int64_t{1LL << 55},
+                       &IBinderRecordReplayTest::getLong, int64_t{1LL << 12});
+}
+
+TEST_F(BinderRecordReplayTest, ReplayDoubleFuzzerCorpus) {
+    replayFuzzerCorpus(&IBinderRecordReplayTest::setDouble, 0.00,
+                       &IBinderRecordReplayTest::getDouble, 1.11);
 }
 
 int main(int argc, char** argv) {
