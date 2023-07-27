@@ -102,6 +102,13 @@ void fillRandomParcel(Parcel* p, FuzzedDataProvider&& provider, RandomParcelOpti
                     }
                     CHECK(OK == p->writeStrongBinder(binder));
                 },
+                // set Data
+                [&]() {
+                    size_t toWrite =
+                            provider.ConsumeIntegralInRange<size_t>(0, provider.remaining_bytes());
+                    std::vector<uint8_t> data = provider.ConsumeBytes<uint8_t>(toWrite);
+                    CHECK(OK == p->setData(data.data(), data.size()));
+                },
         });
 
         fillFunc();
