@@ -46,6 +46,30 @@
       },
       "revId": "772b62edc84718d599e2412561ab201cfa1e30ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7aadb2_086ea258",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-07-27T18:15:43Z",
+      "side": 1,
+      "message": "Maybe no paths in fuzzService which write to parcel before this call should be taken?",
+      "parentUuid": "d4d9ded0_c5180218",
+      "range": {
+        "startLine": 105,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 18
+      },
+      "revId": "772b62edc84718d599e2412561ab201cfa1e30ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
