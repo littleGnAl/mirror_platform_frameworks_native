@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bebf9256_7bbfa046",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2023-07-27T15:53:10Z",
+      "side": 1,
+      "message": "Hi Gavin! This is the change I asked about earlier—this does the same thing as aosp/2678039 but allows the stricter timeouts to be kept if the \u0027dumpstate.lab_run\u0027 sysprop is enabled. Can you take a look? Thanks!",
+      "revId": "4ea062b4a885d6b71ede5b4bb2f9ba6ab818724d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
