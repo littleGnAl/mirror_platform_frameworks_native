@@ -22,6 +22,30 @@
       },
       "revId": "605e6dc6cc0959e5a9a5131278b232d1190b42a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90396d3f_6823ab81",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1059977
+      },
+      "writtenOn": "2023-07-27T16:02:27Z",
+      "side": 1,
+      "message": "What if we just have a property that allows directly setting the timeout in millis? We default to 120 seconds or whatever for the field, and in the lab we can set it however we want. This way we can also have different timeouts for faster/slower devices in the lab.",
+      "parentUuid": "80e2a2f6_f686766e",
+      "range": {
+        "startLine": 3060,
+        "startChar": 4,
+        "endLine": 3060,
+        "endChar": 39
+      },
+      "revId": "605e6dc6cc0959e5a9a5131278b232d1190b42a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
