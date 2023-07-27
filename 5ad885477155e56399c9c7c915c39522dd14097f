@@ -227,6 +227,24 @@
       "parentUuid": "74492013_e4b7329a",
       "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f75fe2de_9e294f60",
+        "filename": "libs/binder/tests/trusty_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 2012811
+      },
+      "writtenOn": "2023-07-27T06:34:32Z",
+      "side": 1,
+      "message": "As we discussed, other fuzzed services (e.x. apploader) are not always `restart_on_exit`, so we\u0027ll leave this one as is, too.",
+      "parentUuid": "b317fdd0_0d40073c",
+      "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
