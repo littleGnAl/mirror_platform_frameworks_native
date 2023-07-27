@@ -46,6 +46,30 @@
       },
       "revId": "605e6dc6cc0959e5a9a5131278b232d1190b42a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b0cbdbd_350e0bb6",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2023-07-27T16:15:32Z",
+      "side": 1,
+      "message": "Updated the \u0027lab\u0027 references to \u0027strict\u0027!\n\nI think having a simple \u0027strict\u0027 vs. \u0027not-strict\u0027 might be better—the latter would require a property specific to incident report, as well as any other sections we\u0027re interested in differentiating. Since there are quite a few dumpstate sections (and the effect of individual device specs on each section isn\u0027t yet known), this could bring a lot of unplanned overhead for investigating device-specific timeouts + code churn on device configs on the lab side.",
+      "parentUuid": "90396d3f_6823ab81",
+      "range": {
+        "startLine": 3060,
+        "startChar": 4,
+        "endLine": 3060,
+        "endChar": 39
+      },
+      "revId": "605e6dc6cc0959e5a9a5131278b232d1190b42a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
