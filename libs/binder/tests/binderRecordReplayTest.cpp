@@ -15,6 +15,7 @@
  */
 
 #include <BnBinderRecordReplayTest.h>
+#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/unique_fd.h>
 #include <binder/Binder.h>
@@ -23,6 +24,11 @@
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 #include <binder/RecordedTransaction.h>
+
+#include <fuzzbinder/libbinder_driver.h>
+#include <fuzzer/FuzzedDataProvider.h>
+#include <fuzzseeds/random_parcel_seeds.h>
+
 #include <gtest/gtest.h>
 
 #include <sys/prctl.h>
@@ -30,6 +36,7 @@
 #include "parcelables/SingleDataParcelable.h"
 
 using namespace android;
+using android::generateSeedsFromRecording;
 using android::binder::Status;
 using android::binder::debug::RecordedTransaction;
 using parcelables::SingleDataParcelable;
@@ -84,6 +91,44 @@ public:
     GENERATE_GETTER_SETTER(SingleDataParcelableArray, std::vector<SingleDataParcelable>);
 };
 
+std::vector<uint8_t> retrieveData(base::borrowed_fd fd) {
+    struct stat fdStat;
+    EXPECT_TRUE(fstat(fd.get(), &fdStat) != -1);
+    EXPECT_TRUE(fdStat.st_size != 0);
+
+    std::vector<uint8_t> buffer(fdStat.st_size);
+    auto readResult = android::base::ReadFully(fd, buffer.data(), fdStat.st_size);
+    EXPECT_TRUE(readResult != 0);
+    return std::move(buffer);
+}
+
+void replayFuzzService(const sp<BpBinder>& binder, const RecordedTransaction& transaction) {
+    base::unique_fd seedFd(open("/data/local/tmp/replayFuzzService",
+                                O_RDWR | O_CREAT | O_CLOEXEC | O_TRUNC, 0666));
+    ASSERT_TRUE(seedFd.ok());
+
+    // generate corpus from this transaction.
+    generateSeedsFromRecording(seedFd, transaction);
+
+    // Read the data which has been written to seed corpus
+    ASSERT_EQ(0, lseek(seedFd.get(), 0, SEEK_SET));
+    std::vector<uint8_t> seedData = retrieveData(seedFd);
+
+    // use fuzzService to replay the corpus
+    FuzzedDataProvider provider(seedData.data(), seedData.size());
+    fuzzService(binder, std::move(provider));
+}
+
+void replayBinder(const sp<BpBinder>& binder, const RecordedTransaction& transaction) {
+    // TODO: move logic to replay RecordedTransaction into RecordedTransaction
+    Parcel data;
+    data.setData(transaction.getDataParcel().data(), transaction.getDataParcel().dataSize());
+    auto result = binder->transact(transaction.getCode(), data, nullptr, transaction.getFlags());
+
+    // make sure recording does the thing we expect it to do
+    EXPECT_EQ(OK, result);
+}
+
 class BinderRecordReplayTest : public ::testing::Test {
 public:
     void SetUp() override {
@@ -97,7 +142,8 @@ public:
 
     template <typename T, typename U>
     void recordReplay(Status (IBinderRecordReplayTest::*set)(T), U recordedValue,
-                      Status (IBinderRecordReplayTest::*get)(U*), U changedValue) {
+                      Status (IBinderRecordReplayTest::*get)(U*), U changedValue,
+                      void (*replay)(const sp<BpBinder>&, const RecordedTransaction&)) {
         base::unique_fd fd(open("/data/local/tmp/binderRecordReplayTest.rec",
                                 O_RDWR | O_CREAT | O_CLOEXEC, 0666));
         ASSERT_TRUE(fd.ok());
@@ -128,14 +174,9 @@ public:
         std::optional<RecordedTransaction> transaction = RecordedTransaction::fromFile(fd);
         ASSERT_NE(transaction, std::nullopt);
 
-        // TODO: move logic to replay RecordedTransaction into RecordedTransaction
-        Parcel data;
-        data.setData(transaction->getDataParcel().data(), transaction->getDataParcel().dataSize());
-        auto result =
-                mBpBinder->transact(transaction->getCode(), data, nullptr, transaction->getFlags());
-
-        // make sure recording does the thing we expect it to do
-        EXPECT_EQ(OK, result);
+        const RecordedTransaction& recordedTransaction = *transaction;
+        // call replay function with recorded transaction
+        (*replay)(mBpBinder, recordedTransaction);
 
         status = (*mInterface.*get)(&output);
         EXPECT_TRUE(status.isOk());
@@ -149,43 +190,44 @@ private:
 
 TEST_F(BinderRecordReplayTest, ReplayByte) {
     recordReplay(&IBinderRecordReplayTest::setByte, int8_t{122}, &IBinderRecordReplayTest::getByte,
-                 int8_t{90});
+                 int8_t{90}, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayBoolean) {
     recordReplay(&IBinderRecordReplayTest::setBoolean, true, &IBinderRecordReplayTest::getBoolean,
-                 false);
+                 false, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayChar) {
     recordReplay(&IBinderRecordReplayTest::setChar, char16_t{'G'},
-                 &IBinderRecordReplayTest::getChar, char16_t{'K'});
+                 &IBinderRecordReplayTest::getChar, char16_t{'K'}, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayInt) {
-    recordReplay(&IBinderRecordReplayTest::setInt, 3, &IBinderRecordReplayTest::getInt, 5);
+    recordReplay(&IBinderRecordReplayTest::setInt, 3, &IBinderRecordReplayTest::getInt, 5,
+                 &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayFloat) {
     recordReplay(&IBinderRecordReplayTest::setFloat, 1.1f, &IBinderRecordReplayTest::getFloat,
-                 22.0f);
+                 22.0f, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayLong) {
     recordReplay(&IBinderRecordReplayTest::setLong, int64_t{1LL << 55},
-                 &IBinderRecordReplayTest::getLong, int64_t{1LL << 12});
+                 &IBinderRecordReplayTest::getLong, int64_t{1LL << 12}, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayDouble) {
     recordReplay(&IBinderRecordReplayTest::setDouble, 0.00, &IBinderRecordReplayTest::getDouble,
-                 1.11);
+                 1.11, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayString) {
     const ::android::String16& input1 = String16("This is saved string");
     const ::android::String16& input2 = String16("This is changed string");
     recordReplay(&IBinderRecordReplayTest::setString, input1, &IBinderRecordReplayTest::getString,
-                 input2);
+                 input2, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplaySingleDataParcelable) {
@@ -193,42 +235,42 @@ TEST_F(BinderRecordReplayTest, ReplaySingleDataParcelable) {
     saved.data = 3;
     changed.data = 5;
     recordReplay(&IBinderRecordReplayTest::setSingleDataParcelable, saved,
-                 &IBinderRecordReplayTest::getSingleDataParcelable, changed);
+                 &IBinderRecordReplayTest::getSingleDataParcelable, changed, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayByteArray) {
     std::vector<uint8_t> savedArray = {uint8_t{255}, uint8_t{0}, uint8_t{127}};
     std::vector<uint8_t> changedArray = {uint8_t{2}, uint8_t{7}, uint8_t{117}};
     recordReplay(&IBinderRecordReplayTest::setByteArray, savedArray,
-                 &IBinderRecordReplayTest::getByteArray, changedArray);
+                 &IBinderRecordReplayTest::getByteArray, changedArray, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayBooleanArray) {
     std::vector<bool> savedArray = {true, false, true};
     std::vector<bool> changedArray = {false, true, false};
     recordReplay(&IBinderRecordReplayTest::setBooleanArray, savedArray,
-                 &IBinderRecordReplayTest::getBooleanArray, changedArray);
+                 &IBinderRecordReplayTest::getBooleanArray, changedArray, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayCharArray) {
     std::vector<char16_t> savedArray = {char16_t{'G'}, char16_t{'L'}, char16_t{'K'}, char16_t{'T'}};
     std::vector<char16_t> changedArray = {char16_t{'X'}, char16_t{'Y'}, char16_t{'Z'}};
     recordReplay(&IBinderRecordReplayTest::setCharArray, savedArray,
-                 &IBinderRecordReplayTest::getCharArray, changedArray);
+                 &IBinderRecordReplayTest::getCharArray, changedArray, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayIntArray) {
     std::vector<int> savedArray = {12, 45, 178};
     std::vector<int> changedArray = {32, 14, 78, 1899};
     recordReplay(&IBinderRecordReplayTest::setIntArray, savedArray,
-                 &IBinderRecordReplayTest::getIntArray, changedArray);
+                 &IBinderRecordReplayTest::getIntArray, changedArray, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayFloatArray) {
     std::vector<float> savedArray = {12.14f, 45.56f, 123.178f};
     std::vector<float> changedArray = {0.00f, 14.0f, 718.1f, 1899.122f, 3268.123f};
     recordReplay(&IBinderRecordReplayTest::setFloatArray, savedArray,
-                 &IBinderRecordReplayTest::getFloatArray, changedArray);
+                 &IBinderRecordReplayTest::getFloatArray, changedArray, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayLongArray) {
@@ -236,7 +278,7 @@ TEST_F(BinderRecordReplayTest, ReplayLongArray) {
     std::vector<int64_t> changedArray = {int64_t{1LL << 1}, int64_t{1LL << 21}, int64_t{1LL << 33},
                                          int64_t{1LL << 62}};
     recordReplay(&IBinderRecordReplayTest::setLongArray, savedArray,
-                 &IBinderRecordReplayTest::getLongArray, changedArray);
+                 &IBinderRecordReplayTest::getLongArray, changedArray, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayDoubleArray) {
@@ -244,7 +286,7 @@ TEST_F(BinderRecordReplayTest, ReplayDoubleArray) {
     std::vector<double> changedArray = {0.00111, 14.32130, 712312318.19, 1899212.122,
                                         322168.122123};
     recordReplay(&IBinderRecordReplayTest::setDoubleArray, savedArray,
-                 &IBinderRecordReplayTest::getDoubleArray, changedArray);
+                 &IBinderRecordReplayTest::getDoubleArray, changedArray, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplayStringArray) {
@@ -254,7 +296,7 @@ TEST_F(BinderRecordReplayTest, ReplayStringArray) {
     std::vector<String16> changedArray = {String16("This is changed value"),
                                           String16("\xF0\x90\x90\xB7\xE2\x82\xAC")};
     recordReplay(&IBinderRecordReplayTest::setStringArray, savedArray,
-                 &IBinderRecordReplayTest::getStringArray, changedArray);
+                 &IBinderRecordReplayTest::getStringArray, changedArray, &replayBinder);
 }
 
 TEST_F(BinderRecordReplayTest, ReplaySingleDataParcelableArray) {
@@ -268,7 +310,133 @@ TEST_F(BinderRecordReplayTest, ReplaySingleDataParcelableArray) {
     std::vector<SingleDataParcelable> changed = {s4, s5};
 
     recordReplay(&IBinderRecordReplayTest::setSingleDataParcelableArray, saved,
-                 &IBinderRecordReplayTest::getSingleDataParcelableArray, changed);
+                 &IBinderRecordReplayTest::getSingleDataParcelableArray, changed, &replayBinder);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusByte) {
+    recordReplay(&IBinderRecordReplayTest::setByte, int8_t{122}, &IBinderRecordReplayTest::getByte,
+                 int8_t{90}, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusBoolean) {
+    recordReplay(&IBinderRecordReplayTest::setBoolean, true, &IBinderRecordReplayTest::getBoolean,
+                 false, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusChar) {
+    recordReplay(&IBinderRecordReplayTest::setChar, char16_t{'G'},
+                 &IBinderRecordReplayTest::getChar, char16_t{'K'}, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusInt) {
+    recordReplay(&IBinderRecordReplayTest::setInt, 3, &IBinderRecordReplayTest::getInt, 5,
+                 &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusFloat) {
+    recordReplay(&IBinderRecordReplayTest::setFloat, 1.1f, &IBinderRecordReplayTest::getFloat,
+                 22.0f, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusLong) {
+    recordReplay(&IBinderRecordReplayTest::setLong, int64_t{1LL << 55},
+                 &IBinderRecordReplayTest::getLong, int64_t{1LL << 12}, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusDouble) {
+    recordReplay(&IBinderRecordReplayTest::setDouble, 0.00, &IBinderRecordReplayTest::getDouble,
+                 1.11, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusString) {
+    const ::android::String16& input1 = String16("This is saved string");
+    const ::android::String16& input2 = String16("This is changed string");
+    recordReplay(&IBinderRecordReplayTest::setString, input1, &IBinderRecordReplayTest::getString,
+                 input2, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusSingleDataParcelable) {
+    SingleDataParcelable saved, changed;
+    saved.data = 3;
+    changed.data = 5;
+    recordReplay(&IBinderRecordReplayTest::setSingleDataParcelable, saved,
+                 &IBinderRecordReplayTest::getSingleDataParcelable, changed, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusByteArray) {
+    std::vector<uint8_t> savedArray = {uint8_t{255}, uint8_t{0}, uint8_t{127}};
+    std::vector<uint8_t> changedArray = {uint8_t{2}, uint8_t{7}, uint8_t{117}};
+    recordReplay(&IBinderRecordReplayTest::setByteArray, savedArray,
+                 &IBinderRecordReplayTest::getByteArray, changedArray, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusBooleanArray) {
+    std::vector<bool> savedArray = {true, false, true};
+    std::vector<bool> changedArray = {false, true, false};
+    recordReplay(&IBinderRecordReplayTest::setBooleanArray, savedArray,
+                 &IBinderRecordReplayTest::getBooleanArray, changedArray, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusCharArray) {
+    std::vector<char16_t> savedArray = {char16_t{'G'}, char16_t{'L'}, char16_t{'K'}, char16_t{'T'}};
+    std::vector<char16_t> changedArray = {char16_t{'X'}, char16_t{'Y'}, char16_t{'Z'}};
+    recordReplay(&IBinderRecordReplayTest::setCharArray, savedArray,
+                 &IBinderRecordReplayTest::getCharArray, changedArray, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusIntArray) {
+    std::vector<int> savedArray = {12, 45, 178};
+    std::vector<int> changedArray = {32, 14, 78, 1899};
+    recordReplay(&IBinderRecordReplayTest::setIntArray, savedArray,
+                 &IBinderRecordReplayTest::getIntArray, changedArray, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusFloatArray) {
+    std::vector<float> savedArray = {12.14f, 45.56f, 123.178f};
+    std::vector<float> changedArray = {0.00f, 14.0f, 718.1f, 1899.122f, 3268.123f};
+    recordReplay(&IBinderRecordReplayTest::setFloatArray, savedArray,
+                 &IBinderRecordReplayTest::getFloatArray, changedArray, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusLongArray) {
+    std::vector<int64_t> savedArray = {int64_t{1LL << 11}, int64_t{1LL << 55}, int64_t{1LL << 45}};
+    std::vector<int64_t> changedArray = {int64_t{1LL << 1}, int64_t{1LL << 21}, int64_t{1LL << 33},
+                                         int64_t{1LL << 62}};
+    recordReplay(&IBinderRecordReplayTest::setLongArray, savedArray,
+                 &IBinderRecordReplayTest::getLongArray, changedArray, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusDoubleArray) {
+    std::vector<double> savedArray = {12.1412313, 45.561232, 123.1781111};
+    std::vector<double> changedArray = {0.00111, 14.32130, 712312318.19, 1899212.122,
+                                        322168.122123};
+    recordReplay(&IBinderRecordReplayTest::setDoubleArray, savedArray,
+                 &IBinderRecordReplayTest::getDoubleArray, changedArray, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusStringArray) {
+    std::vector<String16> savedArray = {String16("This is saved value"), String16(),
+                                        String16("\0\0", 2), String16("\xF3\x01\xAC\xAD\x21\xAF")};
+
+    std::vector<String16> changedArray = {String16("This is changed value"),
+                                          String16("\xF0\x90\x90\xB7\xE2\x82\xAC")};
+    recordReplay(&IBinderRecordReplayTest::setStringArray, savedArray,
+                 &IBinderRecordReplayTest::getStringArray, changedArray, &replayFuzzService);
+}
+
+TEST_F(BinderRecordReplayTest, ReplayCorpusSingleDataParcelableArray) {
+    SingleDataParcelable s1, s2, s3, s4, s5;
+    s1.data = 5213;
+    s2.data = 1512;
+    s3.data = 4233;
+    s4.data = 123124;
+    s5.data = 0;
+    std::vector<SingleDataParcelable> saved = {s1, s2, s3};
+    std::vector<SingleDataParcelable> changed = {s4, s5};
+
+    recordReplay(&IBinderRecordReplayTest::setSingleDataParcelableArray, saved,
+                 &IBinderRecordReplayTest::getSingleDataParcelableArray, changed,
+                 &replayFuzzService);
 }
 
 int main(int argc, char** argv) {
