@@ -118,6 +118,30 @@
       },
       "revId": "605e6dc6cc0959e5a9a5131278b232d1190b42a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2238b63_a67a1e8b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2023-07-27T16:38:54Z",
+      "side": 1,
+      "message": "Looking forward, the timeout_millis that is used for incident report here wouldn\u0027t necessarily fit for other sections if any are seen to also differ drastically in field vs. lab. Each of these sections would require their own poroperty+timeout_millis based on their run length.\n\nI think that would be an okay way to go about setting stricter timeouts, but we\u0027d have to update strict_run -\u003e strict_incident_report, and commit to adding new properties for each differentiated section.\n\nLet me know if I\u0027m misunderstanding your suggestion!",
+      "parentUuid": "ccf81197_2b1773ec",
+      "range": {
+        "startLine": 3060,
+        "startChar": 4,
+        "endLine": 3060,
+        "endChar": 39
+      },
+      "revId": "605e6dc6cc0959e5a9a5131278b232d1190b42a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
