@@ -209,6 +209,24 @@
       "parentUuid": "16f29fb1_7827c416",
       "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc777dc_deaeb5cb",
+        "filename": "libs/binder/tests/trusty_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 2012811
+      },
+      "writtenOn": "2023-07-27T05:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74492013_e4b7329a",
+      "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
