@@ -35,6 +35,11 @@ void fuzzService(const std::vector<sp<IBinder>>& binders, FuzzedDataProvider&& p
             .extraFds = {},
     };
 
+    // Reserved bytes so that we don't have to change fuzzers and seed corpus if
+    // we introduce anything new in fuzzService.
+    std::vector<uint8_t> reservedBytes = provider.ConsumeBytes<uint8_t>(8);
+    (void)reservedBytes;
+
     // always refresh the calling identity, because we sometimes set it below, but also,
     // the code we're fuzzing might reset it
     IPCThreadState::self()->clearCallingIdentity();
@@ -82,7 +87,6 @@ void fuzzService(const std::vector<sp<IBinder>>& binders, FuzzedDataProvider&& p
         reply.setEnforceNoDataAvail(false);
         reply.setServiceFuzzing();
         (void)target->transact(code, data, &reply, flags);
-
         // feed back in binders and fds that are returned from the service, so that
         // we can fuzz those binders, and use the fds and binders to feed back into
         // the binders
