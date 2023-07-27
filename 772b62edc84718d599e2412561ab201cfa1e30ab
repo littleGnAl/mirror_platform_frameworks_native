@@ -22,6 +22,30 @@
       },
       "revId": "772b62edc84718d599e2412561ab201cfa1e30ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4d9ded0_c5180218",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-07-27T18:13:59Z",
+      "side": 1,
+      "message": "IIUC, write doesn\u0027t start at the beginning of the parcel. https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/refs/heads/main:frameworks/native/libs/binder/Parcel.cpp;l\u003d1151;drc\u003d4550fa7a1ac69ff31785519c628b2ecb2de52a53\n\nIt gives mData + mDataPos as start address. \n\nRecordedTransaction uses the same setData API from parcel when recording is read back from the file : https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/native/libs/binder/RecordedTransaction.cpp;l\u003d265;drc\u003d4550fa7a1ac69ff31785519c628b2ecb2de52a53?q\u003dRecordedTransaction.cpp\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20branch:main.\n\nfuzzService wasn\u0027t able to replay exact transaction with parcel constructed with write.",
+      "parentUuid": "33648461_a97da0ac",
+      "range": {
+        "startLine": 105,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 18
+      },
+      "revId": "772b62edc84718d599e2412561ab201cfa1e30ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
