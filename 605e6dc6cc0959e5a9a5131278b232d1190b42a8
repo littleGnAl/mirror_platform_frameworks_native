@@ -166,6 +166,30 @@
       },
       "revId": "605e6dc6cc0959e5a9a5131278b232d1190b42a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed99058b_5c355b39",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2023-07-27T18:07:58Z",
+      "side": 1,
+      "message": "closing!",
+      "parentUuid": "f827eb20_a0d9f95f",
+      "range": {
+        "startLine": 3060,
+        "startChar": 4,
+        "endLine": 3060,
+        "endChar": 39
+      },
+      "revId": "605e6dc6cc0959e5a9a5131278b232d1190b42a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
