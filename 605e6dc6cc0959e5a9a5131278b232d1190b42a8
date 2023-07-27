@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e2a2f6_f686766e",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3060,
+      "author": {
+        "id": 1448822
+      },
+      "writtenOn": "2023-07-27T16:00:02Z",
+      "side": 1,
+      "message": "Implementation looks good, thanks! I wonder if we should rename \"lab run\" to something like \"strict run\", to indicate that it has stricter timeouts?",
+      "range": {
+        "startLine": 3060,
+        "startChar": 4,
+        "endLine": 3060,
+        "endChar": 39
+      },
+      "revId": "605e6dc6cc0959e5a9a5131278b232d1190b42a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
