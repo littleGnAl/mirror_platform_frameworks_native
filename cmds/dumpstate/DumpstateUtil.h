@@ -193,11 +193,18 @@ class PropertiesHelper {
      */
     static bool IsParallelRun();
 
+    /*
+     * Lab-run mode is enabled by setting the `dumpstate.lab_run` sysprop to
+     * true. This results in shortened timeouts for flaky sections.
+     */
+    static bool IsLabRun();
+
   private:
     static std::string build_type_;
     static int dry_run_;
     static int unroot_;
     static int parallel_run_;
+    static int lab_run_;
 };
 
 /*

@@ -207,6 +207,7 @@ std::string PropertiesHelper::build_type_ = "";
 int PropertiesHelper::dry_run_ = -1;
 int PropertiesHelper::unroot_ = -1;
 int PropertiesHelper::parallel_run_ = -1;
+int PropertiesHelper::lab_run_ = -1;
 
 bool PropertiesHelper::IsUserBuild() {
     if (build_type_.empty()) {
@@ -235,6 +236,13 @@ bool PropertiesHelper::IsParallelRun() {
                 /* default_value = */true) ? 1 : 0;
     }
     return parallel_run_ == 1;
+}
+
+bool PropertiesHelper::IsLabRun() {
+    if (lab_run_ == -1) {
+        lab_run_ = android::base::GetBoolProperty("dumpstate.lab_run", false) ? 1 : 0;
+    }
+    return lab_run_ == 1;
 }
 
 int DumpFileToFd(int out_fd, const std::string& title, const std::string& path) {
