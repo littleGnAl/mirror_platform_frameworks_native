@@ -130,12 +130,12 @@ void generateSeedsFromRecording(base::borrowed_fd fd,
     writeInBuffer(fillParcelBuffer, rpcBranch);
 
     // Implicit branch on this path -> options->writeHeader(p, provider)
-    uint8_t writeHeaderInternal = 1; // always write interface Descriptor
+    uint8_t writeHeaderInternal = 0; // always write interface Descriptor
     writeInBuffer(fillParcelBuffer, writeHeaderInternal);
 
     // Choose to write data in parcel
-    size_t fillFuncIndex = 3;
-    writeInBuffer(fillParcelBuffer, static_cast<size_t>(0), static_cast<size_t>(3), fillFuncIndex);
+    size_t fillFuncIndex = 0;
+    writeInBuffer(fillParcelBuffer, static_cast<size_t>(0), static_cast<size_t>(2), fillFuncIndex);
 
     // Write parcel data size from recorded transaction
     size_t toWrite = transaction.getDataParcel().dataBufferSize();
