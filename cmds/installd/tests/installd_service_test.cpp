@@ -42,9 +42,12 @@
 #include "binder_test_utils.h"
 #include "dexopt.h"
 #include "globals.h"
+#include "unique_file.h"
 #include "utils.h"
 
 using android::base::StringPrintf;
+using android::base::unique_fd;
+using android::os::ParcelFileDescriptor;
 using std::filesystem::is_empty;
 
 namespace android {
@@ -527,6 +530,49 @@ TEST_F(ServiceTest, GetAppSizeWrongSizes) {
                                            externalStorageAppId, ceDataInodes, codePaths,
                                            &externalStorageSize));
 }
+
+TEST_F(ServiceTest, createFsveritySetupAuthToken) {
+    const std::string path = kTestPath + "/foo";
+    ASSERT_TRUE(android::base::WriteStringToFile("content", path));
+    UniqueFile raii(/*fd=*/-1, path, [](const std::string& path) { unlink(path.c_str()); });
+
+    // Expect to fs-verity setup to succeed
+    unique_fd ufd(open(path.c_str(), O_RDWR));
+    ASSERT_GE(ufd.get(), 0) << "open failed: " << strerror(errno);
+    ParcelFileDescriptor rfd(std::move(ufd));
+    sp<IFsveritySetupAuthToken> authToken;
+    binder::Status status = service->createFsveritySetupAuthToken(std::move(rfd), &authToken);
+    EXPECT_TRUE(status.isOk());
+    EXPECT_TRUE(authToken != nullptr);
+
+    auto authTokenInstance = sp<InstalldNativeService::FsveritySetupAuthToken>::cast(authToken);
+    // Verify that stat from the same file can be authenticated
+    struct stat st;
+    ASSERT_GE(stat(path.c_str(), &st), 0);
+    EXPECT_TRUE(authTokenInstance->isSameStat(st));
+
+    // Verify that stat from a different file cannot be authenticated
+    const std::string anotherPath = kTestPath + "/bar";
+    ASSERT_TRUE(android::base::WriteStringToFile("content", anotherPath));
+    UniqueFile raii2(/*fd=*/-1, anotherPath, [](const std::string& path) { unlink(path.c_str()); });
+    ASSERT_GE(stat(anotherPath.c_str(), &st), 0);
+    EXPECT_FALSE(authTokenInstance->isSameStat(st));
+}
+
+TEST_F(ServiceTest, createFsveritySetupAuthToken_ReadonlyFdDoesNotAuthenticate) {
+    const std::string path = kTestPath + "/foo";
+    ASSERT_TRUE(android::base::WriteStringToFile("content", path));
+    UniqueFile raii(/*fd=*/-1, path, [](const std::string& path) { unlink(path.c_str()); });
+
+    // Expect to fs-verity setup to fail
+    unique_fd ufd(open(path.c_str(), O_RDONLY));
+    ASSERT_GE(ufd.get(), 0) << "open failed: " << strerror(errno);
+    ParcelFileDescriptor rfd(std::move(ufd));
+    sp<IFsveritySetupAuthToken> authToken;
+    binder::Status status = service->createFsveritySetupAuthToken(std::move(rfd), &authToken);
+    EXPECT_FALSE(status.isOk());
+}
+
 static bool mkdirs(const std::string& path, mode_t mode) {
     struct stat sb;
     if (stat(path.c_str(), &sb) != -1 && S_ISDIR(sb.st_mode)) {

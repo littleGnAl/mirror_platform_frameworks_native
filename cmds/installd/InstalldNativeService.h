@@ -19,6 +19,7 @@
 #define COMMANDS_H_
 
 #include <inttypes.h>
+#include <sys/stat.h>
 #include <unistd.h>
 
 #include <shared_mutex>
@@ -35,8 +36,24 @@
 namespace android {
 namespace installd {
 
+using IFsveritySetupAuthToken = android::os::IInstalld::IFsveritySetupAuthToken;
+
 class InstalldNativeService : public BinderService<InstalldNativeService>, public os::BnInstalld {
 public:
+    class FsveritySetupAuthToken : public os::IInstalld::BnFsveritySetupAuthToken {
+    public:
+        FsveritySetupAuthToken() : mStatFromAuthFd() {}
+
+        binder::Status authenticate(const android::os::ParcelFileDescriptor& authFd);
+        bool isSameStat(const struct stat& st) const;
+
+    private:
+        FsveritySetupAuthToken(const FsveritySetupAuthToken&) = delete;
+        FsveritySetupAuthToken& operator=(const FsveritySetupAuthToken&) = delete;
+
+        struct stat mStatFromAuthFd;
+    };
+
     static status_t start();
     static char const* getServiceName() { return "installd"; }
     virtual status_t dump(int fd, const Vector<String16> &args) override;
@@ -191,6 +208,13 @@ public:
                                      const std::string& instructionSet,
                                      const std::optional<std::string>& outputPath,
                                      int32_t* _aidl_return);
+
+    binder::Status createFsveritySetupAuthToken(const android::os::ParcelFileDescriptor& authFd,
+                                                android::sp<IFsveritySetupAuthToken>* _aidl_return);
+    binder::Status enableFsverity(const android::sp<IFsveritySetupAuthToken>& authToken,
+                                  int32_t appUid, const std::string& filePath,
+                                  const std::string& packageName, int32_t userId,
+                                  int32_t* _aidl_return);
 
 private:
     std::recursive_mutex mLock;
