@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21befb64_b786f504",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2023-07-28T22:48:19Z",
+      "side": 1,
+      "message": "Hi Gavin and Shai, this change adds some preprocessor directives to avoid needing to update the vendor API surface, which was a second change that was origally needed to pass internal presubmit (ag/24245852)\n\nWith this change, we can keep the dumpstate changes self-contained without the   internal ABI dump prebuilt update.\n\nWhen this change is cherry-picked to udc-d1-dev, it should be submitted as a relation chain with ag/24241899 as its parent.\n\nhttps://source.android.com/docs/core/architecture/vndk/build-system#conditional-compilation",
+      "revId": "a681d7df1da3cd2ab156a68a79c56139b6983533",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
