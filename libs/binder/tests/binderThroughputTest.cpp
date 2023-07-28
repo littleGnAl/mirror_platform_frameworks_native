@@ -49,6 +49,44 @@ public:
     }
 };
 
+struct ProcResults {
+    vector<uint64_t> data;
+
+    ProcResults(size_t capacity) { data.reserve(capacity); }
+
+    void add_time(uint64_t time) { data.push_back(time); }
+    void combine_with(const ProcResults& append) {
+        data.insert(data.end(), append.data.begin(), append.data.end());
+    }
+    void dump() {
+        if (data.size() == 0) {
+            // This avoids index-out-of-bounds below.
+            cout << "error: no data\n" << endl;
+            return;
+        }
+        sort(data.begin(), data.end());
+
+        uint64_t total_time = 0;
+        for (uint64_t elem : data) {
+            total_time += elem;
+        }
+
+        double best = (double)data[0] / 1.0E6;
+        double worst = (double)data.back() / 1.0E6;
+        double average = (double)total_time / data.size() / 1.0E6;
+        cout << "average:" << average << "ms worst:" << worst << "ms best:" << best << "ms" << endl;
+
+        double percentile_50 = data[(50 * data.size()) / 100] / 1.0E6;
+        double percentile_90 = data[(90 * data.size()) / 100] / 1.0E6;
+        double percentile_95 = data[(95 * data.size()) / 100] / 1.0E6;
+        double percentile_99 = data[(99 * data.size()) / 100] / 1.0E6;
+        cout << "50%: " << percentile_50 << " ";
+        cout << "90%: " << percentile_90 << " ";
+        cout << "95%: " << percentile_95 << " ";
+        cout << "99%: " << percentile_99 << endl;
+    }
+};
+
 class Pipe {
     int m_readFd;
     int m_writeFd;
@@ -79,13 +117,37 @@ public:
         int error = read(m_readFd, &val, sizeof(val));
         ASSERT_TRUE(error >= 0);
     }
-    template <typename T> void send(const T& v) {
-        int error = write(m_writeFd, &v, sizeof(T));
+    void send(const ProcResults& v) {
+        size_t num_elems = v.data.size();
+
+        int error = write(m_writeFd, &num_elems, sizeof(size_t));
         ASSERT_TRUE(error >= 0);
+
+        char* to_write = (char*)v.data.data();
+        size_t num_bytes = sizeof(uint64_t) * num_elems;
+
+        while (num_bytes > 0) {
+            int ret = write(m_writeFd, to_write, num_bytes);
+            ASSERT_TRUE(ret >= 0);
+            num_bytes -= ret;
+            to_write += ret;
+        }
     }
-    template <typename T> void recv(T& v) {
-        int error = read(m_readFd, &v, sizeof(T));
+    void recv(ProcResults& v) {
+        size_t num_elems = 0;
+        int error = read(m_readFd, &num_elems, sizeof(size_t));
         ASSERT_TRUE(error >= 0);
+
+        v.data.resize(num_elems);
+        char* read_to = (char*)v.data.data();
+        size_t num_bytes = sizeof(uint64_t) * num_elems;
+
+        while (num_bytes > 0) {
+            int ret = read(m_readFd, read_to, num_bytes);
+            ASSERT_TRUE(ret >= 0);
+            num_bytes -= ret;
+            read_to += ret;
+        }
     }
     static tuple<Pipe, Pipe> createPipePair() {
         int a[2];
@@ -97,74 +159,6 @@ public:
         ASSERT_TRUE(error2 >= 0);
 
         return make_tuple(Pipe(a[0], b[1]), Pipe(b[0], a[1]));
-    }
-};
-
-static const uint32_t num_buckets = 128;
-static uint64_t max_time_bucket = 50ull * 1000000;
-static uint64_t time_per_bucket = max_time_bucket / num_buckets;
-
-struct ProcResults {
-    uint64_t m_worst = 0;
-    uint32_t m_buckets[num_buckets] = {0};
-    uint64_t m_transactions = 0;
-    uint64_t m_long_transactions = 0;
-    uint64_t m_total_time = 0;
-    uint64_t m_best = max_time_bucket;
-
-    void add_time(uint64_t time) {
-        if (time > max_time_bucket) {
-            m_long_transactions++;
-        }
-        m_buckets[min((uint32_t)(time / time_per_bucket), num_buckets - 1)] += 1;
-        m_best = min(time, m_best);
-        m_worst = max(time, m_worst);
-        m_transactions += 1;
-        m_total_time += time;
-    }
-    static ProcResults combine(const ProcResults& a, const ProcResults& b) {
-        ProcResults ret;
-        for (int i = 0; i < num_buckets; i++) {
-            ret.m_buckets[i] = a.m_buckets[i] + b.m_buckets[i];
-        }
-        ret.m_worst = max(a.m_worst, b.m_worst);
-        ret.m_best = min(a.m_best, b.m_best);
-        ret.m_transactions = a.m_transactions + b.m_transactions;
-        ret.m_long_transactions = a.m_long_transactions + b.m_long_transactions;
-        ret.m_total_time = a.m_total_time + b.m_total_time;
-        return ret;
-    }
-    void dump() {
-        if (m_long_transactions > 0) {
-            cout << (double)m_long_transactions / m_transactions << "% of transactions took longer "
-                "than estimated max latency. Consider setting -m to be higher than "
-                 << m_worst / 1000 << " microseconds" << endl;
-        }
-
-        double best = (double)m_best / 1.0E6;
-        double worst = (double)m_worst / 1.0E6;
-        double average = (double)m_total_time / m_transactions / 1.0E6;
-        cout << "average:" << average << "ms worst:" << worst << "ms best:" << best << "ms" << endl;
-
-        uint64_t cur_total = 0;
-        float time_per_bucket_ms = time_per_bucket / 1.0E6;
-        for (int i = 0; i < num_buckets; i++) {
-            float cur_time = time_per_bucket_ms * i + 0.5f * time_per_bucket_ms;
-            if ((cur_total < 0.5f * m_transactions) && (cur_total + m_buckets[i] >= 0.5f * m_transactions)) {
-                cout << "50%: " << cur_time << " ";
-            }
-            if ((cur_total < 0.9f * m_transactions) && (cur_total + m_buckets[i] >= 0.9f * m_transactions)) {
-                cout << "90%: " << cur_time << " ";
-            }
-            if ((cur_total < 0.95f * m_transactions) && (cur_total + m_buckets[i] >= 0.95f * m_transactions)) {
-                cout << "95%: " << cur_time << " ";
-            }
-            if ((cur_total < 0.99f * m_transactions) && (cur_total + m_buckets[i] >= 0.99f * m_transactions)) {
-                cout << "99%: " << cur_time << " ";
-            }
-            cur_total += m_buckets[i];
-        }
-        cout << endl;
     }
 };
 
@@ -208,7 +202,7 @@ void worker_fx(int num,
     }
 
     // Run the benchmark if client
-    ProcResults results;
+    ProcResults results(iterations);
     chrono::time_point<chrono::high_resolution_clock> start, end;
     for (int i = 0; (!cs_pair || num >= server_count) && i < iterations; i++) {
         Parcel data, reply;
@@ -274,12 +268,8 @@ void signal_all(vector<Pipe>& v)
     }
 }
 
-void run_main(int iterations,
-              int workers,
-              int payload_size,
-              int cs_pair,
-              bool training_round=false)
-{
+void run_main(int iterations, int workers, int payload_size, int cs_pair,
+              bool warmup_round = false) {
     vector<Pipe> pipes;
     // Create all the workers and wait for them to spawn.
     for (int i = 0; i < workers; i++) {
@@ -302,11 +292,10 @@ void run_main(int iterations,
     // Collect all results from the workers.
     cout << "collecting results" << endl;
     signal_all(pipes);
-    ProcResults tot_results;
+    ProcResults tot_results(0), tmp_results(0);
     for (int i = 0; i < workers; i++) {
-        ProcResults tmp_results;
         pipes[i].recv(tmp_results);
-        tot_results = ProcResults::combine(tot_results, tmp_results);
+        tot_results.combine_with(tmp_results);
     }
 
     // Kill all the workers.
@@ -319,14 +308,8 @@ void run_main(int iterations,
             cout << "nonzero child status" << status << endl;
         }
     }
-    if (training_round) {
-        // sets max_time_bucket to 2 * m_worst from the training round.
-        // Also needs to adjust time_per_bucket accordingly.
-        max_time_bucket = 2 * tot_results.m_worst;
-        time_per_bucket = max_time_bucket / num_buckets;
-        cout << "Max latency during training: " << tot_results.m_worst / 1.0E6 << "ms" << endl;
-    } else {
-            tot_results.dump();
+    if (!warmup_round) {
+        tot_results.dump();
     }
 }
 
@@ -336,7 +319,7 @@ int main(int argc, char *argv[])
     int iterations = 10000;
     int payload_size = 0;
     bool cs_pair = false;
-    bool training_round = false;
+    int warmup_rounds = 0;
     (void)argc;
     (void)argv;
 
@@ -348,22 +331,43 @@ int main(int argc, char *argv[])
             cout << "\t-m N    : Specify expected max latency in microseconds." << endl;
             cout << "\t-p      : Split workers into client/server pairs." << endl;
             cout << "\t-s N    : Specify payload size." << endl;
-            cout << "\t-t N    : Run training round." << endl;
+            cout << "\t-t N    : Specify number of warmup rounds." << endl;
             cout << "\t-w N    : Specify total number of workers." << endl;
             return 0;
         }
         if (string(argv[i]) == "-w") {
+            if (i + 1 == argc) {
+                cout << "-w requires an argument\n" << endl;
+                return 1;
+            }
             workers = atoi(argv[i+1]);
             i++;
             continue;
         }
         if (string(argv[i]) == "-i") {
+            if (i + 1 == argc) {
+                cout << "-i requires an argument\n" << endl;
+                return 1;
+            }
             iterations = atoi(argv[i+1]);
             i++;
             continue;
         }
         if (string(argv[i]) == "-s") {
+            if (i + 1 == argc) {
+                cout << "-s requires an argument\n" << endl;
+                return 1;
+            }
             payload_size = atoi(argv[i+1]);
+            i++;
+            continue;
+        }
+        if (string(argv[i]) == "-t") {
+            if (i + 1 == argc) {
+                cout << "-t requires an argument\n" << endl;
+                return 1;
+            }
+            warmup_rounds = atoi(argv[i + 1]);
             i++;
         }
         if (string(argv[i]) == "-p") {
@@ -372,29 +376,12 @@ int main(int argc, char *argv[])
             // the workers become clients and half servers
             cs_pair = true;
         }
-        if (string(argv[i]) == "-t") {
-            // Run one training round before actually collecting data
-            // to get an approximation of max latency.
-            training_round = true;
-        }
-        if (string(argv[i]) == "-m") {
-            // Caller specified the max latency in microseconds.
-            // No need to run training round in this case.
-            if (atoi(argv[i+1]) > 0) {
-                max_time_bucket = strtoull(argv[i+1], (char **)nullptr, 10) * 1000;
-                time_per_bucket = max_time_bucket / num_buckets;
-                i++;
-            } else {
-                cout << "Max latency -m must be positive." << endl;
-                exit(EXIT_FAILURE);
-            }
-        }
     }
 
-    if (training_round) {
-        cout << "Start training round" << endl;
-        run_main(iterations, workers, payload_size, cs_pair, training_round=true);
-        cout << "Completed training round" << endl << endl;
+    if (warmup_rounds > 0) {
+        cout << "Start warump round" << endl;
+        run_main(warmup_rounds, workers, payload_size, cs_pair, true);
+        cout << "Completed warump round" << endl << endl;
     }
 
     run_main(iterations, workers, payload_size, cs_pair);
