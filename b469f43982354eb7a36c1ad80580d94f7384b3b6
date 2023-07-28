@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f246026f_3bad9979",
+        "filename": "libs/binder/tests/binderRpcTestTrusty.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-28T22:57:21Z",
+      "side": 1,
+      "message": "We could, but I\u0027m not sure it would make any difference. Trusty doesn\u0027t have threads, but the service supports multiple connections from the same client, so there\u0027s really only one mode that it operates in.\n\nBtw `singleThreaded` is a bit of a misnomer here for that reason, I have an old patch (https://r.android.com/2404741) that renames them to \"sequential\" and \"concurrent\".",
+      "revId": "b469f43982354eb7a36c1ad80580d94f7384b3b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
