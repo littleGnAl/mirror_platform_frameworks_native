@@ -134,6 +134,8 @@ interface IInstalld {
     int getOdexVisibility(@utf8InCpp String packageName, @utf8InCpp String apkPath,
             @utf8InCpp String instructionSet, @nullable @utf8InCpp String outputPath);
 
+    int enableFsverity(@utf8InCpp String filePath, @utf8InCpp String packageName, int userId);
+
     const int FLAG_STORAGE_DE = 0x1;
     const int FLAG_STORAGE_CE = 0x2;
     const int FLAG_STORAGE_EXTERNAL = 0x4;

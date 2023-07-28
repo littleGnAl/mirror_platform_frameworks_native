@@ -19,6 +19,7 @@
 #include <errno.h>
 #include <fts.h>
 #include <inttypes.h>
+#include <linux/fsverity.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -83,7 +84,9 @@
 
 using android::base::ParseUint;
 using android::base::Split;
+using android::base::StartsWith;
 using android::base::StringPrintf;
+using android::base::unique_fd;
 using std::endl;
 
 namespace android {
@@ -107,6 +110,7 @@ static constexpr const int MIN_RESTRICTED_HOME_SDK_VERSION = 24; // > M
 static constexpr const char* PKG_LIB_POSTFIX = "/lib";
 static constexpr const char* CACHE_DIR_POSTFIX = "/cache";
 static constexpr const char* CODE_CACHE_DIR_POSTFIX = "/code_cache";
+static constexpr const char* FILES_DIR_POSTFIX = "/files";
 
 static constexpr const char* kFuseProp = "persist.sys.fuse";
 
@@ -227,6 +231,33 @@ binder::Status checkArgumentFileName(const std::string& path) {
         }
     }
     return ok();
+}
+
+bool isAppDataFilePath(const std::string& filePath, const std::string& packageName,
+                       int32_t userId) {
+    if (userId == 0) {
+        // /data/user/0/...
+        std::string cePrefixLegacy =
+                create_data_user_ce_package_path(nullptr, userId, packageName.c_str()) +
+                FILES_DIR_POSTFIX + "/";
+        if (StartsWith(filePath, cePrefixLegacy)) {
+            return true;
+        }
+    }
+    // /data/user/$userId/...
+    std::string cePrefix =
+            create_data_user_ce_package_path_as_user_link(nullptr, userId, packageName.c_str()) +
+            FILES_DIR_POSTFIX + "/";
+    if (StartsWith(filePath, cePrefix)) {
+        return true;
+    }
+    // /data/user_de/$userId/...
+    std::string dePrefix = create_data_user_de_package_path(nullptr, userId, packageName.c_str()) +
+            FILES_DIR_POSTFIX + "/";
+    if (StartsWith(filePath, dePrefix)) {
+        return true;
+    }
+    return false;
 }
 
 #define ENFORCE_UID(uid) {                                  \
@@ -3855,6 +3886,64 @@ binder::Status InstalldNativeService::getOdexVisibility(
 
     *_aidl_return = get_odex_visibility(apk_path, instruction_set, oat_dir);
     return *_aidl_return == -1 ? error() : ok();
+}
+
+// Enables fs-verity for filePath, which must be an absolute path under an app's "files" directory
+// (CE or DE storage) for userId.
+//
+// This function handles a request from the app who wants to enable fs-verity on a file. Normally
+// a process can do this on the file they own, but to avoid the security concern of exposing a risky
+// area (#PKCS7 signature verification) to untrusted apps as a kernel attack surface, the ioctl is
+// done here on behalf of the requesting app to enable fs-verity with a static configuration
+// (i.e. without built-in signature).
+//
+// The reason this is implemented here in installd is to override the ACL. The file is owned by app
+// uid, so we need root (or more specifically CAP_DAC_OVERRIDE) to operate on it. In the future,
+// once we can be confident that a future Android release will run on devices without the fs-verity
+// built-in signature support (disabled in the kernel config in aosp/2650402), we can let the app
+// call the ioctl directly.
+//
+// Security Note:
+//
+// As installd is more privilgede than its client, when can a (compromised) system server do? With
+// the parameter validation, effectively they can enable fs-verity to all app files on the CE and DE
+// storage. This would be a DoS at best.
+binder::Status InstalldNativeService::enableFsverity(const std::string& filePath,
+                                                     const std::string& packageName, int32_t userId,
+                                                     int32_t* _aidl_return) {
+    ENFORCE_UID(AID_SYSTEM);
+    CHECK_ARGUMENT_PATH(filePath);
+    CHECK_ARGUMENT_PACKAGE_NAME(packageName);
+    ENFORCE_VALID_USER(userId);
+    LOCK_PACKAGE();
+
+    // Accept only regular files under the package's "files" directory, CE or DE.
+    if (!isAppDataFilePath(filePath, packageName, userId)) {
+        *_aidl_return = EINVAL;
+        return ok();
+    }
+    struct stat st;
+    if (lstat(filePath.c_str(), &st) < 0) {
+        *_aidl_return = -errno;
+        return ok();
+    }
+    if (!S_ISREG(st.st_mode)) {
+        *_aidl_return = EINVAL;
+        return ok();
+    }
+
+    fsverity_enable_arg arg = {};
+    arg.version = 1;
+    arg.hash_algorithm = FS_VERITY_HASH_ALG_SHA256;
+    arg.block_size = 4096;
+
+    unique_fd rfd(open(filePath.c_str(), O_RDONLY | O_CLOEXEC));
+    if (ioctl(rfd.get(), FS_IOC_ENABLE_VERITY, &arg) < 0) {
+        *_aidl_return = errno;
+    } else {
+        *_aidl_return = 0;
+    }
+    return ok();
 }
 
 }  // namespace installd

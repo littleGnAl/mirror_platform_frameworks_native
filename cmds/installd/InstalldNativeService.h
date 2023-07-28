@@ -192,6 +192,9 @@ public:
                                      const std::optional<std::string>& outputPath,
                                      int32_t* _aidl_return);
 
+    binder::Status enableFsverity(const std::string& filePath, const std::string& packageName,
+                                  int32_t userId, int32_t* _aidl_return);
+
 private:
     std::recursive_mutex mLock;
     std::unordered_map<userid_t, std::weak_ptr<std::shared_mutex>> mUserIdLock;
