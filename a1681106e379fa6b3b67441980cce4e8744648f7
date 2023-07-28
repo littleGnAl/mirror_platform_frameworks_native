@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7408e6da_d749a114",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-07-28T23:05:17Z",
+      "side": 0,
+      "message": "you could use [ConvertGenerator](http://google3/third_party/googletest/googletest/include/gtest/gtest-param-test.h;l\u003d410-448;rcl\u003d504325204) to turn the tuples into the new struct if we\u0027d prefer to stick with the old style. would just need to add a ctor to the struct that accepts the tuple version\n\ni wish we had Applicative Functors in C++ :)",
+      "range": {
+        "startLine": 1124,
+        "startChar": 0,
+        "endLine": 1130,
+        "endChar": 51
+      },
+      "revId": "a1681106e379fa6b3b67441980cce4e8744648f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
