@@ -22,6 +22,30 @@
       },
       "revId": "2a8c1cbeca2489733de9af976abeada5d1d6e947",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24bccfe9_fa8bbee8",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3885,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-07-28T22:50:09Z",
+      "side": 1,
+      "message": "I think checking both st_dev and S_ISREG(st_mode) would be a good idea to minimize the kernel attack surface.  That would block not just other filesystems, but also unusual file types like pipes before getting into the kernel.  You\u0027re right that it doesn\u0027t matter much though, since the kernel will just end up returning ENOTTY or EOPNOTSUPP anyway.",
+      "parentUuid": "b60e286f_382a336c",
+      "range": {
+        "startLine": 3885,
+        "startChar": 4,
+        "endLine": 3885,
+        "endChar": 53
+      },
+      "revId": "2a8c1cbeca2489733de9af976abeada5d1d6e947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
