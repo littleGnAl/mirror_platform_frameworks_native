@@ -27,12 +27,14 @@
 
 #include <android-base/macros.h>
 #include <binder/BinderService.h>
+#include <binder/ParcelFileDescriptor.h>
 #include <cutils/multiuser.h>
 
 #include "android/os/BnInstalld.h"
 #include "installd_constants.h"
 
 namespace android {
+
 namespace installd {
 
 class InstalldNativeService : public BinderService<InstalldNativeService>, public os::BnInstalld {
@@ -191,6 +193,9 @@ public:
                                      const std::string& instructionSet,
                                      const std::optional<std::string>& outputPath,
                                      int32_t* _aidl_return);
+
+    binder::Status enableFsverity(int32_t appUid, const android::os::ParcelFileDescriptor& pfd,
+                                  int32_t* _aidl_return);
 
 private:
     std::recursive_mutex mLock;

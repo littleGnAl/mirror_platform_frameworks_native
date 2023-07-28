@@ -19,6 +19,7 @@
 #include <errno.h>
 #include <fts.h>
 #include <inttypes.h>
+#include <linux/fsverity.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -49,6 +50,7 @@
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 #include <android-base/unique_fd.h>
+#include <binder/ParcelFileDescriptor.h>
 #include <cutils/ashmem.h>
 #include <cutils/fs.h>
 #include <cutils/properties.h>
@@ -3855,6 +3857,72 @@ binder::Status InstalldNativeService::getOdexVisibility(
 
     *_aidl_return = get_odex_visibility(apk_path, instruction_set, oat_dir);
     return *_aidl_return == -1 ? error() : ok();
+}
+
+// This function handles a request from the app who wants to enable fs-verity on a file. Normally
+// a process can do this on the file they own, but to avoid the security concern of exposing a risky
+// area (#PKCS7 signature verification) to untrusted apps as a kernel attack surface, the ioctl is
+// done here on behalf of the requesting app to enable fs-verity with a static configuration
+// (i.e. without built-in signature).
+//
+// The reason this is implemented here in installd is to override the ACL. The file is owned by app
+// uid, so we need root to operate on it.
+binder::Status InstalldNativeService::enableFsverity(int32_t appUid,
+                                                     const android::os::ParcelFileDescriptor& pfd,
+                                                     int32_t* _aidl_return) {
+    ENFORCE_UID(AID_SYSTEM);
+    if (appUid < 0) {
+        return exception(binder::Status::EX_ILLEGAL_ARGUMENT, "Invalid UID");
+    }
+
+    struct stat st;
+    int retval = fstat(pfd.get(), &st);
+    if (retval < 0) {
+        *_aidl_return = retval;
+        return ok();
+    }
+
+    // To enable fs-verity, the calling process needs to open the targeting file with O_RDONLY. It
+    // is possible for a malicious app to provide an fd of other app's file. To prevent that, we
+    // need to check the actual file owner uid against the requesting app uid.
+    if (st.st_uid != static_cast<uint32_t>(appUid)) {
+        *_aidl_return = -EPERM;
+        return ok();
+    }
+
+    // Additionally, ensure the file has expected SELinux file context.
+    char* context = nullptr;
+    int context_len = fgetfilecon(pfd.get(), &context);
+    if (context_len < 0) {
+        *_aidl_return = errno;
+        return ok();
+    }
+    if (context == nullptr) {
+        *_aidl_return = -ENODATA;
+        return ok();
+    }
+    std::string_view context_str(context, context_len);
+    std::string_view prefix_app = "u:object_r:app_data_file:";
+    std::string_view prefix_privapp = "u:object_r:privapp_data_file:";
+    if (context_str.compare(0, prefix_app.length(), prefix_app) != 0 &&
+        context_str.compare(0, prefix_privapp.length(), prefix_privapp) != 0) {
+        freecon(context);
+        *_aidl_return = -EACCES;
+        return ok();
+    }
+    freecon(context);
+
+    fsverity_enable_arg arg = {};
+    arg.version = 1;
+    arg.hash_algorithm = FS_VERITY_HASH_ALG_SHA256;
+    arg.block_size = 4096;
+
+    if (ioctl(pfd.get(), FS_IOC_ENABLE_VERITY, &arg) < 0) {
+        *_aidl_return = errno;
+    } else {
+        *_aidl_return = 0;
+    }
+    return ok();
 }
 
 }  // namespace installd
