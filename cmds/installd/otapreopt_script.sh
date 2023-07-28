@@ -16,7 +16,10 @@
 # limitations under the License.
 #
 
-# This script will run as a postinstall step to drive otapreopt.
+# This script runs as a postinstall step to drive otapreopt. It comes with the
+# OTA package, but runs (directly or indirectly) several binaries in the (old)
+# active system image (notably /system/bin/otapreopt_chroot and
+# /system/bin/otapreopt). See system/extras/postinst/postinst.sh for some docs.
 
 TARGET_SLOT="$1"
 STATUS_FD="$2"
@@ -31,7 +34,7 @@ BOOT_PROPERTY_NAME="dev.bootcomplete"
 
 BOOT_COMPLETE=$(getprop $BOOT_PROPERTY_NAME)
 if [ "$BOOT_COMPLETE" != "1" ] ; then
-  echo "Error: boot-complete not detected."
+  echo "$0: Error: boot-complete not detected."
   # We must return 0 to not block sideload.
   exit 0
 fi
@@ -45,7 +48,7 @@ if [ "$TARGET_SLOT" = "0" ] ; then
 elif [ "$TARGET_SLOT" = "1" ] ; then
   TARGET_SLOT_SUFFIX="_b"
 else
-  echo "Unknown target slot $TARGET_SLOT"
+  echo "$0: Unknown target slot $TARGET_SLOT"
   exit 1
 fi
 
@@ -55,35 +58,77 @@ PREPARE=$(cmd otadexopt prepare)
 #       This is necessary to support suspends - the OTA service will keep
 #       the state around for us.
 
-PROGRESS=$(cmd otadexopt progress)
-print -u${STATUS_FD} "global_progress $PROGRESS"
+if [ "$(/system/bin/otapreopt_chroot --version)" = 2 ]; then
+  # New chroot wrapper that takes dexopt commands on stdin so we only invoke it once.
 
-i=0
-while ((i<MAXIMUM_PACKAGES)) ; do
+  # Create an array with all dexopt commands in advance, to know how many there are.
+  otadexopt_cmds=()
+  while (( ${#otadexopt_cmds[@]} < MAXIMUM_PACKAGES )) ; do
+    DONE=$(cmd otadexopt done)
+    if [ "$DONE" = "OTA complete." ] ; then
+      break
+    fi
+    otadexopt_cmds+=("$(cmd otadexopt next)")
+  done
+
   DONE=$(cmd otadexopt done)
-  if [ "$DONE" = "OTA complete." ] ; then
-    break
-  fi
+  cmd otadexopt cleanup
 
-  DEXOPT_PARAMS=$(cmd otadexopt next)
+  echo "$0: Using streaming otapreopt_chroot on ${#otadexopt_cmds[@]} packages"
 
-  /system/bin/otapreopt_chroot $STATUS_FD $TARGET_SLOT_SUFFIX $DEXOPT_PARAMS >&- 2>&-
+  function print_otadexopt_cmds {
+    for cmd in "${otadexopt_cmds[@]}" ; do
+      print "$cmd"
+    done
+  }
+
+  function report_progress {
+    while read -A count ; do
+      # mksh can't do floating point arithmetic, so emulate a fixed point calculation.
+      (( permilles = 1000 * count / ${#otadexopt_cmds[@]} ))
+      printf 'global_progress %d.%03d\n' $((permilles / 1000)) $((permilles % 1000)) >&${STATUS_FD}
+    done
+  }
+
+  print_otadexopt_cmds | \
+    /system/bin/otapreopt_chroot $STATUS_FD $TARGET_SLOT_SUFFIX | \
+    report_progress
+
+else
+  # Old chroot wrapper (that doesn't know about --version).
+  echo "$0: Using legacy otapreopt_chroot"
 
   PROGRESS=$(cmd otadexopt progress)
   print -u${STATUS_FD} "global_progress $PROGRESS"
 
-  sleep 1
-  i=$((i+1))
-done
+  i=0
+  while ((i<MAXIMUM_PACKAGES)) ; do
+    DONE=$(cmd otadexopt done)
+    if [ "$DONE" = "OTA complete." ] ; then
+      break
+    fi
 
-DONE=$(cmd otadexopt done)
+    DEXOPT_PARAMS=$(cmd otadexopt next)
+
+    /system/bin/otapreopt_chroot $STATUS_FD $TARGET_SLOT_SUFFIX $DEXOPT_PARAMS >&- 2>&-
+
+    PROGRESS=$(cmd otadexopt progress)
+    print -u${STATUS_FD} "global_progress $PROGRESS"
+
+    sleep 1
+    i=$((i+1))
+  done
+
+  DONE=$(cmd otadexopt done)
+  cmd otadexopt cleanup
+fi
+
 if [ "$DONE" = "OTA incomplete." ] ; then
-  echo "Incomplete."
+  echo "$0: Incomplete."
 else
-  echo "Complete or error."
+  echo "$0: Complete or error."
 fi
 
 print -u${STATUS_FD} "global_progress 1.0"
-cmd otadexopt cleanup
 
 exit 0
