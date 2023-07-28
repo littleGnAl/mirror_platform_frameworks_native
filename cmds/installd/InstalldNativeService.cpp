@@ -19,6 +19,7 @@
 #include <errno.h>
 #include <fts.h>
 #include <inttypes.h>
+#include <linux/fsverity.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -49,6 +50,7 @@
 #include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 #include <android-base/unique_fd.h>
+#include <binder/ParcelFileDescriptor.h>
 #include <cutils/ashmem.h>
 #include <cutils/fs.h>
 #include <cutils/properties.h>
@@ -3855,6 +3857,41 @@ binder::Status InstalldNativeService::getOdexVisibility(
 
     *_aidl_return = get_odex_visibility(apk_path, instruction_set, oat_dir);
     return *_aidl_return == -1 ? error() : ok();
+}
+
+binder::Status InstalldNativeService::enableFsverity(int32_t callingUid,
+                                                     const android::os::ParcelFileDescriptor& pfd,
+                                                     int32_t* _aidl_return) {
+    ENFORCE_UID(AID_SYSTEM);
+    if (callingUid < 0) {
+        return exception(binder::Status::EX_ILLEGAL_ARGUMENT, "Invalid UID");
+    }
+
+    struct stat st;
+    int retval = fstat(pfd.get(), &st);
+    if (retval < 0) {
+        *_aidl_return = retval;
+        return ok();
+    }
+
+    // On behalf of the calling app process, we're enabling fs-verity to the given file as root.
+    // We must ensure the file is owned by the same calling uid.
+    if (st.st_uid != static_cast<uint32_t>(callingUid)) {
+        *_aidl_return = -EPERM;
+        return ok();
+    }
+
+    fsverity_enable_arg arg = {};
+    arg.version = 1;
+    arg.hash_algorithm = FS_VERITY_HASH_ALG_SHA256;
+    arg.block_size = 4096;
+
+    if (ioctl(pfd.get(), FS_IOC_ENABLE_VERITY, &arg) < 0) {
+        *_aidl_return = errno;
+    } else {
+        *_aidl_return = 0;
+    }
+    return ok();
 }
 
 }  // namespace installd

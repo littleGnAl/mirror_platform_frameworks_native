@@ -33,6 +33,11 @@
 #include "installd_constants.h"
 
 namespace android {
+
+namespace os {
+class ParcelFileDescriptor;
+} // namespace os
+
 namespace installd {
 
 class InstalldNativeService : public BinderService<InstalldNativeService>, public os::BnInstalld {
@@ -191,6 +196,9 @@ public:
                                      const std::string& instructionSet,
                                      const std::optional<std::string>& outputPath,
                                      int32_t* _aidl_return);
+
+    binder::Status enableFsverity(int32_t callingUid, const android::os::ParcelFileDescriptor& pfd,
+                                  int32_t* _aidl_return);
 
 private:
     std::recursive_mutex mLock;
