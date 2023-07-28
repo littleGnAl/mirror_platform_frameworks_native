@@ -22,6 +22,30 @@
       },
       "revId": "a1681106e379fa6b3b67441980cce4e8744648f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "442e4484_e938ef66",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T23:35:48Z",
+      "side": 0,
+      "message": "The Values for true/false aren\u0027t super clear here, so I like the explicit \"singleThreaded \u003d true\" line here. Anyway, maybe you\u0027re right it\u0027s more succinct for Trusty code, but the next CL modifies the logic heavily in a way that would make manipulating tuples a lot more complicated.",
+      "parentUuid": "7408e6da_d749a114",
+      "range": {
+        "startLine": 1124,
+        "startChar": 0,
+        "endLine": 1130,
+        "endChar": 51
+      },
+      "revId": "a1681106e379fa6b3b67441980cce4e8744648f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
