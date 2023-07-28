@@ -46,6 +46,30 @@
       },
       "revId": "2a8c1cbeca2489733de9af976abeada5d1d6e947",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e48e58c1_158d75c9",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3885,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-07-28T23:11:58Z",
+      "side": 1,
+      "message": "Actually SELinux would also block the ioctl on any weird files, despite coming from installd.  So I guess there\u0027s not much point in any additional checks here.",
+      "parentUuid": "24bccfe9_fa8bbee8",
+      "range": {
+        "startLine": 3885,
+        "startChar": 4,
+        "endLine": 3885,
+        "endChar": 53
+      },
+      "revId": "2a8c1cbeca2489733de9af976abeada5d1d6e947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
