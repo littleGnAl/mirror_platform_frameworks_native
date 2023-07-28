@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be90d99_bf6912e4",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T22:44:32Z",
+      "side": 1,
+      "message": "if it\u0027s an issue later, we can add the full variant in post-submit",
+      "revId": "a3056dae5574c8aada16670f957e2efa2c066f5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
