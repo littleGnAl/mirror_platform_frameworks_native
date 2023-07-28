@@ -19,9 +19,11 @@
 #include <sys/mount.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 #include <array>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 
 #include <android-base/file.h>
@@ -37,7 +39,7 @@
 #include "otapreopt_utils.h"
 
 #ifndef LOG_TAG
-#define LOG_TAG "otapreopt"
+#define LOG_TAG "otapreopt_chroot"
 #endif
 
 using android::base::StringPrintf;
@@ -49,20 +51,22 @@ namespace installd {
 // so just try the possibilities one by one.
 static constexpr std::array kTryMountFsTypes = {"ext4", "erofs"};
 
-static void CloseDescriptor(int fd) {
-    if (fd >= 0) {
-        int result = close(fd);
-        UNUSED(result);  // Ignore result. Printing to logcat will open a new descriptor
-                         // that we do *not* want.
-    }
-}
-
 static void CloseDescriptor(const char* descriptor_string) {
     int fd = -1;
     std::istringstream stream(descriptor_string);
     stream >> fd;
     if (!stream.fail()) {
-        CloseDescriptor(fd);
+        if (fd >= 0) {
+            if (close(fd) < 0) {
+                PLOG(ERROR) << "Failed to close " << fd;
+            }
+        }
+    }
+}
+
+static void SetCloseOnExec(int fd) {
+    if (fcntl(fd, F_SETFD, FD_CLOEXEC) < 0) {
+        PLOG(ERROR) << "Failed to set FD_CLOEXEC on " << fd;
     }
 }
 
@@ -129,24 +133,39 @@ static void TryExtraMount(const char* name, const char* slot, const char* target
 }
 
 // Entry for otapreopt_chroot. Expected parameters are:
-//   [cmd] [status-fd] [target-slot] "dexopt" [dexopt-params]
-// The file descriptor denoted by status-fd will be closed. The rest of the parameters will
-// be passed on to otapreopt in the chroot.
+//
+//   [cmd] [status-fd] [target-slot-suffix]
+//
+// The file descriptor denoted by status-fd will be closed. Dexopt commands on
+// the form
+//
+//   "dexopt" [dexopt-params]
+//
+// are then read from stdin until EOF and passed on to /system/bin/otapreopt one
+// by one. After each call a line with the current command count is written to
+// stdout and flushed.
 static int otapreopt_chroot(const int argc, char **arg) {
     // Validate arguments
-    // We need the command, status channel and target slot, at a minimum.
-    if(argc < 3) {
-        PLOG(ERROR) << "Not enough arguments.";
+    if (argc == 2 && std::string(arg[1]) == "--version") {
+        // Accept a single --version flag, to allow the script to tell this binary
+        // from the earlier one.
+        std::cout << "2" << std::endl;
+        return 0;
+    }
+    if (argc != 3) {
+        LOG(ERROR) << "Wrong number of arguments: " << argc;
         exit(208);
     }
-    // Close all file descriptors. They are coming from the caller, we do not want to pass them
-    // on across our fork/exec into a different domain.
-    // 1) Default descriptors.
-    CloseDescriptor(STDIN_FILENO);
-    CloseDescriptor(STDOUT_FILENO);
-    CloseDescriptor(STDERR_FILENO);
-    // 2) The status channel.
-    CloseDescriptor(arg[1]);
+    const char* status_fd = arg[1];
+    const char* slot_suffix = arg[2];
+
+    // Set O_CLOEXEC on standard fds. They are coming from the caller, we do not
+    // want to pass them on across our fork/exec into a different domain.
+    SetCloseOnExec(STDIN_FILENO);
+    SetCloseOnExec(STDOUT_FILENO);
+    SetCloseOnExec(STDERR_FILENO);
+    // Close the status channel.
+    CloseDescriptor(status_fd);
 
     // We need to run the otapreopt tool from the postinstall partition. As such, set up a
     // mount namespace and change root.
@@ -185,20 +204,20 @@ static int otapreopt_chroot(const int argc, char **arg) {
     //  2) We're in a mount namespace here, so when we die, this will be cleaned up.
     //  3) Ignore errors. Printing anything at this stage will open a file descriptor
     //     for logging.
-    if (!ValidateTargetSlotSuffix(arg[2])) {
-        LOG(ERROR) << "Target slot suffix not legal: " << arg[2];
+    if (!ValidateTargetSlotSuffix(slot_suffix)) {
+        LOG(ERROR) << "Target slot suffix not legal: " << slot_suffix;
         exit(207);
     }
-    TryExtraMount("vendor", arg[2], "/postinstall/vendor");
+    TryExtraMount("vendor", slot_suffix, "/postinstall/vendor");
 
     // Try to mount the product partition. update_engine doesn't do this for us, but we
     // want it for product APKs. Same notes as vendor above.
-    TryExtraMount("product", arg[2], "/postinstall/product");
+    TryExtraMount("product", slot_suffix, "/postinstall/product");
 
     // Try to mount the system_ext partition. update_engine doesn't do this for
     // us, but we want it for system_ext APKs. Same notes as vendor and product
     // above.
-    TryExtraMount("system_ext", arg[2], "/postinstall/system_ext");
+    TryExtraMount("system_ext", slot_suffix, "/postinstall/system_ext");
 
     constexpr const char* kPostInstallLinkerconfig = "/postinstall/linkerconfig";
     // Try to mount /postinstall/linkerconfig. we will set it up after performing the chroot
@@ -329,30 +348,45 @@ static int otapreopt_chroot(const int argc, char **arg) {
         exit(218);
     }
 
-    // Now go on and run otapreopt.
+    // Now go on and read dexopt lines from stdin and pass them on to otapreopt.
 
-    // Incoming:  cmd + status-fd + target-slot + cmd...      | Incoming | = argc
-    // Outgoing:  cmd             + target-slot + cmd...      | Outgoing | = argc - 1
-    std::vector<std::string> cmd;
-    cmd.reserve(argc);
-    cmd.push_back("/system/bin/otapreopt");
+    int count = 1;
+    for (std::array<char, 1000> linebuf; std::cin.getline(&linebuf[0], linebuf.size()); ++count) {
+        // Subtract one from gcount() since getline() counts the newline.
+        std::string_view line(&linebuf[0], std::cin.gcount() - 1);
 
-    // The first parameter is the status file descriptor, skip.
-    for (size_t i = 2; i < static_cast<size_t>(argc); ++i) {
-        cmd.push_back(arg[i]);
+        std::vector<std::string> cmd{"/system/bin/otapreopt", slot_suffix};
+        for (size_t pos = 0; pos != line.npos;) {
+            size_t end = line.find(" ", pos);
+            if (end == line.npos) {
+                end = line.size();
+            }
+            cmd.emplace_back(line.substr(pos, end - pos));
+            pos = line.find_first_not_of(" ", end);
+        }
+
+        if (WOULD_LOG(INFO)) {
+            std::ostringstream msg;
+            for (std::string arg : cmd) {
+                msg << " " << arg;
+            }
+            LOG(INFO) << "Command " << count << ":" << msg.str();
+        }
+
+        // Fork and execute otapreopt in its own process.
+        std::string error_msg;
+        bool exec_result = Exec(cmd, &error_msg);
+        if (!exec_result) {
+            LOG(ERROR) << "Running otapreopt failed: " << error_msg;
+        }
+
+        // Print the count to stdout and flush to indicate progress.
+        std::cout << count << std::endl;
+
+        sleep(1);
     }
 
-    // Fork and execute otapreopt in its own process.
-    std::string error_msg;
-    bool exec_result = Exec(cmd, &error_msg);
-    if (!exec_result) {
-        LOG(ERROR) << "Running otapreopt failed: " << error_msg;
-    }
-
-    if (!exec_result) {
-        exit(213);
-    }
-
+    LOG(INFO) << "No more dexopt commands";
     return 0;
 }
 
