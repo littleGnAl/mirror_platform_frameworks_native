@@ -16,6 +16,23 @@
       "message": "I believe the presubmit failures are similar to b/249983726, where running bugreport-related tests in presubmit fails even if running them manually (using the same test module and base build) passes.\n\nSee passing manual test [1] vs. failing test [2], both of which use base build 10572398.\n\n[1]: https://android-build.corp.google.com/test_investigate/?invocationId\u003dI25700010182417292\u0026testResultId\u003dTR89328821313456028\n[2]: https://android-build.corp.google.com/test_investigate/?invocationId\u003dI04100010182367325\u0026testResultId\u003dTR73028821183741182",
       "revId": "fa64e6412bd607e198a199b39cc18024e6e99105",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea94b075_5a8c9bef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1757736
+      },
+      "writtenOn": "2023-07-28T14:45:39Z",
+      "side": 1,
+      "message": "For additional record keeping before bypassing the PV-1 vote, re-runs of the failed presubmit mapping test shows that this change works fine when not run through the presubmit flow, similar to b/249983726:\n- ([1]): rerun of the failed presubmit run (using \"rerun invocation\") using the cloud device passes\n- ([2]): same thing, but using the remote device\n\n\n[1]: https://android-build.corp.google.com/test_investigate/?invocationId\u003dI88100010182660647\u0026testResultId\u003dTR46928823298652355\n[2]: https://android-build.corp.google.com/test_investigate/?invocationId\u003dI94500010182601652\u0026testResultId\u003dTR45028823320303047",
+      "revId": "fa64e6412bd607e198a199b39cc18024e6e99105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
