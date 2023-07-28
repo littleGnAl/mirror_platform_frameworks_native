@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc323fc_af1600ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:23:21Z",
+      "side": 1,
+      "message": "void",
+      "revId": "ddde78baeaa289fe1734f3ea4aebfc721cfd3723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a2c6cd_e872b840",
+        "filename": "libs/binder/tests/parcel_fuzzer/include_random_parcel_seeds/fuzzseeds/random_parcel_seeds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:23:21Z",
+      "side": 1,
+      "message": "avoid, use \u0027const uint8_t* data\u0027.\n\nTwo reasons:\n1. We want reinterpret_cast to be in the client of this method, not in the body. If someone passes a type of \"const int* data\" in here accidentally with the count instead of ints, it would only write part of the data. We want to make the required type explicit so the compiler gives better errors.\n2. template instantiation requires multiple copies of the functions, so it could become more expensive\n\nIf this is an implementation detail of the below functions only, it might be okay for a small amount of code, but because it\u0027s in a header as an API, that\u0027s why I make the comment.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 21
+      },
+      "revId": "ddde78baeaa289fe1734f3ea4aebfc721cfd3723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e663ce1_f773ce28",
+        "filename": "libs/binder/tests/parcel_fuzzer/include_random_parcel_seeds/fuzzseeds/random_parcel_seeds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:23:21Z",
+      "side": 1,
+      "message": "since this changes the values of the input arguments, I would suggest \"reverseBytes\".\n\nAlso - comment what this method does \"computes the bytes so that if they are passed to FuzzedDataProvider and ConsumeIntegral\u003cT\u003e(min, max) is called, it will return val\"",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "ddde78baeaa289fe1734f3ea4aebfc721cfd3723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7638c8_deb8c658",
+        "filename": "libs/binder/tests/parcel_fuzzer/include_random_parcel_seeds/fuzzseeds/random_parcel_seeds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:23:21Z",
+      "side": 1,
+      "message": "template makes sense here, given what this is doing.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "ddde78baeaa289fe1734f3ea4aebfc721cfd3723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79734021_b0341c24",
+        "filename": "libs/binder/tests/parcel_fuzzer/include_random_parcel_seeds/fuzzseeds/random_parcel_seeds.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:23:21Z",
+      "side": 1,
+      "message": "Move to .cpp file if you aren\u0027t testing these, to avoid them in API. Otherwise, consider:\n\n```\nnamespace impl {\n    status_t writeData..\n    ..\n}\nvoid generateSeeds...\n```\n\nThat way, it\u0027s clear they are an implementation detail and other people shouldn\u0027t rely on it.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 66
+      },
+      "revId": "ddde78baeaa289fe1734f3ea4aebfc721cfd3723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f0d473_5e0f1962",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel_seeds.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:23:21Z",
+      "side": 1,
+      "message": "Avoid copying into buffer first. This could be \"WriteFully(fd, data, byteCount)\". So actually - I think you could remove this function and instead call below:\n\n    CHECK(WriteFully(fd, reservedBytes.data(), reservedBytes.size())) \u003c\u003c fd.get();",
+      "range": {
+        "startLine": 30,
+        "startChar": 33,
+        "endLine": 30,
+        "endChar": 71
+      },
+      "revId": "ddde78baeaa289fe1734f3ea4aebfc721cfd3723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a399f8_e5eaa7d2",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel_seeds.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:23:21Z",
+      "side": 1,
+      "message": "reversedData[index] |\u003d result;",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "ddde78baeaa289fe1734f3ea4aebfc721cfd3723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f56fd28_9f55e98d",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel_seeds.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:23:21Z",
+      "side": 1,
+      "message": "This will always be zero, right? It\u0027s somewhat confusing because this modifies an input that is declared extra. getReversedBytes should probably initialize an array (that is zero) and then return it, rather than getting things passed in, and having to reduce len.",
+      "range": {
+        "startLine": 47,
+        "startChar": 30,
+        "endLine": 47,
+        "endChar": 49
+      },
+      "revId": "ddde78baeaa289fe1734f3ea4aebfc721cfd3723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7391e9_befe4239",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel_seeds.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:23:21Z",
+      "side": 1,
+      "message": "nit: have this API return all the bytes, don\u0027t require people to write it to a file. Anyone can call WriteFully on it.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 4
+      },
+      "revId": "ddde78baeaa289fe1734f3ea4aebfc721cfd3723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de239542_6b9c364e",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel_seeds.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:23:21Z",
+      "side": 1,
+      "message": "convert comment to assert, something like:\n\n    CHECK(subdataSize.size() \u003d\u003d fillParcelbuffer.size() + dataParcel.size())",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 81
+      },
+      "revId": "ddde78baeaa289fe1734f3ea4aebfc721cfd3723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d878c679_08780bc5",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel_seeds.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:23:21Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 73
+      },
+      "revId": "ddde78baeaa289fe1734f3ea4aebfc721cfd3723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
