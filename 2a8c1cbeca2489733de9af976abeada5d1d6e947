@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b60e286f_382a336c",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3885,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-07-28T22:42:09Z",
+      "side": 1,
+      "message": "I removed this from patch set 1, but let me know if anyone has a different thought.\n\nApps can only access their own private directory, and sometimes external storage.  External storage may or may not support fs-verity, so I originally had this check to restrict on userdata partition for avoiding fragmentation (if app wants to use fs-verity on external storage).  But nowadays external storage is managed through FUSE, which does not support fs-verity ioctl. So it\u0027s probably not worth keeping this check.",
+      "range": {
+        "startLine": 3885,
+        "startChar": 4,
+        "endLine": 3885,
+        "endChar": 53
+      },
+      "revId": "2a8c1cbeca2489733de9af976abeada5d1d6e947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
