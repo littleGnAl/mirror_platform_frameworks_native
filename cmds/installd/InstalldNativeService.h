@@ -35,6 +35,8 @@
 namespace android {
 namespace installd {
 
+using IFsveritySetupAuthToken = android::os::IInstalld::IFsveritySetupAuthToken;
+
 class InstalldNativeService : public BinderService<InstalldNativeService>, public os::BnInstalld {
 public:
     static status_t start();
@@ -191,6 +193,13 @@ public:
                                      const std::string& instructionSet,
                                      const std::optional<std::string>& outputPath,
                                      int32_t* _aidl_return);
+
+    binder::Status createFsveritySetupAuthToken(const android::os::ParcelFileDescriptor& authFd,
+                                                android::sp<IFsveritySetupAuthToken>* _aidl_return);
+    binder::Status enableFsverity(const android::sp<IFsveritySetupAuthToken>& authToken,
+                                  int32_t appUid, const std::string& filePath,
+                                  const std::string& packageName, int32_t userId,
+                                  int32_t* _aidl_return);
 
 private:
     std::recursive_mutex mLock;

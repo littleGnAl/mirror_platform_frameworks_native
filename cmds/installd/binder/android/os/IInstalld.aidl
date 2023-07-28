@@ -134,6 +134,22 @@ interface IInstalld {
     int getOdexVisibility(@utf8InCpp String packageName, @utf8InCpp String apkPath,
             @utf8InCpp String instructionSet, @nullable @utf8InCpp String outputPath);
 
+    interface IFsveritySetupAuthToken {
+        // Using an interface here is an easy way to create and maintain an IBinder object across
+        // the processes. When installd creates this binder object (in which the implementation
+        // holds the writable FD) and returns it, only a reference is sent to the caller process,
+        // i.e. the server process still holds the writable FD and can close it when it wants.
+        // Once the binder object has no reference count, it gets destructed automatically
+        // (alternatively, installd can maintain an internal mapping of FD, but it is more error
+        // prone because the app may crash and not finish the fs-verity setup, keeping the FD unused
+        // forever).
+        //
+        // We don't necessarily need a method here, so it's left blank intentionally.
+    }
+    IFsveritySetupAuthToken createFsveritySetupAuthToken(in ParcelFileDescriptor authFd);
+    int enableFsverity(in IFsveritySetupAuthToken authToken, int appUid, @utf8InCpp String filePath,
+            @utf8InCpp String packageName, int userId);
+
     const int FLAG_STORAGE_DE = 0x1;
     const int FLAG_STORAGE_CE = 0x2;
     const int FLAG_STORAGE_EXTERNAL = 0x4;
