@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c6a61f_963525f7",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:00:49Z",
+      "side": 1,
+      "message": "use test name here, or change APIs to keep everything in bytes so that we can do it purely in memory",
+      "range": {
+        "startLine": 196,
+        "startChar": 49,
+        "endLine": 196,
+        "endChar": 60
+      },
+      "revId": "35d5a85e8024129496449b871cd87f41b6032164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21eef7eb_08ef64d4",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:00:49Z",
+      "side": 1,
+      "message": "nit: You should use \u0027seedFd.close()\u0027 for this case as it will provide better fdsan errros. However, since seedFd is an RAII object, I would recommend putting this in a scope. Consider this:\n\n    ...\n    ASSERT_NE(transaction, std::nullopt);\n\n    {\n        base::unique_fd seedFd(...);\n        ASSERT_TRUE(seedFd.ok());\n\n        // generate corpus from this transaction.\n        generateSeedsFromRecording(seedFd, std::move(*transaction));\n     }\n     ...",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 32
+      },
+      "revId": "35d5a85e8024129496449b871cd87f41b6032164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2977f0_3f118910",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:00:49Z",
+      "side": 1,
+      "message": "note: the code `ASSERT_EQ(0, lseek(fd.get(), 0, SEEK_SET));` re-uses the same FD. I actually do like re-opening the file, because it\u0027s a more separate test. However, it is somewhat odd to see both styles in the same test, so if you prefer this way, you may also convert lseek to the other style.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 85
+      },
+      "revId": "35d5a85e8024129496449b871cd87f41b6032164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9baf988_9d92a2e1",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:00:49Z",
+      "side": 1,
+      "message": "everything here is repeated except for this block. What if you factor it out into its own function, and then make this function take a function as an argument which does this? e.g. like `void (*replay)(const RecordedTransaction\u0026)`\n\n`void recordReplay(Status (IBinderRecordReplayTest::*set)(T), U recordedValue, Status (IBinderRecordReplayTest::*get)(U*), U changedValue, void (*replay)(const RecordedTransaction\u0026))`",
+      "range": {
+        "startLine": 191,
+        "startChar": 8,
+        "endLine": 210,
+        "endChar": 36
+      },
+      "revId": "35d5a85e8024129496449b871cd87f41b6032164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d36c7e_e6f38226",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-28T02:00:49Z",
+      "side": 1,
+      "message": "We\u0027ll want to do every mode in both tests (don\u0027t want to risk any missed cases).\n\nIf you use a function like \u0027replay\u0027 mentioned above, then you could even convert this to be TEST_P so that it automatically tries everything in every combination (or you could pass both functions in here now).\n\nTEST_P is very worth trying out, because you will see how easy it is to re-use test cases and keep clear results in stdout.",
+      "range": {
+        "startLine": 222,
+        "startChar": 16,
+        "endLine": 225,
+        "endChar": 1
+      },
+      "revId": "35d5a85e8024129496449b871cd87f41b6032164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
