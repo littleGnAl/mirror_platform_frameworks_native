@@ -19,6 +19,7 @@
 #include <errno.h>
 #include <fts.h>
 #include <inttypes.h>
+#include <linux/fsverity.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -83,7 +84,10 @@
 
 using android::base::ParseUint;
 using android::base::Split;
+using android::base::StartsWith;
 using android::base::StringPrintf;
+using android::base::unique_fd;
+using android::os::ParcelFileDescriptor;
 using std::endl;
 
 namespace android {
@@ -229,6 +233,31 @@ binder::Status checkArgumentFileName(const std::string& path) {
     return ok();
 }
 
+bool isAppDataPath(const std::string& filePath, const std::string& packageName, int32_t userId) {
+    if (userId == 0) {
+        // /data/user/0/...
+        std::string cePrefixLegacy =
+                create_data_user_ce_package_path(nullptr, userId, packageName.c_str()) + "/";
+        if (StartsWith(filePath, cePrefixLegacy)) {
+            return true;
+        }
+    }
+    // /data/user/$userId/...
+    std::string cePrefix =
+            create_data_user_ce_package_path_as_user_link(nullptr, userId, packageName.c_str()) +
+            "/";
+    if (StartsWith(filePath, cePrefix)) {
+        return true;
+    }
+    // /data/user_de/$userId/...
+    std::string dePrefix =
+            create_data_user_de_package_path(nullptr, userId, packageName.c_str()) + "/";
+    if (StartsWith(filePath, dePrefix)) {
+        return true;
+    }
+    return false;
+}
+
 #define ENFORCE_UID(uid) {                                  \
     binder::Status status = checkUid((uid));                \
     if (!status.isOk()) {                                   \
@@ -282,6 +311,26 @@ binder::Status checkArgumentFileName(const std::string& path) {
             return status;                                     \
         }                                                      \
     }
+
+class FsveritySetupAuthToken : public os::IInstalld::BnFsveritySetupAuthToken {
+public:
+    FsveritySetupAuthToken(const ParcelFileDescriptor& authFd) {
+        this->authFd.reset(unique_fd(dup(authFd.get())));
+    }
+
+    const ParcelFileDescriptor& get() const { return authFd; }
+
+    ::android::binder::Status revoke() override {
+        authFd.reset();
+        return ok();
+    }
+
+private:
+    FsveritySetupAuthToken(const FsveritySetupAuthToken&) = delete;
+    FsveritySetupAuthToken& operator=(const FsveritySetupAuthToken&) = delete;
+
+    ParcelFileDescriptor authFd;
+};
 
 #ifdef GRANULAR_LOCKS
 
@@ -3855,6 +3904,112 @@ binder::Status InstalldNativeService::getOdexVisibility(
 
     *_aidl_return = get_odex_visibility(apk_path, instruction_set, oat_dir);
     return *_aidl_return == -1 ? error() : ok();
+}
+
+// Creates an auth token to be used in enableFsverity. This token is really to store a proof that
+// the caller can write to a file, represented by the authFd. Effectively, system_server as the
+// man-in-the-middle cannot enable fs-verity on arbitrary app files. If the FD is not writable,
+// return null.
+//
+// Notebly, creating the token allows us to manage the writable FD easily during enableFsverity.
+// Since enabling fs-verity to a file requires no outstanding writable FD, passing the authFd to the
+// server allows the server to hold the only reference (as long as the client app doesn't).
+binder::Status InstalldNativeService::createFsveritySetupAuthToken(
+        const ParcelFileDescriptor& authFd, android::sp<IFsveritySetupAuthToken>* _aidl_return) {
+    int open_flags = fcntl(authFd.get(), F_GETFL);
+    if (open_flags < 0) {
+        return exception(binder::Status::EX_SERVICE_SPECIFIC, "fcntl failed");
+    }
+    if ((open_flags & (O_WRONLY | O_RDWR)) == 0) {
+        return exception(binder::Status::EX_SECURITY, "Received FD with unexpected open flag");
+    }
+    *_aidl_return = sp<FsveritySetupAuthToken>::make(authFd);
+    return ok();
+}
+
+// Enables fs-verity for filePath, which must be an absolute path under an app's "files" directory
+// (CE or DE storage) for userId. The file must be the same inode as in the auth token previously
+// returned from createFsveritySetupAuthToken, and owned by the app uid. As installd is more
+// privilgede than its client / system server, we attempt to limit what a (compromised) client can
+// do.
+//
+// The reason for this app request to go throuh installd is to avoid exposing a risky area (#PKCS7
+// signature verification) in the kernel to the app as an attack surface (it can't be system server
+// because it can't override DAC and manipulate app files). Note that we should be able to drop
+// these hops and simply the the app calls the ioctl, once all upgrading devices run with a kernel
+// without fs-verity built-in signature (aosp/2650402).
+binder::Status InstalldNativeService::enableFsverity(
+        const android::sp<IFsveritySetupAuthToken>& authToken, int32_t appUid,
+        const std::string& filePath, const std::string& packageName, int32_t userId,
+        int32_t* _aidl_return) {
+    ENFORCE_UID(AID_SYSTEM);
+    CHECK_ARGUMENT_PATH(filePath);
+    CHECK_ARGUMENT_PACKAGE_NAME(packageName);
+    ENFORCE_VALID_USER(userId);
+    LOCK_PACKAGE();
+    if (appUid < 0) {
+        return exception(binder::Status::EX_ILLEGAL_ARGUMENT, "Invalid UID");
+    }
+
+    unique_fd rfd(open(filePath.c_str(), O_RDONLY | O_CLOEXEC | O_NOFOLLOW));
+
+    // Authenticate
+    {
+        // Checks the targeting file is the same inode as the authFd.
+        const ParcelFileDescriptor& authFd =
+                reinterpret_cast<FsveritySetupAuthToken*>(authToken.get())->get();
+        struct stat stFromAuthFd;
+        int retval = fstat(authFd.get(), &stFromAuthFd);
+        if (retval < 0) {
+            *_aidl_return = retval;
+            return ok();
+        }
+        struct stat stFromPath;
+        retval = fstat(rfd.get(), &stFromPath);
+        if (retval < 0) {
+            *_aidl_return = retval;
+            return ok();
+        }
+        if (memcmp(&stFromPath, &stFromAuthFd, sizeof(stFromPath)) != 0) {
+            LOG(DEBUG) << "FD authentication failed";
+            *_aidl_return = EPERM;
+            return ok();
+        }
+
+        // And the FD is a regular file owned by the app uid. An attacker may be able to spoof the
+        // app uid, but it will just fail the request.
+        if (stFromPath.st_uid != static_cast<uint32_t>(appUid)) {
+            LOG(DEBUG) << "File not owned by the app uid";
+            *_aidl_return = EPERM;
+            return ok();
+        }
+        if (!S_ISREG(stFromPath.st_mode)) {
+            LOG(DEBUG) << "Not a regular file";
+            *_aidl_return = EINVAL;
+            return ok();
+        }
+
+        // Confidence check: Accept only the path is under the package's data directory, CE or DE.
+        if (!isAppDataPath(filePath, packageName, userId)) {
+            LOG(DEBUG) << "Path not allowed";
+            *_aidl_return = EINVAL;
+            return ok();
+        }
+    }
+
+    // Release the writable FD. fs-verity can't be enabled if there's any in the system.
+    authToken.get()->revoke();
+
+    fsverity_enable_arg arg = {};
+    arg.version = 1;
+    arg.hash_algorithm = FS_VERITY_HASH_ALG_SHA256;
+    arg.block_size = 4096;
+    if (ioctl(rfd.get(), FS_IOC_ENABLE_VERITY, &arg) < 0) {
+        *_aidl_return = errno;
+    } else {
+        *_aidl_return = 0;
+    }
+    return ok();
 }
 
 }  // namespace installd
