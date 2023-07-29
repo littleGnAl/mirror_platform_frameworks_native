@@ -22,6 +22,30 @@
       },
       "revId": "21e1447a7189b2d3e17797255b6a448de11b3c00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f76f74_78b2373d",
+        "filename": "libs/binder/ndk/tests/libbinder_ndk_unit_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-29T00:56:41Z",
+      "side": 1,
+      "message": "If we use waitForService, and this bug is deeper than this race, and the service really doesn\u0027t get registered, it would cause the test to timeout. We only want it to wait 5s and then give us a clear answer, not wait indefinitely.",
+      "parentUuid": "8b761946_a51a81b8",
+      "range": {
+        "startLine": 387,
+        "startChar": 43,
+        "endLine": 387,
+        "endChar": 71
+      },
+      "revId": "21e1447a7189b2d3e17797255b6a448de11b3c00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
