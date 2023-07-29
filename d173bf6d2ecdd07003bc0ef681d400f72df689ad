@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "694129db_42b0c0b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-07-29T14:45:23Z",
+      "side": 1,
+      "message": "(should this just be a symlink to one of the canonical ones?)",
+      "revId": "d173bf6d2ecdd07003bc0ef681d400f72df689ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
