@@ -190,6 +190,30 @@
       },
       "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e2ccc39_496eec94",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3871,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-07-31T22:35:00Z",
+      "side": 1,
+      "message": "Should we reconsider just allowing apps to use FS_IOC_ENABLE_VERITY?  Then this API would not be needed at all.",
+      "parentUuid": "2ce52f13_9c694be2",
+      "range": {
+        "startLine": 3871,
+        "startChar": 53,
+        "endLine": 3871,
+        "endChar": 97
+      },
+      "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
