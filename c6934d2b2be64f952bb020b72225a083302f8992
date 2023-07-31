@@ -52,6 +52,24 @@
       "parentUuid": "230218fa_37632149",
       "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5559ea6f_a0a11bb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-31T16:19:47Z",
+      "side": 1,
+      "message": "- this change fails due to internal projects, and it is mostly an experiment to show the benefit. I need to recreate it using checkbuilds from the internal tree in order to get it to work.\n\n- I haven\u0027t tried with \u0027-fvisibility\u003dhidden\u0027 in C++, and I intend to do the comparison before doing this at scale. maennich@ also mentioned this on this CL, and you can see the comment chain there for more details.",
+      "parentUuid": "da9ae9a0_33f76a94",
+      "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
