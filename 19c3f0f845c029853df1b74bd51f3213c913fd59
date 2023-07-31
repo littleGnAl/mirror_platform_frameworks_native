@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e1add18b_9bf60797",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-07-31T20:55:05Z",
+      "side": 1,
+      "message": "I\u0027m not sure how the dex2oat issue will fall out. Maybe it\u0027ll suddenly be considered serious enough to warrant OTA packages without DCLA enabled. I don\u0027t think we should make assumptions on what\u0027ll happen there and potentially exacerbate that problem.",
+      "parentUuid": "7ed55f2c_c0ddd71a",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e7f743b8_4f584bd3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e3d901_852d34fa",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-07-31T20:55:05Z",
+      "side": 1,
+      "message": "Agreed. The old code did it this way, and maybe there\u0027s a good reason for it, so I just kept it.\n\n\u003e as we are going to deprecate this in future versions.\n\nWell, there\u0027s a lot of machinery here to set up a chroot to run dex2oat in. We may want to utilise that in future versions, possibly also for Mainline update preopts. I reckon the alternative would be to fully rely on CompOS (and take a hit on all devices that don\u0027t support that). However, that\u0027s a separate discussion we\u0027ll need to have.",
+      "parentUuid": "d22669e8_f23f5dff",
+      "range": {
+        "startLine": 139,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 59
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "097ec23a_63eda7a4",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-07-31T14:11:11Z",
       "side": 1,
       "message": "Nit: string_view",
+      "range": {
+        "startLine": 149,
+        "startChar": 26,
+        "endLine": 149,
+        "endChar": 32
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3470659f_05e19441",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-07-31T20:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "097ec23a_63eda7a4",
       "range": {
         "startLine": 149,
         "startChar": 26,
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0838f044_6bdb2f93",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-07-31T20:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be33e300_e86a3ebb",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 73
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "405ac712_2dc9ba92",
@@ -123,6 +219,30 @@
       "writtenOn": "2023-07-31T14:11:11Z",
       "side": 1,
       "message": "Looks like `npos` is static.",
+      "range": {
+        "startLine": 359,
+        "startChar": 41,
+        "endLine": 359,
+        "endChar": 45
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae76db0_c8bb3ecb",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-07-31T20:55:05Z",
+      "side": 1,
+      "message": "This is moot, but yes, it\u0027s intentional.",
+      "parentUuid": "405ac712_2dc9ba92",
       "range": {
         "startLine": 359,
         "startChar": 41,
@@ -156,6 +276,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "232b304b_eb5db8b5",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-07-31T20:55:05Z",
+      "side": 1,
+      "message": "Ah, thanks. `Tokenize` is good. It means a string copy, but that doesn\u0027t matter.",
+      "parentUuid": "193b2bce_f1d6a231",
+      "range": {
+        "startLine": 359,
+        "startChar": 8,
+        "endLine": 366,
+        "endChar": 9
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de4d4a59_4be2aeae",
@@ -169,6 +313,30 @@
       "writtenOn": "2023-07-31T14:11:11Z",
       "side": 1,
       "message": "`android::base::Join`",
+      "range": {
+        "startLine": 369,
+        "startChar": 12,
+        "endLine": 372,
+        "endChar": 13
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06dd1827_fe77e9e2",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-07-31T20:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de4d4a59_4be2aeae",
       "range": {
         "startLine": 369,
         "startChar": 12,
