@@ -34,6 +34,24 @@
       "parentUuid": "b5a32b6e_190900f5",
       "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9ae9a0_33f76a94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-07-31T01:44:43Z",
+      "side": 1,
+      "message": "Do you have a list of symbols that were removed? \n\nI wish we do this more explicitly, either by\n\n(1) setting the default visibility to be hidden `(-fvisibility\u003dhidden)` and explicitly adding `__attribute__ ((visibility (\"default\")))` to selected APIs\n\n(2) or the way around (visible by default, explicitly hiding)",
+      "parentUuid": "230218fa_37632149",
+      "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
