@@ -142,6 +142,30 @@
       },
       "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25508160_b0fec2b5",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3871,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-07-31T22:06:47Z",
+      "side": 1,
+      "message": "Example bug (for the previous version of enableFsVerity lol) b/216112933",
+      "parentUuid": "0400753b_469fd57f",
+      "range": {
+        "startLine": 3871,
+        "startChar": 53,
+        "endLine": 3871,
+        "endChar": 97
+      },
+      "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
