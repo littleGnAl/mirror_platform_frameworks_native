@@ -214,6 +214,30 @@
       },
       "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13230b05_4b239f8f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3871,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-07-31T22:38:35Z",
+      "side": 1,
+      "message": "Adding more check is fine with me.  But I\u0027d like us to agree with what\u0027s achievable.\n\nThe bug assumes system server isn\u0027t trusted.  If that\u0027s the assumption, all the inputs are from system server, including what\u0027ll be needed for the path validation (e.g. package name, volume uuid, user id, DE/CE storage, etc.), become questionable.  In a sense, what we\u0027d be adding is a large regular expression that reject weird looking package_name/uuid/etc.  But since the attacker can spoof all the inputs, I won\u0027t feel confident about the validation.\n\nThen, I\u0027ll have to question... do we really need to assume system server is untrusted in this case? But not many other cases?",
+      "parentUuid": "2ce52f13_9c694be2",
+      "range": {
+        "startLine": 3871,
+        "startChar": 53,
+        "endLine": 3871,
+        "endChar": 97
+      },
+      "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
