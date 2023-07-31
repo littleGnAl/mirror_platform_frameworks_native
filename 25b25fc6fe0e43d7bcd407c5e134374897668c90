@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "867dc9ed_19e5e5d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2023-07-31T18:17:11Z",
+      "side": 1,
+      "message": "There\u0027s operator\u003c\u003d\u003e if you want to be fancier ( https://en.cppreference.com/w/cpp/language/default_comparisons )",
+      "revId": "25b25fc6fe0e43d7bcd407c5e134374897668c90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
