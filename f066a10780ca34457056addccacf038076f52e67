@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae27e7ec_82431cf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-07-31T10:35:03Z",
+      "side": 1,
+      "message": "Citation needed.",
+      "range": {
+        "startLine": 17,
+        "startChar": 57,
+        "endLine": 17,
+        "endChar": 71
+      },
+      "revId": "f066a10780ca34457056addccacf038076f52e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9a40ed6a_ed001a0c",
@@ -14,6 +37,75 @@
       "writtenOn": "2023-07-28T22:42:09Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "f066a10780ca34457056addccacf038076f52e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f531c5_c9795c26",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3883,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-07-31T10:35:03Z",
+      "side": 1,
+      "message": "That feels like a slightly weak check.\nPassing an fd is a good way to make sure an app can actually access a file it wants us to work on.\nBut elsewhere we\u0027ve relied on paths, provided to us by system server (so already reasonably trusted) and which we validate to make sure they aren\u0027t suspicious and match app data file paths.\nI\u0027m not entirely sure which if either would be better here.\nOf course if you do it by path you have to do it installd; if you do it by fd you can do it in system server.\n\nI suppose you could fetch the path and/or selinux label from the fd and sanitise that, as an additional check?",
+      "range": {
+        "startLine": 3877,
+        "startChar": 0,
+        "endLine": 3883,
+        "endChar": 0
+      },
+      "revId": "f066a10780ca34457056addccacf038076f52e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c7f2ce_2e3c49a1",
+        "filename": "cmds/installd/InstalldNativeService.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-07-31T10:35:03Z",
+      "side": 1,
+      "message": "I thought forward declarations in headers were discouraged?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "f066a10780ca34457056addccacf038076f52e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f0d434_35df4508",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-07-31T10:35:03Z",
+      "side": 1,
+      "message": "Wait, what is this? Binder already gives you an unspoofable calling UID.\nAnd if it\u0027s being passed to you, why should you trust it?\n\nIf we trust system server to call this, why not have system server do the ioctl?",
+      "range": {
+        "startLine": 137,
+        "startChar": 27,
+        "endLine": 137,
+        "endChar": 37
+      },
       "revId": "f066a10780ca34457056addccacf038076f52e67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
