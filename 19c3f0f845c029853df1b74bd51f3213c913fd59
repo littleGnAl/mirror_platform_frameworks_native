@@ -1,6 +1,184 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed55f2c_c0ddd71a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-31T14:11:11Z",
+      "side": 1,
+      "message": "Otapreopt is broken from time to time, so I wouldn\u0027t be too worried about this. Especially, IIUC, the old system image doesn\u0027t have the SELinux policy rule to execute dex2oat. It may be even better to abort otapreopt on an old system image, which not only reduces the complexity of the script, but also relieves users of waiting for otapreopt spending hours doing nothing.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f743b8_4f584bd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-31T14:11:11Z",
+      "side": 1,
+      "message": "Creative solution!",
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d22669e8_f23f5dff",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-31T14:11:11Z",
+      "side": 1,
+      "message": "This looks weird to me. I think it\u0027s the script\u0027s responsibility to close the fd before exec. Maybe this can be done by something like `otapreopt_chroot ARGS... FD\u003e\u0026-`.\n\nAnyway, I was just saying. No action needed, as we are going to deprecate this in future versions.",
+      "range": {
+        "startLine": 139,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 59
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097ec23a_63eda7a4",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-31T14:11:11Z",
+      "side": 1,
+      "message": "Nit: string_view",
+      "range": {
+        "startLine": 149,
+        "startChar": 26,
+        "endLine": 149,
+        "endChar": 32
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be33e300_e86a3ebb",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-31T14:11:11Z",
+      "side": 1,
+      "message": "Can we detect if the line exceeds the limit, for example, by checking if the last character is a newline?",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 73
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "405ac712_2dc9ba92",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-31T14:11:11Z",
+      "side": 1,
+      "message": "Looks like `npos` is static.",
+      "range": {
+        "startLine": 359,
+        "startChar": 41,
+        "endLine": 359,
+        "endChar": 45
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "193b2bce_f1d6a231",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-31T14:11:11Z",
+      "side": 1,
+      "message": "Try `android::base:Tokenize`? https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/libbase/include/android-base/strings.h;l\u003d51;drc\u003d50251b5af2588301c8a477ea5a7f6b7d0050c49c\n\nOr `std::istringstream` with operator `\u003e\u003e`?",
+      "range": {
+        "startLine": 359,
+        "startChar": 8,
+        "endLine": 366,
+        "endChar": 9
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de4d4a59_4be2aeae",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-31T14:11:11Z",
+      "side": 1,
+      "message": "`android::base::Join`",
+      "range": {
+        "startLine": 369,
+        "startChar": 12,
+        "endLine": 372,
+        "endChar": 13
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "93004058_4619131f",
@@ -14,6 +192,30 @@
       "writtenOn": "2023-07-31T12:15:50Z",
       "side": 1,
       "message": "I intend to address this but it\u0027s a separate matter unrelated to this CL.",
+      "range": {
+        "startLine": 386,
+        "startChar": 8,
+        "endLine": 386,
+        "endChar": 17
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b8f63d_3b1f90eb",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-07-31T14:11:11Z",
+      "side": 1,
+      "message": "OK, please don\u0027t forget to address this.",
+      "parentUuid": "93004058_4619131f",
       "range": {
         "startLine": 386,
         "startChar": 8,
