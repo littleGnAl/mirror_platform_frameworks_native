@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "49866efb_6558dfcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-07-31T19:58:51Z",
+      "side": 1,
+      "message": "I added more comments in the code. Let me know if it\u0027s unclear.",
+      "parentUuid": "ae27e7ec_82431cf7",
+      "range": {
+        "startLine": 17,
+        "startChar": 57,
+        "endLine": 17,
+        "endChar": 71
+      },
+      "revId": "f066a10780ca34457056addccacf038076f52e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9a40ed6a_ed001a0c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bbdc317_d6b13fbd",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3883,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-07-31T19:58:51Z",
+      "side": 1,
+      "message": "Added the context check. I at first tried to parse the label, but it got complicated quickly.  I end up with simple prefix matching.\n\nI\u0027m not sure how passing the path helps though.  In either case, system server (system uid) does not have permission to manupilate app\u0027s file, so it still has to be done in installd as root.",
+      "parentUuid": "e1f531c5_c9795c26",
+      "range": {
+        "startLine": 3877,
+        "startChar": 0,
+        "endLine": 3883,
+        "endChar": 0
+      },
+      "revId": "f066a10780ca34457056addccacf038076f52e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6c7f2ce_2e3c49a1",
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb60879_eae313ac",
+        "filename": "cmds/installd/InstalldNativeService.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-07-31T19:58:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c7f2ce_2e3c49a1",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "f066a10780ca34457056addccacf038076f52e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8f0d434_35df4508",
@@ -100,6 +172,30 @@
       "writtenOn": "2023-07-31T10:35:03Z",
       "side": 1,
       "message": "Wait, what is this? Binder already gives you an unspoofable calling UID.\nAnd if it\u0027s being passed to you, why should you trust it?\n\nIf we trust system server to call this, why not have system server do the ioctl?",
+      "range": {
+        "startLine": 137,
+        "startChar": 27,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "f066a10780ca34457056addccacf038076f52e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80fd905a_1bc4eb60",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-07-31T19:58:51Z",
+      "side": 1,
+      "message": "Renamed to reduce confusion.  This is the app UID, i.e. who calls system server, which forwards to installd.",
+      "parentUuid": "e8f0d434_35df4508",
       "range": {
         "startLine": 137,
         "startChar": 27,
