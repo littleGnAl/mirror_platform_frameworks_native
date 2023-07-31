@@ -70,6 +70,24 @@
       "parentUuid": "da9ae9a0_33f76a94",
       "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf310fe4_79e16586",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-07-31T18:36:23Z",
+      "side": 1,
+      "message": "See also Elliott\u0027s commentary on this here: https://android-review.git.corp.google.com/c/platform/system/core/+/2681895/1//COMMIT_MSG#10\n\nThough for C symbols it might make more sense, for C++ I get this can be difficult (but it\u0027s also automatable).",
+      "parentUuid": "5559ea6f_a0a11bb9",
+      "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
