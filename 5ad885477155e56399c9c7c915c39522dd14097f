@@ -159,6 +159,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f878cbe_e1f6d948",
+        "filename": "libs/binder/tests/trusty_fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-07-31T20:28:47Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "279bc13f_61850677",
+      "revId": "5ad885477155e56399c9c7c915c39522dd14097f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16f29fb1_7827c416",
