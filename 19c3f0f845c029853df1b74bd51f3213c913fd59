@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93004058_4619131f",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-07-31T12:15:50Z",
+      "side": 1,
+      "message": "I intend to address this but it\u0027s a separate matter unrelated to this CL.",
+      "range": {
+        "startLine": 386,
+        "startChar": 8,
+        "endLine": 386,
+        "endChar": 17
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
