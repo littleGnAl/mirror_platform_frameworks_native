@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcb0a4d0_37ef1a6e",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3883,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-01T13:26:10Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:packages/modules/Virtualization/virtualizationmanager/src/selinux.rs;drc\u003d3f0f1e80df7369c7dac42d3fcdf65e688a26431d;l\u003d90\n\nBut I don\u0027t really like this sort of selinux label munging, it\u0027s a last resort.",
+      "parentUuid": "5bbdc317_d6b13fbd",
+      "range": {
+        "startLine": 3877,
+        "startChar": 0,
+        "endLine": 3883,
+        "endChar": 0
+      },
+      "revId": "f066a10780ca34457056addccacf038076f52e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6c7f2ce_2e3c49a1",
         "filename": "cmds/installd/InstalldNativeService.h",
         "patchSetId": 2

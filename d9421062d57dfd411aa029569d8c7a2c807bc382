@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19503109_e07cc46d",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3869,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-01T13:26:10Z",
+      "side": 1,
+      "message": "More precisely, you need CAP_DAC_OVERRIDE - which is deliberately very restricted by SELinux, and installd is one of the few things that have it.\n\nI assumed that passing the fd was being done to avoid needing that. But of course FS_IOC_ENABLE_VERITY is weird in that it wants an fd with read only access but does a separate writability check.",
+      "range": {
+        "startLine": 3869,
+        "startChar": 19,
+        "endLine": 3869,
+        "endChar": 23
+      },
+      "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29b0bbc0_22cf0c86",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 3
@@ -259,6 +282,76 @@
         "startChar": 53,
         "endLine": 3871,
         "endChar": 97
+      },
+      "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1199273e_59934d78",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3871,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-01T13:26:10Z",
+      "side": 1,
+      "message": "If you follow the flow for hashSecondaryDexFile there are some path name checks in there. The restrictions are mainly to make sure we are dealing with some app private data file, rather than any other file that system server might have access to.",
+      "parentUuid": "2b9c01a9_2b110322",
+      "range": {
+        "startLine": 3871,
+        "startChar": 53,
+        "endLine": 3871,
+        "endChar": 97
+      },
+      "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1361f539_15a8b63c",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3886,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-01T13:26:10Z",
+      "side": 1,
+      "message": "It\u0027s tricky, but not impossible.",
+      "range": {
+        "startLine": 3885,
+        "startChar": 95,
+        "endLine": 3886,
+        "endChar": 77
+      },
+      "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77226758_39a9f079",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3906,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-01T13:26:10Z",
+      "side": 1,
+      "message": "There\u0027s possibly others out there - see app_data_file_type.\nBut to be fair, esoteric apps with unusual data file types may not be your target audience.",
+      "range": {
+        "startLine": 3905,
+        "startChar": 0,
+        "endLine": 3906,
+        "endChar": 70
       },
       "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
