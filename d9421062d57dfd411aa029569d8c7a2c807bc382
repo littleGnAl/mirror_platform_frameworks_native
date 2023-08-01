@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33cddcc5_4aea5abc",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3869,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-01T20:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19503109_e07cc46d",
+      "range": {
+        "startLine": 3869,
+        "startChar": 19,
+        "endLine": 3869,
+        "endChar": 23
+      },
+      "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29b0bbc0_22cf0c86",
@@ -313,6 +337,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a532cda0_f1ad8a50",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3871,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-01T20:30:19Z",
+      "side": 1,
+      "message": "Done with the path check as suggested.\n\nI don\u0027t think direct app access to FS_IOC_ENABLE_VERITY is a good idea at this point, but I leave a comment to revamp in the future.\n\n\n(FWIW, I didn\u0027t mean regex per-se, just the idea of pattern matching the untrusted inputs)",
+      "parentUuid": "1199273e_59934d78",
+      "range": {
+        "startLine": 3871,
+        "startChar": 53,
+        "endLine": 3871,
+        "endChar": 97
+      },
+      "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1361f539_15a8b63c",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 3
@@ -347,6 +395,30 @@
       "writtenOn": "2023-08-01T13:26:10Z",
       "side": 1,
       "message": "There\u0027s possibly others out there - see app_data_file_type.\nBut to be fair, esoteric apps with unusual data file types may not be your target audience.",
+      "range": {
+        "startLine": 3905,
+        "startChar": 0,
+        "endLine": 3906,
+        "endChar": 70
+      },
+      "revId": "d9421062d57dfd411aa029569d8c7a2c807bc382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d52f5d_38717e09",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3906,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-01T20:30:19Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "77226758_39a9f079",
       "range": {
         "startLine": 3905,
         "startChar": 0,
