@@ -118,6 +118,30 @@
       },
       "revId": "772b62edc84718d599e2412561ab201cfa1e30ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edbbd42e_92f34d5b",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-01T20:54:06Z",
+      "side": 1,
+      "message": "Deleted setData here and abandoned the new CL.",
+      "parentUuid": "55a4c0db_95eb5219",
+      "range": {
+        "startLine": 105,
+        "startChar": 16,
+        "endLine": 111,
+        "endChar": 18
+      },
+      "revId": "772b62edc84718d599e2412561ab201cfa1e30ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
