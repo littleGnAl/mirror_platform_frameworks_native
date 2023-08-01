@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a3cdfe_7b54683a",
+        "filename": "cmds/installd/otapreopt_script.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-01T14:24:46Z",
+      "side": 1,
+      "message": "I\u0027d be surprised if this passes selinux. https://cs.android.com/android/platform/superproject/main/+/main:system/sepolicy/private/file_contexts?q\u003dotapreopt_chroot\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain:system%2Fsepolicy%2F\n\nI think the reason it uses the binary in the old system is because it\u0027s not feasible to have sepolicy rules for things in a temporarily mounted directory. If they could do it this way they\u0027d have done it. I thought that was so obvious I haven\u0027t even bothered to sift through the history to find out.",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 14
+      },
+      "revId": "7aa2d6a7e4da42cee7ae255580affc893f6c3608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
