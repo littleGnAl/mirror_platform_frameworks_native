@@ -88,6 +88,24 @@
       "parentUuid": "5559ea6f_a0a11bb9",
       "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c16e9f_629f7dae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-08-01T02:50:12Z",
+      "side": 1,
+      "message": "I don\u0027t see maennich on this CL. Where is he?\n\nAnd yes, I agree with Eliott for C libraries like libcutils, but I don\u0027t think the same principle can be easily applied to C++ libraries like this.\n\nSo, it looks like the common ground we all agree is that we hide symbols by default and export only those needed. \n\nWe don\u0027t have a consensus on how to export symbols. Some options mentioned so far:\n\n1. version script\n2. visibility attribute in source code",
+      "parentUuid": "bf310fe4_79e16586",
+      "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
