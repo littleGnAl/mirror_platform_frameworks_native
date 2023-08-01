@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b46a54_1b93d00f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-08-01T23:51:58Z",
+      "side": 1,
+      "message": "I\u0027d really prefer not to rely on path validation like this.  Some potential issues are:\n\n- Path traversal via paths like `/data/user/0/com.foo.bar/../../../../some/arbitrary/path`\n- Paths like `/data/user/0/com.foo.bar/foo/bar` where either `foo` or `bar` could be a symlink that points to anywhere\n- TOCTOU bugs if checks are done on the file separately from it actually being opened for the ioctl",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 4
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49fdbb0_f4f667a1",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3902,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-08-01T23:51:58Z",
+      "side": 1,
+      "message": "Could https://lore.kernel.org/fsverity/20230801050714.28974-1-ebiggers@kernel.org be enough?  That wouldn\u0027t break backwards compatibility for earlier Android versions, so we could backport it to *every* Android Common Kernel branch that supports fsverity, even branches like `android11-5.4` that need to be compatible with earlier Android versions",
+      "range": {
+        "startLine": 3899,
+        "startChar": 82,
+        "endLine": 3902,
+        "endChar": 27
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
