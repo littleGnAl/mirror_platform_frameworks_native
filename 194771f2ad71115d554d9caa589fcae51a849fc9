@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f27efa1a_b5f9f84d",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-08-01T14:18:52Z",
+      "side": 1,
+      "message": "Nit: You can use `std::move` from \u003calgorithm\u003e to avoid copying the strings. The pointers will still be copied though.",
+      "range": {
+        "startLine": 367,
+        "startChar": 12,
+        "endLine": 367,
+        "endChar": 18
+      },
+      "revId": "194771f2ad71115d554d9caa589fcae51a849fc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

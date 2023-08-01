@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8fca90b_ea7f1f1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-08-01T14:18:52Z",
+      "side": 1,
+      "message": "I think this is bad to keep the legacy behavior in terms of user experience. As discussed, we intend to make this change a recommended patch, with which otapreopt should work without setting up and tearing down the chroot environment repeatedly, or it should be disabled, so that users don\u0027t suffer from the extremely long \"optimizing apps\" step.\n\nOne approach is to call the new otapreopt_chroot from the script. I have a CL for this (aosp/2686706).\n\nAnother approach is to return early and do nothing when `otapreopt_chroot --version` fails.",
+      "parentUuid": "e1add18b_9bf60797",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "19c3f0f845c029853df1b74bd51f3213c913fd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e7f743b8_4f584bd3",
