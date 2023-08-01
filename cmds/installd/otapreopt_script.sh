@@ -67,7 +67,7 @@ while ((i<MAXIMUM_PACKAGES)) ; do
 
   DEXOPT_PARAMS=$(cmd otadexopt next)
 
-  /system/bin/otapreopt_chroot $STATUS_FD $TARGET_SLOT_SUFFIX $DEXOPT_PARAMS >&- 2>&-
+  /postinstall/system/bin/otapreopt_chroot $STATUS_FD $TARGET_SLOT_SUFFIX $DEXOPT_PARAMS >&- 2>&-
 
   PROGRESS=$(cmd otadexopt progress)
   print -u${STATUS_FD} "global_progress $PROGRESS"
