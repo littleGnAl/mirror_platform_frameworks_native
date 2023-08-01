@@ -181,7 +181,6 @@ cc_binary {
 
 cc_binary {
     name: "otapreopt_chroot",
-    defaults: ["libapexd-deps"],
     cflags: [
         "-Wall",
         "-Werror",
@@ -192,13 +191,18 @@ cc_binary {
         "otapreopt_utils.cpp",
     ],
     shared_libs: [
-        "libbase",
         "liblog",
-        "libutils",
+        "libselinux",
+    ],
+    static_libs: [
+        "libbase_ndk",
+        "libdm",
+        "libext2_uuid",
     ],
     required: [
         "apexd",
     ],
+    stl: "c++_static",
 }
 
 filegroup {
