@@ -22,6 +22,30 @@
       },
       "revId": "7aa2d6a7e4da42cee7ae255580affc893f6c3608",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e5fa570_3ee2f54f",
+        "filename": "cmds/installd/otapreopt_script.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-08-01T15:52:21Z",
+      "side": 1,
+      "message": "Discussed offline. The files in /postinstall get the right SELinux labels, though it\u0027s unclear to me how, so SELinux is not the blocker.\n\nI don\u0027t see a reason to use the old binary. AFAICS, the new binary works.",
+      "parentUuid": "b0a3cdfe_7b54683a",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 14
+      },
+      "revId": "7aa2d6a7e4da42cee7ae255580affc893f6c3608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
