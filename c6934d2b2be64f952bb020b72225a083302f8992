@@ -124,6 +124,24 @@
       "parentUuid": "b6c16e9f_629f7dae",
       "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c92bb57_6b85f71b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-08-02T00:46:02Z",
+      "side": 1,
+      "message": "Thanks.\n\nWe also have to have a criteria on hiding or exporting a symbol. Two options:\n\n1. export only those are currently being used\n2. export only those are designed to be externally usable (by the lib author)\n\nI like 2.",
+      "parentUuid": "4b618ecf_1a08bab2",
+      "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
