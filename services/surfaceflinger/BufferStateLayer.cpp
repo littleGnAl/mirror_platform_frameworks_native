@@ -485,6 +485,9 @@ bool BufferStateLayer::setSidebandStream(const sp<NativeHandle>& sidebandStream)
 
     mDrawingState.sidebandStream = sidebandStream;
     mDrawingState.modified = true;
+    if (sidebandStream != nullptr) {
+        mDrawingState.buffer = nullptr;
+    }
     setTransactionFlags(eTransactionNeeded);
     if (!mSidebandStreamChanged.exchange(true)) {
         // mSidebandStreamChanged was false
