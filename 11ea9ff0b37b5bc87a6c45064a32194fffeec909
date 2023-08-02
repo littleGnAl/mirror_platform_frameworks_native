@@ -135,6 +135,30 @@
       },
       "revId": "11ea9ff0b37b5bc87a6c45064a32194fffeec909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47d3f95f_6af09b3d",
+        "filename": "libs/binder/trusty/rust/binder_ndk_sys/rules.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-08-02T06:07:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61fd0815_814bf8cd",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 28
+      },
+      "revId": "11ea9ff0b37b5bc87a6c45064a32194fffeec909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
