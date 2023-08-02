@@ -45,6 +45,30 @@
       },
       "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e62d6210_d92469cc",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3902,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-02T00:05:34Z",
+      "side": 1,
+      "message": "I thought many OEMs don\u0027t touch the kernel once a device is launched?  Are we able to actually require a kernel update on an Android release?  If so, how is it enforced?  How do we know the OEM/vendor actually apply that patch?\n\nIf we can get the patch out this early, I\u0027d love to switch over to the simple solution...",
+      "parentUuid": "e49fdbb0_f4f667a1",
+      "range": {
+        "startLine": 3899,
+        "startChar": 82,
+        "endLine": 3902,
+        "endChar": 27
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
