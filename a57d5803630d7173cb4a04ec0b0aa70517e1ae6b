@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee7e1880_e7dd33ad",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-02T13:48:10Z",
+      "side": 1,
+      "message": "I agree with the sentiment, but the alternative also has issues - we can\u0027t just operate on any fd.\n\nThere are helpers in frameworks/native/cmds/installd/utils.cpp for some of this - e.g. validate_path() which blocks use of \"..\" at all. Maybe this function should be there?\n\nWe also sometimes specify O_NOFOLLOW when opening the files. (Although I vaguely think we try to prevent symlinks being created in app data directories in the first place.)\n\nOver at https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/refs/heads/main:frameworks/native/cmds/installd/dexopt.cpp;drc\u003da8dc666195b8df98e1f35e9d54759670f267666f;l\u003d2244 we fork, drop capabilities and switch to the app\u0027s uid before opening the file, which prevents a lot of attacks. (There\u0027s a few other places we do that too.) We retain our SELinux context though, so we can still do things only installd can do, like fs-verity.",
+      "parentUuid": "96b46a54_1b93d00f",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 4
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e49fdbb0_f4f667a1",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 5
@@ -90,6 +114,53 @@
         "startChar": 82,
         "endLine": 3902,
         "endChar": 27
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef3eaab1_c750864f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3902,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-02T13:48:10Z",
+      "side": 1,
+      "message": "I believe the current state is that very few OEMs will upgrade existing devices to a new kernel version, but they will distribute security patches.\n\nThat will start to change though, as longer device lifetimes are mandated.",
+      "parentUuid": "91a7baca_edfae237",
+      "range": {
+        "startLine": 3899,
+        "startChar": 82,
+        "endLine": 3902,
+        "endChar": 27
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4051e5f6_6db1a533",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3913,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-02T13:48:10Z",
+      "side": 1,
+      "message": "Actually this checks for \"..\" already.",
+      "range": {
+        "startLine": 3913,
+        "startChar": 4,
+        "endLine": 3913,
+        "endChar": 23
       },
       "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
