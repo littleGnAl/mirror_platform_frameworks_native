@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4c3c32c_8c125998",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-02T18:27:20Z",
+      "side": 1,
+      "message": "I\u0027m trying another idea (I\u0027m seeing some technical complexity, so throwing out first).\n\nWhen the app calls the API, the app process will open the file and send the read-only FD, PLUS a writable \"auth FD\" of the same file.  This way, system server as the man-in-the-middle can\u0027t enable fs-verity on arbitrary app files.\n\ninstalld will ensure both FDs are indeed the same inode via stat(2), the auth FD is writable via fcntl(F_GETCL), and the app uid actually owns the file. If preferred, we can keep the path check, although I don\u0027t think it will provide any security value.\n\nI think this is as much as we can get without relying on the kernel update?\n\nLet me know if you see a problem in this approach.  If this sounds good, I need to fight with some binder/aidl challenge (specifically, to get the auth PFD closed right after sending over the transport)...",
+      "parentUuid": "ee7e1880_e7dd33ad",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 4
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e49fdbb0_f4f667a1",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 5
@@ -132,6 +156,30 @@
       "writtenOn": "2023-08-02T13:48:10Z",
       "side": 1,
       "message": "I believe the current state is that very few OEMs will upgrade existing devices to a new kernel version, but they will distribute security patches.\n\nThat will start to change though, as longer device lifetimes are mandated.",
+      "parentUuid": "91a7baca_edfae237",
+      "range": {
+        "startLine": 3899,
+        "startChar": 82,
+        "endLine": 3902,
+        "endChar": 27
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "106ab9fe_6fe9041b",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3902,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-02T18:27:20Z",
+      "side": 1,
+      "message": "Yeah... if there is already a standard process of updating a device kernel, especially during an Android update, I\u0027d love to learn more.  But if it\u0027s really just up to the OEM, I wouldn\u0027t feel comfortable exposing a new attack surface to apps (I don\u0027t know how much vulnerabilities are accessible to the app sandbox).\n\nASB is an interesting idea though.  Maybe a plan B?",
       "parentUuid": "91a7baca_edfae237",
       "range": {
         "startLine": 3899,
