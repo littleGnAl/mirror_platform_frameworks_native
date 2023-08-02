@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e523ac34_eea6cdd0",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-02T22:53:53Z",
+      "side": 1,
+      "message": "I think the path validation here is different from the other cases. Unlike the others, the path here is copied directly from the app.\n\nWith only path validation (or really, pattern matching), we can\u0027t assume system server is trusted.  On the other hand, system_server can\u0027t spoof \"auth fd\" since only the app can open their file writable, and I think that\u0027s a real security improvement (we need some binder change though, and I\u0027m not sure how tricky it\u0027d be ).\n\nIt really boils down to how much installd can trust system server.\n* If we only check the path (the current patch set), it gives the system server the ability to enable fs-verity to all app files. The \"auth fd\" prevents that.\n* Anything else besides auth fd adds layers of filters\n * App uid check forbids an app to target other app\u0027s world-writable file (but we don\u0027t need this check)\n * Path check could be a sanity check, assuming system server is trusted",
+      "parentUuid": "9afcd96e_7ce40fed",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 4
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e49fdbb0_f4f667a1",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 5
