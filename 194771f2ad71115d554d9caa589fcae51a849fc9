@@ -22,6 +22,30 @@
       },
       "revId": "194771f2ad71115d554d9caa589fcae51a849fc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fc418ff_be97c848",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-03T19:22:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f27efa1a_b5f9f84d",
+      "range": {
+        "startLine": 367,
+        "startChar": 12,
+        "endLine": 367,
+        "endChar": 18
+      },
+      "revId": "194771f2ad71115d554d9caa589fcae51a849fc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -16,6 +16,24 @@
       "message": "Sorry, I accidentally overwritten your CL!",
       "revId": "67991e579b135b32d4c751a29b616cf16c81ce43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15dc7a4a_ef68b32d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-03T19:22:12Z",
+      "side": 1,
+      "message": "No worries. I\u0027ve got a local change along the same lines that I\u0027ll upload once I\u0027ve figured out some sepolicy errors.",
+      "parentUuid": "dfa8081e_de833bdc",
+      "revId": "67991e579b135b32d4c751a29b616cf16c81ce43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
