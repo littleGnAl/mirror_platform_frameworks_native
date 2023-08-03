@@ -22,6 +22,30 @@
       },
       "revId": "adea715927393577ea95b1a31acf64e2e8e18aa9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73592e2a_a4835d09",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel_seeds.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-03T00:33:15Z",
+      "side": 1,
+      "message": "This was changed while refactoring tests here :https://android-review.git.corp.google.com/c/platform/frameworks/native/+/2679736/3/libs/binder/tests/parcel_fuzzer/include_random_parcel_seeds/fuzzseeds/random_parcel_seeds.h",
+      "parentUuid": "3c9ffcc9_07977316",
+      "range": {
+        "startLine": 68,
+        "startChar": 32,
+        "endLine": 68,
+        "endChar": 80
+      },
+      "revId": "adea715927393577ea95b1a31acf64e2e8e18aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
