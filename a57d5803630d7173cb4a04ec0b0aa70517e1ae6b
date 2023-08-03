@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4133e17_73d914f0",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-03T16:12:17Z",
+      "side": 1,
+      "message": "If I run `/usr/bin/sesearch -A   -s untrusted_app_all -c file -p write \u003cpolocy\u003e` I get a lot of hits. \n\nMost of those the app can\u0027t open, but I assume it could acquire fds to a bunch of them.\n\nBut then installd wouldn\u0027t be able to enable fs-verity on most of them.\n\nBut an app could acquire a writable fd to some other app\u0027s data file - which your ownership check would handle.",
+      "parentUuid": "ca69cad3_c166e1f8",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 4
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e49fdbb0_f4f667a1",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 5
