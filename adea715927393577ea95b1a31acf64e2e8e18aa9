@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c9ffcc9_07977316",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel_seeds.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-03T00:31:11Z",
+      "side": 1,
+      "message": "does this need to consume the transaction? Could it be `const RecordedTransaction\u0026\u0027?",
+      "range": {
+        "startLine": 68,
+        "startChar": 32,
+        "endLine": 68,
+        "endChar": 80
+      },
+      "revId": "adea715927393577ea95b1a31acf64e2e8e18aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
