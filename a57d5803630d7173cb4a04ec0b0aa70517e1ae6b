@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca69cad3_c166e1f8",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-03T16:05:53Z",
+      "side": 1,
+      "message": "If we can assume an app can only write to their own private data directory (by sandboxing, i.e. sepolicy, etc.), then it still seems to me a \"path pattern check\" is just a sanity check on top of the fd auth.  But if we rather not assume so, then I agree a \"path stat(2) check against the auth fd\" is stronger to enforce 2.\n\n(Although once we allow apps to use the ioctl directly, we can only rely on the kernel / sepolicy, not the path. Which is fine by me.)",
+      "parentUuid": "ecde5470_44d6985f",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 4
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e49fdbb0_f4f667a1",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 5
