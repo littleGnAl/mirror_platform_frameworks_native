@@ -194,6 +194,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8b36779_4a7b46b1",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-08-03T17:29:55Z",
+      "side": 1,
+      "message": "\u003e When the app calls the API, the app process will open the file and send the read-only FD, PLUS a writable \"auth FD\" of the same file.\n\nThis won\u0027t work because FS_IOC_ENABLE_VERITY requires that the file not be open for writing by anyone.  Unless you close the writable fd before actually calling the ioctl",
+      "parentUuid": "a4133e17_73d914f0",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 4
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e49fdbb0_f4f667a1",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 5
