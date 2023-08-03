@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b87edf62_1229bfe7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-03T00:37:05Z",
+      "side": 1,
+      "message": "cl",
+      "revId": "66d9218b88c49327c343914129b0546b92c4f95e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ba300a2_4adeda85",
@@ -14,6 +31,30 @@
       "writtenOn": "2023-08-03T00:33:15Z",
       "side": 1,
       "message": "it\u0027s still a lot of duplication to copy paste each of these and check they are in sync. What if we removed the argument from recordReplay, and inside recordReplay, we switched it to iterate over both replayBinder and replayFuzzService?",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 1
+      },
+      "revId": "66d9218b88c49327c343914129b0546b92c4f95e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5b8aef_830d800c",
+        "filename": "libs/binder/tests/binderRecordReplayTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-03T00:37:05Z",
+      "side": 1,
+      "message": "I was thinking the setup part of the test should happen for both type of tests separately. But it seems like nothing major state based is being done in setup.",
+      "parentUuid": "5ba300a2_4adeda85",
       "range": {
         "startLine": 191,
         "startChar": 0,
