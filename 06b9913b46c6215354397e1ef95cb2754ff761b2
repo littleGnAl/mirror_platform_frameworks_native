@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2746df_d8163ef0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-08-03T16:30:06Z",
+      "side": 1,
+      "message": "what is MMP playback?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "06b9913b46c6215354397e1ef95cb2754ff761b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86593046_16f97070",
+        "filename": "libs/gui/BufferQueueProducer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1393,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-08-03T16:30:06Z",
+      "side": 1,
+      "message": "why is this change needed? shouldn\u0027t the producer side know that there\u0027s no longer a sidebadn stream upon disconnecting?",
+      "range": {
+        "startLine": 1392,
+        "startChar": 8,
+        "endLine": 1393,
+        "endChar": 48
+      },
+      "revId": "06b9913b46c6215354397e1ef95cb2754ff761b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
