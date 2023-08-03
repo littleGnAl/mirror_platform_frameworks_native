@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce80f926_25d30a7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-08-03T18:53:46Z",
+      "side": 1,
+      "message": "Tested this on both Android and Trusty, it works. Take another look at it?",
+      "revId": "abf991c2e076597f1daf91ffb9196d5b29befb38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
