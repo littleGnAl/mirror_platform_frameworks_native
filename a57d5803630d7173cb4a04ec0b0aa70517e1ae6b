@@ -218,6 +218,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b1c0cf3_f5e58bce",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-03T17:47:23Z",
+      "side": 1,
+      "message": "\u003e Unless you close the writable fd before actually calling the ioctl\n\nYes, that\u0027s the challenge, but I think I figured this out... prototyping at the moment.",
+      "parentUuid": "d8b36779_4a7b46b1",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 4
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e49fdbb0_f4f667a1",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 5
