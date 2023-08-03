@@ -22,6 +22,30 @@
       },
       "revId": "877d087af7ad0a435b27d36068bd0d0162a91f45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d91e01_7a1e8197",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-08-03T12:36:29Z",
+      "side": 1,
+      "message": "Reducing the load doesn\u0027t look like the motivation. Sure, the sleep reduces the average load, but what\u0027s critical to user experience is not the average load but the peak load. The sleep doesn\u0027t reduce the peak load but only spreads it to a longer period, which makes user experience even worse.\n\nAnyway, glad to see it being removed.",
+      "parentUuid": "e0aa5bc0_2eb74eaa",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "877d087af7ad0a435b27d36068bd0d0162a91f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
