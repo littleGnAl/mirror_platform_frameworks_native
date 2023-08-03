@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecde5470_44d6985f",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-03T09:44:21Z",
+      "side": 1,
+      "message": "\u003e I think the path validation here is different from the other cases. Unlike the others, the path here is copied directly from the app.\n\nI think that\u0027s true in some of the other cases.\n\nWe want to prove 2 things:\n1. The app has (write) access to the file.\n2. The file is in the (or even an) app\u0027s private data directory.\n\nThe fd check is good for the first (as is the fork/setuid approach). But the path check seems useful for the second?",
+      "parentUuid": "e523ac34_eea6cdd0",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 4
+      },
+      "revId": "a57d5803630d7173cb4a04ec0b0aa70517e1ae6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e49fdbb0_f4f667a1",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 5
