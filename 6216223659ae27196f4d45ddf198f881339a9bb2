@@ -111,6 +111,30 @@
       },
       "revId": "6216223659ae27196f4d45ddf198f881339a9bb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "116ae123_a9cb4cd0",
+        "filename": "cmds/installd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-08-04T19:27:10Z",
+      "side": 1,
+      "message": "Thanks for catching this! I believe using a new binary is one of the keys to the success of the new implementation in ART Service, so I\u0027d like to experiment the approach here. I added `min_sdk_version`. Is it sufficient? IIUC, that\u0027s what we do to make the ART module work on an older platform version, right?\n\nPS: I could potentially set min_sdk_version to a much older version (\"30\" is the lowest possible one), but I picked \"UpsideDownCake\" so that we won\u0027t bother the static_libs owners if they start to use some newer APIs at some point.",
+      "parentUuid": "5c294ccf_efa80acb",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 22
+      },
+      "revId": "6216223659ae27196f4d45ddf198f881339a9bb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
