@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e8cad0_28a1b866",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-04T15:52:25Z",
+      "side": 1,
+      "message": "I\u0027ve incorporated this into [my topic](http://r.android.com/q/topic:%22otachroot-speed%22+author:mast) now. There are some wrinkles with the sepolicy rules.",
+      "revId": "6216223659ae27196f4d45ddf198f881339a9bb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
