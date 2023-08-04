@@ -88,6 +88,29 @@
       "parentUuid": "2312adb9_9618ebca",
       "revId": "6216223659ae27196f4d45ddf198f881339a9bb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c294ccf_efa80acb",
+        "filename": "cmds/installd/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-04T16:49:39Z",
+      "side": 1,
+      "message": "I realised this isn\u0027t safe to reliably load the binary on an older platform version. You\u0027d either need to use `sdk_version: \"34\"` (or older), or make the binary entirely static.\n\nNeither is very attractive, and given we\u0027ll need the sepolicy changes in the base image anyway we can just as well keep using the binary from there. If we ever need to do something like this again (without requiring sepolicy changes) then we could consider this approach, but hopefully this will go away soon enough instead.\n\n(This may actually be the reason they originally chose to call /system/bin/otapreopt_chroot from the script.)",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 22
+      },
+      "revId": "6216223659ae27196f4d45ddf198f881339a9bb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
