@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4273438a_87b90f32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-04T17:50:34Z",
+      "side": 1,
+      "message": "This may invalidate assumptions in `DexOptOtaTests`. At this point I no longer care particularly, except it would be nice to see a green run after the otapreopt_chroot stuff has gone in. So would you mind holding off submit for a little while, or else run that test [locally](go/android-art/art/otadexopt.md#local-test)?",
+      "revId": "db8c0f9c4d22835bf556f462035e9e64d815ba21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
