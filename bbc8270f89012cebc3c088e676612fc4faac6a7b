@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc18e168_063a50e5",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-04T10:02:49Z",
+      "side": 1,
+      "message": "At least one example should show or_binder_exception",
+      "range": {
+        "startLine": 383,
+        "startChar": 13,
+        "endLine": 383,
+        "endChar": 42
+      },
+      "revId": "bbc8270f89012cebc3c088e676612fc4faac6a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8b84370_00250b2e",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-04T10:02:49Z",
+      "side": 1,
+      "message": "For anyhow errors at least we should prefer Debug to Display.\nI went through a while back and changed all our usages to debug, because that shows you the full context (ie the causes of the error), while display shows only the most recent message.\nAnd actually that\u0027s what you show in your before example in the commit message.",
+      "range": {
+        "startLine": 429,
+        "startChar": 21,
+        "endLine": 429,
+        "endChar": 28
+      },
+      "revId": "bbc8270f89012cebc3c088e676612fc4faac6a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6bba0cc_8d6fee65",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-04T10:02:49Z",
+      "side": 1,
+      "message": "This doesn\u0027t require the Display (or Debug) bound; can we drop it?",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 5
+      },
+      "revId": "bbc8270f89012cebc3c088e676612fc4faac6a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
