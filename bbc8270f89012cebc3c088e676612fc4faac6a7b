@@ -140,6 +140,30 @@
       },
       "revId": "bbc8270f89012cebc3c088e676612fc4faac6a7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "285072ea_8481d8fa",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-04T11:19:46Z",
+      "side": 1,
+      "message": "The bound is part of the impl, not the trait.\nThe functions that don\u0027t need Debug could be defaulted in the trait itself, with the ones that do in the impl?\n(I may be massively misunderstanding this of course.)",
+      "parentUuid": "143b056e_a8da911c",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 5
+      },
+      "revId": "bbc8270f89012cebc3c088e676612fc4faac6a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

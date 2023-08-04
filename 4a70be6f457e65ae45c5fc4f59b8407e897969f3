@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7817aa4b_9f1a8f77",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-04T11:19:46Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"similarily\" -- should it be \"similarly\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \"similarily\" -- should it be \"similarly\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 401,
+        "startChar": 48,
+        "endLine": 401,
+        "endChar": 58
+      },
+      "revId": "4a70be6f457e65ae45c5fc4f59b8407e897969f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
