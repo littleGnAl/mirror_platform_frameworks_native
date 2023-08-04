@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9520174_5d98bbc7",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-08-04T10:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc18e168_063a50e5",
+      "range": {
+        "startLine": 383,
+        "startChar": 13,
+        "endLine": 383,
+        "endChar": 42
+      },
+      "revId": "bbc8270f89012cebc3c088e676612fc4faac6a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8b84370_00250b2e",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c78b9c4a_09568a8c",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-08-04T10:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8b84370_00250b2e",
+      "range": {
+        "startLine": 429,
+        "startChar": 21,
+        "endLine": 429,
+        "endChar": 28
+      },
+      "revId": "bbc8270f89012cebc3c088e676612fc4faac6a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6bba0cc_8d6fee65",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-08-04T10:02:49Z",
       "side": 1,
       "message": "This doesn\u0027t require the Display (or Debug) bound; can we drop it?",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 5
+      },
+      "revId": "bbc8270f89012cebc3c088e676612fc4faac6a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "143b056e_a8da911c",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-08-04T10:53:26Z",
+      "side": 1,
+      "message": "But other functions in the same trait require the bound. We can\u0027t have different bounds for functions in the same trait. To remove the bound, we have to create two traits, which requires users to import both. Since `std::error::Error` inherits `Display` and `Debug`, I think dropping the bound doesn\u0027t give us much.",
+      "parentUuid": "c6bba0cc_8d6fee65",
       "range": {
         "startLine": 434,
         "startChar": 0,
