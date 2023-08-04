@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01b8143b_1fd5ae5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-04T21:43:24Z",
+      "side": 1,
+      "message": "ag/24326119 is the internal change that uses the API (I\u0027m not sure which part of the internal change should be made public)\n\n+Steven and Devin, who I discussed the binder challenge with. Please feel free to focus on the AIDL and how it\u0027s used.  See also the internal change above.",
+      "revId": "8ddd89c282f31a25a92397cf1d279661ed30dfc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80d6d93f_2c76d8af",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3960,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-04T21:43:24Z",
+      "side": 1,
+      "message": "Steven, I don\u0027t remember how you suggested me to handle the casting (but I think the IBinder alternative doesn\u0027t make it cleaner).  Is there a cleaner way?\n\nI have another `authToken.get()-\u003erevoke();` below. There\u0027s no particular reason why it\u0027s part of the AIDL.  I\u0027d just like to see what you think.  Thanks!",
+      "range": {
+        "startLine": 3959,
+        "startChar": 8,
+        "endLine": 3960,
+        "endChar": 82
+      },
+      "revId": "8ddd89c282f31a25a92397cf1d279661ed30dfc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
