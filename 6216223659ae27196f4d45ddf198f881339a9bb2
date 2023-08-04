@@ -70,6 +70,24 @@
       "parentUuid": "ee10f1b5_1d85319f",
       "revId": "6216223659ae27196f4d45ddf198f881339a9bb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5361df88_56dbf1c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-08-04T16:24:20Z",
+      "side": 1,
+      "message": "I saw those messages, but I consider them as harmless. Let\u0027s wait for Alan\u0027s reply.",
+      "parentUuid": "2312adb9_9618ebca",
+      "revId": "6216223659ae27196f4d45ddf198f881339a9bb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
