@@ -63,6 +63,30 @@
       },
       "revId": "8ddd89c282f31a25a92397cf1d279661ed30dfc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ce7458_7e0380a4",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3960,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-04T22:51:18Z",
+      "side": 1,
+      "message": "authToken isn\u0027t an IBinder though? From code search it seems interface_cast is used to convert from IBinder?",
+      "parentUuid": "24578509_d70372d9",
+      "range": {
+        "startLine": 3959,
+        "startChar": 8,
+        "endLine": 3960,
+        "endChar": 82
+      },
+      "revId": "8ddd89c282f31a25a92397cf1d279661ed30dfc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
