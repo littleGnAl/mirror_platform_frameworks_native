@@ -142,6 +142,24 @@
       "parentUuid": "4b618ecf_1a08bab2",
       "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d98893d_653f9103",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-04T21:52:10Z",
+      "side": 1,
+      "message": "(2) is the idea, but (1) is the only thing we can do automatically, so it\u0027s likely we will be stuck inbetween 1/2. I don\u0027t really mind (1). If an author adds a symbol without using it or testing it, that\u0027s already somewhat of a problem.",
+      "parentUuid": "5c92bb57_6b85f71b",
+      "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
