@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5cdcff2_b7c93a60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-08-04T16:10:33Z",
+      "side": 1,
+      "message": "I suppose this can only be submitted after the static linking change (aosp/2686706)?",
+      "revId": "24299e54759595e4167a2f49c8c9117fdc0f7e87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
