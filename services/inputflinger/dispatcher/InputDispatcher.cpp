@@ -2541,7 +2541,11 @@ void InputDispatcher::addDragEventLocked(const MotionEntry& entry) {
     }
 
     if (uint32_t(pointerIndex) == entry.pointerCount) {
-        LOG_ALWAYS_FATAL("Should find a valid pointer index by id %d", mDragState->pointerId);
+        ALOGE("Abort drag: should find a valid pointer index by id %d", mDragState->pointerId);
+        for (uint32_t index = 0; index < entry.pointerCount; index++) {
+            const PointerProperties& pointerProperties = entry.pointerProperties[index];
+            ALOGV("  pointer index %d -> pointer id %d", index, pointerProperties.id);
+        }
         sendDropWindowCommandLocked(nullptr, 0, 0);
         mDragState.reset();
         return;
