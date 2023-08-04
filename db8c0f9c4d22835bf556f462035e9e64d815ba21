@@ -16,6 +16,24 @@
       "message": "This may invalidate assumptions in `DexOptOtaTests`. At this point I no longer care particularly, except it would be nice to see a green run after the otapreopt_chroot stuff has gone in. So would you mind holding off submit for a little while, or else run that test [locally](go/android-art/art/otadexopt.md#local-test)?",
       "revId": "db8c0f9c4d22835bf556f462035e9e64d815ba21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b591a3f_6020a880",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-08-04T18:30:00Z",
+      "side": 1,
+      "message": "Yes, I changed the test and ran it locally.",
+      "parentUuid": "4273438a_87b90f32",
+      "revId": "db8c0f9c4d22835bf556f462035e9e64d815ba21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
