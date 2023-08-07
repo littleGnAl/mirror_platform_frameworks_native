@@ -22,6 +22,30 @@
       },
       "revId": "4a70be6f457e65ae45c5fc4f59b8407e897969f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8886ab1b_e661a5e7",
+        "filename": "libs/binder/rust/src/error.rs",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-08-07T01:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7817aa4b_9f1a8f77",
+      "range": {
+        "startLine": 401,
+        "startChar": 48,
+        "endLine": 401,
+        "endChar": 58
+      },
+      "revId": "4a70be6f457e65ae45c5fc4f59b8407e897969f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
