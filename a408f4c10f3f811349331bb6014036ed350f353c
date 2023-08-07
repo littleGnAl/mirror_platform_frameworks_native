@@ -194,6 +194,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63471025_8399c69d",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-07T18:59:37Z",
+      "side": 1,
+      "message": "The security concern isn\u0027t an \"invalid path\" (from the link, I assume by \"invalid\" you imply only the path \"structure\", i.e. symlink and existence), but perhaps \"arbitrary path\".  I thought we\u0027re treating installd as a super privilege domain and want a high security bar.  For example, we need to consider what can happen when a system server is compromised, right? Otherwise why the domain separation?  Arguably we\u0027re only enabling fs-verity to files, so it isn\u0027t a huge problem if we allow an attacker to abuse the API.\n\nDoes anyone on security feel a path check is sufficient?  Not sure who on security has more knowledge about installd.  Otherwise, I don\u0027t feel this is an overkill given the installd privilege.",
+      "parentUuid": "89941a13_8ae382c0",
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03280907_facfde48",
         "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
         "patchSetId": 8
