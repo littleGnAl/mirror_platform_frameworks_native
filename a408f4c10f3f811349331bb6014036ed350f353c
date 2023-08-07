@@ -49,6 +49,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ebbfb36_2560edde",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-07T19:20:07Z",
+      "side": 1,
+      "message": "How are we avoiding an fd leak here?",
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fad0f71b_34dc7719",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 8
@@ -65,6 +82,29 @@
         "startChar": 3,
         "endLine": 3911,
         "endChar": 10
+      },
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2086669_d1e0c790",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 3915,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-07T19:20:07Z",
+      "side": 1,
+      "message": "is this only because we need writable fd? can we send both writable and read-only fd into enableFsverity, and close the writable one?",
+      "range": {
+        "startLine": 3915,
+        "startChar": 36,
+        "endLine": 3915,
+        "endChar": 42
       },
       "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -206,6 +246,24 @@
       "side": 1,
       "message": "The security concern isn\u0027t an \"invalid path\" (from the link, I assume by \"invalid\" you imply only the path \"structure\", i.e. symlink and existence), but perhaps \"arbitrary path\".  I thought we\u0027re treating installd as a super privilege domain and want a high security bar.  For example, we need to consider what can happen when a system server is compromised, right? Otherwise why the domain separation?  Arguably we\u0027re only enabling fs-verity to files, so it isn\u0027t a huge problem if we allow an attacker to abuse the API.\n\nDoes anyone on security feel a path check is sufficient?  Not sure who on security has more knowledge about installd.  Otherwise, I don\u0027t feel this is an overkill given the installd privilege.",
       "parentUuid": "89941a13_8ae382c0",
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b72426c_8b36f4e2",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-07T19:20:07Z",
+      "side": 1,
+      "message": "My feedback was based on the security bugs we received for this component.",
+      "parentUuid": "63471025_8399c69d",
       "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
