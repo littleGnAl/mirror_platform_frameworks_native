@@ -250,6 +250,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2dfcc1ee_879e2c06",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 3915,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-07T21:12:15Z",
+      "side": 1,
+      "message": "When a client creates a PFD, it holds the FD. Not until the call returns, it can manually close the FD.  So for example, if we only have 1 enableFsverity, because the client hasn\u0027t closed the writable FD, the server can\u0027t enable fs-verity successfully. See ag/24326119.\n\n(I first tried to do it in binder, but apparently it\u0027s a huge surgery.)",
+      "parentUuid": "5506cf90_e6f52786",
+      "range": {
+        "startLine": 3915,
+        "startChar": 36,
+        "endLine": 3915,
+        "endChar": 42
+      },
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed33142b_07fd13c6",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 8
