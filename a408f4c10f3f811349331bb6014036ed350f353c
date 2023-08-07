@@ -226,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5506cf90_e6f52786",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 3915,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-07T21:04:04Z",
+      "side": 1,
+      "message": "Well, you are passing writable fd back to enableFsverity, albeit wrapped inside FsveritySetupAuthToken? How is it different from just passing ParcelFileDescriptor?",
+      "parentUuid": "94d2ecc6_1444035a",
+      "range": {
+        "startLine": 3915,
+        "startChar": 36,
+        "endLine": 3915,
+        "endChar": 42
+      },
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed33142b_07fd13c6",
         "filename": "cmds/installd/InstalldNativeService.cpp",
         "patchSetId": 8
