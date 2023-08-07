@@ -141,6 +141,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65278034_487c6aa8",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-07T16:36:46Z",
+      "side": 1,
+      "message": "ok, this is definitely an overkill. we are doing way more sensetive operations in installd just by checking a path. let\u0027s do just that",
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03280907_facfde48",
         "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
         "patchSetId": 8
