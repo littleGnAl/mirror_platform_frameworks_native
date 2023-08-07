@@ -176,6 +176,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89941a13_8ae382c0",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-07T18:33:46Z",
+      "side": 1,
+      "message": "Sorry, I might not have been clear enough.\nMy personal concern is that an app can put a symlink in their path.\nThe concern of security team is that system_server can send an invalid path.\n\nThey are both can be addressed by using a rather simple validation-and-open e.g.:\n\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:system/vold/Utils.cpp;l\u003d1727-1762?q\u003dopenat%20vold\u0026sq\u003drepo:googleplex-android%2Fplatform%2Fsuperproject%2Fmain%20b:main\n\nre: more sensitive operation. not in this method, but across installd",
+      "parentUuid": "e8008c4f_e447ac7b",
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03280907_facfde48",
         "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
         "patchSetId": 8
