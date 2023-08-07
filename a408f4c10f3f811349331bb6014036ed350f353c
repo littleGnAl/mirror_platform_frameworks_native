@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf42918_e294a3ac",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-07T08:32:57Z",
+      "side": 1,
+      "message": "Actually this checks for /data/data. /data/user/0 is handled below.",
+      "range": {
+        "startLine": 238,
+        "startChar": 11,
+        "endLine": 238,
+        "endChar": 27
+      },
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c8945a_f7ea1522",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-07T08:32:57Z",
+      "side": 1,
+      "message": "Nit: dup can fail.",
+      "range": {
+        "startLine": 318,
+        "startChar": 37,
+        "endLine": 318,
+        "endChar": 40
+      },
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad0f71b_34dc7719",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 3911,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-07T08:32:57Z",
+      "side": 1,
+      "message": "Notably",
+      "range": {
+        "startLine": 3911,
+        "startChar": 3,
+        "endLine": 3911,
+        "endChar": 10
+      },
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed33142b_07fd13c6",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 3936,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-07T08:32:57Z",
+      "side": 1,
+      "message": "Please fix this ERROR reported by Common Typos: Common typo found: \"the the\" -- should it be \"the\"?\n\nAnalyzer Description: Linter for catching common typos motivated by go/todo-fail and go/lol-codesearch. Shared with google3 common typos library go/common-typos.\nOwner: ayeaye-team@google.com\n\nCommon typo found: \"the the\" -- should it be \"the\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 3936,
+        "startChar": 25,
+        "endLine": 3936,
+        "endChar": 32
+      },
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9964d426_29fe27af",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 3947,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-07T08:32:57Z",
+      "side": 1,
+      "message": "That feels like a slightly weak check. Check it\u0027s a valid app uid, or at least not a system uid?",
+      "range": {
+        "startLine": 3947,
+        "startChar": 4,
+        "endLine": 3947,
+        "endChar": 21
+      },
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c868808a_59848c1b",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 3982,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-07T08:32:57Z",
+      "side": 1,
+      "message": "I think this won\u0027t work for userId !\u003d 0.\nThe file will have the combined uid, encoding userId + appId.",
+      "range": {
+        "startLine": 3982,
+        "startChar": 7,
+        "endLine": 3982,
+        "endChar": 64
+      },
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03280907_facfde48",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-07T08:32:57Z",
+      "side": 1,
+      "message": "// Intentionally left blank\n\nOr a better explanation? Both to make it less ugly, and to make it clearer why there are no methods?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 5
+      },
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
