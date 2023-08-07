@@ -296,6 +296,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15752c64_337dc456",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 3915,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-07T22:43:19Z",
+      "side": 1,
+      "message": "Oh I like the idea :)  I also moved the code slightly.",
+      "parentUuid": "d3d51c05_a8813a2e",
+      "range": {
+        "startLine": 3915,
+        "startChar": 36,
+        "endLine": 3915,
+        "endChar": 42
+      },
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed33142b_07fd13c6",
