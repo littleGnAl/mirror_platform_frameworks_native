@@ -21,6 +21,7 @@
 #include <binder/Binder.h>
 #include <binder/BpBinder.h>
 #include <binder/TextOutput.h>
+#include <binder/Trace.h>
 
 #include <android-base/macros.h>
 #include <cutils/sched_policy.h>
@@ -810,6 +811,11 @@ status_t IPCThreadState::transact(int32_t handle,
 {
     LOG_ALWAYS_FATAL_IF(data.isForRpc(), "Parcel constructed for RPC, but being used with binder.");
 
+    // TODO: we could print more information here (handle, code, etc.. or pull
+    // transaction names, piped down from other layers, but the point is - you
+    // can see all binder transactions like this)
+    binder::ScopedTrace(ATRACE_TAG_RAW_BINDER, "send_binder_transaction");
+
     status_t err;
 
     flags |= TF_ACCEPT_FDS;
@@ -1400,6 +1406,11 @@ status_t IPCThreadState::executeCommand(int32_t cmd)
 
             // ALOGI(">>>> TRANSACT from pid %d sid %s uid %d\n", mCallingPid,
             //    (mCallingSid ? mCallingSid : "<N/A>"), mCallingUid);
+
+            // TODO: we could include more information here. Putting trace start here,
+            // not later, so that it's always at the same point in this code, even if
+            // we add more information in the future.
+            binder::ScopedTrace(ATRACE_TAG_RAW_BINDER, "rec_binder_transaction");
 
             Parcel reply;
             status_t error;

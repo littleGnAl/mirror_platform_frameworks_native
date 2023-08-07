@@ -229,6 +229,7 @@ static const TracingCategory k_categories[] = {
     { "regulators",  "Voltage and Current Regulators", 0, {
         { REQ,      "events/regulator/enable" },
     } },
+    { "binder", "Userspace binder", ATRACE_TAG_RAW_BINDER, { } },
     { "binder_driver", "Binder Kernel driver", 0, {
         { REQ,      "events/binder/binder_transaction/enable" },
         { REQ,      "events/binder/binder_transaction_received/enable" },
