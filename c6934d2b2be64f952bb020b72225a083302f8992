@@ -160,6 +160,24 @@
       "parentUuid": "5c92bb57_6b85f71b",
       "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "952d9656_0cce433b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-08-07T00:47:48Z",
+      "side": 1,
+      "message": "The automatic identification could be used to help the authors. For example, it could be used as the starting set, from where the authors will add or remove symbols as they think. The automation script could be used by partners for their own libraries (not forks of ours) if they seek for optimization.",
+      "parentUuid": "2d98893d_653f9103",
+      "revId": "c6934d2b2be64f952bb020b72225a083302f8992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
