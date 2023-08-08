@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eb9dd18_343baa74",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-08T18:24:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8d8c4fa_ff680225",
+      "range": {
+        "startLine": 341,
+        "startChar": 12,
+        "endLine": 341,
+        "endChar": 51
+      },
+      "revId": "969fc0f0245efd505cbcc5e9bbebc4afb48c83c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdf795d7_b0825a12",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-08T17:46:27Z",
       "side": 1,
       "message": "privileged",
+      "range": {
+        "startLine": 3957,
+        "startChar": 3,
+        "endLine": 3957,
+        "endChar": 13
+      },
+      "revId": "969fc0f0245efd505cbcc5e9bbebc4afb48c83c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d42f40f_fd15eb5a",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 3957,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-08T18:24:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdf795d7_b0825a12",
       "range": {
         "startLine": 3957,
         "startChar": 3,
@@ -93,6 +141,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dca13919_1877a854",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 3960,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-08T18:24:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f197ba60_7672a1da",
+      "range": {
+        "startLine": 3960,
+        "startChar": 41,
+        "endLine": 3960,
+        "endChar": 47
+      },
+      "revId": "969fc0f0245efd505cbcc5e9bbebc4afb48c83c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c46bae8_0b27f220",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 3960,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-08T18:24:18Z",
+      "side": 1,
+      "message": "Done lol",
+      "parentUuid": "98b1f9bf_1e7e77b0",
+      "range": {
+        "startLine": 3960,
+        "startChar": 92,
+        "endLine": 3960,
+        "endChar": 98
+      },
+      "revId": "969fc0f0245efd505cbcc5e9bbebc4afb48c83c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81f756e2_02161c85",
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6eace2b_38d20ab4",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 3964,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-08T18:24:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81f756e2_02161c85",
+      "range": {
+        "startLine": 3964,
+        "startChar": 41,
+        "endLine": 3964,
+        "endChar": 53
+      },
+      "revId": "969fc0f0245efd505cbcc5e9bbebc4afb48c83c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb7810f4_a27c1181",
@@ -129,6 +249,30 @@
       "writtenOn": "2023-08-08T17:46:27Z",
       "side": 1,
       "message": "Does this error get logged somewhere?",
+      "range": {
+        "startLine": 4027,
+        "startChar": 0,
+        "endLine": 4027,
+        "endChar": 30
+      },
+      "revId": "969fc0f0245efd505cbcc5e9bbebc4afb48c83c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cea6739_3a4b5228",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 4027,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-08T18:24:18Z",
+      "side": 1,
+      "message": "It\u0027s handled in the app process.  The API throws an IOException.",
+      "parentUuid": "eb7810f4_a27c1181",
       "range": {
         "startLine": 4027,
         "startChar": 0,
