@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f197ba60_7672a1da",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 3960,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2023-08-08T14:28:48Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 3960,
+        "startChar": 41,
+        "endLine": 3960,
+        "endChar": 47
+      },
+      "revId": "969fc0f0245efd505cbcc5e9bbebc4afb48c83c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
