@@ -49,6 +49,11 @@ class RpcTransportCtxTls;
 class RpcTransportCtxTipcAndroid;
 class RpcTransportCtxTipcTrusty;
 
+namespace sdv::rpc {
+class RpcTransportSdv;
+class RpcTransportCtxSdv;
+} // namespace sdv::rpc
+
 // Represents a socket connection.
 // No thread-safety is guaranteed for these APIs.
 class RpcTransport {
@@ -116,6 +121,7 @@ private:
     friend class ::android::RpcTransportTls;
     friend class ::android::RpcTransportTipcAndroid;
     friend class ::android::RpcTransportTipcTrusty;
+    friend class ::android::sdv::rpc::RpcTransportSdv;
 
     RpcTransport() = default;
 };
@@ -147,6 +153,7 @@ private:
     friend class ::android::RpcTransportCtxTls;
     friend class ::android::RpcTransportCtxTipcAndroid;
     friend class ::android::RpcTransportCtxTipcTrusty;
+    friend class ::android::sdv::rpc::RpcTransportCtxSdv;
 
     RpcTransportCtx() = default;
 };
