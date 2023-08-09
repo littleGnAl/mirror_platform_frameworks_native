@@ -977,8 +977,8 @@ bool Parcel::enforceInterface(const char16_t* interface,
             return true;
         } else {
             ALOGW("**** enforceInterface() expected '%s' but read '%s'",
-                  String8(interface, len).c_str(),
-                  String8(parcel_interface, parcel_interface_len).c_str());
+                  ws2s(String16(interface, len)).c_str(),
+                  ws2s(String16(parcel_interface, parcel_interface_len)).c_str());
             return false;
         }
     }
@@ -1007,7 +1007,7 @@ binder::Status Parcel::enforceNoDataAvail() const {
     }
     return binder::Status::
             fromExceptionCode(binder::Status::Exception::EX_BAD_PARCELABLE,
-                              String8::format("Parcel data not fully consumed, unread size: %zu",
+                              String8format("Parcel data not fully consumed, unread size: %zu",
                                               n));
 }
 
@@ -2126,7 +2126,7 @@ status_t Parcel::readString8(String8* pArg) const
     size_t len;
     const char* str = readString8Inplace(&len);
     if (str) {
-        pArg->setTo(str, len);
+        *pArg = String8(str, len);
         return 0;
     } else {
         *pArg = String8();
@@ -2171,7 +2171,7 @@ status_t Parcel::readString16(String16* pArg) const
     size_t len;
     const char16_t* str = readString16Inplace(&len);
     if (str) {
-        pArg->setTo(str, len);
+        *pArg = String16(str, len);
         return 0;
     } else {
         *pArg = String16();

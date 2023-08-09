@@ -24,7 +24,7 @@ using android::base::unique_fd;
 using android::binder::debug::RecordedTransaction;
 
 TEST(BinderRecordedTransaction, RoundTripEncoding) {
-    android::String16 interfaceName("SampleInterface");
+    android::String16 interfaceName(u"SampleInterface");
     Parcel d;
     d.writeInt32(12);
     d.writeInt64(2);
@@ -45,7 +45,7 @@ TEST(BinderRecordedTransaction, RoundTripEncoding) {
 
     auto retrievedTransaction = RecordedTransaction::fromFile(fd);
 
-    EXPECT_EQ(retrievedTransaction->getInterfaceName(), android::String8(interfaceName).c_str());
+    EXPECT_EQ(retrievedTransaction->getInterfaceName(), android::toString8(interfaceName).c_str());
     EXPECT_EQ(retrievedTransaction->getCode(), 1);
     EXPECT_EQ(retrievedTransaction->getFlags(), 42);
     EXPECT_EQ(retrievedTransaction->getTimestamp().tv_sec, ts.tv_sec);
@@ -61,7 +61,7 @@ TEST(BinderRecordedTransaction, RoundTripEncoding) {
 }
 
 TEST(BinderRecordedTransaction, Checksum) {
-    android::String16 interfaceName("SampleInterface");
+    android::String16 interfaceName(u"SampleInterface");
     Parcel d;
     d.writeInt32(12);
     d.writeInt64(2);
@@ -96,7 +96,7 @@ TEST(BinderRecordedTransaction, PayloadsExceedPageBoundaries) {
     std::vector<uint8_t> largePayload;
     uint8_t filler = 0xaa;
     largePayload.insert(largePayload.end(), largeDataSize, filler);
-    android::String16 interfaceName("SampleInterface");
+    android::String16 interfaceName(u"SampleInterface");
     Parcel d;
     d.writeInt32(12);
     d.writeInt64(2);
