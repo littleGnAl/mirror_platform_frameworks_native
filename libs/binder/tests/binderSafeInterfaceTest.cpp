@@ -44,7 +44,7 @@ using namespace std::chrono_literals; // NOLINT - google-build-using-namespace
 namespace android {
 namespace tests {
 
-static const String16 kServiceName("SafeInterfaceTest");
+static const String16 kServiceName(u"SafeInterfaceTest");
 
 enum class TestEnum : uint32_t {
     INVALID = 0,

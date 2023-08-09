@@ -22,6 +22,7 @@
 #include <android-base/unique_fd.h>
 #include <utils/Flattenable.h>
 #include <utils/RefBase.h>
+#include <utils/String8.h>
 #include <utils/Timers.h>
 
 namespace android {
@@ -29,8 +30,6 @@ namespace android {
 namespace mock {
 class MockFence;
 }
-
-class String8;
 
 // ===========================================================================
 // Fence

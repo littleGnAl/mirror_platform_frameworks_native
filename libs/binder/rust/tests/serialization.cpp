@@ -322,7 +322,7 @@ TEST_F(SerializationTest, SerializeString) {
         if (*I == nullptr) {
             strings.push_back(optional<String16>());
         } else {
-            strings.emplace_back(*I);
+            strings.emplace_back(toString16(*I));
         }
     }
     data.writeUtf8AsUtf16(string("testing"));

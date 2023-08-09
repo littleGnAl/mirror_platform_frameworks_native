@@ -129,7 +129,7 @@ TEST(TextOutput, HandleString8) {
 }
 
 TEST(TextOutput, HandleString16) {
-    android::String16 val("foobar");
+    android::String16 val(u"foobar");
     CHECK_LOG(val, "foobar");
 }
 

@@ -27,7 +27,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     std::shared_ptr<os::PersistableBundle> p_bundle(new os::PersistableBundle());
 
     while (fdp.remaining_bytes() > 0) {
-        String16 key(fdp.ConsumeRandomLengthString(fdp.remaining_bytes()).c_str());
+        auto key = String16(fdp.ConsumeRandomLengthString(fdp.remaining_bytes()).c_str());
         callArbitraryFunction(&fdp, gPersistableBundleOperations, p_bundle, &key);
     }
 

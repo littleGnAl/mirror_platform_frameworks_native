@@ -46,7 +46,7 @@ public:
     }
     virtual ~UnixSocketAddress() {}
     std::string toString() const override {
-        return String8::format("path '%.*s'", static_cast<int>(sizeof(mAddr.sun_path)),
+        return String8format("path '%.*s'", static_cast<int>(sizeof(mAddr.sun_path)),
                                mAddr.sun_path)
                 .c_str();
     }
@@ -67,7 +67,7 @@ public:
             }) {}
     virtual ~VsockSocketAddress() {}
     std::string toString() const override {
-        return String8::format("cid %u port %u", mAddr.svm_cid, mAddr.svm_port).c_str();
+        return String8format("cid %u port %u", mAddr.svm_cid, mAddr.svm_port).c_str();
     }
     const sockaddr* addr() const override { return reinterpret_cast<const sockaddr*>(&mAddr); }
     size_t addrSize() const override { return sizeof(mAddr); }
@@ -81,7 +81,7 @@ public:
     InetSocketAddress(const sockaddr* sockAddr, size_t size, const char* addr, unsigned int port)
           : mSockAddr(sockAddr), mSize(size), mAddr(addr), mPort(port) {}
     [[nodiscard]] std::string toString() const override {
-        return String8::format("%s:%u", mAddr, mPort).c_str();
+        return String8format("%s:%u", mAddr, mPort).c_str();
     }
     [[nodiscard]] const sockaddr* addr() const override { return mSockAddr; }
     [[nodiscard]] size_t addrSize() const override { return mSize; }
