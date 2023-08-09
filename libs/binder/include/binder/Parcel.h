@@ -48,7 +48,6 @@ class IBinder;
 class IPCThreadState;
 class ProcessState;
 class RpcSession;
-class String8;
 class TextOutput;
 namespace binder {
 class Status;

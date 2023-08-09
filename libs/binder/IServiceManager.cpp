@@ -88,7 +88,7 @@ public:
         explicit RegistrationWaiter(const sp<AidlRegistrationCallback>& callback)
               : mImpl(callback) {}
         Status onRegistration(const std::string& name, const sp<IBinder>& binder) override {
-            mImpl->onServiceRegistration(String16(name.c_str()), binder);
+            mImpl->onServiceRegistration(s2ws(name), binder);
             return Status::ok();
         }
 
@@ -217,7 +217,7 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid, bool logP
                 if (startTime != 0) {
                     ALOGI("Check passed after %d seconds for %s from uid=%d pid=%d",
                             (int)((uptimeMillis()-startTime)/1000),
-                            String8(permission).string(), uid, pid);
+                            ws2s(permission).c_str(), uid, pid);
                 }
                 return res;
             }
@@ -225,7 +225,7 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid, bool logP
             // Is this a permission failure, or did the controller go away?
             if (IInterface::asBinder(pc)->isBinderAlive()) {
                 if (logPermissionFailure) {
-                    ALOGW("Permission failure: %s from uid=%d pid=%d", String8(permission).string(),
+                    ALOGW("Permission failure: %s from uid=%d pid=%d", ws2s(permission).c_str(),
                           uid, pid);
                 }
                 return false;
@@ -246,7 +246,7 @@ bool checkPermission(const String16& permission, pid_t pid, uid_t uid, bool logP
             if (startTime == 0) {
                 startTime = uptimeMillis();
                 ALOGI("Waiting to check permission %s from uid=%d pid=%d",
-                        String8(permission).string(), uid, pid);
+                        ws2s(permission).c_str(), uid, pid);
             }
             sleep(1);
         } else {
@@ -295,7 +295,7 @@ sp<IBinder> ServiceManagerShim::getService(const String16& name) const
     // retry interval in millisecond; note that vendor services stay at 100ms
     const useconds_t sleepTime = gSystemBootCompleted ? 1000 : 100;
 
-    ALOGI("Waiting for service '%s' on '%s'...", String8(name).string(),
+    ALOGI("Waiting for service '%s' on '%s'...", ws2s(name).c_str(),
           ProcessState::self()->getDriverName().c_str());
 
     int n = 0;
@@ -306,19 +306,19 @@ sp<IBinder> ServiceManagerShim::getService(const String16& name) const
         sp<IBinder> svc = checkService(name);
         if (svc != nullptr) {
             ALOGI("Waiting for service '%s' on '%s' successful after waiting %" PRIi64 "ms",
-                  String8(name).string(), ProcessState::self()->getDriverName().c_str(),
+                  ws2s(name).c_str(), ProcessState::self()->getDriverName().c_str(),
                   uptimeMillis() - startTime);
             return svc;
         }
     }
-    ALOGW("Service %s didn't start. Returning NULL", String8(name).string());
+    ALOGW("Service %s didn't start. Returning NULL", ws2s(name).c_str());
     return nullptr;
 }
 
 sp<IBinder> ServiceManagerShim::checkService(const String16& name) const
 {
     sp<IBinder> ret;
-    if (!mTheRealServiceManager->checkService(String8(name).c_str(), &ret).isOk()) {
+    if (!mTheRealServiceManager->checkService(ws2s(name), &ret).isOk()) {
         return nullptr;
     }
     return ret;
@@ -328,7 +328,7 @@ status_t ServiceManagerShim::addService(const String16& name, const sp<IBinder>&
                                         bool allowIsolated, int dumpsysPriority)
 {
     Status status = mTheRealServiceManager->addService(
-        String8(name).c_str(), service, allowIsolated, dumpsysPriority);
+        ws2s(name), service, allowIsolated, dumpsysPriority);
     return status.exceptionCode();
 }
 
@@ -342,7 +342,7 @@ Vector<String16> ServiceManagerShim::listServices(int dumpsysPriority)
     Vector<String16> res;
     res.setCapacity(ret.size());
     for (const std::string& name : ret) {
-        res.push(String16(name.c_str()));
+        res.push(s2ws(name));
     }
     return res;
 }
@@ -375,7 +375,7 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
         std::function<void()> mF;
     };
 
-    const std::string name = String8(name16).c_str();
+    const std::string name = ws2s(name16);
 
     sp<IBinder> out;
     if (Status status = realGetService(name, &out); !status.isOk()) {
@@ -442,9 +442,9 @@ sp<IBinder> ServiceManagerShim::waitForService(const String16& name16)
 
 bool ServiceManagerShim::isDeclared(const String16& name) {
     bool declared;
-    if (Status status = mTheRealServiceManager->isDeclared(String8(name).c_str(), &declared);
+    if (Status status = mTheRealServiceManager->isDeclared(ws2s(name), &declared);
         !status.isOk()) {
-        ALOGW("Failed to get isDeclared for %s: %s", String8(name).c_str(),
+        ALOGW("Failed to get isDeclared for %s: %s", ws2s(name).c_str(),
               status.toString8().c_str());
         return false;
     }
@@ -454,9 +454,9 @@ bool ServiceManagerShim::isDeclared(const String16& name) {
 Vector<String16> ServiceManagerShim::getDeclaredInstances(const String16& interface) {
     std::vector<std::string> out;
     if (Status status =
-                mTheRealServiceManager->getDeclaredInstances(String8(interface).c_str(), &out);
+                mTheRealServiceManager->getDeclaredInstances(ws2s(interface), &out);
         !status.isOk()) {
-        ALOGW("Failed to getDeclaredInstances for %s: %s", String8(interface).c_str(),
+        ALOGW("Failed to getDeclaredInstances for %s: %s", ws2s(interface).c_str(),
               status.toString8().c_str());
         return {};
     }
@@ -464,27 +464,27 @@ Vector<String16> ServiceManagerShim::getDeclaredInstances(const String16& interf
     Vector<String16> res;
     res.setCapacity(out.size());
     for (const std::string& instance : out) {
-        res.push(String16(instance.c_str()));
+        res.push(s2ws(instance));
     }
     return res;
 }
 
 std::optional<String16> ServiceManagerShim::updatableViaApex(const String16& name) {
     std::optional<std::string> declared;
-    if (Status status = mTheRealServiceManager->updatableViaApex(String8(name).c_str(), &declared);
+    if (Status status = mTheRealServiceManager->updatableViaApex(ws2s(name), &declared);
         !status.isOk()) {
-        ALOGW("Failed to get updatableViaApex for %s: %s", String8(name).c_str(),
+        ALOGW("Failed to get updatableViaApex for %s: %s", ws2s(name).c_str(),
               status.toString8().c_str());
         return std::nullopt;
     }
-    return declared ? std::optional<String16>(String16(declared.value().c_str())) : std::nullopt;
+    return declared ? std::optional<String16>(s2ws(declared.value())) : std::nullopt;
 }
 
 Vector<String16> ServiceManagerShim::getUpdatableNames(const String16& apexName) {
     std::vector<std::string> out;
-    if (Status status = mTheRealServiceManager->getUpdatableNames(String8(apexName).c_str(), &out);
+    if (Status status = mTheRealServiceManager->getUpdatableNames(ws2s(apexName), &out);
         !status.isOk()) {
-        ALOGW("Failed to getUpdatableNames for %s: %s", String8(apexName).c_str(),
+        ALOGW("Failed to getUpdatableNames for %s: %s", ws2s(apexName).c_str(),
               status.toString8().c_str());
         return {};
     }
@@ -492,7 +492,7 @@ Vector<String16> ServiceManagerShim::getUpdatableNames(const String16& apexName)
     Vector<String16> res;
     res.setCapacity(out.size());
     for (const std::string& instance : out) {
-        res.push(String16(instance.c_str()));
+        res.push(s2ws(instance));
     }
     return res;
 }
@@ -501,9 +501,9 @@ std::optional<IServiceManager::ConnectionInfo> ServiceManagerShim::getConnection
         const String16& name) {
     std::optional<os::ConnectionInfo> connectionInfo;
     if (Status status =
-                mTheRealServiceManager->getConnectionInfo(String8(name).c_str(), &connectionInfo);
+                mTheRealServiceManager->getConnectionInfo(ws2s(name), &connectionInfo);
         !status.isOk()) {
-        ALOGW("Failed to get ConnectionInfo for %s: %s", String8(name).c_str(),
+        ALOGW("Failed to get ConnectionInfo for %s: %s", ws2s(name).c_str(),
               status.toString8().c_str());
     }
     return connectionInfo.has_value()
@@ -518,7 +518,7 @@ status_t ServiceManagerShim::registerForNotifications(const String16& name,
         ALOGE("%s: null cb passed", __FUNCTION__);
         return BAD_VALUE;
     }
-    std::string nameStr = String8(name).c_str();
+    std::string nameStr = ws2s(name);
     sp<RegistrationWaiter> registrationWaiter = sp<RegistrationWaiter>::make(cb);
     std::lock_guard<std::mutex> lock(mNameToRegistrationLock);
     if (Status status =
@@ -559,7 +559,7 @@ status_t ServiceManagerShim::unregisterForNotifications(const String16& name,
         ALOGE("%s: null cb passed", __FUNCTION__);
         return BAD_VALUE;
     }
-    std::string nameStr = String8(name).c_str();
+    std::string nameStr = ws2s(name);
     std::lock_guard<std::mutex> lock(mNameToRegistrationLock);
     auto it = mNameToRegistrationCallback.find(nameStr);
     sp<RegistrationWaiter> registrationWaiter;
@@ -573,11 +573,11 @@ status_t ServiceManagerShim::unregisterForNotifications(const String16& name,
         ALOGE("%s Callback passed wasn't used to register for notifications", __FUNCTION__);
         return BAD_VALUE;
     }
-    if (Status status = mTheRealServiceManager->unregisterForNotifications(String8(name).c_str(),
+    if (Status status = mTheRealServiceManager->unregisterForNotifications(ws2s(name),
                                                                            registrationWaiter);
         !status.isOk()) {
         ALOGW("Failed to get service manager to unregisterForNotifications for %s: %s",
-              String8(name).c_str(), status.toString8().c_str());
+              ws2s(name).c_str(), status.toString8().c_str());
         return UNKNOWN_ERROR;
     }
     return OK;
@@ -611,7 +611,7 @@ public:
           : ServiceManagerShim(impl), mOptions(options) {}
     // ServiceManagerShim::getService is based on checkService, so no need to override it.
     sp<IBinder> checkService(const String16& name) const override {
-        return getDeviceService({String8(name).c_str()}, mOptions);
+        return getDeviceService({ws2s(name)}, mOptions);
     }
 
 protected:

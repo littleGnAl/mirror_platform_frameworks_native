@@ -181,16 +181,16 @@ sp<INTERFACE> checkDeclaredService(const String16& name) {
 
 template<typename INTERFACE>
 sp<INTERFACE> waitForVintfService(
-        const String16& instance = String16("default")) {
+        const String16& instance = u"default") {
     return waitForDeclaredService<INTERFACE>(
-        INTERFACE::descriptor + String16("/") + instance);
+        INTERFACE::descriptor + u"/" + instance);
 }
 
 template<typename INTERFACE>
 sp<INTERFACE> checkVintfService(
-        const String16& instance = String16("default")) {
+        const String16& instance = u"default") {
     return checkDeclaredService<INTERFACE>(
-        INTERFACE::descriptor + String16("/") + instance);
+        INTERFACE::descriptor + u"/" + instance);
 }
 
 template<typename INTERFACE>

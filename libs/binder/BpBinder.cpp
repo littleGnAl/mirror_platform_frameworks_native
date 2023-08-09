@@ -261,7 +261,7 @@ std::optional<int32_t> BpBinder::getDebugBinderHandle() const {
 
 bool BpBinder::isDescriptorCached() const {
     Mutex::Autolock _l(mLock);
-    return mDescriptorCache.string() != kDescriptorUninit.string();
+    return mDescriptorCache != kDescriptorUninit;
 }
 
 const String16& BpBinder::getInterfaceDescriptor() const
@@ -279,7 +279,7 @@ const String16& BpBinder::getInterfaceDescriptor() const
             Mutex::Autolock _l(mLock);
             // mDescriptorCache could have been assigned while the lock was
             // released.
-            if (mDescriptorCache.string() == kDescriptorUninit.string()) mDescriptorCache = res;
+            if (mDescriptorCache == kDescriptorUninit) mDescriptorCache = res;
         }
     }
 
@@ -350,7 +350,7 @@ status_t BpBinder::transact(
             if (CC_UNLIKELY(!Stability::check(stability, required))) {
                 ALOGE("Cannot do a user transaction on a %s binder (%s) in a %s context.",
                       Stability::levelString(stability).c_str(),
-                      String8(getInterfaceDescriptor()).c_str(),
+                      ws2s(getInterfaceDescriptor()).c_str(),
                       Stability::levelString(required).c_str());
                 return BAD_TYPE;
             }
@@ -371,7 +371,7 @@ status_t BpBinder::transact(
         if (data.dataSize() > LOG_TRANSACTIONS_OVER_SIZE) {
             Mutex::Autolock _l(mLock);
             ALOGW("Large outgoing transaction of %zu bytes, interface descriptor %s, code %d",
-                  data.dataSize(), String8(mDescriptorCache).c_str(), code);
+                  data.dataSize(), ws2s(mDescriptorCache).c_str(), code);
         }
 
         if (status == DEAD_OBJECT) mAlive = 0;
@@ -402,7 +402,7 @@ status_t BpBinder::linkToDeath(
                   "ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the "
                   "binder "
                   "threadpool before other initialization steps.",
-                  String8(getInterfaceDescriptor()).c_str());
+                  ws2s(getInterfaceDescriptor()).c_str());
         }
     }
 
@@ -647,7 +647,7 @@ void BpBinder::onLastStrongRef(const void* /*id*/) {
     if(obits != nullptr) {
         if (!obits->isEmpty()) {
             ALOGI("onLastStrongRef automatically unlinking death recipients: %s",
-                  String8(mDescriptorCache).c_str());
+                  ws2s(mDescriptorCache).c_str());
         }
 
         if (ipc) ipc->clearDeathNotification(binderHandle(), this);

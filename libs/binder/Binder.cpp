@@ -234,7 +234,7 @@ public:
     void binderDied(const wp<IBinder>&) override {
         auto promoted = mBinder.promote();
         ALOGI("RpcBinder: binder died, shutting down RpcServer for %s",
-              promoted ? String8(promoted->getInterfaceDescriptor()).c_str() : "<NULL>");
+              promoted ? ws2s(promoted->getInterfaceDescriptor()).c_str() : "<NULL>");
 
         if (mRpcServer == nullptr) {
             ALOGW("RpcServerLink: Unable to shut down RpcServer because it does not exist.");
@@ -398,7 +398,7 @@ status_t BBinder::transact(
         reply->setDataPosition(0);
         if (reply->dataSize() > LOG_REPLIES_OVER_SIZE) {
             ALOGW("Large reply transaction of %zu bytes, interface descriptor %s, code %d",
-                  reply->dataSize(), String8(getInterfaceDescriptor()).c_str(), code);
+                  reply->dataSize(), ws2s(getInterfaceDescriptor()).c_str(), code);
         }
     }
 
@@ -705,7 +705,7 @@ status_t BBinder::setRpcClientDebug(android::base::unique_fd socketFd,
         return status;
     }
     rpcServer->setMaxThreads(binderThreadPoolMaxCount);
-    LOG(INFO) << "RpcBinder: Started Binder debug on " << getInterfaceDescriptor();
+    LOG(INFO) << "RpcBinder: Started Binder debug on " << ws2s(getInterfaceDescriptor());
     rpcServer->start();
     e->mRpcServerLinks.emplace(link);
     LOG_RPC_DETAIL("%s(fd=%d) successful", __PRETTY_FUNCTION__, socketFdForPrint);

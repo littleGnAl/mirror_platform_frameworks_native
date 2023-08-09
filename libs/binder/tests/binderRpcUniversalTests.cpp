@@ -315,7 +315,7 @@ TEST_P(BinderRpc, CannotSendSocketBinderOverRegularBinder) {
     // for historical reasons, IServiceManager interface only returns the
     // exception code
     EXPECT_EQ(binder::Status::EX_TRANSACTION_FAILED,
-              defaultServiceManager()->addService(String16("not_suspicious"), proc.rootBinder));
+              defaultServiceManager()->addService(u"not_suspicious", proc.rootBinder));
 }
 
 // END TESTS FOR LIMITATIONS OF SOCKET BINDER

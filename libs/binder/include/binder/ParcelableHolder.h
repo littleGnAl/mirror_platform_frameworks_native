@@ -82,7 +82,7 @@ public:
                 return android::OK;
             } else if (parcelableDesc != *mParcelableName) {
                 ALOGD("extension class name mismatch expected:%s actual:%s",
-                      String8(*mParcelableName).c_str(), String8(parcelableDesc).c_str());
+                      ws2s(*mParcelableName).c_str(), ws2s(parcelableDesc).c_str());
                 *ret = nullptr;
                 return android::BAD_VALUE;
             }
@@ -113,8 +113,7 @@ public:
 
     inline std::string toString() const {
         return "ParcelableHolder:" +
-                (mParcelableName ? std::string(String8(mParcelableName.value()).c_str())
-                                 : "<parceled>");
+                (mParcelableName ? ws2s(*mParcelableName) : "<parceled>");
     }
     inline bool operator!=(const ParcelableHolder& rhs) const {
         return this != &rhs;

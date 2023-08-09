@@ -136,7 +136,7 @@ status_t Status::readFromParcel(const Parcel& parcel) {
         setFromStatusT(status);
         return status;
     }
-    mMessage = String8(message.value_or(String16()));
+    mMessage = ws2s(message.value_or(String16()));
 
     // Skip over the remote stack trace data
     const size_t remote_start = parcel.dataPosition();
@@ -204,7 +204,7 @@ status_t Status::writeToParcel(Parcel* parcel) const {
         // We have no more information to write.
         return status;
     }
-    status = parcel->writeString16(String16(mMessage));
+    status = parcel->writeString16(s2ws(mMessage));
     if (status != OK) return status;
     status = parcel->writeInt32(0); // Empty remote stack trace header
     if (status != OK) return status;
@@ -226,7 +226,7 @@ status_t Status::writeOverParcel(Parcel* parcel) const {
 void Status::setException(int32_t ex, const String8& message) {
     mException = ex;
     mErrorCode = ex == EX_TRANSACTION_FAILED ? FAILED_TRANSACTION : NO_ERROR;
-    mMessage.setTo(message);
+    mMessage = message;
 }
 
 void Status::setServiceSpecificError(int32_t errorCode, const String8& message) {
@@ -245,11 +245,11 @@ String8 Status::toString8() const {
     if (mException == EX_NONE) {
         ret.append("No error");
     } else {
-        ret.appendFormat("Status(%d, %s): '", mException, exceptionToString(mException).c_str());
+        appendFormat(ret, "Status(%d, %s): '", mException, exceptionToString(mException).c_str());
         if (mException == EX_SERVICE_SPECIFIC) {
-            ret.appendFormat("%d: ", mErrorCode);
+            appendFormat(ret, "%d: ", mErrorCode);
         } else if (mException == EX_TRANSACTION_FAILED) {
-            ret.appendFormat("%s: ", statusToString(mErrorCode).c_str());
+            appendFormat(ret, "%s: ", statusToString(mErrorCode).c_str());
         }
         ret.append(String8(mMessage));
         ret.append("'");

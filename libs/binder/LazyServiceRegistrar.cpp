@@ -172,7 +172,7 @@ std::map<std::string, ClientCounterCallbackImpl::Service>::iterator ClientCounte
         if (registered.service != service) continue;
         return it;
     }
-    LOG_ALWAYS_FATAL("Got callback on service which we did not register: %s", String8(service->getInterfaceDescriptor()).c_str());
+    LOG_ALWAYS_FATAL("Got callback on service which we did not register: %s", ws2s(service->getInterfaceDescriptor()).c_str());
     __builtin_unreachable();
 }
 

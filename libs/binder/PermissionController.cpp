@@ -33,7 +33,7 @@ sp<IPermissionController> PermissionController::getService()
     int64_t startTime = 0;
     sp<IPermissionController> service = mService;
     while (service == nullptr || !IInterface::asBinder(service)->isBinderAlive()) {
-        sp<IBinder> binder = defaultServiceManager()->checkService(String16("permission"));
+        sp<IBinder> binder = defaultServiceManager()->checkService(u"permission");
         if (binder == nullptr) {
             // Wait for the activity service to come back...
             if (startTime == 0) {
