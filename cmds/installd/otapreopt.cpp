@@ -28,6 +28,7 @@
 #include <sys/stat.h>
 #include <sys/mman.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 #include <android-base/logging.h>
 #include <android-base/macros.h>
@@ -527,8 +528,7 @@ private:
 
     // Choose a random relocation offset. Taken from art/runtime/gc/image_space.cc.
     static int32_t ChooseRelocationOffsetDelta(int32_t min_delta, int32_t max_delta) {
-        constexpr size_t kPageSize = PAGE_SIZE;
-        static_assert(IsPowerOfTwo(kPageSize), "page size must be power of two");
+        static const size_t kPageSize = getpagesize();
         CHECK_EQ(min_delta % kPageSize, 0u);
         CHECK_EQ(max_delta % kPageSize, 0u);
         CHECK_LT(min_delta, max_delta);
