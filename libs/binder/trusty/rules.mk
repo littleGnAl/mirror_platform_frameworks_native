@@ -90,4 +90,9 @@ MODULE_LIBRARY_DEPS += \
 	trusty/user/base/lib/tipc \
 	external/boringssl \
 
+# TODO(b/181755948): We're linking this into Rust code
+# and Rust doesn't support CFI yet, so we need to also
+# disable it for this C++ code.
+MODULE_DISABLE_CFI := true
+
 include make/library.mk

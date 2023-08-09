@@ -26,4 +26,9 @@ MODULE_LIBRARY_DEPS += \
 	$(LIBBINDER_DIR)/trusty/ndk \
 	trusty/user/base/lib/libstdc++-trusty \
 
+# TODO(b/181755948): We're linking this into Rust code
+# and Rust doesn't support CFI yet, so we need to also
+# disable it for this C++ code.
+MODULE_DISABLE_CFI := true
+
 include make/library.mk
