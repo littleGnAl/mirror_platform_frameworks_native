@@ -854,7 +854,7 @@ constexpr int32_t kHeader = B_PACK_CHARS('S', 'Y', 'S', 'T');
 // Write RPC headers.  (previously just the interface token)
 status_t Parcel::writeInterfaceToken(const String16& interface)
 {
-    return writeInterfaceToken(interface.string(), interface.size());
+    return writeInterfaceToken(interface.c_str(), interface.size());
 }
 
 status_t Parcel::writeInterfaceToken(const char16_t* str, size_t len) {
@@ -918,7 +918,7 @@ bool Parcel::checkInterface(IBinder* binder) const
 bool Parcel::enforceInterface(const String16& interface,
                               IPCThreadState* threadState) const
 {
-    return enforceInterface(interface.string(), interface.size(), threadState);
+    return enforceInterface(interface.c_str(), interface.size(), threadState);
 }
 
 bool Parcel::enforceInterface(const char16_t* interface,
@@ -977,8 +977,8 @@ bool Parcel::enforceInterface(const char16_t* interface,
             return true;
         } else {
             ALOGW("**** enforceInterface() expected '%s' but read '%s'",
-                  String8(interface, len).string(),
-                  String8(parcel_interface, parcel_interface_len).string());
+                  ws2s(String16(interface, len)).c_str(),
+                  ws2s(String16(parcel_interface, parcel_interface_len)).c_str());
             return false;
         }
     }
@@ -1007,7 +1007,7 @@ binder::Status Parcel::enforceNoDataAvail() const {
     }
     return binder::Status::
             fromExceptionCode(binder::Status::Exception::EX_BAD_PARCELABLE,
-                              String8::format("Parcel data not fully consumed, unread size: %zu",
+                              String8format("Parcel data not fully consumed, unread size: %zu",
                                               n));
 }
 
@@ -1376,7 +1376,7 @@ status_t Parcel::writeCString(const char* str)
 
 status_t Parcel::writeString8(const String8& str)
 {
-    return writeString8(str.string(), str.size());
+    return writeString8(str.c_str(), str.size());
 }
 
 status_t Parcel::writeString8(const char* str, size_t len)
@@ -1399,7 +1399,7 @@ status_t Parcel::writeString8(const char* str, size_t len)
 
 status_t Parcel::writeString16(const String16& str)
 {
-    return writeString16(str.string(), str.size());
+    return writeString16(str.c_str(), str.size());
 }
 
 status_t Parcel::writeString16(const char16_t* str, size_t len)
@@ -2126,7 +2126,7 @@ status_t Parcel::readString8(String8* pArg) const
     size_t len;
     const char* str = readString8Inplace(&len);
     if (str) {
-        pArg->setTo(str, len);
+        *pArg = String8(str, len);
         return 0;
     } else {
         *pArg = String8();
@@ -2171,7 +2171,7 @@ status_t Parcel::readString16(String16* pArg) const
     size_t len;
     const char16_t* str = readString16Inplace(&len);
     if (str) {
-        pArg->setTo(str, len);
+        *pArg = String16(str, len);
         return 0;
     } else {
         *pArg = String16();

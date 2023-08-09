@@ -53,7 +53,7 @@ public:
             } else {
                 // An exception was thrown back; fall through to return failure
                 ALOGD("openContentUri(%s) caught exception %d\n",
-                        String8(stringUri).string(), exceptionCode);
+                        String8(stringUri).c_str(), exceptionCode);
             }
         }
         return fd;

@@ -25,7 +25,7 @@
 namespace {
 class Service : public android::BBinder {
 public:
-    Service(std::string_view descriptor) : mDescriptor(descriptor.data(), descriptor.size()) {}
+    Service(std::string_view descriptor) : mDescriptor(android::toString16(descriptor.data(), descriptor.size())) {}
     const android::String16& getInterfaceDescriptor() const override { return mDescriptor; }
 
 private:
@@ -44,7 +44,7 @@ int main(int argc, char** argv) {
     auto sm = android::defaultServiceManager();
     CHECK(sm != nullptr);
     auto service = android::sp<Service>::make(descriptor);
-    auto status = sm->addService(android::String16(name), service);
+    auto status = sm->addService(android::toString16(name), service);
     CHECK_EQ(android::OK, status) << android::statusToString(status);
     std::cout << "running..." << std::endl;
     android::ProcessState::self()->startThreadPool();
