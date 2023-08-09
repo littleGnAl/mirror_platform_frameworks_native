@@ -261,7 +261,7 @@ std::optional<int32_t> BpBinder::getDebugBinderHandle() const {
 
 bool BpBinder::isDescriptorCached() const {
     Mutex::Autolock _l(mLock);
-    return mDescriptorCache.c_str() != kDescriptorUninit.c_str();
+    return mDescriptorCache.c_str() != kDescriptorUninit.c_str();  // TODO: does it still make sense with std::string?
 }
 
 const String16& BpBinder::getInterfaceDescriptor() const
@@ -279,7 +279,7 @@ const String16& BpBinder::getInterfaceDescriptor() const
             Mutex::Autolock _l(mLock);
             // mDescriptorCache could have been assigned while the lock was
             // released.
-            if (mDescriptorCache.c_str() == kDescriptorUninit.c_str()) mDescriptorCache = res;
+            if (mDescriptorCache.c_str() == kDescriptorUninit.c_str()) mDescriptorCache = res;  //TODO
         }
     }
 

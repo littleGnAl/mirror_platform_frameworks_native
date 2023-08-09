@@ -97,7 +97,7 @@ static const std::vector<std::function<
                  },
                  [](FuzzedDataProvider* fdp, std::shared_ptr<os::PersistableBundle> const& p_bundle,
                     String16* key) -> void {
-                     String16 value(fdp->ConsumeRandomLengthString(fdp->remaining_bytes()).c_str());
+                     auto value = String16(fdp->ConsumeRandomLengthString(fdp->remaining_bytes()).c_str());
                      p_bundle->putString(*key, value);
                  },
                  [](FuzzedDataProvider* fdp, std::shared_ptr<os::PersistableBundle> const& p_bundle,

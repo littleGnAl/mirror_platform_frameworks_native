@@ -34,8 +34,6 @@ namespace android {
 // ----------------------------------------------------------------------------
 
 
-class String8;
-
 /*
  * GLConsumer consumes buffers of graphics data from a BufferQueue,
  * and makes them available to OpenGL as a texture.

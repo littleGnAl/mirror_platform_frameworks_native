@@ -187,7 +187,7 @@ TEST(BinderStability, VintfStabilityServerMustBeDeclaredInManifest) {
     for (const char* instance8 : {
         ".", "/", "/.", "a.d.IFoo", "foo", "a.d.IFoo/foo"
     }) {
-        String16 instance (instance8);
+        auto instance = String16(instance8);
 
         EXPECT_EQ(Status::EX_ILLEGAL_ARGUMENT,
             android::defaultServiceManager()->addService(String16("."), vintfServer)) << instance8;

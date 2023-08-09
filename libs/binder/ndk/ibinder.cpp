@@ -32,12 +32,14 @@ using DeathRecipient = ::android::IBinder::DeathRecipient;
 using ::android::IBinder;
 using ::android::IResultReceiver;
 using ::android::Parcel;
+using ::android::s2ws;
 using ::android::sp;
 using ::android::status_t;
 using ::android::statusToString;
 using ::android::String16;
 using ::android::String8;
 using ::android::wp;
+using ::android::ws2s;
 
 namespace ABBinderTag {
 
@@ -119,14 +121,14 @@ bool AIBinder::associateClass(const AIBinder_Class* clazz) {
     if (mClazz != nullptr && !asABpBinder()) {
         const String16& currentDescriptor = mClazz->getInterfaceDescriptor();
         if (newDescriptor == currentDescriptor) {
-            LOG(ERROR) << __func__ << ": Class descriptors '" << currentDescriptor
+            LOG(ERROR) << __func__ << ": Class descriptors '" << ws2s(currentDescriptor)
                        << "' match during associateClass, but they are different class objects ("
                        << clazz << " vs " << mClazz << "). Class descriptor collision?";
         } else {
             LOG(ERROR) << __func__
                        << ": Class cannot be associated on object which already has a class. "
                           "Trying to associate to '"
-                       << newDescriptor << "' but already set to '" << currentDescriptor << "'.";
+                       << ws2s(newDescriptor) << "' but already set to '" << ws2s(currentDescriptor) << "'.";
         }
 
         // always a failure because we know mClazz != clazz
@@ -139,11 +141,11 @@ bool AIBinder::associateClass(const AIBinder_Class* clazz) {
     // more flake-proof. However, the check is not dependent on the lock.
     if (descriptor != newDescriptor && !(asABpBinder() && asABpBinder()->isServiceFuzzing())) {
         if (getBinder()->isBinderAlive()) {
-            LOG(ERROR) << __func__ << ": Expecting binder to have class '" << newDescriptor
+            LOG(ERROR) << __func__ << ": Expecting binder to have class '" << ws2s(newDescriptor)
                        << "' but descriptor is actually '" << SanitizeString(descriptor) << "'.";
         } else {
             // b/155793159
-            LOG(ERROR) << __func__ << ": Cannot associate class '" << newDescriptor
+            LOG(ERROR) << __func__ << ": Cannot associate class '" << ws2s(newDescriptor)
                        << "' to dead binder with cached descriptor '" << SanitizeString(descriptor)
                        << "'.";
         }
@@ -352,7 +354,7 @@ AIBinder_Class::AIBinder_Class(const char* interfaceDescriptor, AIBinder_Class_o
       onDestroy(onDestroy),
       onTransact(onTransact),
       mInterfaceDescriptor(interfaceDescriptor),
-      mWideInterfaceDescriptor(interfaceDescriptor) {}
+      mWideInterfaceDescriptor(s2ws(interfaceDescriptor)) {}
 
 AIBinder_Class* AIBinder_Class_define(const char* interfaceDescriptor,
                                       AIBinder_Class_onCreate onCreate,

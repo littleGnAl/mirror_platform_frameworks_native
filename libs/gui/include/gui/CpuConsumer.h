@@ -22,6 +22,7 @@
 #include <gui/ConsumerBase.h>
 #include <gui/BufferQueue.h>
 
+#include <utils/String8.h>
 #include <utils/Vector.h>
 
 
@@ -29,7 +30,6 @@ namespace android {
 
 class BufferQueue;
 class GraphicBuffer;
-class String8;
 
 /**
  * CpuConsumer is a BufferQueue consumer endpoint that allows direct CPU

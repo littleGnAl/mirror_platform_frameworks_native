@@ -20,11 +20,11 @@
 #include <gui/ConsumerBase.h>
 #include <gui/BufferQueue.h>
 
+#include <utils/String8.h>
+
 #define ANDROID_GRAPHICS_BUFFERITEMCONSUMER_JNI_ID "mBufferItemConsumer"
 
 namespace android {
-
-class String8;
 
 /**
  * BufferItemConsumer is a BufferQueue consumer endpoint that allows clients

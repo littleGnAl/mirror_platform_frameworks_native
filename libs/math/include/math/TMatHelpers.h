@@ -345,7 +345,7 @@ String8 asString(const MATRIX& m) {
     for (size_t c = 0; c < MATRIX::COL_SIZE; c++) {
         s.append("|  ");
         for (size_t r = 0; r < MATRIX::ROW_SIZE; r++) {
-            s.appendFormat("%7.2f  ", m[r][c]);
+            appendFormat(s, "%7.2f  ", m[r][c]);
         }
         s.append("|\n");
     }

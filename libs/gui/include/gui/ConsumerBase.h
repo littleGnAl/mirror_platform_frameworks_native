@@ -32,7 +32,6 @@
 namespace android {
 // ----------------------------------------------------------------------------
 
-class String8;
 class GraphicBuffer;
 
 // ConsumerBase is a base class for BufferQueue consumer end-points. It
