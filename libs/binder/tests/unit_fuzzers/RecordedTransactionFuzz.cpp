@@ -28,7 +28,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
     FuzzedDataProvider provider = FuzzedDataProvider(data, size);
 
     android::String16 interfaceName =
-            android::String16(provider.ConsumeRandomLengthString().c_str());
+            android::toString16(provider.ConsumeRandomLengthString().c_str());
 
     uint32_t code = provider.ConsumeIntegral<uint32_t>();
     uint32_t flags = provider.ConsumeIntegral<uint32_t>();

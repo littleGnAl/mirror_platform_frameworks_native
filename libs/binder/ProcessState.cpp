@@ -391,10 +391,7 @@ String8 ProcessState::makeBinderThreadName() {
     std::string_view driverName = mDriverName.c_str();
     android::base::ConsumePrefix(&driverName, "/dev/");
 
-    String8 name;
-    name.appendFormat("%.*s:%d_%X", static_cast<int>(driverName.length()), driverName.data(), pid,
-                      s);
-    return name;
+    return String8format("%.*s:%d_%X", static_cast<int>(driverName.length()), driverName.data(), pid, s);
 }
 
 void ProcessState::spawnPooledThread(bool isMain)

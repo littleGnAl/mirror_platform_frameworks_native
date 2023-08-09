@@ -705,7 +705,7 @@ status_t BBinder::setRpcClientDebug(android::base::unique_fd socketFd,
         return status;
     }
     rpcServer->setMaxThreads(binderThreadPoolMaxCount);
-    LOG(INFO) << "RpcBinder: Started Binder debug on " << getInterfaceDescriptor();
+    LOG(INFO) << "RpcBinder: Started Binder debug on " << ws2s(getInterfaceDescriptor());
     rpcServer->start();
     e->mRpcServerLinks.emplace(link);
     LOG_RPC_DETAIL("%s(fd=%d) successful", __PRETTY_FUNCTION__, socketFdForPrint);

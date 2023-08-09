@@ -59,7 +59,7 @@ namespace android {
 
 static String8 getUniqueName() {
     static volatile int32_t counter = 0;
-    return String8::format("unnamed-%d-%d", getpid(),
+    return String8format("unnamed-%d-%d", getpid(),
             android_atomic_inc(&counter));
 }
 
@@ -70,7 +70,7 @@ static uint64_t getUniqueId() {
 }
 
 static status_t getProcessName(int pid, String8& name) {
-    FILE* fp = fopen(String8::format("/proc/%d/cmdline", pid).c_str(), "r");
+    FILE* fp = fopen(String8format("/proc/%d/cmdline", pid).c_str(), "r");
     if (NULL != fp) {
         const size_t size = 64;
         char proc_name[size];
@@ -146,25 +146,25 @@ BufferQueueCore::~BufferQueueCore() {}
 void BufferQueueCore::dumpState(const String8& prefix, String8* outResult) const {
     std::lock_guard<std::mutex> lock(mMutex);
 
-    outResult->appendFormat("%s- BufferQueue ", prefix.c_str());
-    outResult->appendFormat("mMaxAcquiredBufferCount=%d mMaxDequeuedBufferCount=%d\n",
+    appendFormat(*outResult, "%s- BufferQueue ", prefix.c_str());
+    appendFormat(*outResult, "mMaxAcquiredBufferCount=%d mMaxDequeuedBufferCount=%d\n",
                             mMaxAcquiredBufferCount, mMaxDequeuedBufferCount);
-    outResult->appendFormat("%s  mDequeueBufferCannotBlock=%d mAsyncMode=%d\n", prefix.c_str(),
+    appendFormat(*outResult, "%s  mDequeueBufferCannotBlock=%d mAsyncMode=%d\n", prefix.c_str(),
                             mDequeueBufferCannotBlock, mAsyncMode);
-    outResult->appendFormat("%s  mQueueBufferCanDrop=%d mLegacyBufferDrop=%d\n", prefix.c_str(),
+    appendFormat(*outResult, "%s  mQueueBufferCanDrop=%d mLegacyBufferDrop=%d\n", prefix.c_str(),
                             mQueueBufferCanDrop, mLegacyBufferDrop);
-    outResult->appendFormat("%s  default-size=[%dx%d] default-format=%d ", prefix.c_str(),
+    appendFormat(*outResult, "%s  default-size=[%dx%d] default-format=%d ", prefix.c_str(),
                             mDefaultWidth, mDefaultHeight, mDefaultBufferFormat);
-    outResult->appendFormat("%s  transform-hint=%02x frame-counter=%" PRIu64 "\n", prefix.c_str(),
+    appendFormat(*outResult, "%s  transform-hint=%02x frame-counter=%" PRIu64 "\n", prefix.c_str(),
                             mTransformHint, mFrameCounter);
-    outResult->appendFormat("%s  mTransformHintInUse=%02x mAutoPrerotation=%d\n", prefix.c_str(),
+    appendFormat(*outResult, "%s  mTransformHintInUse=%02x mAutoPrerotation=%d\n", prefix.c_str(),
                             mTransformHintInUse, mAutoPrerotation);
 
-    outResult->appendFormat("%sFIFO(%zu):\n", prefix.c_str(), mQueue.size());
+    appendFormat(*outResult, "%sFIFO(%zu):\n", prefix.c_str(), mQueue.size());
 
-    outResult->appendFormat("%s(mConsumerName=%s, ", prefix.c_str(), mConsumerName.c_str());
+    appendFormat(*outResult, "%s(mConsumerName=%s, ", prefix.c_str(), mConsumerName.c_str());
 
-    outResult->appendFormat("mConnectedApi=%d, mConsumerUsageBits=%" PRIu64 ", ", mConnectedApi,
+    appendFormat(*outResult, "mConnectedApi=%d, mConsumerUsageBits=%" PRIu64 ", ", mConnectedApi,
                             mConsumerUsageBits);
 
     String8 producerProcName = String8("\?\?\?");
@@ -172,50 +172,50 @@ void BufferQueueCore::dumpState(const String8& prefix, String8* outResult) const
     int32_t pid = getpid();
     getProcessName(mConnectedPid, producerProcName);
     getProcessName(pid, consumerProcName);
-    outResult->appendFormat("mId=%" PRIx64 ", producer=[%d:%s], consumer=[%d:%s])\n", mUniqueId,
+    appendFormat(*outResult, "mId=%" PRIx64 ", producer=[%d:%s], consumer=[%d:%s])\n", mUniqueId,
                             mConnectedPid, producerProcName.c_str(), pid, consumerProcName.c_str());
     Fifo::const_iterator current(mQueue.begin());
     while (current != mQueue.end()) {
         double timestamp = current->mTimestamp / 1e9;
-        outResult->appendFormat("%s  %02d:%p ", prefix.c_str(), current->mSlot,
+        appendFormat(*outResult, "%s  %02d:%p ", prefix.c_str(), current->mSlot,
                                 current->mGraphicBuffer.get());
-        outResult->appendFormat("crop=[%d,%d,%d,%d] ", current->mCrop.left, current->mCrop.top,
+        appendFormat(*outResult, "crop=[%d,%d,%d,%d] ", current->mCrop.left, current->mCrop.top,
                                 current->mCrop.right, current->mCrop.bottom);
-        outResult->appendFormat("xform=0x%02x time=%.4f scale=%s\n", current->mTransform, timestamp,
+        appendFormat(*outResult, "xform=0x%02x time=%.4f scale=%s\n", current->mTransform, timestamp,
                                 BufferItem::scalingModeName(current->mScalingMode));
         ++current;
     }
 
-    outResult->appendFormat("%sSlots:\n", prefix.c_str());
+    appendFormat(*outResult, "%sSlots:\n", prefix.c_str());
     for (int s : mActiveBuffers) {
         const sp<GraphicBuffer>& buffer(mSlots[s].mGraphicBuffer);
         // A dequeued buffer might be null if it's still being allocated
         if (buffer.get()) {
-            outResult->appendFormat("%s %s[%02d:%p] ", prefix.c_str(),
+            appendFormat(*outResult, "%s %s[%02d:%p] ", prefix.c_str(),
                                     (mSlots[s].mBufferState.isAcquired()) ? ">" : " ", s,
                                     buffer.get());
-            outResult->appendFormat("state=%-8s %p frame=%" PRIu64, mSlots[s].mBufferState.string(),
+            appendFormat(*outResult, "state=%-8s %p frame=%" PRIu64, mSlots[s].mBufferState.string(),
                                     buffer->handle, mSlots[s].mFrameNumber);
-            outResult->appendFormat(" [%4ux%4u:%4u,%3X]\n", buffer->width, buffer->height,
+            appendFormat(*outResult, " [%4ux%4u:%4u,%3X]\n", buffer->width, buffer->height,
                                     buffer->stride, buffer->format);
         } else {
-            outResult->appendFormat("%s  [%02d:%p] ", prefix.c_str(), s, buffer.get());
-            outResult->appendFormat("state=%-8s frame=%" PRIu64 "\n",
+            appendFormat(*outResult, "%s  [%02d:%p] ", prefix.c_str(), s, buffer.get());
+            appendFormat(*outResult, "state=%-8s frame=%" PRIu64 "\n",
                                     mSlots[s].mBufferState.string(), mSlots[s].mFrameNumber);
         }
     }
     for (int s : mFreeBuffers) {
         const sp<GraphicBuffer>& buffer(mSlots[s].mGraphicBuffer);
-        outResult->appendFormat("%s  [%02d:%p] ", prefix.c_str(), s, buffer.get());
-        outResult->appendFormat("state=%-8s %p frame=%" PRIu64, mSlots[s].mBufferState.string(),
+        appendFormat(*outResult, "%s  [%02d:%p] ", prefix.c_str(), s, buffer.get());
+        appendFormat(*outResult, "state=%-8s %p frame=%" PRIu64, mSlots[s].mBufferState.string(),
                                 buffer->handle, mSlots[s].mFrameNumber);
-        outResult->appendFormat(" [%4ux%4u:%4u,%3X]\n", buffer->width, buffer->height,
+        appendFormat(*outResult, " [%4ux%4u:%4u,%3X]\n", buffer->width, buffer->height,
                                 buffer->stride, buffer->format);
     }
 
     for (int s : mFreeSlots) {
         const sp<GraphicBuffer>& buffer(mSlots[s].mGraphicBuffer);
-        outResult->appendFormat("%s  [%02d:%p] state=%-8s\n", prefix.c_str(), s, buffer.get(),
+        appendFormat(*outResult, "%s  [%02d:%p] state=%-8s\n", prefix.c_str(), s, buffer.get(),
                                 mSlots[s].mBufferState.string());
     }
 }

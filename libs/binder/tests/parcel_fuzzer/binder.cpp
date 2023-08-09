@@ -119,7 +119,7 @@ std::vector<ParcelRead<::android::Parcel>> BINDER_PARCEL_READ_FUNCTIONS {
     [] (const ::android::Parcel& p, FuzzedDataProvider& provider) {
         std::string interface = provider.ConsumeRandomLengthString();
         FUZZ_LOG() << "about to enforceInterface: " << interface;
-        bool b = p.enforceInterface(::android::String16(interface.c_str()));
+        bool b = p.enforceInterface(::android::toString16(interface.c_str()));
         FUZZ_LOG() << "enforced interface: " << b;
     },
     [] (const ::android::Parcel& p, FuzzedDataProvider& /*provider*/) {

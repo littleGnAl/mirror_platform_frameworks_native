@@ -48,7 +48,6 @@ class IBinder;
 class IPCThreadState;
 class ProcessState;
 class RpcSession;
-class String8;
 class TextOutput;
 namespace binder {
 class Status;
@@ -174,6 +173,9 @@ public:
     status_t            writeString8(const String8& str);
     status_t            writeString8(const char* str, size_t len);
     status_t            writeString16(const String16& str);
+    status_t            writeString16(const String8& str) {
+        return writeString16(toString16(str));
+    }
     status_t            writeString16(const std::optional<String16>& str);
     status_t            writeString16(const std::unique_ptr<String16>& str) __attribute__((deprecated("use std::optional version instead")));
     status_t            writeString16(const char16_t* str, size_t len);
@@ -413,6 +415,12 @@ public:
     const char*         readString8Inplace(size_t* outLen) const;
     String16            readString16() const;
     status_t            readString16(String16* pArg) const;
+    status_t            readString16(String8* pArg) const {
+        String16 s;
+        auto res = readString16(&s);
+        *pArg = ::android::toString8(s);
+        return res;
+    }
     status_t            readString16(std::optional<String16>* pArg) const;
     status_t            readString16(std::unique_ptr<String16>* pArg) const __attribute__((deprecated("use std::optional version instead")));
     const char16_t*     readString16Inplace(size_t* outLen) const;

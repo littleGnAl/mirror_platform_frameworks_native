@@ -189,7 +189,7 @@ std::string ToString(const _T& t) {
 #ifdef HAS_STRING16
     } else if constexpr (std::is_same_v<String16, _T>) {
         std::stringstream out;
-        out << t;
+        out << ws2s(t);
         return out.str();
 #endif
     } else if constexpr (details::IsPointerLike<_T>::value || std::is_pointer_v<_T>) {

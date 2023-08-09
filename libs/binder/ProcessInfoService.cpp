@@ -94,7 +94,7 @@ status_t ProcessInfoService::getProcessStatesScoresImpl(size_t length,
 void ProcessInfoService::updateBinderLocked() {
     const sp<IServiceManager> sm(defaultServiceManager());
     if (sm != nullptr) {
-        const String16 name("processinfo");
+        const String16 name(u"processinfo");
         mProcessInfoService = interface_cast<IProcessInfoService>(sm->checkService(name));
     }
 }

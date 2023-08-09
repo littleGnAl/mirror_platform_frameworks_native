@@ -20,14 +20,13 @@
 
 #include <binder/Parcelable.h>
 
+#include <utils/String8.h>
 #include <utils/Timers.h>
 
 #include <deque>
 #include <unordered_map>
 
 namespace android {
-
-class String8;
 
 class OccupancyTracker
 {
