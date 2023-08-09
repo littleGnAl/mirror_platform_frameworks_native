@@ -391,19 +391,16 @@ String8 ProcessState::makeBinderThreadName() {
     std::string_view driverName = mDriverName.c_str();
     android::base::ConsumePrefix(&driverName, "/dev/");
 
-    String8 name;
-    name.appendFormat("%.*s:%d_%X", static_cast<int>(driverName.length()), driverName.data(), pid,
-                      s);
-    return name;
+    return String8format("%.*s:%d_%X", static_cast<int>(driverName.length()), driverName.data(), pid, s);
 }
 
 void ProcessState::spawnPooledThread(bool isMain)
 {
     if (mThreadPoolStarted) {
         String8 name = makeBinderThreadName();
-        ALOGV("Spawning new pooled thread, name=%s\n", name.string());
+        ALOGV("Spawning new pooled thread, name=%s\n", name.c_str());
         sp<Thread> t = sp<PoolThread>::make(isMain);
-        t->run(name.string());
+        t->run(name.c_str());
         pthread_mutex_lock(&mThreadCountLock);
         mKernelStartedThreads++;
         pthread_mutex_unlock(&mThreadCountLock);
@@ -505,7 +502,7 @@ status_t ProcessState::enableOnewaySpamDetection(bool enable) {
 }
 
 void ProcessState::giveThreadPoolName() {
-    androidSetThreadName( makeBinderThreadName().string() );
+    androidSetThreadName( makeBinderThreadName().c_str() );
 }
 
 String8 ProcessState::getDriverName() {
