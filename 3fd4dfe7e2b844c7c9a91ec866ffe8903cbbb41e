@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183c04ae_1b204729",
+        "filename": "vulkan/libvulkan/api.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1576895
+      },
+      "writtenOn": "2023-08-09T17:48:34Z",
+      "side": 1,
+      "message": "This code is so similar to `DiscoverLayersFromProperty`. Need to find a way to abstract it.",
+      "revId": "3fd4dfe7e2b844c7c9a91ec866ffe8903cbbb41e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
