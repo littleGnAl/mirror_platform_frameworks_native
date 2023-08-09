@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e1abf0a_b11b4777",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-09T17:59:24Z",
+      "side": 1,
+      "message": "I know for other services, we\u0027ve seen that the fuzzer is blocked due to missing coverage. However, I don\u0027t think that the servicemanager fuzzer is blocked for this reason. So, how will we be able to measure if this is a success for servicemanager fuzzer?",
+      "revId": "bcb5ec23c1fef17dcfd5ce0921f0ab1a041dc856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79121fe9_51d4cfcf",
+        "filename": "cmds/servicemanager/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-09T17:59:24Z",
+      "side": 1,
+      "message": "this is already in frameworks/native/cmds/servicemanager/\n\nIt\u0027s fine to have this be \u0027fuzzer/corpus\u0027. Otherwise the full path will be frameworks/native/cmds/servicemanager/fuzzer/servicemamanager_fuzzer_corpus",
+      "range": {
+        "startLine": 101,
+        "startChar": 21,
+        "endLine": 101,
+        "endChar": 51
+      },
+      "revId": "bcb5ec23c1fef17dcfd5ce0921f0ab1a041dc856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "384415a7_79af0130",
+        "filename": "cmds/servicemanager/fuzzer/servicemanager_fuzzer_corpus/transaction_1",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-09T17:59:24Z",
+      "side": 1,
+      "message": "nit: These should not be marked as \"executable\". If your tool is setting this, can you update it?",
+      "revId": "bcb5ec23c1fef17dcfd5ce0921f0ab1a041dc856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739ee1a9_065c9958",
+        "filename": "cmds/servicemanager/fuzzer/servicemanager_fuzzer_corpus/transaction_1",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-09T17:59:24Z",
+      "side": 1,
+      "message": "these each contain a single transaction right? Do we have a follow-on bug to support multiple transactions?",
+      "revId": "bcb5ec23c1fef17dcfd5ce0921f0ab1a041dc856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
