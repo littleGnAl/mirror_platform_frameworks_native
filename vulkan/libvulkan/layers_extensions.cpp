@@ -25,18 +25,23 @@
 #include <sys/prctl.h>
 
 #include <mutex>
+#include <optional>
 #include <string>
+#include <string_view>
 #include <vector>
 
-#include <android/dlext.h>
 #include <android-base/strings.h>
+#include <android/dlext.h>
 #include <cutils/properties.h>
 #include <graphicsenv/GraphicsEnv.h>
 #include <log/log.h>
 #include <nativebridge/native_bridge.h>
 #include <nativeloader/native_loader.h>
 #include <utils/Trace.h>
+#include <vndksupport/linker.h>
 #include <ziparchive/zip_archive.h>
+
+#include "VulkanProperties.sysprop.h"
 
 // TODO(b/143296676): This file currently builds up global data structures as it
 // loads, and never cleans them up. This means we're doing heap allocations
@@ -64,6 +69,11 @@ struct Layer {
 namespace {
 
 const char kSystemLayerLibraryDir[] = "/data/local/debug/vulkan";
+#if defined(__LP64__)
+const char kVendorLayerLibraryDir[] = "/vendor/lib64";
+#else
+const char kVendorLayerLibraryDir[] = "/vendor/lib";
+#endif
 
 class LayerLibrary {
    public:
@@ -132,19 +142,30 @@ bool LayerLibrary::Open() {
         // can't safely use libc++_shared, for example. Which is one reason
         // (among several) we only allow them in non-user builds.
         auto app_namespace = android::GraphicsEnv::getInstance().getAppNamespace();
-        if (app_namespace &&
-            !android::base::StartsWith(path_, kSystemLayerLibraryDir)) {
+
+        if (android::base::StartsWith(path_, kVendorLayerLibraryDir)) {
+            dlhandle_ = android_load_sphal_library(path_.c_str(),
+                                                   RTLD_LOCAL | RTLD_NOW);
+            if (!dlhandle_) {
+                ALOGE("failed to load layer library '%s': %s", path_.c_str(),
+                      dlerror());
+                refcount_ = 0;
+                return false;
+            }
+        } else if (app_namespace &&
+                   !android::base::StartsWith(path_, kSystemLayerLibraryDir)) {
             char* error_msg = nullptr;
             dlhandle_ = OpenNativeLibraryInNamespace(
                 app_namespace, path_.c_str(), &native_bridge_, &error_msg);
             if (!dlhandle_) {
-                ALOGE("failed to load layer library '%s': %s", path_.c_str(), error_msg);
+                ALOGE("xxx failed to load layer library '%s': %s",
+                      path_.c_str(), error_msg);
                 android::NativeLoaderFreeErrorMessage(error_msg);
                 refcount_ = 0;
                 return false;
             }
         } else {
-          dlhandle_ = dlopen(path_.c_str(), RTLD_NOW | RTLD_LOCAL);
+            dlhandle_ = dlopen(path_.c_str(), RTLD_NOW | RTLD_LOCAL);
             if (!dlhandle_) {
                 ALOGE("failed to load layer library '%s': %s", path_.c_str(),
                       dlerror());
@@ -440,6 +461,72 @@ void DiscoverLayersInPathList(const std::string& pathstr) {
     }
 }
 
+void AddLayerFromProperty(std::string_view layer_name) {
+    const std::string_view kPrefix("VK_LAYER_");
+    if (layer_name.rfind(kPrefix, 0) == std::string_view::npos) {
+        std::string owned_name(layer_name);
+        ALOGI(
+            "Layer name %s doesn't start with VK_LAYER_. Skip when layer "
+            "discovery.",
+            owned_name.c_str());
+        return;
+    }
+    std::string_view stem = layer_name.substr(kPrefix.size());
+    bool valid_stem = std::all_of(
+        stem.begin(), stem.end(),
+        [](unsigned char c) { return c == '_' || std::isalnum(c); });
+    if (!valid_stem) {
+        std::string owned_stem(stem);
+        ALOGW_IF(!valid_stem,
+                 "Invalid layer name stem: %s, may fail to discover the layer.",
+                 owned_stem.c_str());
+    }
+    std::string filename = "libVkLayer_";
+    std::transform(stem.cbegin(), stem.cend(), std::back_inserter(filename),
+                   [](unsigned char c) { return std::tolower(c); });
+    filename.append(".so");
+
+    bool duplicate = false;
+    for (auto& layer : g_layer_libraries) {
+        if (layer.GetFilename() == filename) {
+            ALOGV("Skipping duplicate layer %s in %s", filename.c_str(),
+                  kVendorLayerLibraryDir);
+            duplicate = true;
+        }
+    }
+
+    if (!duplicate)
+        AddLayerLibrary(kVendorLayerLibraryDir, filename);
+}
+
+void DiscoverLayersFromProperty() {
+    ATRACE_CALL();
+
+    std::optional<std::string> maybe_implicit_layers =
+        android::sysprop::VulkanProperties::vulkan_implicit_layers();
+    if (!maybe_implicit_layers.has_value()) {
+        return;
+    }
+    const std::string_view implicit_layers_str(*maybe_implicit_layers);
+    std::size_t p = 0;
+    std::size_t delim = p;
+    while ((delim = implicit_layers_str.find_first_of(':', p)) !=
+           std::string_view::npos) {
+        std::string_view implicit_layer_str =
+            implicit_layers_str.substr(p, delim - p);
+        if (!implicit_layer_str.empty()) {
+            AddLayerFromProperty(implicit_layer_str);
+        }
+        p = delim + 1;
+    }
+    if (p != std::string_view::npos) {
+        std::string_view rest = implicit_layers_str.substr(p);
+        if (!rest.empty()) {
+            AddLayerFromProperty(rest);
+        }
+    }
+}
+
 const VkExtensionProperties* FindExtension(
     const std::vector<VkExtensionProperties>& extensions,
     const char* name) {
@@ -466,6 +553,7 @@ void DiscoverLayers() {
     }
     if (!android::GraphicsEnv::getInstance().getLayerPaths().empty())
         DiscoverLayersInPathList(android::GraphicsEnv::getInstance().getLayerPaths());
+    DiscoverLayersFromProperty();
 }
 
 uint32_t GetLayerCount() {

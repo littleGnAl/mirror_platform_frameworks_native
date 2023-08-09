@@ -39,12 +39,12 @@
 #include <log/log.h>
 #include <utils/Trace.h>
 
-#include <vulkan/vk_layer_interface.h>
 #include <graphicsenv/GraphicsEnv.h>
+#include <vulkan/vk_layer_interface.h>
+#include "VulkanProperties.sysprop.h"
 #include "api.h"
 #include "driver.h"
 #include "layers_extensions.h"
-
 
 namespace vulkan {
 namespace api {
@@ -143,6 +143,35 @@ class OverrideLayerNames {
                       [](const ImplicitLayer& a, const ImplicitLayer& b) {
                           return (a.priority < b.priority);
                       });
+        }
+
+        ParseLayersFromProperty();
+    }
+
+    void ParseLayersFromProperty() {
+        std::optional<std::string> maybe_implicit_layers =
+            android::sysprop::VulkanProperties::vulkan_implicit_layers();
+        if (!maybe_implicit_layers.has_value()) {
+            return;
+        }
+        const std::string_view implicit_layers_str(*maybe_implicit_layers);
+        std::size_t p = 0;
+        std::size_t delim = p;
+        while ((delim = implicit_layers_str.find_first_of(':', p)) !=
+               std::string_view::npos) {
+            std::string_view implicit_layer_str =
+                implicit_layers_str.substr(p, delim - p);
+            if (!implicit_layer_str.empty()) {
+                AddImplicitLayer(0, implicit_layer_str.data(),
+                                 implicit_layer_str.size());
+            }
+            p = delim + 1;
+        }
+        if (p != std::string_view::npos) {
+            std::string_view rest = implicit_layers_str.substr(p);
+            if (!rest.empty()) {
+                AddImplicitLayer(0, rest.data(), rest.size());
+            }
         }
     }
 
@@ -1209,20 +1238,23 @@ bool EnsureInitialized() {
 }
 
 template <typename Functor>
-void ForEachLayerFromSettings(Functor functor) {
-    const std::string layersSetting =
-        android::GraphicsEnv::getInstance().getDebugLayers();
-    if (!layersSetting.empty()) {
-        std::vector<std::string> layers =
-            android::base::Split(layersSetting, ":");
-        for (uint32_t i = 0; i < layers.size(); i++) {
-            const Layer* layer = FindLayer(layers[i].c_str());
-            if (!layer) {
-                continue;
-            }
-            functor(layer);
-        }
+VkResult ForEachImplicitLayer(Functor functor,
+                              const VkAllocationCallbacks& allocator) {
+    OverrideLayerNames implicit_layer_names(true, allocator);
+    VkResult res = implicit_layer_names.Parse(nullptr, 0);
+    if (res != VK_SUCCESS) {
+        ALOGE("Failed to parse implicit layer names.");
+        return res;
     }
+    for (uint32_t i = 0; i < implicit_layer_names.Count(); i++) {
+        const char* layer_name = implicit_layer_names.Names()[i];
+        const Layer* layer = FindLayer(layer_name);
+        if (!layer) {
+            continue;
+        }
+        functor(layer);
+    }
+    return VK_SUCCESS;
 }
 
 }  // anonymous namespace
@@ -1320,18 +1352,23 @@ VkResult EnumerateInstanceExtensionProperties(
     std::unordered_set<std::string> extensionNames;
 
     // Expose extensions from implicitly enabled layers.
-    ForEachLayerFromSettings([&](const Layer* layer) {
-        uint32_t count = 0;
-        const VkExtensionProperties* props =
-            GetLayerInstanceExtensions(*layer, count);
-        if (count > 0) {
-            for (uint32_t i = 0; i < count; ++i) {
-                if (extensionNames.emplace(props[i].extensionName).second) {
-                    properties.push_back(props[i]);
+    VkResult res = ForEachImplicitLayer(
+        [&](const Layer* layer) {
+            uint32_t count = 0;
+            const VkExtensionProperties* props =
+                GetLayerInstanceExtensions(*layer, count);
+            if (count > 0) {
+                for (uint32_t i = 0; i < count; ++i) {
+                    if (extensionNames.emplace(props[i].extensionName).second) {
+                        properties.push_back(props[i]);
+                    }
                 }
             }
-        }
-    });
+        },
+        driver::GetDefaultAllocator());
+    if (res != VK_SUCCESS) {
+        return res;
+    }
 
     // TODO(b/143293104): Parse debug.vulkan.layers properties
 
@@ -1421,18 +1458,23 @@ VkResult EnumerateDeviceExtensionProperties(
     std::unordered_set<std::string> extensionNames;
 
     // Expose extensions from implicitly enabled layers.
-    ForEachLayerFromSettings([&](const Layer* layer) {
-        uint32_t count = 0;
-        const VkExtensionProperties* props =
-            GetLayerDeviceExtensions(*layer, count);
-        if (count > 0) {
-            for (uint32_t i = 0; i < count; ++i) {
-                if (extensionNames.emplace(props[i].extensionName).second) {
-                    properties.push_back(props[i]);
+    VkResult res = ForEachImplicitLayer(
+        [&](const Layer* layer) {
+            uint32_t count = 0;
+            const VkExtensionProperties* props =
+                GetLayerDeviceExtensions(*layer, count);
+            if (count > 0) {
+                for (uint32_t i = 0; i < count; ++i) {
+                    if (extensionNames.emplace(props[i].extensionName).second) {
+                        properties.push_back(props[i]);
+                    }
                 }
             }
-        }
-    });
+        },
+        driver::GetData(physicalDevice).allocator);
+    if (res != VK_SUCCESS) {
+        return res;
+    }
 
     // TODO(b/143293104): Parse debug.vulkan.layers properties
 
