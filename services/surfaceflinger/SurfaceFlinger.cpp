@@ -2212,7 +2212,7 @@ void SurfaceFlinger::composite(nsecs_t frameTime, int64_t vsyncId)
     const auto prevVsyncTime = mScheduler->getPreviousVsyncFrom(expectedPresentTime);
     const auto hwcMinWorkDuration = mVsyncConfiguration->getCurrentConfigs().hwcMinWorkDuration;
     const auto vsyncPeriod = mScheduler->getDisplayStatInfo(frameTime).vsyncPeriod;
-    const bool threeVsyncsAhead = mExpectedPresentTime - frameTime > 2 * vsyncPeriod;
+    const bool threeVsyncsAhead = mExpectedPresentTime - systemTime() - hwcMinWorkDuration > 2 * vsyncPeriod;
 
     // We should wait for the earliest present time if HWC doesn't support ExpectedPresentTime,
     // and the next vsync is not already taken by the previous frame.
