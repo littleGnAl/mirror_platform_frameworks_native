@@ -22,6 +22,30 @@
       },
       "revId": "59f3eb2eddf4f681f3778fa4249bf4c3c60dae89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9781581c_9bdda729",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1499410
+      },
+      "writtenOn": "2023-08-10T16:02:28Z",
+      "side": 1,
+      "message": "Thanks Martin.",
+      "parentUuid": "098e97f8_af1b4718",
+      "range": {
+        "startLine": 569,
+        "startChar": 19,
+        "endLine": 569,
+        "endChar": 46
+      },
+      "revId": "59f3eb2eddf4f681f3778fa4249bf4c3c60dae89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
