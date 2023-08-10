@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a647ba0_695ea209",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder2corpus/binder2corpus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-10T20:58:47Z",
+      "side": 1,
+      "message": "0666",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "4e3373fbaa93a2af762e83a3a78a5876346c4671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc932ba3_b4770c4f",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder2corpus/binder2corpus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-10T20:58:47Z",
+      "side": 1,
+      "message": "note: we may want to add an option to add things into an existing directory in the future, but this is fine now",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "4e3373fbaa93a2af762e83a3a78a5876346c4671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bba7536_a583d9fd",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder2corpus/binder2corpus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-10T20:58:47Z",
+      "side": 1,
+      "message": "note: we may want to add an option to start from any number, but this is fine now - or maybe also use arbitrary prefix, e.g. instead of \u0027transaction_\u0027 we might use \u0027testName_x\u0027 to separate corpus entries from different tests",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "4e3373fbaa93a2af762e83a3a78a5876346c4671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef0aa845_fddb6a94",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder2corpus/binder2corpus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-10T20:58:47Z",
+      "side": 1,
+      "message": "these should be 0666 maybe, not \u00271\u0027 bit set (executable), since they aren\u0027t programs",
+      "range": {
+        "startLine": 52,
+        "startChar": 77,
+        "endLine": 52,
+        "endChar": 78
+      },
+      "revId": "4e3373fbaa93a2af762e83a3a78a5876346c4671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
