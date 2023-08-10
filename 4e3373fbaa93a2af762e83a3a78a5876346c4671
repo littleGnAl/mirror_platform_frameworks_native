@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecdf81a2_72718b8c",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder2corpus/binder2corpus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-10T21:35:25Z",
+      "side": 1,
+      "message": "tool fails to create files inside this directory if execute is not set. Execute grants permission to enter the directory.",
+      "parentUuid": "4a647ba0_695ea209",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "4e3373fbaa93a2af762e83a3a78a5876346c4671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc932ba3_b4770c4f",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-08-10T20:58:47Z",
       "side": 1,
       "message": "note: we may want to add an option to add things into an existing directory in the future, but this is fine now",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "4e3373fbaa93a2af762e83a3a78a5876346c4671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2897a8ec_1701af1d",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder2corpus/binder2corpus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-10T21:35:25Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "bc932ba3_b4770c4f",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfda02f9_81914c43",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder2corpus/binder2corpus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-10T21:35:25Z",
+      "side": 1,
+      "message": "Acknowledged. I will follow up with option to add arbitrary prefix to corpus.",
+      "parentUuid": "3bba7536_a583d9fd",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "4e3373fbaa93a2af762e83a3a78a5876346c4671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef0aa845_fddb6a94",
@@ -83,6 +155,30 @@
       "writtenOn": "2023-08-10T20:58:47Z",
       "side": 1,
       "message": "these should be 0666 maybe, not \u00271\u0027 bit set (executable), since they aren\u0027t programs",
+      "range": {
+        "startLine": 52,
+        "startChar": 77,
+        "endLine": 52,
+        "endChar": 78
+      },
+      "revId": "4e3373fbaa93a2af762e83a3a78a5876346c4671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03ae512_d48648dc",
+        "filename": "libs/binder/tests/parcel_fuzzer/binder2corpus/binder2corpus.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-10T21:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef0aa845_fddb6a94",
       "range": {
         "startLine": 52,
         "startChar": 77,
