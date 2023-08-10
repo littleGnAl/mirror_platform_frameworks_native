@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098e97f8_af1b4718",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-08-10T15:13:27Z",
+      "side": 1,
+      "message": "This whole function is dead code since https://r.android.com/1271089. I\u0027ve uploaded https://r.android.com/2703593 to delete it altogether instead.",
+      "range": {
+        "startLine": 569,
+        "startChar": 19,
+        "endLine": 569,
+        "endChar": 46
+      },
+      "revId": "59f3eb2eddf4f681f3778fa4249bf4c3c60dae89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
