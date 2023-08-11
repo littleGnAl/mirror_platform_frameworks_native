@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d0cf66_d86232da",
+        "filename": "libs/graphicsenv/GraphicsEnv.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-08-11T08:47:01Z",
+      "side": 1,
+      "message": "We don\u0027t have to call this every time. Make a function which stores this to a static local variable once, and returns the stored value.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 87
+      },
+      "revId": "fb2735791c44077d0e7199f5d2b9beadd44bd1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
