@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ad1750_1b5a116a",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-11T02:38:42Z",
+      "side": 1,
+      "message": "mStatFromAuthFd",
+      "range": {
+        "startLine": 358,
+        "startChar": 16,
+        "endLine": 358,
+        "endChar": 28
+      },
+      "revId": "692e98cc3523ea70f9c50ca51503909ff91e72ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a11ace38_a9f7f56e",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 3943,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-11T02:38:42Z",
+      "side": 1,
+      "message": "please add a unit test for this",
+      "range": {
+        "startLine": 3943,
+        "startChar": 38,
+        "endLine": 3943,
+        "endChar": 66
+      },
+      "revId": "692e98cc3523ea70f9c50ca51503909ff91e72ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c61c86_8f3b0156",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 4015,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-11T02:38:42Z",
+      "side": 1,
+      "message": "do we still need this? if an app can open and fsverity can be enabled then it should be ok?",
+      "range": {
+        "startLine": 4015,
+        "startChar": 13,
+        "endLine": 4015,
+        "endChar": 26
+      },
+      "revId": "692e98cc3523ea70f9c50ca51503909ff91e72ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

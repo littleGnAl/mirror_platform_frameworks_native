@@ -550,6 +550,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ffa5a89_e99722a6",
+        "filename": "cmds/installd/binder/android/os/IInstalld.aidl",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-11T02:38:42Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "7b72426c_8b36f4e2",
+      "revId": "a408f4c10f3f811349331bb6014036ed350f353c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03280907_facfde48",
