@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781f004a_3fb428c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-11T20:41:12Z",
+      "side": 1,
+      "message": "The point of the friends here is so we can change the interface. All sources would need to be here, or if different functionality needed, please say what it is.",
+      "revId": "a6761759a36094e6049811d2e6afd816fbfaeae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
