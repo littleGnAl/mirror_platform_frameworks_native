@@ -16,6 +16,24 @@
       "message": "The point of the friends here is so we can change the interface. All sources would need to be here, or if different functionality needed, please say what it is.",
       "revId": "a6761759a36094e6049811d2e6afd816fbfaeae7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "416bf95e_d85c0c8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-08-11T20:45:44Z",
+      "side": 1,
+      "message": "The last time we discussed this you said something along the lines that it\u0027s fine to call RPC Binder directly as long as we\u0027re doing it from a single place (libsdvrpc) so that you can go in and change stuff there if needed.\n\nWe (SDV) are doing a transport that\u0027s completely different from TLS and AAOS-SDV specific.",
+      "parentUuid": "781f004a_3fb428c6",
+      "revId": "a6761759a36094e6049811d2e6afd816fbfaeae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
