@@ -71,6 +71,8 @@ static constexpr const char* kNativeLibrariesSystemConfigPath[] =
         {"/apex/com.android.vndk.v{}/etc/llndk.libraries.{}.txt",
          "/apex/com.android.vndk.v{}/etc/vndksp.libraries.{}.txt"};
 
+static const char* kLlndkLibrariesTxtPath = "/system/etc/llndk.libraries.txt";
+
 static std::string vndkVersionStr() {
 #ifdef __BIONIC__
     return base::GetProperty("ro.vndk.version", "");
@@ -108,8 +110,16 @@ static bool readConfig(const std::string& configFile, std::vector<std::string>* 
 }
 
 static const std::string getSystemNativeLibraries(NativeLibrary type) {
-    std::string nativeLibrariesSystemConfig = kNativeLibrariesSystemConfigPath[type];
-    insertVndkVersionStr(&nativeLibrariesSystemConfig);
+    // TODO(b/290159430) Use ro.vndk.version to check if VNDK is enabled instead
+    bool isVndkDeprecated = android::base::GetBoolProperty("ro.vndk.deprecate", false);
+    std::string nativeLibrariesSystemConfig = "";
+
+    if (isVndkDeprecated && type == NativeLibrary::LLNDK) {
+        nativeLibrariesSystemConfig = kLlndkLibrariesTxtPath;
+    } else {
+        nativeLibrariesSystemConfig = kNativeLibrariesSystemConfigPath[type];
+        insertVndkVersionStr(&nativeLibrariesSystemConfig);
+    }
 
     std::vector<std::string> soNames;
     if (!readConfig(nativeLibrariesSystemConfig, &soNames)) {
