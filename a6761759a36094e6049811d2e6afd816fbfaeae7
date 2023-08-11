@@ -70,6 +70,24 @@
       "parentUuid": "ffc65836_1c6b771e",
       "revId": "a6761759a36094e6049811d2e6afd816fbfaeae7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46be1534_57e36d3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-11T21:11:52Z",
+      "side": 1,
+      "message": "If that CL is moved to AOSP, I\u0027m okay with the structure of where it is at. I might have specific comments if it can be done as a feature which would work at a higher level rather than a separate implementation.",
+      "parentUuid": "e48174b4_3648a59f",
+      "revId": "a6761759a36094e6049811d2e6afd816fbfaeae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
