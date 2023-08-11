@@ -52,6 +52,24 @@
       "parentUuid": "416bf95e_d85c0c8d",
       "revId": "a6761759a36094e6049811d2e6afd816fbfaeae7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e48174b4_3648a59f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-08-11T21:07:36Z",
+      "side": 1,
+      "message": "Ah, okay, sorry for misunderstanding.\n\nLet us prototype this and we\u0027ll come back to you when it\u0027s ready. For the record, my colleague\u0027s WIP change: http://ag/23832125 - TL;DR: we want RpcTransportSdv to perform handshake instead of TLS.",
+      "parentUuid": "ffc65836_1c6b771e",
+      "revId": "a6761759a36094e6049811d2e6afd816fbfaeae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
