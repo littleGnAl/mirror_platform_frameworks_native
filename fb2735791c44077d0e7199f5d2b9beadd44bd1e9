@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e48e186_f8c47751",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-08-11T16:36:16Z",
+      "side": 1,
+      "message": "lgtm with Jiyong\u0027s comment addressed",
+      "revId": "fb2735791c44077d0e7199f5d2b9beadd44bd1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96d0cf66_d86232da",
