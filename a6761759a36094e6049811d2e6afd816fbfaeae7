@@ -34,6 +34,24 @@
       "parentUuid": "781f004a_3fb428c6",
       "revId": "a6761759a36094e6049811d2e6afd816fbfaeae7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc65836_1c6b771e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-11T21:02:26Z",
+      "side": 1,
+      "message": "I never approved libsdvrpc using this interface internally, and I asked for the things implementing this interface to be on AOSP. Then, I went out and explicitly made it a build error (added friend) because I didn\u0027t know how I could be more clear.\n\nIf the functionality here is not enough for you, say why. We have had to make several changes to this interface in order to accommodate various performance issues or features, and we can\u0027t have it frozen downstream.",
+      "parentUuid": "416bf95e_d85c0c8d",
+      "revId": "a6761759a36094e6049811d2e6afd816fbfaeae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
