@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c1f4920_8a1054c1",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3929,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-11T22:49:57Z",
+      "side": 1,
+      "message": "can we have test for this one as well?",
+      "range": {
+        "startLine": 3929,
+        "startChar": 38,
+        "endLine": 3929,
+        "endChar": 52
+      },
+      "revId": "6787ec9da195433bde24cb83e8c03ae29095ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "848267eb_4e330ae1",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3976,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-11T22:49:57Z",
+      "side": 1,
+      "message": "should this one be in createFsveritySetupAuthToken?\nmaybe along with the uid check",
+      "range": {
+        "startLine": 3972,
+        "startChar": 0,
+        "endLine": 3976,
+        "endChar": 9
+      },
+      "revId": "6787ec9da195433bde24cb83e8c03ae29095ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2a832b_691aa8e7",
+        "filename": "cmds/installd/InstalldNativeService.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-11T22:49:57Z",
+      "side": 1,
+      "message": "(nit) DISALLOW_COPY_AND_ASSIGN",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "6787ec9da195433bde24cb83e8c03ae29095ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
