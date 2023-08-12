@@ -70,6 +70,24 @@
       "parentUuid": "038cdde3_cfa722ae",
       "revId": "3a11add31c6485855c208c040c29b37fb9f21e9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d59bd48e_237e98cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081758
+      },
+      "writtenOn": "2023-08-12T01:02:08Z",
+      "side": 1,
+      "message": "RISCV has no unified iommu spec now, the multimedia IP of th1520 like GPU VPU DPU ISP,  have their different IOMMU spec from IP vendor, or have no standalone iommu IP.\n\nso th1520 can only use CMA now.",
+      "parentUuid": "0bd568be_056dee26",
+      "revId": "3a11add31c6485855c208c040c29b37fb9f21e9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
