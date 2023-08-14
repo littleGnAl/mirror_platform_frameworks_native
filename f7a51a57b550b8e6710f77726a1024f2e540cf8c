@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb19672e_15854cf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-14T21:56:57Z",
+      "side": 1,
+      "message": "nit: in the future, add test code with the same CL that introduces the change. No need for a separate CL. It\u0027s okay to put them together.",
+      "revId": "f7a51a57b550b8e6710f77726a1024f2e540cf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af579886_67db11ba",
+        "filename": "libs/binder/tests/parcel_fuzzer/test_fuzzer/TestServiceFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-14T21:56:57Z",
+      "side": 1,
+      "message": "What about avoiding the global variable, and put this here (similar to how L106 is done):\n\n```\nif (mCrash \u003d\u003d CrashType::ON_DUMP_TRANSACT \u0026\u0026 code \u003d\u003d DUMP_TRANSACTION) ...\n```\n\nTwo reasons for this or similar suggestion:\n- onData is called from multiple different places, so we don\u0027t need to mix that logic with this logic.\n-  we don\u0027t want to call onData here. BnTestService::onTransact will call setIntData. We want to make sure the logic itself in these functions is reachable. If onTransact is reachable, the readFromParcel code may still be broken, so it loses coverage.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 17
+      },
+      "revId": "f7a51a57b550b8e6710f77726a1024f2e540cf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
