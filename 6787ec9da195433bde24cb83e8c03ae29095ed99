@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb4528d_ea65ea1a",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3929,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-14T19:29:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c1f4920_8a1054c1",
+      "range": {
+        "startLine": 3929,
+        "startChar": 38,
+        "endLine": 3929,
+        "endChar": 52
+      },
+      "revId": "6787ec9da195433bde24cb83e8c03ae29095ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "848267eb_4e330ae1",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2fb703f_495b1830",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3976,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-14T19:29:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "848267eb_4e330ae1",
+      "range": {
+        "startLine": 3972,
+        "startChar": 0,
+        "endLine": 3976,
+        "endChar": 9
+      },
+      "revId": "6787ec9da195433bde24cb83e8c03ae29095ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d2a832b_691aa8e7",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-08-11T22:49:57Z",
       "side": 1,
       "message": "(nit) DISALLOW_COPY_AND_ASSIGN",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "6787ec9da195433bde24cb83e8c03ae29095ed99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6614ca54_c38b13da",
+        "filename": "cmds/installd/InstalldNativeService.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-14T19:29:40Z",
+      "side": 1,
+      "message": "DISALLOW_COPY_AND_ASSIGN is no longer encouraged for new code (see comment in the definition or internal style guide).  The public doc suggests calling out with a comment, so added a comment instead.\n\nhttps://google.github.io/styleguide/cppguide.html#Copyable_Movable_Types",
+      "parentUuid": "6d2a832b_691aa8e7",
       "range": {
         "startLine": 51,
         "startChar": 8,
