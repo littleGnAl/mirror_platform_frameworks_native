@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100fd95f_a0fd3495",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-14T19:58:54Z",
+      "side": 1,
+      "message": "Not a regular file",
+      "range": {
+        "startLine": 419,
+        "startChar": 55,
+        "endLine": 419,
+        "endChar": 80
+      },
+      "revId": "6ec7e4d2a813619bde39e670f2fe64ac096ebbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe3b06e1_6d81cd83",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 3956,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-14T19:58:54Z",
+      "side": 1,
+      "message": "let\u0027s move open and fstat to after the sp\u003cFsveritySetupAuthToken\u003e::cast",
+      "revId": "6ec7e4d2a813619bde39e670f2fe64ac096ebbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55633fb0_1fe25bbb",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 3968,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-14T19:58:54Z",
+      "side": 1,
+      "message": "null check?",
+      "range": {
+        "startLine": 3968,
+        "startChar": 9,
+        "endLine": 3968,
+        "endChar": 26
+      },
+      "revId": "6ec7e4d2a813619bde39e670f2fe64ac096ebbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d968301d_c0cdb42e",
+        "filename": "cmds/installd/tests/installd_service_test.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-14T19:58:54Z",
+      "side": 1,
+      "message": "are these needed?",
+      "revId": "6ec7e4d2a813619bde39e670f2fe64ac096ebbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f73fbce5_a638be1c",
+        "filename": "cmds/installd/tests/installd_service_test.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1166043
+      },
+      "writtenOn": "2023-08-14T19:58:54Z",
+      "side": 1,
+      "message": "do we expect all test filesystems to support fs-verity? otherwise we could check for ok or not-supported?",
+      "range": {
+        "startLine": 573,
+        "startChar": 22,
+        "endLine": 573,
+        "endChar": 36
+      },
+      "revId": "6ec7e4d2a813619bde39e670f2fe64ac096ebbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
