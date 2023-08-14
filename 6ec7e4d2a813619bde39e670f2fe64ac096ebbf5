@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3360e4e3_068a88cf",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-14T20:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "100fd95f_a0fd3495",
+      "range": {
+        "startLine": 419,
+        "startChar": 55,
+        "endLine": 419,
+        "endChar": 80
+      },
+      "revId": "6ec7e4d2a813619bde39e670f2fe64ac096ebbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe3b06e1_6d81cd83",
@@ -37,6 +61,24 @@
       "writtenOn": "2023-08-14T19:58:54Z",
       "side": 1,
       "message": "let\u0027s move open and fstat to after the sp\u003cFsveritySetupAuthToken\u003e::cast",
+      "revId": "6ec7e4d2a813619bde39e670f2fe64ac096ebbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba40457_6210a487",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 3956,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-14T20:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe3b06e1_6d81cd83",
       "revId": "6ec7e4d2a813619bde39e670f2fe64ac096ebbf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32072893_5b0ced7a",
+        "filename": "cmds/installd/InstalldNativeService.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 3968,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-14T20:51:49Z",
+      "side": 1,
+      "message": "authTokenBinder !\u003d nullptr, so the cast is safe here",
+      "parentUuid": "55633fb0_1fe25bbb",
+      "range": {
+        "startLine": 3968,
+        "startChar": 9,
+        "endLine": 3968,
+        "endChar": 26
+      },
+      "revId": "6ec7e4d2a813619bde39e670f2fe64ac096ebbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d968301d_c0cdb42e",
@@ -81,6 +147,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f5df76c_c0dd9e6c",
+        "filename": "cmds/installd/tests/installd_service_test.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-14T20:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d968301d_c0cdb42e",
+      "revId": "6ec7e4d2a813619bde39e670f2fe64ac096ebbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f73fbce5_a638be1c",
@@ -94,6 +178,30 @@
       "writtenOn": "2023-08-14T19:58:54Z",
       "side": 1,
       "message": "do we expect all test filesystems to support fs-verity? otherwise we could check for ok or not-supported?",
+      "range": {
+        "startLine": 573,
+        "startChar": 22,
+        "endLine": 573,
+        "endChar": 36
+      },
+      "revId": "6ec7e4d2a813619bde39e670f2fe64ac096ebbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e00c85_76187fbf",
+        "filename": "cmds/installd/tests/installd_service_test.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2023-08-14T20:51:49Z",
+      "side": 1,
+      "message": "Yes.  It\u0027s required for new devices launched with R+.  I doubt there\u0027s any OEM devices that upgrade all the way from Q.  Plus this is just APCT, not xTS anyway.  So I think it\u0027s pretty safe to skip the check.",
+      "parentUuid": "f73fbce5_a638be1c",
       "range": {
         "startLine": 573,
         "startChar": 22,
