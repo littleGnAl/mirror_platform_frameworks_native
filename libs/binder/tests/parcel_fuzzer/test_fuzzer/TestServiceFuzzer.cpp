@@ -33,7 +33,12 @@ enum class CrashType {
     ON_KNOWN_UID,
     ON_SYSTEM_AID,
     ON_ROOT_AID,
+    ON_DUMP_TRANSACT,
+    ON_SHELL_CMD_TRANSACT,
 };
+
+CrashType gCrashType = CrashType::NONE;
+uint32_t gTransactCode = 0;
 
 // This service is to verify that fuzzService is functioning properly
 class TestService : public BnTestService {
@@ -61,6 +66,18 @@ public:
             case CrashType::ON_ROOT_AID: {
                 if (IPCThreadState::self()->getCallingUid() == AID_ROOT) {
                     LOG_ALWAYS_FATAL("Expected crash, AID_ROOT.");
+                }
+                break;
+            }
+            case CrashType::ON_DUMP_TRANSACT: {
+                if (gTransactCode == DUMP_TRANSACTION) {
+                    LOG_ALWAYS_FATAL("Expected crash, DUMP.");
+                }
+                break;
+            }
+            case CrashType::ON_SHELL_CMD_TRANSACT: {
+                if (gTransactCode == SHELL_COMMAND_TRANSACTION) {
+                    LOG_ALWAYS_FATAL("Expected crash, SHELL_CMD.");
                 }
                 break;
             }
@@ -92,11 +109,15 @@ public:
         return Status::ok();
     }
 
+    status_t onTransact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags) override {
+        gTransactCode = code;
+        onData();
+        return BnTestService::onTransact(code, data, reply, flags);
+    }
+
 private:
     CrashType mCrash;
 };
-
-CrashType gCrashType = CrashType::NONE;
 
 extern "C" int LLVMFuzzerInitialize(int* argc, char*** argv) {
     if (*argc < 2) {
@@ -121,6 +142,10 @@ extern "C" int LLVMFuzzerInitialize(int* argc, char*** argv) {
         gCrashType = CrashType::ON_ROOT_AID;
     } else if (arg == "BINDER") {
         gCrashType = CrashType::ON_BINDER;
+    } else if (arg == "DUMP") {
+        gCrashType = CrashType::ON_DUMP_TRANSACT;
+    } else if (arg == "SHELL_CMD") {
+        gCrashType = CrashType::ON_SHELL_CMD_TRANSACT;
     } else {
         printf("INVALID ARG\n");
         exit(0); // success because this is a crash test
