@@ -39,6 +39,30 @@
       },
       "revId": "fb2735791c44077d0e7199f5d2b9beadd44bd1e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f65da7_fd2b6cc8",
+        "filename": "libs/graphicsenv/GraphicsEnv.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2023-08-14T01:36:08Z",
+      "side": 1,
+      "message": "Updated to store prop value in a static local variable.",
+      "parentUuid": "96d0cf66_d86232da",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 87
+      },
+      "revId": "fb2735791c44077d0e7199f5d2b9beadd44bd1e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
