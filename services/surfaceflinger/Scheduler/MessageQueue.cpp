@@ -178,10 +178,12 @@ void MessageQueue::scheduleFrame() {
     }
 
     std::lock_guard lock(mVsync.mutex);
-    mVsync.scheduledFrameTime =
-            mVsync.registration->schedule({.workDuration = mVsync.workDuration.get().count(),
-                                           .readyDuration = 0,
-                                           .earliestVsync = mVsync.lastCallbackTime.count()});
+    if (!mVsync.scheduledFrameTime) {
+        mVsync.scheduledFrameTime =
+                mVsync.registration->schedule({.workDuration = mVsync.workDuration.get().count(),
+                                               .readyDuration = 0,
+                                               .earliestVsync = mVsync.lastCallbackTime.count()});
+    }
 }
 
 void MessageQueue::injectorCallback() {
