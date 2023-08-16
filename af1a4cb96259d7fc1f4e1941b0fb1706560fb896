@@ -16,6 +16,29 @@
       "message": "I think this fuzzer should always crash no matter how it is used. Providing incorrect args to this fuzzer will be catched by fuzz_service_test as it always looks for the crash type which is mentioned and we have other crash types than plain now.",
       "revId": "af1a4cb96259d7fc1f4e1941b0fb1706560fb896",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b5d40ad_08168bf5",
+        "filename": "libs/binder/tests/parcel_fuzzer/test_fuzzer/TestServiceFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-16T22:08:26Z",
+      "side": 1,
+      "message": "This can be another crash type as well.",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 40
+      },
+      "revId": "af1a4cb96259d7fc1f4e1941b0fb1706560fb896",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
