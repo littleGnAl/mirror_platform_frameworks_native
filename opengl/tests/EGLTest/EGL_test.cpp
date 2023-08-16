@@ -36,10 +36,10 @@ bool hasEglExtension(EGLDisplay dpy, const char* extensionName) {
     bool equal = !strcmp(extensionName, exts);
     android::String8 extString(extensionName);
     android::String8 space(" ");
-    bool atStart = !strncmp(extString + space, exts, cropExtLen + 1);
+    bool atStart = !strncmp((extString + space).c_str(), exts, cropExtLen + 1);
     bool atEnd = (cropExtLen + 1) < extsLen &&
-            !strcmp(space + extString, exts + extsLen - (cropExtLen + 1));
-    bool inMiddle = strstr(exts, space + extString + space);
+            !strcmp((space + extString).c_str(), exts + extsLen - (cropExtLen + 1));
+    bool inMiddle = strstr(exts, (space + extString + space).c_str());
     return equal || atStart || atEnd || inMiddle;
 }
 

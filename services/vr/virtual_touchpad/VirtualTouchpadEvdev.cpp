@@ -66,7 +66,7 @@ status_t VirtualTouchpadEvdev::Attach() {
     }
     String8 DeviceName;
     DeviceName.appendFormat(kDeviceNameFormat, i);
-    touchpad.injector->ConfigureBegin(DeviceName, kDeviceBusType,
+    touchpad.injector->ConfigureBegin(DeviceName.c_str(), kDeviceBusType,
                                       kDeviceVendor, kDeviceProduct,
                                       kDeviceVersion);
     touchpad.injector->ConfigureInputProperty(INPUT_PROP_DIRECT);

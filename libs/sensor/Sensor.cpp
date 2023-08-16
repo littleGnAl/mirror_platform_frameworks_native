@@ -307,7 +307,7 @@ Sensor::Sensor(struct sensor_t const& hwSensor, const uuid_t& uuid, int halVersi
         }
         if (halVersion > SENSORS_DEVICE_API_VERSION_1_0 && hwSensor.requiredPermission) {
             mRequiredPermission = hwSensor.requiredPermission;
-            if (!strcmp(mRequiredPermission, SENSOR_PERMISSION_BODY_SENSORS)) {
+            if (!strcmp(mRequiredPermission.c_str(), SENSOR_PERMISSION_BODY_SENSORS)) {
                 AppOpsManager appOps;
                 mRequiredAppOp = appOps.permissionToOpCode(String16(SENSOR_PERMISSION_BODY_SENSORS));
             }

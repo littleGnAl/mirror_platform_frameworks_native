@@ -156,7 +156,7 @@
 
 namespace android {
 
-using namespace std::string_literals;
+using namespace std::literals;
 
 using namespace hardware::configstore;
 using namespace hardware::configstore::V1_0;
@@ -5060,7 +5060,7 @@ status_t SurfaceFlinger::doDump(int fd, const DumpArgs& args, bool asProto) {
                 {"--frametimeline"s, argsDumper(&SurfaceFlinger::dumpFrameTimeline)},
         };
 
-        const auto flag = args.empty() ? ""s : std::string(String8(args[0]));
+        const auto flag = args.empty() ? ""s : std::string(String8(args[0]));  // TODO ws2s
 
         // Traversal of drawing state must happen on the main thread.
         // Otherwise, SortedVector may have shared ownership during concurrent
@@ -5292,7 +5292,7 @@ void SurfaceFlinger::dumpRawDisplayIdentificationData(const DumpArgs& args,
     uint8_t port;
     DisplayIdentificationData data;
 
-    if (args.size() > 1 && base::ParseUint(String8(args[1]), &hwcDisplayId) &&
+    if (args.size() > 1 && base::ParseUint(String8(args[1]), &hwcDisplayId) &&  // TODO ws2s
         getHwComposer().getDisplayIdentificationData(hwcDisplayId, &port, &data)) {
         result.append(reinterpret_cast<const char*>(data.data()), data.size());
     }

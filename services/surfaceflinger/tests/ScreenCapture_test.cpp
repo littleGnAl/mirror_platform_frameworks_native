@@ -40,14 +40,14 @@ protected:
         mDisplaySize = resolution;
 
         // Background surface
-        mBGSurfaceControl = createLayer(String8("BG Test Surface"), resolution.getWidth(),
+        mBGSurfaceControl = createLayer("BG Test Surface", resolution.getWidth(),
                                         resolution.getHeight(), 0);
         ASSERT_TRUE(mBGSurfaceControl != nullptr);
         ASSERT_TRUE(mBGSurfaceControl->isValid());
         TransactionUtils::fillSurfaceRGBA8(mBGSurfaceControl, 63, 63, 195);
 
         // Foreground surface
-        mFGSurfaceControl = createLayer(String8("FG Test Surface"), 64, 64, 0);
+        mFGSurfaceControl = createLayer("FG Test Surface", 64, 64, 0);
 
         ASSERT_TRUE(mFGSurfaceControl != nullptr);
         ASSERT_TRUE(mFGSurfaceControl->isValid());
@@ -274,7 +274,7 @@ TEST_F(ScreenCaptureTest, DontCaptureRelativeOutsideTree) {
     sp<SurfaceControl> child = createSurface(mClient, "Child surface", 10, 10,
                                              PIXEL_FORMAT_RGBA_8888, 0, mFGSurfaceControl.get());
     ASSERT_NE(nullptr, child.get()) << "failed to create surface";
-    sp<SurfaceControl> relative = createLayer(String8("Relative surface"), 10, 10, 0);
+    sp<SurfaceControl> relative = createLayer("Relative surface", 10, 10, 0);
     TransactionUtils::fillSurfaceRGBA8(child, 200, 200, 200);
     TransactionUtils::fillSurfaceRGBA8(relative, 100, 100, 100);
 
@@ -442,7 +442,7 @@ TEST_F(ScreenCaptureTest, CaptureGrandchildOnly) {
 }
 
 TEST_F(ScreenCaptureTest, CaptureCrop) {
-    sp<SurfaceControl> redLayer = createLayer(String8("Red surface"), 60, 60,
+    sp<SurfaceControl> redLayer = createLayer("Red surface", 60, 60,
                                               ISurfaceComposerClient::eFXSurfaceBufferState);
     sp<SurfaceControl> blueLayer = createSurface(mClient, "Blue surface", 30, 30,
                                                  PIXEL_FORMAT_RGBA_8888,
@@ -478,7 +478,7 @@ TEST_F(ScreenCaptureTest, CaptureCrop) {
 
 TEST_F(ScreenCaptureTest, CaptureSize) {
   sp<SurfaceControl> redLayer =
-      createLayer(String8("Red surface"), 60, 60, ISurfaceComposerClient::eFXSurfaceBufferState);
+      createLayer("Red surface", 60, 60, ISurfaceComposerClient::eFXSurfaceBufferState);
     sp<SurfaceControl> blueLayer = createSurface(mClient, "Blue surface", 30, 30,
                                                  PIXEL_FORMAT_RGBA_8888,
                                                  ISurfaceComposerClient::eFXSurfaceBufferState,
@@ -527,7 +527,7 @@ TEST_F(ScreenCaptureTest, CaptureInvalidLayer) {
 }
 
 TEST_F(ScreenCaptureTest, CaptureTooLargeLayer) {
-    sp<SurfaceControl> redLayer = createLayer(String8("Red surface"), 60, 60);
+    sp<SurfaceControl> redLayer = createLayer("Red surface", 60, 60);
     ASSERT_NO_FATAL_FAILURE(fillBufferQueueLayerColor(redLayer, Color::RED, 60, 60));
 
     Transaction().show(redLayer).setLayer(redLayer, INT32_MAX).apply(true);
@@ -542,10 +542,10 @@ TEST_F(ScreenCaptureTest, CaptureTooLargeLayer) {
 }
 
 TEST_F(ScreenCaptureTest, CaptureSecureLayer) {
-    sp<SurfaceControl> redLayer = createLayer(String8("Red surface"), 60, 60,
+    sp<SurfaceControl> redLayer = createLayer("Red surface", 60, 60,
                                               ISurfaceComposerClient::eFXSurfaceBufferState);
     sp<SurfaceControl> secureLayer =
-            createLayer(String8("Secure surface"), 30, 30,
+            createLayer("Secure surface", 30, 30,
                         ISurfaceComposerClient::eSecure |
                                 ISurfaceComposerClient::eFXSurfaceBufferState,
                         redLayer.get());

@@ -864,7 +864,7 @@ status_t SensorService::handleSetUidState(Vector<String16>& args, int err) {
 
     int userId = 0;
     if (args.size() == 5 && args[3] == String16("--user")) {
-        userId = atoi(String8(args[4]));
+        userId = atoi(String8(args[4]).c_str());
     }
 
     uid_t uid;
@@ -885,7 +885,7 @@ status_t SensorService::handleResetUidState(Vector<String16>& args, int err) {
 
     int userId = 0;
     if (args.size() == 4 && args[2] == String16("--user")) {
-        userId = atoi(String8(args[3]));
+        userId = atoi(String8(args[3]).c_str());
     }
 
     uid_t uid;
@@ -906,7 +906,7 @@ status_t SensorService::handleGetUidState(Vector<String16>& args, int out, int e
 
     int userId = 0;
     if (args.size() == 4 && args[2] == String16("--user")) {
-        userId = atoi(String8(args[3]));
+        userId = atoi(String8(args[3]).c_str());
     }
 
     uid_t uid;

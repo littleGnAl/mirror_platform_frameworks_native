@@ -46,8 +46,8 @@ SensorInfo convertSensor(const Sensor& src) {
     dst.minDelay = src.getMinDelay();
     dst.fifoReservedEventCount = src.getFifoReservedEventCount();
     dst.fifoMaxEventCount = src.getFifoMaxEventCount();
-    dst.typeAsString = src.getStringType();
-    dst.requiredPermission = src.getRequiredPermission();
+    dst.typeAsString = src.getStringType().c_str();
+    dst.requiredPermission = src.getRequiredPermission().c_str();
     dst.maxDelay = src.getMaxDelay();
     dst.flags = src.getFlags();
     return dst;

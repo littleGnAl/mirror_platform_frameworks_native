@@ -41,14 +41,14 @@ protected:
         const ui::Size& resolution = mode.resolution;
 
         // Background surface
-        mBGSurfaceControl = createLayer(String8("BG Test Surface"), resolution.getWidth(),
+        mBGSurfaceControl = createLayer("BG Test Surface", resolution.getWidth(),
                                         resolution.getHeight(), 0);
         ASSERT_TRUE(mBGSurfaceControl != nullptr);
         ASSERT_TRUE(mBGSurfaceControl->isValid());
         TransactionUtils::fillSurfaceRGBA8(mBGSurfaceControl, 63, 63, 195);
 
         // Foreground surface
-        mFGSurfaceControl = createLayer(String8("FG Test Surface"), 64, 64, 0);
+        mFGSurfaceControl = createLayer("FG Test Surface", 64, 64, 0);
 
         ASSERT_TRUE(mFGSurfaceControl != nullptr);
         ASSERT_TRUE(mFGSurfaceControl->isValid());
@@ -56,7 +56,7 @@ protected:
         TransactionUtils::fillSurfaceRGBA8(mFGSurfaceControl, 195, 63, 63);
 
         // Synchronization surface
-        mSyncSurfaceControl = createLayer(String8("Sync Test Surface"), 1, 1, 0);
+        mSyncSurfaceControl = createLayer("Sync Test Surface", 1, 1, 0);
         ASSERT_TRUE(mSyncSurfaceControl != nullptr);
         ASSERT_TRUE(mSyncSurfaceControl->isValid());
 
@@ -512,7 +512,7 @@ TEST_F(ChildLayerTest, ReparentToNoParent) {
 }
 
 TEST_F(ChildLayerTest, ReparentFromNoParent) {
-    sp<SurfaceControl> newSurface = createLayer(String8("New Surface"), 10, 10, 0);
+    sp<SurfaceControl> newSurface = createLayer("New Surface", 10, 10, 0);
     ASSERT_TRUE(newSurface != nullptr);
     ASSERT_TRUE(newSurface->isValid());
 
@@ -559,7 +559,7 @@ TEST_F(ChildLayerTest, NestedChildren) {
 }
 
 TEST_F(ChildLayerTest, ChildLayerRelativeLayer) {
-    sp<SurfaceControl> relative = createLayer(String8("Relative surface"), 128, 128, 0);
+    sp<SurfaceControl> relative = createLayer("Relative surface", 128, 128, 0);
     TransactionUtils::fillSurfaceRGBA8(relative, 255, 255, 255);
 
     Transaction t;

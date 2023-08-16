@@ -70,7 +70,7 @@ static uint64_t getUniqueId() {
 }
 
 static status_t getProcessName(int pid, String8& name) {
-    FILE* fp = fopen(String8::format("/proc/%d/cmdline", pid), "r");
+    FILE* fp = fopen(String8::format("/proc/%d/cmdline", pid).c_str(), "r");
     if (NULL != fp) {
         const size_t size = 64;
         char proc_name[size];
