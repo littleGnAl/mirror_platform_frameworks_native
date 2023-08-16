@@ -112,8 +112,10 @@ CrashType gCrashType = CrashType::NONE;
 
 extern "C" int LLVMFuzzerInitialize(int* argc, char*** argv) {
     if (*argc < 2) {
-        printf("You must specify at least one argument\n");
-        exit(0); // success because this is a crash test
+        // This fuzzer is also used as test fuzzer to check infra pipeline.
+        // It should always run and find a crash in TestService.
+        gCrashType = CrashType::ON_PLAIN;
+        return 0;
     }
 
     std::string arg = std::string((*argv)[1]);
