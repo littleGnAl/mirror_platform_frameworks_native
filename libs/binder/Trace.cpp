@@ -15,17 +15,33 @@
  */
 
 #include <binder/Trace.h>
+
+#ifdef __ANDROID__
+#define __BINDER_USE_ATRACE__
+#endif
+
+#ifdef __BINDER_USE_ATRACE__
 #include <cutils/trace.h>
+#endif
 
 namespace android {
 namespace binder {
 
 void atrace_begin(uint64_t tag, const char* name) {
+#ifdef __BINDER_USE_ATRACE__
     ::atrace_begin(tag, name);
+#else
+    (void)tag;
+    (void)name;
+#endif
 }
 
 void atrace_end(uint64_t tag) {
+#ifdef __BINDER_USE_ATRACE__
     ::atrace_end(tag);
+#else
+    (void)tag;
+#endif
 }
 
 } // namespace binder
