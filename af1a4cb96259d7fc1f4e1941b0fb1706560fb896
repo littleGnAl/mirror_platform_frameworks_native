@@ -87,6 +87,30 @@
       },
       "revId": "af1a4cb96259d7fc1f4e1941b0fb1706560fb896",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3531bcc_39a69e32",
+        "filename": "libs/binder/tests/parcel_fuzzer/test_fuzzer/TestServiceFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-17T00:09:26Z",
+      "side": 1,
+      "message": "aha!\n\nOne nit then, add crash type \"ALWAYS\" and and in \u0027LLVMFuzzerTestOneInput\u0027, if always crashing, LOG_ALWAYS_FATAL directly.\n\nThe reason I suggest this is that currently, we are re-using \u0027PLAIN\u0027 here, but \u0027PLAIN\u0027 still means that transactions are successfully executed. We should avoid re-using this, in case there is an issue in the fuzzer driver, we don\u0027t want to be confused that there is an issue with the fuzzing infrastructure.",
+      "parentUuid": "1fdd4122_230a49a9",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 40
+      },
+      "revId": "af1a4cb96259d7fc1f4e1941b0fb1706560fb896",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
