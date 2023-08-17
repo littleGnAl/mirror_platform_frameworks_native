@@ -39,6 +39,30 @@
       },
       "revId": "af1a4cb96259d7fc1f4e1941b0fb1706560fb896",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2492d421_6c600ab3",
+        "filename": "libs/binder/tests/parcel_fuzzer/test_fuzzer/TestServiceFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-17T00:01:52Z",
+      "side": 1,
+      "message": "The script and test should always add an argument when calling this script. Why do we need to have some default behavior here?",
+      "parentUuid": "1b5d40ad_08168bf5",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 40
+      },
+      "revId": "af1a4cb96259d7fc1f4e1941b0fb1706560fb896",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
