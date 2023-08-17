@@ -63,6 +63,30 @@
       },
       "revId": "af1a4cb96259d7fc1f4e1941b0fb1706560fb896",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fdd4122_230a49a9",
+        "filename": "libs/binder/tests/parcel_fuzzer/test_fuzzer/TestServiceFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-17T00:04:22Z",
+      "side": 1,
+      "message": "This is the same fuzzer which is used to check buganizer pipeline : https://android-review.git.corp.google.com/c/platform/frameworks/native/+/2706119. \nWhile running on infra, exit 0 is not being catched as crash.",
+      "parentUuid": "2492d421_6c600ab3",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 40
+      },
+      "revId": "af1a4cb96259d7fc1f4e1941b0fb1706560fb896",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
