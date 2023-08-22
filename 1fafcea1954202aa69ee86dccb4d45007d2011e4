@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c52b8d62_9d87ce1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-22T00:20:10Z",
+      "side": 1,
+      "message": "Following up on adding random binder APIs for rust and integrating this with rust keystore2 fuzzer",
+      "revId": "1fafcea1954202aa69ee86dccb4d45007d2011e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
