@@ -27,6 +27,7 @@
 #include <utils/Mutex.h>
 #include <utils/Vector.h>
 
+#include <filesystem>
 #include <getopt.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -69,16 +70,14 @@ public:
     virtual int openFile(const String16& path, const String16& seLinuxContext,
             const String16& mode) {
         String8 path8(path);
-        char cwd[256];
-        getcwd(cwd, 256);
-        String8 fullPath(cwd);
-        fullPath.appendPath(path8);
+        auto fullPath = std::filesystem::current_path();
+        fullPath /= path8.c_str();
         if (!mActive) {
             mErrorLog << "Open attempt after active for: " << fullPath << endl;
             return -EPERM;
         }
 #if DEBUG
-        ALOGD("openFile: %s, full=%s", path8.string(), fullPath.string());
+        ALOGD("openFile: %s, full=%s", path8.string(), fullPath.c_str());
 #endif
         int flags = 0;
         bool checkRead = false;
@@ -99,7 +98,7 @@ public:
             mErrorLog << "Invalid mode requested: " << mode.string() << endl;
             return -EINVAL;
         }
-        int fd = open(fullPath.string(), flags, S_IRWXU|S_IRWXG);
+        int fd = open(fullPath.c_str(), flags, S_IRWXU|S_IRWXG);
 #if DEBUG
         ALOGD("openFile: fd=%d", fd);
 #endif
@@ -109,7 +108,7 @@ public:
         if (is_selinux_enabled() && seLinuxContext.size() > 0) {
             String8 seLinuxContext8(seLinuxContext);
             char* tmp = nullptr;
-            getfilecon(fullPath.string(), &tmp);
+            getfilecon(fullPath.c_str(), &tmp);
             Unique_SecurityContext context(tmp);
             if (checkWrite) {
                 int accessGranted = selinux_check_access(seLinuxContext8.string(), context.get(),
@@ -119,7 +118,7 @@ public:
                     ALOGD("openFile: failed selinux write check!");
 #endif
                     close(fd);
-                    mErrorLog << "System server has no access to write file context " << context.get() << " (from path " << fullPath.string() << ", context " << seLinuxContext8.string() << ")" << endl;
+                    mErrorLog << "System server has no access to write file context " << context.get() << " (from path " << fullPath.c_str() << ", context " << seLinuxContext8.string() << ")" << endl;
                     return -EPERM;
                 }
             }
@@ -131,7 +130,7 @@ public:
                     ALOGD("openFile: failed selinux read check!");
 #endif
                     close(fd);
-                    mErrorLog << "System server has no access to read file context " << context.get() << " (from path " << fullPath.string() << ", context " << seLinuxContext8.string() << ")" << endl;
+                    mErrorLog << "System server has no access to read file context " << context.get() << " (from path " << fullPath.c_str() << ", context " << seLinuxContext8.string() << ")" << endl;
                     return -EPERM;
                 }
             }
