@@ -27,6 +27,7 @@
 #include <utils/Mutex.h>
 #include <utils/Vector.h>
 
+#include <filesystem>
 #include <getopt.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -69,16 +70,18 @@ public:
     virtual int openFile(const String16& path, const String16& seLinuxContext,
             const String16& mode) {
         String8 path8(path);
-        char cwd[256];
-        getcwd(cwd, 256);
-        String8 fullPath(cwd);
-        fullPath.appendPath(path8);
+        auto fullPath = std::filesystem::current_path();
+        fullPath /= path8.c_str();
         if (!mActive) {
             mErrorLog << "Open attempt after active for: " << fullPath << endl;
             return -EPERM;
         }
 #if DEBUG
+<<<<<<< PATCH SET (a2daf5 Migrate from android::String path functions to std::filesyst)
+        ALOGD("openFile: %s, full=%s", path8.string(), fullPath.c_str());
+=======
         ALOGD("openFile: %s, full=%s", path8.c_str(), fullPath.c_str());
+>>>>>>> BASE      (4d3227 Merge "Use String8/16 c_str [cmds]" into main)
 #endif
         int flags = 0;
         bool checkRead = false;
@@ -119,7 +122,11 @@ public:
                     ALOGD("openFile: failed selinux write check!");
 #endif
                     close(fd);
+<<<<<<< PATCH SET (a2daf5 Migrate from android::String path functions to std::filesyst)
+                    mErrorLog << "System server has no access to write file context " << context.get() << " (from path " << fullPath.c_str() << ", context " << seLinuxContext8.string() << ")" << endl;
+=======
                     mErrorLog << "System server has no access to write file context " << context.get() << " (from path " << fullPath.c_str() << ", context " << seLinuxContext8.c_str() << ")" << endl;
+>>>>>>> BASE      (4d3227 Merge "Use String8/16 c_str [cmds]" into main)
                     return -EPERM;
                 }
             }
@@ -131,7 +138,11 @@ public:
                     ALOGD("openFile: failed selinux read check!");
 #endif
                     close(fd);
+<<<<<<< PATCH SET (a2daf5 Migrate from android::String path functions to std::filesyst)
+                    mErrorLog << "System server has no access to read file context " << context.get() << " (from path " << fullPath.c_str() << ", context " << seLinuxContext8.string() << ")" << endl;
+=======
                     mErrorLog << "System server has no access to read file context " << context.get() << " (from path " << fullPath.c_str() << ", context " << seLinuxContext8.c_str() << ")" << endl;
+>>>>>>> BASE      (4d3227 Merge "Use String8/16 c_str [cmds]" into main)
                     return -EPERM;
                 }
             }
