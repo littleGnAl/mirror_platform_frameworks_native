@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3e1781_078c0857",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-22T22:56:03Z",
+      "side": 1,
+      "message": "please test before merging. Should the new functions be added to unit tests?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "1fafcea1954202aa69ee86dccb4d45007d2011e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c52b8d62_9d87ce1f",
@@ -14,6 +37,52 @@
       "writtenOn": "2023-08-22T00:20:10Z",
       "side": 1,
       "message": "Following up on adding random binder APIs for rust and integrating this with rust keystore2 fuzzer",
+      "revId": "1fafcea1954202aa69ee86dccb4d45007d2011e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c97e9e_2b3f7ef1",
+        "filename": "libs/fakeservicemanager/FakeServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-22T22:56:03Z",
+      "side": 1,
+      "message": "nit: this could be a local variable",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 72
+      },
+      "revId": "1fafcea1954202aa69ee86dccb4d45007d2011e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2beac96_338a81fe",
+        "filename": "libs/fakeservicemanager/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-22T22:56:03Z",
+      "side": 1,
+      "message": "nit: use full name - \u0027servicemanager\u0027",
+      "range": {
+        "startLine": 19,
+        "startChar": 18,
+        "endLine": 19,
+        "endChar": 20
+      },
       "revId": "1fafcea1954202aa69ee86dccb4d45007d2011e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
