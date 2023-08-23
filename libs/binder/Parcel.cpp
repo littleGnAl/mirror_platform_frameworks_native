@@ -2126,7 +2126,7 @@ status_t Parcel::readString8(String8* pArg) const
     size_t len;
     const char* str = readString8Inplace(&len);
     if (str) {
-        pArg->setTo(str, len);
+        *pArg = String8(str, len);
         return 0;
     } else {
         *pArg = String8();
@@ -2171,7 +2171,7 @@ status_t Parcel::readString16(String16* pArg) const
     size_t len;
     const char16_t* str = readString16Inplace(&len);
     if (str) {
-        pArg->setTo(str, len);
+        *pArg = String16(str, len);
         return 0;
     } else {
         *pArg = String16();
