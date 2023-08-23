@@ -152,7 +152,11 @@ std::vector<NotifyMotionArgs> PreferStylusOverTouchBlocker::processMotion(
     }
 
     const bool isTouchEvent = hasTouch;
-    if (isTouchEvent) {
+    const int32_t maskedAction = args.action & AMOTION_EVENT_ACTION_MASK;
+    const bool isHoverAction = (maskedAction == AMOTION_EVENT_ACTION_HOVER_MOVE ||
+                                maskedAction == AMOTION_EVENT_ACTION_HOVER_ENTER ||
+                                maskedAction == AMOTION_EVENT_ACTION_HOVER_EXIT);
+    if (isTouchEvent && !isHoverAction) {
         // Suppress the current gesture if any stylus is still down
         if (!mActiveStyli.empty()) {
             mCanceledDevices.insert(args.deviceId);
