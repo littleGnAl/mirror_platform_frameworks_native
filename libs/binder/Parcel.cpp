@@ -992,10 +992,6 @@ void Parcel::setServiceFuzzing() {
     mServiceFuzzing = true;
 }
 
-bool Parcel::isServiceFuzzing() const {
-    return mServiceFuzzing;
-}
-
 binder::Status Parcel::enforceNoDataAvail() const {
     if (!mEnforceNoDataAvail) {
         return binder::Status::ok();
