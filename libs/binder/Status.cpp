@@ -226,7 +226,7 @@ status_t Status::writeOverParcel(Parcel* parcel) const {
 void Status::setException(int32_t ex, const String8& message) {
     mException = ex;
     mErrorCode = ex == EX_TRANSACTION_FAILED ? FAILED_TRANSACTION : NO_ERROR;
-    mMessage.setTo(message);
+    mMessage = message;
 }
 
 void Status::setServiceSpecificError(int32_t errorCode, const String8& message) {
