@@ -18,8 +18,13 @@
 #include <fuzzbinder/random_parcel.h>
 
 #include <android-base/logging.h>
+#include <android/binder_libbinder.h>
 #include <binder/IInterface.h>
 #include <binder/IServiceManager.h>
+
+using android::getRandomBinder;
+using android::IBinder;
+using android::sp;
 
 namespace android {
 
@@ -91,5 +96,16 @@ sp<IBinder> getRandomBinder(FuzzedDataProvider* provider) {
     });
     return makeFunc();
 }
-
 } // namespace android
+
+extern "C" {
+void createRandomBinder(void** outBinder, const uint8_t* data, size_t len) {
+    if (outBinder == nullptr) {
+        return;
+    }
+    FuzzedDataProvider provider(data, len);
+    sp<IBinder> randomBinder = getRandomBinder(&provider);
+    AIBinder* aiBinder = AIBinder_fromPlatformBinder(randomBinder);
+    *outBinder = aiBinder;
+}
+} // extern "c"
