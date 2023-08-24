@@ -22,4 +22,7 @@ extern "C" {
 
     // This API is used by fuzzers to automatically fuzz aidl services
     void fuzzRustService(void* binder, const uint8_t* data, size_t len);
+
+    // Creates a random binder to be used as mock in fuzzers
+    void createRandomBinder(void** binder, const uint8_t* data, size_t len);
 }

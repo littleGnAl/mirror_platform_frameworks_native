@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-use binder::binder_impl::Parcel;
-use binder::unstable_api::{AParcel, AsNative};
+use binder::binder_impl::{Binder, Parcel};
+use binder::unstable_api::{new_spibinder, AIBinder, AParcel, AsNative};
 use binder::SpIBinder;
-use binder_random_parcel_bindgen::{createRandomParcel, fuzzRustService};
+use binder_random_parcel_bindgen::{createRandomBinder, createRandomParcel, fuzzRustService};
 use std::os::raw::c_void;
+use std::ptr;
 
 /// This API creates a random parcel to be used by fuzzers
 pub fn create_random_parcel(fuzzer_data: &[u8]) -> Parcel {
@@ -41,4 +42,18 @@ pub fn fuzz_service(binder: &mut SpIBinder, fuzzer_data: &[u8]) {
         // return valid pointers.
         fuzzRustService(ptr, fuzzer_data.as_ptr(), fuzzer_data.len());
     }
+}
+
+/// This API creates a random binder to be used by fuzzers
+pub fn create_random_binder(fuzzer_data: &[u8]) -> Option<SpIBinder> {
+    let mut outBinder = ptr::null_mut();
+    unsafe {
+        // Safety: Function creates an binder object and returns the valid pointer.
+        // By design, this pointer can be null as well since we want to test services
+        // against null binders.
+        createRandomBinder(&mut outBinder, fuzzer_data.as_ptr(), fuzzer_data.len());
+    }
+    let aiBinder = outBinder as *mut AIBinder;
+    let spiBinder = unsafe { new_spibinder(aiBinder) };
+    spiBinder
 }
