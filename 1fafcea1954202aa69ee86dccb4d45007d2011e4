@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0adc3724_bee21b01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-24T18:46:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf3e1781_078c0857",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "1fafcea1954202aa69ee86dccb4d45007d2011e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c52b8d62_9d87ce1f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f31647_b505f526",
+        "filename": "libs/fakeservicemanager/FakeServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-24T18:46:12Z",
+      "side": 1,
+      "message": "I was trying to avoid a dynamic_cast from IServiceManager to FakeServiceManager. It can prove costly for fuzzers. It will be necessary as we don\u0027t have \u0027clear\u0027 in IServiceManager.",
+      "parentUuid": "46c97e9e_2b3f7ef1",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 72
+      },
+      "revId": "1fafcea1954202aa69ee86dccb4d45007d2011e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2beac96_338a81fe",
@@ -77,6 +125,30 @@
       "writtenOn": "2023-08-22T22:56:03Z",
       "side": 1,
       "message": "nit: use full name - \u0027servicemanager\u0027",
+      "range": {
+        "startLine": 19,
+        "startChar": 18,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "1fafcea1954202aa69ee86dccb4d45007d2011e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8495b8c3_6f2b08be",
+        "filename": "libs/fakeservicemanager/rust/src/lib.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-24T18:46:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2beac96_338a81fe",
       "range": {
         "startLine": 19,
         "startChar": 18,
