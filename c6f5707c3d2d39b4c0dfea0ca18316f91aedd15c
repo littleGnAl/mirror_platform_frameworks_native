@@ -16,6 +16,24 @@
       "message": "always say why",
       "revId": "c6f5707c3d2d39b4c0dfea0ca18316f91aedd15c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1577d659_05f1745c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-08-25T16:55:36Z",
+      "side": 1,
+      "message": "Updated commit message.",
+      "parentUuid": "8f7fb73c_cbcfcbdf",
+      "revId": "c6f5707c3d2d39b4c0dfea0ca18316f91aedd15c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

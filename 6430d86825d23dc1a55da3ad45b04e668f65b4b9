@@ -33,6 +33,24 @@
       "message": "input changes look good to me.\n\nSome points here:\n\n1. you will have to submit another CL into internal master first, the aosp patch won\u0027t go in like this due to merge conflicts. You will need a merged-in.\n\n2. Point 1  probably also means you will have to split your changes by area (gui, input, etc).",
       "revId": "6430d86825d23dc1a55da3ad45b04e668f65b4b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42f8977_56988016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-08-25T16:55:36Z",
+      "side": 1,
+      "message": "Non-binder changes moved out.",
+      "parentUuid": "901dba38_15799220",
+      "revId": "6430d86825d23dc1a55da3ad45b04e668f65b4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
