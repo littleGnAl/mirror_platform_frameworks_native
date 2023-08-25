@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "934e1911_01a9eacd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-25T00:49:41Z",
+      "side": 1,
+      "message": "test?",
+      "revId": "b6c89b15e8bdcf18f16828551809c397c32fa5d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5643aaa5_5982f848",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_binder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-25T00:49:41Z",
+      "side": 1,
+      "message": "nit: should we expose this function instead in Rust? I\u0027ve been using this (instead of RandomBinder directly) because it\u0027s good to test with more types of binders as well, and we may add even more in the future",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "b6c89b15e8bdcf18f16828551809c397c32fa5d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
