@@ -35,10 +35,26 @@ pub fn create_random_parcel(fuzzer_data: &[u8]) -> Parcel {
 
 /// This API automatically fuzzes provided service
 pub fn fuzz_service(binder: &mut SpIBinder, fuzzer_data: &[u8]) {
-    let ptr = binder.as_native_mut() as *mut c_void;
+    let mut binders = vec![binder];
+    fuzz_multiple_services(binders.as_mut_slice(), fuzzer_data);
+}
+
+/// This API automatically fuzzes provided services
+pub fn fuzz_multiple_services(binders: &mut [&mut SpIBinder], fuzzer_data: &[u8]) {
+    let mut cppBinders = vec![];
+    for binder in binders.iter_mut() {
+        let ptr = binder.as_native_mut() as *mut c_void;
+        cppBinders.push(ptr);
+    }
+
     unsafe {
-        // Safety: `SpIBinder::as_native_mut` and `slice::as_ptr` always
+        // Safety: `Vec::as_ptr` and `slice::as_ptr` always
         // return valid pointers.
-        fuzzRustService(ptr, fuzzer_data.as_ptr(), fuzzer_data.len());
+        fuzzRustService(
+            cppBinders.as_ptr() as *mut *mut c_void,
+            cppBinders.len(),
+            fuzzer_data.as_ptr(),
+            fuzzer_data.len(),
+        );
     }
 }
