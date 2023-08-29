@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf4f231_4380cd77",
+        "filename": "services/sensorservice/aidl/SensorManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-08-29T23:42:29Z",
+      "side": 1,
+      "message": "nit: is there a chance of this getting modified? We can move this after the lock below.",
+      "range": {
+        "startLine": 198,
+        "startChar": 9,
+        "endLine": 198,
+        "endChar": 16
+      },
+      "revId": "18f173cc7c35db54414513e297079e9f1e4ebecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
