@@ -22,6 +22,30 @@
       },
       "revId": "d2a60bec68388e4ef09ac739d8a8b75bed8211c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086da822_d5dd3d33",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2023-08-29T11:03:43Z",
+      "side": 1,
+      "message": "I think kernel-based tracing probably contains everything you need, though it is quite low-level and a lot of stuff dumped in there is probably not relevant. I think one limit of the current kernel tracing is that there is no clear event for when a transaction has failed - this came up recently because when this happens, perfetto shows a slice that does not seem to end. But I think we can fix that in the kernel driver.",
+      "parentUuid": "fda972a9_b2add82c",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 8
+      },
+      "revId": "d2a60bec68388e4ef09ac739d8a8b75bed8211c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
