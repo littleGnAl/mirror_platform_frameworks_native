@@ -16,6 +16,24 @@
       "message": "something like\n```\n  std::unique_ptr\u003cchar, decltype(\u0026free)\u003e cwd(getcwd(nullptr, 0), \u0026free);\n  auto fullPath \u003d std::string(cwd.get()) + \"/\"s + path8.c_str();\n```\nwould avoid having to come back and clean up the .bp file when std::filesystem disappears into libc++ as part of the forthcoming update...",
       "revId": "8d29cc4897f1a719cf617bd4673a386895744a72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c0bb843_6471a6ac",
+        "filename": "cmds/cmd/cmd.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-08-29T16:53:00Z",
+      "side": 1,
+      "message": "libc++fs is easily searchable and surely there will be cleaning up .bp files when the static library is removed. But actually when you ingest std::filesystem into libc++ you don\u0027t need to touch bp files - you just need to turn libc++ into an empty library.\n\nI would say it\u0027s better to migrate code to (more readable) std::filesystem now with a potential need to remove libc++fs than to migrate to much less readable explicit string operations.\n\nI\u0027ll do as you say, but my fingers will hurt if I replace std::filesystem with something like you proposed :).",
+      "parentUuid": "b7aacff9_2d0b5c83",
+      "revId": "8d29cc4897f1a719cf617bd4673a386895744a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
