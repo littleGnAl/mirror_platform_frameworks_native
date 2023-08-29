@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2513ecc_d6a2fff3",
+        "filename": "libs/nativewindow/include/android/hardware_buffer_aidl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-08-29T22:54:44Z",
+      "side": 1,
+      "message": "Could we have a define in some header?",
+      "range": {
+        "startLine": 98,
+        "startChar": 40,
+        "endLine": 98,
+        "endChar": 42
+      },
+      "revId": "e0f4db34ee05c9dce375cd965ff7935a285c5824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a63536d_94478e80",
+        "filename": "libs/nativewindow/include/android/hardware_buffer_aidl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-08-29T22:54:44Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 161,
+        "startChar": 40,
+        "endLine": 161,
+        "endChar": 42
+      },
+      "revId": "e0f4db34ee05c9dce375cd965ff7935a285c5824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
