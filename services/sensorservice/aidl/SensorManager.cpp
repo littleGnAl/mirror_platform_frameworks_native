@@ -195,6 +195,11 @@ ndk::ScopedAStatus SensorManagerAidl::getSensorList(std::vector<SensorInfo>* _ai
 
 /* One global looper for all event queues created from this SensorManager. */
 sp<Looper> SensorManagerAidl::getLooper() {
+    if (!mJavaVm) {
+        LOG(ERROR) << "No Java VM. This must be running in a test or fuzzer.";
+        return mLooper;
+    }
+
     std::lock_guard<std::mutex> lock(mThreadMutex);
 
     if (!mPollThread.joinable()) {
