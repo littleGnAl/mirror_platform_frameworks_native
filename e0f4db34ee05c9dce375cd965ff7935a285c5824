@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b366de54_48186329",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2023-08-30T16:21:36Z",
+      "side": 1,
+      "message": "I\u0027d prefer instead marking the entire type as requiring API 34. Can `__INTRODUCED_IN()` be applied to a class? If not mark the relevant methods as such.\n\nHandling back-compat isn\u0027t something this should be doing itself as this class really only exists to handle AIDL compat which wasn\u0027t available prior to 34. So it should be whoever is trying to use this wrapper\u0027s responsibility to ensure it\u0027s not used when it isn\u0027t available",
+      "revId": "e0f4db34ee05c9dce375cd965ff7935a285c5824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2513ecc_d6a2fff3",
         "filename": "libs/nativewindow/include/android/hardware_buffer_aidl.h",
         "patchSetId": 1
