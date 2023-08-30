@@ -46,6 +46,30 @@
       },
       "revId": "18f173cc7c35db54414513e297079e9f1e4ebecb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e59df1dd_2c45f380",
+        "filename": "services/sensorservice/aidl/SensorManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-08-30T22:40:01Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6d67981f_63e30adc",
+      "range": {
+        "startLine": 198,
+        "startChar": 9,
+        "endLine": 198,
+        "endChar": 16
+      },
+      "revId": "18f173cc7c35db54414513e297079e9f1e4ebecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
