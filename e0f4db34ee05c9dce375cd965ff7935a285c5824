@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0dc9170c_7c419186",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-30T16:36:17Z",
+      "side": 1,
+      "message": "FWIW - we use __builtin_available inside the libbinder_ndk types a lot. Since it\u0027s easy for people to mix up \u002734\u0027 or \u002732\u0027, it\u0027s nice to have it here. Though - if you\u0027re saying this - I hope Sungtak is moving use of __builtin_available elsewhere.",
+      "parentUuid": "b366de54_48186329",
+      "revId": "e0f4db34ee05c9dce375cd965ff7935a285c5824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2513ecc_d6a2fff3",
         "filename": "libs/nativewindow/include/android/hardware_buffer_aidl.h",
         "patchSetId": 1
