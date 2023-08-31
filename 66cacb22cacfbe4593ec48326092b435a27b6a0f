@@ -34,6 +34,24 @@
       "parentUuid": "540efe96_cf2e10ef",
       "revId": "66cacb22cacfbe4593ec48326092b435a27b6a0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbeaffbf_e73777aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1017430
+      },
+      "writtenOn": "2023-08-31T16:27:18Z",
+      "side": 1,
+      "message": "it is not fixed, and I think it\u0027s worth taking this patch regardless (I didn\u0027t know this could happen to servicemanager)",
+      "parentUuid": "2cbd589c_406c9459",
+      "revId": "66cacb22cacfbe4593ec48326092b435a27b6a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
