@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18ed58c1_a8c66817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2023-08-31T23:56:43Z",
+      "side": 1,
+      "message": "the build error without this change looks like:\n\n```\nIn file included from frameworks/av/media/codec2/hal/client/client.cpp:40:\nIn file included from out/soong/.intermediates/hardware/interfaces/media/c2/aidl/android.hardware.media.c2-V1-ndk-source/gen/include/aidl/android/hardware/media/c2/IComponent.h:25:\nIn file included from out/soong/.intermediates/hardware/interfaces/media/c2/aidl/android.hardware.media.c2-V1-ndk-source/gen/include/aidl/android/hardware/media/c2/IGraphicBufferAllocator.h:15:\nframeworks/native/libs/nativewindow/include/android/hardware_buffer_aidl.h:98:16: error: \u0027AHardwareBuffer_readFromParcel\u0027 is only available on Android 34 or newer [-Werror,-Wunguarded-availability]\n        return AHardwareBuffer_readFromParcel(parcel, \u0026mBuffer);\n               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n```\n\nSince this is coming from include directives, I can\u0027t use `__builtin_available` to guard against the usage. The only option I can think of is ignoring this error using something like `#pragma clang diagnostic ignored \"-Wunguarded-availability\"`. WDYT?",
+      "parentUuid": "0dc9170c_7c419186",
+      "revId": "e0f4db34ee05c9dce375cd965ff7935a285c5824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2513ecc_d6a2fff3",
         "filename": "libs/nativewindow/include/android/hardware_buffer_aidl.h",
         "patchSetId": 1
