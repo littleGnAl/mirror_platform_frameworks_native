@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540efe96_cf2e10ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-08-31T15:09:41Z",
+      "side": 1,
+      "message": "Shai, it wasn\u0027t clear to me if the regression you saw was already fixed, or how to test if this is fixed.",
+      "revId": "66cacb22cacfbe4593ec48326092b435a27b6a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
