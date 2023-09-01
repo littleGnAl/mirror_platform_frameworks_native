@@ -1,0 +1,10 @@
+rust_library {
+    name: "libnativewindow_rust",
+    crate_name: "nativewindow",
+    srcs: ["src/lib.rs"],
+    rustlibs: [
+        "libbinder_rs",
+        "libnativewindow_bindgen",
+    ],
+    vendor_available: true,
+}
