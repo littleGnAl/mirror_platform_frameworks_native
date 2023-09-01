@@ -39,6 +39,43 @@ ndk_headers {
     license: "NOTICE",
 }
 
+rust_bindgen {
+    name: "libnativewindow_bindgen_internal",
+    crate_name: "nativewindow_bindgen",
+    wrapper_src: "include/android/hardware_buffer_aidl.h",
+    source_stem: "bindings",
+    bindgen_flags: [
+        "--blocklist-type",
+        "AParcel",
+        "--raw-line",
+        "use binder::unstable_api::AParcel;",
+    ],
+    shared_libs: [
+        "libbinder_ndk",
+        "libnativewindow",
+    ],
+    rustlibs: [
+        "libbinder_rs",
+    ],
+    vendor_available: true,
+}
+
+rust_library {
+    name: "libnativewindow_bindgen",
+    crate_name: "nativewindow_bindgen",
+    srcs: [":libnativewindow_bindgen_internal"],
+    shared_libs: [
+        "libbinder_ndk",
+        "libnativewindow",
+    ],
+    rustlibs: [
+        "libbinder_rs",
+    ],
+    lints: "none",
+    clippy_lints: "none",
+    vendor_available: true,
+}
+
 // TODO(b/118715870): cleanup header files
 cc_library_headers {
     name: "libnativewindow_headers",

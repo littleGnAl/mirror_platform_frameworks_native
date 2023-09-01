@@ -147,4 +147,5 @@ pub mod unstable_api {
     pub use crate::proxy::unstable_api::new_spibinder;
     pub use crate::sys::AIBinder;
     pub use crate::sys::AParcel;
+    pub use crate::error::status_result;
 }
