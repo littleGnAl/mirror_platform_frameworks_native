@@ -34,6 +34,24 @@
       "parentUuid": "b7aacff9_2d0b5c83",
       "revId": "8d29cc4897f1a719cf617bd4673a386895744a72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ee2423_9b7fc9c7",
+        "filename": "cmds/cmd/cmd.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-09-01T22:06:14Z",
+      "side": 1,
+      "message": "I hope I addressed your comment. Since this is a small change, I\u0027ll go forward with merging it and we can amend if you feel strong about it.",
+      "parentUuid": "4c0bb843_6471a6ac",
+      "revId": "8d29cc4897f1a719cf617bd4673a386895744a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
