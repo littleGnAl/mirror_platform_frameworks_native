@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "593ead50_5055c637",
+        "filename": "libs/nativewindow/rust/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-09-05T18:11:20Z",
+      "side": 1,
+      "message": "Would it not make more sense to do `UninitType \u003d Option\u003cSelf\u003e` for this? That would allow the `buffer` element to be `NonNull\u003cAHardwareBuffer\u003e`.",
+      "revId": "620b5f4d9d720365a5af4fc72c44a76abf4c05fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
