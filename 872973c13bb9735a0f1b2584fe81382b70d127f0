@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac3b93a9_41c1081e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-09-06T18:08:26Z",
+      "side": 1,
+      "message": "presubmit failure looks unrelated. retrying",
+      "revId": "872973c13bb9735a0f1b2584fe81382b70d127f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
