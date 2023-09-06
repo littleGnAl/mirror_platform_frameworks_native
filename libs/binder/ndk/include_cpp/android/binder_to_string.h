@@ -39,6 +39,11 @@
 #define HAS_STRONG_POINTER
 #endif
 
+#if __has_include(<utils/String8.h>)
+#include <utils/String8.h>
+#define HAS_STRING8
+#endif
+
 #if __has_include(<utils/String16.h>)
 #include <utils/String16.h>
 #define HAS_STRING16
@@ -186,6 +191,10 @@ std::string ToString(const _T& t) {
         ss << "binder:" << std::hex << &t;
         return ss.str();
 #endif
+#ifdef HAS_STRING8
+    } else if constexpr (std::is_same_v<String8, _T>) {
+        return t.c_str();
+#endif
 #ifdef HAS_STRING16
     } else if constexpr (std::is_same_v<String16, _T>) {
         std::stringstream out;
@@ -227,6 +236,10 @@ std::string ToString(const _T& t) {
 
 #ifdef HAS_STRONG_POINTER
 #undef HAS_STRONG_POINTER
+#endif
+
+#ifdef HAS_STRING8
+#undef HAS_STRING8
 #endif
 
 #ifdef HAS_STRING16
