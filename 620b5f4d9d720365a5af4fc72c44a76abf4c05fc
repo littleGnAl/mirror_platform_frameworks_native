@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5eed599_e54cbcec",
+        "filename": "libs/nativewindow/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-06T16:30:25Z",
+      "side": 1,
+      "message": "so, this is entirely on top of NDK APIs, right?",
+      "revId": "620b5f4d9d720365a5af4fc72c44a76abf4c05fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "593ead50_5055c637",
         "filename": "libs/nativewindow/rust/src/lib.rs",
         "patchSetId": 2
