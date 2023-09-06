@@ -46,6 +46,30 @@
       },
       "revId": "d2a60bec68388e4ef09ac739d8a8b75bed8211c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb982c7_b7a04f8a",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-06T21:18:10Z",
+      "side": 1,
+      "message": "Fixing in the kernel driver only shows the event on some devices.\n\nUserspace could also print interface descriptor or method names, though it would take more work. If we did do that, we could remove the optional AIDL-generated tracing, potentially saving MBs of code there.",
+      "parentUuid": "086da822_d5dd3d33",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 8
+      },
+      "revId": "d2a60bec68388e4ef09ac739d8a8b75bed8211c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
