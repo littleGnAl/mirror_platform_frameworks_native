@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7873573f_e1821260",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2023-09-07T14:11:59Z",
+      "side": 1,
+      "message": "following libbinder_ndk precedent here works for me",
+      "parentUuid": "caae7664_fcb12168",
+      "revId": "e0f4db34ee05c9dce375cd965ff7935a285c5824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2513ecc_d6a2fff3",
