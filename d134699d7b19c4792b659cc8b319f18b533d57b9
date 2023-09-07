@@ -34,6 +34,24 @@
       "parentUuid": "d56fdd0b_d23b0268",
       "revId": "d134699d7b19c4792b659cc8b319f18b533d57b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1143d58_e2b8a112",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2023-09-07T08:13:26Z",
+      "side": 1,
+      "message": "Hi, Prabir, I added a test case for this issue and it passed locally, can you help review it again?",
+      "parentUuid": "28312a65_38e97255",
+      "revId": "d134699d7b19c4792b659cc8b319f18b533d57b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
