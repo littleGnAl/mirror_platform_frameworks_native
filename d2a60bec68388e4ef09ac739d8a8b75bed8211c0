@@ -94,6 +94,30 @@
       },
       "revId": "d2a60bec68388e4ef09ac739d8a8b75bed8211c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75073072_5a6e025b",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-08T16:28:26Z",
+      "side": 1,
+      "message": "I\u0027ve been thinking about passing the interface descriptor along with the binder object when it\u0027s sent. However, with so many binder objects, it might also need a caching mechanism to avoid having to store so many copies of the descriptors.",
+      "parentUuid": "1600e830_65bc5724",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 8
+      },
+      "revId": "d2a60bec68388e4ef09ac739d8a8b75bed8211c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
