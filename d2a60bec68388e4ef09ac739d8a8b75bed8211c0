@@ -70,6 +70,30 @@
       },
       "revId": "d2a60bec68388e4ef09ac739d8a8b75bed8211c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1600e830_65bc5724",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2023-09-08T11:19:26Z",
+      "side": 1,
+      "message": "Yeah if you need interface names userspace is your only option. It would be a bit tricky on the proxy side, since IIRC we do not cache the interface descriptor name there, so you\u0027d need to make a call to retrieve it (much like the binder proxy dumping code does today). But if the AIDL-generated tracing code is too much overhead, definitely something to consider.",
+      "parentUuid": "adb982c7_b7a04f8a",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 8
+      },
+      "revId": "d2a60bec68388e4ef09ac739d8a8b75bed8211c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
