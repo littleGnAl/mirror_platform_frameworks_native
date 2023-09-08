@@ -22,6 +22,30 @@
       },
       "revId": "9bfb9cd38ee6e15dae2c122592b0242b83719e0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9b4b3d_aa52f871",
+        "filename": "libs/binder/tests/parcel_fuzzer/test_fuzzer/run_fuzz_service_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-08T17:33:33Z",
+      "side": 1,
+      "message": "Yeah - it\u0027s expected to be flaky, but it\u0027s okay as long as it\u0027s flaky with low probability (e.g. 0.001% or similar)\n\nIf 60s doesn\u0027t work, you can also run it multiple times, e.g.:\n\n    for iter in 1 2 3 4 5 6; do\n        ./test_service_fuzzer_should_crash ......time\u003d10 || break\n    done\n\nThat way - it will throw away the large built up in-memory corpus that will slow down the fuzzer.",
+      "parentUuid": "d24b64ae_72727a4a",
+      "range": {
+        "startLine": 33,
+        "startChar": 69,
+        "endLine": 33,
+        "endChar": 71
+      },
+      "revId": "9bfb9cd38ee6e15dae2c122592b0242b83719e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
