@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59db509f_b25a9807",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-09-11T20:16:11Z",
+      "side": 1,
+      "message": "super minor: can avoid an alloc with something like\n\n```\nlet mut binders \u003d [binder];\nfuzz_multiple_services(\u0026mut binders, fuzzer_data);\n```",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 64
+      },
+      "revId": "ce9dd8354401049963a423e13a2d964cbe74b8a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2855181c_f976e53b",
@@ -20,6 +43,23 @@
         "endLine": 43,
         "endChar": 29
       },
+      "revId": "ce9dd8354401049963a423e13a2d964cbe74b8a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0773d7a_28fc924b",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-09-11T20:16:11Z",
+      "side": 1,
+      "message": "if you use `cppBinders.as_mut_ptr()`, then you probably don\u0027t need the cast",
       "revId": "ce9dd8354401049963a423e13a2d964cbe74b8a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
