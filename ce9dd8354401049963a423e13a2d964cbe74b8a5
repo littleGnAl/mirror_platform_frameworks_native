@@ -62,6 +62,24 @@
       "message": "if you use `cppBinders.as_mut_ptr()`, then you probably don\u0027t need the cast",
       "revId": "ce9dd8354401049963a423e13a2d964cbe74b8a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e31578_576556a2",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-09-11T20:19:19Z",
+      "side": 1,
+      "message": "or, alternatively, change the C API to something like `void fuzzRustService(void** const binders, size_t numBinders, const uint8_t* data, size_t len);` to match the `Vec::as_ptr` type",
+      "parentUuid": "f0773d7a_28fc924b",
+      "revId": "ce9dd8354401049963a423e13a2d964cbe74b8a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
