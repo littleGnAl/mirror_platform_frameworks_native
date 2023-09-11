@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4224e163_dd0407c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2023-09-11T22:15:27Z",
+      "side": 1,
+      "message": "Hey Hu,\n\nThanks for your patch. I just talked to WM team about this and indeed it seems like a possible issue.\nDuring screen recording, we create a virtual display. This virtual display is visible to the input subsystem. The windows on the virtual display will be *roughly* the same as on the real display. The windows will have the same window tokens.\nThere are some differences, however:\n1) The layer id on windows of the virtual display will be different from the ones on the real display\n2) The transform of the virtual display could potentially be different from the transform of the real display.\n\nSo what you are describing makes sense, the transform on the virtual display is different, so the cancel event is going to end up with wrong coordinates.\n\nCould you please add a test case for this condition inside `InputDispatcher_test`? This would help us prevent regressions in this piece of logic in the future.\n\nOtherwise, this area is currently under heavy development and this bug could be easily reintroduced.\n\nAlso, do you have an issuetracker bug for this? Please link it here if you do.\n\nThanks!",
+      "revId": "66b401d02e7c16f7753350dfae02f269d609f3fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
