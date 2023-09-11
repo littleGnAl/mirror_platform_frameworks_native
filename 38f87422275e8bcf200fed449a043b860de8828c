@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e189e7c2_d4b3ba9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-11T18:09:16Z",
+      "side": 1,
+      "message": "\u003e The function fileno() examines the argument stream and returns the integer file descriptor used to implement this stream.  The file descriptor is still owned by stream and will be closed when fclose(3) is called.",
+      "revId": "38f87422275e8bcf200fed449a043b860de8828c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
