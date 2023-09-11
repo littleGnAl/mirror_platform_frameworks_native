@@ -127,6 +127,8 @@ public:
      */
     void setTransactionHangCallback(std::function<void(bool)> callback);
 
+    void setDequeueTimeout(nsecs_t timeout);
+
     virtual ~BLASTBufferQueue();
 
 private:
