@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2855181c_f976e53b",
+        "filename": "libs/binder/rust/tests/parcel_fuzzer/random_parcel/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-09-11T17:46:46Z",
+      "side": 1,
+      "message": "This will be used for keystore2 fuzzer - https://android-review.git.corp.google.com/c/platform/system/security/+/2715816/5/keystore2/src/fuzzers/aidl-fuzzers/keystore_service_fuzzer.rs",
+      "range": {
+        "startLine": 43,
+        "startChar": 7,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "ce9dd8354401049963a423e13a2d964cbe74b8a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
