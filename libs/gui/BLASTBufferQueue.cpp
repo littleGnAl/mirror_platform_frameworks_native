@@ -959,6 +959,10 @@ sp<Surface> BLASTBufferQueue::getSurface(bool includeSurfaceControlHandle) {
     return new BBQSurface(mProducer, true, scHandle, this);
 }
 
+void BLASTBufferQueue::setDequeueTimeout(nsecs_t timeout) {
+    mProducer->setDequeueTimeout(timeout);
+}
+
 void BLASTBufferQueue::mergeWithNextTransaction(SurfaceComposerClient::Transaction* t,
                                                 uint64_t frameNumber) {
     std::lock_guard _lock{mMutex};
