@@ -16,6 +16,24 @@
       "message": "hey - also - I\u0027m wondering if we should delay this 2-3 days until we have data showing that b/300115015 is fixed, so if this causes any coverage regression, we can see it more clearly",
       "revId": "3d3f8961e9c00b6f9cca81faf7095e9a24104d51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52bc7704_4f4b9f91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-09-12T18:26:33Z",
+      "side": 1,
+      "message": "Sure, sounds like a good idea. I can wait to submit.",
+      "parentUuid": "a1aade6e_b34ece7c",
+      "revId": "3d3f8961e9c00b6f9cca81faf7095e9a24104d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
