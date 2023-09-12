@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f12382_09b1bce6",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_fd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-12T17:53:27Z",
+      "side": 1,
+      "message": "nit: remove double negative !... else",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "007ce7f51c020acbb0ee35196a2d023ab6a8c7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "617bc6c4_98dc3649",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_fd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-12T17:53:27Z",
+      "side": 1,
+      "message": "/data/local/tmp/ is the tmp folder on Android (I\u0027m not sure if it\u0027s in env variable $TEMP or $TMP)",
+      "range": {
+        "startLine": 71,
+        "startChar": 48,
+        "endLine": 71,
+        "endChar": 52
+      },
+      "revId": "007ce7f51c020acbb0ee35196a2d023ab6a8c7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89903ec_b3f12c76",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_fd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-12T17:53:27Z",
+      "side": 1,
+      "message": "nit: CHECK_NE",
+      "range": {
+        "startLine": 76,
+        "startChar": 17,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "007ce7f51c020acbb0ee35196a2d023ab6a8c7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
