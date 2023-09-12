@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f969c66_da2c700f",
+        "filename": "libs/nativewindow/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-09-12T16:49:49Z",
+      "side": 1,
+      "message": "Yes, I believe so.",
+      "parentUuid": "a5eed599_e54cbcec",
+      "revId": "620b5f4d9d720365a5af4fc72c44a76abf4c05fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "593ead50_5055c637",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "What about setting TypeNeedsOption to be true for unstructured parcelables? That seems like it might also make sense for future unstructured parcelables, which may also not be directly constructible.",
       "parentUuid": "78561633_26cd9a21",
+      "revId": "620b5f4d9d720365a5af4fc72c44a76abf4c05fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16cb9b48_a29f1c84",
+        "filename": "libs/nativewindow/rust/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-09-12T16:49:49Z",
+      "side": 1,
+      "message": "That seems to build. What are the implications for users? When would they end up with an `Option` which is `None`?",
+      "parentUuid": "79cfab6a_af294599",
       "revId": "620b5f4d9d720365a5af4fc72c44a76abf4c05fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
