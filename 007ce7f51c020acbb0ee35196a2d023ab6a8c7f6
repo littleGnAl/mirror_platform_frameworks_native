@@ -68,6 +68,29 @@
       },
       "revId": "007ce7f51c020acbb0ee35196a2d023ab6a8c7f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6317a24_9c625f3d",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_fd.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-12T17:54:09Z",
+      "side": 1,
+      "message": "also - what if you do \"if ConsumeBool, then ftruncate\" ? I think that might show a little bit more coverage? truncated files happen from host ashmem, but sending in arbitrary files is good",
+      "range": {
+        "startLine": 77,
+        "startChar": 31,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "007ce7f51c020acbb0ee35196a2d023ab6a8c7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
