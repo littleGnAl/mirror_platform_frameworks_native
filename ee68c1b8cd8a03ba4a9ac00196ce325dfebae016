@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef54f94_2bdf4280",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-09-12T17:15:43Z",
+      "side": 1,
+      "message": "this doesn\u0027t work on device. mkstemp() fails with errno 2",
+      "revId": "ee68c1b8cd8a03ba4a9ac00196ce325dfebae016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fdb2514_e87b8d5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-09-12T17:15:43Z",
+      "side": 1,
+      "message": "this doesn\u0027t work on device. mkstemp() failes with errno 2",
+      "revId": "ee68c1b8cd8a03ba4a9ac00196ce325dfebae016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
