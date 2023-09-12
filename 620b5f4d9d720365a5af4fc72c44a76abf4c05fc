@@ -123,6 +123,24 @@
       "parentUuid": "16cb9b48_a29f1c84",
       "revId": "620b5f4d9d720365a5af4fc72c44a76abf4c05fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc3722fb_a5986214",
+        "filename": "libs/nativewindow/rust/src/lib.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-09-12T17:03:56Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "eb89221c_d92c7653",
+      "revId": "620b5f4d9d720365a5af4fc72c44a76abf4c05fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
