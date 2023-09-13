@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d18f185_87889ff4",
+        "filename": "libs/binder/tests/binderRpcBenchmark.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-09-13T21:32:27Z",
+      "side": 1,
+      "message": "are these still possible helpful or remove?",
+      "range": {
+        "startLine": 83,
+        "startChar": 12,
+        "endLine": 83,
+        "endChar": 84
+      },
+      "revId": "b85e7f7dbd0463d2ba78d53d50e64489fcb01ec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
