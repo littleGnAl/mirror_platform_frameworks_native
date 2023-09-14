@@ -271,10 +271,6 @@ const HdrCapabilities& DisplayColorProfile::getHdrCapabilities() const {
 
 void DisplayColorProfile::populateColorModes(
         const DisplayColorProfileCreationArgs::HwcColorModes& hwcColorModes) {
-    if (!hasWideColorGamut()) {
-        return;
-    }
-
     // collect all known SDR render intents
     std::unordered_set<RenderIntent> sdrRenderIntents(sSdrRenderIntents.begin(),
                                                       sSdrRenderIntents.end());
