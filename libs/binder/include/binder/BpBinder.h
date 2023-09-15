@@ -130,7 +130,7 @@ public:
         friend class ::android::ProcessState;
         friend class ::android::RpcSession;
         friend class ::android::RpcState;
-        explicit PrivateAccessor(const BpBinder* binder) : mBinder(binder) {}
+        explicit PrivateAccessor(BpBinder* binder) : mBinder(binder) {}
 
         static sp<BpBinder> create(int32_t handle) { return BpBinder::create(handle); }
         static sp<BpBinder> create(const sp<RpcSession>& session, uint64_t address) {
@@ -144,9 +144,14 @@ public:
         uint64_t rpcAddress() const { return mBinder->rpcAddress(); }
         const sp<RpcSession>& rpcSession() const { return mBinder->rpcSession(); }
 
-        const BpBinder* mBinder;
+        status_t setDescriptor(const String16& desc) { return mBinder->setDescriptor(desc); }
+
+        BpBinder* mBinder;
     };
-    const PrivateAccessor getPrivateAccessor() const { return PrivateAccessor(this); }
+    const PrivateAccessor getPrivateAccessor() const {
+        return PrivateAccessor(const_cast<BpBinder*>(this));
+    }
+    PrivateAccessor getPrivateAccessor() { return PrivateAccessor(this); }
 
 private:
     friend PrivateAccessor;
@@ -190,8 +195,9 @@ private:
 
             void                reportOneDeath(const Obituary& obit);
             bool                isDescriptorCached() const;
+            status_t setDescriptor(const String16&);
 
-    mutable Mutex               mLock;
+            mutable Mutex mLock;
             volatile int32_t    mAlive;
             volatile int32_t    mObitsSent;
             Vector<Obituary>*   mObituaries;
