@@ -65,7 +65,7 @@ extern "C" {
  * cmsg(3) man pages for more information.
  *
  * If you intend to share this file descriptor with a child process after
- * calling exec(3), note that you will need to use fcntl(2) with FD_SETFD
+ * calling exec(3), note that you will need to use fcntl(2) with F_SETFD
  * to clear the FD_CLOEXEC flag for this to work on all versions of Android.
  *
  * Available since API level 26.
