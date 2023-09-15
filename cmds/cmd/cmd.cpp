@@ -27,7 +27,6 @@
 #include <utils/Mutex.h>
 #include <utils/Vector.h>
 
-#include <filesystem>
 #include <getopt.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -70,8 +69,10 @@ public:
     virtual int openFile(const String16& path, const String16& seLinuxContext,
             const String16& mode) {
         String8 path8(path);
-        auto fullPath = std::filesystem::current_path();
-        fullPath /= path8.c_str();
+        char cwd[256];
+        getcwd(cwd, 256);
+        String8 fullPath(cwd);
+        fullPath.appendPath(path8);
         if (!mActive) {
             mErrorLog << "Open attempt after active for: " << fullPath << endl;
             return -EPERM;
