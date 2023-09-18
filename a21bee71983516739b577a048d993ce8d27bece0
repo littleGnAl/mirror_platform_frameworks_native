@@ -22,6 +22,30 @@
       },
       "revId": "a21bee71983516739b577a048d993ce8d27bece0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deecebaf_c7d0931a",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-18T23:24:48Z",
+      "side": 1,
+      "message": "If you remove \u0027!isForRpc()\u0027, you should see binderRpcWireProtocolTest fail. I would need to introduce a new version of the binder RPC wire protocol to make this work (mentioned in commit message), but we can change platform protocol arbitrarily.",
+      "parentUuid": "271df7d4_4461aa24",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 5
+      },
+      "revId": "a21bee71983516739b577a048d993ce8d27bece0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
