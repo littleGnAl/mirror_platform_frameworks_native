@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e68cac_69cfd59b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-09-18T17:17:06Z",
+      "side": 1,
+      "message": "I don\u0027t see the connection with this ticket. Is it the correct one?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "c131e7d9cd884da691ba704946a73f8c6c9a9234",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7809d963_b34897a1",
+        "filename": "cmds/installd/otapreopt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-09-18T17:17:06Z",
+      "side": 1,
+      "message": "It\u0027d be better to move the installation of the cleanup function to the code paths where it makes sense instead, but I guess we\u0027re not too concerned about code health in this code anymore.",
+      "revId": "c131e7d9cd884da691ba704946a73f8c6c9a9234",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
