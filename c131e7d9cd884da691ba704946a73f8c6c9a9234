@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bd5fcb38_74af94de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-09-18T17:45:14Z",
+      "side": 1,
+      "message": "I didn\u0027t file a bug. I just spotted it. But sure, I can file one (b/300941544).",
+      "parentUuid": "04e68cac_69cfd59b",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "c131e7d9cd884da691ba704946a73f8c6c9a9234",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7809d963_b34897a1",
         "filename": "cmds/installd/otapreopt.cpp",
         "patchSetId": 1
