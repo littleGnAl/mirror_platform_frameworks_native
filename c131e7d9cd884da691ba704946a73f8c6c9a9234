@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0955a501_c54cae61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-09-18T18:00:30Z",
+      "side": 1,
+      "message": "Aha, that\u0027s not necessary. I just wanted to check that it wasn\u0027t a copy\u0026paste mistake.",
+      "parentUuid": "bd5fcb38_74af94de",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "c131e7d9cd884da691ba704946a73f8c6c9a9234",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7809d963_b34897a1",
         "filename": "cmds/installd/otapreopt.cpp",
         "patchSetId": 1
