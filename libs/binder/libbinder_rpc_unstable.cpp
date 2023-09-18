@@ -121,6 +121,22 @@ ARpcServer* ARpcServer_newBoundSocket(AIBinder* service, int socketFd) {
     return createObjectHandle<ARpcServer>(server);
 }
 
+ARpcServer* ARpcServer_newBoundExternalSocket(AIBinder* service, int socketFd) {
+    auto server = RpcServer::make();
+    auto fd = unique_fd(socketFd);
+    if (!fd.ok()) {
+        LOG(ERROR) << "Invalid socket fd " << socketFd;
+        return nullptr;
+    }
+    if (status_t status = server->setupExternalServer(std::move(fd)); status != OK) {
+        LOG(ERROR) << "Failed to set up RPC server with fd " << socketFd
+                   << " error: " << statusToString(status).c_str();
+        return nullptr;
+    }
+    server->setRootObject(AIBinder_toPlatformBinder(service));
+    return createObjectHandle<ARpcServer>(server);
+}
+
 ARpcServer* ARpcServer_newUnixDomainBootstrap(AIBinder* service, int bootstrapFd) {
     auto server = RpcServer::make();
     auto fd = unique_fd(bootstrapFd);

@@ -76,6 +76,26 @@ impl RpcServer {
         }
     }
 
+    /// Creates a binder RPC server, serving the supplied binder service implementation on the given
+    /// socket file descriptor. The socket should be bound to an address and called listen()  before calling this
+    /// function.
+    pub fn new_bound_external_socket(
+        mut service: SpIBinder,
+        socket_fd: OwnedFd,
+    ) -> Result<RpcServer, Error> {
+        let service = service.as_native_mut();
+
+        // SAFETY: Service ownership is transferring to the server and won't be valid afterward.
+        // Plus the binder objects are threadsafe.
+        // The server takes ownership of the socket FD.
+        unsafe {
+            Self::checked_from_ptr(binder_rpc_unstable_bindgen::ARpcServer_newBoundExternalSocket(
+                service,
+                socket_fd.into_raw_fd(),
+            ))
+        }
+    }
+
     /// Creates a binder RPC server that bootstraps sessions using an existing Unix domain socket
     /// pair, with a given root IBinder object. Callers should create a pair of SOCK_STREAM Unix
     /// domain sockets, pass one to the server and the other to the client. Multiple client session

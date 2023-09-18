@@ -48,6 +48,14 @@ enum class ARpcSession_FileDescriptorTransportMode {
 // The socket will be closed by the server once the server goes out of scope.
 [[nodiscard]] ARpcServer* ARpcServer_newBoundSocket(AIBinder* service, int socketFd);
 
+// Starts a Unix domain RPC server with an open raw socket file descriptor
+// and a given root IBinder object.
+// The socket should be created, bound to an address and called listen().
+// Returns an opaque handle to the running server instance, or null if the server
+// could not be started.
+// The socket will be closed by the server once the server goes out of scope.
+[[nodiscard]] ARpcServer* ARpcServer_newBoundExternalSocket(AIBinder* service, int socketFd);
+
 // Starts an RPC server that bootstraps sessions using an existing Unix domain
 // socket pair, with a given root IBinder object.
 // Callers should create a pair of SOCK_STREAM Unix domain sockets, pass one to
