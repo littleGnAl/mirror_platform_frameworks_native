@@ -34,6 +34,24 @@
       "parentUuid": "4224e163_dd0407c8",
       "revId": "66b401d02e7c16f7753350dfae02f269d609f3fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17bce61c_6acbd619",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934854
+      },
+      "writtenOn": "2023-09-18T04:01:13Z",
+      "side": 1,
+      "message": "\u003e Hey Siarhei,\n\u003e I submitted test case and bug：300781590 ， please review, thank you",
+      "parentUuid": "3ea11864_f4ae1345",
+      "revId": "66b401d02e7c16f7753350dfae02f269d609f3fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
