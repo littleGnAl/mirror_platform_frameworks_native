@@ -52,7 +52,8 @@
       "name": "aidl_lazy_test"
     },
     {
-      "name": "aidl_integration_test"
+      "name": "aidl_integration_test",
+      "keywords": ["cf"]
     },
     {
       "name": "memunreachable_binder_test"
