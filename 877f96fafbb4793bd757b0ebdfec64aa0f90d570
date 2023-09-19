@@ -24,6 +24,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0e0d28_fad3295b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-09-19T15:16:30Z",
+      "side": 1,
+      "message": "Do we actually need this change? binder_rpc_unstable is not ABI stable, so we decided to have our own stability layer (libsdvrpc) which would access all platform Binder methods.\n\nExample: https://googleplex-android-review.git.corp.google.com/c/platform/system/software_defined_vehicle/core_services/+/24750121/2/samples/hello_world_rpc_binder/src/libsdvrpc.cpp#72",
+      "revId": "877f96fafbb4793bd757b0ebdfec64aa0f90d570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8be0e3d5_6c93ee2e",
