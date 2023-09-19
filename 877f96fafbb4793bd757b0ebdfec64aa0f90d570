@@ -22,6 +22,75 @@
       },
       "revId": "877f96fafbb4793bd757b0ebdfec64aa0f90d570",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be0e3d5_6c93ee2e",
+        "filename": "libs/binder/include_rpc_unstable/binder_rpc_unstable.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-09-19T14:37:56Z",
+      "side": 1,
+      "message": "This name doesn\u0027t feel so clear. It\u0027s hard to distinguish it from `ARpcServer_newBoundSocket`. What about `ARpcServer_newBoundAndListeningSocket`?",
+      "range": {
+        "startLine": 57,
+        "startChar": 26,
+        "endLine": 57,
+        "endChar": 59
+      },
+      "revId": "877f96fafbb4793bd757b0ebdfec64aa0f90d570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f31a5f9_d883e859",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-09-19T14:37:56Z",
+      "side": 1,
+      "message": "s/called/have invoked/ ?",
+      "range": {
+        "startLine": 80,
+        "startChar": 77,
+        "endLine": 80,
+        "endChar": 83
+      },
+      "revId": "877f96fafbb4793bd757b0ebdfec64aa0f90d570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461a840c_b0c852e9",
+        "filename": "libs/binder/rust/rpcbinder/src/server.rs",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1958315
+      },
+      "writtenOn": "2023-09-19T14:37:56Z",
+      "side": 1,
+      "message": "line too long?",
+      "range": {
+        "startLine": 80,
+        "startChar": 92,
+        "endLine": 80,
+        "endChar": 113
+      },
+      "revId": "877f96fafbb4793bd757b0ebdfec64aa0f90d570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
