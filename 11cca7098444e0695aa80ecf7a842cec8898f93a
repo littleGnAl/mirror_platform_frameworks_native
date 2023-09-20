@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f892c86_13e7452c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2023-09-20T06:44:50Z",
+      "side": 1,
+      "message": "I\u0027m assuming TreeHugger will run this test and detect whether calling `clear()` is the right thing to do. We could also just remove this line if we want to preserve behavior.",
+      "revId": "11cca7098444e0695aa80ecf7a842cec8898f93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
