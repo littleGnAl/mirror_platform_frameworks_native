@@ -16,6 +16,23 @@
       "message": "Quick ping for review, PTAL?",
       "revId": "3f2aa8da444dae366faeea7eb6a9866119b9bbcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f68161_8b891bfc",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 33
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-09-20T22:17:31Z",
+      "side": 1,
+      "message": "If you make this `std::slice::` you can avoid a `cfg` in the imports.",
+      "revId": "3f2aa8da444dae366faeea7eb6a9866119b9bbcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
