@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d525388_91af2520",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 34
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-09-21T16:21:03Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of changing traits per-OS - this would make code that implements these traits fundamentally non-portable, even in cases where it doesn\u0027t really matter. I think we can get away with it here because it\u0027s `IBinderInternal`, but it\u0027s a bit icky in general.\n\nIn an ideal world, we\u0027d have something like `F: Write + Serialize`, and use `Write` for the default local implementations and `Serialize` for proxy objects, but that would be a more serious change since we\u0027d no longer be able to use `AIBinder_dump` explicitly and would be incompatible with existing C++ code that assumes it\u0027s a fd.",
+      "revId": "f9e8a40018d4417e88f76d74f25dd49b8df2a6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef6d05a1_d7ca7d71",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 34
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-09-21T16:21:03Z",
+      "side": 1,
+      "message": "I think this probably goes in the `file_descriptor` module. It may also make sense to move the existing content of the `file_descriptor` module into `file_descriptor/android.rs` as part of that.",
+      "revId": "f9e8a40018d4417e88f76d74f25dd49b8df2a6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
