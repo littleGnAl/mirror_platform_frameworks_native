@@ -33,6 +33,24 @@
       "message": "Thanks for this, @guohu@xiaomi.corp-partner.google.com! LGTM, I\u0027ll resolve conflicts with internal branch.",
       "revId": "f8550cc1a6783f52124307b5cb5a164772b154ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5541e9_bf10c79d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1976388
+      },
+      "writtenOn": "2023-09-21T13:56:58Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "d8de4ca7_d2be19de",
+      "revId": "f8550cc1a6783f52124307b5cb5a164772b154ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
