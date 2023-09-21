@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65118fb9_542f701c",
+        "filename": "services/inputflinger/dispatcher/InputDispatcher.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3606,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2023-09-21T06:45:41Z",
+      "side": 1,
+      "message": "I think we should move this into `synthesizeCancelationEventsForConnectionLocked()`, and only reset the DragState when `mDragState-\u003edragWindow-\u003etoken \u003d\u003d connection-\u003etoken`.\n\nThat way, we also reset the drag state if there is a cancellation for just the drag window, for any reason.",
+      "range": {
+        "startLine": 3600,
+        "startChar": 0,
+        "endLine": 3606,
+        "endChar": 5
+      },
+      "revId": "43dc737cd35b141e154a0383ebc45a0d0fdc30e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6adec97_dbd19f8f",
+        "filename": "services/inputflinger/tests/InputDispatcher_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 6882,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2023-09-21T06:45:41Z",
+      "side": 1,
+      "message": "```suggestion\n    ASSERT_TRUE(startDrag(/*sendDown\u003d*/false, AINPUT_SOURCE_TOUCHSCREEN));\n```",
+      "range": {
+        "startLine": 6882,
+        "startChar": 26,
+        "endLine": 6882,
+        "endChar": 31
+      },
+      "revId": "43dc737cd35b141e154a0383ebc45a0d0fdc30e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "116ad1e8_56012bf7",
+        "filename": "services/inputflinger/tests/InputDispatcher_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 6885,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2023-09-21T06:45:41Z",
+      "side": 1,
+      "message": "We should consume the CANCEL event from both windows.",
+      "revId": "43dc737cd35b141e154a0383ebc45a0d0fdc30e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ea6f5da_0f6de2b3",
+        "filename": "services/inputflinger/tests/InputDispatcher_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 6887,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2023-09-21T06:45:41Z",
+      "side": 1,
+      "message": "Waiting for idle should work instead.\n\n```suggestion\n    ASSERT_TRUE(mDispatcher-\u003ewaitForIdle());\n```",
+      "range": {
+        "startLine": 6886,
+        "startChar": 0,
+        "endLine": 6887,
+        "endChar": 39
+      },
+      "revId": "43dc737cd35b141e154a0383ebc45a0d0fdc30e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "506a3555_603f4dcf",
+        "filename": "services/inputflinger/tests/InputDispatcher_test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 6891,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2023-09-21T06:45:41Z",
+      "side": 1,
+      "message": "We should also consume each of these three injected events from the window.",
+      "revId": "43dc737cd35b141e154a0383ebc45a0d0fdc30e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
