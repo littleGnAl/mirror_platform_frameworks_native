@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2028a05_d5512a65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2023-09-21T09:47:35Z",
+      "side": 1,
+      "message": "Hi, Prabir\nThanks for the review, I\u0027ve made the changes to the patch as you suggested and verified it locally, please help review it again!",
+      "revId": "c5536f3afda9c6c4856013bdbfb7ce3bc0fee222",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
