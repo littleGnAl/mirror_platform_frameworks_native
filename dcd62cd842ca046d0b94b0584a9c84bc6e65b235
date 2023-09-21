@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e90aa1d_ec848904",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2023-09-21T04:58:31Z",
+      "side": 1,
+      "message": "I considered renaming binder\u0027s `__assert` to something else, like `BINDER_FATAL_ERROR`, but stopped when I saw two places in binder defining `__assert`, only one of which had the `LOG_PRI` macro pragma push/pop code. I do still think we shouldn\u0027t be messing with reserved identifier like this, but this one-line fix seems to work well enough.\n\nFor all I know, we could just replace the `__assert` calls in binder with the ordinary convention, `assert(false \u0026\u0026 \"... error message to report ...\");`\n\n(FWIW: musl should be fine, because it doesn\u0027t define an `__assert` macro.)",
+      "revId": "dcd62cd842ca046d0b94b0584a9c84bc6e65b235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
