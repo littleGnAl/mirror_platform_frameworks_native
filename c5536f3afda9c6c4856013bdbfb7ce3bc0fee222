@@ -73,6 +73,30 @@
       },
       "revId": "c5536f3afda9c6c4856013bdbfb7ce3bc0fee222",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e18453_146c70aa",
+        "filename": "services/inputflinger/tests/InputDispatcher_test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 6888,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2023-09-21T11:07:58Z",
+      "side": 1,
+      "message": "My local test can indeed pass. I don’t know why. Is it possible to remove the verification of the return value?",
+      "parentUuid": "c65c10ab_6e3e7874",
+      "range": {
+        "startLine": 6888,
+        "startChar": 4,
+        "endLine": 6888,
+        "endChar": 44
+      },
+      "revId": "c5536f3afda9c6c4856013bdbfb7ce3bc0fee222",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
