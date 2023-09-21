@@ -16,6 +16,23 @@
       "message": "Hi, Prabir\nThanks for the review, I\u0027ve made the changes to the patch as you suggested and verified it locally, please help review it again!",
       "revId": "c5536f3afda9c6c4856013bdbfb7ce3bc0fee222",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebcc6175_92a57c23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407716
+      },
+      "writtenOn": "2023-09-21T10:42:42Z",
+      "side": 1,
+      "message": "Perfect, thanks!!",
+      "revId": "c5536f3afda9c6c4856013bdbfb7ce3bc0fee222",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
