@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d307dd_10c4f30a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-21T00:44:39Z",
+      "side": 1,
+      "message": "nit: should we add a test for this as well in native code? it can be later too if we have a test in java - not sure if we do",
+      "revId": "0fed2a16328b9245b08474c80b74e782b9f8a8f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
