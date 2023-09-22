@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42db67da_e86ef970",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 34
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-09-22T21:37:39Z",
+      "side": 1,
+      "message": "One of the things I\u0027ve been meaning to do anyway is add `AsRawFd` (and `OwnedFd`) to libstd on Trusty. I\u0027ll give that a try, and if that works then we can revisit this.\n\nSpeaking of, one of the things I considered was changing `ParcelFileDescriptor` to wrap `std::os::fd::OwnedFd` instead of `std::fs::File`. The single thing that stopped me was `impl AsRef\u003cFile\u003e for ParcelFileDescriptor`.",
+      "parentUuid": "3d525388_91af2520",
+      "revId": "f9e8a40018d4417e88f76d74f25dd49b8df2a6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef6d05a1_d7ca7d71",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 34
