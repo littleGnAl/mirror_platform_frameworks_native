@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3925a0f_7c7e5061",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2023-09-22T00:26:54Z",
+      "side": 1,
+      "message": "The SurfaceInterceptor and this test are gone in the aosp-main-future branch. Only the aosp/main branch needs the fix, so mark the CL with \"RESTRICT AUTOMERGE\".",
+      "revId": "f168dcdd7379363b80afa699b0f407a5e38506ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
