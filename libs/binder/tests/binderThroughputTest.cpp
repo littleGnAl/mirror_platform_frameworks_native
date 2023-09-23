@@ -204,7 +204,7 @@ void worker_fx(int num,
     for (int i = 0; i < server_count; i++) {
         if (num == i)
             continue;
-        workers.push_back(serviceMgr->getService(generateServiceName(i)));
+        workers.push_back(serviceMgr->waitForService(generateServiceName(i)));
     }
 
     // Run the benchmark if client
