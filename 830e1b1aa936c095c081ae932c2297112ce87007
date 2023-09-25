@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4c1c8fc_253b5c62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2023-09-25T17:16:38Z",
+      "side": 1,
+      "message": "fyi: I\u0027ve uploaded trivial/cosmetic patches at aosp/2759937",
+      "revId": "830e1b1aa936c095c081ae932c2297112ce87007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be397405_05da662e",
