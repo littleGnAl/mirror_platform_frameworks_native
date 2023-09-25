@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8251c60a_fc1fe27b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2023-09-25T16:24:35Z",
+      "side": 1,
+      "message": "I agree this is a much more accurate way of computing the percentiles. This also works great on my Pixel device. I do have a couple of minor suggestions:\n\n1. Can we split this patch? I see ~3 patches: e.g. (1) \"argv bound check\", (2) \"warmup rounds\", (3) new post-compute procedure.\n\n2. I think we can (maybe should?) keep the max latency option. To help determine the number of `m_long_transactions` that exceeded the limit. This should be orthogonal to your patch here?\n\n3. I read through the test source and I have a couple of changes (mostly cosmetic) that I\u0027ll be uploading. We should coordinate the rebase, I\u0027m fine either way.",
+      "revId": "830e1b1aa936c095c081ae932c2297112ce87007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
