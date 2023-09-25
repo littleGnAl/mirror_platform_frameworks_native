@@ -16,6 +16,52 @@
       "message": "I agree this is a much more accurate way of computing the percentiles. This also works great on my Pixel device. I do have a couple of minor suggestions:\n\n1. Can we split this patch? I see ~3 patches: e.g. (1) \"argv bound check\", (2) \"warmup rounds\", (3) new post-compute procedure.\n\n2. I think we can (maybe should?) keep the max latency option. To help determine the number of `m_long_transactions` that exceeded the limit. This should be orthogonal to your patch here?\n\n3. I read through the test source and I have a couple of changes (mostly cosmetic) that I\u0027ll be uploading. We should coordinate the rebase, I\u0027m fine either way.",
       "revId": "830e1b1aa936c095c081ae932c2297112ce87007",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be397405_05da662e",
+        "filename": "libs/binder/tests/binderThroughputTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2023-09-25T16:30:06Z",
+      "side": 1,
+      "message": "this option was deleted, but I still think we should keep it",
+      "range": {
+        "startLine": 331,
+        "startChar": 12,
+        "endLine": 331,
+        "endChar": 88
+      },
+      "revId": "830e1b1aa936c095c081ae932c2297112ce87007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b5c947_93030bd5",
+        "filename": "libs/binder/tests/binderThroughputTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2023-09-25T16:30:06Z",
+      "side": 1,
+      "message": "I\u0027m conflicted here as the \"-t\" option clearly matches the word \"training\". If we are dropping the \"training\" option, maybe we should also pick a new short option for \"warmup\"?",
+      "range": {
+        "startLine": 334,
+        "startChar": 51,
+        "endLine": 334,
+        "endChar": 57
+      },
+      "revId": "830e1b1aa936c095c081ae932c2297112ce87007",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

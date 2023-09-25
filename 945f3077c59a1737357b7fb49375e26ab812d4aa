@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91ba2318_5377e825",
+        "filename": "libs/binder/tests/binderThroughputTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1869395
+      },
+      "writtenOn": "2023-09-25T16:30:06Z",
+      "side": 0,
+      "message": "I think this functionality and the log about \"% of transactions that exceeded the limit\" is worth keeping.",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 118,
+        "endChar": 9
+      },
+      "revId": "945f3077c59a1737357b7fb49375e26ab812d4aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
