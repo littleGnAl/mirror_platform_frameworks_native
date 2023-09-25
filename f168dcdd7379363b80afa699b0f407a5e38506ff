@@ -16,6 +16,23 @@
       "message": "The SurfaceInterceptor and this test are gone in the aosp-main-future branch. Only the aosp/main branch needs the fix, so mark the CL with \"RESTRICT AUTOMERGE\".",
       "revId": "f168dcdd7379363b80afa699b0f407a5e38506ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0792318f_6bda27d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2023-09-25T20:39:07Z",
+      "side": 1,
+      "message": "The bug was introduced in Id4759f65eb2522a80e9328062fe641fe29786a30.\n\nSurfaceInterceptor was removed in I1858826b9eca27b355edb4236510e3aad1ddb399, but it\u0027s still in AOSP so we still to build this build error.",
+      "revId": "f168dcdd7379363b80afa699b0f407a5e38506ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
