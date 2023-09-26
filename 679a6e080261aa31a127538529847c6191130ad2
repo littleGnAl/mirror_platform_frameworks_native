@@ -22,6 +22,30 @@
       },
       "revId": "679a6e080261aa31a127538529847c6191130ad2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c4328d4_c5b19953",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-09-26T22:06:04Z",
+      "side": 1,
+      "message": "Like this? There will be those selinux audit logs in that case?",
+      "parentUuid": "46966c0c_e124c26b",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 40
+      },
+      "revId": "679a6e080261aa31a127538529847c6191130ad2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
