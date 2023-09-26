@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "151fe50f_f92fdaa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047376
+      },
+      "writtenOn": "2023-09-26T09:57:48Z",
+      "side": 1,
+      "message": "lgtm. Sorry I would have mentioned this but I forgot we didn\u0027t manage to get rid of it 😞",
+      "revId": "4c5b25e5e9967366bfe7df7219ca4c469eab5375",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
