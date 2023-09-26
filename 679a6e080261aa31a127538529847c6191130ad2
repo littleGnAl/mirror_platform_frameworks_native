@@ -70,6 +70,30 @@
       },
       "revId": "679a6e080261aa31a127538529847c6191130ad2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88f924b5_0808dcaf",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-09-26T23:37:42Z",
+      "side": 1,
+      "message": "Ahh got it! That makes sense. I removed the extra logging but added a comment there.",
+      "parentUuid": "2b12a0a1_ecd9efc8",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 40
+      },
+      "revId": "679a6e080261aa31a127538529847c6191130ad2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
