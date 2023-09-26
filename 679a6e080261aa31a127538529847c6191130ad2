@@ -46,6 +46,30 @@
       },
       "revId": "679a6e080261aa31a127538529847c6191130ad2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b12a0a1_ecd9efc8",
+        "filename": "cmds/servicemanager/ServiceManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-26T23:00:58Z",
+      "side": 1,
+      "message": "I mean, when you getService, you might have the permission to `find` \u0027foo/bar\u0027 but not \u0027foo/baz\u0027. So, we can\u0027t return any information about \u0027baz\u0027. For instance, if this error string was reported back to the client as \u0027error\u0027 with `Status::from*(*, \u003cerror\u003e)`, then it would reveal information at runtime about \u0027baz\u0027 to a client that doesn\u0027t have permission to view baz.\n\nHowever, since this is a log, it\u0027s okay. What I was asking for is a comment like \"// for logging, not to return to client since includes information to other services\"\n\nThough I\u0027m realizing now, I might have read this a bit too quickly, and since this is VINTF info - it\u0027s statically available, not information about the services running, so it\u0027s less interesting, not very critical, may already be available, so maybe it\u0027s not worth calling out.",
+      "parentUuid": "5c4328d4_c5b19953",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 40
+      },
+      "revId": "679a6e080261aa31a127538529847c6191130ad2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
