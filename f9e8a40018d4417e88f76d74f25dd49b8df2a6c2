@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3dc1a46_20273810",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 34
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-09-27T00:24:15Z",
+      "side": 1,
+      "message": "https://r.android.com/2764297 adds support for `std::os::fd` in Trusty. If we land that, we can keep the current definition of the trait.",
+      "parentUuid": "42db67da_e86ef970",
+      "revId": "f9e8a40018d4417e88f76d74f25dd49b8df2a6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef6d05a1_d7ca7d71",
         "filename": "libs/binder/rust/src/parcel.rs",
         "patchSetId": 34
