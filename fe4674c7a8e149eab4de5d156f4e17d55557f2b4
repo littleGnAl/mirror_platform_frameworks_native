@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4de2fd9_c5edf9b0",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2023-09-29T06:18:11Z",
+      "side": 1,
+      "message": "linker complains about this symbol. Maybe I need to add to libbinder?\n```\nlinux_bionic: {\n    enabled: true,\n}\n```",
+      "range": {
+        "startLine": 395,
+        "startChar": 21,
+        "endLine": 395,
+        "endChar": 42
+      },
+      "revId": "fe4674c7a8e149eab4de5d156f4e17d55557f2b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
