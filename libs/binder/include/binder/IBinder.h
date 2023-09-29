@@ -65,6 +65,7 @@ public:
         EXTENSION_TRANSACTION = B_PACK_CHARS('_', 'E', 'X', 'T'),
         DEBUG_PID_TRANSACTION = B_PACK_CHARS('_', 'P', 'I', 'D'),
         SET_RPC_CLIENT_TRANSACTION = B_PACK_CHARS('_', 'R', 'P', 'C'),
+        GET_SCHEDULING_POLICY = B_PACK_CHARS('_', 'P', 'R', 'I'),
 
         // See android.os.IBinder.TWEET_TRANSACTION
         // Most importantly, messages can be anything not exceeding 130 UTF-8

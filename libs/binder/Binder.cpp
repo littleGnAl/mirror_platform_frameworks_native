@@ -388,6 +388,19 @@ status_t BBinder::transact(
             err = setRpcClientDebug(data);
             break;
         }
+        case GET_SCHEDULING_POLICY: {
+            CHECK(reply != nullptr);
+            int policy = 0;
+            sched_param param;
+            if (0 != pthread_getschedparam(pthread_self(), &policy, &param)) {
+                err = UNKNOWN_ERROR;
+                break;
+            }
+            reply->writeInt32(policy);
+            reply->writeInt32(param.sched_priority);
+            err = NO_ERROR;
+            break;
+        }
         default:
             err = onTransact(code, data, reply, flags);
             break;
