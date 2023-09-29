@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1630cc29_5833a925",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-29T21:01:28Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to expose an API for this (it would be exposing information about any process you talk to - this stuff isn\u0027t stable).\n\nI was imagining more in-place checks, like in your service implementation, asserting the priority is as-expected.\n\nCan we avoid this?",
+      "revId": "d94f22af36261f6fd041d4b24cd20a5596d59631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
