@@ -16,6 +16,29 @@
       "message": "I don\u0027t think we want to expose an API for this (it would be exposing information about any process you talk to - this stuff isn\u0027t stable).\n\nI was imagining more in-place checks, like in your service implementation, asserting the priority is as-expected.\n\nCan we avoid this?",
       "revId": "d94f22af36261f6fd041d4b24cd20a5596d59631",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a961e835_e87299a4",
+        "filename": "libs/binder/tests/binderLibTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-09-29T21:02:06Z",
+      "side": 1,
+      "message": "also - we shouldn\u0027t have APIs like this or clients unparceling libbinder implementation details",
+      "range": {
+        "startLine": 1143,
+        "startChar": 32,
+        "endLine": 1143,
+        "endChar": 64
+      },
+      "revId": "d94f22af36261f6fd041d4b24cd20a5596d59631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
