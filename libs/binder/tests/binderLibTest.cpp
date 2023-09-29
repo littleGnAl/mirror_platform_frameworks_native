@@ -110,7 +110,6 @@ enum BinderLibTestTranscationCode {
     BINDER_LIB_TEST_GET_PTR_SIZE_TRANSACTION,
     BINDER_LIB_TEST_CREATE_BINDER_TRANSACTION,
     BINDER_LIB_TEST_GET_WORK_SOURCE_TRANSACTION,
-    BINDER_LIB_TEST_GET_SCHEDULING_POLICY,
     BINDER_LIB_TEST_NOP_TRANSACTION_WAIT,
     BINDER_LIB_TEST_GETPID,
     BINDER_LIB_TEST_ECHO_VECTOR,
@@ -1121,7 +1120,7 @@ TEST_F(BinderLibTest, SchedPolicySet) {
     ASSERT_TRUE(server != nullptr);
 
     Parcel data, reply;
-    EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_SCHEDULING_POLICY, data, &reply),
+    EXPECT_THAT(server->transact(IBinder::GET_SCHEDULING_POLICY, data, &reply),
                 StatusEq(NO_ERROR));
 
     int policy = reply.readInt32();
@@ -1141,7 +1140,7 @@ TEST_F(BinderLibTest, InheritRt) {
     EXPECT_EQ(0, sched_setscheduler(getpid(), SCHED_RR, &param));
 
     Parcel data, reply;
-    EXPECT_THAT(server->transact(BINDER_LIB_TEST_GET_SCHEDULING_POLICY, data, &reply),
+    EXPECT_THAT(server->transact(IBinder::GET_SCHEDULING_POLICY, data, &reply),
                 StatusEq(NO_ERROR));
 
     int policy = reply.readInt32();
@@ -1822,16 +1821,6 @@ public:
             case BINDER_LIB_TEST_GET_WORK_SOURCE_TRANSACTION: {
                 data.enforceInterface(binderLibTestServiceName);
                 reply->writeInt32(IPCThreadState::self()->getCallingWorkSourceUid());
-                return NO_ERROR;
-            }
-            case BINDER_LIB_TEST_GET_SCHEDULING_POLICY: {
-                int policy = 0;
-                sched_param param;
-                if (0 != pthread_getschedparam(pthread_self(), &policy, &param)) {
-                    return UNKNOWN_ERROR;
-                }
-                reply->writeInt32(policy);
-                reply->writeInt32(param.sched_priority);
                 return NO_ERROR;
             }
             case BINDER_LIB_TEST_ECHO_VECTOR: {
