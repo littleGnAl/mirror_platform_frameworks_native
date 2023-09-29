@@ -63,19 +63,6 @@ bool equalGpuIdUid(const android::gpuwork::GpuIdUid& l, const android::gpuwork::
     return std::tie(l.gpu_id, l.uid) == std::tie(r.gpu_id, r.uid);
 }
 
-// Gets a BPF map from |mapPath|.
-template <class Key, class Value>
-bool getBpfMap(const char* mapPath, bpf::BpfMap<Key, Value>* out) {
-    errno = 0;
-    auto map = bpf::BpfMap<Key, Value>(mapPath);
-    if (!map.isValid()) {
-        ALOGW("Failed to create bpf map from %s [%d(%s)]", mapPath, errno, strerror(errno));
-        return false;
-    }
-    *out = std::move(map);
-    return true;
-}
-
 template <typename SourceType>
 inline int32_t cast_int32(SourceType) = delete;
 
@@ -128,11 +115,15 @@ void GpuWork::initialize() {
     {
         std::lock_guard<std::mutex> lock(mMutex);
 
-        if (!getBpfMap("/sys/fs/bpf/map_gpuWork_gpu_work_map", &mGpuWorkMap)) {
+        mGpuWorkMap.init("/sys/fs/bpf/map_gpuWork_gpu_work_map");
+        if (!mGpuWorkMap.isValid()) {
+            ALOGW("Failed to open gpu work bpf map [%d(%s)]", errno, strerror(errno));
             return;
         }
 
-        if (!getBpfMap("/sys/fs/bpf/map_gpuWork_gpu_work_global_data", &mGpuWorkGlobalDataMap)) {
+        mGpuWorkGlobalDataMap.init("/sys/fs/bpf/map_gpuWork_gpu_work_global_data");
+        if (!mGpuWorkGlobalDataMap.isValid()) {
+            ALOGW("Failed to open gpu work global data bpf map [%d(%s)]", errno, strerror(errno));
             return;
         }
 

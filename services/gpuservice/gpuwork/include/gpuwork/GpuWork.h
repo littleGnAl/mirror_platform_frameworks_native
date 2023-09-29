@@ -90,8 +90,8 @@ private:
     // BPF map for per-UID GPU work.
     bpf::BpfMap<GpuIdUid, UidTrackingInfo> mGpuWorkMap GUARDED_BY(mMutex);
 
-    // BPF map containing a single element for global data.
-    bpf::BpfMap<uint32_t, GlobalData> mGpuWorkGlobalDataMap GUARDED_BY(mMutex);
+    // BPF map (array) containing a single element for global data.
+    bpf::BpfMapRW<uint32_t, GlobalData> mGpuWorkGlobalDataMap GUARDED_BY(mMutex);
 
     // When true, we are being destructed, so |mMapClearerThread| should stop.
     bool mIsTerminating GUARDED_BY(mMutex);
