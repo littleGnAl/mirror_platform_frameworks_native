@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f5f8e0_45bbfed7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-09-29T02:21:15Z",
+      "side": 1,
+      "message": "I think the general rule of thumb is that people outside of our team shouldn\u0027t be the owner of our codebase.",
+      "revId": "b3d7792fc5f195345e88745a09b9072741bce127",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
