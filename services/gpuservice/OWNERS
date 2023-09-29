@@ -5,3 +5,6 @@ lfy@google.com
 paulthomson@google.com
 pbaiget@google.com
 kocdemir@google.com
+
+# for BPF related refactoring
+file:platform/system/bpf:main:/OWNERS_bpf
