@@ -124,6 +124,24 @@
       "parentUuid": "cc38e0a6_1d9d3754",
       "revId": "d99d644c4f5c5e5df5ef839d43f7e4f7b28ca47b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91a56958_b96e8135",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-10-02T22:21:11Z",
+      "side": 1,
+      "message": "That does not work (even in libbinder). Here are (a small subset of) the error messages: https://paste.googleplex.com/6400348313878528\n\nLinux Binder only uses a few cpp files, so that the problem that we see is small, but re-enable it in Android Binder is a different thing. Remove it from the global Soong config is even in another level of complexity. I can imagine that there will be tons of this type of errors everywhere (of course, because nobody will remind the developers when they forget \"override\"). It makes no sense for us to manually fix all of them by hand.",
+      "parentUuid": "dea4c0a3_13d35eee",
+      "revId": "d99d644c4f5c5e5df5ef839d43f7e4f7b28ca47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
