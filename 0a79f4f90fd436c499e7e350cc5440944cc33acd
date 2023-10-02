@@ -34,6 +34,24 @@
       "parentUuid": "3f261461_f1a6c1a8",
       "revId": "0a79f4f90fd436c499e7e350cc5440944cc33acd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163f0e15_470a3d18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-02T18:13:35Z",
+      "side": 1,
+      "message": "okay, let\u0027s put this CL in to unblock, but I\u0027ll consider setting up tests like this to be a pre-requisite for landing cc_library_cmake_snapshot here. Thanks",
+      "parentUuid": "209c427d_76a9e744",
+      "revId": "0a79f4f90fd436c499e7e350cc5440944cc33acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
