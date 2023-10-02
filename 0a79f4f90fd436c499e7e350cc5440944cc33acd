@@ -16,6 +16,24 @@
       "message": "are we going to be able to test this in continuous integration?",
       "revId": "0a79f4f90fd436c499e7e350cc5440944cc33acd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "209c427d_76a9e744",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-02T17:59:37Z",
+      "side": 1,
+      "message": "I was hoping we would have nightly builds [1] based on cc_library_cmake_snapshot output. Because I don\u0027t think if there\u0027s a compile flag that could trigger these errors.\n\n[1] https://docs.google.com/document/d/1a1g3BciMS4AY5CPkLKyB9Ah0fsTMm5sVrqfrScjWIdM/edit?resourcekey\u003d0-SXuEM4aKyDbZ9cM3MbDLTg#heading\u003dh.m8n5o52xh8dj",
+      "parentUuid": "3f261461_f1a6c1a8",
+      "revId": "0a79f4f90fd436c499e7e350cc5440944cc33acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
