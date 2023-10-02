@@ -34,6 +34,24 @@
       "parentUuid": "c41f2705_89baca61",
       "revId": "d99d644c4f5c5e5df5ef839d43f7e4f7b28ca47b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "454810dc_953d5e8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1569496
+      },
+      "writtenOn": "2023-10-02T20:36:12Z",
+      "side": 1,
+      "message": "FYI: The global settings disabled this warning. Do we want to enable it only for libbinder or the entire binder directory?",
+      "parentUuid": "23605e7c_a628f273",
+      "revId": "d99d644c4f5c5e5df5ef839d43f7e4f7b28ca47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
