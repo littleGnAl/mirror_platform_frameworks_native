@@ -70,6 +70,24 @@
       "parentUuid": "454810dc_953d5e8a",
       "revId": "d99d644c4f5c5e5df5ef839d43f7e4f7b28ca47b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "913c5a23_57db3483",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-02T20:40:49Z",
+      "side": 1,
+      "message": "Description sounds like something fixable in AIDL compiler. Steven, do you know about this one?\n\n```\n// AIDL generated code redeclares pure virtual methods in each\n// subsequent version of an interface, so this is currently infeasible\n// to enable.\n\"-Wno-inconsistent-missing-override\",\n```",
+      "parentUuid": "6b9fac3f_3ea62da4",
+      "revId": "d99d644c4f5c5e5df5ef839d43f7e4f7b28ca47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
