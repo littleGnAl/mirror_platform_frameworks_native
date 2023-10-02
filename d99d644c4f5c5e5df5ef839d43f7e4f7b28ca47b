@@ -88,6 +88,24 @@
       "parentUuid": "6b9fac3f_3ea62da4",
       "revId": "d99d644c4f5c5e5df5ef839d43f7e4f7b28ca47b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc38e0a6_1d9d3754",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-02T20:50:39Z",
+      "side": 1,
+      "message": "Can you force it to re-enable here? It\u0027s pretty silly someone disabled it globally without filing a bug on AIDL. If it\u0027s still an issue now, it would be easy to fix.",
+      "parentUuid": "913c5a23_57db3483",
+      "revId": "d99d644c4f5c5e5df5ef839d43f7e4f7b28ca47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
