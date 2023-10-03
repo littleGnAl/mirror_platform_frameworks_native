@@ -22,6 +22,30 @@
       },
       "revId": "5ad813f5a7615d9d9c945dd0d101c2aa11793699",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d5aa741_77d2855b",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2023-10-03T20:56:15Z",
+      "side": 1,
+      "message": "I did not; I assumed that wouldn\u0027t be necessary. I did check that `printflags` can be executed by a random user (`su \u003cuser-id-for-a-random-app-like-launcher\u003e printflags`).\n\nI\u0027ll verify this works as expected on a user build before merging.",
+      "parentUuid": "1f62798a_416dceb4",
+      "range": {
+        "startLine": 1950,
+        "startChar": 2,
+        "endLine": 1951,
+        "endChar": 76
+      },
+      "revId": "5ad813f5a7615d9d9c945dd0d101c2aa11793699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
