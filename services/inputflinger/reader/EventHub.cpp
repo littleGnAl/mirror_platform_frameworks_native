@@ -32,6 +32,7 @@
 #include <sys/stat.h>
 #include <sys/sysmacros.h>
 #include <unistd.h>
+#include <cstdint>
 
 #define LOG_TAG "EventHub"
 
@@ -49,6 +50,7 @@
 #include <utils/Errors.h>
 #include <utils/Log.h>
 #include <utils/Timers.h>
+#include <set>
 
 #include <filesystem>
 #include <regex>
@@ -1965,6 +1967,258 @@ void EventHub::reportDeviceAddedForStatisticsLocked(const InputDeviceIdentifier&
                                identifier.bus, obfuscatedId.c_str(), classes.get());
 }
 
+const std::set<std::pair<uint16_t, uint16_t>> kKeyboardBlocklist = {
+        {0x0111, 0x1830}, // SteelSeries Rival 3 Wireless (Bluetooth)
+        {0x0111, 0x183a}, // SteelSeries Aerox 3 Wireless (Bluetooth)
+        {0x0111, 0x1854}, // SteelSeries Aerox 5 Wireless (Bluetooth)
+        {0x0111, 0x185a}, // SteelSeries Aerox 9 Wireless (Bluetooth)
+        {0x03f0, 0x0b97}, // HyperX Pulsefire Haste 2 Gaming Mouse
+        {0x03f0, 0x4e41}, // HP OMEN Vector Wireless Mouse
+        {0x03f0, 0xa407}, // HP X4000 Wireless Mouse
+        {0x045e, 0x0745}, // Microsoft Wireless Mobile Mouse 6000
+        {0x045e, 0x07a2}, // Microsoft Sculpt Comfort Mouse
+        {0x045e, 0x0821}, // Microsoft Surface Precision Mouse
+        {0x045e, 0x0827}, // Microsoft Modern Mobile Mouse
+        {0x045e, 0x082a}, // Microsoft Pro IntelliMouse
+        {0x045e, 0x082f}, // Microsoft Bluetooth Mouse
+        {0x045e, 0x0845}, // Microsoft Ocean Plastic Mouse
+        {0x045e, 0x0932}, // Microsoft Surface Arc Mouse
+        {0x045e, 0x095d}, // Microsoft Surface Mobile Mouse
+        {0x045e, 0x0b05}, // Xbox One Elite Series 2 gamepad
+        {0x046d, 0x4026}, // Logitech T400
+        {0x046d, 0x404a}, // Logitech MX Anywhere 2 (Unifying)
+        {0x046d, 0x405e}, // Logitech M720 Triathlon (Unifying)
+        {0x046d, 0x4069}, // Logitech MX Master 2S (Unifying) // nocheck
+        {0x046d, 0x406b}, // Logitech M585 (Unifying)
+        {0x046d, 0x406f}, // Logitech MX Ergo
+        {0x046d, 0x4072}, // Logitech MX Anywhere 2 (Unifying)
+        {0x046d, 0x407b}, // Logitech MX Vertical
+        {0x046d, 0x4080}, // Logitech Pebble M350
+        {0x046d, 0x4082}, // Logitech MX Master 3 (Unifying)
+        {0x046d, 0xb00d}, // Logitech T630 Ultrathin
+        {0x046d, 0xb011}, // Logitech M558
+        {0x046d, 0xb012}, // Logitech MX Master (Bluetooth) // nocheck
+        {0x046d, 0xb013}, // Logitech MX Anywhere 2 (Bluetooth)
+        {0x046d, 0xb014}, // Logitech M337
+        {0x046d, 0xb015}, // Logitech M720 Triathlon (Bluetooth)
+        {0x046d, 0xb016}, // Logitech M535
+        {0x046d, 0xb017}, // Logitech MX Master / Anywhere 2 (Bluetooth) // nocheck
+        {0x046d, 0xb019}, // Logitech MX Master 2S (Bluetooth) // nocheck
+        {0x046d, 0xb01a}, // Logitech MX Anywhere 2S (Bluetooth)
+        {0x046d, 0xb01b}, // Logitech M585/M590 (Bluetooth)
+        {0x046d, 0xb01c}, // Logitech G603 Lightspeed Gaming Mouse (Bluetooth)
+        {0x046d, 0xb01e}, // Logitech MX Master (Bluetooth) // nocheck
+        {0x046d, 0xb01f}, // Logitech MX Anywhere 2 (Bluetooth)
+        {0x046d, 0xb023}, // Logitech MX Master 3 (Bluetooth) // nocheck
+        {0x046d, 0xb024}, // Logitech G604 Lightspeed Gaming Mouse (Bluetooth)
+        {0x046d, 0xb503}, // Logitech Spotlight Presentation Remote (Bluetooth)
+        {0x046d, 0xb505}, // Logitech R500 (Bluetooth)
+        {0x046d, 0xc087}, // Logitech G703
+        {0x046d, 0xc088}, // Logitech G Pro Wireless (USB)
+        {0x046d, 0xc08b}, // Logitech G502 Hero
+        {0x046d, 0xc091}, // Logitech G903
+        {0x046d, 0xc092}, // Logitech G203 LIGHTSYNC
+        {0x046d, 0xc093}, // Logitech M500s
+        {0x046d, 0xc094}, // Logitech G Pro Wireless X Superlight (USB)
+        {0x046d, 0xc09d}, // Logitech G203
+        {0x046d, 0xc53e}, // Logitech Spotlight Presentation Remote (USB dongle)
+        {0x04b4, 0x121f}, // SteelSeries Ikari
+        {0x056e, 0x0134}, // Elecom Enelo IR LED Mouse 350
+        {0x056e, 0x0141}, // Elecom EPRIM Blue LED 5 button mouse 228
+        {0x056e, 0x0159}, // Elecom Blue LED Mouse 203
+        {0x05e0, 0x1200}, // Symbol Technologies / Zebra LS2208 barcode scanner
+        {0x093a, 0x2533}, // CyberPower Mouse
+        {0x0951, 0x16d3}, // HyperX Pulsefire Surge
+        {0x0951, 0x16de}, // HyperX Pulsefire Core
+        {0x0951, 0x16e2}, // HyperX Pulsefire Dart
+        {0x0951, 0x1727}, // HyperX Pulsefire Haste Gaming Mouse
+        {0x0b05, 0x1949}, // ASUS ROG Strix Impact II
+        {0x0b33, 0x3022}, // Contour Design RollerMouse Pro
+        {0x0c45, 0x7403}, // RDing FootSwitch1F1
+        {0x1038, 0x0470}, // SteelSeries Reaper Edge
+        {0x1038, 0x0471}, // SteelSeries Rival Rescuer
+        {0x1038, 0x0472}, // SteelSeries Rival 150 net café
+        {0x1038, 0x0473}, // SteelSeries Sensei SP
+        {0x1038, 0x0475}, // SteelSeries Rival 160 retail
+        {0x1038, 0x0777}, // SteelSeries MO3
+        {0x1038, 0x1300}, // SteelSeries Kinzu
+        {0x1038, 0x1310}, // SteelSeries MO4
+        {0x1038, 0x1311}, // SteelSeries MO4v2
+        {0x1038, 0x1320}, // SteelSeries MO3v2
+        {0x1038, 0x1330}, // SteelSeries MO5
+        {0x1038, 0x1332}, // SteelSeries MO5 (Dongle)
+        {0x1038, 0x1356}, // SteelSeries Sensei Dark EDG
+        {0x1038, 0x1358}, // SteelSeries Sensei Dark Snake
+        {0x1038, 0x135a}, // SteelSeries Sensei Dell Alienware
+        {0x1038, 0x1360}, // SteelSeries Xai
+        {0x1038, 0x1361}, // SteelSeries Sensei
+        {0x1038, 0x1362}, // SteelSeries Sensei Raw Diablo III Mouse
+        {0x1038, 0x1364}, // SteelSeries Kana
+        {0x1038, 0x1366}, // SteelSeries Kinzu 2
+        {0x1038, 0x1369}, // SteelSeries Sensei Raw
+        {0x1038, 0x136b}, // SteelSeries MLG Sensei
+        {0x1038, 0x136d}, // SteelSeries Sensei Raw: GW2
+        {0x1038, 0x136f}, // SteelSeries Sensei Raw: CoD
+        {0x1038, 0x1370}, // SteelSeries Sensei Master
+        {0x1038, 0x1372}, // SteelSeries Sensei Master (Hub Controller)
+        {0x1038, 0x1373}, // SteelSeries Sensei Master (Flash Drive Controller)
+        {0x1038, 0x1374}, // SteelSeries Kana: CS:GO
+        {0x1038, 0x1376}, // SteelSeries Kana: DOTA
+        {0x1038, 0x1378}, // SteelSeries Kinzu v2.1
+        {0x1038, 0x137a}, // SteelSeries Kana Pro
+        {0x1038, 0x137c}, // SteelSeries Wireless Sensei
+        {0x1038, 0x137e}, // SteelSeries Wireless Sensei (Charge Stand)
+        {0x1038, 0x1380}, // SteelSeries World of Tank mouse
+        {0x1038, 0x1382}, // SteelSeries Sims Mouse
+        {0x1038, 0x1384}, // SteelSeries Rival
+        {0x1038, 0x1386}, // SteelSeries SIMS 4 mouse
+        {0x1038, 0x1388}, // SteelSeries Kinzu v3 Mouse
+        {0x1038, 0x1390}, // SteelSeries Sensei Raw Heroes of the Storm Mouse
+        {0x1038, 0x1392}, // SteelSeries Rival DOTA 2
+        {0x1038, 0x1394}, // SteelSeries Rival 300 CS:GO Fade Edition
+        {0x1038, 0x1396}, // SteelSeries Rival 300 Gaming Mouse
+        {0x1038, 0x1700}, // SteelSeries Rival 700
+        {0x1038, 0x1701}, // SteelSeries Rival 700 (Basic)
+        {0x1038, 0x1702}, // SteelSeries Rival 100 Gaming Mouse (ELM4 - A)
+        {0x1038, 0x1704}, // SteelSeries Rival 95 PC BANG
+        {0x1038, 0x1705}, // SteelSeries Rival 100 For Alienware
+        {0x1038, 0x1706}, // SteelSeries Rival 95
+        {0x1038, 0x1707}, // SteelSeries Rival 95 MSI edition
+        {0x1038, 0x1708}, // SteelSeries Rival 100 Gaming Mouse (PC Bang)
+        {0x1038, 0x1709}, // SteelSeries Rival 50 MSI edition
+        {0x1038, 0x170a}, // SteelSeries Rival 100 Dell China
+        {0x1038, 0x170b}, // SteelSeries Rival 100 DOTA 2 Mouse
+        {0x1038, 0x170c}, // SteelSeries Rival 100 DOTA 2 Mouse (Lenovo)
+        {0x1038, 0x170d}, // SteelSeries Rival 100 World of Tanks Mouse
+        {0x1038, 0x170e}, // SteelSeries Rival 500 (MBM)
+        {0x1038, 0x170f}, // SteelSeries Rival 500 (Basic)
+        {0x1038, 0x1710}, // SteelSeries Rival 300 Gaming Mouse
+        {0x1038, 0x1712}, // SteelSeries Rival 300 Fallout 4 Gaming Mouse
+        {0x1038, 0x1714}, // SteelSeries Rival 300 Predator Gaming Mouse
+        {0x1038, 0x1716}, // SteelSeries Rival 300 CS:GO Fade Edition
+        {0x1038, 0x1718}, // SteelSeries Rival 300 HP Omen
+        {0x1038, 0x171a}, // SteelSeries Rival 300 CS:GO Hyperbeast Edition
+        {0x1038, 0x171c}, // SteelSeries Rival 300 Evil Geniuses Edition
+        {0x1038, 0x171e}, // SteelSeries Rival 310 CSGO Howl
+        {0x1038, 0x171f}, // SteelSeries Rival 310 CSGO Howl (Basic)
+        {0x1038, 0x1720}, // SteelSeries Rival 310
+        {0x1038, 0x1721}, // SteelSeries Rival 310 (Basic)
+        {0x1038, 0x1722}, // SteelSeries Sensei 310
+        {0x1038, 0x1723}, // SteelSeries Sensei 310  (Basic)
+        {0x1038, 0x1724}, // SteelSeries Rival 600
+        {0x1038, 0x1725}, // SteelSeries Rival 600 (Basic)
+        {0x1038, 0x1726}, // SteelSeries Rival 650 Wireless
+        {0x1038, 0x1727}, // SteelSeries Rival 650 Wireless (Basic)
+        {0x1038, 0x1729}, // SteelSeries Rival 110 Gaming Mouse
+        {0x1038, 0x172b}, // SteelSeries Rival 650 Wireless (Wired)
+        {0x1038, 0x172c}, // SteelSeries Rival 650 Wireless (Basic for wired)
+        {0x1038, 0x172d}, // SteelSeries Rival 110 (Dell)
+        {0x1038, 0x172e}, // SteelSeries Rival 600 Dota 2
+        {0x1038, 0x172f}, // SteelSeries Rival 600 Dota 2 (Basic)
+        {0x1038, 0x1730}, // SteelSeries Rival 710
+        {0x1038, 0x1731}, // SteelSeries Rival 710 (Basic)
+        {0x1038, 0x1736}, // SteelSeries Rival 310 PUBG Edition
+        {0x1038, 0x1737}, // SteelSeries Rival 310 PUBG Edition (Basic)
+        {0x1038, 0x1800}, // SteelSeries Sensei Raw Optical
+        {0x1038, 0x1801}, // SteelSeries Sensei Raw Optical (Basic)
+        {0x1038, 0x1802}, // SteelSeries Sensei Raw Optical RGB
+        {0x1038, 0x1803}, // SteelSeries Sensei Raw Optical RGB (Basic)
+        {0x1038, 0x1810}, // SteelSeries Rival 300S
+        {0x1038, 0x1812}, // SteelSeries Rival 300S Dell Silver
+        {0x1038, 0x1814}, // SteelSeries Rival 105 (Kana v3) Gaming Mouse
+        {0x1038, 0x1816}, // SteelSeries Rival 106 Gaming Mouse
+        {0x1038, 0x1818}, // SteelSeries Rival 610 Wireless
+        {0x1038, 0x1819}, // SteelSeries Rival 610 Wireless (Basic)
+        {0x1038, 0x181a}, // SteelSeries Rival 610 Wireless (Wired)
+        {0x1038, 0x181b}, // SteelSeries Rival 610 Wireless (Basic for wired)
+        {0x1038, 0x181c}, // SteelSeries Rival 310 Wireless
+        {0x1038, 0x181d}, // SteelSeries Rival 310 Wireless (Basic)
+        {0x1038, 0x181e}, // SteelSeries Rival 310 Wireless (Wired)
+        {0x1038, 0x181f}, // SteelSeries Rival 310 Wireless (Basic for wired)
+        {0x1038, 0x1820}, // SteelSeries Rival 610
+        {0x1038, 0x1821}, // SteelSeries Rival 610 (Basic)
+        {0x1038, 0x1822}, // SteelSeries Sensei 610
+        {0x1038, 0x1823}, // SteelSeries Sensei 610 (Basic)
+        {0x1038, 0x1824}, // SteelSeries Rival 3
+        {0x1038, 0x1826}, // SteelSeries Sensei Raw Optical RGB v2
+        {0x1038, 0x1827}, // SteelSeries Sensei Raw Optical RGB v2 (Basic)
+        {0x1038, 0x1828}, // SteelSeries Radical Wireless
+        {0x1038, 0x1829}, // SteelSeries Radical Wireless (Basic)
+        {0x1038, 0x182a}, // SteelSeries Prime Rainbow Six Edition
+        {0x1038, 0x182b}, // SteelSeries Prime Rainbow Six Edition (Basic)
+        {0x1038, 0x182c}, // SteelSeries Prime+
+        {0x1038, 0x182d}, // SteelSeries Prime+ (Basic)
+        {0x1038, 0x182e}, // SteelSeries Prime
+        {0x1038, 0x182f}, // SteelSeries Prime (Basic)
+        {0x1038, 0x1830}, // SteelSeries Rival 3 Wireless
+        {0x1038, 0x1831}, // SteelSeries Rival 3 Wireless (Basic)
+        {0x1038, 0x1832}, // SteelSeries Sensei Ten
+        {0x1038, 0x1833}, // SteelSeries Sensei Ten (Basic)
+        {0x1038, 0x1834}, // SteelSeries Sensei Ten Neon Rider Edition
+        {0x1038, 0x1835}, // SteelSeries Sensei Ten Neon Rider Edition (Basic)
+        {0x1038, 0x1836}, // SteelSeries Aerox 3
+        {0x1038, 0x1838}, // SteelSeries Aerox 3 Wireless (Dongle)
+        {0x1038, 0x1839}, // SteelSeries Aerox 3 Wireless (Basic for dongle)
+        {0x1038, 0x183a}, // SteelSeries Aerox 3 Wireless (Wired)
+        {0x1038, 0x183b}, // SteelSeries Aerox 3 Wireless (Basic for wired)
+        {0x1038, 0x183c}, // SteelSeries Rival 5
+        {0x1038, 0x183d}, // SteelSeries Rival 5 (Basic)
+        {0x1038, 0x183e}, // SteelSeries Rival 5 Destiny 2
+        {0x1038, 0x183f}, // SteelSeries Rival 5 Destiny 2 (Basic)
+        {0x1038, 0x1840}, // SteelSeries Prime Wireless (Dongle)
+        {0x1038, 0x1841}, // SteelSeries Prime Wireless (Basic for dongle)
+        {0x1038, 0x1842}, // SteelSeries Prime Wireless (Wired)
+        {0x1038, 0x1843}, // SteelSeries Prime Wireless (Basic for wired)
+        {0x1038, 0x1848}, // SteelSeries Prime Mini Wireless (Dongle)
+        {0x1038, 0x184a}, // SteelSeries Prime Mini Wireless (Wired)
+        {0x1038, 0x184c}, // SteelSeries Rival 3 (NVIDIA Support - Standard)
+        {0x1038, 0x184d}, // SteelSeries Prime Mini
+        {0x1038, 0x1850}, // SteelSeries Aerox 5
+        {0x1038, 0x1852}, // SteelSeries Aerox 5 Wireless (Dongle)
+        {0x1038, 0x1854}, // SteelSeries Aerox 5 Wireless (Wired)
+        {0x1038, 0x1856}, // SteelSeries Prime CS:GO Neo Noir
+        {0x1038, 0x1858}, // SteelSeries Aerox 9 WL (Dongle)
+        {0x1038, 0x185a}, // SteelSeries Aerox 9 WL (Wired)
+        {0x1050, 0x0010}, // Yubico.com Yubikey
+        {0x1050, 0x0407}, // Yubico.com Yubikey 4 OTP+U2F+CCID
+        {0x12cf, 0x0490}, // Acer Cestus 325
+        {0x1532, 0x005c}, // Razer DeathAdder Elite
+        {0x1532, 0x0062}, // Razer Atheris
+        {0x1532, 0x0071}, // Razer DeathAdder Essential - White
+        {0x1532, 0x0078}, // Razer Viper
+        {0x1532, 0x007a}, // Razer Viper Ultimate (Wired)
+        {0x1532, 0x007b}, // Razer Viper Ultimate (Wireless)
+        {0x1532, 0x007d}, // Razer DeathAdder V2 Pro
+        {0x1532, 0x0083}, // Razer Basilsk X HyperSpeed
+        {0x1532, 0x008a}, // Razer Viper Mini
+        {0x1532, 0x0094}, // Razer Orochi V2 (USB dongle)
+        {0x1532, 0x0098}, // Razer DeathAdder Essential
+        {0x1532, 0x009a}, // Razer Pro Click Mini (Dongle)
+        {0x1532, 0x009b}, // Razer Pro Click Mini (Bluetooth)
+        {0x1532, 0x00b6}, // Razer DeathAdder V3 Pro
+        {0x17ef, 0x60be}, // Lenovo Legion M200 RGB Gaming Mouse
+        {0x17ef, 0x60e4}, // Lenovo Legion M300 RGB Gaming Mouse
+        {0x17ef, 0x6123}, // Lenovo USB-C Wired Compact Mouse
+        {0x1b1c, 0x1b7a}, // Corsair Sabre Pro Champion Gaming Mouse
+        {0x1b1c, 0x1b94}, // Corsair Katar Pro Wireless (USB dongle)
+        {0x1b1c, 0x1b9e}, // Corsair M65 RGB
+        {0x1bae, 0x1b1c}, // Corsair Katar Pro Wireless (Bluetooth)
+        {0x1b1c, 0x1bac}, // Corsair Katar Pro
+        {0x1bcf, 0x08a0}, // Kensington Pro Fit Full-size
+        {0x1e7d, 0x2c88}, // ROCCAT Kone Pro
+        {0x1e7d, 0x2c8a}, // ROCCAT Kone Pro Air
+        {0x1e7d, 0x2ca6}, // ROCCAT Burst Pro Air (USB dongle)
+        {0x1e7d, 0x2cab}, // ROCCAT Burst Pro Air
+        {0x2201, 0x0100}, // AirTurn PEDpro
+        {0x256c, 0x006d}, // Huion HS64
+        {0x258a, 0x1007}, // Acer Cestus 330
+        {0x2717, 0x003b}, // Xiaomi Mi Portable Mouse
+        {0x28bd, 0x0914}, // XP-Pen Star G640
+        {0x28bd, 0x091f}, // XP-Pen Artist 12 Pro
+        {0x28bd, 0x0928}, // XP-Pen Deco mini7W
+        {0x5043, 0x5442}, // Ploopy Trackball
+};
+
 void EventHub::openDeviceLocked(const std::string& devicePath) {
     // If an input device happens to register around the time when EventHub's constructor runs, it
     // is possible that the same input event node (for example, /dev/input/event3) will be noticed
@@ -2103,6 +2357,11 @@ void EventHub::openDeviceLocked(const std::string& devicePath) {
     bool haveGamepadButtons = device->keyBitmask.any(BTN_MISC, BTN_MOUSE) ||
             device->keyBitmask.any(BTN_JOYSTICK, BTN_DIGI);
     if (haveKeyboardKeys || haveGamepadButtons) {
+        if (kKeyboardBlocklist.count(
+                    std::pair<uint16_t, uint16_t>(identifier.vendor, identifier.product)) > 0) {
+            ALOGD("Eventhub: keyboard is in blocklist");
+            return;
+        }
         device->classes |= InputDeviceClass::KEYBOARD;
     }
 
