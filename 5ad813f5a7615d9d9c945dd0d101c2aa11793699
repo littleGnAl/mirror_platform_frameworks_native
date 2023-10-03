@@ -46,6 +46,30 @@
       },
       "revId": "5ad813f5a7615d9d9c945dd0d101c2aa11793699",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3333a3_99a1e0f7",
+        "filename": "cmds/dumpstate/dumpstate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2023-10-03T22:14:18Z",
+      "side": 1,
+      "message": "Verified this works as expected on `aosp_cf_x86_64_phone-user`.",
+      "parentUuid": "4d5aa741_77d2855b",
+      "range": {
+        "startLine": 1950,
+        "startChar": 2,
+        "endLine": 1951,
+        "endChar": 76
+      },
+      "revId": "5ad813f5a7615d9d9c945dd0d101c2aa11793699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
