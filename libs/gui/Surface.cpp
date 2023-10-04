@@ -109,7 +109,10 @@ Surface::Surface(const sp<IGraphicBufferProducer>& bufferProducer, bool controll
     mUserHeight = 0;
     mTransformHint = 0;
     mConsumerRunningBehind = false;
+    mConnectedToEgl = false;
     mConnectedToCpu = false;
+    mConnectedToMedia = false;
+    mConnectedToCamera = false;
     mProducerControlledByApp = controlledByApp;
     mSwapIntervalZero = false;
     mMaxBufferCount = NUM_BUFFER_SLOTS;
@@ -117,8 +120,14 @@ Surface::Surface(const sp<IGraphicBufferProducer>& bufferProducer, bool controll
 }
 
 Surface::~Surface() {
-    if (mConnectedToCpu) {
+    if (mConnectedToEgl) {
+        Surface::disconnect(NATIVE_WINDOW_API_EGL);
+    } else if (mConnectedToCpu) {
         Surface::disconnect(NATIVE_WINDOW_API_CPU);
+    } else if (mConnectedToMedia) {
+        Surface::disconnect(NATIVE_WINDOW_API_MEDIA);
+    } else if (mConnectedToCamera) {
+        Surface::disconnect(NATIVE_WINDOW_API_CAMERA);
     }
 }
 
@@ -1922,6 +1931,21 @@ int Surface::connect(
         }
 
         mConsumerRunningBehind = (output.numPendingBuffers >= 2);
+
+        switch (api) {
+            case NATIVE_WINDOW_API_EGL:
+                mConnectedToEgl = true;
+                break;
+            case NATIVE_WINDOW_API_CPU:
+                mConnectedToCpu = true;
+                break;
+            case NATIVE_WINDOW_API_MEDIA:
+                mConnectedToMedia = true;
+                break;
+            case NATIVE_WINDOW_API_CAMERA:
+                mConnectedToCamera = true;
+                break;
+        }
     }
     if (!err && api == NATIVE_WINDOW_API_CPU) {
         mConnectedToCpu = true;

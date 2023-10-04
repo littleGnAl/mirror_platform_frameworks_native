@@ -562,6 +562,9 @@ protected:
     sp<GraphicBuffer>           mLockedBuffer;
     sp<GraphicBuffer>           mPostedBuffer;
     bool                        mConnectedToCpu;
+    bool mConnectedToEgl;
+    bool mConnectedToMedia;
+    bool mConnectedToCamera;
 
     // When a CPU producer is attached, this reflects the region that the
     // producer wished to update as well as whether the Surface was able to copy
