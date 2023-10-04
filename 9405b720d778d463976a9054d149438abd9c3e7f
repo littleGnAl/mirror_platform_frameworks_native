@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d09c90c6_3709eaa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1986325
+      },
+      "writtenOn": "2023-10-04T18:10:00Z",
+      "side": 1,
+      "message": "Hi @svv@google.com and @joseprio@google.com, as we discussed offline, using a blocklist for non-keyboard devices that registering keyboard interface could be a tempo solution.\n\nI found that chromos is maintaining a blocklist for the same reason b/191897198, and I\u0027m coping it to eventhub.\n\nBy removing the keyboard interface from eventhub, will disable any key from non-keyboard devices. I would need some input on how much impact would it do and whether it\u0027s the right direction to implement the blocklist.",
+      "revId": "9405b720d778d463976a9054d149438abd9c3e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
