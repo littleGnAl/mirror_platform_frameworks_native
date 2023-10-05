@@ -160,6 +160,24 @@
       "parentUuid": "91a56958_b96e8135",
       "revId": "d99d644c4f5c5e5df5ef839d43f7e4f7b28ca47b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f420d1_d2ab9a68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-05T20:40:45Z",
+      "side": 1,
+      "message": "Yes, I disabled this warning in cmake and this change is not required anymore: https://r.android.com/c/2616196/20\n\nHowever, we discussed it would be still good to merge and forget about it.",
+      "parentUuid": "b731349e_3f1845d2",
+      "revId": "d99d644c4f5c5e5df5ef839d43f7e4f7b28ca47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
