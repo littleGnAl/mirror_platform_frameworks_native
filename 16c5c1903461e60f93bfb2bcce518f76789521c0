@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dd8796d_a8965f76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-05T17:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "587361c1_ce65b628",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80e942cb_14eacabd",
@@ -95,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce4cd7c7_05e58b87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-05T17:29:12Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "b80393e8_ef9a18c6",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61691d70_4b275969",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "I think two answers apply here, but Hao can add more color:\n- short-term, we should set up some type of Kokoro(?) based automation to test that we don\u0027t regress as Android moves;\n- long-term, if and as more pieces need to be moved to an out-of-tree build, we need a scalable solution. Hao should own the design of this",
       "parentUuid": "61691d70_4b275969",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "16c5c1903461e60f93bfb2bcce518f76789521c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52d2a8ec_c5cf4404",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-05T17:29:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f80f2b_2586acba",
       "range": {
         "startLine": 13,
         "startChar": 0,
