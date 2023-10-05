@@ -394,6 +394,8 @@ enum ADataSpace {
      * A pixel value of 1.0, 1.0, 1.0 corresponds to sRGB white (D65) at 80 nits.
      * Values beyond the range [0.0 - 1.0] would correspond to other colors
      * spaces and/or HDR content.
+     *
+     * Use extended range, linear transfer and BT.709 standard.
      */
     ADATASPACE_SCRGB_LINEAR = 406913024, // STANDARD_BT709 | TRANSFER_LINEAR | RANGE_EXTENDED
 
@@ -408,7 +410,7 @@ enum ADataSpace {
      * The alpha component, if present, is always stored in linear space and
      * is left unmodified when read or written.
      *
-     * Use full range and BT.709 standard.
+     * Use full range, srgb transfer BT.709 standard.
      */
     ADATASPACE_SRGB = 142671872, // STANDARD_BT709 | TRANSFER_SRGB | RANGE_FULL
 
@@ -423,14 +425,15 @@ enum ADataSpace {
      * A pixel value of 1.0, 1.0, 1.0 corresponds to sRGB white (D65) at 80 nits.
      * Values beyond the range [0.0 - 1.0] would correspond to other colors
      * spaces and/or HDR content.
+     *
+     * Use extended range, srgb transfer and BT.708 standard.
      */
     ADATASPACE_SCRGB = 411107328, // STANDARD_BT709 | TRANSFER_SRGB | RANGE_EXTENDED
 
     /**
      * Display P3
      *
-     * Use same primaries and white-point as DCI-P3
-     * but sRGB transfer function.
+     * Use full range, srgb transfer and D65 DCI-P3 standard.
      */
     ADATASPACE_DISPLAY_P3 = 143261696, // STANDARD_DCI_P3 | TRANSFER_SRGB | RANGE_FULL
 
@@ -439,7 +442,7 @@ enum ADataSpace {
      *
      * Ultra High-definition television
      *
-     * Use full range, SMPTE 2084 (PQ) transfer and BT2020 standard
+     * Use full range, SMPTE 2084 (PQ) transfer and BT2020 standard.
      */
     ADATASPACE_BT2020_PQ = 163971072, // STANDARD_BT2020 | TRANSFER_ST2084 | RANGE_FULL
 
@@ -448,14 +451,14 @@ enum ADataSpace {
      *
      * Ultra High-definition television
      *
-     * Use limited range, SMPTE 2084 (PQ) transfer and BT2020 standard
+     * Use limited range, SMPTE 2084 (PQ) transfer and BT2020 standard.
      */
     ADATASPACE_BT2020_ITU_PQ = 298188800, // STANDARD_BT2020 | TRANSFER_ST2084 | RANGE_LIMITED
 
     /**
      * Adobe RGB
      *
-     * Use full range, gamma 2.2 transfer and Adobe RGB primaries
+     * Use full range, gamma 2.2 transfer and Adobe RGB standard.
      *
      * Note: Application is responsible for gamma encoding the data as
      * a 2.2 gamma encoding is not supported in HW.
@@ -465,7 +468,7 @@ enum ADataSpace {
     /**
      * JPEG File Interchange Format (JFIF)
      *
-     * Same model as BT.601-625, but all values (Y, Cb, Cr) range from 0 to 255
+     * Same model as BT.601-625, but all values (Y, Cb, Cr) range from 0 to 255.
      *
      * Use full range, SMPTE 170M transfer and BT.601_625 standard.
      */
@@ -494,7 +497,7 @@ enum ADataSpace {
      *
      * Ultra High-definition television
      *
-     * Use full range, SMPTE 170M transfer and BT2020 standard
+     * Use full range, SMPTE 170M transfer and BT2020 standard.
      */
     ADATASPACE_BT2020 = 147193856, // STANDARD_BT2020 | TRANSFER_SMPTE_170M | RANGE_FULL
 
@@ -512,7 +515,7 @@ enum ADataSpace {
      *
      * Digital Cinema DCI-P3
      *
-     * Use full range, gamma 2.6 transfer and D65 DCI-P3 standard
+     * Use full range, gamma 2.6 transfer and D65 DCI-P3 standard.
      *
      * Note: Application is responsible for gamma encoding the data as
      * a 2.6 gamma encoding is not supported in HW.
@@ -528,6 +531,8 @@ enum ADataSpace {
      *
      * The values are encoded using the full range ([0,255] for 8-bit) for all
      * components.
+     *
+     * Use full range, linear transfer and BT.709 standard.
      */
     ADATASPACE_SRGB_LINEAR = 138477568, // STANDARD_BT709 | TRANSFER_LINEAR | RANGE_FULL
 
