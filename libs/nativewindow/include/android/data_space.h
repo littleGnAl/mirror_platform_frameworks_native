@@ -242,83 +242,94 @@ enum ADataSpace {
     TRANSFER_UNSPECIFIED = 0 << 22,
 
     /**
+     * Linear transfer.
+     *
+     * <pre>{@code
      * Transfer characteristic curve:
      *  E = L
      *      L - luminance of image 0 <= L <= 1 for conventional colorimetry
-     *      E - corresponding electrical signal
+     *      E - corresponding electrical signal}</pre>
      */
     TRANSFER_LINEAR = 1 << 22,
 
     /**
-     * Transfer characteristic curve:
+     * sRGB transfer.
      *
+     * <pre>{@code
+     * Transfer characteristic curve:
      * E = 1.055 * L^(1/2.4) - 0.055  for 0.0031308 <= L <= 1
      *   = 12.92 * L                  for 0 <= L < 0.0031308
      *     L - luminance of image 0 <= L <= 1 for conventional colorimetry
-     *     E - corresponding electrical signal
+     *     E - corresponding electrical signal}</pre>
      */
     TRANSFER_SRGB = 2 << 22,
 
     /**
-     * BT.601 525, BT.601 625, BT.709, BT.2020
+     * SMPTE 170M transfer.
      *
+     * <pre>{@code
      * Transfer characteristic curve:
      *  E = 1.099 * L ^ 0.45 - 0.099  for 0.018 <= L <= 1
      *    = 4.500 * L                 for 0 <= L < 0.018
      *      L - luminance of image 0 <= L <= 1 for conventional colorimetry
-     *      E - corresponding electrical signal
+     *      E - corresponding electrical signal}</pre>
      */
     TRANSFER_SMPTE_170M = 3 << 22,
 
     /**
-     * Assumed display gamma 2.2.
+     * Display gamma 2.2.
      *
+     * <pre>{@code
      * Transfer characteristic curve:
      *  E = L ^ (1/2.2)
      *      L - luminance of image 0 <= L <= 1 for conventional colorimetry
-     *      E - corresponding electrical signal
+     *      E - corresponding electrical signal}</pre>
      */
     TRANSFER_GAMMA2_2 = 4 << 22,
 
     /**
-     *  display gamma 2.6.
+     * Display gamma 2.6.
      *
+     * <pre>{@code
      * Transfer characteristic curve:
      *  E = L ^ (1/2.6)
      *      L - luminance of image 0 <= L <= 1 for conventional colorimetry
-     *      E - corresponding electrical signal
+     *      E - corresponding electrical signal}</pre>
      */
     TRANSFER_GAMMA2_6 = 5 << 22,
 
     /**
-     *  display gamma 2.8.
+     * Display gamma 2.8.
      *
+     * <pre>{@code
      * Transfer characteristic curve:
      *  E = L ^ (1/2.8)
      *      L - luminance of image 0 <= L <= 1 for conventional colorimetry
-     *      E - corresponding electrical signal
+     *      E - corresponding electrical signal}</pre>
      */
     TRANSFER_GAMMA2_8 = 6 << 22,
 
     /**
      * SMPTE ST 2084 (Dolby Perceptual Quantizer)
      *
+     * <pre>{@code
      * Transfer characteristic curve:
-     *  E = ((c1 + c2 * L^n) / (1 + c3 * L^n)) ^ m
-     *  c1 = c3 - c2 + 1 = 3424 / 4096 = 0.8359375
-     *  c2 = 32 * 2413 / 4096 = 18.8515625
-     *  c3 = 32 * 2392 / 4096 = 18.6875
-     *  m = 128 * 2523 / 4096 = 78.84375
-     *  n = 0.25 * 2610 / 4096 = 0.1593017578125
-     *      L - luminance of image 0 <= L <= 1 for HDR colorimetry.
-     *          L = 1 corresponds to 10000 cd/m2
-     *      E - corresponding electrical signal
+     * E = ((c1 + c2 * L^n) / (1 + c3 * L^n)) ^ m
+     * c1 = c3 - c2 + 1 = 3424 / 4096 = 0.8359375
+     * c2 = 32 * 2413 / 4096 = 18.8515625
+     * c3 = 32 * 2392 / 4096 = 18.6875
+     * m = 128 * 2523 / 4096 = 78.84375
+     * n = 0.25 * 2610 / 4096 = 0.1593017578125
+     *     L - luminance of image 0 <= L <= 1 for HDR colorimetry.
+     *         L = 1 corresponds to 10000 cd/m2
+     *     E - corresponding electrical signal}</pre>
      */
     TRANSFER_ST2084 = 7 << 22,
 
     /**
      * ARIB STD-B67 Hybrid Log Gamma
      *
+     * <pre>{@code
      * Transfer characteristic curve:
      *  E = r * L^0.5                 for 0 <= L <= 1
      *    = a * ln(L - b) + c         for 1 < L
@@ -328,7 +339,7 @@ enum ADataSpace {
      *  r = 0.5
      *      L - luminance of image 0 <= L for HDR colorimetry. L = 1 corresponds
      *          to reference white level of 100 cd/m2
-     *      E - corresponding electrical signal
+     *      E - corresponding electrical signal}</pre>
      */
     TRANSFER_HLG = 8 << 22,
 
