@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43c800b_5334e6a9",
+        "filename": "libs/binder/servicedispatcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-06T23:24:35Z",
+      "side": 1,
+      "message": "nit: put this as the default value of ip_address in \u0027main\u0027, and you won\u0027t need the two ?:",
+      "range": {
+        "startLine": 217,
+        "startChar": 47,
+        "endLine": 217,
+        "endChar": 64
+      },
+      "revId": "8e1abaf30ffa3de31bd74ce605d383880c5cace7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
