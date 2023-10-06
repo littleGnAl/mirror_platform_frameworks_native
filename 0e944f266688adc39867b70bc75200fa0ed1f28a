@@ -16,6 +16,52 @@
       "message": "ping 😊",
       "revId": "0e944f266688adc39867b70bc75200fa0ed1f28a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e03d36_0f9d791f",
+        "filename": "libs/nativewindow/include/android/data_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-10-06T16:20:06Z",
+      "side": 1,
+      "message": "tiny grammar nit throughout this file: this should be \"Uses\", not \"Use\". See: https://developers.google.com/style/reference-verbs",
+      "range": {
+        "startLine": 397,
+        "startChar": 7,
+        "endLine": 397,
+        "endChar": 10
+      },
+      "revId": "0e944f266688adc39867b70bc75200fa0ed1f28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86348e7c_50f96367",
+        "filename": "libs/nativewindow/include/android/data_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-10-06T16:20:06Z",
+      "side": 1,
+      "message": "709",
+      "range": {
+        "startLine": 427,
+        "startChar": 48,
+        "endLine": 427,
+        "endChar": 51
+      },
+      "revId": "0e944f266688adc39867b70bc75200fa0ed1f28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
