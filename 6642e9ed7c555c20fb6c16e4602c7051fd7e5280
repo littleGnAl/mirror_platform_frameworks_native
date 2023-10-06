@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9799302_a43c4561",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-10-06T16:18:38Z",
+      "side": 1,
+      "message": "Same comments apply as on the internal version of this change.",
+      "revId": "6642e9ed7c555c20fb6c16e4602c7051fd7e5280",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
