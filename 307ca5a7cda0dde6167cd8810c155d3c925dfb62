@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e61b2d_c90338d1",
+        "filename": "libs/binder/include/binder/Trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-06T23:20:32Z",
+      "side": 1,
+      "message": "It\u0027s very easy to typo the function when making changes, so we should avoid weak symbol if possible. Can you move it to the OS layer (we might want tracing elsewhere too)?\n\nOr - can we avoid any change at all? If AIDL files are generated without \u0027gen_trace\u0027 option, then this code shouldn\u0027t be run?",
+      "range": {
+        "startLine": 27,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 72
+      },
+      "revId": "307ca5a7cda0dde6167cd8810c155d3c925dfb62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
