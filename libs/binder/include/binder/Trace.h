@@ -24,14 +24,18 @@ namespace binder {
 
 // Trampoline functions allowing generated aidls to trace binder transactions without depending on
 // libcutils/libutils
-void atrace_begin(uint64_t tag, const char* name);
-void atrace_end(uint64_t tag);
+void atrace_begin(uint64_t tag, const char* name) __attribute__((weak));
+void atrace_end(uint64_t tag) __attribute__((weak));
 
 class ScopedTrace {
 public:
-    inline ScopedTrace(uint64_t tag, const char* name) : mTag(tag) { atrace_begin(mTag, name); }
+    inline ScopedTrace(uint64_t tag, const char* name) : mTag(tag) {
+        if (atrace_begin) atrace_begin(mTag, name);
+    }
 
-    inline ~ScopedTrace() { atrace_end(mTag); }
+    inline ~ScopedTrace() {
+        if (atrace_end) atrace_end(mTag);
+    }
 
 private:
     uint64_t mTag;
