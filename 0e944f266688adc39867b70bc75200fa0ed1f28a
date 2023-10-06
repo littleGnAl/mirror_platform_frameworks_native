@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a512ae7d_65d97d95",
+        "filename": "libs/nativewindow/include/android/data_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1884457
+      },
+      "writtenOn": "2023-10-06T16:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70e03d36_0f9d791f",
+      "range": {
+        "startLine": 397,
+        "startChar": 7,
+        "endLine": 397,
+        "endChar": 10
+      },
+      "revId": "0e944f266688adc39867b70bc75200fa0ed1f28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86348e7c_50f96367",
@@ -54,6 +78,30 @@
       "writtenOn": "2023-10-06T16:20:06Z",
       "side": 1,
       "message": "709",
+      "range": {
+        "startLine": 427,
+        "startChar": 48,
+        "endLine": 427,
+        "endChar": 51
+      },
+      "revId": "0e944f266688adc39867b70bc75200fa0ed1f28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19485e0_c96abe23",
+        "filename": "libs/nativewindow/include/android/data_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1884457
+      },
+      "writtenOn": "2023-10-06T16:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86348e7c_50f96367",
       "range": {
         "startLine": 427,
         "startChar": 48,
