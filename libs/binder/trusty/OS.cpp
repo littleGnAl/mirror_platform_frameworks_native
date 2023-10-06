@@ -28,7 +28,7 @@
 
 using android::base::Result;
 
-namespace android {
+namespace android::binder::os {
 
 Result<void> setNonBlocking(android::base::borrowed_fd /*fd*/) {
     // Trusty IPC syscalls are all non-blocking by default.
@@ -73,4 +73,12 @@ ssize_t receiveMessageFromSocket(
     return -1;
 }
 
-} // namespace android
+uint64_t GetThreadId() {
+#ifdef BINDER_RPC_SINGLE_THREADED
+    return 0;
+#else
+    return base::GetThreadId();
+#endif
+}
+
+} // namespace android::binder::os
