@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bbc6a50_c2e180a2",
+        "filename": "libs/binder/OS_unix_base.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-06T23:43:01Z",
+      "side": 1,
+      "message": "can we avoid this? if you are adding it, then using \u0027using namespace binder;\u0027? It\u0027ll make the patch a lot smaller.",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "6effad96fc72028eded1fae4e216e1cdad9466c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
