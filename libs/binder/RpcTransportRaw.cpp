@@ -29,6 +29,8 @@
 
 namespace android {
 
+using namespace binder;
+
 // RpcTransport with TLS disabled.
 class RpcTransportRaw : public RpcTransport {
 public:
@@ -60,7 +62,7 @@ public:
         bool sentFds = false;
         auto send = [&](iovec* iovs, int niovs) -> ssize_t {
             ssize_t ret =
-                    sendMessageOnSocket(mSocket, iovs, niovs, sentFds ? nullptr : ancillaryFds);
+                    os::sendMessageOnSocket(mSocket, iovs, niovs, sentFds ? nullptr : ancillaryFds);
             sentFds |= ret > 0;
             return ret;
         };
@@ -73,7 +75,7 @@ public:
             const std::optional<android::base::function_ref<status_t()>>& altPoll,
             std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds) override {
         auto recv = [&](iovec* iovs, int niovs) -> ssize_t {
-            return receiveMessageFromSocket(mSocket, iovs, niovs, ancillaryFds);
+            return os::receiveMessageFromSocket(mSocket, iovs, niovs, ancillaryFds);
         };
         return interruptableReadOrWrite(mSocket, fdTrigger, iovs, niovs, recv, "recvmsg", POLLIN,
                                         altPoll);

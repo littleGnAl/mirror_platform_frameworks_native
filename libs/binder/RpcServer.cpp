@@ -47,6 +47,7 @@ constexpr size_t kSessionIdBytes = 32;
 
 using base::ScopeGuard;
 using base::unique_fd;
+using namespace binder;
 
 RpcServer::RpcServer(std::unique_ptr<RpcTransportCtx> ctx) : mCtx(std::move(ctx)) {}
 RpcServer::~RpcServer() {
@@ -57,7 +58,7 @@ RpcServer::~RpcServer() {
 sp<RpcServer> RpcServer::make(std::unique_ptr<RpcTransportCtxFactory> rpcTransportCtxFactory) {
     // Default is without TLS.
     if (rpcTransportCtxFactory == nullptr)
-        rpcTransportCtxFactory = makeDefaultRpcTransportCtxFactory();
+        rpcTransportCtxFactory = os::makeDefaultRpcTransportCtxFactory();
     auto ctx = rpcTransportCtxFactory->newServerCtx();
     if (ctx == nullptr) return nullptr;
     return sp<RpcServer>::make(std::move(ctx));
@@ -216,7 +217,7 @@ status_t RpcServer::recvmsgSocketConnection(const RpcServer& server, RpcTranspor
     iovec iov{&zero, sizeof(zero)};
     std::vector<std::variant<base::unique_fd, base::borrowed_fd>> fds;
 
-    ssize_t num_bytes = receiveMessageFromSocket(server.mServer, &iov, 1, &fds);
+    ssize_t num_bytes = os::receiveMessageFromSocket(server.mServer, &iov, 1, &fds);
     if (num_bytes < 0) {
         int savedErrno = errno;
         ALOGE("Failed recvmsg: %s", strerror(savedErrno));
@@ -231,7 +232,7 @@ status_t RpcServer::recvmsgSocketConnection(const RpcServer& server, RpcTranspor
     }
 
     unique_fd fd(std::move(std::get<unique_fd>(fds.back())));
-    if (auto res = setNonBlocking(fd); !res.ok()) {
+    if (auto res = os::setNonBlocking(fd); !res.ok()) {
         ALOGE("Failed setNonBlocking: %s", res.error().message().c_str());
         return res.error().code() == 0 ? UNKNOWN_ERROR : -res.error().code();
     }
@@ -488,7 +489,7 @@ void RpcServer::establishConnection(
                     return;
                 }
 
-                auto status = getRandomBytes(sessionId.data(), sessionId.size());
+                auto status = os::getRandomBytes(sessionId.data(), sessionId.size());
                 if (status != OK) {
                     ALOGE("Failed to read random session ID: %s", strerror(-status));
                     return;

@@ -118,7 +118,8 @@ cc_defaults {
     ],
 
     srcs: [
-        "OS.cpp",
+        "OS_android.cpp",
+        "OS_unix_base.cpp",
         "RpcTransportRaw.cpp",
     ],
 
