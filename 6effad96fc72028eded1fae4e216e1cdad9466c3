@@ -22,6 +22,30 @@
       },
       "revId": "6effad96fc72028eded1fae4e216e1cdad9466c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93bf3d9f_b9b869a7",
+        "filename": "libs/binder/OS_unix_base.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-07T01:32:29Z",
+      "side": 1,
+      "message": "If we keep these in `::android` namespace, we won\u0027t be able to use the same names for functions we\u0027re overriding (GetThreadId is not a good example because it\u0027s in `::android::base`, but e.g. report_sysprop_change is in `::android`). We could name them `binder_GetThreadId`, but that\u0027s effectively the same (but worse) as `binder::GetThreadId`.\n\nBut `using namespace binder` is not necessary indeed, it\u0027s a leftover from previous PS. I\u0027ll clean it up.",
+      "parentUuid": "7bbc6a50_c2e180a2",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "6effad96fc72028eded1fae4e216e1cdad9466c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
