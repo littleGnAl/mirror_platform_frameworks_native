@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a4bfb5_6cdca2df",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1967850
+      },
+      "writtenOn": "2023-10-07T23:09:30Z",
+      "side": 1,
+      "message": "Do we need this constant?",
+      "revId": "5e4fde575e7dfc7805464f8490592294a9159e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb7a7f3_698a4c21",
+        "filename": "cmds/atrace/atrace.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1967850
+      },
+      "writtenOn": "2023-10-07T23:09:30Z",
+      "side": 1,
+      "message": "Is this necessary? Is this connecting already existing signal w/ render stage?",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 90
+      },
+      "revId": "5e4fde575e7dfc7805464f8490592294a9159e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
