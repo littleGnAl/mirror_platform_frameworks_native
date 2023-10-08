@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d268ddc5_a0e3f5bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1934851
+      },
+      "writtenOn": "2023-10-08T06:30:43Z",
+      "side": 1,
+      "message": "Hi, Prabir\nI noticed a merge conflict with this patch, I handled it, please help me review it again!",
+      "revId": "7a3f8ca8603b3dba47e7e6e49cbf26fc333f96df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
