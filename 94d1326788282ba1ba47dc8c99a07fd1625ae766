@@ -117,6 +117,30 @@
       },
       "revId": "94d1326788282ba1ba47dc8c99a07fd1625ae766",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b424dd_8a537ae6",
+        "filename": "libs/binder/OS.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-09T23:06:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b01def90_127d4522",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "94d1326788282ba1ba47dc8c99a07fd1625ae766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
