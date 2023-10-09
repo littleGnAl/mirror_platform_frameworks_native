@@ -228,7 +228,7 @@ impl<T: Remotable> Binder<T> {
     }
 }
 
-impl<T: Remotable> Interface for Binder<T> {
+impl<T: Remotable + 'static> Interface for Binder<T> {
     /// Converts the local remotable object into a generic `SpIBinder`
     /// reference.
     ///
@@ -403,7 +403,7 @@ impl<T: Remotable> Deref for Binder<T> {
     }
 }
 
-impl<B: Remotable> Serialize for Binder<B> {
+impl<B: Remotable + 'static> Serialize for Binder<B> {
     fn serialize(&self, parcel: &mut BorrowedParcel<'_>) -> Result<()> {
         parcel.write_binder(Some(&self.as_binder()))
     }
