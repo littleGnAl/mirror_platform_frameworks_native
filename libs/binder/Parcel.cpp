@@ -40,7 +40,9 @@
 #include <binder/TextOutput.h>
 
 #include <android-base/scopeguard.h>
+#ifndef BINDER_DISABLE_BLOB
 #include <cutils/ashmem.h>
+#endif
 #include <utils/Flattenable.h>
 #include <utils/Log.h>
 #include <utils/String16.h>
@@ -1567,6 +1569,10 @@ status_t Parcel::writeBlob(size_t len, bool mutableCopy, WritableBlob* outBlob)
         return NO_ERROR;
     }
 
+#ifdef BINDER_DISABLE_BLOB
+    (void)mutableCopy;
+    return INVALID_OPERATION;
+#else
     ALOGV("writeBlob: write to ashmem");
     int fd = ashmem_create_region("Parcel Blob", len);
     if (fd < 0) return NO_MEMORY;
@@ -1599,6 +1605,7 @@ status_t Parcel::writeBlob(size_t len, bool mutableCopy, WritableBlob* outBlob)
     }
     ::close(fd);
     return status;
+#endif
 }
 
 status_t Parcel::writeDupImmutableBlobFileDescriptor(int fd)
@@ -2400,6 +2407,9 @@ status_t Parcel::readBlob(size_t len, ReadableBlob* outBlob) const
     int fd = readFileDescriptor();
     if (fd == int(BAD_TYPE)) return BAD_VALUE;
 
+#ifdef BINDER_DISABLE_BLOB
+    return INVALID_OPERATION;
+#else
     if (!ashmem_valid(fd)) {
         ALOGE("invalid fd");
         return BAD_VALUE;
@@ -2415,6 +2425,7 @@ status_t Parcel::readBlob(size_t len, ReadableBlob* outBlob) const
 
     outBlob->init(fd, ptr, len, isMutable);
     return NO_ERROR;
+#endif
 }
 
 status_t Parcel::read(FlattenableHelperInterface& val) const
@@ -3158,6 +3169,7 @@ size_t Parcel::getOpenAshmemSize() const
     }
 
     size_t openAshmemSize = 0;
+#ifndef BINDER_DISABLE_BLOB
     for (size_t i = 0; i < kernelFields->mObjectsSize; i++) {
         const flat_binder_object* flat =
                 reinterpret_cast<const flat_binder_object*>(mData + kernelFields->mObjects[i]);
@@ -3172,6 +3184,7 @@ size_t Parcel::getOpenAshmemSize() const
             }
         }
     }
+#endif
     return openAshmemSize;
 }
 #endif // BINDER_WITH_KERNEL_IPC
