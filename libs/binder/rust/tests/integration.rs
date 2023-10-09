@@ -27,6 +27,7 @@ use binder::binder_impl::{
 use std::convert::{TryFrom, TryInto};
 use std::ffi::CStr;
 use std::fs::File;
+use std::ops::Deref;
 use std::sync::Mutex;
 
 /// Name of service runner.
