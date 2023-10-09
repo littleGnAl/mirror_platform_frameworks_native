@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390d9454_b89c2374",
+        "filename": "include/android/sharedmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1496421
+      },
+      "writtenOn": "2023-10-09T17:34:14Z",
+      "side": 0,
+      "message": "```suggestion\n * `mmap`\u0027ed to process memory space with `PROT_READ | PROT_WRITE | PROT_EXEC`. Access to shared memory\n```",
+      "revId": "97c05f176eaa4f68e78f29eeb39c156274c244d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

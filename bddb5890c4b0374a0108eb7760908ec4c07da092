@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae970200_5d7f7d4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496421
+      },
+      "writtenOn": "2023-10-09T17:34:14Z",
+      "side": 1,
+      "message": "Got a few suggestions in the code-context that is visible. Not sure to what detail symbols and parameters should be monospaced in docs though.",
+      "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26973912_3bc90fcf",
+        "filename": "include/android/sharedmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1496421
+      },
+      "writtenOn": "2023-10-09T17:34:14Z",
+      "side": 1,
+      "message": "Should such function references also be between backticks, or not if it is a `man` page reference like this?",
+      "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933787cd_4228f556",
+        "filename": "include/android/sharedmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1496421
+      },
+      "writtenOn": "2023-10-09T17:34:14Z",
+      "side": 1,
+      "message": "And how about putting constants 0/-1 between backticks?",
+      "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7511218_0416c75f",
+        "filename": "include/android/sharedmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1496421
+      },
+      "writtenOn": "2023-10-09T17:34:14Z",
+      "side": 1,
+      "message": "Since `fd` is referring to a named parameter in code, should it also be monospaced?",
+      "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
