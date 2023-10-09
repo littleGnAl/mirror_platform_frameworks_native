@@ -23,6 +23,14 @@
 #include <binder/RpcTransport.h>
 #include <utils/Errors.h>
 
+#define AID_ROOT 0
+#define AID_SYSTEM 1000
+#define AID_SHELL 2000
+#if __has_include(<private/android_filesystem_config.h>)
+// include android_filesystem_config.h to confirm AID_* values above
+#include <private/android_filesystem_config.h>
+#endif
+
 namespace android::binder::os {
 
 android::base::Result<void> setNonBlocking(android::base::borrowed_fd fd);
