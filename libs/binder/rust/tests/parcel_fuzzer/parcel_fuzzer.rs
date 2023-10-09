@@ -29,6 +29,7 @@ use binder::{
 };
 use binder_random_parcel_rs::create_random_parcel;
 use libfuzzer_sys::{arbitrary::Arbitrary, fuzz_target};
+use std::ops::Deref;
 
 #[derive(Arbitrary, Debug)]
 enum ReadOperation {
