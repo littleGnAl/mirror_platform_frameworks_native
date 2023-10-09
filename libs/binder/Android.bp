@@ -96,7 +96,6 @@ cc_defaults {
 
     shared_libs: [
         "libcutils",
-        "libutils",
     ],
 
     static_libs: [
@@ -248,6 +247,8 @@ cc_library_shared {
         "trusty_mock_defaults",
     ],
 
+    shared_libs: ["libutils"],
+
     srcs: [
         // Trusty-specific files
         "OS_android.cpp",
@@ -315,6 +316,8 @@ cc_library {
         "//apex_available:platform",
     ],
 
+    shared_libs: ["libutils"],
+
     srcs: [
         "IMemory.cpp",
         "IShellCallback.cpp",
@@ -346,6 +349,55 @@ cc_library {
     afdo: true,
 }
 
+cc_library_shared {
+    name: "libbinder_sdk",
+
+    // FIXME: factor all shared libs from defaults
+    defaults: [
+        //"libbinder_common_defaults",
+        //"libbinder_android_defaults",
+        //"libbinder_kernel_defaults",
+    ],
+
+    // FIXME: use defaults
+    export_include_dirs: ["include"],
+
+    shared_libs: [
+        "libbase",
+        "libutils_binder",
+    ],
+
+    cflags: [
+        "-UANDROID",
+    ],
+
+    srcs: [
+        "Binder.cpp",
+        "BpBinder.cpp",
+        "Debug.cpp",
+        "FdTrigger.cpp",
+        "IInterface.cpp",
+        "IResultReceiver.cpp",
+        "OS_unix_base.cpp",
+        "Parcel.cpp",
+        "ParcelFileDescriptor.cpp",
+        "RecordedTransaction.cpp",
+        "RpcSession.cpp",
+        "RpcServer.cpp",
+        "RpcState.cpp",
+        "RpcTransportRaw.cpp",
+        "Stability.cpp",
+        "Status.cpp",
+        "TextOutput.cpp",
+        "Utils.cpp",
+        "linux/OS.cpp",
+    ],
+
+    visibility: [
+        ":__subpackages__",
+    ],
+}
+
 cc_library_static {
     name: "libbinder_rpc_no_kernel",
     vendor_available: true,
@@ -353,6 +405,7 @@ cc_library_static {
         "libbinder_common_defaults",
         "libbinder_android_defaults",
     ],
+    shared_libs: ["libutils"],
     visibility: [
         ":__subpackages__",
     ],
@@ -397,6 +450,7 @@ cc_library_static {
         "libbinder_android_defaults",
         "libbinder_kernel_defaults",
     ],
+    shared_libs: ["libutils"],
     cflags: [
         "-DBINDER_RPC_SINGLE_THREADED",
     ],
@@ -411,6 +465,7 @@ cc_library_static {
         "libbinder_common_defaults",
         "libbinder_android_defaults",
     ],
+    shared_libs: ["libutils"],
     cflags: [
         "-DBINDER_RPC_SINGLE_THREADED",
     ],
