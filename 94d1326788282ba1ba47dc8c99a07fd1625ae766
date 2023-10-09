@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c5ae4d_a69d8807",
+        "filename": "libs/binder/OS.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-09T20:44:18Z",
+      "side": 1,
+      "message": "where is this used? I couldn\u0027t find it",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "94d1326788282ba1ba47dc8c99a07fd1625ae766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc9ec59_22906219",
+        "filename": "libs/binder/OS.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-09T20:44:18Z",
+      "side": 1,
+      "message": "We really should be able to avoid copying these. I only found root/shell used in libbinder_ndk, and the usage should probably be removed for other platforms, since UID 2000 will have a different meaning, we don\u0027t want to interpret it using the Android group definitions",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "94d1326788282ba1ba47dc8c99a07fd1625ae766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
