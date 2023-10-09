@@ -76,12 +76,18 @@ add_library(android_libbinder ${LIBBINDER_SRCS})
 target_include_directories(android_libbinder
     PRIVATE
     "${LIBBINDER_DIR}"
+    "${ANDROID_BUILD_TOP}/system/core/libcutils/include"
 )
 target_include_directories(android_libbinder
     PUBLIC
     "${LIBBINDER_DIR}/include"
 )
-target_link_libraries(android_libbinder android_libbase android_libutils ssl)
+target_link_libraries(android_libbinder
+    android_libbase
+    android_libcutils
+    android_libutils
+    ssl
+)
 target_compile_options(android_libbinder
     PRIVATE
     ${LIBBINDER_CXX_FLAGS}
@@ -106,10 +112,12 @@ target_include_directories(android_libbinder_ndk
     "${LIBBINDER_NDK_DIR}/include_ndk"
 #    "${LIBBINDER_NDK_DIR}/include_cpp"
     "${LIBBINDER_NDK_DIR}/include_platform"
+    "${ANDROID_BUILD_TOP}/system/core/libcutils/include"
 )
 target_link_libraries(android_libbinder_ndk
     android_libbinder
     android_libbase
+    android_libcutils
 )
 target_compile_options(android_libbinder_ndk
     PRIVATE

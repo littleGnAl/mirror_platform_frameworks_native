@@ -20,16 +20,6 @@ project(libandroid CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(LIBANDROID_CXX_FLAGS
-    "-DNDEBUG"
-    "-Wall"
-    "-DANDROID_UTILS_REF_BASE_DISABLE_IMPLICIT_CONSTRUCTION"
-    "-fPIC"
-#    "-Wno-attributes"
-#    "-Wno-invalid-offsetof"
-#    "-Wno-sign-compare"
-)
-
 add_library(android_libandroid_headers INTERFACE)
 target_include_directories(android_libandroid_headers INTERFACE
     "${ANDROID_BUILD_TOP}/frameworks/native/include"
@@ -56,24 +46,17 @@ set(LIBANDROID_SRCS
     #"surface_control.cpp",
     #"surface_texture.cpp",
     #"system_fonts.cpp",
-    "${LIBANDROID_DIR}/trace.cpp"
+    #"${LIBANDROID_DIR}/trace.cpp"
     #"thermal.cpp",
 )
 
 #add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../libcutils" libcutils EXCLUDE_FROM_ALL)
 #add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../liblog" liblog EXCLUDE_FROM_ALL)
 
-add_library(android_libandroid ${LIBANDROID_SRCS})
+add_library(android_libandroid INTERFACE)
 
 target_include_directories(android_libandroid
-    PUBLIC
+    INTERFACE
     "${LIBANDROID_DIR}/include"
+    "${ANDROID_BUILD_TOP}/system/core/libcutils/include"
 )
-
-target_link_libraries(android_libandroid
-    android_libandroid_headers
-    android_libcutils
-# android_libbase  android_liblog
-)
-
-target_compile_options(android_libutils PRIVATE ${LIBUTILS_CXX_FLAGS})

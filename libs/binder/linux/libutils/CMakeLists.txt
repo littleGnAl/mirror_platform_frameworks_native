@@ -61,7 +61,6 @@ set(LIBUTILS_SRCS
     #"${LIBUTILS_DIR}/misc.cpp"
 )
 
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../libcutils" libcutils EXCLUDE_FROM_ALL)
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../liblog" liblog EXCLUDE_FROM_ALL)
 
 add_library(android_libutils ${LIBUTILS_SRCS})
@@ -69,8 +68,9 @@ add_library(android_libutils ${LIBUTILS_SRCS})
 target_include_directories(android_libutils
     PUBLIC
     "${LIBUTILS_DIR}/include"
+    "${ANDROID_BUILD_TOP}/system/core/libcutils/include"
 )
 
-target_link_libraries(android_libutils android_libbase android_libcutils android_liblog)
+target_link_libraries(android_libutils android_libbase android_liblog)
 
 target_compile_options(android_libutils PRIVATE ${LIBUTILS_CXX_FLAGS})
