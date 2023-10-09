@@ -893,6 +893,11 @@ macro_rules! declare_binder_interface {
                 $crate::binder_impl::IBinderInternal::set_requesting_sid(&mut binder, features.set_requesting_sid);
                 $crate::Strong::new(Box::new(binder))
             }
+
+            /// Tries to downcast the interface to another type.
+            pub fn local_downcast<T: $interface>(&self) -> Option<&T> {
+                (&*self.0 as &dyn $interface).downcast_ref::<T>()
+            }
         }
 
         impl $crate::binder_impl::Remotable for $native {

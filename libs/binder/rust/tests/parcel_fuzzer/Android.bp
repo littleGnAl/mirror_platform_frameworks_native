@@ -13,6 +13,7 @@ rust_fuzz {
         "libnum_traits",
         "libbinder_rs",
         "libbinder_random_parcel_rs",
+        "libdowncast_rs",
         "binderReadParcelIface-rust",
     ],
 

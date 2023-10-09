@@ -23,7 +23,7 @@ use binder::{BinderFeatures, Interface, StatusCode, ThreadState};
 use binder::binder_impl::{
     Binder, BorrowedParcel, IBinderInternal, TransactionCode, FIRST_CALL_TRANSACTION,
 };
-
+use downcast_rs::{impl_downcast, DowncastSync};
 use std::convert::{TryFrom, TryInto};
 use std::ffi::CStr;
 use std::fs::File;
@@ -147,7 +147,7 @@ impl ITest for TestService {
 }
 
 /// Trivial testing binder interface
-pub trait ITest: Interface {
+pub trait ITest: Interface + DowncastSync {
     /// Returns a test string
     fn test(&self) -> Result<String, StatusCode>;
 
@@ -160,6 +160,8 @@ pub trait ITest: Interface {
     /// Returns the value of calling `is_handling_transaction`.
     fn get_is_handling_transaction(&self) -> Result<bool, StatusCode>;
 }
+
+impl_downcast!(sync ITest);
 
 /// Async trivial testing binder interface
 pub trait IATest<P>: Interface {
@@ -324,7 +326,9 @@ impl<P: binder::BinderAsyncPool> IATest<P> for Binder<BnTest> {
 }
 
 /// Trivial testing binder interface
-pub trait ITestSameDescriptor: Interface {}
+pub trait ITestSameDescriptor: Interface + DowncastSync {}
+
+impl_downcast!(sync ITestSameDescriptor);
 
 declare_binder_interface! {
     ITestSameDescriptor["android.os.ITest"] {
