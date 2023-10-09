@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7501652f_43e6ab1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-09T22:17:08Z",
+      "side": 1,
+      "message": "TODO: add tests.\n\nSteven said:\n\u003eFor disable blob, native_handle, etc.. we\u0027ll need a way to test binder in this configuration. For instance, running binderLibTestX and binderRpcTestX where \u0027X\u0027 are sets of features we enable. For comparison, see libutils_test_compile and binderRpcTestSingleThreaded. That way, the new modes are tested and can be relied on. It\u0027s easier to set things up in Android testing, and we can set up arbitrary sets of features. Following this would be a single integration test for all the cmake stuff and running in that environment, but we should still test individual bits we can in binder.",
+      "revId": "02d7fcab613fe196c052ea04a3820fbb1a1de2c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
