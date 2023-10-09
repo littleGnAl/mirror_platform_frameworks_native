@@ -28,6 +28,7 @@ use binder::{
     StatusCode,
 };
 use binder_random_parcel_rs::create_random_parcel;
+use downcast_rs::{impl_downcast, DowncastSync};
 use libfuzzer_sys::{arbitrary::Arbitrary, fuzz_target};
 
 #[derive(Arbitrary, Debug)]
@@ -46,7 +47,9 @@ enum Operation<'a> {
 }
 
 /// Interface to fuzz transact with random parcel
-pub trait BinderTransactTest: Interface {}
+pub trait BinderTransactTest: Interface + DowncastSync {}
+
+impl_downcast!(sync BinderTransactTest);
 
 declare_binder_interface! {
     BinderTransactTest["Binder_Transact_Test"] {

@@ -8,6 +8,7 @@ rust_defaults {
     rustlibs: [
         "libbinder_rs",
         "libbinder_random_parcel_rs",
+        "libdowncast_rs",
     ],
     fuzz_config: {
         cc: [

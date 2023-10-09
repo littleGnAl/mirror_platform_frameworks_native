@@ -24,7 +24,7 @@ use binder::{
 // Import from impl API for testing only, should not be necessary as long as you
 // are using AIDL.
 use binder::binder_impl::{Binder, BorrowedParcel, TransactionCode};
-
+use downcast_rs::{impl_downcast, DowncastSync};
 use std::ffi::{c_void, CStr, CString};
 use std::sync::OnceLock;
 
@@ -85,7 +85,9 @@ pub extern "C" fn rust_service() -> *mut c_void {
 }
 
 /// Empty interface just to use the declare_binder_interface macro
-pub trait ReadParcelTest: Interface {}
+pub trait ReadParcelTest: Interface + DowncastSync {}
+
+impl_downcast!(sync ReadParcelTest);
 
 declare_binder_interface! {
     ReadParcelTest["read_parcel_test"] {
