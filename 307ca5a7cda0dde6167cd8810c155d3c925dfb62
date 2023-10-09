@@ -46,6 +46,30 @@
       },
       "revId": "307ca5a7cda0dde6167cd8810c155d3c925dfb62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a0a97bc_43abe302",
+        "filename": "libs/binder/include/binder/Trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-09T18:39:16Z",
+      "side": 1,
+      "message": "Indeed disabling `-t` helped.",
+      "parentUuid": "f0cef27f_686b3bff",
+      "range": {
+        "startLine": 27,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 72
+      },
+      "revId": "307ca5a7cda0dde6167cd8810c155d3c925dfb62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
