@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff8dac67_e604b8aa",
+        "filename": "libs/binder/include/binder/SafeInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-09T20:55:12Z",
+      "side": 1,
+      "message": "are there many clients which are built with old C++? We can disable their custom C++ options and switch over to 20 ideally. We\u0027ll need to do this at some point regardless.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "b663d9c93443deba6b5b5bbf2316eb2c375bca3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
