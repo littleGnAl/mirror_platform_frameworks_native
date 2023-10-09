@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "105204e6_87612f8c",
+        "filename": "libs/binder/OS.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-09T20:51:40Z",
+      "side": 1,
+      "message": "In fuzzer tests.",
+      "parentUuid": "87c5ae4d_a69d8807",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "94d1326788282ba1ba47dc8c99a07fd1625ae766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dc9ec59_22906219",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-09T20:44:18Z",
       "side": 1,
       "message": "We really should be able to avoid copying these. I only found root/shell used in libbinder_ndk, and the usage should probably be removed for other platforms, since UID 2000 will have a different meaning, we don\u0027t want to interpret it using the Android group definitions",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "94d1326788282ba1ba47dc8c99a07fd1625ae766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f21651d_f12f7d2a",
+        "filename": "libs/binder/OS.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-09T20:51:40Z",
+      "side": 1,
+      "message": "There\u0027s a few uses:\n- Binder.cpp restricts recording to root only\n- ibinder.cpp \"Shell commands should only be callable by ADB\" (that\u0027s probably what you\u0027re referring to)\n- fuzzers (I guess they test the two checks above)\n\nDo you want to #ifdef out all of these?",
+      "parentUuid": "9dc9ec59_22906219",
       "range": {
         "startLine": 25,
         "startChar": 0,
