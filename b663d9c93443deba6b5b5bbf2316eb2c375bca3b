@@ -22,6 +22,30 @@
       },
       "revId": "b663d9c93443deba6b5b5bbf2316eb2c375bca3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e76237_836177a4",
+        "filename": "libs/binder/include/binder/SafeInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-09T20:58:35Z",
+      "side": 1,
+      "message": "Just checked, there\u0027s only a single user of this:\n\nhttps://cs.android.com/search?q\u003d%5B%23%5Dinclude.*safeinterface%20-f:prebuilts\u0026sq\u003d\u0026ss\u003dandroid%2Fplatform%2Fsuperproject%2Fmain\n\nIt should be easy to require C++20 there.",
+      "parentUuid": "ff8dac67_e604b8aa",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "b663d9c93443deba6b5b5bbf2316eb2c375bca3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
