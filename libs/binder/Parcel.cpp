@@ -1434,6 +1434,7 @@ status_t Parcel::writeRawNullableParcelable(const Parcelable* parcelable) {
     return writeParcelable(*parcelable);
 }
 
+#ifndef BINDER_DISABLE_NATIVE_HANDLE
 status_t Parcel::writeNativeHandle(const native_handle* handle)
 {
     if (!handle || handle->version != sizeof(native_handle))
@@ -1456,6 +1457,7 @@ status_t Parcel::writeNativeHandle(const native_handle* handle)
     err = write(handle->data + handle->numFds, sizeof(int)*handle->numInts);
     return err;
 }
+#endif
 
 status_t Parcel::writeFileDescriptor(int fd, bool takeOwnership) {
     if (auto* rpcFields = maybeRpcFields()) {
@@ -2230,6 +2232,7 @@ int32_t Parcel::readExceptionCode() const
     return status.exceptionCode();
 }
 
+#ifndef BINDER_DISABLE_NATIVE_HANDLE
 native_handle* Parcel::readNativeHandle() const
 {
     int numFds, numInts;
@@ -2262,6 +2265,7 @@ native_handle* Parcel::readNativeHandle() const
     }
     return h;
 }
+#endif
 
 int Parcel::readFileDescriptor() const {
     if (const auto* rpcFields = maybeRpcFields()) {
