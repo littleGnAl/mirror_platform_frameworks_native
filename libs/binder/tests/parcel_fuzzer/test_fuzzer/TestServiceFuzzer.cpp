@@ -20,7 +20,7 @@
 #include <binder/IPCThreadState.h>
 #include <log/log.h>
 
-#include <private/android_filesystem_config.h>
+#include "../../../OS.h"
 
 using android::binder::Status;
 
