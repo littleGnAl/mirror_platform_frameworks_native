@@ -26,6 +26,7 @@ use binder::{
 use binder::binder_impl::{Binder, BorrowedParcel, TransactionCode};
 
 use std::ffi::{c_void, CStr, CString};
+use std::ops::Deref;
 use std::sync::OnceLock;
 
 #[allow(
