@@ -33,6 +33,7 @@
 
 //#undef ALOGV
 //#define ALOGV(...) fprintf(stderr, __VA_ARGS__)
+#define CC_UNLIKELY(x) UNLIKELY(x)
 
 namespace android {
 

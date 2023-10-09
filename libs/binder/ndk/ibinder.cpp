@@ -27,6 +27,12 @@
 #include "status_internal.h"
 #include "../OS.h"
 
+#define AID_ROOT 0
+#define AID_SHELL 2000
+#if __has_include(<private/android_filesystem_config.h>)
+#include <private/android_filesystem_config.h>
+#endif
+
 using DeathRecipient = ::android::IBinder::DeathRecipient;
 
 using ::android::IBinder;
