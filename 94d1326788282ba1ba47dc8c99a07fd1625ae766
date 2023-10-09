@@ -93,6 +93,30 @@
       },
       "revId": "94d1326788282ba1ba47dc8c99a07fd1625ae766",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b01def90_127d4522",
+        "filename": "libs/binder/OS.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-09T22:06:32Z",
+      "side": 1,
+      "message": "For Binder.cpp, you can use \u00270 /*root*/\u0027 as it is a standard Linux value, and it\u0027s applicable on all Linux systems, or call it \u0027UID_ROOT\u0027 maybe?\n\nShell commands - you might disable these entirely for now? If someone wants to use them, it makes at least some sense to think about security or add security hooks.\n\nFuzzers - we should be able to build fuzzers exclusively in Android. If fuzzers include OS.h, they could include private/android_filesystem_config.h anyway.\n\nBut yeah, 1000/2000 don\u0027t make sense outside of Android, so if they\u0027re getting used, we\u0027d need do something pretty custom.",
+      "parentUuid": "7f21651d_f12f7d2a",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "94d1326788282ba1ba47dc8c99a07fd1625ae766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
