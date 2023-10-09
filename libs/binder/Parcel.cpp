@@ -43,7 +43,7 @@
 #ifndef BINDER_DISABLE_BLOB
 #include <cutils/ashmem.h>
 #endif
-#include <cutils/compiler.h>
+// #include <cutils/compiler.h>
 #include <utils/Flattenable.h>
 #include <utils/Log.h>
 #include <utils/String16.h>

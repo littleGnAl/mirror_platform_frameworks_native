@@ -43,11 +43,6 @@ git clean -fdx
 mkdir -p "$OUTDIR/system/libbase"
 cp -r . "$OUTDIR/system/libbase"
 
-cd "$ANDROID_BUILD_TOP/system/core/libcutils"
-git clean -fdx
-mkdir -p "$OUTDIR/system/core/libcutils"
-cp -r . "$OUTDIR/system/core/libcutils"
-
 cd "$ANDROID_BUILD_TOP/system/core/libutils"
 git clean -fdx
 mkdir -p "$OUTDIR/system/core/libutils"

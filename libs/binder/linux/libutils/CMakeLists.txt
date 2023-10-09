@@ -44,7 +44,7 @@ set(LIBUTILS_SRCS
     "${LIBUTILS_DIR}/FileMap.cpp"
     "${LIBUTILS_DIR}/JenkinsHash.cpp"
     "${LIBUTILS_DIR}/LightRefBase.cpp"
-    "${LIBUTILS_DIR}/NativeHandle.cpp"
+    #"${LIBUTILS_DIR}/NativeHandle.cpp"
     "${LIBUTILS_DIR}/Printer.cpp"
     "${LIBUTILS_DIR}/RefBase.cpp"
     "${LIBUTILS_DIR}/SharedBuffer.cpp"
@@ -52,8 +52,8 @@ set(LIBUTILS_SRCS
     "${LIBUTILS_DIR}/String8.cpp"
     "${LIBUTILS_DIR}/String16.cpp"
     "${LIBUTILS_DIR}/StrongPointer.cpp"
-    "${LIBUTILS_DIR}/SystemClock.cpp"
-    # "${LIBUTILS_DIR}/Threads.cpp"
+    #"${LIBUTILS_DIR}/SystemClock.cpp"
+    #"${LIBUTILS_DIR}/Threads.cpp"
     "${LIBUTILS_DIR}/Timers.cpp"
     "${LIBUTILS_DIR}/Tokenizer.cpp"
     "${LIBUTILS_DIR}/Unicode.cpp"
@@ -61,7 +61,6 @@ set(LIBUTILS_SRCS
     #"${LIBUTILS_DIR}/misc.cpp"
 )
 
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../libcutils" libcutils EXCLUDE_FROM_ALL)
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../liblog" liblog EXCLUDE_FROM_ALL)
 
 add_library(android_libutils ${LIBUTILS_SRCS})
@@ -71,6 +70,6 @@ target_include_directories(android_libutils
     "${LIBUTILS_DIR}/include"
 )
 
-target_link_libraries(android_libutils android_libbase android_libcutils android_liblog)
+target_link_libraries(android_libutils android_libbase android_liblog)
 
 target_compile_options(android_libutils PRIVATE ${LIBUTILS_CXX_FLAGS})

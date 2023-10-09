@@ -23,7 +23,7 @@
 #include <binder/IResultReceiver.h>
 #include <binder/RpcSession.h>
 #include <binder/Stability.h>
-#include <cutils/compiler.h>
+// #include <cutils/compiler.h>
 #include <utils/Log.h>
 
 #include <stdio.h>
@@ -34,6 +34,7 @@
 
 //#undef ALOGV
 //#define ALOGV(...) fprintf(stderr, __VA_ARGS__)
+#define CC_UNLIKELY(x) UNLIKELY(x)
 
 namespace android {
 

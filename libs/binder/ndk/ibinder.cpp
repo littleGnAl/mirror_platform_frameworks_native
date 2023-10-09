@@ -21,11 +21,16 @@
 #include <android/binder_status.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IResultReceiver.h>
-#include <private/android_filesystem_config.h>
 
 #include "ibinder_internal.h"
 #include "parcel_internal.h"
 #include "status_internal.h"
+
+#define AID_ROOT 0
+#define AID_SHELL 2000
+#if __has_include(<private/android_filesystem_config.h>)
+#include <private/android_filesystem_config.h>
+#endif
 
 using DeathRecipient = ::android::IBinder::DeathRecipient;
 

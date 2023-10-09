@@ -29,10 +29,16 @@
 #include <binder/Parcel.h>
 #include <binder/RecordedTransaction.h>
 #include <binder/RpcServer.h>
-#include <cutils/compiler.h>
-#include <private/android_filesystem_config.h>
+// #include <cutils/compiler.h>
+// #include <private/android_filesystem_config.h>
 #include <pthread.h>
 #include <utils/misc.h>
+
+#define AID_ROOT 0
+#define AID_SHELL 2000
+#if __has_include(<private/android_filesystem_config.h>)
+#include <private/android_filesystem_config.h>
+#endif
 
 #include <inttypes.h>
 #include <stdio.h>
@@ -403,7 +409,7 @@ status_t BBinder::transact(
         }
     }
 
-    if (CC_UNLIKELY(kEnableKernelIpc && mRecordingOn && code != START_RECORDING_TRANSACTION)) {
+    if (UNLIKELY(kEnableKernelIpc && mRecordingOn && code != START_RECORDING_TRANSACTION)) {
         Extras* e = mExtras.load(std::memory_order_acquire);
         AutoMutex lock(e->mLock);
         if (mRecordingOn) {

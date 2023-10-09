@@ -80,7 +80,11 @@ target_include_directories(android_libbinder
     PUBLIC
     "${LIBBINDER_DIR}/include"
 )
-target_link_libraries(android_libbinder android_libbase android_libutils ssl)
+target_link_libraries(android_libbinder
+    android_libbase
+    android_libutils
+    ssl
+)
 target_compile_options(android_libbinder
     PRIVATE
     ${LIBBINDER_CXX_FLAGS}
