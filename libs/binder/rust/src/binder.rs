@@ -895,6 +895,14 @@ macro_rules! declare_binder_interface {
             }
         }
 
+        impl std::ops::Deref for $native {
+            type Target = Box<dyn $interface + Sync + Send> ;
+
+            fn deref(&self) -> &Self::Target {
+                &self.0
+            }
+        }
+
         impl $crate::binder_impl::Remotable for $native {
             fn get_descriptor() -> &'static str {
                 $descriptor
