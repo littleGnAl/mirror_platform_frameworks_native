@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e4b885f_4b9e7c7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-10-09T19:11:08Z",
+      "side": 1,
+      "message": "What do you mean? https://developer.android.com/ndk/reference/group/memory",
+      "parentUuid": "1da1a54a_8acf9cc4",
+      "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26973912_3bc90fcf",
