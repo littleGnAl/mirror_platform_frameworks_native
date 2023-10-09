@@ -41,6 +41,7 @@
 #endif
 
 #include "BuildFlags.h"
+#include "OS.h"
 #include "RpcState.h"
 
 namespace android {
@@ -794,7 +795,7 @@ status_t BBinder::onTransact(
         }
 
         case SYSPROPS_TRANSACTION: {
-            report_sysprop_change();
+            if (!binder::os::report_sysprop_change()) return INVALID_OPERATION;
             return NO_ERROR;
         }
 
