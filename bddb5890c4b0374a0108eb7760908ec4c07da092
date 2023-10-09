@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1da1a54a_8acf9cc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-10-09T17:57:06Z",
+      "side": 1,
+      "message": "+danalbert for another reason to get _all_ the ndk docs on the web, that i\u0027m not sure we\u0027ve explicitly stated before...",
+      "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26973912_3bc90fcf",
@@ -31,6 +48,24 @@
       "writtenOn": "2023-10-09T17:34:14Z",
       "side": 1,
       "message": "Should such function references also be between backticks, or not if it is a `man` page reference like this?",
+      "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b4a8c7_c858b3cd",
+        "filename": "include/android/sharedmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-10-09T17:57:06Z",
+      "side": 1,
+      "message": "yeah, i did what matches POSIX style.\n\nto me, this is one reason we should get the bionic headers on the web --- at that point you can just write \"close()\" and doxygen will automatically link to it.",
+      "parentUuid": "26973912_3bc90fcf",
       "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +87,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "087f4f6a_f432dff8",
+        "filename": "include/android/sharedmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-10-09T17:57:06Z",
+      "side": 1,
+      "message": "again, this matches POSIX style (and the bionic headers).",
+      "parentUuid": "933787cd_4228f556",
+      "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7511218_0416c75f",
@@ -65,6 +118,24 @@
       "writtenOn": "2023-10-09T17:34:14Z",
       "side": 1,
       "message": "Since `fd` is referring to a named parameter in code, should it also be monospaced?",
+      "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83410fe9_46a0fc7e",
+        "filename": "include/android/sharedmem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2023-10-09T17:57:06Z",
+      "side": 1,
+      "message": "i wasn\u0027t sure because i don\u0027t know doxygen formatting, but looking at how doxygen has formatted the `\\param` line on the web (using code font), yes, these should probably match. done.",
+      "parentUuid": "a7511218_0416c75f",
       "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
