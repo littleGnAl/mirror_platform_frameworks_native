@@ -21,6 +21,8 @@
 
 #include <fuzzseeds/random_parcel_seeds.h>
 
+#include "../../OS.h"
+
 using android::base::WriteFully;
 
 namespace android {

@@ -22,8 +22,6 @@
 #include <binder/Parcel.h>
 #include <binder/RecordedTransaction.h>
 
-#include <private/android_filesystem_config.h>
-
 #include <vector>
 
 using android::Parcel;
