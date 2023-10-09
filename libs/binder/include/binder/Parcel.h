@@ -61,8 +61,10 @@ class Parcel {
     friend class RpcState;
 
 public:
+#ifndef BINDER_DISABLE_BLOB
     class ReadableBlob;
     class WritableBlob;
+#endif
 
                         Parcel();
                         ~Parcel();
@@ -363,6 +365,7 @@ public:
     status_t            writeUniqueFileDescriptorVector(
                             const std::vector<base::unique_fd>& val);
 
+#ifndef BINDER_DISABLE_BLOB
     // Writes a blob to the parcel.
     // If the blob is small, then it is stored in-place, otherwise it is
     // transferred by way of an anonymous shared memory region.  Prefer sending
@@ -375,6 +378,7 @@ public:
     // This allows the client to send the same blob to multiple processes
     // as long as it keeps a dup of the blob file descriptor handy for later.
     status_t            writeDupImmutableBlobFileDescriptor(int fd);
+#endif
 
     status_t            writeObject(const flat_binder_object& val, bool nullMetaData);
 
@@ -590,9 +594,11 @@ public:
     status_t            readUniqueFileDescriptorVector(
                             std::vector<base::unique_fd>* val) const;
 
+#ifndef BINDER_DISABLE_BLOB
     // Reads a blob from the parcel.
     // The caller should call release() on the blob after reading its contents.
     status_t            readBlob(size_t len, ReadableBlob* outBlob) const;
+#endif
 
     const flat_binder_object* readObject(bool nullMetaData) const;
 
@@ -1351,6 +1357,7 @@ private:
 
     size_t mReserved;
 
+#ifndef BINDER_DISABLE_BLOB
     class Blob {
     public:
         Blob();
@@ -1370,6 +1377,7 @@ private:
         size_t mSize;
         bool mMutable;
     };
+#endif
 
     #if defined(__clang__)
     #pragma clang diagnostic push
@@ -1421,6 +1429,7 @@ private:
     status_t read(FlattenableHelperInterface& val) const;
 
 public:
+#ifndef BINDER_DISABLE_BLOB
     class ReadableBlob : public Blob {
         friend class Parcel;
     public:
@@ -1442,11 +1451,14 @@ public:
      * writeFileDescriptor is called without 'takeOwnership' true).
      */
     size_t getOpenAshmemSize() const;
+#endif
 
 private:
+#ifndef BINDER_DISABLE_BLOB
     // TODO(b/202029388): Remove 'getBlobAshmemSize' once no prebuilts reference
     // this
     size_t getBlobAshmemSize() const;
+#endif
 };
 
 // ---------------------------------------------------------------------------

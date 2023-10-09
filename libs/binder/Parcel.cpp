@@ -40,7 +40,9 @@
 #include <binder/TextOutput.h>
 
 #include <android-base/scopeguard.h>
+#ifndef BINDER_DISABLE_BLOB
 #include <cutils/ashmem.h>
+#endif
 #include <utils/Flattenable.h>
 #include <utils/Log.h>
 #include <utils/String16.h>
@@ -105,6 +107,7 @@ static std::atomic<size_t> gParcelGlobalAllocSize;
 // Maximum number of file descriptors per Parcel.
 constexpr size_t kMaxFds = 1024;
 
+#ifndef BINDER_DISABLE_BLOB
 // Maximum size of a blob to transfer in-place.
 static const size_t BLOB_INPLACE_LIMIT = 16 * 1024;
 
@@ -113,6 +116,7 @@ enum {
     BLOB_ASHMEM_IMMUTABLE = 1,
     BLOB_ASHMEM_MUTABLE = 2,
 };
+#endif
 
 #ifdef BINDER_WITH_KERNEL_IPC
 static void acquire_object(const sp<ProcessState>& proc, const flat_binder_object& obj,
@@ -1546,6 +1550,7 @@ status_t Parcel::writeUniqueFileDescriptor(const base::unique_fd& fd) {
     return writeDupFileDescriptor(fd.get());
 }
 
+#ifndef BINDER_DISABLE_BLOB
 status_t Parcel::writeBlob(size_t len, bool mutableCopy, WritableBlob* outBlob)
 {
     if (len > INT32_MAX) {
@@ -1609,6 +1614,7 @@ status_t Parcel::writeDupImmutableBlobFileDescriptor(int fd)
     if (status) return status;
     return writeDupFileDescriptor(fd);
 }
+#endif // BINDER_DISABLE_BLOB
 
 status_t Parcel::write(const FlattenableHelperInterface& val)
 {
@@ -2380,6 +2386,7 @@ status_t Parcel::readUniqueParcelFileDescriptor(base::unique_fd* val) const
     return OK;
 }
 
+#ifndef BINDER_DISABLE_BLOB
 status_t Parcel::readBlob(size_t len, ReadableBlob* outBlob) const
 {
     int32_t blobType;
@@ -2416,6 +2423,7 @@ status_t Parcel::readBlob(size_t len, ReadableBlob* outBlob) const
     outBlob->init(fd, ptr, len, isMutable);
     return NO_ERROR;
 }
+#endif // BINDER_DISABLE_BLOB
 
 status_t Parcel::read(FlattenableHelperInterface& val) const
 {
@@ -3141,6 +3149,7 @@ void Parcel::scanForFds() const {
     kernelFields->mFdsKnown = true;
 }
 
+#ifndef BINDER_DISABLE_BLOB
 #ifdef BINDER_WITH_KERNEL_IPC
 size_t Parcel::getBlobAshmemSize() const
 {
@@ -3206,5 +3215,6 @@ void Parcel::Blob::clear() {
     mSize = 0;
     mMutable = false;
 }
+#endif // BINDER_DISABLE_BLOB
 
 } // namespace android
