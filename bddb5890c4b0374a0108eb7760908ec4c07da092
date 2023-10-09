@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61220c8d_7508f9e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2023-10-09T19:53:41Z",
+      "side": 1,
+      "message": "Ah. It\u0027s not hard to do that, we (pretty sure you and I made the decision) just chose not to because the disaply on DAC is so bad that adding all the libc docs would probably make the whole API reference unuseable.",
+      "parentUuid": "92c0935f_6b718e24",
+      "revId": "bddb5890c4b0374a0108eb7760908ec4c07da092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26973912_3bc90fcf",
