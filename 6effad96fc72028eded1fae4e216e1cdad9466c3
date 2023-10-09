@@ -46,6 +46,30 @@
       },
       "revId": "6effad96fc72028eded1fae4e216e1cdad9466c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4941ad74_d74d0e0d",
+        "filename": "libs/binder/OS_unix_base.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-09T16:04:20Z",
+      "side": 1,
+      "message": "Done. Also, this patch is not very small because it\u0027s two changes (split OS.cpp to android/linux *and* abstracting GetThreadId out) squashed together. I did this to show how one change depends on the other, but I can separate the changes if you wish.",
+      "parentUuid": "93bf3d9f_b9b869a7",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "6effad96fc72028eded1fae4e216e1cdad9466c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
