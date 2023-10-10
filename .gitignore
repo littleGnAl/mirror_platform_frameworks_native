@@ -3,3 +3,7 @@
 .idea/
 .vscode/
 *.code-workspace
+
+# Rust artifacts
+**/target/
+
