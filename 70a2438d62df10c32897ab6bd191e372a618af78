@@ -16,6 +16,24 @@
       "message": "I\u0027m reluctant to approve this because the only way this would happen is if you\u0027re running `cargo`, which you\u0027re not supposed to be doing...",
       "revId": "70a2438d62df10c32897ab6bd191e372a618af78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78476036_2f315f4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060289
+      },
+      "writtenOn": "2023-10-10T22:10:54Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure where it was coming from, but I think it\u0027s coming from manually running rustfmt by hand? Possibly some vscode nonsense too, I\u0027m not sure.\n\nI think it\u0027s a useful ignore to have so folks don\u0027t accidentally submit it if it gets added and they\u0027re not sure what it is.",
+      "parentUuid": "14a99c2f_142c53ef",
+      "revId": "70a2438d62df10c32897ab6bd191e372a618af78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
