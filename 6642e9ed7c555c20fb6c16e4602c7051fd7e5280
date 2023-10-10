@@ -16,6 +16,24 @@
       "message": "Same comments apply as on the internal version of this change.",
       "revId": "6642e9ed7c555c20fb6c16e4602c7051fd7e5280",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78752447_ad8b82db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060289
+      },
+      "writtenOn": "2023-10-10T20:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9799302_a43c4561",
+      "revId": "6642e9ed7c555c20fb6c16e4602c7051fd7e5280",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
