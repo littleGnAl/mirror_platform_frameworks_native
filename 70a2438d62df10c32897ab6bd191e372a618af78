@@ -52,6 +52,24 @@
       "parentUuid": "78476036_2f315f4d",
       "revId": "70a2438d62df10c32897ab6bd191e372a618af78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c189eb91_a08aafc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060289
+      },
+      "writtenOn": "2023-10-10T22:24:31Z",
+      "side": 1,
+      "message": "Actually it is!\n\n```\n╭─jshargo\n╰─$ git st                                                                                                                                                                                                                                  Changes not staged for commit:\n  (use \"git add \u003cfile\u003e...\" to update what will be committed)\n  (use \"git restore \u003cfile\u003e...\" to discard changes in working directory)\n        modified:   src/\u003cinternal\u003e.rs\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")\n╭─jshargo\n╰─$ rustfmt ~/main/frameworks/native/libs/XXXXX/rust/src/**/*.rs --config max_width\u003d100,wrap_comments\u003dtrue,comment_width\u003d100\n╭─jshargo\n╰─$ git st                                                                                                                          \nChanges not staged for commit:\n  (use \"git add \u003cfile\u003e...\" to update what will be committed)\n  (use \"git restore \u003cfile\u003e...\" to discard changes in working directory)\n        modified:   src/\u003cinternal\u003e.rs\n\nUntracked files:\n  (use \"git add \u003cfile\u003e...\" to include in what will be committed)\n        target/\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")\n```\n\nAlso I think those files are just in there for I think those are there just because of cbindgen--can we run it without them now?",
+      "parentUuid": "8d279d1d_018ee295",
+      "revId": "70a2438d62df10c32897ab6bd191e372a618af78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
