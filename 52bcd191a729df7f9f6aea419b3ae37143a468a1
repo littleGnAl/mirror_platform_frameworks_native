@@ -129,6 +129,30 @@
       },
       "revId": "52bcd191a729df7f9f6aea419b3ae37143a468a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c1894b_f72b45b4",
+        "filename": "libs/binder/trusty/rules.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-10T23:39:19Z",
+      "side": 1,
+      "message": "More modal cflags. :(",
+      "parentUuid": "1c78651c_f2310e33",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "52bcd191a729df7f9f6aea419b3ae37143a468a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
