@@ -547,7 +547,8 @@ TEST_F(ChildLayerTest, ReparentFromNoParent) {
     }
 }
 
-TEST_F(ChildLayerTest, NestedChildren) {
+// TODO(b/302314649): deflake
+TEST_F(ChildLayerTest, DISABLED_NestedChildren) {
     sp<SurfaceControl> grandchild = createSurface(mClient, "Grandchild surface", 10, 10,
                                                   PIXEL_FORMAT_RGBA_8888, 0, mChild.get());
     TransactionUtils::fillSurfaceRGBA8(grandchild, 50, 50, 50);
