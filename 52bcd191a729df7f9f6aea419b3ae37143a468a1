@@ -22,6 +22,30 @@
       },
       "revId": "52bcd191a729df7f9f6aea419b3ae37143a468a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a68e5c75_c4dbdec0",
+        "filename": "libs/binder/trusty/rules.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-10T02:44:00Z",
+      "side": 1,
+      "message": "I think this was only needed for the internal `SYSPROPS_TRANSACTION`. How will that be handled outside of Android?",
+      "parentUuid": "10c55a77_963edf41",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "52bcd191a729df7f9f6aea419b3ae37143a468a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
