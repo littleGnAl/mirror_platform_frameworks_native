@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab477066_2ebc5091",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1958155
+      },
+      "writtenOn": "2023-10-10T17:37:14Z",
+      "side": 1,
+      "message": "How do you feel about disabling this test broadly due to presubmit flakiness? Happy to just exclude it in our TEST_MAPPING instead if preferred.",
+      "revId": "07b8017e7e043d395ee1e22ff3b0877668db23df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
