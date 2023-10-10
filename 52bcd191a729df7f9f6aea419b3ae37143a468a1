@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43379ca8_564d8a10",
+        "filename": "libs/binder/trusty/rules.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-10T02:47:13Z",
+      "side": 1,
+      "message": "One alternative could be to set this to `system/core/libutils/binder`, and then you wouldn\u0027t need to change the file paths.",
+      "revId": "52bcd191a729df7f9f6aea419b3ae37143a468a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10c55a77_963edf41",
         "filename": "libs/binder/trusty/rules.mk",
         "patchSetId": 1
