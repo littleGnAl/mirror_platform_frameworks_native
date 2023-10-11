@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#pragma once
+
 #include <stddef.h>
 #include <sys/uio.h>
 #include <cstdint>
@@ -94,5 +96,14 @@ std::unique_ptr<void, std::function<void(void*)>> make_scope_guard(F&& f) {
     assert_small_callable<decltype(std::bind(f))>();
     return {reinterpret_cast<void*>(true), std::bind(f)};
 }
+
+template <typename T>
+class SmallFunction : public std::function<T> {
+public:
+    template <typename F>
+    SmallFunction(F&& f) : std::function<T>(f) {
+        assert_small_callable<F>();
+    }
+};
 
 }   // namespace android
