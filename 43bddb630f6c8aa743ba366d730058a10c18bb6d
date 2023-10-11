@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac87c138_5cd46261",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060289
+      },
+      "writtenOn": "2023-10-11T18:45:46Z",
+      "side": 1,
+      "message": "As a note, I love your SAFETY comments.",
+      "revId": "43bddb630f6c8aa743ba366d730058a10c18bb6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
