@@ -19,7 +19,6 @@
 #include <binder/ProcessState.h>
 
 #include <android-base/result.h>
-#include <android-base/scopeguard.h>
 #include <android-base/strings.h>
 #include <binder/BpBinder.h>
 #include <binder/IPCThreadState.h>
@@ -32,6 +31,7 @@
 #include <utils/Thread.h>
 
 #include "Static.h"
+#include "Utils.h"
 #include "binder_module.h"
 
 #include <errno.h>
@@ -430,7 +430,7 @@ status_t ProcessState::setThreadPoolMaxThreadCount(size_t maxThreads) {
 
 size_t ProcessState::getThreadPoolMaxTotalThreadCount() const {
     pthread_mutex_lock(&mThreadCountLock);
-    base::ScopeGuard detachGuard = [&]() { pthread_mutex_unlock(&mThreadCountLock); };
+    auto detachGuard = make_scope_guard([&]() { pthread_mutex_unlock(&mThreadCountLock); });
 
     if (mThreadPoolStarted) {
         LOG_ALWAYS_FATAL_IF(mKernelStartedThreads > mMaxThreads + 1,

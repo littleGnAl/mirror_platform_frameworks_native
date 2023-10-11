@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
+#include "Utils.h"
+
 #include <android-base/file.h>
 #include <android-base/logging.h>
-#include <android-base/scopeguard.h>
 #include <android-base/unique_fd.h>
 #include <binder/RecordedTransaction.h>
 #include <sys/mman.h>
@@ -218,7 +219,7 @@ std::optional<RecordedTransaction> RecordedTransaction::fromFile(const unique_fd
         size_t memoryMappedSize = chunkPayloadSize + mmapPayloadStartOffset;
         void* mappedMemory =
                 mmap(NULL, memoryMappedSize, PROT_READ, MAP_SHARED, fd.get(), mmapPageAlignedStart);
-        auto mmap_guard = android::base::make_scope_guard(
+        auto mmap_guard = make_scope_guard(
                 [mappedMemory, memoryMappedSize] { munmap(mappedMemory, memoryMappedSize); });
 
         transaction_checksum_t* payloadMap =
