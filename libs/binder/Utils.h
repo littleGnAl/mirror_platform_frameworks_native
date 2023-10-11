@@ -17,6 +17,8 @@
 #include <stddef.h>
 #include <sys/uio.h>
 #include <cstdint>
+#include <functional>
+#include <memory>
 #include <optional>
 
 #include <log/log.h>
@@ -75,5 +77,22 @@ struct Span {
 // Hex values are printed in order, e.g. 0xDEAD will result in 'adde' because
 // Android is little-endian.
 std::string HexString(const void* bytes, size_t len);
+
+template <typename F>
+constexpr void assert_small_callable() {
+    // While this buffer (std::function::__func::__buf_) is an implementation detail an generally
+    // not accessible to users, it's a good bet to assume its size to be around 3 pointers.
+    constexpr size_t kFunctionBufferSize = 3 * sizeof(void*);
+
+    static_assert(sizeof(F) <= kFunctionBufferSize,
+                  "Supplied callable is larger than std::function optimization buffer. "
+                  "Try using std::ref, but make sure lambda lives long enough to be called.");
+}
+
+template <typename F>
+std::unique_ptr<void, std::function<void(void*)>> make_scope_guard(F&& f) {
+    assert_small_callable<decltype(std::bind(f))>();
+    return {reinterpret_cast<void*>(true), std::bind(f)};
+}
 
 }   // namespace android

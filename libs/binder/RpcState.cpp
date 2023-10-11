@@ -20,7 +20,6 @@
 
 #include <android-base/hex.h>
 #include <android-base/macros.h>
-#include <android-base/scopeguard.h>
 #include <android-base/stringprintf.h>
 #include <binder/BpBinder.h>
 #include <binder/IPCThreadState.h>
@@ -811,11 +810,11 @@ status_t RpcState::processCommand(
         origGuard = kernelBinderState->pushGetCallingSpGuard(&spGuard);
     }
 
-    base::ScopeGuard guardUnguard = [&]() {
+    auto guardUnguard = make_scope_guard([&]() {
         if (kernelBinderState != nullptr) {
             kernelBinderState->restoreGetCallingSpGuard(origGuard);
         }
-    };
+    });
 #endif // BINDER_WITH_KERNEL_IPC
 
     switch (command.command) {
