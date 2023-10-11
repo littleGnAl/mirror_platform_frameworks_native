@@ -30,7 +30,6 @@
 #include <android-base/properties.h>
 #include <android-base/result-gmock.h>
 #include <android-base/result.h>
-#include <android-base/scopeguard.h>
 #include <android-base/strings.h>
 #include <android-base/unique_fd.h>
 #include <binder/Binder.h>
@@ -47,6 +46,7 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
+#include "../Utils.h"
 #include "../binder_module.h"
 
 #define ARRAY_SIZE(array) (sizeof array / sizeof array[0])
@@ -1325,7 +1325,7 @@ TEST_F(BinderLibTest, TooManyFdsFlattenable) {
     ASSERT_EQ(0, ret);
 
     // Restore the original file limits when the test finishes
-    base::ScopeGuard guardUnguard([&]() { setrlimit(RLIMIT_NOFILE, &origNofile); });
+    auto guardUnguard = make_scope_guard([&]() { setrlimit(RLIMIT_NOFILE, &origNofile); });
 
     rlimit testNofile = {1024, 1024};
     ret = setrlimit(RLIMIT_NOFILE, &testNofile);
