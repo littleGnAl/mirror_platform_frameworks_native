@@ -25,7 +25,6 @@
 #include <variant>
 #include <vector>
 
-#include <android-base/function_ref.h>
 #include <android-base/unique_fd.h>
 #include <utils/Errors.h>
 
@@ -85,13 +84,13 @@ public:
      *   error - interrupted (failure or trigger)
      */
     [[nodiscard]] virtual status_t interruptableWriteFully(
-            FdTrigger *fdTrigger, iovec *iovs, int niovs,
-            const std::optional<android::base::function_ref<status_t()>> &altPoll,
-            const std::vector<std::variant<base::unique_fd, base::borrowed_fd>> *ancillaryFds) = 0;
+            FdTrigger* fdTrigger, iovec* iovs, int niovs,
+            const std::optional<std::function<status_t()>>& altPoll,
+            const std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds) = 0;
     [[nodiscard]] virtual status_t interruptableReadFully(
-            FdTrigger *fdTrigger, iovec *iovs, int niovs,
-            const std::optional<android::base::function_ref<status_t()>> &altPoll,
-            std::vector<std::variant<base::unique_fd, base::borrowed_fd>> *ancillaryFds) = 0;
+            FdTrigger* fdTrigger, iovec* iovs, int niovs,
+            const std::optional<std::function<status_t()>>& altPoll,
+            std::vector<std::variant<base::unique_fd, base::borrowed_fd>>* ancillaryFds) = 0;
 
     /**
      *  Check whether any threads are blocked while polling the transport
