@@ -16,6 +16,7 @@
 
 #include <android-base/logging.h>
 #include <binder/Binder.h>
+#include <binder/Functional.h>
 #include <binder/IServiceManager.h>
 #include <binder/Parcel.h>
 #include <binder/RpcServer.h>
@@ -170,6 +171,18 @@ TEST(BinderAllocation, PingTransaction) {
     sp<IBinder> a_binder = GetRemoteBinder();
     const auto m = ScopeDisallowMalloc();
     a_binder->pingBinder();
+}
+
+TEST(BinderAllocation, MakeScopeGuard) {
+    const auto m = ScopeDisallowMalloc();
+    {
+        auto guard1 = android::make_scope_guard([] {});
+        guard1.release();
+
+        auto guard2 = android::make_scope_guard([&guard1, ptr = imaginary_use] {
+            if (ptr == nullptr) guard1.release();
+        });
+    }
 }
 
 TEST(BinderAllocation, InterfaceDescriptorTransaction) {
