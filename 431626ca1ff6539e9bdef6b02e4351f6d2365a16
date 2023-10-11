@@ -16,6 +16,47 @@
       "message": "Not sure best place to put. Or put it into TransportRaw ?",
       "revId": "431626ca1ff6539e9bdef6b02e4351f6d2365a16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9af1a052_b5ce196d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-11T23:39:28Z",
+      "side": 1,
+      "message": "Hey, nice catch! I\u0027m not sure why I only set it on the client.\n\nIt belongs in RpcServer.cpp or otherwise in this layer.",
+      "parentUuid": "7728b83a_4ec7ecca",
+      "revId": "431626ca1ff6539e9bdef6b02e4351f6d2365a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f3feead_f26ad2da",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-11T23:39:28Z",
+      "side": 1,
+      "message": "We might also want to set TCP_NDELAY on the root socket, and we can do it here based on the family of the address in \u0027addr\u0027 here (so that the other tests don\u0027t fail, because we can\u0027t set TCP_NDELAY on UDS/vsock/etc..).\n\nI think if you do that, then hopefully, the accepted connections will inherit this setting. If they don\u0027t inherit the setting, then we\u0027ll need to keep track of the family of mServer so that we can check what it is later in accept.",
+      "range": {
+        "startLine": 578,
+        "startChar": 12,
+        "endLine": 578,
+        "endChar": 18
+      },
+      "revId": "431626ca1ff6539e9bdef6b02e4351f6d2365a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
