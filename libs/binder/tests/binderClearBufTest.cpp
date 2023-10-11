@@ -24,6 +24,8 @@
 #include <binder/Stability.h>
 #include <gtest/gtest.h>
 
+#include "../Utils.h"
+
 #include <sys/prctl.h>
 #include <thread>
 
@@ -68,7 +70,7 @@ class FooBar : public BBinder {
             lastReply = reply.data();
             lastReplySize = reply.dataSize();
         }
-        *outBuffer = android::base::HexString(lastReply, lastReplySize);
+        *outBuffer = android::HexString(lastReply, lastReplySize);
         return result;
     }
 };

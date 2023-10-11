@@ -25,6 +25,7 @@
 #include <gtest/gtest.h>
 
 #include "../Debug.h"
+#include "../Utils.h"
 
 namespace android {
 
@@ -176,7 +177,7 @@ static std::string buildRepr(uint32_t version) {
         setParcelForRpc(&p, version);
         kFillFuns[i](&p);
 
-        result += base::HexString(p.data(), p.dataSize());
+        result += HexString(p.data(), p.dataSize());
     }
     return result;
 }
