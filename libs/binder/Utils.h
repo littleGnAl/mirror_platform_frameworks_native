@@ -17,6 +17,8 @@
 #include <stddef.h>
 #include <sys/uio.h>
 #include <cstdint>
+#include <functional>
+#include <memory>
 #include <optional>
 
 #include <log/log.h>
@@ -75,5 +77,10 @@ struct Span {
 // Hex values are printed in order, e.g. 0xDEAD will result in 'adde' because
 // Android is little-endian.
 std::string HexString(const void* bytes, size_t len);
+
+template <typename F>
+std::unique_ptr<void, std::function<void(void*)>> make_scope_guard(F&& f) {
+    return {reinterpret_cast<void*>(true), std::bind(f)};
+}
 
 }   // namespace android
