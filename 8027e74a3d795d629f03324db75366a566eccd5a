@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c49883_0a5986c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-11T21:30:09Z",
+      "side": 1,
+      "message": "These warnings are actually on Android build system. They prevent me from catching potential warnings I might introduce when working on the other build system.\n\nPlease let me know if you want me to migrate some of `getService` silenced warnings to checkService.",
+      "revId": "8027e74a3d795d629f03324db75366a566eccd5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
