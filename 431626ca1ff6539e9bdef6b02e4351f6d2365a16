@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7728b83a_4ec7ecca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1880185
+      },
+      "writtenOn": "2023-10-11T20:44:24Z",
+      "side": 1,
+      "message": "Not sure best place to put. Or put it into TransportRaw ?",
+      "revId": "431626ca1ff6539e9bdef6b02e4351f6d2365a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
