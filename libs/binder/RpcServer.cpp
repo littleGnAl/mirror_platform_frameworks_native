@@ -17,6 +17,7 @@
 #define LOG_TAG "RpcServer"
 
 #include <inttypes.h>
+#include <netinet/tcp.h>
 #include <poll.h>
 #include <sys/socket.h>
 #include <sys/un.h>
@@ -204,6 +205,15 @@ status_t RpcServer::acceptSocketConnection(const RpcServer& server, RpcTransport
     if (clientSocket.fd < 0) {
         int savedErrno = errno;
         ALOGE("Could not accept4 socket: %s", strerror(savedErrno));
+        return -savedErrno;
+    }
+
+    int noDelay = 1;
+    int result =
+            setsockopt(clientSocket.fd.get(), IPPROTO_TCP, TCP_NODELAY, &noDelay, sizeof(noDelay));
+    if (result < 0) {
+        int savedErrno = errno;
+        ALOGE("Could not set TCP_NODELAY: %s", strerror(savedErrno));
         return -savedErrno;
     }
 
