@@ -39,7 +39,6 @@
 #include <binder/Status.h>
 #include <binder/TextOutput.h>
 
-#include <android-base/scopeguard.h>
 #include <cutils/ashmem.h>
 #include <utils/Flattenable.h>
 #include <utils/Log.h>
@@ -584,7 +583,7 @@ status_t Parcel::appendFrom(const Parcel* parcel, size_t offset, size_t len) {
         }
 
         const size_t savedDataPos = mDataPos;
-        base::ScopeGuard scopeGuard = [&]() { mDataPos = savedDataPos; };
+        auto scopeGuard = make_scope_guard([&]() { mDataPos = savedDataPos; });
 
         rpcFields->mObjectPositions.reserve(otherRpcFields->mObjectPositions.size());
         if (otherRpcFields->mFds != nullptr) {
