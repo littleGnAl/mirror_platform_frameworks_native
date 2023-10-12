@@ -16,6 +16,29 @@
       "message": "These warnings are actually on Android build system. They prevent me from catching potential warnings I might introduce when working on the other build system.\n\nPlease let me know if you want me to migrate some of `getService` silenced warnings to checkService.",
       "revId": "8027e74a3d795d629f03324db75366a566eccd5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23531144_7023a96f",
+        "filename": "libs/binder/rust/tests/serialization.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T00:59:34Z",
+      "side": 1,
+      "message": "lol, clang doesn\u0027t like hpp?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 63
+      },
+      "revId": "8027e74a3d795d629f03324db75366a566eccd5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
