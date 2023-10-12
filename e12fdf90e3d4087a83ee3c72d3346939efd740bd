@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc92841f_e36096fc",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-12T17:57:00Z",
+      "side": 1,
+      "message": "std::function is guaranteed to not create allocations if you pass function pointer (C-style callback) to it. But even if you pass a lambda, it would need to have a large number of captures (\u003e2 pointers) to cause allocation.\n\nThere\u0027s a good article about it here: https://blog.demofox.org/2015/02/25/avoiding-the-performance-hazzards-of-stdfunction/",
+      "parentUuid": "4555e43d_30667320",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 68
+      },
+      "revId": "e12fdf90e3d4087a83ee3c72d3346939efd740bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a002e76_fb840a95",
@@ -37,6 +61,30 @@
       "writtenOn": "2023-10-12T00:53:43Z",
       "side": 1,
       "message": "accident typo?",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "e12fdf90e3d4087a83ee3c72d3346939efd740bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "617aff01_59315462",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-12T17:57:00Z",
+      "side": 1,
+      "message": "It\u0027s a deliberate trick to avoid linter doing a huge indentation on arguments.",
+      "parentUuid": "4a002e76_fb840a95",
       "range": {
         "startLine": 27,
         "startChar": 36,
