@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39a907c_249f89c2",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T01:05:26Z",
+      "side": 1,
+      "message": "Due to current state of C++ stdlib, the easiest way is probably like this:\n\n    struct PollingStateGuard {\n        const android::RpcTransportFd\u0026 mTransportFd;\n        PollingStateGuard(const android::RpcTransportFd\u0026 transportFd) : mTransportFd(transportFd) {}\n        ~PollingStateGuard() { mTransportFd.setPollingState(false); }\n    };\n    PollingStateGuard pollingStateGuard;",
+      "revId": "c2f480c8d9b04c5f91cdaa4f87ba3ff34dce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c06bc6_9c015793",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T01:05:26Z",
+      "side": 1,
+      "message": "This would also leak memory. Kind of annoying to implement this for a one time class, but it can work",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 30
+      },
+      "revId": "c2f480c8d9b04c5f91cdaa4f87ba3ff34dce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85da2f9b_9dff5dc9",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T01:05:26Z",
+      "side": 1,
+      "message": "for this, keep a pointer to this in the one-time class instead. It\u0027ll be cleaner.",
+      "range": {
+        "startLine": 500,
+        "startChar": 19,
+        "endLine": 500,
+        "endChar": 35
+      },
+      "revId": "c2f480c8d9b04c5f91cdaa4f87ba3ff34dce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecfc314a_21427881",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T01:05:26Z",
+      "side": 1,
+      "message": "we can\u0027t introduce these heap allocations",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "c2f480c8d9b04c5f91cdaa4f87ba3ff34dce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
