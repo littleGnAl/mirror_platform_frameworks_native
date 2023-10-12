@@ -95,4 +95,10 @@ std::unique_ptr<void, std::function<void(void*)>> make_scope_guard(F&& f) {
     return {reinterpret_cast<void*>(true), std::bind(f)};
 }
 
+// for printing pointers with std::format
+template <typename T>
+const void* ptr(const T* p) {
+    return p;
+}
+
 }   // namespace android
