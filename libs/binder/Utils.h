@@ -76,4 +76,10 @@ struct Span {
 // Android is little-endian.
 std::string HexString(const void* bytes, size_t len);
 
+// for printing pointers with std::format
+template <typename T>
+const void* ptr(const T* p) {
+    return p;
+}
+
 }   // namespace android

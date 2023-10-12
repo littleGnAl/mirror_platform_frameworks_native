@@ -55,6 +55,7 @@ MODULE_SRCS := \
 	$(LIBUTILS_DIR)/binder/Unicode.cpp \
 	$(LIBUTILS_DIR)/binder/VectorImpl.cpp \
 	$(LIBUTILS_DIR)/misc.cpp \
+	$(FMTLIB_DIR)/src/format.cc \
 
 MODULE_EXPORT_INCLUDES += \
 	$(LOCAL_DIR)/include \
