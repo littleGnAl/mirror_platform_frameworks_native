@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0434b83_e55110ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-12T17:46:41Z",
+      "side": 1,
+      "message": "I added static_assert to make sure of it (and fixed one instance where it would).",
+      "parentUuid": "98be4bcc_532533c7",
+      "revId": "c2f480c8d9b04c5f91cdaa4f87ba3ff34dce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e39a907c_249f89c2",
