@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4555e43d_30667320",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T00:53:43Z",
+      "side": 1,
+      "message": "std::function may create an allocation. Are we sure they won\u0027t here? How hard would it be to switch to C-style callbacks instead or similar?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 68
+      },
+      "revId": "e12fdf90e3d4087a83ee3c72d3346939efd740bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a002e76_fb840a95",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T00:53:43Z",
+      "side": 1,
+      "message": "accident typo?",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "e12fdf90e3d4087a83ee3c72d3346939efd740bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
