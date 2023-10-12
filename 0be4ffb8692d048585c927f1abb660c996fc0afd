@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4495420_911cd990",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1041495
+      },
+      "writtenOn": "2023-10-12T07:21:15Z",
+      "side": 1,
+      "message": "I retract my prior statement -- I am not wielding the power of CTS, since these tests are not part of it.\n\nIn any case: Done.",
+      "parentUuid": "f4da0aa9_d951ed4c",
+      "revId": "0be4ffb8692d048585c927f1abb660c996fc0afd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8d14ff8_f5c996fc",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Along with the log, yeah. Ack.",
       "parentUuid": "c8d14ff8_f5c996fc",
+      "revId": "0be4ffb8692d048585c927f1abb660c996fc0afd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9387cbaf_cfbec13b",
+        "filename": "services/surfaceflinger/CompositionEngine/src/DisplayColorProfile.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1041495
+      },
+      "writtenOn": "2023-10-12T07:21:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d17a8e81_c7762802",
       "revId": "0be4ffb8692d048585c927f1abb660c996fc0afd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

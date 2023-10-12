@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6addc3f8_c67d3262",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1041495
+      },
+      "writtenOn": "2023-10-12T07:21:15Z",
+      "side": 1,
+      "message": "Patchset 2 adds and modifies some tests. They expect the same behavior with or without declaring WCG support, which makes sense considering what the change is, but I don\u0027t really know if it\u0027s reasonable in a wider sense -- hence the \"iffy-tests\" line in the commit message. :)",
+      "revId": "096de4cb37a6a9b45241a6183aab17878dc2b6d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
