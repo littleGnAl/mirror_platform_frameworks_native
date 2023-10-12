@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f6133d_59ea2de3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-12T21:33:41Z",
+      "side": 1,
+      "message": "Steven, please re-review this one. I forgot about removing android-base/hex.h.",
+      "revId": "891f6b06b98208d4dd8c2f837b5138e7f1b2aa3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
