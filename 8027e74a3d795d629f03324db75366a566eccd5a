@@ -39,6 +39,30 @@
       },
       "revId": "8027e74a3d795d629f03324db75366a566eccd5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d96638e_2eb81d79",
+        "filename": "libs/binder/rust/tests/serialization.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-12T16:11:25Z",
+      "side": 1,
+      "message": "It\u0027s actually used as sources by rust_bindgen:\nhttps://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/libs/binder/rust/tests/Android.bp;l\u003d115;drc\u003de99670ccb85442c5cae54e3db24d721b69fd40d0",
+      "parentUuid": "23531144_7023a96f",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 63
+      },
+      "revId": "8027e74a3d795d629f03324db75366a566eccd5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
