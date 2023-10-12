@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98be4bcc_532533c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T01:07:04Z",
+      "side": 1,
+      "message": "I missed \u0027void\u0027 unique_ptr first. Nice! Are we sure that std::function won\u0027t make allocations here?",
+      "revId": "c2f480c8d9b04c5f91cdaa4f87ba3ff34dce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e39a907c_249f89c2",
         "filename": "libs/binder/FdTrigger.cpp",
         "patchSetId": 1
@@ -14,6 +31,24 @@
       "writtenOn": "2023-10-12T01:05:26Z",
       "side": 1,
       "message": "Due to current state of C++ stdlib, the easiest way is probably like this:\n\n    struct PollingStateGuard {\n        const android::RpcTransportFd\u0026 mTransportFd;\n        PollingStateGuard(const android::RpcTransportFd\u0026 transportFd) : mTransportFd(transportFd) {}\n        ~PollingStateGuard() { mTransportFd.setPollingState(false); }\n    };\n    PollingStateGuard pollingStateGuard;",
+      "revId": "c2f480c8d9b04c5f91cdaa4f87ba3ff34dce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e27698_3f4be399",
+        "filename": "libs/binder/FdTrigger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T01:07:04Z",
+      "side": 1,
+      "message": "nvm",
+      "parentUuid": "e39a907c_249f89c2",
       "revId": "c2f480c8d9b04c5f91cdaa4f87ba3ff34dce4326",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -31,6 +66,30 @@
       "writtenOn": "2023-10-12T01:05:26Z",
       "side": 1,
       "message": "This would also leak memory. Kind of annoying to implement this for a one time class, but it can work",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 30
+      },
+      "revId": "c2f480c8d9b04c5f91cdaa4f87ba3ff34dce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9b225a_140ea1b9",
+        "filename": "libs/binder/RpcServer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T01:07:04Z",
+      "side": 1,
+      "message": "nvm",
+      "parentUuid": "39c06bc6_9c015793",
       "range": {
         "startLine": 549,
         "startChar": 0,
@@ -64,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53dd225f_8ebafdb1",
+        "filename": "libs/binder/RpcSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T01:07:04Z",
+      "side": 1,
+      "message": "nvm",
+      "parentUuid": "85da2f9b_9dff5dc9",
+      "range": {
+        "startLine": 500,
+        "startChar": 19,
+        "endLine": 500,
+        "endChar": 35
+      },
+      "revId": "c2f480c8d9b04c5f91cdaa4f87ba3ff34dce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecfc314a_21427881",
@@ -77,6 +160,30 @@
       "writtenOn": "2023-10-12T01:05:26Z",
       "side": 1,
       "message": "we can\u0027t introduce these heap allocations",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "c2f480c8d9b04c5f91cdaa4f87ba3ff34dce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "944a77c3_6a3ace8c",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-12T01:07:04Z",
+      "side": 1,
+      "message": "nvm",
+      "parentUuid": "ecfc314a_21427881",
       "range": {
         "startLine": 82,
         "startChar": 5,
