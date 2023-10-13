@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c35a940_46ee7ae8",
+        "filename": "services/surfaceflinger/CompositionEngine/src/DisplayColorProfile.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-10-13T17:17:48Z",
+      "side": 0,
+      "message": "please keep an info log at least - we ahould know if we tried to switch to a color mode the display didn\u0027t support",
+      "range": {
+        "startLine": 368,
+        "startChar": 11,
+        "endLine": 368,
+        "endChar": 62
+      },
+      "revId": "3b7bc1dd91b21d47d8f9e1072b7679d9d6fb2e74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
