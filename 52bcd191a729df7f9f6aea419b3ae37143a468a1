@@ -195,6 +195,30 @@
       },
       "revId": "52bcd191a729df7f9f6aea419b3ae37143a468a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "396a9e11_6237bace",
+        "filename": "libs/binder/trusty/rules.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-13T22:55:24Z",
+      "side": 1,
+      "message": "Found it myself: https://r.android.com/2779427. It adds a `report_sysprop_change` wrapper in `OS.h`, maybe we could land that patch ASAP and make that operation a no-op on Trusty?",
+      "parentUuid": "1ab691dd_366f924b",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "52bcd191a729df7f9f6aea419b3ae37143a468a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
