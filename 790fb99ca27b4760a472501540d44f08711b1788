@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9100ed0_83e03464",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-13T22:22:03Z",
+      "side": 1,
+      "message": "we can also add a test to binderAllocationLimits if you want",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "790fb99ca27b4760a472501540d44f08711b1788",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
