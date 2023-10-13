@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baf8ef6b_714dbc03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-10-13T17:18:25Z",
+      "side": 1,
+      "message": "yeah - they\u0027re not part of CTS, but the tests are the only way we can really validate that color mode selection works",
+      "parentUuid": "f4495420_911cd990",
+      "revId": "0be4ffb8692d048585c927f1abb660c996fc0afd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8d14ff8_f5c996fc",
