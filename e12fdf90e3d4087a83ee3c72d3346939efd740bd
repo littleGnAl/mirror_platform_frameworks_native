@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9311aff_80e4d3a2",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-10-13T23:25:09Z",
+      "side": 1,
+      "message": "Another consideration is that since std::function can copy, it requires whatever you capture to have a copy constructor which often forces annoyances like the introduction of std::shared_ptr. Doesn\u0027t seem relevant here though.\n\nThe implementation of funciton_ref is really small (50 lines, header only), so we could also consider copying the code.",
+      "parentUuid": "2145a626_21f88239",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 68
+      },
+      "revId": "e12fdf90e3d4087a83ee3c72d3346939efd740bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a002e76_fb840a95",
         "filename": "libs/binder/RpcTransportUtils.h",
         "patchSetId": 1
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "use \u0027// clang-format: off\u0027 and \u0027// clang-format: on\u0027\n\nor \u0027--no-verify\u0027\n\nor let it mess up the format - I don\u0027t mind much",
       "parentUuid": "617aff01_59315462",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "e12fdf90e3d4087a83ee3c72d3346939efd740bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37bda4f1_093360cb",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-10-13T23:25:09Z",
+      "side": 1,
+      "message": "+1 to \"just let the formatter do its thing\"",
+      "parentUuid": "0caf59cc_85a03f08",
       "range": {
         "startLine": 27,
         "startChar": 36,
