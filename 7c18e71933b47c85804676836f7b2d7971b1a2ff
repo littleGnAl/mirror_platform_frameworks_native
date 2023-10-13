@@ -22,6 +22,23 @@
       },
       "revId": "7c18e71933b47c85804676836f7b2d7971b1a2ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fec2ac9_3c757536",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-13T22:47:04Z",
+      "side": 1,
+      "message": "LGTM, because the Rust docs say this is what you\u0027re supposed to do if you implement both traits. On top of that, `SpIBinder` also does exactly that:\n```\nimpl PartialOrd for SpIBinder {\n    fn partial_cmp(\u0026self, other: \u0026Self) -\u003e Option\u003cOrdering\u003e {\n        Some(self.cmp(other))\n    }\n}\n```",
+      "revId": "7c18e71933b47c85804676836f7b2d7971b1a2ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
