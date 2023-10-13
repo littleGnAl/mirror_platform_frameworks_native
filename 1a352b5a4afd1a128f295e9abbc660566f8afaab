@@ -16,6 +16,23 @@
       "message": "Hello everyone,\n\nCould you please help me review this CL?\n\nThanks.",
       "revId": "1a352b5a4afd1a128f295e9abbc660566f8afaab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45f0128d_87bd9e37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1746367
+      },
+      "writtenOn": "2023-10-13T13:34:18Z",
+      "side": 1,
+      "message": "Hi @vishnun@google.com,\n\nThere seems to be something wrong with PV and PV has failed -1, so could you please trigger it again and submit this CL when it passes?\n\nThanks.",
+      "revId": "1a352b5a4afd1a128f295e9abbc660566f8afaab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
