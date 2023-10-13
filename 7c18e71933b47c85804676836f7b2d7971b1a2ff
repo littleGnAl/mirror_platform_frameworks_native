@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f27fabea_240b28f3",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-13T22:47:45Z",
+      "side": 1,
+      "message": "That is correct, it\u0027s implemented in `proxy.rs`.",
+      "parentUuid": "f1120363_0a038004",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 52
+      },
+      "revId": "7c18e71933b47c85804676836f7b2d7971b1a2ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fec2ac9_3c757536",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 2
