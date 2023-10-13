@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2145a626_21f88239",
+        "filename": "libs/binder/RpcState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-13T22:30:16Z",
+      "side": 1,
+      "message": "Are you sure all the clients are passing in a function pointer? In the future, they might forget to do this. Specifically, I think that the only user of altPoll now uses a lambda:\nhttps://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/native/libs/binder/RpcState.cpp;l\u003d607;drc\u003d7b5430b3290dd2575f7648a91a019ef2b2222480\n\nI thought you had another CL which resolved this? Can you copy that solution here too?",
+      "parentUuid": "fc92841f_e36096fc",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 68
+      },
+      "revId": "e12fdf90e3d4087a83ee3c72d3346939efd740bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a002e76_fb840a95",
         "filename": "libs/binder/RpcTransportUtils.h",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "It\u0027s a deliberate trick to avoid linter doing a huge indentation on arguments.",
       "parentUuid": "4a002e76_fb840a95",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "e12fdf90e3d4087a83ee3c72d3346939efd740bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0caf59cc_85a03f08",
+        "filename": "libs/binder/RpcTransportUtils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-13T22:30:16Z",
+      "side": 1,
+      "message": "use \u0027// clang-format: off\u0027 and \u0027// clang-format: on\u0027\n\nor \u0027--no-verify\u0027\n\nor let it mess up the format - I don\u0027t mind much",
+      "parentUuid": "617aff01_59315462",
       "range": {
         "startLine": 27,
         "startChar": 36,
