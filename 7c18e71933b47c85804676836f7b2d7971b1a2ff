@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1120363_0a038004",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-13T22:42:30Z",
+      "side": 1,
+      "message": "btw - this delegates to AIBinder_lt, right?",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 52
+      },
+      "revId": "7c18e71933b47c85804676836f7b2d7971b1a2ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
