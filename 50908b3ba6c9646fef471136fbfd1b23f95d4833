@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eb1ef1a_f6989310",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1170688
+      },
+      "writtenOn": "2023-10-13T15:45:23Z",
+      "side": 1,
+      "message": "We cannot use a single queue to apply the transactions because a transaction from one process or one graphic buffer producer may block another\u0027s.\n\nI will follow up on the bugs, there are other ways to ensure order between transactions from different apply tokens",
+      "revId": "50908b3ba6c9646fef471136fbfd1b23f95d4833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
