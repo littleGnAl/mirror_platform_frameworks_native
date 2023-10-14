@@ -219,6 +219,30 @@
       },
       "revId": "52bcd191a729df7f9f6aea419b3ae37143a468a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b45dd44_b97536a0",
+        "filename": "libs/binder/trusty/rules.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-14T02:21:41Z",
+      "side": 1,
+      "message": "Here\u0027s OS.cpp for auto FYI: https://android-review.git.corp.google.com/c/platform/frameworks/native/+/2616196/48/libs/binder/linux/OS.cpp\n\nAs you said, it\u0027s a no-op on Linux.",
+      "parentUuid": "396a9e11_6237bace",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "52bcd191a729df7f9f6aea419b3ae37143a468a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
