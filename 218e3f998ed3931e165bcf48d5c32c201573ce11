@@ -16,6 +16,24 @@
       "message": "ptal, this is a pure cherry-pick from internal branch",
       "revId": "218e3f998ed3931e165bcf48d5c32c201573ce11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762e43ff_f4b814e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1941946
+      },
+      "writtenOn": "2023-10-14T00:33:39Z",
+      "side": 1,
+      "message": "Maybe we need to add `Merged-In` in the CL description to resolve the `MERGE CONFLICT` error?",
+      "parentUuid": "17be59bb_a7fc5e65",
+      "revId": "218e3f998ed3931e165bcf48d5c32c201573ce11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
