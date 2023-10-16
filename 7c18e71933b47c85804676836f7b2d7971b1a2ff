@@ -50,6 +50,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "421aeabb_f01f113d",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2023-10-16T09:28:14Z",
+      "side": 1,
+      "message": "Why keep this commented-out code? I think it would be better to remove it entirely, here and below.",
+      "revId": "7c18e71933b47c85804676836f7b2d7971b1a2ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fec2ac9_3c757536",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 2
