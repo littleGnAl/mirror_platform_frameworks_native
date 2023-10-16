@@ -22,6 +22,30 @@
       },
       "revId": "790fb99ca27b4760a472501540d44f08711b1788",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbd5d33d_47440f3e",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-16T21:56:06Z",
+      "side": 1,
+      "message": "I wrote a test [1], but I can\u0027t make it fail. I tried passing 60 or 90 bytes through lambda captures (max is 24 bytes) and it still didn\u0027t trigger any allocations (with `assert_small_callable` disabled) - unless I explicitly call `new int[10]` in one of these lambdas. I don\u0027t feel super comfortable about such a test (like [1]), but I can include it in this change once I rebase and clean up this CL chain (pending 3 merges).\n\n[1] https://paste.googleplex.com/5553790710185984?raw\n[2] https://paste.googleplex.com/5265794127626240?raw",
+      "parentUuid": "d9100ed0_83e03464",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "790fb99ca27b4760a472501540d44f08711b1788",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
