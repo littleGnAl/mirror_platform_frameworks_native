@@ -22,6 +22,30 @@
       },
       "revId": "3b7bc1dd91b21d47d8f9e1072b7679d9d6fb2e74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a4695f_9671f310",
+        "filename": "services/surfaceflinger/CompositionEngine/src/DisplayColorProfile.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1041495
+      },
+      "writtenOn": "2023-10-16T09:23:17Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "7c35a940_46ee7ae8",
+      "range": {
+        "startLine": 368,
+        "startChar": 11,
+        "endLine": 368,
+        "endChar": 62
+      },
+      "revId": "3b7bc1dd91b21d47d8f9e1072b7679d9d6fb2e74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
