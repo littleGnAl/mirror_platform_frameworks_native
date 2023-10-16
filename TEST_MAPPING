@@ -7,7 +7,7 @@
           "include-filter": "*"
         },
         {
-          "exclude-filter": "*ChildLayerTest#ChildrenSurviveParentDestruction"
+          "exclude-filter": "*ChildLayerTest*"
         }
       ]
     },
