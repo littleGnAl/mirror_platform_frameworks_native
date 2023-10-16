@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95551158_b1c76a1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-16T22:59:26Z",
+      "side": 1,
+      "message": "Merge conflicts pending on HexString auto-merge to main\n\nhttps://android-build.corp.google.com/where-is-my-cl/search/I5c7a71a91b7dc95bfa0cd653eabe554bdd3f7812",
+      "revId": "8df0c35a1b607b8cb654ab1bf80a77105b8c546d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
