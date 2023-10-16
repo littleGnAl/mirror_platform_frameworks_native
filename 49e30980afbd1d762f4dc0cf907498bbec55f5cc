@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c8f051_6d5d7fd7",
+        "filename": "TEST_MAPPING",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2023-10-16T17:01:32Z",
+      "side": 1,
+      "message": "nit: add `TODO(b/)` to deflake and re-enable.",
+      "revId": "49e30980afbd1d762f4dc0cf907498bbec55f5cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
