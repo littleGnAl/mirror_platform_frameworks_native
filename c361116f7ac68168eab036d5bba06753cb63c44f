@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e39354d_f53bf5eb",
+        "filename": "libs/binder/OS.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-16T23:56:28Z",
+      "side": 1,
+      "message": "Nit: could follow the existing naming convention and call this `reportSyspropChange`.",
+      "revId": "c361116f7ac68168eab036d5bba06753cb63c44f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464c866d_bb838430",
+        "filename": "libs/binder/OS_android.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-16T23:56:28Z",
+      "side": 1,
+      "message": "Trusty also includes this, right?\n\nI think what we\u0027ll need to do in a follow-up (I can do it) is add both `GetThreadId` and `report_sysprop_change` to `trusty/OS.cpp` and stop including the Android file in `rules.mk`.",
+      "revId": "c361116f7ac68168eab036d5bba06753cb63c44f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
