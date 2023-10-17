@@ -34,6 +34,24 @@
       "parentUuid": "61a5e448_b503b60e",
       "revId": "2661b73e149e99a3202e922d07174cb80b5d6122",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "215f347d_4683521b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1941946
+      },
+      "writtenOn": "2023-10-17T20:52:12Z",
+      "side": 1,
+      "message": "Ah ok, understood. If that is the case, is it possible to chain all these CLs as \"submitted together\": https://screenshot.googleplex.com/7xSM9mqY8GZdBKm?",
+      "parentUuid": "579256e9_432a4750",
+      "revId": "2661b73e149e99a3202e922d07174cb80b5d6122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
