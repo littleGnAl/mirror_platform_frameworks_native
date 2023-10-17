@@ -86,7 +86,10 @@ rust_library {
     min_sdk_version: "Tiramisu",
     lints: "none",
     clippy_lints: "none",
-    visibility: [":__subpackages__"],
+    visibility: [
+        ":__subpackages__",
+        "//system/core/trusty/libtrusty-rs",
+    ],
 }
 
 rust_bindgen {

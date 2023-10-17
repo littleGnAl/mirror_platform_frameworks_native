@@ -21,6 +21,7 @@
 #include <android/binder_libbinder.h>
 #include <binder/RpcServer.h>
 #include <binder/RpcSession.h>
+#include <binder/RpcTrusty.h>
 #include <cutils/sockets.h>
 #include <linux/vm_sockets.h>
 
@@ -182,6 +183,22 @@ void ARpcServer_free(ARpcServer* handle) {
 ARpcSession* ARpcSession_new() {
     auto session = RpcSession::make();
     return createObjectHandle<ARpcSession>(session);
+}
+
+ARpcSession* ARpcSession_new_trusty_session(const char* device, const char* port) {
+    auto session = android::RpcTrustyConnectWithSessionInitializer(device, port, [](auto) {});
+    return createObjectHandle<ARpcSession>(session);
+}
+
+AIBinder* ARpcSession_get_binder_from_session(ARpcSession* handle) {
+    auto session = handleToStrongPointer<RpcSession>(handle);
+    return AIBinder_fromPlatformBinder(session->getRootObject());
+}
+
+AIBinder* ARpcSession_new_trusty(const char* device, const char* port) {
+    auto session = android::RpcTrustyConnectWithSessionInitializer(device, port, [](auto) {});
+    // return createObjectHandle<ARpcSession>(session);
+    return AIBinder_fromPlatformBinder(session->getRootObject());
 }
 
 void ARpcSession_free(ARpcSession* handle) {
