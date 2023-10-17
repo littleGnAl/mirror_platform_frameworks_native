@@ -189,19 +189,26 @@ status_t RpcSession::setupInetClient(const char* addr, unsigned int port) {
 
 status_t RpcSession::setupPreconnectedClient(base::unique_fd fd,
                                              std::function<unique_fd()>&& request) {
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside  setupPreconnectedClient");
     return setupClient([&](const std::vector<uint8_t>& sessionId, bool incoming) -> status_t {
+        // ALOGE(">>>>>>>>>>>>>>>>>>>inside  setupPreconnectedClient setupClient returned true");
         if (!fd.ok()) {
             fd = request();
             if (!fd.ok()) return BAD_VALUE;
         }
+        // ALOGE(">>>>>>>>>>>>>>>>>>>inside  setupPreconnectedClient about to set setNonBlocking");
         if (auto res = binder::os::setNonBlocking(fd); !res.ok()) {
             ALOGE("setupPreconnectedClient: %s", res.error().message().c_str());
             return res.error().code() == 0 ? UNKNOWN_ERROR : -res.error().code();
         }
 
         RpcTransportFd transportFd(std::move(fd));
+        // ALOGE(">>>>>>>>>>>>>>>>>>>inside  setupPreconnectedClient about to
+        // initAndAddConnection");
         status_t status = initAndAddConnection(std::move(transportFd), sessionId, incoming);
         fd = unique_fd(); // Explicitly reset after move to avoid analyzer warning.
+        // ALOGE(">>>>>>>>>>>>>>>>>>>inside  setupPreconnectedClient about to return, status %d",
+        // status);
         return status;
     });
 }
@@ -237,9 +244,15 @@ sp<IBinder> RpcSession::getRootObject() {
 
 status_t RpcSession::getRemoteMaxThreads(size_t* maxThreads) {
     ExclusiveConnection connection;
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside getRemoteMaxThreads, before looking for find");
     status_t status = ExclusiveConnection::find(sp<RpcSession>::fromExisting(this),
                                                 ConnectionUse::CLIENT, &connection);
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside getRemoteMaxThreads, after find");
     if (status != OK) return status;
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside getRemoteMaxThreads, before calling state getMaxThreads");
+    // auto val = state()->getMaxThreads(connection.get(), sp<RpcSession>::fromExisting(this),
+    // maxThreads); ALOGE(">>>>>>>>>>>>>>>>>>>inside getRemoteMaxThreads, before returning"); return
+    // val;
     return state()->getMaxThreads(connection.get(), sp<RpcSession>::fromExisting(this), maxThreads);
 }
 
@@ -524,6 +537,7 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
 
     {
         ExclusiveConnection connection;
+        // ALOGE(">>>>>>>>>>>>>>>>>>>inside setupClient in lamda connect and init");
         if (status_t status = ExclusiveConnection::find(sp<RpcSession>::fromExisting(this),
                                                         ConnectionUse::CLIENT, &connection);
             status != OK)
@@ -537,6 +551,7 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
             return status;
         if (!setProtocolVersionInternal(version, false)) return BAD_VALUE;
     }
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside setupClient after lamda connect and init");
 
     // TODO(b/189955605): we should add additional sessions dynamically
     // instead of all at once.
@@ -546,12 +561,14 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
               statusToString(status).c_str());
         return status;
     }
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside setupClient after getRemoteMaxThreads");
 
     if (status_t status = readId(); status != OK) {
         ALOGE("Could not get session id after initial session setup: %s",
               statusToString(status).c_str());
         return status;
     }
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside setupClient after readId");
 
     size_t outgoingConnections = std::min(numThreadsAvailable, mMaxOutgoingConnections);
     ALOGI_IF(outgoingConnections != numThreadsAvailable,
@@ -569,16 +586,19 @@ status_t RpcSession::setupClient(const std::function<status_t(const std::vector<
     LOG_RPC_DETAIL("RpcSession::setupClient() instantiating %zu outgoing connections (server max: "
                    "%zu) and %zu incoming threads",
                    outgoingConnections, numThreadsAvailable, mMaxIncomingThreads);
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside setupClient before for loops for outgoingConnections");
     for (size_t i = 0; i + 1 < outgoingConnections; i++) {
         if (status_t status = connectAndInit(mId, false /*incoming*/); status != OK) return status;
     }
 
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside setupClient before for loops for mMaxIncomingThreads");
     for (size_t i = 0; i < mMaxIncomingThreads; i++) {
         if (status_t status = connectAndInit(mId, true /*incoming*/); status != OK) return status;
     }
 
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside setupClient before cleanup disable");
     cleanup.Disable();
-
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside setupClient about to return");
     return OK;
 }
 
@@ -666,7 +686,9 @@ status_t RpcSession::setupOneSocketConnection(const RpcSocketAddress& addr,
 status_t RpcSession::initAndAddConnection(RpcTransportFd fd, const std::vector<uint8_t>& sessionId,
                                           bool incoming) {
     LOG_ALWAYS_FATAL_IF(mShutdownTrigger == nullptr);
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside  initAndAddConnection about to call newTransport");
     auto server = mCtx->newTransport(std::move(fd), mShutdownTrigger.get());
+    // ALOGE(">>>>>>>>>>>>>>>>>>>inside  initAndAddConnection returned from newTransport");
     if (server == nullptr) {
         ALOGE("%s: Unable to set up RpcTransport", __PRETTY_FUNCTION__);
         return UNKNOWN_ERROR;
