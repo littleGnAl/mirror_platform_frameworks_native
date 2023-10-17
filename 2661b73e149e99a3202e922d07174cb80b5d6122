@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a5e448_b503b60e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1941946
+      },
+      "writtenOn": "2023-10-17T20:40:29Z",
+      "side": 1,
+      "message": "This patch http://ag/23865478 was reverted. Should we cherry-pick this change instead: http://ag/24288318?",
+      "revId": "2661b73e149e99a3202e922d07174cb80b5d6122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
