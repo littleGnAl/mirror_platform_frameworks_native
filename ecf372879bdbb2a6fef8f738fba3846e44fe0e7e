@@ -16,6 +16,24 @@
       "message": "maybe we should have a `kExperimentalRepr` that we check always. i haven\u0027t put much thought into it",
       "revId": "ecf372879bdbb2a6fef8f738fba3846e44fe0e7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c06034_584701ce",
+        "filename": "libs/binder/tests/binderRpcWireProtocolTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-17T23:17:58Z",
+      "side": 0,
+      "message": "Yeah, it would be nice to be able to see it, and we could still check it, e.g. if it became 1GB in size, we would know early, though it\u0027s also one more thing you have to change while developing, so I\u0027m not sure.",
+      "parentUuid": "a594c2a8_3d9893d6",
+      "revId": "ecf372879bdbb2a6fef8f738fba3846e44fe0e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
