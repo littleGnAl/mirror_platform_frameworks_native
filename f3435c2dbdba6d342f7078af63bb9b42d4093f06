@@ -22,6 +22,30 @@
       },
       "revId": "f3435c2dbdba6d342f7078af63bb9b42d4093f06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f995dd48_45e1ad5c",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-17T23:38:49Z",
+      "side": 1,
+      "message": "Did you mean to comment on https://r.android.com/2784072? I don\u0027t think I can use that scope_guard example in this CL.\n\nRegarding the suggested implementation, we would also need a flag to deactivate guard, delete some constructors and assignment operators and ideally implement move operator. Then, it suddenly makes more sense to copy-paste ScopeGuard from libbase:\nhttps://cs.android.com/android/platform/superproject/main/+/main:system/libbase/include/android-base/scopeguard.h\n\nIs making this based on unique_ptr really a problem? I don\u0027t think address sanitizer should be unhappy about this.\n\nAnyway, I\u0027m leaving it up to Steven to break a tie here.",
+      "parentUuid": "cf8f9ec1_3bed6575",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 41
+      },
+      "revId": "f3435c2dbdba6d342f7078af63bb9b42d4093f06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
