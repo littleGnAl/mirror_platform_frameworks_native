@@ -94,6 +94,30 @@
       },
       "revId": "f3435c2dbdba6d342f7078af63bb9b42d4093f06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc3e6589_5a0ffc38",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-17T23:53:32Z",
+      "side": 1,
+      "message": "If we end up copying from libbase, I think we should make changes you suggested there (I like replacing flag with optional, or removing move constructor if it\u0027s not needed) - before making a copy.",
+      "parentUuid": "fe8e2ebf_af108fb7",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 41
+      },
+      "revId": "f3435c2dbdba6d342f7078af63bb9b42d4093f06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
