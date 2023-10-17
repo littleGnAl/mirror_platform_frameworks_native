@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd3dde2_5c8f4aac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2023-10-17T06:00:34Z",
+      "side": 1,
+      "message": "This CL is cherry-picked from https://googleplex-android-review.git.corp.google.com/c/platform/frameworks/native/+/24957700, but applied to aosp/main rather than goog/aosp-main-future, because Android 14 has since been merged to aosp/main.",
+      "revId": "841b07c666cd03f478e206a934e8393a2db8f703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
