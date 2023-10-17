@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74181e50_9f342cf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2023-10-17T22:57:29Z",
+      "side": 1,
+      "message": "Now that Android 14 is merged into aosp/main, this patch is needed in this branch rather than goog/aosp-main-future. This CL replaces this one:\n\nhttps://googleplex-android-review.git.corp.google.com/c/platform/frameworks/native/+/24959339",
+      "revId": "ce0eb13cb6fceb7190e68a7dcea9771d68e09df2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
