@@ -69,6 +69,24 @@
       "parentUuid": "464c866d_bb838430",
       "revId": "c361116f7ac68168eab036d5bba06753cb63c44f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b0d3ea_aef97703",
+        "filename": "libs/binder/OS_android.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-17T19:53:04Z",
+      "side": 1,
+      "message": "\u003e  I wasn\u0027t sure how \"android\" trusty is\n\nTrusty has its own kernel. There are some basic similarities between it and Linux, but a lot of stuff is different: Trusty has no threads, select/poll (it has a similar call named wait), fcntl, pipes, dynamic linking, and more (or less, if you will).\n\n\u003e I suggest to do this after all of Linux Binder is done\n\nAlright, that works. In the mean time, Trusty has some tests in Binder presubmit, so if anything breaks we can fix it as needed.",
+      "parentUuid": "6a848779_40ce3d19",
+      "revId": "c361116f7ac68168eab036d5bba06753cb63c44f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
