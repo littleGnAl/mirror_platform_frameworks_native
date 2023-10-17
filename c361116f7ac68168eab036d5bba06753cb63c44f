@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44391910_81cb694b",
+        "filename": "libs/binder/OS.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-17T19:40:43Z",
+      "side": 1,
+      "message": "This is deliberate to follow existing libutils API we\u0027re abstracting out there (see OS_android.cpp).",
+      "parentUuid": "9e39354d_f53bf5eb",
+      "revId": "c361116f7ac68168eab036d5bba06753cb63c44f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "464c866d_bb838430",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-16T23:56:28Z",
       "side": 1,
       "message": "Trusty also includes this, right?\n\nI think what we\u0027ll need to do in a follow-up (I can do it) is add both `GetThreadId` and `report_sysprop_change` to `trusty/OS.cpp` and stop including the Android file in `rules.mk`.",
+      "revId": "c361116f7ac68168eab036d5bba06753cb63c44f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a848779_40ce3d19",
+        "filename": "libs/binder/OS_android.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-17T19:40:43Z",
+      "side": 1,
+      "message": "Yes. I wasn\u0027t sure how \"android\" trusty is, so I made it include `OS_android.cpp`, but feel free to move stuff to `trusty/OS.cpp`. I even did this initially, but then realized that trusty\u0027s OS.cpp was the same as Android\u0027s (for these two functions).\n\nPTAL at Linux OS.cpp - maybe this one could be shared between Linux (non-android) and trusty?\n\nhttps://android-review.git.corp.google.com/c/platform/frameworks/native/+/2616196/48/libs/binder/linux/OS.cpp\n\nEither way - I suggest to do this after all of Linux Binder is done, so we would know how much Linux, Android and Trusty would differ.",
+      "parentUuid": "464c866d_bb838430",
       "revId": "c361116f7ac68168eab036d5bba06753cb63c44f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
