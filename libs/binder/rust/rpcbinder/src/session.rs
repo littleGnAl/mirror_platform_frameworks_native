@@ -47,6 +47,18 @@ impl RpcSession {
         // SAFETY: Takes ownership of the returned handle, which has correct refcount.
         unsafe { RpcSession::from_ptr(binder_rpc_unstable_bindgen::ARpcSession_new()) }
     }
+
+    /// Allocates a new RpcSession object and connects to a trusty server.
+    pub fn new_trusty(device: &str, port: &str) -> RpcSession {
+        let device_name = CString::new(device).expect("Service name contained null bytes");
+        let port_name = CString::new(port).expect("Service name contained null bytes");
+        unsafe {
+            RpcSession::from_ptr(binder_rpc_unstable_bindgen::ARpcSession_new_trusty_session(
+                device_name.as_ptr(),
+                port_name.as_ptr(),
+            ))
+        }
+    }
 }
 
 impl Default for RpcSession {
@@ -84,6 +96,35 @@ impl RpcSessionRef {
                 connections,
             )
         };
+    }
+
+    /// a function :)
+    pub fn session_to_handle<T: FromIBinder + ?Sized>(&self) -> Result<Strong<T>, StatusCode> {
+        // SAFETY: Only passes the 'self' pointer as an opaque handle.
+        let service = unsafe {
+            new_spibinder(binder_rpc_unstable_bindgen::ARpcSession_get_binder_from_session(
+                self.as_ptr(),
+            ))
+        };
+        Self::get_interface(service)
+    }
+
+    /// Connects to an RPC Binder server over vsock for a particular interface.
+    pub fn setup_trusty_client<T: FromIBinder + ?Sized>(
+        device: &str,
+        port: &str,
+    ) -> Result<Strong<T>, StatusCode> {
+        let device_name = CString::new(device).expect("Service name contained null bytes");
+        let port_name = CString::new(port).expect("Service name contained null bytes");
+        // SAFETY: AIBinder returned by ARpcSession_setupVsockClient has correct
+        // reference count, and the ownership can safely be taken by new_spibinder.
+        let service = unsafe {
+            new_spibinder(binder_rpc_unstable_bindgen::ARpcSession_new_trusty(
+                device_name.as_ptr(),
+                port_name.as_ptr(),
+            ))
+        };
+        Self::get_interface(service)
     }
 
     /// Connects to an RPC Binder server over vsock for a particular interface.
