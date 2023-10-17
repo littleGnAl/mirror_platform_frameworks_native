@@ -69,6 +69,24 @@
       "message": "I think this probably goes in the `file_descriptor` module. It may also make sense to move the existing content of the `file_descriptor` module into `file_descriptor/android.rs` as part of that.",
       "revId": "f9e8a40018d4417e88f76d74f25dd49b8df2a6c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2dee8c9_1e3caef2",
+        "filename": "libs/binder/rust/src/parcel.rs",
+        "patchSetId": 34
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-17T02:06:43Z",
+      "side": 1,
+      "message": "I have a better idea that I\u0027ll upload after the rustc prebuilts land: add a feature `pfd_owned_fd` (name subject to bikeshedding) which, when enabled, switched `ParcelFileDescriptor` to a new type around `std::os::fd::OwnedFd` instead of `std::fs::File`.",
+      "parentUuid": "ef6d05a1_d7ca7d71",
+      "revId": "f9e8a40018d4417e88f76d74f25dd49b8df2a6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
