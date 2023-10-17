@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a594c2a8_3d9893d6",
+        "filename": "libs/binder/tests/binderRpcWireProtocolTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-10-17T20:12:14Z",
+      "side": 0,
+      "message": "maybe we should have a `kExperimentalRepr` that we check always. i haven\u0027t put much thought into it",
+      "revId": "ecf372879bdbb2a6fef8f738fba3846e44fe0e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
