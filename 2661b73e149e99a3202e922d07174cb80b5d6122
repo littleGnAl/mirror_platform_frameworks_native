@@ -16,6 +16,24 @@
       "message": "This patch http://ag/23865478 was reverted. Should we cherry-pick this change instead: http://ag/24288318?",
       "revId": "2661b73e149e99a3202e922d07174cb80b5d6122",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "579256e9_432a4750",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-10-17T20:42:53Z",
+      "side": 1,
+      "message": "there will be some rebase we have to do because between this patch and the reverted patch, we landed a refactoring patch.\n\nThis original patch will get reverted and relanded multiple times, my plan is to get this patch in, land the refactoring patch and land the revert of this patch and then reland the final shape of the reverted patch.\n\nwdyt?",
+      "parentUuid": "61a5e448_b503b60e",
+      "revId": "2661b73e149e99a3202e922d07174cb80b5d6122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
