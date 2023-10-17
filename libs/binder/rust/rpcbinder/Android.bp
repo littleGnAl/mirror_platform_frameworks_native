@@ -27,6 +27,8 @@ rust_library {
         "//device/google/cuttlefish/shared/minidroid/sample",
         "//packages/modules/Virtualization:__subpackages__",
         "//system/software_defined_vehicle:__subpackages__",
+        "//system/core/trusty/hwcryptolib",
+        "//system/core/trusty/aidltest",
     ],
     apex_available: [
         "//apex_available:platform",

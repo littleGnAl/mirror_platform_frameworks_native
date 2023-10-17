@@ -98,6 +98,11 @@ void ARpcServer_free(ARpcServer* server);
 AIBinder* ARpcSession_setupVsockClient(ARpcSession* session, unsigned int cid,
                                        unsigned int port);
 
+
+ARpcSession* ARpcSession_new_trusty_session(const char* device, const char* port);
+AIBinder* ARpcSession_new_trusty(const char* device, const char* port);
+AIBinder* ARpcSession_get_binder_from_session(ARpcSession* handle);
+
 // Connects to an RPC server over a Unix Domain Socket of the given name.
 // The final Unix Domain Socket path name is /dev/socket/`name`.
 // Returns the root Binder object of the server.
