@@ -118,6 +118,30 @@
       },
       "revId": "135751df2b58388e4a84f0f56c1bad740e27773e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c201c7_1ebdca7a",
+        "filename": "libs/binder/format.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-18T23:54:28Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t know that it\u0027s indeed 10GB!\n\nAnyway, synced offline - I\u0027ll drop format from RpcState but will leave it in tests and servicedispatcher.",
+      "parentUuid": "8f839132_5e74c3f5",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "135751df2b58388e4a84f0f56c1bad740e27773e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
