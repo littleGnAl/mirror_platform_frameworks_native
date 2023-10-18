@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b041fd42_2df32d69",
+        "filename": "libs/binder/format.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-18T00:40:04Z",
+      "side": 1,
+      "message": "Hey, I forgot when I +2\u0027d earlier. By including this, we\u0027re statically including a lot more code into libbinder (no longer gets gc\u0027d with --gc-sections). So, we should measure the memory to justify it.\n\nAny chance you could pull showmap of a process using this (e.g. servicemanager) before and after this change?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "135751df2b58388e4a84f0f56c1bad740e27773e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
