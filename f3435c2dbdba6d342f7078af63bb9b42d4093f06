@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e783cb4_066a6cc7",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-10-18T00:58:36Z",
+      "side": 1,
+      "message": "It is a pointer to the memory at address 0x1, right?\n\nI don\u0027t feel that strongly about it just throwing my opinion out there. Whatever you two decide SGTM",
+      "parentUuid": "e9a2a1e2_ebbe796c",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 41
+      },
+      "revId": "f3435c2dbdba6d342f7078af63bb9b42d4093f06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "162d6ffe_7696253c",
         "filename": "libs/binder/include/binder/RpcTransport.h",
         "patchSetId": 8
