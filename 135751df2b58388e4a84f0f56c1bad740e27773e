@@ -22,6 +22,30 @@
       },
       "revId": "135751df2b58388e4a84f0f56c1bad740e27773e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1870c0b_a5107ef3",
+        "filename": "libs/binder/format.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-18T17:33:08Z",
+      "side": 1,
+      "message": "fmtlib static module is just 100 lines long, so I don\u0027t expect it to make any difference. Anyway, here is your output - I don\u0027t see any correlation between having this change and impact on memory.\n\n1. without: https://paste.googleplex.com/5902112021020672?raw\n2. with: https://paste.googleplex.com/5731179603951616?raw\n3. with: https://paste.googleplex.com/5397211503394816?raw\n4. without: https://paste.googleplex.com/5842979347496960?raw\n5. without: https://paste.googleplex.com/6006636526174208?raw\n\nAt what column are you looking at?",
+      "parentUuid": "b041fd42_2df32d69",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "135751df2b58388e4a84f0f56c1bad740e27773e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
