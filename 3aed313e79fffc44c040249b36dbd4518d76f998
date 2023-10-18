@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1530122_6f8bd405",
+        "filename": "libs/binder/Parcel.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 2411,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-18T21:59:03Z",
+      "side": 1,
+      "message": "nit: can you return all the way at the beginning? This way, we wouldn\u0027t expose the underlying format",
+      "range": {
+        "startLine": 2411,
+        "startChar": 0,
+        "endLine": 2411,
+        "endChar": 29
+      },
+      "revId": "3aed313e79fffc44c040249b36dbd4518d76f998",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
