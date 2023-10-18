@@ -70,6 +70,30 @@
       },
       "revId": "135751df2b58388e4a84f0f56c1bad740e27773e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0208264d_99af0adc",
+        "filename": "libs/binder/format.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-18T18:07:27Z",
+      "side": 1,
+      "message": "Ah, I see it now. But I don\u0027t see where are you getting these number from :).\n\nShared clean column goes up by 68 or 72 *bytes*, private dirty by 4 bytes (for units - please note virtual size for entire process is 10MB, not 10GB).",
+      "parentUuid": "d93d993f_4205558e",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "135751df2b58388e4a84f0f56c1bad740e27773e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
