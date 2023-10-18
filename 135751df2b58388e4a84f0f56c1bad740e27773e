@@ -46,6 +46,30 @@
       },
       "revId": "135751df2b58388e4a84f0f56c1bad740e27773e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d93d993f_4205558e",
+        "filename": "libs/binder/format.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-18T17:58:39Z",
+      "side": 1,
+      "message": "libbinder.so row, the shared clean column goes up by 36KB, and private dirty column goes up by 4KB, so estimate of memory increase would be 36KB + ~50 * 4KB \u003d 236KB. Btw, there is recently a long discussion about this method of estimating memory on b/206145174, if you want to know in more details.\n\nAnyway, most of these methods are in test, and we can use string concatenation, and it\u0027s fine. In servicedispatcher, it can trivially be changed to use streams, and that codepath isn\u0027t important.\n\nThe RpcState.cpp one may take a little bit of work, but it seems we can pretty easily avoid this dependency? Would you be okay removing it?",
+      "parentUuid": "d1870c0b_a5107ef3",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "135751df2b58388e4a84f0f56c1bad740e27773e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
