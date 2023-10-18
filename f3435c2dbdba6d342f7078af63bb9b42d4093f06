@@ -168,6 +168,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "557d1164_fbd353df",
+        "filename": "libs/binder/Utils.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-18T16:42:19Z",
+      "side": 1,
+      "message": "If you don\u0027t feel strongly and Steven don\u0027t care too much, let\u0027s leave this as it is now? :) If this becomes a problem for some reason, we can always replace it with copy-paste from libutils (ideally improving it first with your comments).\n\nEither way, I\u0027m closing this thread here since it\u0027s not applicable for this change anyway.",
+      "parentUuid": "2e783cb4_066a6cc7",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 41
+      },
+      "revId": "f3435c2dbdba6d342f7078af63bb9b42d4093f06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "162d6ffe_7696253c",
