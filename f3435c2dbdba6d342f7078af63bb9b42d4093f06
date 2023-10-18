@@ -189,6 +189,30 @@
       },
       "revId": "f3435c2dbdba6d342f7078af63bb9b42d4093f06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e52ac12f_050c24ab",
+        "filename": "libs/binder/include/binder/RpcTransport.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-18T16:37:39Z",
+      "side": 1,
+      "message": "I thought I explained this somewhere, but now I can\u0027t find where it was. I was about to ask you what do you want to do about this.\n\nTo use SmallFunction here, I would need to move `SmallFunction` and `assert_small_callable` from internal Utils.h to public libbinder includes. If that\u0027s what you want, please let me know into which header file should I put these (or create new?).",
+      "parentUuid": "162d6ffe_7696253c",
+      "range": {
+        "startLine": 88,
+        "startChar": 37,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "f3435c2dbdba6d342f7078af63bb9b42d4093f06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
