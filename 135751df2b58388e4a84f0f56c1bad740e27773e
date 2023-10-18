@@ -94,6 +94,30 @@
       },
       "revId": "135751df2b58388e4a84f0f56c1bad740e27773e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f839132_5e74c3f5",
+        "filename": "libs/binder/format.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-18T19:50:59Z",
+      "side": 1,
+      "message": "10GB is the amount of virtual address space that is reserved, mostly from scudo which is reserving a large amount of space. However, this space doesn\u0027t represent real memory use.",
+      "parentUuid": "0208264d_99af0adc",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "135751df2b58388e4a84f0f56c1bad740e27773e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
