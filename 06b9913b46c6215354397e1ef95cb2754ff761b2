@@ -113,6 +113,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fbf48bd_170a4a86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1837035
+      },
+      "writtenOn": "2023-10-19T03:22:41Z",
+      "side": 1,
+      "message": "After a lot of tests, it seams that there is a side effect of this patch.\nFor tunneled playback, if we would like to keep video freeze on Surface after closing MediaCodec.\nThis patch may violate this behavior, because there will be a sideband change notification to let SF switch from sideband to non-sideband.\nAnd this destroys the hw render engine in HWC.\n\nSo, we would like to change the patch from BufferQueue to CCodec.\nFor KEY_PUSH_BLANK_BUFFERS_ON_STOP case,\n  CCodec should setSidebandStream(nullptr) and then push blank video.\nFor no KEY_PUSH_BLANK_BUFFERS_ON_STOP case,\n  CCodec should not setSidebandStream(nullptr) and not push blank video.\n\nBecause we have some applications need to implement seamless feature, it means video should keep display on screen while MediaCodec changes with the same surface in tunneled playback.\n\nFor case: MediaCodec1 (tunnel) with Surface1 -\u003e MediaCodec1 close -\u003e MediaCodec2 (tunnel) with Surface1\nThere is also a tricky point that \u0027KEY_PUSH_BLANK_BUFFERS_ON_STOP \u003d false\u0027 means video should freeze after MediaCodec closes.\nBut currently, MediaCodec closing causes BufferQueue::disconnect() which sets sidebandStream handle to nullptr.\nAlthough this sidebandStream state doesn\u0027t update to SF immediately without the MTK patch.\nWe think if it is possible that there is a way not to set sidebandStream to nullptr in BufferQueue::disconnect while KEY_PUSH_BLANK_BUFFERS_ON_STOP  \u003d false.\nSo, we can keep sideband video show on screen and then switch to next sideband handle seamlessly.",
+      "revId": "06b9913b46c6215354397e1ef95cb2754ff761b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86593046_16f97070",
