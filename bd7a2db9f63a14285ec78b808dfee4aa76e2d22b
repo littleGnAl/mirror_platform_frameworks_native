@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8befd586_4cd751d1",
+        "filename": "libs/binder/format.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-19T23:53:50Z",
+      "side": 1,
+      "message": "nit: libs/binder/tests/format.h",
+      "revId": "bd7a2db9f63a14285ec78b808dfee4aa76e2d22b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
