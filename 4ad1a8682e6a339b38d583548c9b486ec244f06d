@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ad9a44_d46ae5b4",
+        "filename": "libs/binder/include/binder/Functional.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-19T23:56:49Z",
+      "side": 1,
+      "message": "how do we know if this changes?",
+      "range": {
+        "startLine": 27,
+        "startChar": 27,
+        "endLine": 27,
+        "endChar": 87
+      },
+      "revId": "4ad1a8682e6a339b38d583548c9b486ec244f06d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
