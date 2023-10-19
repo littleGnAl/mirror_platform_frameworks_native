@@ -102,6 +102,7 @@ const char* const gExtensionString  =
         "EGL_ANDROID_recordable "               // mandatory
         "EGL_EXT_buffer_age "                   // strongly recommended with partial_update
         "EGL_EXT_create_context_robustness "
+        "EGL_EXT_image_dma_buf_import "
         "EGL_EXT_image_gl_colorspace "
         "EGL_EXT_pixel_format_float "
         "EGL_EXT_protected_content "
