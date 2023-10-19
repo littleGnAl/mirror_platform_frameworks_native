@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6cd0815_91a3d331",
+        "filename": "libs/binder/include/binder/Functional.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-19T23:58:27Z",
+      "side": 1,
+      "message": "this is also in http://r.android.com/2780893, right?",
+      "revId": "e85005343e7b4cc2a4e98c8885c1af911b0a4202",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
