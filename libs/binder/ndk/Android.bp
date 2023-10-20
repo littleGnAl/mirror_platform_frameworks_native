@@ -64,6 +64,7 @@ cc_library {
         "stability.cpp",
         "status.cpp",
         "service_manager.cpp",
+        "persistable_bundle.cpp",
     ],
 
     static_libs: [
@@ -191,3 +192,4 @@ ndk_library {
         "libbinder_ndk_helper_headers",
     ],
 }
+
