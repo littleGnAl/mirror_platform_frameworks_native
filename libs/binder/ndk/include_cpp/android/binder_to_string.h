@@ -64,9 +64,25 @@
 namespace android {
 namespace internal {
 
+/**
+ * Always use a designated initializer to create this, e.g.:
+ *
+ * e.g. BinderToStringOptions myToString = { .collectionEllipses = true; }
+ */
+struct BinderToStringOptions {
+    bool collectionEllipses = false;
+
+    struct MustBeDefaultInstantiated {
+       private:
+        MustBeDefaultInstantiated() {}
+        friend BinderToStringOptions;
+    };
+    MustBeDefaultInstantiated BINDER_IMPLEMENTATION_DETAIL = {};
+};
+
 // ToString is a utility to generate string representation for various AIDL-supported types.
 template <typename _T>
-std::string ToString(const _T& t);
+std::string ToString(const _T& t, const BinderToStringOptions& options = {});
 
 namespace details {
 
@@ -146,7 +162,7 @@ struct TypeDependentFalse {
 }  // namespace details
 
 template <typename _T>
-std::string ToString(const _T& t) {
+std::string ToString(const _T& t, const BinderToStringOptions& options) {
     if constexpr (std::is_same_v<bool, _T>) {
         return t ? "true" : "false";
     } else if constexpr (std::is_same_v<char16_t, _T>) {
@@ -195,25 +211,31 @@ std::string ToString(const _T& t) {
     } else if constexpr (details::IsPointerLike<_T>::value || std::is_pointer_v<_T>) {
         if (!t) return "(null)";
         std::stringstream out;
-        out << ToString(*t);
+        out << ToString(*t, options);
         return out.str();
     } else if constexpr (details::HasToStringMethod<_T>::value) {
+        // FIXME! need to add BinderToStringOptions for Parcelable members
         return t.toString();
     } else if constexpr (details::HasToStringFunction<_T>::value) {
         return toString(t);
     } else if constexpr (details::IsIterable<_T>::value) {
         std::stringstream out;
-        bool first = true;
         out << "[";
+        size_t count = 0;
         for (const auto& e : t) {
-            if (first) {
-                first = false;
-            } else {
+            if (count > 0) {
                 out << ", ";
             }
+            count++;
+
+            if (count >= 2 && options.collectionEllipses) {
+                out << "...";
+                break;
+            }
+
             // Use explicit type parameter in case deref of iterator has different type
             // e.g. vector<bool>
-            out << ToString<typename _T::value_type>(e);
+            out << ToString<typename _T::value_type>(e, options);
         }
         out << "]";
         return out.str();
