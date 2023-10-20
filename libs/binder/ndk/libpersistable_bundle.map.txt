@@ -1,0 +1,7 @@
+LIBPERSISTABLE_BUNDLE {
+  global:
+    APersistableBundle_readFromParcel; # introduced=35
+    APersistableBundle_writeToParcel; # introduced=35
+  local:
+    *;
+};

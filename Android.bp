@@ -99,3 +99,8 @@ filegroup {
     srcs: ["aidl/android/hardware/display/IDeviceProductInfoConstants.aidl"],
     path: "aidl",
 }
+
+aidl_library {
+    name: "PersistableBundle_aidl",
+    hdrs: ["aidl/binder/android/os/PersistableBundle.aidl"],
+}
