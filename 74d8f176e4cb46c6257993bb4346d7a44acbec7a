@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f586250b_316ed398",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-20T23:15:42Z",
+      "side": 1,
+      "message": "note - this will also need \u0027APersistableBundle_delete\u0027",
+      "range": {
+        "startLine": 14,
+        "startChar": 30,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "74d8f176e4cb46c6257993bb4346d7a44acbec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
