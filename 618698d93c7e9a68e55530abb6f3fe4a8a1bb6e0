@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e623a3f_7dfaee7f",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-20T00:47:52Z",
+      "side": 1,
+      "message": "Main thing I\u0027m not sure about: if we should use `Deref`, or just a separate `inner` method. The Rust docs only recommend implementing `Deref` for smart pointers, and I\u0027m not entirely sure `$native` counts as one (leaning towards yes).\n\n@cranes@google.com wdyt?",
+      "revId": "618698d93c7e9a68e55530abb6f3fe4a8a1bb6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3355cad5_3b378462",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 5
