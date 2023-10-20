@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67e0a2b1_ce1927bb",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-20T20:18:59Z",
+      "side": 1,
+      "message": "We can\u0027t make it the default because that would destroy information people may be relying on in existing places. You already have an abstraction layer for your audio tostring (with the enum bit) so you could use that for this as well.",
+      "parentUuid": "62496157_0e3b4f83",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 36
+      },
+      "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da9237d6_6a562de3",
         "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2023-10-20T20:11:26Z",
       "side": 1,
       "message": "What if we break after achieving a certain length instead? There is no problem with printing completely a short list of small numbers.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105b31d0_83742337",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-20T20:18:59Z",
+      "side": 1,
+      "message": "sure, we can do any option. Let me get this piped through everywhere, and I can change it to something else.\n\nHowever, a specific length may not work - these structures may be nested arbitrarily deeply, so it\u0027s hard to impose a global length.",
+      "parentUuid": "c2c884b1_bc86c113",
       "range": {
         "startLine": 231,
         "startChar": 0,
