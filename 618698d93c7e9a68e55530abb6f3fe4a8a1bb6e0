@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3e5659b_9a3c0ab3",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-10-20T18:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9493c88d_44bdf491",
+      "revId": "618698d93c7e9a68e55530abb6f3fe4a8a1bb6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f94cf037_1f5c6fb1",
@@ -65,6 +83,24 @@
       "writtenOn": "2023-10-20T00:46:47Z",
       "side": 1,
       "message": "This shouldn\u0027t be needed.",
+      "revId": "618698d93c7e9a68e55530abb6f3fe4a8a1bb6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60833113_5147f001",
+        "filename": "libs/binder/rust/tests/integration.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-10-20T18:45:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3355cad5_3b378462",
       "revId": "618698d93c7e9a68e55530abb6f3fe4a8a1bb6e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
