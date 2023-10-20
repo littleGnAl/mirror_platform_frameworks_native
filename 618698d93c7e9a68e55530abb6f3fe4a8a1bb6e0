@@ -216,6 +216,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acdea2fe_cd2b89c0",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-10-20T19:20:26Z",
+      "side": 1,
+      "message": "Thanks Stephen. I was following some of the comments from this discussion and did this on the Rust side: https://groups.google.com/a/google.com/g/android-idl-discuss/c/WLtk6Mw9cOc\nIs the alternative then doing something on the C++ side to have the object available?",
+      "parentUuid": "23cde70a_73ddb508",
+      "revId": "618698d93c7e9a68e55530abb6f3fe4a8a1bb6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3355cad5_3b378462",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 5
