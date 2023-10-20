@@ -134,6 +134,30 @@
       },
       "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d06f10ed_6f39fe87",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-20T20:57:47Z",
+      "side": 1,
+      "message": "Do you mean, for instance, that instead of [1, 2, 3, ...] we should print [1, 2, 3, 4] because it\u0027s shorter?\n\nWe could also print [1, 2, 3, \u003c4 more elements\u003e] or similar.",
+      "parentUuid": "3e21a9fb_172feec0",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
