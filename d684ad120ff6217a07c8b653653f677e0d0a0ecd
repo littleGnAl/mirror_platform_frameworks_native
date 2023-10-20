@@ -65,6 +65,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68af1ef_9f67e409",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2023-10-20T23:04:19Z",
+      "side": 1,
+      "message": "Out of curiosity, how does this work?",
+      "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2c884b1_bc86c113",
@@ -198,6 +215,30 @@
       "side": 1,
       "message": "The global length is related to the local length because if the local length is the same everywhere, it also becomes the global length. Imagine if the first element of an array is a parcelable which contains an array that bumps against this limit, then you would always get an array with the first element cut off which contains many elements in a subarray. By picking a number of elements, we always guarantee visibility to elements at high and at low levels of nesting.\n\nIf this was BFS instead of DFS, we could limit string length in nested levels based on how much room is available when higher-level items are printed. Otherwise, you could do things like have the string length limit be different at different layers, but I don\u0027t really see a clean way. Maybe you have a more specific idea?",
       "parentUuid": "f6cc4ac7_0957bc06",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0bbf3c_9989155f",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1494236
+      },
+      "writtenOn": "2023-10-20T23:04:19Z",
+      "side": 1,
+      "message": "An alternate approach (not saying that it is preferable), is a per-field annotation (e.g. @TruncateString(length \u003d 5)) or something similar (which is opt-in by the actual interface definition).\n\nThis would mean that you could generically specify which fields were unimportant for a particular parcel stringify, and then all containing parcels would drop it.\n\nThis maps more clearly to a mental model where the problem is that certain fields are just not that helpful to be stringified (i.e. a data[] array) for logging purposes.\n\nA reason for this approach is imo, both fan-out and array length are parallel causes of verbosity.",
+      "parentUuid": "01fbe52e_d7118db5",
       "range": {
         "startLine": 231,
         "startChar": 0,
