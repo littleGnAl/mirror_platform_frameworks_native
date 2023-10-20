@@ -46,6 +46,30 @@
       },
       "revId": "4ad1a8682e6a339b38d583548c9b486ec244f06d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8c7216_55c35882",
+        "filename": "libs/binder/include/binder/Functional.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-20T21:50:59Z",
+      "side": 1,
+      "message": "which alloc test will fire? I didn\u0027t realize these paths were covered by binderAllocationLimits, so we should just cover them there. If we don\u0027t have a guarantee this works and it\u0027s just a heuristic, we could keep \u0027std::function\u0027 instead of small function, and have the real tests that check for an allocation.",
+      "parentUuid": "524ef906_a4fb4920",
+      "range": {
+        "startLine": 27,
+        "startChar": 27,
+        "endLine": 27,
+        "endChar": 87
+      },
+      "revId": "4ad1a8682e6a339b38d583548c9b486ec244f06d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
