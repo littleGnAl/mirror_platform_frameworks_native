@@ -16,6 +16,24 @@
       "message": "nit: libs/binder/tests/format.h",
       "revId": "bd7a2db9f63a14285ec78b808dfee4aa76e2d22b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c96bf2a_d737779a",
+        "filename": "libs/binder/format.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-20T06:30:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8befd586_4cd751d1",
+      "revId": "bd7a2db9f63a14285ec78b808dfee4aa76e2d22b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
