@@ -191,3 +191,41 @@ ndk_library {
         "libbinder_ndk_helper_headers",
     ],
 }
+
+cc_library {
+    name: "libpersistable_bundle",
+    host_supported: true,
+    llndk: {
+        symbol_file: "libpersistable_bundle.map.txt",
+    },
+    srcs: [
+        "persistable_bundle.cpp",
+    ],
+    shared_libs: [
+        "libbinder",
+        "libbinder_ndk",
+        "liblog",
+    ],
+    export_include_dirs: [
+        "include_persistable_bundle",
+    ],
+}
+
+ndk_headers {
+    name: "persistable_bundle_headers",
+    from: "include_persistable_bundle/android",
+    to: "android",
+    srcs: [
+        "include_persistable_bundle/android/*.h",
+    ],
+    license: "NOTICE",
+}
+
+ndk_library {
+    name: "libpersistable_bundle",
+    symbol_file: "libpersistable_bundle.map.txt",
+    first_version: "35",
+    export_header_libs: [
+        "persistable_bundle_headers",
+    ],
+}
