@@ -22,6 +22,30 @@
       },
       "revId": "38a22eebdedb81043c694b6d07329188a9c4148a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89811920_4d5e1ec3",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-20T21:56:38Z",
+      "side": 1,
+      "message": "This is just an extension of the same ifdef from line 1065. With our current CMake, there\u0027s no distinction between vendor and platform - Hao just declared `__ANDROID_VENDOR__` to deactivate these parts of the test.\n\nIf we want it in both modes, why the ifdef on `WorksWithLibbinderNdkPing` and `WorksWithLibbinderNdkUserTransaction`?",
+      "parentUuid": "ae59c1a4_217ec192",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "38a22eebdedb81043c694b6d07329188a9c4148a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
