@@ -161,6 +161,12 @@ LIBBINDER_NDK34 { # introduced=UpsideDownCake
     AServiceManager_addServiceWithFlags; # systemapi llndk
 };
 
+LIBBINDER_NDK35 { # introduced=VanillaIceCream
+  global:
+    APersistableBundle_readFromParcel;  # llndk
+    APersistableBundle_writeToParcel;  # llndk
+};
+
 LIBBINDER_NDK_PLATFORM {
   global:
     AParcel_getAllowFds;
