@@ -22,6 +22,30 @@
       },
       "revId": "4ad1a8682e6a339b38d583548c9b486ec244f06d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "524ef906_a4fb4920",
+        "filename": "libs/binder/include/binder/Functional.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-20T06:24:23Z",
+      "side": 1,
+      "message": "Not directly - it\u0027s an implementation detail. But if it changes to less than 3 pointers and triggers memory allocation, your alloc tests will fire.\n\nOn the other hand - as the comment says - 3 pointers is a good bet.",
+      "parentUuid": "b3ad9a44_d46ae5b4",
+      "range": {
+        "startLine": 27,
+        "startChar": 27,
+        "endLine": 27,
+        "endChar": 87
+      },
+      "revId": "4ad1a8682e6a339b38d583548c9b486ec244f06d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
