@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae59c1a4_217ec192",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-20T21:48:01Z",
+      "side": 1,
+      "message": "This is weird because it can be built for vendor. Are you building the libbinder sdk stuff as vendor code? I would think we\u0027d want it in both modes, and we should be able to test it in both modes.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "38a22eebdedb81043c694b6d07329188a9c4148a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
