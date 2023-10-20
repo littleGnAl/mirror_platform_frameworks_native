@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5662940_c5de0110",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-10-20T18:46:47Z",
+      "side": 1,
+      "message": "We impl Deref for `Strong\u003c\u003e`, why do we need it for `$native`? What is the use case for this change @oarbildo@google.com?",
+      "parentUuid": "6e623a3f_7dfaee7f",
+      "revId": "618698d93c7e9a68e55530abb6f3fe4a8a1bb6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3355cad5_3b378462",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 5
