@@ -158,6 +158,30 @@
       },
       "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6cc4ac7_0957bc06",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-10-20T21:14:15Z",
+      "side": 1,
+      "message": "\u003e because it\u0027s shorter?\n\nIdeally, yes, but we can just limit the resulting string length (for the array, not overall string length).\n\n\u003e We could also print [1, 2, 3, \u003c4 more elements\u003e] or similar.\n\nThat\u0027s a good idea!",
+      "parentUuid": "d06f10ed_6f39fe87",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
