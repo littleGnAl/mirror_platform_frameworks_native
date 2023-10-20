@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd58efde_a1a2d016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1967833
+      },
+      "writtenOn": "2023-10-20T08:02:32Z",
+      "side": 1,
+      "message": "Can you add prebuilt.xml entries for these files as well? ref: ag/24283353",
+      "revId": "66e6fad09b36098a8e83835d79ee08214f1126fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
