@@ -16,6 +16,24 @@
       "message": "The context of why you need this isn\u0027t well captured in the linked bug. Can you add that context to the commit message (a quick summary of our email conversation will do) and then I\u0027ll +1.",
       "revId": "194a7563c1df5a3c2d27cbb24491555c2b47e8ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8dbda15_e87ef6f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1986660
+      },
+      "writtenOn": "2023-10-20T11:11:29Z",
+      "side": 1,
+      "message": "Good point, thanks. I added more information from the email conversation to the linked bug.",
+      "parentUuid": "0945be9c_d79d0956",
+      "revId": "194a7563c1df5a3c2d27cbb24491555c2b47e8ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
