@@ -198,6 +198,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23cde70a_73ddb508",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-10-20T19:13:18Z",
+      "side": 1,
+      "message": "Yeah, you can\u0027t just cast from a trait object to the underlying object here. That\u0027s not sound, the layout of the trait object pointer is not well-defined.",
+      "parentUuid": "6331b5f8_3d71432d",
+      "revId": "618698d93c7e9a68e55530abb6f3fe4a8a1bb6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3355cad5_3b378462",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 5
