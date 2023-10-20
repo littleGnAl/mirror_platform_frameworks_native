@@ -182,6 +182,30 @@
       },
       "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01fbe52e_d7118db5",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-20T21:28:33Z",
+      "side": 1,
+      "message": "The global length is related to the local length because if the local length is the same everywhere, it also becomes the global length. Imagine if the first element of an array is a parcelable which contains an array that bumps against this limit, then you would always get an array with the first element cut off which contains many elements in a subarray. By picking a number of elements, we always guarantee visibility to elements at high and at low levels of nesting.\n\nIf this was BFS instead of DFS, we could limit string length in nested levels based on how much room is available when higher-level items are printed. Otherwise, you could do things like have the string length limit be different at different layers, but I don\u0027t really see a clean way. Maybe you have a more specific idea?",
+      "parentUuid": "f6cc4ac7_0957bc06",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
