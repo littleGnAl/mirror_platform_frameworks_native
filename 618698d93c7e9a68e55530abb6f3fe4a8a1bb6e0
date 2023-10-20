@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e53671f9_beecce7d",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 5
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-10-20T18:51:24Z",
+      "side": 1,
+      "message": "The use case is to cast from an IFooBinder object back to the original MyFooo object that implements IFooBinder. For that the cast chain that I follow is something like Strong\u003cIOpaqueKey\u003e -\u003e Binder\u003cBnOpaqueKey\u003e -\u003e BnOpaqueKey -\u003e OpaqueKey.",
+      "parentUuid": "f5662940_c5de0110",
+      "revId": "618698d93c7e9a68e55530abb6f3fe4a8a1bb6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3355cad5_3b378462",
         "filename": "libs/binder/rust/tests/integration.rs",
         "patchSetId": 5
