@@ -110,6 +110,30 @@
       },
       "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e21a9fb_172feec0",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-10-20T20:52:13Z",
+      "side": 1,
+      "message": "I meant, the length of `out.str()` here. Agree that using a global length is more laborious.",
+      "parentUuid": "105b31d0_83742337",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 13
+      },
+      "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
