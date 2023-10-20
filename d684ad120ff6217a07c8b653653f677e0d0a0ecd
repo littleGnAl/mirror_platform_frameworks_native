@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9237d6_6a562de3",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-20T19:07:07Z",
+      "side": 1,
+      "message": "I also need to make this struct bigger, so if options do get baked into a prebuilt, we can still add more without OOBR",
+      "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
