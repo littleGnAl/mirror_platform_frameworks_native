@@ -102,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d8cf753_4ba9c920",
+        "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2023-10-21T01:48:27Z",
+      "side": 1,
+      "message": "I started scratching my head, too. Which situation do we want to prevent with this arrangement, exactly?",
+      "parentUuid": "6fb6619d_990fdad3",
+      "revId": "d684ad120ff6217a07c8b653653f677e0d0a0ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2c884b1_bc86c113",
         "filename": "libs/binder/ndk/include_cpp/android/binder_to_string.h",
         "patchSetId": 1
