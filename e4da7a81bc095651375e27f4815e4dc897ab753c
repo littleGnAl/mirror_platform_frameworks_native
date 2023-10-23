@@ -34,6 +34,24 @@
       "parentUuid": "c6bb17bb_bcb7ada0",
       "revId": "e4da7a81bc095651375e27f4815e4dc897ab753c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "490994eb_7d293214",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-10-23T19:44:31Z",
+      "side": 1,
+      "message": "we won\u0027t land the internal patch, we will land from aosp. The reason I mentioned cherry-pick was to let reviewers know that nothing has changed from last time you reviewed the code internally",
+      "parentUuid": "dd758f00_7c34d917",
+      "revId": "e4da7a81bc095651375e27f4815e4dc897ab753c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
