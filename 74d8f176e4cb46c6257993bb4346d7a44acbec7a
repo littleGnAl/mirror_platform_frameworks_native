@@ -22,6 +22,30 @@
       },
       "revId": "74d8f176e4cb46c6257993bb4346d7a44acbec7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2428e9d_2440d1be",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f586250b_316ed398",
+      "range": {
+        "startLine": 14,
+        "startChar": 30,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "74d8f176e4cb46c6257993bb4346d7a44acbec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "733d6d7b_bdbb2799",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "\u003e of course needs APersistableBundle APIs for put/get set. It may also need an API to list the keys or list the types of each key, but otherwise lgtm\n\nRight, they are all skeletons right now. Wanted to get some feedback on the CL before writing all of them (you can see them in libbinder_ndk.map.txt right now. Quite a few!).",
+      "parentUuid": "db796d41_29d9fda5",
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8680fde5_29fd2db1",
         "filename": "aidl/binder/Android.bp",
         "patchSetId": 7
@@ -48,6 +66,30 @@
       "writtenOn": "2023-10-23T18:17:11Z",
       "side": 1,
       "message": "Can we keep this in the existing Android.bp file since everything is there? you can use \u0027strip_import_prefix\u0027 to allow the other directory to work",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3720b408_dea8aba4",
+        "filename": "aidl/binder/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8680fde5_29fd2db1",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -71,6 +113,24 @@
       "writtenOn": "2023-10-23T18:17:11Z",
       "side": 1,
       "message": "alphabetical",
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b9cea4_4ce9493a",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1dbddc2_39d7d26d",
       "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -115,6 +175,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdcb1e64_6dbaaef2",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d25ef52d_8ad65076",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b7442c_4a39f3f4",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f137ded2_f5220cd3",
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1e2453f_5820ecef",
@@ -138,6 +240,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5797e6_8611e4cb",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1e2453f_5820ecef",
+      "range": {
+        "startLine": 8,
+        "startChar": 7,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7ee5d19_82e41a3f",
@@ -151,6 +277,30 @@
       "writtenOn": "2023-10-23T18:17:11Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fefe311f_7a00b6ce",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7ee5d19_82e41a3f",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -207,6 +357,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1595f1b_bdb9931c",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "Done. Moved the get() to private for internal impl.",
+      "parentUuid": "e56231eb_9679c222",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 80
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1583bf2e_f5296952",
@@ -220,6 +394,30 @@
       "writtenOn": "2023-10-23T18:17:11Z",
       "side": 1,
       "message": "nit: I would recommend avoiding this and prefer people being explicit in if statements rather than assigning a default meaning",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 73
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13cd25de_b5e52db9",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1583bf2e_f5296952",
       "range": {
         "startLine": 72,
         "startChar": 0,
@@ -253,6 +451,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3add38f0_44a42e6e",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "Yeah, the `APersistableBundle` APIs (skeletons are already defined) plus all of the `PersistableBundle` APIs that wrap them like the this.",
+      "parentUuid": "366d3813_d708f6c8",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 5
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a219e3f3_7d793bc3",
@@ -266,6 +488,24 @@
       "writtenOn": "2023-10-23T18:17:11Z",
       "side": 1,
       "message": "same, license, pragma once, same elsewhere",
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cb4f22d_cd7c23d6",
+        "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T19:46:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a219e3f3_7d793bc3",
       "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
