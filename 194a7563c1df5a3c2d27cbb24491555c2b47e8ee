@@ -51,6 +51,24 @@
       "message": "You might want to enable EGL_EXT_image_dma_buf_import_modifiers too to really make this useful",
       "revId": "194a7563c1df5a3c2d27cbb24491555c2b47e8ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0523602f_9055707f",
+        "filename": "opengl/libs/EGL/egl_platform_entries.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1986660
+      },
+      "writtenOn": "2023-10-23T14:41:21Z",
+      "side": 1,
+      "message": "Thanks, done 😊",
+      "parentUuid": "e3a2994c_656369e4",
+      "revId": "194a7563c1df5a3c2d27cbb24491555c2b47e8ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
