@@ -16,6 +16,258 @@
       "message": "@smoreland@google.com can you take a look to make sure I have everything covered while I implement each of the methods.\n\nIt looks like I need to add two different APIs, one for APersistableBundle_* and the equivalent in the new PersistableBundle type that AIDL uses?",
       "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db796d41_29d9fda5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "hey, if this builds, go ahead and run presubmit to make sure nothing else surprising comes up. LGTM, a few comments, of course needs APersistableBundle APIs for put/get set. It may also need an API to list the keys or list the types of each key, but otherwise lgtm",
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8680fde5_29fd2db1",
+        "filename": "aidl/binder/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "Can we keep this in the existing Android.bp file since everything is there? you can use \u0027strip_import_prefix\u0027 to allow the other directory to work",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 1
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1dbddc2_39d7d26d",
+        "filename": "libs/binder/ndk/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "alphabetical",
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d25ef52d_8ad65076",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "prefer \"#pragma once\"",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f137ded2_f5220cd3",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "license",
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e2453f_5820ecef",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure we need this btw because it\u0027s in the include_cpp folder, not in an NDK header",
+      "range": {
+        "startLine": 8,
+        "startChar": 7,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ee5d19_82e41a3f",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78aca3a8_db0f4120",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "nit: you could consider inheriting from ScopedAResource and getting a lot of the details automatically",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 88
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e56231eb_9679c222",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "Since APersistableBundle is opaque, this is a bit odd to export. Though it might make internal implementation details slightly cleaner, no client of this API could use it, so might consider keeping it out",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 80
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1583bf2e_f5296952",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "nit: I would recommend avoiding this and prefer people being explicit in if statements rather than assigning a default meaning",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 73
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "366d3813_d708f6c8",
+        "filename": "libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "you\u0027ll add the other ones as well right?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 5
+      },
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a219e3f3_7d793bc3",
+        "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T18:17:11Z",
+      "side": 1,
+      "message": "same, license, pragma once, same elsewhere",
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
