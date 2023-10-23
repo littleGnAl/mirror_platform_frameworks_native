@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34070d72_0175a380",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-10-23T21:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88f91305_745e92ac",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "4d7e6b8ca99314dc8938059d81eabfe024c674df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1891b1b3_c8b79572",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b9e3e67_6999c8f8",
+        "filename": "libs/binder/tests/parcel_fuzzer/include_random_parcel/fuzzbinder/random_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-10-23T21:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1891b1b3_c8b79572",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "4d7e6b8ca99314dc8938059d81eabfe024c674df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77f2dec3_72905c32",
@@ -60,6 +108,30 @@
       "writtenOn": "2023-10-23T19:00:47Z",
       "side": 1,
       "message": "this is limiting the number of FDs sent to all Parcels. If you want to limit on the specific parcel, can you check debugReadAllFileDescriptors? or we could add a new API which is FD count.\n\nIt would also be nice, because it would be easy to make writtenFdCount wrong right now if the logic was messed up.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 77
+      },
+      "revId": "4d7e6b8ca99314dc8938059d81eabfe024c674df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20bf2912_b7377c8a",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1956258
+      },
+      "writtenOn": "2023-10-23T21:43:39Z",
+      "side": 1,
+      "message": "I tried debugReadAllFileDescriptors and it is too slow for to be done on long inputs. For the crashing test case is took around ~20000ms to execute single input if we use debugReadAllFileDescriptors and check fd count based on it. Using object Count to limit fds and binders.",
+      "parentUuid": "77f2dec3_72905c32",
       "range": {
         "startLine": 69,
         "startChar": 0,
