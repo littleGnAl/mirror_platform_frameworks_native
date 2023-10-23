@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f91305_745e92ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T19:00:47Z",
+      "side": 1,
+      "message": "Is there a typo in the bug number?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "4d7e6b8ca99314dc8938059d81eabfe024c674df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1891b1b3_c8b79572",
+        "filename": "libs/binder/tests/parcel_fuzzer/include_random_parcel/fuzzbinder/random_parcel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T19:00:47Z",
+      "side": 1,
+      "message": "nit: this is an internal implementation detail but exposed as an API. Maybe we can keep it internal? see other comments",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "4d7e6b8ca99314dc8938059d81eabfe024c674df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f2dec3_72905c32",
+        "filename": "libs/binder/tests/parcel_fuzzer/random_parcel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-23T19:00:47Z",
+      "side": 1,
+      "message": "this is limiting the number of FDs sent to all Parcels. If you want to limit on the specific parcel, can you check debugReadAllFileDescriptors? or we could add a new API which is FD count.\n\nIt would also be nice, because it would be easy to make writtenFdCount wrong right now if the logic was messed up.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 77
+      },
+      "revId": "4d7e6b8ca99314dc8938059d81eabfe024c674df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
