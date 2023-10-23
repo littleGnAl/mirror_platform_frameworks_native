@@ -16,6 +16,24 @@
       "message": "ptal, this is a cherry-pick from internal main",
       "revId": "e4da7a81bc095651375e27f4815e4dc897ab753c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd758f00_7c34d917",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1941946
+      },
+      "writtenOn": "2023-10-23T19:04:13Z",
+      "side": 1,
+      "message": "Looks like below two are missing from the commit message:\n\n1. Add \"[cherry-pick]\" prefix in commit message title.\n\n2. Add \"Merged-In\" in the commit message.",
+      "parentUuid": "c6bb17bb_bcb7ada0",
+      "revId": "e4da7a81bc095651375e27f4815e4dc897ab753c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
