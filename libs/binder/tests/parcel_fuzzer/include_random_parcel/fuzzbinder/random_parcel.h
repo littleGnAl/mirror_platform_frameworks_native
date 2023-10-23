@@ -28,6 +28,7 @@ struct RandomParcelOptions {
     std::function<void(Parcel* p, FuzzedDataProvider& provider)> writeHeader;
     std::vector<sp<IBinder>> extraBinders;
     std::vector<base::unique_fd> extraFds;
+    size_t writtenFdCount;
 };
 
 /**

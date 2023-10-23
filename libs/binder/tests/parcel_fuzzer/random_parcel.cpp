@@ -66,12 +66,18 @@ void fillRandomParcel(Parcel* p, FuzzedDataProvider&& provider, RandomParcelOpti
                 },
                 // write FD
                 [&]() {
+                    // b/296516864 - Limit number of fds written to a parcel.
+                    if (options->writtenFdCount > 1000) {
+                        return;
+                    }
+
                     if (options->extraFds.size() > 0 && provider.ConsumeBool()) {
                         const base::unique_fd& fd = options->extraFds.at(
                                 provider.ConsumeIntegralInRange<size_t>(0,
                                                                         options->extraFds.size() -
                                                                                 1));
                         CHECK(OK == p->writeFileDescriptor(fd.get(), false /*takeOwnership*/));
+                        options->writtenFdCount++;
                     } else {
                         // b/260119717 - Adding more FDs can eventually lead to FD limit exhaustion
                         if (options->extraFds.size() > 1000) {
@@ -82,7 +88,7 @@ void fillRandomParcel(Parcel* p, FuzzedDataProvider&& provider, RandomParcelOpti
                         CHECK(OK ==
                               p->writeFileDescriptor(fds.begin()->release(),
                                                      true /*takeOwnership*/));
-
+                        options->writtenFdCount++;
                         options->extraFds.insert(options->extraFds.end(),
                                                  std::make_move_iterator(fds.begin() + 1),
                                                  std::make_move_iterator(fds.end()));
