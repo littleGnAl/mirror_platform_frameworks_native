@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10f40bbc_1cdbb493",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-23T18:07:37Z",
+      "side": 1,
+      "message": "@smoreland@google.com can you take a look to make sure I have everything covered while I implement each of the methods.\n\nIt looks like I need to add two different APIs, one for APersistableBundle_* and the equivalent in the new PersistableBundle type that AIDL uses?",
+      "revId": "222de3c039cd5eb90fc9087bcd98d086b2a28783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
