@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c830334_94a70a61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1149384
+      },
+      "writtenOn": "2023-10-23T21:39:52Z",
+      "side": 1,
+      "message": "Could you please explain what this change is about here? Are you getting some kind of build error, or is this for a compiler upgrade? Is there a bug you can link to?",
+      "revId": "d4b5914d0cfd180295845c3b2d5162162f79f502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
