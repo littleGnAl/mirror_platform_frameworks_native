@@ -786,11 +786,14 @@ status_t IPCThreadState::handlePolledCommands()
     status_t result;
 
     do {
-        result = getAndExecuteCommand();
+        do {
+            result = getAndExecuteCommand();
+        } while (mIn.dataPosition() < mIn.dataSize());
+
+        processPendingDerefs();
+        flushCommands(); // may read more on mIn
     } while (mIn.dataPosition() < mIn.dataSize());
 
-    processPendingDerefs();
-    flushCommands();
     return result;
 }
 
