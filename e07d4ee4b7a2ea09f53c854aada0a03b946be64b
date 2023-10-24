@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eee38935_e4a00277",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-24T18:23:28Z",
+      "side": 1,
+      "message": "Yeah, this isn\u0027t finished.",
+      "parentUuid": "6ebb1b94_29836ed9",
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54826660_cc102912",
         "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
         "patchSetId": 11
@@ -49,6 +67,30 @@
       "writtenOn": "2023-10-24T18:11:31Z",
       "side": 1,
       "message": "these must be leaking memory? note - free and delete on the same object can\u0027t be mixed across the C API surface",
+      "range": {
+        "startLine": 115,
+        "startChar": 42,
+        "endLine": 115,
+        "endChar": 85
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e0ffae4_600e5f13",
+        "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-24T18:23:28Z",
+      "side": 1,
+      "message": "Hmmm, so we can\u0027t return anything allocated?\n\nI guess that\u0027s why some of these ndk APIs use callbacks instead of trying to return something like this? Is that what I need to use instead?\nLike `AServiceManager_forEachDeclaredInstance` https://source.corp.google.com/h/googleplex-android/platform/superproject/main/+/main:frameworks/native/libs/binder/ndk/include_platform/android/binder_manager.h;drc\u003d33558d327bdce855e88b7c17330d840d051b38b4;l\u003d221",
+      "parentUuid": "54826660_cc102912",
       "range": {
         "startLine": 115,
         "startChar": 42,
@@ -158,6 +200,30 @@
       "writtenOn": "2023-10-24T18:11:31Z",
       "side": 1,
       "message": "yeah, what cleans this allocation up?",
+      "range": {
+        "startLine": 131,
+        "startChar": 30,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c70d0d03_7f94f832",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-24T18:23:28Z",
+      "side": 1,
+      "message": "That would be up to the user of this API. In this case the `PersistableBundle::getBooleanVector()` in `libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h`",
+      "parentUuid": "5842e799_46b1abf4",
       "range": {
         "startLine": 131,
         "startChar": 30,
