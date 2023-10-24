@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e46372_1db3a833",
+        "filename": "services/sensorservice/SensorDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1956847
+      },
+      "writtenOn": "2023-10-24T11:56:42Z",
+      "side": 1,
+      "message": "if a dynamic connection is established, after hal die once, when dynamic sensor called onDynamicSensorConnected, it will crash because of check in line 406, so  mConnectedDynamicSensors should be cleared when do reconnect we think.\nneed your help to review if it reasonable, thank you very much.",
+      "revId": "31dd10785d51d43c873d902cdb63318fdbd57a3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
