@@ -165,6 +165,7 @@ void SensorDevice::reconnect() {
 
     mActivationCount.clear();
     mSensorList.clear();
+    mConnectedDynamicSensors.clear();
 
     if (mHalWrapper->connect(this)) {
         initializeSensorList();
