@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc3b6f2_d8ae4a48",
+        "filename": "libs/binder/IPCThreadState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-24T00:28:43Z",
+      "side": 1,
+      "message": "this won\u0027t work, because it doesn\u0027t \u0027do receive\u0027",
+      "range": {
+        "startLine": 794,
+        "startChar": 8,
+        "endLine": 794,
+        "endChar": 21
+      },
+      "revId": "1e52ca390fff6c4d31212da148a5d3d520f12e48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
