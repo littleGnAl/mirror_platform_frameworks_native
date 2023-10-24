@@ -16,6 +16,156 @@
       "message": "(adding NDK API council)",
       "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ebb1b94_29836ed9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-24T18:11:31Z",
+      "side": 1,
+      "message": "(oh - or may remove them until all APIs are implemented, but doesn\u0027t hurt to get initial review)",
+      "parentUuid": "233e8b37_07e0063c",
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54826660_cc102912",
+        "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-24T18:11:31Z",
+      "side": 1,
+      "message": "these must be leaking memory? note - free and delete on the same object can\u0027t be mixed across the C API surface",
+      "range": {
+        "startLine": 115,
+        "startChar": 42,
+        "endLine": 115,
+        "endChar": 85
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5444ad4_5e75e616",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-24T18:11:31Z",
+      "side": 1,
+      "message": "license",
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e82a2c55_79ffcdcd",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-24T18:11:31Z",
+      "side": 1,
+      "message": "prefer throwing variant? I\u0027m actually curious NDK API council perspective, but crashing on ENOMEM should be preferred I would think",
+      "range": {
+        "startLine": 17,
+        "startChar": 14,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f88c6b91_8946207f",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-24T18:11:31Z",
+      "side": 1,
+      "message": "can just be \u0027free(pBundle)\u0027 - free of nullptr is okay",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f44b9fe_be9a94d9",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-24T18:11:31Z",
+      "side": 1,
+      "message": "lhs \u003d\u003d rhs (if they are both null?)",
+      "range": {
+        "startLine": 38,
+        "startChar": 15,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5842e799_46b1abf4",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-24T18:11:31Z",
+      "side": 1,
+      "message": "yeah, what cleans this allocation up?",
+      "range": {
+        "startLine": 131,
+        "startChar": 30,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
