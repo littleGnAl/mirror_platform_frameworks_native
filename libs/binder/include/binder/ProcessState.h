@@ -17,7 +17,11 @@
 #pragma once
 
 #include <binder/IBinder.h>
+<<<<<<< PATCH SET (4f31a1 Binder: don't depend on libutils headers)
+#include <utils/Mutex.h>
+=======
 #include <utils/KeyedVector.h>
+>>>>>>> BASE      (29c9a9 Merge "Binder: migrate off libutils Mutex" into main)
 #include <utils/String16.h>
 #include <utils/String8.h>
 
