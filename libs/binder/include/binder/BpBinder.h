@@ -18,9 +18,9 @@
 
 #include <android-base/unique_fd.h>
 #include <binder/IBinder.h>
-#include <utils/Mutex.h>
 
 #include <map>
+#include <mutex>
 #include <optional>
 #include <unordered_map>
 #include <variant>
@@ -193,7 +193,7 @@ private:
             void                reportOneDeath(const Obituary& obit);
             bool                isDescriptorCached() const;
 
-    mutable Mutex               mLock;
+    mutable std::mutex          mLock;
             volatile int32_t    mAlive;
             volatile int32_t    mObitsSent;
             Vector<Obituary>*   mObituaries;
@@ -201,7 +201,7 @@ private:
     mutable String16            mDescriptorCache;
             int32_t             mTrackedUid;
 
-    static Mutex                                sTrackingLock;
+    static std::mutex                           sTrackingLock;
     static std::unordered_map<int32_t,uint32_t> sTrackingMap;
     static int                                  sNumTrackedUids;
     static std::atomic_bool                     sCountByUidEnabled;
