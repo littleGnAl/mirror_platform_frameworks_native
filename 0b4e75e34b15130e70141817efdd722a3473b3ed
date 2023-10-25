@@ -103,6 +103,30 @@
       },
       "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e50d08_25c5ae40",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-25T23:38:13Z",
+      "side": 1,
+      "message": "I guess that\u0027s true. It\u0027s just more formal than a comment in English.",
+      "parentUuid": "06cd27ed_a8575444",
+      "range": {
+        "startLine": 181,
+        "startChar": 31,
+        "endLine": 181,
+        "endChar": 59
+      },
+      "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
