@@ -94,6 +94,30 @@
       },
       "revId": "4ad1a8682e6a339b38d583548c9b486ec244f06d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2535df6_69a92c14",
+        "filename": "libs/binder/include/binder/Functional.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-25T22:49:37Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s been on my mind for a few days. We can improve binderAllocationLimits separately as needed. This is fine.\n\nCan you put the SmallFunction stuff in an impl namespace or similar? I don\u0027t want clients of libbinder to depend on it, except for the friend classes we know about which implement RpcTransport subclasses.",
+      "parentUuid": "8c2282ef_3085f8f0",
+      "range": {
+        "startLine": 27,
+        "startChar": 27,
+        "endLine": 27,
+        "endChar": 87
+      },
+      "revId": "4ad1a8682e6a339b38d583548c9b486ec244f06d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
