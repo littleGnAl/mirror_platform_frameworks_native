@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#define BINDER_ENABLE_FLATTENABLE
+
 #include <errno.h>
 #include <poll.h>
 #include <pthread.h>

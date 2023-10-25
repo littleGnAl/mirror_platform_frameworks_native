@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 #define FUZZ_LOG_TAG "binder"
+#define BINDER_ENABLE_FLATTENABLE
 
 #include "binder.h"
 #include "parcelables/EmptyParcelable.h"

@@ -191,7 +191,7 @@ void ProcessState::childPostFork() {
 
 void ProcessState::startThreadPool()
 {
-    AutoMutex _l(mLock);
+    std::unique_lock<std::mutex> _l(mLock);
     if (!mThreadPoolStarted) {
         if (mMaxThreads == 0) {
             // see also getThreadPoolMaxTotalThreadCount
@@ -205,7 +205,7 @@ void ProcessState::startThreadPool()
 
 bool ProcessState::becomeContextManager()
 {
-    AutoMutex _l(mLock);
+    std::unique_lock<std::mutex> _l(mLock);
 
     flat_binder_object obj {
         .flags = FLAT_BINDER_FLAG_TXN_SECURITY_CTX,
@@ -312,7 +312,7 @@ sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
 {
     sp<IBinder> result;
 
-    AutoMutex _l(mLock);
+    std::unique_lock<std::mutex> _l(mLock);
 
     if (handle == 0 && the_context_object != nullptr) return the_context_object;
 
@@ -376,7 +376,7 @@ sp<IBinder> ProcessState::getStrongProxyForHandle(int32_t handle)
 
 void ProcessState::expungeHandle(int32_t handle, IBinder* binder)
 {
-    AutoMutex _l(mLock);
+    std::unique_lock<std::mutex> _l(mLock);
 
     handle_entry* e = lookupHandleLocked(handle);
 
