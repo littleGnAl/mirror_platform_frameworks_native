@@ -17,6 +17,7 @@
 #define LOG_TAG "Parcel"
 //#define LOG_NDEBUG 0
 
+#include <endian.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <inttypes.h>
@@ -43,11 +44,13 @@
 #ifndef BINDER_DISABLE_BLOB
 #include <cutils/ashmem.h>
 #endif
+<<<<<<< PATCH SET (8d46bc Binder: don't depend on libutils headers)
+=======
 #include <utils/Flattenable.h>
 #include <utils/Log.h>
+>>>>>>> BASE      (f31030 Merge "record file fuzzer: fix FD double-own" into main)
 #include <utils/String16.h>
 #include <utils/String8.h>
-#include <utils/misc.h>
 
 #include "OS.h"
 #include "RpcState.h"

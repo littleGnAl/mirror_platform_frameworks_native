@@ -17,8 +17,11 @@
 #pragma once
 
 #include <binder/IBinder.h>
+<<<<<<< PATCH SET (8d46bc Binder: don't depend on libutils headers)
+=======
 #include <utils/KeyedVector.h>
 #include <utils/Mutex.h>
+>>>>>>> BASE      (f31030 Merge "record file fuzzer: fix FD double-own" into main)
 #include <utils/String16.h>
 #include <utils/String8.h>
 
