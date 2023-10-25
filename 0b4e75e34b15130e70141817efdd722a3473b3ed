@@ -20,6 +20,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d639be4_7b7c1457",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-25T23:31:43Z",
+      "side": 1,
+      "message": "yeah, this looks very solid",
+      "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5fae37d_c87767e7",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-25T23:31:43Z",
+      "side": 1,
+      "message": "we\u0027ll need to perf test the mutex switches independently",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 21
+      },
+      "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12298782_8291f340",
         "filename": "libs/binder/include/binder/ProcessState.h",
         "patchSetId": 1
@@ -31,6 +71,30 @@
       "writtenOn": "2023-10-25T23:28:28Z",
       "side": 1,
       "message": "`GUARDED_BY`? We\u0027d need to copy it from libutils.",
+      "range": {
+        "startLine": 181,
+        "startChar": 31,
+        "endLine": 181,
+        "endChar": 59
+      },
+      "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06cd27ed_a8575444",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-25T23:31:43Z",
+      "side": 1,
+      "message": "yeah, just not everything in the standard library implements the macros required to actually make -Wthread-safety useful.",
+      "parentUuid": "12298782_8291f340",
       "range": {
         "startLine": 181,
         "startChar": 31,
