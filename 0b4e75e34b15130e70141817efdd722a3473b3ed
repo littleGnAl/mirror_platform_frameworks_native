@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "243230f2_75433bb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-25T23:24:50Z",
+      "side": 1,
+      "message": "This is the fix I was talking about today. It\u0027s building and passing tests on Linux, but fails to build on Android yet. I\u0027ll fix it tomorrow.",
+      "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
