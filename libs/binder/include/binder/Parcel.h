@@ -33,7 +33,9 @@
 #include <utils/RefBase.h>
 #include <utils/String16.h>
 #include <utils/Vector.h>
+#ifndef BINDER_ENABLE_FLATTENABLE
 #include <utils/Flattenable.h>
+#endif
 
 #include <binder/IInterface.h>
 #include <binder/Parcelable.h>

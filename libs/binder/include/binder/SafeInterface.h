@@ -58,6 +58,7 @@ public:
                                                                           E e) const {
         return write(parcel, static_cast<typename std::underlying_type<E>::type>(e));
     }
+#ifndef BINDER_ENABLE_FLATTENABLE
     template <typename T>
     typename std::enable_if<std::is_base_of<Flattenable<T>, T>::value, status_t>::type read(
             const Parcel& parcel, T* t) const {
@@ -89,6 +90,7 @@ public:
             Parcel* parcel, const T& t) const {
         return callParcel("write(LightFlattenable)", [&]() { return parcel->write(t); });
     }
+#endif
     template <typename NH>
     typename std::enable_if<std::is_same<NH, sp<NativeHandle>>::value, status_t>::type read(
             const Parcel& parcel, NH* nh) {
