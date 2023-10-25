@@ -16,6 +16,29 @@
       "message": "This is the fix I was talking about today. It\u0027s building and passing tests on Linux, but fails to build on Android yet. I\u0027ll fix it tomorrow.",
       "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12298782_8291f340",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-25T23:28:28Z",
+      "side": 1,
+      "message": "`GUARDED_BY`? We\u0027d need to copy it from libutils.",
+      "range": {
+        "startLine": 181,
+        "startChar": 31,
+        "endLine": 181,
+        "endChar": 59
+      },
+      "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
