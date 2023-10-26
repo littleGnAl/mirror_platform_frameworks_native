@@ -118,6 +118,30 @@
       },
       "revId": "4ad1a8682e6a339b38d583548c9b486ec244f06d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea9f2bd1_2b14194c",
+        "filename": "libs/binder/include/binder/Functional.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-26T16:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2535df6_69a92c14",
+      "range": {
+        "startLine": 27,
+        "startChar": 27,
+        "endLine": 27,
+        "endChar": 87
+      },
+      "revId": "4ad1a8682e6a339b38d583548c9b486ec244f06d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
