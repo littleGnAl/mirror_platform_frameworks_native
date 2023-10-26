@@ -127,6 +127,30 @@
       },
       "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1285129_8c65d75e",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-26T00:24:23Z",
+      "side": 1,
+      "message": "Yeah. I\u0027ve also seen a few cases of people assuming GUARDED_BY does something, when it actually does not 😄, I have also tried adding -Wthread-safety to libbinder in the past, but it\u0027s actually pretty tricky because there are some *really old* paths which do things like check if a memory location is non-zero without guarding access, because they don\u0027t care about races. We should definitely use these macros/attributes more, but I think the c++ stl library implementations do need to catch up a tiny bit, at least the last time I checked.",
+      "parentUuid": "f6e50d08_25c5ae40",
+      "range": {
+        "startLine": 181,
+        "startChar": 31,
+        "endLine": 181,
+        "endChar": 59
+      },
+      "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
