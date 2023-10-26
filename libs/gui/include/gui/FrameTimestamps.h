@@ -17,6 +17,8 @@
 #ifndef ANDROID_GUI_FRAMETIMESTAMPS_H
 #define ANDROID_GUI_FRAMETIMESTAMPS_H
 
+#define BINDER_ENABLE_FLATTENABLE
+
 #include <android/gui/FrameEvent.h>
 
 #include <gui/CompositorTiming.h>

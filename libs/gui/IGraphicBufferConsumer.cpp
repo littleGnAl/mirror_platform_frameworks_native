@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#define BINDER_ENABLE_FLATTENABLE
+
 #include <gui/IGraphicBufferConsumer.h>
 
 #include <gui/BufferItem.h>

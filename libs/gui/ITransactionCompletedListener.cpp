@@ -15,6 +15,7 @@
  */
 
 #define LOG_TAG "ITransactionCompletedListener"
+#define BINDER_ENABLE_FLATTENABLE
 //#define LOG_NDEBUG 0
 
 #include <cstdint>
