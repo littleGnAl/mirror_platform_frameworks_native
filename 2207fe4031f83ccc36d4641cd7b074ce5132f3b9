@@ -16,6 +16,24 @@
       "message": "There\u0027s one more build failure I don\u0027t understand yet - trusty.\n\nBuild log: http://gpaste/5216005138677760?raw\n\nIt fails with undefined symbol __libcpp_mutex_destroy. Is trusty single-threaded only? But then why doesn\u0027t it fail with pthread Mutex?",
       "revId": "2207fe4031f83ccc36d4641cd7b074ce5132f3b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3afb57b1_34c515a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-26T19:16:50Z",
+      "side": 1,
+      "message": "(unresolved)",
+      "parentUuid": "c9441999_ba4710d5",
+      "revId": "2207fe4031f83ccc36d4641cd7b074ce5132f3b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
