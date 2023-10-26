@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include <utils/Flattenable.h>
+
 #include <errno.h>
 #include <poll.h>
 #include <pthread.h>

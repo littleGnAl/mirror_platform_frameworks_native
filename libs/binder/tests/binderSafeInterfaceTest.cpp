@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include <utils/Flattenable.h>
+
 #include <binder/SafeInterface.h>
 
 #include <binder/IInterface.h>
