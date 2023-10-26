@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0092982_8bf8f7fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-26T00:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eee38935_e4a00277",
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "215718f1_7ab0823c",
@@ -84,6 +102,42 @@
       "writtenOn": "2023-10-24T21:13:50Z",
       "side": 1,
       "message": "every method needs API docs",
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5da5cd38_fb1e7558",
+        "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-26T00:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b7e09d0_601f9ebc",
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd2e9bf0_f3eceec6",
+        "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-26T00:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "215718f1_7ab0823c",
       "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -135,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a84f090a_340e3ecd",
+        "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-26T00:13:13Z",
+      "side": 1,
+      "message": "Changed these require a user supplied pre-allocated buffer. Behaves like snprintf https://cplusplus.com/reference/cstdio/snprintf/",
+      "parentUuid": "3e0ffae4_600e5f13",
+      "range": {
+        "startLine": 115,
+        "startChar": 42,
+        "endLine": 115,
+        "endChar": 85
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5444ad4_5e75e616",
@@ -152,6 +230,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb03746_71c870e2",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-26T00:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5444ad4_5e75e616",
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e82a2c55_79ffcdcd",
@@ -165,6 +261,30 @@
       "writtenOn": "2023-10-24T18:11:31Z",
       "side": 1,
       "message": "prefer throwing variant? I\u0027m actually curious NDK API council perspective, but crashing on ENOMEM should be preferred I would think",
+      "range": {
+        "startLine": 17,
+        "startChar": 14,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbcef2b1_9ded7b13",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-26T00:13:13Z",
+      "side": 1,
+      "message": "ok, removed. Leaving open in case anyone from NDK API council has an opinion.",
+      "parentUuid": "e82a2c55_79ffcdcd",
       "range": {
         "startLine": 17,
         "startChar": 14,
@@ -198,6 +318,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3190859a_1f94ada9",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-26T00:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f88c6b91_8946207f",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f44b9fe_be9a94d9",
@@ -211,6 +355,30 @@
       "writtenOn": "2023-10-24T18:11:31Z",
       "side": 1,
       "message": "lhs \u003d\u003d rhs (if they are both null?)",
+      "range": {
+        "startLine": 38,
+        "startChar": 15,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b94f2eff_c99427ab",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-26T00:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f44b9fe_be9a94d9",
       "range": {
         "startLine": 38,
         "startChar": 15,
@@ -258,6 +426,30 @@
       "side": 1,
       "message": "That would be up to the user of this API. In this case the `PersistableBundle::getBooleanVector()` in `libs/binder/ndk/include_cpp/android/persistable_bundle_aidl.h`",
       "parentUuid": "5842e799_46b1abf4",
+      "range": {
+        "startLine": 131,
+        "startChar": 30,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e08cb39b_7160e8f3",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-26T00:13:13Z",
+      "side": 1,
+      "message": "Changed this to only use allocations from the user side.",
+      "parentUuid": "c70d0d03_7f94f832",
       "range": {
         "startLine": 131,
         "startChar": 30,
