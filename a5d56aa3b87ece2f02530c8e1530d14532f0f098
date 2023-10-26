@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc0c82f_75abe8b4",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1809421
+      },
+      "writtenOn": "2023-10-26T23:12:45Z",
+      "side": 1,
+      "message": "Can you just do the following without the downcast_rs crate and impl?\n\n            /// Tries to downcast the interface to another type.\n            pub fn local_downcast\u003cT: $interface + Any\u003e(\u0026self) -\u003e Option\u003c\u0026T\u003e {\n                (\u0026*self.0 as \u0026dyn Any).downcast_ref::\u003cT\u003e()\n            }",
+      "range": {
+        "startLine": 896,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 13
+      },
+      "revId": "a5d56aa3b87ece2f02530c8e1530d14532f0f098",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
