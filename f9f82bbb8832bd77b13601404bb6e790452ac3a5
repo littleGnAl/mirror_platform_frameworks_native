@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5457332_7fe91726",
+        "filename": "libs/gui/ITransactionCompletedListener.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-26T21:24:51Z",
+      "side": 1,
+      "message": "can\u0027t this import Flattenable instead of adding the cflag? Using cflag to control header is a bit of an anti-pattern. The Parcel header has a forward declare, so it should be okay. Then this file could import Flattenable.h\n\nOr for SafeInterface.h case, can we do the same solution we did for native_handle, where we disable it for our custom build? Having to add this for every client might be a bit much",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "f9f82bbb8832bd77b13601404bb6e790452ac3a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
