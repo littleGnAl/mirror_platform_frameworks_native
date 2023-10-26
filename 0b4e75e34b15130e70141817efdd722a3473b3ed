@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0acfdf67_e122c806",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-26T21:19:22Z",
+      "side": 1,
+      "message": "I\u0027d also check binderThroughputBenchmark. You might also use frameworks/base/libs/hwui/tests/scripts/prep_generic.sh to control for other things.\n\nThe thing is, these tests aren\u0027t going to be representative of real binder usage. So, you might do boot time or app startup time as well. Also, it should be in a separate and ideally easily revertible change. This kind of thing can be tricky to land.",
+      "parentUuid": "64db39b0_dbf14912",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 21
+      },
+      "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12298782_8291f340",
         "filename": "libs/binder/include/binder/ProcessState.h",
         "patchSetId": 1
