@@ -52,6 +52,24 @@
       "parentUuid": "3afb57b1_34c515a0",
       "revId": "2207fe4031f83ccc36d4641cd7b074ce5132f3b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fe49bb0_6979d8ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-26T21:16:51Z",
+      "side": 1,
+      "message": "Fixed, thanks.\n\nBut now Binder.cpp and BpBinder.cpp uses RpcMutex. It\u0027s just naming, but we might want to update it (ideally in a separate change).",
+      "parentUuid": "704b9cfb_c1e23956",
+      "revId": "2207fe4031f83ccc36d4641cd7b074ce5132f3b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
