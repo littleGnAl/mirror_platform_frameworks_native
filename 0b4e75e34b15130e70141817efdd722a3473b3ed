@@ -151,6 +151,30 @@
       },
       "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5721aec_a36b455f",
+        "filename": "libs/binder/include/binder/ProcessState.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-26T17:50:07Z",
+      "side": 1,
+      "message": "While it would be good to describe mutex-variable relation with formal annotations instead of English language, it\u0027s out of scope of this change. For another time.",
+      "parentUuid": "e1285129_8c65d75e",
+      "range": {
+        "startLine": 181,
+        "startChar": 31,
+        "endLine": 181,
+        "endChar": 59
+      },
+      "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
