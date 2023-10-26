@@ -172,6 +172,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b238b7dd_6ecdb7c1",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-26T21:43:52Z",
+      "side": 1,
+      "message": "Acknowledged. I can run ABDT to minimize that, I already have a bunch of favorite, error-prone targets.",
+      "parentUuid": "5a519d8e_39ae34fb",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 21
+      },
+      "revId": "0b4e75e34b15130e70141817efdd722a3473b3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12298782_8291f340",

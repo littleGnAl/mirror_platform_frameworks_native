@@ -22,6 +22,30 @@
       },
       "revId": "f9f82bbb8832bd77b13601404bb6e790452ac3a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03b424e5_0f63b8b6",
+        "filename": "libs/gui/ITransactionCompletedListener.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-26T21:43:52Z",
+      "side": 1,
+      "message": "I guess it can - I had some not very readable build errors last time I tried, but I can try harder.\n\nI found that Flattenable is deprecated and so far I only found one client using flattenable-parcel pair (didn\u0027t look hard yet). So I figured we might prefer to disable-by-default and get rid of that in the future.",
+      "parentUuid": "d5457332_7fe91726",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "f9f82bbb8832bd77b13601404bb6e790452ac3a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
