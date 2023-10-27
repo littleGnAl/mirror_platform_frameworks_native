@@ -16,6 +16,29 @@
       "message": "@jreck@google.com @mathias@google.com do either of you know what needs to happen with the `-next` release configuration here? It doesn\u0027t build in aosp (can\u0027t even lunch to it). It\u0027s failing to build in presubmits here saying the ABI diffs need to be updated:https://android-build.corp.google.com/artifact/pending/P64670390/aosp_cf_x86_64_only_phone-next-userdebug/latest/view/logs%2Fbuild_error.log",
       "revId": "cbadc5d24e281f5209a7516ad52c564508e168d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b35ebd3_cf6a4e29",
+        "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2023-10-27T20:34:14Z",
+      "side": 1,
+      "message": "this forces copies to happen that don\u0027t in theory need to. Ideally we\u0027d read directly from the underlying parcel into a given char* buffer, whereas this is essentially forcing a temporary heap allocation purely to supply to the callback function (as if it wasn\u0027t temporary we could just return the const char* with a note that the lifecycle is the same as the `APersistableBundle`\u0027s)\n\nAlso https://g3doc.corp.google.com/company/teams/android-api-council/guidelines/ndk.md?cl\u003dhead#callbacks-void\n\nSo do instead something like `char* (*APersistableBundle_stringAllocator)(size_t sizeBytes, void* context)` ?",
+      "range": {
+        "startLine": 38,
+        "startChar": 60,
+        "endLine": 38,
+        "endChar": 88
+      },
+      "revId": "cbadc5d24e281f5209a7516ad52c564508e168d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
