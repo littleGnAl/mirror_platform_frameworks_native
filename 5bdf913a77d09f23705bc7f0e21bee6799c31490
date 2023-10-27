@@ -46,6 +46,30 @@
       },
       "revId": "5bdf913a77d09f23705bc7f0e21bee6799c31490",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e07b04d_1d681389",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-10-27T15:19:05Z",
+      "side": 1,
+      "message": "I see, yes that\u0027s also a reason to do it here. I\u0027m not terribly concerned that we\u0027re messing up the legacy code either, but it can still be called out a bit better:\n\n- This sentence can be more accurate.\n- Please add a comment in OtaPreoptService.java that this override exists and that the FIRST_BOOT specified there won\u0027t make it into the actual compiler reason. The legacy code is still there after all, and we don\u0027t know for sure that it\u0027ll go away soon.",
+      "parentUuid": "8133540b_f87129ac",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 67
+      },
+      "revId": "5bdf913a77d09f23705bc7f0e21bee6799c31490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
