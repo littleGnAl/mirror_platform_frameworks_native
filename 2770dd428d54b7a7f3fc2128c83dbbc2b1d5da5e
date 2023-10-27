@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef99f1b_c95e8d49",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-27T00:17:32Z",
+      "side": 1,
+      "message": "does this avoid an allocation here? this is a performance critical path",
+      "range": {
+        "startLine": 624,
+        "startChar": 34,
+        "endLine": 624,
+        "endChar": 51
+      },
+      "revId": "2770dd428d54b7a7f3fc2128c83dbbc2b1d5da5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
