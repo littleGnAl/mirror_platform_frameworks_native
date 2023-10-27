@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4bb3605_64c41618",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-27T20:34:35Z",
+      "side": 1,
+      "message": "Maybe it should be @maennich@google.com. Adding @hsinyichen@google.com in case they know what\u0027s going on with `-next` abi diffs internally. Created b/308192597 for this.",
+      "parentUuid": "3ee59fdb_a5c1a62f",
+      "revId": "cbadc5d24e281f5209a7516ad52c564508e168d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b35ebd3_cf6a4e29",
         "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
         "patchSetId": 15
