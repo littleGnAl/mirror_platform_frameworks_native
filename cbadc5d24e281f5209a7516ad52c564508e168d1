@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee59fdb_a5c1a62f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-27T20:23:27Z",
+      "side": 1,
+      "message": "@jreck@google.com @mathias@google.com do either of you know what needs to happen with the `-next` release configuration here? It doesn\u0027t build in aosp (can\u0027t even lunch to it). It\u0027s failing to build in presubmits here saying the ABI diffs need to be updated:https://android-build.corp.google.com/artifact/pending/P64670390/aosp_cf_x86_64_only_phone-next-userdebug/latest/view/logs%2Fbuild_error.log",
+      "revId": "cbadc5d24e281f5209a7516ad52c564508e168d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
