@@ -46,6 +46,30 @@
       },
       "revId": "3caae303bdeff661b0551ea32b5ac679aeb1f38a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7615cfc_cc2eb4e8",
+        "filename": "libs/binder/trusty/binderRpcTest/rules.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-27T15:52:47Z",
+      "side": 1,
+      "message": "std::format is available since C++20 and requires newer versions of compiler and stdc++lib.\n\nThere\u0027s already a TODO and reminder in format.h, do we need additional bug to track this?",
+      "parentUuid": "79586c4e_9dd292a2",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "3caae303bdeff661b0551ea32b5ac679aeb1f38a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
