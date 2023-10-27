@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbdb471c_3e45c744",
+        "filename": "libs/binder/trusty/binderRpcTest/rules.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-27T00:09:53Z",
+      "side": 1,
+      "message": "We really should clean this up for Trusty as well, not add more deps. Do you want to file a bug for the test cases? We could also see if Trusty will use updated C++ soon",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "3caae303bdeff661b0551ea32b5ac679aeb1f38a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
