@@ -22,6 +22,30 @@
       },
       "revId": "5bdf913a77d09f23705bc7f0e21bee6799c31490",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8133540b_f87129ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2023-10-27T14:56:46Z",
+      "side": 1,
+      "message": "Changes to `otapreopt.cpp` can take effect in the next OTA update, regardless of how old `OtaPreoptService` is. Yes, this change makes the workflow tricker, but since otapreopt is going to be deprecated, I don\u0027t think maintainability is a concern. The point is to make debugging easier so that we can understand the existing bugs in otapreopt and make sure we don\u0027t carry them to the new implementation.",
+      "parentUuid": "1300b74a_62e95713",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 67
+      },
+      "revId": "5bdf913a77d09f23705bc7f0e21bee6799c31490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
