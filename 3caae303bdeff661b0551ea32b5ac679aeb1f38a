@@ -22,6 +22,30 @@
       },
       "revId": "3caae303bdeff661b0551ea32b5ac679aeb1f38a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79586c4e_9dd292a2",
+        "filename": "libs/binder/trusty/binderRpcTest/rules.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-27T00:11:26Z",
+      "side": 1,
+      "message": "Trusty uses C++17 right now, do we need something newer?",
+      "parentUuid": "bbdb471c_3e45c744",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "3caae303bdeff661b0551ea32b5ac679aeb1f38a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
