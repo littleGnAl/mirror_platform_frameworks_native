@@ -416,6 +416,9 @@ bool RpcState::validateProtocolVersion(uint32_t version) {
         // don't restrict on other platforms, though experimental should
         // only really be used for testing, we don't have a good way to see
         // what is shipping outside of Android
+
+        ALOGE("Cannot use experimental RPC binder protocol outside of Android.");
+        return false;
 #endif
     } else if (version >= RPC_WIRE_PROTOCOL_VERSION_NEXT) {
         ALOGE("Cannot use RPC binder protocol version %u which is unknown (current protocol "
