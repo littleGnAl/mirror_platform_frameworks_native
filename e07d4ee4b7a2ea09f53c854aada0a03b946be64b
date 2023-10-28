@@ -319,6 +319,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e0505eb_b5b59319",
+        "filename": "libs/binder/ndk/persistable_bundle.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-28T01:35:55Z",
+      "side": 1,
+      "message": "Added back the no throw.",
+      "parentUuid": "6ff1febf_85f1699c",
+      "range": {
+        "startLine": 17,
+        "startChar": 14,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "e07d4ee4b7a2ea09f53c854aada0a03b946be64b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f88c6b91_8946207f",
