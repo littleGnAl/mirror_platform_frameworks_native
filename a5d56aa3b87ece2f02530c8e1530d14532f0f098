@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae1df815_ff31f454",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-28T03:32:42Z",
+      "side": 1,
+      "message": "Discussed offline: we could just add `DowncastSync` as a supertrait here, and `impl_downcast!(sync Interface);`.",
+      "revId": "a5d56aa3b87ece2f02530c8e1530d14532f0f098",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8dc0c82f_75abe8b4",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 12
