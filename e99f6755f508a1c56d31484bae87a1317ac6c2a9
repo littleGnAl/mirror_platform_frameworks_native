@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66bfc0c7_e9eeb55b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-10-30T23:29:59Z",
+      "side": 1,
+      "message": "current is the highest stable version. experimental has any pending protocol changes that haven\u0027t been rolled into a new stable version yet (i think there are currently none, so they are equivalent)",
+      "parentUuid": "8247c27a_51cfd88f",
+      "revId": "e99f6755f508a1c56d31484bae87a1317ac6c2a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2673031_86e10298",
