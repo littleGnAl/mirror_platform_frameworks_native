@@ -263,6 +263,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1a24ab1_a130cfff",
+        "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1644679
+      },
+      "writtenOn": "2023-10-30T22:21:40Z",
+      "side": 1,
+      "message": "Got it, changed to int32s and added some checks for size with FATAL logs if we ever hit that unlikely problem.\n\nAre we ok with FATAL logs in the case of operating on an object that has gotten too large? Or should we check every time we instert anything as well?\n\nI\u0027m not concerned about IPC since it would be way over the binder transaction limits before the size becomes a problem.",
+      "parentUuid": "9c705ea7_83d1a4f7",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 6
+      },
+      "revId": "cbadc5d24e281f5209a7516ad52c564508e168d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b5b0aa0_c1c904a3",
         "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
         "patchSetId": 15
