@@ -16,6 +16,29 @@
       "message": "For completeness: is there any difference between current wire protocol version and experimental?",
       "revId": "e99f6755f508a1c56d31484bae87a1317ac6c2a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2673031_86e10298",
+        "filename": "libs/binder/RpcState.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-10-30T22:21:57Z",
+      "side": 1,
+      "message": "obsolete",
+      "range": {
+        "startLine": 416,
+        "startChar": 11,
+        "endLine": 416,
+        "endChar": 44
+      },
+      "revId": "e99f6755f508a1c56d31484bae87a1317ac6c2a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
