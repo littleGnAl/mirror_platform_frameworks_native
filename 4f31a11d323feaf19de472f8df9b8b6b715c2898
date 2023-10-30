@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b2be645_812e42dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-30T22:13:44Z",
+      "side": 1,
+      "message": "Build tested on almost all phones:\nhttp://android-build/abtd/run/L87800030000003657/\n\n(two are lingering because build scheduler is sluggish today)",
+      "revId": "4f31a11d323feaf19de472f8df9b8b6b715c2898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
