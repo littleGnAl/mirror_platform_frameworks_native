@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9920eb9a_319fc1a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2023-10-30T06:49:05Z",
+      "side": 1,
+      "message": "Try `export TESTING_TARGET_RELEASE_NEXT\u003dtrue` or sync your codebase. The restriction was removed in September.\n\nhttps://android-review.googlesource.com/q/topic:%22header-abi-linker-api-level%22 fixes the ABI diff.",
+      "parentUuid": "d4bb3605_64c41618",
+      "revId": "cbadc5d24e281f5209a7516ad52c564508e168d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54437923_6ddc0fae",
