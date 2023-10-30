@@ -52,6 +52,24 @@
       "parentUuid": "0f43c9ca_155e97c0",
       "revId": "4f1095e210b9cd76ec0d1592355cde7d2d2d7f42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8fb8825_6255f887",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-10-30T20:45:25Z",
+      "side": 1,
+      "message": "ABDT build test passes\n- https://android-build.corp.google.com/abtd/run/L35400000963799554/\n\nAnd health (boot) test too\n- https://android-build.corp.google.com/abtd/run/L21800000963798389/",
+      "parentUuid": "c2c54681_366ce73c",
+      "revId": "4f1095e210b9cd76ec0d1592355cde7d2d2d7f42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
