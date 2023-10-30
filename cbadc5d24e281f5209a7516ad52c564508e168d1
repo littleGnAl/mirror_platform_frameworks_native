@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77e71259_dcf198d5",
+        "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2023-10-30T20:04:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd51a34_c2631ea0",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 53
+      },
+      "revId": "cbadc5d24e281f5209a7516ad52c564508e168d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b35ebd3_cf6a4e29",
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "\u003e Also if this really was a size_t / int64\u0027s you\u0027d be able to create an object via the NDK that the SDK wouldn\u0027t be able to handle.\n\nIs that because the object is too large? For the framework to handle?\n\nYeah I think int32 would be fine (the use case is over binder so it better be small enough to fit). But the types returned by the underlying C++ `PersistableBundle` are all size_t so we\u0027d have to check and cast everything. I can make that change if you think it\u0027s worth it.",
       "parentUuid": "d661341c_ff763011",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 6
+      },
+      "revId": "cbadc5d24e281f5209a7516ad52c564508e168d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c705ea7_83d1a4f7",
+        "filename": "libs/binder/ndk/include_ndk/android/persistable_bundle.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1010103
+      },
+      "writtenOn": "2023-10-30T20:04:23Z",
+      "side": 1,
+      "message": "the SDK types for these are all int32\u0027s and also you\u0027ll end up seeing different values between 32-bit \u0026 64-bit processes.\n\nGiven this is an IPC object, the sizes should _probably_ be constrained to the minimum requirement so int32\u0027s?",
+      "parentUuid": "e150b42a_fd644078",
       "range": {
         "startLine": 135,
         "startChar": 0,
