@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b163f85_96819055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2023-10-30T02:16:19Z",
+      "side": 1,
+      "message": "Since I don\u0027t know the impact of adding a new interface to the callback, I added the implementation.\n\n1. Can I modify all the occurence of IProducerListener of other part of system? (e.g. camera)\n2. How does this impact to backward compatibility? (system partition and vendor partition version difference)",
+      "revId": "8d8b3a41b5c85cad7e15039ea261f7e9fc126d14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
