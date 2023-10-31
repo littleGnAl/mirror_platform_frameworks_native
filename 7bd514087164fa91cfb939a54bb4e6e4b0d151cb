@@ -16,6 +16,24 @@
       "message": "@smoreland: this one fails to build due to missing jni.h. On the hand-made CMake build it\u0027s not a problem, because we don\u0027t define `ANDROID` and `__ANDROID__`.\n\nIs it possible to not define `ANDROID` in soong?",
       "revId": "7bd514087164fa91cfb939a54bb4e6e4b0d151cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a47d1cb_6ee8b957",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-10-31T19:24:20Z",
+      "side": 1,
+      "message": "we could try forcing it to be host_supported, rather than on-device. I\u0027m pretty sure that should do the trick",
+      "parentUuid": "9fcdc700_88cdec77",
+      "revId": "7bd514087164fa91cfb939a54bb4e6e4b0d151cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
