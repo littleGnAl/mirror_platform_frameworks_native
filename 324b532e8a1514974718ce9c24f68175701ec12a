@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62e115e7_9261e79d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-10-31T21:42:17Z",
+      "side": 1,
+      "message": "Nit: the function is now called `downcast_binder`.",
+      "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
