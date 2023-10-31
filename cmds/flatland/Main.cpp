@@ -739,12 +739,6 @@ int main(int argc, char** argv) {
         exit(0);
     }
 
-    const auto ids = SurfaceComposerClient::getPhysicalDisplayIds();
-    if (ids.empty()) {
-        fprintf(stderr, "Failed to get ID for any displays.\n");
-        exit(3);
-    }
-
     std::optional<PhysicalDisplayId> displayId;
 
     for (;;) {
@@ -775,7 +769,7 @@ int main(int argc, char** argv) {
                 displayId = DisplayId::fromValue<PhysicalDisplayId>(atoll(optarg));
                 if (!displayId) {
                     fprintf(stderr, "Invalid display ID: %s.\n", optarg);
-                    exit(4);
+                    exit(3);
                 }
             break;
 
@@ -792,20 +786,30 @@ int main(int argc, char** argv) {
         }
     }
 
-    if (!displayId) { // no display id is specified
-        if (ids.size() == 1) {
-            displayId = ids.front();
-        } else {
-            fprintf(stderr, "Please specify a display ID for multi-display device.\n");
-            showHelp(argv[0]);
-            exit(5);
+    if (g_PresentToWindow)
+    {
+        std::vector<PhysicalDisplayId>  ids;
+        ids = SurfaceComposerClient::getPhysicalDisplayIds();
+        if (ids.empty()) {
+            fprintf(stderr, "Failed to get ID for any displays.\n");
+            exit(4);
         }
-    }
 
-    g_DisplayToken = SurfaceComposerClient::getPhysicalDisplayToken(*displayId);
-    if (g_DisplayToken == nullptr) {
-        fprintf(stderr, "SurfaceComposer::getPhysicalDisplayToken failed.\n");
-        exit(6);
+        if (!displayId) { // no display id is specified
+            if (ids.size() == 1) {
+                displayId = ids.front();
+            } else {
+                fprintf(stderr, "Please specify a display ID for multi-display device.\n");
+                showHelp(argv[0]);
+                exit(5);
+            }
+        }
+
+        g_DisplayToken = SurfaceComposerClient::getPhysicalDisplayToken(*displayId);
+        if (g_DisplayToken == nullptr) {
+            fprintf(stderr, "SurfaceComposer::getPhysicalDisplayToken failed.\n");
+            exit(6);
+        }
     }
 
     g_BenchmarkNameLen = maxBenchmarkNameLen();
