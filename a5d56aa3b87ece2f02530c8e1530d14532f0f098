@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b87c866_09850046",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-10-31T02:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae1df815_ff31f454",
+      "revId": "a5d56aa3b87ece2f02530c8e1530d14532f0f098",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dc0c82f_75abe8b4",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "We wouldn\u0027t even need `+ Any` if we add `DowncastSync` as a super trait of `Interface`.\n\nOn another note, I think the body can be rewritten as `self.0.as_ref().as_any().downcast_ref::\u003cT\u003e()`.",
       "parentUuid": "8dc0c82f_75abe8b4",
+      "range": {
+        "startLine": 896,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 13
+      },
+      "revId": "a5d56aa3b87ece2f02530c8e1530d14532f0f098",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7fb03ed_68234784",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 12
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-10-31T02:34:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80005d24_9a7c70ed",
       "range": {
         "startLine": 896,
         "startChar": 0,
