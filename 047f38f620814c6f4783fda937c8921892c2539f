@@ -33,6 +33,24 @@
       "message": "Sorry about the delay. The email got buried while I was out of the office.\n\nCould you please file a bug first and elaborate why this workaround is necessary?",
       "revId": "047f38f620814c6f4783fda937c8921892c2539f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a621791_c392e681",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010080
+      },
+      "writtenOn": "2023-10-31T17:43:50Z",
+      "side": 1,
+      "message": "Hey, sorry about the delay.\n\nWithout this, display kept being blank on the Pixel 4.\n\nHowever, we were able to fix it in the kernel by backporting changes from a newer kernel,\n\n* 22515: disp: msm: allow DMS before cont-splash handoff | https://review.calyxos.org/c/CalyxOS/kernel_google_msm-4.14/+/22515\n* 22516: disp: msm: dsi: do not skip DSI CTRL init for DMS on first frame | https://review.calyxos.org/c/CalyxOS/kernel_google_msm-4.14/+/22516",
+      "parentUuid": "dd9ad15e_e4846280",
+      "revId": "047f38f620814c6f4783fda937c8921892c2539f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
