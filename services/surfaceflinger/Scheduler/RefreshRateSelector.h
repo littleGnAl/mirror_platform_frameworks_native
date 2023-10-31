@@ -60,7 +60,7 @@ public:
             std::chrono::nanoseconds(800us).count();
 
     // The lowest Render Frame Rate that will ever be selected
-    static constexpr Fps kMinSupportedFrameRate = 20_Hz;
+    static Fps kMinSupportedFrameRate;
 
     class Policy {
         static constexpr int kAllowGroupSwitchingDefault = false;

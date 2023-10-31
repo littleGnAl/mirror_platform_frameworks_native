@@ -43,6 +43,7 @@
 #define LOG_TAG "RefreshRateSelector"
 
 namespace android::scheduler {
+     Fps RefreshRateSelector::kMinSupportedFrameRate = 20_Hz;
 namespace {
 
 struct RefreshRateScore {
@@ -1035,6 +1036,11 @@ RefreshRateSelector::RefreshRateSelector(DisplayModes modes, DisplayModeId activ
                                          Config config)
       : mKnownFrameRates(constructKnownFrameRates(modes)), mConfig(config) {
     initializeIdleTimer();
+    const int32_t allow30Hz = base::GetIntProperty("debug.sf.enable.refreshrate.30hz", 0);
+    if (allow30Hz) {
+        kMinSupportedFrameRate = 15_Hz;
+        ALOGD("kMinSupportedFrameRate change 15hz!");
+    }
     FTL_FAKE_GUARD(kMainThreadContext, updateDisplayModes(std::move(modes), activeModeId));
 }
 
