@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c1c4c36_56a970fd",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-10-31T17:28:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "932abfe4_b4586c89",
+      "revId": "26e6543e3fce1cd7ca81c6e21a72ed5f5c44805a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56a32ac1_2faa3ec9",
@@ -31,6 +49,24 @@
       "writtenOn": "2023-10-31T02:36:33Z",
       "side": 1,
       "message": "Should we make `Remotable: \u0027static` instead?",
+      "revId": "26e6543e3fce1cd7ca81c6e21a72ed5f5c44805a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41966459_448ed18e",
+        "filename": "libs/binder/rust/src/native.rs",
+        "patchSetId": 13
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-10-31T17:28:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a32ac1_2faa3ec9",
       "revId": "26e6543e3fce1cd7ca81c6e21a72ed5f5c44805a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
