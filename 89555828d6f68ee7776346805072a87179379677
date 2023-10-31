@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3be2e508_f12c9da8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1388190
+      },
+      "writtenOn": "2023-10-31T17:50:05Z",
+      "side": 1,
+      "message": "There is a CTS fix for this issue that was merged internally. Please see https://android.googlesource.com/platform/cts/+/45b77c0a4e9550fb84e7fef60583d7ef72c22616",
+      "revId": "89555828d6f68ee7776346805072a87179379677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
