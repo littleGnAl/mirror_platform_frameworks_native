@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-#include <android-base/logging.h>
 #include <android/binder_parcel.h>
 #include <android/binder_parcel_platform.h>
 #include <binder/Parcel.h>
 #include <binder/ParcelFileDescriptor.h>
 #include <binder/unique_fd.h>
+#include <inttypes.h>
 #include <utils/Unicode.h>
 
 #include <limits>
@@ -51,11 +51,11 @@ static binder_status_t WriteAndValidateArraySize(AParcel* parcel, bool isNullArr
     if (length < -1) return STATUS_BAD_VALUE;
 
     if (!isNullArray && length < 0) {
-        LOG(ERROR) << __func__ << ": non-null array but length is " << length;
+        ALOGE("non-null array but length is %" PRIi32, length);
         return STATUS_BAD_VALUE;
     }
     if (isNullArray && length > 0) {
-        LOG(ERROR) << __func__ << ": null buffer cannot be for size " << length << " array.";
+        ALOGE("null buffer cannot be for size %" PRIi32 " array.", length);
         return STATUS_BAD_VALUE;
     }
 
@@ -324,7 +324,7 @@ binder_status_t AParcel_readStatusHeader(const AParcel* parcel, AStatus** status
 binder_status_t AParcel_writeString(AParcel* parcel, const char* string, int32_t length) {
     if (string == nullptr) {
         if (length != -1) {
-            LOG(WARNING) << __func__ << ": null string must be used with length == -1.";
+            ALOGW("null string must be used with length == -1.");
             return STATUS_BAD_VALUE;
         }
 
@@ -333,7 +333,7 @@ binder_status_t AParcel_writeString(AParcel* parcel, const char* string, int32_t
     }
 
     if (length < 0) {
-        LOG(WARNING) << __func__ << ": Negative string length: " << length;
+        ALOGW("Negative string length: %" PRIi32, length);
         return STATUS_BAD_VALUE;
     }
 
@@ -341,7 +341,7 @@ binder_status_t AParcel_writeString(AParcel* parcel, const char* string, int32_t
     const ssize_t len16 = utf8_to_utf16_length(str8, length);
 
     if (len16 < 0 || len16 >= std::numeric_limits<int32_t>::max()) {
-        LOG(WARNING) << __func__ << ": Invalid string length: " << len16;
+        ALOGW("Invalid string length: %zd", len16);
         return STATUS_BAD_VALUE;
     }
 
@@ -382,7 +382,7 @@ binder_status_t AParcel_readString(const AParcel* parcel, void* stringData,
     }
 
     if (len8 <= 0 || len8 > std::numeric_limits<int32_t>::max()) {
-        LOG(WARNING) << __func__ << ": Invalid string length: " << len8;
+        ALOGW("Invalid string length: %zd", len8);
         return STATUS_BAD_VALUE;
     }
 
@@ -390,7 +390,7 @@ binder_status_t AParcel_readString(const AParcel* parcel, void* stringData,
     bool success = allocator(stringData, len8, &str8);
 
     if (!success || str8 == nullptr) {
-        LOG(WARNING) << __func__ << ": AParcel_stringAllocator failed to allocate.";
+        ALOGW("AParcel_stringAllocator failed to allocate.");
         return STATUS_NO_MEMORY;
     }
 
