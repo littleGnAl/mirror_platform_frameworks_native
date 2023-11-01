@@ -31,10 +31,11 @@ using testing::Optional;
 namespace android {
 
 TEST(UtilsHost, ExecuteImmediately) {
-    auto result = execute({"echo", "foo"}, nullptr);
-    ASSERT_THAT(result, Ok());
-    EXPECT_THAT(result->exitCode, Optional(EX_OK));
-    EXPECT_EQ(result->stdoutStr, "foo\n");
+    CommandResult result;
+    auto status = execute(&result, {"echo", "foo"}, nullptr);
+    ASSERT_EQ(OK, status);
+    EXPECT_THAT(result.exitCode, Optional(EX_OK));
+    EXPECT_EQ(result.stdoutStr, "foo\n");
 }
 
 template <typename T>
@@ -49,7 +50,8 @@ TEST(UtilsHost, ExecuteLongRunning) {
     {
         std::vector<std::string>
                 args{"sh", "-c", "sleep 0.5 && echo -n f && sleep 0.5 && echo oo && sleep 100"};
-        auto result = execute(std::move(args), [&](const CommandResult& commandResult) {
+        CommandResult result;
+        auto status = execute(&result, std::move(args), [&](const CommandResult& commandResult) {
             std::cout << millisSince(start)
                       << "ms: GOT PARTIAL COMMAND RESULT:" << commandResult.stdoutStr << std::endl;
             return android::base::EndsWith(commandResult.stdoutStr, "\n");
@@ -58,9 +60,9 @@ TEST(UtilsHost, ExecuteLongRunning) {
         EXPECT_GE(elapsedMs, 1000);
         EXPECT_LT(elapsedMs, 2000);
 
-        ASSERT_THAT(result, Ok());
-        EXPECT_EQ(std::nullopt, result->exitCode);
-        EXPECT_EQ(result->stdoutStr, "foo\n");
+        ASSERT_EQ(OK, status);
+        EXPECT_EQ(std::nullopt, result.exitCode);
+        EXPECT_EQ(result.stdoutStr, "foo\n");
     }
 
     // ~CommandResult() called, child process is killed.
@@ -74,7 +76,8 @@ TEST(UtilsHost, ExecuteLongRunning2) {
     {
         std::vector<std::string> args{"sh", "-c",
                                       "sleep 2 && echo -n f && sleep 2 && echo oo && sleep 100"};
-        auto result = execute(std::move(args), [&](const CommandResult& commandResult) {
+        CommandResult result;
+        auto status = execute(&result, std::move(args), [&](const CommandResult& commandResult) {
             std::cout << millisSince(start)
                       << "ms: GOT PARTIAL COMMAND RESULT:" << commandResult.stdoutStr << std::endl;
             return android::base::EndsWith(commandResult.stdoutStr, "\n");
@@ -83,9 +86,9 @@ TEST(UtilsHost, ExecuteLongRunning2) {
         EXPECT_GE(elapsedMs, 4000);
         EXPECT_LT(elapsedMs, 6000);
 
-        ASSERT_THAT(result, Ok());
-        EXPECT_EQ(std::nullopt, result->exitCode);
-        EXPECT_EQ(result->stdoutStr, "foo\n");
+        ASSERT_EQ(OK, status);
+        EXPECT_EQ(std::nullopt, result.exitCode);
+        EXPECT_EQ(result.stdoutStr, "foo\n");
     }
 
     // ~CommandResult() called, child process is killed.
@@ -95,7 +98,8 @@ TEST(UtilsHost, ExecuteLongRunning2) {
 
 TEST(UtilsHost, KillWithSigKill) {
     std::vector<std::string> args{"sh", "-c", "echo foo && sleep 10"};
-    auto result = execute(std::move(args), [](const CommandResult& commandResult) {
+    CommandResult result;
+    auto status = execute(&result, std::move(args), [](const CommandResult& commandResult) {
         // FOR TEST PURPOSE ONLY. DON'T DO THIS!
         if (commandResult.pid.has_value()) {
             (void)kill(*commandResult.pid, SIGKILL);
@@ -104,9 +108,9 @@ TEST(UtilsHost, KillWithSigKill) {
         return false;
     });
 
-    ASSERT_THAT(result, Ok());
-    EXPECT_EQ(std::nullopt, result->exitCode);
-    EXPECT_THAT(result->signal, Optional(SIGKILL));
+    ASSERT_EQ(OK, status);
+    EXPECT_EQ(std::nullopt, result.exitCode);
+    EXPECT_THAT(result.signal, Optional(SIGKILL));
 }
 
 } // namespace android

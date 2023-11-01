@@ -193,9 +193,9 @@ status_t RpcSession::setupPreconnectedClient(base::unique_fd fd,
             fd = request();
             if (!fd.ok()) return BAD_VALUE;
         }
-        if (auto res = binder::os::setNonBlocking(fd); !res.ok()) {
-            ALOGE("setupPreconnectedClient: %s", res.error().message().c_str());
-            return res.error().code() == 0 ? UNKNOWN_ERROR : -res.error().code();
+        if (auto res = binder::os::setNonBlocking(fd); res != OK) {
+            ALOGE("setupPreconnectedClient: %s", strerror(-res));
+            return res;
         }
 
         RpcTransportFd transportFd(std::move(fd));
