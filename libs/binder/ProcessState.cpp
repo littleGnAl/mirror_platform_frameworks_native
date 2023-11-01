@@ -18,7 +18,6 @@
 
 #include <binder/ProcessState.h>
 
-#include <android-base/result.h>
 #include <android-base/strings.h>
 #include <binder/BpBinder.h>
 #include <binder/Functional.h>
@@ -514,23 +513,25 @@ String8 ProcessState::getDriverName() {
     return mDriverName;
 }
 
-static base::Result<int> open_driver(const char* driver) {
+static status_t open_driver(int* outFd, const char* driver) {
     int fd = open(driver, O_RDWR | O_CLOEXEC);
     if (fd < 0) {
-        return base::ErrnoError() << "Opening '" << driver << "' failed";
+        if (errno == 0) return UNKNOWN_ERROR;
+        return errno; // Opening '" << driver << "' failed
     }
     int vers = 0;
     status_t result = ioctl(fd, BINDER_VERSION, &vers);
     if (result == -1) {
         close(fd);
-        return base::ErrnoError() << "Binder ioctl to obtain version failed";
+        if (errno == 0) return UNKNOWN_ERROR;
+        return errno; // Binder ioctl to obtain version failed
     }
     if (result != 0 || vers != BINDER_CURRENT_PROTOCOL_VERSION) {
         close(fd);
-        return base::Error() << "Binder driver protocol(" << vers
-                             << ") does not match user space protocol("
-                             << BINDER_CURRENT_PROTOCOL_VERSION
-                             << ")! ioctl() return value: " << result;
+        ALOGE("Binder driver protocol(%d) does not match user space protocol(%d)! "
+              "ioctl() return value: %d",
+              vers, BINDER_CURRENT_PROTOCOL_VERSION, result);
+        return UNKNOWN_TRANSACTION;
     }
     size_t maxThreads = DEFAULT_MAX_BINDER_THREADS;
     result = ioctl(fd, BINDER_SET_MAX_THREADS, &maxThreads);
@@ -544,7 +545,8 @@ static base::Result<int> open_driver(const char* driver) {
                      ProcessState::DriverFeature::ONEWAY_SPAM_DETECTION),
                  "Binder ioctl to enable oneway spam detection failed: %s", strerror(errno));
     }
-    return fd;
+    *outFd = fd;
+    return OK;
 }
 
 ProcessState::ProcessState(const char* driver)
@@ -563,28 +565,29 @@ ProcessState::ProcessState(const char* driver)
         mThreadPoolStarted(false),
         mThreadPoolSeq(1),
         mCallRestriction(CallRestriction::NONE) {
-    base::Result<int> opened = open_driver(driver);
+    int opened;
+    auto status = open_driver(&opened, driver);
 
-    if (opened.ok()) {
+    if (status == OK) {
         // mmap the binder, providing a chunk of virtual address space to receive transactions.
-        mVMStart = mmap(nullptr, BINDER_VM_SIZE, PROT_READ, MAP_PRIVATE | MAP_NORESERVE,
-                        opened.value(), 0);
+        mVMStart = mmap(nullptr, BINDER_VM_SIZE, PROT_READ, MAP_PRIVATE | MAP_NORESERVE, opened, 0);
         if (mVMStart == MAP_FAILED) {
-            close(opened.value());
+            close(opened);
             // *sigh*
-            opened = base::Error()
-                    << "Using " << driver << " failed: unable to mmap transaction memory.";
+            opened = 0;
+            ALOGE("Using %s failed: unable to mmap transaction memory.", driver);
+            status = NO_MEMORY;
             mDriverName.clear();
         }
     }
 
 #ifdef __ANDROID__
-    LOG_ALWAYS_FATAL_IF(!opened.ok(), "Binder driver '%s' could not be opened. Terminating: %s",
-                        driver, opened.error().message().c_str());
+    LOG_ALWAYS_FATAL_IF(status != OK, "Binder driver '%s' could not be opened. Terminating: %s",
+                        driver, strerror(status));
 #endif
 
-    if (opened.ok()) {
-        mDriverFD = opened.value();
+    if (status == OK) {
+        mDriverFD = opened;
     }
 }
 

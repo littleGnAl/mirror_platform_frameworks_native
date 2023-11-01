@@ -74,18 +74,21 @@ void initHostRpcServiceManagerOnce() {
 class HostDeviceTest : public ::testing::Test {
 public:
     void SetUp() override {
-        auto debuggableResult = execute(Split("adb shell getprop ro.debuggable", " "), nullptr);
-        ASSERT_THAT(debuggableResult, Ok());
-        ASSERT_EQ(0, debuggableResult->exitCode) << *debuggableResult;
-        auto debuggableBool = ParseBool(Trim(debuggableResult->stdoutStr));
-        ASSERT_NE(ParseBoolResult::kError, debuggableBool) << Trim(debuggableResult->stdoutStr);
+        CommandResult debuggableResult;
+        auto status =
+                execute(&debuggableResult, Split("adb shell getprop ro.debuggable", " "), nullptr);
+        ASSERT_EQ(OK, status);
+        ASSERT_EQ(0, debuggableResult.exitCode) << debuggableResult;
+        auto debuggableBool = ParseBool(Trim(debuggableResult.stdoutStr));
+        ASSERT_NE(ParseBoolResult::kError, debuggableBool) << Trim(debuggableResult.stdoutStr);
         if (debuggableBool == ParseBoolResult::kFalse) {
-            GTEST_SKIP() << "ro.debuggable=" << Trim(debuggableResult->stdoutStr);
+            GTEST_SKIP() << "ro.debuggable=" << Trim(debuggableResult.stdoutStr);
         }
 
-        auto lsResult = execute(Split("adb shell which servicedispatcher", " "), nullptr);
-        ASSERT_THAT(lsResult, Ok());
-        if (lsResult->exitCode != 0) {
+        CommandResult lsResult;
+        status = execute(&lsResult, Split("adb shell which servicedispatcher", " "), nullptr);
+        ASSERT_EQ(OK, status);
+        if (lsResult.exitCode != 0) {
             GTEST_SKIP() << "b/182914638: until feature is fully enabled, skip test on devices "
                             "without servicedispatcher";
         }
@@ -93,11 +96,12 @@ public:
         initHostRpcServiceManagerOnce();
         ASSERT_NE(nullptr, defaultServiceManager()) << "No defaultServiceManager() over RPC";
 
-        auto service = execute({"adb", "shell", kServiceBinary, kServiceName, kDescriptor},
-                               &CommandResult::stdoutEndsWithNewLine);
-        ASSERT_THAT(service, Ok());
-        ASSERT_EQ(std::nullopt, service->exitCode) << *service;
-        mService = std::move(*service);
+        CommandResult service;
+        status = execute(&service, {"adb", "shell", kServiceBinary, kServiceName, kDescriptor},
+                         &CommandResult::stdoutEndsWithNewLine);
+        ASSERT_EQ(OK, status);
+        ASSERT_EQ(std::nullopt, service.exitCode) << service;
+        mService = std::move(service);
     }
     void TearDown() override { mService.reset(); }
 
