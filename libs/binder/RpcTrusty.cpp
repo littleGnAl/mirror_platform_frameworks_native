@@ -17,9 +17,9 @@
 #define LOG_TAG "RpcTrusty"
 
 #include <android-base/logging.h>
-#include <android-base/unique_fd.h>
 #include <binder/RpcSession.h>
 #include <binder/RpcTransportTipcAndroid.h>
+#include <binder/unique_fd.h>
 #include <trusty/tipc.h>
 
 namespace android {
