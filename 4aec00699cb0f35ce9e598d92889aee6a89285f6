@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c3b1517_53478a79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-01T18:18:19Z",
+      "side": 1,
+      "message": "This is not a complete change (I haven\u0027t migrated all files to ALOGI), but I need to double check this with @smoreland...\n\nWhen writing this change, my fingers literally hurt. Migrating from stream logging to C-style Android logger feels like two steps back. Do we really have to do this?\n\nI would be more than happy to migrate logging the other way, but if that\u0027s not something you\u0027d like to consider, how about mocking both logging systems (liblog and stream logging)? I can write whatever header wrappers or other tooling needed, but I\u0027d really rather not to step back to dark C ages if it\u0027s not really necessary...",
+      "revId": "4aec00699cb0f35ce9e598d92889aee6a89285f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f85ad8_f00efd30",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-01T18:18:19Z",
+      "side": 1,
+      "message": "5-space indent?! That\u0027s what formatter forced on me.",
+      "range": {
+        "startLine": 754,
+        "startChar": 8,
+        "endLine": 754,
+        "endChar": 13
+      },
+      "revId": "4aec00699cb0f35ce9e598d92889aee6a89285f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
