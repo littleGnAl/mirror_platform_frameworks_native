@@ -16,7 +16,6 @@
 #pragma once
 
 #include <android-base/threads.h>
-#include <android-base/unique_fd.h>
 #include <binder/IBinder.h>
 #include <binder/RpcThreads.h>
 #include <binder/RpcTransport.h>
