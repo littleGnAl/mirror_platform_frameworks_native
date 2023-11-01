@@ -16,7 +16,13 @@
 
 #pragma once
 
+// TODO: just include binder/unique_fd.h
+#if __has_include(<android-base/unique_fd.h>)
 #include <android-base/unique_fd.h>
+#else
+// fatal error: 'binder/unique_fd.h' file not found ?!?
+#include <binder/unique_fd.h>
+#endif
 #include <utils/Errors.h>
 #include <utils/RefBase.h>
 #include <utils/String16.h>

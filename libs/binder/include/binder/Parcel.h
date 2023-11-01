@@ -25,7 +25,13 @@
 #include <variant>
 #include <vector>
 
+// TODO: just include binder/unique_fd.h
+#if __has_include(<android-base/unique_fd.h>)
 #include <android-base/unique_fd.h>
+#else
+// fatal error: 'binder/unique_fd.h' file not found ?!?
+#include <binder/unique_fd.h>
+#endif
 #ifndef BINDER_DISABLE_NATIVE_HANDLE
 #include <cutils/native_handle.h>
 #endif
