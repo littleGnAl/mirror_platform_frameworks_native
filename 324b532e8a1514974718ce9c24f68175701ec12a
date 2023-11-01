@@ -41,6 +41,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e33bb6d_78d6f698",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-11-01T16:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f645b04_d38f0728",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40dff195_abc6282a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-11-01T16:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62e115e7_9261e79d",
+      "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c885456f_f5efd369",
@@ -54,6 +96,24 @@
       "writtenOn": "2023-11-01T01:18:00Z",
       "side": 1,
       "message": "maybe we should add a note here about when it is appropriate to use this (i.e. when the binder comes from the kernel as mentioned in https://android-review.git.corp.google.com/c/platform/system/tools/aidl/+/2813799/comments/1bac12ba_1f0618c1)\n\nalso should warn people to never use `unwrap`/`expect`/etc on this if the object comes from a binder call (it would be an easy DOS attack)",
+      "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84af3b32_2607b4fb",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-11-01T16:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c885456f_f5efd369",
       "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -119,6 +179,30 @@
       "side": 1,
       "message": "I think you might as well assert the classes are the same, even if you go this route, but I\u0027m okay with it, yeah.\n\n\u003e we never move that inner Box out.\n\nIt\u0027s important that you don\u0027t, since the kernel driver keeps a pointer to this structure, and it\u0027s expected to identify this structure. If it was possible to move out, then the kernel would fail to be able to identify a binder.\n\nBtw - Box\u003cBox\u003c..\u003e\u003e is a lot of boxes. Do we need so many heap allocations?",
       "parentUuid": "55ad6bb9_e468c04d",
+      "range": {
+        "startLine": 902,
+        "startChar": 32,
+        "endLine": 902,
+        "endChar": 44
+      },
+      "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc7ec79a_091c61d2",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-11-01T16:26:00Z",
+      "side": 1,
+      "message": "smoreland@: Thanks! If the way I am intending this function to be used already needs to go through the `TryFrom\u003cSpIBinder\u003e` code which does this class check, do we need to also do the check again on this function? I added a comment with the sequence of calls, which is basically:\n\n```\nlet binder \u003d received_object.as_binder();\nif !binder.is_remote() {\n    let binder_native: Binder\u003cBnFoo\u003e \u003d binder.try_into()?;\n    let original_object \u003d binder_native.downcast_binder::\u003cMyFoo\u003e();\n    // Check that returned type is not None before using it\n}\n```",
+      "parentUuid": "ff5e540d_808d0b6e",
       "range": {
         "startLine": 902,
         "startChar": 32,
