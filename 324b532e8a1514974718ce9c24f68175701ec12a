@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c885456f_f5efd369",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-11-01T01:18:00Z",
+      "side": 1,
+      "message": "maybe we should add a note here about when it is appropriate to use this (i.e. when the binder comes from the kernel as mentioned in https://android-review.git.corp.google.com/c/platform/system/tools/aidl/+/2813799/comments/1bac12ba_1f0618c1)\n\nalso should warn people to never use `unwrap`/`expect`/etc on this if the object comes from a binder call (it would be an easy DOS attack)",
+      "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89ffa47e_055be0e5",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 14
