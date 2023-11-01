@@ -16,6 +16,24 @@
       "message": "@smoreland: any idea what\u0027s going on here?\n\nhttps://paste.googleplex.com/4860019685195776?raw",
       "revId": "1eda5155272d9f953c1d526dd6f6e0d87b033a56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8baedfc_ba955ecf",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-01T21:27:37Z",
+      "side": 1,
+      "message": "legacy global includes are at frameworks/native/include/binder 😊",
+      "parentUuid": "4ca05689_3b83dcb2",
+      "revId": "1eda5155272d9f953c1d526dd6f6e0d87b033a56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
