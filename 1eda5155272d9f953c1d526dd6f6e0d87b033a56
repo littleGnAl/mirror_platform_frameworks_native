@@ -52,6 +52,24 @@
       "parentUuid": "f8baedfc_ba955ecf",
       "revId": "1eda5155272d9f953c1d526dd6f6e0d87b033a56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e549bbe_8220f436",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-01T21:34:53Z",
+      "side": 1,
+      "message": "Fixed, thanks.\n\nDo we want to diverge from upstream unique_fd? There isn\u0027t much to scope down here.\n\nI made it to use libbase header on Android to avoid including different definitions in user code. Diverging on non-Android only, just for the name of slimming down doesn\u0027t sound right, does it?\n\nI see unique_fd copied all over the place in code search. Keeping it 1:1 same as upstream will make future updates (if any) easier.",
+      "parentUuid": "437cd3c6_c951a8ea",
+      "revId": "1eda5155272d9f953c1d526dd6f6e0d87b033a56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
