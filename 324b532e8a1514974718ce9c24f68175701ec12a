@@ -16,6 +16,29 @@
       "message": "Nit: the function is now called `downcast_binder`.",
       "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ffa47e_055be0e5",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-01T00:34:13Z",
+      "side": 1,
+      "message": "so, I\u0027m not very familiar with this or the above macro. This is using state at the Rust layer to make sure it\u0027s the same object type?\n\nWe could theoretically do it without any additional state, by checking AIBinder_Class equality, and then checking AIBinder_getUserData equality, which would determine if it\u0027s the same object. However, I\u0027m not sure how messy that would be to implement.",
+      "range": {
+        "startLine": 902,
+        "startChar": 32,
+        "endLine": 902,
+        "endChar": 44
+      },
+      "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
