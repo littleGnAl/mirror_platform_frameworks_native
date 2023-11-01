@@ -17,7 +17,6 @@
 
 #include <memory>
 
-#include <android-base/result.h>
 #include <utils/Errors.h>
 
 #include <binder/RpcTransport.h>

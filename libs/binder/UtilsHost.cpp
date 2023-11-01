@@ -72,8 +72,8 @@ std::string CommandResult::toString() const {
     return ss.str();
 }
 
-android::base::Result<CommandResult> execute(std::vector<std::string> argStringVec,
-                                             const std::function<bool(const CommandResult&)>& end) {
+status_t execute(CommandResult* result, std::vector<std::string> argStringVec,
+                 const std::function<bool(const CommandResult&)>& end) {
     // turn vector<string> into null-terminated char* vector.
     std::vector<char*> argv;
     argv.reserve(argStringVec.size() + 1);
@@ -82,14 +82,21 @@ android::base::Result<CommandResult> execute(std::vector<std::string> argStringV
 
     CommandResult ret;
     android::base::unique_fd outWrite;
-    if (!android::base::Pipe(&ret.outPipe, &outWrite))
-        return android::base::ErrnoError() << "pipe() for outPipe";
+    if (!android::base::Pipe(&ret.outPipe, &outWrite)) {
+        if (errno == 0) return UNKNOWN_ERROR;
+        return -errno; // pipe() for outPipe
+    }
     android::base::unique_fd errWrite;
-    if (!android::base::Pipe(&ret.errPipe, &errWrite))
-        return android::base::ErrnoError() << "pipe() for errPipe";
+    if (!android::base::Pipe(&ret.errPipe, &errWrite)) {
+        if (errno == 0) return UNKNOWN_ERROR;
+        return -errno; // pipe() for errPipe
+    }
 
     int pid = fork();
-    if (pid == -1) return android::base::ErrnoError() << "fork()";
+    if (pid == -1) {
+        if (errno == 0) return UNKNOWN_ERROR;
+        return -errno; // fork()
+    }
     if (pid == 0) {
         // child
         ret.outPipe.reset();
@@ -140,21 +147,34 @@ android::base::Result<CommandResult> execute(std::vector<std::string> argStringV
             *errPollFd = {.fd = ret.errPipe.get(), .events = POLLIN};
         }
         int pollRet = poll(fds, nfds, 1000 /* ms timeout */);
-        if (pollRet == -1) return android::base::ErrnoError() << "poll()";
+        if (pollRet == -1) {
+            if (errno == 0) return UNKNOWN_ERROR;
+            return -errno; // poll()
+        }
 
-        if (!handlePoll(&ret.outPipe, outPollFd, &ret.stdoutStr))
-            return android::base::ErrnoError() << "read(stdout)";
-        if (!handlePoll(&ret.errPipe, errPollFd, &ret.stderrStr))
-            return android::base::ErrnoError() << "read(stderr)";
+        if (!handlePoll(&ret.outPipe, outPollFd, &ret.stdoutStr)) {
+            if (errno == 0) return UNKNOWN_ERROR;
+            return -errno; // read(stdout)
+        }
+        if (!handlePoll(&ret.errPipe, errPollFd, &ret.stderrStr)) {
+            if (errno == 0) return UNKNOWN_ERROR;
+            return -errno; // read(stderr)
+        }
 
-        if (end && end(ret)) return ret;
+        if (end && end(ret)) {
+            *result = std::move(ret);
+            return OK;
+        }
     }
 
     // If both stdout and stderr are closed by the subprocess, it may or may not be terminated.
     while (ret.pid.has_value()) {
         int status;
         auto exitPid = waitpid(pid, &status, 0);
-        if (exitPid == -1) return android::base::ErrnoError() << "waitpid(" << pid << ")";
+        if (exitPid == -1) {
+            if (errno == 0) return UNKNOWN_ERROR;
+            return -errno; // waitpid(" << pid << ")
+        }
         if (exitPid == pid) {
             if (WIFEXITED(status)) {
                 ret.pid = std::nullopt;
@@ -172,6 +192,7 @@ android::base::Result<CommandResult> execute(std::vector<std::string> argStringV
         // is no need to check the predicate `end(ret)`.
     }
 
-    return ret;
+    *result = std::move(ret);
+    return OK;
 }
 } // namespace android

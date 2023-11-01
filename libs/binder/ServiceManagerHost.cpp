@@ -62,25 +62,25 @@ private:
     std::optional<unsigned int> mPort;
 };
 std::optional<AdbForwarder> AdbForwarder::forward(unsigned int devicePort) {
-    auto result =
-            execute({"adb", "forward", "tcp:0", "tcp:" + std::to_string(devicePort)}, nullptr);
-    if (!result.ok()) {
-        ALOGE("Unable to run `adb forward tcp:0 tcp:%d`: %s", devicePort,
-              result.error().message().c_str());
+    CommandResult result;
+    auto status = execute(&result, {"adb", "forward", "tcp:0", "tcp:" + std::to_string(devicePort)},
+                          nullptr);
+    if (status != OK) {
+        ALOGE("Unable to run `adb forward tcp:0 tcp:%d`: %s", devicePort, strerror(status));
         return std::nullopt;
     }
     // Must end with exit code 0 (`has_value() && value() == 0`)
-    if (result->exitCode.value_or(1) != 0) {
+    if (result.exitCode.value_or(1) != 0) {
         ALOGE("Unable to run `adb forward tcp:0 tcp:%d`, command exits with %s", devicePort,
-              result->toString().c_str());
+              result.toString().c_str());
         return std::nullopt;
     }
-    if (!result->stderrStr.empty()) {
+    if (!result.stderrStr.empty()) {
         LOG_HOST("`adb forward tcp:0 tcp:%d` writes to stderr: %s", devicePort,
-                 result->stderrStr.c_str());
+                 result.stderrStr.c_str());
     }
 
-    unsigned int hostPort = parsePortNumber(result->stdoutStr, "host port");
+    unsigned int hostPort = parsePortNumber(result.stdoutStr, "host port");
     if (hostPort == 0) return std::nullopt;
 
     return AdbForwarder(hostPort);
@@ -94,21 +94,22 @@ AdbForwarder& AdbForwarder::operator=(AdbForwarder&& other) noexcept {
 AdbForwarder::~AdbForwarder() {
     if (!mPort.has_value()) return;
 
-    auto result = execute({"adb", "forward", "--remove", "tcp:" + std::to_string(*mPort)}, nullptr);
-    if (!result.ok()) {
-        ALOGE("Unable to run `adb forward --remove tcp:%d`: %s", *mPort,
-              result.error().message().c_str());
+    CommandResult result;
+    auto status = execute(&result, {"adb", "forward", "--remove", "tcp:" + std::to_string(*mPort)},
+                          nullptr);
+    if (status != OK) {
+        ALOGE("Unable to run `adb forward --remove tcp:%d`: %s", *mPort, strerror(status));
         return;
     }
     // Must end with exit code 0 (`has_value() && value() == 0`)
-    if (result->exitCode.value_or(1) != 0) {
+    if (result.exitCode.value_or(1) != 0) {
         ALOGE("Unable to run `adb forward --remove tcp:%d`, command exits with %s", *mPort,
-              result->toString().c_str());
+              result.toString().c_str());
         return;
     }
-    if (!result->stderrStr.empty()) {
+    if (!result.stderrStr.empty()) {
         LOG_HOST("`adb forward --remove tcp:%d` writes to stderr: %s", *mPort,
-                 result->stderrStr.c_str());
+                 result.stderrStr.c_str());
     }
 
     LOG_HOST("Successfully run `adb forward --remove tcp:%d`", *mPort);
@@ -130,27 +131,29 @@ sp<IBinder> getDeviceService(std::vector<std::string>&& serviceDispatcherArgs,
     std::vector<std::string> prefix{"adb", "shell", "servicedispatcher"};
     serviceDispatcherArgs.insert(serviceDispatcherArgs.begin(), prefix.begin(), prefix.end());
 
-    auto result = execute(std::move(serviceDispatcherArgs), &CommandResult::stdoutEndsWithNewLine);
-    if (!result.ok()) {
-        ALOGE("%s", result.error().message().c_str());
+    CommandResult result;
+    auto status = execute(&result, std::move(serviceDispatcherArgs),
+                          &CommandResult::stdoutEndsWithNewLine);
+    if (status != OK) {
+        ALOGE("%s", strerror(status));
         return nullptr;
     }
 
     // `servicedispatcher` process must be alive to keep the port open.
-    if (result->exitCode.has_value()) {
-        ALOGE("Command exits with: %s", result->toString().c_str());
+    if (result.exitCode.has_value()) {
+        ALOGE("Command exits with: %s", result.toString().c_str());
         return nullptr;
     }
-    if (!result->stderrStr.empty()) {
-        LOG_HOST("servicedispatcher writes to stderr: %s", result->stderrStr.c_str());
+    if (!result.stderrStr.empty()) {
+        LOG_HOST("servicedispatcher writes to stderr: %s", result.stderrStr.c_str());
     }
 
-    if (!result->stdoutEndsWithNewLine()) {
-        ALOGE("Unexpected command result: %s", result->toString().c_str());
+    if (!result.stdoutEndsWithNewLine()) {
+        ALOGE("Unexpected command result: %s", result.toString().c_str());
         return nullptr;
     }
 
-    unsigned int devicePort = parsePortNumber(result->stdoutStr, "device port");
+    unsigned int devicePort = parsePortNumber(result.stdoutStr, "device port");
     if (devicePort == 0) return nullptr;
 
     auto forwardResult = AdbForwarder::forward(devicePort);
@@ -179,7 +182,7 @@ sp<IBinder> getDeviceService(std::vector<std::string>&& serviceDispatcherArgs,
     LOG_ALWAYS_FATAL_IF(
             nullptr !=
             binder->attachObject(kDeviceServiceExtraId,
-                                 static_cast<void*>(new CommandResult(std::move(*result))), nullptr,
+                                 static_cast<void*>(new CommandResult(std::move(result))), nullptr,
                                  &cleanupCommandResult));
     return binder;
 }
