@@ -121,9 +121,9 @@ bool AIBinder::associateClass(const AIBinder_Class* clazz) {
     if (mClazz != nullptr && !asABpBinder()) {
         const String16& currentDescriptor = mClazz->getInterfaceDescriptor();
         if (newDescriptor == currentDescriptor) {
-            LOG(ERROR) << __func__ << ": Class descriptors '" << currentDescriptor
-                       << "' match during associateClass, but they are different class objects ("
-                       << clazz << " vs " << mClazz << "). Class descriptor collision?";
+            ALOGE("Class descriptors '%s' match during associateClass, but they are different class"
+                  " objects (%p vs %p). Class descriptor collision?",
+                  String8(currentDescriptor).c_str(), clazz, mClazz);
         } else {
             LOG(ERROR) << __func__
                        << ": Class cannot be associated on object which already has a class. "
