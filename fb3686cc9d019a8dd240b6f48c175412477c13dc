@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49fd027b_5d56fe78",
+        "filename": "cmds/installd/otapreopt_chroot.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2023-11-01T20:28:03Z",
+      "side": 0,
+      "message": "Well, this is embarrassing. I can\u0027t find any justification why I apparently thought such a low number would be enough.\n\nI actually think 10k is on the low side too, but given this is a static buffer on the stack I suppose we can\u0027t just go 10x bigger without thinking a bit about it.",
+      "range": {
+        "startLine": 356,
+        "startChar": 26,
+        "endLine": 356,
+        "endChar": 30
+      },
+      "revId": "fb3686cc9d019a8dd240b6f48c175412477c13dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
