@@ -19,8 +19,8 @@
 #include <cstdint>
 
 #include <android-base/result.h>
-#include <android-base/unique_fd.h>
 #include <binder/RpcTransport.h>
+#include <binder/unique_fd.h>
 #include <utils/Errors.h>
 
 namespace android::binder::os {
