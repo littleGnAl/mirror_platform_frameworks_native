@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f645b04_d38f0728",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1944400
+      },
+      "writtenOn": "2023-11-01T01:18:44Z",
+      "side": 1,
+      "message": "don\u0027t use `unwrap` in the commit message, someone will probably copy-paste it",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c885456f_f5efd369",
         "filename": "libs/binder/rust/src/binder.rs",
         "patchSetId": 14
