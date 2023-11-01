@@ -27,8 +27,6 @@
 #include "RpcTransportUtils.h"
 
 using namespace android::binder::impl;
-using android::base::Error;
-using android::base::Result;
 
 namespace android {
 
