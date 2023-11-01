@@ -39,6 +39,30 @@
       },
       "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ad6bb9_e468c04d",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-11-01T00:51:40Z",
+      "side": 1,
+      "message": "\u003e checking AIBinder_getUserData equality, which would determine if it\u0027s the same object.\n\nJust to clarify: what we store in `userData` for Rust is a `*mut Box\u003cT\u003e` here, i.e., a double indirection returned by a `Box\u003cBox\u003cT\u003e\u003e::into_raw()`. I think comparing the pointers should still work because we never move that inner `Box` out.\n\n\u003e how messy that would be to implement\n\nWe\u0027re trying to avoid using `unsafe`, but that\u0027s not a hard requirement.",
+      "parentUuid": "89ffa47e_055be0e5",
+      "range": {
+        "startLine": 902,
+        "startChar": 32,
+        "endLine": 902,
+        "endChar": 44
+      },
+      "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
