@@ -34,6 +34,24 @@
       "parentUuid": "4ca05689_3b83dcb2",
       "revId": "1eda5155272d9f953c1d526dd6f6e0d87b033a56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "437cd3c6_c951a8ea",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-01T21:28:03Z",
+      "side": 1,
+      "message": "also - we probably don\u0027t want to just copy/paste unique_fd, we probably want a scoped-down version in libbinder.",
+      "parentUuid": "f8baedfc_ba955ecf",
+      "revId": "1eda5155272d9f953c1d526dd6f6e0d87b033a56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
