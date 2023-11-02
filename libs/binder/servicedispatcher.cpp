@@ -19,7 +19,6 @@
 
 #include <iostream>
 
-#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/properties.h>
 #include <android/debug/BnAdbCallback.h>
@@ -29,6 +28,7 @@
 #include <binder/IServiceManager.h>
 #include <binder/ProcessState.h>
 #include <binder/RpcServer.h>
+#include <binder/file.h>
 
 using android::BBinder;
 using android::defaultServiceManager;

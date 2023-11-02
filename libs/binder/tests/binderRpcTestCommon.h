@@ -37,7 +37,6 @@
 #include <vector>
 
 #ifndef __TRUSTY__
-#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/properties.h>
 #include <android/binder_auto_utils.h>
@@ -46,6 +45,7 @@
 #include <binder/RpcTlsTestUtils.h>
 #include <binder/RpcTlsUtils.h>
 #include <binder/RpcTransportTls.h>
+#include <binder/file.h>
 
 #include <signal.h>
 
