@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <binder/RecordedTransaction.h>
+#include <binder/file.h>
 #include <binder/unique_fd.h>
 
 #include <fuzzseeds/random_parcel_seeds.h>
 
 #include <sys/prctl.h>
+#include <sys/stat.h>
 
 using android::generateSeedsFromRecording;
 using android::status_t;
