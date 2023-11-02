@@ -15,7 +15,6 @@
  */
 
 #include <BnBinderRecordReplayTest.h>
-#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <binder/Binder.h>
 #include <binder/BpBinder.h>
@@ -23,6 +22,7 @@
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 #include <binder/RecordedTransaction.h>
+#include <binder/file.h>
 #include <binder/unique_fd.h>
 
 #include <fuzzbinder/libbinder_driver.h>
