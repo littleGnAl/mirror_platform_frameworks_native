@@ -37,7 +37,6 @@
 #include <vector>
 
 #ifndef __TRUSTY__
-#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/properties.h>
 #include <android/binder_auto_utils.h>
@@ -57,6 +56,7 @@
 #include "../BuildFlags.h"
 #include "../FdTrigger.h"
 #include "../RpcState.h" // for debugging
+#include "FileUtils.h"
 #include "format.h"
 #include "utils/Errors.h"
 
