@@ -16,6 +16,24 @@
       "message": "I\u0027ll need more information and justification.  From quickly looking at the referenced bug, it seems like you are trying to create something very different than Android.  Yet this CL changes the Android platform code for everybody.  Am I misunderstanding?\n\nIIUC, perhaps you\u0027ll need a change in a downstream branch (not AOSP main) and/or one of the new types of flags that can be enabled only for the new version of Android you are creating.",
       "revId": "55b477d4abc70ce7051fca6176d1cccc5a400c0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3990fb8_ac5c7614",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1986660
+      },
+      "writtenOn": "2023-11-02T20:39:58Z",
+      "side": 1,
+      "message": "Thank you for taking a look. What we\u0027re building is indeed missing quite a few pieces that are present in Android.\n\nI\u0027ll see if a change to a downstream branch is possible for us. The reasoning for suggesting this change upstream was:\n- These extensions don\u0027t add any new functions, but define a handful of constants for existing `eglCreateImageKHR`. If the GL driver supports these extensions, one could successfully use the functionality, as long as they ignore the library reporting no support for it.\n- Right now, we\u0027re using an upstream `frameworks/native` as is, and it would be great if we could keep that up if at all possible.\n\nI can see how this may not be desirable in general Android, as the use case for that is very specific to our version.\n\n\u003e one of the new types of flags that can be enabled only for the new version of Android you are creating.\n\nJust to clarify - if there was a way to limit the scope of this change to our Android version with a feature flag, would that make such change acceptable upstream, or would that still be a no-go?",
+      "parentUuid": "1a65f6b8_217bdbea",
+      "revId": "55b477d4abc70ce7051fca6176d1cccc5a400c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
