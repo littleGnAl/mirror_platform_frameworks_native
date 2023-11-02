@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <binder/Binder.h>
 #include <binder/Parcel.h>
@@ -23,6 +22,7 @@
 #include <binder/RpcTransport.h>
 #include <binder/RpcTransportRaw.h>
 #include <binder/RpcTransportTls.h>
+#include <binder/file.h>
 #include <binder/unique_fd.h>
 #include <fuzzer/FuzzedDataProvider.h>
 #include <openssl/rand.h>
