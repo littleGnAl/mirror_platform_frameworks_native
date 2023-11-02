@@ -88,6 +88,23 @@
       "parentUuid": "5dd68221_42ffb48b",
       "revId": "e4da7a81bc095651375e27f4815e4dc897ab753c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4042599d_2dee4a4f",
+        "filename": "opengl/libs/EGL/Loader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2023-11-02T23:08:56Z",
+      "side": 1,
+      "message": "Hi!  I\u0027m seeing boot failures on Cuttlefish because of a null pointer dereference on this line.  Just above this, `suffix` is nullable, so maybe it needs a null check here.",
+      "revId": "e4da7a81bc095651375e27f4815e4dc897ab753c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
