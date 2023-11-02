@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a65f6b8_217bdbea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2023-11-02T04:30:14Z",
+      "side": 1,
+      "message": "I\u0027ll need more information and justification.  From quickly looking at the referenced bug, it seems like you are trying to create something very different than Android.  Yet this CL changes the Android platform code for everybody.  Am I misunderstanding?\n\nIIUC, perhaps you\u0027ll need a change in a downstream branch (not AOSP main) and/or one of the new types of flags that can be enabled only for the new version of Android you are creating.",
+      "revId": "55b477d4abc70ce7051fca6176d1cccc5a400c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
