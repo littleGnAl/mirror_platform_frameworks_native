@@ -34,6 +34,24 @@
       "parentUuid": "1a65f6b8_217bdbea",
       "revId": "55b477d4abc70ce7051fca6176d1cccc5a400c0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "210c3225_abcc4f2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098333
+      },
+      "writtenOn": "2023-11-02T23:58:32Z",
+      "side": 1,
+      "message": "\u003e Just to clarify - if there was a way to limit the scope of this change to our Android version with a feature flag, would that make such change acceptable upstream, or would that still be a no-go?\n\nI\u0027d be open to this being upstream as long as it\u0027s only built for your variant of Android.",
+      "parentUuid": "e3990fb8_ac5c7614",
+      "revId": "55b477d4abc70ce7051fca6176d1cccc5a400c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
