@@ -34,6 +34,24 @@
       "parentUuid": "48ca1fa2_05b043b7",
       "revId": "ac3d9a70597ffd47dab8f8cd1b7b9b0259d52ec2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee77f647_af3b09d1",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-03T02:35:27Z",
+      "side": 1,
+      "message": "GetExecutableDirectory is only used by the tests though.\n\nWhat\u0027s actually used here in BpBinder.cpp? I don\u0027t see anything. Is there anything in libbinder using these APIs?",
+      "parentUuid": "de4d654d_393d6a01",
+      "revId": "ac3d9a70597ffd47dab8f8cd1b7b9b0259d52ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
