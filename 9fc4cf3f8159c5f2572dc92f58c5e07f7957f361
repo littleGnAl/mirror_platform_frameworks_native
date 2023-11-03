@@ -33,6 +33,24 @@
       "message": "Should we try to load the `angleGetDisplayPlatformFunc` and update the cache result `cnx-\u003eangleGetDisplayPlatformFunc`, instead of just returning false?",
       "revId": "9fc4cf3f8159c5f2572dc92f58c5e07f7957f361",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e960fdb_fe0052b3",
+        "filename": "opengl/libs/EGL/egl_angle_platform.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-11-03T23:26:51Z",
+      "side": 1,
+      "message": "No, it must succeed if ANGLE is in use",
+      "parentUuid": "2a9faa58_325b866a",
+      "revId": "9fc4cf3f8159c5f2572dc92f58c5e07f7957f361",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
