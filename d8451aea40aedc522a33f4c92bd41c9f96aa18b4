@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f28e0e32_3e4ab310",
+        "filename": "libs/binder/include/binder/BpBinder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-03T23:41:53Z",
+      "side": 1,
+      "message": "Also for many of these, unique_fd could be forward-declared. Could we avoid exporting this as API? or no?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 70
+      },
+      "revId": "d8451aea40aedc522a33f4c92bd41c9f96aa18b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75b08acb_8e408efe",
         "filename": "libs/binder/include/binder/unique_fd.h",
         "patchSetId": 4
