@@ -52,6 +52,24 @@
       "parentUuid": "e3990fb8_ac5c7614",
       "revId": "55b477d4abc70ce7051fca6176d1cccc5a400c0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6818c35e_ed16d378",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1101621
+      },
+      "writtenOn": "2023-11-03T00:49:27Z",
+      "side": 1,
+      "message": "For me, the order of preference is:\n\n1) Don\u0027t build frameworks libEGL at all for the Android variant\n2) Add a flag upstream\n3) Fork\n\nThough, (1) doesn\u0027t seem to be ruled out.  I know it would require changes to the Android variant in terms of partitioning as suggested by the build team:\n\nhttps://buganizer.corp.google.com/issues/301237091#comment15\n\nBut it may be a good idea in the long run.  If the Android variant is going to be useful, refactorings/discussions like this improve the health of the product.",
+      "parentUuid": "210c3225_abcc4f2d",
+      "revId": "55b477d4abc70ce7051fca6176d1cccc5a400c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
