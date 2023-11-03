@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5075c155_5b25c9bc",
+        "filename": "libs/binder/OS_unix_base.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-03T19:31:24Z",
+      "side": 1,
+      "message": "We could switch to std::expected and use that directly when C++23 comes around, but I think it\u0027s simpler to have a string output, rather than yet another Result type.\n\nCustom error handling for a library is okay, but it raises the barrier of entry for someone to understand the code. status_t/std::string will be obvious. std::expected later will be obvious, but this would be one more file someone would have to open to learn the intricacies of, and worse, they might read it and assume it\u0027s another Result\u003c\u003e",
+      "parentUuid": "2c02f079_bf5f744d",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "233284589dba0a3b8cbb8746c1582414a059a80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "764a5cd5_1c0eba10",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 1
