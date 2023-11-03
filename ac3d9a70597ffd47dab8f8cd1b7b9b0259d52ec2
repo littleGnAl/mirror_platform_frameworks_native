@@ -52,6 +52,24 @@
       "parentUuid": "de4d654d_393d6a01",
       "revId": "ac3d9a70597ffd47dab8f8cd1b7b9b0259d52ec2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39f9ee2_50fd3886",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-03T03:11:51Z",
+      "side": 1,
+      "message": "I just checked and indeed, it\u0027s not being used in BpBinder. It is still used in OS_unix_base, RecordedTransaction and servicedispatcher.\n\nIf we use libbase for tests, we won\u0027t have a good way to test this library on Linux!\n\nHowever, I can cut a great bunch of this code by migrating to std::filesystem, wdyt? At least for tests.",
+      "parentUuid": "ee77f647_af3b09d1",
+      "revId": "ac3d9a70597ffd47dab8f8cd1b7b9b0259d52ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
