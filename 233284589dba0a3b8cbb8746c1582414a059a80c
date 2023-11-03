@@ -508,6 +508,30 @@
       },
       "revId": "233284589dba0a3b8cbb8746c1582414a059a80c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961e9911_92f81ebd",
+        "filename": "libs/binder/UtilsHost.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-03T22:32:19Z",
+      "side": 1,
+      "message": "All non-test users always log errors here, so I\u0027ll do the same thing as with `open_driver` - always log with `PLOGE` and return `std::optional`.",
+      "parentUuid": "9368ce3e_1b10c473",
+      "range": {
+        "startLine": 84,
+        "startChar": 23,
+        "endLine": 95,
+        "endChar": 21
+      },
+      "revId": "233284589dba0a3b8cbb8746c1582414a059a80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
