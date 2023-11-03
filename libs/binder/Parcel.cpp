@@ -3228,4 +3228,8 @@ void Parcel::Blob::clear() {
     mMutable = false;
 }
 
+void Parcel::testMethod() {
+
+}
+
 } // namespace android

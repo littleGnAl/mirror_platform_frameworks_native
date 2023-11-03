@@ -158,6 +158,8 @@ public:
     void setServiceFuzzing();
     bool isServiceFuzzing() const;
 
+    void testMethod();
+
     void                freeData();
 
     size_t              objectsCount() const;
