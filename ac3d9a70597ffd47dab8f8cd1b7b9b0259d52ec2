@@ -70,6 +70,24 @@
       "parentUuid": "ee77f647_af3b09d1",
       "revId": "ac3d9a70597ffd47dab8f8cd1b7b9b0259d52ec2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab0d525_6bd73b49",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-03T03:42:59Z",
+      "side": 1,
+      "message": "Sure, but if we\u0027re only using functions in tests, can we leave them as helper functions in tests, not in libbinder itself?\n\nservicedispatcher is a separate binary which you shouldn\u0027t need.\n\nI think reading fully/writing fully to FDs, we can have a separate copy of this in libbinder for RecordedTransaction. That\u0027s fine. However, this GetExecutableDirectory stuff is pretty complicated. I think we can switch that out with something else?\n\nAlso, we can avoid exporting any of this as APIs since it would be an implementation detail of libbinder.",
+      "parentUuid": "e39f9ee2_50fd3886",
+      "revId": "ac3d9a70597ffd47dab8f8cd1b7b9b0259d52ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
