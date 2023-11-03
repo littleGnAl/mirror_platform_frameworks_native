@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adfa657d_e8306c3b",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-03T23:59:25Z",
+      "side": 1,
+      "message": "@smoreland: this was not status_t in the first place.",
+      "range": {
+        "startLine": 524,
+        "startChar": 4,
+        "endLine": 524,
+        "endChar": 7
+      },
+      "revId": "ac33b6624eca3f05f42d5fed27bedc14d6370a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

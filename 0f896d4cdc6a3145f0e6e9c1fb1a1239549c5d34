@@ -22,6 +22,30 @@
       },
       "revId": "0f896d4cdc6a3145f0e6e9c1fb1a1239549c5d34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3718fe55_67b48e8d",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-03T23:59:25Z",
+      "side": 1,
+      "message": "Done. Why didn\u0027t I think about it.\n\nActually, I think it would be good to convert mDriverFD too (in this change?), but it\u0027s up to you.",
+      "parentUuid": "9f335537_68e7a7c4",
+      "range": {
+        "startLine": 568,
+        "startChar": 4,
+        "endLine": 568,
+        "endChar": 22
+      },
+      "revId": "0f896d4cdc6a3145f0e6e9c1fb1a1239549c5d34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
