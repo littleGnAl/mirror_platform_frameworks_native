@@ -88,6 +88,24 @@
       "parentUuid": "6818c35e_ed16d378",
       "revId": "55b477d4abc70ce7051fca6176d1cccc5a400c0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a401aca_65ce1dfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1986660
+      },
+      "writtenOn": "2023-11-03T16:39:14Z",
+      "side": 1,
+      "message": "Thanks folks for all your input. Let me take a step back and reconsider the options. I asked you for input on the doc linked to in b/301237091#comment16.",
+      "parentUuid": "63dce36a_02cb7b36",
+      "revId": "55b477d4abc70ce7051fca6176d1cccc5a400c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
