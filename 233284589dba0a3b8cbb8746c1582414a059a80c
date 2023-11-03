@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b90e044e_97b1e79c",
+        "filename": "libs/binder/OS_unix_base.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-03T19:57:00Z",
+      "side": 1,
+      "message": "Keep it simple? Don\u0027t add new abstraction layers? It\u0027s only a couple functions that need it. libbase Result is already based on a copy of expected 😊",
+      "parentUuid": "d1dc2da6_29ec7626",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "233284589dba0a3b8cbb8746c1582414a059a80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "764a5cd5_1c0eba10",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 1
