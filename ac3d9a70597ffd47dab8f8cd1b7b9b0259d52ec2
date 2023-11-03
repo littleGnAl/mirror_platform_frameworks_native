@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ca1fa2_05b043b7",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-03T01:46:05Z",
+      "side": 1,
+      "message": "which of these are actually used in libbinder? I don\u0027t think we want to flat copy and maintain APIs from libbase. Can we look at libbinder first and actually cut deps if possible or only maintain copies of a few, and use libbase in the tests?",
+      "revId": "ac3d9a70597ffd47dab8f8cd1b7b9b0259d52ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
