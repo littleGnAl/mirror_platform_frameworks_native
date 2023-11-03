@@ -16,6 +16,24 @@
       "message": "which of these are actually used in libbinder? I don\u0027t think we want to flat copy and maintain APIs from libbase. Can we look at libbinder first and actually cut deps if possible or only maintain copies of a few, and use libbase in the tests?",
       "revId": "ac3d9a70597ffd47dab8f8cd1b7b9b0259d52ec2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de4d654d_393d6a01",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-03T02:29:59Z",
+      "side": 1,
+      "message": "It\u0027s mostly Read/WriteFdToString and Read/WriteFully. Everything else is needed for GetExecutableDirectory. And maybe Basename/Dirname is being used somewhere minor.\n\nI looked at SO and there\u0027s no std library way of doing GetExecutableDirectory, every OS does this differently.",
+      "parentUuid": "48ca1fa2_05b043b7",
+      "revId": "ac3d9a70597ffd47dab8f8cd1b7b9b0259d52ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
