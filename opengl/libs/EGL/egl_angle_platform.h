@@ -25,8 +25,8 @@
 
 namespace angle {
 
-bool initializeAnglePlatform(EGLDisplay dpy);
-void resetAnglePlatform(EGLDisplay dpy);
+bool initializeAnglePlatform(EGLDisplay dpy, egl_connection_t* const cnx);
+void resetAnglePlatform(EGLDisplay dpy, egl_connection_t* const cnx);
 
 }; // namespace angle
 
