@@ -88,6 +88,24 @@
       "parentUuid": "e39f9ee2_50fd3886",
       "revId": "ac3d9a70597ffd47dab8f8cd1b7b9b0259d52ec2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d683219b_1ec7c75d",
+        "filename": "libs/binder/BpBinder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-03T03:47:59Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ll separate test helpers out and indeed I shouldn\u0027t have exposed file.h in Binder API (like I had to do with unique_fd). I\u0027ll fix all of this maybe tomorrow.",
+      "parentUuid": "5ab0d525_6bd73b49",
+      "revId": "ac3d9a70597ffd47dab8f8cd1b7b9b0259d52ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
