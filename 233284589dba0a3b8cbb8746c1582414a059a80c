@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c02f079_bf5f744d",
+        "filename": "libs/binder/OS_unix_base.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-03T19:16:30Z",
+      "side": 1,
+      "message": "Yeah, I felt bad writing this... How about alternative: since this is just implementation detail of libbinder, I\u0027ll just implement a very simple android::base::Result alternative local to Binder. Something like:\n```\nclass Result\u003cT\u003e {\n  std::variant\u003cT, std::string\u003e mValOrError;\n  ...\n};\n```",
+      "parentUuid": "8edaecc7_07ab1084",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "233284589dba0a3b8cbb8746c1582414a059a80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "764a5cd5_1c0eba10",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 1
