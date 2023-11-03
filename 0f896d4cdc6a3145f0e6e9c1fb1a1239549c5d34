@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f335537_68e7a7c4",
+        "filename": "libs/binder/ProcessState.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-03T23:25:53Z",
+      "side": 1,
+      "message": "nit: this could use \u0027unique_fd\u0027 since it has -1 as the not okay type. mDriverFD could too, but we won\u0027t worry about that :)",
+      "range": {
+        "startLine": 568,
+        "startChar": 4,
+        "endLine": 568,
+        "endChar": 22
+      },
+      "revId": "0f896d4cdc6a3145f0e6e9c1fb1a1239549c5d34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
