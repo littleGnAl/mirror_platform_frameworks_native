@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1dc2da6_29ec7626",
+        "filename": "libs/binder/OS_unix_base.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-03T19:55:14Z",
+      "side": 1,
+      "message": "This actually sound nice - I just checked and `std::expected` is already available on some compilers. Moreover, `android::base::Result` is a typedef of `android::base::expected` which is a drop-in reimplementation of `std::expected`.\n\nHow about this:\n1. Implement local expected.h which would include expected implementations in order:\n   - `\u003cexpected\u003e`\n   - `\u003candroid-base/expected.h\u003e`\n   - local super simple implementation of expected if the two above are not present\n2. Once C++23 gets widely supported, drop local `expected.h` and move to `\u003cexpected\u003e`",
+      "parentUuid": "5075c155_5b25c9bc",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "233284589dba0a3b8cbb8746c1582414a059a80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "764a5cd5_1c0eba10",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 1
