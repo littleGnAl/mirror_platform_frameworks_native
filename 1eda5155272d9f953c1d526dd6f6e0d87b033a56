@@ -70,6 +70,24 @@
       "parentUuid": "437cd3c6_c951a8ea",
       "revId": "1eda5155272d9f953c1d526dd6f6e0d87b033a56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92376d34_83787bce",
+        "filename": "libs/binder/include/binder/IBinder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-03T23:39:07Z",
+      "side": 1,
+      "message": "We cannot do this change as is. For instance, if someone has access to libbinder headers but not libbase headers, they would get binder/unique_fd.h, has_include would be false, and if they pass unique_fd into another translation unit, they\u0027d effectively be reinterpret casting between the libbase and libbinder unique_fd implementations, causing UB if any of the methods/etc.. here change.",
+      "parentUuid": "8e549bbe_8220f436",
+      "revId": "1eda5155272d9f953c1d526dd6f6e0d87b033a56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
