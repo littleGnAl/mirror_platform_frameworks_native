@@ -235,6 +235,30 @@
       },
       "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "291f0189_5545ef60",
+        "filename": "libs/binder/rust/src/binder.rs",
+        "patchSetId": 14
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1942645
+      },
+      "writtenOn": "2023-11-03T16:11:16Z",
+      "side": 1,
+      "message": "I am not sure I fully follow the question. While the user of the API assumes (hopes?) that it is possible to cast a local instance of `BnFoo` into `MyFoo` (the other direction is not implemented because `downcast_binder` is part of `BnFoo`), you get back an `Option`, so if the type stored inside the `BnFoo` was not really a `MyFoo`, Rust will check that and return a `None`.\nBecause `MyFoo` implements `Interface`, its users will have now the option to call `as_any().downcast_ref::\u003cXXXXX\u003e()` on it, but if `XXXXX` is not `MyFoo` the cast will fail. Please let me know if this is not the info you were looking for.",
+      "parentUuid": "91b5d7e2_1b9c0968",
+      "range": {
+        "startLine": 902,
+        "startChar": 32,
+        "endLine": 902,
+        "endChar": 44
+      },
+      "revId": "324b532e8a1514974718ce9c24f68175701ec12a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
