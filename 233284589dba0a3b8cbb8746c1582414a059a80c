@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55b4a593_2b9dbe72",
+        "filename": "libs/binder/OS_unix_base.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-03T20:16:43Z",
+      "side": 1,
+      "message": "But this would only affect Linux Binder on systems without full C++23. Android would still use current support implementation. And the last-resort implementation would be super simple (std::variant based).\n\nIf you really want not going std::expected way, I\u0027d need to log unconditionally in OS_unix_base.cpp ProcessState.cpp and figure out what to do with `android::execute` (log unconditionally there too?).",
+      "parentUuid": "9dba56f1_d959de61",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "233284589dba0a3b8cbb8746c1582414a059a80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "764a5cd5_1c0eba10",
         "filename": "libs/binder/ProcessState.cpp",
         "patchSetId": 1
