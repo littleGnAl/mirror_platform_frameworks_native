@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c60863d_e6bb401e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-04T00:38:03Z",
+      "side": 1,
+      "message": "Bad rebase. I\u0027ll resolve it later (maybe today).",
+      "revId": "e55ab2e39ea3557101a40c214cb2a3c3ce624496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
