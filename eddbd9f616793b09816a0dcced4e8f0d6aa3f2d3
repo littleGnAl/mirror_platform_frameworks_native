@@ -122,6 +122,24 @@
       "parentUuid": "02223c45_99000995",
       "revId": "eddbd9f616793b09816a0dcced4e8f0d6aa3f2d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34c3e4bb_890c2bb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-11-06T18:11:08Z",
+      "side": 1,
+      "message": "Yes. But paths are hidden in linker configuration. Especially, since we use `android_load_sphal_library`, Loader can still load drivers from \u0027sphal\u0027 namespace without specifying actual path.\n\nFor now, \u0027sphal\u0027 namespace has /vendor/lib/egl in its search paths. But it can be extended via vendor apex.",
+      "parentUuid": "1605d86b_18a206b9",
+      "revId": "eddbd9f616793b09816a0dcced4e8f0d6aa3f2d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
