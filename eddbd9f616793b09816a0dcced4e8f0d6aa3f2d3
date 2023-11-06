@@ -140,6 +140,24 @@
       "parentUuid": "1605d86b_18a206b9",
       "revId": "eddbd9f616793b09816a0dcced4e8f0d6aa3f2d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "351d6d03_2184e281",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-11-06T18:22:04Z",
+      "side": 1,
+      "message": "That\u0027s not true for this code as far as I understand, we always use the exact directory `/vendor/${LIB}/egl` or `/system/${LIB}` to search our libraries, and always call dlopen with the exact path.",
+      "parentUuid": "34c3e4bb_890c2bb4",
+      "revId": "eddbd9f616793b09816a0dcced4e8f0d6aa3f2d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
