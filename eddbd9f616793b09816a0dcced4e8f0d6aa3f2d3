@@ -104,6 +104,24 @@
       "parentUuid": "8c870b45_89625d3e",
       "revId": "eddbd9f616793b09816a0dcced4e8f0d6aa3f2d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1605d86b_18a206b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-11-06T17:57:40Z",
+      "side": 1,
+      "message": "I am confused. By making this modification you added more paths other than `/vendor/${LIB}/egl`, right?",
+      "parentUuid": "02223c45_99000995",
+      "revId": "eddbd9f616793b09816a0dcced4e8f0d6aa3f2d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
