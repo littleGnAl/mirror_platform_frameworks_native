@@ -33,6 +33,23 @@
       "message": "Hey Peiyong,\n\nThis change is to allow EGL/GLES drivers to be loaded from \"sphal\" namespace as well as from the fixed location (e.g. /vendor/lib/egl). This means that graphics libraries can be loaded from a vendor apex if the apex is a part of \"sphal\" namespace. In the topic, a new graphics APEX with graphic drivers is created for demonstration.\n\nPlease take a look.",
       "revId": "eddbd9f616793b09816a0dcced4e8f0d6aa3f2d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eae2baf5_6a4624e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267775
+      },
+      "writtenOn": "2023-11-06T17:22:18Z",
+      "side": 1,
+      "message": "There are a couple things that we are moving towards: 1) We are trying to reduce the paths where the graphics driver exists and hence reduce the time to search them; 2) We are trying to move to use ANGLE as the default GLES and by that time the GLES driver will only have one path `/system/${LIB}`; 3) the library name must be fixed, e.g. it must be `libxxx_${ro.hardware.egl}.so`",
+      "revId": "eddbd9f616793b09816a0dcced4e8f0d6aa3f2d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
