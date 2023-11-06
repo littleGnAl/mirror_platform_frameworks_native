@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ba53b5_a3c63a61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-06T22:56:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "179d23ca_94eb24b8",
+      "revId": "4aec00699cb0f35ce9e598d92889aee6a89285f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57f85ad8_f00efd30",
@@ -85,6 +103,30 @@
       "writtenOn": "2023-11-01T18:18:19Z",
       "side": 1,
       "message": "5-space indent?! That\u0027s what formatter forced on me.",
+      "range": {
+        "startLine": 754,
+        "startChar": 8,
+        "endLine": 754,
+        "endChar": 13
+      },
+      "revId": "4aec00699cb0f35ce9e598d92889aee6a89285f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a67bf926_76781c4e",
+        "filename": "libs/binder/Binder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-06T22:56:49Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "57f85ad8_f00efd30",
       "range": {
         "startLine": 754,
         "startChar": 8,
