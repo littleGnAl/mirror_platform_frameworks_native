@@ -499,6 +499,18 @@ static void* load_system_driver(const char* kind, const char* suffix, const bool
     // Only use sphal namespace when system ANGLE binaries are not the default drivers.
     const bool useSphalNamespace =  !isSuffixAngle || AngleInVendor;
 
+    // First, rely on search paths in 'sphal' namespace
+    if (useSphalNamespace && exact && suffix) {
+        std::string name = libraryName + ".so";
+        ALOGV("trying to load %s", name.c_str());
+        dso = do_android_load_sphal_library(name.c_str(), RTLD_NOW | RTLD_LOCAL);
+        if (dso) {
+            ALOGV("loaded %s", name.c_str());
+            return dso;
+        }
+    }
+
+    // If not found, find the driver for its absolute path.
     const std::string absolutePath =
             findLibrary(libraryName, useSphalNamespace ? VENDOR_LIB_EGL_DIR : SYSTEM_LIB_PATH,
                         exact);
