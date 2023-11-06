@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e5c4c08_8549edc0",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-06T23:10:36Z",
+      "side": 1,
+      "message": "@smoreland@google.com: this sounds like an error. `ALOGI(\"Unrecognized chunk.\");` at line 284 too.",
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
