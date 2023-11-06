@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd4513ab_f4c1e7f5",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-06T22:56:04Z",
+      "side": 1,
+      "message": "@smoreland: this one\u0027s interesting. Removing logging.cpp (or keeping it, but removing its contents) will trigger missing symbols from liblog. If I remove just a single symbol from there, I\u0027ll get duplicate symbols for all others.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 6
+      },
+      "revId": "35d3f39105c106f3ddd85f0b3649e8e9d7e53eb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
