@@ -86,6 +86,24 @@
       "parentUuid": "b7a50aa8_96f018ae",
       "revId": "eddbd9f616793b09816a0dcced4e8f0d6aa3f2d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02223c45_99000995",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2023-11-06T17:51:00Z",
+      "side": 1,
+      "message": "Right. But in fact, this isn\u0027t adding a new path, but rather removing the path restriction.\n\nFor now, the loader loads drivers from /vendor/lib/egl via `android_load_sphal_library`.\n\nIn this change, the loader loads drivers via `android_load_sphal_library`.",
+      "parentUuid": "8c870b45_89625d3e",
+      "revId": "eddbd9f616793b09816a0dcced4e8f0d6aa3f2d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
