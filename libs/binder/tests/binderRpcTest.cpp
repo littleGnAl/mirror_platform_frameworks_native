@@ -1382,6 +1382,7 @@ TEST(BinderRpc, Java) {
     auto keepAlive = sp<BBinder>::make();
     auto setRpcClientDebugStatus = binder->setRpcClientDebug(std::move(socket), keepAlive);
 
+#ifdef __ANDROID__
     if (!android::base::GetBoolProperty("ro.debuggable", false) ||
         android::base::GetProperty("ro.build.type", "") == "user") {
         ASSERT_EQ(INVALID_OPERATION, setRpcClientDebugStatus)
@@ -1390,6 +1391,7 @@ TEST(BinderRpc, Java) {
                 << statusToString(setRpcClientDebugStatus);
         GTEST_SKIP();
     }
+#endif
 
     ASSERT_EQ(OK, setRpcClientDebugStatus);
 

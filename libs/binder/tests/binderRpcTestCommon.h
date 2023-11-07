@@ -36,8 +36,11 @@
 #include <string>
 #include <vector>
 
-#ifndef __TRUSTY__
+#ifdef __ANDROID__
 #include <android-base/properties.h>
+#endif
+
+#ifndef __TRUSTY__
 #include <android/binder_auto_utils.h>
 #include <android/binder_libbinder.h>
 #include <binder/ProcessState.h>
