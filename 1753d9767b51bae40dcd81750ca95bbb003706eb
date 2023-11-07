@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "456cc630_18aff095",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "3e52a2c6_59f10216",
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b146f211_49ab0cc1",
@@ -49,6 +67,30 @@
       "writtenOn": "2023-11-07T01:29:43Z",
       "side": 1,
       "message": "zd for ssize_t (zu is size_t)",
+      "range": {
+        "startLine": 344,
+        "startChar": 39,
+        "endLine": 344,
+        "endChar": 41
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f55705c_847fbc83",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b146f211_49ab0cc1",
       "range": {
         "startLine": 344,
         "startChar": 39,
@@ -82,6 +124,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c71840bd_e1782fcb",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43eb7381_70907eb5",
+      "range": {
+        "startLine": 385,
+        "startChar": 39,
+        "endLine": 385,
+        "endChar": 41
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab01f7d7_1a1b4678",
@@ -95,6 +161,30 @@
       "writtenOn": "2023-11-07T01:29:43Z",
       "side": 1,
       "message": "for this log, it would be important that we print the string values. Could you add that here?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 96
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b7b816_8480c76b",
+        "filename": "libs/binder/ndk/service_manager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab01f7d7_1a1b4678",
       "range": {
         "startLine": 116,
         "startChar": 0,
@@ -128,6 +218,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b89f0cb_b22a72a3",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff61e1a4_8348dd60",
+      "range": {
+        "startLine": 90,
+        "startChar": 14,
+        "endLine": 91,
+        "endChar": 22
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8d71676_4dbaee45",
@@ -141,6 +255,30 @@
       "writtenOn": "2023-11-07T01:29:43Z",
       "side": 1,
       "message": "I think this will happen in the other process, so they should stay fatal. Otherwise, things might hang/might be annoying to clean up.",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 150,
+        "endChar": 21
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7611d1ec_3e13c82d",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8d71676_4dbaee45",
       "range": {
         "startLine": 149,
         "startChar": 11,
@@ -174,6 +312,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee0cf48_e4cb73d5",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edad7c1c_d697db54",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 13
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89903fb0_1df96674",
@@ -187,6 +349,30 @@
       "writtenOn": "2023-11-07T01:29:43Z",
       "side": 1,
       "message": "fatal",
+      "range": {
+        "startLine": 248,
+        "startChar": 8,
+        "endLine": 248,
+        "endChar": 17
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c16c86_b8e082ee",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89903fb0_1df96674",
       "range": {
         "startLine": 248,
         "startChar": 8,
@@ -220,6 +406,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b648e8e5_e664b5b5",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed05237c_c3278c18",
+      "range": {
+        "startLine": 332,
+        "startChar": 8,
+        "endLine": 332,
+        "endChar": 17
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b4c94ad_4db709d7",
@@ -233,6 +443,30 @@
       "writtenOn": "2023-11-07T01:29:43Z",
       "side": 1,
       "message": "fatal",
+      "range": {
+        "startLine": 334,
+        "startChar": 12,
+        "endLine": 334,
+        "endChar": 21
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "830e38a2_3948e9ce",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b4c94ad_4db709d7",
       "range": {
         "startLine": 334,
         "startChar": 12,
@@ -266,6 +500,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ab9574_0bd5aa67",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2045c0aa_ee875fa5",
+      "range": {
+        "startLine": 339,
+        "startChar": 12,
+        "endLine": 339,
+        "endChar": 21
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c2a6905_bc242db2",
@@ -279,6 +537,30 @@
       "writtenOn": "2023-11-07T01:29:43Z",
       "side": 1,
       "message": "fatal",
+      "range": {
+        "startLine": 354,
+        "startChar": 8,
+        "endLine": 354,
+        "endChar": 19
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd4309cb_2fa8854a",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c2a6905_bc242db2",
       "range": {
         "startLine": 354,
         "startChar": 8,
@@ -312,6 +594,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec63d1d_0ebc3fe9",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08d85ecf_5e5c08b1",
+      "range": {
+        "startLine": 406,
+        "startChar": 8,
+        "endLine": 406,
+        "endChar": 17
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99c26433_00327896",
@@ -325,6 +631,30 @@
       "writtenOn": "2023-11-07T01:29:43Z",
       "side": 1,
       "message": "nit: ASSERT_TRUE",
+      "range": {
+        "startLine": 587,
+        "startChar": 4,
+        "endLine": 587,
+        "endChar": 15
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb0a9b1_d596abe3",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99c26433_00327896",
       "range": {
         "startLine": 587,
         "startChar": 4,
@@ -358,6 +688,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e773c06_7835c5f6",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d49661f_dacc84f3",
+      "range": {
+        "startLine": 592,
+        "startChar": 4,
+        "endLine": 592,
+        "endChar": 15
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb303b56_a9a67a6c",
@@ -381,6 +735,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9ca9168_3e1c590c",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb303b56_a9a67a6c",
+      "range": {
+        "startLine": 949,
+        "startChar": 4,
+        "endLine": 949,
+        "endChar": 15
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0deed65d_9eadcbcd",
@@ -394,6 +772,30 @@
       "writtenOn": "2023-11-07T01:29:43Z",
       "side": 1,
       "message": "unrelated change",
+      "range": {
+        "startLine": 1196,
+        "startChar": 0,
+        "endLine": 1196,
+        "endChar": 66
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75aa7659_3dda656e",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1196,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0deed65d_9eadcbcd",
       "range": {
         "startLine": 1196,
         "startChar": 0,
