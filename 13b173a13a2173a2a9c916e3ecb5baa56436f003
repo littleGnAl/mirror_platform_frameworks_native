@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e8d1f5_e706d01f",
+        "filename": "libs/binder/trusty/rust/binder_rpc_server/src/server.rs",
+        "patchSetId": 18
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 2064605
+      },
+      "writtenOn": "2023-11-07T23:52:51Z",
+      "side": 1,
+      "message": "Unsafe Rust review: How is it known that `handle_fd` will continue to be valid throughout the life of the `RpcServerConnection`?  It looks as though `Handle`\u0027s lifetime is not attached to the `RpcServerConnection`.\n\nIs it possible for this to trigger any unsoundness if the undelrying `handle_fd` is invalidated while the `RpcServerConnection` continues to exist?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 34
+      },
+      "revId": "13b173a13a2173a2a9c916e3ecb5baa56436f003",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
