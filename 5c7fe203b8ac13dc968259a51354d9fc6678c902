@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7d9ebfa_dab6403b",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T00:50:05Z",
+      "side": 1,
+      "message": "You should make sure that this returns INVALID_OPERATION in your configuration. So, assume conditional is \u0027true\u0027 on non-Android builds.",
+      "range": {
+        "startLine": 1388,
+        "startChar": 0,
+        "endLine": 1391,
+        "endChar": 59
+      },
+      "revId": "5c7fe203b8ac13dc968259a51354d9fc6678c902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
