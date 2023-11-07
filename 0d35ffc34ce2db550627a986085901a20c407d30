@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de075c3c_ac1b1fe1",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2085,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 0,
+      "message": "hmmm, do the logs still go to stderr? there are liblog APIs supposedly that do the same thing as this. We might need to.",
+      "range": {
+        "startLine": 2085,
+        "startChar": 0,
+        "endLine": 2085,
+        "endChar": 97
+      },
+      "revId": "0d35ffc34ce2db550627a986085901a20c407d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96537219_1469215f",
+        "filename": "libs/binder/tests/binderRpcTestService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 0,
+      "message": "same question",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 97
+      },
+      "revId": "0d35ffc34ce2db550627a986085901a20c407d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

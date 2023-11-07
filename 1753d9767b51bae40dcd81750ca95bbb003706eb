@@ -16,6 +16,392 @@
       "message": "@smoreland@google.com: this sounds like an error. `ALOGI(\"Unrecognized chunk.\");` at line 284 too.",
       "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e52a2c6_59f10216",
+        "filename": "libs/binder/RecordedTransaction.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "This one could be an error. However, \"Unrecognized chunk\" is expected if we add a new chunk type, but we use an old reader of these files to process that new file. Probably won\u0027t happen, but that\u0027s the design.",
+      "parentUuid": "8e5c4c08_8549edc0",
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b146f211_49ab0cc1",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "zd for ssize_t (zu is size_t)",
+      "range": {
+        "startLine": 344,
+        "startChar": 39,
+        "endLine": 344,
+        "endChar": 41
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43eb7381_70907eb5",
+        "filename": "libs/binder/ndk/parcel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 385,
+        "startChar": 39,
+        "endLine": 385,
+        "endChar": 41
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab01f7d7_1a1b4678",
+        "filename": "libs/binder/ndk/service_manager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "for this log, it would be important that we print the string values. Could you add that here?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 96
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff61e1a4_8348dd60",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "It might be best to leave these fatal, rather than if they didn\u0027t work, having to debug whatever situation arises when whatever code in \u0027f\u0027 is handed -1 instead of a socket",
+      "range": {
+        "startLine": 90,
+        "startChar": 14,
+        "endLine": 91,
+        "endChar": 22
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d71676_4dbaee45",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "I think this will happen in the other process, so they should stay fatal. Otherwise, things might hang/might be annoying to clean up.",
+      "range": {
+        "startLine": 149,
+        "startChar": 11,
+        "endLine": 150,
+        "endChar": 21
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edad7c1c_d697db54",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "keep the calls in this function fatal as well.\n\nThe \"gtest\" way would be to return an assertion failure object, but it would make client code a lot messier to check this or assert this every time, so keep them fatal, yeah.",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 13
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89903fb0_1df96674",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "fatal",
+      "range": {
+        "startLine": 248,
+        "startChar": 8,
+        "endLine": 248,
+        "endChar": 17
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed05237c_c3278c18",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "fatal",
+      "range": {
+        "startLine": 332,
+        "startChar": 8,
+        "endLine": 332,
+        "endChar": 17
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4c94ad_4db709d7",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "fatal",
+      "range": {
+        "startLine": 334,
+        "startChar": 12,
+        "endLine": 334,
+        "endChar": 21
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2045c0aa_ee875fa5",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "fatal",
+      "range": {
+        "startLine": 339,
+        "startChar": 12,
+        "endLine": 339,
+        "endChar": 21
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c2a6905_bc242db2",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "fatal",
+      "range": {
+        "startLine": 354,
+        "startChar": 8,
+        "endLine": 354,
+        "endChar": 19
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d85ecf_5e5c08b1",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "fatal",
+      "range": {
+        "startLine": 406,
+        "startChar": 8,
+        "endLine": 406,
+        "endChar": 17
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c26433_00327896",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "nit: ASSERT_TRUE",
+      "range": {
+        "startLine": 587,
+        "startChar": 4,
+        "endLine": 587,
+        "endChar": 15
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d49661f_dacc84f3",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "nit: ASSERT_TRUE",
+      "range": {
+        "startLine": 592,
+        "startChar": 4,
+        "endLine": 592,
+        "endChar": 15
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb303b56_a9a67a6c",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "nit: ASSERT_TRUE (and same below)\n\nbtw, I would have never written \u0027CHECK\u0027 here, but the reason for ASSERT is that it prevents subsequent failures from spamming. This is also a common error these tests hit (if the other side crashes), so it would actually be useful. I\u0027ve seen these get hit dozens of times while debugging here. Though, nit because it\u0027s spam, not really going to be the biggest issue in the world.",
+      "range": {
+        "startLine": 949,
+        "startChar": 4,
+        "endLine": 949,
+        "endChar": 15
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0deed65d_9eadcbcd",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1196,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:29:43Z",
+      "side": 1,
+      "message": "unrelated change",
+      "range": {
+        "startLine": 1196,
+        "startChar": 0,
+        "endLine": 1196,
+        "endChar": 66
+      },
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
