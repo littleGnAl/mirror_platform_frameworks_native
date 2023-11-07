@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd46da74_7e118ec6",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T23:54:19Z",
+      "side": 1,
+      "message": "We should probably still test this method regardless of the above conditions, to make sure it fails. Would you be willing to do this or split into a bug?",
+      "range": {
+        "startLine": 1391,
+        "startChar": 43,
+        "endLine": 1391,
+        "endChar": 60
+      },
+      "revId": "ded8b2cbac24796c735d750748b7e389eb67e07a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
