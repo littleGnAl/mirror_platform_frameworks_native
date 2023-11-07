@@ -22,6 +22,30 @@
       },
       "revId": "35d3f39105c106f3ddd85f0b3649e8e9d7e53eb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988eb318_d350c6f3",
+        "filename": "libs/binder/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2023-11-07T01:04:59Z",
+      "side": 1,
+      "message": "what\u0027s the exact error? (when trusty/logging.cpp is removed) do you still have it?",
+      "parentUuid": "dd4513ab_f4c1e7f5",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 6
+      },
+      "revId": "35d3f39105c106f3ddd85f0b3649e8e9d7e53eb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
