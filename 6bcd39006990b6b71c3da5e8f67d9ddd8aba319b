@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "801c0c21_f5035246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 71
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T18:20:00Z",
+      "side": 1,
+      "message": "This change may potentially be abandoned, but I\u0027ll keep it for now just in case we\u0027ll decide to build aidl from sources.",
+      "revId": "6bcd39006990b6b71c3da5e8f67d9ddd8aba319b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
