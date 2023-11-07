@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d082d7_023708a4",
+        "filename": "libs/renderengine/gl/GLSkiaShadowPort.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2023-11-07T12:26:27Z",
+      "side": 1,
+      "message": "is this just fixing an implicit cast or fixing a real bug?\n\n`kFill_RRectType !\u003d shadowGeometry.fType` I think is what has no behavior change.",
+      "range": {
+        "startLine": 463,
+        "startChar": 41,
+        "endLine": 463,
+        "endChar": 82
+      },
+      "revId": "eaa6879aa495770f7c3ea974175eba2a74bd2585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
