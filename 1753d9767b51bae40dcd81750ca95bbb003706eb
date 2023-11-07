@@ -16,6 +16,24 @@
       "message": "Could we also get rid of `trusty/include/log/log.h`? That one always bothered me, but I couldn\u0027t work around it.",
       "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a95e9f_92b8217e",
+        "filename": "libs/binder/trusty/logging.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T14:16:19Z",
+      "side": 0,
+      "message": "Probably yes, as part of doing the same thing on Linux Binder. But not as a part of this change :).",
+      "parentUuid": "7692a50b_7b61abfb",
+      "revId": "1753d9767b51bae40dcd81750ca95bbb003706eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
