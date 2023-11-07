@@ -22,6 +22,30 @@
       },
       "revId": "5c7fe203b8ac13dc968259a51354d9fc6678c902",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2e4104_b309204e",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-07T00:52:54Z",
+      "side": 1,
+      "message": "Right now it returns OK (see line 1396). Does it mean you want it to be \"not debuggable\" on non-android?",
+      "parentUuid": "c7d9ebfa_dab6403b",
+      "range": {
+        "startLine": 1388,
+        "startChar": 0,
+        "endLine": 1391,
+        "endChar": 59
+      },
+      "revId": "5c7fe203b8ac13dc968259a51354d9fc6678c902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
