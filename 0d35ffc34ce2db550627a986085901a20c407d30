@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "255a5ceb_3741181c",
+        "filename": "libs/binder/tests/binderRpcTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2085,
+      "author": {
+        "id": 1135107
+      },
+      "writtenOn": "2023-11-08T02:21:24Z",
+      "side": 0,
+      "message": "It is visible when running on Linux. I need to check how it looks when you run it on device.\n\nBut I\u0027m curious - if it\u0027s logged to logcat, why do you need it on stdout/err?",
+      "parentUuid": "79849133_d55636c2",
+      "range": {
+        "startLine": 2085,
+        "startChar": 0,
+        "endLine": 2085,
+        "endChar": 97
+      },
+      "revId": "0d35ffc34ce2db550627a986085901a20c407d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96537219_1469215f",
         "filename": "libs/binder/tests/binderRpcTestService.cpp",
         "patchSetId": 6
