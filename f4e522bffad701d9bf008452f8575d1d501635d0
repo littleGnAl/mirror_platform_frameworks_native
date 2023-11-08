@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a71f767_043c6461",
+        "filename": "libs/binder/rust/src/parcel/file_descriptor.rs",
+        "patchSetId": 44
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-11-08T19:49:51Z",
+      "side": 1,
+      "message": "Did we examine existing uses of this in our Rust code and figure out whether preserving `std::fs::File` was even worth it?\n\nParcelFileDescriptor is frequently used to transport things that shouldn\u0027t have been wrapped in `File` in the first place, like network sockets or memory resources. Maybe we can just move everything to OwnedFd?",
+      "revId": "f4e522bffad701d9bf008452f8575d1d501635d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b0d4b0_a8888d4a",
+        "filename": "libs/binder/rust/src/parcel/file_descriptor.rs",
+        "patchSetId": 44
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-11-08T19:49:51Z",
+      "side": 1,
+      "message": "This cannot be a feature, it must be a cfg. It\u0027s not additive.",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "f4e522bffad701d9bf008452f8575d1d501635d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
