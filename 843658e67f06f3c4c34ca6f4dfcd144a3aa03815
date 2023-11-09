@@ -16,6 +16,23 @@
       "message": "Hi, please help review the change, thanks!",
       "revId": "843658e67f06f3c4c34ca6f4dfcd144a3aa03815",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c539d54b_c67ba97e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1870086
+      },
+      "writtenOn": "2023-11-09T01:43:15Z",
+      "side": 1,
+      "message": "Hi, Google team, help merge the patch, thanks!",
+      "revId": "843658e67f06f3c4c34ca6f4dfcd144a3aa03815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
