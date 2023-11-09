@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "506fc62b_7e39a50b",
+        "filename": "libs/binder/rust/src/parcel/file_descriptor.rs",
+        "patchSetId": 44
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-11-09T03:34:36Z",
+      "side": 1,
+      "message": "I realized that\u0027s an orthogonal change from `Interface::dump`, so I split them up into separate patches.",
+      "parentUuid": "4a71f767_043c6461",
+      "revId": "f4e522bffad701d9bf008452f8575d1d501635d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7b0d4b0_a8888d4a",
@@ -31,6 +49,30 @@
       "writtenOn": "2023-11-08T19:49:51Z",
       "side": 1,
       "message": "This cannot be a feature, it must be a cfg. It\u0027s not additive.",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "f4e522bffad701d9bf008452f8575d1d501635d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ca501b_75be6dc5",
+        "filename": "libs/binder/rust/src/parcel/file_descriptor.rs",
+        "patchSetId": 44
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-11-09T03:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7b0d4b0_a8888d4a",
       "range": {
         "startLine": 33,
         "startChar": 4,
