@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68fd6829_9676088b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1959901
+      },
+      "writtenOn": "2023-11-09T21:16:41Z",
+      "side": 1,
+      "message": "This is porting http://ag/25225632 to AOSP",
+      "revId": "54161bf487f036bf7c795de6fabb75b340c9c9c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
