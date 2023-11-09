@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5769aa1_fc72791d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1809582
+      },
+      "writtenOn": "2023-11-09T04:41:14Z",
+      "side": 1,
+      "message": "The biggest difference between `OwnedFd` and `File` is that the former does not implement the `Read` and `Write` traits. If you want to use those, you have to convert using `From\u003cOwnedFd\u003e for File` (which is clunky if you start with a reference).",
+      "revId": "8114cb75e21ffeb49afb7973ff53c174affac3f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
