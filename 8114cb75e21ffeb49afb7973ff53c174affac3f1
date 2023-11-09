@@ -16,6 +16,24 @@
       "message": "The biggest difference between `OwnedFd` and `File` is that the former does not implement the `Read` and `Write` traits. If you want to use those, you have to convert using `From\u003cOwnedFd\u003e for File` (which is clunky if you start with a reference).",
       "revId": "8114cb75e21ffeb49afb7973ff53c174affac3f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759a2f64_6760359b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2023-11-09T15:52:23Z",
+      "side": 1,
+      "message": "I advocated for this over the Trusty split b/c I don\u0027t think this should have been a File in the first place.\n\nFile is for objects which are bufferable, can be read/written through arbitrary read/write sequencing, etc.\n\nParcelFileDescriptor is frequently used with ashmem/ion_buffer/pipe/socket/memfd/etc. which may not implement the right methods for File to work correctly, and may need other methods to be exposed. I\u0027ve definitely seen people call `as_raw_fd` to get the fd back out of the `File`, which was a bit of a warning sign, but it didn\u0027t seem worth the shakeup. The Trusty needs just kind of push things over the line such that I\u0027d advocate for us fixing this API.",
+      "parentUuid": "b5769aa1_fc72791d",
+      "revId": "8114cb75e21ffeb49afb7973ff53c174affac3f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
