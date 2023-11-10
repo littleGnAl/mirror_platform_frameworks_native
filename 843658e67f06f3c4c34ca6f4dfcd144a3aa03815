@@ -33,6 +33,23 @@
       "message": "Hi, Google team, help merge the patch, thanks!",
       "revId": "843658e67f06f3c4c34ca6f4dfcd144a3aa03815",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28492695_e7c1cefe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1870086
+      },
+      "writtenOn": "2023-11-10T01:57:52Z",
+      "side": 1,
+      "message": "This patch requires Review-Enforcement, please help code review, thanks!",
+      "revId": "843658e67f06f3c4c34ca6f4dfcd144a3aa03815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
