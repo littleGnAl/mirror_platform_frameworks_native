@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5e7c61_36170486",
+        "filename": "libs/gui/BufferQueueConsumer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-11-10T08:39:47Z",
+      "side": 1,
+      "message": "Can these be `!defined(__ANDROID_VENDOR__) \u0026\u0026 !defined(__ANDROID_PRODUCT__)` as below?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "6f3bfa684e92ea5bd8ef353494f47db188e7068c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75fc4ba0_f5c71c3b",
+        "filename": "libs/gui/BufferQueueConsumer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2023-11-10T08:39:47Z",
+      "side": 1,
+      "message": "Do we have to update the comment as well?",
+      "range": {
+        "startLine": 814,
+        "startChar": 6,
+        "endLine": 815,
+        "endChar": 31
+      },
+      "revId": "6f3bfa684e92ea5bd8ef353494f47db188e7068c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
