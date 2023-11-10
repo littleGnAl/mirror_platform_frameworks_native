@@ -388,7 +388,6 @@ cc_defaults {
         "libsync",
         "libui",
         "libutils",
-        "libvndksupport",
     ],
 
     static_libs: [
